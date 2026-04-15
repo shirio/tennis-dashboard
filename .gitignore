@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+.claude/
+/data/matches_all_players.json
+/data/players_30.json
+/data/players_35.json
+*.output
+/tmp/
