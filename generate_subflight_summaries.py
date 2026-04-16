@@ -11,12 +11,14 @@ SUMMARIES = {
     "30_A": (
         "DTC #3 (4-0) is the only unbeaten team, powered by Shi Oskooi (2.76→3.03, 4-0) "
         "and Darian McCauley (2.98→3.11, 3-0) as the D1 pair that upset Shirey (3.18) + "
-        "Frazier (3.03) in W1. Anthem CC (3-1) is the main challenger with Chelsi Grady "
+        "Frazier (3.03) in W1. TPC and Anthem CC both at 3-1 are the main challengers. "
+        "TPC crushed DTC #2 4-1 in their delayed W4 match — Tina Shirey + Irene Frazier "
+        "(DTC #2's D1 anchor) lost to TPC's D1 pair 6-2 6-3. Anthem CC has Chelsi Grady "
         "(2.86→3.00) and Crystal Ziebarth (2.83→2.97) emerging. Summerlin Arbors (2-2) "
         "has Tayoni Coleman (3-0 at S1) and Brittany Carlson (2.71→2.86, 3-1) as risers. "
-        "TPC (2-1) has a bye pending from W4 and sits lurking. DTC #2 (1-2) underperforms "
-        "its rating baseline. Red Rock CC, Life Time Fitness/GV, and Southern Highlands "
-        "all sit at 1-3 in the bottom tier."
+        "DTC #2 collapsed to 1-3 after the TPC loss — their 1# Doubles pair going down "
+        "is a structural problem. Red Rock CC, Life Time Fitness/GV, and Southern "
+        "Highlands round out the bottom at 1-3."
     ),
     "30_B": (
         "Four teams tied at 3-1 at the top — Spanish Trail, Desert Palm, Whitney Mesa Park, "

@@ -16,8 +16,20 @@
           "sets_lost": 13,
           "games_won": 224,
           "games_lost": 134,
-          "games_won_pct": "61.27%",
-          "notes": "Undefeated (4-0) with the deepest roster in the division. Shi Oskooi (4-0, +0.32 delta) and Darian McCauley (3-0) anchor doubles, while Yarisbel Schieck (3-0 at S1) and Anna Clark (3-0 at S1/S2) handle singles. Emmy Perez deploys all 4 weeks everywhere — the captain's flex weapon. Structural advantage: every core player is trending up."
+          "games_won_pct": "61.27%"
+        },
+        {
+          "team_name": "TPC",
+          "team_wins": 3,
+          "matches_played": 4,
+          "team_losses": 1,
+          "indiv_wins": 13,
+          "indiv_losses": 7,
+          "sets_won": 29,
+          "sets_lost": 16,
+          "games_won": 199,
+          "games_lost": 169,
+          "games_won_pct": "55.90%"
         },
         {
           "team_name": "ANTHEM CC",
@@ -30,8 +42,7 @@
           "sets_lost": 22,
           "games_won": 185,
           "games_lost": 170,
-          "games_won_pct": "52.11%",
-          "notes": "3-1 but the 1-4 loss to Summerlin in W4 exposed real weaknesses. Chelsi Grady + Crystal Ziebarth are an emerging D1 threat, and Kelly Twells (3-0) wins everywhere. But Gina Rivera (1-2 at S1) and Carrie Maddux (1-2 at D1) are liabilities at the top. Against DTC #3 on 4/18: vulnerable at D1 where Shi/Darian should dominate, and at S1 where Yarisbel outrates everyone Anthem can put there."
+          "games_won_pct": "52.11%"
         },
         {
           "team_name": "SUMMERLIN ARBORS",
@@ -44,22 +55,7 @@
           "sets_lost": 18,
           "games_won": 204,
           "games_lost": 165,
-          "games_won_pct": "55.28%",
-          "notes": "2-2 but the wins are emphatic (5-0 vs Red Rock, 4-1 vs Anthem). Tayoni Coleman (3-0 at S1) is the best singles player in the division. Brittany Carlson (3-1, +0.34 delta) is the breakout player. The D1 pair of Kim Springer + Tina Nathalia is solid but beatable. DTC #3 faces them on 5/2 — the S1 matchup (Yarisbel vs Coleman) is the marquee line."
-        },
-        {
-          "team_name": "TPC",
-          "team_wins": 2,
-          "matches_played": 3,
-          "team_losses": 1,
-          "indiv_wins": 9,
-          "indiv_losses": 6,
-          "sets_won": 21,
-          "sets_lost": 14,
-          "games_won": 143,
-          "games_lost": 127,
-          "games_won_pct": "55.43%",
-          "notes": "2-1 with a bye week (W4 match vs DTC #2 not played). Deep roster with 17 players but no dominant stars. Laurie Lenhart (2-1) plays everywhere and is the most versatile. Cross-listed players from 3.5 (Leticia Schoff, Jeralyn Marchesi) give them upside. DTC #3 faces them on 4/25."
+          "games_won_pct": "55.28%"
         },
         {
           "team_name": "SOUTHERN HIGHLANDS",
@@ -72,8 +68,7 @@
           "sets_lost": 26,
           "games_won": 174,
           "games_lost": 198,
-          "games_won_pct": "46.77%",
-          "notes": "1-3 and structurally weak. Daniella Toms (1-3) and Christa Shiklanian (1-3) play every week and lose. Shaza Nayef (+0.27 delta) and Gretchen Wills are their only bright spots. DTC #3 already beat them 4-1 in W2. Rematch on 5/16 should be straightforward."
+          "games_won_pct": "46.77%"
         },
         {
           "team_name": "LIFE TIME FITNESS/GV",
@@ -86,8 +81,20 @@
           "sets_lost": 29,
           "games_won": 156,
           "games_lost": 203,
-          "games_won_pct": "44.96%",
-          "notes": "1-3. Han Hu (3-1) is a singles threat at S1/S2, and Kimberly Lippisch (3-1) is their most reliable player. But D1 is a disaster — Melanie Campoy + various partners are 0-2 at D1. Mary Ann Apone plays all 4 weeks at 1-3. DTC #3 already beat them 4-1 in W4."
+          "games_won_pct": "44.96%"
+        },
+        {
+          "team_name": "DTC #2",
+          "team_wins": 1,
+          "matches_played": 4,
+          "team_losses": 3,
+          "indiv_wins": 6,
+          "indiv_losses": 14,
+          "sets_won": 14,
+          "sets_lost": 28,
+          "games_won": 165,
+          "games_lost": 210,
+          "games_won_pct": "44.00%"
         },
         {
           "team_name": "RED ROCK CC",
@@ -100,22 +107,7 @@
           "sets_lost": 30,
           "games_won": 148,
           "games_lost": 206,
-          "games_won_pct": "39.77%",
-          "notes": "1-3 and the weakest team in Subflight A. Desiree Mcivor (0-3, -0.21 delta) is the most overrated player in the division. Brenda Cambridge (2-1) is their only reliable performer. DTC #3 beat them 3-2 in W3 and plays them again 5/30."
-        },
-        {
-          "team_name": "DTC #2",
-          "team_wins": 1,
-          "matches_played": 3,
-          "team_losses": 2,
-          "indiv_wins": 5,
-          "indiv_losses": 10,
-          "sets_won": 12,
-          "sets_lost": 20,
-          "games_won": 123,
-          "games_lost": 154,
-          "games_won_pct": "44.40%",
-          "notes": "1-2 with a bye week (W4 vs TPC not played). Tina Shirey (3.18) + Irene Frazier (3.03) at D1 are the division's most dangerous pair, but they lost 6-0 6-3 at Anthem in W2. Outside of D1, the roster is thin — Elsy Flores Rojas (1-2) and Kathryn Wilson (0-2) struggle at singles. Not on DTC #3's schedule in remaining weeks."
+          "games_won_pct": "39.77%"
         }
       ],
       "matches": [
@@ -186,6 +178,76 @@
               "losers": "Charlotte Durisseau / Monica Taylor",
               "winner_team": "DTC #3",
               "loser_team": "DTC #2"
+            }
+          ]
+        },
+        {
+          "match_id": "abaad446e17fb4e4",
+          "date": "3/14/2026",
+          "tl_match_id": "1011779571",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779571",
+          "home_team": "TPC",
+          "away_team": "RED ROCK CC",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Desiree Mcivor",
+              "players_away": "Jennifer Wang",
+              "score": "6-0 6-0",
+              "result": "home",
+              "winners": "Jennifer Wang",
+              "losers": "Desiree Mcivor",
+              "winner_team": "TPC",
+              "loser_team": "RED ROCK CC"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Brenda Cambridge",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "away",
+              "winners": "Brenda Cambridge",
+              "losers": "",
+              "winner_team": "RED ROCK CC",
+              "loser_team": "TPC"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Kellye Ray / Carolina Nigro",
+              "players_away": "Jeralyn Marchesi / Kristen Radlosky",
+              "score": "6-3 2-6 1-0",
+              "result": "home",
+              "winners": "Jeralyn Marchesi / Kristen Radlosky",
+              "losers": "Kellye Ray / Carolina Nigro",
+              "winner_team": "TPC",
+              "loser_team": "RED ROCK CC"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kimberly Yang / Carine Tsveniashvili",
+              "players_away": "Nicole Chikhani / Laurie Lenhart",
+              "score": "7-5 6-1",
+              "result": "home",
+              "winners": "Nicole Chikhani / Laurie Lenhart",
+              "losers": "Kimberly Yang / Carine Tsveniashvili",
+              "winner_team": "TPC",
+              "loser_team": "RED ROCK CC"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Raedene Counts / Maria Dellett",
+              "players_away": "Debbie D'Amato / Meghan Arnold",
+              "score": "7-5 6-2",
+              "result": "home",
+              "winners": "Debbie D'Amato / Meghan Arnold",
+              "losers": "Raedene Counts / Maria Dellett",
+              "winner_team": "TPC",
+              "loser_team": "RED ROCK CC"
             }
           ]
         },
@@ -330,76 +392,6 @@
           ]
         },
         {
-          "match_id": "abaad446e17fb4e4",
-          "date": "3/14/2026",
-          "tl_match_id": "1011779571",
-          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779571",
-          "home_team": "TPC",
-          "away_team": "RED ROCK CC",
-          "team_wins_home": 4,
-          "team_wins_away": 1,
-          "score": "4-1",
-          "status": "Won 4-1 Confirmed",
-          "pending": false,
-          "lines": [
-            {
-              "line": "1# Singles",
-              "players_home": "Desiree Mcivor",
-              "players_away": "Jennifer Wang",
-              "score": "6-0 6-0",
-              "result": "home",
-              "winners": "Jennifer Wang",
-              "losers": "Desiree Mcivor",
-              "winner_team": "TPC",
-              "loser_team": "RED ROCK CC"
-            },
-            {
-              "line": "2# Singles",
-              "players_home": "Brenda Cambridge",
-              "players_away": "",
-              "score": "6-0 6-0",
-              "result": "away",
-              "winners": "Brenda Cambridge",
-              "losers": "",
-              "winner_team": "RED ROCK CC",
-              "loser_team": "TPC"
-            },
-            {
-              "line": "1# Doubles",
-              "players_home": "Kellye Ray / Carolina Nigro",
-              "players_away": "Jeralyn Marchesi / Kristen Radlosky",
-              "score": "6-3 2-6 1-0",
-              "result": "home",
-              "winners": "Jeralyn Marchesi / Kristen Radlosky",
-              "losers": "Kellye Ray / Carolina Nigro",
-              "winner_team": "TPC",
-              "loser_team": "RED ROCK CC"
-            },
-            {
-              "line": "2# Doubles",
-              "players_home": "Kimberly Yang / Carine Tsveniashvili",
-              "players_away": "Nicole Chikhani / Laurie Lenhart",
-              "score": "7-5 6-1",
-              "result": "home",
-              "winners": "Nicole Chikhani / Laurie Lenhart",
-              "losers": "Kimberly Yang / Carine Tsveniashvili",
-              "winner_team": "TPC",
-              "loser_team": "RED ROCK CC"
-            },
-            {
-              "line": "3# Doubles",
-              "players_home": "Raedene Counts / Maria Dellett",
-              "players_away": "Debbie D'Amato / Meghan Arnold",
-              "score": "7-5 6-2",
-              "result": "home",
-              "winners": "Debbie D'Amato / Meghan Arnold",
-              "losers": "Raedene Counts / Maria Dellett",
-              "winner_team": "TPC",
-              "loser_team": "RED ROCK CC"
-            }
-          ]
-        },
-        {
           "match_id": "2c79b8bb1e34b0fa",
           "date": "3/21/2026",
           "tl_match_id": "1011779573",
@@ -466,6 +458,76 @@
               "losers": "Rebecca Dunne / Kara Gaston",
               "winner_team": "SOUTHERN HIGHLANDS",
               "loser_team": "DTC #3"
+            }
+          ]
+        },
+        {
+          "match_id": "ea9f56e114374add",
+          "date": "3/21/2026",
+          "tl_match_id": "1011779574",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779574",
+          "home_team": "TPC",
+          "away_team": "LIFE TIME FITNESS/GV",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Leticia Schoff",
+              "players_away": "Margo Isler",
+              "score": "6-3 6-4",
+              "result": "home",
+              "winners": "Leticia Schoff",
+              "losers": "Margo Isler",
+              "winner_team": "TPC",
+              "loser_team": "LIFE TIME FITNESS/GV"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Rachel Corpuz",
+              "players_away": "Han Hu",
+              "score": "6-2 7-5",
+              "result": "away",
+              "winners": "Han Hu",
+              "losers": "Rachel Corpuz",
+              "winner_team": "LIFE TIME FITNESS/GV",
+              "loser_team": "TPC"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Michelle Simister / Amy Arbeli",
+              "players_away": "Jacqueline Brooks / Melanie Campoy",
+              "score": "6-4 6-4",
+              "result": "home",
+              "winners": "Michelle Simister / Amy Arbeli",
+              "losers": "Jacqueline Brooks / Melanie Campoy",
+              "winner_team": "TPC",
+              "loser_team": "LIFE TIME FITNESS/GV"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Meghan Arnold / Jennifer Blais",
+              "players_away": "Kimberly Lippisch / Kelli Caderot",
+              "score": "6-2 7-5",
+              "result": "home",
+              "winners": "Meghan Arnold / Jennifer Blais",
+              "losers": "Kimberly Lippisch / Kelli Caderot",
+              "winner_team": "TPC",
+              "loser_team": "LIFE TIME FITNESS/GV"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Laurie Lenhart / Jill Kreston",
+              "players_away": "Mary Ann Apone / Hee Park",
+              "score": "6-4 6-1",
+              "result": "home",
+              "winners": "Laurie Lenhart / Jill Kreston",
+              "losers": "Mary Ann Apone / Hee Park",
+              "winner_team": "TPC",
+              "loser_team": "LIFE TIME FITNESS/GV"
             }
           ]
         },
@@ -610,76 +672,6 @@
           ]
         },
         {
-          "match_id": "ea9f56e114374add",
-          "date": "3/21/2026",
-          "tl_match_id": "1011779574",
-          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779574",
-          "home_team": "TPC",
-          "away_team": "LIFE TIME FITNESS/GV",
-          "team_wins_home": 4,
-          "team_wins_away": 1,
-          "score": "4-1",
-          "status": "Won 4-1 Confirmed",
-          "pending": false,
-          "lines": [
-            {
-              "line": "1# Singles",
-              "players_home": "Leticia Schoff",
-              "players_away": "Margo Isler",
-              "score": "6-3 6-4",
-              "result": "home",
-              "winners": "Leticia Schoff",
-              "losers": "Margo Isler",
-              "winner_team": "TPC",
-              "loser_team": "LIFE TIME FITNESS/GV"
-            },
-            {
-              "line": "2# Singles",
-              "players_home": "Rachel Corpuz",
-              "players_away": "Han Hu",
-              "score": "6-2 7-5",
-              "result": "away",
-              "winners": "Han Hu",
-              "losers": "Rachel Corpuz",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "TPC"
-            },
-            {
-              "line": "1# Doubles",
-              "players_home": "Michelle Simister / Amy Arbeli",
-              "players_away": "Jacqueline Brooks / Melanie Campoy",
-              "score": "6-4 6-4",
-              "result": "home",
-              "winners": "Michelle Simister / Amy Arbeli",
-              "losers": "Jacqueline Brooks / Melanie Campoy",
-              "winner_team": "TPC",
-              "loser_team": "LIFE TIME FITNESS/GV"
-            },
-            {
-              "line": "2# Doubles",
-              "players_home": "Meghan Arnold / Jennifer Blais",
-              "players_away": "Kimberly Lippisch / Kelli Caderot",
-              "score": "6-2 7-5",
-              "result": "home",
-              "winners": "Meghan Arnold / Jennifer Blais",
-              "losers": "Kimberly Lippisch / Kelli Caderot",
-              "winner_team": "TPC",
-              "loser_team": "LIFE TIME FITNESS/GV"
-            },
-            {
-              "line": "3# Doubles",
-              "players_home": "Laurie Lenhart / Jill Kreston",
-              "players_away": "Mary Ann Apone / Hee Park",
-              "score": "6-4 6-1",
-              "result": "home",
-              "winners": "Laurie Lenhart / Jill Kreston",
-              "losers": "Mary Ann Apone / Hee Park",
-              "winner_team": "TPC",
-              "loser_team": "LIFE TIME FITNESS/GV"
-            }
-          ]
-        },
-        {
           "match_id": "f81a1323d520200f",
           "date": "3/28/2026",
           "tl_match_id": "1011779578",
@@ -754,12 +746,12 @@
           "date": "3/28/2026",
           "tl_match_id": "1011779577",
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779577",
-          "home_team": "ANTHEM CC",
-          "away_team": "TPC",
-          "team_wins_home": 4,
-          "team_wins_away": 1,
-          "score": "4-1",
-          "status": "Won 4-1 Confirmed",
+          "home_team": "TPC",
+          "away_team": "ANTHEM CC",
+          "team_wins_home": 1,
+          "team_wins_away": 4,
+          "score": "1-4",
+          "status": "Lost 1-4 Confirmed",
           "pending": false,
           "lines": [
             {
@@ -767,7 +759,7 @@
               "players_home": "CHRISTINE McNair",
               "players_away": "Amber Candelaria",
               "score": "6-1 4-6 1-0",
-              "result": "home",
+              "result": "away",
               "winners": "CHRISTINE McNair",
               "losers": "Amber Candelaria",
               "winner_team": "ANTHEM CC",
@@ -778,7 +770,7 @@
               "players_home": "Gina Rivera",
               "players_away": "Rachel Corpuz",
               "score": "6-4 1-6 1-0",
-              "result": "away",
+              "result": "home",
               "winners": "Rachel Corpuz",
               "losers": "Gina Rivera",
               "winner_team": "TPC",
@@ -789,7 +781,7 @@
               "players_home": "Chelsi Grady / Crystal Ziebarth",
               "players_away": "Laurie Lenhart / Debbie D'Amato",
               "score": "6-4 6-3",
-              "result": "home",
+              "result": "away",
               "winners": "Chelsi Grady / Crystal Ziebarth",
               "losers": "Laurie Lenhart / Debbie D'Amato",
               "winner_team": "ANTHEM CC",
@@ -800,7 +792,7 @@
               "players_home": "Therese Laudenslager / Carrie Maddux",
               "players_away": "Christina Smith / Jennifer Blais",
               "score": "5-7 6-3 1-0",
-              "result": "home",
+              "result": "away",
               "winners": "Therese Laudenslager / Carrie Maddux",
               "losers": "Christina Smith / Jennifer Blais",
               "winner_team": "ANTHEM CC",
@@ -811,7 +803,7 @@
               "players_home": "Kelly Twells / Cynthia Lau",
               "players_away": "Kelly Boyers / Kristen Bedell",
               "score": "1-6 6-2 1-0",
-              "result": "home",
+              "result": "away",
               "winners": "Kelly Twells / Cynthia Lau",
               "losers": "Kelly Boyers / Kristen Bedell",
               "winner_team": "ANTHEM CC",
@@ -969,7 +961,7 @@
           "team_wins_home": 4,
           "team_wins_away": 1,
           "score": "4-1",
-          "status": "Won 4-1 Reported",
+          "status": "Won 4-1 Confirmed",
           "pending": false,
           "lines": [
             {
@@ -1026,6 +1018,76 @@
               "losers": "N/A",
               "winner_team": "DTC #3",
               "loser_team": "LIFE TIME FITNESS/GV"
+            }
+          ]
+        },
+        {
+          "match_id": "6d59dfd332bf0c31",
+          "date": "4/11/2026",
+          "tl_match_id": "1011779580",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779580",
+          "home_team": "TPC",
+          "away_team": "DTC #2",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Reported",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jennifer Wang",
+              "players_away": "Stephanie Stern",
+              "score": "7-5 6-3",
+              "result": "home",
+              "winners": "Jennifer Wang",
+              "losers": "Stephanie Stern",
+              "winner_team": "TPC",
+              "loser_team": "DTC #2"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Amy Arbeli",
+              "players_away": "Jihee Anh",
+              "score": "6-3 7-5",
+              "result": "home",
+              "winners": "Amy Arbeli",
+              "losers": "Jihee Anh",
+              "winner_team": "TPC",
+              "loser_team": "DTC #2"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Blais / Rachel Corpuz",
+              "players_away": "Tina Shirey / Irene Frazier",
+              "score": "6-2 6-3",
+              "result": "away",
+              "winners": "Tina Shirey / Irene Frazier",
+              "losers": "Jennifer Blais / Rachel Corpuz",
+              "winner_team": "DTC #2",
+              "loser_team": "TPC"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jeralyn Marchesi / Meghan Arnold",
+              "players_away": "Consuelo Kinahan / Kathryn Wilson",
+              "score": "6-3 7-5",
+              "result": "home",
+              "winners": "Jeralyn Marchesi / Meghan Arnold",
+              "losers": "Consuelo Kinahan / Kathryn Wilson",
+              "winner_team": "TPC",
+              "loser_team": "DTC #2"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Trish Metriyakool / Janice Malos",
+              "players_away": "Monica Taylor / Elizabeth Abatangelo",
+              "score": "6-4 6-2",
+              "result": "home",
+              "winners": "Trish Metriyakool / Janice Malos",
+              "losers": "Monica Taylor / Elizabeth Abatangelo",
+              "winner_team": "TPC",
+              "loser_team": "DTC #2"
             }
           ]
         },
@@ -1098,20 +1160,6 @@
               "loser_team": "ANTHEM CC"
             }
           ]
-        },
-        {
-          "match_id": "6d59dfd332bf0c31",
-          "date": "4/11/2026",
-          "tl_match_id": "1011779580",
-          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779580",
-          "home_team": "TPC",
-          "away_team": "DTC #2",
-          "team_wins_home": null,
-          "team_wins_away": null,
-          "score": "",
-          "status": "Not Played",
-          "pending": true,
-          "lines": []
         },
         {
           "match_id": "f47e5e79528bd1cb",
@@ -1202,8 +1250,8 @@
           "date": "4/18/2026",
           "tl_match_id": "1011779585",
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779585",
-          "home_team": "SUMMERLIN ARBORS",
-          "away_team": "TPC",
+          "home_team": "TPC",
+          "away_team": "SUMMERLIN ARBORS",
           "team_wins_home": null,
           "team_wins_away": null,
           "score": "",
@@ -1230,8 +1278,8 @@
           "date": "4/18/2026",
           "tl_match_id": "1011779584",
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779584",
-          "home_team": "RED ROCK CC",
-          "away_team": "DTC #2",
+          "home_team": "DTC #2",
+          "away_team": "RED ROCK CC",
           "team_wins_home": null,
           "team_wins_away": null,
           "score": "",
@@ -1310,6 +1358,20 @@
           "lines": []
         },
         {
+          "match_id": "45e813abc33f2f5b",
+          "date": "5/16/2026",
+          "tl_match_id": "1011779602",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779602",
+          "home_team": "TPC",
+          "away_team": "LIFE TIME FITNESS/GV",
+          "team_wins_home": null,
+          "team_wins_away": null,
+          "score": "",
+          "status": "Not Played",
+          "pending": true,
+          "lines": []
+        },
+        {
           "match_id": "9d61b29fca8824cd",
           "date": "5/16/2026",
           "tl_match_id": "1011779600",
@@ -1338,20 +1400,6 @@
           "lines": []
         },
         {
-          "match_id": "45e813abc33f2f5b",
-          "date": "5/16/2026",
-          "tl_match_id": "1011779602",
-          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779602",
-          "home_team": "TPC",
-          "away_team": "LIFE TIME FITNESS/GV",
-          "team_wins_home": null,
-          "team_wins_away": null,
-          "score": "",
-          "status": "Not Played",
-          "pending": true,
-          "lines": []
-        },
-        {
           "match_id": "64dfcd42cf8a5d25",
           "date": "5/2/2026",
           "tl_match_id": "1011779593",
@@ -1366,12 +1414,12 @@
           "lines": []
         },
         {
-          "match_id": "85733767cb28bc2f",
+          "match_id": "c86a53a8bf83d80d",
           "date": "5/2/2026",
-          "tl_match_id": "1011779594",
-          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779594",
-          "home_team": "ANTHEM CC",
-          "away_team": "RED ROCK CC",
+          "tl_match_id": "1011779595",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779595",
+          "home_team": "TPC",
+          "away_team": "SOUTHERN HIGHLANDS",
           "team_wins_home": null,
           "team_wins_away": null,
           "score": "",
@@ -1380,12 +1428,12 @@
           "lines": []
         },
         {
-          "match_id": "c86a53a8bf83d80d",
+          "match_id": "85733767cb28bc2f",
           "date": "5/2/2026",
-          "tl_match_id": "1011779595",
-          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779595",
-          "home_team": "TPC",
-          "away_team": "SOUTHERN HIGHLANDS",
+          "tl_match_id": "1011779594",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779594",
+          "home_team": "ANTHEM CC",
+          "away_team": "RED ROCK CC",
           "team_wins_home": null,
           "team_wins_away": null,
           "score": "",
@@ -1426,8 +1474,8 @@
           "date": "5/30/2026",
           "tl_match_id": "1011779605",
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779605",
-          "home_team": "ANTHEM CC",
-          "away_team": "TPC",
+          "home_team": "TPC",
+          "away_team": "ANTHEM CC",
           "team_wins_home": null,
           "team_wins_away": null,
           "score": "",
@@ -1478,6 +1526,20 @@
           "lines": []
         },
         {
+          "match_id": "264c0a0f5fabcc74",
+          "date": "5/9/2026",
+          "tl_match_id": "1011779599",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779599",
+          "home_team": "TPC",
+          "away_team": "RED ROCK CC",
+          "team_wins_home": null,
+          "team_wins_away": null,
+          "score": "",
+          "status": "Not Played",
+          "pending": true,
+          "lines": []
+        },
+        {
           "match_id": "23fe377fa8dfbf8c",
           "date": "5/9/2026",
           "tl_match_id": "1011779597",
@@ -1506,40 +1568,12 @@
           "lines": []
         },
         {
-          "match_id": "264c0a0f5fabcc74",
-          "date": "5/9/2026",
-          "tl_match_id": "1011779599",
-          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779599",
-          "home_team": "TPC",
-          "away_team": "RED ROCK CC",
-          "team_wins_home": null,
-          "team_wins_away": null,
-          "score": "",
-          "status": "Not Played",
-          "pending": true,
-          "lines": []
-        },
-        {
           "match_id": "2b4870e533dea3ca",
           "date": "6/6/2026",
           "tl_match_id": "1011779611",
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779611",
           "home_team": "DTC #3",
           "away_team": "LIFE TIME FITNESS/GV",
-          "team_wins_home": null,
-          "team_wins_away": null,
-          "score": "",
-          "status": "Not Played",
-          "pending": true,
-          "lines": []
-        },
-        {
-          "match_id": "0cd3eb2e4c8c6174",
-          "date": "6/6/2026",
-          "tl_match_id": "1011779610",
-          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779610",
-          "home_team": "ANTHEM CC",
-          "away_team": "SUMMERLIN ARBORS",
           "team_wins_home": null,
           "team_wins_away": null,
           "score": "",
@@ -1562,6 +1596,20 @@
           "lines": []
         },
         {
+          "match_id": "0cd3eb2e4c8c6174",
+          "date": "6/6/2026",
+          "tl_match_id": "1011779610",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779610",
+          "home_team": "ANTHEM CC",
+          "away_team": "SUMMERLIN ARBORS",
+          "team_wins_home": null,
+          "team_wins_away": null,
+          "score": "",
+          "status": "Not Played",
+          "pending": true,
+          "lines": []
+        },
+        {
           "match_id": "6ccd3a827f6da0e3",
           "date": "6/6/2026",
           "tl_match_id": "1011779609",
@@ -1576,7 +1624,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "DTC #3 (4-0) is the only unbeaten team, powered by Shi Oskooi (2.76→3.03, 4-0) and Darian McCauley (2.98→3.11, 3-0) as the D1 pair that upset Shirey (3.18) + Frazier (3.03) in W1. Anthem CC (3-1) is the main challenger with Chelsi Grady (2.86→3.00) and Crystal Ziebarth (2.83→2.97) emerging. Summerlin Arbors (2-2) has Tayoni Coleman (3-0 at S1) and Brittany Carlson (2.71→2.86, 3-1) as risers. TPC (2-1) has a bye pending from W4 and sits lurking. DTC #2 (1-2) underperforms its rating baseline. Red Rock CC, Life Time Fitness/GV, and Southern Highlands all sit at 1-3 in the bottom tier."
+      "subflight_summary": "DTC #3 (4-0) is the only unbeaten team, powered by Shi Oskooi (2.76→3.03, 4-0) and Darian McCauley (2.98→3.11, 3-0) as the D1 pair that upset Shirey (3.18) + Frazier (3.03) in W1. TPC and Anthem CC both at 3-1 are the main challengers. TPC crushed DTC #2 4-1 in their delayed W4 match — Tina Shirey + Irene Frazier (DTC #2's D1 anchor) lost to TPC's D1 pair 6-2 6-3. Anthem CC has Chelsi Grady (2.86→3.00) and Crystal Ziebarth (2.83→2.97) emerging. Summerlin Arbors (2-2) has Tayoni Coleman (3-0 at S1) and Brittany Carlson (2.71→2.86, 3-1) as risers. DTC #2 collapsed to 1-3 after the TPC loss — their 1# Doubles pair going down is a structural problem. Red Rock CC, Life Time Fitness/GV, and Southern Highlands round out the bottom at 1-3."
     },
     {
       "flight_label": "B",
@@ -1592,8 +1640,7 @@
           "sets_lost": 15,
           "games_won": 194,
           "games_lost": 162,
-          "games_won_pct": "56.40%",
-          "notes": "4-0, dominant in Subflight B. sirina Shouldis (3-0, +0.29) and Chelsie Hawkinson (3-1, +0.32) are the D1 anchor pair. Jenny Mulopulos (2-0 at S1) handles singles. The entire roster is trending up — 9 of 14 players have positive deltas. The clear favorite to win Subflight B."
+          "games_won_pct": "56.40%"
         },
         {
           "team_name": "DESERT PALM",
@@ -1606,8 +1653,7 @@
           "sets_lost": 16,
           "games_won": 186,
           "games_lost": 145,
-          "games_won_pct": "56.19%",
-          "notes": "3-1 and very strong. Kristyl Addison (4-0) and Nourjan Bonney (3-0 at S1, +0.30 delta) are elite. Alexandria Chang (2-0 at D1) is a hidden weapon. Their depth at D1 with Addison/Hicks/Stimson is formidable."
+          "games_won_pct": "56.19%"
         },
         {
           "team_name": "WHITNEY MESA PARK",
@@ -1620,8 +1666,7 @@
           "sets_lost": 18,
           "games_won": 183,
           "games_lost": 133,
-          "games_won_pct": "54.45%",
-          "notes": "3-1. Loaded with high-dynamic players cross-listed from 3.5 — Maria Allen (3.27), Abigail Cox (3.25), Jessica Borghoff (3.17) all play D1 selectively. Shiniqual Washington (3-1) is the workhorse who plays every week everywhere. The Tori Walker (2-1 at S1) plus Francine Mazza (2-1) combo handles the rest."
+          "games_won_pct": "54.45%"
         },
         {
           "team_name": "DTC #4",
@@ -1634,8 +1679,7 @@
           "sets_lost": 19,
           "games_won": 195,
           "games_lost": 160,
-          "games_won_pct": "53.35%",
-          "notes": "2-2 but improving. Kristin Stowe (3-0, +0.29 delta) is the breakout star. Maryna Post (3-1) and Olga Bencini (2-1) anchor D1. Tiffany Vance (3-1, +0.32 delta) from the bottom of the roster is winning at D2/D3 consistently — major underrating by the model."
+          "games_won_pct": "53.35%"
         },
         {
           "team_name": "DTC #1",
@@ -1648,8 +1692,7 @@
           "sets_lost": 21,
           "games_won": 182,
           "games_lost": 154,
-          "games_won_pct": "52.47%",
-          "notes": "2-2. Wendy Cashin (4-0) is the engine who plays every week and wins everything. Jaqueline Schultz (2-1) anchors D1. The roster has decent depth but no stars beyond Cashin. Roni Tarr (+0.25 delta) is an emerging contributor at D2/D3."
+          "games_won_pct": "52.47%"
         },
         {
           "team_name": "LAKE LAS VEGAS SPORTS CLUB",
@@ -1662,8 +1705,7 @@
           "sets_lost": 23,
           "games_won": 164,
           "games_lost": 181,
-          "games_won_pct": "51.09%",
-          "notes": "1-3. Erika Cravens (2-0 at D2) and Melissa Arcella (2-0) are bright spots, but the bottom of the roster is desperately thin — Tonya Guidi (2.37) and Janie Oceguera (2.31) are being deployed at D1/S1 out of necessity. Geraldine Wright (2-2, +0.30 delta) is improving rapidly from a very low base."
+          "games_won_pct": "51.09%"
         },
         {
           "team_name": "SPANISH OAKS",
@@ -1676,8 +1718,7 @@
           "sets_lost": 26,
           "games_won": 149,
           "games_lost": 186,
-          "games_won_pct": "44.48%",
-          "notes": "1-3. A flat, undifferentiated roster with no dominant players. Nancy McPartlin (2-0 at D1/D2) is the best player, but after her the talent is spread thin. Julie Schoolmeester (0-2 at D1/S1) and Shawanna Johnson (0-2 at S1/S2) are major liabilities being deployed at top lines."
+          "games_won_pct": "44.48%"
         },
         {
           "team_name": "CLUB RIDGES",
@@ -1690,8 +1731,7 @@
           "sets_lost": 36,
           "games_won": 93,
           "games_lost": 225,
-          "games_won_pct": "30.39%",
-          "notes": "0-4, the only winless team in the entire division. Michelle Inman (0-4) and Christy Cropper (0-4) play every week and lose every match. The roster is the weakest in the division from top to bottom — Jennifer Lake (1-2) is their best player and she's still losing. Every opponent can expect a comfortable win."
+          "games_won_pct": "30.39%"
         }
       ],
       "matches": [
@@ -2755,7 +2795,7 @@
           "team_wins_home": 5,
           "team_wins_away": 0,
           "score": "5-0",
-          "status": "Won 5-0 Reported",
+          "status": "Won 5-0 Confirmed",
           "pending": false,
           "lines": [
             {
