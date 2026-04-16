@@ -394,14 +394,15 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
 
             roster = sorted(
                 by_team.get(tname, []),
-                key=lambda p: -(p.get("current_division_rating") or
+                key=lambda p: -(p.get(f"rating_{_sfx}") or
+                                p.get("current_division_rating") or
                                 p.get("dynamic_rating_baseline") or 0)
             )
             rows = ""
             for p in roster:
                 ntrp_r = p.get("ntrp_rating", "") or ""
                 baseline = p.get("dynamic_rating_baseline")
-                curr = p.get("current_division_rating")
+                curr = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
                 glob = p.get("global_rating")
                 # Use per-division stats if available, else fall back to legacy fields
                 wl    = p.get(f"wl_record_{_sfx}") or p.get("wl_record") or "–"
@@ -467,14 +468,15 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
 
     div_players = [p for p in players if _in_ntrp(p)]
     div_players.sort(
-        key=lambda p: -(p.get("current_division_rating") or
+        key=lambda p: -(p.get(f"rating_{_sfx}") or
+                        p.get("current_division_rating") or
                         p.get("dynamic_rating_baseline") or 0)
     )
     rows = ""
     for p in div_players:
         ntrp_r = p.get("ntrp_rating", "") or ""
         baseline = p.get("dynamic_rating_baseline")
-        curr = p.get("current_division_rating")
+        curr = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
         glob = p.get("global_rating")
         wl = p.get(f"wl_record_{_sfx}") or p.get("wl_record") or "–"
         division = p.get("division", "")
@@ -741,6 +743,7 @@ tr:last-child td { border-bottom: none; }
 .pname { font-weight: 500; }
 #ap-table td { vertical-align: middle; }
 .st-table td:nth-child(n+4):nth-child(-n+6) { white-space: nowrap; font-size: 11px; }
+.rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
 .muted { color: #aaa; font-size: 11px; }
 /* Badges */
 .badge { display: inline-block; padding: 1px 7px; border-radius: 10px;

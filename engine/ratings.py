@@ -450,22 +450,24 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
     elif implied_loss_ceiling is not None:
         implied_ceiling = implied_loss_ceiling
 
-    # Blend toward implied range
-    FLOOR_BLEND = 0.50    # trust the floor at 50% (upward pull for underrated winners)
-    CEILING_BLEND = 0.60  # trust the ceiling at 60% (downward pull for inflated ratings)
+    # --- Implied-rating constraints ---
+    # Floor: if you beat someone strong, you must be at least near their level.
+    # Ceiling: you can't be rated above what your opponents prove. Hard cap.
+    #   If every opponent was below your baseline, you have zero evidence
+    #   of being above baseline — the ceiling IS your baseline.
+    FLOOR_BLEND = 0.50
 
-    # The ceiling should only limit how far ABOVE baseline you can go.
-    # If you only beat weak opponents, you can't prove you're better than baseline,
-    # but you shouldn't drop below baseline for winning.
     if implied_ceiling is not None:
         implied_ceiling = max(implied_ceiling, baseline)
 
     if implied_floor is not None and surprise_rating < implied_floor:
         gap = implied_floor - surprise_rating
         surprise_rating += gap * FLOOR_BLEND
+
+    # Hard ceiling: you cannot exceed your implied ceiling from wins.
+    # No blending — if you only beat weak opponents, your rating is capped.
     if implied_ceiling is not None and surprise_rating > implied_ceiling:
-        gap = surprise_rating - implied_ceiling
-        surprise_rating -= gap * CEILING_BLEND
+        surprise_rating = implied_ceiling
 
     return round(surprise_rating, 4)
 
@@ -655,37 +657,44 @@ def run_ratings() -> RatingsSummary:
             continue
 
         if not matches:
-            # No match records (possibly all filtered as walkovers) — reset to baseline
             player["current_division_rating"] = baseline
             player["global_rating"] = baseline
+            player["rating_30"] = baseline
+            player["rating_35"] = baseline
             summary.players_skipped += 1
             continue
 
-        # Determine player's primary division from their division field
+        # Determine player's primary division
         div = player.get("division", "")
         if "3.5" in div:
-            div_ntrp = "3.5"
+            primary_ntrp = "3.5"
         elif "3.0" in div:
-            div_ntrp = "3.0"
+            primary_ntrp = "3.0"
         elif "2.5" in div:
-            div_ntrp = "3.0"
+            primary_ntrp = "3.0"
         else:
-            div_ntrp = "3.0"
+            primary_ntrp = "3.0"
 
-        n_weeks_div = weeks_by_div.get(div_ntrp, 4)
+        # Per-division ratings: SILOED, each based only on that division's matches
+        for ntrp_key, sfx in [("3.0", "30"), ("3.5", "35")]:
+            div_matches = [m for m in matches if m.division == ntrp_key]
+            n_weeks = weeks_by_div.get(ntrp_key, 4)
+            if div_matches:
+                player[f"rating_{sfx}"] = _compute_v8_rating(
+                    baseline, div_matches,
+                    n_total_weeks=n_weeks, division=ntrp_key,
+                )
+            else:
+                player[f"rating_{sfx}"] = baseline
 
-        # Division rating: only same-division matches
-        div_matches = [m for m in matches if m.division == div_ntrp]
-        player["current_division_rating"] = _compute_v8_rating(
-            baseline, div_matches,
-            n_total_weeks=n_weeks_div, division=div_ntrp,
-        )
+        # current_division_rating = the primary division's siloed rating
+        player["current_division_rating"] = player.get(f"rating_{primary_ntrp.replace('.','')}", baseline)
 
         # Global rating: ALL matches across all divisions
         n_weeks_global = max(weeks_by_div.values()) if weeks_by_div else 4
         player["global_rating"] = _compute_v8_rating(
             baseline, matches,
-            n_total_weeks=n_weeks_global, division=div_ntrp,
+            n_total_weeks=n_weeks_global, division=primary_ntrp,
         )
 
         summary.players_updated += 1

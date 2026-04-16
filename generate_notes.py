@@ -136,20 +136,22 @@ def main():
             # Build note
             parts = []
 
-            # 1. Most interesting match result (if any)
+            # 1. Most interesting result (concise — no scores, just the takeaway)
             if surprising_wins:
                 best = max(surprising_wins, key=lambda m: (m["opp_avg"] or 0) - bl)
-                opp_str = " + ".join(f"{n} ({rating.get(_name_key(n), 0):.2f})" for n in best["opp_names"])
-                partner_str = f" with {best['partner']}" if best["partner"] else ""
-                parts.append(f"Upset win{partner_str} over {opp_str} {best['score']}.")
+                opp_r = best["opp_avg"]
+                gap = opp_r - bl if opp_r else 0
+                if gap > 0.15:
+                    parts.append(f"Upset win vs {'+'.join(best['opp_names'])} (rated {opp_r:.2f}).")
+                else:
+                    parts.append(f"Won vs higher-rated {'+'.join(best['opp_names'])}.")
 
             if surprising_losses:
                 worst = max(surprising_losses, key=lambda m: bl - (m["opp_avg"] or 0))
-                opp_str = " + ".join(f"{n} ({rating.get(_name_key(n), 0):.2f})" for n in worst["opp_names"])
-                parts.append(f"Surprising loss to {opp_str} {worst['score']}.")
+                opp_r = worst["opp_avg"]
+                parts.append(f"Lost to lower-rated {'+'.join(worst['opp_names'])} ({opp_r:.2f}).")
 
-            # 2. Deployment context (only if surprising relative to baseline)
-            avg_line_tier = 0
+            # 2. Deployment context (only if surprising, ultra-concise)
             tier_map = {"1# Singles": 5, "1# Doubles": 4.5, "2# Singles": 4, "2# Doubles": 3, "3# Doubles": 1.5}
             div_floor = 2.50 if sfx == "30" else 3.00
             expected_tier = (bl - div_floor) * 10
@@ -158,46 +160,33 @@ def main():
                 avg_tier = sum(actual_tiers) / len(actual_tiers)
                 tier_gap = avg_tier - expected_tier
                 if tier_gap > 1.5:
-                    parts.append(f"Deployed above expected lines given baseline — captain trusts her.")
+                    parts.append("Deployed above expected lines.")
                 elif tier_gap < -1.5:
-                    parts.append(f"Deployed below expected lines — negative signal from captain.")
+                    parts.append("Deployed below expected lines.")
 
-            if deploy_rate >= 0.9 and n_matches >= 3:
-                parts.append("Captain's every-week player.")
-            elif deploy_rate <= 0.30 and n_matches <= 1:
-                parts.append("Rarely deployed — limited data.")
+            if n_matches <= 1:
+                parts.append("Limited data.")
 
-            # 3. Rating trajectory (only if significant and not obvious)
-            if abs(delta) > 0.10:
-                direction = "up" if delta > 0 else "down"
-                if delta > 0.20:
-                    parts.append(f"Model's biggest positive mover on this roster.")
-                elif delta < -0.10:
-                    reason = ""
-                    if surprising_losses:
-                        reason = " Losses to lower-rated opponents are the driver."
-                    elif deploy_rate < 0.4:
-                        reason = " Low deployment compounds the decline."
-                    parts.append(f"Significant downward correction.{reason}")
+            # 3. Rating trajectory (only the WHY, not the numbers)
+            if delta > 0.20:
+                parts.append("Biggest riser on this roster.")
+            elif delta < -0.10:
+                if surprising_losses:
+                    parts.append("Losses to weaker opponents drive the decline.")
+                elif deploy_rate < 0.4:
+                    parts.append("Low deployment reinforces downgrade.")
 
             # 4. Cross-division addendum (brief)
             if other_wl:
                 other_div = "3.5" if sfx == "30" else "3.0"
                 parts.append(f"Also {other_wl} in {other_div}.")
 
-            # Limit note length
             note = " ".join(parts).strip()
-            if len(note) > 300:
-                note = note[:297] + "..."
+            if len(note) > 250:
+                note = note[:247] + "..."
 
-            if not note and n_matches == 1:
-                # Generic for 1-match players with nothing interesting
-                m0 = matches[0]
-                result = "Won" if m0["won"] else "Lost"
-                opp_str = " / ".join(m0["opp_names"])
-                note = f"Single match: {result} {m0['score']} vs {opp_str}. Insufficient data."
-            elif not note:
-                note = "Results as expected given baseline and opponent quality."
+            if not note:
+                note = ""
 
             p[notes_field] = note
             n_updated += 1
