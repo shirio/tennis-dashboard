@@ -110,6 +110,7 @@ def main():
             losses = [m for m in matches if not m["won"]]
             n_matches = len(matches)
             line_labels = [m["line"] for m in matches]
+            deploy_rate = n_matches / n_weeks if n_weeks else 0
 
             # Detect conditions
             all_opps_below = (
@@ -150,22 +151,44 @@ def main():
                     worst = max(surprising_losses, key=lambda m: bl - (m["opp_avg"] or 0))
                     parts.append(f"Lost to lower-rated {_opp_label(worst)}.")
 
-                # For multi-match players, add broader context beyond the single highlight
-                if n_matches >= 3 and len(parts) <= 1:
-                    # The note so far only has 0-1 highlights — add match pattern context
+                # For multi-match players, tell the fuller story
+                if n_matches >= 3:
                     doubles_matches = [m for m in matches if "Doubles" in m["line"]]
                     singles_matches = [m for m in matches if "Singles" in m["line"]]
-                    d_wins = sum(1 for m in doubles_matches if m["won"])
-                    d_losses = len(doubles_matches) - d_wins
-                    s_wins = sum(1 for m in singles_matches if m["won"])
-                    s_losses = len(singles_matches) - s_wins
-                    if doubles_matches and singles_matches:
-                        parts.append(f"Doubles {d_wins}-{d_losses}, singles {s_wins}-{s_losses}.")
-                    elif doubles_matches and len(doubles_matches) >= 2 and not parts:
-                        # All doubles, nothing highlighted — summarize the opponent quality
-                        avg_opp = sum(m["opp_avg"] for m in doubles_matches if m["opp_avg"]) / len([m for m in doubles_matches if m["opp_avg"]]) if any(m["opp_avg"] for m in doubles_matches) else None
-                        if avg_opp and avg_opp < bl - 0.15:
+                    line_types = set()
+                    for ll in line_labels:
+                        if "1# Singles" in ll: line_types.add("S1")
+                        elif "2# Singles" in ll: line_types.add("S2")
+                        elif "1# Doubles" in ll: line_types.add("D1")
+                        elif "2# Doubles" in ll: line_types.add("D2")
+                        elif "3# Doubles" in ll: line_types.add("D3")
+
+                    # Every-week player with line versatility
+                    if deploy_rate >= 0.9 and len(line_types) >= 3:
+                        parts.append(f"One of the most deployed players on the roster — {'/'.join(sorted(line_types))} across {n_matches} weeks.")
+                    elif deploy_rate >= 0.9:
+                        parts.append(f"Deployed every week.")
+
+                    # Mention the notable loss if there is one and we haven't already
+                    if losses and not surprising_losses:
+                        best_loss = min(losses, key=lambda m: abs((m["opp_avg"] or bl) - bl))
+                        is_3set = "1-0" in best_loss["score"] or "0-1" in best_loss["score"]
+                        if is_3set:
+                            parts.append(f"Only loss: tight 3-setter vs {_opp_label(best_loss)}.")
+
+                    # If all doubles and opponents all weak, say so
+                    if not singles_matches and doubles_matches and len(parts) <= 1:
+                        avg_opp = sum(m["opp_avg"] for m in doubles_matches if m["opp_avg"]) / max(1, len([m for m in doubles_matches if m["opp_avg"]]))
+                        if avg_opp < bl - 0.15:
                             parts.append(f"All doubles opponents well below baseline (avg {avg_opp:.2f}).")
+
+                    # Add splits if there are both types and we have room
+                    if doubles_matches and singles_matches and len(parts) <= 2:
+                        d_wins = sum(1 for m in doubles_matches if m["won"])
+                        d_losses = len(doubles_matches) - d_wins
+                        s_wins = sum(1 for m in singles_matches if m["won"])
+                        s_losses = len(singles_matches) - s_wins
+                        parts.append(f"Doubles {d_wins}-{d_losses}, singles {s_wins}-{s_losses}.")
 
                 # Explain WHY the rating is where it is
                 if abs(delta) < 0.02:
