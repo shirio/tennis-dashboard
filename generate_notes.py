@@ -150,6 +150,23 @@ def main():
                     worst = max(surprising_losses, key=lambda m: bl - (m["opp_avg"] or 0))
                     parts.append(f"Lost to lower-rated {_opp_label(worst)}.")
 
+                # For multi-match players, add broader context beyond the single highlight
+                if n_matches >= 3 and len(parts) <= 1:
+                    # The note so far only has 0-1 highlights — add match pattern context
+                    doubles_matches = [m for m in matches if "Doubles" in m["line"]]
+                    singles_matches = [m for m in matches if "Singles" in m["line"]]
+                    d_wins = sum(1 for m in doubles_matches if m["won"])
+                    d_losses = len(doubles_matches) - d_wins
+                    s_wins = sum(1 for m in singles_matches if m["won"])
+                    s_losses = len(singles_matches) - s_wins
+                    if doubles_matches and singles_matches:
+                        parts.append(f"Doubles {d_wins}-{d_losses}, singles {s_wins}-{s_losses}.")
+                    elif doubles_matches and len(doubles_matches) >= 2 and not parts:
+                        # All doubles, nothing highlighted — summarize the opponent quality
+                        avg_opp = sum(m["opp_avg"] for m in doubles_matches if m["opp_avg"]) / len([m for m in doubles_matches if m["opp_avg"]]) if any(m["opp_avg"] for m in doubles_matches) else None
+                        if avg_opp and avg_opp < bl - 0.15:
+                            parts.append(f"All doubles opponents well below baseline (avg {avg_opp:.2f}).")
+
                 # Explain WHY the rating is where it is
                 if abs(delta) < 0.02:
                     if len(wins) >= 2 and all_opps_below:
@@ -166,21 +183,26 @@ def main():
                     elif losses and wins:
                         pass  # wins and losses roughly cancel, nothing interesting to say
                 elif n_matches == 1:
-                    # Single match — explain the context
+                    # Single match — explain the context with opponent specifics
                     m0 = matches[0]
                     is_d1 = m0["line"] in ("1# Singles", "1# Doubles")
                     is_3set = "1-0" in m0["score"] or "0-1" in m0["score"]
+                    opp_label = _opp_label(m0)
                     if m0["won"]:
                         if m0.get("opp_avg") and m0["opp_avg"] < bl:
                             if is_d1 and is_3set:
-                                parts.append("Won a close D1 match but opponent below baseline — proves D1 caliber but no upside evidence yet.")
+                                parts.append(f"Tight D1 win vs {opp_label} — proves D1 caliber but no upside evidence yet.")
                             else:
-                                parts.append("Won but opponent below baseline — no upside evidence yet.")
+                                parts.append(f"Won vs {opp_label} — no upside evidence yet.")
                     else:
                         if is_d1 and is_3set:
-                            parts.append("Close 3-set loss at D1 — competitive match despite the result.")
+                            opp_r = m0["opp_avg"]
+                            if opp_r and opp_r > bl:
+                                parts.append(f"Took higher-rated {opp_label} to 3 sets at D1.")
+                            else:
+                                parts.append(f"Lost a tight 3-set D1 match vs {opp_label}.")
                         elif m0.get("opp_avg") and m0["opp_avg"] > bl + 0.05:
-                            parts.append("Loss to higher-rated opponent — expected.")
+                            parts.append(f"Loss to higher-rated {opp_label} — expected.")
                         elif m0.get("opp_avg") and m0["opp_avg"] < bl - 0.05:
                             pass  # surprising_losses already handles this
 
