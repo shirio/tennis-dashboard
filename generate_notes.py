@@ -137,19 +137,32 @@ def main():
             parts = []
 
             # 1. Most interesting result (concise — no scores, just the takeaway)
+            def _opp_label(m):
+                """Format opponent names with individual ratings."""
+                pieces = []
+                for n in m["opp_names"]:
+                    r = rating.get(_name_key(n))
+                    pieces.append(f"{n} ({r:.2f})" if r else n)
+                return " + ".join(pieces)
+
             if surprising_wins:
                 best = max(surprising_wins, key=lambda m: (m["opp_avg"] or 0) - bl)
                 opp_r = best["opp_avg"]
+                label = _opp_label(best)
                 gap = opp_r - bl if opp_r else 0
                 if gap > 0.15:
-                    parts.append(f"Upset win vs {'+'.join(best['opp_names'])} ({opp_r:.2f}).")
+                    # For doubles with 2 opponents, note the implied minimum
+                    if len(best["opp_names"]) > 1 and opp_r:
+                        parts.append(f"Upset win vs {label} — implies playing at {opp_r:.2f}+ level to win.")
+                    else:
+                        parts.append(f"Upset win vs {label}.")
                 else:
-                    parts.append(f"Beat higher-rated {'+'.join(best['opp_names'])}.")
+                    parts.append(f"Beat higher-rated {label}.")
 
             if surprising_losses:
                 worst = max(surprising_losses, key=lambda m: bl - (m["opp_avg"] or 0))
-                opp_r = worst["opp_avg"]
-                parts.append(f"Lost to lower-rated {'+'.join(worst['opp_names'])} ({opp_r:.2f}).")
+                label = _opp_label(worst)
+                parts.append(f"Lost to lower-rated {label}.")
 
             # 2. Deployment context — only flag truly meaningful signals:
             #    S1/D1 for a low-baseline player = positive signal

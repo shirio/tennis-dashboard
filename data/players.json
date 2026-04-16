@@ -48,7 +48,7 @@
     ],
     "wl_record_30": "1-3",
     "team_30": "DESERT PALM",
-    "notes_30": "Beat higher-rated Shawanna Johnson.",
+    "notes_30": "Beat higher-rated Shawanna Johnson (2.69).",
     "notes_35": "",
     "rating_30": 2.7657,
     "rating_35": 2.6308
@@ -76,7 +76,7 @@
     ],
     "wl_record_30": "3-1",
     "team_30": "LIFE TIME FITNESS/GV",
-    "notes_30": "Upset win vs Kim Knotts+Kellie Woods (2.85). Playing S1/D1 despite low baseline.",
+    "notes_30": "Upset win vs Kim Knotts (2.93) + Kellie Woods (2.77) — implies playing at 2.85+ level to win. Playing S1/D1 despite low baseline.",
     "notes_35": "",
     "rating_30": 2.7351,
     "rating_35": 2.6213
@@ -217,7 +217,7 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Upset win vs Sandra Shearer+ANN MARIE WEAVER (2.82). Biggest riser on this roster.",
+    "notes_30": "Upset win vs Sandra Shearer (2.91) + ANN MARIE WEAVER (2.73) — implies playing at 2.82+ level to win. Biggest riser on this roster.",
     "notes_35": "",
     "rating_30": 2.7972,
     "rating_35": 2.4853
@@ -2133,7 +2133,7 @@
     ],
     "wl_record_30": "2-2",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Lost to lower-rated Shaza Nayef+Shannon Keever (2.90).",
+    "notes_30": "Lost to lower-rated Shaza Nayef (2.82) + Shannon Keever (2.97).",
     "notes_35": "",
     "rating_30": 3.1945,
     "rating_35": 3.2551
@@ -2191,7 +2191,7 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "DTC #2",
-    "notes_30": "Lost to lower-rated Darian McCauley+Shi L Oskooi (2.87).",
+    "notes_30": "Lost to lower-rated Darian McCauley (2.98) + Shi L Oskooi (2.76).",
     "notes_35": "",
     "rating_30": 3.1617,
     "rating_35": 3.1849
@@ -2340,8 +2340,8 @@
     "wl_record_35": "3-1",
     "team_30": "SUMMERLIN ARBORS",
     "team_35": "SPANISH TRAIL #2",
-    "notes_30": "Lost to lower-rated Lindsey Jacobs+Christa Shiklanian (2.60). Also 3-1 in 3.5.",
-    "notes_35": "Upset win vs Carroll Welch+Andi Berger (3.29). Playing S1/D1 despite low baseline. Also 2-2 in 3.0.",
+    "notes_30": "Lost to lower-rated Lindsey Jacobs (2.59) + Christa Shiklanian (2.61). Also 3-1 in 3.5.",
+    "notes_35": "Upset win vs Carroll Welch (3.26) + Andi Berger (3.33) — implies playing at 3.29+ level to win. Playing S1/D1 despite low baseline. Also 2-2 in 3.0.",
     "rating_30": 3.1214,
     "rating_35": 3.2847
   },
@@ -2373,7 +2373,7 @@
     "team_30": "TPC",
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "Limited data. Also 1-2 in 3.5.",
-    "notes_35": "Upset win vs Michelle Brinlee+Michele Howser (3.33). Playing S1/D1 despite low baseline. Also 1-0 in 3.0.",
+    "notes_35": "Upset win vs Michelle Brinlee (3.02) + Michele Howser (3.63) — implies playing at 3.33+ level to win. Playing S1/D1 despite low baseline. Also 1-0 in 3.0.",
     "rating_30": 3.0938,
     "rating_35": 3.3119
   },
@@ -2438,7 +2438,7 @@
     "team_30": "TPC",
     "team_35": "TPC",
     "notes_30": "Limited data. Also 2-0 in 3.5.",
-    "notes_35": "Upset win vs Shilpa Daulat+Allison Ibarguen (3.38). Playing S1/D1 despite low baseline. Also 1-0 in 3.0.",
+    "notes_35": "Upset win vs Shilpa Daulat (3.17) + Allison Ibarguen (3.59) — implies playing at 3.38+ level to win. Playing S1/D1 despite low baseline. Also 1-0 in 3.0.",
     "rating_30": 3.0718,
     "rating_35": 3.3592
   },
@@ -2469,7 +2469,7 @@
     "team_30": "DTC #3",
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "Only deployed at D3. Also 2-0 in 3.5.",
-    "notes_35": "Upset win vs Sally Ryba+Marilyn Fenn (3.24). Also 2-0 in 3.0.",
+    "notes_35": "Upset win vs Sally Ryba (3.34) + Marilyn Fenn (3.14) — implies playing at 3.24+ level to win. Also 2-0 in 3.0.",
     "rating_30": 3.0345,
     "rating_35": 3.2496
   },
@@ -2494,7 +2494,7 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "DTC #1",
-    "notes_30": "Lost to lower-rated Alexandria Chang+Ara Lee Stimson (2.92).",
+    "notes_30": "Lost to lower-rated Alexandria Chang (2.82) + Ara Lee Stimson (3.03).",
     "notes_35": "",
     "rating_30": 3.0426,
     "rating_35": 3.0755
@@ -2742,7 +2742,7 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "DTC #2",
-    "notes_30": "Lost to lower-rated Darian McCauley+Shi L Oskooi (2.87).",
+    "notes_30": "Lost to lower-rated Darian McCauley (2.98) + Shi L Oskooi (2.76).",
     "notes_35": "",
     "rating_30": 3.0331,
     "rating_35": 3.0331
@@ -2827,7 +2827,7 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "WHITNEY MESA PARK",
-    "notes_30": "Lost to lower-rated Holly Crosby+Nancy Ozun (2.68).",
+    "notes_30": "Lost to lower-rated Holly Crosby (2.89) + Nancy Ozun (2.48).",
     "notes_35": "",
     "rating_30": 3.0167,
     "rating_35": 3.0167
@@ -3047,7 +3047,7 @@
     ],
     "wl_record_30": "3-0",
     "team_30": "DTC #3",
-    "notes_30": "Beat higher-rated Tina Shirey+Irene Frazier.",
+    "notes_30": "Beat higher-rated Tina Shirey (3.18) + Irene Frazier (3.03).",
     "notes_35": "",
     "rating_30": 3.1067,
     "rating_35": 2.9823
@@ -3075,7 +3075,7 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
-    "notes_30": "Lost to lower-rated Chelsie Hawkinson+Sirina Shouldis (2.85).",
+    "notes_30": "Lost to lower-rated Chelsie Hawkinson (2.83) + Sirina Shouldis (2.87).",
     "notes_35": "",
     "rating_30": 2.9468,
     "rating_35": 2.9825
@@ -3155,7 +3155,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "SOUTHERN HIGHLANDS",
-    "notes_30": "Lost to lower-rated Kim Knotts+Emmy Perez (2.89).",
+    "notes_30": "Lost to lower-rated Kim Knotts (2.93) + Emmy Perez (2.85).",
     "notes_35": "",
     "rating_30": 2.9725,
     "rating_35": 2.9725
@@ -3182,7 +3182,7 @@
     ],
     "wl_record_30": "2-2",
     "team_30": "DESERT PALM",
-    "notes_30": "Lost to lower-rated Valerie Valow-Orris+Lynn Row (2.76).",
+    "notes_30": "Lost to lower-rated Valerie Valow-Orris (2.88) + Lynn Row (2.63).",
     "notes_35": "",
     "rating_30": 2.8614,
     "rating_35": 2.9587
@@ -3210,7 +3210,7 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "TPC",
-    "notes_30": "Lost to lower-rated Chelsi Grady+Crystal Ziebarth (2.85).",
+    "notes_30": "Lost to lower-rated Chelsi Grady (2.86) + Crystal Ziebarth (2.83).",
     "notes_35": "",
     "rating_30": 2.8804,
     "rating_35": 2.9581
@@ -3237,7 +3237,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "LIFE TIME FITNESS/GV",
-    "notes_30": "Upset win vs Tina Nathalia+Kim Springer (3.19).",
+    "notes_30": "Upset win vs Tina Nathalia (3.12) + Kim Springer (3.26) — implies playing at 3.19+ level to win.",
     "notes_35": "",
     "rating_30": 3.0533,
     "rating_35": 2.9611
@@ -3295,7 +3295,7 @@
     "wl_record_35": "0-2",
     "team_30": "DTC #3",
     "team_35": "DTC #3",
-    "notes_30": "Lost to lower-rated Courtney Long+Kellye Ray (2.84). Only deployed at D3. Limited data. Also 0-2 in 3.5.",
+    "notes_30": "Lost to lower-rated Courtney Long (2.78) + Kellye Ray (2.89). Only deployed at D3. Limited data. Also 0-2 in 3.5.",
     "notes_35": "Playing S1/D1 despite low baseline. Also 0-1 in 3.0.",
     "rating_30": 2.9141,
     "rating_35": 2.8058
@@ -3349,7 +3349,7 @@
     ],
     "wl_record_30": "3-1",
     "team_30": "LIFE TIME FITNESS/GV",
-    "notes_30": "Upset win vs Tina Nathalia+Kim Springer (3.19). Lost to lower-rated Emmy Perez (2.85).",
+    "notes_30": "Upset win vs Tina Nathalia (3.12) + Kim Springer (3.26) — implies playing at 3.19+ level to win. Lost to lower-rated Emmy Perez (2.85).",
     "notes_35": "",
     "rating_30": 2.941,
     "rating_35": 2.941
@@ -3375,7 +3375,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "RED ROCK CC",
-    "notes_30": "Lost to lower-rated Nicole Chikhani+Laurie Lenhart (2.86).",
+    "notes_30": "Lost to lower-rated Nicole Chikhani (2.77) + Laurie Lenhart (2.96).",
     "notes_35": "",
     "rating_30": 2.9017,
     "rating_35": 2.9447
@@ -3460,7 +3460,7 @@
     "wl_record_35": "1-1",
     "team_30": "DTC #3",
     "team_35": "DTC #3",
-    "notes_30": "Lost to lower-rated Shaza Nayef+Amy Badain (2.77). Only deployed at D3. Limited data. Losses to weaker opponents drive the decline. Also 1-1 in 3.5.",
+    "notes_30": "Lost to lower-rated Shaza Nayef (2.82) + Amy Badain (2.72). Only deployed at D3. Limited data. Losses to weaker opponents drive the decline. Also 1-1 in 3.5.",
     "notes_35": "Playing S1/D1 despite low baseline. Also 0-1 in 3.0.",
     "rating_30": 2.8125,
     "rating_35": 3.0206
@@ -3491,7 +3491,7 @@
     "wl_record_35": "0-1",
     "team_30": "DTC #3",
     "team_35": "DTC #2",
-    "notes_30": "Lost to lower-rated Kimberly Lippisch+Julie Smith (2.70). Also 0-1 in 3.5.",
+    "notes_30": "Lost to lower-rated Kimberly Lippisch (2.62) + Julie Smith (2.78). Also 0-1 in 3.5.",
     "notes_35": "Playing S1/D1 despite low baseline. Limited data. Also 2-1 in 3.0.",
     "rating_30": 2.9322,
     "rating_35": 2.9635
@@ -3570,7 +3570,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "TPC",
-    "notes_30": "Lost to lower-rated Chelsi Grady+Crystal Ziebarth (2.85). Losses to weaker opponents drive the decline.",
+    "notes_30": "Lost to lower-rated Chelsi Grady (2.86) + Crystal Ziebarth (2.83). Losses to weaker opponents drive the decline.",
     "notes_35": "",
     "rating_30": 2.7531,
     "rating_35": 2.9051
@@ -3596,7 +3596,7 @@
     ],
     "wl_record_30": "0-1",
     "team_30": "ANTHEM CC",
-    "notes_30": "Lost to lower-rated Ani Zargaryan+Jocelyn Herman (2.67). Limited data. Losses to weaker opponents drive the decline.",
+    "notes_30": "Lost to lower-rated Ani Zargaryan (2.86) + Jocelyn Herman (2.49). Limited data. Losses to weaker opponents drive the decline.",
     "notes_35": "",
     "rating_30": 2.7232,
     "rating_35": 2.912
@@ -3810,7 +3810,7 @@
     ],
     "wl_record_30": "0-1",
     "team_30": "WHITNEY MESA PARK",
-    "notes_30": "Lost to lower-rated Kelly Perkins+Chelsie Hawkinson (2.80). Only deployed at D3. Limited data. Losses to weaker opponents drive the decline.",
+    "notes_30": "Lost to lower-rated Kelly Perkins (2.77) + Chelsie Hawkinson (2.83). Only deployed at D3. Limited data. Losses to weaker opponents drive the decline.",
     "notes_35": "",
     "rating_30": 2.7819,
     "rating_35": 2.8921
@@ -3836,7 +3836,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "ANTHEM CC",
-    "notes_30": "Lost to lower-rated Brittany Carlson+Renee Johnson (2.67). Only deployed at D3.",
+    "notes_30": "Lost to lower-rated Brittany Carlson (2.71) + Renee Johnson (2.63). Only deployed at D3.",
     "notes_35": "",
     "rating_30": 2.8472,
     "rating_35": 2.8826
@@ -3863,7 +3863,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "CLUB RIDGES",
-    "notes_30": "Lost to lower-rated Geraldine Wright+Erika Cravens (2.71).",
+    "notes_30": "Lost to lower-rated Geraldine Wright (2.53) + Erika Cravens (2.89).",
     "notes_35": "",
     "rating_30": 2.8514,
     "rating_35": 2.8799
@@ -4078,7 +4078,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Lost to lower-rated Adrian Cutolo+Mary Ann Apone (2.77).",
+    "notes_30": "Lost to lower-rated Adrian Cutolo (3.03) + Mary Ann Apone (2.51).",
     "notes_35": "",
     "rating_30": 2.8856,
     "rating_35": 2.8637
@@ -4106,7 +4106,7 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "ANTHEM CC",
-    "notes_30": "Beat higher-rated Laurie Lenhart+Debbie D'Amato.",
+    "notes_30": "Beat higher-rated Laurie Lenhart (2.96) + Debbie D'Amato (2.91).",
     "notes_35": "",
     "rating_30": 2.9966,
     "rating_35": 2.8629
@@ -4187,7 +4187,7 @@
     ],
     "wl_record_30": "3-1",
     "team_30": "DTC #3",
-    "notes_30": "Beat higher-rated Han Hu.",
+    "notes_30": "Beat higher-rated Han Hu (2.94).",
     "notes_35": "",
     "rating_30": 2.9896,
     "rating_35": 2.8511
@@ -4487,7 +4487,7 @@
     ],
     "wl_record_30": "2-0",
     "team_30": "ANTHEM CC",
-    "notes_30": "Beat higher-rated Laurie Lenhart+Debbie D'Amato.",
+    "notes_30": "Beat higher-rated Laurie Lenhart (2.96) + Debbie D'Amato (2.91).",
     "notes_35": "",
     "rating_30": 2.9711,
     "rating_35": 2.8282
@@ -4515,7 +4515,7 @@
     ],
     "wl_record_30": "1-3",
     "team_30": "SOUTHERN HIGHLANDS",
-    "notes_30": "Lost to lower-rated Kimberly Yang+Kinsey Wolanski (2.69).",
+    "notes_30": "Lost to lower-rated Kimberly Yang (2.94) + Kinsey Wolanski (2.44).",
     "notes_35": "",
     "rating_30": 2.7438,
     "rating_35": 2.8266
@@ -4601,7 +4601,7 @@
     "wl_record_35": "0-1",
     "team_30": "DESERT PALM",
     "team_35": "DTC #3",
-    "notes_30": "Beat higher-rated Maggie Pacholuk+Jaqueline Schultz. Also 0-1 in 3.5.",
+    "notes_30": "Beat higher-rated Maggie Pacholuk (2.80) + Jaqueline Schultz (3.08). Also 0-1 in 3.5.",
     "notes_35": "Playing S1/D1 despite low baseline. Limited data. Also 2-0 in 3.0.",
     "rating_30": 2.9202,
     "rating_35": 2.8276
@@ -4677,7 +4677,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "SPANISH OAKS",
-    "notes_30": "Lost to lower-rated Nadine Kluger+Jennifer Lake (2.77).",
+    "notes_30": "Lost to lower-rated Nadine Kluger (2.67) + Jennifer Lake (2.88).",
     "notes_35": "",
     "rating_30": 2.764,
     "rating_35": 2.8241
@@ -5041,7 +5041,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "LIFE TIME FITNESS/GV",
-    "notes_30": "Beat higher-rated Kim Knotts+Kellie Woods. Lost to lower-rated Genesis Garcia+Brittany Carlson (2.67).",
+    "notes_30": "Beat higher-rated Kim Knotts (2.93) + Kellie Woods (2.77). Lost to lower-rated Genesis Garcia (2.63) + Brittany Carlson (2.71).",
     "notes_35": "",
     "rating_30": 2.6842,
     "rating_35": 2.7759
@@ -5121,7 +5121,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "DTC #3",
-    "notes_30": "Beat higher-rated Margaret Bruno+Danielle Britten. Lost to lower-rated Kimberly Lippisch+Julie Smith (2.70).",
+    "notes_30": "Beat higher-rated Margaret Bruno (2.88) + Danielle Britten (2.87). Lost to lower-rated Kimberly Lippisch (2.62) + Julie Smith (2.78).",
     "notes_35": "",
     "rating_30": 2.77,
     "rating_35": 2.77
@@ -5148,7 +5148,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "SPANISH TRAIL",
-    "notes_30": "Lost to lower-rated Sonja Rogers+Roni Tarr (2.72).",
+    "notes_30": "Lost to lower-rated Sonja Rogers (2.71) + Roni Tarr (2.72).",
     "notes_35": "",
     "rating_30": 2.7332,
     "rating_35": 2.7706
@@ -5260,7 +5260,7 @@
     "wl_record_35": "1-0",
     "team_30": "DTC #3",
     "team_35": "DTC #1",
-    "notes_30": "Upset win vs Tina Shirey+Irene Frazier (3.11). Biggest riser on this roster. Also 1-0 in 3.5.",
+    "notes_30": "Upset win vs Tina Shirey (3.18) + Irene Frazier (3.03) — implies playing at 3.11+ level to win. Biggest riser on this roster. Also 1-0 in 3.5.",
     "notes_35": "Upset win vs Lisa Gaughan (2.93). Limited data. Biggest riser on this roster. Also 4-0 in 3.0.",
     "rating_30": 3.0283,
     "rating_35": 2.9107
@@ -5286,7 +5286,7 @@
     ],
     "wl_record_30": "1-0",
     "team_30": "DTC #4",
-    "notes_30": "Beat higher-rated Eva Gryczon. Limited data.",
+    "notes_30": "Beat higher-rated Eva Gryczon (2.83). Limited data.",
     "notes_35": "",
     "rating_30": 2.8897,
     "rating_35": 2.7467
@@ -5387,7 +5387,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "DTC #2",
-    "notes_30": "Beat higher-rated Shaza Nayef. Lost to lower-rated Nicole Harper (2.35).",
+    "notes_30": "Beat higher-rated Shaza Nayef (2.82). Lost to lower-rated Nicole Harper (2.35).",
     "notes_35": "",
     "rating_30": 2.7441,
     "rating_35": 2.7441
@@ -5445,7 +5445,7 @@
     "wl_record_35": "0-1",
     "team_30": "ANTHEM CC",
     "team_35": "ANTHEM CC",
-    "notes_30": "Lost to lower-rated Ani Zargaryan+Jocelyn Herman (2.67). Losses to weaker opponents drive the decline. Also 0-1 in 3.5.",
+    "notes_30": "Lost to lower-rated Ani Zargaryan (2.86) + Jocelyn Herman (2.49). Losses to weaker opponents drive the decline. Also 0-1 in 3.5.",
     "notes_35": "Limited data. Low deployment reinforces downgrade. Also 1-1 in 3.0.",
     "rating_30": 2.5749,
     "rating_35": 2.7421
@@ -5525,7 +5525,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "DTC #4",
-    "notes_30": "Beat higher-rated Chelsie Hawkinson+Kelly Perkins.",
+    "notes_30": "Beat higher-rated Chelsie Hawkinson (2.83) + Kelly Perkins (2.77).",
     "notes_35": "",
     "rating_30": 2.7863,
     "rating_35": 2.731
@@ -5764,7 +5764,7 @@
     ],
     "wl_record_30": "0-2",
     "team_30": "RED ROCK CC",
-    "notes_30": "Lost to lower-rated Renee Johnson+Jessica Marx (2.59). Losses to weaker opponents drive the decline.",
+    "notes_30": "Lost to lower-rated Renee Johnson (2.63) + Jessica Marx (2.56). Losses to weaker opponents drive the decline.",
     "notes_35": "",
     "rating_30": 2.6151,
     "rating_35": 2.7259
@@ -5999,7 +5999,7 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "DTC #1",
-    "notes_30": "Lost to lower-rated Geraldine Wright+Courtney Beine (2.63).",
+    "notes_30": "Lost to lower-rated Geraldine Wright (2.53) + Courtney Beine (2.73).",
     "notes_35": "",
     "rating_30": 2.7289,
     "rating_35": 2.7232
@@ -6074,7 +6074,7 @@
     ],
     "wl_record_30": "1-0",
     "team_30": "TPC",
-    "notes_30": "Upset win vs Kellye Ray+Carolina Nigro (2.90). Limited data.",
+    "notes_30": "Upset win vs Kellye Ray (2.89) + Carolina Nigro (2.91) — implies playing at 2.90+ level to win. Limited data.",
     "notes_35": "",
     "rating_30": 2.7945,
     "rating_35": 2.7095
@@ -6127,7 +6127,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "DTC #1",
-    "notes_30": "Lost to lower-rated Geraldine Wright+Courtney Beine (2.63).",
+    "notes_30": "Lost to lower-rated Geraldine Wright (2.53) + Courtney Beine (2.73).",
     "notes_35": "",
     "rating_30": 2.7167,
     "rating_35": 2.7077
@@ -6180,7 +6180,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
-    "notes_30": "Beat higher-rated DeVita Robinson. Playing S1/D1 despite low baseline.",
+    "notes_30": "Beat higher-rated DeVita Robinson (2.79). Playing S1/D1 despite low baseline.",
     "notes_35": "",
     "rating_30": 2.744,
     "rating_35": 2.6969
@@ -6372,7 +6372,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "CLUB RIDGES",
-    "notes_30": "Beat higher-rated Luanne Balelo+Liz MacDonald.",
+    "notes_30": "Beat higher-rated Luanne Balelo (2.82) + Liz MacDonald (2.74).",
     "notes_35": "",
     "rating_30": 2.7515,
     "rating_35": 2.6659
@@ -6476,7 +6476,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "DESERT PALM",
-    "notes_30": "Beat higher-rated Maureen Caruso+Miriam Jimenez.",
+    "notes_30": "Beat higher-rated Maureen Caruso (2.73) + Miriam Jimenez (2.72).",
     "notes_35": "",
     "rating_30": 2.8085,
     "rating_35": 2.6618
@@ -6637,7 +6637,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "DTC #1",
-    "notes_30": "Beat higher-rated Lisa Jones.",
+    "notes_30": "Beat higher-rated Lisa Jones (2.72).",
     "notes_35": "",
     "rating_30": 2.7214,
     "rating_35": 2.6332
@@ -6690,7 +6690,7 @@
     ],
     "wl_record_30": "2-0",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Beat higher-rated Lisa Williams+Julie Smith. Biggest riser on this roster.",
+    "notes_30": "Beat higher-rated Lisa Williams (2.72) + Julie Smith (2.78). Biggest riser on this roster.",
     "notes_35": "",
     "rating_30": 2.8414,
     "rating_35": 2.6334
@@ -6769,7 +6769,7 @@
     ],
     "wl_record_30": "1-0",
     "team_30": "SPANISH OAKS",
-    "notes_30": "Upset win vs Eva Gryczon+Annabel Elliott (2.90). Limited data.",
+    "notes_30": "Upset win vs Eva Gryczon (2.83) + Annabel Elliott (2.96) — implies playing at 2.90+ level to win. Limited data.",
     "notes_35": "",
     "rating_30": 2.7839,
     "rating_35": 2.6344
@@ -6795,7 +6795,7 @@
     ],
     "wl_record_30": "1-1",
     "team_30": "RED ROCK CC",
-    "notes_30": "Beat higher-rated Christie Sanders. Playing S1/D1 despite low baseline.",
+    "notes_30": "Beat higher-rated Christie Sanders (2.70). Playing S1/D1 despite low baseline.",
     "notes_35": "",
     "rating_30": 2.7622,
     "rating_35": 2.6263
@@ -6822,7 +6822,7 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Beat higher-rated Heather Rosenthal+Shari Abdoulah. Biggest riser on this roster.",
+    "notes_30": "Beat higher-rated Heather Rosenthal (2.88) + Shari Abdoulah (2.58). Biggest riser on this roster.",
     "notes_35": "",
     "rating_30": 2.8331,
     "rating_35": 2.6269
@@ -6896,7 +6896,7 @@
     ],
     "wl_record_30": "1-3",
     "team_30": "SOUTHERN HIGHLANDS",
-    "notes_30": "Upset win vs Tina Nathalia+Danika Johnson (2.82).",
+    "notes_30": "Upset win vs Tina Nathalia (3.12) + Danika Johnson (2.53) — implies playing at 2.82+ level to win.",
     "notes_35": "",
     "rating_30": 2.6811,
     "rating_35": 2.6066
@@ -7024,7 +7024,7 @@
     ],
     "wl_record_30": "1-0",
     "team_30": "SOUTHERN HIGHLANDS",
-    "notes_30": "Upset win vs Tina Nathalia+Danika Johnson (2.82). Limited data.",
+    "notes_30": "Upset win vs Tina Nathalia (3.12) + Danika Johnson (2.53) — implies playing at 2.82+ level to win. Limited data.",
     "notes_35": "",
     "rating_30": 2.7127,
     "rating_35": 2.5875
@@ -7103,7 +7103,7 @@
     ],
     "wl_record_30": "0-2",
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
-    "notes_30": "Lost to lower-rated Nancy Ozun+Roslyn Katz (2.47).",
+    "notes_30": "Lost to lower-rated Nancy Ozun (2.48) + Roslyn Katz (2.47).",
     "notes_35": "",
     "rating_30": 2.4929,
     "rating_35": 2.566
@@ -7210,7 +7210,7 @@
     ],
     "wl_record_30": "2-2",
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
-    "notes_30": "Upset win vs Nadine Kluger+Jennifer Lake (2.77). Biggest riser on this roster.",
+    "notes_30": "Upset win vs Nadine Kluger (2.67) + Jennifer Lake (2.88) — implies playing at 2.77+ level to win. Biggest riser on this roster.",
     "notes_35": "",
     "rating_30": 2.8459,
     "rating_35": 2.5281
@@ -7236,7 +7236,7 @@
     ],
     "wl_record_30": "1-0",
     "team_30": "DTC #4",
-    "notes_30": "Beat higher-rated Rochelle Hamatian+Michelle Inman. Playing S1/D1 despite low baseline. Limited data.",
+    "notes_30": "Beat higher-rated Rochelle Hamatian (2.67) + Michelle Inman (2.64). Playing S1/D1 despite low baseline. Limited data.",
     "notes_35": "",
     "rating_30": 2.6173,
     "rating_35": 2.5245
@@ -7379,7 +7379,7 @@
     ],
     "wl_record_30": "2-0",
     "team_30": "SPANISH TRAIL",
-    "notes_30": "Upset win vs Francine Mazza+Leona Kiely (2.84).",
+    "notes_30": "Upset win vs Francine Mazza (3.02) + Leona Kiely (2.66) — implies playing at 2.84+ level to win.",
     "notes_35": "",
     "rating_30": 2.6632,
     "rating_35": 2.4784
@@ -7406,7 +7406,7 @@
     ],
     "wl_record_30": "2-0",
     "team_30": "SPANISH TRAIL",
-    "notes_30": "Beat higher-rated Venetia Espinueva+Ann Shah.",
+    "notes_30": "Beat higher-rated Venetia Espinueva (2.65) + Ann Shah (2.53).",
     "notes_35": "",
     "rating_30": 2.6156,
     "rating_35": 2.4656
@@ -7433,7 +7433,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "DTC #2",
-    "notes_30": "Upset win vs Christa Shiklanian+Addy Iveth Zilberman (2.62). Biggest riser on this roster.",
+    "notes_30": "Upset win vs Christa Shiklanian (2.61) + Addy Iveth Zilberman (2.64) — implies playing at 2.62+ level to win. Biggest riser on this roster.",
     "notes_35": "",
     "rating_30": 2.6975,
     "rating_35": 2.4644
@@ -7460,7 +7460,7 @@
     ],
     "wl_record_30": "3-1",
     "team_30": "DTC #4",
-    "notes_30": "Upset win vs Yong Mi DeMilliano+Heather Hartzell (2.65). Biggest riser on this roster.",
+    "notes_30": "Upset win vs Yong Mi DeMilliano (2.66) + Heather Hartzell (2.63) — implies playing at 2.65+ level to win. Biggest riser on this roster.",
     "notes_35": "",
     "rating_30": 2.7216,
     "rating_35": 2.4561
@@ -7535,7 +7535,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "RED ROCK CC",
-    "notes_30": "Upset win vs Daniella Toms+Christa Shiklanian (2.72). Biggest riser on this roster.",
+    "notes_30": "Upset win vs Daniella Toms (2.83) + Christa Shiklanian (2.61) — implies playing at 2.72+ level to win. Biggest riser on this roster.",
     "notes_35": "",
     "rating_30": 2.6712,
     "rating_35": 2.4416
@@ -7662,7 +7662,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
-    "notes_30": "Upset win vs Rochelle Hamatian+Michelle Inman (2.65). Playing S1/D1 despite low baseline. Biggest riser on this roster.",
+    "notes_30": "Upset win vs Rochelle Hamatian (2.67) + Michelle Inman (2.64) — implies playing at 2.65+ level to win. Playing S1/D1 despite low baseline. Biggest riser on this roster.",
     "notes_35": "",
     "rating_30": 2.5918,
     "rating_35": 2.3744
@@ -8599,7 +8599,7 @@
     "wl_record_35": "2-1",
     "team_35": "RED ROCK CC #1",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Leticia Schoff+Melissa Ruediger (3.18). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Leticia Schoff (3.11) + Melissa Ruediger (3.25). Losses to weaker opponents drive the decline.",
     "rating_30": 3.6323,
     "rating_35": 3.5173
   },
@@ -8731,7 +8731,7 @@
     "wl_record_35": "1-2",
     "team_35": "SPANISH TRAIL #1",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Jamie Johnson+Jeralyn Marchesi (3.12). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Jamie Johnson (3.15) + Jeralyn Marchesi (3.10). Losses to weaker opponents drive the decline.",
     "rating_30": 3.5873,
     "rating_35": 3.38
   },
@@ -8785,7 +8785,7 @@
     "wl_record_35": "1-2",
     "team_35": "DRAGONRIDGE CC",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Arika Carrier+Jamie Warrington (3.53). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Arika Carrier (3.60) + Jamie Warrington (3.46). Losses to weaker opponents drive the decline.",
     "rating_30": 3.5789,
     "rating_35": 3.4601
   },
@@ -8913,7 +8913,7 @@
     "wl_record_35": "3-1",
     "team_35": "SPANISH TRAIL #1",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Karen Hom+Stella Chivikas (3.24).",
+    "notes_35": "Lost to lower-rated Karen Hom (3.05) + Stella Chivikas (3.42).",
     "rating_30": 3.5711,
     "rating_35": 3.5249
   },
@@ -8939,7 +8939,7 @@
     "wl_record_35": "0-1",
     "team_35": "TPC",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Valeria Perdomo+Diane Paull (3.40). Only deployed at D3. Limited data. Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Valeria Perdomo (3.39) + Diane Paull (3.42). Only deployed at D3. Limited data. Losses to weaker opponents drive the decline.",
     "rating_30": 3.5537,
     "rating_35": 3.4438
   },
@@ -9020,7 +9020,7 @@
     "wl_record_35": "1-2",
     "team_35": "SUMMERLIN ARBORS",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Marlaina Harris+Megan Bell (3.46). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Marlaina Harris (3.49) + Megan Bell (3.42). Losses to weaker opponents drive the decline.",
     "rating_30": 3.5372,
     "rating_35": 3.4027
   },
@@ -9046,7 +9046,7 @@
     "wl_record_35": "0-2",
     "team_35": "LIFE TIME FITNESS/GV",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Alisun Vehar+Gina Case (3.30). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Alisun Vehar (3.39) + Gina Case (3.22). Losses to weaker opponents drive the decline.",
     "rating_30": 3.5414,
     "rating_35": 3.2997
   },
@@ -9072,7 +9072,7 @@
     "wl_record_35": "0-2",
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Allison Festa+Darlene Whittlesy (3.41). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Allison Festa (3.44) + Darlene Whittlesy (3.39). Losses to weaker opponents drive the decline.",
     "rating_30": 3.5449,
     "rating_35": 3.3801
   },
@@ -9231,7 +9231,7 @@
     "wl_record_35": "1-1",
     "team_35": "SPANISH TRAIL #1",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Amy Cooper+Michelle Castillo (3.40).",
+    "notes_35": "Lost to lower-rated Amy Cooper (3.36) + Michelle Castillo (3.45).",
     "rating_30": 3.5243,
     "rating_35": 3.5041
   },
@@ -9286,7 +9286,7 @@
     "wl_record_35": "2-1",
     "team_35": "RED ROCK CC #2",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Claudia Hernandez+Karen Kiyono (3.44).",
+    "notes_35": "Lost to lower-rated Claudia Hernandez (3.44) + Karen Kiyono (3.45).",
     "rating_30": 3.5139,
     "rating_35": 3.4259
   },
@@ -9314,7 +9314,7 @@
     "wl_record_35": "3-1",
     "team_35": "RED ROCK CC #1",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Hannah Stevens+Amrita Soli (3.24).",
+    "notes_35": "Lost to lower-rated Hannah Stevens (3.28) + Amrita Soli (3.20).",
     "rating_30": 3.5129,
     "rating_35": 3.5129
   },
@@ -9516,7 +9516,7 @@
     "wl_record_35": "3-0",
     "team_35": "ANTHEM CC",
     "notes_30": "",
-    "notes_35": "Beat higher-rated Jules Mitchell.",
+    "notes_35": "Beat higher-rated Jules Mitchell (3.64).",
     "rating_30": 3.4929,
     "rating_35": 3.6457
   },
@@ -9596,7 +9596,7 @@
     "wl_record_35": "0-1",
     "team_35": "DTC #2",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Rowena Messner+Shiangyuh Wu (3.42). Only deployed at D3. Limited data.",
+    "notes_35": "Lost to lower-rated Rowena Messner (3.31) + Shiangyuh Wu (3.52). Only deployed at D3. Limited data.",
     "rating_30": 3.4771,
     "rating_35": 3.4187
   },
@@ -9810,7 +9810,7 @@
     "wl_record_35": "1-1",
     "team_35": "TPC",
     "notes_30": "",
-    "notes_35": "Beat higher-rated Anne Gumm+Katrin Dragnev.",
+    "notes_35": "Beat higher-rated Anne Gumm (3.58) + Katrin Dragnev (3.50).",
     "rating_30": 3.4557,
     "rating_35": 3.6181
   },
@@ -9941,7 +9941,7 @@
     "wl_record_35": "2-1",
     "team_35": "DTC #1",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Leslie Brodie+Arika Carrier (3.31).",
+    "notes_35": "Lost to lower-rated Leslie Brodie (3.01) + Arika Carrier (3.60).",
     "rating_30": 3.4496,
     "rating_35": 3.4552
   },
@@ -9995,7 +9995,7 @@
     "wl_record_35": "1-2",
     "team_35": "DESERT PALM",
     "notes_30": "",
-    "notes_35": "Beat higher-rated Vanessa Nicole Rowe+Allison Ibarguen.",
+    "notes_35": "Beat higher-rated Vanessa Nicole Rowe (3.52) + Allison Ibarguen (3.59).",
     "rating_30": 3.4499,
     "rating_35": 3.5018
   },
@@ -10075,7 +10075,7 @@
     "wl_record_35": "2-1",
     "team_35": "DTC #1",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Leslie Brodie+Arika Carrier (3.31).",
+    "notes_35": "Lost to lower-rated Leslie Brodie (3.01) + Arika Carrier (3.60).",
     "rating_30": 3.4372,
     "rating_35": 3.4552
   },
@@ -10102,7 +10102,7 @@
     "wl_record_35": "0-2",
     "team_35": "LIFE TIME FITNESS/GV",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Alex Schrack+Judith Watson (3.02). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Alex Schrack (2.95) + Judith Watson (3.09). Losses to weaker opponents drive the decline.",
     "rating_30": 3.4446,
     "rating_35": 3.1976
   },
@@ -10156,7 +10156,7 @@
     "wl_record_35": "1-1",
     "team_35": "LIFE TIME FITNESS/GV",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Alisun Vehar+Gina Case (3.30). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Alisun Vehar (3.39) + Gina Case (3.22). Losses to weaker opponents drive the decline.",
     "rating_30": 3.4433,
     "rating_35": 3.2451
   },
@@ -10182,7 +10182,7 @@
     "wl_record_35": "1-1",
     "team_35": "RED ROCK CC #2",
     "notes_30": "",
-    "notes_35": "Beat higher-rated Stacie Corelle. Lost to lower-rated Maria Allen (3.27).",
+    "notes_35": "Beat higher-rated Stacie Corelle (3.50). Lost to lower-rated Maria Allen (3.27).",
     "rating_30": 3.4382,
     "rating_35": 3.3876
   },
@@ -10519,7 +10519,7 @@
     "wl_record_35": "1-2",
     "team_35": "ANTHEM CC",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Janet Wellman+Jennifer Petrie (3.36).",
+    "notes_35": "Lost to lower-rated Janet Wellman (3.39) + Jennifer Petrie (3.32).",
     "rating_30": 3.4114,
     "rating_35": 3.3347
   },
@@ -10567,7 +10567,7 @@
     "wl_record_35": "1-1",
     "team_35": "LIFE TIME FITNESS/GV",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Alex Schrack+Judith Watson (3.02). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Alex Schrack (2.95) + Judith Watson (3.09). Losses to weaker opponents drive the decline.",
     "rating_30": 3.4021,
     "rating_35": 3.2183
   },
@@ -10620,7 +10620,7 @@
     "wl_record_35": "1-1",
     "team_35": "ANTHEM CC",
     "notes_30": "",
-    "notes_35": "Beat higher-rated Joan Perricone+Joann Komanowski.",
+    "notes_35": "Beat higher-rated Joan Perricone (3.44) + Joann Komanowski (3.54).",
     "rating_30": 3.387,
     "rating_35": 3.5339
   },
@@ -11026,7 +11026,7 @@
     "wl_record_35": "1-1",
     "team_35": "DESERT PALM",
     "notes_30": "",
-    "notes_35": "Upset win vs Vanessa Nicole Rowe+Allison Ibarguen (3.56).",
+    "notes_35": "Upset win vs Vanessa Nicole Rowe (3.52) + Allison Ibarguen (3.59) — implies playing at 3.56+ level to win.",
     "rating_30": 3.3569,
     "rating_35": 3.4629
   },
@@ -11079,7 +11079,7 @@
     "wl_record_35": "1-0",
     "team_35": "RED ROCK CC #2",
     "notes_30": "",
-    "notes_35": "Beat higher-rated Katrin Dragnev+Lori LaBarbera. Only deployed at D3. Limited data.",
+    "notes_35": "Beat higher-rated Katrin Dragnev (3.50) + Lori LaBarbera (3.45). Only deployed at D3. Limited data.",
     "rating_30": 3.3595,
     "rating_35": 3.4334
   },
@@ -11106,7 +11106,7 @@
     "wl_record_35": "0-3",
     "team_35": "TPC",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Jill Morrison+Vinne Chen (3.09). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Jill Morrison (3.12) + Vinne Chen (3.07). Losses to weaker opponents drive the decline.",
     "rating_30": 3.3497,
     "rating_35": 3.1366
   },
@@ -11180,7 +11180,7 @@
     "wl_record_35": "0-3",
     "team_35": "DTC #3",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Vinne Chen+Jill Morrison (3.09). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Vinne Chen (3.07) + Jill Morrison (3.12). Losses to weaker opponents drive the decline.",
     "rating_30": 3.3401,
     "rating_35": 3.0475
   },
@@ -11206,7 +11206,7 @@
     "wl_record_35": "0-1",
     "team_35": "LIFE TIME FITNESS/GV",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Tina Nathalia+Christine LaBarre (3.10). Limited data. Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Tina Nathalia (3.12) + Christine LaBarre (3.09). Limited data. Losses to weaker opponents drive the decline.",
     "rating_30": 3.3424,
     "rating_35": 3.1592
   },
@@ -11232,7 +11232,7 @@
     "wl_record_35": "0-1",
     "team_35": "RED ROCK CC #1",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Tina Nathalia+Nicole Palichat (3.13). Limited data. Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Tina Nathalia (3.12) + Nicole Palichat (3.13). Limited data. Losses to weaker opponents drive the decline.",
     "rating_30": 3.3319,
     "rating_35": 3.2202
   },
@@ -11385,7 +11385,7 @@
     "wl_record_35": "3-0",
     "team_35": "SUMMERLIN ARBORS",
     "notes_30": "",
-    "notes_35": "Beat higher-rated Christi Lin+Shellene Goudge.",
+    "notes_35": "Beat higher-rated Christi Lin (3.48) + Shellene Goudge (3.38).",
     "rating_30": 3.3082,
     "rating_35": 3.4282
   },
@@ -11412,7 +11412,7 @@
     "wl_record_35": "0-2",
     "team_35": "DRAGONRIDGE CC",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Liliya Pummill+Judith Milligan (3.22). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Liliya Pummill (3.27) + Judith Milligan (3.17). Losses to weaker opponents drive the decline.",
     "rating_30": 3.3143,
     "rating_35": 3.1815
   },
@@ -11515,7 +11515,7 @@
     "wl_record_35": "3-0",
     "team_35": "SUMMERLIN ARBORS",
     "notes_30": "",
-    "notes_35": "Beat higher-rated Carroll Welch+Tracey Lee. Biggest riser on this roster.",
+    "notes_35": "Beat higher-rated Carroll Welch (3.26) + Tracey Lee (3.51). Biggest riser on this roster.",
     "rating_30": 3.2792,
     "rating_35": 3.5112
   },
@@ -11597,7 +11597,7 @@
     "wl_record_35": "0-3",
     "team_35": "RED ROCK CC #1",
     "notes_30": "",
-    "notes_35": "Lost to lower-rated Tina Nathalia+Nicole Palichat (3.13). Losses to weaker opponents drive the decline.",
+    "notes_35": "Lost to lower-rated Tina Nathalia (3.12) + Nicole Palichat (3.13). Losses to weaker opponents drive the decline.",
     "rating_30": 3.2559,
     "rating_35": 3.0774
   },
@@ -11756,7 +11756,7 @@
     "wl_record_35": "1-1",
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "",
-    "notes_35": "Beat higher-rated Michelle Brinlee+Michele Howser.",
+    "notes_35": "Beat higher-rated Michelle Brinlee (3.02) + Michele Howser (3.63).",
     "rating_30": 3.2479,
     "rating_35": 3.3529
   },
@@ -11919,7 +11919,7 @@
     "wl_record_35": "2-2",
     "team_35": "ANTHEM CC",
     "notes_30": "",
-    "notes_35": "Upset win vs Joan Perricone+Joann Komanowski (3.49). Biggest riser on this roster.",
+    "notes_35": "Upset win vs Joan Perricone (3.44) + Joann Komanowski (3.54) — implies playing at 3.49+ level to win. Biggest riser on this roster.",
     "rating_30": 3.2172,
     "rating_35": 3.5038
   },
@@ -11993,7 +11993,7 @@
     "wl_record_35": "1-0",
     "team_35": "SUMMERLIN ARBORS",
     "notes_30": "",
-    "notes_35": "Upset win vs Carroll Welch+Tracey Lee (3.38). Limited data.",
+    "notes_35": "Upset win vs Carroll Welch (3.26) + Tracey Lee (3.51) — implies playing at 3.38+ level to win. Limited data.",
     "rating_30": 3.1981,
     "rating_35": 3.3019
   },
@@ -12220,7 +12220,7 @@
     "wl_record_35": "2-2",
     "team_35": "SPANISH TRAIL #1",
     "notes_30": "",
-    "notes_35": "Upset win vs Amanda Verba (3.39). Lost to lower-rated Jamie Johnson+Jeralyn Marchesi (3.12). Playing S1/D1 despite low baseline.",
+    "notes_35": "Upset win vs Amanda Verba (3.39). Lost to lower-rated Jamie Johnson (3.15) + Jeralyn Marchesi (3.10). Playing S1/D1 despite low baseline.",
     "rating_30": 3.173,
     "rating_35": 3.173
   },
@@ -12364,7 +12364,7 @@
     "wl_record_35": "2-0",
     "team_35": "TPC",
     "notes_30": "",
-    "notes_35": "Upset win vs Shilpa Daulat+Allison Ibarguen (3.38). Playing S1/D1 despite low baseline. Biggest riser on this roster.",
+    "notes_35": "Upset win vs Shilpa Daulat (3.17) + Allison Ibarguen (3.59) — implies playing at 3.38+ level to win. Playing S1/D1 despite low baseline. Biggest riser on this roster.",
     "rating_30": 3.1467,
     "rating_35": 3.3813
   },
@@ -12485,7 +12485,7 @@
     "wl_record_35": "1-2",
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "",
-    "notes_35": "Upset win vs Carroll Welch+Andi Berger (3.29). Playing S1/D1 despite low baseline.",
+    "notes_35": "Upset win vs Carroll Welch (3.26) + Andi Berger (3.33) — implies playing at 3.29+ level to win. Playing S1/D1 despite low baseline.",
     "rating_30": 3.1306,
     "rating_35": 3.2602
   },
@@ -12636,7 +12636,7 @@
     "wl_record_35": "1-1",
     "team_35": "ANTHEM CC",
     "notes_30": "",
-    "notes_35": "Upset win vs Kelley Ferrence+Debi Marimberga (3.42).",
+    "notes_35": "Upset win vs Kelley Ferrence (3.40) + Debi Marimberga (3.44) — implies playing at 3.42+ level to win.",
     "rating_30": 3.0913,
     "rating_35": 3.2167
   },
@@ -12718,7 +12718,7 @@
     "wl_record_35": "2-1",
     "team_35": "SPANISH TRAIL #1",
     "notes_30": "",
-    "notes_35": "Beat higher-rated Lisa Schnitz+Kelly Nguyen.",
+    "notes_35": "Beat higher-rated Lisa Schnitz (2.95) + Kelly Nguyen (3.34).",
     "rating_30": 3.0657,
     "rating_35": 3.2044
   },
@@ -12745,7 +12745,7 @@
     "wl_record_35": "1-2",
     "team_35": "DESERT PALM",
     "notes_30": "",
-    "notes_35": "Upset win vs Vinne Chen+Sara Sager (3.32). Biggest riser on this roster.",
+    "notes_35": "Upset win vs Vinne Chen (3.07) + Sara Sager (3.57) — implies playing at 3.32+ level to win. Biggest riser on this roster.",
     "rating_30": 3.0518,
     "rating_35": 3.3707
   },
@@ -12772,7 +12772,7 @@
     "wl_record_35": "1-1",
     "team_35": "TPC",
     "notes_30": "",
-    "notes_35": "Beat higher-rated LaCheyva Edmonis+Alexandria Chang. Playing S1/D1 despite low baseline.",
+    "notes_35": "Beat higher-rated LaCheyva Edmonis (3.39) + Alexandria Chang (2.82). Playing S1/D1 despite low baseline.",
     "rating_30": 3.0421,
     "rating_35": 3.21
   },
@@ -12946,7 +12946,7 @@
     "wl_record_35": "1-0",
     "team_35": "TPC",
     "notes_30": "",
-    "notes_35": "Upset win vs Claudia Hernandez+Karen Kiyono (3.44). Playing S1/D1 despite low baseline. Limited data. Biggest riser on this roster.",
+    "notes_35": "Upset win vs Claudia Hernandez (3.44) + Karen Kiyono (3.45) — implies playing at 3.44+ level to win. Playing S1/D1 despite low baseline. Limited data. Biggest riser on this roster.",
     "rating_30": 3.0104,
     "rating_35": 3.3276
   },
@@ -12973,7 +12973,7 @@
     "wl_record_35": "1-3",
     "team_35": "ANTHEM CC",
     "notes_30": "",
-    "notes_35": "Upset win vs Kelley Ferrence+Debi Marimberga (3.42). Biggest riser on this roster.",
+    "notes_35": "Upset win vs Kelley Ferrence (3.40) + Debi Marimberga (3.44) — implies playing at 3.42+ level to win. Biggest riser on this roster.",
     "rating_30": 2.9517,
     "rating_35": 3.2167
   },
