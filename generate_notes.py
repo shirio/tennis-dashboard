@@ -232,6 +232,21 @@ def main():
                 elif 0.02 <= delta < 0.15:
                     if all_opps_below and wins:
                         parts.append("Modest rise but ceiling-capped — hasn't faced anyone near baseline yet.")
+                    elif not parts and len(wins) >= 2:
+                        # Multi-match winner with near-level opponents
+                        all_s1 = all(ll == "1# Singles" for ll in line_labels)
+                        all_d1 = all(ll == "1# Doubles" for ll in line_labels)
+                        if all_s1:
+                            # List opponents with ratings for context
+                            opp_list = ", ".join(
+                                f"{m['opp_names'][0]} ({m['opp_avg']:.2f})"
+                                for m in wins if m["opp_avg"]
+                            )
+                            parts.append(f"S1 every deployment, {len(wins)}-0 vs {opp_list}.")
+                        elif all_d1:
+                            parts.append(f"D1 every deployment, {len(wins)}-0 against near-level pairs.")
+                        else:
+                            parts.append("Winning near-level matches — modest rise reflects narrow rating gaps.")
                 elif delta > 0.15:
                     parts.append("Biggest riser on this roster.")
                 elif -0.10 <= delta <= -0.02:

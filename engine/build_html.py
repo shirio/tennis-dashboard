@@ -279,11 +279,27 @@ def _standings_tab(subflights: list[dict], warnings: list[str]) -> str:
         items = "".join(f"<li>{_esc(w)}</li>" for w in warnings)
         warn_html = f'<div class="warn-box">⚠ Data validation warnings:<ul>{items}</ul></div>'
 
-    sections = ""
-    for sf in subflights:
+    # Build subflight tabs
+    sf_labels = [sf.get("flight_label", str(i)) for i, sf in enumerate(subflights)]
+    first_sf = sf_labels[0] if sf_labels else ""
+
+    sf_btns = ""
+    for i, lbl in enumerate(sf_labels):
+        active = " on" if i == 0 else ""
+        sf_btns += (
+            f'<button class="rtab sf-switcher{active}" '
+            f'data-sf="{_esc(lbl)}" '
+            f'onclick="filterStandingsSF(\'{_esc(lbl)}\')">'
+            f'{_esc(lbl)}</button>\n'
+        )
+
+    panes = ""
+    for i, sf in enumerate(subflights):
         lbl    = _esc(sf.get("flight_label", "?"))
         sf_raw = sf.get("flight_label", "")
         teams  = sf.get("teams", [])
+        summary = _esc(sf.get("subflight_summary", "") or "")
+        visible = "" if i == 0 else ' style="display:none"'
 
         rows = ""
         for j, t in enumerate(teams, 1):
@@ -314,15 +330,25 @@ def _standings_tab(subflights: list[dict], warnings: list[str]) -> str:
                 f"</tr>\n"
             )
 
-        sections += (
+        summary_html = (
+            f'<p class="sf-summary">{summary}</p>' if summary else ""
+        )
+        panes += (
+            f'<div class="st-pane" data-sf="{_esc(sf_raw)}"{visible}>'
             f'<p class="sf-header">Subflight {lbl}</p>'
+            f'{summary_html}'
             f'<table class="st-table"><thead><tr>'
             f'<th style="width:2rem">#</th><th>Team</th>'
             f'<th>Record</th><th>Courts</th><th>Sets</th><th>Games</th><th>Notes</th>'
-            f'</tr></thead><tbody>{rows}</tbody></table>\n'
+            f'</tr></thead><tbody>{rows}</tbody></table>'
+            f'</div>\n'
         )
 
-    return warn_html + sections
+    return (
+        warn_html
+        + f'<div class="rtabs" id="st-sf-tabs">{sf_btns}</div>'
+        + panes
+    )
 
 
 def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") -> str:
@@ -605,8 +631,14 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None) -> s
                         # Keep original scorecard layout (home col left, away col right)
                         ph_raw = ln.get("players_home", "")
                         pa_raw = ln.get("players_away", "")
-                        left = _render_players(ph_raw)
-                        right = _render_players(pa_raw)
+                        # Show "default" for empty/N/A player slots
+                        def _default_or_render(raw):
+                            s = raw.strip()
+                            if not s or s.upper() == "N/A":
+                                return '<em class="default-marker">default</em>'
+                            return _render_players(raw)
+                        left = _default_or_render(ph_raw)
+                        right = _default_or_render(pa_raw)
                         sc = _esc(ln.get("score", ""))
                         lnum = _line_label_short(ln.get("line", ""))
                         # Use normalized winners field to determine highlighting
@@ -827,6 +859,11 @@ tr:last-child td { border-bottom: none; }
 .gdiff-dn { font-size: 10px; color: #a04000; font-weight: 500; }
 /* Notes column */
 .notes-cell { font-size: 10px; color: #555; line-height: 1.35; min-width: 180px; max-width: 320px; }
+/* Default marker in results tab */
+.default-marker { color: #999; font-style: italic; font-size: 11px; }
+/* Subflight summary in standings */
+.sf-summary { font-size: 12px; color: #444; line-height: 1.55; margin: 0 0 12px 0;
+              padding: 10px 12px; background: #f9f9f9; border-left: 3px solid #d0d0d0; border-radius: 4px; }
 /* Analysis + Predictions tab */
 .insight { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 12px; line-height: 1.6; }
 .insight:last-child { border-bottom: none; }
@@ -858,6 +895,19 @@ function sr(id, btn, groupId) {
 }
 
 // Switch A/B subflight in rosters or results tab
+// Simple subflight switcher for the standings tab (no team sub-tabs)
+function filterStandingsSF(sf) {
+  var tabs = document.getElementById('st-sf-tabs');
+  if (tabs) {
+    tabs.querySelectorAll('.rtab').forEach(function(b) {
+      b.classList.toggle('on', b.dataset.sf === sf);
+    });
+  }
+  document.querySelectorAll('.st-pane').forEach(function(p) {
+    p.style.display = (p.dataset.sf === sf) ? '' : 'none';
+  });
+}
+
 function filterSF(sf, btn, sfTabsId, teamTabsId, prefix) {
   // Update SF tab highlight
   var sfTabs = document.getElementById(sfTabsId);
