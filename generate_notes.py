@@ -142,27 +142,29 @@ def main():
                 opp_r = best["opp_avg"]
                 gap = opp_r - bl if opp_r else 0
                 if gap > 0.15:
-                    parts.append(f"Upset win vs {'+'.join(best['opp_names'])} (rated {opp_r:.2f}).")
+                    parts.append(f"Upset win vs {'+'.join(best['opp_names'])} ({opp_r:.2f}).")
                 else:
-                    parts.append(f"Won vs higher-rated {'+'.join(best['opp_names'])}.")
+                    parts.append(f"Beat higher-rated {'+'.join(best['opp_names'])}.")
 
             if surprising_losses:
                 worst = max(surprising_losses, key=lambda m: bl - (m["opp_avg"] or 0))
                 opp_r = worst["opp_avg"]
                 parts.append(f"Lost to lower-rated {'+'.join(worst['opp_names'])} ({opp_r:.2f}).")
 
-            # 2. Deployment context (only if surprising, ultra-concise)
-            tier_map = {"1# Singles": 5, "1# Doubles": 4.5, "2# Singles": 4, "2# Doubles": 3, "3# Doubles": 1.5}
+            # 2. Deployment context — only flag truly meaningful signals:
+            #    S1/D1 for a low-baseline player = positive signal
+            #    D3 for a high-baseline player = negative signal
+            #    Everything else (S2, D2) is neutral and not worth noting
+            has_top_line = any(ll in ("1# Singles", "1# Doubles") for ll in line_labels)
+            has_d3 = any(ll == "3# Doubles" for ll in line_labels)
+            all_d3 = all(ll == "3# Doubles" for ll in line_labels)
             div_floor = 2.50 if sfx == "30" else 3.00
-            expected_tier = (bl - div_floor) * 10
-            actual_tiers = [tier_map.get(ll, 3) for ll in line_labels]
-            if actual_tiers:
-                avg_tier = sum(actual_tiers) / len(actual_tiers)
-                tier_gap = avg_tier - expected_tier
-                if tier_gap > 1.5:
-                    parts.append("Deployed above expected lines.")
-                elif tier_gap < -1.5:
-                    parts.append("Deployed below expected lines.")
+            high_baseline = bl >= div_floor + 0.35  # e.g., 2.85+ in 3.0 or 3.35+ in 3.5
+
+            if has_top_line and bl < div_floor + 0.20:
+                parts.append("Playing S1/D1 despite low baseline.")
+            elif all_d3 and high_baseline:
+                parts.append("Only deployed at D3.")
 
             if n_matches <= 1:
                 parts.append("Limited data.")

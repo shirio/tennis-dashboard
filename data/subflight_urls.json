@@ -1,0 +1,42 @@
+{
+  "3.0_2026": [
+    {
+      "flight_label": "3.0 Women A",
+      "url": "https://tennislink.usta.com/Leagues/Main/StatsAndStandings.aspx?t=6&par1=DB00C015B5E0C0F7F5944B4A2968&par2=2026&par3=0"
+    },
+    {
+      "flight_label": "3.0 Women B",
+      "url": "https://tennislink.usta.com/Leagues/Main/StatsAndStandings.aspx?t=6&par1=DB00A4A35D90F6C04894FB0A1978BF7E2D&par2=2026&par3=0"
+    }
+  ],
+  "3.0_2025": [
+    {
+      "flight_label": "3.0 Women A",
+      "url": "https://tennislink.usta.com/Leagues/Main/StatsAndStandings.aspx?t=6&par1=DB001A8271E07F76F5944B4A2968&par2=2026&par3=0"
+    },
+    {
+      "flight_label": "3.0 Women B",
+      "url": "https://tennislink.usta.com/Leagues/Main/StatsAndStandings.aspx?t=6&par1=DB00E87B53E0CE46F5C44BEA0978&par2=2026&par3=0"
+    }
+  ],
+  "3.5_2025": [
+    {
+      "flight_label": "3.5 Women A",
+      "url": "https://tennislink.usta.com/Leagues/Main/StatsAndStandings.aspx?t=6&par1=DB00202BBFE0E248F5944B4A2928&par2=2026&par3=0"
+    },
+    {
+      "flight_label": "3.5 Women B",
+      "url": "https://tennislink.usta.com/Leagues/Main/StatsAndStandings.aspx?t=3&par1=DB004D4B2CD04886C5F46B7A5938BF0E9D&par2=2026&par3=0"
+    }
+  ],
+  "3.5_2026": [
+    {
+      "flight_label": "3.5 Women A",
+      "url": "https://tennislink.usta.com/Leagues/Main/StatsAndStandings.aspx?t=6&par1=DB00D5C7EF90CC7B7029B90A49781F5E7D&par2=2026&par3=0"
+    },
+    {
+      "flight_label": "3.5 Women B",
+      "url": "https://tennislink.usta.com/Leagues/Main/StatsAndStandings.aspx?t=3&par1=DB00B7371BE033B2B5D40B7A49484FAE3D8C&par2=2026&par3=0"
+    }
+  ]
+}

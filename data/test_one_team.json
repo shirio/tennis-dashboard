@@ -1,0 +1,209 @@
+{
+  "section": "USTA/INTERMOUNTAIN",
+  "district": "NEVADA",
+  "league": "2026 USTA ADULT LEAGUE 18 & OVER",
+  "flight": "3.0 WOMEN- 18 & OVER / A",
+  "standings": [
+    {
+      "team": "DTC #3",
+      "wins": "4",
+      "matches": "4",
+      "losses": "0",
+      "indiv_wins": "16",
+      "indiv_losses": "4",
+      "games_pct": "61.27%"
+    },
+    {
+      "team": "ANTHEM CC",
+      "wins": "3",
+      "matches": "4",
+      "losses": "1",
+      "indiv_wins": "12",
+      "indiv_losses": "8",
+      "games_pct": "52.11%"
+    },
+    {
+      "team": "SUMMERLIN ARBORS",
+      "wins": "2",
+      "matches": "4",
+      "losses": "2",
+      "indiv_wins": "12",
+      "indiv_losses": "8",
+      "games_pct": "55.28%"
+    },
+    {
+      "team": "TPC",
+      "wins": "2",
+      "matches": "3",
+      "losses": "1",
+      "indiv_wins": "9",
+      "indiv_losses": "6",
+      "games_pct": "55.43%"
+    },
+    {
+      "team": "SOUTHERN HIGHLANDS",
+      "wins": "1",
+      "matches": "4",
+      "losses": "3",
+      "indiv_wins": "8",
+      "indiv_losses": "12",
+      "games_pct": "46.77%"
+    },
+    {
+      "team": "LIFE TIME FITNESS/GV",
+      "wins": "1",
+      "matches": "4",
+      "losses": "3",
+      "indiv_wins": "7",
+      "indiv_losses": "13",
+      "games_pct": "44.96%"
+    },
+    {
+      "team": "RED ROCK CC",
+      "wins": "1",
+      "matches": "4",
+      "losses": "3",
+      "indiv_wins": "6",
+      "indiv_losses": "14",
+      "games_pct": "39.77%"
+    },
+    {
+      "team": "DTC #2",
+      "wins": "1",
+      "matches": "3",
+      "losses": "2",
+      "indiv_wins": "5",
+      "indiv_losses": "10",
+      "games_pct": "44.40%"
+    }
+  ],
+  "matches": [
+    {
+      "date": "3/14/2026",
+      "opponent": "DTC #2",
+      "result": "Won 5-0 Confirmed"
+    },
+    {
+      "date": "3/21/2026",
+      "opponent": "SOUTHERN HIGHLANDS",
+      "result": "Won 4-1 Confirmed"
+    },
+    {
+      "date": "3/28/2026",
+      "opponent": "RED ROCK CC",
+      "result": "Won 3-2 Confirmed"
+    },
+    {
+      "date": "4/11/2026",
+      "opponent": "LIFE TIME FITNESS/GV",
+      "result": "Won 4-1 Reported"
+    },
+    {
+      "date": "4/18/2026",
+      "opponent": "ANTHEM CC",
+      "result": "Not Played"
+    },
+    {
+      "date": "4/25/2026",
+      "opponent": "TPC",
+      "result": "Not Played"
+    },
+    {
+      "date": "5/16/2026",
+      "opponent": "SOUTHERN HIGHLANDS",
+      "result": "Not Played"
+    },
+    {
+      "date": "5/2/2026",
+      "opponent": "SUMMERLIN ARBORS",
+      "result": "Not Played"
+    },
+    {
+      "date": "5/30/2026",
+      "opponent": "RED ROCK CC",
+      "result": "Not Played"
+    },
+    {
+      "date": "5/9/2026",
+      "opponent": "DTC #2",
+      "result": "Not Played"
+    },
+    {
+      "date": "6/6/2026",
+      "opponent": "LIFE TIME FITNESS/GV",
+      "result": "Not Played"
+    }
+  ],
+  "roster": [
+    {
+      "name": "Moon-Hui Choi",
+      "ntrp": "3"
+    },
+    {
+      "name": "Kimberly Cunningham",
+      "ntrp": "2.5"
+    },
+    {
+      "name": "Kim Knotts",
+      "ntrp": "3"
+    },
+    {
+      "name": "Prexy Tamayo",
+      "ntrp": "3"
+    },
+    {
+      "name": "Rebecca Dunne",
+      "ntrp": "2.5"
+    },
+    {
+      "name": "Emmy Perez",
+      "ntrp": "3"
+    },
+    {
+      "name": "Shi L Oskooi",
+      "ntrp": "3"
+    },
+    {
+      "name": "Christine LaBarre",
+      "ntrp": "3"
+    },
+    {
+      "name": "Darian McCauley",
+      "ntrp": "3"
+    },
+    {
+      "name": "Kellie Woods",
+      "ntrp": "3"
+    },
+    {
+      "name": "Anna Clark",
+      "ntrp": "3"
+    },
+    {
+      "name": "Julie Brown",
+      "ntrp": "3"
+    },
+    {
+      "name": "Yarisbel Schieck",
+      "ntrp": "3"
+    },
+    {
+      "name": "Michelle Mortensen",
+      "ntrp": "2.5"
+    },
+    {
+      "name": "Rachel Glaze",
+      "ntrp": "3"
+    },
+    {
+      "name": "Lisa Schnitz",
+      "ntrp": "3"
+    },
+    {
+      "name": "Kara Gaston",
+      "ntrp": "3"
+    }
+  ],
+  "source_url": "https://tennislink.usta.com/Leagues/Main/StatsAndStandings.aspx?SearchType=3#&&s=vPBulJjWgRv7uR_TWomgdOcSiRkJS8Yi0",
+  "usta_number_searched": "2019825517"
+}

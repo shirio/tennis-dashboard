@@ -1,0 +1,314 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; padding: 1rem; background: #fff; color: #222; font-size: 13px; }
+.cards-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px; }
+.mcard { background: #f5f4f0; border-radius: 8px; padding: 0.75rem 1rem; }
+.mcard-label { font-size: 11px; color: #888; margin-bottom: 3px; }
+.mcard-val { font-size: 22px; font-weight: 600; color: #222; }
+.mcard-sub { font-size: 11px; color: #888; margin-top: 2px; }
+.line-summary { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-bottom: 14px; }
+.ls-card { background: #f5f4f0; border-radius: 8px; padding: 8px 10px; text-align: center; }
+.ls-line { font-size: 11px; color: #888; margin-bottom: 3px; }
+.ls-rec { font-size: 18px; font-weight: 600; }
+.green { color: #27500A; } .amber { color: #633806; } .red { color: #791F1F; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.tab { padding: 6px 14px; border: 1px solid #ccc; border-radius: 20px; font-size: 13px; background: transparent; color: #666; cursor: pointer; font-weight: 500; }
+.tab.on { background: #eee; color: #222; font-weight: 600; border-color: #999; }
+.pane { display: none; } .pane.on { display: block; }
+.sec-title { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.07em; margin: 16px 0 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; }
+th { text-align: left; padding: 5px 6px; color: #888; font-weight: 600; border-bottom: 1px solid #eee; font-size: 11px; }
+td { padding: 5px 6px; border-bottom: 1px solid #f0f0f0; vertical-align: top; line-height: 1.4; }
+tr:last-child td { border-bottom: none; }
+.badge { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.bw { background: #EAF3DE; color: #27500A; } .bl { background: #FCEBEB; color: #791F1F; } .bn { background: #F1EFE8; color: #444; }
+.mblock { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 12px; }
+.mhdr { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.mtitle { font-size: 13px; font-weight: 600; } .mscore { font-size: 16px; font-weight: 600; color: #185FA5; }
+.line-lbl { font-size: 10px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin: 10px 0 3px; }
+.line-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2px 8px; font-size: 12px; align-items: center; }
+.lh { color: #aaa; } .lh.w { color: #27500A; font-weight: 600; }
+.la { color: #aaa; text-align: right; } .la.w { color: #27500A; font-weight: 600; text-align: right; }
+.ls { text-align: center; font-weight: 600; font-size: 11px; white-space: nowrap; color: #aaa; }
+.fnote { font-size: 11px; color: #888; margin-top: 8px; line-height: 1.5; border-top: 1px solid #f0f0f0; padding-top: 6px; }
+.rtabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.rtab { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font-size: 11px; background: transparent; color: #666; cursor: pointer; }
+.rtab.on { background: #eee; color: #222; font-weight: 600; }
+.rpane { display: none; } .rpane.on { display: block; }
+.insight { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 12px; line-height: 1.6; }
+.insight:last-child { border-bottom: none; }
+.itag { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 8px; margin-right: 5px; background: #E6F1FB; color: #0C447C; }
+.itag.you { background: #EAF3DE; color: #27500A; }
+.itag.warn { background: #FAEEDA; color: #633806; }
+.itag.opp { background: #EEEDFE; color: #3C3489; }
+.pbadge { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 7px; border-radius: 10px; white-space: nowrap; margin-right: 4px; }
+.ps1 { background: #FAECE7; color: #712B13; } .ps2 { background: #FAEEDA; color: #633806; }
+.pd1 { background: #E6F1FB; color: #0C447C; } .pd2 { background: #EAF3DE; color: #27500A; }
+.pd3 { background: #EEEDFE; color: #3C3489; }
+.prow { display: flex; align-items: baseline; gap: 4px; font-size: 12px; padding: 3px 0; }
+.legend { display: flex; gap: 14px; font-size: 11px; color: #888; margin-bottom: 10px; flex-wrap: wrap; }
+.leg { display: flex; align-items: center; gap: 4px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+
+#ap-table td { padding: 6px 8px; }
+</style></head><body>
+
+<div id="summary-cards" class="cards-row"></div>
+<div id="line-summary-row" class="line-summary"></div>
+
+<div class="tabs">
+  <button class="tab on" onclick="sw('standings',this)">standings</button>
+  <button class="tab" onclick="sw('rosters',this)">opponent rosters</button>
+  <button class="tab" onclick="sw('yourteam',this)">your team</button>
+  <button class="tab" onclick="sw('insights',this)">analysis + predictions</button>
+  <button class="tab" onclick="sw('allplayers',this)">all players</button>
+  <button class="tab" onclick="sw('all_results',this)">all results</button>
+</div>
+
+<div id="standings" class="pane on"></div>
+<div id="rosters" class="pane"></div>
+<div id="yourteam" class="pane"></div>
+<div id="insights" class="pane"></div>
+<div id="allplayers" class="pane"></div>
+<div id="all_results" class="pane"></div>
+
+<script src="data/players_30.json"></script>
+<script>
+function sw(id, el) {
+  document.querySelectorAll('.pane').forEach(function(p) { p.classList.remove('on'); });
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('on'); });
+  document.getElementById(id).classList.add('on');
+  el.classList.add('on');
+}
+function sr(id, el) {
+  document.querySelectorAll('#rosters .rpane').forEach(function(p) { p.classList.remove('on'); });
+  document.querySelectorAll('#rosters .rtab').forEach(function(t) { t.classList.remove('on'); });
+  document.getElementById(id).classList.add('on');
+  el.classList.add('on');
+}
+function sr2(id, el) {
+  document.querySelectorAll('#all_results .rpane').forEach(function(p) { p.classList.remove('on'); });
+  document.querySelectorAll('#all_results .rtab').forEach(function(t) { t.classList.remove('on'); });
+  document.getElementById(id).classList.add('on');
+  el.classList.add('on');
+}
+
+(function() {
+  var D = DATA_30;
+
+  // ============================================================
+  // Summary cards
+  // ============================================================
+  var di = D.division_info;
+  document.getElementById('summary-cards').innerHTML =
+    '<div class="mcard"><div class="mcard-label">team record</div><div class="mcard-val">' + di.team_record + '</div><div class="mcard-sub">' + di.courts_record + '</div></div>' +
+    '<div class="mcard"><div class="mcard-label">singles record</div><div class="mcard-val">' + di.singles_record + '</div><div class="mcard-sub">' + di.singles_sub + '</div></div>' +
+    '<div class="mcard"><div class="mcard-label">doubles record</div><div class="mcard-val">' + di.doubles_record + '</div><div class="mcard-sub">' + di.doubles_sub + '</div></div>' +
+    '<div class="mcard"><div class="mcard-label">next match</div><div class="mcard-val">' + di.next_match + '</div><div class="mcard-sub">' + di.next_opponent + '</div></div>';
+
+  // ============================================================
+  // Line summary
+  // ============================================================
+  var ls = D.line_summary;
+  var lsKeys = ['S1','S2','D1','D2','D3'];
+  document.getElementById('line-summary-row').innerHTML = lsKeys.map(function(k) {
+    return '<div class="ls-card"><div class="ls-line">' + k + '</div><div class="ls-rec ' + ls[k].color_class + '">' + ls[k].record + '</div></div>';
+  }).join('');
+
+  // ============================================================
+  // Standings
+  // ============================================================
+  var stHtml = '<p class="sec-title">league standings \u2014 week 3</p>' +
+    '<table style="table-layout:fixed;width:100%"><colgroup><col style="width:18%"><col style="width:10%"><col style="width:10%"><col style="width:10%"><col></colgroup><thead><tr>' +
+    '<th>team</th><th>record</th><th>courts</th><th>avg new</th><th>notes</th></tr></thead><tbody>';
+  D.standings.forEach(function(r) {
+    var rowStyle = r.is_your_team ? ' style="background:#e8f2fd;font-weight:600"' : '';
+    var nameDisplay = r.is_your_team ? r.name + ' \u2605' : r.name;
+    stHtml += '<tr' + rowStyle + '><td>' + nameDisplay + '</td><td><span class="badge ' + r.record_class + '">' + r.record + '</span></td><td>' + r.courts + '</td><td>' + r.avg_new + '</td><td>' + r.notes + '</td></tr>';
+  });
+  stHtml += '</tbody></table><p class="fnote">' + D.standings_footnote + '</p>';
+  document.getElementById('standings').innerHTML = stHtml;
+
+  // ============================================================
+  // Helper: render a roster table
+  // ============================================================
+  function rosterTable(players, fieldName) {
+    var h = '<table><thead><tr><th style="width:23%">player</th><th style="width:9%">old</th><th style="width:9%">new</th><th style="width:9%">W/L</th><th style="width:16%">lines</th><th>' + fieldName + '</th></tr></thead><tbody>';
+    players.forEach(function(p) {
+      var newCol = p['new'] > p.old + 0.005 ? '<span style="color:#27500A;font-weight:600">' + p['new'].toFixed(2) + '</span>'
+                 : p['new'] < p.old - 0.005 ? '<span style="color:#791F1F">' + p['new'].toFixed(2) + '</span>'
+                 : '<span style="color:#888">' + p['new'].toFixed(2) + '</span>';
+      var trAttr = p.highlighted ? ' style="background:#e8f2fd;font-weight:600"' : '';
+      var text = p[fieldName === 'reasoning' ? 'reasoning' : 'notes'] || '';
+      h += '<tr' + trAttr + '><td>' + p.name + (p.highlighted && p.name.indexOf('\u2605') === -1 ? '' : '') + '</td><td>' + p.old.toFixed(2) + '</td><td>' + newCol + '</td><td>' + p.wl + '</td><td>' + p.lines_html + '</td><td style="font-size:11px;color:#555;line-height:1.4">' + text + '</td></tr>';
+    });
+    h += '</tbody></table>';
+    return h;
+  }
+
+  // ============================================================
+  // Opponent rosters
+  // ============================================================
+  var teamKeys = ['ltf','anthem','tpc','sa','dtc2r','shr','rrr'];
+  var rostersHtml = '<div class="rtabs">';
+  teamKeys.forEach(function(k, i) {
+    var t = D.teams[k];
+    rostersHtml += '<button class="rtab' + (i === 0 ? ' on' : '') + '" onclick="sr(\'' + k + '\',this)">' + t.tab_label + '</button>';
+  });
+  rostersHtml += '</div>';
+
+  teamKeys.forEach(function(k, i) {
+    var t = D.teams[k];
+    rostersHtml += '<div id="' + k + '" class="rpane' + (i === 0 ? ' on' : '') + '">';
+    rostersHtml += '<p class="sec-title">' + t.sec_title + '</p>';
+    rostersHtml += rosterTable(t.players, 'reasoning');
+    rostersHtml += '<p style="font-size:11px;color:#888;margin-top:8px;line-height:1.5;border-top:1px solid #f0f0f0;padding-top:6px">' + t.footnote + '</p>';
+    rostersHtml += '</div>';
+  });
+  document.getElementById('rosters').innerHTML = rostersHtml;
+
+  // ============================================================
+  // Your team
+  // ============================================================
+  var yt = D.your_team;
+  var ytHtml = '<p class="sec-title">' + yt.sec_title + '</p>';
+  ytHtml += rosterTable(yt.players, 'notes');
+  ytHtml += '<p style="font-size:11px;color:#888;margin-top:8px;line-height:1.5;border-top:1px solid #f0f0f0;padding-top:6px">' + yt.footnote + '</p>';
+  document.getElementById('yourteam').innerHTML = ytHtml;
+
+  // ============================================================
+  // Insights / Analysis + Predictions
+  // ============================================================
+  var insHtml = '<p class="sec-title">' + D.insights_sec_title + '</p>';
+  D.insights.forEach(function(ins, idx) {
+    // The availability insight is the second-to-last; after it comes lineup predictions
+    if (ins.tag_text === 'availability') {
+      insHtml += '<div class="insight"><span class="' + ins.tag_class + '">' + ins.tag_text + '</span>' + ins.content_html + '</div>';
+      // Insert lineup predictions prows
+      insHtml += D.lineup_predictions.prows_html;
+      return;
+    }
+    if (ins.tag_text === 'LTF key threats') {
+      // This comes after the predictions section; insert sec_title before it
+      insHtml += '<div class="insight"><span class="' + ins.tag_class + '">' + ins.tag_text + '</span>' + ins.content_html + '</div>';
+      return;
+    }
+    insHtml += '<div class="insight"><span class="' + ins.tag_class + '">' + ins.tag_text + '</span>' + ins.content_html + '</div>';
+  });
+
+  // Insert the predictions sec_title before the availability insight
+  // Actually we need to restructure: insights before predictions, then sec_title, then availability+prows+ltf threats, then schedule
+  // Let's rebuild more carefully
+  insHtml = '<p class="sec-title">' + D.insights_sec_title + '</p>';
+  var foundAvail = false;
+  D.insights.forEach(function(ins) {
+    if (ins.tag_text === 'availability') {
+      // Insert predictions sec_title before availability
+      insHtml += '<p class="sec-title">' + D.lineup_predictions.sec_title + '</p>';
+      insHtml += '<div class="insight"><span class="' + ins.tag_class + '">' + ins.tag_text + '</span>' + ins.content_html + '</div>';
+      insHtml += D.lineup_predictions.prows_html;
+      foundAvail = true;
+      return;
+    }
+    insHtml += '<div class="insight"><span class="' + ins.tag_class + '">' + ins.tag_text + '</span>' + ins.content_html + '</div>';
+  });
+
+  // Schedule outlook
+  insHtml += '<p class="sec-title">remaining schedule outlook</p>';
+  insHtml += '<div class="prow" style="font-size:12px;color:#555;line-height:2.0">' + D.schedule_outlook_html + '</div>';
+
+  document.getElementById('insights').innerHTML = insHtml;
+
+  // ============================================================
+  // All Players (sortable table)
+  // ============================================================
+  var apData = D.all_players;
+  var sortCol = 'name', sortAsc = true;
+
+  function renderAP(rows) {
+    var q = document.getElementById('ap-search').value.toLowerCase();
+    if (q) rows = rows.filter(function(r) {
+      return r.name.toLowerCase().includes(q) || r.team.toLowerCase().includes(q);
+    });
+    var tb = document.getElementById('ap-tbody');
+    tb.innerHTML = rows.map(function(r) {
+      var newCol = r['new'] > r.old + 0.005 ? '<span style="color:#27500A;font-weight:600">' + r['new'].toFixed(2) + '</span>'
+                 : r['new'] < r.old - 0.005 ? '<span style="color:#791F1F">' + r['new'].toFixed(2) + '</span>'
+                 : '<span style="color:#888">' + r['new'].toFixed(2) + '</span>';
+      var rowStyle = r.team === 'DTC #3' ? ' style="background:#e8f2fd;font-weight:600"' : '';
+      return '<tr' + rowStyle + '><td>' + r.name + '</td><td>' + r.team + '</td><td>' + r.old.toFixed(2) + '</td><td>' + newCol + '</td><td>' + r.wl + '</td><td>' + r.lines_html + '</td></tr>';
+    }).join('');
+  }
+
+  window.apSort = function(col) {
+    if (sortCol === col) { sortAsc = !sortAsc; }
+    else { sortCol = col; sortAsc = col === 'name' || col === 'team'; }
+    ['name','team','old','new'].forEach(function(c) {
+      var el = document.getElementById('ap-arr-' + c);
+      if (el) el.textContent = c === sortCol ? (sortAsc ? '\u2191' : '\u2193') : '\u2195';
+    });
+    var sorted = apData.slice().sort(function(a, b) {
+      var av = a[col], bv = b[col];
+      if (av < bv) return sortAsc ? -1 : 1;
+      if (av > bv) return sortAsc ? 1 : -1;
+      return 0;
+    });
+    renderAP(sorted);
+  };
+
+  var apHtml = '<p class="sec-title">All players \u2014 full division (click name, team, old, or new to sort)</p>' +
+    '<input id="ap-search" type="text" placeholder="Search by name or team\u2026" style="margin-bottom:10px;padding:5px 8px;border:1px solid #ddd;border-radius:4px;width:260px;font-size:13px">' +
+    '<table id="ap-table" style="width:100%;table-layout:fixed;border-collapse:collapse">' +
+    '<colgroup><col style="width:140px"><col style="width:69px"><col style="width:40px"><col style="width:40px"><col style="width:34px"><col></colgroup>' +
+    '<thead><tr>' +
+    '<th onclick="window.apSort(\'name\')" style="cursor:pointer;user-select:none;padding:6px 8px;width:140px">player <span id="ap-arr-name">&#x2195;</span></th>' +
+    '<th onclick="window.apSort(\'team\')" style="cursor:pointer;user-select:none;padding:6px 8px;width:69px">team <span id="ap-arr-team">&#x2195;</span></th>' +
+    '<th onclick="window.apSort(\'old\')" style="cursor:pointer;user-select:none;padding:6px 8px">old <span id="ap-arr-old">&#x2195;</span></th>' +
+    '<th onclick="window.apSort(\'new\')" style="cursor:pointer;user-select:none;padding:6px 8px">new <span id="ap-arr-new">&#x2195;</span></th>' +
+    '<th style="padding:6px 8px">W/L</th>' +
+    '<th style="padding:6px 8px">lines</th>' +
+    '</tr></thead><tbody id="ap-tbody"></tbody></table>';
+  document.getElementById('allplayers').innerHTML = apHtml;
+
+  document.getElementById('ap-search').addEventListener('input', function() {
+    var sorted = apData.slice().sort(function(a, b) {
+      var av = a[sortCol], bv = b[sortCol];
+      if (av < bv) return sortAsc ? -1 : 1;
+      if (av > bv) return sortAsc ? 1 : -1;
+      return 0;
+    });
+    renderAP(sorted);
+  });
+
+  apSort('name');
+
+  // ============================================================
+  // All Results
+  // ============================================================
+  var resKeys = ['res_dtc3','res_dtc2','res_anthem','res_tpc','res_sh','res_sa','res_rr','res_ltf'];
+  var arHtml = '<div class="rtabs">';
+  resKeys.forEach(function(k, i) {
+    var t = D.results_by_team[k];
+    arHtml += '<button class="rtab' + (i === 0 ? ' on' : '') + '" onclick="sr2(\'' + k + '\',this)">' + t.tab_label + '</button>';
+  });
+  arHtml += '</div>';
+
+  resKeys.forEach(function(k, i) {
+    var t = D.results_by_team[k];
+    arHtml += '<div id="' + k + '" class="rpane' + (i === 0 ? ' on' : '') + '">';
+    arHtml += '<p class="sec-title">' + t.sec_title + '</p>';
+    t.matches.forEach(function(m) {
+      arHtml += '<div class="mblock"><div class="mhdr"><span class="mtitle">' + m.title + '</span><span class="mscore" style="color:' + m.outcome_color + '">' + m.outcome + '</span></div>';
+      m.lines.forEach(function(l) {
+        var hc = l.home_winner ? 'lh w' : 'lh';
+        var ac = l.away_winner ? 'la w' : 'la';
+        arHtml += '<div class="line-lbl">' + l.position + '</div><div class="line-row"><span class="' + hc + '">' + l.home_player + '</span><span class="ls">' + l.scores + '</span><span class="' + ac + '">' + l.away_player + '</span></div>';
+      });
+      arHtml += '</div>';
+    });
+    arHtml += '</div>';
+  });
+  document.getElementById('all_results').innerHTML = arHtml;
+
+})();
+</script></body></html>
