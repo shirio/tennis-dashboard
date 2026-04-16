@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Generate per-division player notes (notes_30, notes_35) using normalized match data.
-Notes are division-specific and focus on what's INTERESTING, not repeating column data.
+Notes explain what's INTERESTING — why the rating moved (or didn't), surprising results,
+and cross-division context. Never repeat data visible in other columns.
 """
 import json, re
 from pathlib import Path
@@ -26,7 +27,7 @@ def main():
         data = json.loads((DATA / fname).read_text())
 
         # Collect per-player match details FOR THIS DIVISION ONLY
-        player_matches = defaultdict(list)  # name_key -> [{date, line, won, opp_names, opp_ratings, score, winner_team, loser_team}]
+        player_matches = defaultdict(list)
 
         for sf in data.get("subflights", []):
             for m in sf.get("matches", []):
@@ -38,39 +39,41 @@ def main():
                     if not winners_raw or not losers_raw:
                         continue
 
+                    is_walkover = (
+                        winners_raw.strip().upper() == "N/A"
+                        or losers_raw.strip().upper() == "N/A"
+                        or not winners_raw.strip()
+                        or not losers_raw.strip()
+                    )
                     winner_names = [n.strip() for n in winners_raw.split("/")]
                     loser_names = [n.strip() for n in losers_raw.split("/")]
 
                     for wn in winner_names:
                         wk = _name_key(wn)
-                        opp_ratings = [rating.get(_name_key(ln), None) for ln in loser_names]
-                        opp_ratings = [r for r in opp_ratings if r is not None]
+                        opp_ratings = [rating.get(_name_key(n)) for n in loser_names]
+                        opp_ratings_clean = [r for r in opp_ratings if r is not None]
                         partner_names = [n for n in winner_names if _name_key(n) != wk]
                         player_matches[wk].append({
-                            "date": m.get("date", ""),
-                            "line": ln.get("line", ""),
-                            "won": True,
-                            "opp_names": loser_names,
-                            "opp_avg": sum(opp_ratings) / len(opp_ratings) if opp_ratings else None,
+                            "date": m.get("date", ""), "line": ln.get("line", ""),
+                            "won": True, "opp_names": loser_names,
+                            "opp_avg": sum(opp_ratings_clean) / len(opp_ratings_clean) if opp_ratings_clean else None,
                             "score": ln.get("score", ""),
                             "partner": partner_names[0] if partner_names else None,
-                            "match_teams": f'{m.get("home_team")} vs {m.get("away_team")}',
+                            "walkover": is_walkover,
                         })
 
                     for ln2 in loser_names:
                         lk = _name_key(ln2)
-                        opp_ratings = [rating.get(_name_key(wn), None) for wn in winner_names]
-                        opp_ratings = [r for r in opp_ratings if r is not None]
+                        opp_ratings = [rating.get(_name_key(wn)) for wn in winner_names]
+                        opp_ratings_clean = [r for r in opp_ratings if r is not None]
                         partner_names = [n for n in loser_names if _name_key(n) != lk]
                         player_matches[lk].append({
-                            "date": m.get("date", ""),
-                            "line": ln.get("line", ""),
-                            "won": False,
-                            "opp_names": winner_names,
-                            "opp_avg": sum(opp_ratings) / len(opp_ratings) if opp_ratings else None,
+                            "date": m.get("date", ""), "line": ln.get("line", ""),
+                            "won": False, "opp_names": winner_names,
+                            "opp_avg": sum(opp_ratings_clean) / len(opp_ratings_clean) if opp_ratings_clean else None,
                             "score": ln.get("score", ""),
                             "partner": partner_names[0] if partner_names else None,
-                            "match_teams": f'{m.get("home_team")} vs {m.get("away_team")}',
+                            "walkover": is_walkover,
                         })
 
         # Count total match weeks
@@ -81,127 +84,134 @@ def main():
                     dates.add(m["date"])
         n_weeks = len(dates)
 
-        # Generate notes per player
         notes_field = f"notes_{sfx}"
         n_updated = 0
 
         for p in players:
             pk = _name_key(p.get("name", ""))
-            matches = player_matches.get(pk, [])
-            if not matches:
-                p[notes_field] = ""
-                continue
+            all_matches = player_matches.get(pk, [])
+            # Filter out walkovers for analysis
+            matches = [m for m in all_matches if not m.get("walkover")]
+            walkover_only = len(all_matches) > 0 and len(matches) == 0
 
             bl = p.get("dynamic_rating_baseline")
-            dr = p.get("current_division_rating")
+            dr = p.get(f"rating_{sfx}")
             gr = p.get("global_rating")
-            wl = p.get(f"wl_record_{sfx}", "")
-            lines_raw = p.get(f"lines_played_{sfx}", [])
             other_sfx = "35" if sfx == "30" else "30"
             other_wl = p.get(f"wl_record_{other_sfx}", "")
+            other_div = "3.5" if sfx == "30" else "3.0"
 
-            if bl is None:
+            if bl is None or (not all_matches and not walkover_only):
                 p[notes_field] = ""
                 continue
 
             delta = (dr - bl) if dr else 0
-            n_matches = len(matches)
             wins = [m for m in matches if m["won"]]
             losses = [m for m in matches if not m["won"]]
-            deploy_rate = n_matches / n_weeks if n_weeks else 0
-
-            # Parse line types
+            n_matches = len(matches)
             line_labels = [m["line"] for m in matches]
 
-            # Find surprising results
-            surprising_wins = []
-            surprising_losses = []
-            for m in matches:
-                if m["opp_avg"] is None:
-                    continue
-                gap = bl - m["opp_avg"]  # positive = player is favorite
-                if m["won"] and gap < -0.05:
-                    # Upset win (beat higher-rated opponent)
-                    surprising_wins.append(m)
-                elif m["won"] and gap > 0.25:
-                    # Stomped much weaker opponent — not notable
-                    pass
-                elif not m["won"] and gap > 0.05:
-                    # Upset loss (lost to lower-rated opponent)
-                    surprising_losses.append(m)
-                elif not m["won"] and gap < -0.25:
-                    # Expected loss against much stronger — not notable
-                    pass
+            # Detect conditions
+            all_opps_below = (
+                all(m["opp_avg"] is not None and m["opp_avg"] < bl - 0.05 for m in wins)
+                if wins else False
+            )
+            surprising_wins = [m for m in matches if m["won"] and m["opp_avg"] and m["opp_avg"] - bl > 0.05]
+            surprising_losses = [m for m in matches if not m["won"] and m["opp_avg"] and bl - m["opp_avg"] > 0.05]
 
-            # Build note
-            parts = []
-
-            # 1. Most interesting result (concise — no scores, just the takeaway)
             def _opp_label(m):
-                """Format opponent names with individual ratings."""
                 pieces = []
                 for n in m["opp_names"]:
                     r = rating.get(_name_key(n))
                     pieces.append(f"{n} ({r:.2f})" if r else n)
                 return " + ".join(pieces)
 
-            if surprising_wins:
-                best = max(surprising_wins, key=lambda m: (m["opp_avg"] or 0) - bl)
-                opp_r = best["opp_avg"]
-                label = _opp_label(best)
-                gap = opp_r - bl if opp_r else 0
-                if gap > 0.15:
-                    # For doubles with 2 opponents, note the implied minimum
-                    if len(best["opp_names"]) > 1 and opp_r:
-                        parts.append(f"Upset win vs {label} — implies playing at {opp_r:.2f}+ level to win.")
-                    else:
+            # --- BUILD NOTE ---
+            parts = []
+
+            if walkover_only:
+                parts.append("Only match was a default — no competitive data.")
+            elif n_matches == 0:
+                pass
+            else:
+                # Lead with the most interesting result
+                if surprising_wins:
+                    best = max(surprising_wins, key=lambda m: (m["opp_avg"] or 0) - bl)
+                    label = _opp_label(best)
+                    opp_r = best["opp_avg"]
+                    if opp_r and (opp_r - bl) > 0.15 and len(best["opp_names"]) > 1:
+                        parts.append(f"Upset win vs {label} — implies playing at {opp_r:.2f}+ level.")
+                    elif opp_r and (opp_r - bl) > 0.15:
                         parts.append(f"Upset win vs {label}.")
-                else:
-                    parts.append(f"Beat higher-rated {label}.")
+                    else:
+                        parts.append(f"Beat higher-rated {label}.")
 
-            if surprising_losses:
-                worst = max(surprising_losses, key=lambda m: bl - (m["opp_avg"] or 0))
-                label = _opp_label(worst)
-                parts.append(f"Lost to lower-rated {label}.")
-
-            # 2. Deployment context — only flag truly meaningful signals:
-            #    S1/D1 for a low-baseline player = positive signal
-            #    D3 for a high-baseline player = negative signal
-            #    Everything else (S2, D2) is neutral and not worth noting
-            has_top_line = any(ll in ("1# Singles", "1# Doubles") for ll in line_labels)
-            has_d3 = any(ll == "3# Doubles" for ll in line_labels)
-            all_d3 = all(ll == "3# Doubles" for ll in line_labels)
-            div_floor = 2.50 if sfx == "30" else 3.00
-            high_baseline = bl >= div_floor + 0.35  # e.g., 2.85+ in 3.0 or 3.35+ in 3.5
-
-            if has_top_line and bl < div_floor + 0.20:
-                parts.append("Playing S1/D1 despite low baseline.")
-            elif all_d3 and high_baseline:
-                parts.append("Only deployed at D3.")
-
-            if n_matches <= 1:
-                parts.append("Limited data.")
-
-            # 3. Rating trajectory (only the WHY, not the numbers)
-            if delta > 0.20:
-                parts.append("Biggest riser on this roster.")
-            elif delta < -0.10:
                 if surprising_losses:
-                    parts.append("Losses to weaker opponents drive the decline.")
-                elif deploy_rate < 0.4:
-                    parts.append("Low deployment reinforces downgrade.")
+                    worst = max(surprising_losses, key=lambda m: bl - (m["opp_avg"] or 0))
+                    parts.append(f"Lost to lower-rated {_opp_label(worst)}.")
 
-            # 4. Cross-division addendum (brief)
-            if other_wl:
-                other_div = "3.5" if sfx == "30" else "3.0"
+                # Explain WHY the rating is where it is
+                if abs(delta) < 0.02:
+                    if len(wins) >= 2 and all_opps_below:
+                        parts.append("Rating flat: all opponents below baseline, ceiling-capped until tested against stronger competition.")
+                    elif len(wins) == 1 and not losses and n_matches == 1:
+                        m0 = matches[0]
+                        is_d1 = m0["line"] in ("1# Singles", "1# Doubles")
+                        is_3set = "1-0" in m0["score"] or "0-1" in m0["score"]
+                        opp_below = m0["opp_avg"] and m0["opp_avg"] < bl
+                        if is_d1 and is_3set and opp_below:
+                            parts.append("Won a close D1 match but opponent was near/below baseline — proves D1 caliber but no upside evidence yet.")
+                        elif opp_below:
+                            parts.append("Won but opponent below baseline — no upside evidence yet.")
+                    elif losses and wins:
+                        pass  # wins and losses roughly cancel, nothing interesting to say
+                elif n_matches == 1:
+                    # Single match — explain the context
+                    m0 = matches[0]
+                    is_d1 = m0["line"] in ("1# Singles", "1# Doubles")
+                    is_3set = "1-0" in m0["score"] or "0-1" in m0["score"]
+                    if m0["won"]:
+                        if m0.get("opp_avg") and m0["opp_avg"] < bl:
+                            if is_d1 and is_3set:
+                                parts.append("Won a close D1 match but opponent below baseline — proves D1 caliber but no upside evidence yet.")
+                            else:
+                                parts.append("Won but opponent below baseline — no upside evidence yet.")
+                    else:
+                        if is_d1 and is_3set:
+                            parts.append("Close 3-set loss at D1 — competitive match despite the result.")
+                        elif m0.get("opp_avg") and m0["opp_avg"] > bl + 0.05:
+                            parts.append("Loss to higher-rated opponent — expected.")
+                        elif m0.get("opp_avg") and m0["opp_avg"] < bl - 0.05:
+                            pass  # surprising_losses already handles this
+
+                elif delta > 0.15:
+                    parts.append("Biggest riser on this roster.")
+                elif delta < -0.10:
+                    if surprising_losses:
+                        parts.append("Losses to weaker opponents drive the decline.")
+
+                # Deployment signals (only extremes)
+                has_top = any(ll in ("1# Singles", "1# Doubles") for ll in line_labels)
+                all_d3 = all(ll == "3# Doubles" for ll in line_labels) if line_labels else False
+                div_floor = 2.50 if sfx == "30" else 3.00
+
+                if has_top and bl < div_floor + 0.20:
+                    parts.append("Playing S1/D1 despite low baseline.")
+                elif all_d3 and bl >= div_floor + 0.35:
+                    parts.append("Only deployed at D3.")
+
+            # Cross-division context (explain the global diff if meaningful)
+            if gr and dr and abs(gr - dr) > 0.05 and other_wl:
+                if gr > dr:
+                    parts.append(f"Global higher ({gr:.2f}) from {other_wl} in {other_div}.")
+                else:
+                    parts.append(f"Global lower ({gr:.2f}) — {other_wl} in {other_div} pulls it down.")
+            elif other_wl:
                 parts.append(f"Also {other_wl} in {other_div}.")
 
             note = " ".join(parts).strip()
-            if len(note) > 250:
-                note = note[:247] + "..."
-
-            if not note:
-                note = ""
+            if len(note) > 300:
+                note = note[:297] + "..."
 
             p[notes_field] = note
             n_updated += 1
