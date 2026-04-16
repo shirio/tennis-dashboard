@@ -407,7 +407,7 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
                 # Use per-division stats if available, else fall back to legacy fields
                 wl    = p.get(f"wl_record_{_sfx}") or p.get("wl_record") or "–"
                 lines = p.get(f"lines_played_{_sfx}") or p.get("lines_played") or "–"
-                pnotes = _esc(p.get(f"notes_{_sfx}", "") or p.get("notes", "") or "")
+                pnotes = _esc(p.get(f"notes_{_sfx}", "") or "")
                 rows += (
                     f"<tr>"
                     f"<td>{_esc(p.get('name',''))}</td>"

@@ -229,8 +229,14 @@ def main():
                         elif m0.get("opp_avg") and m0["opp_avg"] < bl - 0.05:
                             pass  # surprising_losses already handles this
 
+                elif 0.02 <= delta < 0.15:
+                    if all_opps_below and wins:
+                        parts.append("Modest rise but ceiling-capped — hasn't faced anyone near baseline yet.")
                 elif delta > 0.15:
                     parts.append("Biggest riser on this roster.")
+                elif -0.10 <= delta <= -0.02:
+                    if not parts:
+                        parts.append(f"Slight decline.")
                 elif delta < -0.10:
                     if surprising_losses:
                         parts.append("Losses to weaker opponents drive the decline.")
