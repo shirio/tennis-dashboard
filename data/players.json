@@ -6,8 +6,8 @@
     "team": "DTC #2",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.6749,
-    "current_division_rating": 2.7703,
-    "global_rating": 2.7703,
+    "current_division_rating": 2.7203,
+    "global_rating": 2.7203,
     "ntrp_rating": "2.5 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -23,7 +23,7 @@
     "team_30": "DTC #4",
     "notes_30": "Upset: W5 D3 beat Jocelyn Goldman (2.78) + Valerie Valow-Orris (2.88) (6-4 6-4).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Jocelyn Goldman (2.78) + Valerie Valow-Orris (2.88) (6-4 6-4).",
-    "rating_30": 2.7703,
+    "rating_30": 2.7203,
     "rating_35": 2.6749
   },
   {
@@ -33,8 +33,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.5831,
-    "current_division_rating": 2.7657,
-    "global_rating": 2.7657,
+    "current_division_rating": 2.7057,
+    "global_rating": 2.7057,
     "ntrp_rating": "2.5 C",
     "wl_record": "3-1",
     "lines_played": 4,
@@ -50,7 +50,7 @@
     "team_30": "DESERT PALM",
     "notes_30": "Among DESERT PALM's most-deployed (4/5 weeks). Upset: W2 S2 beat Shawanna Johnson (2.77) (6-2 6-1).",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Shawanna Johnson (2.77) (6-2 6-1).",
-    "rating_30": 2.7657,
+    "rating_30": 2.7057,
     "rating_35": 2.5831
   },
   {
@@ -60,8 +60,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.6213,
-    "current_division_rating": 2.7479,
-    "global_rating": 2.7479,
+    "current_division_rating": 2.7729,
+    "global_rating": 2.7729,
     "ntrp_rating": "3.0 D",
     "wl_record": "3-1",
     "lines_played": 4,
@@ -78,7 +78,7 @@
     "team_30": "LIFE TIME FITNESS/GV",
     "notes_30": "Among LIFE TIME FITNESS/GV's most-deployed (4/5 weeks). Captain's flex weapon — D2/S1/S2. Upset: W4 D2 beat Kim Knotts (2.96) + Kellie Woods (2.80) (1-6 6-4 1-0) — implies playing at 2.88+ level. Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Kim Knotts (2.96) + Kellie Woods (2.80) (1-6 6-4 1-0).",
-    "rating_30": 2.7479,
+    "rating_30": 2.7729,
     "rating_35": 2.6213
   },
   {
@@ -181,8 +181,8 @@
     "team": "SPANISH TRAIL #2",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.46,
-    "current_division_rating": 2.5832,
-    "global_rating": 2.5832,
+    "current_division_rating": 2.5007,
+    "global_rating": 2.5007,
     "ntrp_rating": "2.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -190,9 +190,9 @@
     "notes": null,
     "profile_url": "/adult/profile.aspx?playername=Leah Bonilla",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
-    "notes_30": "Only 3.0 match: W5 D3 beat Christy Shulman (2.64) + Michelle Tarnow (2.02) (6-0 6-1). Biggest riser on this roster.",
+    "notes_30": "Only 3.0 match: W5 D3 beat Christy Shulman (2.64) + Michelle Tarnow (2.02) (6-0 6-1).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Christy Shulman (2.64) + Michelle Tarnow (2.02) (6-0 6-1).",
-    "rating_30": 2.5832,
+    "rating_30": 2.5007,
     "rating_35": 2.46,
     "lines_played_30": [
       "D3"
@@ -207,8 +207,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.5812,
-    "current_division_rating": 2.8269,
-    "global_rating": 2.8269,
+    "current_division_rating": 2.7787,
+    "global_rating": 2.7787,
     "ntrp_rating": "2.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -224,7 +224,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Upset: W4 D2 beat Sandra Shearer (2.89) + ANN MARIE WEAVER (2.76) (6-3 6-4).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Sandra Shearer (2.89) + ANN MARIE WEAVER (2.76) (6-3 6-4).",
-    "rating_30": 2.8269,
+    "rating_30": 2.7787,
     "rating_35": 2.5812
   },
   {
@@ -276,8 +276,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.4552,
-    "current_division_rating": 2.5756,
-    "global_rating": 2.5756,
+    "current_division_rating": 2.4881,
+    "global_rating": 2.4881,
     "ntrp_rating": "2.5 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -290,9 +290,9 @@
     ],
     "wl_record_30": "2-0",
     "team_30": "SPANISH TRAIL",
-    "notes_30": "Undefeated but all opponents below baseline (avg 2.37) — ceiling-capped. Biggest riser on this roster.",
+    "notes_30": "Undefeated but all opponents below baseline (avg 2.37) — ceiling-capped.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Lexi Fleury (2.40) (6-3 3-6 1-0).",
-    "rating_30": 2.5756,
+    "rating_30": 2.4881,
     "rating_35": 2.4552
   },
   {
@@ -302,8 +302,8 @@
     "team": "SPANISH TRAIL #2",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.4413,
-    "current_division_rating": 2.4697,
-    "global_rating": 2.4697,
+    "current_division_rating": 2.4413,
+    "global_rating": 2.4413,
     "ntrp_rating": "2.5 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -319,7 +319,7 @@
     "team_30": "SPANISH TRAIL",
     "notes_30": "Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Janie Oceguera (2.37) (6-2 7-5).",
-    "rating_30": 2.4697,
+    "rating_30": 2.4413,
     "rating_35": 2.4413
   },
   {
@@ -1158,8 +1158,8 @@
     "team": "TPC",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.1897,
-    "current_division_rating": 2.4183,
-    "global_rating": 2.4183,
+    "current_division_rating": 2.3933,
+    "global_rating": 2.3933,
     "ntrp_rating": "2.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -1169,7 +1169,7 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "Upset: W4 D3 beat Monica Taylor (2.37) + Elizabeth Abatangelo (2.61) (6-4 6-2) — implies playing at 2.49+ level.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Monica Taylor (2.37) + Elizabeth Abatangelo (2.61) (6-4 6-2).",
-    "rating_30": 2.4183,
+    "rating_30": 2.3933,
     "rating_35": 2.1897,
     "lines_played_30": [
       "D3"
@@ -2098,7 +2098,7 @@
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.2374,
     "current_division_rating": 3.2009,
-    "global_rating": 3.4953,
+    "global_rating": 3.4703,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -2119,7 +2119,7 @@
     "notes_30": "Only 3.0 match: W4 D1 beat Miriam Jimenez (2.77) + Bree Carlson (2.70) (6-1 6-4). In 3.5: S1 beat Monica Baldwin (3.38) (6-3 4-6 1-0).",
     "notes_35": "Upset: W1 S1 beat Karina McAffee (3.41) (6-2 6-4). Also 1-0 in 3.0.",
     "rating_30": 3.2009,
-    "rating_35": 3.4555
+    "rating_35": 3.4305
   },
   {
     "id": "kim-springer",
@@ -2156,7 +2156,7 @@
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.252,
     "current_division_rating": 3.2397,
-    "global_rating": 3.4718,
+    "global_rating": 3.4318,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -2178,7 +2178,7 @@
     "notes_30": "Undefeated but all opponents below baseline (avg 2.68) — ceiling-capped. Also 2-0 in 3.5.",
     "notes_35": "Upset: W5 D3 beat Natasha Kattau (3.16) + Vanessa Nicole Rowe (3.52) (6-1 6-4). Also 2-0 in 3.0.",
     "rating_30": 3.2397,
-    "rating_35": 3.4229
+    "rating_35": 3.3854
   },
   {
     "id": "tina-shirey",
@@ -2187,8 +2187,8 @@
     "team": "DTC #2",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.2608,
-    "current_division_rating": 3.0815,
-    "global_rating": 3.0815,
+    "current_division_rating": 3.0443,
+    "global_rating": 3.0443,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -2203,7 +2203,7 @@
     "team_30": "DTC #2",
     "notes_30": "DTC #2's every-week player (with Irene Frazier). Surprising loss: W1 D1 lost to Darian McCauley (2.98) + Shi L Oskooi (2.84) (7-5 5-7 1-0).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Carrie Maddux (2.72) + Therese Laudenslager (3.01) (6-0 6-3).",
-    "rating_30": 3.0815,
+    "rating_30": 3.0443,
     "rating_35": 3.2608
   },
   {
@@ -2214,7 +2214,7 @@
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.1713,
     "current_division_rating": 3.1395,
-    "global_rating": 3.3695,
+    "global_rating": 3.332,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -2230,7 +2230,7 @@
     "notes_30": "Only 3.0 match: W2 D1 beat Martha Langer (2.23) + Jennifer Lake (2.83) (6-0 6-0). In 3.5: D3 beat Natasha Kattau (3.16) + Vanessa Nicole Rowe (3.52) (6-1 6-4).",
     "notes_35": "Upset: W5 D3 beat Natasha Kattau (3.16) + Vanessa Nicole Rowe (3.52) (6-1 6-4). In 3.0: D1 beat Martha Langer (2.23) + Jennifer Lake (2.83) (6-0 6-0).",
     "rating_30": 3.1395,
-    "rating_35": 3.344,
+    "rating_35": 3.3065,
     "lines_played_35": [
       "D3"
     ],
@@ -2307,7 +2307,7 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.1597,
-    "current_division_rating": 3.1381,
+    "current_division_rating": 3.1075,
     "global_rating": 3.1597,
     "ntrp_rating": "3.0 C",
     "wl_record": "4-4",
@@ -2331,8 +2331,8 @@
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "Deployed every week (SUMMERLIN ARBORS). Surprising loss: W1 D3 lost to Lindsey Jacobs (2.64) + Christa Shiklanian (2.63) (4-6 6-4 1-0). Also 3-1 in 3.5.",
     "notes_35": "Among SPANISH TRAIL #2's most-deployed (4/5 weeks). Captain's flex weapon — D1/D2/D3. Upset: W4 D2 beat Carroll Welch (3.21) + Andi Berger (3.29) (7-6 7-6). Playing S1/D1 despite low baseline. Also 3-2 in 3.0.",
-    "rating_30": 3.1381,
-    "rating_35": 3.2132
+    "rating_30": 3.1075,
+    "rating_35": 3.2057
   },
   {
     "id": "kari-allen",
@@ -2368,7 +2368,7 @@
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.194,
     "current_division_rating": 3.166,
-    "global_rating": 3.3196,
+    "global_rating": 3.3029,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -2391,7 +2391,7 @@
     "notes_30": "Only 3.0 match: W2 S1 beat Margo Isler (3.01) (6-3 6-4). In 3.5: D3 beat Michelle Brinlee (3.00) + Michele Howser (3.60) (6-2 4-6 1-0).",
     "notes_35": "Among SPANISH TRAIL #2's most-deployed (4/5 weeks). Captain's flex weapon — D1/D3/S1. Upset: W4 D3 beat Michelle Brinlee (3.00) + Michele Howser (3.60) (6-2 4-6 1-0). Playing S1/D1 despite low baseline. Also 1-0 in 3.0.",
     "rating_30": 3.166,
-    "rating_35": 3.3271
+    "rating_35": 3.3104
   },
   {
     "id": "anna-clark",
@@ -2401,7 +2401,7 @@
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.0958,
     "current_division_rating": 2.9669,
-    "global_rating": 3.015,
+    "global_rating": 2.9728,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-6",
     "lines_played": 6,
@@ -2467,7 +2467,7 @@
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.0397,
     "current_division_rating": 2.9909,
-    "global_rating": 3.2642,
+    "global_rating": 3.2567,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -2488,7 +2488,7 @@
     "notes_30": "Only 3.0 match: W1 D3 beat Charlotte Durisseau (2.40) + Monica Taylor (2.37) (6-0 6-1). In 3.5: D3 beat Sally Ryba (3.35) + Marilyn Fenn (3.13) (7-5 6-3).",
     "notes_35": "Upset: W2 D3 beat Sally Ryba (3.35) + Marilyn Fenn (3.13) (7-5 6-3). Also 2-0 in 3.0.",
     "rating_30": 2.9909,
-    "rating_35": 3.2824
+    "rating_35": 3.2738
   },
   {
     "id": "tayoni-coleman",
@@ -2497,8 +2497,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.1057,
-    "current_division_rating": 3.3026,
-    "global_rating": 3.3075,
+    "current_division_rating": 3.2037,
+    "global_rating": 3.2037,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-3",
     "lines_played": 5,
@@ -2517,9 +2517,9 @@
     "wl_record_35": "1-2",
     "team_30": "SUMMERLIN ARBORS",
     "team_35": "DTC #3",
-    "notes_30": "Won 3-set tiebreaks in W1/W4. Undefeated but all opponents below baseline (avg 2.93) — ceiling-capped. Biggest riser on this roster. Also 1-2 in 3.5.",
+    "notes_30": "Won 3-set tiebreaks in W1/W4. Undefeated but all opponents below baseline (avg 2.93) — ceiling-capped. Also 1-2 in 3.5.",
     "notes_35": "Deployed at S1 but outmatched: W5 S1 lost to Stacie Corelle (3.53) (6-3 6-0). Playing S1/D1 despite low baseline. Also 4-0 in 3.0.",
-    "rating_30": 3.3026,
+    "rating_30": 3.2037,
     "rating_35": 3.1057
   },
   {
@@ -2555,8 +2555,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.0853,
-    "current_division_rating": 3.2045,
-    "global_rating": 3.2045,
+    "current_division_rating": 3.1145,
+    "global_rating": 3.1145,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -2571,7 +2571,7 @@
     "team_30": "DTC #3",
     "notes_30": "Undefeated but all opponents below baseline (avg 2.80) — ceiling-capped.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S1 beat Gina Rivera (3.00) (6-1 6-3).",
-    "rating_30": 3.2045,
+    "rating_30": 3.1145,
     "rating_35": 3.0853
   },
   {
@@ -2603,7 +2603,7 @@
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.1113,
     "current_division_rating": 3.1113,
-    "global_rating": 3.3453,
+    "global_rating": 3.3166,
     "ntrp_rating": "3.0 C",
     "wl_record": "3-2",
     "lines_played": 5,
@@ -2626,7 +2626,7 @@
     "notes_30": "Among DESERT PALM's most-deployed (4/5 weeks). Captain's flex weapon — D1/D2/D3. Undefeated but all opponents below baseline (avg 2.75) — ceiling-capped. Also 1-1 in 3.5.",
     "notes_35": "Upset: W5 D3 beat Karen Kiyono (3.42) + Michelle Jarvis (3.16) (3-6 6-1 1-0). Also 4-0 in 3.0.",
     "rating_30": 3.1113,
-    "rating_35": 3.2801
+    "rating_35": 3.2601
   },
   {
     "id": "therese-laudenslager",
@@ -2693,8 +2693,8 @@
     "team": "DTC #2",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.0842,
-    "current_division_rating": 3.0021,
-    "global_rating": 3.0021,
+    "current_division_rating": 2.9496,
+    "global_rating": 2.9496,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -2709,7 +2709,7 @@
     "team_30": "DTC #2",
     "notes_30": "DTC #2's every-week player (with Tina Shirey). Surprising loss: W1 D1 lost to Darian McCauley (2.98) + Shi L Oskooi (2.84) (7-5 5-7 1-0).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Carrie Maddux (2.72) + Therese Laudenslager (3.01) (6-0 6-3).",
-    "rating_30": 3.0021,
+    "rating_30": 2.9496,
     "rating_35": 3.0842
   },
   {
@@ -2746,7 +2746,7 @@
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0324,
     "current_division_rating": 3.0324,
-    "global_rating": 2.976,
+    "global_rating": 2.974,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-3",
     "lines_played": 5,
@@ -2803,8 +2803,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.9761,
-    "current_division_rating": 3.1738,
-    "global_rating": 3.1741,
+    "current_division_rating": 3.1588,
+    "global_rating": 3.1591,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-3",
     "lines_played": 4,
@@ -2826,7 +2826,7 @@
     "team_35": "ANTHEM CC",
     "notes_30": "Captain's flex weapon — D1/D3/S2. Upset: W5 S2 beat Anna Clark (3.10) (6-3 6-3). Won 3-set tiebreaks in W1/W3. Also 0-1 in 3.5.",
     "notes_35": "Only 3.5 match: W2 D2 lost to Marlaina Harris (3.57) + Lisa Krzyzaniak (3.39) (6-1 6-1). In 3.0: D3 beat Kelly Boyers (2.90) + Kristen Bedell (2.28) (1-6 6-2 1-0).",
-    "rating_30": 3.1738,
+    "rating_30": 3.1588,
     "rating_35": 2.9852
   },
   {
@@ -2889,8 +2889,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.0045,
-    "current_division_rating": 2.8925,
-    "global_rating": 2.8925,
+    "current_division_rating": 2.8808,
+    "global_rating": 2.8808,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -2906,7 +2906,7 @@
     "team_30": "ANTHEM CC",
     "notes_30": "Surprising loss: W3 S2 lost to Rachel Corpuz (2.79) (6-4 1-6 1-0).",
     "notes_35": "No 3.5 matches played yet. In 3.0: S1 beat Kathryn Wilson (2.70) (6-2 6-2).",
-    "rating_30": 2.8925,
+    "rating_30": 2.8808,
     "rating_35": 3.0045
   },
   {
@@ -2970,8 +2970,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.9995,
-    "current_division_rating": 3.2086,
-    "global_rating": 3.2086,
+    "current_division_rating": 3.1761,
+    "global_rating": 3.1761,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -2986,7 +2986,7 @@
     "team_30": "RED ROCK CC",
     "notes_30": "Upset: W5 D1 beat Tina Shirey (3.26) + Irene Frazier (3.08) (6-2 6-3).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Tina Shirey (3.26) + Irene Frazier (3.08) (6-2 6-3).",
-    "rating_30": 3.2086,
+    "rating_30": 3.1761,
     "rating_35": 2.9995
   },
   {
@@ -3132,8 +3132,8 @@
     "team": "DESERT PALM",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9677,
-    "current_division_rating": 3.0746,
-    "global_rating": 3.0746,
+    "current_division_rating": 2.9846,
+    "global_rating": 2.9846,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -3148,7 +3148,7 @@
     "team_30": "DESERT PALM",
     "notes_30": "Undefeated but all opponents below baseline (avg 2.84) — ceiling-capped.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S1 beat Sandra Mier (2.90) (6-3 6-3).",
-    "rating_30": 3.0746,
+    "rating_30": 2.9846,
     "rating_35": 2.9677
   },
   {
@@ -3492,7 +3492,7 @@
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.0871,
     "current_division_rating": 2.8601,
-    "global_rating": 3.0005,
+    "global_rating": 2.9555,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -3541,7 +3541,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S2 lost to Shi L Oskooi (2.84) (4-6 6-2 1-0).",
     "notes_35": "",
     "rating_30": 2.852,
-    "rating_35": 2.8693
+    "rating_35": 2.8644
   },
   {
     "id": "carolina-nigro",
@@ -3602,8 +3602,8 @@
     "team": "TPC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.9051,
-    "current_division_rating": 2.7456,
-    "global_rating": 2.7456,
+    "current_division_rating": 2.7391,
+    "global_rating": 2.7391,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -3619,7 +3619,7 @@
     "team_30": "TPC",
     "notes_30": "Surprising loss: W3 D1 lost to Chelsi Grady (2.87) + Crystal Ziebarth (2.77) (6-4 6-3).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Raedene Counts (2.73) + Maria Dellett (2.58) (7-5 6-2).",
-    "rating_30": 2.7456,
+    "rating_30": 2.7391,
     "rating_35": 2.9051
   },
   {
@@ -3629,8 +3629,8 @@
     "team": "DTC #1",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.904,
-    "current_division_rating": 2.9837,
-    "global_rating": 2.9837,
+    "current_division_rating": 2.904,
+    "global_rating": 2.904,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -3646,7 +3646,7 @@
     "team_30": "DTC #1",
     "notes_30": "",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Bree Carlson (2.70) + Jennifer Roberts (2.76) (6-1 6-1).",
-    "rating_30": 2.9837,
+    "rating_30": 2.904,
     "rating_35": 2.904
   },
   {
@@ -3708,8 +3708,8 @@
     "team": "WHITNEY MESA PARK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8913,
-    "current_division_rating": 2.9618,
-    "global_rating": 2.9618,
+    "current_division_rating": 2.8913,
+    "global_rating": 2.8913,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -3727,7 +3727,7 @@
     "team_30": "WHITNEY MESA PARK",
     "notes_30": "Captain's flex weapon — D1/D2/S1.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S1 beat Shawanna Johnson (2.77) (6-3 6-1).",
-    "rating_30": 2.9618,
+    "rating_30": 2.8913,
     "rating_35": 2.8913
   },
   {
@@ -3843,8 +3843,8 @@
     "team": "SPANISH OAKS",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8763,
-    "current_division_rating": 2.8261,
-    "global_rating": 2.8261,
+    "current_division_rating": 2.8144,
+    "global_rating": 2.8144,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -3859,7 +3859,7 @@
     "team_30": "SPANISH OAKS",
     "notes_30": "Surprising loss: W5 D3 lost to Dianne Austin (2.73) + Venetia Espinueva (2.67) (6-4 6-4).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Eva Gryczon (2.79) + Annabel Elliott (2.95) (3-6 6-2 1-0).",
-    "rating_30": 2.8261,
+    "rating_30": 2.8144,
     "rating_35": 2.8763
   },
   {
@@ -3895,8 +3895,8 @@
     "team": "CLUB RIDGES",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8322,
-    "current_division_rating": 2.9284,
-    "global_rating": 2.9284,
+    "current_division_rating": 2.8634,
+    "global_rating": 2.8634,
     "ntrp_rating": "3.0 A",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -3912,7 +3912,7 @@
     "team_30": "CLUB RIDGES",
     "notes_30": "Deployed at D1 but outmatched: W2 D1 lost to Abigail Cox (3.25) + Jessica Borghoff (3.17) (6-0 6-0).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Luanne Balelo (2.86) + Liz MacDonald (2.80) (6-2 7-5).",
-    "rating_30": 2.9284,
+    "rating_30": 2.8634,
     "rating_35": 2.8322
   },
   {
@@ -4003,8 +4003,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8777,
-    "current_division_rating": 2.9574,
-    "global_rating": 2.9574,
+    "current_division_rating": 2.9074,
+    "global_rating": 2.9074,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -4020,7 +4020,7 @@
     "team_30": "SPANISH TRAIL",
     "notes_30": "Among SPANISH TRAIL's most-deployed (4/5 weeks).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Robi Hinton (3.02) + Elizabeth Eshragh (2.70) (7-6 6-2).",
-    "rating_30": 2.9574,
+    "rating_30": 2.9074,
     "rating_35": 2.8777
   },
   {
@@ -4030,8 +4030,8 @@
     "team": "DTC #1",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8673,
-    "current_division_rating": 2.9353,
-    "global_rating": 2.9353,
+    "current_division_rating": 2.8673,
+    "global_rating": 2.8673,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-4",
     "lines_played": 4,
@@ -4048,7 +4048,7 @@
     "team_30": "DTC #1",
     "notes_30": "DTC #1's only every-week player. Captain's flex weapon — D1/D2/S1. Won 3-set tiebreaks in W2/W4/W5. Undefeated but all opponents below baseline (avg 2.71) — ceiling-capped.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Jocelyn Goldman (2.78) + Sally Morley (2.74) (6-2 6-2).",
-    "rating_30": 2.9353,
+    "rating_30": 2.8673,
     "rating_35": 2.8673
   },
   {
@@ -4113,8 +4113,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8697,
-    "current_division_rating": 2.9903,
-    "global_rating": 2.9903,
+    "current_division_rating": 2.9503,
+    "global_rating": 2.9503,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -4131,7 +4131,7 @@
     "team_30": "ANTHEM CC",
     "notes_30": "Captain's flex weapon — D1/D2/S1. Upset: W3 D1 beat Laurie Lenhart (2.96) + Debbie D'Amato (2.91) (6-4 6-3).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Laurie Lenhart (2.96) + Debbie D'Amato (2.91) (6-4 6-3).",
-    "rating_30": 2.9903,
+    "rating_30": 2.9503,
     "rating_35": 2.8697
   },
   {
@@ -4141,8 +4141,8 @@
     "team": "DTC #2",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8544,
-    "current_division_rating": 2.7997,
-    "global_rating": 2.7997,
+    "current_division_rating": 2.7497,
+    "global_rating": 2.7497,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -4159,7 +4159,7 @@
     "team_30": "DTC #2",
     "notes_30": "Captain's flex weapon — D2/D3/S2. Lopsided loss: W5 D2 lost to Golssa Moridi (2.63) + Maria Dellett (2.58) (6-0 6-4).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Christa Shiklanian (2.63) + Addy Iveth Zilberman (2.72) (6-2 6-2).",
-    "rating_30": 2.7997,
+    "rating_30": 2.7497,
     "rating_35": 2.8544
   },
   {
@@ -4169,8 +4169,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8562,
-    "current_division_rating": 3.0011,
-    "global_rating": 3.0011,
+    "current_division_rating": 2.9111,
+    "global_rating": 2.9111,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-4",
     "lines_played": 4,
@@ -4187,7 +4187,7 @@
     "team_30": "DTC #3",
     "notes_30": "DTC #3's every-week player (with Shi L Oskooi). Captain's flex weapon — D1/D2/S2. Upset: W4 S2 beat Han Hu (2.92) (3-6 6-4 1-0).",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Han Hu (2.92) (3-6 6-4 1-0).",
-    "rating_30": 3.0011,
+    "rating_30": 2.9111,
     "rating_35": 2.8562
   },
   {
@@ -4281,8 +4281,8 @@
     "team": "DTC #2",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8428,
-    "current_division_rating": 2.7241,
-    "global_rating": 2.7241,
+    "current_division_rating": 2.6866,
+    "global_rating": 2.6866,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -4298,7 +4298,7 @@
     "team_30": "DTC #2",
     "notes_30": "Lopsided loss: W5 D2 lost to Golssa Moridi (2.63) + Maria Dellett (2.58) (6-0 6-4).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Arlene Lytle (2.38) + Daniella Toms (2.83) (6-4 6-1).",
-    "rating_30": 2.7241,
+    "rating_30": 2.6866,
     "rating_35": 2.8428
   },
   {
@@ -4502,8 +4502,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8431,
-    "current_division_rating": 2.8648,
-    "global_rating": 2.8648,
+    "current_division_rating": 2.8548,
+    "global_rating": 2.8548,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -4519,7 +4519,7 @@
     "team_30": "SPANISH TRAIL",
     "notes_30": "Among SPANISH TRAIL's most-deployed (4/5 weeks).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Robi Hinton (3.02) + Elizabeth Eshragh (2.70) (7-6 6-2).",
-    "rating_30": 2.8648,
+    "rating_30": 2.8548,
     "rating_35": 2.8431
   },
   {
@@ -4529,8 +4529,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7671,
-    "current_division_rating": 2.9316,
-    "global_rating": 2.9316,
+    "current_division_rating": 2.9241,
+    "global_rating": 2.9241,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -4546,7 +4546,7 @@
     "team_30": "ANTHEM CC",
     "notes_30": "Upset: W3 D1 beat Laurie Lenhart (2.96) + Debbie D'Amato (2.91) (6-4 6-3).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Laurie Lenhart (2.96) + Debbie D'Amato (2.91) (6-4 6-3).",
-    "rating_30": 2.9316,
+    "rating_30": 2.9241,
     "rating_35": 2.7671
   },
   {
@@ -4557,7 +4557,7 @@
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8711,
     "current_division_rating": 2.8177,
-    "global_rating": 2.9021,
+    "global_rating": 2.8921,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -4578,7 +4578,7 @@
     "notes_30": "Only 3.0 match: W3 D2 lost to Therese Laudenslager (3.01) + Carrie Maddux (2.72); split sets before losing tiebreak. In 3.5: D3 beat Tracey Willson (3.39) + Gina Thornton (3.25) (2-6 7-6 1-0).",
     "notes_35": "Upset: W5 D3 beat Tracey Willson (3.39) + Gina Thornton (3.25) (2-6 7-6 1-0) — implies playing at 3.32+ level. Also 0-1 in 3.0.",
     "rating_30": 2.8177,
-    "rating_35": 3.0644
+    "rating_35": 3.0811
   },
   {
     "id": "daniella-toms",
@@ -4587,8 +4587,8 @@
     "team": "SOUTHERN HIGHLANDS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8266,
-    "current_division_rating": 2.7681,
-    "global_rating": 2.7681,
+    "current_division_rating": 2.7565,
+    "global_rating": 2.7565,
     "ntrp_rating": "3.0 C",
     "wl_record": "4-0",
     "lines_played": 4,
@@ -4605,7 +4605,7 @@
     "team_30": "SOUTHERN HIGHLANDS",
     "notes_30": "Among SOUTHERN HIGHLANDS's most-deployed (4/5 weeks). Captain's flex weapon — D2/S1/S2. Surprising loss: W4 D2 lost to Kimberly Yang (2.98) + Kinsey Wolanski (2.45) (6-2 7-5). Won a 3-set tiebreak in W1.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Brittany Carlson (2.76) (3-6 6-2 1-0).",
-    "rating_30": 2.7681,
+    "rating_30": 2.7565,
     "rating_35": 2.8266
   },
   {
@@ -4664,7 +4664,7 @@
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8224,
     "current_division_rating": 2.9128,
-    "global_rating": 3.2027,
+    "global_rating": 3.1827,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -4686,7 +4686,7 @@
     "notes_30": "Upset: W1 D1 beat Maggie Pacholuk (2.80) + Jaqueline Schultz (3.08) (7-5 6-4). Also 1-1 in 3.5.",
     "notes_35": "Upset: W5 D3 beat Karen Kiyono (3.42) + Michelle Jarvis (3.16) (3-6 6-1 1-0) — implies playing at 3.29+ level. Deployed at D1 but outmatched: W1 D1 lost to Susan Grady (3.04) + Arika Carrier (3.70) (6-4 6-0). Playing S1/D1 despite low baseline. Also 2-0 in 3.0.",
     "rating_30": 2.9128,
-    "rating_35": 3.1525
+    "rating_35": 3.1325
   },
   {
     "id": "shaza-nayef",
@@ -4878,8 +4878,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8046,
-    "current_division_rating": 2.8708,
-    "global_rating": 2.8708,
+    "current_division_rating": 2.8058,
+    "global_rating": 2.8058,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -4894,7 +4894,7 @@
     "team_30": "SPANISH TRAIL",
     "notes_30": "Won a 3-set tiebreak in W4.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S1 beat Anjelica Moore (2.79) (6-4 3-6 1-0).",
-    "rating_30": 2.8708,
+    "rating_30": 2.8058,
     "rating_35": 2.8046
   },
   {
@@ -4980,8 +4980,8 @@
     "team": "DTC #4",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7879,
-    "current_division_rating": 2.7879,
-    "global_rating": 2.7879,
+    "current_division_rating": 2.7775,
+    "global_rating": 2.7775,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -4997,7 +4997,7 @@
     "team_30": "DTC #4",
     "notes_30": "Surprising loss: W1 S1 lost to Elizabeth Eshragh (2.70) (6-4 6-3).",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Jennifer Olson (2.68) (6-0 6-2).",
-    "rating_30": 2.7879,
+    "rating_30": 2.7775,
     "rating_35": 2.7879
   },
   {
@@ -5033,8 +5033,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7227,
-    "current_division_rating": 2.7637,
-    "global_rating": 2.7637,
+    "current_division_rating": 2.7587,
+    "global_rating": 2.7587,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -5050,7 +5050,7 @@
     "team_30": "ANTHEM CC",
     "notes_30": "Upset: W3 D2 beat Christina Smith (2.87) + Jennifer Blais (2.83) (5-7 6-3 1-0). Deployed at D1, outmatched both times: W2 D1 lost to Irene Frazier (3.08) + Tina Shirey (3.26) (6-0 6-3); W4 D1 lost to Tina Nathalia (3.16) + Kim Springer (3.27) (6-1 6-1).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Christina Smith (2.87) + Jennifer Blais (2.83) (5-7 6-3 1-0).",
-    "rating_30": 2.7637,
+    "rating_30": 2.7587,
     "rating_35": 2.7227
   },
   {
@@ -5060,8 +5060,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7759,
-    "current_division_rating": 2.733,
-    "global_rating": 2.733,
+    "current_division_rating": 2.758,
+    "global_rating": 2.758,
     "ntrp_rating": "3.0 S",
     "wl_record": "3-0",
     "lines_played": 3,
@@ -5078,7 +5078,7 @@
     "team_30": "LIFE TIME FITNESS/GV",
     "notes_30": "Captain's flex weapon — D1/D2/D3. Upset: W4 D2 beat Kim Knotts (2.96) + Kellie Woods (2.80) (1-6 6-4 1-0). Surprising loss: W3 D3 lost to Genesis Garcia (2.63) + Brittany Carlson (2.76) (6-4 6-1).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Kim Knotts (2.96) + Kellie Woods (2.80) (1-6 6-4 1-0).",
-    "rating_30": 2.733,
+    "rating_30": 2.758,
     "rating_35": 2.7759
   },
   {
@@ -5115,8 +5115,8 @@
     "team": "SOUTHERN HIGHLANDS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.743,
-    "current_division_rating": 2.8523,
-    "global_rating": 2.8523,
+    "current_division_rating": 2.7523,
+    "global_rating": 2.7523,
     "ntrp_rating": "3.0 C",
     "wl_record": "4-0",
     "lines_played": 4,
@@ -5132,7 +5132,7 @@
     "team_30": "SOUTHERN HIGHLANDS",
     "notes_30": "Among SOUTHERN HIGHLANDS's most-deployed (4/5 weeks).",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Stephanie Stern (2.65) (6-2 6-2).",
-    "rating_30": 2.8523,
+    "rating_30": 2.7523,
     "rating_35": 2.743
   },
   {
@@ -5142,8 +5142,8 @@
     "team": "TPC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7718,
-    "current_division_rating": 2.8096,
-    "global_rating": 2.8096,
+    "current_division_rating": 2.7718,
+    "global_rating": 2.7718,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -5159,7 +5159,7 @@
     "team_30": "TPC",
     "notes_30": "Deployed at D1 but outmatched: W5 D1 lost to Tina Nathalia (3.16) + Kim Springer (3.27) (6-3 6-0).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Kimberly Yang (2.98) + Carine Tsveniashvili (2.34) (7-5 6-1).",
-    "rating_30": 2.8096,
+    "rating_30": 2.7718,
     "rating_35": 2.7718
   },
   {
@@ -5169,8 +5169,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7359,
-    "current_division_rating": 2.7619,
-    "global_rating": 2.7619,
+    "current_division_rating": 2.7359,
+    "global_rating": 2.7359,
     "ntrp_rating": "3.0 A",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -5187,7 +5187,7 @@
     "team_30": "SPANISH TRAIL",
     "notes_30": "Among SPANISH TRAIL's most-deployed (4/5 weeks). Captain's flex weapon — D1/D2/D3. Lopsided loss: W4 D3 lost to Sonja Rogers (2.77) + Roni Tarr (2.70) (6-0 6-3).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Francie Angelov (2.33) + Linda English (2.89) (7-6 6-1).",
-    "rating_30": 2.7619,
+    "rating_30": 2.7359,
     "rating_35": 2.7359
   },
   {
@@ -5224,8 +5224,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7716,
-    "current_division_rating": 2.8677,
-    "global_rating": 2.8677,
+    "current_division_rating": 2.8227,
+    "global_rating": 2.8227,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -5240,7 +5240,7 @@
     "team_30": "ANTHEM CC",
     "notes_30": "Undefeated in 3.0.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Consuelo Kinahan (2.85) + Elizabeth Abatangelo (2.61) (6-3 6-1).",
-    "rating_30": 2.8677,
+    "rating_30": 2.8227,
     "rating_35": 2.7716
   },
   {
@@ -5273,7 +5273,7 @@
     "notes_30": "DTC #3's every-week player (with Emmy Perez). Captain's flex weapon — D1/D2/S2. Upset: W1 D1 beat Tina Shirey (3.26) + Irene Frazier (3.08) (7-5 5-7 1-0) — implies playing at 3.17+ level. Won 3-set tiebreaks in W1/W2. Also 1-0 in 3.5.",
     "notes_35": "Only 3.5 match: W4 S2 beat Lisa Gaughan (2.85); won after 3 sets. In 3.0: D1 beat Tina Shirey (3.26) + Irene Frazier (3.08) (7-5 5-7 1-0).",
     "rating_30": 3.1166,
-    "rating_35": 2.8993
+    "rating_35": 2.8753
   },
   {
     "id": "jennifer-roberts",
@@ -5282,8 +5282,8 @@
     "team": "SPANISH OAKS",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7615,
-    "current_division_rating": 2.7232,
-    "global_rating": 2.7232,
+    "current_division_rating": 2.6857,
+    "global_rating": 2.6857,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -5300,7 +5300,7 @@
     "team_30": "SPANISH OAKS",
     "notes_30": "Among SPANISH OAKS's most-deployed (3/5 weeks). Captain's flex weapon — D1/D2/D3. Lopsided loss: W3 D2 lost to Sandra Mier (2.90) + Roni Tarr (2.70) (6-1 6-1).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Helen McDaniel (2.61) + Michelle Inman (2.63) (6-4 6-1).",
-    "rating_30": 2.7232,
+    "rating_30": 2.6857,
     "rating_35": 2.7615
   },
   {
@@ -5386,8 +5386,8 @@
     "team": "DTC #4",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8786,
-    "current_division_rating": 2.9358,
-    "global_rating": 2.9358,
+    "current_division_rating": 2.8786,
+    "global_rating": 2.8786,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -5403,7 +5403,7 @@
     "team_30": "DTC #4",
     "notes_30": "Undefeated but all opponents below baseline (avg 2.78) — ceiling-capped.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Eva Gryczon (2.79) (6-4 6-1).",
-    "rating_30": 2.9358,
+    "rating_30": 2.8786,
     "rating_35": 2.8786
   },
   {
@@ -5440,8 +5440,8 @@
     "team": "SPANISH OAKS",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.804,
-    "current_division_rating": 2.6882,
-    "global_rating": 2.6882,
+    "current_division_rating": 2.66,
+    "global_rating": 2.66,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -5457,7 +5457,7 @@
     "team_30": "SPANISH OAKS",
     "notes_30": "Surprising loss: W1 D2 lost to Nadine Kluger (2.59) + Jennifer Lake (2.83) (6-2 7-5).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Debbie Fleury (2.72) + Megan Johnson (2.32) (6-2 6-2).",
-    "rating_30": 2.6882,
+    "rating_30": 2.66,
     "rating_35": 2.804
   },
   {
@@ -5467,8 +5467,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.734,
-    "current_division_rating": 2.7799,
-    "global_rating": 2.7799,
+    "current_division_rating": 2.734,
+    "global_rating": 2.734,
     "ntrp_rating": "3.0 S",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -5484,7 +5484,7 @@
     "team_30": "SPANISH TRAIL",
     "notes_30": "",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Geraldine Wright (2.57) + Courtney Beine (2.76) (6-4 6-2).",
-    "rating_30": 2.7799,
+    "rating_30": 2.734,
     "rating_35": 2.734
   },
   {
@@ -5494,8 +5494,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.734,
-    "current_division_rating": 2.7799,
-    "global_rating": 2.7799,
+    "current_division_rating": 2.734,
+    "global_rating": 2.734,
     "ntrp_rating": "3.0 S",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -5512,7 +5512,7 @@
     "team_30": "SPANISH TRAIL",
     "notes_30": "Among SPANISH TRAIL's most-deployed (4/5 weeks). Captain's flex weapon — D1/D2/D3.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Geraldine Wright (2.57) + Courtney Beine (2.76) (6-4 6-2).",
-    "rating_30": 2.7799,
+    "rating_30": 2.734,
     "rating_35": 2.734
   },
   {
@@ -5548,8 +5548,8 @@
     "team": "SPANISH OAKS",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7243,
-    "current_division_rating": 2.7496,
-    "global_rating": 2.7496,
+    "current_division_rating": 2.7329,
+    "global_rating": 2.7329,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -5564,7 +5564,7 @@
     "team_30": "SPANISH OAKS",
     "notes_30": "Lopsided loss: W2 D2 lost to Kristyl Addison (3.11) + Yong Mi DeMilliano (2.60) (6-1 6-1).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Leona Kiely (2.67) + Mimi Fumo (2.83) (4-6 6-2 1-0).",
-    "rating_30": 2.7496,
+    "rating_30": 2.7329,
     "rating_35": 2.7243
   },
   {
@@ -5574,8 +5574,8 @@
     "team": "WHITNEY MESA PARK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7075,
-    "current_division_rating": 2.8347,
-    "global_rating": 2.8347,
+    "current_division_rating": 2.8331,
+    "global_rating": 2.8331,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -5590,7 +5590,7 @@
     "team_30": "WHITNEY MESA PARK",
     "notes_30": "Among WHITNEY MESA PARK's most-deployed (4/5 weeks). Upset: W5 D1 beat Maggie Pacholuk (2.80) + Yesenia Arias (2.99) (6-7 7-6 1-0).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Maggie Pacholuk (2.80) + Yesenia Arias (2.99) (6-7 7-6 1-0).",
-    "rating_30": 2.8347,
+    "rating_30": 2.8331,
     "rating_35": 2.7075
   },
   {
@@ -5655,8 +5655,8 @@
     "team": "TPC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7299,
-    "current_division_rating": 2.8054,
-    "global_rating": 2.8054,
+    "current_division_rating": 2.7979,
+    "global_rating": 2.7979,
     "ntrp_rating": "2.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -5672,7 +5672,7 @@
     "team_30": "TPC",
     "notes_30": "Undefeated in 3.0.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Consuelo Kinahan (2.85) + Kathryn Wilson (2.70) (6-3 7-5).",
-    "rating_30": 2.8054,
+    "rating_30": 2.7979,
     "rating_35": 2.7299
   },
   {
@@ -5682,8 +5682,8 @@
     "team": "LAKE LAS VEGAS SPORTS CLUB",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7602,
-    "current_division_rating": 2.8102,
-    "global_rating": 2.8102,
+    "current_division_rating": 2.7952,
+    "global_rating": 2.7952,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -5698,7 +5698,7 @@
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
     "notes_30": "",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Sonja Rogers (2.77) + Roni Tarr (2.70) (6-3 6-3).",
-    "rating_30": 2.8102,
+    "rating_30": 2.7952,
     "rating_35": 2.7602
   },
   {
@@ -5739,8 +5739,8 @@
     "team": "SPANISH OAKS",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.741,
-    "current_division_rating": 2.8518,
-    "global_rating": 2.8518,
+    "current_division_rating": 2.741,
+    "global_rating": 2.741,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -5757,7 +5757,7 @@
     "team_30": "SPANISH OAKS",
     "notes_30": "Among SPANISH OAKS's most-deployed (3/5 weeks). Captain's flex weapon — D1/D2/D3. Undefeated but all opponents below baseline (avg 2.47) — ceiling-capped.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Debbie Fleury (2.72) + Megan Johnson (2.32) (6-2 6-2).",
-    "rating_30": 2.8518,
+    "rating_30": 2.741,
     "rating_35": 2.741
   },
   {
@@ -6011,8 +6011,8 @@
     "team": "SOUTHERN HIGHLANDS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7156,
-    "current_division_rating": 2.8064,
-    "global_rating": 2.8064,
+    "current_division_rating": 2.7814,
+    "global_rating": 2.7814,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -6027,7 +6027,7 @@
     "team_30": "SOUTHERN HIGHLANDS",
     "notes_30": "Upset: W2 D3 beat Rebecca Dunne (2.47) + Kara Gaston (3.09) (6-2 6-4).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Rebecca Dunne (2.47) + Kara Gaston (3.09) (6-2 6-4).",
-    "rating_30": 2.8064,
+    "rating_30": 2.7814,
     "rating_35": 2.7156
   },
   {
@@ -6062,8 +6062,8 @@
     "team": "TPC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.6682,
-    "current_division_rating": 2.7467,
-    "global_rating": 2.7467,
+    "current_division_rating": 2.7583,
+    "global_rating": 2.7583,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -6078,7 +6078,7 @@
     "team_30": "TPC",
     "notes_30": "Upset: W1 D1 beat Kellye Ray (2.84) + Carolina Nigro (2.86) (6-3 2-6 1-0). Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Kellye Ray (2.84) + Carolina Nigro (2.86) (6-3 2-6 1-0).",
-    "rating_30": 2.7467,
+    "rating_30": 2.7583,
     "rating_35": 2.6682
   },
   {
@@ -6114,8 +6114,8 @@
     "team": "DTC #1",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7701,
-    "current_division_rating": 2.6581,
-    "global_rating": 2.6581,
+    "current_division_rating": 2.6056,
+    "global_rating": 2.6056,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -6131,7 +6131,7 @@
     "team_30": "DTC #1",
     "notes_30": "Surprising loss: W5 D3 lost to Francie Angelov (2.33) + Katie Sanders (2.15) (6-2 6-2).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Kelly Perkins (2.74) + Theresa Burnette (2.30) (6-0 6-3).",
-    "rating_30": 2.6581,
+    "rating_30": 2.6056,
     "rating_35": 2.7701
   },
   {
@@ -6141,8 +6141,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7603,
-    "current_division_rating": 2.8599,
-    "global_rating": 2.8599,
+    "current_division_rating": 2.8366,
+    "global_rating": 2.8366,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -6160,7 +6160,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Deployed every week (SUMMERLIN ARBORS). Captain's flex weapon — D1/D2/D3/S2. Won a 3-set tiebreak in W5.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Jennifer Blais (2.83) + Rachel Corpuz (2.79) (6-3 5-7 1-0).",
-    "rating_30": 2.8599,
+    "rating_30": 2.8366,
     "rating_35": 2.7603
   },
   {
@@ -6270,8 +6270,8 @@
     "team": "LAKE LAS VEGAS SPORTS CLUB",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6969,
-    "current_division_rating": 2.744,
-    "global_rating": 2.744,
+    "current_division_rating": 2.804,
+    "global_rating": 2.804,
     "ntrp_rating": "3.0 C",
     "wl_record": "3-0",
     "lines_played": 3,
@@ -6287,7 +6287,7 @@
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
     "notes_30": "Upset: W1 S1 beat DeVita Robinson (2.79) (6-4 6-3). Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S1 beat DeVita Robinson (2.79) (6-4 6-3).",
-    "rating_30": 2.744,
+    "rating_30": 2.804,
     "rating_35": 2.6969
   },
   {
@@ -6297,8 +6297,8 @@
     "team": "SPANISH OAKS",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7758,
-    "current_division_rating": 2.7134,
-    "global_rating": 2.7134,
+    "current_division_rating": 2.6759,
+    "global_rating": 2.6759,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -6314,7 +6314,7 @@
     "team_30": "SPANISH OAKS",
     "notes_30": "Among SPANISH OAKS's most-deployed (3/5 weeks). Surprising loss: W5 D3 lost to Dianne Austin (2.73) + Venetia Espinueva (2.67) (6-4 6-4).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Helen McDaniel (2.61) + Michelle Inman (2.63) (6-4 6-1).",
-    "rating_30": 2.7134,
+    "rating_30": 2.6759,
     "rating_35": 2.7758
   },
   {
@@ -6412,8 +6412,8 @@
     "team": "CLUB RIDGES",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.5884,
-    "current_division_rating": 2.8205,
-    "global_rating": 2.8205,
+    "current_division_rating": 2.7955,
+    "global_rating": 2.7955,
     "ntrp_rating": "3.0 A",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -6429,7 +6429,7 @@
     "team_30": "CLUB RIDGES",
     "notes_30": "Upset: W1 D2 beat Luanne Balelo (2.86) + Liz MacDonald (2.80) (6-2 7-5). Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Luanne Balelo (2.86) + Liz MacDonald (2.80) (6-2 7-5).",
-    "rating_30": 2.8205,
+    "rating_30": 2.7955,
     "rating_35": 2.5884
   },
   {
@@ -6466,8 +6466,8 @@
     "team": "DESERT PALM",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6027,
-    "current_division_rating": 2.8399,
-    "global_rating": 2.8399,
+    "current_division_rating": 2.7649,
+    "global_rating": 2.7649,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -6481,7 +6481,7 @@
     "team_30": "DESERT PALM",
     "notes_30": "Upset: W2 D2 beat Maureen Caruso (2.72) + Miriam Jimenez (2.77) (6-1 6-1).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Maureen Caruso (2.72) + Miriam Jimenez (2.77) (6-1 6-1).",
-    "rating_30": 2.8399,
+    "rating_30": 2.7649,
     "rating_35": 2.6027
   },
   {
@@ -6491,8 +6491,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.6583,
-    "current_division_rating": 2.6771,
-    "global_rating": 2.6771,
+    "current_division_rating": 2.6571,
+    "global_rating": 2.6571,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -6507,7 +6507,7 @@
     "team_30": "ANTHEM CC",
     "notes_30": "",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Hee Park (2.84) + Mary Ann Apone (2.51) (3-6 6-1 1-0).",
-    "rating_30": 2.6771,
+    "rating_30": 2.6571,
     "rating_35": 2.6583
   },
   {
@@ -6598,8 +6598,8 @@
     "team": "WHITNEY MESA PARK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6424,
-    "current_division_rating": 2.7064,
-    "global_rating": 2.7064,
+    "current_division_rating": 2.6464,
+    "global_rating": 2.6464,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -6615,7 +6615,7 @@
     "team_30": "WHITNEY MESA PARK",
     "notes_30": "Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Heather Hartzell (2.58) (4-6 6-0 1-0).",
-    "rating_30": 2.7064,
+    "rating_30": 2.6464,
     "rating_35": 2.6424
   },
   {
@@ -6680,8 +6680,8 @@
     "team": "SPANISH OAKS",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6344,
-    "current_division_rating": 2.7679,
-    "global_rating": 2.7679,
+    "current_division_rating": 2.7562,
+    "global_rating": 2.7562,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -6696,7 +6696,7 @@
     "team_30": "SPANISH OAKS",
     "notes_30": "Upset: W2 D3 beat Eva Gryczon (2.79) + Annabel Elliott (2.95) (3-6 6-2 1-0).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Eva Gryczon (2.79) + Annabel Elliott (2.95) (3-6 6-2 1-0).",
-    "rating_30": 2.7679,
+    "rating_30": 2.7562,
     "rating_35": 2.6344
   },
   {
@@ -6706,8 +6706,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.6334,
-    "current_division_rating": 2.8627,
-    "global_rating": 2.8627,
+    "current_division_rating": 2.8252,
+    "global_rating": 2.8252,
     "ntrp_rating": "3.0 A",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -6722,7 +6722,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Upset: W3 D3 beat Lisa Williams (2.75) + Julie Smith (2.78) (6-4 6-1).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Lisa Williams (2.75) + Julie Smith (2.78) (6-4 6-1).",
-    "rating_30": 2.8627,
+    "rating_30": 2.8252,
     "rating_35": 2.6334
   },
   {
@@ -6732,8 +6732,8 @@
     "team": "DTC #1",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6332,
-    "current_division_rating": 2.9391,
-    "global_rating": 2.9391,
+    "current_division_rating": 2.9241,
+    "global_rating": 2.9241,
     "ntrp_rating": "3.0 A",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -6748,7 +6748,7 @@
     "team_30": "DTC #1",
     "notes_30": "Upset: W5 S2 beat Tori Walker (2.87) (6-3 6-3).",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Tori Walker (2.87) (6-3 6-3).",
-    "rating_30": 2.9391,
+    "rating_30": 2.9241,
     "rating_35": 2.6332
   },
   {
@@ -6758,8 +6758,8 @@
     "team": "TPC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.6323,
-    "current_division_rating": 2.7377,
-    "global_rating": 2.7377,
+    "current_division_rating": 2.7002,
+    "global_rating": 2.7002,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -6774,7 +6774,7 @@
     "team_30": "TPC",
     "notes_30": "Only 3.0 match: W2 D3 beat Mary Ann Apone (2.51) + Hee Park (2.84) (6-4 6-1).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Mary Ann Apone (2.51) + Hee Park (2.84) (6-4 6-1).",
-    "rating_30": 2.7377,
+    "rating_30": 2.7002,
     "rating_35": 2.6323
   },
   {
@@ -6811,8 +6811,8 @@
     "team": "SOUTHERN HIGHLANDS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.6293,
-    "current_division_rating": 2.6754,
-    "global_rating": 2.6754,
+    "current_division_rating": 2.6504,
+    "global_rating": 2.6504,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -6827,7 +6827,7 @@
     "team_30": "SOUTHERN HIGHLANDS",
     "notes_30": "Only 3.0 match: W1 D2 beat Jocelyn Herman (2.58) + Renee Johnson (2.64) (7-5 6-2).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Jocelyn Herman (2.58) + Renee Johnson (2.64) (7-5 6-2).",
-    "rating_30": 2.6754,
+    "rating_30": 2.6504,
     "rating_35": 2.6293
   },
   {
@@ -6837,8 +6837,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.6335,
-    "current_division_rating": 2.808,
-    "global_rating": 2.808,
+    "current_division_rating": 2.793,
+    "global_rating": 2.793,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -6854,7 +6854,7 @@
     "team_30": "RED ROCK CC",
     "notes_30": "Upset: W5 D2 beat Jihee Anh (2.84) + Meekyoung Lee (2.85) (6-0 6-4).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Jihee Anh (2.84) + Meekyoung Lee (2.85) (6-0 6-4).",
-    "rating_30": 2.808,
+    "rating_30": 2.793,
     "rating_35": 2.6335
   },
   {
@@ -6864,8 +6864,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.6443,
-    "current_division_rating": 2.7885,
-    "global_rating": 2.7885,
+    "current_division_rating": 2.7404,
+    "global_rating": 2.7404,
     "ntrp_rating": "3.0 A",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -6879,9 +6879,9 @@
     ],
     "wl_record_30": "2-1",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Biggest riser on this roster.",
+    "notes_30": "",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Heather Rosenthal (2.84) + Shari Abdoulah (2.54) (6-2 7-6).",
-    "rating_30": 2.7885,
+    "rating_30": 2.7404,
     "rating_35": 2.6443
   },
   {
@@ -6891,8 +6891,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7096,
-    "current_division_rating": 2.7258,
-    "global_rating": 2.7258,
+    "current_division_rating": 2.7096,
+    "global_rating": 2.7096,
     "ntrp_rating": "3.0 A",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -6907,7 +6907,7 @@
     "team_30": "RED ROCK CC",
     "notes_30": "",
     "notes_35": "No 3.5 matches played yet. In 3.0: S1 beat Christie Sanders (2.66) (6-4 6-3).",
-    "rating_30": 2.7258,
+    "rating_30": 2.7096,
     "rating_35": 2.7096
   },
   {
@@ -6917,8 +6917,8 @@
     "team": "WHITNEY MESA PARK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6175,
-    "current_division_rating": 2.7594,
-    "global_rating": 2.7594,
+    "current_division_rating": 2.7269,
+    "global_rating": 2.7269,
     "ntrp_rating": "3.0 S",
     "wl_record": null,
     "lines_played": null,
@@ -6928,7 +6928,7 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "Upset: W5 D2 beat Robin Gordon (2.73) + Debbie Fleury (2.72) (6-3 6-2).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Robin Gordon (2.73) + Debbie Fleury (2.72) (6-3 6-2).",
-    "rating_30": 2.7594,
+    "rating_30": 2.7269,
     "rating_35": 2.6175,
     "lines_played_30": [
       "D2"
@@ -6998,8 +6998,8 @@
     "team": "SOUTHERN HIGHLANDS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.6298,
-    "current_division_rating": 2.7426,
-    "global_rating": 2.7426,
+    "current_division_rating": 2.7276,
+    "global_rating": 2.7276,
     "ntrp_rating": "3.0 C",
     "wl_record": "4-0",
     "lines_played": 4,
@@ -7015,7 +7015,7 @@
     "team_30": "SOUTHERN HIGHLANDS",
     "notes_30": "Among SOUTHERN HIGHLANDS's most-deployed (4/5 weeks). Upset: W1 D3 beat Tina Nathalia (3.16) + Danika Johnson (2.57) (4-6 6-4 1-0).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Tina Nathalia (3.16) + Danika Johnson (2.57) (4-6 6-4 1-0).",
-    "rating_30": 2.7426,
+    "rating_30": 2.7276,
     "rating_35": 2.6298
   },
   {
@@ -7077,8 +7077,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.5785,
-    "current_division_rating": 2.8969,
-    "global_rating": 2.8969,
+    "current_division_rating": 2.8519,
+    "global_rating": 2.8519,
     "ntrp_rating": "3.0 A",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -7095,7 +7095,7 @@
     "team_30": "RED ROCK CC",
     "notes_30": "Captain's flex weapon — D1/D2/D3. Upset: W5 D2 beat Jihee Anh (2.84) + Meekyoung Lee (2.85) (6-0 6-4) — implies playing at 2.85+ level. Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Jihee Anh (2.84) + Meekyoung Lee (2.85) (6-0 6-4).",
-    "rating_30": 2.8969,
+    "rating_30": 2.8519,
     "rating_35": 2.5785
   },
   {
@@ -7183,8 +7183,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.5605,
-    "current_division_rating": 2.6363,
-    "global_rating": 2.6363,
+    "current_division_rating": 2.6192,
+    "global_rating": 2.6192,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -7201,7 +7201,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Captain's flex weapon — D2/D3/S1. Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Raedene Counts (2.73) + Carine Tsveniashvili (2.34) (6-2 6-3).",
-    "rating_30": 2.6363,
+    "rating_30": 2.6192,
     "rating_35": 2.5605
   },
   {
@@ -7237,8 +7237,8 @@
     "team": "LAKE LAS VEGAS SPORTS CLUB",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.5696,
-    "current_division_rating": 2.7803,
-    "global_rating": 2.7803,
+    "current_division_rating": 2.753,
+    "global_rating": 2.753,
     "ntrp_rating": "3.0 A",
     "wl_record": "3-1",
     "lines_played": 4,
@@ -7254,7 +7254,7 @@
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
     "notes_30": "LAKE LAS VEGAS SPORTS CLUB's most-deployed player (4/5 weeks). Upset: W2 D2 beat Sonja Rogers (2.77) + Roni Tarr (2.70) (6-3 6-3).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Sonja Rogers (2.77) + Roni Tarr (2.70) (6-3 6-3).",
-    "rating_30": 2.7803,
+    "rating_30": 2.753,
     "rating_35": 2.5696
   },
   {
@@ -7291,8 +7291,8 @@
     "team": "DTC #4",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.5245,
-    "current_division_rating": 2.6103,
-    "global_rating": 2.6103,
+    "current_division_rating": 2.6053,
+    "global_rating": 2.6053,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -7307,7 +7307,7 @@
     "team_30": "DTC #4",
     "notes_30": "Upset: W3 D1 beat Rochelle Hamatian (2.65) + Michelle Inman (2.63) (4-6 6-3 1-0). Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Rochelle Hamatian (2.65) + Michelle Inman (2.63) (4-6 6-3 1-0).",
-    "rating_30": 2.6103,
+    "rating_30": 2.6053,
     "rating_35": 2.5245
   },
   {
@@ -7317,8 +7317,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.5149,
-    "current_division_rating": 2.6776,
-    "global_rating": 2.6776,
+    "current_division_rating": 2.6326,
+    "global_rating": 2.6326,
     "ntrp_rating": "3.0 C",
     "wl_record": "3-1",
     "lines_played": 4,
@@ -7334,7 +7334,7 @@
     "team_30": "LIFE TIME FITNESS/GV",
     "notes_30": "Among LIFE TIME FITNESS/GV's most-deployed (4/5 weeks). Captain's flex weapon — D1/D2/D3. Upset: W3 D2 beat Tamaris Cotta (2.19) + Ani Zargaryan (2.95) (6-1 6-3). Deployed at D1 but outmatched: W4 D1 lost to Darian McCauley (2.98) + Shi L Oskooi (2.84) (6-1 6-0). Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Tamaris Cotta (2.19) + Ani Zargaryan (2.95) (6-1 6-3).",
-    "rating_30": 2.6776,
+    "rating_30": 2.6326,
     "rating_35": 2.5149
   },
   {
@@ -7443,8 +7443,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.4784,
-    "current_division_rating": 2.7389,
-    "global_rating": 2.7389,
+    "current_division_rating": 2.7556,
+    "global_rating": 2.7556,
     "ntrp_rating": "3.0 A",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -7460,7 +7460,7 @@
     "team_30": "SPANISH TRAIL",
     "notes_30": "Upset: W1 D2 beat Francine Mazza (2.99) + Leona Kiely (2.67) (2-6 6-4 1-0) — implies playing at 2.83+ level.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Francine Mazza (2.99) + Leona Kiely (2.67) (2-6 6-4 1-0).",
-    "rating_30": 2.7389,
+    "rating_30": 2.7556,
     "rating_35": 2.4784
   },
   {
@@ -7470,8 +7470,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.4628,
-    "current_division_rating": 2.6195,
-    "global_rating": 2.6195,
+    "current_division_rating": 2.5945,
+    "global_rating": 2.5945,
     "ntrp_rating": "2.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -7487,7 +7487,7 @@
     "team_30": "SPANISH TRAIL",
     "notes_30": "Upset: W2 D2 beat Venetia Espinueva (2.67) + Ann Shah (2.53) (7-5 6-2).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Venetia Espinueva (2.67) + Ann Shah (2.53) (7-5 6-2).",
-    "rating_30": 2.6195,
+    "rating_30": 2.5945,
     "rating_35": 2.4628
   },
   {
@@ -7497,8 +7497,8 @@
     "team": "DTC #2",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.4008,
-    "current_division_rating": 2.7053,
-    "global_rating": 2.7053,
+    "current_division_rating": 2.6553,
+    "global_rating": 2.6553,
     "ntrp_rating": "2.5 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -7514,7 +7514,7 @@
     "team_30": "DTC #2",
     "notes_30": "Upset: W3 D3 beat Christa Shiklanian (2.63) + Addy Iveth Zilberman (2.72) (6-2 6-2) — implies playing at 2.67+ level.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Christa Shiklanian (2.63) + Addy Iveth Zilberman (2.72) (6-2 6-2).",
-    "rating_30": 2.7053,
+    "rating_30": 2.6553,
     "rating_35": 2.4008
   },
   {
@@ -7524,8 +7524,8 @@
     "team": "DTC #4",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.4798,
-    "current_division_rating": 2.6864,
-    "global_rating": 2.6864,
+    "current_division_rating": 2.6297,
+    "global_rating": 2.6297,
     "ntrp_rating": "2.5 C",
     "wl_record": "0-4",
     "lines_played": 4,
@@ -7541,7 +7541,7 @@
     "team_30": "DTC #4",
     "notes_30": "Upset: W4 D2 beat Yong Mi DeMilliano (2.60) + Heather Hartzell (2.58) (6-1 6-4).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Yong Mi DeMilliano (2.60) + Heather Hartzell (2.58) (6-1 6-4).",
-    "rating_30": 2.6864,
+    "rating_30": 2.6297,
     "rating_35": 2.4798
   },
   {
@@ -7629,8 +7629,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.4541,
-    "current_division_rating": 2.6783,
-    "global_rating": 2.6783,
+    "current_division_rating": 2.6533,
+    "global_rating": 2.6533,
     "ntrp_rating": "3.0 S",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -7647,7 +7647,7 @@
     "team_30": "RED ROCK CC",
     "notes_30": "Captain's flex weapon — D2/D3/S2. Upset: W4 D2 beat Daniella Toms (2.83) + Christa Shiklanian (2.63) (6-2 7-5) — implies playing at 2.73+ level.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Daniella Toms (2.83) + Christa Shiklanian (2.63) (6-2 7-5).",
-    "rating_30": 2.6783,
+    "rating_30": 2.6533,
     "rating_35": 2.4541
   },
   {
@@ -7731,8 +7731,8 @@
     "team": "LAKE LAS VEGAS SPORTS CLUB",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.4358,
-    "current_division_rating": 2.5802,
-    "global_rating": 2.5802,
+    "current_division_rating": 2.5727,
+    "global_rating": 2.5727,
     "ntrp_rating": "2.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -7748,7 +7748,7 @@
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
     "notes_30": "Upset: W4 D1 beat Rochelle Hamatian (2.65) + Michelle Inman (2.63) (6-3 7-5). Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Rochelle Hamatian (2.65) + Michelle Inman (2.63) (6-3 7-5).",
-    "rating_30": 2.5802,
+    "rating_30": 2.5727,
     "rating_35": 2.4358
   },
   {
@@ -7913,8 +7913,8 @@
     "team": "WHITNEY MESA PARK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.3317,
-    "current_division_rating": 2.7139,
-    "global_rating": 2.7139,
+    "current_division_rating": 2.6639,
+    "global_rating": 2.6639,
     "ntrp_rating": "2.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -7930,7 +7930,7 @@
     "team_30": "WHITNEY MESA PARK",
     "notes_30": "Upset: W5 D3 beat Roni Tarr (2.70) + Sonja Rogers (2.77) (6-2 6-2) — implies playing at 2.74+ level.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Roni Tarr (2.70) + Sonja Rogers (2.77) (6-2 6-2).",
-    "rating_30": 2.7139,
+    "rating_30": 2.6639,
     "rating_35": 2.3317
   },
   {
@@ -7940,8 +7940,8 @@
     "team": "LAKE LAS VEGAS SPORTS CLUB",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.3697,
-    "current_division_rating": 2.4103,
-    "global_rating": 2.4103,
+    "current_division_rating": 2.3697,
+    "global_rating": 2.3697,
     "ntrp_rating": "2.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -7957,7 +7957,7 @@
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
     "notes_30": "Deployed at D1 but outmatched: W2 D1 lost to Jaqueline Schultz (3.08) + Anjelica Moore (2.79) (6-1 6-0). Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Martha Langer (2.23) (7-5 6-0).",
-    "rating_30": 2.4103,
+    "rating_30": 2.3697,
     "rating_35": 2.3697
   },
   {
@@ -7967,8 +7967,8 @@
     "team": "LAKE LAS VEGAS SPORTS CLUB",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.3382,
-    "current_division_rating": 2.4856,
-    "global_rating": 2.4856,
+    "current_division_rating": 2.4436,
+    "global_rating": 2.4436,
     "ntrp_rating": "2.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -7982,9 +7982,9 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
-    "notes_30": "Deployed at D1 but outmatched: W2 D1 lost to Jaqueline Schultz (3.08) + Anjelica Moore (2.79) (6-1 6-0). Biggest riser on this roster. Playing S1/D1 despite low baseline.",
+    "notes_30": "Deployed at D1 but outmatched: W2 D1 lost to Jaqueline Schultz (3.08) + Anjelica Moore (2.79) (6-1 6-0). Playing S1/D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Sharon Edwards (1.97) + Christy Shulman (2.64) (6-1 6-0).",
-    "rating_30": 2.4856,
+    "rating_30": 2.4436,
     "rating_35": 2.3382
   },
   {
@@ -8091,8 +8091,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.2628,
-    "current_division_rating": 2.5146,
-    "global_rating": 2.5146,
+    "current_division_rating": 2.4621,
+    "global_rating": 2.4621,
     "ntrp_rating": "2.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -8102,7 +8102,7 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "Upset: W5 D2 beat Martha Langer (2.23) + Jennifer Olson (2.68) (6-3 6-0).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Martha Langer (2.23) + Jennifer Olson (2.68) (6-3 6-0).",
-    "rating_30": 2.5146,
+    "rating_30": 2.4621,
     "rating_35": 2.2628,
     "lines_played_30": [
       "D2"
@@ -8199,8 +8199,8 @@
     "team": "WHITNEY MESA PARK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.1515,
-    "current_division_rating": 2.584,
-    "global_rating": 2.584,
+    "current_division_rating": 2.5515,
+    "global_rating": 2.5515,
     "ntrp_rating": "3.0 S",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -8216,7 +8216,7 @@
     "team_30": "WHITNEY MESA PARK",
     "notes_30": "Upset: W5 D2 beat Robin Gordon (2.73) + Debbie Fleury (2.72) (6-3 6-2) — implies playing at 2.72+ level.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Robin Gordon (2.73) + Debbie Fleury (2.72) (6-3 6-2).",
-    "rating_30": 2.584,
+    "rating_30": 2.5515,
     "rating_35": 2.1515
   },
   {
@@ -8226,8 +8226,8 @@
     "team": "WHITNEY MESA PARK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.1515,
-    "current_division_rating": 2.6126,
-    "global_rating": 2.6126,
+    "current_division_rating": 2.5626,
+    "global_rating": 2.5626,
     "ntrp_rating": "3.0 S",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -8242,7 +8242,7 @@
     "team_30": "WHITNEY MESA PARK",
     "notes_30": "Upset: W5 D3 beat Roni Tarr (2.70) + Sonja Rogers (2.77) (6-2 6-2) — implies playing at 2.74+ level.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Roni Tarr (2.70) + Sonja Rogers (2.77) (6-2 6-2).",
-    "rating_30": 2.6126,
+    "rating_30": 2.5626,
     "rating_35": 2.1515
   },
   {
@@ -8524,8 +8524,8 @@
     "team": "RED ROCK CC #2",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.563,
-    "current_division_rating": 3.5397,
-    "global_rating": 3.5397,
+    "current_division_rating": 3.5147,
+    "global_rating": 3.5147,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -8542,7 +8542,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Christina Drees (3.63) + Kami Adamson (3.52) (7-6 6-2).",
     "notes_35": "Surprising loss: W4 S2 lost to Punam Patel (3.50) (6-1 6-2).",
     "rating_30": 3.563,
-    "rating_35": 3.5397
+    "rating_35": 3.5147
   },
   {
     "id": "mary-lind",
@@ -8551,8 +8551,8 @@
     "team": "RED ROCK CC #2",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.665,
-    "current_division_rating": 3.6777,
-    "global_rating": 3.6777,
+    "current_division_rating": 3.665,
+    "global_rating": 3.665,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-3",
     "lines_played": 4,
@@ -8570,7 +8570,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Anne Gumm (3.58) + Chelsea Gray (3.67) (6-3 4-6 1-0).",
     "notes_35": "RED ROCK CC #2's most-deployed player (4/5 weeks). Captain's flex weapon — D1/D2/D3. Won a 3-set tiebreak in W1.",
     "rating_30": 3.665,
-    "rating_35": 3.6777
+    "rating_35": 3.665
   },
   {
     "id": "shawn-mcnulty",
@@ -8627,8 +8627,8 @@
     "team": "RED ROCK CC #2",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.6326,
-    "current_division_rating": 3.6268,
-    "global_rating": 3.6268,
+    "current_division_rating": 3.6218,
+    "global_rating": 3.6218,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -8644,7 +8644,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Anne Gumm (3.58) + Chelsea Gray (3.67) (6-3 4-6 1-0).",
     "notes_35": "Only 3.5 match: W1 D1 beat Anne Gumm (3.58) + Chelsea Gray (3.67); won after 3 sets.",
     "rating_30": 3.6326,
-    "rating_35": 3.6268
+    "rating_35": 3.6218
   },
   {
     "id": "michele-howser",
@@ -8653,8 +8653,8 @@
     "team": "RED ROCK CC #1",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.6038,
-    "current_division_rating": 3.5027,
-    "global_rating": 3.5027,
+    "current_division_rating": 3.4702,
+    "global_rating": 3.4702,
     "ntrp_rating": "3.5 C",
     "wl_record": "3-0",
     "lines_played": 3,
@@ -8672,7 +8672,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Alisun Vehar (3.48) + Gina Case (3.30) (6-2 6-3).",
     "notes_35": "Captain's flex weapon — D1/D3/S1. Surprising loss: W4 D3 lost to Leticia Schoff (3.19) + Melissa Ruediger (3.28) (6-2 4-6 1-0).",
     "rating_30": 3.6038,
-    "rating_35": 3.5027
+    "rating_35": 3.4702
   },
   {
     "id": "amy-waters",
@@ -8734,8 +8734,8 @@
     "team": "TPC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.7033,
-    "current_division_rating": 3.7205,
-    "global_rating": 3.7205,
+    "current_division_rating": 3.7033,
+    "global_rating": 3.7033,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -8751,7 +8751,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Anne Gumm (3.58) + Katrin Dragnev (3.46) (6-3 6-1).",
     "notes_35": "Undefeated but all opponents below baseline (avg 3.36) — ceiling-capped.",
     "rating_30": 3.7033,
-    "rating_35": 3.7205
+    "rating_35": 3.7033
   },
   {
     "id": "emelia-allen",
@@ -8814,8 +8814,8 @@
     "team": "RED ROCK CC #2",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.5631,
-    "current_division_rating": 3.6345,
-    "global_rating": 3.6345,
+    "current_division_rating": 3.5631,
+    "global_rating": 3.5631,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -8832,7 +8832,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Christina Rich (3.42) + Joan Stertzer (3.38) (6-1 6-1).",
     "notes_35": "Undefeated but all opponents below baseline (avg 3.36) — ceiling-capped.",
     "rating_30": 3.5631,
-    "rating_35": 3.6345
+    "rating_35": 3.5631
   },
   {
     "id": "allison-ibarguen",
@@ -8868,8 +8868,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.6399,
-    "current_division_rating": 3.7561,
-    "global_rating": 3.7561,
+    "current_division_rating": 3.6936,
+    "global_rating": 3.6936,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -8886,7 +8886,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Tracey Lee (3.58) (6-2 6-1).",
     "notes_35": "Undefeated but all opponents below baseline (avg 3.54) — ceiling-capped.",
     "rating_30": 3.6399,
-    "rating_35": 3.7561
+    "rating_35": 3.6936
   },
   {
     "id": "anne-gumm",
@@ -8949,8 +8949,8 @@
     "team": "RED ROCK CC #2",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.5534,
-    "current_division_rating": 3.5825,
-    "global_rating": 3.5825,
+    "current_division_rating": 3.5522,
+    "global_rating": 3.5522,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -8967,7 +8967,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Jenny Baxter (3.55) + Amy Cooper (3.38) (7-6 7-5).",
     "notes_35": "Undefeated but all opponents below baseline (avg 3.39) — ceiling-capped.",
     "rating_30": 3.5534,
-    "rating_35": 3.5825
+    "rating_35": 3.5522
   },
   {
     "id": "sara-sager",
@@ -9050,8 +9050,8 @@
     "team": "RED ROCK CC #2",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4518,
-    "current_division_rating": 3.4912,
-    "global_rating": 3.4912,
+    "current_division_rating": 3.4837,
+    "global_rating": 3.4837,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -9068,7 +9068,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Katrin Dragnev (3.46) + Lori LaBarbera (3.46) (6-3 7-5).",
     "notes_35": "Undefeated in 3.5.",
     "rating_30": 3.4518,
-    "rating_35": 3.4912
+    "rating_35": 3.4837
   },
   {
     "id": "yan-uyeno",
@@ -9156,8 +9156,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.5404,
-    "current_division_rating": 3.573,
-    "global_rating": 3.573,
+    "current_division_rating": 3.563,
+    "global_rating": 3.563,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -9174,7 +9174,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Lyndsey van der Laan (3.55) (6-3 4-6 1-0).",
     "notes_35": "Won a 3-set tiebreak in W5.",
     "rating_30": 3.5404,
-    "rating_35": 3.573
+    "rating_35": 3.563
   },
   {
     "id": "jen-liong",
@@ -9264,8 +9264,8 @@
     "team": "RED ROCK CC #2",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.5765,
-    "current_division_rating": 3.6571,
-    "global_rating": 3.6571,
+    "current_division_rating": 3.5765,
+    "global_rating": 3.5765,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -9282,7 +9282,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Valeria Perdomo (3.43) + Sabine Curtis (3.51) (5-7 6-3 1-0).",
     "notes_35": "Won a 3-set tiebreak in W3. Undefeated but all opponents below baseline (avg 3.40) — ceiling-capped.",
     "rating_30": 3.5765,
-    "rating_35": 3.6571
+    "rating_35": 3.5765
   },
   {
     "id": "vanessa-nicole-rowe",
@@ -9291,8 +9291,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.5243,
-    "current_division_rating": 3.4023,
-    "global_rating": 3.4023,
+    "current_division_rating": 3.3973,
+    "global_rating": 3.3973,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -9309,7 +9309,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Jaclyn O'Malley (3.45) (6-3 4-6 1-0).",
     "notes_35": "Captain's flex weapon — D1/D3/S1. Surprising loss: W5 D3 lost to Abigail Cox (3.25) + Jessica Borghoff (3.17) (6-1 6-4). Won a 3-set tiebreak in W2.",
     "rating_30": 3.5243,
-    "rating_35": 3.4023
+    "rating_35": 3.3973
   },
   {
     "id": "shiangyuh-wu",
@@ -9318,8 +9318,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.5163,
-    "current_division_rating": 3.5424,
-    "global_rating": 3.5424,
+    "current_division_rating": 3.5163,
+    "global_rating": 3.5163,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -9337,7 +9337,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Joann Komanowski (3.49) + Debi Marimberga (3.36) (6-2 6-4).",
     "notes_35": "Captain's flex weapon — D1/D2/D3. Lopsided loss: W2 D1 lost to Mimi Liu (3.71) + Yan Uyeno (3.54) (6-1 6-1). Won 3-set tiebreaks in W4/W5.",
     "rating_30": 3.5163,
-    "rating_35": 3.5424
+    "rating_35": 3.5163
   },
   {
     "id": "amanda-gumberg",
@@ -9346,8 +9346,8 @@
     "team": "RED ROCK CC #1",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.4766,
-    "current_division_rating": 3.5016,
-    "global_rating": 3.5016,
+    "current_division_rating": 3.4766,
+    "global_rating": 3.4766,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -9363,7 +9363,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Jan Willis (3.41) + Janet Wellman (3.42) (6-2 6-4).",
     "notes_35": "",
     "rating_30": 3.4766,
-    "rating_35": 3.5016
+    "rating_35": 3.4766
   },
   {
     "id": "maria-truman",
@@ -9372,8 +9372,8 @@
     "team": "RED ROCK CC #2",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.517,
-    "current_division_rating": 3.359,
-    "global_rating": 3.359,
+    "current_division_rating": 3.3512,
+    "global_rating": 3.3512,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -9391,7 +9391,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat RACQUEL DIZON (3.05) + Lana Penrose (3.25) (6-4 6-0).",
     "notes_35": "Captain's flex weapon — D1/D2/S2. Surprising loss: W3 D1 lost to Claudia Hernandez (3.38) + Karen Kiyono (3.42) (6-1 6-4).",
     "rating_30": 3.517,
-    "rating_35": 3.359
+    "rating_35": 3.3512
   },
   {
     "id": "tracey-lee",
@@ -9429,8 +9429,8 @@
     "team": "TPC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4744,
-    "current_division_rating": 3.4769,
-    "global_rating": 3.4769,
+    "current_division_rating": 3.4535,
+    "global_rating": 3.4535,
     "ntrp_rating": "3.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -9441,7 +9441,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Amy Cooper (3.38) + Stella Chivikas (3.42) (6-2 7-5).",
     "notes_35": "Only 3.5 match: W5 D2 beat Amy Cooper (3.38) + Stella Chivikas (3.42) (6-2 7-5).",
     "rating_30": 3.4744,
-    "rating_35": 3.4769,
+    "rating_35": 3.4535,
     "lines_played_35": [
       "D2"
     ],
@@ -9534,8 +9534,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.5071,
-    "current_division_rating": 3.5192,
-    "global_rating": 3.5192,
+    "current_division_rating": 3.5039,
+    "global_rating": 3.5039,
     "ntrp_rating": "3.5 C",
     "wl_record": "3-0",
     "lines_played": 3,
@@ -9552,7 +9552,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Carolyn Wood (3.34) + Jennifer Hall (3.33) (6-2 6-2).",
     "notes_35": "",
     "rating_30": 3.5071,
-    "rating_35": 3.5192
+    "rating_35": 3.5039
   },
   {
     "id": "kelly-kedge",
@@ -9589,8 +9589,8 @@
     "team": "ANTHEM CC",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.5497,
-    "current_division_rating": 3.5637,
-    "global_rating": 3.5637,
+    "current_division_rating": 3.5537,
+    "global_rating": 3.5537,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -9606,7 +9606,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Jules Mitchell (3.59) (7-6 6-4).",
     "notes_35": "",
     "rating_30": 3.5497,
-    "rating_35": 3.5637
+    "rating_35": 3.5537
   },
   {
     "id": "marlaina-harris",
@@ -9642,8 +9642,8 @@
     "team": "DTC #2",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.4707,
-    "current_division_rating": 3.4655,
-    "global_rating": 3.4655,
+    "current_division_rating": 3.4405,
+    "global_rating": 3.4405,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -9660,7 +9660,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Emily Courville (3.46) + Jennifer Petrie (3.39) (7-6 3-2).",
     "notes_35": "",
     "rating_30": 3.4707,
-    "rating_35": 3.4655
+    "rating_35": 3.4405
   },
   {
     "id": "jenny-baxter",
@@ -9723,8 +9723,8 @@
     "team": "DTC #2",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.5022,
-    "current_division_rating": 3.7023,
-    "global_rating": 3.7023,
+    "current_division_rating": 3.6036,
+    "global_rating": 3.6036,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -9740,9 +9740,9 @@
     "wl_record_35": "3-1",
     "team_35": "DTC #2",
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Nancy Holland (3.50) + Rika Cook (3.57) (2-6 6-3 1-0).",
-    "notes_35": "Captain's flex weapon — D1/D2/S2. Won a 3-set tiebreak in W4. Biggest riser on this roster.",
+    "notes_35": "Captain's flex weapon — D1/D2/S2. Won a 3-set tiebreak in W4.",
     "rating_30": 3.5022,
-    "rating_35": 3.7023
+    "rating_35": 3.6036
   },
   {
     "id": "christi-lin",
@@ -9804,8 +9804,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.4962,
-    "current_division_rating": 3.553,
-    "global_rating": 3.553,
+    "current_division_rating": 3.5029,
+    "global_rating": 3.5029,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -9822,7 +9822,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Amanda Gumberg (3.48) + Rachel Lamb (3.43) (3-6 6-0 1-0).",
     "notes_35": "Won a 3-set tiebreak in W2.",
     "rating_30": 3.4962,
-    "rating_35": 3.553
+    "rating_35": 3.5029
   },
   {
     "id": "cathy-vanderford",
@@ -9831,8 +9831,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.4669,
-    "current_division_rating": 3.4505,
-    "global_rating": 3.4505,
+    "current_division_rating": 3.4299,
+    "global_rating": 3.4299,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -9850,7 +9850,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Linda Guastella (3.35) + Nicole Palichat (3.19) (6-3 6-1).",
     "notes_35": "Captain's flex weapon — D1/D2/D3.",
     "rating_30": 3.4669,
-    "rating_35": 3.4505
+    "rating_35": 3.4299
   },
   {
     "id": "dawn-anderson",
@@ -9859,8 +9859,8 @@
     "team": "DTC #2",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.481,
-    "current_division_rating": 3.4392,
-    "global_rating": 3.4392,
+    "current_division_rating": 3.4382,
+    "global_rating": 3.4382,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -9876,7 +9876,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Misti Webb (3.19) + Kathryn Garlan (3.55) (6-7 6-2 1-0).",
     "notes_35": "Only 3.5 match: W3 D3 beat Misti Webb (3.19) + Kathryn Garlan (3.55); won after 3 sets.",
     "rating_30": 3.481,
-    "rating_35": 3.4392
+    "rating_35": 3.4382
   },
   {
     "id": "emily-courville",
@@ -9911,8 +9911,8 @@
     "team": "TPC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4754,
-    "current_division_rating": 3.5904,
-    "global_rating": 3.5904,
+    "current_division_rating": 3.5301,
+    "global_rating": 3.5301,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -9929,7 +9929,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Anne Gumm (3.58) + Katrin Dragnev (3.46) (6-3 6-1).",
     "notes_35": "",
     "rating_30": 3.4754,
-    "rating_35": 3.5904
+    "rating_35": 3.5301
   },
   {
     "id": "heidi-thornhill",
@@ -9964,8 +9964,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.416,
-    "current_division_rating": 3.4276,
-    "global_rating": 3.4276,
+    "current_division_rating": 3.4176,
+    "global_rating": 3.4176,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -9981,7 +9981,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Jamie Warrington (3.48) + Jennifer Hall (3.33) (6-4 6-1).",
     "notes_35": "",
     "rating_30": 3.416,
-    "rating_35": 3.4276
+    "rating_35": 3.4176
   },
   {
     "id": "jaclyn-omalley",
@@ -10016,8 +10016,8 @@
     "team": "DRAGONRIDGE CC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4594,
-    "current_division_rating": 3.4037,
-    "global_rating": 3.4037,
+    "current_division_rating": 3.3991,
+    "global_rating": 3.3991,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -10034,7 +10034,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat My Vuong (3.36) + Nicole Medas (3.39) (6-3 6-7 1-0).",
     "notes_35": "Won a 3-set tiebreak in W5.",
     "rating_30": 3.4594,
-    "rating_35": 3.4037
+    "rating_35": 3.3991
   },
   {
     "id": "anne-kellogg",
@@ -10124,8 +10124,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.4665,
-    "current_division_rating": 3.4682,
-    "global_rating": 3.4682,
+    "current_division_rating": 3.4665,
+    "global_rating": 3.4665,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -10142,7 +10142,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Crystal LaTour (3.24) (6-1 6-4).",
     "notes_35": "Undefeated but all opponents below baseline (avg 3.20) — ceiling-capped.",
     "rating_30": 3.4665,
-    "rating_35": 3.4682
+    "rating_35": 3.4665
   },
   {
     "id": "debi-marimberga",
@@ -10259,8 +10259,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.3839,
-    "current_division_rating": 3.5631,
-    "global_rating": 3.5631,
+    "current_division_rating": 3.4981,
+    "global_rating": 3.4981,
     "ntrp_rating": "3.5 C",
     "wl_record": "3-0",
     "lines_played": 3,
@@ -10277,7 +10277,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Maria Truman (3.52) + Suzy Wirth (3.43) (6-1 6-4).",
     "notes_35": "Upset: W3 D1 beat Maria Truman (3.52) + Suzy Wirth (3.43) (6-1 6-4).",
     "rating_30": 3.3839,
-    "rating_35": 3.5631
+    "rating_35": 3.4981
   },
   {
     "id": "allison-festa",
@@ -10286,8 +10286,8 @@
     "team": "ANTHEM CC",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.3538,
-    "current_division_rating": 3.4992,
-    "global_rating": 3.4992,
+    "current_division_rating": 3.4367,
+    "global_rating": 3.4367,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -10301,9 +10301,9 @@
     "wl_record_35": "1-0",
     "team_35": "ANTHEM CC",
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Lisa Gobel (3.59) + Tina Nathalia (3.16) (6-2 6-1).",
-    "notes_35": "Only 3.5 match: W3 D1 beat Lisa Gobel (3.59) + Tina Nathalia (3.16) (6-2 6-1). Biggest riser on this roster.",
+    "notes_35": "Only 3.5 match: W3 D1 beat Lisa Gobel (3.59) + Tina Nathalia (3.16) (6-2 6-1).",
     "rating_30": 3.3538,
-    "rating_35": 3.4992
+    "rating_35": 3.4367
   },
   {
     "id": "lisa-cook",
@@ -10339,8 +10339,8 @@
     "team": "DRAGONRIDGE CC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.3414,
-    "current_division_rating": 3.4097,
-    "global_rating": 3.4097,
+    "current_division_rating": 3.4047,
+    "global_rating": 3.4047,
     "ntrp_rating": "3.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -10351,7 +10351,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Chandra VanPaepeghem (3.42) + Sara Sager (3.46) (6-3 5-7 1-0).",
     "notes_35": "Upset: W5 D1 beat Chandra VanPaepeghem (3.42) + Sara Sager (3.46) (6-3 5-7 1-0).",
     "rating_30": 3.3414,
-    "rating_35": 3.4097,
+    "rating_35": 3.4047,
     "lines_played_35": [
       "D1"
     ],
@@ -10392,8 +10392,8 @@
     "team": "RED ROCK CC #2",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4345,
-    "current_division_rating": 3.3161,
-    "global_rating": 3.3161,
+    "current_division_rating": 3.2711,
+    "global_rating": 3.2711,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -10410,7 +10410,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat RACQUEL DIZON (3.05) + Lana Penrose (3.25) (6-4 6-0).",
     "notes_35": "Rating down without a clear single-match driver.",
     "rating_30": 3.4345,
-    "rating_35": 3.3161
+    "rating_35": 3.2711
   },
   {
     "id": "rachel-lamb",
@@ -10446,8 +10446,8 @@
     "team": "DRAGONRIDGE CC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4471,
-    "current_division_rating": 3.4573,
-    "global_rating": 3.4573,
+    "current_division_rating": 3.4523,
+    "global_rating": 3.4523,
     "ntrp_rating": "3.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -10458,7 +10458,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Chandra VanPaepeghem (3.42) + Sara Sager (3.46) (6-3 5-7 1-0).",
     "notes_35": "Only 3.5 match: W5 D1 beat Chandra VanPaepeghem (3.42) + Sara Sager (3.46); won after 3 sets.",
     "rating_30": 3.4471,
-    "rating_35": 3.4573,
+    "rating_35": 3.4523,
     "lines_played_35": [
       "D1"
     ],
@@ -10472,8 +10472,8 @@
     "team": "DESERT PALM",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4235,
-    "current_division_rating": 3.4582,
-    "global_rating": 3.4582,
+    "current_division_rating": 3.4235,
+    "global_rating": 3.4235,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -10489,7 +10489,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Vinne Chen (3.12) + Sara Sager (3.46) (6-2 6-2).",
     "notes_35": "Lopsided loss: W2 D2 lost to Claudia Hernandez (3.38) + Karen Kiyono (3.42) (6-0 6-4).",
     "rating_30": 3.4235,
-    "rating_35": 3.4582
+    "rating_35": 3.4235
   },
   {
     "id": "christina-rich",
@@ -10525,8 +10525,8 @@
     "team": "DTC #2",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.5079,
-    "current_division_rating": 3.6433,
-    "global_rating": 3.6433,
+    "current_division_rating": 3.5354,
+    "global_rating": 3.5354,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-3",
     "lines_played": 4,
@@ -10543,9 +10543,9 @@
     "wl_record_35": "5-0",
     "team_35": "DTC #2",
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Jane Doe (3.41) + Jan Willis (3.41) (6-1 6-2).",
-    "notes_35": "DTC #2's only every-week player. Captain's flex weapon — D1/D2/D3/S2. Won 3-set tiebreaks in W4/W5. Undefeated but all opponents below baseline (avg 3.22) — ceiling-capped. Biggest riser on this roster.",
+    "notes_35": "DTC #2's only every-week player. Captain's flex weapon — D1/D2/D3/S2. Won 3-set tiebreaks in W4/W5. Undefeated but all opponents below baseline (avg 3.22) — ceiling-capped.",
     "rating_30": 3.5079,
-    "rating_35": 3.6433
+    "rating_35": 3.5354
   },
   {
     "id": "monica-baldwin",
@@ -10765,8 +10765,8 @@
     "team": "DESERT PALM",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4613,
-    "current_division_rating": 3.3082,
-    "global_rating": 3.3082,
+    "current_division_rating": 3.3132,
+    "global_rating": 3.3132,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -10782,7 +10782,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Monica Baldwin (3.38) (3-6 7-6 1-0).",
     "notes_35": "Surprising loss: W1 S1 lost to Shilpa Daulat (3.13) (6-1 6-4). Won a 3-set tiebreak in W5.",
     "rating_30": 3.4613,
-    "rating_35": 3.3082
+    "rating_35": 3.3132
   },
   {
     "id": "valerie-witherspoon",
@@ -10870,8 +10870,8 @@
     "team": "ANTHEM CC",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.3915,
-    "current_division_rating": 3.5109,
-    "global_rating": 3.5109,
+    "current_division_rating": 3.4878,
+    "global_rating": 3.4878,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -10889,7 +10889,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Lisa Gobel (3.59) + Tina Nathalia (3.16) (6-2 6-1).",
     "notes_35": "Captain's flex weapon — D1/D2/S2.",
     "rating_30": 3.3915,
-    "rating_35": 3.5109
+    "rating_35": 3.4878
   },
   {
     "id": "marchelle-locke",
@@ -11215,8 +11215,8 @@
     "team": "RED ROCK CC #2",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4174,
-    "current_division_rating": 3.4486,
-    "global_rating": 3.4486,
+    "current_division_rating": 3.4411,
+    "global_rating": 3.4411,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -11232,7 +11232,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Katrin Dragnev (3.46) + Lori LaBarbera (3.46) (6-3 7-5).",
     "notes_35": "Only 3.5 match: W1 D3 beat Katrin Dragnev (3.46) + Lori LaBarbera (3.46) (6-3 7-5).",
     "rating_30": 3.4174,
-    "rating_35": 3.4486
+    "rating_35": 3.4411
   },
   {
     "id": "amy-cooper",
@@ -11447,8 +11447,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.3882,
-    "current_division_rating": 3.4064,
-    "global_rating": 3.4064,
+    "current_division_rating": 3.3882,
+    "global_rating": 3.3882,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -11466,7 +11466,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Patricia Delgado (3.40) + Kirsten Ingram (3.19) (6-4 6-2).",
     "notes_35": "Captain's flex weapon — D1/D2/D3.",
     "rating_30": 3.3882,
-    "rating_35": 3.4064
+    "rating_35": 3.3882
   },
   {
     "id": "samantha-schuster",
@@ -11475,8 +11475,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.3189,
-    "current_division_rating": 3.3247,
-    "global_rating": 3.3247,
+    "current_division_rating": 3.3189,
+    "global_rating": 3.3189,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -11492,7 +11492,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Hong Lee (3.26) (6-4 6-3).",
     "notes_35": "Only 3.5 match: W2 S2 beat Hong Lee (3.26) (6-4 6-3).",
     "rating_30": 3.3189,
-    "rating_35": 3.3247
+    "rating_35": 3.3189
   },
   {
     "id": "joan-stertzer",
@@ -11575,8 +11575,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.2967,
-    "current_division_rating": 3.4455,
-    "global_rating": 3.4455,
+    "current_division_rating": 3.4205,
+    "global_rating": 3.4205,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -11593,7 +11593,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Jennifer Petrie (3.39) + Jan Willis (3.41) (6-2 7-5).",
     "notes_35": "Upset: W3 D3 beat Jennifer Petrie (3.39) + Jan Willis (3.41) (6-2 7-5). Won 3-set tiebreaks in W4/W5.",
     "rating_30": 3.2967,
-    "rating_35": 3.4455
+    "rating_35": 3.4205
   },
   {
     "id": "jennifer-dalby",
@@ -11629,8 +11629,8 @@
     "team": "DESERT PALM",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4983,
-    "current_division_rating": 3.7266,
-    "global_rating": 3.7266,
+    "current_division_rating": 3.6393,
+    "global_rating": 3.6393,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -11647,7 +11647,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Tyree Judd (3.56) (6-1 6-2).",
     "notes_35": "DESERT PALM's most-deployed player (4/5 weeks). Upset: W4 S2 beat Tyree Judd (3.56) (6-1 6-2).",
     "rating_30": 3.4983,
-    "rating_35": 3.7266
+    "rating_35": 3.6393
   },
   {
     "id": "kerri-comings",
@@ -11704,8 +11704,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.3368,
-    "current_division_rating": 3.4264,
-    "global_rating": 3.4264,
+    "current_division_rating": 3.4099,
+    "global_rating": 3.4099,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -11723,7 +11723,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Carroll Welch (3.21) + Tracey Lee (3.58) (6-4 7-6).",
     "notes_35": "Captain's flex weapon — D2/D3/S2. Upset: W2 D3 beat Carroll Welch (3.21) + Tracey Lee (3.58) (6-4 7-6).",
     "rating_30": 3.3368,
-    "rating_35": 3.4264
+    "rating_35": 3.4099
   },
   {
     "id": "liliya-pummill",
@@ -11732,8 +11732,8 @@
     "team": "TPC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.2665,
-    "current_division_rating": 3.3193,
-    "global_rating": 3.3193,
+    "current_division_rating": 3.2818,
+    "global_rating": 3.2818,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -11750,7 +11750,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Amy Kirk (3.09) + Joan Stertzer (3.38) (7-6 2-1).",
     "notes_35": "Only 3.5 match: W2 D3 beat Amy Kirk (3.09) + Joan Stertzer (3.38) (7-6 2-1).",
     "rating_30": 3.2665,
-    "rating_35": 3.3193
+    "rating_35": 3.2818
   },
   {
     "id": "christine-ballard",
@@ -11921,8 +11921,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.2122,
-    "current_division_rating": 3.3723,
-    "global_rating": 3.3723,
+    "current_division_rating": 3.3273,
+    "global_rating": 3.3273,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -11936,9 +11936,9 @@
     "wl_record_35": "1-1",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Gina Thornton (3.25) (6-3 6-1).",
-    "notes_35": "Biggest riser on this roster.",
+    "notes_35": "",
     "rating_30": 3.2122,
-    "rating_35": 3.3723
+    "rating_35": 3.3273
   },
   {
     "id": "melissa-ruediger",
@@ -11947,8 +11947,8 @@
     "team": "SPANISH TRAIL #2",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.2754,
-    "current_division_rating": 3.3561,
-    "global_rating": 3.3561,
+    "current_division_rating": 3.3227,
+    "global_rating": 3.3227,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -11966,7 +11966,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Michelle Brinlee (3.00) + Michele Howser (3.60) (6-2 4-6 1-0).",
     "notes_35": "Captain's flex weapon — D1/D2/D3. Won a 3-set tiebreak in W4.",
     "rating_30": 3.2754,
-    "rating_35": 3.3561
+    "rating_35": 3.3227
   },
   {
     "id": "deborah-protell",
@@ -12117,8 +12117,8 @@
     "team": "SPANISH TRAIL #2",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.2615,
-    "current_division_rating": 3.2637,
-    "global_rating": 3.2637,
+    "current_division_rating": 3.2615,
+    "global_rating": 3.2615,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -12135,7 +12135,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Alex Schrack (3.12) + Judith Watson (3.28) (6-3 6-4).",
     "notes_35": "",
     "rating_30": 3.2615,
-    "rating_35": 3.2637
+    "rating_35": 3.2615
   },
   {
     "id": "gina-case",
@@ -12223,8 +12223,8 @@
     "team": "DRAGONRIDGE CC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.203,
-    "current_division_rating": 3.4279,
-    "global_rating": 3.4279,
+    "current_division_rating": 3.4112,
+    "global_rating": 3.4112,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -12241,7 +12241,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Valerie Witherspoon (3.39) (4-6 6-2 1-0).",
     "notes_35": "DRAGONRIDGE CC's most-deployed player (4/5 weeks). Upset: W3 S1 beat Valerie Witherspoon (3.39) (4-6 6-2 1-0).",
     "rating_30": 3.203,
-    "rating_35": 3.4279
+    "rating_35": 3.4112
   },
   {
     "id": "monica-johnson",
@@ -12373,8 +12373,8 @@
     "team": "TPC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.1682,
-    "current_division_rating": 3.2751,
-    "global_rating": 3.2751,
+    "current_division_rating": 3.2376,
+    "global_rating": 3.2376,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -12390,7 +12390,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Amy Kirk (3.09) + Joan Stertzer (3.38) (7-6 2-1).",
     "notes_35": "Upset: W2 D3 beat Amy Kirk (3.09) + Joan Stertzer (3.38) (7-6 2-1).",
     "rating_30": 3.1682,
-    "rating_35": 3.2751
+    "rating_35": 3.2376
   },
   {
     "id": "andra-starr-scano",
@@ -12768,8 +12768,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.1926,
-    "current_division_rating": 3.2305,
-    "global_rating": 3.2305,
+    "current_division_rating": 3.1926,
+    "global_rating": 3.1926,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -12786,7 +12786,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Carolyn Wood (3.34) + Elisabeth Skinner (2.85) (6-0 5-7 1-0).",
     "notes_35": "Won a 3-set tiebreak in W3.",
     "rating_30": 3.1926,
-    "rating_35": 3.2305
+    "rating_35": 3.1926
   },
   {
     "id": "judith-watson",
@@ -12874,8 +12874,8 @@
     "team": "SPANISH TRAIL #2",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.1268,
-    "current_division_rating": 3.2092,
-    "global_rating": 3.2092,
+    "current_division_rating": 3.1975,
+    "global_rating": 3.1975,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -12893,7 +12893,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Misti Webb (3.19) (6-2 3-6 1-0).",
     "notes_35": "Among SPANISH TRAIL #2's most-deployed (4/5 weeks). Captain's flex weapon — D2/D3/S2. Upset: W4 S2 beat Misti Webb (3.19) (6-2 3-6 1-0).",
     "rating_30": 3.1268,
-    "rating_35": 3.2092
+    "rating_35": 3.1975
   },
   {
     "id": "vinne-chen",
@@ -12902,8 +12902,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.1159,
-    "current_division_rating": 3.1771,
-    "global_rating": 3.1771,
+    "current_division_rating": 3.1471,
+    "global_rating": 3.1471,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -12920,7 +12920,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Carolyn Wood (3.34) + Elisabeth Skinner (2.85) (6-0 5-7 1-0).",
     "notes_35": "Won a 3-set tiebreak in W3.",
     "rating_30": 3.1159,
-    "rating_35": 3.1771
+    "rating_35": 3.1471
   },
   {
     "id": "karen-hom",
@@ -12929,8 +12929,8 @@
     "team": "DESERT PALM",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.1186,
-    "current_division_rating": 3.3286,
-    "global_rating": 3.3286,
+    "current_division_rating": 3.2786,
+    "global_rating": 3.2786,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -12947,7 +12947,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Vinne Chen (3.12) + Sara Sager (3.46) (6-2 6-2).",
     "notes_35": "Upset: W1 D2 beat Vinne Chen (3.12) + Sara Sager (3.46) (6-2 6-2).",
     "rating_30": 3.1186,
-    "rating_35": 3.3286
+    "rating_35": 3.2786
   },
   {
     "id": "susan-grady",
@@ -12956,8 +12956,8 @@
     "team": "TPC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.0421,
-    "current_division_rating": 3.1845,
-    "global_rating": 3.1845,
+    "current_division_rating": 3.1395,
+    "global_rating": 3.1395,
     "ntrp_rating": "3.5 A",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -12972,9 +12972,9 @@
     "wl_record_35": "1-1",
     "team_35": "TPC",
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat LaCheyva Edmonis (3.32) + Alexandria Chang (2.82) (6-4 6-0).",
-    "notes_35": "Biggest riser on this roster. Playing S1/D1 despite low baseline.",
+    "notes_35": "Playing S1/D1 despite low baseline.",
     "rating_30": 3.0421,
-    "rating_35": 3.1845
+    "rating_35": 3.1395
   },
   {
     "id": "heather-rose",
@@ -13131,8 +13131,8 @@
     "team": "TPC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.1228,
-    "current_division_rating": 3.3543,
-    "global_rating": 3.3543,
+    "current_division_rating": 3.3218,
+    "global_rating": 3.3218,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -13148,7 +13148,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Claudia Hernandez (3.38) + Karen Kiyono (3.42) (6-2 6-3).",
     "notes_35": "Upset: W4 D1 beat Claudia Hernandez (3.38) + Karen Kiyono (3.42) (6-2 6-3) — implies playing at 3.40+ level. Playing S1/D1 despite low baseline.",
     "rating_30": 3.1228,
-    "rating_35": 3.3543
+    "rating_35": 3.3218
   },
   {
     "id": "alex-schrack",
@@ -13157,8 +13157,8 @@
     "team": "ANTHEM CC",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.1187,
-    "current_division_rating": 3.2156,
-    "global_rating": 3.2156,
+    "current_division_rating": 3.2006,
+    "global_rating": 3.2006,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-3",
     "lines_played": 4,
@@ -13175,7 +13175,7 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Kelley Ferrence (3.30) + Debi Marimberga (3.36) (6-2 6-3).",
     "notes_35": "Upset: W4 D3 beat Kelley Ferrence (3.30) + Debi Marimberga (3.36) (6-2 6-3).",
     "rating_30": 3.1187,
-    "rating_35": 3.2156
+    "rating_35": 3.2006
   },
   {
     "id": "katie-kerestesi",

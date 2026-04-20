@@ -313,11 +313,11 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
 # ---------------------------------------------------------------------------
 
 _SCORE_GAP = {
-    0: 0.40,   # 6-0 → dominant, ~0.40 gap
-    1: 0.30,   # 6-1 → strong, ~0.30
-    2: 0.20,   # 6-2 → solid, ~0.20
-    3: 0.10,   # 6-3 → moderate, ~0.10
-    4: 0.03,   # 6-4 → slight, ~0.03
+    0: 0.22,   # 6-0 → dominant (reduced: one bagel ≠ 0.40 rating gap)
+    1: 0.15,   # 6-1 → strong
+    2: 0.10,   # 6-2 → solid
+    3: 0.07,   # 6-3 → moderate
+    4: 0.03,   # 6-4 → slight
     5: 0.00,   # 7-5 → essentially even
     6: 0.00,   # 7-6 → tiebreak, even
 }

@@ -238,6 +238,126 @@ def _find_match_diffs(stored_standings: dict, summary_rows: list[dict]) -> list[
 
 
 # ---------------------------------------------------------------------------
+# Standings teams recompute
+# ---------------------------------------------------------------------------
+
+def _recompute_standings_teams():
+    """
+    Recompute the `teams` array for every subflight from actual match results.
+    Keeps standings W-L, individual line wins, sets, and games in sync after
+    diff updates (the TennisLink scrape only populates these on full scrapes).
+    """
+    for path in (STANDINGS_30, STANDINGS_35):
+        data = json.loads(path.read_text())
+        changed = False
+        for sf in data.get("subflights", []):
+            teams: dict[str, dict] = {}
+            for m in sf.get("matches", []):
+                if m.get("pending"):
+                    continue
+                ht = m.get("home_team", "")
+                at = m.get("away_team", "")
+                hw = m.get("team_wins_home")
+                aw = m.get("team_wins_away")
+                if hw is None or aw is None:
+                    continue
+                for team in (ht, at):
+                    if team not in teams:
+                        teams[team] = {
+                            "team_name": team,
+                            "team_wins": 0, "team_losses": 0,
+                            "matches_played": 0,
+                            "indiv_wins": 0, "indiv_losses": 0,
+                            "sets_won": 0, "sets_lost": 0,
+                            "games_won": 0, "games_lost": 0,
+                        }
+                winner_team = ht if (hw > aw) else at
+                loser_team = at if (hw > aw) else ht
+                teams[winner_team]["team_wins"] += 1
+                teams[loser_team]["team_losses"] += 1
+                teams[ht]["matches_played"] += 1
+                teams[at]["matches_played"] += 1
+
+                # Line-level stats
+                for ln in m.get("lines", []):
+                    wt = ln.get("winner_team", "")
+                    lt = ln.get("loser_team", "")
+                    score = ln.get("score", "")
+                    if not wt or not lt:
+                        continue
+                    for t in (wt, lt):
+                        if t not in teams:
+                            teams[t] = {
+                                "team_name": t,
+                                "team_wins": 0, "team_losses": 0,
+                                "matches_played": 0,
+                                "indiv_wins": 0, "indiv_losses": 0,
+                                "sets_won": 0, "sets_lost": 0,
+                                "games_won": 0, "games_lost": 0,
+                            }
+                    teams[wt]["indiv_wins"] += 1
+                    teams[lt]["indiv_losses"] += 1
+
+                    # Parse sets/games from winner-first score
+                    for part in score.strip().split():
+                        nums = part.split("-")
+                        if len(nums) != 2:
+                            continue
+                        try:
+                            wg, lg = int(nums[0]), int(nums[1])
+                        except ValueError:
+                            continue
+                        teams[wt]["games_won"] += wg
+                        teams[wt]["games_lost"] += lg
+                        teams[lt]["games_won"] += lg
+                        teams[lt]["games_lost"] += wg
+                        # Count sets (tiebreak 1-0 counts as a set)
+                        if wg > lg:
+                            teams[wt]["sets_won"] += 1
+                            teams[lt]["sets_lost"] += 1
+                        else:
+                            teams[lt]["sets_won"] += 1
+                            teams[wt]["sets_lost"] += 1
+
+            if not teams:
+                continue
+
+            # Add games_won_pct
+            for t in teams.values():
+                total_games = t["games_won"] + t["games_lost"]
+                t["games_won_pct"] = (
+                    f"{t['games_won'] / total_games * 100:.2f}%"
+                    if total_games > 0 else "0.00%"
+                )
+
+            # Sort: wins desc, then indiv_wins desc, then games_won_pct desc
+            sorted_teams = sorted(
+                teams.values(),
+                key=lambda t: (
+                    -t["team_wins"],
+                    -t["indiv_wins"],
+                    -t["games_won"],
+                ),
+            )
+
+            # Preserve any extra fields from the old teams array (e.g. notes)
+            old_by_name = {t.get("team_name", ""): t
+                           for t in sf.get("teams", [])}
+            for t in sorted_teams:
+                old = old_by_name.get(t["team_name"], {})
+                for k in ("notes",):
+                    if k in old:
+                        t[k] = old[k]
+
+            sf["teams"] = sorted_teams
+            changed = True
+
+        if changed:
+            path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+            print(f"  [standings] {path.name} teams table updated")
+
+
+# ---------------------------------------------------------------------------
 # Main flow
 # ---------------------------------------------------------------------------
 
@@ -421,6 +541,9 @@ def main():
     # Re-normalize winner/loser fields
     import subprocess
     subprocess.run(["python3", "/tmp/normalize_lines.py"], check=True)
+
+    # Recompute standings teams table (W-L, indiv wins, sets, games) from match results
+    _recompute_standings_teams()
 
     # Recompute player stats from updated scorecards
     from scrapers.scrape_tennislink import _compute_player_stats_from_scorecards
