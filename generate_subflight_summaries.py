@@ -9,17 +9,15 @@ DATA = Path("data")
 # Update these as the season progresses.
 SUMMARIES = {
     "30_A": (
-        "DTC #3 (4-0) is the only unbeaten team, powered by Shi Oskooi (2.76→3.03, 4-0) "
-        "and Darian McCauley (2.98→3.11, 3-0) as the D1 pair that upset Shirey (3.18) + "
-        "Frazier (3.03) in W1. TPC and Anthem CC both at 3-1 are the main challengers. "
-        "TPC crushed DTC #2 4-1 in their delayed W4 match — Jennifer Wang won S1, Amy "
-        "Arbeli won S2, and TPC's 2D/3D pairs both won. DTC #2's only win came from "
-        "Shirey + Frazier at D1 (6-2 6-3). Anthem CC has Chelsi Grady "
-        "(2.86→3.00) and Crystal Ziebarth (2.83→2.97) emerging. Summerlin Arbors (2-2) "
-        "has Tayoni Coleman (3-0 at S1) and Brittany Carlson (2.71→2.86, 3-1) as risers. "
-        "DTC #2 collapsed to 1-3 after the TPC loss — their 1# Doubles pair going down "
-        "is a structural problem. Red Rock CC, Life Time Fitness/GV, and Southern "
-        "Highlands round out the bottom at 1-3."
+        "DTC #3 (5-0) is the only unbeaten team after W5 — beat Anthem CC 4-1 with "
+        "Yarisbel Schieck (3.09→3.20) dominating S1 and Shi Oskooi (2.84→3.12) + Darian "
+        "McCauley (2.98→3.17) winning D1. The biggest W5 story: Summerlin Arbors swept "
+        "TPC 5-0, with Tayoni Coleman (3.11→3.30) bageling TPC's S1 player 6-0 6-0 and "
+        "Nathalia (3.16) + Springer (3.27) rolling D1 6-3 6-0. TPC, Anthem CC, and "
+        "Summerlin are all 3-2 behind DTC #3. Jennifer Wang (2.87→2.95) lost S2 in a "
+        "3-setter — her early-season S1 results look overstated. DTC #2 (2-3) beat Red "
+        "Rock 3-2 to avoid a complete collapse; Shirey + Frazier continue holding serve at "
+        "D1. Red Rock CC (1-4) is the division's weakest team."
     ),
     "30_B": (
         "Four teams tied at 3-1 at the top — Spanish Trail, Desert Palm, Whitney Mesa Park, "

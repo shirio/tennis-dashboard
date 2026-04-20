@@ -91,7 +91,8 @@ def _line_short(line_label: str) -> str:
     return f"{'S' if kind == 'Singles' else 'D'}{n}"
 
 
-def _describe_match(m, rating_lookup, all_dates_in_division, include_week=True) -> str:
+def _describe_match(m, rating_lookup, all_dates_in_division, include_week=True,
+                    include_score=True) -> str:
     """Short phrase describing a match: 'W2 D1 loss to Shirey+Frazier (6-0 6-3)'."""
     wk = _week_number(m["date"], all_dates_in_division) if include_week else ""
     line = _line_short(m["line"])
@@ -99,7 +100,10 @@ def _describe_match(m, rating_lookup, all_dates_in_division, include_week=True) 
     # For concise form, use just last names of opponents
     opp = _opp_label(m, rating_lookup)
     prefix = f"{wk} {line}" if wk else line
-    return f"{prefix} {verb} {opp} ({m['score']})"
+    base = f"{prefix} {verb} {opp}"
+    if include_score and m.get("score"):
+        return f"{base} ({m['score']})"
+    return base
 
 
 def _is_lopsided_loss(m):
@@ -264,7 +268,24 @@ def main():
 
             wins_this = [m for m in this_matches if m["won"]]
             losses_this = [m for m in this_matches if not m["won"]]
-            lopsided_losses = [m for m in losses_this if _is_lopsided_loss(m)]
+
+            # Peer-level lopsided losses: surprising routs (opponent not >> player).
+            # These are the genuinely "shouldn't have happened" losses.
+            lopsided_losses = [
+                m for m in losses_this
+                if _is_lopsided_loss(m)
+                and (m["opp_avg"] is None or m["opp_avg"] - bl < 0.15)
+            ]
+
+            # Top-line lopsided losses: deployed at D1/S1 and routed by stronger opponents.
+            # Tells the "are they ready for the next level?" story.
+            top_line_lopsided_losses = [
+                m for m in losses_this
+                if _is_lopsided_loss(m)
+                and _line_short(m["line"]) in ("D1", "S1")
+                and m["opp_avg"] is not None and m["opp_avg"] - bl >= 0.15
+            ]
+
             tiebreak_wins = [m for m in wins_this if _is_tiebreak(m)]
 
             surprising_wins = [
@@ -275,6 +296,18 @@ def main():
                 m for m in this_matches
                 if not m["won"] and m["opp_avg"] and bl - m["opp_avg"] > 0.05
             ]
+
+            # Line-split story: grinds out tiebreaks at lower lines but outmatched at top.
+            # Only use tiebreak wins not already highlighted individually as upsets.
+            _surprise_win_set = set(id(m) for m in surprising_wins)
+            _fresh_tiebreak_wins = [m for m in tiebreak_wins
+                                    if id(m) not in _surprise_win_set]
+            _tiebreak_lines = {_line_short(m["line"]) for m in _fresh_tiebreak_wins}
+            _top_loss_lines = {_line_short(m["line"]) for m in top_line_lopsided_losses}
+            has_line_split = (
+                bool(_fresh_tiebreak_wins) and bool(top_line_lopsided_losses)
+                and _tiebreak_lines.isdisjoint(_top_loss_lines)
+            )
 
             # --- Assemble note ---
             parts = []
@@ -343,38 +376,78 @@ def main():
                     else:
                         parts.append(f"Upset: {desc}.")
 
-                # Describe crushing losses (these are big negative signals)
-                if lopsided_losses:
-                    # If there are 2+, describe both
-                    sorted_losses = sorted(
-                        lopsided_losses,
-                        key=lambda m: m["date"],
-                    )
-                    descs = [
-                        _describe_match(m, rating, this_data["all_dates"])
-                        for m in sorted_losses[:2]
-                    ]
-                    if len(descs) == 1:
-                        parts.append(f"Lopsided loss: {descs[0]}.")
-                    else:
-                        parts.append(f"Two lopsided losses: {descs[0]}; {descs[1]}.")
-                elif surprising_losses and not lopsided_losses:
-                    worst = max(surprising_losses,
-                               key=lambda m: bl - (m["opp_avg"] or 0))
-                    desc = _describe_match(worst, rating, this_data["all_dates"])
-                    parts.append(f"Surprising loss: {desc}.")
-
-                # Tiebreak wins (scrappy) — mention when there are multiple OR when they're the only highlight
-                if tiebreak_wins and (len(tiebreak_wins) >= 2 or
-                                       (len(this_matches) >= 3 and not surprising_wins
-                                        and not lopsided_losses)):
+                # Line-split: competitive at lower lines, outmatched at top line.
+                # Fuse into one sentence — this is the whole story.
+                if has_line_split:
                     wks = sorted({_week_number(m["date"], this_data["all_dates"])
-                                  for m in tiebreak_wins})
+                                  for m in _fresh_tiebreak_wins})
                     wks_str = "/".join(w for w in wks if w)
-                    if wks_str and len(tiebreak_wins) >= 2:
-                        parts.append(f"Won 3-set tiebreaks in {wks_str}.")
-                    elif wks_str:
-                        parts.append(f"Won a 3-set tiebreak in {wks_str}.")
+                    ll_str = "/".join(sorted(_tiebreak_lines,
+                                            key=lambda x: (x[0], x[1:])))
+                    tl_str = "/".join(sorted(_top_loss_lines,
+                                            key=lambda x: (x[0], x[1:])))
+                    top_descs = [
+                        _describe_match(m, rating, this_data["all_dates"])
+                        for m in sorted(top_line_lopsided_losses,
+                                        key=lambda m: m["date"])[:2]
+                    ]
+                    tiebreak_clause = (f"tiebreak wins in {wks_str}" if wks_str
+                                       else "tiebreak wins")
+                    parts.append(
+                        f"Competitive at {ll_str} ({tiebreak_clause}) but "
+                        f"outmatched at {tl_str}: " + "; ".join(top_descs) + "."
+                    )
+                else:
+                    # Peer-level lopsided losses (these are genuinely surprising)
+                    if lopsided_losses:
+                        sorted_losses = sorted(lopsided_losses, key=lambda m: m["date"])
+                        descs = [
+                            _describe_match(m, rating, this_data["all_dates"])
+                            for m in sorted_losses[:2]
+                        ]
+                        if len(descs) == 1:
+                            parts.append(f"Lopsided loss: {descs[0]}.")
+                        else:
+                            parts.append(f"Two lopsided losses: {descs[0]}; {descs[1]}.")
+                    elif surprising_losses and not lopsided_losses \
+                            and not top_line_lopsided_losses:
+                        worst = max(surprising_losses,
+                                   key=lambda m: bl - (m["opp_avg"] or 0))
+                        desc = _describe_match(worst, rating, this_data["all_dates"])
+                        parts.append(f"Surprising loss: {desc}.")
+
+                    # Top-line lopsided losses without a tiebreak contrast
+                    if top_line_lopsided_losses and not has_line_split:
+                        sorted_tlls = sorted(top_line_lopsided_losses,
+                                             key=lambda m: m["date"])
+                        descs = [
+                            _describe_match(m, rating, this_data["all_dates"])
+                            for m in sorted_tlls[:2]
+                        ]
+                        tl_str = "/".join(sorted(_top_loss_lines,
+                                                 key=lambda x: (x[0], x[1:])))
+                        if len(descs) == 1:
+                            parts.append(
+                                f"Deployed at {tl_str} but outmatched: {descs[0]}."
+                            )
+                        else:
+                            parts.append(
+                                f"Deployed at {tl_str}, outmatched both times: "
+                                + "; ".join(descs) + "."
+                            )
+
+                    # Tiebreak wins (not already part of a line-split narrative)
+                    if tiebreak_wins and (len(tiebreak_wins) >= 2 or
+                                          (len(this_matches) >= 3
+                                           and not surprising_wins
+                                           and not lopsided_losses)):
+                        wks = sorted({_week_number(m["date"], this_data["all_dates"])
+                                      for m in tiebreak_wins})
+                        wks_str = "/".join(w for w in wks if w)
+                        if wks_str and len(tiebreak_wins) >= 2:
+                            parts.append(f"Won 3-set tiebreaks in {wks_str}.")
+                        elif wks_str:
+                            parts.append(f"Won a 3-set tiebreak in {wks_str}.")
 
                 # Undefeated vs all-below-baseline (ceiling-capped) — even alongside other notes
                 all_opps_below = bool(wins_this) and all(
@@ -396,16 +469,17 @@ def main():
                 if n_this == 1 and not surprising_wins and not surprising_losses \
                    and not lopsided_losses:
                     m0 = this_matches[0]
-                    desc = _describe_match(m0, rating, this_data["all_dates"])
                     score_desc = _score_descriptor(m0["score"])
                     if score_desc == "3-set tiebreak":
+                        # Use prose — omit redundant score
+                        desc = _describe_match(m0, rating, this_data["all_dates"],
+                                               include_score=False)
                         if m0["won"]:
                             parts.append(f"Only {div_label} match: {desc}; won after 3 sets.")
                         else:
-                            parts.append(f"Only {div_label} match: {desc}; split sets evenly before losing tiebreak.")
-                    elif m0["won"]:
-                        parts.append(f"Only {div_label} match: {desc}.")
+                            parts.append(f"Only {div_label} match: {desc}; split sets before losing tiebreak.")
                     else:
+                        desc = _describe_match(m0, rating, this_data["all_dates"])
                         parts.append(f"Only {div_label} match: {desc}.")
 
                 # Weave in cross-division context when informative
@@ -424,49 +498,58 @@ def main():
                                 most_sig = m
                                 break
                     if most_sig:
-                        # Check if opponent is cross-listed in THIS division
-                        opp_names = most_sig["opp_names"]
-                        opp_cross_listing = ""
-                        if len(opp_names) == 1:
-                            op = pbn.get(_name_key(opp_names[0]))
-                            if op:
-                                op_team_this = op.get(f"team_{sfx}") or ""
-                                if op_team_this:
-                                    opp_cross_listing = f", on {op_team_this}'s {div_label} roster"
-                        desc = _describe_match(most_sig, rating,
-                                               other_data["all_dates"],
-                                               include_week=False)
-                        score_desc = _score_descriptor(most_sig["score"])
-                        # Reframe the description with cross-listing info
-                        if opp_cross_listing:
-                            # Construct a more narrative version
-                            line_s = _line_short(most_sig["line"]) or most_sig["line"]
-                            opp = _opp_label(most_sig, rating)
-                            if not most_sig["won"] and score_desc == "3-set tiebreak":
-                                parts.append(
-                                    f"In {other_div}: pushed {opp}{opp_cross_listing} "
-                                    f"to 3 sets at {line_s} ({most_sig['score']})."
-                                )
-                            elif most_sig["won"]:
-                                parts.append(
-                                    f"In {other_div}: beat {opp}{opp_cross_listing} "
-                                    f"at {line_s} ({most_sig['score']})."
-                                )
-                            else:
-                                parts.append(
-                                    f"In {other_div}: {line_s} loss to {opp}"
-                                    f"{opp_cross_listing} ({most_sig['score']})."
-                                )
+                        opp_r = most_sig["opp_avg"] or bl
+                        opp_gap = opp_r - bl
+                        # Suppress detail when the result is entirely predictable —
+                        # player lost to much-higher-rated opponents (gap > 0.20).
+                        # The wl_other fallback below will add a brief record note.
+                        if not most_sig["won"] and opp_gap > 0.20:
+                            pass  # not informative — let wl_other handle it
                         else:
-                            parts.append(f"In {other_div}: {desc}.")
+                            # Check if opponent is cross-listed in THIS division
+                            opp_names = most_sig["opp_names"]
+                            opp_cross_listing = ""
+                            if len(opp_names) == 1:
+                                op = pbn.get(_name_key(opp_names[0]))
+                                if op:
+                                    op_team_this = op.get(f"team_{sfx}") or ""
+                                    if op_team_this:
+                                        opp_cross_listing = (
+                                            f", on {op_team_this}'s {div_label} roster"
+                                        )
+                            desc = _describe_match(most_sig, rating,
+                                                   other_data["all_dates"],
+                                                   include_week=False)
+                            score_desc = _score_descriptor(most_sig["score"])
+                            # Reframe the description with cross-listing info
+                            if opp_cross_listing:
+                                # Construct a more narrative version
+                                line_s = _line_short(most_sig["line"]) or most_sig["line"]
+                                opp = _opp_label(most_sig, rating)
+                                if not most_sig["won"] and score_desc == "3-set tiebreak":
+                                    parts.append(
+                                        f"In {other_div}: pushed {opp}{opp_cross_listing} "
+                                        f"to 3 sets at {line_s} ({most_sig['score']})."
+                                    )
+                                elif most_sig["won"]:
+                                    parts.append(
+                                        f"In {other_div}: beat {opp}{opp_cross_listing} "
+                                        f"at {line_s} ({most_sig['score']})."
+                                    )
+                                else:
+                                    parts.append(
+                                        f"In {other_div}: {line_s} loss to {opp}"
+                                        f"{opp_cross_listing} ({most_sig['score']})."
+                                    )
+                            else:
+                                parts.append(f"In {other_div}: {desc}.")
 
-                        # Add qualitative judgment for Prexy-type case
-                        opp_r = most_sig["opp_avg"] or 0
-                        if (not most_sig["won"] and score_desc == "3-set tiebreak"
-                                and opp_r - bl > 0.10):
-                            parts.append(
-                                "Qualitative signal her ceiling is higher than baseline."
-                            )
+                            # Add qualitative judgment for Prexy-type case
+                            if (not most_sig["won"] and score_desc == "3-set tiebreak"
+                                    and opp_gap > 0.10):
+                                parts.append(
+                                    "Qualitative signal her ceiling is higher than baseline."
+                                )
 
                 # Rating trajectory (only when not already explained)
                 if dr is not None:

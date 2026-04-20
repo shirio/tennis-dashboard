@@ -1,72 +1,67 @@
 {
   "sections": [
     {
-      "title": "key findings — updated after W4 (all matches finalized)",
+      "title": "key findings — updated after W5",
       "insights": [
         {
           "tag": "your team",
           "tag_class": "you",
-          "content": "DTC #3 is 4-0, the only unbeaten team in Subflight A. Shi Oskooi (2.76→3.03, +0.27) is the model's most underrated player — the W1 D1 upset with Darian over Shirey (3.18) + Frazier (3.03) implies playing at 3.11+ level. Emmy Perez (2.85→2.99, 100% deployed) is the flex weapon. Every core player is trending up or stable."
+          "content": "DTC #3 is 5-0, the only unbeaten team in the division. W5 win over Anthem was clean: Yarisbel dominated Rivera 6-1 6-3 at S1, Shi/Darian won D1 6-2 6-3, Emmy/Moon won D2 6-4 6-4, and Kara/Rachel ground out a D3 tiebreak. Only loss was S2 (Anna Clark lost to Anthem's Kelly Twells). DTC #3 now controls their destiny — win W7 vs Summerlin to lock first place."
+        },
+        {
+          "tag": "standings shift",
+          "tag_class": "opp",
+          "content": "TPC collapsed 0-5 to Summerlin — their biggest result of the season was swept aside entirely. TPC drops to 3-2, Anthem drops to 3-2, Summerlin rises to 3-2. Three teams now tied at 3-2 behind DTC #3. The threat hierarchy has flipped: Summerlin is now the most dangerous team in Subflight A."
         },
         {
           "tag": "warning",
           "tag_class": "warn",
-          "content": "The W3 3-2 win over Red Rock was tighter than expected — Prexy/Emmy lost D1 4-6 6-3 1-0, and Schnitz/Cunningham lost D3. DTC #3's doubles depth beyond the Shi/Darian pair is the vulnerability. Kara Gaston (2.93→2.81) and Lisa Schnitz (2.95→2.91) are confirmed overrated — both deployed at D3 only and lost."
+          "content": "W7 (5/2) vs Summerlin is now the danger match. Tayoni Coleman (3.106→3.303, 4-0) bageled TPC's S1 player 6-0 6-0 — she is the division's best singles player and will face Yarisbel (3.085→3.204, 4-0). That S1 line is a coin flip at best. Nathalia (3.16) + Springer (3.27) went 6-3 6-0 at D1 today — they are DTC #3's D1 pair's biggest test yet."
         },
         {
-          "tag": "update",
+          "tag": "tpc reassessed",
           "tag_class": "opp",
-          "content": "W4 finalized: TPC rolled DTC #2 4-1 in the previously-delayed match. TPC is now 3-1, tied with Anthem. Jennifer Wang (2.87→3.11) emerged as a S1 threat, Amy Arbeli went 6-3 7-5 at S2, and TPC's 2D/3D pairs both won. DTC #2's only bright spot was Shirey + Frazier still holding serve at D1 (6-2 6-3 win). DTC #2 dropped to 1-3."
-        },
-        {
-          "tag": "overrated",
-          "tag_class": "warn",
-          "content": "Most overrated dynamics: Desiree Mcivor (Red Rock, 2.82→2.62, -0.19), Sandra Shearer (Anthem, 2.91→2.72, -0.19), Casey Primmer (Anthem, 3.17→3.11, D3 only despite highest team dynamic). On DTC #3: Gaston (2.93→2.81) and Schnitz (2.95→2.91) are overrated."
+          "content": "TPC (W6 opponent, 4/25) is no longer a serious threat. After the 0-5 rout, Jennifer Wang (2.87→2.95, 2-1) looks mortal — she lost S2 today in a 3-setter. Their D1 pair (Chikhani/Lenhart) got crushed 6-3 6-0 by Nathalia/Springer. Expect a comfortable DTC #3 win in W6 — 4-1 or better."
         },
         {
           "tag": "underrated",
           "tag_class": "opp",
-          "content": "Most underrated: Shi Oskooi (2.76→3.03, +0.27), Kinsey Wolanski (Red Rock, 2.44→2.67, +0.23), Brittany Carlson (Summerlin, 2.71→2.86, +0.15), Maryam Kaveh (Red Rock, 2.63→2.76, +0.14), Chelsi Grady (Anthem, 2.86→3.00, +0.13), Crystal Ziebarth (Anthem, 2.83→2.97, +0.14)."
+          "content": "Most underrated after W5: Shi Oskooi (2.84→3.12, +0.28, 5-0), Yarisbel Schieck (3.09→3.20, 4-0), Tayoni Coleman (3.11→3.30, 4-0), Darian McCauley (2.98→3.17, 4-0), Kelly Twells (Anthem, 2.98→3.17, 4-0). Kelly Twells is quietly Anthem's best player — she beat DTC #3's Anna Clark at S2 today while Gina Rivera was getting routed at S1."
         },
         {
-          "tag": "threats",
-          "tag_class": "opp",
-          "content": "Biggest D1 threats: Shirey (3.26→3.21) + Frazier (3.08) remain the top D1 pair — 3-1 together, their only loss was to Shi+Darian in W1. Biggest S1 threats: Tayoni Coleman (Summerlin, 3.08→3.10, 3-0), Nourjan Bonney (Desert Palm, 2.97→3.07, 3-0), and Jennifer Wang (TPC, 2.87→3.11, 2-0 at S1). S1 matchup to watch: Yarisbel Schieck vs Tayoni Coleman on 5/2."
+          "tag": "d1 pair check",
+          "tag_class": "you",
+          "content": "Anthem put Maddux (2.72) + Laudenslager (3.01) at D1 against Shi/Darian — a mismatch they lost 6-2 6-3. Shi/Darian are now 4-0 together at D1, their only real test being the W1 Shirey+Frazier upset. Nathalia (3.14) + Springer (3.19, post-adjustment) are the only pair in the subflight likely to push them."
         },
         {
-          "tag": "subflight B",
-          "tag_class": "opp",
-          "content": "Spanish Trail (4-0) and Desert Palm (3-1) dominate Subflight B. Note: Desert Palm's ratings are flat despite good records — they beat weak opponents. Kristyl Addison (3.06→3.06, 4-0) hasn't proved anything above baseline because every opponent was rated well below her. Club Ridges (0-4) is winless."
+          "tag": "kara/rachel bounce back",
+          "tag_class": "you",
+          "content": "Kara Gaston (3.09→2.86) and Rachel Glaze (2.83→2.80) won D3 today 4-6 6-1 1-0 — their first win together. This is important: D3 was the soft underbelly in previous weeks. Rachel is 2-0 overall, Kara now 1-1. Keep this pair together at D3."
         }
       ]
     },
     {
-      "title": "04/18 — next match preview: DTC #3 vs ANTHEM CC",
+      "title": "04/25 — next match preview: DTC #3 vs TPC",
       "insights": [
         {
           "tag": "matchup",
           "tag_class": "you",
-          "content": "DTC #3 (4-0) hosts Anthem CC (3-1). Anthem's lone loss was 1-4 to Summerlin in W4. This is the biggest test remaining in the first half — both at the top of Subflight A."
-        },
-        {
-          "tag": "D1",
-          "tag_class": "you",
-          "content": "Anthem's likely D1: Chelsi Grady (2.86→3.00, 2-1) + Crystal Ziebarth (2.83→2.97, 2-0) or Therese Laudenslager (3.05→2.98, 2-2) + Carrie Maddux (2.78→2.72, 1-2). Shi/Darian should be favored against either pair."
+          "content": "DTC #3 (5-0) at TPC (3-2). TPC just got swept 0-5 by Summerlin. Their roster is thinner than their early-season results suggested. This should be a comfortable win."
         },
         {
           "tag": "S1",
           "tag_class": "you",
-          "content": "Anthem's S1 options: Gina Rivera (3.01→2.94, 1-2) or CHRISTINE McNair (3.14→3.12, 1-0). Against Yarisbel Schieck (3.07, 3-0) — slight edge to DTC #3. Rivera has two losses; McNair is less tested."
+          "content": "TPC's S1 option is likely Amber Candelaria (2.98) — she was bageled 6-0 6-0 by Coleman today. Yarisbel (3.20 dynamic) should win comfortably. If they push Jennifer Wang (2.95) back to S1, Yarisbel still has the edge."
         },
         {
-          "tag": "watch for",
-          "tag_class": "warn",
-          "content": "Anthem's D3 strength: Cynthia Lau (2-0) and Heather Rosenthal (1-1). DTC #3 needs a reliable D3 pair — don't send Gaston or Schnitz."
+          "tag": "D1",
+          "tag_class": "you",
+          "content": "TPC's D1 pair (Chikhani 2.77 + Lenhart 2.96) lost 6-3 6-0 to Nathalia/Springer. Shi/Darian should win this handily."
         },
         {
           "tag": "prediction",
           "tag_class": "you",
-          "content": "DTC #3 should win 3-2 or 4-1. D1 and S1 favor DTC #3. Swing lines are D2 (Kim Knotts vs Anthem's D2) and D3 (depends on deployment)."
+          "content": "DTC #3 wins 4-1 or 5-0. The only swing line is S2 — Anna Clark (3.10→2.97) vs TPC's S2. TPC's depth beyond Wang has not been impressive."
         }
       ]
     },
@@ -74,19 +69,14 @@
       "title": "remaining schedule outlook",
       "insights": [
         {
-          "tag": "W5 (4/18)",
-          "tag_class": "you",
-          "content": "vs ANTHEM CC (3-1). Top-of-table clash. Advantage DTC #3 at D1 and S1."
-        },
-        {
           "tag": "W6 (4/25)",
-          "tag_class": "warn",
-          "content": "vs TPC (3-1). Upgraded threat after TPC's 4-1 rout of DTC #2. Jennifer Wang (2.87→3.11) won both her S1 matches and Amy Arbeli is unbeaten at S2. TPC's D1 lost to Shirey+Frazier but they won everywhere else. No longer a comfortable match — expect 3-2 either way."
+          "tag_class": "you",
+          "content": "vs TPC (3-2). TPC just got swept 0-5 by Summerlin — no longer a serious test. Comfortable win expected."
         },
         {
           "tag": "W7 (5/2)",
           "tag_class": "warn",
-          "content": "vs SUMMERLIN ARBORS (2-2). Most dangerous remaining match. Tayoni Coleman (3-0) vs Yarisbel at S1 is the marquee line. Brittany Carlson (2.71→2.86, 3-1) is a wildcard."
+          "content": "vs SUMMERLIN ARBORS (3-2) — now the must-win. Tayoni Coleman (3.30 dynamic, 4-0) vs Yarisbel at S1 is the marquee line. Nathalia (3.14) + Springer (3.19) at D1 is DTC #3's hardest doubles test. Brittany Carlson (2.76→2.86, 4-1) is a wildcard at D2/D3. This match decides first place."
         },
         {
           "tag": "W8 (5/16)",
@@ -96,12 +86,12 @@
         {
           "tag": "W9 (5/30)",
           "tag_class": "you",
-          "content": "vs RED ROCK CC (1-3). Already beat them 3-2 in W3. Should still win 3-2+."
+          "content": "vs RED ROCK CC (1-4). Already beat them 3-2 in W3. Should win 3-2+."
         },
         {
           "tag": "path to 1st",
           "tag_class": "you",
-          "content": "DTC #3 controls their destiny. Win vs Anthem (4/18) and Summerlin (5/2) to lock 1st. Even splitting those keeps 1st given the 2-game lead."
+          "content": "DTC #3 is 2 games clear of everyone at 5-0. Win W6 (TPC, very likely) and W7 (Summerlin, competitive) to clinch 1st outright. Even losing W7 keeps DTC #3 in the driver's seat given the remaining schedule."
         }
       ]
     }
