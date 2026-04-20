@@ -2498,7 +2498,7 @@
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.1057,
     "current_division_rating": 3.3026,
-    "global_rating": 3.3843,
+    "global_rating": 3.3075,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-3",
     "lines_played": 5,
@@ -2514,13 +2514,13 @@
       "S1x2",
       "S2"
     ],
-    "wl_record_35": "2-1",
+    "wl_record_35": "1-2",
     "team_30": "SUMMERLIN ARBORS",
     "team_35": "DTC #3",
-    "notes_30": "Won 3-set tiebreaks in W1/W4. Undefeated but all opponents below baseline (avg 2.93) — ceiling-capped. Biggest riser on this roster. Also 2-1 in 3.5.",
-    "notes_35": "Upset: W5 S1 beat Stacie Corelle (3.53) (6-3 6-0). Playing S1/D1 despite low baseline. Also 4-0 in 3.0.",
+    "notes_30": "Won 3-set tiebreaks in W1/W4. Undefeated but all opponents below baseline (avg 2.93) — ceiling-capped. Biggest riser on this roster. Also 1-2 in 3.5.",
+    "notes_35": "Deployed at S1 but outmatched: W5 S1 lost to Stacie Corelle (3.53) (6-3 6-0). Playing S1/D1 despite low baseline. Also 4-0 in 3.0.",
     "rating_30": 3.3026,
-    "rating_35": 3.3843
+    "rating_35": 3.1057
   },
   {
     "id": "jaqueline-schultz",
@@ -2603,7 +2603,7 @@
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.1113,
     "current_division_rating": 3.1113,
-    "global_rating": 3.1113,
+    "global_rating": 3.3453,
     "ntrp_rating": "3.0 C",
     "wl_record": "3-2",
     "lines_played": 5,
@@ -2620,13 +2620,13 @@
     "lines_played_35": [
       "D3x2"
     ],
-    "wl_record_35": "0-2",
+    "wl_record_35": "1-1",
     "team_30": "DESERT PALM",
     "team_35": "DTC #3",
-    "notes_30": "Among DESERT PALM's most-deployed (4/5 weeks). Captain's flex weapon — D1/D2/D3. Undefeated but all opponents below baseline (avg 2.75) — ceiling-capped. Also 0-2 in 3.5.",
-    "notes_35": "Also 4-0 in 3.0.",
+    "notes_30": "Among DESERT PALM's most-deployed (4/5 weeks). Captain's flex weapon — D1/D2/D3. Undefeated but all opponents below baseline (avg 2.75) — ceiling-capped. Also 1-1 in 3.5.",
+    "notes_35": "Upset: W5 D3 beat Karen Kiyono (3.42) + Michelle Jarvis (3.16) (3-6 6-1 1-0). Also 4-0 in 3.0.",
     "rating_30": 3.1113,
-    "rating_35": 3.1033
+    "rating_35": 3.2801
   },
   {
     "id": "therese-laudenslager",
@@ -3295,7 +3295,7 @@
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.897,
     "current_division_rating": 2.8618,
-    "global_rating": 2.897,
+    "global_rating": 2.8135,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -3311,13 +3311,13 @@
       "D1",
       "D2x2"
     ],
-    "wl_record_35": "1-2",
+    "wl_record_35": "0-3",
     "team_30": "DTC #3",
     "team_35": "DTC #3",
-    "notes_30": "Surprising loss: W3 D3 lost to Courtney Long (2.79) + Kellye Ray (2.84) (1-6 6-2 1-0). In 3.5: D2 beat Diane Paull (3.42) + Valeria Perdomo (3.43) (6-1 6-7 1-0).",
-    "notes_35": "Upset: W5 D2 beat Diane Paull (3.42) + Valeria Perdomo (3.43) (6-1 6-7 1-0) — implies playing at 3.43+ level. Playing S1/D1 despite low baseline. Also 0-1 in 3.0.",
+    "notes_30": "Surprising loss: W3 D3 lost to Courtney Long (2.79) + Kellye Ray (2.84) (1-6 6-2 1-0). Also 0-3 in 3.5.",
+    "notes_35": "Playing S1/D1 despite low baseline. Also 0-1 in 3.0.",
     "rating_30": 2.8618,
-    "rating_35": 3.2969
+    "rating_35": 2.8517
   },
   {
     "id": "jacqueline-brooks",
@@ -3492,7 +3492,7 @@
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.0871,
     "current_division_rating": 2.8601,
-    "global_rating": 3.0871,
+    "global_rating": 3.0005,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -3509,13 +3509,13 @@
       "D2",
       "D3"
     ],
-    "wl_record_35": "2-1",
+    "wl_record_35": "1-2",
     "team_30": "DTC #3",
     "team_35": "DTC #3",
-    "notes_30": "Surprising loss: W2 D3 lost to Shaza Nayef (2.83) + Amy Badain (2.72) (6-2 6-4). Also 2-1 in 3.5.",
-    "notes_35": "Captain's flex weapon — D1/D2/D3. Upset: W5 D2 beat Diane Paull (3.42) + Valeria Perdomo (3.43) (6-1 6-7 1-0) — implies playing at 3.43+ level. Playing S1/D1 despite low baseline. Also 1-1 in 3.0.",
+    "notes_30": "Surprising loss: W2 D3 lost to Shaza Nayef (2.83) + Amy Badain (2.72) (6-2 6-4). Also 1-2 in 3.5.",
+    "notes_35": "Captain's flex weapon — D1/D2/D3. Playing S1/D1 despite low baseline. Also 1-1 in 3.0.",
     "rating_30": 2.8601,
-    "rating_35": 3.4216
+    "rating_35": 3.0871
   },
   {
     "id": "lisa-gaughan",
@@ -4664,7 +4664,7 @@
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8224,
     "current_division_rating": 2.9128,
-    "global_rating": 2.9191,
+    "global_rating": 3.2027,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -4680,13 +4680,13 @@
       "D1",
       "D3"
     ],
-    "wl_record_35": "0-2",
+    "wl_record_35": "1-1",
     "team_30": "DESERT PALM",
     "team_35": "DTC #3",
-    "notes_30": "Upset: W1 D1 beat Maggie Pacholuk (2.80) + Jaqueline Schultz (3.08) (7-5 6-4). Also 0-2 in 3.5.",
-    "notes_35": "Deployed at D1 but outmatched: W1 D1 lost to Susan Grady (3.04) + Arika Carrier (3.70) (6-4 6-0). Playing S1/D1 despite low baseline. Also 2-0 in 3.0.",
+    "notes_30": "Upset: W1 D1 beat Maggie Pacholuk (2.80) + Jaqueline Schultz (3.08) (7-5 6-4). Also 1-1 in 3.5.",
+    "notes_35": "Upset: W5 D3 beat Karen Kiyono (3.42) + Michelle Jarvis (3.16) (3-6 6-1 1-0) — implies playing at 3.29+ level. Deployed at D1 but outmatched: W1 D1 lost to Susan Grady (3.04) + Arika Carrier (3.70) (6-4 6-0). Playing S1/D1 despite low baseline. Also 2-0 in 3.0.",
     "rating_30": 2.9128,
-    "rating_35": 2.8288
+    "rating_35": 3.1525
   },
   {
     "id": "shaza-nayef",
@@ -6325,7 +6325,7 @@
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7676,
     "current_division_rating": 2.572,
-    "global_rating": 2.8331,
+    "global_rating": 2.5833,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -6342,13 +6342,13 @@
       "S1",
       "S2"
     ],
-    "wl_record_35": "1-1",
+    "wl_record_35": "0-2",
     "team_30": "SPANISH OAKS",
     "team_35": "DTC #1",
-    "notes_30": "Surprising loss: W2 S2 lost to Heather Hartzell (2.58) (6-2 6-1). Also 1-1 in 3.5.",
-    "notes_35": "Upset: W5 S2 beat Valerie Witherspoon (3.39) (6-3 6-3). Playing S1/D1 despite low baseline. Also 0-2 in 3.0.",
+    "notes_30": "Surprising loss: W2 S2 lost to Heather Hartzell (2.58) (6-2 6-1). Also 0-2 in 3.5.",
+    "notes_35": "Playing S1/D1 despite low baseline. Also 0-2 in 3.0.",
     "rating_30": 2.572,
-    "rating_35": 3.2094
+    "rating_35": 2.8222
   },
   {
     "id": "jennifer-olson",
@@ -8681,8 +8681,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.6616,
-    "current_division_rating": 3.501,
-    "global_rating": 3.501,
+    "current_division_rating": 3.6473,
+    "global_rating": 3.6473,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -8694,12 +8694,12 @@
       "D1",
       "D2"
     ],
-    "wl_record_35": "1-1",
+    "wl_record_35": "2-0",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Carolyn Wood (3.34) + Jennifer Hall (3.33) (6-2 6-2).",
-    "notes_35": "Surprising loss: W5 D1 lost to Kelly Nguyen (3.25) + Donna Lefever (3.35) (6-4 6-3).",
+    "notes_35": "Undefeated but all opponents below baseline (avg 3.32) — ceiling-capped.",
     "rating_30": 3.6616,
-    "rating_35": 3.501
+    "rating_35": 3.6473
   },
   {
     "id": "kate-alred",
@@ -8760,8 +8760,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.5806,
-    "current_division_rating": 3.3726,
-    "global_rating": 3.3726,
+    "current_division_rating": 3.5556,
+    "global_rating": 3.5556,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -8773,12 +8773,12 @@
       "D1",
       "D3"
     ],
-    "wl_record_35": "1-1",
+    "wl_record_35": "2-0",
     "team_35": "DTC #1",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat RACQUEL DIZON (3.05) + Monica Johnson (3.18) (6-3 7-5).",
-    "notes_35": "Surprising loss: W5 D1 lost to Kelly Nguyen (3.25) + Donna Lefever (3.35) (6-4 6-3).",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Kelly Nguyen (3.25) + Donna Lefever (3.35) (6-4 6-3).",
+    "notes_35": "Undefeated but all opponents below baseline (avg 3.21) — ceiling-capped.",
     "rating_30": 3.5806,
-    "rating_35": 3.3726
+    "rating_35": 3.5556
   },
   {
     "id": "christina-drees",
@@ -9520,10 +9520,10 @@
     "lines_played_35": [
       "S1x3"
     ],
-    "wl_record_35": "1-2",
+    "wl_record_35": "2-1",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Punam Patel (3.50) (6-3 6-1).",
-    "notes_35": "Lopsided loss: W5 S1 lost to Tayoni Coleman (3.11) (6-3 6-0).",
+    "notes_35": "Surprising loss: W3 S1 lost to Karina McAffee (3.41) (5-7 7-6 1-0).",
     "rating_30": 3.5293,
     "rating_35": 3.5293
   },
@@ -10096,8 +10096,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4244,
-    "current_division_rating": 3.5631,
-    "global_rating": 3.5631,
+    "current_division_rating": 3.4244,
+    "global_rating": 3.4244,
     "ntrp_rating": "3.5 C",
     "wl_record": "3-0",
     "lines_played": 3,
@@ -10110,12 +10110,12 @@
       "D2",
       "D3"
     ],
-    "wl_record_35": "3-1",
+    "wl_record_35": "2-2",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Maria Truman (3.52) + Suzy Wirth (3.43) (6-1 6-4).",
-    "notes_35": "DTC #1's most-deployed player (4/5 weeks). Captain's flex weapon — D1/D2/D3. Upset: W3 D1 beat Maria Truman (3.52) + Suzy Wirth (3.43) (6-1 6-4).",
+    "notes_35": "DTC #1's most-deployed player (4/5 weeks). Captain's flex weapon — D1/D2/D3. Upset: W3 D1 beat Maria Truman (3.52) + Suzy Wirth (3.43) (6-1 6-4). Surprising loss: W5 D3 lost to Alexandria Chang (2.82) + Kristyl Addison (3.11) (3-6 6-1 1-0).",
     "rating_30": 3.4244,
-    "rating_35": 3.5631
+    "rating_35": 3.4244
   },
   {
     "id": "wendy-hopper",
@@ -10580,8 +10580,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4218,
-    "current_division_rating": 3.2805,
-    "global_rating": 3.2805,
+    "current_division_rating": 3.4218,
+    "global_rating": 3.4218,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -10593,12 +10593,12 @@
       "D2",
       "D3"
     ],
-    "wl_record_35": "1-1",
+    "wl_record_35": "2-0",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Elisabeth Skinner (2.85) + Maggie Skinner (3.55) (5-7 6-1 1-0).",
-    "notes_35": "Surprising loss: W5 D2 lost to Lisa Schnitz (2.90) + Kara Gaston (3.09) (6-1 6-7 1-0).",
+    "notes_35": "Won 3-set tiebreaks in W4/W5. Undefeated but all opponents below baseline (avg 3.10) — ceiling-capped.",
     "rating_30": 3.4218,
-    "rating_35": 3.2805
+    "rating_35": 3.4218
   },
   {
     "id": "patricia-delgado",
@@ -10791,8 +10791,8 @@
     "team": "DTC #3",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.3932,
-    "current_division_rating": 3.1479,
-    "global_rating": 3.1479,
+    "current_division_rating": 3.2925,
+    "global_rating": 3.2925,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -10804,12 +10804,12 @@
       "S1",
       "S2x2"
     ],
-    "wl_record_35": "1-2",
+    "wl_record_35": "2-1",
     "team_35": "DTC #3",
     "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Lisa Gaughan (2.85) (6-4 7-5).",
-    "notes_35": "Surprising loss: W5 S2 lost to Shawanna Johnson (2.77) (6-3 6-3).",
+    "notes_35": "Surprising loss: W3 S1 lost to Melanie Isbell (3.20) (4-6 6-2 1-0).",
     "rating_30": 3.3932,
-    "rating_35": 3.1479
+    "rating_35": 3.2925
   },
   {
     "id": "donna-lefever",
@@ -10818,8 +10818,8 @@
     "team": "DTC #3",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.3521,
-    "current_division_rating": 3.53,
-    "global_rating": 3.53,
+    "current_division_rating": 3.3413,
+    "global_rating": 3.3413,
     "ntrp_rating": "3.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -10827,14 +10827,14 @@
     "notes": null,
     "profile_url": "/adult/profile.aspx?playername=Donna Lefever",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat EMELIA ALLEN (3.58) + Amy Waters (3.66) (6-4 6-3).",
-    "notes_35": "Upset: W5 D1 beat EMELIA ALLEN (3.58) + Amy Waters (3.66) (6-4 6-3) — implies playing at 3.62+ level.",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D1 lost to EMELIA ALLEN (3.58) + Amy Waters (3.66) (6-4 6-3).",
+    "notes_35": "Only 3.5 match: W5 D1 lost to EMELIA ALLEN (3.58) + Amy Waters (3.66) (6-4 6-3).",
     "rating_30": 3.3521,
-    "rating_35": 3.53,
+    "rating_35": 3.3413,
     "lines_played_35": [
       "D1"
     ],
-    "wl_record_35": "1-0",
+    "wl_record_35": "0-1",
     "team_35": "DTC #3"
   },
   {
@@ -10950,8 +10950,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.4344,
-    "current_division_rating": 3.2862,
-    "global_rating": 3.2862,
+    "current_division_rating": 3.4344,
+    "global_rating": 3.4344,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -10963,12 +10963,12 @@
       "D2",
       "D3x2"
     ],
-    "wl_record_35": "1-2",
+    "wl_record_35": "2-1",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Elisabeth Skinner (2.85) + Maggie Skinner (3.55) (5-7 6-1 1-0).",
-    "notes_35": "Surprising loss: W5 D2 lost to Lisa Schnitz (2.90) + Kara Gaston (3.09) (6-1 6-7 1-0). Won a 3-set tiebreak in W4.",
+    "notes_35": "Won 3-set tiebreaks in W4/W5.",
     "rating_30": 3.4344,
-    "rating_35": 3.2862
+    "rating_35": 3.4344
   },
   {
     "id": "janet-wellman",
@@ -11368,8 +11368,8 @@
     "team": "DTC #3",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.2462,
-    "current_division_rating": 3.3043,
-    "global_rating": 3.3043,
+    "current_division_rating": 3.1171,
+    "global_rating": 3.1171,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -11381,12 +11381,12 @@
       "D1x2",
       "D2x2"
     ],
-    "wl_record_35": "1-3",
+    "wl_record_35": "0-4",
     "team_35": "DTC #3",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat EMELIA ALLEN (3.58) + Amy Waters (3.66) (6-4 6-3).",
-    "notes_35": "DTC #3's most-deployed player (4/5 weeks). Upset: W5 D1 beat EMELIA ALLEN (3.58) + Amy Waters (3.66) (6-4 6-3) — implies playing at 3.62+ level. Surprising loss: W4 D2 lost to Vinne Chen (3.12) + Jill Morrison (3.19) (6-2 6-3).",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D2 lost to Jamie Johnson (3.20) + Jeralyn Marchesi (3.14) (6-1 7-6).",
+    "notes_35": "DTC #3's most-deployed player (4/5 weeks). Surprising loss: W4 D2 lost to Vinne Chen (3.12) + Jill Morrison (3.19) (6-2 6-3).",
     "rating_30": 3.2462,
-    "rating_35": 3.3043
+    "rating_35": 3.1171
   },
   {
     "id": "andi-berger",
@@ -12521,8 +12521,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.1554,
-    "current_division_rating": 3.1411,
-    "global_rating": 3.1411,
+    "current_division_rating": 2.9629,
+    "global_rating": 2.9629,
     "ntrp_rating": "3.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -12530,14 +12530,14 @@
     "notes": null,
     "profile_url": "/adult/profile.aspx?playername=michelle jarvis",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Alexandria Chang (2.82) + Kristyl Addison (3.11) (3-6 6-1 1-0).",
-    "notes_35": "Only 3.5 match: W5 D3 beat Alexandria Chang (2.82) + Kristyl Addison (3.11); won after 3 sets.",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D3 lost to Alexandria Chang (2.82) + Kristyl Addison (3.11) (3-6 6-1 1-0).",
+    "notes_35": "Surprising loss: W5 D3 lost to Alexandria Chang (2.82) + Kristyl Addison (3.11) (3-6 6-1 1-0).",
     "rating_30": 3.1554,
-    "rating_35": 3.1411,
+    "rating_35": 2.9629,
     "lines_played_35": [
       "D3"
     ],
-    "wl_record_35": "1-0",
+    "wl_record_35": "0-1",
     "team_35": "DTC #1"
   },
   {

@@ -11,7 +11,7 @@
         {
           "tag": "standings shift",
           "tag_class": "opp",
-          "content": "TPC collapsed 0-5 to Summerlin — their biggest result of the season was swept aside entirely. TPC drops to 3-2, Anthem drops to 3-2, Summerlin rises to 3-2. Three teams now tied at 3-2 behind DTC #3. The threat hierarchy has flipped: Summerlin is now the most dangerous team in Subflight A."
+          "content": "TPC collapsed 0-5 to Summerlin — their biggest result of the season was swept aside entirely. TPC drops to 3-2, Anthem drops to 3-2, Summerlin rises to 3-2. Three teams now tied at 3-2 behind DTC #3. The threat hierarchy has flipped: Summerlin is now the most dangerous team in Subflight A. DTC #2 beat Red Rock 3-2 — but buried inside that result is Shirey/Frazier losing D1 to Cambridge/Schwartz 6-2 6-3."
         },
         {
           "tag": "warning",
@@ -36,7 +36,12 @@
         {
           "tag": "kara/rachel bounce back",
           "tag_class": "you",
-          "content": "Kara Gaston (3.09→2.86) and Rachel Glaze (2.83→2.80) won D3 today 4-6 6-1 1-0 — their first win together. This is important: D3 was the soft underbelly in previous weeks. Rachel is 2-0 overall, Kara now 1-1. Keep this pair together at D3."
+          "content": "Kara Gaston (3.09→2.86) and Rachel Glaze (2.83→2.80) won D3 today 4-6 6-1 1-0 — their first competitive win together. (Rachel's other 'win' in the record was a default — no competitive data there.) Kara now 1-1 in real matches. Keep this pair at D3."
+        },
+        {
+          "tag": "upset — shirey/frazier fall",
+          "tag_class": "warn",
+          "content": "Major W5 upset: Brenda Cambridge (2.999→3.12) + Rhianna Schwartz (2.999→3.21) beat Shirey (3.26) + Frazier (3.08) 6-2 6-3 at D1 for Red Rock. This is only the second time the top D1 pair has been beaten all season — both times at D1 by underdogs. Shirey and Frazier are no longer the automatic D1 lock they appeared to be."
         }
       ]
     },

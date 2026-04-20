@@ -16,8 +16,10 @@ SUMMARIES = {
         "Nathalia (3.16) + Springer (3.27) rolling D1 6-3 6-0. TPC, Anthem CC, and "
         "Summerlin are all 3-2 behind DTC #3. Jennifer Wang (2.87→2.95) lost S2 in a "
         "3-setter — her early-season S1 results look overstated. DTC #2 (2-3) beat Red "
-        "Rock 3-2 to avoid a complete collapse; Shirey + Frazier continue holding serve at "
-        "D1. Red Rock CC (1-4) is the division's weakest team."
+        "Rock 3-2, but buried in that result: Brenda Cambridge (2.999→3.12) + Rhianna "
+        "Schwartz (2.999→3.21) upset Shirey (3.26) + Frazier (3.08) at D1 — 6-2 6-3. "
+        "The division's supposed top D1 pair have now lost twice. Red Rock CC (1-4) is the "
+        "weakest team overall, but Cambridge/Schwartz are an emerging threat."
     ),
     "30_B": (
         "Four teams tied at 3-1 at the top — Spanish Trail, Desert Palm, Whitney Mesa Park, "

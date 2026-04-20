@@ -362,9 +362,25 @@ def run(dry_run: bool = False) -> int:
                             print(f"    [warn] new match {tl_id} not in stored data; skipping")
                             continue
 
-                        # Update stored match object in place
-                        stored["team_wins_home"] = row.get("team_wins_home")
-                        stored["team_wins_away"] = row.get("team_wins_away")
+                        # Update stored match object in place.
+                        # Detect home/away orientation flip: Match Summary may list
+                        # teams in opposite order from what's stored (from original scrape).
+                        # When flipped, swap the scores AND invert result on each line so
+                        # normalize_lines assigns winner_team correctly.
+                        stored_home = (stored.get("home_team") or "").strip().lower()
+                        row_home = (row.get("home_team") or "").strip().lower()
+                        orientation_flipped = (stored_home != row_home and bool(stored_home))
+                        if orientation_flipped:
+                            stored["team_wins_home"] = row.get("team_wins_away")
+                            stored["team_wins_away"] = row.get("team_wins_home")
+                            for ln in lines:
+                                if ln.get("result") == "home":
+                                    ln["result"] = "away"
+                                elif ln.get("result") == "away":
+                                    ln["result"] = "home"
+                        else:
+                            stored["team_wins_home"] = row.get("team_wins_home")
+                            stored["team_wins_away"] = row.get("team_wins_away")
                         stored["pending"] = row.get("pending", False)
                         stored["lines"] = lines
                         print(f"    ✓ {row['date']} {row['home_team']} vs {row['away_team']}: "

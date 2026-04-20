@@ -2431,8 +2431,8 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779866",
           "home_team": "DTC #1",
           "away_team": "DTC #3",
-          "team_wins_home": 2,
-          "team_wins_away": 3,
+          "team_wins_home": 3,
+          "team_wins_away": 2,
           "score": "",
           "status": "Not Played",
           "pending": false,
@@ -2442,55 +2442,55 @@
               "players_home": "Tayoni Coleman",
               "players_away": "Stacie Corelle",
               "score": "6-3 6-0",
-              "result": "away",
-              "winners": "Tayoni Coleman",
-              "losers": "Stacie Corelle",
-              "winner_team": "DTC #3",
-              "loser_team": "DTC #1"
+              "result": "home",
+              "winners": "Stacie Corelle",
+              "losers": "Tayoni Coleman",
+              "winner_team": "DTC #1",
+              "loser_team": "DTC #3"
             },
             {
               "line": "2# Singles",
               "players_home": "Valerie Witherspoon",
               "players_away": "Shawanna Johnson",
               "score": "6-3 6-3",
-              "result": "home",
-              "winners": "Shawanna Johnson",
-              "losers": "Valerie Witherspoon",
-              "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "result": "away",
+              "winners": "Valerie Witherspoon",
+              "losers": "Shawanna Johnson",
+              "winner_team": "DTC #3",
+              "loser_team": "DTC #1"
             },
             {
               "line": "1# Doubles",
               "players_home": "Kelly Nguyen / Donna Lefever",
               "players_away": "EMELIA ALLEN / Amy Waters",
               "score": "6-4 6-3",
-              "result": "away",
-              "winners": "Kelly Nguyen / Donna Lefever",
-              "losers": "EMELIA ALLEN / Amy Waters",
-              "winner_team": "DTC #3",
-              "loser_team": "DTC #1"
+              "result": "home",
+              "winners": "EMELIA ALLEN / Amy Waters",
+              "losers": "Kelly Nguyen / Donna Lefever",
+              "winner_team": "DTC #1",
+              "loser_team": "DTC #3"
             },
             {
               "line": "2# Doubles",
               "players_home": "Lisa Schnitz / Kara Gaston",
               "players_away": "Diane Paull / Valeria Perdomo",
               "score": "6-1 6-7 1-0",
-              "result": "away",
-              "winners": "Lisa Schnitz / Kara Gaston",
-              "losers": "Diane Paull / Valeria Perdomo",
-              "winner_team": "DTC #3",
-              "loser_team": "DTC #1"
+              "result": "home",
+              "winners": "Diane Paull / Valeria Perdomo",
+              "losers": "Lisa Schnitz / Kara Gaston",
+              "winner_team": "DTC #1",
+              "loser_team": "DTC #3"
             },
             {
               "line": "3# Doubles",
               "players_home": "Alexandria Chang / Kristyl Addison",
               "players_away": "Karen Kiyono / Michelle Jarvis",
               "score": "3-6 6-1 1-0",
-              "result": "home",
-              "winners": "Karen Kiyono / Michelle Jarvis",
-              "losers": "Alexandria Chang / Kristyl Addison",
-              "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "result": "away",
+              "winners": "Alexandria Chang / Kristyl Addison",
+              "losers": "Karen Kiyono / Michelle Jarvis",
+              "winner_team": "DTC #3",
+              "loser_team": "DTC #1"
             }
           ]
         },
