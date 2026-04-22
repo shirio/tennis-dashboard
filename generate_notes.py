@@ -361,6 +361,172 @@ def _ordinal_suffix(n: int) -> str:
     return {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
 
 
+def _compose_subflight_summary(sf_label, div_label, teams, pbt, sfx, pending_matches):
+    """
+    Generate a 2-4 sentence narrative summary for a subflight.
+
+    Args:
+        sf_label: "A" or "B"
+        div_label: "3.0" or "3.5"
+        teams: list of team dicts from standings JSON
+        pbt: dict mapping (team_upper, sfx) -> [player_obj, ...]
+        sfx: "30" or "35"
+        pending_matches: list of pending match dicts in this subflight
+    """
+
+    def _rec(t):
+        return f"{t.get('team_wins', 0)}-{t.get('team_losses', 0)}"
+
+    ranked = sorted(teams, key=lambda t: (-t.get("team_wins", 0), -t.get("indiv_wins", 0)))
+    if not ranked:
+        return ""
+
+    leader_wins = ranked[0].get("team_wins", 0)
+    sf_id = f"{div_label}{sf_label}"   # e.g. "3.030A" — just use label directly
+
+    parts = []
+
+    # --- Sentence 1: leader(s) ---
+    leaders = [t for t in ranked if t.get("team_wins", 0) == leader_wins]
+    if len(leaders) == 1:
+        t = leaders[0]
+        short = _team_short(t["team_name"])
+        if t.get("team_losses", 0) == 0:
+            parts.append(f"{short} leads {sf_label} undefeated at {_rec(t)}.")
+        else:
+            parts.append(f"{short} leads {sf_label} at {_rec(t)}.")
+    elif len(leaders) == 2:
+        names = f"{_team_short(leaders[0]['team_name'])} and {_team_short(leaders[1]['team_name'])}"
+        parts.append(f"{names} share the {sf_label} lead at {_rec(leaders[0])}.")
+    else:
+        names = ", ".join(_team_short(t["team_name"]) for t in leaders)
+        parts.append(f"{names} are all tied atop {sf_label} at {_rec(leaders[0])}.")
+
+    # --- Sentence 2: chasers (within 2 wins of leader, not already a leader) ---
+    # With 4-5 games still remaining in the season, being 2 wins back is
+    # still a live title race — use a 2-win gap as the contention cutoff.
+    chasers = [t for t in ranked
+               if t.get("team_wins", 0) >= leader_wins - 2 and t not in leaders]
+    if chasers:
+        c_strs = [f"{_team_short(t['team_name'])} ({_rec(t)})" for t in chasers]
+        if len(c_strs) == 1:
+            parts.append(f"{c_strs[0]} is in contention.")
+        elif len(c_strs) <= 4:
+            parts.append(f"{', '.join(c_strs[:-1])}, and {c_strs[-1]} are in contention.")
+        else:
+            # Too many to list — just say how many at what record
+            parts.append(
+                f"{len(c_strs)} teams are within 2 of the lead ({_rec(chasers[0])})."
+            )
+
+    # --- Sentence 3: bottom of the table ---
+    fading = [t for t in ranked if t.get("team_wins", 0) < leader_wins - 2]
+    if fading:
+        fnames = [_team_short(t["team_name"]) for t in fading[:3]]
+        if len(fading) == 1:
+            parts.append(f"{fnames[0]} ({_rec(fading[0])}) is fading.")
+        elif len(fading) == 2:
+            parts.append(
+                f"{fnames[0]} ({_rec(fading[0])}) and {fnames[1]} ({_rec(fading[1])}) "
+                f"are at the bottom."
+            )
+        else:
+            parts.append(
+                f"{', '.join(fnames[:-1])}, and {fnames[-1]} are at the bottom."
+            )
+
+    # --- Sentence 4: top player(s) / biggest risers across this subflight ---
+    sf_teams_upper = {t["team_name"].upper() for t in teams}
+    sf_players = []
+    for tu in sf_teams_upper:
+        sf_players.extend(pbt.get((tu, sfx), []))
+
+    # Minimum current rating floor: only highlight players actually competing
+    # at the division level (avoids low-baseline outliers dominating the list)
+    riser_floor = 2.85 if sfx == "30" else 3.15
+
+    risers = []
+    for p in sf_players:
+        bl = p.get("dynamic_rating_baseline")
+        dr = p.get(f"rating_{sfx}")
+        wl = p.get(f"wl_record_{sfx}", "") or ""
+        if bl is None or dr is None or not wl or "-" not in str(wl):
+            continue
+        if dr < riser_floor:
+            continue  # below competitive floor for this division
+        try:
+            w, l = map(int, str(wl).split("-"))
+        except ValueError:
+            continue
+        if w + l < 2:
+            continue
+        delta = dr - bl
+        if delta >= 0.08:
+            risers.append((p, delta))
+
+    risers.sort(key=lambda x: -x[1])
+
+    player_snippets = []
+    seen = set()
+    for p, delta in risers[:2]:
+        name = p.get("name", "")
+        if name in seen:
+            continue
+        seen.add(name)
+        bl = p.get("dynamic_rating_baseline")
+        dr = p.get(f"rating_{sfx}")
+        team = p.get(f"team_{sfx}") or p.get("team", "")
+        wl = p.get(f"wl_record_{sfx}", "") or ""
+        team_s = _team_short(team)
+        wl_clause = f", {wl}" if wl else ""
+        player_snippets.append(f"{name} ({team_s}, {bl:.2f}→{dr:.2f}{wl_clause})")
+
+    if player_snippets:
+        if len(player_snippets) == 1:
+            parts.append(f"Biggest riser: {player_snippets[0]}.")
+        else:
+            parts.append(f"Top risers: {player_snippets[0]}; {player_snippets[1]}.")
+
+    # --- Sentence 5: key pending matchup between top-2 teams ---
+    top2 = {t["team_name"] for t in ranked[:2]}
+    for m in pending_matches:
+        ht, at = m.get("home_team", ""), m.get("away_team", "")
+        if ht in top2 and at in top2:
+            date = m.get("date", "")
+            parts.append(
+                f"{_team_short(ht)} vs {_team_short(at)} ({date}) decides the {sf_label} title."
+            )
+            break
+
+    return " ".join(parts).strip()
+
+
+def _generate_subflight_summaries(players):
+    """Generate subflight_summary text and write back to both standings files."""
+    # Build player lookup by (team_upper, sfx)
+    pbt: dict = defaultdict(list)
+    for p in players:
+        for sfx_ in ("30", "35"):
+            tv = (p.get(f"team_{sfx_}") or "").upper()
+            if tv:
+                pbt[(tv, sfx_)].append(p)
+
+    for fname, sfx, div_label in [
+        ("standings_women_30.json", "30", "3.0"),
+        ("standings_women_35.json", "35", "3.5"),
+    ]:
+        data = json.loads((DATA / fname).read_text())
+        for sf in data.get("subflights", []):
+            sf_label = sf.get("flight_label", "?")
+            teams = sf.get("teams", [])
+            pending = [m for m in sf.get("matches", []) if m.get("pending")]
+            sf["subflight_summary"] = _compose_subflight_summary(
+                sf_label, div_label, teams, pbt, sfx, pending
+            )
+        (DATA / fname).write_text(json.dumps(data, indent=2, ensure_ascii=False))
+        print(f"{div_label}: subflight summaries written to {fname}")
+
+
 def _compose_team_note(tname, rank, n_teams, wins, losses, played,
                        match_history, top_players, sfx):
     """Return a 1–3 sentence analytical note for a team."""
@@ -1365,10 +1531,11 @@ def main():
     (DATA / "players.json").write_text(json.dumps(players, indent=2, ensure_ascii=False))
     print("Saved players.json")
 
-    # Generate team notes in both standings files
+    # Generate team notes and subflight summaries in both standings files
     # Re-read players after notes have been saved so ratings are fresh
     players = json.loads((DATA / "players.json").read_text())
     _generate_team_notes(players)
+    _generate_subflight_summaries(players)
 
 
 if __name__ == "__main__":
