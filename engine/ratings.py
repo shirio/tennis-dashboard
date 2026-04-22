@@ -481,11 +481,20 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
     # WIN CEILING:
     #   Case A — win_implied > baseline: wins against strong opponents → hard cap at
     #     win_implied (prevents inflation above what wins actually prove, e.g. Tayoni)
-    #   Case B — win_implied is CLOSE to baseline (gap ≤ WIN_CEIL_GAP): wins are
-    #     near-level evidence → no ceiling (Arika at 3.597 beating 3.54 opponents;
-    #     those wins prove she belongs at her level — don't cap her at 3.56)
-    #   Case C — win_implied is FAR below baseline (gap > WIN_CEIL_GAP): wins are
-    #     all against weaker opponents → cap at baseline + small evidence nudge.
+    #   Case B — win_implied is CLOSE to baseline (gap ≤ WIN_CEIL_GAP) AND player
+    #     faced at least one opponent at/above their baseline: wins are near-level
+    #     evidence → no ceiling (Arika at 3.597 beating 3.54 opponents proves she
+    #     belongs at her level — don't cap her at 3.56).
+    #     Case B is BLOCKED when the player individually outrated every opponent they
+    #     beat: winning 6-1 6-2 against opponents all below your baseline is expected
+    #     performance, not proof of higher ability — even if the implied rating lands
+    #     close to baseline via score gaps. A weak partner can make the pair "even"
+    #     against below-baseline opponents, artificially raising the surprise weight
+    #     and inflating adjustments to the cap (Kristin Stowe: 2.63 with 2.36 partner
+    #     vs 2.50 opponents scores 6-2 6-1 → pair expected ≈ 50%, wins look like
+    #     mild upsets, but from an individual standpoint this is just expected tennis).
+    #   Case C — wins far below baseline OR player outrated every opponent they beat:
+    #     cap at baseline + small evidence nudge.
     #     A player 5-0 vs weaker opponents still deserves a small upward signal
     #     (Yarisbel 5-0: up to baseline + min(0.08, 5×0.02) = baseline + 0.08).
     #
@@ -498,14 +507,29 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
     WIN_CEIL_GAP = 0.05    # wins within 0.05 below baseline → near-level, no ceiling
     LOSS_CEIL_GAP = 0.15   # losses must be within 0.15 below baseline to apply ceiling
 
+    # Max opponent rating faced across all wins (for individual-advantage check).
+    # Doubles: _implied_rating_from_match already uses max(opps) for wins, so use
+    # max(opponent_ratings) here too — the strongest player beaten is what matters.
+    max_opp_beaten = max(
+        (max(m.opponent_ratings) for m in matches if m.won and m.opponent_ratings),
+        default=None,
+    )
+    # True when the player's baseline already exceeds every opponent they beat.
+    # In this case their wins are expected individual performance even if a weak
+    # partner made the pair appear even-odds — Case B must not apply.
+    player_outrated_all_opps = (
+        max_opp_beaten is not None and max_opp_beaten < baseline
+    )
+
     effective_win_ceil: Optional[float] = None
     if implied_win_ceiling is not None:
         if implied_win_ceiling > baseline:
             effective_win_ceil = implied_win_ceiling          # Case A
-        elif baseline - implied_win_ceiling <= WIN_CEIL_GAP:
+        elif baseline - implied_win_ceiling <= WIN_CEIL_GAP and not player_outrated_all_opps:
             effective_win_ceil = None                         # Case B — no cap
         else:
-            # Case C — wins far below baseline: allow a small evidence-based nudge
+            # Case C — wins against weaker opponents or implied far below baseline:
+            # allow only a small evidence-based nudge above baseline.
             n_wins = sum(1 for m in matches if m.won)
             evidence_nudge = min(0.08, n_wins * 0.02)
             effective_win_ceil = baseline + evidence_nudge
