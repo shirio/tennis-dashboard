@@ -528,12 +528,9 @@ def _generate_subflight_summaries(players):
 
 
 def _pname(full_name: str) -> str:
-    """Shortest recognizable player name: last name for most, full for 1-word names."""
+    """First name — personal and readable in team notes."""
     parts = full_name.strip().split()
-    if len(parts) <= 1:
-        return full_name
-    # Use last name — unique enough and matches the informal note style
-    return parts[-1]
+    return parts[0] if parts else full_name
 
 
 def _compose_team_note(  # noqa: C901
@@ -551,12 +548,14 @@ def _compose_team_note(  # noqa: C901
 
     parts = []
 
-    def _wl(w, l):
-        return f"{w}–{l}"
+    # Track which players and superlatives have already been mentioned so
+    # we never repeat the same fact in a different sentence.
+    mentioned: set = set()
+    superlative_used = False
 
-    # --- Line W-L profile (only when there's something interesting) ---
+    # --- Line W-L profile with inline player fusion ---
     # "Perfect" = no losses with ≥2 wins.  "Soft spot" = losing record.
-    enough = max(2, n_team_weeks - 1)  # need at least this many matches to be notable
+    enough = max(2, n_team_weeks - 1)
     perfect_lines = sorted(
         [ls for ls, (w, l) in line_wl.items() if l == 0 and w >= enough],
         key=lambda ls: ("S" not in ls, ls),  # singles first
@@ -566,14 +565,43 @@ def _compose_team_note(  # noqa: C901
         for ls, (w, l) in line_wl.items()
         if l > w and w + l >= 2
     ]
-    soft_lines.sort(key=lambda x: x[2] - x[1], reverse=True)  # worst first
+    soft_lines.sort(key=lambda x: x[2] - x[1], reverse=True)
+
+    # Build a fast lookup: line_short -> best player (undefeated with most wins)
+    best_player_at: dict = {}
+    for name, ls, w, l in player_line_records:
+        if ls not in best_player_at and l == 0 and w >= 2:
+            best_player_at[ls] = (name, w, l)
 
     line_profile_parts = []
-    if perfect_lines:
-        line_profile_parts.append(f"{'+'.join(perfect_lines)} all perfect")
+    for ls in perfect_lines:
+        if ls in best_player_at:
+            bname, bw, _ = best_player_at[ls]
+            pn = _pname(bname)
+            bkey = _name_key(bname)
+            # Is this also the division's best singles player?
+            is_div_best = (
+                not superlative_used
+                and div_best_singles_key == bkey
+                and div_best_singles_key in team_player_keys
+                and "S" in ls  # only for singles lines
+            )
+            if is_div_best:
+                line_profile_parts.append(
+                    f"{ls} perfect, led by {pn} ({bw}–0), "
+                    f"the biggest singles threat in the division"
+                )
+                superlative_used = True
+            else:
+                line_profile_parts.append(f"{ls} perfect, led by {pn} ({bw}–0)")
+            mentioned.add(pn)
+        else:
+            line_profile_parts.append(f"{ls} all perfect")
+
     if soft_lines:
         sl, sw, sl_l = soft_lines[0]
         line_profile_parts.append(f"{sl} is the soft spot ({sw}–{sl_l} record)")
+
     if line_profile_parts:
         parts.append("; ".join(line_profile_parts) + ".")
 
@@ -592,34 +620,30 @@ def _compose_team_note(  # noqa: C901
                 f"({'/'.join(ns[:2])} etc.)."
             )
     elif sometimes_names:
-        # No one played every week, but name the most-deployed core
         ns = [_pname(n) for n in sometimes_names[:3]]
         parts.append(f"{'/'.join(ns)} are the core rotation.")
 
-    # --- Individual line standouts ---
-    # Mention up to 2 players with notable records at a specific line.
-    # Skip players already covered by the pair note (to avoid repetition).
-    covered_by_pair = set()
+    # --- Individual line standouts (skip anyone already fused into line profile or pairs) ---
+    covered_by_pair: set = set()
     if strong_pairs:
         n1, n2, pls, pw, pl = strong_pairs[0]
         covered_by_pair = {_pname(n1), _pname(n2)}
 
-    mentioned = set(covered_by_pair)
+    skip = mentioned | covered_by_pair
     standout_count = 0
     for name, ls, w, l in player_line_records:
         pn = _pname(name)
-        if pn in mentioned:
+        if pn in skip:
             continue
         if w + l < 2:
             continue
-        # Only mention if meaningful: undefeated with ≥2, or clearly winning
         if l == 0 and w >= 2:
-            parts.append(f"{pn} {_wl(w, l)} at {ls}.")
-            mentioned.add(pn)
+            parts.append(f"{pn} {w}–{l} at {ls}.")
+            skip.add(pn)
             standout_count += 1
         elif w >= 2 and w > l:
-            parts.append(f"{pn} {_wl(w, l)} at {ls}.")
-            mentioned.add(pn)
+            parts.append(f"{pn} {w}–{l} at {ls}.")
+            skip.add(pn)
             standout_count += 1
         if standout_count >= 2:
             break
@@ -629,16 +653,15 @@ def _compose_team_note(  # noqa: C901
         n1, n2, pls, pw, pl = strong_pairs[0]
         if pw + pl >= 2:
             pn1, pn2 = _pname(n1), _pname(n2)
-            parts.append(f"{pn1}/{pn2} {_wl(pw, pl)} at {pls}.")
+            parts.append(f"{pn1}/{pn2} {pw}–{pl} at {pls}.")
 
-    # --- Division-wide superlative ---
-    if div_best_singles and div_best_singles_key in team_player_keys:
+    # --- Division-wide superlative (only if not already fused above) ---
+    if not superlative_used and div_best_singles and div_best_singles_key in team_player_keys:
         bname, bw, bl_l = div_best_singles
         parts.append(f"{_pname(bname)} has the best singles record in the division.")
 
     # --- Winless team fallback ---
     if wins == 0:
-        # Prepend the hard fact
         parts.insert(0, f"Only team without a win ({wins}–{losses}).")
 
     return " ".join(parts).strip()
