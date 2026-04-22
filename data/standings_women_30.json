@@ -16,7 +16,8 @@
           "sets_lost": 16,
           "games_won": 277,
           "games_lost": 170,
-          "games_won_pct": "60.92%"
+          "games_won_pct": "60.92%",
+          "notes": "Leads the subflight undefeated at 5-0. Swept DTC #2 5-0. Led by Yarisbel Schieck (3.10→3.18, 4-0 undefeated); Darian McCauley (2.92→3.10, 4-0 undefeated)."
         },
         {
           "team_name": "SUMMERLIN ARBORS",
@@ -29,7 +30,8 @@
           "sets_lost": 20,
           "games_won": 261,
           "games_lost": 189,
-          "games_won_pct": "58.00%"
+          "games_won_pct": "58.00%",
+          "notes": "3-2, 2nd in the subflight. Swept TPC 5-0. Led by Kim Springer (3.30, 3-2); Tina Nathalia (2.91→3.08, 3-2)."
         },
         {
           "team_name": "ANTHEM CC",
@@ -42,7 +44,8 @@
           "sets_lost": 30,
           "games_won": 221,
           "games_lost": 223,
-          "games_won_pct": "49.77%"
+          "games_won_pct": "49.77%",
+          "notes": "3-2, 3rd in the subflight. Lost last two matches. Led by Kelly Twells (3.01→3.15, 4-0 undefeated); Casey Primmer (3.05, 1-0 undefeated)."
         },
         {
           "team_name": "TPC",
@@ -55,7 +58,8 @@
           "sets_lost": 26,
           "games_won": 223,
           "games_lost": 226,
-          "games_won_pct": "51.03%"
+          "games_won_pct": "51.03%",
+          "notes": "3-2, 4th in the subflight. Shut out 0-5 by Summerlin. Led by Amy Arbeli (2.99→3.08, 2-0 undefeated); Laurie Lenhart (3.05, 2-2)."
         },
         {
           "team_name": "LIFE TIME FITNESS/GV",
@@ -68,7 +72,8 @@
           "sets_lost": 33,
           "games_won": 208,
           "games_lost": 244,
-          "games_won_pct": "47.27%"
+          "games_won_pct": "47.27%",
+          "notes": "2-3, 5th in the subflight. Led by Han Hu (2.98→3.17, 4-1); Margo Isler (3.00, 2-2)."
         },
         {
           "team_name": "DTC #2",
@@ -81,7 +86,8 @@
           "sets_lost": 35,
           "games_won": 206,
           "games_lost": 261,
-          "games_won_pct": "44.11%"
+          "games_won_pct": "44.11%",
+          "notes": "2-3, 6th in the subflight. Shut out 0-5 by DTC #3. Led by Tina Shirey (3.09→3.20, 3-2); Irene Frazier (2.95→2.83, 3-2)."
         },
         {
           "team_name": "SOUTHERN HIGHLANDS",
@@ -94,7 +100,8 @@
           "sets_lost": 32,
           "games_won": 215,
           "games_lost": 250,
-          "games_won_pct": "46.24%"
+          "games_won_pct": "46.24%",
+          "notes": "1-4, 7th in the subflight. Lost last two matches. Led by Shannon Keever (2.98→3.14, 1-1); Margaret Bruno (2.87, 1-3)."
         },
         {
           "team_name": "RED ROCK CC",
@@ -107,7 +114,8 @@
           "sets_lost": 36,
           "games_won": 199,
           "games_lost": 247,
-          "games_won_pct": "43.09%"
+          "games_won_pct": "43.09%",
+          "notes": "Last in the subflight at 1-4. Shut out 0-5 by Summerlin. Led by Rhianna Schwartz (2.90→3.07, 2-0 undefeated); Brenda Cambridge (2.92, 3-1)."
         }
       ],
       "matches": [
@@ -1464,7 +1472,8 @@
           "sets_lost": 15,
           "games_won": 254,
           "games_lost": 177,
-          "games_won_pct": "59.46%"
+          "games_won_pct": "59.46%",
+          "notes": "First in the subflight at 4-1. Swept Ridges 5-0. Led by Holly Crosby (2.93, 1-0 undefeated); Nancy Ozun (2.45→2.90, 3-0 undefeated)."
         },
         {
           "team_name": "DTC #4",
@@ -1477,7 +1486,8 @@
           "sets_lost": 24,
           "games_won": 238,
           "games_lost": 210,
-          "games_won_pct": "51.83%"
+          "games_won_pct": "51.83%",
+          "notes": "4-1, 2nd in the subflight. Swept Ridges 5-0. Led by Maryna Post (2.86→3.00, 4-1); Olga Bencini (2.88→3.00, 3-1)."
         },
         {
           "team_name": "DTC #1",
@@ -1490,7 +1500,8 @@
           "sets_lost": 26,
           "games_won": 233,
           "games_lost": 196,
-          "games_won_pct": "53.00%"
+          "games_won_pct": "53.00%",
+          "notes": "3-2, 3rd in the subflight. Led by Jaqueline Schultz (3.08, 2-1); Yesenia Arias (3.05, 3-0 undefeated)."
         },
         {
           "team_name": "WHITNEY MESA PARK",
@@ -1503,7 +1514,8 @@
           "sets_lost": 25,
           "games_won": 225,
           "games_lost": 184,
-          "games_won_pct": "52.21%"
+          "games_won_pct": "52.21%",
+          "notes": "3-2, 4th in the subflight. Led by Maria Allen (3.09, 1-0 undefeated); Jessica Borghoff (3.09, 1-0 undefeated)."
         },
         {
           "team_name": "DESERT PALM",
@@ -1516,7 +1528,8 @@
           "sets_lost": 16,
           "games_won": 186,
           "games_lost": 145,
-          "games_won_pct": "56.19%"
+          "games_won_pct": "56.19%",
+          "notes": "3-1, 5th in the subflight. Led by Kristyl Addison (2.91→3.29, 4-0 undefeated); Melissa Hicks (3.11, 3-0 undefeated)."
         },
         {
           "team_name": "SPANISH OAKS",
@@ -1529,7 +1542,8 @@
           "sets_lost": 32,
           "games_won": 199,
           "games_lost": 229,
-          "games_won_pct": "46.50%"
+          "games_won_pct": "46.50%",
+          "notes": "1-4, 6th in the subflight. Lost last two matches. Led by Nancy McPartlin (3.08, 3-0 undefeated); Valerie Valow-Orris (2.92, 1-1)."
         },
         {
           "team_name": "LAKE LAS VEGAS SPORTS CLUB",
@@ -1542,7 +1556,8 @@
           "sets_lost": 23,
           "games_won": 164,
           "games_lost": 181,
-          "games_won_pct": "51.09%"
+          "games_won_pct": "51.09%",
+          "notes": "1-3, 7th in the subflight. Swept Ridges 5-0. Led by Erika Cravens (2.74→2.88, 2-0 undefeated); Sydney Collins (2.87, 0-1)."
         },
         {
           "team_name": "CLUB RIDGES",
@@ -1555,7 +1570,8 @@
           "sets_lost": 46,
           "games_won": 108,
           "games_lost": 285,
-          "games_won_pct": "29.27%"
+          "games_won_pct": "29.27%",
+          "notes": "Last in the subflight at 0-5. Shut out 0-5 by Sp. Trail. Led by Jennifer Lake (2.88, 1-2); Nadine Kluger (2.56→2.67, 1-2)."
         }
       ],
       "matches": [

@@ -1,0 +1,602 @@
+{
+  "Ames Blas": {
+    "date": "12/05/2025",
+    "baseline": 3.92
+  },
+  "Samantha Schwartz": {
+    "date": "12/15/2025",
+    "baseline": 3.9
+  },
+  "Ruth-Ann Edwards": {
+    "date": "12/15/2025",
+    "baseline": 3.82
+  },
+  "Alex Farley Messer": {
+    "date": "12/15/2025",
+    "baseline": 3.95
+  },
+  "Sonia Vermeys": {
+    "date": "12/01/2025",
+    "baseline": 3.84
+  },
+  "Marijo Peterson": {
+    "date": "12/13/2025",
+    "baseline": 3.98
+  },
+  "Claudia Sleet": {
+    "date": "12/18/2025",
+    "baseline": 3.85
+  },
+  "Mary Stephenson": {
+    "date": "12/06/2025",
+    "baseline": 3.63
+  },
+  "K C Scherrer": {
+    "date": "12/15/2025",
+    "baseline": 3.8
+  },
+  "Lan Duong": {
+    "date": "12/13/2025",
+    "baseline": 3.85
+  },
+  "Tricia Miller": {
+    "date": "12/15/2025",
+    "baseline": 3.76
+  },
+  "Margret Winter": {
+    "date": "12/13/2025",
+    "baseline": 3.78
+  },
+  "Shannan Ohlson": {
+    "date": "12/15/2025",
+    "baseline": 3.76
+  },
+  "Sharon Jimenez": {
+    "date": "12/08/2025",
+    "baseline": 3.89
+  },
+  "Julieanna Edge": {
+    "date": "12/13/2025",
+    "baseline": 3.89
+  },
+  "Ann Pham": {
+    "date": "12/13/2025",
+    "baseline": 3.8
+  },
+  "Grace Nemec": {
+    "date": "03/21/2026",
+    "baseline": 3.83
+  },
+  "Nyree Hartman Saad": {
+    "date": "12/18/2025",
+    "baseline": 3.8
+  },
+  "Amy Pan": {
+    "date": "12/15/2025",
+    "baseline": 3.8
+  },
+  "Danielle Dyer": {
+    "date": "12/18/2025",
+    "baseline": 4.01
+  },
+  "Chloe Dilling": {
+    "date": "02/16/2026",
+    "baseline": 3.76
+  },
+  "Sophy Feng": {
+    "date": "12/15/2025",
+    "baseline": 3.88
+  },
+  "Serena Roberts": {
+    "date": "12/05/2025",
+    "baseline": 4.0
+  },
+  "ALVA BRANDON": {
+    "date": "12/11/2025",
+    "baseline": 3.71
+  },
+  "Lea Cohen": {
+    "date": "12/06/2025",
+    "baseline": 3.81
+  },
+  "Annie Guiliano": {
+    "date": "12/15/2025",
+    "baseline": 3.86
+  },
+  "Hayley Hollander": {
+    "date": "12/15/2025",
+    "baseline": 3.74
+  },
+  "Lisa Ross": {
+    "date": "12/13/2025",
+    "baseline": 3.82
+  },
+  "Karin De Amicis": {
+    "date": "02/16/2026",
+    "baseline": 3.76
+  },
+  "Jennifer Covington": {
+    "date": "12/15/2025",
+    "baseline": 3.74
+  },
+  "Jennifer Unick": {
+    "date": "12/06/2025",
+    "baseline": 3.89
+  },
+  "Elisabeth Golden": {
+    "date": "12/05/2025",
+    "baseline": 3.96
+  },
+  "LOURDES MENDOZA": {
+    "date": "12/08/2025",
+    "baseline": 3.78
+  },
+  "Jane Dorn": {
+    "date": "03/14/2026",
+    "baseline": 3.9
+  },
+  "Jill Russell": {
+    "date": "12/15/2025",
+    "baseline": 3.83
+  },
+  "Erin Anderson": {
+    "date": "12/15/2025",
+    "baseline": 3.86
+  },
+  "Ui Afualo": {
+    "date": "01/03/2026",
+    "baseline": 3.84
+  },
+  "Stacia Walker": {
+    "date": "12/13/2025",
+    "baseline": 3.88
+  },
+  "Jenny Grob": {
+    "date": "12/15/2025",
+    "baseline": 3.99
+  },
+  "Maryann Goodsell": {
+    "date": "12/15/2025",
+    "baseline": 3.83
+  },
+  "Michaela Stevens": {
+    "date": "12/13/2025",
+    "baseline": 3.89
+  },
+  "Heather George": {
+    "date": "12/18/2025",
+    "baseline": 3.92
+  },
+  "Dawn Soong": {
+    "date": "12/11/2025",
+    "baseline": 3.89
+  },
+  "Debora Dean": {
+    "date": "12/15/2025",
+    "baseline": 3.78
+  },
+  "Christine DeLisle": {
+    "date": "12/13/2025",
+    "baseline": 3.68
+  },
+  "Shannon Ashcraft": {
+    "date": "12/15/2025",
+    "baseline": 3.69
+  },
+  "Jenniffer Rodriguez-Rivera": {
+    "date": "01/10/2026",
+    "baseline": 3.92
+  },
+  "Amanda Comtois": {
+    "date": null,
+    "baseline": null
+  },
+  "Jennifer Cribb": {
+    "date": "12/13/2025",
+    "baseline": 3.81
+  },
+  "Nora Taylor": {
+    "date": "12/15/2025",
+    "baseline": 3.74
+  },
+  "Alyce Brownridge": {
+    "date": "12/15/2025",
+    "baseline": 3.81
+  },
+  "Drea Jones": {
+    "date": "12/02/2025",
+    "baseline": 3.75
+  },
+  "audrey chin": {
+    "date": "12/13/2025",
+    "baseline": 3.84
+  },
+  "JACKIE EDLUND": {
+    "date": "12/15/2025",
+    "baseline": 3.75
+  },
+  "Angela Lobato": {
+    "date": "12/15/2025",
+    "baseline": 3.73
+  },
+  "Gretchen Moy": {
+    "date": "12/08/2025",
+    "baseline": 3.76
+  },
+  "Katey Drawe": {
+    "date": "01/10/2026",
+    "baseline": 3.8
+  },
+  "Jennifer Gleason": {
+    "date": "12/13/2025",
+    "baseline": 3.8
+  },
+  "Maricel Renigen": {
+    "date": "12/13/2025",
+    "baseline": 3.79
+  },
+  "Robin Rudolph": {
+    "date": "12/13/2025",
+    "baseline": 3.84
+  },
+  "Ruby Marine": {
+    "date": "12/18/2025",
+    "baseline": 3.89
+  },
+  "Nicole Lefebvre": {
+    "date": "12/15/2025",
+    "baseline": 3.77
+  },
+  "Mari K Bradley": {
+    "date": "12/06/2025",
+    "baseline": 3.71
+  },
+  "Allison Richards": {
+    "date": "12/13/2025",
+    "baseline": 3.81
+  },
+  "Jaclyn Bermudez": {
+    "date": "12/13/2025",
+    "baseline": 3.91
+  },
+  "Elizabeth Barnes": {
+    "date": "12/15/2025",
+    "baseline": 3.77
+  },
+  "Bing Zou": {
+    "date": "03/09/2026",
+    "baseline": 3.84
+  },
+  "Lauren Bucquet": {
+    "date": "11/22/2025",
+    "baseline": 3.72
+  },
+  "Michelle Murdock": {
+    "date": "02/21/2026",
+    "baseline": 3.73
+  },
+  "Billi Dunning": {
+    "date": "12/18/2025",
+    "baseline": 3.82
+  },
+  "Jill Gragson": {
+    "date": "01/03/2026",
+    "baseline": 3.82
+  },
+  "Claire Oraee": {
+    "date": "12/06/2025",
+    "baseline": 3.74
+  },
+  "Jamaica Tan": {
+    "date": "11/22/2025",
+    "baseline": 3.75
+  },
+  "Angela Renteria": {
+    "date": "03/14/2026",
+    "baseline": 3.68
+  },
+  "Rosemary Turner": {
+    "date": "12/18/2025",
+    "baseline": 3.74
+  },
+  "Amy Levasseur": {
+    "date": "12/18/2025",
+    "baseline": 3.7
+  },
+  "Jami Pappas": {
+    "date": "12/18/2025",
+    "baseline": 3.79
+  },
+  "Carli Fettig": {
+    "date": "12/13/2025",
+    "baseline": 3.79
+  },
+  "Jamie Muaina": {
+    "date": "12/15/2025",
+    "baseline": 3.77
+  },
+  "Denise Antoniadis": {
+    "date": "12/18/2025",
+    "baseline": 3.78
+  },
+  "Cynthia Graham": {
+    "date": "12/18/2025",
+    "baseline": 3.69
+  },
+  "Jessica Berger": {
+    "date": "01/03/2026",
+    "baseline": 3.74
+  },
+  "Angela Thalgott": {
+    "date": "11/13/2025",
+    "baseline": 3.71
+  },
+  "Jenny Penesa": {
+    "date": "12/15/2025",
+    "baseline": 3.62
+  },
+  "Debbie Barbaroussis-Goot": {
+    "date": "11/22/2025",
+    "baseline": 3.68
+  },
+  "Jennifer Peterson": {
+    "date": "01/24/2026",
+    "baseline": 3.66
+  },
+  "Francie Doak": {
+    "date": "12/08/2025",
+    "baseline": 3.68
+  },
+  "Ashley Marx": {
+    "date": "01/10/2026",
+    "baseline": 3.84
+  },
+  "Rebecca Little": {
+    "date": "12/15/2025",
+    "baseline": 3.68
+  },
+  "Christine McNaught": {
+    "date": "12/18/2025",
+    "baseline": 3.7
+  },
+  "Kathy Shade": {
+    "date": "12/06/2025",
+    "baseline": 3.65
+  },
+  "Jennifer Togliatti": {
+    "date": "12/13/2025",
+    "baseline": 3.68
+  },
+  "Irena Khin": {
+    "date": "12/15/2025",
+    "baseline": 3.58
+  },
+  "Valerie Murphy": {
+    "date": "12/15/2025",
+    "baseline": 3.69
+  },
+  "Casey Hou": {
+    "date": "12/13/2025",
+    "baseline": 3.49
+  },
+  "stephanie chen": {
+    "date": "11/16/2025",
+    "baseline": 3.72
+  },
+  "Jacqueline Smallwood": {
+    "date": "12/15/2025",
+    "baseline": 3.54
+  },
+  "Maria Gonzales": {
+    "date": "12/13/2025",
+    "baseline": 3.6
+  },
+  "Catherine Vannah": {
+    "date": "12/06/2025",
+    "baseline": 3.68
+  },
+  "Shani Ma": {
+    "date": "12/18/2025",
+    "baseline": 3.7
+  },
+  "Kelly Maier": {
+    "date": "12/01/2025",
+    "baseline": 3.67
+  },
+  "Tami Kuhnwald": {
+    "date": "12/13/2025",
+    "baseline": 3.56
+  },
+  "Amy Nhaisi": {
+    "date": "12/13/2025",
+    "baseline": 3.69
+  },
+  "Jessica Ng": {
+    "date": "11/22/2025",
+    "baseline": 3.64
+  },
+  "Donna Isaacs": {
+    "date": "11/24/2025",
+    "baseline": 3.63
+  },
+  "Mary Mathews": {
+    "date": "12/06/2025",
+    "baseline": 3.65
+  },
+  "Huong Nardelli": {
+    "date": "12/13/2025",
+    "baseline": 3.54
+  },
+  "Sharon Pauli": {
+    "date": "01/17/2026",
+    "baseline": 3.63
+  },
+  "Kristi Pishko": {
+    "date": "11/22/2025",
+    "baseline": 3.53
+  },
+  "Diane Welch": {
+    "date": "12/18/2025",
+    "baseline": 3.59
+  },
+  "Katie Jacobs": {
+    "date": "01/03/2026",
+    "baseline": 3.53
+  },
+  "Alexandra Wysong": {
+    "date": "11/22/2025",
+    "baseline": 3.46
+  },
+  "Jordan Bosnos": {
+    "date": "12/08/2025",
+    "baseline": 3.56
+  },
+  "Susan Norris": {
+    "date": "12/15/2025",
+    "baseline": 3.68
+  },
+  "Marcy Saxe": {
+    "date": "12/13/2025",
+    "baseline": 3.61
+  },
+  "Lorri McElroy": {
+    "date": "11/24/2025",
+    "baseline": 3.6
+  },
+  "Carla Eggleston": {
+    "date": "11/15/2025",
+    "baseline": 3.55
+  },
+  "Rozanne Meservey": {
+    "date": "12/18/2025",
+    "baseline": 3.51
+  },
+  "Barbara Fair": {
+    "date": "12/13/2025",
+    "baseline": 3.58
+  },
+  "Amy CookSjoerdsma": {
+    "date": "12/15/2025",
+    "baseline": 3.57
+  },
+  "Rose Gerrard": {
+    "date": "12/01/2025",
+    "baseline": 3.53
+  },
+  "Tara Bananto": {
+    "date": "12/01/2025",
+    "baseline": 3.54
+  },
+  "Ciara Rivera": {
+    "date": "03/14/2026",
+    "baseline": 3.66
+  },
+  "Shelby McIntyre": {
+    "date": "12/03/2025",
+    "baseline": 3.49
+  },
+  "Jacqueline Roberts": {
+    "date": "12/06/2025",
+    "baseline": 3.47
+  },
+  "Gabriela Resh": {
+    "date": "12/15/2025",
+    "baseline": 3.51
+  },
+  "Charlene Rath": {
+    "date": "12/15/2025",
+    "baseline": 3.55
+  },
+  "Erin Mangino": {
+    "date": null,
+    "baseline": null
+  },
+  "Betty Hale": {
+    "date": "12/03/2025",
+    "baseline": 3.42
+  },
+  "Anna Maddux": {
+    "date": "11/22/2025",
+    "baseline": 3.3
+  },
+  "Denise Mandelbaum": {
+    "date": "12/18/2025",
+    "baseline": 3.22
+  },
+  "Sandi Martin": {
+    "date": "01/31/2026",
+    "baseline": 3.17
+  },
+  "melodee wilcox": {
+    "date": "12/18/2025",
+    "baseline": 3.01
+  },
+  "Kara Godfrey": {
+    "date": "11/24/2025",
+    "baseline": 4.52
+  },
+  "Caitlin Murphy": {
+    "date": "12/06/2025",
+    "baseline": 4.58
+  },
+  "Ava Nhaisi": {
+    "date": "12/08/2025",
+    "baseline": 4.4
+  },
+  "Katherine Olivier": {
+    "date": "12/12/2025",
+    "baseline": 4.46
+  },
+  "Madisen Cherry": {
+    "date": "12/12/2025",
+    "baseline": 4.47
+  },
+  "Lindsey White": {
+    "date": "01/03/2026",
+    "baseline": 4.4
+  },
+  "Marne Darrall": {
+    "date": "12/06/2025",
+    "baseline": 4.35
+  },
+  "Kathleen Janssen": {
+    "date": "12/07/2025",
+    "baseline": 4.31
+  },
+  "Brigitte Fallon": {
+    "date": "12/15/2025",
+    "baseline": 4.25
+  },
+  "Jade Mayweather": {
+    "date": "11/13/2025",
+    "baseline": 4.35
+  },
+  "Regina Esperanza": {
+    "date": "01/18/2026",
+    "baseline": 4.39
+  },
+  "Amy Thompson": {
+    "date": "12/13/2025",
+    "baseline": 4.38
+  },
+  "Catherine Pfarrer": {
+    "date": "12/06/2025",
+    "baseline": 4.4
+  },
+  "Lucy Twohy": {
+    "date": "01/03/2026",
+    "baseline": 4.29
+  },
+  "Morgan Daley": {
+    "date": "12/06/2025",
+    "baseline": 4.4
+  },
+  "Margaretha Breytenbach": {
+    "date": "12/06/2025",
+    "baseline": 4.39
+  },
+  "Hillary Wolfson": {
+    "date": "11/24/2025",
+    "baseline": 4.28
+  }
+}

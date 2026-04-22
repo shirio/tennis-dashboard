@@ -238,7 +238,7 @@ def _describe_match(m, rating_lookup, all_dates_in_division, include_week=True,
             # Predictable large-gap result — shape adds nothing
             if (not m["won"] and gap >= 0.20) or (m["won"] and gap <= -0.20):
                 return base
-        return f"{base} — {phrase}"
+        return f"{base} {phrase}"
     return base
 
 
@@ -352,6 +352,171 @@ def _resolve_line_sides(ln: dict, match: dict, team_by_name: dict):
     w_names = [n.strip() for n in w_raw.split("/") if n.strip()]
     l_names = [n.strip() for n in l_raw.split("/") if n.strip()]
     return w_names, l_names, winner_team, loser_team, False
+
+
+def _ordinal_suffix(n: int) -> str:
+    """Return ordinal suffix for rank numbers: 1st, 2nd, 3rd, 4th..."""
+    if 11 <= (n % 100) <= 13:
+        return "th"
+    return {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+
+
+def _compose_team_note(tname, rank, n_teams, wins, losses, played,
+                       match_history, top_players, sfx):
+    """Return a 1–3 sentence analytical note for a team."""
+    parts = []
+
+    # --- Position / record lead sentence ---
+    record_str = f"{wins}-{losses}"
+    if rank == 1 and losses == 0:
+        lead = f"Leads the subflight undefeated at {record_str}."
+    elif rank == 1:
+        lead = f"First in the subflight at {record_str}."
+    elif rank == n_teams and wins <= 1:
+        lead = f"Last in the subflight at {record_str}."
+    elif rank >= n_teams - 1 and wins == 0:
+        lead = f"Winless at {record_str}, last in the subflight."
+    else:
+        pos = f"{rank}{_ordinal_suffix(rank)}"
+        lead = f"{record_str}, {pos} in the subflight."
+    parts.append(lead)
+
+    # --- Notable result (5-0 sweep or 0-5 shutout) ---
+    notable = None
+    for r in reversed(match_history):
+        score = r.get("score", "")
+        opp = _team_short(r.get("opp", ""))
+        if score == "5-0" and r["won"]:
+            notable = f"Swept {opp} 5-0."
+            break
+        if score == "0-5" and not r["won"]:
+            notable = f"Shut out 0-5 by {opp}."
+            break
+    if notable:
+        parts.append(notable)
+
+    # Recent losing streak (last 2 losses with no win)
+    if not notable and len(match_history) >= 2:
+        last_two = match_history[-2:]
+        if not any(r["won"] for r in last_two):
+            shutout_loss = any(r["score"] == "0-5" for r in last_two)
+            if shutout_loss:
+                parts.append("Dropped last two matches including a shutout.")
+            else:
+                parts.append("Lost last two matches.")
+
+    # --- Key player(s) ---
+    key_parts = []
+    shown = 0
+    for p in top_players:
+        bl = p.get("dynamic_rating_baseline")
+        dr = p.get(f"rating_{sfx}")
+        wl = p.get(f"wl_record_{sfx}", "") or ""
+        name = p.get("name", "")
+        if bl is None or dr is None or not name:
+            continue
+        if not wl or "-" not in str(wl):
+            continue
+        try:
+            w_count, l_count = map(int, str(wl).split("-"))
+        except ValueError:
+            continue
+        total = w_count + l_count
+        if total == 0:
+            continue
+
+        delta = dr - bl
+        if abs(delta) >= 0.08:
+            rating_str = f"{bl:.2f}→{dr:.2f}"
+        else:
+            rating_str = f"{dr:.2f}"
+
+        if w_count > 0 and l_count == 0:
+            key_parts.append(f"{name} ({rating_str}, {wl} undefeated)")
+        else:
+            key_parts.append(f"{name} ({rating_str}, {wl})")
+        shown += 1
+        if shown >= 2:
+            break
+
+    if key_parts:
+        if len(key_parts) == 1:
+            parts.append(f"Led by {key_parts[0]}.")
+        else:
+            parts.append(f"Led by {key_parts[0]}; {key_parts[1]}.")
+
+    return " ".join(parts).strip()
+
+
+def _generate_team_notes(players):
+    """Generate brief analytical team notes and write back to both standings files."""
+    # Build player lookup by (team_uppercase, sfx)
+    pbt: dict = defaultdict(list)
+    for p in players:
+        for sfx_ in ("30", "35"):
+            tv = (p.get(f"team_{sfx_}") or "").upper()
+            if tv:
+                pbt[(tv, sfx_)].append(p)
+
+    for fname, sfx, div_label in [
+        ("standings_women_30.json", "30", "3.0"),
+        ("standings_women_35.json", "35", "3.5"),
+    ]:
+        data = json.loads((DATA / fname).read_text())
+
+        for sf in data.get("subflights", []):
+            # Build per-team match history from played matches
+            match_records: dict = defaultdict(list)
+            for m in sf.get("matches", []):
+                if m.get("pending"):
+                    continue
+                ht = m.get("home_team", "")
+                at = m.get("away_team", "")
+                hw = m.get("team_wins_home", 0) or 0
+                aw = m.get("team_wins_away", 0) or 0
+                date = m.get("date", "")
+                if ht:
+                    match_records[ht].append({
+                        "won": hw > aw, "score": f"{hw}-{aw}",
+                        "opp": at, "date": date,
+                    })
+                if at:
+                    match_records[at].append({
+                        "won": aw > hw, "score": f"{aw}-{hw}",
+                        "opp": ht, "date": date,
+                    })
+            for tn in match_records:
+                match_records[tn].sort(key=lambda x: x["date"])
+
+            # Rank teams by wins then indiv_wins
+            all_teams = sf.get("teams", [])
+            ranked = sorted(all_teams,
+                            key=lambda t: (-t.get("team_wins", 0),
+                                           -t.get("indiv_wins", 0)))
+            rank_map = {t["team_name"]: i + 1 for i, t in enumerate(ranked)}
+            n_teams = len(all_teams)
+
+            for t in sf.get("teams", []):
+                tname = t["team_name"]
+                rank = rank_map.get(tname, 1)
+                wins = t.get("team_wins", 0)
+                losses = t.get("team_losses", 0)
+                played = t.get("matches_played", 0)
+                mh = match_records.get(tname, [])
+
+                # Top players for this team in this division, sorted by current rating
+                tp = pbt.get((tname.upper(), sfx), [])
+                tp_rated = sorted(
+                    [p for p in tp if p.get(f"rating_{sfx}") is not None],
+                    key=lambda p: -(p.get(f"rating_{sfx}") or 0),
+                )
+
+                t["notes"] = _compose_team_note(
+                    tname, rank, n_teams, wins, losses, played, mh, tp_rated, sfx
+                )
+
+        (DATA / fname).write_text(json.dumps(data, indent=2, ensure_ascii=False))
+        print(f"{div_label}: team notes written to {fname}")
 
 
 def main():
@@ -1199,6 +1364,11 @@ def main():
 
     (DATA / "players.json").write_text(json.dumps(players, indent=2, ensure_ascii=False))
     print("Saved players.json")
+
+    # Generate team notes in both standings files
+    # Re-read players after notes have been saved so ratings are fresh
+    players = json.loads((DATA / "players.json").read_text())
+    _generate_team_notes(players)
 
 
 if __name__ == "__main__":
