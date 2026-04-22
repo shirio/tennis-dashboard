@@ -527,10 +527,28 @@ def _generate_subflight_summaries(players):
         print(f"{div_label}: subflight summaries written to {fname}")
 
 
+_COMMON_FIRST_NAMES = {
+    "kim", "chris", "alex", "sam", "taylor", "jordan", "morgan", "casey",
+    "ashley", "jessica", "jennifer", "sarah", "emily", "amanda", "melissa",
+    "stephanie", "nicole", "rachel", "megan", "lauren", "brittany", "amber",
+    "heather", "anna", "kate", "katie", "kelly", "kerry", "keri", "lisa",
+    "linda", "maria", "mary", "michelle", "amy", "andrea", "angela", "ann",
+    "dana", "diana", "donna", "elizabeth", "erin", "grace", "hannah", "holly",
+    "jade", "jamie", "jane", "janet", "karen", "katie", "laura", "leah",
+    "lynn", "meg", "natalie", "nina", "paige", "robin", "rose", "sara",
+    "shannon", "tina", "tracy", "victoria", "wendy",
+}
+
+
 def _pname(full_name: str) -> str:
-    """First name — personal and readable in team notes."""
+    """First name normally; first + last when first name is very common."""
     parts = full_name.strip().split()
-    return parts[0] if parts else full_name
+    if not parts:
+        return full_name
+    first = parts[0]
+    if first.lower() in _COMMON_FIRST_NAMES and len(parts) >= 2:
+        return f"{first} {parts[-1]}"
+    return first
 
 
 def _compose_team_note(  # noqa: C901
