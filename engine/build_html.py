@@ -436,7 +436,7 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
                 # Use per-division stats only — legacy wl_record is a combined total across
                 # all divisions and is wrong for cross-listed players.
                 wl    = p.get(f"wl_record_{_sfx}") or "–"
-                lines = p.get(f"lines_played_{_sfx}") or p.get("lines_played") or "–"
+                lines = p.get(f"lines_played_{_sfx}") or "–"
                 pnotes = _esc(p.get(f"notes_{_sfx}", "") or "")
                 dw = p.get(f"default_wins_{_sfx}", 0) or 0
                 if dw:

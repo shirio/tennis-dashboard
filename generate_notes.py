@@ -331,10 +331,12 @@ def _resolve_line_sides(ln: dict, match: dict, team_by_name: dict):
     # the away team, the columns are swapped.
     home_votes = away_votes = 0
     for pn in [x.strip() for x in ph.split("/") if x.strip()]:
-        pt = team_by_name.get(_name_key(pn), "")
-        if pt == home_team:
+        pt_set = team_by_name.get(_name_key(pn)) or set()
+        if isinstance(pt_set, str):
+            pt_set = {pt_set}
+        if home_team in pt_set:
             home_votes += 1
-        elif pt == away_team:
+        elif away_team in pt_set:
             away_votes += 1
     is_swapped = away_votes > home_votes
 
@@ -1099,16 +1101,19 @@ def main():
     pbn = {_name_key(p.get("name", "")): p for p in players if p.get("name")}
     rating = {_name_key(p.get("name", "")): p.get("dynamic_rating_baseline")
               for p in players}
-    # Player name → primary team lookup (for swap detection in new-format lines)
-    team_by_name = {}
+    # Player name → all known teams (set) for swap detection in new-format lines.
+    # Must include division-specific teams (team_30, team_35) so cross-listed
+    # players are recognised correctly in both divisions' scorecards.
+    team_by_name: dict[str, set] = {}
     for p in players:
         norm = _name_key(p.get("name", ""))
+        teams_set: set = set()
         for tf in ("team", "team_30", "team_35"):
             tv = p.get(tf)
             if tv:
-                team_by_name[norm] = tv
-        if p.get("team"):
-            team_by_name[norm] = p["team"]
+                teams_set.add(tv)
+        if teams_set:
+            team_by_name[norm] = teams_set
 
     # Load both divisions' match data for cross-division context
     division_data = {}   # sfx -> {"all_dates": [...], "matches_by_player": {...}, "data": {...}}
