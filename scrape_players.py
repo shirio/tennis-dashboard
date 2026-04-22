@@ -481,7 +481,9 @@ def merge_players(existing: list[dict], new_players: list[dict]) -> list[dict]:
             ep["profile_url"] = np.get("profile_url", ep.get("profile_url"))
             ep["team"] = np.get("team", ep.get("team"))
             ep["division"] = np.get("division", ep.get("division"))
-            if np.get("dynamic_rating_baseline") is not None:
+            # NEVER overwrite an existing baseline — it is a frozen pre-2026 value.
+            # Only fill it in if the player has no baseline yet.
+            if np.get("dynamic_rating_baseline") is not None and ep.get("dynamic_rating_baseline") is None:
                 ep["dynamic_rating_baseline"] = np["dynamic_rating_baseline"]
             if np.get("ntrp_rating") is not None:
                 ep["ntrp_rating"] = np["ntrp_rating"]
@@ -650,7 +652,10 @@ def main():
 
             profile = parse_player_profile(html)
             if profile["dynamic_rating"]:
-                p["dynamic_rating_baseline"] = profile["dynamic_rating"]
+                if p.get("dynamic_rating_baseline") is not None:
+                    print(f" [BASELINE PROTECTED — keeping {p['dynamic_rating_baseline']} not {profile['dynamic_rating']}]")
+                else:
+                    p["dynamic_rating_baseline"] = profile["dynamic_rating"]
             if profile["ntrp_full"]:
                 p["ntrp_rating"] = profile["ntrp_full"]
             print(f" ntrp={profile['ntrp_full']} dyn={profile['dynamic_rating']}")
@@ -661,7 +666,9 @@ def main():
             pid = p["tennisrecord_id"]
             if pid and pid in profile_data:
                 src = profile_data[pid]
-                p["dynamic_rating_baseline"] = src["dynamic_rating_baseline"]
+                # Only fill baseline if this player doesn't have one yet
+                if p.get("dynamic_rating_baseline") is None and src.get("dynamic_rating_baseline") is not None:
+                    p["dynamic_rating_baseline"] = src["dynamic_rating_baseline"]
                 p["ntrp_rating"] = src["ntrp_rating"]
     else:
         print(f"\n[4/4] Skipping profile scrape (use --profiles to enable)")

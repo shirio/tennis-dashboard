@@ -1136,6 +1136,7 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
     # Per-ntrp accumulators
     wins:         dict[str, dict] = defaultdict(lambda: defaultdict(int))
     losses:       dict[str, dict] = defaultdict(lambda: defaultdict(int))
+    defaults_w:   dict[str, dict] = defaultdict(lambda: defaultdict(int))  # default wins
     lines_count:  dict[str, dict] = defaultdict(lambda: defaultdict(Counter))  # court label counts
     match_teams:  dict[str, dict] = defaultdict(dict)  # which team player played for per division
 
@@ -1184,6 +1185,19 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
                     # Per-court winner from radio buttons (set during scraping)
                     court_result = (ln.get("result") or "").lower()  # "home", "away", or ""
 
+                    # Detect default/walkover lines — one side has no players listed
+                    # (empty string or literal "N/A" / "N/A / N/A").
+                    # Defaults DO count toward W/L records and lines-played (they show in
+                    # the roster exactly like real matches). They are tracked separately via
+                    # the defaults_NNN counter so analysis can distinguish competitive wins.
+                    def _is_default_side(s: str) -> bool:
+                        s = (s or "").strip().upper()
+                        return not s or s in ("N/A", "N/A / N/A", "DEFAULT", "NOT AVAILABLE")
+                    _line_is_default = (
+                        _is_default_side(ln.get("players_home", "")) or
+                        _is_default_side(ln.get("players_away", ""))
+                    )
+
                     def _process(pname: str, parsed_is_home: bool):
                         key = pname.lower().strip()
                         if not key:
@@ -1221,6 +1235,8 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
 
                         if won:
                             wins[ntrp][key] += 1
+                            if _line_is_default:
+                                defaults_w[ntrp][key] += 1
                         else:
                             losses[ntrp][key] += 1
 
@@ -1255,8 +1271,15 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
                 sorted_courts.append(f"{label}x{cnt}" if cnt > 1 else label)
             w = wins[ntrp_key].get(key, 0)
             l = losses[ntrp_key].get(key, 0)
+            dw = defaults_w[ntrp_key].get(key, 0)
             p[f"lines_played_{sfx}"] = sorted_courts
             p[f"wl_record_{sfx}"] = f"{w}-{l}"
+            # Track default wins separately so analysis can show competitive-only record.
+            # Only write the field when non-zero to keep the JSON lean.
+            if dw:
+                p[f"default_wins_{sfx}"] = dw
+            elif f"default_wins_{sfx}" in p:
+                del p[f"default_wins_{sfx}"]
             # Store the team they played for in this division (used for roster placement)
             team = match_teams[ntrp_key].get(key, "")
             if team:

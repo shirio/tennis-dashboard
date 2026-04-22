@@ -6,27 +6,27 @@
         {
           "tag": "your team",
           "tag_class": "you",
-          "content": "DTC #1 is 3-1 in 35B after a closer-than-expected 3-2 win over DTC #3. Kiyono/Jarvis were deployed at D3 and lost to Chang/Addison — a lineup call that needs revisiting. Corelle (S1) beat Tayoni Coleman 6-3 6-0, the D1 pair (Allen/Waters and Paull/Perdomo) both won, but DTC #3 took S2 and D3. DTC #1 leads 35B tied with Dragonridge at 3-1."
+          "content": "DTC #1 is 3-1 in 35B after a closer-than-expected 3-2 win over DTC #3. Kiyono/Jarvis were deployed at D3 and lost — a costly lineup call given Kiyono (3.33→3.56) belongs at D1. Corelle (3.41 baseline, 2-1 at S1) beat Tayoni Coleman. Allen/Waters at D1 and Paull (3.31→3.48) + Perdomo (3.31→3.51) both won, but DTC #3 (35B) took S2 and D3. DTC #1 is tied with Dragonridge at 3-1, both trailing Red Rock CC #2 (4-0) who leads 35B."
         },
         {
           "tag": "35B standings",
           "tag_class": "opp",
-          "content": "Dragonridge CC swept Spanish Trail #1 5-0 and is now tied with DTC #1 at 3-1. TPC beat Desert Palm 3-2 and is 3-2. Red Rock #2 (unknown W5 result) has been dominant all season. DTC #3 is 1-3, Spanish Trail #1 is 1-4 and fading. W6 — DTC #1 vs Dragonridge — now decides 35B leadership."
+          "content": "Dragonridge CC swept Spanish Trail #1 5-0 and is tied with DTC #1 at 3-1. TPC beat Desert Palm 3-2 and is 3-2. Red Rock CC #2 leads 35B at 4-0. W6 — DTC #1 vs Dragonridge — decides who is best-placed behind Red Rock."
         },
         {
           "tag": "35A shift",
           "tag_class": "opp",
-          "content": "Summerlin swept Anthem CC 5-0 in 35A (same team that swept TPC 5-0 in 3.0). They are now 4-1, tied with DTC #2 (4-1 over Spanish Trail #2). LTF beat Red Rock #1 4-1 — Yan Uyeno (3.55→3.83) is still Red Rock's only bright spot. 35A is essentially a Summerlin-DTC#2 race."
+          "content": "Summerlin swept Anthem CC 5-0 in 35A. They are now 4-1, tied with DTC #2 (4-1). Nicole Reyes (DTC #2, 3.69→3.77, 4-0 at S1) is the division's highest-rated active player. Sarah Perez (Summerlin, 3.48→3.69, 3-0) is a major Summerlin riser. Rika Cook (3.46→3.51, 4-1) and Nancy Holland (3.41→3.50, 3-1) anchor Summerlin. Yan Uyeno (Red Rock #1, 3.35→3.44, 4-1) is actually RISING from her true 3.35 baseline — not declining as she appeared with incorrect ratings. 35A is essentially a Summerlin-DTC#2 race."
         },
         {
           "tag": "overrated",
           "tag_class": "warn",
-          "content": "Kelly Nguyen (DTC #3, 3.34→3.05, 0-4 in 35), Joann Komanowski (LTF, 3.54→3.29, struggling), Lisa Gobel (Spanish Trail #2, 3.54→3.28). Tayoni Coleman (3.11 baseline) is 1-2 in 3.5 — her 3.0 dominance (4-0 vs avg 2.93 opponents) hasn't translated upward."
+          "content": "Kelly Nguyen (DTC #3, 3.27 baseline, 0-4 in 35) is the clearest decliner. Lisa Gobel (Spanish Trail #2, 3.48→3.34, 0-2) and Jan Willis (LTF, 3.43→3.06, 0-3) are both sliding hard. Joann Komanowski (LTF, 3.48→3.32, 0-2) is another LTF decliner. Carolyn Wood (TPC, 3.30→3.00, 0-3) has collapsed entirely."
         },
         {
           "tag": "threats",
           "tag_class": "opp",
-          "content": "Biggest 35B threats: Dragonridge's Melanie Isbell (3-0+ at S1/S2) leads a team that just swept 5-0. Arika Carrier (TPC, 3.60→3.74, D1 force). Red Rock #2's Mary Lind (3.64, undefeated). 35A: Summerlin's Rika Cook (3.54→3.81) and Yan Uyeno (Red Rock, 3.55→3.83)."
+          "content": "Biggest 35B risers: Melanie Isbell (Dragonridge, 3.04→3.57, 4-0 at S1/S2) is the division's standout riser — +0.53 from baseline. Arika Carrier (TPC, 3.16→3.57, 4-0 at D1) has risen +0.41 from her real baseline. Jamie Johnson (TPC, 2.95→3.48, 3-0) is another massive riser (+0.53) — a genuine surprise weapon. Mary Lind (Red Rock #2, 3.37→3.60, 4-0) is rising steadily. 35A: Seda Sargsyan (DTC #2, 3.61→3.67) leads singles; Nicole Reyes (3.69→3.77) leads the division overall."
         }
       ]
     },
@@ -36,22 +36,22 @@
         {
           "tag": "matchup",
           "tag_class": "warn",
-          "content": "DTC #1 (3-1) vs Dragonridge (3-1) — this is the 35B title match. Winner controls the top spot. Dragonridge just swept Spanish Trail #1 5-0 and is playing their best tennis."
+          "content": "DTC #1 (3-1) vs Dragonridge (3-1) — this is the 35B title match. Winner controls the top spot behind Red Rock. Dragonridge just swept Spanish Trail #1 5-0 and is playing their best tennis."
         },
         {
           "tag": "S1",
           "tag_class": "warn",
-          "content": "Melanie Isbell is Dragonridge's singles engine — 3-0+ at S1/S2. Corelle (S1) will be tested hard. This is DTC #1's most dangerous line."
+          "content": "Melanie Isbell (3.04→3.57, 4-0) is Dragonridge's singles engine — her +0.53 rise is the biggest in the division. Corelle (3.41 baseline, 2-1) is DTC #1's S1 option at a lower current rating. Isbell is favored but not a certainty — she's been climbing fast and DTC #1 needs Corelle to compete here."
         },
         {
           "tag": "D1",
           "tag_class": "you",
-          "content": "DTC #1's Kiyono + Hernandez should be favored at D1 against Dragonridge's D1 pair. Don't misplace Kiyono at D3 again — that was a costly lineup error against DTC #3."
+          "content": "DTC #1's Amy Waters (3.66→3.70) and EMELIA ALLEN (3.68→3.69) are a legitimately strong D1 pair with high baselines and should be favored against Dragonridge's D1. Don't misplace Kiyono (3.33→3.56) at D3 again — that lineup call cost a line against DTC #3 (35B)."
         },
         {
           "tag": "prediction",
           "tag_class": "warn",
-          "content": "3-2 either way. Dragonridge is the slight favorite on current form (5-0 last match). DTC #1 needs Corelle to compete at S1 and the D1 pair to hold serve."
+          "content": "3-2 either way. Dragonridge is the slight favorite on current form (5-0 last match, Isbell dominant). DTC #1 needs Waters/Allen to hold D1 and Corelle to compete at S1."
         }
       ]
     },
@@ -61,7 +61,7 @@
         {
           "tag": "W6 (4/25)",
           "tag_class": "warn",
-          "content": "vs DRAGONRIDGE CC (3-1). Melanie Isbell at S1 is the key threat. 35B title implications. Must-win."
+          "content": "vs DRAGONRIDGE CC (3-1). Melanie Isbell (3.04→3.57) at S1/S2 is the key threat. 35B title implications. Must-win."
         },
         {
           "tag": "W7 (5/2)",
@@ -71,12 +71,12 @@
         {
           "tag": "W8 (5/9)",
           "tag_class": "warn",
-          "content": "vs RED ROCK CC #2 (4-0+). Toughest match remaining. Mary Lind (3.64) leads a deep roster. Probable loss without the full lineup. Arika Carrier (TPC) won't help here."
+          "content": "vs RED ROCK CC #2 (4-0+). Toughest match remaining. Mary Lind (3.37→3.60) and a deep roster with Tanya Hale (3.47→3.60) and Shanna Toft (3.54→3.58). Probable loss without the full lineup."
         },
         {
           "tag": "W9 (5/16)",
           "tag_class": "you",
-          "content": "vs TPC (3-2). TPC is beatable — their D1 (Carrier) is strong but the rest of the lineup is inconsistent. DTC #1 should win 3-2."
+          "content": "vs TPC (3-2). Arika Carrier (3.16→3.57) is their D1 force and a genuine threat. Jamie Johnson (2.95→3.48) is another surprise weapon. DTC #1 should win 3-2 if D1 is matched correctly."
         },
         {
           "tag": "path to playoffs",

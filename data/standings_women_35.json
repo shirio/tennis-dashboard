@@ -8,80 +8,80 @@
         {
           "team_name": "SUMMERLIN ARBORS",
           "team_wins": 4,
-          "team_losses": 1,
           "matches_played": 5,
+          "team_losses": 1,
           "indiv_wins": 19,
           "indiv_losses": 6,
           "sets_won": 40,
           "sets_lost": 17,
           "games_won": 258,
           "games_lost": 183,
-          "games_won_pct": "58.50%"
+          "games_won_pct": "54.81%"
         },
         {
           "team_name": "DTC #2",
           "team_wins": 4,
-          "team_losses": 1,
           "matches_played": 5,
+          "team_losses": 1,
           "indiv_wins": 16,
           "indiv_losses": 9,
           "sets_won": 34,
           "sets_lost": 23,
-          "games_won": 246,
+          "games_won": 249,
           "games_lost": 188,
-          "games_won_pct": "56.68%"
+          "games_won_pct": "56.98%"
         },
         {
           "team_name": "LIFE TIME FITNESS/GV",
           "team_wins": 3,
-          "team_losses": 2,
           "matches_played": 5,
+          "team_losses": 2,
           "indiv_wins": 15,
           "indiv_losses": 10,
           "sets_won": 31,
           "sets_lost": 23,
           "games_won": 245,
-          "games_lost": 211,
-          "games_won_pct": "53.73%"
+          "games_lost": 214,
+          "games_won_pct": "53.38%"
         },
         {
           "team_name": "ANTHEM CC",
           "team_wins": 2,
-          "team_losses": 3,
           "matches_played": 5,
+          "team_losses": 3,
           "indiv_wins": 9,
           "indiv_losses": 16,
           "sets_won": 21,
           "sets_lost": 34,
           "games_won": 187,
           "games_lost": 239,
-          "games_won_pct": "43.90%"
+          "games_won_pct": "44.87%"
         },
         {
           "team_name": "RED ROCK CC #1",
           "team_wins": 1,
-          "team_losses": 4,
           "matches_played": 5,
+          "team_losses": 4,
           "indiv_wins": 10,
           "indiv_losses": 15,
           "sets_won": 25,
           "sets_lost": 30,
           "games_won": 223,
           "games_lost": 228,
-          "games_won_pct": "49.45%"
+          "games_won_pct": "48.06%"
         },
         {
           "team_name": "SPANISH TRAIL #2",
           "team_wins": 1,
-          "team_losses": 4,
           "matches_played": 5,
+          "team_losses": 4,
           "indiv_wins": 6,
           "indiv_losses": 19,
           "sets_won": 16,
           "sets_lost": 40,
           "games_won": 172,
           "games_lost": 282,
-          "games_won_pct": "37.89%"
+          "games_won_pct": "41.15%"
         }
       ],
       "matches": [
@@ -103,55 +103,35 @@
               "players_home": "Sarah Perez",
               "players_away": "Linda Guastella",
               "score": "6-3 6-4",
-              "result": "home",
-              "winners": "Sarah Perez",
-              "losers": "Linda Guastella",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Shaun Bruce",
               "players_away": "",
               "score": "6-0 6-0",
-              "result": "home",
-              "winners": "Shaun Bruce",
-              "losers": "",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Lisa Cook / Jen Liong",
               "players_away": "",
               "score": "6-0 6-0",
-              "result": "home",
-              "winners": "Lisa Cook / Jen Liong",
-              "losers": "",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Hannah Stevens / Rika Cook",
               "players_away": "Tina Nathalia / Nicole Palichat",
               "score": "6-1 6-2",
-              "result": "home",
-              "winners": "Hannah Stevens / Rika Cook",
-              "losers": "Tina Nathalia / Nicole Palichat",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Kelly Kedge / Rowena Messner",
               "players_away": "Leticia Schoff / Ashlee Rowerdink",
               "score": "6-4 6-4",
-              "result": "home",
-              "winners": "Kelly Kedge / Rowena Messner",
-              "losers": "Leticia Schoff / Ashlee Rowerdink",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             }
           ]
         },
@@ -173,55 +153,35 @@
               "players_home": "Jules Mitchell",
               "players_away": "Marlaina Harris",
               "score": "6-3 6-3",
-              "result": "away",
-              "winners": "Jules Mitchell",
-              "losers": "Marlaina Harris",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "DTC #2"
+              "result": "away"
             },
             {
               "line": "2# Singles",
               "players_home": "Wendy Hopper",
               "players_away": "Fiona Yeh",
               "score": "6-1 6-1",
-              "result": "away",
-              "winners": "Wendy Hopper",
-              "losers": "Fiona Yeh",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "DTC #2"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Emily Courville / Jennifer Petrie",
               "players_away": "Melissa Kwong-Blais / Nicole Reyes",
               "score": "7-6 3-2",
-              "result": "home",
-              "winners": "Melissa Kwong-Blais / Nicole Reyes",
-              "losers": "Emily Courville / Jennifer Petrie",
-              "winner_team": "DTC #2",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Jane Doe / Jan Willis",
               "players_away": "Megan Bell / Loc Nguyen",
               "score": "6-1 6-2",
-              "result": "home",
-              "winners": "Megan Bell / Loc Nguyen",
-              "losers": "Jane Doe / Jan Willis",
-              "winner_team": "DTC #2",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Holly Dexter / Joan Perricone",
               "players_away": "Shellene Goudge / Chantel Vu",
               "score": "1-6 7-6 1-0",
-              "result": "away",
-              "winners": "Holly Dexter / Joan Perricone",
-              "losers": "Shellene Goudge / Chantel Vu",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "DTC #2"
+              "result": "away"
             }
           ]
         },
@@ -243,55 +203,35 @@
               "players_home": "Michelle Brinlee",
               "players_away": "Lyndsey van der Laan",
               "score": "6-1 6-0",
-              "result": "home",
-              "winners": "Lyndsey van der Laan",
-              "losers": "Michelle Brinlee",
-              "winner_team": "ANTHEM CC",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Paige Song",
               "players_away": "",
               "score": "6-0 6-0",
-              "result": "away",
-              "winners": "Paige Song",
-              "losers": "",
-              "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Michele Howser / Mimi Liu",
               "players_away": "Alisun Vehar / Gina Case",
               "score": "6-2 6-3",
-              "result": "away",
-              "winners": "Michele Howser / Mimi Liu",
-              "losers": "Alisun Vehar / Gina Case",
-              "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "result": "away"
             },
             {
               "line": "2# Doubles",
               "players_home": "Tracey Lee / Yan Uyeno",
               "players_away": "Darlene Whittlesy / Heidi Thornhill",
               "score": "6-0 6-1",
-              "result": "away",
-              "winners": "Tracey Lee / Yan Uyeno",
-              "losers": "Darlene Whittlesy / Heidi Thornhill",
-              "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "result": "away"
             },
             {
               "line": "3# Doubles",
               "players_home": "Kathryn Garlan / Rachel Lamb",
               "players_away": "Patricia Delgado / Alex Schrack",
               "score": "6-3 6-4",
-              "result": "away",
-              "winners": "Kathryn Garlan / Rachel Lamb",
-              "losers": "Patricia Delgado / Alex Schrack",
-              "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "result": "away"
             }
           ]
         },
@@ -313,55 +253,35 @@
               "players_home": "Misti Webb",
               "players_away": "Kelly Kedge",
               "score": "6-2 6-1",
-              "result": "home",
-              "winners": "Kelly Kedge",
-              "losers": "Misti Webb",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Hong Lee",
               "players_away": "Samantha Schuster",
               "score": "6-4 6-3",
-              "result": "home",
-              "winners": "Samantha Schuster",
-              "losers": "Hong Lee",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Mimi Liu / Yan Uyeno",
               "players_away": "Shiangyuh Wu / Jen Liong",
               "score": "6-1 6-1",
-              "result": "away",
-              "winners": "Mimi Liu / Yan Uyeno",
-              "losers": "Shiangyuh Wu / Jen Liong",
-              "winner_team": "RED ROCK CC #1",
-              "loser_team": "SUMMERLIN ARBORS"
+              "result": "away"
             },
             {
               "line": "2# Doubles",
               "players_home": "Amanda Gumberg / Rachel Lamb",
               "players_away": "Rika Cook / Nancy Holland",
               "score": "3-6 6-0 1-0",
-              "result": "home",
-              "winners": "Rika Cook / Nancy Holland",
-              "losers": "Amanda Gumberg / Rachel Lamb",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Carroll Welch / Tracey Lee",
               "players_away": "Hannah Stevens / Amrita Soli",
               "score": "6-4 7-6",
-              "result": "home",
-              "winners": "Hannah Stevens / Amrita Soli",
-              "losers": "Carroll Welch / Tracey Lee",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             }
           ]
         },
@@ -383,55 +303,35 @@
               "players_home": "Preslyn Harris",
               "players_away": "Lyndsey van der Laan",
               "score": "6-1 6-2",
-              "result": "away",
-              "winners": "Lyndsey van der Laan",
-              "losers": "Preslyn Harris",
-              "winner_team": "ANTHEM CC",
-              "loser_team": "DTC #2"
+              "result": "away"
             },
             {
               "line": "2# Singles",
               "players_home": "Chantel Vu",
               "players_away": "CHRISTINE McNair",
               "score": "6-3 7-6",
-              "result": "home",
-              "winners": "Chantel Vu",
-              "losers": "CHRISTINE McNair",
-              "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Melissa Kwong-Blais / Nicole Reyes",
               "players_away": "Andra Starr Scano / Gina Case",
               "score": "6-2 6-2",
-              "result": "home",
-              "winners": "Melissa Kwong-Blais / Nicole Reyes",
-              "losers": "Andra Starr Scano / Gina Case",
-              "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Marlaina Harris / Lisa Krzyzaniak",
               "players_away": "Kelly Twells / Alex Schrack",
               "score": "6-1 6-1",
-              "result": "home",
-              "winners": "Marlaina Harris / Lisa Krzyzaniak",
-              "losers": "Kelly Twells / Alex Schrack",
-              "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Megan Bell / Shellene Goudge",
               "players_away": "Casey Primmer / ANN MARIE WEAVER",
               "score": "6-1 6-0",
-              "result": "home",
-              "winners": "Megan Bell / Shellene Goudge",
-              "losers": "Casey Primmer / ANN MARIE WEAVER",
-              "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             }
           ]
         },
@@ -453,55 +353,35 @@
               "players_home": "Leticia Schoff",
               "players_away": "Wendy Hopper",
               "score": "6-3 6-3",
-              "result": "home",
-              "winners": "Wendy Hopper",
-              "losers": "Leticia Schoff",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Ashlee Rowerdink",
               "players_away": "Jules Mitchell",
               "score": "6-0 6-2",
-              "result": "home",
-              "winners": "Jules Mitchell",
-              "losers": "Ashlee Rowerdink",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Linda Guastella / Nicole Palichat",
               "players_away": "Cathy Vanderford / Jane Doe",
               "score": "6-3 6-1",
-              "result": "home",
-              "winners": "Cathy Vanderford / Jane Doe",
-              "losers": "Linda Guastella / Nicole Palichat",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Melissa Ruediger / Sheri Cherubino",
               "players_away": "Kelley Ferrence / Holly Dexter",
               "score": "4-6 6-4 1-0",
-              "result": "home",
-              "winners": "Kelley Ferrence / Holly Dexter",
-              "losers": "Melissa Ruediger / Sheri Cherubino",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Tina Nathalia / Christine LaBarre",
               "players_away": "Sally Ryba / Marilyn Fenn",
               "score": "7-5 6-3",
-              "result": "away",
-              "winners": "Tina Nathalia / Christine LaBarre",
-              "losers": "Sally Ryba / Marilyn Fenn",
-              "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "result": "away"
             }
           ]
         },
@@ -523,55 +403,35 @@
               "players_home": "Tracey Cutler",
               "players_away": "Kelly Kedge",
               "score": "6-3 7-5",
-              "result": "away",
-              "winners": "Tracey Cutler",
-              "losers": "Kelly Kedge",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SUMMERLIN ARBORS"
+              "result": "away"
             },
             {
               "line": "2# Singles",
               "players_home": "Jane Doe",
               "players_away": "Ramona Acosta",
               "score": "6-1 6-1",
-              "result": "away",
-              "winners": "Jane Doe",
-              "losers": "Ramona Acosta",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SUMMERLIN ARBORS"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Joann Komanowski / Debi Marimberga",
               "players_away": "Rika Cook / Shiangyuh Wu",
               "score": "6-2 6-4",
-              "result": "home",
-              "winners": "Rika Cook / Shiangyuh Wu",
-              "losers": "Joann Komanowski / Debi Marimberga",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Cathy Vanderford / Holly Dexter",
               "players_away": "Lisa Cook / Nancy Holland",
               "score": "6-4 6-4",
-              "result": "home",
-              "winners": "Lisa Cook / Nancy Holland",
-              "losers": "Cathy Vanderford / Holly Dexter",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Jennifer Petrie / Jan Willis",
               "players_away": "Rowena Messner / Sarah Perez",
               "score": "6-2 7-5",
-              "result": "home",
-              "winners": "Rowena Messner / Sarah Perez",
-              "losers": "Jennifer Petrie / Jan Willis",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "result": "home"
             }
           ]
         },
@@ -593,55 +453,35 @@
               "players_home": "Carroll Welch",
               "players_away": "Seda Sargsyan",
               "score": "6-0 6-1",
-              "result": "home",
-              "winners": "Seda Sargsyan",
-              "losers": "Carroll Welch",
-              "winner_team": "DTC #2",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Paige Song",
               "players_away": "Megan Bell",
               "score": "6-2 6-3",
-              "result": "home",
-              "winners": "Megan Bell",
-              "losers": "Paige Song",
-              "winner_team": "DTC #2",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Hayley Rodes / Michele Howser",
               "players_away": "Stephanie McGregor / Kim Knotts",
               "score": "6-3 6-1",
-              "result": "away",
-              "winners": "Hayley Rodes / Michele Howser",
-              "losers": "Stephanie McGregor / Kim Knotts",
-              "winner_team": "RED ROCK CC #1",
-              "loser_team": "DTC #2"
+              "result": "away"
             },
             {
               "line": "2# Doubles",
               "players_home": "Tracey Lee / Yan Uyeno",
               "players_away": "Loc Nguyen / Melissa Kwong-Blais",
               "score": "6-1 7-5",
-              "result": "away",
-              "winners": "Tracey Lee / Yan Uyeno",
-              "losers": "Loc Nguyen / Melissa Kwong-Blais",
-              "winner_team": "RED ROCK CC #1",
-              "loser_team": "DTC #2"
+              "result": "away"
             },
             {
               "line": "3# Doubles",
               "players_home": "Misti Webb / Kathryn Garlan",
               "players_away": "Dawn Anderson / Kate Alred",
               "score": "6-7 6-2 1-0",
-              "result": "home",
-              "winners": "Dawn Anderson / Kate Alred",
-              "losers": "Misti Webb / Kathryn Garlan",
-              "winner_team": "DTC #2",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             }
           ]
         },
@@ -663,55 +503,35 @@
               "players_home": "Prexy Tamayo",
               "players_away": "CHRISTINE McNair",
               "score": "7-6 2-6 1-0",
-              "result": "home",
-              "winners": "CHRISTINE McNair",
-              "losers": "Prexy Tamayo",
-              "winner_team": "ANTHEM CC",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "N/A",
               "players_away": "Crystal LaTour",
               "score": "6-0 6-0",
-              "result": "home",
-              "winners": "Crystal LaTour",
-              "losers": "N/A",
-              "winner_team": "ANTHEM CC",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Lisa Gobel / Tina Nathalia",
               "players_away": "Allison Festa / Darlene Whittlesy",
               "score": "6-2 6-1",
-              "result": "home",
-              "winners": "Allison Festa / Darlene Whittlesy",
-              "losers": "Lisa Gobel / Tina Nathalia",
-              "winner_team": "ANTHEM CC",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Jennifer Dalby / Ashlee Rowerdink",
               "players_away": "Patricia Delgado / Gina Case",
               "score": "6-4 6-3",
-              "result": "home",
-              "winners": "Patricia Delgado / Gina Case",
-              "losers": "Jennifer Dalby / Ashlee Rowerdink",
-              "winner_team": "ANTHEM CC",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Sheri Cherubino / Christine LaBarre",
               "players_away": "Alex Schrack / Judith Watson",
               "score": "6-3 6-4",
-              "result": "away",
-              "winners": "Sheri Cherubino / Christine LaBarre",
-              "losers": "Alex Schrack / Judith Watson",
-              "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "ANTHEM CC"
+              "result": "away"
             }
           ]
         },
@@ -733,55 +553,35 @@
               "players_home": "Ramona Acosta",
               "players_away": "Seda Sargsyan",
               "score": "6-1 6-1",
-              "result": "away",
-              "winners": "Seda Sargsyan",
-              "losers": "Ramona Acosta",
-              "winner_team": "DTC #2",
-              "loser_team": "SUMMERLIN ARBORS"
+              "result": "away"
             },
             {
               "line": "2# Singles",
               "players_home": "Hannah Stevens",
               "players_away": "Chantel Vu",
               "score": "6-3 6-2",
-              "result": "home",
-              "winners": "Hannah Stevens",
-              "losers": "Chantel Vu",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "DTC #2"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Nancy Holland / Rika Cook",
               "players_away": "Nicole Reyes / Loc Nguyen",
               "score": "2-6 6-3 1-0",
-              "result": "away",
-              "winners": "Nicole Reyes / Loc Nguyen",
-              "losers": "Nancy Holland / Rika Cook",
-              "winner_team": "DTC #2",
-              "loser_team": "SUMMERLIN ARBORS"
+              "result": "away"
             },
             {
               "line": "2# Doubles",
               "players_home": "Christine Ballard / Jen Liong",
               "players_away": "Marlaina Harris / Megan Bell",
               "score": "6-4 3-6 1-0",
-              "result": "away",
-              "winners": "Marlaina Harris / Megan Bell",
-              "losers": "Christine Ballard / Jen Liong",
-              "winner_team": "DTC #2",
-              "loser_team": "SUMMERLIN ARBORS"
+              "result": "away"
             },
             {
               "line": "3# Doubles",
               "players_home": "Rowena Messner / Shiangyuh Wu",
               "players_away": "Christi Lin / Shellene Goudge",
               "score": "6-3 3-6 1-0",
-              "result": "home",
-              "winners": "Rowena Messner / Shiangyuh Wu",
-              "losers": "Christi Lin / Shellene Goudge",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "DTC #2"
+              "result": "home"
             }
           ]
         },
@@ -803,55 +603,35 @@
               "players_home": "Lyndsey van der Laan",
               "players_away": "Jules Mitchell",
               "score": "7-6 6-4",
-              "result": "away",
-              "winners": "Lyndsey van der Laan",
-              "losers": "Jules Mitchell",
-              "winner_team": "ANTHEM CC",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "result": "away"
             },
             {
               "line": "2# Singles",
               "players_home": "Crystal LaTour",
               "players_away": "Wendy Hopper",
               "score": "6-1 6-4",
-              "result": "home",
-              "winners": "Wendy Hopper",
-              "losers": "Crystal LaTour",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Alisun Vehar / Gina Case",
               "players_away": "Joan Perricone / Joann Komanowski",
               "score": "2-6 6-0 1-0",
-              "result": "away",
-              "winners": "Alisun Vehar / Gina Case",
-              "losers": "Joan Perricone / Joann Komanowski",
-              "winner_team": "ANTHEM CC",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "result": "away"
             },
             {
               "line": "2# Doubles",
               "players_home": "Patricia Delgado / Kirsten Ingram",
               "players_away": "Janet Wellman / Jennifer Petrie",
               "score": "6-4 6-2",
-              "result": "home",
-              "winners": "Janet Wellman / Jennifer Petrie",
-              "losers": "Patricia Delgado / Kirsten Ingram",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Alex Schrack / Judith Watson",
               "players_away": "Kelley Ferrence / Debi Marimberga",
               "score": "6-2 6-3",
-              "result": "away",
-              "winners": "Alex Schrack / Judith Watson",
-              "losers": "Kelley Ferrence / Debi Marimberga",
-              "winner_team": "ANTHEM CC",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "result": "away"
             }
           ]
         },
@@ -873,55 +653,35 @@
               "players_home": "Hayley Rodes",
               "players_away": "Caroline Walton",
               "score": "7-5 6-4",
-              "result": "home",
-              "winners": "Hayley Rodes",
-              "losers": "Caroline Walton",
-              "winner_team": "RED ROCK CC #1",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Misti Webb",
               "players_away": "Ashlee Rowerdink",
               "score": "6-2 3-6 1-0",
-              "result": "away",
-              "winners": "Ashlee Rowerdink",
-              "losers": "Misti Webb",
-              "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "RED ROCK CC #1"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Tracey Lee / Yan Uyeno",
               "players_away": "Lisa Gobel / Jennifer Dalby",
               "score": "7-5 6-3",
-              "result": "home",
-              "winners": "Tracey Lee / Yan Uyeno",
-              "losers": "Lisa Gobel / Jennifer Dalby",
-              "winner_team": "RED ROCK CC #1",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Carroll Welch / Andi Berger",
               "players_away": "Tina Nathalia / Nicole Palichat",
               "score": "7-6 7-6",
-              "result": "away",
-              "winners": "Tina Nathalia / Nicole Palichat",
-              "losers": "Carroll Welch / Andi Berger",
-              "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "RED ROCK CC #1"
+              "result": "away"
             },
             {
               "line": "3# Doubles",
               "players_home": "Michelle Brinlee / Michele Howser",
               "players_away": "Leticia Schoff / Melissa Ruediger",
               "score": "6-2 4-6 1-0",
-              "result": "away",
-              "winners": "Leticia Schoff / Melissa Ruediger",
-              "losers": "Michelle Brinlee / Michele Howser",
-              "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "RED ROCK CC #1"
+              "result": "away"
             }
           ]
         },
@@ -934,8 +694,8 @@
           "away_team": "ANTHEM CC",
           "team_wins_home": 5,
           "team_wins_away": 0,
-          "score": "",
-          "status": "Not Played",
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
           "pending": false,
           "lines": [
             {
@@ -943,55 +703,35 @@
               "players_home": "Sarah Perez",
               "players_away": "Lyndsey van der Laan",
               "score": "6-3 4-6 1-0",
-              "result": "home",
-              "winners": "Sarah Perez",
-              "losers": "Lyndsey van der Laan",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Kelly Kedge",
               "players_away": "Darlene Whittlesy",
               "score": "5-7 6-4 1-0",
-              "result": "home",
-              "winners": "Kelly Kedge",
-              "losers": "Darlene Whittlesy",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Nancy Holland / Rika Cook",
               "players_away": "Andra Starr Scano / Patricia Delgado",
               "score": "6-3 6-2",
-              "result": "home",
-              "winners": "Nancy Holland / Rika Cook",
-              "losers": "Andra Starr Scano / Patricia Delgado",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Rowena Messner / Shiangyuh Wu",
               "players_away": "Alisun Vehar / Gina Case",
               "score": "6-4 5-7 1-0",
-              "result": "home",
-              "winners": "Rowena Messner / Shiangyuh Wu",
-              "losers": "Alisun Vehar / Gina Case",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Christine Ballard / Michelle Willoughby",
-              "players_away": "N/A",
+              "players_away": "",
               "score": "6-0 6-0",
-              "result": "home",
-              "winners": "Christine Ballard / Michelle Willoughby",
-              "losers": "N/A",
-              "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "result": "home"
             }
           ]
         },
@@ -1004,8 +744,8 @@
           "away_team": "SPANISH TRAIL #2",
           "team_wins_home": 4,
           "team_wins_away": 1,
-          "score": "",
-          "status": "Not Played",
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
           "pending": false,
           "lines": [
             {
@@ -1013,55 +753,35 @@
               "players_home": "Seda Sargsyan",
               "players_away": "Linda Guastella",
               "score": "6-1 6-0",
-              "result": "home",
-              "winners": "Seda Sargsyan",
-              "losers": "Linda Guastella",
-              "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Loc Nguyen",
               "players_away": "Caroline Walton",
               "score": "6-0 6-2",
-              "result": "home",
-              "winners": "Loc Nguyen",
-              "losers": "Caroline Walton",
-              "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Megan Bell / Nicole Reyes",
               "players_away": "Leticia Schoff / Melissa Ruediger",
               "score": "6-1 4-6 1-0",
-              "result": "home",
-              "winners": "Megan Bell / Nicole Reyes",
-              "losers": "Leticia Schoff / Melissa Ruediger",
-              "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Lisa Krzyzaniak / Marchelle Locke",
               "players_away": "Nicole Palichat / Jennifer Dalby",
               "score": "6-2 6-7 1-0",
-              "result": "home",
-              "winners": "Lisa Krzyzaniak / Marchelle Locke",
-              "losers": "Nicole Palichat / Jennifer Dalby",
-              "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Mari Valvo / Kim Knotts",
               "players_away": "Sheri Cherubino / Christine LaBarre",
               "score": "7-6 7-6",
-              "result": "away",
-              "winners": "Sheri Cherubino / Christine LaBarre",
-              "losers": "Mari Valvo / Kim Knotts",
-              "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "DTC #2"
+              "result": "away"
             }
           ]
         },
@@ -1074,8 +794,8 @@
           "away_team": "RED ROCK CC #1",
           "team_wins_home": 4,
           "team_wins_away": 1,
-          "score": "",
-          "status": "Not Played",
+          "score": "4-1",
+          "status": "Won 4-1 Reported",
           "pending": false,
           "lines": [
             {
@@ -1083,55 +803,35 @@
               "players_home": "Jules Mitchell",
               "players_away": "Michele Howser",
               "score": "6-2 7-5",
-              "result": "home",
-              "winners": "Jules Mitchell",
-              "losers": "Michele Howser",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Tracey Cutler",
               "players_away": "Tracey Lee",
               "score": "6-2 6-1",
-              "result": "home",
-              "winners": "Tracey Cutler",
-              "losers": "Tracey Lee",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Holly Dexter / Jane Doe",
               "players_away": "Mimi Liu / Yan Uyeno",
               "score": "4-6 7-6 1-0",
-              "result": "home",
-              "winners": "Holly Dexter / Jane Doe",
-              "losers": "Mimi Liu / Yan Uyeno",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Jan Willis / Janet Wellman",
               "players_away": "Kathryn Garlan / Amanda Gumberg",
               "score": "6-2 6-4",
-              "result": "away",
-              "winners": "Kathryn Garlan / Amanda Gumberg",
-              "losers": "Jan Willis / Janet Wellman",
-              "winner_team": "RED ROCK CC #1",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "result": "away"
             },
             {
               "line": "3# Doubles",
               "players_home": "Cathy Vanderford / Debi Marimberga",
               "players_away": "Misti Webb / Hong Lee",
               "score": "6-4 6-4",
-              "result": "home",
-              "winners": "Cathy Vanderford / Debi Marimberga",
-              "losers": "Misti Webb / Hong Lee",
-              "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "result": "home"
             }
           ]
         },
@@ -1346,7 +1046,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "Summerlin Arbors (3-1) leads thanks to Rika Cook (3.54→3.81, 3-1) and Nancy Holland (3.47→3.64) as the D1 anchor. DTC #2 (3-1) is the other top team with Seda Sargsyan (3.92) handling S1. Life Time Fitness/GV and Anthem CC both at 2-2 — LTF has Joann Komanowski (3.54→3.29, -0.25) significantly overrated, which drags their depth. Red Rock CC #1 (1-3) has the division's biggest riser in Yan Uyeno (3.55→3.83, 4-0) — her wins are the main reason Red Rock is relevant at all. Spanish Trail #2 (1-3) relies heavily on cross-listed 3.0 players and is generally overmatched."
+      "subflight_summary": "Summerlin Arbors and DTC #2 share the 35A lead at 4-1 — essentially a two-team race. Seda Sargsyan (DTC #2, 3.91→3.97) is the division's dominant singles player. Rika Cook (Summerlin, 3.57→3.59) and Nancy Holland (3.50→3.50) anchor Summerlin. LTF (3-2) is still alive. Anthem (2-3), Red Rock #1 (1-4), and Spanish Trail #2 (1-4) are falling away."
     },
     {
       "flight_label": "B",
@@ -1354,47 +1054,47 @@
         {
           "team_name": "RED ROCK CC #2",
           "team_wins": 4,
-          "team_losses": 0,
           "matches_played": 4,
+          "team_losses": 0,
           "indiv_wins": 14,
           "indiv_losses": 6,
           "sets_won": 29,
           "sets_lost": 16,
-          "games_won": 205,
+          "games_won": 207,
           "games_lost": 177,
-          "games_won_pct": "53.66%"
+          "games_won_pct": "53.91%"
         },
         {
           "team_name": "DRAGONRIDGE CC",
           "team_wins": 3,
-          "team_losses": 1,
           "matches_played": 4,
+          "team_losses": 1,
           "indiv_wins": 15,
           "indiv_losses": 5,
           "sets_won": 31,
           "sets_lost": 15,
           "games_won": 208,
-          "games_lost": 159,
-          "games_won_pct": "56.68%"
+          "games_lost": 163,
+          "games_won_pct": "56.06%"
         },
         {
           "team_name": "TPC",
           "team_wins": 3,
-          "team_losses": 2,
           "matches_played": 5,
+          "team_losses": 2,
           "indiv_wins": 13,
           "indiv_losses": 12,
           "sets_won": 31,
           "sets_lost": 26,
-          "games_won": 233,
+          "games_won": 237,
           "games_lost": 226,
-          "games_won_pct": "50.76%"
+          "games_won_pct": "49.89%"
         },
         {
           "team_name": "DTC #1",
           "team_wins": 3,
-          "team_losses": 1,
           "matches_played": 4,
+          "team_losses": 1,
           "indiv_wins": 12,
           "indiv_losses": 8,
           "sets_won": 28,
@@ -1406,21 +1106,21 @@
         {
           "team_name": "SPANISH TRAIL #1",
           "team_wins": 1,
-          "team_losses": 4,
           "matches_played": 5,
+          "team_losses": 4,
           "indiv_wins": 9,
           "indiv_losses": 16,
-          "sets_won": 20,
+          "sets_won": 21,
           "sets_lost": 34,
-          "games_won": 201,
-          "games_lost": 251,
-          "games_won_pct": "44.47%"
+          "games_won": 207,
+          "games_lost": 253,
+          "games_won_pct": "46.21%"
         },
         {
           "team_name": "DESERT PALM",
           "team_wins": 1,
-          "team_losses": 3,
           "matches_played": 4,
+          "team_losses": 3,
           "indiv_wins": 7,
           "indiv_losses": 13,
           "sets_won": 15,
@@ -1432,15 +1132,15 @@
         {
           "team_name": "DTC #3",
           "team_wins": 0,
-          "team_losses": 4,
           "matches_played": 4,
+          "team_losses": 4,
           "indiv_wins": 5,
           "indiv_losses": 15,
           "sets_won": 14,
-          "sets_lost": 30,
+          "sets_lost": 31,
           "games_won": 162,
-          "games_lost": 207,
-          "games_won_pct": "43.90%"
+          "games_lost": 213,
+          "games_won_pct": "43.20%"
         }
       ],
       "matches": [
@@ -1462,55 +1162,35 @@
               "players_home": "Karina McAffee",
               "players_away": "Maria Allen",
               "score": "6-2 6-4",
-              "result": "away",
-              "winners": "Maria Allen",
-              "losers": "Karina McAffee",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "RED ROCK CC #2"
+              "result": "away"
             },
             {
               "line": "2# Singles",
               "players_home": "Blair May",
               "players_away": "Melanie Isbell",
               "score": "6-3 7-5",
-              "result": "away",
-              "winners": "Melanie Isbell",
-              "losers": "Blair May",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "RED ROCK CC #2"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Mary Lind / Kathleen Chamberlain",
               "players_away": "Anne Gumm / Chelsea Gray",
               "score": "6-3 4-6 1-0",
-              "result": "home",
-              "winners": "Mary Lind / Kathleen Chamberlain",
-              "losers": "Anne Gumm / Chelsea Gray",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DRAGONRIDGE CC"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Travis Azous / Tanya Hale",
               "players_away": "Christina Rich / Joan Stertzer",
               "score": "6-1 6-1",
-              "result": "home",
-              "winners": "Travis Azous / Tanya Hale",
-              "losers": "Christina Rich / Joan Stertzer",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DRAGONRIDGE CC"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Megan Galli / Patti Zack",
               "players_away": "Katrin Dragnev / Lori LaBarbera",
               "score": "6-3 7-5",
-              "result": "home",
-              "winners": "Megan Galli / Patti Zack",
-              "losers": "Katrin Dragnev / Lori LaBarbera",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DRAGONRIDGE CC"
+              "result": "home"
             }
           ]
         },
@@ -1532,55 +1212,35 @@
               "players_home": "Monica Baldwin",
               "players_away": "Mai Le",
               "score": "6-4 4-6 1-0",
-              "result": "home",
-              "winners": "Monica Baldwin",
-              "losers": "Mai Le",
-              "winner_team": "TPC",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Lisa Gaughan",
               "players_away": "Valerie Witherspoon",
               "score": "6-4 7-5",
-              "result": "away",
-              "winners": "Valerie Witherspoon",
-              "losers": "Lisa Gaughan",
-              "winner_team": "DTC #3",
-              "loser_team": "TPC"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Susan Grady / Arika Carrier",
               "players_away": "LaCheyva Edmonis / Alexandria Chang",
               "score": "6-4 6-0",
-              "result": "home",
-              "winners": "Susan Grady / Arika Carrier",
-              "losers": "LaCheyva Edmonis / Alexandria Chang",
-              "winner_team": "TPC",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Jamie Johnson / Jeralyn Marchesi",
               "players_away": "Kelly Nguyen / Melissa Hicks",
               "score": "6-1 7-6",
-              "result": "home",
-              "winners": "Jamie Johnson / Jeralyn Marchesi",
-              "losers": "Kelly Nguyen / Melissa Hicks",
-              "winner_team": "TPC",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Christina Smith / Jennifer Wang",
               "players_away": "Anna Clark / Kara Gaston",
               "score": "6-4 6-0",
-              "result": "away",
-              "winners": "Anna Clark / Kara Gaston",
-              "losers": "Christina Smith / Jennifer Wang",
-              "winner_team": "DTC #3",
-              "loser_team": "TPC"
+              "result": "away"
             }
           ]
         },
@@ -1602,55 +1262,35 @@
               "players_home": "Amanda Verba",
               "players_away": "Shilpa Daulat",
               "score": "6-1 6-4",
-              "result": "home",
-              "winners": "Shilpa Daulat",
-              "losers": "Amanda Verba",
-              "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Punam Patel",
               "players_away": "Kelsey Spence",
               "score": "6-3 6-0",
-              "result": "away",
-              "winners": "Punam Patel",
-              "losers": "Kelsey Spence",
-              "winner_team": "DESERT PALM",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Amy Cooper / Michelle Castillo",
               "players_away": "Vanessa Nicole Rowe / Allison Ibarguen",
               "score": "4-6 7-6 1-0",
-              "result": "away",
-              "winners": "Amy Cooper / Michelle Castillo",
-              "losers": "Vanessa Nicole Rowe / Allison Ibarguen",
-              "winner_team": "DESERT PALM",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "away"
             },
             {
               "line": "2# Doubles",
               "players_home": "Karen Hom / Stella Chivikas",
               "players_away": "Vinne Chen / Sara Sager",
               "score": "6-2 6-2",
-              "result": "away",
-              "winners": "Karen Hom / Stella Chivikas",
-              "losers": "Vinne Chen / Sara Sager",
-              "winner_team": "DESERT PALM",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "away"
             },
             {
               "line": "3# Doubles",
               "players_home": "Lana Penrose / Jenny Baxter",
               "players_away": "Jill Morrison / Alisia Pulella",
               "score": "6-4 6-4",
-              "result": "away",
-              "winners": "Lana Penrose / Jenny Baxter",
-              "losers": "Jill Morrison / Alisia Pulella",
-              "winner_team": "DESERT PALM",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "away"
             }
           ]
         },
@@ -1672,55 +1312,35 @@
               "players_home": "Vanessa Nicole Rowe",
               "players_away": "Jaclyn O'Malley",
               "score": "6-3 4-6 1-0",
-              "result": "away",
-              "winners": "Vanessa Nicole Rowe",
-              "losers": "Jaclyn O'Malley",
-              "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "RED ROCK CC #2"
+              "result": "away"
             },
             {
               "line": "2# Singles",
               "players_home": "Shilpa Daulat",
               "players_away": "Maria Truman",
               "score": "6-4 6-4",
-              "result": "home",
-              "winners": "Maria Truman",
-              "losers": "Shilpa Daulat",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Sara Sager / Chandra VanPaepeghem",
               "players_away": "Liz Jones / Anne Kellogg",
               "score": "6-1 6-0",
-              "result": "away",
-              "winners": "Sara Sager / Chandra VanPaepeghem",
-              "losers": "Liz Jones / Anne Kellogg",
-              "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "RED ROCK CC #2"
+              "result": "away"
             },
             {
               "line": "2# Doubles",
               "players_home": "Nicole Medas / Natasha Kattau",
               "players_away": "Patti Zack / Mary Lind",
               "score": "6-4 4-0",
-              "result": "home",
-              "winners": "Patti Zack / Mary Lind",
-              "losers": "Nicole Medas / Natasha Kattau",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Alisia Pulella / Kelsey Spence",
               "players_away": "Karen Watts / Tanya Hale",
               "score": "6-1 6-1",
-              "result": "home",
-              "winners": "Karen Watts / Tanya Hale",
-              "losers": "Alisia Pulella / Kelsey Spence",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             }
           ]
         },
@@ -1742,55 +1362,35 @@
               "players_home": "Maria Allen",
               "players_away": "Monica Baldwin",
               "score": "6-3 4-6 1-0",
-              "result": "home",
-              "winners": "Maria Allen",
-              "losers": "Monica Baldwin",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "TPC"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Melanie Isbell",
               "players_away": "Lisa Gaughan",
               "score": "6-2 6-3",
-              "result": "home",
-              "winners": "Melanie Isbell",
-              "losers": "Lisa Gaughan",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "TPC"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Anne Gumm / Katrin Dragnev",
               "players_away": "Arika Carrier / Jamie Warrington",
               "score": "6-3 6-1",
-              "result": "away",
-              "winners": "Arika Carrier / Jamie Warrington",
-              "losers": "Anne Gumm / Katrin Dragnev",
-              "winner_team": "TPC",
-              "loser_team": "DRAGONRIDGE CC"
+              "result": "away"
             },
             {
               "line": "2# Doubles",
               "players_home": "Lori LaBarbera / Lorraine Yarde",
               "players_away": "Carolyn Wood / Susan Grady",
               "score": "6-3 6-3",
-              "result": "home",
-              "winners": "Lori LaBarbera / Lorraine Yarde",
-              "losers": "Carolyn Wood / Susan Grady",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "TPC"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Amy Kirk / Joan Stertzer",
               "players_away": "Liliya Pummill / Judith Milligan",
               "score": "7-6 2-1",
-              "result": "away",
-              "winners": "Liliya Pummill / Judith Milligan",
-              "losers": "Amy Kirk / Joan Stertzer",
-              "winner_team": "TPC",
-              "loser_team": "DRAGONRIDGE CC"
+              "result": "away"
             }
           ]
         },
@@ -1812,55 +1412,35 @@
               "players_home": "Stacie Corelle",
               "players_away": "Punam Patel",
               "score": "6-3 6-1",
-              "result": "home",
-              "winners": "Stacie Corelle",
-              "losers": "Punam Patel",
-              "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Kelly McPherson",
               "players_away": "Gina Thornton",
               "score": "6-3 6-1",
-              "result": "home",
-              "winners": "Kelly McPherson",
-              "losers": "Gina Thornton",
-              "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Kami Adamson / Christina Drees",
               "players_away": "Val Froman / Michelle Castillo",
               "score": "7-6 6-4",
-              "result": "home",
-              "winners": "Kami Adamson / Christina Drees",
-              "losers": "Val Froman / Michelle Castillo",
-              "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Claudia Hernandez / Karen Kiyono",
               "players_away": "Karen Hom / Stella Chivikas",
               "score": "6-0 6-4",
-              "result": "home",
-              "winners": "Claudia Hernandez / Karen Kiyono",
-              "losers": "Karen Hom / Stella Chivikas",
-              "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Sabine Curtis / EMELIA ALLEN",
               "players_away": "RACQUEL DIZON / Monica Johnson",
               "score": "6-3 7-5",
-              "result": "home",
-              "winners": "Sabine Curtis / EMELIA ALLEN",
-              "losers": "RACQUEL DIZON / Monica Johnson",
-              "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             }
           ]
         },
@@ -1882,55 +1462,35 @@
               "players_home": "Stacie Corelle",
               "players_away": "Karina McAffee",
               "score": "5-7 7-6 1-0",
-              "result": "home",
-              "winners": "Karina McAffee",
-              "losers": "Stacie Corelle",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Kelly McPherson",
               "players_away": "Shanna Toft",
               "score": "6-7 6-0 1-0",
-              "result": "home",
-              "winners": "Shanna Toft",
-              "losers": "Kelly McPherson",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Claudia Hernandez / Karen Kiyono",
               "players_away": "Maria Truman / Suzy Wirth",
               "score": "6-1 6-4",
-              "result": "away",
-              "winners": "Claudia Hernandez / Karen Kiyono",
-              "losers": "Maria Truman / Suzy Wirth",
-              "winner_team": "DTC #1",
-              "loser_team": "RED ROCK CC #2"
+              "result": "away"
             },
             {
               "line": "2# Doubles",
               "players_home": "Christina Drees / Kami Adamson",
               "players_away": "Mary Lind / Tyree Judd",
               "score": "7-6 6-2",
-              "result": "home",
-              "winners": "Mary Lind / Tyree Judd",
-              "losers": "Christina Drees / Kami Adamson",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Valeria Perdomo / Sabine Curtis",
               "players_away": "Travis Azous / Julie MacDonald",
               "score": "5-7 6-3 1-0",
-              "result": "home",
-              "winners": "Travis Azous / Julie MacDonald",
-              "losers": "Valeria Perdomo / Sabine Curtis",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "result": "home"
             }
           ]
         },
@@ -1952,55 +1512,35 @@
               "players_home": "Melanie Isbell",
               "players_away": "Valerie Witherspoon",
               "score": "4-6 6-2 1-0",
-              "result": "home",
-              "winners": "Melanie Isbell",
-              "losers": "Valerie Witherspoon",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Vanessa Landreman",
               "players_away": "Tayoni Coleman",
               "score": "6-1 2-6 1-0",
-              "result": "home",
-              "winners": "Vanessa Landreman",
-              "losers": "Tayoni Coleman",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Lorraine Yarde / Katrin Dragnev",
               "players_away": "Kelly Nguyen / Lisa Schnitz",
               "score": "6-4 7-5",
-              "result": "home",
-              "winners": "Lorraine Yarde / Katrin Dragnev",
-              "losers": "Kelly Nguyen / Lisa Schnitz",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Anne Gumm / Chelsea Gray",
               "players_away": "LaCheyva Edmonis / Melissa Hicks",
               "score": "6-2 6-2",
-              "result": "home",
-              "winners": "Anne Gumm / Chelsea Gray",
-              "losers": "LaCheyva Edmonis / Melissa Hicks",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Christina Rich / Abigail Cox",
               "players_away": "NANCIE WEBSTER / Anna Clark",
               "score": "6-4 6-0",
-              "result": "home",
-              "winners": "Christina Rich / Abigail Cox",
-              "losers": "NANCIE WEBSTER / Anna Clark",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "result": "home"
             }
           ]
         },
@@ -2022,55 +1562,35 @@
               "players_home": "Monica Baldwin",
               "players_away": "Natasha Kattau",
               "score": "6-4 6-1",
-              "result": "home",
-              "winners": "Monica Baldwin",
-              "losers": "Natasha Kattau",
-              "winner_team": "TPC",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Liliya Pummill",
               "players_away": "",
               "score": "6-0 6-0",
-              "result": "home",
-              "winners": "Liliya Pummill",
-              "losers": "",
-              "winner_team": "TPC",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Jamie Johnson / Jeralyn Marchesi",
               "players_away": "Shilpa Daulat / Allison Ibarguen",
               "score": "6-4 7-5",
-              "result": "home",
-              "winners": "Jamie Johnson / Jeralyn Marchesi",
-              "losers": "Shilpa Daulat / Allison Ibarguen",
-              "winner_team": "TPC",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Jamie Warrington / Jennifer Hall",
               "players_away": "Chandra VanPaepeghem / Sara Sager",
               "score": "6-4 6-1",
-              "result": "away",
-              "winners": "Chandra VanPaepeghem / Sara Sager",
-              "losers": "Jamie Warrington / Jennifer Hall",
-              "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "TPC"
+              "result": "away"
             },
             {
               "line": "3# Doubles",
               "players_home": "Carolyn Wood / Elisabeth Skinner",
               "players_away": "Jill Morrison / Vinne Chen",
               "score": "6-0 5-7 1-0",
-              "result": "away",
-              "winners": "Jill Morrison / Vinne Chen",
-              "losers": "Carolyn Wood / Elisabeth Skinner",
-              "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "TPC"
+              "result": "away"
             }
           ]
         },
@@ -2092,55 +1612,35 @@
               "players_home": "Amanda Verba",
               "players_away": "Shanna Toft",
               "score": "7-5 7-6",
-              "result": "home",
-              "winners": "Shanna Toft",
-              "losers": "Amanda Verba",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Punam Patel",
               "players_away": "Tyree Judd",
               "score": "6-1 6-2",
-              "result": "away",
-              "winners": "Punam Patel",
-              "losers": "Tyree Judd",
-              "winner_team": "DESERT PALM",
-              "loser_team": "RED ROCK CC #2"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Jenny Baxter / Amy Cooper",
               "players_away": "Julie MacDonald / Karen Watts",
               "score": "7-6 7-5",
-              "result": "home",
-              "winners": "Julie MacDonald / Karen Watts",
-              "losers": "Jenny Baxter / Amy Cooper",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "RACQUEL DIZON / Lana Penrose",
               "players_away": "Suzy Wirth / Maria Truman",
               "score": "6-4 6-0",
-              "result": "home",
-              "winners": "Suzy Wirth / Maria Truman",
-              "losers": "RACQUEL DIZON / Lana Penrose",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Karen Hom / Michelle Castillo",
               "players_away": "Travis Azous / Mary Lind",
               "score": "6-4 6-4",
-              "result": "home",
-              "winners": "Travis Azous / Mary Lind",
-              "losers": "Karen Hom / Michelle Castillo",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             }
           ]
         },
@@ -2162,55 +1662,35 @@
               "players_home": "Shawanna Johnson",
               "players_away": "Monica Baldwin",
               "score": "6-2 6-2",
-              "result": "home",
-              "winners": "Monica Baldwin",
-              "losers": "Shawanna Johnson",
-              "winner_team": "TPC",
-              "loser_team": "DTC #1"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Shi L Oskooi",
               "players_away": "Lisa Gaughan",
               "score": "4-6 6-2 1-0",
-              "result": "away",
-              "winners": "Shi L Oskooi",
-              "losers": "Lisa Gaughan",
-              "winner_team": "DTC #1",
-              "loser_team": "TPC"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Claudia Hernandez / Karen Kiyono",
               "players_away": "Leslie Brodie / Arika Carrier",
               "score": "6-2 6-3",
-              "result": "home",
-              "winners": "Leslie Brodie / Arika Carrier",
-              "losers": "Claudia Hernandez / Karen Kiyono",
-              "winner_team": "TPC",
-              "loser_team": "DTC #1"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Sabine Curtis / Amy Waters",
               "players_away": "Carolyn Wood / Jennifer Hall",
               "score": "6-2 6-2",
-              "result": "away",
-              "winners": "Sabine Curtis / Amy Waters",
-              "losers": "Carolyn Wood / Jennifer Hall",
-              "winner_team": "DTC #1",
-              "loser_team": "TPC"
+              "result": "away"
             },
             {
               "line": "3# Doubles",
               "players_home": "Valeria Perdomo / Diane Paull",
               "players_away": "Elisabeth Skinner / Maggie Skinner",
               "score": "5-7 6-1 1-0",
-              "result": "away",
-              "winners": "Valeria Perdomo / Diane Paull",
-              "losers": "Elisabeth Skinner / Maggie Skinner",
-              "winner_team": "DTC #1",
-              "loser_team": "TPC"
+              "result": "away"
             }
           ]
         },
@@ -2232,55 +1712,35 @@
               "players_home": "Cindy Nguyen",
               "players_away": "Tayoni Coleman",
               "score": "6-2 6-2",
-              "result": "away",
-              "winners": "Tayoni Coleman",
-              "losers": "Cindy Nguyen",
-              "winner_team": "DTC #3",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "away"
             },
             {
               "line": "2# Singles",
               "players_home": "Alisia Pulella",
               "players_away": "LaCheyva Edmonis",
               "score": "7-5",
-              "result": "home",
-              "winners": "Alisia Pulella",
-              "losers": "LaCheyva Edmonis",
-              "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Chandra VanPaepeghem / Sara Sager",
               "players_away": "Anna Clark / Kara Gaston",
               "score": "7-6 7-6",
-              "result": "home",
-              "winners": "Chandra VanPaepeghem / Sara Sager",
-              "losers": "Anna Clark / Kara Gaston",
-              "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Vinne Chen / Jill Morrison",
               "players_away": "Lisa Schnitz / Kelly Nguyen",
               "score": "6-2 6-3",
-              "result": "home",
-              "winners": "Vinne Chen / Jill Morrison",
-              "losers": "Lisa Schnitz / Kelly Nguyen",
-              "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Allison Ibarguen / Shilpa Daulat",
               "players_away": "Kristyl Addison / Patti Oakes",
               "score": "7-5 7-5",
-              "result": "home",
-              "winners": "Allison Ibarguen / Shilpa Daulat",
-              "losers": "Kristyl Addison / Patti Oakes",
-              "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DTC #3"
+              "result": "home"
             }
           ]
         },
@@ -2293,8 +1753,8 @@
           "away_team": "SPANISH TRAIL #1",
           "team_wins_home": 5,
           "team_wins_away": 0,
-          "score": "",
-          "status": "Not Played",
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
           "pending": false,
           "lines": [
             {
@@ -2302,55 +1762,35 @@
               "players_home": "Melanie Isbell",
               "players_away": "Shilpa Daulat",
               "score": "6-4 6-4",
-              "result": "home",
-              "winners": "Melanie Isbell",
-              "losers": "Shilpa Daulat",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Vanessa Landreman",
               "players_away": "Cindy Nguyen",
               "score": "6-3 6-0",
-              "result": "home",
-              "winners": "Vanessa Landreman",
-              "losers": "Cindy Nguyen",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             },
             {
               "line": "1# Doubles",
               "players_home": "Teisha Hunsaker / Tricia Colbert",
               "players_away": "Chandra VanPaepeghem / Sara Sager",
               "score": "6-3 5-7 1-0",
-              "result": "home",
-              "winners": "Teisha Hunsaker / Tricia Colbert",
-              "losers": "Chandra VanPaepeghem / Sara Sager",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Jamie Kelvington / Lori LaBarbera",
               "players_away": "My Vuong / Nicole Medas",
               "score": "6-3 6-7 1-0",
-              "result": "home",
-              "winners": "Jamie Kelvington / Lori LaBarbera",
-              "losers": "My Vuong / Nicole Medas",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Abigail Cox / Jessica Borghoff",
               "players_away": "Natasha Kattau / Vanessa Nicole Rowe",
               "score": "6-1 6-4",
-              "result": "home",
-              "winners": "Abigail Cox / Jessica Borghoff",
-              "losers": "Natasha Kattau / Vanessa Nicole Rowe",
-              "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "result": "home"
             }
           ]
         },
@@ -2363,8 +1803,8 @@
           "away_team": "DESERT PALM",
           "team_wins_home": 3,
           "team_wins_away": 2,
-          "score": "",
-          "status": "Not Played",
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
           "pending": false,
           "lines": [
             {
@@ -2372,55 +1812,35 @@
               "players_home": "Monica Baldwin",
               "players_away": "Amanda Verba",
               "score": "3-6 7-6 1-0",
-              "result": "away",
-              "winners": "Amanda Verba",
-              "losers": "Monica Baldwin",
-              "winner_team": "DESERT PALM",
-              "loser_team": "TPC"
+              "result": "away"
             },
             {
               "line": "2# Singles",
               "players_home": "Lisa Gaughan",
               "players_away": "Punam Patel",
               "score": "6-0 6-1",
-              "result": "away",
-              "winners": "Punam Patel",
-              "losers": "Lisa Gaughan",
-              "winner_team": "DESERT PALM",
-              "loser_team": "TPC"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Arika Carrier / Jennifer Hall",
               "players_away": "Jenny Baxter / Val Froman",
               "score": "7-5 7-5",
-              "result": "home",
-              "winners": "Arika Carrier / Jennifer Hall",
-              "losers": "Jenny Baxter / Val Froman",
-              "winner_team": "TPC",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Susan Castelli / Jamie Warrington",
               "players_away": "Amy Cooper / Stella Chivikas",
               "score": "6-2 7-5",
-              "result": "home",
-              "winners": "Susan Castelli / Jamie Warrington",
-              "losers": "Amy Cooper / Stella Chivikas",
-              "winner_team": "TPC",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Jamie Johnson / Christina Smith",
               "players_away": "Tracey Willson / Gina Thornton",
               "score": "2-6 7-6 1-0",
-              "result": "home",
-              "winners": "Jamie Johnson / Christina Smith",
-              "losers": "Tracey Willson / Gina Thornton",
-              "winner_team": "TPC",
-              "loser_team": "DESERT PALM"
+              "result": "home"
             }
           ]
         },
@@ -2433,8 +1853,8 @@
           "away_team": "DTC #3",
           "team_wins_home": 3,
           "team_wins_away": 2,
-          "score": "",
-          "status": "Not Played",
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
           "pending": false,
           "lines": [
             {
@@ -2442,55 +1862,35 @@
               "players_home": "Tayoni Coleman",
               "players_away": "Stacie Corelle",
               "score": "6-3 6-0",
-              "result": "home",
-              "winners": "Stacie Corelle",
-              "losers": "Tayoni Coleman",
-              "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "2# Singles",
               "players_home": "Valerie Witherspoon",
               "players_away": "Shawanna Johnson",
               "score": "6-3 6-3",
-              "result": "away",
-              "winners": "Valerie Witherspoon",
-              "losers": "Shawanna Johnson",
-              "winner_team": "DTC #3",
-              "loser_team": "DTC #1"
+              "result": "away"
             },
             {
               "line": "1# Doubles",
               "players_home": "Kelly Nguyen / Donna Lefever",
               "players_away": "EMELIA ALLEN / Amy Waters",
               "score": "6-4 6-3",
-              "result": "home",
-              "winners": "EMELIA ALLEN / Amy Waters",
-              "losers": "Kelly Nguyen / Donna Lefever",
-              "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "2# Doubles",
               "players_home": "Lisa Schnitz / Kara Gaston",
               "players_away": "Diane Paull / Valeria Perdomo",
               "score": "6-1 6-7 1-0",
-              "result": "home",
-              "winners": "Diane Paull / Valeria Perdomo",
-              "losers": "Lisa Schnitz / Kara Gaston",
-              "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "result": "home"
             },
             {
               "line": "3# Doubles",
               "players_home": "Alexandria Chang / Kristyl Addison",
               "players_away": "Karen Kiyono / Michelle Jarvis",
               "score": "3-6 6-1 1-0",
-              "result": "away",
-              "winners": "Alexandria Chang / Kristyl Addison",
-              "losers": "Karen Kiyono / Michelle Jarvis",
-              "winner_team": "DTC #3",
-              "loser_team": "DTC #1"
+              "result": "away"
             }
           ]
         },
@@ -2775,7 +2175,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "Red Rock CC #2 (4-0) is the class of the subflight with Mary Lind (3.64, 4-0 across all lines) leading a deep roster. Dragonridge CC and DTC #1 sit at 2-1, TPC at 2-2. TPC has the division's most underrated player in Arika Carrier (3.60→3.74, 3-0 at D1). Dragonridge has Melanie Isbell (3-0 at S1/S2) — a singles problem for everyone. DTC #1 has solid D1 depth in Kiyono + Hernandez but no dominant singles threat. Spanish Trail #1 (1-3) and Desert Palm (1-2) sit in the middle. DTC #3 (0-3) is the weakest team — their roster is built from cross-listed 3.0 players with negative deltas across the board."
+      "subflight_summary": "Red Rock CC #2 leads 35B at 4-0 — Mary Lind (3.67→3.67) anchors a deep roster. DTC #1 (3-1) and Dragonridge (3-1) are tied for 2nd — they meet in W6 (4/25) in the key matchup. Melanie Isbell (Dragonridge, 3.20→3.41) is the division's biggest riser. Arika Carrier (TPC, 3.70→3.78) is the top-rated active player. TPC (3-2) is still in contention."
     }
   ]
 }

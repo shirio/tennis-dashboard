@@ -106,6 +106,18 @@ class MatchRecord:
     score: str                          # e.g. "6-4 6-2"
 
 
+@dataclass
+class CourtEvent:
+    """One unique court line across all divisions, used for sequential global rating."""
+    date: str
+    match_id: str
+    line_label: str
+    division: str
+    winner_keys: list[str]              # name_key(s) of winning side
+    loser_keys: list[str]               # name_key(s) of losing side
+    score: str
+
+
 # ---------------------------------------------------------------------------
 # Helpers (kept from original)
 # ---------------------------------------------------------------------------
@@ -234,39 +246,38 @@ def _parse_sets(score_str: str) -> list[tuple[int, int, bool]]:
 
 def _surprise_weight(expected: float, won: bool) -> float:
     """
-    Asymmetric weighting based on how surprising the result is.
+    How much does this result update our belief that ratings are correct?
 
-    - Upset win (won=True, expected low): HIGH weight — meaningful signal.
-    - Expected win (won=True, expected high): LOW weight — noisy / uninformative.
-    - Upset loss (won=False, expected high): HIGH weight — meaningful signal.
-    - Expected loss (won=False, expected low): LOW weight — noisy / uninformative.
+    Computed as |actual - expected|: how far the outcome was from what ratings
+    predicted. An underdog winning (upset) and a favourite losing (upset) are
+    equivalent — both are strong signals that ratings are off. A favourite winning
+    and an underdog losing are both weak signals — they just confirm the status quo.
 
-    Returns a multiplier in [0.15, 1.0].
+    This is symmetric by construction: surprise_level for a win = 1 - expected,
+    which equals expected for a loss when the match flips — both measure the same
+    "distance from expectation" regardless of direction.
+
+    Returns a multiplier in [0.10, 1.00].
     """
-    if won:
-        # For a win, surprise = how unlikely the win was (1 - expected)
-        surprise_level = 1.0 - expected
-    else:
-        # For a loss, surprise = how unlikely the loss was (expected)
-        surprise_level = expected
-
-    # Map surprise_level to weight: low surprise → low weight
+    surprise_level = abs((1.0 if won else 0.0) - expected)
     if surprise_level >= 0.70:
-        return 1.00    # huge upset
+        return 1.00
     if surprise_level >= 0.55:
-        return 0.75    # moderate upset
+        return 0.75
     if surprise_level >= 0.40:
-        return 0.40    # slight upset or even match — modest signal
+        return 0.40
     if surprise_level >= 0.25:
-        return 0.20    # expected result — weak signal
-    return 0.10        # heavily expected result (barely a signal)
+        return 0.20
+    return 0.10
 
 
 def _match_adjustment(player_rating: float, record: MatchRecord,
                       scaling: float = SCALING, cap: float = CAP) -> float:
     """
-    Compute the v8 rating adjustment for a single match.
-    Uses cross-pair expected probability, surprise weighting, and set-by-set scoring.
+    Compute the rating adjustment for a single match.
+    Surprise weighting amplifies results that defy rating expectations (symmetrically
+    for wins and losses) since upsets in either direction usually indicate ratings
+    are off, not luck. Score dominance captures margin of victory within the match.
     """
     expected = _cross_pair_expected(
         player_rating, record.partner_rating, record.opponent_ratings
@@ -275,27 +286,31 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
 
     sets = _parse_sets(record.score)
     if not sets:
-        # No parseable score → use simple win/loss surprise
         surprise = (1.0 if record.won else 0.0) - expected
         return max(-cap, min(cap, surprise * sw * scaling))
 
-    # Set-by-set surprise accumulation
+    # Set-by-set signal weighted by score dominance — no SW here.
+    # Score margins are direct performance evidence: Yarisbel winning 6-1 6-3 is
+    # a real signal regardless of whether the win was expected. SW would zero out
+    # dominant wins against weaker opponents, masking genuine performance quality.
     total_surprise = 0.0
     total_dominance = 0.0
     for winner_games, loser_games, first_side_won in sets:
-        # Did the player win this set?
         player_won_set = (first_side_won == record.won)
         actual_set = 1.0 if player_won_set else 0.0
         base_surprise = actual_set - expected
         dom = _set_dominance(winner_games, loser_games)
-        total_surprise += base_surprise * dom * sw
+        total_surprise += base_surprise * dom       # ← no SW on score signal
         total_dominance += dom
 
-    # Add match-outcome signal: the overall W/L result carries its own weight
-    # beyond individual set scores. Straight-sets (2-set) wins are more decisive
-    # and carry a stronger signal. 3-set matches were closely contested — the
-    # outcome matters but the signal is muddier.
+    # Match-outcome signal: SW applies here. The outcome (win/loss) is where luck
+    # lives — an upset outcome is a sign ratings are off, an expected outcome is
+    # weak evidence. Score margins within a match are less luck-dependent.
+    # Singles matches carry a 1.25× bonus: a 1v1 result is a cleaner signal than
+    # doubles (no partner contribution to mask individual ability).
     match_outcome_weight = 0.15 if len(sets) >= 3 else 0.30
+    if record.partner_rating is None:   # singles — boost outcome weight
+        match_outcome_weight *= 1.25
     match_surprise = (1.0 if record.won else 0.0) - expected
     total_surprise += match_surprise * match_outcome_weight * sw
     total_dominance += match_outcome_weight
@@ -313,11 +328,11 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
 # ---------------------------------------------------------------------------
 
 _SCORE_GAP = {
-    0: 0.22,   # 6-0 → dominant (reduced: one bagel ≠ 0.40 rating gap)
-    1: 0.15,   # 6-1 → strong
-    2: 0.10,   # 6-2 → solid
-    3: 0.07,   # 6-3 → moderate
-    4: 0.03,   # 6-4 → slight
+    0: 0.10,   # 6-0 → dominant (bagel vs 2.95 implies ~3.05, not 3.17)
+    1: 0.07,   # 6-1 → strong
+    2: 0.05,   # 6-2 → solid
+    3: 0.03,   # 6-3 → moderate
+    4: 0.01,   # 6-4 → slight
     5: 0.00,   # 7-5 → essentially even
     6: 0.00,   # 7-6 → tiebreak, even
 }
@@ -334,7 +349,17 @@ def _implied_rating_from_match(record: MatchRecord) -> Optional[float]:
     if not record.opponent_ratings:
         return None
 
-    opp_strength = sum(record.opponent_ratings) / len(record.opponent_ratings)
+    # For doubles wins: use the STRONGEST opponent as the effective benchmark.
+    # Winning a doubles match proves you (and your partner) can handle the best
+    # that pair has. Using avg would understate the quality of the win when one
+    # opponent is significantly stronger (Arika beating a 3.58+3.50 pair should
+    # imply ~3.60, not ~3.56). For losses and singles: keep average (you lost
+    # to the pair as a whole; avg is the right benchmark for the loss ceiling).
+    is_doubles = record.partner_rating is not None and len(record.opponent_ratings) >= 2
+    if is_doubles and record.won:
+        opp_strength = max(record.opponent_ratings)
+    else:
+        opp_strength = sum(record.opponent_ratings) / len(record.opponent_ratings)
 
     # Parse sets to get average score gap
     sets = _parse_sets(record.score)
@@ -352,9 +377,6 @@ def _implied_rating_from_match(record: MatchRecord) -> Optional[float]:
         gap = sum(gaps) / len(gaps) if gaps else 0.0
 
     # Implied rating = opponent strength ± score gap
-    # For doubles: we use opponent strength directly (not pair back-calculation)
-    # because backing out individual rating from pair is too sensitive to partner quality.
-    # Beating opponents rated X means YOU are approximately X + gap.
     if record.won:
         return opp_strength + gap
     else:
@@ -379,24 +401,34 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
 
     n_matches = len(matches)
 
-    # --- Step 1-3: match adjustments with diminishing returns ---
+    # --- Steps 1-4: adjustments, diminishing returns, confidence ---
+    # Adjustments are sorted by magnitude so the most impactful match
+    # gets the highest diminishing-return weight.
+    # Positive (win) contributions and negative (loss) contributions are
+    # accumulated separately so confidence can be applied independently —
+    # this prevents a single large loss from "sign-flipping" the total and
+    # bypassing the evidence requirement that governs positive moves.
     adjustments = [_match_adjustment(baseline, m, scaling, cap) for m in matches]
     sorted_adj = sorted(adjustments, key=lambda x: abs(x), reverse=True)
-    match_total = 0.0
+    pos_total = 0.0   # weighted sum of positive (win) adjustments
+    neg_total = 0.0   # weighted sum of negative (loss) adjustments
     for i, adj in enumerate(sorted_adj):
         w = DIM_WEIGHTS[i] if i < len(DIM_WEIGHTS) else DIM_WEIGHTS[-1]
-        match_total += adj * w
+        if adj >= 0:
+            pos_total += adj * w
+        else:
+            neg_total += adj * w  # remains negative
 
-    # --- Step 4: asymmetric confidence scaling ---
     deploy_rate = n_matches / n_total_weeks if n_total_weeks > 0 else 0
-    if match_total > 0:
-        # Positive moves require evidence: need matches AND deployment
-        confidence = (min(1.0, n_matches / MIN_MATCHES_FULL_CONFIDENCE)
-                      * min(1.0, deploy_rate * 2))
-    else:
-        # Negative moves: losses always count at full weight
-        confidence = 1.0
-    match_total *= confidence
+    evidence = (min(1.0, n_matches / MIN_MATCHES_FULL_CONFIDENCE)
+                * min(1.0, deploy_rate * 2))
+
+    # Both directions get the same evidence-based confidence.
+    # The asymmetry between wins and losses is already handled upstream by
+    # _surprise_weight: a surprising loss gets weight=1.0 while an expected
+    # win gets weight=0.10 — a 10× difference built into the adjustment itself.
+    # Adding a separate floor on losses here would be double-counting that asymmetry.
+    match_total = pos_total * evidence + neg_total * evidence
 
     # --- Step 5: deployment rate prior ---
     deploy_prior = (deploy_rate - 0.5) * DEPLOY_WEIGHT
@@ -433,39 +465,74 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
     # The hardest win (highest implied) is the strongest evidence of ability.
     implied_floor = max(win_implied) if win_implied else None
 
-    # Ceiling from wins: you can't be rated much above what your wins prove.
-    # If you only beat 2.85-average opponents, even dominantly, your max is ~3.05-3.10.
-    # This prevents inflation from beating weak fields.
+    # Ceiling from wins: only meaningful when wins against STRONG opponents prove
+    # an upper bound. If a player's best win implies 3.56 but their baseline is 3.60,
+    # that win doesn't prove they CAN'T be 3.60 — it just proves a lower bound.
+    # Win ceiling only applies when it exceeds baseline (i.e., wins against strong
+    # opponents show you belong at a high level, limiting further inflation).
     implied_win_ceiling = max(win_implied) if win_implied else None
 
     # Ceiling from losses: losing to someone rated X means you're probably not above X.
+    # Always applies regardless of baseline — losses cap you at the opponent's level.
     implied_loss_ceiling = min(loss_implied) if loss_implied else None
 
-    # Use the tighter of the two ceilings
-    implied_ceiling = None
-    if implied_win_ceiling is not None and implied_loss_ceiling is not None:
-        implied_ceiling = min(implied_win_ceiling, implied_loss_ceiling)
-    elif implied_win_ceiling is not None:
-        implied_ceiling = implied_win_ceiling
-    elif implied_loss_ceiling is not None:
-        implied_ceiling = implied_loss_ceiling
+    # Build effective ceiling.
+    #
+    # WIN CEILING:
+    #   Case A — win_implied > baseline: wins against strong opponents → hard cap at
+    #     win_implied (prevents inflation above what wins actually prove, e.g. Tayoni)
+    #   Case B — win_implied is CLOSE to baseline (gap ≤ WIN_CEIL_GAP): wins are
+    #     near-level evidence → no ceiling (Arika at 3.597 beating 3.54 opponents;
+    #     those wins prove she belongs at her level — don't cap her at 3.56)
+    #   Case C — win_implied is FAR below baseline (gap > WIN_CEIL_GAP): wins are
+    #     all against weaker opponents → cap at baseline + small evidence nudge.
+    #     A player 5-0 vs weaker opponents still deserves a small upward signal
+    #     (Yarisbel 5-0: up to baseline + min(0.08, 5×0.02) = baseline + 0.08).
+    #
+    # LOSS CEILING:
+    #   Apply when loss_implied ≥ (baseline - LOSS_CEIL_GAP): losing to a
+    #     near-baseline or stronger opponent limits how high your rating can go.
+    #   Skip when loss_implied < (baseline - LOSS_CEIL_GAP): an upset loss to a
+    #     much weaker opponent is handled by match adjustments, not a hard ceiling
+    #     (Karen Kiyono 3.33 losing to a 3.00 player shouldn't hard-cap her at 2.96)
+    WIN_CEIL_GAP = 0.05    # wins within 0.05 below baseline → near-level, no ceiling
+    LOSS_CEIL_GAP = 0.15   # losses must be within 0.15 below baseline to apply ceiling
+
+    effective_win_ceil: Optional[float] = None
+    if implied_win_ceiling is not None:
+        if implied_win_ceiling > baseline:
+            effective_win_ceil = implied_win_ceiling          # Case A
+        elif baseline - implied_win_ceiling <= WIN_CEIL_GAP:
+            effective_win_ceil = None                         # Case B — no cap
+        else:
+            # Case C — wins far below baseline: allow a small evidence-based nudge
+            n_wins = sum(1 for m in matches if m.won)
+            evidence_nudge = min(0.08, n_wins * 0.02)
+            effective_win_ceil = baseline + evidence_nudge
+
+    effective_loss_ceil: Optional[float] = None
+    if implied_loss_ceiling is not None:
+        if implied_loss_ceiling >= baseline - LOSS_CEIL_GAP:
+            effective_loss_ceil = implied_loss_ceiling
+
+    if effective_win_ceil is not None and effective_loss_ceil is not None:
+        implied_ceiling = min(effective_win_ceil, effective_loss_ceil)
+    elif effective_win_ceil is not None:
+        implied_ceiling = effective_win_ceil
+    elif effective_loss_ceil is not None:
+        implied_ceiling = effective_loss_ceil
+    else:
+        implied_ceiling = None
 
     # --- Implied-rating constraints ---
-    # Floor: if you beat someone strong, you must be at least near their level.
-    # Ceiling: you can't be rated above what your opponents prove. Hard cap.
-    #   If every opponent was below your baseline, you have zero evidence
-    #   of being above baseline — the ceiling IS your baseline.
     FLOOR_BLEND = 0.50
 
-    if implied_ceiling is not None:
-        implied_ceiling = max(implied_ceiling, baseline)
-
+    # Floor: if you beat someone strong, you must be at least near their level.
     if implied_floor is not None and surprise_rating < implied_floor:
         gap = implied_floor - surprise_rating
         surprise_rating += gap * FLOOR_BLEND
 
-    # Hard ceiling: you cannot exceed your implied ceiling from wins.
-    # No blending — if you only beat weak opponents, your rating is capped.
+    # Hard ceiling: cap at what opponents prove. No blending.
     if implied_ceiling is not None and surprise_rating > implied_ceiling:
         surprise_rating = implied_ceiling
 
@@ -515,6 +582,7 @@ def _detect_scorecard_swap(match: dict, team_lookup: dict[str, str]) -> bool:
 def _collect_match_records(
     standings_files: list[tuple[Path, str]],
     players_by_name: dict[str, dict],
+    opponent_rating_fields: Optional[dict[str, str]] = None,
 ) -> dict[str, list[MatchRecord]]:
     """
     Walk standings JSONs and extract per-player MatchRecords.
@@ -522,6 +590,9 @@ def _collect_match_records(
     standings_files: list of (path, division_suffix) tuples,
         e.g. [(STANDINGS_30, "30"), (STANDINGS_35, "35")]
     players_by_name: {name_key: player_dict} lookup
+    opponent_rating_fields: optional dict mapping ntrp key ("3.0"/"3.5") to the player
+        field to use for opponent strength, e.g. {"3.0": "iter_rating_30", "3.5": "iter_rating_35"}.
+        If None (default), uses "dynamic_rating_baseline" for all divisions.
     Returns: {name_key: [MatchRecord, ...]}
     """
     records: dict[str, list[MatchRecord]] = {}
@@ -536,13 +607,22 @@ def _collect_match_records(
         ntrp = data.get("ntrp", f"{div_suffix[0]}.{div_suffix[1]}")   # "3.0" or "3.5"
         default_opp = DEFAULT_OPP_RATING_30 if "30" in div_suffix else DEFAULT_OPP_RATING_35
 
-        def _rating_or_default(name: str) -> float:
+        # Determine which field to use for opponent ratings in this division
+        live_field = (opponent_rating_fields or {}).get(ntrp)   # None → use baseline
+
+        def _rating_or_default(name: str, _live=live_field, _def=default_opp) -> float:
             p = players_by_name.get(_name_key(name))
             if p:
+                # Prefer the live iterative field if provided and populated
+                if _live is not None:
+                    r = p.get(_live)
+                    if r is not None:
+                        return r
+                # Fall back to frozen baseline
                 r = p.get("dynamic_rating_baseline")
                 if r is not None:
                     return r
-            return default_opp
+            return _def
 
         for sf in data.get("subflights", []):
             for match in sf.get("matches", []):
@@ -551,12 +631,38 @@ def _collect_match_records(
                 match_id = match.get("match_id", "")
                 date = match.get("date", "")
 
+                # Detect scorecard swap once per match (new-format lines only)
+                _swap = _detect_scorecard_swap(match, team_lookup)
+
                 for ln in match.get("lines", []):
-                    # Use normalized winner/loser fields
+                    # Defaults/walkovers: one side has no players listed.
+                    # These are a total no-op for ratings — skip immediately.
+                    # Represented as: empty string ("") or literal "N/A" / "N/A / N/A".
+                    def _is_default_side(s: str) -> bool:
+                        s = (s or "").strip().upper()
+                        return not s or s in ("N/A", "N/A / N/A", "DEFAULT", "NOT AVAILABLE")
+                    _ph = ln.get("players_home") or ln.get("winners") or ""
+                    _pa = ln.get("players_away") or ln.get("losers") or ""
+                    if _is_default_side(_ph) or _is_default_side(_pa):
+                        continue
+
+                    # Support both old format (winners/losers) and new scraper
+                    # format (players_home / players_away / result: "home"|"away")
                     w_raw = ln.get("winners", "")
                     l_raw = ln.get("losers", "")
                     if not w_raw or not l_raw:
-                        continue
+                        home_raw   = ln.get("players_home", "")
+                        away_raw   = ln.get("players_away", "")
+                        result_raw = ln.get("result", "").strip().lower()
+                        if not home_raw or not away_raw or result_raw not in ("home", "away"):
+                            continue
+                        # If columns are swapped, flip home↔away before applying result
+                        if _swap:
+                            home_raw, away_raw = away_raw, home_raw
+                        if result_raw == "home":
+                            w_raw, l_raw = home_raw, away_raw
+                        else:
+                            w_raw, l_raw = away_raw, home_raw
                     # Skip walkovers
                     if w_raw.strip().upper() == "N/A" or l_raw.strip().upper() == "N/A":
                         continue
@@ -606,6 +712,134 @@ def _collect_match_records(
     return records
 
 
+def _collect_court_events(
+    standings_files: list[tuple[Path, str]],
+    players_by_name: dict[str, dict],
+) -> list[CourtEvent]:
+    """
+    Collect one CourtEvent per unique court line across all standings files.
+    Used for sequential global rating computation.
+    """
+    seen: set[tuple[str, str]] = set()   # (match_id, line_label)
+    events: list[CourtEvent] = []
+    team_lookup: dict[str, str] = {k: p.get("team", "") for k, p in players_by_name.items()}
+
+    for path, div_suffix in standings_files:
+        data = _load(path, {})
+        ntrp = data.get("ntrp", f"{div_suffix[0]}.{div_suffix[1]}")
+
+        for sf in data.get("subflights", []):
+            for match in sf.get("matches", []):
+                if match.get("pending"):
+                    continue
+                match_id = match.get("match_id", "")
+                date = match.get("date", "")
+                _swap = _detect_scorecard_swap(match, team_lookup)
+
+                for ln in match.get("lines", []):
+                    line_label = ln.get("line", "")
+                    dedup_key = (match_id, line_label)
+                    if dedup_key in seen:
+                        continue
+                    seen.add(dedup_key)
+
+                    def _is_default_side(s: str) -> bool:
+                        s = (s or "").strip().upper()
+                        return not s or s in ("N/A", "N/A / N/A", "DEFAULT", "NOT AVAILABLE")
+                    if _is_default_side(ln.get("players_home", "")) or \
+                       _is_default_side(ln.get("players_away", "")):
+                        continue
+
+                    w_raw = ln.get("winners", "")
+                    l_raw = ln.get("losers", "")
+                    if not w_raw or not l_raw:
+                        home_raw = ln.get("players_home", "")
+                        away_raw = ln.get("players_away", "")
+                        result_raw = ln.get("result", "").strip().lower()
+                        if not home_raw or not away_raw or result_raw not in ("home", "away"):
+                            continue
+                        if _swap:
+                            home_raw, away_raw = away_raw, home_raw
+                        w_raw, l_raw = (home_raw, away_raw) if result_raw == "home" else (away_raw, home_raw)
+
+                    winner_keys = [
+                        _name_key(n) for n in _parse_player_names(w_raw)
+                        if _name_key(n) in players_by_name
+                    ]
+                    loser_keys = [
+                        _name_key(n) for n in _parse_player_names(l_raw)
+                        if _name_key(n) in players_by_name
+                    ]
+                    if not winner_keys and not loser_keys:
+                        continue
+
+                    events.append(CourtEvent(
+                        date=date, match_id=match_id, line_label=line_label,
+                        division=ntrp, winner_keys=winner_keys,
+                        loser_keys=loser_keys, score=ln.get("score", ""),
+                    ))
+
+    return events
+
+
+def _compute_global_sequential(
+    court_events: list[CourtEvent],
+    baselines: dict[str, float],
+) -> dict[str, float]:
+    """
+    Compute global ratings by processing all court lines in chronological order,
+    treating all divisions as one pool. Opponent strength at each step uses
+    the running global rating (not the frozen baseline), so earlier results
+    inform later ones.
+    """
+    def _date_sort_key(ev: CourtEvent) -> tuple:
+        try:
+            m, d, y = ev.date.split("/")
+            return (int(y), int(m), int(d))
+        except Exception:
+            return (0, 0, 0)
+
+    global_r: dict[str, float] = dict(baselines)
+
+    for ev in sorted(court_events, key=_date_sort_key):
+        all_keys = ev.winner_keys + ev.loser_keys
+        # Snapshot current ratings for everyone in this court BEFORE any update
+        # so both sides see consistent pre-match ratings.
+        cur = {k: global_r.get(k, baselines.get(k, 3.0)) for k in all_keys}
+
+        updates: dict[str, float] = {}
+
+        for pk in ev.winner_keys:
+            if pk not in baselines:
+                continue
+            partners = [k for k in ev.winner_keys if k != pk]
+            partner_r = cur.get(partners[0]) if partners else None
+            opp_ratings = [cur.get(k, 3.0) for k in ev.loser_keys] or [3.0]
+            rec = MatchRecord(
+                opponent_ratings=opp_ratings, partner_rating=partner_r,
+                won=True, date=ev.date, division=ev.division,
+                match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+            )
+            updates[pk] = cur[pk] + _match_adjustment(cur[pk], rec)
+
+        for pk in ev.loser_keys:
+            if pk not in baselines:
+                continue
+            partners = [k for k in ev.loser_keys if k != pk]
+            partner_r = cur.get(partners[0]) if partners else None
+            opp_ratings = [cur.get(k, 3.0) for k in ev.winner_keys] or [3.0]
+            rec = MatchRecord(
+                opponent_ratings=opp_ratings, partner_rating=partner_r,
+                won=False, date=ev.date, division=ev.division,
+                match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+            )
+            updates[pk] = cur[pk] + _match_adjustment(cur[pk], rec)
+
+        global_r.update(updates)
+
+    return global_r
+
+
 # ---------------------------------------------------------------------------
 # Public entry point
 # ---------------------------------------------------------------------------
@@ -634,6 +868,17 @@ def run_ratings() -> RatingsSummary:
         (STANDINGS_35, "35"),
     ]
     all_records = _collect_match_records(standings_files, players_by_name)
+
+    # Collect unique court events for sequential global rating
+    court_events = _collect_court_events(standings_files, players_by_name)
+
+    # Pre-compute sequential global ratings (used below, replaces per-player batch call)
+    baselines_all = {
+        k: p["dynamic_rating_baseline"]
+        for k, p in players_by_name.items()
+        if p.get("dynamic_rating_baseline") is not None
+    }
+    global_sequential = _compute_global_sequential(court_events, baselines_all)
 
     # Count total match weeks per division (for deployment rate calculation)
     weeks_by_div: dict[str, int] = {}
@@ -690,12 +935,15 @@ def run_ratings() -> RatingsSummary:
         # current_division_rating = the primary division's siloed rating
         player["current_division_rating"] = player.get(f"rating_{primary_ntrp.replace('.','')}", baseline)
 
-        # Global rating: ALL matches across all divisions
-        n_weeks_global = max(weeks_by_div.values()) if weeks_by_div else 4
-        player["global_rating"] = _compute_v8_rating(
-            baseline, matches,
-            n_total_weeks=n_weeks_global, division=primary_ntrp,
-        )
+        # Global rating: sequential cross-division signal — only meaningful for players
+        # who have matches in BOTH divisions. For single-division players, global = their
+        # siloed rating (no cross-division data to add), so no diff will be displayed.
+        has_30 = any(m.division == "3.0" for m in matches)
+        has_35 = any(m.division == "3.5" for m in matches)
+        if has_30 and has_35:
+            player["global_rating"] = global_sequential.get(k, baseline)
+        else:
+            player["global_rating"] = player["current_division_rating"]
 
         summary.players_updated += 1
 
@@ -706,8 +954,178 @@ def run_ratings() -> RatingsSummary:
 
 
 # ---------------------------------------------------------------------------
+# Iterative opponent ratings
+# ---------------------------------------------------------------------------
+
+def run_ratings_iterative(
+    max_iterations: int = 12,
+    epsilon: float = 0.001,
+    damping: float = 0.65,
+    verbose: bool = True,
+) -> None:
+    """
+    Compute ratings iteratively so that opponent strengths reflect each player's
+    computed rating from the previous pass rather than frozen pre-season baselines.
+
+    Writes results to separate fields on each player dict:
+        "iter_rating_30", "iter_rating_35", "iter_global_rating"
+    Does NOT overwrite current_division_rating / rating_30 / rating_35 / global_rating.
+    Call this after run_ratings() so that single-pass results are already present for
+    comparison.
+
+    damping: blend factor — each iteration uses (damping * computed + (1-damping) * prev).
+        Values < 1.0 prevent 2-cycle oscillation in strongly coupled matchups.
+    Convergence: stops when max |new - prev| across all players < epsilon.
+    """
+    players: list[dict] = _load(PLAYERS_JSON, [])
+    if not players:
+        return
+
+    players_by_name: dict[str, dict] = {}
+    for p in players:
+        k = _name_key(p.get("name", ""))
+        if k:
+            players_by_name[k] = p
+
+    standings_files = [(STANDINGS_30, "30"), (STANDINGS_35, "35")]
+
+    # Count weeks per division (same as run_ratings)
+    weeks_by_div: dict[str, int] = {}
+    for path, div_suffix in standings_files:
+        data = _load(path, {})
+        ntrp = data.get("ntrp", f"{div_suffix[0]}.{div_suffix[1]}")
+        dates: set[str] = set()
+        for sf in data.get("subflights", []):
+            for m in sf.get("matches", []):
+                if not m.get("pending") and m.get("date"):
+                    dates.add(m["date"])
+        weeks_by_div[ntrp] = len(dates)
+
+    # Track per-iteration snapshots for verbose output
+    # snapshots[iter_idx] = {name_key: (r30, r35, rglobal)}
+    snapshots: list[dict[str, tuple[float, float, float]]] = []
+
+    def _compute_all(opp_fields: Optional[dict[str, str]]) -> dict[str, tuple[float, float, float]]:
+        """One full pass: collect records, compute ratings, return {nk: (r30, r35, rglobal)}."""
+        all_records = _collect_match_records(standings_files, players_by_name, opp_fields)
+        result: dict[str, tuple[float, float, float]] = {}
+        for player in players:
+            k = _name_key(player.get("name", ""))
+            matches = all_records.get(k, [])
+            baseline = player.get("dynamic_rating_baseline")
+            if baseline is None:
+                continue
+            div = player.get("division", "")
+            primary_ntrp = "3.5" if "3.5" in div else "3.0"
+            r30 = r35 = rg = baseline
+            for ntrp_key, sfx in [("3.0", "30"), ("3.5", "35")]:
+                div_matches = [m for m in matches if m.division == ntrp_key]
+                n_weeks = weeks_by_div.get(ntrp_key, 4)
+                if div_matches:
+                    r = _compute_v8_rating(baseline, div_matches,
+                                           n_total_weeks=n_weeks, division=ntrp_key)
+                    if ntrp_key == "3.0":
+                        r30 = r
+                    else:
+                        r35 = r
+            n_weeks_global = max(weeks_by_div.values()) if weeks_by_div else 4
+            if matches:
+                rg = _compute_v8_rating(baseline, matches,
+                                        n_total_weeks=n_weeks_global, division=primary_ntrp)
+            result[k] = (r30, r35, rg)
+        return result
+
+    def _store(ratings: dict[str, tuple[float, float, float]]) -> None:
+        """Write iter_rating_* fields into players_by_name dicts."""
+        for k, (r30, r35, rg) in ratings.items():
+            p = players_by_name.get(k)
+            if p:
+                p["iter_rating_30"] = r30
+                p["iter_rating_35"] = r35
+                p["iter_global_rating"] = rg
+
+    # Iteration 0: use baseline as opponent ratings (same as single-pass)
+    prev = _compute_all(None)
+    _store(prev)
+    snapshots.append(prev)
+
+    converged_at = 0
+    for iteration in range(1, max_iterations + 1):
+        opp_fields = {"3.0": "iter_rating_30", "3.5": "iter_rating_35"}
+        raw = _compute_all(opp_fields)
+
+        # Damped update: blend computed value toward previous to prevent oscillation.
+        # Pure substitution (damping=1.0) can produce 2-cycles when A's rating depends
+        # on B's, which depends on A's. Damping < 1.0 breaks the cycle.
+        curr = {
+            k: (
+                round(damping * raw[k][0] + (1 - damping) * prev[k][0], 4),
+                round(damping * raw[k][1] + (1 - damping) * prev[k][1], 4),
+                round(damping * raw[k][2] + (1 - damping) * prev[k][2], 4),
+            )
+            for k in raw if k in prev
+        }
+
+        # Convergence check
+        max_delta = max(
+            max(abs(curr[k][i] - prev[k][i]) for i in range(3))
+            for k in curr
+        )
+        _store(curr)
+        snapshots.append(curr)
+        prev = curr
+
+        if max_delta < epsilon:
+            converged_at = iteration
+            break
+    else:
+        converged_at = max_iterations
+
+    # Persist iter_rating_* fields to disk
+    _save(PLAYERS_JSON, players)
+
+    if verbose:
+        # Print comparison table for players with ≥1 match
+        all_records_check = _collect_match_records(standings_files, players_by_name)
+        active = {k for k, ms in all_records_check.items() if ms}
+
+        print(f"\n  [iterative] converged after {converged_at} iteration(s)  "
+              f"(epsilon={epsilon})\n")
+
+        header = "%-25s %8s %8s" % ("Player", "Baseline", "Single")
+        for i in range(len(snapshots)):
+            header += " %7s" % f"Iter-{i}"
+        header += "  %7s" % "ΔFinal"
+        print(header)
+        print("-" * len(header))
+
+        # Sort by abs(final delta) descending
+        rows = []
+        for p in players:
+            k = _name_key(p.get("name", ""))
+            if k not in active:
+                continue
+            baseline = p.get("dynamic_rating_baseline")
+            if baseline is None:
+                continue
+            single = p.get("current_division_rating", baseline)
+            iters = [snapshots[i][k][0] if "3.0" in p.get("division","") else snapshots[i][k][1]
+                     for i in range(len(snapshots)) if k in snapshots[i]]
+            final = iters[-1] if iters else single
+            rows.append((abs(final - baseline), p.get("name",""), baseline, single, iters, final))
+
+        for _, name, baseline, single, iters, final in sorted(rows, reverse=True)[:40]:
+            line = "%-25s %8.4f %8.4f" % (name, baseline, single)
+            for r in iters:
+                line += " %7.4f" % r
+            line += "  %+7.4f" % (final - baseline)
+            print(line)
+
+
+# ---------------------------------------------------------------------------
 # Standalone entry
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
     run_ratings()
+    run_ratings_iterative()

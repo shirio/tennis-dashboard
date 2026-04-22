@@ -253,7 +253,9 @@ def update_players(records: list[dict]):
         if chosen:
             if chosen.get("ntrp_rating"):
                 p["ntrp_rating"] = chosen["ntrp_rating"]
-            if chosen.get("dynamic_rating") is not None:
+            # NEVER overwrite an existing baseline — it is a frozen pre-2026 value.
+            # Only set it if the player has no baseline yet (first-time lookup).
+            if chosen.get("dynamic_rating") is not None and p.get("dynamic_rating_baseline") is None:
                 p["dynamic_rating_baseline"] = chosen["dynamic_rating"]
             updated += 1
 

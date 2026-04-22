@@ -42,13 +42,13 @@ SUMMARIES = {
         "overmatched."
     ),
     "35_B": (
-        "Red Rock CC #2 (4-0) is the class of the subflight with Mary Lind (3.64, 4-0 "
-        "across all lines) leading a deep roster. Dragonridge CC and DTC #1 sit at 2-1, "
-        "TPC at 2-2. TPC has the division's most underrated player in Arika Carrier "
+        "Red Rock CC #2 (4-0) leads the subflight with Mary Lind (3.64, 4-0 "
+        "across all lines) leading a deep roster. Dragonridge CC and DTC #1 are tied at 3-1, "
+        "TPC at 3-2. TPC has the division's most underrated player in Arika Carrier "
         "(3.60→3.74, 3-0 at D1). Dragonridge has Melanie Isbell (3-0 at S1/S2) — a singles "
         "problem for everyone. DTC #1 has solid D1 depth in Kiyono + Hernandez but no "
-        "dominant singles threat. Spanish Trail #1 (1-3) and Desert Palm (1-2) sit in "
-        "the middle. DTC #3 (0-3) is the weakest team — their roster is built from "
+        "dominant singles threat. Spanish Trail #1 (1-4) and Desert Palm (1-2) sit in "
+        "the middle. DTC #3 (1-3) is the weakest team — their roster is built from "
         "cross-listed 3.0 players with negative deltas across the board."
     ),
 }

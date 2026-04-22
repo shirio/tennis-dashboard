@@ -298,9 +298,12 @@ def step2_resolve_unknown_players(
             stub["profile_url"]             = tr_data["profile_url"]
             stub["tennisrecord_id"]          = tr_data["tennisrecord_id"]
             stub["ntrp_rating"]              = tr_data["ntrp_full"] or None
+            # Note: dynamic_rating here is the in-season estimate — it is only used as
+            # a temporary placeholder for new players with no baseline yet. The correct
+            # pre-2026 baseline should be set by running scripts/scrape_baselines.py.
             stub["dynamic_rating_baseline"]  = tr_data["dynamic_rating"]
             stub.pop("pending_tennisrecord_lookup", None)
-            print(f"      → found on tennisrecord: rating={tr_data['dynamic_rating']}")
+            print(f"      → found on tennisrecord: rating={tr_data['dynamic_rating']} (temp baseline; run scrape_baselines to correct)")
         else:
             print(f"      → not found – flagged pending_tennisrecord_lookup")
 
@@ -332,7 +335,9 @@ def step3_retry_pending(players: list[dict], session: requests.Session) -> tuple
             p["profile_url"]            = tr_data["profile_url"]
             p["tennisrecord_id"]         = tr_data["tennisrecord_id"]
             p["ntrp_rating"]             = (tr_data["ntrp_full"] or "").rstrip("ABCS") or None
-            p["dynamic_rating_baseline"] = tr_data["dynamic_rating"]
+            # Only set baseline if not already defined — this is in-season estimated dynamic
+            if p.get("dynamic_rating_baseline") is None:
+                p["dynamic_rating_baseline"] = tr_data["dynamic_rating"]
             p.pop("pending_tennisrecord_lookup", None)
             resolved += 1
             print(f"    → resolved: {name}  (rating={tr_data['dynamic_rating']})")

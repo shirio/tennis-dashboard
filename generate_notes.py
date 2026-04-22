@@ -91,19 +91,154 @@ def _line_short(line_label: str) -> str:
     return f"{'S' if kind == 'Singles' else 'D'}{n}"
 
 
+# Numerical tier for each line — used to detect deployment arc changes.
+# Global ordering (for arc direction): S1 > D1 > S2 > D2 > D3
+_LINE_TIER = {
+    "1# Singles": 5, "2# Singles": 3,
+    "1# Doubles": 4, "2# Doubles": 2, "3# Doubles": 1,
+}
+
+# Within-type tier: compare singles to singles, doubles to doubles only.
+# This prevents nonsensical comparisons like "D1 player vs S1 teammate."
+_SINGLES_TIER = {"1# Singles": 2, "2# Singles": 1}
+_DOUBLES_TIER = {"1# Doubles": 3, "2# Doubles": 2, "3# Doubles": 1}
+
+
+def _line_tier(line: str) -> int:
+    return _LINE_TIER.get(line, 2)
+
+
+def _line_type(line: str) -> str:
+    """Return 'S' for singles lines, 'D' for doubles lines."""
+    if "Singles" in (line or ""):
+        return "S"
+    if "Doubles" in (line or ""):
+        return "D"
+    return ""
+
+
+def _within_type_tier(line: str) -> int:
+    t = _line_type(line)
+    if t == "S":
+        return _SINGLES_TIER.get(line, 0)
+    if t == "D":
+        return _DOUBLES_TIER.get(line, 0)
+    return 0
+
+
+def _arc_outcome(m: dict, bl=None) -> str:  # bl: float | None
+    """
+    Short outcome phrase for use inside a tier-arc sentence.
+    Includes opponent quality signal when bl is provided:
+      'beaten 6-3 6-1 vs much stronger opp', 'won 7-6 2-6 1-0 vs much weaker opp'
+    """
+    score = m.get("score", "")
+    desc = _score_descriptor(score)
+    sets = re.findall(r"(\d+)-(\d+)", score)
+    reg = [(int(a), int(b)) for a, b in sets if not (int(a) <= 1 and int(b) <= 1)]
+    all_76 = len(reg) >= 2 and all((a, b) in [(7, 6), (6, 7)] for a, b in reg)
+
+    opp_avg = m.get("opp_avg")
+    opp_qual = ""
+    if bl is not None and opp_avg is not None:
+        gap = opp_avg - bl
+        if m["won"] and gap < -0.20:
+            opp_qual = " vs much weaker opp"
+        elif not m["won"] and gap > 0.20:
+            opp_qual = " vs much stronger opp"
+        elif not m["won"] and gap < -0.10:
+            opp_qual = " vs weaker opp"   # lost to someone they should have beaten
+
+    if not m["won"]:
+        if desc == "lopsided":
+            return f"beaten {score}{opp_qual}" if score else f"beaten{opp_qual}"
+        if all_76:
+            return f"lost {score} — two tight sets{opp_qual}"
+        return f"lost {score}{opp_qual}" if score else f"lost{opp_qual}"
+    else:
+        return f"won {score}{opp_qual}" if score else f"won{opp_qual}"
+
+
+def _other_div_line_summary(other_matches: list) -> str:
+    """
+    Summarise deployment line(s) in the other division.
+    E.g. 'D2' or 'D2/D3'.
+    """
+    lines = sorted({_line_short(m["line"]) for m in other_matches if m["line"]},
+                   key=lambda x: (x[0], x[1:]))
+    return "/".join(lines) if lines else ""
+
+
 def _describe_match(m, rating_lookup, all_dates_in_division, include_week=True,
-                    include_score=True) -> str:
-    """Short phrase describing a match: 'W2 D1 loss to Shirey+Frazier (6-0 6-3)'."""
+                    include_score=True, include_partner=False,
+                    player_bl=None) -> str:
+    """Short phrase describing a match: 'W2 D1 alongside Liu lost to Dexter+Doe'.
+
+    player_bl: when provided, suppress the score for predictable large-gap results
+    (opponent ≥0.20 stronger on a loss, or ≥0.20 weaker on a win) unless it's a
+    tiebreak — those are always worth showing.
+    """
     wk = _week_number(m["date"], all_dates_in_division) if include_week else ""
     line = _line_short(m["line"])
     verb = "beat" if m["won"] else "lost to"
-    # For concise form, use just last names of opponents
     opp = _opp_label(m, rating_lookup)
+
+    # Partner context — doubles only, when caller opts in
+    partner_clause = ""
+    if include_partner and m.get("partner"):
+        partner_clause = f" alongside {m['partner']}"
+
     prefix = f"{wk} {line}" if wk else line
-    base = f"{prefix} {verb} {opp}"
+    base = f"{prefix}{partner_clause} {verb} {opp}"
+
     if include_score and m.get("score"):
+        desc = _score_descriptor(m["score"])
+        if desc == "3-set tiebreak":
+            return f"{base} in third-set tiebreak"
+        # Suppress score when the result is predictable given the ratings gap.
+        # Tiebreaks (kept above) are always interesting.  Everything else:
+        # - loss to someone ≥0.20 above player → obvious result, score adds clutter
+        # - win over someone ≥0.20 below player → expected, score not illuminating
+        if player_bl is not None and m.get("opp_avg") is not None:
+            gap = m["opp_avg"] - player_bl
+            if (not m["won"] and gap >= 0.20) or (m["won"] and gap <= -0.20):
+                return base  # skip score
         return f"{base} ({m['score']})"
     return base
+
+
+# Concise display names for teams — used wherever a team name appears in note text.
+# Full all-caps names (as stored in data) → short readable form.
+_TEAM_SHORT = {
+    "ALL AMERICAN TENNIS CENTER": "AATC",
+    "ANTHEM CC": "Anthem",
+    "CLUB RIDGES": "Ridges",
+    "DESERT PALM": "Desert Palm",
+    "DRAGONRIDGE CC": "Dragonridge",
+    "DTC #1": "DTC #1",
+    "DTC #2": "DTC #2",
+    "DTC #3": "DTC #3",
+    "DTC #4": "DTC #4",
+    "LAKE LAS VEGAS SPORTS CLUB": "LLV",
+    "LIFE TIME FITNESS/GV": "LTF",
+    "RED ROCK CC": "Red Rock",
+    "RED ROCK CC #1": "Red Rock #1",
+    "RED ROCK CC #2": "Red Rock #2",
+    "SOUTHERN HIGHLANDS": "SoHi",
+    "SPANISH OAKS": "Sp. Oaks",
+    "SPANISH TRAIL": "Sp. Trail",
+    "SPANISH TRAIL #1": "Sp. Trail #1",
+    "SPANISH TRAIL #2": "Sp. Trail #2",
+    "STIRLING CLUB": "Stirling",
+    "SUMMERLIN ARBORS": "Summerlin",
+    "TPC": "TPC",
+    "WHITNEY MESA PARK": "Whitney Mesa",
+}
+
+
+def _team_short(team: str) -> str:
+    """Return the concise display name for a team, falling back to title-case."""
+    return _TEAM_SHORT.get(team.upper() if team else "", team)
 
 
 def _is_lopsided_loss(m):
@@ -142,6 +277,51 @@ def main():
                     continue
                 if m.get("date"):
                     all_dates.add(m["date"])
+
+                # Pre-build team lineups for this match so every player record can
+                # know who their closest-higher-line teammate was that day.
+                # Structure: team -> {line: [(name, rating), ...]}
+                _match_lineup: dict = defaultdict(lambda: defaultdict(list))
+                for _ln2 in m.get("lines", []):
+                    _line2 = _ln2.get("line", "")
+                    for _tk, _pk in [("winner_team", "winners"),
+                                     ("loser_team", "losers")]:
+                        _team2 = _ln2.get(_tk, "")
+                        _names2 = _ln2.get(_pk, "") or ""
+                        if _team2 and _names2 and _line2:
+                            for _n2 in [nn.strip() for nn in _names2.split("/")
+                                        if nn.strip() and nn.strip().upper() != "N/A"]:
+                                _match_lineup[_team2][_line2].append(
+                                    (_n2, rating.get(_name_key(_n2)))
+                                )
+
+                def _closest_higher_teammate(team, line, self_key):
+                    """Return (name, rating, line) of the nearest higher-tier
+                    teammate on the SAME line type (singles vs singles, doubles vs
+                    doubles).  Cross-type comparisons (D1 vs S1) are meaningless
+                    for deployment context and are excluded."""
+                    best = None
+                    best_tier_diff = float("inf")
+                    own_type = _line_type(line)
+                    own_tier = _within_type_tier(line)
+                    if not own_type:
+                        return None
+                    for other_line, players in _match_lineup.get(team, {}).items():
+                        if _line_type(other_line) != own_type:
+                            continue  # only compare same line type
+                        diff = _within_type_tier(other_line) - own_tier
+                        if diff <= 0:
+                            continue
+                        for tn, tr in players:
+                            if _name_key(tn) == self_key:
+                                continue
+                            if diff < best_tier_diff or (
+                                diff == best_tier_diff and (tr or 0) > (best[1] or 0)
+                            ):
+                                best = (tn, tr, other_line)
+                                best_tier_diff = diff
+                    return best
+
                 for ln in m.get("lines", []):
                     w = ln.get("winners", "")
                     l = ln.get("losers", "")
@@ -158,6 +338,7 @@ def main():
                         opp_rs = [rating.get(_name_key(n)) for n in l_names]
                         opp_rs = [r for r in opp_rs if r is not None]
                         partners = [n for n in w_names if _name_key(n) != k]
+                        team = ln.get("winner_team", "")
                         matches_by_player[k].append({
                             "date": m.get("date", ""), "line": ln.get("line", ""),
                             "won": True, "opp_names": l_names,
@@ -165,13 +346,16 @@ def main():
                             "score": ln.get("score", ""),
                             "partner": partners[0] if partners else None,
                             "walkover": walkover,
-                            "winner_team": ln.get("winner_team", ""),
+                            "winner_team": team,
+                            "higher_teammate": _closest_higher_teammate(
+                                team, ln.get("line", ""), k),
                         })
                     for name in l_names:
                         k = _name_key(name)
                         opp_rs = [rating.get(_name_key(n)) for n in w_names]
                         opp_rs = [r for r in opp_rs if r is not None]
                         partners = [n for n in l_names if _name_key(n) != k]
+                        team = ln.get("loser_team", "")
                         matches_by_player[k].append({
                             "date": m.get("date", ""), "line": ln.get("line", ""),
                             "won": False, "opp_names": w_names,
@@ -179,7 +363,9 @@ def main():
                             "score": ln.get("score", ""),
                             "partner": partners[0] if partners else None,
                             "walkover": walkover,
-                            "loser_team": ln.get("loser_team", ""),
+                            "loser_team": team,
+                            "higher_teammate": _closest_higher_teammate(
+                                team, ln.get("line", ""), k),
                         })
         division_data[sfx] = {
             "all_dates": sorted(all_dates),
@@ -249,6 +435,17 @@ def main():
             n_weeks = this_data["n_weeks"]
             deploy_rate_this = n_this / n_weeks if n_weeks else 0
 
+            # Detect record padding by defaults/walkovers:
+            # if the official W-L record implies more matches than we have
+            # competitive data for, the gap is defaults.
+            _wl_wins, _wl_losses = 0, 0
+            if wl_this and "-" in str(wl_this):
+                try:
+                    _wl_wins, _wl_losses = map(int, str(wl_this).split("-"))
+                except (ValueError, AttributeError):
+                    pass
+            _record_padded = n_this < (_wl_wins + _wl_losses)
+
             # Team deployment rank
             team_depl = team_deploy[sfx].get(team_this, [])
             team_max_count = team_depl[0][1] if team_depl else 0
@@ -277,11 +474,12 @@ def main():
                 and (m["opp_avg"] is None or m["opp_avg"] - bl < 0.15)
             ]
 
-            # Top-line lopsided losses: deployed at D1/S1 and routed by stronger opponents.
-            # Tells the "are they ready for the next level?" story.
+            # Top-line outmatched losses: deployed at D1/S1, clearly beaten by a
+            # significantly stronger opponent.  Includes "dominant" scores (6-2 6-1)
+            # not just bagels — a decisive top-line loss still tells the story.
             top_line_lopsided_losses = [
                 m for m in losses_this
-                if _is_lopsided_loss(m)
+                if _score_descriptor(m.get("score", "")) in ("lopsided", "dominant")
                 and _line_short(m["line"]) in ("D1", "S1")
                 and m["opp_avg"] is not None and m["opp_avg"] - bl >= 0.15
             ]
@@ -292,9 +490,25 @@ def main():
                 m for m in this_matches
                 if m["won"] and m["opp_avg"] and m["opp_avg"] - bl > 0.05
             ]
+            # Surprising losses: lost to someone below your baseline.
+            # Use 0.03 not 0.05 — even a small rating edge matters when you lose.
             surprising_losses = [
                 m for m in this_matches
-                if not m["won"] and m["opp_avg"] and bl - m["opp_avg"] > 0.05
+                if not m["won"] and m["opp_avg"] and bl - m["opp_avg"] > 0.03
+            ]
+
+            # Competitive close losses: lost a tight match (tiebreak or 6-4/7-5 type)
+            # against a notably stronger opponent.  This is a positive signal — the
+            # player competed above their level even in defeat.
+            # Threshold: opponent ≥0.15 above player.
+            competitive_losses = [
+                m for m in losses_this
+                if m["opp_avg"] is not None
+                and m["opp_avg"] - bl >= 0.15
+                and (
+                    _is_tiebreak(m)
+                    or _score_descriptor(m.get("score", "")) == "tight"
+                )
             ]
 
             # Line-split story: grinds out tiebreaks at lower lines but outmatched at top.
@@ -330,28 +544,34 @@ def main():
                             other_matches,
                             key=lambda m: abs((m["opp_avg"] or bl) - bl),
                         )
-                    desc = _describe_match(best, rating, other_data["all_dates"], include_week=False)
+                    desc = _describe_match(best, rating, other_data["all_dates"],
+                                          include_week=False, player_bl=bl)
                     parts.append(f"In {other_div}: {desc}.")
             else:
-                # Lead with team-rank signal if notable
+                # Lead with team-rank signal if notable.
+                # Drop the team name — the reader is already on this player's roster.
                 if is_team_only_max and n_this == n_weeks:
-                    parts.append(f"{team_this}'s only every-week player.")
+                    parts.append("Only every-week player.")
                 elif is_team_max_tied and not is_team_only_max and n_this == n_weeks:
-                    # Tied for every-week — list the other names
                     others = [n for n in top_deployed if n != p["name"]]
                     if len(others) == 1:
-                        parts.append(f"{team_this}'s every-week player (with {others[0]}).")
+                        parts.append(f"Every-week player (with {others[0]}).")
                     else:
-                        parts.append(f"Deployed every week ({team_this}).")
+                        parts.append("Deployed every week.")
                 elif is_team_only_max:
-                    parts.append(f"{team_this}'s most-deployed player ({n_this}/{n_weeks} weeks).")
+                    parts.append(f"Most-deployed player ({n_this}/{n_weeks} weeks).")
                 elif is_team_max_tied:
-                    parts.append(f"Among {team_this}'s most-deployed ({n_this}/{n_weeks} weeks).")
+                    parts.append(f"Among the most-deployed ({n_this}/{n_weeks} weeks).")
 
-                # Versatility note for high-deploy multi-line players
+                # Versatility note for high-deploy multi-line players.
+                # "Flex weapon" only applies when results back it up (winning record).
+                # A player deployed everywhere who keeps losing isn't a weapon —
+                # they're just core rotation that hasn't found their level.
                 if n_this >= 3 and len(line_types) >= 3:
                     lt_str = "/".join(sorted(line_types, key=lambda x: (x[0], x[1])))
-                    parts.append(f"Captain's flex weapon — {lt_str}.")
+                    win_rate = len(wins_this) / n_this
+                    if win_rate > 0.5:
+                        parts.append(f"Captain's flex weapon — {lt_str}.")
 
                 # For very low n_this + rich other_matches, weave the cross-division story
                 has_rich_cross = (
@@ -366,7 +586,8 @@ def main():
                 if surprising_wins:
                     best = max(surprising_wins,
                                key=lambda m: (m["opp_avg"] or 0) - bl)
-                    desc = _describe_match(best, rating, this_data["all_dates"])
+                    desc = _describe_match(best, rating, this_data["all_dates"],
+                                          include_partner=True)
                     opp_r = best["opp_avg"]
                     gap = opp_r - bl if opp_r else 0
                     if gap > 0.25 and len(best["opp_names"]) > 1:
@@ -375,6 +596,57 @@ def main():
                         )
                     else:
                         parts.append(f"Upset: {desc}.")
+
+                # Competitive close losses — positive framing before the loss analysis.
+                # Fires when player lost close matches against significantly stronger
+                # opponents.  Fire when:
+                #   • there are such losses (tiebreak or tight vs opp ≥0.15 above)
+                #   • there are no surprising wins already telling the positive story
+                #   • not already covered by a line-split narrative
+                # Track insertion index so the arc block can drop this sentence
+                # if it ends up covering the same match.
+                _comp_loss_part_idx = None
+                if competitive_losses and not surprising_wins and not has_line_split:
+                    comp_d = [m for m in competitive_losses
+                              if _line_type(m["line"]) == "D"]
+                    comp_s = [m for m in competitive_losses
+                              if _line_type(m["line"]) == "S"]
+                    comp_d.sort(key=lambda m: -(m["opp_avg"] or 0))
+                    comp_s.sort(key=lambda m: -(m["opp_avg"] or 0))
+
+                    def _comp_mini(m):
+                        """Opponent + result shape only — no 'loss', no line, no week.
+                        'tiebreak vs Opp (r)+Opp (r)' or 'Opp (r)+Opp (r) (score)'."""
+                        opp = _opp_label(m, rating)
+                        sc = m.get("score", "")
+                        d = _score_descriptor(sc)
+                        if d == "3-set tiebreak":
+                            return f"tiebreak vs {opp}"
+                        return f"{opp} ({sc})" if sc else opp
+
+                    _comp_loss_part_idx = len(parts)
+                    if comp_d and not comp_s:
+                        minis = [_comp_mini(m) for m in comp_d[:2]]
+                        if len(minis) == 1:
+                            parts.append(
+                                f"Close doubles loss to a stronger pair — {minis[0]}."
+                            )
+                        else:
+                            parts.append(
+                                f"Close doubles losses to stronger pairs — "
+                                f"{minis[0]}; {minis[1]}."
+                            )
+                    elif comp_s and not comp_d:
+                        parts.append(
+                            f"Close singles loss to a stronger opponent — "
+                            f"{_comp_mini(comp_s[0])}."
+                        )
+                    else:
+                        best_c = max(competitive_losses, key=lambda m: m["opp_avg"] or 0)
+                        parts.append(
+                            f"Close loss to a stronger opponent — "
+                            f"{_comp_mini(best_c)}."
+                        )
 
                 # Line-split: competitive at lower lines, outmatched at top line.
                 # Fuse into one sentence — this is the whole story.
@@ -409,31 +681,62 @@ def main():
                             parts.append(f"Lopsided loss: {descs[0]}.")
                         else:
                             parts.append(f"Two lopsided losses: {descs[0]}; {descs[1]}.")
-                    elif surprising_losses and not lopsided_losses \
-                            and not top_line_lopsided_losses:
-                        worst = max(surprising_losses,
+                    # Surprising losses: show even when top-line outmatching also present,
+                    # since those are separate matches telling different stories.
+                    # Exclude matches already covered by top_line_lopsided_losses.
+                    _top_loss_ids = {id(m) for m in top_line_lopsided_losses}
+                    _sl_not_top = [m for m in surprising_losses
+                                   if id(m) not in _top_loss_ids]
+                    if _sl_not_top and not lopsided_losses:
+                        worst = max(_sl_not_top,
                                    key=lambda m: bl - (m["opp_avg"] or 0))
-                        desc = _describe_match(worst, rating, this_data["all_dates"])
-                        parts.append(f"Surprising loss: {desc}.")
+                        worst_gap = bl - (worst["opp_avg"] or bl)
+                        if worst_gap >= 0.10 or _is_tiebreak(worst):
+                            # Large gap OR a tiebreak — worth naming the specific match.
+                            # Tiebreaks are always interesting: even a small-gap surprise
+                            # tiebreak loss shows the player was competitive but couldn't close.
+                            desc = _describe_match(worst, rating, this_data["all_dates"],
+                                                  include_partner=True)
+                            parts.append(f"Surprising loss: {desc.replace(' lost to ', ' to ', 1)}.")
+                        else:
+                            # Small-gap, non-tiebreak loss — summarise the pattern.
+                            _sl_lines = sorted(
+                                {_line_short(m["line"]) for m in _sl_not_top if m["line"]},
+                                key=lambda x: (x[0], x[1:])
+                            )
+                            _sl_line_str = "/".join(_sl_lines) if _sl_lines else "doubles"
+                            if len(_sl_not_top) > 1:
+                                parts.append(
+                                    f"Underperforming at {_sl_line_str} — "
+                                    f"multiple losses to slightly lower-rated opponents."
+                                )
+                            else:
+                                parts.append(
+                                    f"Underperforming at {_sl_line_str} — "
+                                    f"lost to a slightly lower-rated opponent."
+                                )
 
-                    # Top-line lopsided losses without a tiebreak contrast
+                    # Top-line lopsided losses without a tiebreak contrast.
+                    # Format: "Outmatched at S1 by Opp (r) in W2."
+                    # The line is already in the prefix — don't repeat it in the body.
                     if top_line_lopsided_losses and not has_line_split:
                         sorted_tlls = sorted(top_line_lopsided_losses,
                                              key=lambda m: m["date"])
-                        descs = [
-                            _describe_match(m, rating, this_data["all_dates"])
-                            for m in sorted_tlls[:2]
-                        ]
                         tl_str = "/".join(sorted(_top_loss_lines,
                                                  key=lambda x: (x[0], x[1:])))
-                        if len(descs) == 1:
-                            parts.append(
-                                f"Deployed at {tl_str} but outmatched: {descs[0]}."
-                            )
+
+                        def _outmatched_short(m):
+                            opp = _opp_label(m, rating)
+                            wk = _week_number(m["date"], this_data["all_dates"])
+                            return f"{opp} in {wk}" if wk else opp
+
+                        tl_descs = [_outmatched_short(m) for m in sorted_tlls[:2]]
+                        if len(tl_descs) == 1:
+                            parts.append(f"Outmatched at {tl_str} by {tl_descs[0]}.")
                         else:
                             parts.append(
-                                f"Deployed at {tl_str}, outmatched both times: "
-                                + "; ".join(descs) + "."
+                                f"Outmatched at {tl_str} — "
+                                + "; ".join(tl_descs) + "."
                             )
 
                     # Tiebreak wins (not already part of a line-split narrative)
@@ -449,38 +752,77 @@ def main():
                         elif wks_str:
                             parts.append(f"Won a 3-set tiebreak in {wks_str}.")
 
-                # Undefeated vs all-below-baseline (ceiling-capped) — even alongside other notes
+                # Undefeated with all opponents below baseline — describe the
+                # dominance qualitatively rather than labeling it "ceiling-capped."
+                # (The ceiling-capped concept is misleading for a top player whose
+                # opponents are just lower-rated because she's at the top of the field.)
                 all_opps_below = bool(wins_this) and all(
                     m["opp_avg"] is not None and m["opp_avg"] < bl - 0.05
                     for m in wins_this
                 )
                 if (len(wins_this) >= 2 and not losses_this and all_opps_below
-                        and not any("ceiling-capped" in p_ for p_ in parts)
+                        and not any("Undefeated" in p_ for p_ in parts)
                         and not surprising_wins):
-                    avg_opp = sum(m["opp_avg"] for m in wins_this if m["opp_avg"]) / len(
-                        [m for m in wins_this if m["opp_avg"]]
+                    # Compute dominance metrics across all wins
+                    _all_reg_sets = []
+                    for _wm in wins_this:
+                        _sets = re.findall(r"(\d+)-(\d+)", _wm.get("score", ""))
+                        _reg = [(int(a), int(b)) for a, b in _sets
+                                if not (int(a) <= 1 and int(b) <= 1)]
+                        _all_reg_sets.extend(_reg)
+                    _all_straight = not any(_is_tiebreak(m) for m in wins_this)
+                    _max_conceded = max(
+                        (min(a, b) for a, b in _all_reg_sets), default=None
                     )
-                    parts.append(
-                        f"Undefeated but all opponents below baseline "
-                        f"(avg {avg_opp:.2f}) — ceiling-capped."
-                    )
+                    if _max_conceded is not None and _max_conceded <= 1:
+                        _game_word = "game" if _max_conceded == 1 else "games"
+                        parts.append(
+                            f"Undefeated — no opponent has won more than "
+                            f"{_max_conceded} {_game_word} off her in any set."
+                        )
+                    elif _all_straight:
+                        parts.append("Undefeated in straight sets.")
+                    else:
+                        avg_opp = sum(m["opp_avg"] for m in wins_this if m["opp_avg"]) / len(
+                            [m for m in wins_this if m["opp_avg"]]
+                        )
+                        parts.append(
+                            f"Undefeated but all opponents below baseline "
+                            f"(avg {avg_opp:.2f})."
+                        )
 
                 # Single-match story (Prexy case)
+                # Drop "Only X match:" prefix — just describe it directly.
+                # Pass player_bl so obvious large-gap results suppress their score.
                 if n_this == 1 and not surprising_wins and not surprising_losses \
-                   and not lopsided_losses:
+                   and not lopsided_losses and not top_line_lopsided_losses \
+                   and not competitive_losses:
                     m0 = this_matches[0]
                     score_desc = _score_descriptor(m0["score"])
                     if score_desc == "3-set tiebreak":
-                        # Use prose — omit redundant score
                         desc = _describe_match(m0, rating, this_data["all_dates"],
                                                include_score=False)
                         if m0["won"]:
-                            parts.append(f"Only {div_label} match: {desc}; won after 3 sets.")
+                            parts.append(f"{desc}; won in 3 sets.")
                         else:
-                            parts.append(f"Only {div_label} match: {desc}; split sets before losing tiebreak.")
+                            parts.append(f"{desc}; split sets before losing tiebreak.")
                     else:
-                        desc = _describe_match(m0, rating, this_data["all_dates"])
-                        parts.append(f"Only {div_label} match: {desc}.")
+                        desc = _describe_match(m0, rating, this_data["all_dates"],
+                                               player_bl=bl)
+                        opp_gap = (m0.get("opp_avg") or 0) - bl
+                        if not m0["won"] and opp_gap >= 0.25:
+                            # Large-gap predictable loss — tell the captain what the
+                            # result means (very little) rather than just listing it.
+                            line_s = _line_short(m0["line"]) or m0["line"]
+                            opp_label = _opp_label(m0, rating)
+                            pad_clause = (" Default win pads the record."
+                                          if _record_padded else "")
+                            parts.append(
+                                f"{line_s} loss to {opp_label} — "
+                                f"expected result, minimal data.{pad_clause}"
+                            )
+                        else:
+                            parts.append(f"{desc}.")
 
                 # Weave in cross-division context when informative
                 if has_rich_cross and other_matches:
@@ -515,11 +857,12 @@ def main():
                                     op_team_this = op.get(f"team_{sfx}") or ""
                                     if op_team_this:
                                         opp_cross_listing = (
-                                            f", on {op_team_this}'s {div_label} roster"
+                                            f", on {_team_short(op_team_this)}'s {div_label} roster"
                                         )
                             desc = _describe_match(most_sig, rating,
                                                    other_data["all_dates"],
-                                                   include_week=False)
+                                                   include_week=False,
+                                                   player_bl=bl)
                             score_desc = _score_descriptor(most_sig["score"])
                             # Reframe the description with cross-listing info
                             if opp_cross_listing:
@@ -557,20 +900,151 @@ def main():
                     if abs(delta) >= 0.12 and delta > 0 and not surprising_wins:
                         parts.append("Biggest riser on this roster.")
                     elif (delta < -0.10 and not lopsided_losses
-                          and not surprising_losses):
+                          and not surprising_losses
+                          and not top_line_lopsided_losses
+                          and not competitive_losses):
                         parts.append("Rating down without a clear single-match driver.")
 
-                # Deployment extremes (only if not already mentioned)
-                has_top = any(ll in ("1# Singles", "1# Doubles")
-                              for ll in [m["line"] for m in this_matches])
+                # ---- Deployment arc + teammate context ----
+                # Before deciding whether to call something a "promotion" or
+                # "calibration", ask: WHY was the player at that line?
+                # A player at S2 with a much higher-rated teammate at S1 is there
+                # for the obvious reason — that's not a demotion, that's just order.
+                # A player "promoted" to S1 when S2 is defaulted isn't a real
+                # promotion — they were the only singles player available.
+                #
+                # Only tell the arc story when it's the primary finding (≤1 existing
+                # sentence already in parts) and the arc adds real information.
+
+                _sorted = sorted(this_matches, key=lambda m: m["date"])
+                _tier_arc_note = None
+                _arc_covered = False
+
+                # NOTE: We intentionally do NOT add a "strategically kept below
+                # lower-rated teammate" label here.  The same rating inversion can
+                # mean two opposite things:
+                #   • Captain knows better (Shi/Darian at D1 despite low baseline)
+                #   • Player's rating is inflated and captain is right to deploy lower
+                # Results ARE the validation, and those stories are already told by
+                # the surprising-wins, lopsided-losses, and arc patterns above.
+                # Premature labeling of a deployment as "strategic" vs "demotion"
+                # without that results context is more misleading than helpful.
+
+                # We DO use higher_teammate to understand arc context (vacancy
+                # detection, natural-slot detection) — see arc block below.
+
+                if (len(_sorted) >= 2
+                        and not has_line_split
+                        and not top_line_lopsided_losses
+                        and len(parts) < 2):
+                    _first_tier = _line_tier(_sorted[0]["line"])
+                    _last_tier = _line_tier(_sorted[-1]["line"])
+                    _tier_delta = _first_tier - _last_tier
+                    # Only tell the arc story when both anchor matches are the same
+                    # line type (singles vs singles or doubles vs doubles).
+                    # Cross-type arcs (D1→S2, S2→D1) don't tell a coherent story.
+                    _same_type_arc = (
+                        _line_type(_sorted[0]["line"])
+                        == _line_type(_sorted[-1]["line"])
+                        and bool(_line_type(_sorted[0]["line"]))
+                    )
+                    if abs(_tier_delta) >= 2 and _same_type_arc:
+                        _em = _sorted[0]   # representative early match
+                        _lm = _sorted[-1]  # representative late match
+                        _el = _line_short(_em["line"])
+                        _ll = _line_short(_lm["line"])
+                        _eo = _arc_outcome(_em, bl)
+                        _lo = _arc_outcome(_lm, bl)
+
+                        # Teammate context (same-type only, already enforced by
+                        # _closest_higher_teammate):
+                        # "early_natural" = the lower slot was expected because a
+                        # much higher-rated same-type teammate occupied the line above.
+                        _em_ht = _em.get("higher_teammate")
+                        _lm_ht = _lm.get("higher_teammate")
+                        _early_natural = (
+                            _em_ht is not None
+                            and _em_ht[1] is not None
+                            and bl is not None
+                            and _em_ht[1] > bl + 0.10
+                        )
+
+                        if _tier_delta > 0:
+                            # Step DOWN. Only meaningful when:
+                            # - early match was a LOSS (not tactical re-use)
+                            # - the higher slot wasn't just the natural order
+                            if not _em["won"] and not _early_natural:
+                                _late_desc = _score_descriptor(_lm.get("score", ""))
+                                if (not _lm["won"] and _late_desc in ("tight",)
+                                        and "tight sets" not in _lo):
+                                    _lo_note = f"{_lo} — competitive"
+                                else:
+                                    _lo_note = _lo
+                                _tier_arc_note = (
+                                    f"Tried at {_el} ({_eo}), "
+                                    f"moved down to {_ll} ({_lo_note})."
+                                )
+                                _arc_covered = True
+                        else:
+                            # Step UP — positive arc, but need to check if the
+                            # "promotion" was real or just by vacancy.
+                            #
+                            # Vacancy case: player was at their natural lower slot
+                            # (higher-rated anchor above them) and then played the
+                            # top line when that anchor wasn't available.
+                            _vacancy = (
+                                _early_natural        # lower slot was the natural one
+                                and _lm_ht is None    # alone at the top in the later match
+                            )
+                            if _vacancy:
+                                # Tell the true story: natural lower-line player,
+                                # filled in at the top when needed.
+                                _anchor_name = _em_ht[0] if _em_ht else "anchor"
+                                _anchor_line = _line_short(_em_ht[2]) if _em_ht else _el
+                                _tier_arc_note = (
+                                    f"Natural {_el} with {_anchor_name} above;"
+                                    f" played {_ll} by vacancy ({_lo})."
+                                )
+                            else:
+                                _tier_arc_note = (
+                                    f"Started at {_el} ({_eo}), "
+                                    f"moved up to {_ll} ({_lo})."
+                                )
+                            _arc_covered = True
+
+                if _tier_arc_note and not any(
+                    "Tried at" in p_ or "Started at" in p_ or "At " in p_
+                    for p_ in parts
+                ):
+                    # The arc already narrates the competitive match in detail —
+                    # drop the competitive_losses sentence to avoid repeating it.
+                    if _arc_covered and _comp_loss_part_idx is not None:
+                        parts.pop(_comp_loss_part_idx)
+                    parts.append(_tier_arc_note)
+
+                # Deployment extremes (only if arc or existing note didn't cover it)
+                played_s1 = any(m["line"] == "1# Singles" for m in this_matches)
+                played_d1 = any(m["line"] == "1# Doubles" for m in this_matches)
+                has_top = played_s1 or played_d1
+                top_label = (
+                    "S1/D1" if (played_s1 and played_d1)
+                    else "S1" if played_s1
+                    else "D1"
+                )
                 all_d3 = (
                     all(m["line"] == "3# Doubles" for m in this_matches)
                     if this_matches else False
                 )
                 div_floor = 2.50 if sfx == "30" else 3.00
-                if (has_top and bl < div_floor + 0.20
-                        and not any("S1/D1" in p_ for p_ in parts)):
-                    parts.append("Playing S1/D1 despite low baseline.")
+                already_covered = (
+                    _arc_covered
+                    or bool(top_line_lopsided_losses)
+                    or bool(competitive_losses)
+                    or has_line_split
+                    or any("outmatched" in p_.lower() or "Deployed at" in p_ for p_ in parts)
+                )
+                if (has_top and bl < div_floor + 0.20 and not already_covered):
+                    parts.append(f"Playing {top_label} despite low baseline.")
                 elif (all_d3 and bl >= div_floor + 0.35
                       and not any("D3" in p_ for p_ in parts)):
                     parts.append("Only deployed at D3.")
@@ -582,23 +1056,35 @@ def main():
                         opps = [m["opp_avg"] for m in wins_this if m["opp_avg"]]
                         if opps:
                             avg_opp = sum(opps) / len(opps)
-                        if avg_opp and avg_opp < bl - 0.15:
+                        _all_straight_fb = not any(_is_tiebreak(m) for m in wins_this)
+                        if avg_opp and avg_opp < bl - 0.15 and _all_straight_fb:
+                            parts.append(f"Undefeated in straight sets.")
+                        elif avg_opp and avg_opp < bl - 0.15:
                             parts.append(
                                 f"Undefeated vs opponents below baseline "
-                                f"(avg {avg_opp:.2f}) — ceiling-capped."
+                                f"(avg {avg_opp:.2f})."
                             )
                         else:
                             parts.append(f"Undefeated in {div_label}.")
                     elif losses_this and wins_this:
                         pass  # mixed record, no standout story
 
-                # Cross-division addendum (brief) if not already woven in
+                # Cross-division addendum — weave in naturally when there's an arc.
+                # When we already have a tier-arc story, the other-div record + typical
+                # line tells you where the player actually belongs.
                 cross_mentioned = any(
                     f"In {other_div}:" in p_ or f"in {other_div}" in p_
                     for p_ in parts
                 )
                 if wl_other and not cross_mentioned:
-                    parts.append(f"Also {wl_other} in {other_div}.")
+                    if _arc_covered and other_matches:
+                        _odl = _other_div_line_summary(other_matches)
+                        _line_clause = f" at {_odl}" if _odl else ""
+                        parts.append(
+                            f"More settled in {other_div} — {wl_other}{_line_clause}."
+                        )
+                    else:
+                        parts.append(f"Also {wl_other} in {other_div}.")
 
             note = " ".join(parts).strip()
             if len(note) > 400:

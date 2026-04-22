@@ -306,9 +306,12 @@ def _standings_tab(subflights: list[dict], warnings: list[str]) -> str:
             name = t.get("team_name", "")
             w = t.get("team_wins")
             l = t.get("team_losses")
-            courts = _wl_cell(t.get("indiv_wins"), t.get("indiv_losses"))
-            sets   = _wl_cell(t.get("sets_won"),   t.get("sets_lost"))
-            games  = _wl_cell(t.get("games_won"),  t.get("games_lost"))
+            iw = t.get("indiv_wins")  if t.get("indiv_wins")  is not None else "–"
+            il = t.get("indiv_losses") if t.get("indiv_losses") is not None else "–"
+            sw = t.get("sets_won")    if t.get("sets_won")    is not None else "–"
+            sl = t.get("sets_lost")   if t.get("sets_lost")   is not None else "–"
+            gw = t.get("games_won")   if t.get("games_won")   is not None else "–"
+            gl = t.get("games_lost")  if t.get("games_lost")  is not None else "–"
             slug   = _slug(name)
             sf_esc = _esc(sf_raw).replace("'", "\\'")
             notes = _esc(t.get("notes", "") or "")
@@ -323,9 +326,9 @@ def _standings_tab(subflights: list[dict], warnings: list[str]) -> str:
                 f"<a class='team-link' href='#' "
                 f"onclick=\"goToResult('{slug}','{sf_esc}'); return false;\">"
                 f"{_badge_record(w, l)}</a></td>"
-                f"<td>{courts}</td>"
-                f"<td>{sets}</td>"
-                f"<td>{games}</td>"
+                f"<td class='st-w'>{iw}</td><td class='st-l'>{il}</td>"
+                f"<td class='st-w'>{sw}</td><td class='st-l'>{sl}</td>"
+                f"<td class='st-w'>{gw}</td><td class='st-l'>{gl}</td>"
                 f"<td class='notes-cell'>{notes}</td>"
                 f"</tr>\n"
             )
@@ -339,7 +342,7 @@ def _standings_tab(subflights: list[dict], warnings: list[str]) -> str:
             f'{summary_html}'
             f'<table class="st-table"><thead><tr>'
             f'<th style="width:2rem">#</th><th>Team</th>'
-            f'<th>Record</th><th>Courts</th><th>Sets</th><th>Games</th><th>Notes</th>'
+            f'<th>Record</th><th colspan="2">Courts</th><th colspan="2">Sets</th><th colspan="2">Games</th><th>Notes</th>'
             f'</tr></thead><tbody>{rows}</tbody></table>'
             f'</div>\n'
         )
@@ -430,10 +433,16 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
                 baseline = p.get("dynamic_rating_baseline")
                 curr = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
                 glob = p.get("global_rating")
-                # Use per-division stats if available, else fall back to legacy fields
-                wl    = p.get(f"wl_record_{_sfx}") or p.get("wl_record") or "–"
+                # Use per-division stats only — legacy wl_record is a combined total across
+                # all divisions and is wrong for cross-listed players.
+                wl    = p.get(f"wl_record_{_sfx}") or "–"
                 lines = p.get(f"lines_played_{_sfx}") or p.get("lines_played") or "–"
                 pnotes = _esc(p.get(f"notes_{_sfx}", "") or "")
+                dw = p.get(f"default_wins_{_sfx}", 0) or 0
+                if dw:
+                    dw_note = (f'<span class="default-win-badge">'
+                               f'incl. {dw} walkover{"s" if dw > 1 else ""}</span>')
+                    pnotes = (pnotes + " " if pnotes else "") + dw_note
                 rows += (
                     f"<tr>"
                     f"<td>{_esc(p.get('name',''))}</td>"
@@ -504,7 +513,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
         baseline = p.get("dynamic_rating_baseline")
         curr = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
         glob = p.get("global_rating")
-        wl = p.get(f"wl_record_{_sfx}") or p.get("wl_record") or "–"
+        wl = p.get(f"wl_record_{_sfx}") or "–"
         division = p.get("division", "")
         # For players registered in this division, read subflight from their division string.
         # For dual-division players, look up the subflight of their actual team in this division.
@@ -513,16 +522,28 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
         else:
             div_team = (p.get(f"team_{_sfx}", "") or "") if _sfx else ""
             sf = team_to_sf.get(div_team, "")
+        # Numeric sort key for W-L: wins * 100 + total_matches
+        # (sort by most wins first; more matches breaks ties at same win count)
+        _wl_sort = "0"
+        _wl_str = str(wl) if wl else "–"
+        if "-" in _wl_str and _wl_str != "–":
+            _wparts = _wl_str.split("-")
+            try:
+                _w, _l = int(_wparts[0]), int(_wparts[1])
+                # Primary: wins (higher = better). Secondary: fewer losses (4-0 > 4-1).
+                _wl_sort = str(_w * 100 - _l)
+            except (ValueError, IndexError):
+                pass
         rows += (
             f"<tr data-sf='{_esc(sf)}'>"
             f"<td class='pname'>{_esc(p.get('name',''))}</td>"
-            f"<td>{_esc(_abbrev_team(p.get('team','')))}</td>"
+            f"<td>{_esc(_abbrev_team((_sfx and p.get(f'team_{_sfx}')) or p.get('team','') or ''))}</td>"
             f"<td><span class='sf-pill'>{_esc(sf)}</span></td>"
             f"<td>{_esc(ntrp_r)}</td>"
             f"<td>{_esc(_fmt_rating(baseline))}</td>"
             f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
             f"<td>{_global_diff_span(glob, curr)}</td>"
-            f"<td>{_esc(str(wl))}</td>"
+            f"<td data-sort='{_wl_sort}'>{_esc(_wl_str)}</td>"
             f"</tr>\n"
         )
     return f"""
@@ -544,7 +565,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
     <th class="sortable" onclick="sortAP(4)">Base ↕</th>
     <th class="sortable" onclick="sortAP(5)">New ↕</th>
     <th class="sortable" onclick="sortAP(6)">Gbl ±</th>
-    <th>W–L</th>
+    <th class="sortable" onclick="sortAP(7)">W–L ↕</th>
   </tr></thead>
   <tbody>{rows}</tbody>
 </table>"""
@@ -563,8 +584,13 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None) -> s
                     _rating_by_name[norm] = f"{float(raw):.2f}"
                 except (ValueError, TypeError):
                     pass
+            # Include all team fields so swap detection works for cross-listed players
+            for _tf in ("team", "team_30", "team_35"):
+                _tv = p.get(_tf)
+                if _tv:
+                    _team_by_name[norm] = _tv
             if p.get("team"):
-                _team_by_name[norm] = p["team"]
+                _team_by_name[norm] = p["team"]  # primary team wins
 
     def _pname_key(name: str) -> str:
         """Normalise a player name for data-pkey attribute."""
@@ -626,6 +652,21 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None) -> s
                 lines = m.get("lines", [])
                 courts_verified = m.get("courts_verified", False)
                 if lines:
+                    # Detect scorecard swap at match level: TennisLink sometimes lists
+                    # the away team's players in the "home" column and vice versa.
+                    # result="home" means the HOME TEAM won that court (TL radio label),
+                    # NOT that the players_home column player won. Swap detection tells
+                    # us which column actually has the home team's players.
+                    _mht = m.get("home_team", "")
+                    _mat = m.get("away_team", "")
+                    _home_votes = _away_votes = 0
+                    for _vln in lines:
+                        for _pn in [x.strip() for x in _vln.get("players_home", "").split("/") if x.strip()]:
+                            _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
+                            if _pt == _mht: _home_votes += 1
+                            elif _pt == _mat: _away_votes += 1
+                    _is_swapped = (_away_votes > _home_votes)
+
                     blocks += '<div class="line-lbl">line results</div>'
                     for ln in lines:
                         # Keep original scorecard layout (home col left, away col right)
@@ -641,11 +682,13 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None) -> s
                         right = _default_or_render(pa_raw)
                         sc = _esc(ln.get("score", ""))
                         lnum = _line_label_short(ln.get("line", ""))
-                        # Use normalized winners field to determine highlighting
-                        winners_raw = ln.get("winners", "")
-                        if winners_raw:
-                            hw = "w" if winners_raw.strip() == ph_raw.strip() else ""
-                            aw = "w" if winners_raw.strip() == pa_raw.strip() else ""
+                        # result="home"/"away" = which TEAM won (not which column).
+                        # If swapped, home team players are in the right (away) column.
+                        result = ln.get("result", "")
+                        if result == "home":
+                            hw, aw = ("", "w") if _is_swapped else ("w", "")
+                        elif result == "away":
+                            hw, aw = ("w", "") if _is_swapped else ("", "w")
                         else:
                             hw = aw = ""
                         blocks += (
@@ -775,6 +818,10 @@ tr:last-child td { border-bottom: none; }
 .pname { font-weight: 500; }
 #ap-table td { vertical-align: middle; }
 .st-table td:nth-child(n+4):nth-child(-n+6) { white-space: nowrap; font-size: 11px; }
+/* Courts/Sets/Games split sub-columns */
+.st-w { text-align: right; padding-right: 2px; padding-left: 6px; white-space: nowrap; font-size: 11px; width: 1.6rem; }
+.st-l { text-align: right; padding-left: 2px; padding-right: 10px; white-space: nowrap; font-size: 11px; color: #aaa; width: 1.6rem; }
+.st-table thead th[colspan] { text-align: center; }
 .rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
 .muted { color: #aaa; font-size: 11px; }
 /* Badges */
@@ -859,6 +906,9 @@ tr:last-child td { border-bottom: none; }
 .gdiff-dn { font-size: 10px; color: #a04000; font-weight: 500; }
 /* Notes column */
 .notes-cell { font-size: 10px; color: #555; line-height: 1.35; min-width: 180px; max-width: 320px; }
+/* Walkover/default win badge in roster notes */
+.default-win-badge { display: inline-block; font-size: 9px; color: #888; background: #f3f3f3;
+  border: 1px solid #ddd; border-radius: 3px; padding: 1px 4px; margin-top: 2px; font-style: italic; }
 /* Default marker in results tab */
 .default-marker { color: #999; font-style: italic; font-size: 11px; }
 /* Subflight summary in standings */
@@ -982,8 +1032,16 @@ function _sortTable(tbodyOrSelector, col, dirKey) {
   var rows = Array.from(tbody.querySelectorAll('tr'));
   var dir = (_sortDir[dirKey] = !_sortDir[dirKey]);
   rows.sort(function(a, b) {
-    var av = a.cells[col] ? a.cells[col].innerText.trim() : '';
-    var bv = b.cells[col] ? b.cells[col].innerText.trim() : '';
+    var ac = a.cells[col], bc = b.cells[col];
+    // Prefer data-sort numeric attribute when present (e.g. W-L cells)
+    var ads = ac ? ac.dataset.sort : undefined;
+    var bds = bc ? bc.dataset.sort : undefined;
+    if (ads !== undefined && bds !== undefined) {
+      var an2 = parseFloat(ads), bn2 = parseFloat(bds);
+      if (!isNaN(an2) && !isNaN(bn2)) return dir ? an2 - bn2 : bn2 - an2;
+    }
+    var av = ac ? ac.innerText.trim() : '';
+    var bv = bc ? bc.innerText.trim() : '';
     var an = parseFloat(av), bn = parseFloat(bv);
     if (!isNaN(an) && !isNaN(bn)) return dir ? an - bn : bn - an;
     return dir ? av.localeCompare(bv) : bv.localeCompare(av);
