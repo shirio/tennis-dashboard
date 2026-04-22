@@ -22,7 +22,7 @@ def _name_key(name):
 def _score_descriptor(score: str) -> str:
     """
     Describe the shape of a score string:
-      'crushing' → any bagel (6-0) OR both sets conceded ≤1 (straight sets)
+      'lopsided' → any bagel (6-0) OR both sets conceded ≤1 (straight sets)
       'dominant' → both sets conceded ≤2 (straight sets)
       'clear' → 6-3 or similar (straight sets)
       'tight' → 6-4 / 7-5 / 7-6 (straight sets)
@@ -44,13 +44,11 @@ def _score_descriptor(score: str) -> str:
     if not regular:
         return ""
 
-    min_games = min(min(a, b) for a, b in regular)  # lowest game count in any set
+    min_games = min(min(a, b) for a, b in regular)
     max_conceded = max(min(a, b) for a, b in regular)
 
-    # Any bagel (0 games) is a crushing signal for the loser, regardless of other set
     if min_games == 0:
         return "lopsided"
-    # Both sets conceded ≤1 — also crushing
     if max_conceded <= 1:
         return "lopsided"
     if max_conceded == 2:
@@ -58,6 +56,45 @@ def _score_descriptor(score: str) -> str:
     if max_conceded == 3:
         return "clear"
     return "tight"
+
+
+def _score_phrase(score: str, won: bool) -> str:
+    """
+    Translate a raw score into a concise qualitative phrase for note text.
+    Never returns raw numbers — only shape/drama language.
+    Returns empty string when the result is too ordinary to mention.
+    """
+    desc = _score_descriptor(score)
+    if not desc:
+        return ""
+
+    if desc == "3-set tiebreak":
+        return "in a third-set tiebreak"
+
+    sets = re.findall(r"(\d+)-(\d+)", score)
+    reg = [(int(a), int(b)) for a, b in sets if not (int(a) <= 1 and int(b) <= 1)]
+    has_bagel = any(min(a, b) == 0 for a, b in reg)
+
+    if won:
+        if has_bagel:
+            return "with a bagel"
+        if desc == "lopsided":
+            return "in a rout"
+        if desc == "dominant":
+            return "comfortably"
+        if desc == "tight":
+            return "in a tight match"
+        return ""   # clear/straight — uninteresting, say nothing
+    else:
+        if has_bagel:
+            return "bageled in a set"
+        if desc == "lopsided":
+            return "in a rout"
+        if desc == "dominant":
+            return "decisively"
+        if desc == "tight":
+            return "in a tight match"
+        return ""
 
 
 def _week_number(date: str, all_dates: list[str]) -> str:
@@ -129,14 +166,9 @@ def _within_type_tier(line: str) -> int:
 def _arc_outcome(m: dict, bl=None) -> str:  # bl: float | None
     """
     Short outcome phrase for use inside a tier-arc sentence.
-    Includes opponent quality signal when bl is provided:
-      'beaten 6-3 6-1 vs much stronger opp', 'won 7-6 2-6 1-0 vs much weaker opp'
+    Qualitative only — no raw scores.
     """
-    score = m.get("score", "")
-    desc = _score_descriptor(score)
-    sets = re.findall(r"(\d+)-(\d+)", score)
-    reg = [(int(a), int(b)) for a, b in sets if not (int(a) <= 1 and int(b) <= 1)]
-    all_76 = len(reg) >= 2 and all((a, b) in [(7, 6), (6, 7)] for a, b in reg)
+    phrase = _score_phrase(m.get("score", ""), m["won"])
 
     opp_avg = m.get("opp_avg")
     opp_qual = ""
@@ -147,16 +179,21 @@ def _arc_outcome(m: dict, bl=None) -> str:  # bl: float | None
         elif not m["won"] and gap > 0.20:
             opp_qual = " vs much stronger opp"
         elif not m["won"] and gap < -0.10:
-            opp_qual = " vs weaker opp"   # lost to someone they should have beaten
+            opp_qual = " vs weaker opp"
 
     if not m["won"]:
-        if desc == "lopsided":
-            return f"beaten {score}{opp_qual}" if score else f"beaten{opp_qual}"
-        if all_76:
-            return f"lost {score} — two tight sets{opp_qual}"
-        return f"lost {score}{opp_qual}" if score else f"lost{opp_qual}"
+        base = "lost"
+        if phrase == "in a rout":
+            base = "routed"
+            phrase = ""
+        elif phrase == "bageled in a set":
+            base = "bageled"
+            phrase = ""
+        return (f"{base} {phrase}".strip() + opp_qual).strip()
     else:
-        return f"won {score}{opp_qual}" if score else f"won{opp_qual}"
+        if phrase:
+            return (f"won {phrase}" + opp_qual).strip()
+        return ("won" + opp_qual).strip()
 
 
 def _other_div_line_summary(other_matches: list) -> str:
@@ -174,16 +211,14 @@ def _describe_match(m, rating_lookup, all_dates_in_division, include_week=True,
                     player_bl=None) -> str:
     """Short phrase describing a match: 'W2 D1 alongside Liu lost to Dexter+Doe'.
 
-    player_bl: when provided, suppress the score for predictable large-gap results
-    (opponent ≥0.20 stronger on a loss, or ≥0.20 weaker on a win) unless it's a
-    tiebreak — those are always worth showing.
+    Qualitative shape (tight/rout/tiebreak/bagel) appended only when interesting.
+    Never shows raw scores.
     """
     wk = _week_number(m["date"], all_dates_in_division) if include_week else ""
     line = _line_short(m["line"])
     verb = "beat" if m["won"] else "lost to"
     opp = _opp_label(m, rating_lookup)
 
-    # Partner context — doubles only, when caller opts in
     partner_clause = ""
     if include_partner and m.get("partner"):
         partner_clause = f" alongside {m['partner']}"
@@ -192,18 +227,18 @@ def _describe_match(m, rating_lookup, all_dates_in_division, include_week=True,
     base = f"{prefix}{partner_clause} {verb} {opp}"
 
     if include_score and m.get("score"):
-        desc = _score_descriptor(m["score"])
-        if desc == "3-set tiebreak":
-            return f"{base} in third-set tiebreak"
-        # Suppress score when the result is predictable given the ratings gap.
-        # Tiebreaks (kept above) are always interesting.  Everything else:
-        # - loss to someone ≥0.20 above player → obvious result, score adds clutter
-        # - win over someone ≥0.20 below player → expected, score not illuminating
+        phrase = _score_phrase(m["score"], m["won"])
+        if not phrase:
+            return base
+        # Tiebreak always worth adding; other shape words only when not obvious
+        if phrase == "in a third-set tiebreak":
+            return f"{base} in a third-set tiebreak"
         if player_bl is not None and m.get("opp_avg") is not None:
             gap = m["opp_avg"] - player_bl
+            # Predictable large-gap result — shape adds nothing
             if (not m["won"] and gap >= 0.20) or (m["won"] and gap <= -0.20):
-                return base  # skip score
-        return f"{base} ({m['score']})"
+                return base
+        return f"{base} — {phrase}"
     return base
 
 
@@ -258,11 +293,82 @@ def _is_tiebreak(m):
     return _score_descriptor(m["score"]) == "3-set tiebreak"
 
 
+def _resolve_line_sides(ln: dict, match: dict, team_by_name: dict):
+    """
+    Resolve a line dict (either old winners/losers format OR new
+    players_home/players_away/result format) into:
+      (w_names, l_names, winner_team, loser_team, is_walkover)
+    Returns None if the line cannot be resolved.
+    """
+    def _is_default(s):
+        s = (s or "").strip().upper()
+        return not s or s in ("N/A", "N/A / N/A", "DEFAULT", "NOT AVAILABLE")
+
+    # ── Old format ──────────────────────────────────────────────────────────
+    w_raw = ln.get("winners", "")
+    l_raw = ln.get("losers", "")
+    if w_raw and l_raw:
+        w_names = [n.strip() for n in w_raw.split("/") if n.strip()]
+        l_names = [n.strip() for n in l_raw.split("/") if n.strip()]
+        walkover = any(n.upper() == "N/A" for n in w_names + l_names)
+        return (w_names, l_names,
+                ln.get("winner_team", ""), ln.get("loser_team", ""),
+                walkover)
+
+    # ── New format: players_home / players_away / result ────────────────────
+    ph = ln.get("players_home", "")
+    pa = ln.get("players_away", "")
+    result = ln.get("result", "").strip().lower()
+    if not ph or not pa or result not in ("home", "away"):
+        return None
+    if _is_default(ph) or _is_default(pa):
+        return None
+
+    home_team = match.get("home_team", "")
+    away_team = match.get("away_team", "")
+
+    # Detect scorecard swap: if majority of players_home names belong to
+    # the away team, the columns are swapped.
+    home_votes = away_votes = 0
+    for pn in [x.strip() for x in ph.split("/") if x.strip()]:
+        pt = team_by_name.get(_name_key(pn), "")
+        if pt == home_team:
+            home_votes += 1
+        elif pt == away_team:
+            away_votes += 1
+    is_swapped = away_votes > home_votes
+
+    if is_swapped:
+        ph, pa = pa, ph
+
+    # result refers to which TEAM won (home_team or away_team)
+    if result == "home":
+        w_raw, l_raw = ph, pa
+        winner_team, loser_team = home_team, away_team
+    else:
+        w_raw, l_raw = pa, ph
+        winner_team, loser_team = away_team, home_team
+
+    w_names = [n.strip() for n in w_raw.split("/") if n.strip()]
+    l_names = [n.strip() for n in l_raw.split("/") if n.strip()]
+    return w_names, l_names, winner_team, loser_team, False
+
+
 def main():
     players = json.loads((DATA / "players.json").read_text())
     pbn = {_name_key(p.get("name", "")): p for p in players if p.get("name")}
     rating = {_name_key(p.get("name", "")): p.get("dynamic_rating_baseline")
               for p in players}
+    # Player name → primary team lookup (for swap detection in new-format lines)
+    team_by_name = {}
+    for p in players:
+        norm = _name_key(p.get("name", ""))
+        for tf in ("team", "team_30", "team_35"):
+            tv = p.get(tf)
+            if tv:
+                team_by_name[norm] = tv
+        if p.get("team"):
+            team_by_name[norm] = p["team"]
 
     # Load both divisions' match data for cross-division context
     division_data = {}   # sfx -> {"all_dates": [...], "matches_by_player": {...}, "data": {...}}
@@ -284,16 +390,17 @@ def main():
                 _match_lineup: dict = defaultdict(lambda: defaultdict(list))
                 for _ln2 in m.get("lines", []):
                     _line2 = _ln2.get("line", "")
-                    for _tk, _pk in [("winner_team", "winners"),
-                                     ("loser_team", "losers")]:
-                        _team2 = _ln2.get(_tk, "")
-                        _names2 = _ln2.get(_pk, "") or ""
+                    _resolved2 = _resolve_line_sides(_ln2, m, team_by_name)
+                    if not _resolved2:
+                        continue
+                    _w2, _l2, _wt2, _lt2, _wo2 = _resolved2
+                    for _team2, _names2 in [(_wt2, _w2), (_lt2, _l2)]:
                         if _team2 and _names2 and _line2:
-                            for _n2 in [nn.strip() for nn in _names2.split("/")
-                                        if nn.strip() and nn.strip().upper() != "N/A"]:
-                                _match_lineup[_team2][_line2].append(
-                                    (_n2, rating.get(_name_key(_n2)))
-                                )
+                            for _n2 in _names2:
+                                if _n2 and _n2.upper() != "N/A":
+                                    _match_lineup[_team2][_line2].append(
+                                        (_n2, rating.get(_name_key(_n2)))
+                                    )
 
                 def _closest_higher_teammate(team, line, self_key):
                     """Return (name, rating, line) of the nearest higher-tier
@@ -323,49 +430,44 @@ def main():
                     return best
 
                 for ln in m.get("lines", []):
-                    w = ln.get("winners", "")
-                    l = ln.get("losers", "")
-                    if not w or not l:
+                    resolved = _resolve_line_sides(ln, m, team_by_name)
+                    if not resolved:
                         continue
-                    w_names = [n.strip() for n in w.split("/")]
-                    l_names = [n.strip() for n in l.split("/")]
-                    walkover = any(
-                        n.upper() == "N/A"
-                        for n in ([w.strip(), l.strip()] + w_names + l_names)
-                    )
+                    w_names, l_names, winner_team, loser_team, walkover = resolved
+                    line_label = ln.get("line", "")
+                    score = ln.get("score", "")
+
                     for name in w_names:
                         k = _name_key(name)
                         opp_rs = [rating.get(_name_key(n)) for n in l_names]
                         opp_rs = [r for r in opp_rs if r is not None]
                         partners = [n for n in w_names if _name_key(n) != k]
-                        team = ln.get("winner_team", "")
                         matches_by_player[k].append({
-                            "date": m.get("date", ""), "line": ln.get("line", ""),
+                            "date": m.get("date", ""), "line": line_label,
                             "won": True, "opp_names": l_names,
                             "opp_avg": sum(opp_rs) / len(opp_rs) if opp_rs else None,
-                            "score": ln.get("score", ""),
+                            "score": score,
                             "partner": partners[0] if partners else None,
                             "walkover": walkover,
-                            "winner_team": team,
+                            "winner_team": winner_team,
                             "higher_teammate": _closest_higher_teammate(
-                                team, ln.get("line", ""), k),
+                                winner_team, line_label, k),
                         })
                     for name in l_names:
                         k = _name_key(name)
                         opp_rs = [rating.get(_name_key(n)) for n in w_names]
                         opp_rs = [r for r in opp_rs if r is not None]
                         partners = [n for n in l_names if _name_key(n) != k]
-                        team = ln.get("loser_team", "")
                         matches_by_player[k].append({
-                            "date": m.get("date", ""), "line": ln.get("line", ""),
+                            "date": m.get("date", ""), "line": line_label,
                             "won": False, "opp_names": w_names,
                             "opp_avg": sum(opp_rs) / len(opp_rs) if opp_rs else None,
-                            "score": ln.get("score", ""),
+                            "score": score,
                             "partner": partners[0] if partners else None,
                             "walkover": walkover,
-                            "loser_team": team,
+                            "loser_team": loser_team,
                             "higher_teammate": _closest_higher_teammate(
-                                team, ln.get("line", ""), k),
+                                loser_team, line_label, k),
                         })
         division_data[sfx] = {
             "all_dates": sorted(all_dates),
@@ -615,14 +717,13 @@ def main():
                     comp_s.sort(key=lambda m: -(m["opp_avg"] or 0))
 
                     def _comp_mini(m):
-                        """Opponent + result shape only — no 'loss', no line, no week.
-                        'tiebreak vs Opp (r)+Opp (r)' or 'Opp (r)+Opp (r) (score)'."""
+                        """Opponent label only — no raw scores, no line, no week.
+                        Mentions tiebreak when applicable."""
                         opp = _opp_label(m, rating)
-                        sc = m.get("score", "")
-                        d = _score_descriptor(sc)
+                        d = _score_descriptor(m.get("score", ""))
                         if d == "3-set tiebreak":
                             return f"tiebreak vs {opp}"
-                        return f"{opp} ({sc})" if sc else opp
+                        return opp
 
                     _comp_loss_part_idx = len(parts)
                     if comp_d and not comp_s:
@@ -866,23 +967,24 @@ def main():
                             score_desc = _score_descriptor(most_sig["score"])
                             # Reframe the description with cross-listing info
                             if opp_cross_listing:
-                                # Construct a more narrative version
                                 line_s = _line_short(most_sig["line"]) or most_sig["line"]
                                 opp = _opp_label(most_sig, rating)
+                                phrase = _score_phrase(most_sig.get("score", ""), most_sig["won"])
+                                phrase_clause = f" — {phrase}" if phrase else ""
                                 if not most_sig["won"] and score_desc == "3-set tiebreak":
                                     parts.append(
                                         f"In {other_div}: pushed {opp}{opp_cross_listing} "
-                                        f"to 3 sets at {line_s} ({most_sig['score']})."
+                                        f"to a third-set tiebreak at {line_s}."
                                     )
                                 elif most_sig["won"]:
                                     parts.append(
                                         f"In {other_div}: beat {opp}{opp_cross_listing} "
-                                        f"at {line_s} ({most_sig['score']})."
+                                        f"at {line_s}{phrase_clause}."
                                     )
                                 else:
                                     parts.append(
                                         f"In {other_div}: {line_s} loss to {opp}"
-                                        f"{opp_cross_listing} ({most_sig['score']})."
+                                        f"{opp_cross_listing}{phrase_clause}."
                                     )
                             else:
                                 parts.append(f"In {other_div}: {desc}.")
