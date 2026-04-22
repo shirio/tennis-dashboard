@@ -527,158 +527,328 @@ def _generate_subflight_summaries(players):
         print(f"{div_label}: subflight summaries written to {fname}")
 
 
-def _compose_team_note(tname, rank, n_teams, wins, losses, played,
-                       match_history, top_players, sfx):
-    """Return a 1–3 sentence analytical note for a team."""
+def _pname(full_name: str) -> str:
+    """Shortest recognizable player name: last name for most, full for 1-word names."""
+    parts = full_name.strip().split()
+    if len(parts) <= 1:
+        return full_name
+    # Use last name — unique enough and matches the informal note style
+    return parts[-1]
+
+
+def _compose_team_note(  # noqa: C901
+    tname, wins, losses, n_team_weeks,
+    every_week_names,    # [str] — names deployed in ALL team weeks
+    sometimes_names,     # [str] — names deployed most but not all weeks
+    line_wl,             # {line_short: (W, L)}
+    player_line_records, # [(name, line_short, W, L)] sorted best first
+    strong_pairs,        # [(name1, name2, line_short, W, L)] sorted best first
+    div_best_singles,    # (name, W, L) or None — best singles record in whole division
+    div_best_singles_key,# player key or None
+    team_player_keys,    # set of player keys on this team
+):
+    """Compose an example-style team note focused on deployment, line records, and pairs."""
+
     parts = []
 
-    # --- Position / record lead sentence ---
-    record_str = f"{wins}-{losses}"
-    if rank == 1 and losses == 0:
-        lead = f"Leads the subflight undefeated at {record_str}."
-    elif rank == 1:
-        lead = f"First in the subflight at {record_str}."
-    elif rank == n_teams and wins <= 1:
-        lead = f"Last in the subflight at {record_str}."
-    elif rank >= n_teams - 1 and wins == 0:
-        lead = f"Winless at {record_str}, last in the subflight."
-    else:
-        pos = f"{rank}{_ordinal_suffix(rank)}"
-        lead = f"{record_str}, {pos} in the subflight."
-    parts.append(lead)
+    def _wl(w, l):
+        return f"{w}–{l}"
 
-    # --- Notable result (5-0 sweep or 0-5 shutout) ---
-    notable = None
-    for r in reversed(match_history):
-        score = r.get("score", "")
-        opp = _team_short(r.get("opp", ""))
-        if score == "5-0" and r["won"]:
-            notable = f"Swept {opp} 5-0."
-            break
-        if score == "0-5" and not r["won"]:
-            notable = f"Shut out 0-5 by {opp}."
-            break
-    if notable:
-        parts.append(notable)
+    # --- Line W-L profile (only when there's something interesting) ---
+    # "Perfect" = no losses with ≥2 wins.  "Soft spot" = losing record.
+    enough = max(2, n_team_weeks - 1)  # need at least this many matches to be notable
+    perfect_lines = sorted(
+        [ls for ls, (w, l) in line_wl.items() if l == 0 and w >= enough],
+        key=lambda ls: ("S" not in ls, ls),  # singles first
+    )
+    soft_lines = [
+        (ls, w, l)
+        for ls, (w, l) in line_wl.items()
+        if l > w and w + l >= 2
+    ]
+    soft_lines.sort(key=lambda x: x[2] - x[1], reverse=True)  # worst first
 
-    # Recent losing streak (last 2 losses with no win)
-    if not notable and len(match_history) >= 2:
-        last_two = match_history[-2:]
-        if not any(r["won"] for r in last_two):
-            shutout_loss = any(r["score"] == "0-5" for r in last_two)
-            if shutout_loss:
-                parts.append("Dropped last two matches including a shutout.")
-            else:
-                parts.append("Lost last two matches.")
+    line_profile_parts = []
+    if perfect_lines:
+        line_profile_parts.append(f"{'+'.join(perfect_lines)} all perfect")
+    if soft_lines:
+        sl, sw, sl_l = soft_lines[0]
+        line_profile_parts.append(f"{sl} {_wl(sw, sl_l)} is the soft spot")
+    if line_profile_parts:
+        parts.append("; ".join(line_profile_parts) + ".")
 
-    # --- Key player(s) ---
-    key_parts = []
-    shown = 0
-    for p in top_players:
-        bl = p.get("dynamic_rating_baseline")
-        dr = p.get(f"rating_{sfx}")
-        wl = p.get(f"wl_record_{sfx}", "") or ""
-        name = p.get("name", "")
-        if bl is None or dr is None or not name:
-            continue
-        if not wl or "-" not in str(wl):
-            continue
-        try:
-            w_count, l_count = map(int, str(wl).split("-"))
-        except ValueError:
-            continue
-        total = w_count + l_count
-        if total == 0:
-            continue
-
-        delta = dr - bl
-        if abs(delta) >= 0.08:
-            rating_str = f"{bl:.2f}→{dr:.2f}"
+    # --- Backbone / deployment sentence ---
+    if every_week_names:
+        ns = [_pname(n) for n in every_week_names[:4]]
+        if len(ns) == 1:
+            parts.append(f"{ns[0]} deployed every week.")
+        elif len(ns) == 2:
+            parts.append(f"{ns[0]} + {ns[1]} both deployed every week.")
+        elif len(ns) <= 4:
+            parts.append(f"{'/'.join(ns)} all deployed every week.")
         else:
-            rating_str = f"{dr:.2f}"
+            parts.append(
+                f"{len(every_week_names)} players deployed every week "
+                f"({'/'.join(ns[:2])} etc.)."
+            )
+    elif sometimes_names:
+        # No one played every week, but name the most-deployed core
+        ns = [_pname(n) for n in sometimes_names[:3]]
+        parts.append(f"{'/'.join(ns)} are the core rotation.")
 
-        if w_count > 0 and l_count == 0:
-            key_parts.append(f"{name} ({rating_str}, {wl} undefeated)")
-        else:
-            key_parts.append(f"{name} ({rating_str}, {wl})")
-        shown += 1
-        if shown >= 2:
+    # --- Individual line standouts ---
+    # Mention up to 2 players with notable records at a specific line.
+    # Skip players already covered by the pair note (to avoid repetition).
+    covered_by_pair = set()
+    if strong_pairs:
+        n1, n2, pls, pw, pl = strong_pairs[0]
+        covered_by_pair = {_pname(n1), _pname(n2)}
+
+    mentioned = set(covered_by_pair)
+    standout_count = 0
+    for name, ls, w, l in player_line_records:
+        pn = _pname(name)
+        if pn in mentioned:
+            continue
+        if w + l < 2:
+            continue
+        # Only mention if meaningful: undefeated with ≥2, or clearly winning
+        if l == 0 and w >= 2:
+            parts.append(f"{pn} {_wl(w, l)} at {ls}.")
+            mentioned.add(pn)
+            standout_count += 1
+        elif w >= 2 and w > l:
+            parts.append(f"{pn} {_wl(w, l)} at {ls}.")
+            mentioned.add(pn)
+            standout_count += 1
+        if standout_count >= 2:
             break
 
-    if key_parts:
-        if len(key_parts) == 1:
-            parts.append(f"Led by {key_parts[0]}.")
-        else:
-            parts.append(f"Led by {key_parts[0]}; {key_parts[1]}.")
+    # --- Strong pairs ---
+    if strong_pairs:
+        n1, n2, pls, pw, pl = strong_pairs[0]
+        if pw + pl >= 2:
+            pn1, pn2 = _pname(n1), _pname(n2)
+            parts.append(f"{pn1}/{pn2} {_wl(pw, pl)} at {pls}.")
+
+    # --- Division-wide superlative ---
+    if div_best_singles and div_best_singles_key in team_player_keys:
+        bname, bw, bl_l = div_best_singles
+        parts.append(f"{_pname(bname)} has the best singles record in the division.")
+
+    # --- Winless team fallback ---
+    if wins == 0:
+        # Prepend the hard fact
+        parts.insert(0, f"Only team without a win ({wins}–{losses}).")
 
     return " ".join(parts).strip()
 
 
-def _generate_team_notes(players):
-    """Generate brief analytical team notes and write back to both standings files."""
-    # Build player lookup by (team_uppercase, sfx)
-    pbt: dict = defaultdict(list)
-    for p in players:
-        for sfx_ in ("30", "35"):
-            tv = (p.get(f"team_{sfx_}") or "").upper()
-            if tv:
-                pbt[(tv, sfx_)].append(p)
+def _generate_team_notes(players, division_data):
+    """
+    Generate analytically rich per-team notes (deployment, line W-L, pairs)
+    and write back to both standings files.
+
+    Requires division_data from main() so we can access per-player match records
+    with line-level detail.
+    """
+    pbn = {_name_key(p.get("name", "")): p for p in players if p.get("name")}
 
     for fname, sfx, div_label in [
         ("standings_women_30.json", "30", "3.0"),
         ("standings_women_35.json", "35", "3.5"),
     ]:
         data = json.loads((DATA / fname).read_text())
+        mbp = division_data[sfx]["matches_by_player"]  # player_key -> [match_records]
 
+        # ── Per-team match date sets (to determine "every week") ──────────────
+        team_dates: dict = defaultdict(set)
         for sf in data.get("subflights", []):
-            # Build per-team match history from played matches
-            match_records: dict = defaultdict(list)
             for m in sf.get("matches", []):
                 if m.get("pending"):
                     continue
-                ht = m.get("home_team", "")
-                at = m.get("away_team", "")
-                hw = m.get("team_wins_home", 0) or 0
-                aw = m.get("team_wins_away", 0) or 0
                 date = m.get("date", "")
-                if ht:
-                    match_records[ht].append({
-                        "won": hw > aw, "score": f"{hw}-{aw}",
-                        "opp": at, "date": date,
-                    })
-                if at:
-                    match_records[at].append({
-                        "won": aw > hw, "score": f"{aw}-{hw}",
-                        "opp": ht, "date": date,
-                    })
-            for tn in match_records:
-                match_records[tn].sort(key=lambda x: x["date"])
+                if date:
+                    ht = m.get("home_team", "").upper()
+                    at = m.get("away_team", "").upper()
+                    if ht:
+                        team_dates[ht].add(date)
+                    if at:
+                        team_dates[at].add(date)
 
-            # Rank teams by wins then indiv_wins
-            all_teams = sf.get("teams", [])
-            ranked = sorted(all_teams,
-                            key=lambda t: (-t.get("team_wins", 0),
-                                           -t.get("indiv_wins", 0)))
-            rank_map = {t["team_name"]: i + 1 for i, t in enumerate(ranked)}
-            n_teams = len(all_teams)
+        # ── Player records bucketed by team ──────────────────────────────────
+        # player_records_by_team[team_upper][player_key] = [match_records]
+        player_records_by_team: dict = defaultdict(lambda: defaultdict(list))
+        for pk, matches in mbp.items():
+            p = pbn.get(pk)
+            if not p:
+                continue
+            team = (p.get(f"team_{sfx}") or "").upper()
+            if not team:
+                continue
+            for m in matches:
+                if not m.get("walkover"):
+                    player_records_by_team[team][pk].append(m)
 
+        # ── Division-wide: best singles record ────────────────────────────────
+        # "best" = most wins among undefeated singles players with ≥2 matches
+        # falling back to best W-L ratio if nobody undefeated
+        div_singles: dict = {}  # pk -> (W, L)
+        for pk, matches in mbp.items():
+            singles = [m for m in matches
+                       if "Singles" in m.get("line", "") and not m.get("walkover")]
+            if len(singles) < 2:
+                continue
+            w = sum(1 for m in singles if m["won"])
+            div_singles[pk] = (w, len(singles) - w)
+
+        best_singles_key = None
+        best_singles = None  # (name, W, L)
+        for pk, (w, l) in div_singles.items():
+            if best_singles_key is None:
+                best_singles_key = pk
+                p = pbn.get(pk)
+                best_singles = (p.get("name", pk) if p else pk, w, l)
+                continue
+            bw, bl_l = div_singles[best_singles_key]
+            # Prefer: undefeated > more wins, then fewer losses
+            beats = (
+                (l == 0 and bl_l > 0) or
+                (l == bl_l == 0 and w > bw) or
+                (l == bl_l and w > bw)
+            )
+            if beats:
+                best_singles_key = pk
+                p = pbn.get(pk)
+                best_singles = (p.get("name", pk) if p else pk, w, l)
+
+        # ── Generate note per team ────────────────────────────────────────────
+        for sf in data.get("subflights", []):
             for t in sf.get("teams", []):
                 tname = t["team_name"]
-                rank = rank_map.get(tname, 1)
+                tu = tname.upper()
+
+                tdates = team_dates.get(tu, set())
+                n_team_weeks = len(tdates)
+                pr = player_records_by_team.get(tu, {})
+
                 wins = t.get("team_wins", 0)
                 losses = t.get("team_losses", 0)
-                played = t.get("matches_played", 0)
-                mh = match_records.get(tname, [])
 
-                # Top players for this team in this division, sorted by current rating
-                tp = pbt.get((tname.upper(), sfx), [])
-                tp_rated = sorted(
-                    [p for p in tp if p.get(f"rating_{sfx}") is not None],
-                    key=lambda p: -(p.get(f"rating_{sfx}") or 0),
+                if n_team_weeks == 0:
+                    t["notes"] = ""
+                    continue
+
+                # -- Backbone: who played every week vs. sometimes --
+                every_week_names = []
+                sometimes_names = []
+                all_deploy = []  # (name, n_matches, dates_set)
+                for pk, matches in pr.items():
+                    p = pbn.get(pk)
+                    if not p:
+                        continue
+                    name = p.get("name", pk)
+                    dates = {m["date"] for m in matches}
+                    n = len(matches)
+                    all_deploy.append((name, n, dates))
+
+                all_deploy.sort(key=lambda x: -x[1])
+
+                for name, n, dates in all_deploy:
+                    if tdates and dates >= tdates:
+                        every_week_names.append(name)
+                    elif n >= max(1, n_team_weeks - 1):
+                        sometimes_names.append(name)
+
+                # -- Team line W-L (deduplicated by date+line) --
+                line_results: dict = defaultdict(list)
+                seen_dl = set()
+                for pk, matches in pr.items():
+                    for m in matches:
+                        ls = _line_short(m.get("line", ""))
+                        if not ls:
+                            continue
+                        key = (m["date"], ls)
+                        if key in seen_dl:
+                            continue
+                        seen_dl.add(key)
+                        line_results[ls].append(m["won"])
+
+                line_wl = {ls: (sum(rs), len(rs) - sum(rs))
+                           for ls, rs in line_results.items()}
+
+                # -- Per-player records at each line --
+                player_line_recs = []
+                for pk, matches in pr.items():
+                    p = pbn.get(pk)
+                    if not p:
+                        continue
+                    name = p.get("name", pk)
+                    by_line: dict = defaultdict(list)
+                    for m in matches:
+                        ls = _line_short(m.get("line", ""))
+                        if ls:
+                            by_line[ls].append(m["won"])
+                    for ls, rs in by_line.items():
+                        w = sum(rs)
+                        l = len(rs) - w
+                        player_line_recs.append((name, ls, w, l))
+
+                # Sort: undefeated+most wins first, then best ratio
+                player_line_recs.sort(
+                    key=lambda x: (
+                        -(x[3] == 0 and x[2] >= 2),  # undefeated with ≥2 wins
+                        -(x[2] / (x[2] + x[3])) if (x[2] + x[3]) > 0 else 0,
+                        -x[2],
+                    )
+                )
+
+                # -- Doubles pairs --
+                pair_results: dict = defaultdict(list)
+                for pk, matches in pr.items():
+                    p = pbn.get(pk)
+                    if not p:
+                        continue
+                    name = p.get("name", pk)
+                    for m in matches:
+                        partner = m.get("partner")
+                        if not partner:
+                            continue
+                        ls = _line_short(m.get("line", ""))
+                        if not ls.startswith("D"):
+                            continue
+                        pair_key = (tuple(sorted([name, partner])), ls)
+                        pair_results[pair_key].append(m["won"])
+
+                strong_pairs = []
+                for (pair, ls), rs in pair_results.items():
+                    if len(rs) < 2:
+                        continue
+                    w = sum(rs)
+                    l = len(rs) - w
+                    strong_pairs.append((pair[0], pair[1], ls, w, l))
+
+                strong_pairs.sort(
+                    key=lambda x: (
+                        -(x[4] == 0 and x[3] >= 2),
+                        -(x[3] / (x[3] + x[4])) if (x[3] + x[4]) > 0 else 0,
+                        -x[3],
+                    )
                 )
 
                 t["notes"] = _compose_team_note(
-                    tname, rank, n_teams, wins, losses, played, mh, tp_rated, sfx
+                    tname=tname,
+                    wins=wins,
+                    losses=losses,
+                    n_team_weeks=n_team_weeks,
+                    every_week_names=every_week_names,
+                    sometimes_names=sometimes_names,
+                    line_wl=line_wl,
+                    player_line_records=player_line_recs,
+                    strong_pairs=strong_pairs,
+                    div_best_singles=best_singles,
+                    div_best_singles_key=best_singles_key,
+                    team_player_keys=set(pr.keys()),
                 )
 
         (DATA / fname).write_text(json.dumps(data, indent=2, ensure_ascii=False))
@@ -1534,7 +1704,7 @@ def main():
     # Generate team notes and subflight summaries in both standings files
     # Re-read players after notes have been saved so ratings are fresh
     players = json.loads((DATA / "players.json").read_text())
-    _generate_team_notes(players)
+    _generate_team_notes(players, division_data)
     _generate_subflight_summaries(players)
 
 
