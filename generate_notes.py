@@ -535,145 +535,245 @@ def _pname(full_name: str) -> str:
 
 def _compose_team_note(  # noqa: C901
     tname, wins, losses, n_team_weeks,
-    every_week_names,    # [str] — names deployed in ALL team weeks
-    sometimes_names,     # [str] — names deployed most but not all weeks
-    line_wl,             # {line_short: (W, L)}
-    player_line_records, # [(name, line_short, W, L)] sorted best first
-    strong_pairs,        # [(name1, name2, line_short, W, L)] sorted best first
-    div_best_singles,    # (name, W, L) or None — best singles record in whole division
-    div_best_singles_key,# player key or None
-    team_player_keys,    # set of player keys on this team
+    match_history,          # [{won, score, opp, date}] team-level match results
+    every_week_names,
+    sometimes_names,
+    line_wl,
+    player_line_records,    # [(name, line_short, W, L)]
+    strong_pairs,           # [(n1, n2, line_short, W, L)]
+    missing_stars,          # [(name, baseline)] — rostered but unplayed, high baseline
+    rising_players,         # [(name, bl, dr, wl_str)] sorted by delta desc
+    falling_players,        # [(name, bl, dr, wl_str)]
+    overperforming_singles, # [(name, W, L, baseline)] good singles despite low bl
+    is_top_rated_roster,    # bool
+    div_best_singles,       # (name, W, L) or None
+    div_best_singles_key,
+    team_player_keys,
 ):
-    """Compose an example-style team note focused on deployment, line records, and pairs."""
-
-    parts = []
-
-    # Track which players and superlatives have already been mentioned so
-    # we never repeat the same fact in a different sentence.
+    """
+    Story-driven team note.  Lead with the most distinctive fact for THIS team,
+    then add 1-2 supporting facts.  Never follow a fixed template.
+    """
+    parts: list = []
     mentioned: set = set()
     superlative_used = False
 
-    # --- Line W-L profile with inline player fusion ---
-    # "Perfect" = no losses with ≥2 wins.  "Soft spot" = losing record.
+    # ── Parse team match history ──────────────────────────────────────────────
+    n_matches = len(match_history)
+    close_losses, big_wins, big_losses = [], [], []
+    for m in match_history:
+        sc = m.get("score", "")
+        sc_parts = sc.split("-")
+        if len(sc_parts) != 2:
+            continue
+        try:
+            tw, tl = int(sc_parts[0]), int(sc_parts[1])
+        except ValueError:
+            continue
+        if m["won"]:
+            if tw >= 4:
+                big_wins.append(m)
+        else:
+            if tl - tw <= 1:         # 2–3 loss = competitive
+                close_losses.append(m)
+            if tl >= 4:              # 0–5 or 1–4 = blowout loss
+                big_losses.append(m)
+
+    contrasting = bool(big_wins) and bool(big_losses)
+
+    # ── Line profile helpers ──────────────────────────────────────────────────
     enough = max(2, n_team_weeks - 1)
     perfect_lines = sorted(
         [ls for ls, (w, l) in line_wl.items() if l == 0 and w >= enough],
-        key=lambda ls: ("S" not in ls, ls),  # singles first
+        key=lambda ls: ("S" not in ls, ls),
     )
-    soft_lines = [
-        (ls, w, l)
-        for ls, (w, l) in line_wl.items()
-        if l > w and w + l >= 2
-    ]
-    soft_lines.sort(key=lambda x: x[2] - x[1], reverse=True)
-
-    # Build a fast lookup: line_short -> best player (undefeated with most wins)
-    best_player_at: dict = {}
+    soft_lines = sorted(
+        [(ls, w, l) for ls, (w, l) in line_wl.items() if l > w and w + l >= 2],
+        key=lambda x: x[2] - x[1], reverse=True,
+    )
+    all_lines_winning = (
+        bool(line_wl) and
+        all(w >= l for ls, (w, l) in line_wl.items() if w + l >= 2)
+    )
+    best_player_at: dict = {}   # line_short -> (name, W, L)
     for name, ls, w, l in player_line_records:
         if ls not in best_player_at and l == 0 and w >= 2:
             best_player_at[ls] = (name, w, l)
 
-    line_profile_parts = []
-    for ls in perfect_lines:
-        if ls in best_player_at:
-            bname, bw, _ = best_player_at[ls]
-            pn = _pname(bname)
-            bkey = _name_key(bname)
-            # Is this also the division's best singles player?
-            is_div_best = (
-                not superlative_used
-                and div_best_singles_key == bkey
-                and div_best_singles_key in team_player_keys
-                and "S" in ls  # only for singles lines
-            )
-            if is_div_best:
-                line_profile_parts.append(
-                    f"{ls} perfect, led by {pn} ({bw}–0), "
-                    f"the biggest singles threat in the division"
+    def _emit_line_profile(lines_to_show):
+        """Build fused line-profile clause(s), marking names as mentioned."""
+        nonlocal superlative_used
+        clauses = []
+        for ls in lines_to_show:
+            if ls in best_player_at:
+                bname, bw, _ = best_player_at[ls]
+                pn = _pname(bname)
+                bkey = _name_key(bname)
+                is_div_best = (
+                    not superlative_used
+                    and div_best_singles_key == bkey
+                    and div_best_singles_key in team_player_keys
+                    and "S" in ls
                 )
-                superlative_used = True
+                if is_div_best:
+                    clauses.append(
+                        f"{ls} perfect, led by {pn} ({bw}–0), "
+                        f"the biggest singles threat in the division"
+                    )
+                    superlative_used = True
+                else:
+                    clauses.append(f"{ls} perfect, led by {pn} ({bw}–0)")
+                mentioned.add(pn)
             else:
-                line_profile_parts.append(f"{ls} perfect, led by {pn} ({bw}–0)")
-            mentioned.add(pn)
+                clauses.append(f"{ls} all perfect")
+        if soft_lines and not any("soft spot" in p for p in parts):
+            sl, sw, sl_l = soft_lines[0]
+            clauses.append(f"{sl} is the soft spot ({sw}–{sl_l} record)")
+        if clauses:
+            parts.append("; ".join(clauses) + ".")
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # LEAD — pick the single most distinctive fact for this team
+    # ══════════════════════════════════════════════════════════════════════════
+
+    if wins > 0 and losses == 0:
+        # Undefeated — lead with strength descriptor
+        if is_top_rated_roster:
+            parts.append("Undefeated; top-rated roster in the division.")
+        elif all_lines_winning:
+            parts.append("Undefeated; strong across all lines.")
         else:
-            line_profile_parts.append(f"{ls} all perfect")
+            parts.append(f"Undefeated at {wins}–{losses}.")
+        # Follow up with line detail
+        if perfect_lines:
+            _emit_line_profile(perfect_lines)
 
-    if soft_lines:
+    elif wins == 0 and missing_stars:
+        # Winless but key players haven't appeared yet
+        stars = [f"{_pname(n)} ({bl:.2f})" for n, bl in missing_stars[:2]]
+        if len(stars) == 1:
+            parts.append(f"0–{losses}; {stars[0]} hasn't played yet.")
+        else:
+            parts.append(f"0–{losses}; {' and '.join(stars)} haven't played yet.")
+
+    elif wins == 0 and len(close_losses) >= 2:
+        # Winless but consistently competitive
+        parts.append(
+            f"0–{losses} but {len(close_losses)} of {n_matches} "
+            f"losses were 2–3 splits."
+        )
+
+    elif wins == 0 and len(close_losses) == 1:
+        parts.append(f"0–{losses}; one 2–3 loss shows they can compete.")
+
+    elif contrasting:
+        # Mixed bag — big win and big blowout loss
+        bw_m = big_wins[-1]
+        bl_m = big_losses[-1]
+        parts.append(
+            f"Won big over {_team_short(bw_m['opp'])}, "
+            f"got swept by {_team_short(bl_m['opp'])}."
+        )
+
+    elif perfect_lines:
+        # Line dominance is the headline
+        _emit_line_profile(perfect_lines)
+
+    elif soft_lines and wins < losses:
+        # Struggling team — soft spot is the story
         sl, sw, sl_l = soft_lines[0]
-        line_profile_parts.append(f"{sl} is the soft spot ({sw}–{sl_l} record)")
+        parts.append(f"{sl} is the soft spot ({sw}–{sl_l} record).")
 
-    if line_profile_parts:
-        parts.append("; ".join(line_profile_parts) + ".")
+    # ══════════════════════════════════════════════════════════════════════════
+    # SUPPORTING FACTS (1-2, non-redundant)
+    # ══════════════════════════════════════════════════════════════════════════
 
-    # --- Backbone / deployment sentence ---
-    if every_week_names:
-        ns = [_pname(n) for n in every_week_names[:4]]
+    # Overperforming singles player (beating expectations given low baseline)
+    if overperforming_singles:
+        name, ow, ol, obl = overperforming_singles[0]
+        pn = _pname(name)
+        if pn not in mentioned:
+            line_tag = " in singles" if ol == 0 else " at singles"
+            parts.append(f"{pn} {ow}–{ol}{line_tag} despite low dynamic ({obl:.2f}).")
+            mentioned.add(pn)
+
+    is_undefeated = wins > 0 and losses == 0
+
+    # Rising player — require ≥2 matches so 1 lucky win doesn't trigger this
+    if rising_players:
+        rname, rbl, rdr, rwl = rising_players[0]
+        try:
+            rw, rl = map(int, str(rwl).split("-"))
+            enough_matches = (rw + rl) >= 2
+        except (ValueError, AttributeError):
+            enough_matches = False
+        pn = _pname(rname)
+        if pn not in mentioned and enough_matches:
+            parts.append(f"{pn} ({rbl:.2f}→{rdr:.2f}, {rwl}) trending up.")
+            mentioned.add(pn)
+
+    # Falling player — suppress for undefeated teams (misleading context)
+    if falling_players and not is_undefeated:
+        fname_p, fbl, fdr, fwl = falling_players[0]
+        pn = _pname(fname_p)
+        if pn not in mentioned:
+            parts.append(f"{pn} drops hardest: {fbl:.2f}→{fdr:.2f}.")
+            mentioned.add(pn)
+
+    # Strong backbone (if not yet implied by lead)
+    if every_week_names and not any("deployed every week" in p for p in parts):
+        ns = [_pname(n) for n in every_week_names[:4] if _pname(n) not in mentioned]
         if len(ns) == 1:
             parts.append(f"{ns[0]} deployed every week.")
         elif len(ns) == 2:
             parts.append(f"{ns[0]} + {ns[1]} both deployed every week.")
-        elif len(ns) <= 4:
-            parts.append(f"{'/'.join(ns)} all deployed every week.")
-        else:
-            parts.append(
-                f"{len(every_week_names)} players deployed every week "
-                f"({'/'.join(ns[:2])} etc.)."
-            )
-    elif sometimes_names:
-        ns = [_pname(n) for n in sometimes_names[:3]]
-        parts.append(f"{'/'.join(ns)} are the core rotation.")
+        elif ns:
+            parts.append(f"{'/'.join(ns[:3])} all deployed every week.")
 
-    # --- Individual line standouts (skip anyone already fused into line profile or pairs) ---
+    # Soft spot (if not yet mentioned)
+    if soft_lines and not any("soft spot" in p for p in parts):
+        sl, sw, sl_l = soft_lines[0]
+        parts.append(f"{sl} is the soft spot ({sw}–{sl_l} record).")
+
+    # Individual line standouts (skip already-mentioned players and pair partners)
     covered_by_pair: set = set()
     if strong_pairs:
         n1, n2, pls, pw, pl = strong_pairs[0]
         covered_by_pair = {_pname(n1), _pname(n2)}
-
     skip = mentioned | covered_by_pair
     standout_count = 0
     for name, ls, w, l in player_line_records:
         pn = _pname(name)
-        if pn in skip:
+        if pn in skip or w + l < 2:
             continue
-        if w + l < 2:
-            continue
-        if l == 0 and w >= 2:
-            parts.append(f"{pn} {w}–{l} at {ls}.")
-            skip.add(pn)
-            standout_count += 1
-        elif w >= 2 and w > l:
+        if (l == 0 and w >= 2) or (w >= 2 and w > l):
             parts.append(f"{pn} {w}–{l} at {ls}.")
             skip.add(pn)
             standout_count += 1
         if standout_count >= 2:
             break
 
-    # --- Strong pairs ---
+    # Strong pair — only show if winning or even record (never highlight a losing pair)
     if strong_pairs:
         n1, n2, pls, pw, pl = strong_pairs[0]
-        if pw + pl >= 2:
+        if pw >= pl and pw >= 2:     # winning or even, at least 2 wins
             pn1, pn2 = _pname(n1), _pname(n2)
             parts.append(f"{pn1}/{pn2} {pw}–{pl} at {pls}.")
 
-    # --- Division-wide superlative (only if not already fused above) ---
+    # Division superlative (if not fused into line profile)
     if not superlative_used and div_best_singles and div_best_singles_key in team_player_keys:
         bname, bw, bl_l = div_best_singles
         parts.append(f"{_pname(bname)} has the best singles record in the division.")
 
-    # --- Winless team fallback ---
-    if wins == 0:
-        parts.insert(0, f"Only team without a win ({wins}–{losses}).")
-
-    return " ".join(parts).strip()
+    # Cap at 4 sentences — pick the most front-loaded, highest-value ones
+    return " ".join(parts[:4]).strip()
 
 
-def _generate_team_notes(players, division_data):
+def _generate_team_notes(players, division_data):  # noqa: C901
     """
-    Generate analytically rich per-team notes (deployment, line W-L, pairs)
-    and write back to both standings files.
-
-    Requires division_data from main() so we can access per-player match records
-    with line-level detail.
+    Generate story-driven per-team notes and write back to both standings files.
+    Each note leads with the most distinctive fact for that team rather than
+    always following the same template.
     """
     pbn = {_name_key(p.get("name", "")): p for p in players if p.get("name")}
 
@@ -682,25 +782,47 @@ def _generate_team_notes(players, division_data):
         ("standings_women_35.json", "35", "3.5"),
     ]:
         data = json.loads((DATA / fname).read_text())
-        mbp = division_data[sfx]["matches_by_player"]  # player_key -> [match_records]
+        mbp = division_data[sfx]["matches_by_player"]
 
-        # ── Per-team match date sets (to determine "every week") ──────────────
+        # Division floor for "low dynamic" detection
+        div_floor = 2.50 if sfx == "30" else 3.00
+
+        # ── Division-wide average baseline (for top-rated roster detection) ──
+        all_baselines = [
+            p.get("dynamic_rating_baseline")
+            for p in players
+            if p.get(f"team_{sfx}") and p.get("dynamic_rating_baseline") is not None
+        ]
+        div_avg_bl = sum(all_baselines) / len(all_baselines) if all_baselines else 3.0
+
+        # ── Per-team match date sets ──────────────────────────────────────────
         team_dates: dict = defaultdict(set)
+        team_match_history: dict = defaultdict(list)  # team_upper -> [{won,score,opp,date}]
         for sf in data.get("subflights", []):
             for m in sf.get("matches", []):
                 if m.get("pending"):
                     continue
                 date = m.get("date", "")
+                ht = m.get("home_team", "")
+                at = m.get("away_team", "")
+                htu, atu = ht.upper(), at.upper()
+                hw = m.get("team_wins_home", 0) or 0
+                aw = m.get("team_wins_away", 0) or 0
                 if date:
-                    ht = m.get("home_team", "").upper()
-                    at = m.get("away_team", "").upper()
-                    if ht:
-                        team_dates[ht].add(date)
-                    if at:
-                        team_dates[at].add(date)
+                    if htu:
+                        team_dates[htu].add(date)
+                        team_match_history[htu].append(
+                            {"won": hw > aw, "score": f"{hw}-{aw}", "opp": at, "date": date}
+                        )
+                    if atu:
+                        team_dates[atu].add(date)
+                        team_match_history[atu].append(
+                            {"won": aw > hw, "score": f"{aw}-{hw}", "opp": ht, "date": date}
+                        )
+        for tu in team_match_history:
+            team_match_history[tu].sort(key=lambda x: x["date"])
 
         # ── Player records bucketed by team ──────────────────────────────────
-        # player_records_by_team[team_upper][player_key] = [match_records]
         player_records_by_team: dict = defaultdict(lambda: defaultdict(list))
         for pk, matches in mbp.items():
             p = pbn.get(pk)
@@ -713,10 +835,8 @@ def _generate_team_notes(players, division_data):
                 if not m.get("walkover"):
                     player_records_by_team[team][pk].append(m)
 
-        # ── Division-wide: best singles record ────────────────────────────────
-        # "best" = most wins among undefeated singles players with ≥2 matches
-        # falling back to best W-L ratio if nobody undefeated
-        div_singles: dict = {}  # pk -> (W, L)
+        # ── Division-wide best singles record ─────────────────────────────────
+        div_singles: dict = {}
         for pk, matches in mbp.items():
             singles = [m for m in matches
                        if "Singles" in m.get("line", "") and not m.get("walkover")]
@@ -726,7 +846,7 @@ def _generate_team_notes(players, division_data):
             div_singles[pk] = (w, len(singles) - w)
 
         best_singles_key = None
-        best_singles = None  # (name, W, L)
+        best_singles = None
         for pk, (w, l) in div_singles.items():
             if best_singles_key is None:
                 best_singles_key = pk
@@ -734,7 +854,6 @@ def _generate_team_notes(players, division_data):
                 best_singles = (p.get("name", pk) if p else pk, w, l)
                 continue
             bw, bl_l = div_singles[best_singles_key]
-            # Prefer: undefeated > more wins, then fewer losses
             beats = (
                 (l == 0 and bl_l > 0) or
                 (l == bl_l == 0 and w > bw) or
@@ -754,6 +873,7 @@ def _generate_team_notes(players, division_data):
                 tdates = team_dates.get(tu, set())
                 n_team_weeks = len(tdates)
                 pr = player_records_by_team.get(tu, {})
+                mh = team_match_history.get(tu, [])
 
                 wins = t.get("team_wins", 0)
                 losses = t.get("team_losses", 0)
@@ -762,30 +882,70 @@ def _generate_team_notes(players, division_data):
                     t["notes"] = ""
                     continue
 
-                # -- Backbone: who played every week vs. sometimes --
-                every_week_names = []
-                sometimes_names = []
-                all_deploy = []  # (name, n_matches, dates_set)
+                # -- All rostered players for this team --
+                from_pbt = [
+                    p for p in players
+                    if (p.get(f"team_{sfx}") or "").upper() == tu
+                    and p.get("dynamic_rating_baseline") is not None
+                ]
+
+                # -- Missing stars: rostered players who haven't played yet --
+                threshold = div_avg_bl + 0.05
+                missing_stars = sorted(
+                    [
+                        (p.get("name", ""), p["dynamic_rating_baseline"])
+                        for p in from_pbt
+                        if _name_key(p.get("name", "")) not in pr
+                        and p["dynamic_rating_baseline"] >= threshold
+                    ],
+                    key=lambda x: -x[1],
+                )[:2]
+
+                # -- Is this the top-rated roster in the division? --
+                if from_pbt:
+                    team_avg_bl = sum(
+                        p["dynamic_rating_baseline"] for p in from_pbt
+                    ) / len(from_pbt)
+                    # Compare to all other teams' averages
+                    all_team_avgs = []
+                    for p2 in players:
+                        t2 = (p2.get(f"team_{sfx}") or "").upper()
+                        if t2 and p2.get("dynamic_rating_baseline") is not None:
+                            all_team_avgs.append((t2, p2["dynamic_rating_baseline"]))
+                    from collections import defaultdict as _dd
+                    avgs_by_team: dict = _dd(list)
+                    for t2, bl2 in all_team_avgs:
+                        avgs_by_team[t2].append(bl2)
+                    team_roster_avgs = {
+                        t2: sum(bls) / len(bls)
+                        for t2, bls in avgs_by_team.items() if bls
+                    }
+                    is_top_rated_roster = (
+                        bool(team_roster_avgs) and
+                        team_avg_bl >= max(team_roster_avgs.values()) - 0.005
+                    )
+                else:
+                    is_top_rated_roster = False
+
+                # -- Backbone players --
+                every_week_names, sometimes_names, all_deploy = [], [], []
                 for pk, matches in pr.items():
                     p = pbn.get(pk)
                     if not p:
                         continue
                     name = p.get("name", pk)
                     dates = {m["date"] for m in matches}
-                    n = len(matches)
-                    all_deploy.append((name, n, dates))
-
+                    all_deploy.append((name, len(matches), dates))
                 all_deploy.sort(key=lambda x: -x[1])
-
                 for name, n, dates in all_deploy:
                     if tdates and dates >= tdates:
                         every_week_names.append(name)
                     elif n >= max(1, n_team_weeks - 1):
                         sometimes_names.append(name)
 
-                # -- Team line W-L (deduplicated by date+line) --
+                # -- Team line W-L (deduplicated) --
                 line_results: dict = defaultdict(list)
-                seen_dl = set()
+                seen_dl: set = set()
                 for pk, matches in pr.items():
                     for m in matches:
                         ls = _line_short(m.get("line", ""))
@@ -796,11 +956,10 @@ def _generate_team_notes(players, division_data):
                             continue
                         seen_dl.add(key)
                         line_results[ls].append(m["won"])
-
                 line_wl = {ls: (sum(rs), len(rs) - sum(rs))
                            for ls, rs in line_results.items()}
 
-                # -- Per-player records at each line --
+                # -- Per-player line records --
                 player_line_recs = []
                 for pk, matches in pr.items():
                     p = pbn.get(pk)
@@ -813,21 +972,17 @@ def _generate_team_notes(players, division_data):
                         if ls:
                             by_line[ls].append(m["won"])
                     for ls, rs in by_line.items():
-                        w = sum(rs)
-                        l = len(rs) - w
+                        w, l = sum(rs), len(rs) - sum(rs)
                         player_line_recs.append((name, ls, w, l))
-
-                # Sort: undefeated+most wins first, then best ratio
                 player_line_recs.sort(
                     key=lambda x: (
-                        -(x[3] == 0 and x[2] >= 2),  # undefeated with ≥2 wins
+                        -(x[3] == 0 and x[2] >= 2),
                         -(x[2] / (x[2] + x[3])) if (x[2] + x[3]) > 0 else 0,
                         -x[2],
                     )
                 )
 
-                # -- Doubles pairs (deduplicated by date+line so each match
-                #    is counted once even though both players appear in pr) --
+                # -- Doubles pairs (deduplicated) --
                 pair_results: dict = defaultdict(list)
                 seen_pair_dates: set = set()
                 for pk, matches in pr.items():
@@ -848,33 +1003,70 @@ def _generate_team_notes(players, division_data):
                             continue
                         seen_pair_dates.add(dedup)
                         pair_results[pair_key].append(m["won"])
-
-                strong_pairs = []
-                for (pair, ls), rs in pair_results.items():
-                    if len(rs) < 2:
-                        continue
-                    w = sum(rs)
-                    l = len(rs) - w
-                    strong_pairs.append((pair[0], pair[1], ls, w, l))
-
-                strong_pairs.sort(
+                strong_pairs = sorted(
+                    [
+                        (pair[0], pair[1], ls, sum(rs), len(rs) - sum(rs))
+                        for (pair, ls), rs in pair_results.items()
+                        if len(rs) >= 2
+                    ],
                     key=lambda x: (
                         -(x[4] == 0 and x[3] >= 2),
                         -(x[3] / (x[3] + x[4])) if (x[3] + x[4]) > 0 else 0,
                         -x[3],
-                    )
+                    ),
                 )
+
+                # -- Player trajectories (rising / falling / overperforming) --
+                rising_players, falling_players, overperforming_singles = [], [], []
+                for pk, matches in pr.items():
+                    p = pbn.get(pk)
+                    if not p:
+                        continue
+                    name = p.get("name", pk)
+                    bl = p.get("dynamic_rating_baseline")
+                    dr = p.get(f"rating_{sfx}")
+                    wl_str = p.get(f"wl_record_{sfx}", "") or ""
+                    if bl is None or dr is None:
+                        continue
+                    delta = dr - bl
+                    # Only track trajectories for players who are actually
+                    # competing at this division's level (not fill-ins with
+                    # very low baselines whose swings are noise).
+                    meaningful = bl >= div_floor + 0.15
+                    if delta >= 0.10 and wl_str and meaningful:
+                        rising_players.append((name, bl, dr, wl_str))
+                    elif delta <= -0.08 and wl_str and meaningful:
+                        falling_players.append((name, bl, dr, wl_str))
+                    # Overperforming singles: undefeated with ≥2 singles wins
+                    # despite baseline clearly below division expectation
+                    singles_ms = [
+                        m for m in matches if "Singles" in m.get("line", "")
+                    ]
+                    sw = sum(1 for m in singles_ms if m["won"])
+                    sl_ = len(singles_ms) - sw
+                    if sw >= 2 and sl_ == 0 and bl < div_floor + 0.20:
+                        overperforming_singles.append((name, sw, sl_, bl))
+
+                rising_players.sort(key=lambda x: -(x[2] - x[1]))
+                falling_players.sort(key=lambda x: (x[2] - x[1]))
+                overperforming_singles.sort(key=lambda x: -x[1])
 
                 t["notes"] = _compose_team_note(
                     tname=tname,
                     wins=wins,
                     losses=losses,
                     n_team_weeks=n_team_weeks,
+                    match_history=mh,
                     every_week_names=every_week_names,
                     sometimes_names=sometimes_names,
                     line_wl=line_wl,
                     player_line_records=player_line_recs,
                     strong_pairs=strong_pairs,
+                    missing_stars=missing_stars,
+                    rising_players=rising_players,
+                    falling_players=falling_players,
+                    overperforming_singles=overperforming_singles,
+                    is_top_rated_roster=is_top_rated_roster,
                     div_best_singles=best_singles,
                     div_best_singles_key=best_singles_key,
                     team_player_keys=set(pr.keys()),
