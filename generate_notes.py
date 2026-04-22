@@ -528,7 +528,7 @@ def _generate_subflight_summaries(players):
 
 
 _COMMON_FIRST_NAMES = {
-    "kim", "chris", "alex", "sam", "taylor", "jordan", "morgan", "casey",
+    "kim", "kimberly", "chris", "alex", "sam", "taylor", "jordan", "morgan", "casey",
     "ashley", "jessica", "jennifer", "sarah", "emily", "amanda", "melissa",
     "stephanie", "nicole", "rachel", "megan", "lauren", "brittany", "amber",
     "heather", "anna", "kate", "katie", "kelly", "kerry", "keri", "lisa",
