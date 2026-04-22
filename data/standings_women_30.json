@@ -17,7 +17,7 @@
           "games_won": 277,
           "games_lost": 170,
           "games_won_pct": "60.92%",
-          "notes": "S1 perfect, led by Yarisbel (4–0), the biggest singles threat in the division. Shi + Emmy both deployed every week. Emmy 3–0 at D2. Anna 2–1 at S2. Darian/Shi 6–0 at D1."
+          "notes": "S1 perfect, led by Yarisbel (4–0), the biggest singles threat in the division. Shi + Emmy both deployed every week. Emmy 3–0 at D2. Anna 2–1 at S2. Darian/Shi 3–0 at D1."
         },
         {
           "team_name": "SUMMERLIN ARBORS",
@@ -31,7 +31,7 @@
           "games_won": 261,
           "games_lost": 189,
           "games_won_pct": "58.00%",
-          "notes": "Brittany/Kim/Tina all deployed every week. Tayoni 4–0 at S1. Genesis 3–0 at D3. Brittany/Tina 2–0 at D1."
+          "notes": "Brittany/Kim/Tina all deployed every week. Tayoni 4–0 at S1. Genesis 3–0 at D3. Kim/Tina 2–1 at D1."
         },
         {
           "team_name": "ANTHEM CC",
@@ -45,7 +45,7 @@
           "games_won": 221,
           "games_lost": 223,
           "games_won_pct": "49.77%",
-          "notes": "S1 is the soft spot (2–3 record). Therese deployed every week. Kelly 2–0 at S2. Therese 2–0 at D2. Chelsi/Crystal 2–0 at D2."
+          "notes": "S1 is the soft spot (2–3 record). Therese deployed every week. Kelly 2–0 at S2. Cynthia 2–0 at D3. Carrie/Therese 0–3 at D1."
         },
         {
           "team_name": "TPC",
@@ -59,7 +59,7 @@
           "games_won": 223,
           "games_lost": 226,
           "games_won_pct": "51.03%",
-          "notes": "D1 is the soft spot (2–3 record). Laurie/Rachel/Jennifer are the core rotation. Jennifer 2–0 at S1. Meghan 2–0 at D2. Jeralyn/Kristen 2–0 at D1."
+          "notes": "D1 is the soft spot (2–3 record). Laurie/Rachel/Jennifer are the core rotation. Jennifer 2–0 at S1. Meghan 2–0 at D2."
         },
         {
           "team_name": "LIFE TIME FITNESS/GV",
@@ -73,7 +73,7 @@
           "games_won": 208,
           "games_lost": 244,
           "games_won_pct": "47.27%",
-          "notes": "D3 is the soft spot (1–3 record). Han/Kimberly/Mary all deployed every week. Kimberly 2–0 at S1. Han/Margo 4–0 at D1."
+          "notes": "D3 is the soft spot (1–3 record). Han/Kimberly/Mary all deployed every week. Kimberly 2–0 at S1. Han/Margo 2–0 at D1."
         },
         {
           "team_name": "DTC #2",
@@ -87,7 +87,7 @@
           "games_won": 206,
           "games_lost": 261,
           "games_won_pct": "44.11%",
-          "notes": "S2 is the soft spot (1–4 record). Tina + Irene both deployed every week. Elsy 2–1 at S1. Tina 3–2 at D1. Charlotte/Meekyoung 2–0 at D3."
+          "notes": "S2 is the soft spot (1–4 record). Tina + Irene both deployed every week. Elsy 2–1 at S1. Charlotte 2–1 at D3. Irene/Tina 3–2 at D1."
         },
         {
           "team_name": "SOUTHERN HIGHLANDS",
@@ -101,7 +101,7 @@
           "games_won": 215,
           "games_lost": 250,
           "games_won_pct": "46.24%",
-          "notes": "S1 is the soft spot (0–5 record). Gretchen/Danielle/Christa all deployed every week. Gretchen 3–1 at S2. Shannon/Shaza 2–0 at D1."
+          "notes": "S1 is the soft spot (0–5 record). Gretchen/Danielle/Christa all deployed every week. Gretchen 3–1 at S2. Danielle/Margaret 0–2 at D1."
         },
         {
           "team_name": "RED ROCK CC",
@@ -115,7 +115,7 @@
           "games_won": 199,
           "games_lost": 247,
           "games_won_pct": "43.09%",
-          "notes": "S2 is the soft spot (0–4 record). Kellye deployed every week. Brenda/Rhianna 4–0 at D1."
+          "notes": "S2 is the soft spot (0–4 record). Kellye deployed every week. Brenda/Rhianna 2–0 at D1."
         }
       ],
       "matches": [
@@ -1473,7 +1473,7 @@
           "games_won": 254,
           "games_lost": 177,
           "games_won_pct": "59.46%",
-          "notes": "Kelly/Chelsie/sirina are the core rotation. Jenny 3–0 at S1. sirina 3–0 at D1. Holly/Nancy 2–0 at D2."
+          "notes": "Kelly/Chelsie/sirina are the core rotation. Jenny 3–0 at S1. sirina 3–0 at D1. Chelsie/Sirina 2–0 at D1."
         },
         {
           "team_name": "DTC #4",
@@ -1487,7 +1487,7 @@
           "games_won": 238,
           "games_lost": 210,
           "games_won_pct": "51.83%",
-          "notes": "D2 is the soft spot (2–3 record). Maryna deployed every week. Olga 2–1 at D1. Tiffany 2–1 at D3. Dianne/Maryna 2–0 at D1."
+          "notes": "D2 is the soft spot (2–3 record). Maryna deployed every week. Tiffany 2–1 at D3. Maryna/Olga 2–1 at D1."
         },
         {
           "team_name": "DTC #1",
@@ -1501,7 +1501,7 @@
           "games_won": 233,
           "games_lost": 196,
           "games_won_pct": "53.00%",
-          "notes": "S2 is the soft spot (1–4 record). Wendy deployed every week. Sonja 2–0 at D3. Roni 2–0 at D3. Wendy/Yesenia 4–0 at D2."
+          "notes": "S2 is the soft spot (1–4 record). Wendy deployed every week. Sonja 2–0 at D3. Roni 2–0 at D3. Wendy/Yesenia 2–0 at D2."
         },
         {
           "team_name": "WHITNEY MESA PARK",
@@ -1515,7 +1515,7 @@
           "games_won": 225,
           "games_lost": 184,
           "games_won_pct": "52.21%",
-          "notes": "D3 is the soft spot (0–4 record). Tori/Jeannie are the core rotation. Tori 2–1 at S1. Jeannie/Maria 2–0 at D1."
+          "notes": "D3 is the soft spot (0–4 record). Tori/Jeannie are the core rotation. Tori 2–1 at S1. Ada/Jeannie 1–1 at D1."
         },
         {
           "team_name": "DESERT PALM",
@@ -1529,7 +1529,7 @@
           "games_won": 186,
           "games_lost": 145,
           "games_won_pct": "56.19%",
-          "notes": "D1 perfect, led by Alexandria (2–0); D2 is the soft spot (1–3 record). Heather/Annabel/Kristyl all deployed every week. Nourjan 3–0 at S1. Kristyl 2–0 at D1. Alexandria/Ara 4–0 at D1."
+          "notes": "D1 perfect, led by Alexandria (2–0); D2 is the soft spot (1–3 record). Heather/Annabel/Kristyl all deployed every week. Nourjan 3–0 at S1. Kristyl 2–0 at D1. Alexandria/Ara 2–0 at D1."
         },
         {
           "team_name": "SPANISH OAKS",
@@ -1543,7 +1543,7 @@
           "games_won": 199,
           "games_lost": 229,
           "games_won_pct": "46.50%",
-          "notes": "S1 is the soft spot (1–4 record). Adrienne/Nancy 2–0 at D1."
+          "notes": "S1 is the soft spot (1–4 record). Nancy 2–0 at D2."
         },
         {
           "team_name": "LAKE LAS VEGAS SPORTS CLUB",
@@ -1557,7 +1557,7 @@
           "games_won": 164,
           "games_lost": 181,
           "games_won_pct": "51.09%",
-          "notes": "D1 is the soft spot (1–3 record). Geraldine deployed every week. Erika 2–0 at D2. Geraldine 2–1 at D2. Melissa/Tonya 2–0 at D1."
+          "notes": "D1 is the soft spot (1–3 record). Geraldine deployed every week. Erika 2–0 at D2. Courtney/Geraldine 1–1 at D2."
         },
         {
           "team_name": "CLUB RIDGES",
@@ -1571,7 +1571,7 @@
           "games_won": 108,
           "games_lost": 285,
           "games_won_pct": "29.27%",
-          "notes": "Only team without a win (0–5). S1 is the soft spot (0–5 record). Michelle deployed every week. Jennifer/Nadine 2–2 at D2."
+          "notes": "Only team without a win (0–5). S1 is the soft spot (0–5 record). Michelle deployed every week. Jennifer/Nadine 1–1 at D2."
         }
       ],
       "matches": [

@@ -826,8 +826,10 @@ def _generate_team_notes(players, division_data):
                     )
                 )
 
-                # -- Doubles pairs --
+                # -- Doubles pairs (deduplicated by date+line so each match
+                #    is counted once even though both players appear in pr) --
                 pair_results: dict = defaultdict(list)
+                seen_pair_dates: set = set()
                 for pk, matches in pr.items():
                     p = pbn.get(pk)
                     if not p:
@@ -841,6 +843,10 @@ def _generate_team_notes(players, division_data):
                         if not ls.startswith("D"):
                             continue
                         pair_key = (tuple(sorted([name, partner])), ls)
+                        dedup = (pair_key, m["date"])
+                        if dedup in seen_pair_dates:
+                            continue
+                        seen_pair_dates.add(dedup)
                         pair_results[pair_key].append(m["won"])
 
                 strong_pairs = []
