@@ -1919,14 +1919,9 @@ def main():
                     for p_ in parts
                 )
                 if wl_other and not cross_mentioned:
-                    if _arc_covered and other_matches:
-                        _odl = _other_div_line_summary(other_matches)
-                        _line_clause = f" at {_odl}" if _odl else ""
-                        parts.append(
-                            f"More settled in {other_div} — {wl_other}{_line_clause}."
-                        )
-                    else:
-                        parts.append(f"Also {wl_other} in {other_div}.")
+                    _odl = _other_div_line_summary(other_matches) if other_matches else ""
+                    _line_clause = f" at {_odl}" if _odl else ""
+                    parts.append(f"Also {wl_other} in {other_div}{_line_clause}.")
 
             note = " ".join(parts).strip()
             if len(note) > 400:
