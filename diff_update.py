@@ -241,6 +241,36 @@ def _find_match_diffs(stored_standings: dict, summary_rows: list[dict]) -> list[
 # Standings teams recompute
 # ---------------------------------------------------------------------------
 
+def _normalize_lines_inline():
+    """
+    For each match line that has result='home'/'away' but is missing
+    winner_team/loser_team, derive those fields from the match's home/away teams.
+    Writes updated standings back to disk.
+    """
+    for path in (STANDINGS_30, STANDINGS_35):
+        data = json.loads(path.read_text())
+        changed = False
+        for sf in data.get("subflights", []):
+            for m in sf.get("matches", []):
+                ht = m.get("home_team", "")
+                at = m.get("away_team", "")
+                for ln in m.get("lines", []):
+                    result = ln.get("result", "")
+                    if result and not ln.get("winner_team"):
+                        if result == "home":
+                            ln["winner_team"] = ht
+                            ln["loser_team"] = at
+                        elif result == "away":
+                            ln["winner_team"] = at
+                            ln["loser_team"] = ht
+                        changed = True
+        if changed:
+            path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+            print(f"  [normalize] {path.name} lines normalized")
+
+
+# ---------------------------------------------------------------------------
+
 def _recompute_standings_teams():
     """
     Recompute the `teams` array for every subflight from actual match results.
@@ -538,9 +568,9 @@ def main():
 
     print(f"\n=== Post-processing ({n_updated} matches updated) ===")
 
-    # Re-normalize winner/loser fields
+    # Re-normalize winner/loser fields inline (convert result:"home"/"away" → winner_team/loser_team)
     import subprocess
-    subprocess.run(["python3", "/tmp/normalize_lines.py"], check=True)
+    _normalize_lines_inline()
 
     # Recompute standings teams table (W-L, indiv wins, sets, games) from match results
     _recompute_standings_teams()
@@ -561,9 +591,8 @@ def main():
     from engine.ratings import run_ratings
     run_ratings()
 
-    # Regenerate notes and subflight summaries
+    # Regenerate notes and subflight summaries (generate_notes.py handles both)
     subprocess.run(["python3", "generate_notes.py"], check=True)
-    subprocess.run(["python3", "generate_subflight_summaries.py"], check=True)
 
     # Rebuild dashboards
     from engine.build_html import build_dashboards
