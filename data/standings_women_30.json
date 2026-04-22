@@ -45,7 +45,7 @@
           "games_won": 221,
           "games_lost": 223,
           "games_won_pct": "49.77%",
-          "notes": "S1 2–3 is the soft spot. Laudenslager deployed every week. Twells 2–0 at S2. Laudenslager 2–0 at D2. Grady/Ziebarth 2–0 at D2."
+          "notes": "S1 is the soft spot (2–3 record). Laudenslager deployed every week. Twells 2–0 at S2. Laudenslager 2–0 at D2. Grady/Ziebarth 2–0 at D2."
         },
         {
           "team_name": "TPC",
@@ -59,7 +59,7 @@
           "games_won": 223,
           "games_lost": 226,
           "games_won_pct": "51.03%",
-          "notes": "D1 2–3 is the soft spot. Lenhart/Corpuz/Blais are the core rotation. Wang 2–0 at S1. Arnold 2–0 at D2. Marchesi/Radlosky 2–0 at D1."
+          "notes": "D1 is the soft spot (2–3 record). Lenhart/Corpuz/Blais are the core rotation. Wang 2–0 at S1. Arnold 2–0 at D2. Marchesi/Radlosky 2–0 at D1."
         },
         {
           "team_name": "LIFE TIME FITNESS/GV",
@@ -73,7 +73,7 @@
           "games_won": 208,
           "games_lost": 244,
           "games_won_pct": "47.27%",
-          "notes": "D3 1–3 is the soft spot. Hu/Lippisch/Apone all deployed every week. Lippisch 2–0 at S1. Hu/Isler 4–0 at D1."
+          "notes": "D3 is the soft spot (1–3 record). Hu/Lippisch/Apone all deployed every week. Lippisch 2–0 at S1. Hu/Isler 4–0 at D1."
         },
         {
           "team_name": "DTC #2",
@@ -87,7 +87,7 @@
           "games_won": 206,
           "games_lost": 261,
           "games_won_pct": "44.11%",
-          "notes": "S2 1–4 is the soft spot. Shirey + Frazier both deployed every week. Rojas 2–1 at S1. Shirey 3–2 at D1. Durisseau/Lee 2–0 at D3."
+          "notes": "S2 is the soft spot (1–4 record). Shirey + Frazier both deployed every week. Rojas 2–1 at S1. Shirey 3–2 at D1. Durisseau/Lee 2–0 at D3."
         },
         {
           "team_name": "SOUTHERN HIGHLANDS",
@@ -101,7 +101,7 @@
           "games_won": 215,
           "games_lost": 250,
           "games_won_pct": "46.24%",
-          "notes": "S1 0–5 is the soft spot. Wills/Britten/Shiklanian all deployed every week. Wills 3–1 at S2. Keever/Nayef 2–0 at D1."
+          "notes": "S1 is the soft spot (0–5 record). Wills/Britten/Shiklanian all deployed every week. Wills 3–1 at S2. Keever/Nayef 2–0 at D1."
         },
         {
           "team_name": "RED ROCK CC",
@@ -115,7 +115,7 @@
           "games_won": 199,
           "games_lost": 247,
           "games_won_pct": "43.09%",
-          "notes": "S2 0–4 is the soft spot. Ray deployed every week. Cambridge/Schwartz 4–0 at D1."
+          "notes": "S2 is the soft spot (0–4 record). Ray deployed every week. Cambridge/Schwartz 4–0 at D1."
         }
       ],
       "matches": [
@@ -1487,7 +1487,7 @@
           "games_won": 238,
           "games_lost": 210,
           "games_won_pct": "51.83%",
-          "notes": "D2 2–3 is the soft spot. Post deployed every week. Bencini 2–1 at D1. Vance 2–1 at D3. Austin/Post 2–0 at D1."
+          "notes": "D2 is the soft spot (2–3 record). Post deployed every week. Bencini 2–1 at D1. Vance 2–1 at D3. Austin/Post 2–0 at D1."
         },
         {
           "team_name": "DTC #1",
@@ -1501,7 +1501,7 @@
           "games_won": 233,
           "games_lost": 196,
           "games_won_pct": "53.00%",
-          "notes": "S2 1–4 is the soft spot. Cashin deployed every week. Rogers 2–0 at D3. Tarr 2–0 at D3. Cashin/Arias 4–0 at D2."
+          "notes": "S2 is the soft spot (1–4 record). Cashin deployed every week. Rogers 2–0 at D3. Tarr 2–0 at D3. Cashin/Arias 4–0 at D2."
         },
         {
           "team_name": "WHITNEY MESA PARK",
@@ -1515,7 +1515,7 @@
           "games_won": 225,
           "games_lost": 184,
           "games_won_pct": "52.21%",
-          "notes": "D3 0–4 is the soft spot. Walker/Collins are the core rotation. Walker 2–1 at S1. Collins/Allen 2–0 at D1."
+          "notes": "D3 is the soft spot (0–4 record). Walker/Collins are the core rotation. Walker 2–1 at S1. Collins/Allen 2–0 at D1."
         },
         {
           "team_name": "DESERT PALM",
@@ -1529,7 +1529,7 @@
           "games_won": 186,
           "games_lost": 145,
           "games_won_pct": "56.19%",
-          "notes": "D1 all perfect; D2 1–3 is the soft spot. Hartzell/Elliott/Addison all deployed every week. Bonney 3–0 at S1. Addison 2–0 at D1. Chang/Stimson 4–0 at D1."
+          "notes": "D1 all perfect; D2 is the soft spot (1–3 record). Hartzell/Elliott/Addison all deployed every week. Bonney 3–0 at S1. Addison 2–0 at D1. Chang/Stimson 4–0 at D1."
         },
         {
           "team_name": "SPANISH OAKS",
@@ -1543,7 +1543,7 @@
           "games_won": 199,
           "games_lost": 229,
           "games_won_pct": "46.50%",
-          "notes": "S1 1–4 is the soft spot. Berman/McPartlin 2–0 at D1."
+          "notes": "S1 is the soft spot (1–4 record). Berman/McPartlin 2–0 at D1."
         },
         {
           "team_name": "LAKE LAS VEGAS SPORTS CLUB",
@@ -1557,7 +1557,7 @@
           "games_won": 164,
           "games_lost": 181,
           "games_won_pct": "51.09%",
-          "notes": "D1 1–3 is the soft spot. Wright deployed every week. Cravens 2–0 at D2. Wright 2–1 at D2. Arcella/Guidi 2–0 at D1."
+          "notes": "D1 is the soft spot (1–3 record). Wright deployed every week. Cravens 2–0 at D2. Wright 2–1 at D2. Arcella/Guidi 2–0 at D1."
         },
         {
           "team_name": "CLUB RIDGES",
@@ -1571,7 +1571,7 @@
           "games_won": 108,
           "games_lost": 285,
           "games_won_pct": "29.27%",
-          "notes": "Only team without a win (0–5). S1 0–5 is the soft spot. Inman deployed every week. Lake/Kluger 2–2 at D2."
+          "notes": "Only team without a win (0–5). S1 is the soft spot (0–5 record). Inman deployed every week. Lake/Kluger 2–2 at D2."
         }
       ],
       "matches": [

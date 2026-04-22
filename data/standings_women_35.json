@@ -31,7 +31,7 @@
           "games_won": 249,
           "games_lost": 188,
           "games_won_pct": "56.98%",
-          "notes": "D3 2–3 is the soft spot. Bell deployed every week. Sargsyan 3–0 at S1. Harris 2–0 at D2. Kwong-Blais/Reyes 4–0 at D1."
+          "notes": "D3 is the soft spot (2–3 record). Bell deployed every week. Sargsyan 3–0 at S1. Harris 2–0 at D2. Kwong-Blais/Reyes 4–0 at D1."
         },
         {
           "team_name": "LIFE TIME FITNESS/GV",
@@ -45,7 +45,7 @@
           "games_won": 245,
           "games_lost": 214,
           "games_won_pct": "53.38%",
-          "notes": "S2 all perfect; D1 1–4 is the soft spot. Mitchell/Doe/Dexter are the core rotation. Hopper 2–0 at S2. Mitchell 2–1 at S1. Wellman/Petrie 2–0 at D2."
+          "notes": "S2 all perfect; D1 is the soft spot (1–4 record). Mitchell/Doe/Dexter are the core rotation. Hopper 2–0 at S2. Mitchell 2–1 at S1. Wellman/Petrie 2–0 at D2."
         },
         {
           "team_name": "ANTHEM CC",
@@ -59,7 +59,7 @@
           "games_won": 187,
           "games_lost": 239,
           "games_won_pct": "44.87%",
-          "notes": "D2 1–4 is the soft spot. Case deployed every week. Laan 3–1 at S1. Case/Delgado 2–0 at D2."
+          "notes": "D2 is the soft spot (1–4 record). Case deployed every week. Laan 3–1 at S1. Case/Delgado 2–0 at D2."
         },
         {
           "team_name": "RED ROCK CC #1",
@@ -73,7 +73,7 @@
           "games_won": 223,
           "games_lost": 228,
           "games_won_pct": "48.06%",
-          "notes": "S2 0–4 is the soft spot. Lee + Uyeno both deployed every week. Howser 2–0 at D1. Liu 2–1 at D1. Lee/Uyeno 4–0 at D2."
+          "notes": "S2 is the soft spot (0–4 record). Lee + Uyeno both deployed every week. Howser 2–0 at D1. Liu 2–1 at D1. Lee/Uyeno 4–0 at D2."
         },
         {
           "team_name": "SPANISH TRAIL #2",
@@ -87,7 +87,7 @@
           "games_won": 172,
           "games_lost": 282,
           "games_won_pct": "41.15%",
-          "notes": "D2 1–4 is the soft spot. Nathalia/Palichat/Schoff are the core rotation. LaBarre/Cherubino 4–0 at D3."
+          "notes": "D2 is the soft spot (1–4 record). Nathalia/Palichat/Schoff are the core rotation. LaBarre/Cherubino 4–0 at D3."
         }
       ],
       "matches": [
@@ -1097,7 +1097,7 @@
           "games_won": 237,
           "games_lost": 226,
           "games_won_pct": "49.89%",
-          "notes": "D1 all perfect; S2 1–3 is the soft spot. Baldwin deployed every week. Carrier/Grady 2–0 at D1."
+          "notes": "D1 all perfect; S2 is the soft spot (1–3 record). Baldwin deployed every week. Carrier/Grady 2–0 at D1."
         },
         {
           "team_name": "DTC #1",
@@ -1111,7 +1111,7 @@
           "games_won": 206,
           "games_lost": 170,
           "games_won_pct": "54.79%",
-          "notes": "S2 1–3 is the soft spot. Kiyono deployed every week. Drees/Adamson 2–0 at D1."
+          "notes": "S2 is the soft spot (1–3 record). Kiyono deployed every week. Drees/Adamson 2–0 at D1."
         },
         {
           "team_name": "SPANISH TRAIL #1",
@@ -1125,7 +1125,7 @@
           "games_won": 207,
           "games_lost": 253,
           "games_won_pct": "46.21%",
-          "notes": "S2 1–3 is the soft spot. Daulat + Sager both deployed every week. Sager 2–1 at D1. VanPaepeghem 2–1 at D1. Ibarguen/Daulat 2–0 at D3."
+          "notes": "S2 is the soft spot (1–3 record). Daulat + Sager both deployed every week. Sager 2–1 at D1. VanPaepeghem 2–1 at D1. Ibarguen/Daulat 2–0 at D3."
         },
         {
           "team_name": "DESERT PALM",
@@ -1139,7 +1139,7 @@
           "games_won": 181,
           "games_lost": 206,
           "games_won_pct": "46.77%",
-          "notes": "S1 1–3 is the soft spot. Patel deployed every week. Patel 3–0 at S2. Cooper/Castillo 2–0 at D1."
+          "notes": "S1 is the soft spot (1–3 record). Patel deployed every week. Patel 3–0 at S2. Cooper/Castillo 2–0 at D1."
         },
         {
           "team_name": "DTC #3",
@@ -1153,7 +1153,7 @@
           "games_won": 162,
           "games_lost": 213,
           "games_won_pct": "43.20%",
-          "notes": "Only team without a win (0–4). D1 0–4 is the soft spot. Nguyen deployed every week. Witherspoon 2–0 at S2. Coleman 2–0 at S1. Clark/Gaston 2–0 at D3."
+          "notes": "Only team without a win (0–4). D1 is the soft spot (0–4 record). Nguyen deployed every week. Witherspoon 2–0 at S2. Coleman 2–0 at S1. Clark/Gaston 2–0 at D3."
         }
       ],
       "matches": [

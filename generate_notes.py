@@ -573,7 +573,7 @@ def _compose_team_note(  # noqa: C901
         line_profile_parts.append(f"{'+'.join(perfect_lines)} all perfect")
     if soft_lines:
         sl, sw, sl_l = soft_lines[0]
-        line_profile_parts.append(f"{sl} {_wl(sw, sl_l)} is the soft spot")
+        line_profile_parts.append(f"{sl} is the soft spot ({sw}–{sl_l} record)")
     if line_profile_parts:
         parts.append("; ".join(line_profile_parts) + ".")
 
