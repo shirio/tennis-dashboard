@@ -355,9 +355,20 @@ def _implied_rating_from_match(record: MatchRecord) -> Optional[float]:
     # opponent is significantly stronger (Arika beating a 3.58+3.50 pair should
     # imply ~3.60, not ~3.56). For losses and singles: keep average (you lost
     # to the pair as a whole; avg is the right benchmark for the loss ceiling).
+    #
+    # EXCEPTION — lopsided opponent pair: if the opponents are very mismatched
+    # (spread ≥ 0.35), a dominant score is more likely explained by the weak
+    # partner than by the player beating the strong one. Use avg in this case
+    # to avoid inflating the implied rating (Maryna Post 6-0 6-0 vs 3.01+1.96:
+    # max would imply 3.11, but the bagel is just the 1.96 dragging the pair).
     is_doubles = record.partner_rating is not None and len(record.opponent_ratings) >= 2
     if is_doubles and record.won:
-        opp_strength = max(record.opponent_ratings)
+        opp_ratings = record.opponent_ratings[:2]
+        spread = max(opp_ratings) - min(opp_ratings)
+        if spread >= 0.35:
+            opp_strength = sum(opp_ratings) / len(opp_ratings)   # lopsided pair → avg
+        else:
+            opp_strength = max(opp_ratings)                       # balanced pair → max
     else:
         opp_strength = sum(record.opponent_ratings) / len(record.opponent_ratings)
 
