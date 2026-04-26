@@ -850,12 +850,16 @@ def _compute_division_sequential(
     n_total_weeks: int,
 ) -> tuple[dict[str, float], dict[str, dict[str, float]]]:
     """
-    Compute per-division ratings chronologically using the full v8 algorithm.
+    Compute per-division ratings chronologically using incremental per-match updates.
 
-    For each match date, opponent strength comes from the players' running ratings
-    AT THAT MOMENT — not frozen pre-season baselines and not end-of-season values.
-    The match records for each player accumulate with those locked-in opponent ratings,
-    so calling _compute_v8_rating after each date gives a self-consistent history.
+    Each player starts at their baseline rating. After every match, _match_adjustment
+    is called on the player's CURRENT running rating and the result is added directly
+    to that running value. The baseline is NEVER used again after initialization —
+    not even as an anchor for subsequent matches.
+
+    Opponent ratings used inside each MatchRecord are snapshotted at the moment the
+    match is played (pre-match running values), so earlier results inform later ones
+    without circular dependencies.
 
     Returns:
         final_ratings:      {player_key: rating_after_all_matches}
@@ -882,10 +886,6 @@ def _compute_division_sequential(
     # pre_match_timeline[player_key][date] = rating going INTO that date
     pre_match: dict[str, dict[str, float]] = {}
 
-    # accumulated[player_key] = list of MatchRecords with opponent ratings
-    # frozen at the time each match was played
-    accumulated: dict[str, list[MatchRecord]] = {}
-
     for date in dates_sorted:
         today = events_by_date[date]
 
@@ -895,7 +895,9 @@ def _compute_division_sequential(
             involved.update(ev.winner_keys + ev.loser_keys)
 
         # Snapshot ratings before today's matches — this is what opponents
-        # "look like" from the perspective of each match played on this date
+        # "look like" from the perspective of each match played on this date.
+        # Baseline is ONLY used here to fill in players who have never played
+        # before (i.e. their running[pk] hasn't been set yet).
         snap: dict[str, float] = {
             pk: running.get(pk, baselines.get(pk, 3.0))
             for pk in involved
@@ -905,7 +907,11 @@ def _compute_division_sequential(
         for pk in involved:
             pre_match.setdefault(pk, {})[date] = snap[pk]
 
-        # Build MatchRecords for today with opponent ratings locked to snapshot
+        # Apply each match as an INCREMENTAL adjustment to the current running
+        # rating.  Baseline is never used again after initialization — each
+        # player's running[pk] is the sole source of truth going forward.
+        updates: dict[str, float] = {}
+
         for ev in today:
             for pk in ev.winner_keys:
                 if pk not in baselines:
@@ -913,11 +919,13 @@ def _compute_division_sequential(
                 partners = [k for k in ev.winner_keys if k != pk]
                 partner_r = snap.get(partners[0]) if partners else None
                 opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.loser_keys] or [3.0]
-                accumulated.setdefault(pk, []).append(MatchRecord(
+                rec = MatchRecord(
                     opponent_ratings=opp_r, partner_rating=partner_r,
                     won=True, date=date, division=division,
                     match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
-                ))
+                )
+                prev = updates.get(pk, snap[pk])
+                updates[pk] = round(prev + _match_adjustment(prev, rec), 4)
 
             for pk in ev.loser_keys:
                 if pk not in baselines:
@@ -925,23 +933,15 @@ def _compute_division_sequential(
                 partners = [k for k in ev.loser_keys if k != pk]
                 partner_r = snap.get(partners[0]) if partners else None
                 opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.winner_keys] or [3.0]
-                accumulated.setdefault(pk, []).append(MatchRecord(
+                rec = MatchRecord(
                     opponent_ratings=opp_r, partner_rating=partner_r,
                     won=False, date=date, division=division,
                     match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
-                ))
-
-        # Recompute rating for each involved player using all their accumulated
-        # match records (each with historically-correct opponent ratings)
-        for pk in involved:
-            if pk not in baselines:
-                continue
-            recs = accumulated.get(pk)
-            if recs:
-                running[pk] = _compute_v8_rating(
-                    baselines[pk], recs,
-                    n_total_weeks=n_total_weeks, division=division,
                 )
+                prev = updates.get(pk, snap[pk])
+                updates[pk] = round(prev + _match_adjustment(prev, rec), 4)
+
+        running.update(updates)
 
     return running, pre_match
 
