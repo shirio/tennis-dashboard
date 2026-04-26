@@ -506,8 +506,7 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
     implied_win_ceiling = max(win_implied) if win_implied else None
 
     # Ceiling from losses: losing to someone rated X means you're probably not above X.
-    # Always applies regardless of baseline — losses cap you at the opponent's level.
-    implied_loss_ceiling = min(loss_implied) if loss_implied else None
+    # Only near-peer losses count — see effective_loss_ceil logic below.
 
     # Build effective ceiling.
     #
@@ -567,10 +566,20 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
             evidence_nudge = min(0.08, n_wins * 0.02)
             effective_win_ceil = baseline + evidence_nudge
 
+    # LOSS CEILING: apply only from losses where the opponent was near the player's
+    # level (implied >= baseline - LOSS_CEIL_GAP). Upset losses (implied far below
+    # baseline) are handled by match adjustments, not a hard ceiling — but they
+    # must NOT disable the ceiling from OTHER near-peer losses.
+    # Bug fix: the old code used min(loss_implied) globally, so a single below-
+    # threshold upset loss could cancel ALL loss ceilings, even valid near-peer ones
+    # (Kim Knotts losing to a 2.18+2.78 team produced implied=2.46, below the 2.59
+    # threshold, which silently suppressed the valid ceiling from her TPC loss at
+    # implied=2.71 — letting her rate higher than Emmy who only lost to near-peers).
     effective_loss_ceil: Optional[float] = None
-    if implied_loss_ceiling is not None:
-        if implied_loss_ceiling >= baseline - LOSS_CEIL_GAP:
-            effective_loss_ceil = implied_loss_ceiling
+    if loss_implied:
+        near_peer_losses = [r for r in loss_implied if r >= baseline - LOSS_CEIL_GAP]
+        if near_peer_losses:
+            effective_loss_ceil = min(near_peer_losses)
 
     if effective_win_ceil is not None and effective_loss_ceil is not None:
         implied_ceiling = min(effective_win_ceil, effective_loss_ceil)

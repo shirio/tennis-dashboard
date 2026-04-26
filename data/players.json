@@ -26,9 +26,9 @@
     "rating_30": 2.685,
     "rating_35": 2.53,
     "baseline_date": "12/10/2025",
-    "iter_rating_30": 2.6396,
+    "iter_rating_30": 2.6374,
     "iter_rating_35": 2.53,
-    "iter_global_rating": 2.6396
+    "iter_global_rating": 2.6374
   },
   {
     "id": "heather-hartzell",
@@ -91,9 +91,9 @@
     "rating_30": 2.715,
     "rating_35": 2.18,
     "baseline_date": "01/29/2026",
-    "iter_rating_30": 2.722,
+    "iter_rating_30": 2.7208,
     "iter_rating_35": 2.18,
-    "iter_global_rating": 2.722
+    "iter_global_rating": 2.7208
   },
   {
     "id": "kimberly-cooks",
@@ -262,9 +262,9 @@
     "rating_30": 2.73,
     "rating_35": 2.51,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.7685,
+    "iter_rating_30": 2.7671,
     "iter_rating_35": 2.51,
-    "iter_global_rating": 2.7685
+    "iter_global_rating": 2.7671
   },
   {
     "id": "catherine-fadrowsky",
@@ -374,9 +374,9 @@
     "rating_30": 2.7436,
     "rating_35": 2.39,
     "baseline_date": "02/04/2026",
-    "iter_rating_30": 2.6693,
+    "iter_rating_30": 2.6704,
     "iter_rating_35": 2.39,
-    "iter_global_rating": 2.6693
+    "iter_global_rating": 2.6704
   },
   {
     "id": "dulcinea-rongavilla",
@@ -1027,9 +1027,9 @@
     "rating_30": 2.1193,
     "rating_35": 2.15,
     "baseline_date": "02/05/2026",
-    "iter_rating_30": 2.0919,
+    "iter_rating_30": 2.0916,
     "iter_rating_35": 2.15,
-    "iter_global_rating": 2.0919
+    "iter_global_rating": 2.0916
   },
   {
     "id": "lily-ward",
@@ -1282,9 +1282,9 @@
     "rating_30": 2.1868,
     "rating_35": 2.24,
     "baseline_date": "12/10/2025",
-    "iter_rating_30": 2.2089,
+    "iter_rating_30": 2.2084,
     "iter_rating_35": 2.24,
-    "iter_global_rating": 2.2089
+    "iter_global_rating": 2.2084
   },
   {
     "id": "lani-wong",
@@ -2128,9 +2128,9 @@
     "rating_30": 1.8978,
     "rating_35": 1.96,
     "baseline_date": "12/10/2025",
-    "iter_rating_30": 1.9304,
+    "iter_rating_30": 1.9235,
     "iter_rating_35": 1.96,
-    "iter_global_rating": 1.9304
+    "iter_global_rating": 1.9235
   },
   {
     "id": "lauren-tabeek",
@@ -2500,8 +2500,8 @@
     "rating_35": 3.4267,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.0827,
-    "iter_rating_35": 3.3378,
-    "iter_global_rating": 3.3378
+    "iter_rating_35": 3.3375,
+    "iter_global_rating": 3.3375
   },
   {
     "id": "kim-springer",
@@ -2530,9 +2530,9 @@
     "rating_30": 3.2443,
     "rating_35": 3.25,
     "baseline_date": "03/14/2026",
-    "iter_rating_30": 3.1048,
+    "iter_rating_30": 3.1003,
     "iter_rating_35": 3.25,
-    "iter_global_rating": 3.1048
+    "iter_global_rating": 3.1003
   },
   {
     "id": "abigail-cox",
@@ -2566,9 +2566,9 @@
     "rating_30": 3.04,
     "rating_35": 3.2252,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 3.022,
-    "iter_rating_35": 3.0883,
-    "iter_global_rating": 3.0883
+    "iter_rating_30": 3.0218,
+    "iter_rating_35": 3.0875,
+    "iter_global_rating": 3.0875
   },
   {
     "id": "tina-shirey",
@@ -2577,8 +2577,8 @@
     "team": "DTC #2",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.09,
-    "current_division_rating": 3.254,
-    "global_rating": 3.254,
+    "current_division_rating": 2.945,
+    "global_rating": 2.945,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -2593,12 +2593,12 @@
     "team_30": "DTC #2",
     "notes_30": "Every-week player (with Irene Frazier). Surprising loss: W1 D1 alongside Irene Frazier to Darian McCauley (2.92) + Shi L Oskooi (2.74) in a third-set tiebreak. Biggest riser on this roster.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Tayoni Coleman (2.92) + Kim Springer (3.25) in a tight match.",
-    "rating_30": 3.254,
+    "rating_30": 2.945,
     "rating_35": 3.09,
     "baseline_date": "12/19/2025",
-    "iter_rating_30": 3.0632,
+    "iter_rating_30": 2.9991,
     "iter_rating_35": 3.09,
-    "iter_global_rating": 3.0632
+    "iter_global_rating": 2.9991
   },
   {
     "id": "jessica-borghoff",
@@ -2631,9 +2631,9 @@
     "wl_record_35": "1-0",
     "team_35": "DRAGONRIDGE CC",
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 3.0817,
-    "iter_rating_35": 3.1022,
-    "iter_global_rating": 3.18
+    "iter_rating_30": 3.0816,
+    "iter_rating_35": 3.1026,
+    "iter_global_rating": 3.1828
   },
   {
     "id": "casey-primmer",
@@ -2668,7 +2668,7 @@
     "baseline_date": "12/09/2025",
     "iter_rating_30": 3.0469,
     "iter_rating_35": 3.0698,
-    "iter_global_rating": 3.0629
+    "iter_global_rating": 3.0628
   },
   {
     "id": "christine-mcnair",
@@ -2713,7 +2713,7 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.91,
-    "current_division_rating": 3.075,
+    "current_division_rating": 2.9683,
     "global_rating": 3.2863669000000004,
     "ntrp_rating": "3.0 C",
     "wl_record": "4-4",
@@ -2737,12 +2737,12 @@
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "Surprising loss: W1 D3 alongside Danika Johnson to Lindsey Jacobs (2.42) + Christa Shiklanian (2.64) in a third-set tiebreak. Biggest riser on this roster. Also 3-2 in 3.5 at D1/D2/D3.",
     "notes_35": "Among the most-deployed (5/6 weeks). Upset: W4 D2 alongside Nicole Palichat beat Carroll Welch (3.34) + Andi Berger (3.34) in a tight match — implies playing at 3.34+ level. Outmatched at D1 by Allison Festa (3.34) + Darlene Whittlesy (3.19) in W3. Also 3-2 in 3.0 at D1/D3.",
-    "rating_30": 3.075,
+    "rating_30": 2.9683,
     "rating_35": 3.2169,
     "baseline_date": "11/16/2025",
-    "iter_rating_30": 2.97,
-    "iter_rating_35": 3.0721,
-    "iter_global_rating": 3.1323
+    "iter_rating_30": 2.9493,
+    "iter_rating_35": 3.0715,
+    "iter_global_rating": 2.9493
   },
   {
     "id": "kari-allen",
@@ -2807,9 +2807,9 @@
     "rating_30": 2.9984,
     "rating_35": 3.1823,
     "baseline_date": "11/17/2025",
-    "iter_rating_30": 3.0029,
-    "iter_rating_35": 3.1375,
-    "iter_global_rating": 3.1375
+    "iter_rating_30": 2.9969,
+    "iter_rating_35": 3.1316,
+    "iter_global_rating": 3.1316
   },
   {
     "id": "anna-clark",
@@ -2845,9 +2845,9 @@
     "rating_30": 3.04,
     "rating_35": 3.023,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 3.0992,
+    "iter_rating_30": 3.0982,
     "iter_rating_35": 3.14,
-    "iter_global_rating": 3.0707
+    "iter_global_rating": 3.0701
   },
   {
     "id": "jeralyn-marchesi",
@@ -2883,9 +2883,9 @@
     "rating_30": 2.934,
     "rating_35": 3.335,
     "baseline_date": "11/11/2025",
-    "iter_rating_30": 2.8417,
-    "iter_rating_35": 3.2478,
-    "iter_global_rating": 3.2463
+    "iter_rating_30": 2.8411,
+    "iter_rating_35": 3.2479,
+    "iter_global_rating": 3.2452
   },
   {
     "id": "christine-labarre",
@@ -2919,8 +2919,8 @@
     "rating_35": 3.3343,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.07,
-    "iter_rating_35": 3.3044,
-    "iter_global_rating": 3.3044,
+    "iter_rating_35": 3.3041,
+    "iter_global_rating": 3.3041,
     "default_wins_30": 1
   },
   {
@@ -2956,9 +2956,9 @@
     "rating_30": 3.025,
     "rating_35": 2.94,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 3.0173,
+    "iter_rating_30": 2.9872,
     "iter_rating_35": 2.94,
-    "iter_global_rating": 3.0173
+    "iter_global_rating": 2.9872
   },
   {
     "id": "jaqueline-schultz",
@@ -3078,9 +3078,9 @@
     "rating_30": 2.945,
     "rating_35": 3.298,
     "baseline_date": "11/15/2025",
-    "iter_rating_30": 2.9941,
-    "iter_rating_35": 3.2523,
-    "iter_global_rating": 3.0343
+    "iter_rating_30": 2.9915,
+    "iter_rating_35": 3.2457,
+    "iter_global_rating": 3.0326
   },
   {
     "id": "therese-laudenslager",
@@ -3109,9 +3109,9 @@
     "rating_30": 2.7291,
     "rating_35": 3.0,
     "baseline_date": "01/03/2026",
-    "iter_rating_30": 2.6558,
+    "iter_rating_30": 2.6488,
     "iter_rating_35": 3.0,
-    "iter_global_rating": 2.6558
+    "iter_global_rating": 2.6488
   },
   {
     "id": "prexy-tamayo",
@@ -3120,7 +3120,7 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.99,
-    "current_division_rating": 2.9219,
+    "current_division_rating": 2.9117,
     "global_rating": 2.918865415,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
@@ -3143,12 +3143,12 @@
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "Surprising loss: W6 D2 alongside Kellie Woods to Debbie D'Amato (2.91) + Meghan Arnold (2.60) in a third-set tiebreak. Tried at D1 (lost in a third-set tiebreak), moved down to D2 (lost in a third-set tiebreak vs weaker opp). Also 0-2 in 3.5 at D1/S1.",
     "notes_35": "Close doubles loss to a stronger pair — tiebreak vs Joann Komanowski (3.48) + Sally Ryba (3.37). Also 0-2 in 3.0 at D1/D2.",
-    "rating_30": 2.9219,
+    "rating_30": 2.9117,
     "rating_35": 3.0133,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.8768,
+    "iter_rating_30": 2.8766,
     "iter_rating_35": 2.9919,
-    "iter_global_rating": 2.8768
+    "iter_global_rating": 2.8766
   },
   {
     "id": "irene-frazier",
@@ -3176,9 +3176,9 @@
     "rating_30": 2.83,
     "rating_35": 2.95,
     "baseline_date": "11/12/2025",
-    "iter_rating_30": 3.0312,
+    "iter_rating_30": 2.9991,
     "iter_rating_35": 2.95,
-    "iter_global_rating": 3.0312
+    "iter_global_rating": 2.9991
   },
   {
     "id": "adrian-cutolo",
@@ -3273,9 +3273,9 @@
     "rating_30": 2.99,
     "rating_35": 2.94,
     "baseline_date": "12/11/2025",
-    "iter_rating_30": 2.9463,
+    "iter_rating_30": 2.9462,
     "iter_rating_35": 2.94,
-    "iter_global_rating": 2.9463
+    "iter_global_rating": 2.9462
   },
   {
     "id": "kelly-twells",
@@ -3311,9 +3311,9 @@
     "rating_30": 3.15,
     "rating_35": 2.9747,
     "baseline_date": "11/13/2025",
-    "iter_rating_30": 3.1311,
+    "iter_rating_30": 3.1288,
     "iter_rating_35": 2.9467,
-    "iter_global_rating": 3.0893
+    "iter_global_rating": 3.0882
   },
   {
     "id": "francine-mazza",
@@ -3342,9 +3342,9 @@
     "rating_30": 3.0982,
     "rating_35": 2.85,
     "baseline_date": "12/02/2025",
-    "iter_rating_30": 2.7702,
+    "iter_rating_30": 2.7698,
     "iter_rating_35": 2.85,
-    "iter_global_rating": 2.7702
+    "iter_global_rating": 2.7698
   },
   {
     "id": "ada-vera",
@@ -3373,9 +3373,9 @@
     "rating_30": 3.09,
     "rating_35": 3.05,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.9994,
+    "iter_rating_30": 2.9993,
     "iter_rating_35": 3.05,
-    "iter_global_rating": 2.9994
+    "iter_global_rating": 2.9993
   },
   {
     "id": "gina-rivera",
@@ -3404,9 +3404,9 @@
     "rating_30": 2.7439,
     "rating_35": 2.97,
     "baseline_date": "11/11/2025",
-    "iter_rating_30": 2.7411,
+    "iter_rating_30": 2.7321,
     "iter_rating_35": 2.97,
-    "iter_global_rating": 2.7411
+    "iter_global_rating": 2.7321
   },
   {
     "id": "nancy-mcpartlin",
@@ -3496,9 +3496,9 @@
     "rating_30": 3.0621,
     "rating_35": 2.9,
     "baseline_date": "12/02/2025",
-    "iter_rating_30": 3.0464,
+    "iter_rating_30": 3.0151,
     "iter_rating_35": 2.9,
-    "iter_global_rating": 3.0464
+    "iter_global_rating": 3.0151
   },
   {
     "id": "brenda-cambridge",
@@ -3528,9 +3528,9 @@
     "rating_30": 2.925,
     "rating_35": 2.91,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 3.0173,
+    "iter_rating_30": 2.9872,
     "iter_rating_35": 2.91,
-    "iter_global_rating": 3.0173,
+    "iter_global_rating": 2.9872,
     "default_wins_30": 1
   },
   {
@@ -3591,9 +3591,9 @@
     "rating_30": 2.76,
     "rating_35": 2.87,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.9502,
+    "iter_rating_30": 2.9466,
     "iter_rating_35": 2.87,
-    "iter_global_rating": 2.9502
+    "iter_global_rating": 2.9466
   },
   {
     "id": "darian-mccauley",
@@ -3622,9 +3622,9 @@
     "rating_30": 3.09,
     "rating_35": 2.92,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 3.0632,
+    "iter_rating_30": 2.9992,
     "iter_rating_35": 2.92,
-    "iter_global_rating": 3.0632
+    "iter_global_rating": 2.9992
   },
   {
     "id": "shannon-keever",
@@ -3653,9 +3653,9 @@
     "rating_30": 2.9908,
     "rating_35": 2.98,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.8541,
+    "iter_rating_30": 2.8517,
     "iter_rating_35": 2.98,
-    "iter_global_rating": 2.8541
+    "iter_global_rating": 2.8517
   },
   {
     "id": "nourjan-bonney",
@@ -3683,9 +3683,9 @@
     "rating_30": 2.895,
     "rating_35": 2.88,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.9157,
+    "iter_rating_30": 2.9094,
     "iter_rating_35": 2.88,
-    "iter_global_rating": 2.9157
+    "iter_global_rating": 2.9094
   },
   {
     "id": "maryna-post",
@@ -3714,9 +3714,9 @@
     "rating_30": 2.9,
     "rating_35": 2.86,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.8933,
+    "iter_rating_30": 2.8886,
     "iter_rating_35": 2.86,
-    "iter_global_rating": 2.8933
+    "iter_global_rating": 2.8886
   },
   {
     "id": "margo-isler",
@@ -3745,9 +3745,9 @@
     "rating_30": 3.0,
     "rating_35": 2.99,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.9915,
+    "iter_rating_30": 2.9853,
     "iter_rating_35": 2.99,
-    "iter_global_rating": 2.9915
+    "iter_global_rating": 2.9853
   },
   {
     "id": "annabel-elliott",
@@ -3776,9 +3776,9 @@
     "rating_30": 2.9,
     "rating_35": 2.96,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.8786,
+    "iter_rating_30": 2.8313,
     "iter_rating_35": 2.96,
-    "iter_global_rating": 2.8786
+    "iter_global_rating": 2.8313
   },
   {
     "id": "laurie-lenhart",
@@ -3808,9 +3808,9 @@
     "rating_30": 3.039,
     "rating_35": 3.01,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.8,
+    "iter_rating_30": 2.8052,
     "iter_rating_35": 3.01,
-    "iter_global_rating": 2.8
+    "iter_global_rating": 2.8052
   },
   {
     "id": "yesenia-arias",
@@ -3876,9 +3876,9 @@
     "rating_30": 2.7117,
     "rating_35": 2.6039,
     "baseline_date": "11/13/2025",
-    "iter_rating_30": 2.6654,
+    "iter_rating_30": 2.6571,
     "iter_rating_35": 2.6449,
-    "iter_global_rating": 2.5868
+    "iter_global_rating": 2.5835
   },
   {
     "id": "jacqueline-brooks",
@@ -3937,9 +3937,9 @@
     "rating_30": 2.915,
     "rating_35": 2.97,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.8201,
+    "iter_rating_30": 2.896,
     "iter_rating_35": 2.97,
-    "iter_global_rating": 2.8201
+    "iter_global_rating": 2.896
   },
   {
     "id": "melissa-arcella",
@@ -3968,9 +3968,9 @@
     "rating_30": 2.9604,
     "rating_35": 2.87,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.9754,
+    "iter_rating_30": 2.9748,
     "iter_rating_35": 2.87,
-    "iter_global_rating": 2.9754
+    "iter_global_rating": 2.9748
   },
   {
     "id": "han-hu",
@@ -4000,9 +4000,9 @@
     "rating_30": 3.1926,
     "rating_35": 2.98,
     "baseline_date": "03/19/2026",
-    "iter_rating_30": 2.9393,
+    "iter_rating_30": 2.9379,
     "iter_rating_35": 2.98,
-    "iter_global_rating": 2.9393
+    "iter_global_rating": 2.9379
   },
   {
     "id": "sydney-collins",
@@ -4032,9 +4032,9 @@
     "rating_30": 2.87,
     "rating_35": 2.94,
     "baseline_date": "03/14/2026",
-    "iter_rating_30": 2.8619,
+    "iter_rating_30": 2.8376,
     "iter_rating_35": 2.94,
-    "iter_global_rating": 2.8619
+    "iter_global_rating": 2.8376
   },
   {
     "id": "kim-knotts",
@@ -4043,7 +4043,7 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.74,
-    "current_division_rating": 3.0146,
+    "current_division_rating": 2.7117,
     "global_rating": 2.7405640790000003,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-4",
@@ -4066,12 +4066,12 @@
     "team_35": "DTC #2",
     "notes_30": "Upset: W2 D2 alongside Emmy Perez beat Shannon Keever (2.98) + Christa Shiklanian (2.64). Surprising loss: W4 D2 alongside Kellie Woods to Kimberly Lippisch (2.18) + Julie Smith (2.78) in a third-set tiebreak. Also 0-2 in 3.5 at D1/D3.",
     "notes_35": "Tried at D1 (lost vs much stronger opp), moved down to D3 (lost in a tight match vs much stronger opp — competitive). Also 2-2 in 3.0 at D1/D2.",
-    "rating_30": 3.0146,
+    "rating_30": 2.7117,
     "rating_35": 2.7116,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.6638,
-    "iter_rating_35": 2.729,
-    "iter_global_rating": 2.6638
+    "iter_rating_30": 2.6571,
+    "iter_rating_35": 2.7286,
+    "iter_global_rating": 2.6571
   },
   {
     "id": "kara-gaston",
@@ -4106,9 +4106,9 @@
     "rating_30": 2.8442,
     "rating_35": 2.98,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.8408,
+    "iter_rating_30": 2.8406,
     "iter_rating_35": 3.1034,
-    "iter_global_rating": 3.0235
+    "iter_global_rating": 3.0234
   },
   {
     "id": "lisa-gaughan",
@@ -4166,9 +4166,9 @@
     "rating_30": 2.7533,
     "rating_35": 2.82,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.7904,
+    "iter_rating_30": 2.7897,
     "iter_rating_35": 2.82,
-    "iter_global_rating": 2.7904
+    "iter_global_rating": 2.7897
   },
   {
     "id": "sandra-shearer",
@@ -4196,9 +4196,9 @@
     "rating_30": 2.8012,
     "rating_35": 2.94,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.8078,
+    "iter_rating_30": 2.8077,
     "iter_rating_35": 2.94,
-    "iter_global_rating": 2.8078
+    "iter_global_rating": 2.8077
   },
   {
     "id": "debbie-damato",
@@ -4228,9 +4228,9 @@
     "rating_30": 2.85,
     "rating_35": 2.91,
     "baseline_date": "01/09/2026",
-    "iter_rating_30": 2.8488,
+    "iter_rating_30": 2.8486,
     "iter_rating_35": 2.91,
-    "iter_global_rating": 2.8488
+    "iter_global_rating": 2.8486
   },
   {
     "id": "sandra-mier",
@@ -4353,9 +4353,9 @@
     "rating_30": 2.9,
     "rating_35": 2.78,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.8944,
+    "iter_rating_30": 2.8909,
     "iter_rating_35": 2.78,
-    "iter_global_rating": 2.8944,
+    "iter_global_rating": 2.8909,
     "default_wins_30": 1
   },
   {
@@ -4416,9 +4416,9 @@
     "rating_30": 2.6967,
     "rating_35": 2.81,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.6307,
+    "iter_rating_30": 2.6218,
     "iter_rating_35": 2.81,
-    "iter_global_rating": 2.6307
+    "iter_global_rating": 2.6218
   },
   {
     "id": "erika-cravens",
@@ -4447,9 +4447,9 @@
     "rating_30": 2.9,
     "rating_35": 2.74,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.8861,
+    "iter_rating_30": 2.8826,
     "iter_rating_35": 2.74,
-    "iter_global_rating": 2.8861
+    "iter_global_rating": 2.8826
   },
   {
     "id": "holly-crosby",
@@ -4508,9 +4508,9 @@
     "rating_30": 2.9247,
     "rating_35": 2.98,
     "baseline_date": "12/19/2025",
-    "iter_rating_30": 2.8889,
+    "iter_rating_30": 2.8862,
     "iter_rating_35": 2.98,
-    "iter_global_rating": 2.8889
+    "iter_global_rating": 2.8862
   },
   {
     "id": "heather-rosenthal",
@@ -4538,9 +4538,9 @@
     "rating_30": 2.9127,
     "rating_35": 2.81,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.6883,
+    "iter_rating_30": 2.6889,
     "iter_rating_35": 2.81,
-    "iter_global_rating": 2.6883
+    "iter_global_rating": 2.6889
   },
   {
     "id": "jennifer-lake",
@@ -4569,9 +4569,9 @@
     "rating_30": 2.873,
     "rating_35": 2.86,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.7247,
+    "iter_rating_30": 2.7237,
     "iter_rating_35": 2.86,
-    "iter_global_rating": 2.7247
+    "iter_global_rating": 2.7237
   },
   {
     "id": "margaret-bruno",
@@ -4693,9 +4693,9 @@
     "rating_30": 2.845,
     "rating_35": 2.87,
     "baseline_date": "12/19/2025",
-    "iter_rating_30": 2.9703,
+    "iter_rating_30": 2.967,
     "iter_rating_35": 2.87,
-    "iter_global_rating": 2.9703
+    "iter_global_rating": 2.967
   },
   {
     "id": "wendy-cashin",
@@ -4725,9 +4725,9 @@
     "rating_30": 2.8459,
     "rating_35": 2.83,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.8113,
+    "iter_rating_30": 2.8071,
     "iter_rating_35": 2.83,
-    "iter_global_rating": 2.8113
+    "iter_global_rating": 2.8071
   },
   {
     "id": "danielle-britten",
@@ -4758,9 +4758,9 @@
     "rating_30": 2.804,
     "rating_35": 2.78,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.7668,
+    "iter_rating_30": 2.7647,
     "iter_rating_35": 2.78,
-    "iter_global_rating": 2.7668
+    "iter_global_rating": 2.7647
   },
   {
     "id": "ani-zargaryan",
@@ -4854,9 +4854,9 @@
     "rating_30": 2.62,
     "rating_35": 2.64,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.6599,
+    "iter_rating_30": 2.66,
     "iter_rating_35": 2.64,
-    "iter_global_rating": 2.6599
+    "iter_global_rating": 2.66
   },
   {
     "id": "emmy-perez",
@@ -4886,9 +4886,9 @@
     "rating_30": 2.9117,
     "rating_35": 2.79,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.9393,
+    "iter_rating_30": 2.9379,
     "iter_rating_35": 2.79,
-    "iter_global_rating": 2.9393
+    "iter_global_rating": 2.9379
   },
   {
     "id": "nancie-webster",
@@ -4922,9 +4922,9 @@
     "rating_30": 2.7996,
     "rating_35": 2.7,
     "baseline_date": "12/02/2025",
-    "iter_rating_30": 2.7519,
+    "iter_rating_30": 2.7603,
     "iter_rating_35": 2.7116,
-    "iter_global_rating": 2.6087
+    "iter_global_rating": 2.6129
   },
   {
     "id": "consuelo-kinahan",
@@ -5014,9 +5014,9 @@
     "rating_30": 2.785,
     "rating_35": 2.95,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.7074,
+    "iter_rating_30": 2.7071,
     "iter_rating_35": 2.95,
-    "iter_global_rating": 2.7074
+    "iter_global_rating": 2.7071
   },
   {
     "id": "nicole-horton",
@@ -5185,8 +5185,8 @@
     "team": "DESERT PALM",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.86,
-    "current_division_rating": 2.8119,
-    "global_rating": 2.8119,
+    "current_division_rating": 2.79,
+    "global_rating": 2.79,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -5202,12 +5202,12 @@
     "team_30": "DESERT PALM",
     "notes_30": "Surprising loss: W5 D3 alongside Yong Mi DeMilliano to Geraldine Wright (2.51) + Erika Cravens (2.74) in a tight match.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Kelly Perkins (2.84) + Holly Crosby (2.96) with a bagel.",
-    "rating_30": 2.8119,
+    "rating_30": 2.79,
     "rating_35": 2.86,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.7927,
+    "iter_rating_30": 2.7932,
     "iter_rating_35": 2.86,
-    "iter_global_rating": 2.7927
+    "iter_global_rating": 2.7932
   },
   {
     "id": "kristin-stowe",
@@ -5237,9 +5237,9 @@
     "rating_30": 2.69,
     "rating_35": 2.63,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.6604,
+    "iter_rating_30": 2.6602,
     "iter_rating_35": 2.63,
-    "iter_global_rating": 2.6604
+    "iter_global_rating": 2.6602
   },
   {
     "id": "chelsie-hawkinson",
@@ -5268,9 +5268,9 @@
     "rating_30": 2.7817,
     "rating_35": 2.6,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.8885,
+    "iter_rating_30": 2.8843,
     "iter_rating_35": 2.6,
-    "iter_global_rating": 2.8885
+    "iter_global_rating": 2.8843
   },
   {
     "id": "crystal-ziebarth",
@@ -5334,9 +5334,9 @@
     "rating_30": 2.7456,
     "rating_35": 3.0734,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.6461,
+    "iter_rating_30": 2.6286,
     "iter_rating_35": 3.0486,
-    "iter_global_rating": 2.6461
+    "iter_global_rating": 2.6286
   },
   {
     "id": "daniella-toms",
@@ -5366,9 +5366,9 @@
     "rating_30": 2.601,
     "rating_35": 2.72,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.5437,
+    "iter_rating_30": 2.5474,
     "iter_rating_35": 2.72,
-    "iter_global_rating": 2.5437
+    "iter_global_rating": 2.5474
   },
   {
     "id": "brianne-pepperman",
@@ -5422,9 +5422,9 @@
     "rating_30": 2.735,
     "rating_35": 2.88,
     "baseline_date": "12/18/2025",
-    "iter_rating_30": 2.7801,
+    "iter_rating_30": 2.778,
     "iter_rating_35": 2.88,
-    "iter_global_rating": 2.7801
+    "iter_global_rating": 2.778
   },
   {
     "id": "alexandria-chang",
@@ -5459,8 +5459,8 @@
     "rating_35": 3.0805,
     "baseline_date": "11/23/2025",
     "iter_rating_30": 2.9135,
-    "iter_rating_35": 3.1485,
-    "iter_global_rating": 3.0343
+    "iter_rating_35": 3.1433,
+    "iter_global_rating": 3.0326
   },
   {
     "id": "shaza-nayef",
@@ -5522,9 +5522,9 @@
     "rating_30": 2.5265,
     "rating_35": 2.85,
     "baseline_date": "11/22/2025",
-    "iter_rating_30": 2.5159,
+    "iter_rating_30": 2.5147,
     "iter_rating_35": 2.85,
-    "iter_global_rating": 2.5159
+    "iter_global_rating": 2.5147
   },
   {
     "id": "gina-alcoser",
@@ -5553,9 +5553,9 @@
     "rating_30": 2.5989,
     "rating_35": 2.81,
     "baseline_date": "03/28/2026",
-    "iter_rating_30": 2.6918,
+    "iter_rating_30": 2.693,
     "iter_rating_35": 2.81,
-    "iter_global_rating": 2.6918
+    "iter_global_rating": 2.693
   },
   {
     "id": "mimi-fumo",
@@ -5614,9 +5614,9 @@
     "rating_30": 2.7013,
     "rating_35": 2.73,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.6722,
+    "iter_rating_30": 2.6721,
     "iter_rating_35": 2.73,
-    "iter_global_rating": 2.6722
+    "iter_global_rating": 2.6721
   },
   {
     "id": "maggie-pacholuk",
@@ -5645,9 +5645,9 @@
     "rating_30": 2.835,
     "rating_35": 2.74,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.9411,
+    "iter_rating_30": 2.941,
     "iter_rating_35": 2.74,
-    "iter_global_rating": 2.9411
+    "iter_global_rating": 2.941
   },
   {
     "id": "ashley-richas",
@@ -5725,9 +5725,9 @@
     "rating_30": 2.7094,
     "rating_35": 2.63,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.6645,
+    "iter_rating_30": 2.6589,
     "iter_rating_35": 2.63,
-    "iter_global_rating": 2.6645,
+    "iter_global_rating": 2.6589,
     "lines_played_30": [
       "D1"
     ],
@@ -5793,9 +5793,9 @@
     "rating_30": 2.692,
     "rating_35": 2.78,
     "baseline_date": "12/15/2025",
-    "iter_rating_30": 2.6461,
+    "iter_rating_30": 2.6381,
     "iter_rating_35": 2.78,
-    "iter_global_rating": 2.6461
+    "iter_global_rating": 2.6381
   },
   {
     "id": "devita-robinson",
@@ -5854,9 +5854,9 @@
     "rating_30": 2.8828,
     "rating_35": 2.86,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.8745,
+    "iter_rating_30": 2.8742,
     "iter_rating_35": 2.86,
-    "iter_global_rating": 2.8745
+    "iter_global_rating": 2.8742
   },
   {
     "id": "carrie-maddux",
@@ -5885,9 +5885,9 @@
     "rating_30": 2.6139,
     "rating_35": 2.78,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.6114,
+    "iter_rating_30": 2.5857,
     "iter_rating_35": 2.78,
-    "iter_global_rating": 2.6114
+    "iter_global_rating": 2.5857
   },
   {
     "id": "julie-smith",
@@ -5917,9 +5917,9 @@
     "rating_30": 2.7,
     "rating_35": 2.7759,
     "baseline_date": "03/19/2026",
-    "iter_rating_30": 2.6488,
+    "iter_rating_30": 2.6489,
     "iter_rating_35": 2.7759,
-    "iter_global_rating": 2.6488,
+    "iter_global_rating": 2.6489,
     "baseline_override": true,
     "baseline_override_note": "Manual override: USTA website bug shows wrong baseline; correct value is 2.77"
   },
@@ -5981,9 +5981,9 @@
     "rating_30": 2.75,
     "rating_35": 2.61,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.7295,
+    "iter_rating_30": 2.7294,
     "iter_rating_35": 2.61,
-    "iter_global_rating": 2.7295
+    "iter_global_rating": 2.7294
   },
   {
     "id": "nicole-chikhani",
@@ -6012,9 +6012,9 @@
     "rating_30": 2.7233,
     "rating_35": 2.75,
     "baseline_date": "11/22/2025",
-    "iter_rating_30": 2.77,
+    "iter_rating_30": 2.7577,
     "iter_rating_35": 2.75,
-    "iter_global_rating": 2.77
+    "iter_global_rating": 2.7577
   },
   {
     "id": "kelly-perkins",
@@ -6044,9 +6044,9 @@
     "rating_30": 2.725,
     "rating_35": 2.84,
     "baseline_date": "01/03/2026",
-    "iter_rating_30": 2.745,
+    "iter_rating_30": 2.7451,
     "iter_rating_35": 2.84,
-    "iter_global_rating": 2.745
+    "iter_global_rating": 2.7451
   },
   {
     "id": "kellie-woods",
@@ -6075,9 +6075,9 @@
     "rating_30": 2.7599,
     "rating_35": 2.82,
     "baseline_date": "12/05/2025",
-    "iter_rating_30": 2.798,
+    "iter_rating_30": 2.7981,
     "iter_rating_35": 2.82,
-    "iter_global_rating": 2.798
+    "iter_global_rating": 2.7981
   },
   {
     "id": "cynthia-lau",
@@ -6105,9 +6105,9 @@
     "rating_30": 2.872,
     "rating_35": 2.69,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.7246,
+    "iter_rating_30": 2.7247,
     "iter_rating_35": 2.69,
-    "iter_global_rating": 2.7246
+    "iter_global_rating": 2.7247
   },
   {
     "id": "shi-l-oskooi",
@@ -6141,9 +6141,9 @@
     "rating_30": 3.09,
     "rating_35": 2.8192,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 3.0632,
+    "iter_rating_30": 2.9992,
     "iter_rating_35": 2.76,
-    "iter_global_rating": 3.0632
+    "iter_global_rating": 2.9992
   },
   {
     "id": "jennifer-roberts",
@@ -6173,9 +6173,9 @@
     "rating_30": 2.6382,
     "rating_35": 2.87,
     "baseline_date": "11/22/2025",
-    "iter_rating_30": 2.6328,
+    "iter_rating_30": 2.633,
     "iter_rating_35": 2.87,
-    "iter_global_rating": 2.6328
+    "iter_global_rating": 2.633
   },
   {
     "id": "rita-abboud",
@@ -6229,9 +6229,9 @@
     "rating_30": 2.9158,
     "rating_35": 2.8,
     "baseline_date": "12/18/2025",
-    "iter_rating_30": 2.8181,
+    "iter_rating_30": 2.818,
     "iter_rating_35": 2.8,
-    "iter_global_rating": 2.8181
+    "iter_global_rating": 2.818
   },
   {
     "id": "michele-behnen",
@@ -6261,9 +6261,9 @@
     "rating_30": 2.7501,
     "rating_35": 2.82,
     "baseline_date": "12/10/2025",
-    "iter_rating_30": 2.8436,
+    "iter_rating_30": 2.8337,
     "iter_rating_35": 2.82,
-    "iter_global_rating": 2.8436
+    "iter_global_rating": 2.8337
   },
   {
     "id": "elena-bolha",
@@ -6292,9 +6292,9 @@
     "rating_30": 2.8614,
     "rating_35": 2.75,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.8276,
+    "iter_rating_30": 2.8279,
     "iter_rating_35": 2.75,
-    "iter_global_rating": 2.8276
+    "iter_global_rating": 2.8279
   },
   {
     "id": "elsy-flores-rojas",
@@ -6355,9 +6355,9 @@
     "rating_30": 2.6112,
     "rating_35": 2.84,
     "baseline_date": "01/10/2026",
-    "iter_rating_30": 2.6141,
+    "iter_rating_30": 2.6139,
     "iter_rating_35": 2.84,
-    "iter_global_rating": 2.6141
+    "iter_global_rating": 2.6139
   },
   {
     "id": "maria-cheng",
@@ -6386,9 +6386,9 @@
     "rating_30": 2.68,
     "rating_35": 2.64,
     "baseline_date": "03/21/2026",
-    "iter_rating_30": 2.7503,
+    "iter_rating_30": 2.7502,
     "iter_rating_35": 2.64,
-    "iter_global_rating": 2.7503
+    "iter_global_rating": 2.7502
   },
   {
     "id": "meryll-ledesma",
@@ -6418,9 +6418,9 @@
     "rating_30": 2.83,
     "rating_35": 2.64,
     "baseline_date": "03/21/2026",
-    "iter_rating_30": 2.7503,
+    "iter_rating_30": 2.7502,
     "iter_rating_35": 2.64,
-    "iter_global_rating": 2.7503
+    "iter_global_rating": 2.7502
   },
   {
     "id": "elizabeth-pierce",
@@ -6448,9 +6448,9 @@
     "rating_30": 2.5641,
     "rating_35": 2.56,
     "baseline_date": "12/02/2025",
-    "iter_rating_30": 2.5664,
+    "iter_rating_30": 2.5657,
     "iter_rating_35": 2.56,
-    "iter_global_rating": 2.5664
+    "iter_global_rating": 2.5657
   },
   {
     "id": "maureen-caruso",
@@ -6479,9 +6479,9 @@
     "rating_30": 2.6284,
     "rating_35": 2.68,
     "baseline_date": "11/11/2025",
-    "iter_rating_30": 2.6413,
+    "iter_rating_30": 2.6412,
     "iter_rating_35": 2.68,
-    "iter_global_rating": 2.6413
+    "iter_global_rating": 2.6412
   },
   {
     "id": "jeannie-collins",
@@ -6541,9 +6541,9 @@
     "rating_30": 2.7453,
     "rating_35": 2.79,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.7456,
+    "iter_rating_30": 2.7451,
     "iter_rating_35": 2.79,
-    "iter_global_rating": 2.7456
+    "iter_global_rating": 2.7451
   },
   {
     "id": "dianne-austin",
@@ -6573,9 +6573,9 @@
     "rating_30": 2.82,
     "rating_35": 2.69,
     "baseline_date": "01/24/2026",
-    "iter_rating_30": 2.8743,
+    "iter_rating_30": 2.8716,
     "iter_rating_35": 2.69,
-    "iter_global_rating": 2.8743
+    "iter_global_rating": 2.8716
   },
   {
     "id": "meghan-arnold",
@@ -6604,9 +6604,9 @@
     "rating_30": 2.9551,
     "rating_35": 2.6,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.8864,
+    "iter_rating_30": 2.8862,
     "iter_rating_35": 2.6,
-    "iter_global_rating": 2.8864
+    "iter_global_rating": 2.8862
   },
   {
     "id": "courtney-beine",
@@ -6671,8 +6671,8 @@
     "rating_35": 2.8418,
     "baseline_date": "12/09/2025",
     "iter_rating_30": 2.7789,
-    "iter_rating_35": 2.8451,
-    "iter_global_rating": 2.6784
+    "iter_rating_35": 2.845,
+    "iter_global_rating": 2.6783
   },
   {
     "id": "adrienne-berman",
@@ -6733,9 +6733,9 @@
     "rating_30": 2.595,
     "rating_35": 2.7,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.6067,
+    "iter_rating_30": 2.6068,
     "iter_rating_35": 2.7,
-    "iter_global_rating": 2.6067
+    "iter_global_rating": 2.6068
   },
   {
     "id": "rachel-corpuz",
@@ -6766,9 +6766,9 @@
     "rating_30": 2.61,
     "rating_35": 2.72,
     "baseline_date": "11/16/2025",
-    "iter_rating_30": 2.6343,
+    "iter_rating_30": 2.6223,
     "iter_rating_35": 2.72,
-    "iter_global_rating": 2.6343
+    "iter_global_rating": 2.6223
   },
   {
     "id": "julie-schoolmeester",
@@ -6829,9 +6829,9 @@
     "rating_30": 2.565,
     "rating_35": 2.57,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.7028,
+    "iter_rating_30": 2.703,
     "iter_rating_35": 2.57,
-    "iter_global_rating": 2.7028
+    "iter_global_rating": 2.703
   },
   {
     "id": "aida-shirley",
@@ -6985,9 +6985,9 @@
     "rating_30": 2.5831,
     "rating_35": 2.77,
     "baseline_date": "01/10/2026",
-    "iter_rating_30": 2.5788,
+    "iter_rating_30": 2.5786,
     "iter_rating_35": 2.77,
-    "iter_global_rating": 2.5788
+    "iter_global_rating": 2.5786
   },
   {
     "id": "amy-badain",
@@ -7045,9 +7045,9 @@
     "rating_30": 2.5563,
     "rating_35": 2.75,
     "baseline_date": "03/28/2026",
-    "iter_rating_30": 2.6363,
+    "iter_rating_30": 2.6345,
     "iter_rating_35": 2.75,
-    "iter_global_rating": 2.6363
+    "iter_global_rating": 2.6345
   },
   {
     "id": "kristen-radlosky",
@@ -7075,9 +7075,9 @@
     "rating_30": 2.7679,
     "rating_35": 2.71,
     "baseline_date": "12/10/2025",
-    "iter_rating_30": 2.7515,
+    "iter_rating_30": 2.751,
     "iter_rating_35": 2.71,
-    "iter_global_rating": 2.7515
+    "iter_global_rating": 2.751
   },
   {
     "id": "melanie-campoy",
@@ -7169,9 +7169,9 @@
     "rating_30": 2.7267,
     "rating_35": 2.69,
     "baseline_date": "12/10/2025",
-    "iter_rating_30": 2.5734,
+    "iter_rating_30": 2.575,
     "iter_rating_35": 2.69,
-    "iter_global_rating": 2.5734
+    "iter_global_rating": 2.575
   },
   {
     "id": "candace-sartini",
@@ -7225,9 +7225,9 @@
     "rating_30": 2.3518,
     "rating_35": 2.7,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.409,
+    "iter_rating_30": 2.4087,
     "iter_rating_35": 2.7,
-    "iter_global_rating": 2.409
+    "iter_global_rating": 2.4087
   },
   {
     "id": "sally-morley",
@@ -7285,9 +7285,9 @@
     "rating_30": 2.6687,
     "rating_35": 2.66,
     "baseline_date": "04/11/2026",
-    "iter_rating_30": 2.6627,
+    "iter_rating_30": 2.6626,
     "iter_rating_35": 2.66,
-    "iter_global_rating": 2.6627
+    "iter_global_rating": 2.6626
   },
   {
     "id": "elizabeth-eshragh",
@@ -7347,9 +7347,9 @@
     "rating_30": 2.5788,
     "rating_35": 2.65,
     "baseline_date": "12/12/2025",
-    "iter_rating_30": 2.496,
+    "iter_rating_30": 2.4953,
     "iter_rating_35": 2.65,
-    "iter_global_rating": 2.496
+    "iter_global_rating": 2.4953
   },
   {
     "id": "shawanna-johnson",
@@ -7478,9 +7478,9 @@
     "rating_30": 2.665,
     "rating_35": 2.56,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.7349,
+    "iter_rating_30": 2.7332,
     "iter_rating_35": 2.56,
-    "iter_global_rating": 2.7349
+    "iter_global_rating": 2.7332
   },
   {
     "id": "rochelle-hamatian",
@@ -7539,9 +7539,9 @@
     "rating_30": 2.535,
     "rating_35": 2.56,
     "baseline_date": "11/23/2025",
-    "iter_rating_30": 2.6205,
+    "iter_rating_30": 2.6203,
     "iter_rating_35": 2.56,
-    "iter_global_rating": 2.6205
+    "iter_global_rating": 2.6203
   },
   {
     "id": "angela-roylance",
@@ -7569,9 +7569,9 @@
     "rating_30": 2.7023,
     "rating_35": 2.64,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.6256,
+    "iter_rating_30": 2.6263,
     "iter_rating_35": 2.64,
-    "iter_global_rating": 2.6256
+    "iter_global_rating": 2.6263
   },
   {
     "id": "leona-kiely",
@@ -7630,9 +7630,9 @@
     "rating_30": 2.6457,
     "rating_35": 2.7,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.5477,
+    "iter_rating_30": 2.5396,
     "iter_rating_35": 2.7,
-    "iter_global_rating": 2.5477
+    "iter_global_rating": 2.5396
   },
   {
     "id": "amy-bernstein",
@@ -7662,9 +7662,9 @@
     "rating_30": 2.5524,
     "rating_35": 2.41,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.4269,
+    "iter_rating_30": 2.425,
     "iter_rating_35": 2.41,
-    "iter_global_rating": 2.4269,
+    "iter_global_rating": 2.425,
     "default_wins_30": 1
   },
   {
@@ -7694,9 +7694,9 @@
     "rating_30": 2.83,
     "rating_35": 2.58,
     "baseline_date": "11/17/2025",
-    "iter_rating_30": 2.8106,
+    "iter_rating_30": 2.8065,
     "iter_rating_35": 2.58,
-    "iter_global_rating": 2.8106
+    "iter_global_rating": 2.8065
   },
   {
     "id": "addy-iveth-zilberman",
@@ -7726,9 +7726,9 @@
     "rating_30": 2.7987,
     "rating_35": 2.65,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.5815,
+    "iter_rating_30": 2.5805,
     "iter_rating_35": 2.65,
-    "iter_global_rating": 2.5815
+    "iter_global_rating": 2.5805
   },
   {
     "id": "michelle-inman",
@@ -7789,9 +7789,9 @@
     "rating_30": 2.8306,
     "rating_35": 2.62,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.7863,
+    "iter_rating_30": 2.7616,
     "iter_rating_35": 2.62,
-    "iter_global_rating": 2.7863
+    "iter_global_rating": 2.7616
   },
   {
     "id": "genesis-garcia",
@@ -7820,9 +7820,9 @@
     "rating_30": 2.8159,
     "rating_35": 2.63,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.7452,
+    "iter_rating_30": 2.7576,
     "iter_rating_35": 2.63,
-    "iter_global_rating": 2.7452
+    "iter_global_rating": 2.7576
   },
   {
     "id": "allyssandra-prodoehl",
@@ -7880,9 +7880,9 @@
     "rating_30": 2.7696,
     "rating_35": 2.69,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.7006,
+    "iter_rating_30": 2.7004,
     "iter_rating_35": 2.69,
-    "iter_global_rating": 2.7006
+    "iter_global_rating": 2.7004
   },
   {
     "id": "bree-carlson",
@@ -7941,9 +7941,9 @@
     "rating_30": 2.6437,
     "rating_35": 2.63,
     "baseline_date": "03/14/2026",
-    "iter_rating_30": 2.7216,
+    "iter_rating_30": 2.7209,
     "iter_rating_35": 2.63,
-    "iter_global_rating": 2.7216
+    "iter_global_rating": 2.7209
   },
   {
     "id": "golssa-moridi",
@@ -7972,9 +7972,9 @@
     "rating_30": 2.63,
     "rating_35": 2.58,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.7101,
+    "iter_rating_30": 2.7098,
     "iter_rating_35": 2.58,
-    "iter_global_rating": 2.7101
+    "iter_global_rating": 2.7098
   },
   {
     "id": "renee-johnson",
@@ -8003,9 +8003,9 @@
     "rating_30": 2.73,
     "rating_35": 2.56,
     "baseline_date": "12/06/2025",
-    "iter_rating_30": 2.7223,
+    "iter_rating_30": 2.7224,
     "iter_rating_35": 2.56,
-    "iter_global_rating": 2.7223
+    "iter_global_rating": 2.7224
   },
   {
     "id": "maryam-kaveh",
@@ -8033,9 +8033,9 @@
     "rating_30": 2.6359,
     "rating_35": 2.81,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.6508,
+    "iter_rating_30": 2.6505,
     "iter_rating_35": 2.81,
-    "iter_global_rating": 2.6508
+    "iter_global_rating": 2.6505
   },
   {
     "id": "lora-brown",
@@ -8064,9 +8064,9 @@
     "wl_record_30": "0-2",
     "team_30": "WHITNEY MESA PARK",
     "baseline_date": "02/14/2026",
-    "iter_rating_30": 2.5461,
+    "iter_rating_30": 2.5458,
     "iter_rating_35": 2.63,
-    "iter_global_rating": 2.5461
+    "iter_global_rating": 2.5458
   },
   {
     "id": "elizabeth-abatangelo",
@@ -8095,9 +8095,9 @@
     "rating_30": 2.2982,
     "rating_35": 2.72,
     "baseline_date": "03/14/2026",
-    "iter_rating_30": 2.3206,
+    "iter_rating_30": 2.3205,
     "iter_rating_35": 2.72,
-    "iter_global_rating": 2.3206
+    "iter_global_rating": 2.3205
   },
   {
     "id": "helen-mcdaniel",
@@ -8127,9 +8127,9 @@
     "rating_30": 2.6143,
     "rating_35": 2.6,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.3921,
+    "iter_rating_30": 2.3917,
     "iter_rating_35": 2.6,
-    "iter_global_rating": 2.3921
+    "iter_global_rating": 2.3917
   },
   {
     "id": "christa-shiklanian",
@@ -8158,9 +8158,9 @@
     "rating_30": 2.4952,
     "rating_35": 2.64,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.5143,
+    "iter_rating_30": 2.5113,
     "iter_rating_35": 2.64,
-    "iter_global_rating": 2.5143
+    "iter_global_rating": 2.5113
   },
   {
     "id": "kimberly-cunningham",
@@ -8188,9 +8188,9 @@
     "rating_30": 2.5511,
     "rating_35": 2.55,
     "baseline_date": "12/12/2025",
-    "iter_rating_30": 2.5516,
+    "iter_rating_30": 2.5517,
     "iter_rating_35": 2.55,
-    "iter_global_rating": 2.5516
+    "iter_global_rating": 2.5517
   },
   {
     "id": "dylan-underwood",
@@ -8250,9 +8250,9 @@
     "rating_30": 2.78,
     "rating_35": 2.55,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.6874,
+    "iter_rating_30": 2.6872,
     "iter_rating_35": 2.55,
-    "iter_global_rating": 2.6874
+    "iter_global_rating": 2.6872
   },
   {
     "id": "lindsey-jacobs",
@@ -8281,9 +8281,9 @@
     "rating_30": 2.7907,
     "rating_35": 2.42,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.6598,
+    "iter_rating_30": 2.656,
     "iter_rating_35": 2.42,
-    "iter_global_rating": 2.6598
+    "iter_global_rating": 2.656
   },
   {
     "id": "shari-abdoulah",
@@ -8342,9 +8342,9 @@
     "rating_30": 2.2442,
     "rating_35": 2.5,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.2338,
+    "iter_rating_30": 2.2372,
     "iter_rating_35": 2.5,
-    "iter_global_rating": 2.2338
+    "iter_global_rating": 2.2372
   },
   {
     "id": "jessica-marx",
@@ -8404,9 +8404,9 @@
     "rating_30": 2.5602,
     "rating_35": 2.56,
     "baseline_date": "12/02/2025",
-    "iter_rating_30": 2.5618,
+    "iter_rating_30": 2.5616,
     "iter_rating_35": 2.56,
-    "iter_global_rating": 2.5618
+    "iter_global_rating": 2.5616
   },
   {
     "id": "geraldine-wright",
@@ -8435,9 +8435,9 @@
     "rating_30": 2.555,
     "rating_35": 2.51,
     "baseline_date": "11/29/2025",
-    "iter_rating_30": 2.7203,
+    "iter_rating_30": 2.7201,
     "iter_rating_35": 2.51,
-    "iter_global_rating": 2.7203
+    "iter_global_rating": 2.7201
   },
   {
     "id": "danika-johnson",
@@ -8527,9 +8527,9 @@
     "rating_30": 2.4857,
     "rating_35": 2.53,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.5541,
+    "iter_rating_30": 2.5523,
     "iter_rating_35": 2.53,
-    "iter_global_rating": 2.5541
+    "iter_global_rating": 2.5523
   },
   {
     "id": "maureen-kelly",
@@ -8673,9 +8673,9 @@
     "rating_30": 2.7672,
     "rating_35": 2.45,
     "baseline_date": "12/03/2025",
-    "iter_rating_30": 2.7353,
+    "iter_rating_30": 2.7345,
     "iter_rating_35": 2.45,
-    "iter_global_rating": 2.7353
+    "iter_global_rating": 2.7345
   },
   {
     "id": "roslyn-katz",
@@ -8704,9 +8704,9 @@
     "rating_30": 2.5601,
     "rating_35": 2.45,
     "baseline_date": "12/10/2025",
-    "iter_rating_30": 2.6022,
+    "iter_rating_30": 2.5991,
     "iter_rating_35": 2.45,
-    "iter_global_rating": 2.6022
+    "iter_global_rating": 2.5991
   },
   {
     "id": "charlotte-durisseau",
@@ -8736,9 +8736,9 @@
     "rating_30": 2.4967,
     "rating_35": 2.15,
     "baseline_date": "12/10/2025",
-    "iter_rating_30": 2.4664,
+    "iter_rating_30": 2.4657,
     "iter_rating_35": 2.15,
-    "iter_global_rating": 2.4664
+    "iter_global_rating": 2.4657
   },
   {
     "id": "tiffany-vance",
@@ -8767,9 +8767,9 @@
     "rating_30": 2.6,
     "rating_35": 2.36,
     "baseline_date": "12/10/2025",
-    "iter_rating_30": 2.6604,
+    "iter_rating_30": 2.6602,
     "iter_rating_35": 2.36,
-    "iter_global_rating": 2.6604
+    "iter_global_rating": 2.6602
   },
   {
     "id": "kelley-candito",
@@ -8827,9 +8827,9 @@
     "rating_30": 2.2112,
     "rating_35": 2.19,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.2502,
+    "iter_rating_30": 2.2508,
     "iter_rating_35": 2.19,
-    "iter_global_rating": 2.2502
+    "iter_global_rating": 2.2508
   },
   {
     "id": "pam-birnbaum",
@@ -8857,9 +8857,9 @@
     "rating_30": 2.3733,
     "rating_35": 2.48,
     "baseline_date": "01/10/2026",
-    "iter_rating_30": 2.3991,
+    "iter_rating_30": 2.4039,
     "iter_rating_35": 2.48,
-    "iter_global_rating": 2.3991
+    "iter_global_rating": 2.4039
   },
   {
     "id": "kinsey-wolanski",
@@ -8889,9 +8889,9 @@
     "rating_30": 2.5273,
     "rating_35": 2.19,
     "baseline_date": "03/21/2026",
-    "iter_rating_30": 2.4467,
+    "iter_rating_30": 2.4448,
     "iter_rating_35": 2.19,
-    "iter_global_rating": 2.4467
+    "iter_global_rating": 2.4448
   },
   {
     "id": "ali-wolak",
@@ -8920,9 +8920,9 @@
     "rating_30": 2.3947,
     "rating_35": 2.37,
     "baseline_date": "12/19/2025",
-    "iter_rating_30": 2.3967,
+    "iter_rating_30": 2.3965,
     "iter_rating_35": 2.37,
-    "iter_global_rating": 2.3967,
+    "iter_global_rating": 2.3965,
     "default_wins_30": 1
   },
   {
@@ -9008,9 +9008,9 @@
     "rating_30": 2.4807,
     "rating_35": 2.3,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.337,
+    "iter_rating_30": 2.3372,
     "iter_rating_35": 2.3,
-    "iter_global_rating": 2.337
+    "iter_global_rating": 2.3372
   },
   {
     "id": "lisa-aldulaimi",
@@ -9064,9 +9064,9 @@
     "rating_30": 2.0758,
     "rating_35": 2.38,
     "baseline_date": "12/19/2025",
-    "iter_rating_30": 2.1655,
+    "iter_rating_30": 2.1656,
     "iter_rating_35": 2.38,
-    "iter_global_rating": 2.1655
+    "iter_global_rating": 2.1656
   },
   {
     "id": "nicole-harper",
@@ -9094,9 +9094,9 @@
     "rating_30": 2.5202,
     "rating_35": 2.19,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.5329,
+    "iter_rating_30": 2.5327,
     "iter_rating_35": 2.19,
-    "iter_global_rating": 2.5329
+    "iter_global_rating": 2.5327
   },
   {
     "id": "angela-xin",
@@ -9125,9 +9125,9 @@
     "rating_30": 2.1493,
     "rating_35": 2.42,
     "baseline_date": "12/03/2025",
-    "iter_rating_30": 2.196,
+    "iter_rating_30": 2.1955,
     "iter_rating_35": 2.42,
-    "iter_global_rating": 2.196
+    "iter_global_rating": 2.1955
   },
   {
     "id": "carine-tsveniashvili",
@@ -9156,9 +9156,9 @@
     "rating_30": 2.0359,
     "rating_35": 2.25,
     "baseline_date": "01/17/2026",
-    "iter_rating_30": 2.1084,
+    "iter_rating_30": 2.0912,
     "iter_rating_35": 2.25,
-    "iter_global_rating": 2.1084
+    "iter_global_rating": 2.0912
   },
   {
     "id": "arlene-lytle",
@@ -9187,9 +9187,9 @@
     "rating_30": 1.722,
     "rating_35": 1.82,
     "baseline_date": "11/22/2025",
-    "iter_rating_30": 1.7205,
+    "iter_rating_30": 1.7208,
     "iter_rating_35": 1.82,
-    "iter_global_rating": 1.7205
+    "iter_global_rating": 1.7208
   },
   {
     "id": "francie-angelov",
@@ -9218,9 +9218,9 @@
     "rating_30": 2.0941,
     "rating_35": 2.37,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.0795,
+    "iter_rating_30": 2.0791,
     "iter_rating_35": 2.37,
-    "iter_global_rating": 2.0795
+    "iter_global_rating": 2.0791
   },
   {
     "id": "janie-oceguera",
@@ -9249,9 +9249,9 @@
     "rating_30": 2.27,
     "rating_35": 2.25,
     "baseline_date": "12/09/2025",
-    "iter_rating_30": 2.2072,
+    "iter_rating_30": 2.2145,
     "iter_rating_35": 2.25,
-    "iter_global_rating": 2.2072
+    "iter_global_rating": 2.2145
   },
   {
     "id": "jena-domingue",
@@ -9281,9 +9281,9 @@
     "rating_30": 2.455,
     "rating_35": 2.03,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.6302,
+    "iter_rating_30": 2.6068,
     "iter_rating_35": 2.03,
-    "iter_global_rating": 2.6302
+    "iter_global_rating": 2.6068
   },
   {
     "id": "christy-cropper",
@@ -9314,9 +9314,9 @@
     "rating_30": 1.8904,
     "rating_35": 2.25,
     "baseline_date": "01/10/2026",
-    "iter_rating_30": 1.9906,
+    "iter_rating_30": 1.99,
     "iter_rating_35": 2.25,
-    "iter_global_rating": 1.9906
+    "iter_global_rating": 1.99
   },
   {
     "id": "michelle-mortensen",
@@ -9369,9 +9369,9 @@
     "rating_30": 2.2581,
     "rating_35": 2.27,
     "baseline_date": "12/11/2025",
-    "iter_rating_30": 2.2837,
+    "iter_rating_30": 2.2838,
     "iter_rating_35": 2.27,
-    "iter_global_rating": 2.2837
+    "iter_global_rating": 2.2838
   },
   {
     "id": "sandra-walford",
@@ -9394,9 +9394,9 @@
     "rating_30": 2.2867,
     "rating_35": 2.28,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 2.2872,
+    "iter_rating_30": 2.2873,
     "iter_rating_35": 2.28,
-    "iter_global_rating": 2.2872,
+    "iter_global_rating": 2.2873,
     "lines_played_30": [
       "D3"
     ],
@@ -9461,9 +9461,9 @@
     "rating_30": 1.8134,
     "rating_35": 2.14,
     "baseline_date": "12/13/2025",
-    "iter_rating_30": 1.824,
+    "iter_rating_30": 1.8241,
     "iter_rating_35": 2.14,
-    "iter_global_rating": 1.824
+    "iter_global_rating": 1.8241
   },
   {
     "id": "amber-pasco",
@@ -9523,9 +9523,9 @@
     "rating_30": 2.1484,
     "rating_35": 2.22,
     "baseline_date": "12/10/2025",
-    "iter_rating_30": 2.1503,
+    "iter_rating_30": 2.1505,
     "iter_rating_35": 2.22,
-    "iter_global_rating": 2.1503
+    "iter_global_rating": 2.1505
   },
   {
     "id": "jenni-pevoto",
@@ -9867,8 +9867,8 @@
     "rating_35": 3.7706,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.7106,
-    "iter_rating_35": 3.7544,
-    "iter_global_rating": 3.7544
+    "iter_rating_35": 3.754,
+    "iter_global_rating": 3.754
   },
   {
     "id": "chelsea-gray",
@@ -9929,8 +9929,8 @@
     "rating_35": 3.34,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.29,
-    "iter_rating_35": 3.3155,
-    "iter_global_rating": 3.3155
+    "iter_rating_35": 3.3154,
+    "iter_global_rating": 3.3154
   },
   {
     "id": "mary-lind",
@@ -10058,8 +10058,8 @@
     "team": "RED ROCK CC #1",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.45,
-    "current_division_rating": 3.515,
-    "global_rating": 3.515,
+    "current_division_rating": 3.445,
+    "global_rating": 3.445,
     "ntrp_rating": "3.5 C",
     "wl_record": "3-0",
     "lines_played": 3,
@@ -10078,11 +10078,11 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Nancy Holland (3.41) + Shiangyuh Wu (3.50) in a tight match.",
     "notes_35": "Captain's flex weapon — D1/D2/D3/S1. Surprising loss: W4 D3 alongside Michelle Brinlee to Leticia Schoff (2.98) + Melissa Ruediger (3.10) in a third-set tiebreak.",
     "rating_30": 3.45,
-    "rating_35": 3.515,
+    "rating_35": 3.445,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.45,
-    "iter_rating_35": 3.4713,
-    "iter_global_rating": 3.4713
+    "iter_rating_35": 3.463,
+    "iter_global_rating": 3.463
   },
   {
     "id": "amy-waters",
@@ -10235,8 +10235,8 @@
     "rating_35": 3.3085,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.57,
-    "iter_rating_35": 3.322,
-    "iter_global_rating": 3.322
+    "iter_rating_35": 3.3219,
+    "iter_global_rating": 3.3219
   },
   {
     "id": "tanya-hale",
@@ -10297,8 +10297,8 @@
     "rating_35": 3.3547,
     "baseline_date": "11/22/2025",
     "iter_rating_30": 3.59,
-    "iter_rating_35": 3.3882,
-    "iter_global_rating": 3.3882
+    "iter_rating_35": 3.3881,
+    "iter_global_rating": 3.3881
   },
   {
     "id": "tracey-cutler",
@@ -10328,8 +10328,8 @@
     "rating_35": 3.6799,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.6399,
-    "iter_rating_35": 3.6562,
-    "iter_global_rating": 3.6562
+    "iter_rating_35": 3.655,
+    "iter_global_rating": 3.655
   },
   {
     "id": "anne-gumm",
@@ -10431,8 +10431,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.5,
-    "current_division_rating": 3.5101,
-    "global_rating": 3.5101,
+    "current_division_rating": 3.39,
+    "global_rating": 3.39,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -10449,11 +10449,11 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Jamie Warrington (3.47) + Jennifer Hall (3.39) in a tight match.",
     "notes_35": "Among the most-deployed (5/6 weeks). Surprising loss: W1 D2 alongside Vinne Chen to Karen Hom (3.04) + Stella Chivikas (3.37) decisively.",
     "rating_30": 3.5,
-    "rating_35": 3.5101,
+    "rating_35": 3.39,
     "baseline_date": "11/22/2025",
     "iter_rating_30": 3.5,
-    "iter_rating_35": 3.388,
-    "iter_global_rating": 3.388
+    "iter_rating_35": 3.3865,
+    "iter_global_rating": 3.3865
   },
   {
     "id": "alexandra-song",
@@ -10539,8 +10539,8 @@
     "rating_35": 3.495,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.33,
-    "iter_rating_35": 3.4778,
-    "iter_global_rating": 3.4778
+    "iter_rating_35": 3.4779,
+    "iter_global_rating": 3.4779
   },
   {
     "id": "yan-uyeno",
@@ -10571,8 +10571,8 @@
     "rating_35": 3.4417,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.35,
-    "iter_rating_35": 3.5385,
-    "iter_global_rating": 3.5385
+    "iter_rating_35": 3.535,
+    "iter_global_rating": 3.535
   },
   {
     "id": "lisa-gobel",
@@ -10601,8 +10601,8 @@
     "rating_35": 3.3565,
     "baseline_date": "11/22/2025",
     "iter_rating_30": 3.48,
-    "iter_rating_35": 3.37,
-    "iter_global_rating": 3.37
+    "iter_rating_35": 3.3699,
+    "iter_global_rating": 3.3699
   },
   {
     "id": "joann-komanowski",
@@ -10631,8 +10631,8 @@
     "rating_35": 3.1664,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.48,
-    "iter_rating_35": 3.1798,
-    "iter_global_rating": 3.1798
+    "iter_rating_35": 3.1785,
+    "iter_global_rating": 3.1785
   },
   {
     "id": "sarah-perez",
@@ -10726,8 +10726,8 @@
     "rating_35": 3.51,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.46,
-    "iter_rating_35": 3.5308,
-    "iter_global_rating": 3.5308
+    "iter_rating_35": 3.5185,
+    "iter_global_rating": 3.5185
   },
   {
     "id": "kathryn-garlan",
@@ -10799,8 +10799,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.47,
-    "current_division_rating": 3.3767,
-    "global_rating": 3.3767,
+    "current_division_rating": 3.3217,
+    "global_rating": 3.3217,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -10817,11 +10817,11 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Jaclyn O'Malley (3.48) in a third-set tiebreak.",
     "notes_35": "Surprising loss: W5 D3 alongside Natasha Kattau to Abigail Cox (3.00) + Jessica Borghoff (3.09) in a tight match. Won a 3-set tiebreak in W2.",
     "rating_30": 3.47,
-    "rating_35": 3.3767,
+    "rating_35": 3.3217,
     "baseline_date": "11/22/2025",
     "iter_rating_30": 3.47,
-    "iter_rating_35": 3.3111,
-    "iter_global_rating": 3.3111
+    "iter_rating_35": 3.3092,
+    "iter_global_rating": 3.3092
   },
   {
     "id": "shiangyuh-wu",
@@ -10852,8 +10852,8 @@
     "rating_35": 3.405,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.5,
-    "iter_rating_35": 3.3042,
-    "iter_global_rating": 3.3042
+    "iter_rating_35": 3.3029,
+    "iter_global_rating": 3.3029
   },
   {
     "id": "amanda-gumberg",
@@ -10882,8 +10882,8 @@
     "rating_35": 3.4583,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.33,
-    "iter_rating_35": 3.5125,
-    "iter_global_rating": 3.5125
+    "iter_rating_35": 3.5013,
+    "iter_global_rating": 3.5013
   },
   {
     "id": "maria-truman",
@@ -10914,8 +10914,8 @@
     "rating_35": 3.435,
     "baseline_date": "12/05/2025",
     "iter_rating_30": 3.58,
-    "iter_rating_35": 3.4723,
-    "iter_global_rating": 3.4723
+    "iter_rating_35": 3.4726,
+    "iter_global_rating": 3.4726
   },
   {
     "id": "tracey-lee",
@@ -10947,8 +10947,8 @@
     "rating_35": 3.615,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.5,
-    "iter_rating_35": 3.6175,
-    "iter_global_rating": 3.6175
+    "iter_rating_35": 3.6157,
+    "iter_global_rating": 3.6157
   },
   {
     "id": "susan-castelli",
@@ -11039,8 +11039,8 @@
     "rating_35": 3.36,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.48,
-    "iter_rating_35": 3.4628,
-    "iter_global_rating": 3.4628
+    "iter_rating_35": 3.4629,
+    "iter_global_rating": 3.4629
   },
   {
     "id": "stacie-corelle",
@@ -11069,8 +11069,8 @@
     "rating_35": 3.47,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.41,
-    "iter_rating_35": 3.3073,
-    "iter_global_rating": 3.3073
+    "iter_rating_35": 3.3071,
+    "iter_global_rating": 3.3071
   },
   {
     "id": "sabine-curtis",
@@ -11134,8 +11134,8 @@
     "rating_35": 3.5,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.44,
-    "iter_rating_35": 3.3794,
-    "iter_global_rating": 3.3794
+    "iter_rating_35": 3.379,
+    "iter_global_rating": 3.379
   },
   {
     "id": "lyndsey-van-der-laan",
@@ -11227,8 +11227,8 @@
     "rating_35": 3.46,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.58,
-    "iter_rating_35": 3.4642,
-    "iter_global_rating": 3.4642
+    "iter_rating_35": 3.4641,
+    "iter_global_rating": 3.4641
   },
   {
     "id": "jenny-baxter",
@@ -11258,8 +11258,8 @@
     "rating_35": 3.4205,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.53,
-    "iter_rating_35": 3.3998,
-    "iter_global_rating": 3.3998
+    "iter_rating_35": 3.3996,
+    "iter_global_rating": 3.3996
   },
   {
     "id": "kami-adamson",
@@ -11321,8 +11321,8 @@
     "rating_35": 3.46,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.47,
-    "iter_rating_35": 3.6053,
-    "iter_global_rating": 3.6053
+    "iter_rating_35": 3.6027,
+    "iter_global_rating": 3.6027
   },
   {
     "id": "christi-lin",
@@ -11414,8 +11414,8 @@
     "rating_35": 3.405,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.41,
-    "iter_rating_35": 3.5041,
-    "iter_global_rating": 3.5041
+    "iter_rating_35": 3.4921,
+    "iter_global_rating": 3.4921
   },
   {
     "id": "cathy-vanderford",
@@ -11446,8 +11446,8 @@
     "rating_35": 3.4,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.36,
-    "iter_rating_35": 3.3707,
-    "iter_global_rating": 3.3707
+    "iter_rating_35": 3.3698,
+    "iter_global_rating": 3.3698
   },
   {
     "id": "dawn-anderson",
@@ -11538,8 +11538,8 @@
     "rating_35": 3.43,
     "baseline_date": "02/16/2026",
     "iter_rating_30": 3.47,
-    "iter_rating_35": 3.4264,
-    "iter_global_rating": 3.4264
+    "iter_rating_35": 3.4243,
+    "iter_global_rating": 3.4243
   },
   {
     "id": "heidi-thornhill",
@@ -11598,8 +11598,8 @@
     "rating_35": 3.39,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.28,
-    "iter_rating_35": 3.388,
-    "iter_global_rating": 3.388
+    "iter_rating_35": 3.3865,
+    "iter_global_rating": 3.3865
   },
   {
     "id": "jaclyn-omalley",
@@ -11629,8 +11629,8 @@
     "rating_35": 3.3807,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.48,
-    "iter_rating_35": 3.3562,
-    "iter_global_rating": 3.3562
+    "iter_rating_35": 3.3528,
+    "iter_global_rating": 3.3528
   },
   {
     "id": "lori-labarbera",
@@ -11660,8 +11660,8 @@
     "rating_35": 3.2977,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.42,
-    "iter_rating_35": 3.2858,
-    "iter_global_rating": 3.2858
+    "iter_rating_35": 3.2841,
+    "iter_global_rating": 3.2841
   },
   {
     "id": "anne-kellogg",
@@ -11754,8 +11754,8 @@
     "rating_35": 3.5778,
     "baseline_date": "12/03/2025",
     "iter_rating_30": 3.33,
-    "iter_rating_35": 3.2444,
-    "iter_global_rating": 3.2444
+    "iter_rating_35": 3.2323,
+    "iter_global_rating": 3.2323
   },
   {
     "id": "wendy-hopper",
@@ -11816,8 +11816,8 @@
     "rating_35": 3.2085,
     "baseline_date": "12/03/2025",
     "iter_rating_30": 3.4,
-    "iter_rating_35": 3.1388,
-    "iter_global_rating": 3.1388
+    "iter_rating_35": 3.1311,
+    "iter_global_rating": 3.1311
   },
   {
     "id": "joan-perricone",
@@ -11847,8 +11847,8 @@
     "rating_35": 3.3631,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.5,
-    "iter_rating_35": 3.3506,
-    "iter_global_rating": 3.3506
+    "iter_rating_35": 3.3505,
+    "iter_global_rating": 3.3505
   },
   {
     "id": "karina-mcaffee",
@@ -11877,8 +11877,8 @@
     "rating_35": 3.13,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.26,
-    "iter_rating_35": 3.2823,
-    "iter_global_rating": 3.2823
+    "iter_rating_35": 3.2822,
+    "iter_global_rating": 3.2822
   },
   {
     "id": "holly-dexter",
@@ -11909,8 +11909,8 @@
     "rating_35": 3.3747,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.49,
-    "iter_rating_35": 3.4572,
-    "iter_global_rating": 3.4572
+    "iter_rating_35": 3.4507,
+    "iter_global_rating": 3.4507
   },
   {
     "id": "claudia-hernandez",
@@ -11940,8 +11940,8 @@
     "rating_35": 3.62,
     "baseline_date": "12/11/2025",
     "iter_rating_30": 3.46,
-    "iter_rating_35": 3.3975,
-    "iter_global_rating": 3.3975
+    "iter_rating_35": 3.3914,
+    "iter_global_rating": 3.3914
   },
   {
     "id": "allison-festa",
@@ -11970,8 +11970,8 @@
     "rating_35": 3.3577,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.34,
-    "iter_rating_35": 3.3938,
-    "iter_global_rating": 3.3938
+    "iter_rating_35": 3.3937,
+    "iter_global_rating": 3.3937
   },
   {
     "id": "lisa-cook",
@@ -12001,8 +12001,8 @@
     "rating_35": 3.4323,
     "baseline_date": "12/03/2025",
     "iter_rating_30": 3.37,
-    "iter_rating_35": 3.4091,
-    "iter_global_rating": 3.4091,
+    "iter_rating_35": 3.406,
+    "iter_global_rating": 3.406,
     "default_wins_35": 1
   },
   {
@@ -12033,8 +12033,8 @@
     "team_35": "DRAGONRIDGE CC",
     "baseline_date": "12/01/2025",
     "iter_rating_30": 3.36,
-    "iter_rating_35": 3.3558,
-    "iter_global_rating": 3.3558
+    "iter_rating_35": 3.3502,
+    "iter_global_rating": 3.3502
   },
   {
     "id": "jan-willis",
@@ -12064,8 +12064,8 @@
     "rating_35": 3.1126,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.43,
-    "iter_rating_35": 3.3137,
-    "iter_global_rating": 3.3137
+    "iter_rating_35": 3.313,
+    "iter_global_rating": 3.313
   },
   {
     "id": "suzy-wirth",
@@ -12095,8 +12095,8 @@
     "rating_35": 3.435,
     "baseline_date": "12/05/2025",
     "iter_rating_30": 3.54,
-    "iter_rating_35": 3.4482,
-    "iter_global_rating": 3.4482
+    "iter_rating_35": 3.4585,
+    "iter_global_rating": 3.4585
   },
   {
     "id": "rachel-lamb",
@@ -12126,8 +12126,8 @@
     "rating_35": 3.347,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.39,
-    "iter_rating_35": 3.3403,
-    "iter_global_rating": 3.3403
+    "iter_rating_35": 3.3391,
+    "iter_global_rating": 3.3391
   },
   {
     "id": "teisha-hunsaker",
@@ -12156,8 +12156,8 @@
     "team_35": "DRAGONRIDGE CC",
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.4,
-    "iter_rating_35": 3.4009,
-    "iter_global_rating": 3.4009
+    "iter_rating_35": 3.4008,
+    "iter_global_rating": 3.4008
   },
   {
     "id": "stella-chivikas",
@@ -12186,8 +12186,8 @@
     "rating_35": 3.3801,
     "baseline_date": "01/03/2026",
     "iter_rating_30": 3.37,
-    "iter_rating_35": 3.3909,
-    "iter_global_rating": 3.3909
+    "iter_rating_35": 3.3825,
+    "iter_global_rating": 3.3825
   },
   {
     "id": "christina-rich",
@@ -12218,8 +12218,8 @@
     "rating_35": 3.2075,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.34,
-    "iter_rating_35": 3.2335,
-    "iter_global_rating": 3.2335
+    "iter_rating_35": 3.2336,
+    "iter_global_rating": 3.2336
   },
   {
     "id": "megan-bell",
@@ -12252,8 +12252,8 @@
     "rating_35": 3.49,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.4,
-    "iter_rating_35": 3.6786,
-    "iter_global_rating": 3.6786
+    "iter_rating_35": 3.6777,
+    "iter_global_rating": 3.6777
   },
   {
     "id": "monica-baldwin",
@@ -12262,8 +12262,8 @@
     "team": "TPC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.42,
-    "current_division_rating": 3.4742,
-    "global_rating": 3.4742,
+    "current_division_rating": 3.46,
+    "global_rating": 3.46,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -12280,11 +12280,11 @@
     "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Jaclyn O'Malley (3.48) in a tight match.",
     "notes_35": "Only every-week player. Upset: W6 S2 beat Jaclyn O'Malley (3.48) in a tight match. Surprising loss: W2 S1 to Maria Allen (3.10) in a third-set tiebreak.",
     "rating_30": 3.42,
-    "rating_35": 3.4742,
+    "rating_35": 3.46,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.42,
-    "iter_rating_35": 3.3265,
-    "iter_global_rating": 3.3265
+    "iter_rating_35": 3.3263,
+    "iter_global_rating": 3.3263
   },
   {
     "id": "diane-paull",
@@ -12346,8 +12346,8 @@
     "rating_35": 3.2325,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.36,
-    "iter_rating_35": 3.0945,
-    "iter_global_rating": 3.0945
+    "iter_rating_35": 3.093,
+    "iter_global_rating": 3.093
   },
   {
     "id": "jane-doe",
@@ -12378,8 +12378,8 @@
     "rating_35": 3.4839,
     "baseline_date": "12/03/2025",
     "iter_rating_30": 3.4,
-    "iter_rating_35": 3.6523,
-    "iter_global_rating": 3.6523
+    "iter_rating_35": 3.6515,
+    "iter_global_rating": 3.6515
   },
   {
     "id": "kelley-ferrence",
@@ -12465,8 +12465,8 @@
     "rating_35": 2.9502,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.27,
-    "iter_rating_35": 3.0217,
-    "iter_global_rating": 3.0217
+    "iter_rating_35": 3.0215,
+    "iter_global_rating": 3.0215
   },
   {
     "id": "lacheyva-edmonis",
@@ -12527,8 +12527,8 @@
     "rating_35": 3.5291,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.47,
-    "iter_rating_35": 3.3349,
-    "iter_global_rating": 3.3349
+    "iter_rating_35": 3.3348,
+    "iter_global_rating": 3.3348
   },
   {
     "id": "valerie-witherspoon",
@@ -12558,8 +12558,8 @@
     "rating_35": 3.2416,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.5,
-    "iter_rating_35": 3.2711,
-    "iter_global_rating": 3.2711
+    "iter_rating_35": 3.271,
+    "iter_global_rating": 3.271
   },
   {
     "id": "donna-lefever",
@@ -12588,8 +12588,8 @@
     "team_35": "DTC #3",
     "baseline_date": "12/11/2025",
     "iter_rating_30": 3.4,
-    "iter_rating_35": 3.3204,
-    "iter_global_rating": 3.3204
+    "iter_rating_35": 3.3202,
+    "iter_global_rating": 3.3202
   },
   {
     "id": "lisa-krzyzaniak",
@@ -12652,8 +12652,8 @@
     "rating_35": 3.1763,
     "baseline_date": "12/19/2025",
     "iter_rating_30": 3.19,
-    "iter_rating_35": 3.3462,
-    "iter_global_rating": 3.3462
+    "iter_rating_35": 3.3457,
+    "iter_global_rating": 3.3457
   },
   {
     "id": "marchelle-locke",
@@ -12683,8 +12683,8 @@
     "team_35": "DTC #2",
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.23,
-    "iter_rating_35": 3.2089,
-    "iter_global_rating": 3.2089
+    "iter_rating_35": 3.2088,
+    "iter_global_rating": 3.2088
   },
   {
     "id": "tracey-willson",
@@ -12774,8 +12774,8 @@
     "rating_35": 3.3799,
     "baseline_date": "01/26/2026",
     "iter_rating_30": 3.42,
-    "iter_rating_35": 3.3646,
-    "iter_global_rating": 3.3646
+    "iter_rating_35": 3.3635,
+    "iter_global_rating": 3.3635
   },
   {
     "id": "alisun-vehar",
@@ -12805,8 +12805,8 @@
     "rating_35": 3.4033,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.35,
-    "iter_rating_35": 3.3301,
-    "iter_global_rating": 3.3301
+    "iter_rating_35": 3.3285,
+    "iter_global_rating": 3.3285
   },
   {
     "id": "nicole-medas",
@@ -12866,8 +12866,8 @@
     "rating_35": 3.4,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.4,
-    "iter_rating_35": 3.3275,
-    "iter_global_rating": 3.3275
+    "iter_rating_35": 3.3256,
+    "iter_global_rating": 3.3256
   },
   {
     "id": "shaun-bruce",
@@ -12928,8 +12928,8 @@
     "rating_35": 3.3509,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.39,
-    "iter_rating_35": 3.2857,
-    "iter_global_rating": 3.2857
+    "iter_rating_35": 3.2855,
+    "iter_global_rating": 3.2855
   },
   {
     "id": "kelsey-spence",
@@ -13020,8 +13020,8 @@
     "rating_35": 3.184,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.33,
-    "iter_rating_35": 3.1753,
-    "iter_global_rating": 3.1753
+    "iter_rating_35": 3.1752,
+    "iter_global_rating": 3.1752
   },
   {
     "id": "megan-galli",
@@ -13082,8 +13082,8 @@
     "rating_35": 3.4067,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.31,
-    "iter_rating_35": 3.2764,
-    "iter_global_rating": 3.2764
+    "iter_rating_35": 3.2768,
+    "iter_global_rating": 3.2768
   },
   {
     "id": "megan-meyers",
@@ -13168,8 +13168,8 @@
     "rating_35": 2.9918,
     "baseline_date": "02/04/2026",
     "iter_rating_30": 3.3,
-    "iter_rating_35": 3.0148,
-    "iter_global_rating": 3.0148
+    "iter_rating_35": 3.0143,
+    "iter_global_rating": 3.0143
   },
   {
     "id": "sally-ryba",
@@ -13199,8 +13199,8 @@
     "rating_35": 3.2611,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.37,
-    "iter_rating_35": 3.2895,
-    "iter_global_rating": 3.2895
+    "iter_rating_35": 3.2893,
+    "iter_global_rating": 3.2893
   },
   {
     "id": "kelly-nguyen",
@@ -13230,8 +13230,8 @@
     "rating_35": 2.9503,
     "baseline_date": "03/14/2026",
     "iter_rating_30": 3.27,
-    "iter_rating_35": 2.9874,
-    "iter_global_rating": 2.9874
+    "iter_rating_35": 2.9875,
+    "iter_global_rating": 2.9875
   },
   {
     "id": "andi-berger",
@@ -13290,8 +13290,8 @@
     "rating_35": 3.275,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.34,
-    "iter_rating_35": 3.3476,
-    "iter_global_rating": 3.3476
+    "iter_rating_35": 3.3475,
+    "iter_global_rating": 3.3475
   },
   {
     "id": "jennifer-petrie",
@@ -13469,8 +13469,8 @@
     "rating_35": 3.455,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.3,
-    "iter_rating_35": 3.3404,
-    "iter_global_rating": 3.3404
+    "iter_rating_35": 3.3391,
+    "iter_global_rating": 3.3391
   },
   {
     "id": "jennifer-dalby",
@@ -13500,8 +13500,8 @@
     "rating_35": 3.0703,
     "baseline_date": "03/28/2026",
     "iter_rating_30": 3.3,
-    "iter_rating_35": 3.0937,
-    "iter_global_rating": 3.0937
+    "iter_rating_35": 3.0932,
+    "iter_global_rating": 3.0932
   },
   {
     "id": "punam-patel",
@@ -13587,8 +13587,8 @@
     "rating_35": 3.1207,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.33,
-    "iter_rating_35": 3.0789,
-    "iter_global_rating": 3.0789
+    "iter_rating_35": 3.0796,
+    "iter_global_rating": 3.0796
   },
   {
     "id": "hannah-stevens",
@@ -13619,8 +13619,8 @@
     "rating_35": 3.415,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.23,
-    "iter_rating_35": 3.3136,
-    "iter_global_rating": 3.3136
+    "iter_rating_35": 3.3131,
+    "iter_global_rating": 3.3131
   },
   {
     "id": "liliya-pummill",
@@ -13683,8 +13683,8 @@
     "rating_35": 3.1031,
     "baseline_date": "12/11/2025",
     "iter_rating_30": 3.13,
-    "iter_rating_35": 3.1163,
-    "iter_global_rating": 3.1163,
+    "iter_rating_35": 3.1162,
+    "iter_global_rating": 3.1162,
     "default_wins_35": 1
   },
   {
@@ -13716,8 +13716,8 @@
     "rating_35": 2.929,
     "baseline_date": "11/13/2025",
     "iter_rating_30": 3.27,
-    "iter_rating_35": 2.9095,
-    "iter_global_rating": 2.9095
+    "iter_rating_35": 2.9093,
+    "iter_global_rating": 2.9093
   },
   {
     "id": "stephanie-mcgregor",
@@ -13746,8 +13746,8 @@
     "rating_35": 3.2512,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.26,
-    "iter_rating_35": 3.2531,
-    "iter_global_rating": 3.2531
+    "iter_rating_35": 3.253,
+    "iter_global_rating": 3.253
   },
   {
     "id": "carroll-welch",
@@ -13903,8 +13903,8 @@
     "rating_35": 3.2283,
     "baseline_date": "12/19/2025",
     "iter_rating_30": 3.1,
-    "iter_rating_35": 3.1375,
-    "iter_global_rating": 3.1375
+    "iter_rating_35": 3.1316,
+    "iter_global_rating": 3.1316
   },
   {
     "id": "deborah-protell",
@@ -13964,8 +13964,8 @@
     "rating_35": 2.9164,
     "baseline_date": "12/11/2025",
     "iter_rating_30": 3.22,
-    "iter_rating_35": 2.9382,
-    "iter_global_rating": 2.9382
+    "iter_rating_35": 2.937,
+    "iter_global_rating": 2.937
   },
   {
     "id": "pj-shouldis",
@@ -14111,8 +14111,8 @@
     "rating_35": 3.1392,
     "baseline_date": "12/19/2025",
     "iter_rating_30": 3.01,
-    "iter_rating_35": 3.1134,
-    "iter_global_rating": 3.1134
+    "iter_rating_35": 3.1135,
+    "iter_global_rating": 3.1135
   },
   {
     "id": "gina-case",
@@ -14142,8 +14142,8 @@
     "rating_35": 3.4033,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.23,
-    "iter_rating_35": 3.3308,
-    "iter_global_rating": 3.3308
+    "iter_rating_35": 3.329,
+    "iter_global_rating": 3.329
   },
   {
     "id": "amrita-soli",
@@ -14172,8 +14172,8 @@
     "rating_35": 3.3477,
     "baseline_date": "11/28/2025",
     "iter_rating_30": 3.19,
-    "iter_rating_35": 3.251,
-    "iter_global_rating": 3.251
+    "iter_rating_35": 3.2507,
+    "iter_global_rating": 3.2507
   },
   {
     "id": "kirsten-ingram",
@@ -14202,8 +14202,8 @@
     "rating_35": 3.1622,
     "baseline_date": "12/11/2025",
     "iter_rating_30": 3.22,
-    "iter_rating_35": 3.1679,
-    "iter_global_rating": 3.1679
+    "iter_rating_35": 3.1678,
+    "iter_global_rating": 3.1678
   },
   {
     "id": "melanie-isbell",
@@ -14233,8 +14233,8 @@
     "rating_35": 3.5661,
     "baseline_date": "11/24/2025",
     "iter_rating_30": 3.04,
-    "iter_rating_35": 3.3497,
-    "iter_global_rating": 3.3497
+    "iter_rating_35": 3.3495,
+    "iter_global_rating": 3.3495
   },
   {
     "id": "monica-johnson",
@@ -14263,8 +14263,8 @@
     "rating_35": 3.0633,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.16,
-    "iter_rating_35": 3.0693,
-    "iter_global_rating": 3.0693
+    "iter_rating_35": 3.069,
+    "iter_global_rating": 3.069
   },
   {
     "id": "shilpa-daulat",
@@ -14437,8 +14437,8 @@
     "rating_35": 3.2128,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.15,
-    "iter_rating_35": 3.2385,
-    "iter_global_rating": 3.2385
+    "iter_rating_35": 3.2372,
+    "iter_global_rating": 3.2372
   },
   {
     "id": "renee-bergeron",
@@ -14525,8 +14525,8 @@
     "rating_35": 2.7575,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.07,
-    "iter_rating_35": 2.7846,
-    "iter_global_rating": 2.7846
+    "iter_rating_35": 2.7845,
+    "iter_global_rating": 2.7845
   },
   {
     "id": "lisa-davis-wilson",
@@ -14580,8 +14580,8 @@
     "team_35": "DTC #1",
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.1,
-    "iter_rating_35": 3.0817,
-    "iter_global_rating": 3.0817
+    "iter_rating_35": 3.0823,
+    "iter_global_rating": 3.0823
   },
   {
     "id": "susan-gray",
@@ -14668,8 +14668,8 @@
     "rating_35": 3.4819,
     "baseline_date": "12/09/2025",
     "iter_rating_30": 2.95,
-    "iter_rating_35": 3.3185,
-    "iter_global_rating": 3.3185
+    "iter_rating_35": 3.3186,
+    "iter_global_rating": 3.3186
   },
   {
     "id": "marilyn-fenn",
@@ -14789,8 +14789,8 @@
     "rating_35": 3.0004,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.0,
-    "iter_rating_35": 2.9977,
-    "iter_global_rating": 2.9977
+    "iter_rating_35": 2.9978,
+    "iter_global_rating": 2.9978
   },
   {
     "id": "nicole-nestman",
@@ -14931,8 +14931,8 @@
     "rating_35": 2.9715,
     "baseline_date": "11/24/2025",
     "iter_rating_30": 3.02,
-    "iter_rating_35": 2.9867,
-    "iter_global_rating": 2.9867
+    "iter_rating_35": 2.9885,
+    "iter_global_rating": 2.9885
   },
   {
     "id": "amy-kirk",
@@ -14993,8 +14993,8 @@
     "rating_35": 3.1745,
     "baseline_date": "11/19/2025",
     "iter_rating_30": 3.05,
-    "iter_rating_35": 2.8935,
-    "iter_global_rating": 2.8935
+    "iter_rating_35": 2.8934,
+    "iter_global_rating": 2.8934
   },
   {
     "id": "vinne-chen",
@@ -15024,8 +15024,8 @@
     "rating_35": 3.1242,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.08,
-    "iter_rating_35": 3.0666,
-    "iter_global_rating": 3.0666
+    "iter_rating_35": 3.0667,
+    "iter_global_rating": 3.0667
   },
   {
     "id": "karen-hom",
@@ -15056,8 +15056,8 @@
     "rating_35": 3.2621,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.04,
-    "iter_rating_35": 3.312,
-    "iter_global_rating": 3.312
+    "iter_rating_35": 3.3109,
+    "iter_global_rating": 3.3109
   },
   {
     "id": "susan-grady",
@@ -15087,8 +15087,8 @@
     "rating_35": 3.0635,
     "baseline_date": "12/11/2025",
     "iter_rating_30": 3.0,
-    "iter_rating_35": 3.132,
-    "iter_global_rating": 3.132
+    "iter_rating_35": 3.0955,
+    "iter_global_rating": 3.0955
   },
   {
     "id": "heather-rose",
@@ -15168,8 +15168,8 @@
     "rating_35": 2.7057,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 2.98,
-    "iter_rating_35": 2.7767,
-    "iter_global_rating": 2.7767
+    "iter_rating_35": 2.7773,
+    "iter_global_rating": 2.7773
   },
   {
     "id": "ramona-acosta",
@@ -15200,8 +15200,8 @@
     "rating_35": 3.1454,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 2.9,
-    "iter_rating_35": 2.9763,
-    "iter_global_rating": 2.9763
+    "iter_rating_35": 2.9756,
+    "iter_global_rating": 2.9756
   },
   {
     "id": "liz-jones",
@@ -15290,8 +15290,8 @@
     "rating_35": 3.2218,
     "baseline_date": "12/10/2025",
     "iter_rating_30": 2.88,
-    "iter_rating_35": 3.1944,
-    "iter_global_rating": 3.1944
+    "iter_rating_35": 3.1883,
+    "iter_global_rating": 3.1883
   },
   {
     "id": "alex-schrack",
@@ -15321,8 +15321,8 @@
     "rating_35": 3.04,
     "baseline_date": "01/28/2026",
     "iter_rating_30": 2.89,
-    "iter_rating_35": 3.2116,
-    "iter_global_rating": 3.2116
+    "iter_rating_35": 3.2117,
+    "iter_global_rating": 3.2117
   },
   {
     "id": "katie-kerestesi",
