@@ -821,6 +821,125 @@ def _collect_court_events(
     return events
 
 
+def _date_sort_key(ev: "CourtEvent") -> tuple:
+    try:
+        m, d, y = ev.date.split("/")
+        return (int(y), int(m), int(d))
+    except Exception:
+        return (0, 0, 0)
+
+
+def _date_str_sort_key(date_str: str) -> tuple:
+    try:
+        m, d, y = date_str.split("/")
+        return (int(y), int(m), int(d))
+    except Exception:
+        return (0, 0, 0)
+
+
+def _compute_division_sequential(
+    court_events: list[CourtEvent],
+    division: str,
+    baselines: dict[str, float],
+    n_total_weeks: int,
+) -> tuple[dict[str, float], dict[str, dict[str, float]]]:
+    """
+    Compute per-division ratings chronologically using the full v8 algorithm.
+
+    For each match date, opponent strength comes from the players' running ratings
+    AT THAT MOMENT — not frozen pre-season baselines and not end-of-season values.
+    The match records for each player accumulate with those locked-in opponent ratings,
+    so calling _compute_v8_rating after each date gives a self-consistent history.
+
+    Returns:
+        final_ratings:      {player_key: rating_after_all_matches}
+        pre_match_timeline: {player_key: {date_str: rating_going_INTO_that_date}}
+            This timeline is used to display "what was this player's rating at the
+            time of this match" in the results tab.
+    """
+    from collections import defaultdict
+
+    div_events = sorted(
+        (ev for ev in court_events if ev.division == division),
+        key=_date_sort_key,
+    )
+
+    events_by_date: dict[str, list[CourtEvent]] = defaultdict(list)
+    for ev in div_events:
+        events_by_date[ev.date].append(ev)
+
+    dates_sorted = sorted(events_by_date.keys(), key=_date_str_sort_key)
+
+    # Running ratings — start everyone at their baseline
+    running: dict[str, float] = dict(baselines)
+
+    # pre_match_timeline[player_key][date] = rating going INTO that date
+    pre_match: dict[str, dict[str, float]] = {}
+
+    # accumulated[player_key] = list of MatchRecords with opponent ratings
+    # frozen at the time each match was played
+    accumulated: dict[str, list[MatchRecord]] = {}
+
+    for date in dates_sorted:
+        today = events_by_date[date]
+
+        # Everyone playing today in this division
+        involved: set[str] = set()
+        for ev in today:
+            involved.update(ev.winner_keys + ev.loser_keys)
+
+        # Snapshot ratings before today's matches — this is what opponents
+        # "look like" from the perspective of each match played on this date
+        snap: dict[str, float] = {
+            pk: running.get(pk, baselines.get(pk, 3.0))
+            for pk in involved
+        }
+
+        # Record pre-match rating in the timeline
+        for pk in involved:
+            pre_match.setdefault(pk, {})[date] = snap[pk]
+
+        # Build MatchRecords for today with opponent ratings locked to snapshot
+        for ev in today:
+            for pk in ev.winner_keys:
+                if pk not in baselines:
+                    continue
+                partners = [k for k in ev.winner_keys if k != pk]
+                partner_r = snap.get(partners[0]) if partners else None
+                opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.loser_keys] or [3.0]
+                accumulated.setdefault(pk, []).append(MatchRecord(
+                    opponent_ratings=opp_r, partner_rating=partner_r,
+                    won=True, date=date, division=division,
+                    match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                ))
+
+            for pk in ev.loser_keys:
+                if pk not in baselines:
+                    continue
+                partners = [k for k in ev.loser_keys if k != pk]
+                partner_r = snap.get(partners[0]) if partners else None
+                opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.winner_keys] or [3.0]
+                accumulated.setdefault(pk, []).append(MatchRecord(
+                    opponent_ratings=opp_r, partner_rating=partner_r,
+                    won=False, date=date, division=division,
+                    match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                ))
+
+        # Recompute rating for each involved player using all their accumulated
+        # match records (each with historically-correct opponent ratings)
+        for pk in involved:
+            if pk not in baselines:
+                continue
+            recs = accumulated.get(pk)
+            if recs:
+                running[pk] = _compute_v8_rating(
+                    baselines[pk], recs,
+                    n_total_weeks=n_total_weeks, division=division,
+                )
+
+    return running, pre_match
+
+
 def _compute_global_sequential(
     court_events: list[CourtEvent],
     baselines: dict[str, float],
@@ -831,16 +950,10 @@ def _compute_global_sequential(
     the running global rating (not the frozen baseline), so earlier results
     inform later ones.
     """
-    def _date_sort_key(ev: CourtEvent) -> tuple:
-        try:
-            m, d, y = ev.date.split("/")
-            return (int(y), int(m), int(d))
-        except Exception:
-            return (0, 0, 0)
 
     global_r: dict[str, float] = dict(baselines)
 
-    for ev in sorted(court_events, key=_date_sort_key):
+    for ev in sorted(court_events, key=_date_sort_key):  # module-level _date_sort_key
         all_keys = ev.winner_keys + ev.loser_keys
         # Snapshot current ratings for everyone in this court BEFORE any update
         # so both sides see consistent pre-match ratings.
@@ -911,13 +1024,11 @@ def run_ratings() -> RatingsSummary:
     # Collect unique court events for sequential global rating
     court_events = _collect_court_events(standings_files, players_by_name)
 
-    # Pre-compute sequential global ratings (used below, replaces per-player batch call)
     baselines_all = {
         k: p["dynamic_rating_baseline"]
         for k, p in players_by_name.items()
         if p.get("dynamic_rating_baseline") is not None
     }
-    global_sequential = _compute_global_sequential(court_events, baselines_all)
 
     # Count total match weeks per division (for deployment rate calculation)
     weeks_by_div: dict[str, int] = {}
@@ -930,6 +1041,21 @@ def run_ratings() -> RatingsSummary:
                 if not m.get("pending") and m.get("date"):
                     dates.add(m["date"])
         weeks_by_div[ntrp] = len(dates)
+
+    # --- Per-division sequential ratings ---
+    # Chronological: each match sees opponents at their running rating AT THAT DATE,
+    # not frozen baselines. The match history accumulates with locked-in opponent
+    # ratings so _compute_v8_rating after each date is historically consistent.
+    # Fully siloed: 3.0 events only feed 3.0 ratings; 3.5 events only feed 3.5 ratings.
+    seq_30_finals, seq_30_timeline = _compute_division_sequential(
+        court_events, "3.0", baselines_all, weeks_by_div.get("3.0", 4),
+    )
+    seq_35_finals, seq_35_timeline = _compute_division_sequential(
+        court_events, "3.5", baselines_all, weeks_by_div.get("3.5", 4),
+    )
+
+    # --- Global sequential (cross-division, existing approach) ---
+    global_sequential = _compute_global_sequential(court_events, baselines_all)
 
     for player in players:
         k = _name_key(player.get("name", ""))
@@ -945,6 +1071,8 @@ def run_ratings() -> RatingsSummary:
             player["global_rating"] = baseline
             player["rating_30"] = baseline
             player["rating_35"] = baseline
+            player["rating_timeline_30"] = {}
+            player["rating_timeline_35"] = {}
             summary.players_skipped += 1
             continue
 
@@ -959,24 +1087,17 @@ def run_ratings() -> RatingsSummary:
         else:
             primary_ntrp = "3.0"
 
-        # Per-division ratings: SILOED, each based only on that division's matches
-        for ntrp_key, sfx in [("3.0", "30"), ("3.5", "35")]:
-            div_matches = [m for m in matches if m.division == ntrp_key]
-            n_weeks = weeks_by_div.get(ntrp_key, 4)
-            if div_matches:
-                player[f"rating_{sfx}"] = _compute_v8_rating(
-                    baseline, div_matches,
-                    n_total_weeks=n_weeks, division=ntrp_key,
-                )
-            else:
-                player[f"rating_{sfx}"] = baseline
+        # Per-division ratings and timelines from sequential computation
+        player["rating_30"] = seq_30_finals.get(k, baseline)
+        player["rating_35"] = seq_35_finals.get(k, baseline)
+        player["rating_timeline_30"] = seq_30_timeline.get(k, {})
+        player["rating_timeline_35"] = seq_35_timeline.get(k, {})
 
-        # current_division_rating = the primary division's siloed rating
-        player["current_division_rating"] = player.get(f"rating_{primary_ntrp.replace('.','')}", baseline)
+        # current_division_rating = primary division's sequential result
+        sfx_primary = primary_ntrp.replace(".", "")
+        player["current_division_rating"] = player[f"rating_{sfx_primary}"]
 
-        # Global rating: sequential cross-division signal — only meaningful for players
-        # who have matches in BOTH divisions. For single-division players, global = their
-        # siloed rating (no cross-division data to add), so no diff will be displayed.
+        # Global: sequential cross-division — only meaningful for cross-listed players
         has_30 = any(m.division == "3.0" for m in matches)
         has_35 = any(m.division == "3.5" for m in matches)
         if has_30 and has_35:
@@ -1120,41 +1241,8 @@ def run_ratings_iterative(
     else:
         converged_at = max_iterations
 
-    # Promote converged iterative ratings to primary fields.
-    # The single-pass run_ratings() used frozen pre-season baselines for opponent
-    # strength, which badly misrepresents mid-season matchups (e.g. a player with
-    # baseline 2.18 who has already proved she's 2.74 by week 4 is treated as 2.18
-    # in every single-pass match calculation — making Kim Knotts' even loss look
-    # like a major upset). The iterative ratings converge to self-consistent values
-    # where everyone's opponent strength reflects computed (not frozen) ratings.
-    # These are the numbers we want displayed and used for all downstream logic.
-    all_records_final = _collect_match_records(standings_files, players_by_name)
-    active_keys = {k for k, ms in all_records_final.items() if ms}
-
-    for player in players:
-        k = _name_key(player.get("name", ""))
-        if k not in active_keys:
-            continue
-        div = player.get("division", "")
-        primary_ntrp = "3.5" if "3.5" in div else "3.0"
-
-        r30 = player.get("iter_rating_30")
-        r35 = player.get("iter_rating_35")
-        if r30 is not None:
-            player["rating_30"] = r30
-        if r35 is not None:
-            player["rating_35"] = r35
-        # current_division_rating → primary division's iterative result
-        if primary_ntrp == "3.0" and r30 is not None:
-            player["current_division_rating"] = r30
-        elif primary_ntrp == "3.5" and r35 is not None:
-            player["current_division_rating"] = r35
-        # global_rating → iterative global (cross-division players already have this)
-        rg = player.get("iter_global_rating")
-        if rg is not None:
-            player["global_rating"] = rg
-
-    # Persist everything (iter_rating_* fields + promoted primary fields)
+    # Persist iter_rating_* fields to disk (diagnostic only — primary ratings
+    # are set by _compute_division_sequential in run_ratings())
     _save(PLAYERS_JSON, players)
 
     if verbose:

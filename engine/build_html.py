@@ -598,6 +598,8 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
     # Build name → baseline and name → new (division) rating lookups
     _baseline_by_name: dict[str, str] = {}
     _new_by_name: dict[str, str] = {}
+    # name → {date: pre-match rating} for point-in-time display
+    _timeline_by_name: dict[str, dict[str, float]] = {}
     _team_by_name: dict[str, str] = {}
     if players:
         for p in players:
@@ -616,6 +618,10 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                     _new_by_name[norm] = f"{float(raw_new):.2f}"
                 except (ValueError, TypeError):
                     pass
+            # Timeline: per-date pre-match rating stored by sequential computation
+            timeline = p.get(f"rating_timeline_{sfx}") if sfx else None
+            if timeline and isinstance(timeline, dict):
+                _timeline_by_name[norm] = {k: float(v) for k, v in timeline.items()}
             # Include all team fields so swap detection works for cross-listed players
             for _tf in ("team", "team_30", "team_35"):
                 _tv = p.get(_tf)
@@ -628,14 +634,26 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         """Normalise a player name for data-pkey attribute."""
         return re.sub(r"[^a-z0-9]", "-", name.strip().lower())
 
-    def _render_players(raw: str) -> str:
-        """Wrap each player name in a clickable span with rating badge (base + new)."""
+    def _render_players(raw: str, match_date: str = "") -> str:
+        """Wrap each player name in a clickable span with rating badge (base + new).
+
+        When match_date is provided and the player has a sequential rating timeline,
+        data-new shows the player's rating going *into* that match (based on all
+        prior matches in the division), not their final end-of-season rating.
+        """
         parts = [p.strip() for p in raw.split("/") if p.strip()]
         rendered = []
         for name in parts:
             nkey = re.sub(r"\s+", " ", name.lower())
             base_r = _baseline_by_name.get(nkey, "")
-            new_r  = _new_by_name.get(nkey, "")
+            # Point-in-time new rating: use timeline entry for this date if available,
+            # otherwise fall back to final rating (covers players with no matches yet).
+            if match_date and nkey in _timeline_by_name:
+                tl = _timeline_by_name[nkey]
+                pit = tl.get(match_date)
+                new_r = f"{pit:.2f}" if pit is not None else _new_by_name.get(nkey, "")
+            else:
+                new_r = _new_by_name.get(nkey, "")
             # Embed both ratings as data attributes; text defaults to new rating.
             # JS setResultRatingMode() swaps displayed text without re-rendering.
             if base_r or new_r:
@@ -716,11 +734,11 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                         ph_raw = ln.get("players_home", "")
                         pa_raw = ln.get("players_away", "")
                         # Show "default" for empty/N/A player slots
-                        def _default_or_render(raw):
+                        def _default_or_render(raw, _mdate=m["date"]):
                             s = raw.strip()
                             if not s or s.upper() == "N/A":
                                 return '<em class="default-marker">default</em>'
-                            return _render_players(raw)
+                            return _render_players(raw, _mdate)
                         left = _default_or_render(ph_raw)
                         right = _default_or_render(pa_raw)
                         sc = _esc(ln.get("score", ""))
