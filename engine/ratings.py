@@ -1120,7 +1120,41 @@ def run_ratings_iterative(
     else:
         converged_at = max_iterations
 
-    # Persist iter_rating_* fields to disk
+    # Promote converged iterative ratings to primary fields.
+    # The single-pass run_ratings() used frozen pre-season baselines for opponent
+    # strength, which badly misrepresents mid-season matchups (e.g. a player with
+    # baseline 2.18 who has already proved she's 2.74 by week 4 is treated as 2.18
+    # in every single-pass match calculation — making Kim Knotts' even loss look
+    # like a major upset). The iterative ratings converge to self-consistent values
+    # where everyone's opponent strength reflects computed (not frozen) ratings.
+    # These are the numbers we want displayed and used for all downstream logic.
+    all_records_final = _collect_match_records(standings_files, players_by_name)
+    active_keys = {k for k, ms in all_records_final.items() if ms}
+
+    for player in players:
+        k = _name_key(player.get("name", ""))
+        if k not in active_keys:
+            continue
+        div = player.get("division", "")
+        primary_ntrp = "3.5" if "3.5" in div else "3.0"
+
+        r30 = player.get("iter_rating_30")
+        r35 = player.get("iter_rating_35")
+        if r30 is not None:
+            player["rating_30"] = r30
+        if r35 is not None:
+            player["rating_35"] = r35
+        # current_division_rating → primary division's iterative result
+        if primary_ntrp == "3.0" and r30 is not None:
+            player["current_division_rating"] = r30
+        elif primary_ntrp == "3.5" and r35 is not None:
+            player["current_division_rating"] = r35
+        # global_rating → iterative global (cross-division players already have this)
+        rg = player.get("iter_global_rating")
+        if rg is not None:
+            player["global_rating"] = rg
+
+    # Persist everything (iter_rating_* fields + promoted primary fields)
     _save(PLAYERS_JSON, players)
 
     if verbose:
