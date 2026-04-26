@@ -634,6 +634,40 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         """Normalise a player name for data-pkey attribute."""
         return re.sub(r"[^a-z0-9]", "-", name.strip().lower())
 
+    def _date_to_sort_key(d: str) -> tuple:
+        """Convert M/D/YYYY string to (YYYY, MM, DD) tuple for comparison."""
+        try:
+            m, day, y = d.split("/")
+            return (int(y), int(m), int(day))
+        except Exception:
+            return (0, 0, 0)
+
+    def _pit_rating(nkey: str, match_date: str) -> str:
+        """Return the point-in-time rating for a player going into match_date.
+
+        Priority:
+        1. Exact timeline entry for match_date (player played that date → pre-match snapshot)
+        2. Most recent timeline entry BEFORE match_date (last known rating)
+        3. Baseline (player hadn't played yet in this division)
+        4. Final season rating (no timeline at all — e.g. opponents from other divisions)
+        """
+        if nkey not in _timeline_by_name:
+            return _new_by_name.get(nkey, "")
+        tl = _timeline_by_name[nkey]
+        # Exact hit
+        if match_date in tl:
+            return f"{tl[match_date]:.2f}"
+        # Most recent entry strictly before match_date
+        match_key = _date_to_sort_key(match_date)
+        prior = [(k, v) for k, v in tl.items() if _date_to_sort_key(k) < match_key]
+        if prior:
+            # Take the latest prior entry
+            latest_k, latest_v = max(prior, key=lambda kv: _date_to_sort_key(kv[0]))
+            return f"{latest_v:.2f}"
+        # No timeline entries before this date → player hadn't played yet → use baseline
+        base = _baseline_by_name.get(nkey, "")
+        return base if base else _new_by_name.get(nkey, "")
+
     def _render_players(raw: str, match_date: str = "") -> str:
         """Wrap each player name in a clickable span with rating badge (base + new).
 
@@ -646,12 +680,11 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         for name in parts:
             nkey = re.sub(r"\s+", " ", name.lower())
             base_r = _baseline_by_name.get(nkey, "")
-            # Point-in-time new rating: use timeline entry for this date if available,
-            # otherwise fall back to final rating (covers players with no matches yet).
-            if match_date and nkey in _timeline_by_name:
-                tl = _timeline_by_name[nkey]
-                pit = tl.get(match_date)
-                new_r = f"{pit:.2f}" if pit is not None else _new_by_name.get(nkey, "")
+            # Point-in-time new rating via timeline lookup (falls back to baseline
+            # if player hadn't played yet — avoids showing end-of-season rating
+            # on default lines or weeks before their first actual match).
+            if match_date:
+                new_r = _pit_rating(nkey, match_date)
             else:
                 new_r = _new_by_name.get(nkey, "")
             # Embed both ratings as data attributes; text defaults to new rating.
