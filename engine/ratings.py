@@ -926,16 +926,26 @@ def _compute_division_sequential(
                 ))
 
         # Recompute rating for each involved player using all their accumulated
-        # match records (each with historically-correct opponent ratings)
+        # match records (each with historically-correct opponent ratings).
+        # Floor: a win-only date can never lower your rating.  The evidence
+        # scaling can make the batch v8 drop slightly when adding a weak win
+        # (the existing loss gets a higher confidence weight with more matches).
+        # That's a batch-recomputation artifact; a win should always hold or improve.
         for pk in involved:
             if pk not in baselines:
                 continue
             recs = accumulated.get(pk)
-            if recs:
-                running[pk] = _compute_v8_rating(
-                    baselines[pk], recs,
-                    n_total_weeks=n_total_weeks, division=division,
-                )
+            if not recs:
+                continue
+            new_r = _compute_v8_rating(
+                baselines[pk], recs,
+                n_total_weeks=n_total_weeks, division=division,
+            )
+            # Check whether ALL of today's matches for this player were wins
+            today_recs = [r for r in recs if r.date == date]
+            if today_recs and all(r.won for r in today_recs):
+                new_r = max(new_r, running[pk])
+            running[pk] = new_r
 
     return running, pre_match
 
