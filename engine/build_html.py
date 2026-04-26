@@ -593,17 +593,27 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
 </table>"""
 
 
-def _results_tab(subflights: list[dict], players: list[dict] | None = None) -> str:
-    # Build name → rating and name → team lookups from players list
-    _rating_by_name: dict[str, str] = {}
+def _results_tab(subflights: list[dict], players: list[dict] | None = None,
+                 sfx: str = "") -> str:
+    # Build name → baseline and name → new (division) rating lookups
+    _baseline_by_name: dict[str, str] = {}
+    _new_by_name: dict[str, str] = {}
     _team_by_name: dict[str, str] = {}
     if players:
         for p in players:
-            raw = p.get("dynamic_rating_baseline")
             norm = re.sub(r"\s+", " ", (p.get("name") or "").strip().lower())
-            if raw is not None:
+            raw_base = p.get("dynamic_rating_baseline")
+            if raw_base is not None:
                 try:
-                    _rating_by_name[norm] = f"{float(raw):.2f}"
+                    _baseline_by_name[norm] = f"{float(raw_base):.2f}"
+                except (ValueError, TypeError):
+                    pass
+            raw_new = p.get(f"rating_{sfx}") if sfx else None
+            if raw_new is None:
+                raw_new = p.get("current_division_rating")
+            if raw_new is not None:
+                try:
+                    _new_by_name[norm] = f"{float(raw_new):.2f}"
                 except (ValueError, TypeError):
                     pass
             # Include all team fields so swap detection works for cross-listed players
@@ -619,12 +629,23 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None) -> s
         return re.sub(r"[^a-z0-9]", "-", name.strip().lower())
 
     def _render_players(raw: str) -> str:
-        """Wrap each player name in a clickable span with optional rating badge."""
+        """Wrap each player name in a clickable span with rating badge (base + new)."""
         parts = [p.strip() for p in raw.split("/") if p.strip()]
         rendered = []
         for name in parts:
-            rating = _rating_by_name.get(re.sub(r"\s+", " ", name.lower()))
-            rating_html = f'<em class="prating">({rating})</em>' if rating else ""
+            nkey = re.sub(r"\s+", " ", name.lower())
+            base_r = _baseline_by_name.get(nkey, "")
+            new_r  = _new_by_name.get(nkey, "")
+            # Embed both ratings as data attributes; text defaults to new rating.
+            # JS setResultRatingMode() swaps displayed text without re-rendering.
+            if base_r or new_r:
+                default_txt = new_r or base_r
+                rating_html = (
+                    f'<em class="prating" data-base="{base_r}" data-new="{new_r}">'
+                    f'({default_txt})</em>'
+                )
+            else:
+                rating_html = ""
             key = _pname_key(name)
             rendered.append(
                 f'<span class="pname" data-pkey="{key}" '
@@ -735,9 +756,18 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None) -> s
                 f'<div id="{tid}" class="rpane{active}">{blocks}</div>\n'
             )
 
+    rating_toggle = (
+        '<div class="re-rating-toggle">'
+        '<span class="re-rtog-label">Ratings:</span>'
+        '<button class="rtab" onclick="setResultRatingMode(\'none\',this)">None</button>'
+        '<button class="rtab" onclick="setResultRatingMode(\'base\',this)">Base</button>'
+        '<button class="rtab on" onclick="setResultRatingMode(\'new\',this)">New</button>'
+        '</div>'
+    )
     return (
-        f'<div class="rtabs" id="re-sf-tabs">{sf_btns}</div>'
-        f'<div class="rtabs scrollable" id="re-tabs">{team_tabs}</div>'
+        rating_toggle
+        + f'<div class="rtabs" id="re-sf-tabs">{sf_btns}</div>'
+        + f'<div class="rtabs scrollable" id="re-tabs">{team_tabs}</div>'
         + rpanes
     )
 
@@ -822,6 +852,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 /* Sub-tabs */
 .rtabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
 .rtabs.scrollable { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+.re-rating-toggle { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+.re-rtog-label { font-size: 11px; color: #888; }
 .rtab { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px;
         font-size: 11px; background: transparent; color: #666; cursor: pointer;
         white-space: nowrap; }
@@ -1015,6 +1047,24 @@ function filterSF(sf, btn, sfTabsId, teamTabsId, prefix) {
 }
 
 // Highlight all occurrences of a player name in the results tab
+function setResultRatingMode(mode, btn) {
+  // Update toggle button state
+  document.querySelectorAll('.re-rating-toggle .rtab').forEach(function(b) {
+    b.classList.remove('on');
+  });
+  btn.classList.add('on');
+  // Update every rating badge in the results pane
+  document.querySelectorAll('.rpane .prating').forEach(function(em) {
+    if (mode === 'none') {
+      em.style.display = 'none';
+    } else {
+      em.style.display = '';
+      var val = mode === 'base' ? em.dataset.base : em.dataset.new;
+      em.textContent = val ? '(' + val + ')' : '';
+    }
+  });
+}
+
 function highlightPlayer(el) {
   var key = el.dataset.pkey;
   if (!key) return;
@@ -1215,7 +1265,7 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict]) -> str:
     standings_html = _standings_tab(subflights, warnings)
     rosters_html = _rosters_tab(subflights, players, ntrp)
     players_html = _players_tab(players, ntrp, subflights)
-    results_html = _results_tab(subflights, players)
+    results_html = _results_tab(subflights, players, sfx=ntrp.replace(".", ""))
     analysis_html = _analysis_tab(ntrp)
 
     tab_defs = [
