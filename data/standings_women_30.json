@@ -7,17 +7,17 @@
       "teams": [
         {
           "team_name": "DTC #3",
-          "team_wins": 5,
+          "team_wins": 6,
           "team_losses": 0,
-          "matches_played": 5,
-          "indiv_wins": 20,
-          "indiv_losses": 5,
-          "sets_won": 43,
-          "sets_lost": 16,
-          "games_won": 277,
-          "games_lost": 170,
-          "games_won_pct": "61.97%",
-          "notes": "Undefeated; top-rated roster in the division. S1 perfect, led by Yarisbel (4–0), the biggest singles threat in the division. Shi (2.74→3.09, 5-0) trending up. Emmy deployed every week."
+          "matches_played": 6,
+          "indiv_wins": 23,
+          "indiv_losses": 7,
+          "sets_won": 53,
+          "sets_lost": 18,
+          "games_won": 332,
+          "games_lost": 198,
+          "games_won_pct": "62.64%",
+          "notes": "Undefeated; top-rated roster in the division. S1 perfect, led by Yarisbel (5–0), the biggest singles threat in the division. Shi (2.74→3.09, 5-0) trending up. Emmy 3–0 at D2."
         },
         {
           "team_name": "SUMMERLIN ARBORS",
@@ -36,16 +36,16 @@
         {
           "team_name": "TPC",
           "team_wins": 3,
-          "team_losses": 2,
-          "matches_played": 5,
-          "indiv_wins": 13,
-          "indiv_losses": 12,
-          "sets_won": 31,
-          "sets_lost": 26,
-          "games_won": 223,
-          "games_lost": 226,
-          "games_won_pct": "49.67%",
-          "notes": "Won big over DTC #2, got swept by Summerlin. Jeralyn (2.81→2.93, 2-0) trending up. Jennifer Blais drops hardest: 2.78→2.60. D1 is the soft spot (2–3 record)."
+          "team_losses": 3,
+          "matches_played": 6,
+          "indiv_wins": 15,
+          "indiv_losses": 15,
+          "sets_won": 33,
+          "sets_lost": 36,
+          "games_won": 251,
+          "games_lost": 281,
+          "games_won_pct": "47.18%",
+          "notes": "Won big over DTC #2, got swept by Summerlin. Jeralyn (2.81→2.93, 2-0) trending up. Rachel Corpuz drops hardest: 2.72→2.61. S2 is the soft spot (2–3 record)."
         },
         {
           "team_name": "ANTHEM CC",
@@ -1326,12 +1326,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779590",
           "home_team": "DTC #3",
           "away_team": "TPC",
-          "team_wins_home": null,
-          "team_wins_away": null,
-          "score": "",
-          "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Completed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Yarisbel Schieck",
+              "players_away": "Rachel Corpuz",
+              "score": "6-2 6-2",
+              "result": "home",
+              "winner_team": "DTC #3",
+              "loser_team": "TPC"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Anna Clark",
+              "players_away": "Amy Arbeli",
+              "score": "6-1 6-2",
+              "result": "home",
+              "winner_team": "DTC #3",
+              "loser_team": "TPC"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lisa Schnitz / Kim Knotts",
+              "players_away": "Jennifer Blais / Danielle Caswell",
+              "score": "3-6 6-2 0-1",
+              "result": "away",
+              "winner_team": "TPC",
+              "loser_team": "DTC #3"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Prexy Tamayo / Kellie Woods",
+              "players_away": "Debbie D'Amato / Meghan Arnold",
+              "score": "6-3 4-6 0-1",
+              "result": "away",
+              "winner_team": "TPC",
+              "loser_team": "DTC #3"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kara Gaston / Christine LaBarre",
+              "players_away": "Trish Metriyakool / Jill Kreston",
+              "score": "6-1 6-1",
+              "result": "home",
+              "winner_team": "DTC #3",
+              "loser_team": "TPC"
+            }
+          ]
         },
         {
           "match_id": "528b382490789027",
@@ -1748,7 +1794,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "DTC #3 leads A undefeated at 5-0. Summerlin (4-2), TPC (3-2), and Anthem (3-2) are in contention. LTF, DTC #2, and Red Rock are at the bottom. Top risers: Shi L Oskooi (DTC #3, 2.74→3.09, 5-0); Meghan Arnold (TPC, 2.60→2.93, 3-0). DTC #3 vs Summerlin (5/2/2026) decides the A title."
+      "subflight_summary": "DTC #3 leads A undefeated at 6-0. Summerlin (4-2) is in contention. TPC, Anthem, and LTF are at the bottom. Top risers: Meghan Arnold (TPC, 2.60→2.96, 4-0); Shi L Oskooi (DTC #3, 2.74→3.09, 5-0). DTC #3 vs Summerlin (5/2/2026) decides the A title."
     },
     {
       "flight_label": "B",
