@@ -505,50 +505,25 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
     # opponents show you belong at a high level, limiting further inflation).
     implied_win_ceiling = max(win_implied) if win_implied else None
 
-    # Ceiling from losses: losing to someone rated X means you're probably not above X.
-    # Only near-peer losses count — see effective_loss_ceil logic below.
-
-    # Build effective ceiling.
+    # --- Win ceiling (Cases A / B / C) ---
     #
     # WIN CEILING:
     #   Case A — win_implied > baseline: wins against strong opponents → hard cap at
-    #     win_implied (prevents inflation above what wins actually prove, e.g. Tayoni)
+    #     win_implied (prevents inflation above what wins actually prove).
     #   Case B — win_implied is CLOSE to baseline (gap ≤ WIN_CEIL_GAP) AND player
-    #     faced at least one opponent at/above their baseline: wins are near-level
-    #     evidence → no ceiling (Arika at 3.597 beating 3.54 opponents proves she
-    #     belongs at her level — don't cap her at 3.56).
-    #     Case B is BLOCKED when the player individually outrated every opponent they
-    #     beat: winning 6-1 6-2 against opponents all below your baseline is expected
-    #     performance, not proof of higher ability — even if the implied rating lands
-    #     close to baseline via score gaps. A weak partner can make the pair "even"
-    #     against below-baseline opponents, artificially raising the surprise weight
-    #     and inflating adjustments to the cap (Kristin Stowe: 2.63 with 2.36 partner
-    #     vs 2.50 opponents scores 6-2 6-1 → pair expected ≈ 50%, wins look like
-    #     mild upsets, but from an individual standpoint this is just expected tennis).
+    #     faced at least one opponent at/above their baseline: near-level wins →
+    #     no ceiling (Arika beating 3.54 opponents at 3.597 proves she belongs there).
+    #     Case B is BLOCKED when player individually outrated every opponent beaten:
+    #     weak partner can make pair even-odds vs below-baseline opponents, artificially
+    #     inflating adjustments (Kristin Stowe 2.63 with 2.36 partner vs 2.50 opps).
     #   Case C — wins far below baseline OR player outrated every opponent they beat:
-    #     cap at baseline + small evidence nudge.
-    #     A player 5-0 vs weaker opponents still deserves a small upward signal
-    #     (Yarisbel 5-0: up to baseline + min(0.08, 5×0.02) = baseline + 0.08).
-    #
-    # LOSS CEILING:
-    #   Apply when loss_implied ≥ (baseline - LOSS_CEIL_GAP): losing to a
-    #     near-baseline or stronger opponent limits how high your rating can go.
-    #   Skip when loss_implied < (baseline - LOSS_CEIL_GAP): an upset loss to a
-    #     much weaker opponent is handled by match adjustments, not a hard ceiling
-    #     (Karen Kiyono 3.33 losing to a 3.00 player shouldn't hard-cap her at 2.96)
+    #     cap at baseline + small evidence-based nudge (+0.02 per win, max +0.08).
     WIN_CEIL_GAP = 0.05    # wins within 0.05 below baseline → near-level, no ceiling
-    LOSS_CEIL_GAP = 0.15   # losses must be within 0.15 below baseline to apply ceiling
 
-    # Max opponent rating faced across all wins (for individual-advantage check).
-    # Doubles: _implied_rating_from_match already uses max(opps) for wins, so use
-    # max(opponent_ratings) here too — the strongest player beaten is what matters.
     max_opp_beaten = max(
         (max(m.opponent_ratings) for m in matches if m.won and m.opponent_ratings),
         default=None,
     )
-    # True when the player's baseline already exceeds every opponent they beat.
-    # In this case their wins are expected individual performance even if a weak
-    # partner made the pair appear even-odds — Case B must not apply.
     player_outrated_all_opps = (
         max_opp_beaten is not None and max_opp_beaten < baseline
     )
@@ -560,47 +535,45 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
         elif baseline - implied_win_ceiling <= WIN_CEIL_GAP and not player_outrated_all_opps:
             effective_win_ceil = None                         # Case B — no cap
         else:
-            # Case C — wins against weaker opponents or implied far below baseline:
-            # allow only a small evidence-based nudge above baseline.
             n_wins = sum(1 for m in matches if m.won)
             evidence_nudge = min(0.08, n_wins * 0.02)
-            effective_win_ceil = baseline + evidence_nudge
-
-    # LOSS CEILING: apply only from losses where the opponent was near the player's
-    # level (implied >= baseline - LOSS_CEIL_GAP). Upset losses (implied far below
-    # baseline) are handled by match adjustments, not a hard ceiling — but they
-    # must NOT disable the ceiling from OTHER near-peer losses.
-    # Bug fix: the old code used min(loss_implied) globally, so a single below-
-    # threshold upset loss could cancel ALL loss ceilings, even valid near-peer ones
-    # (Kim Knotts losing to a 2.18+2.78 team produced implied=2.46, below the 2.59
-    # threshold, which silently suppressed the valid ceiling from her TPC loss at
-    # implied=2.71 — letting her rate higher than Emmy who only lost to near-peers).
-    effective_loss_ceil: Optional[float] = None
-    if loss_implied:
-        near_peer_losses = [r for r in loss_implied if r >= baseline - LOSS_CEIL_GAP]
-        if near_peer_losses:
-            effective_loss_ceil = min(near_peer_losses)
-
-    if effective_win_ceil is not None and effective_loss_ceil is not None:
-        implied_ceiling = min(effective_win_ceil, effective_loss_ceil)
-    elif effective_win_ceil is not None:
-        implied_ceiling = effective_win_ceil
-    elif effective_loss_ceil is not None:
-        implied_ceiling = effective_loss_ceil
-    else:
-        implied_ceiling = None
+            effective_win_ceil = baseline + evidence_nudge    # Case C
 
     # --- Implied-rating constraints ---
     FLOOR_BLEND = 0.50
 
-    # Floor: if you beat someone strong, you must be at least near their level.
+    # Floor: strong win proves a lower bound — blend up toward implied_floor.
     if implied_floor is not None and surprise_rating < implied_floor:
         gap = implied_floor - surprise_rating
         surprise_rating += gap * FLOOR_BLEND
 
-    # Hard ceiling: cap at what opponents prove. No blending.
-    if implied_ceiling is not None and surprise_rating > implied_ceiling:
-        surprise_rating = implied_ceiling
+    # Win ceiling: hard cap at what wins prove you're capable of.
+    if effective_win_ceil is not None and surprise_rating > effective_win_ceil:
+        surprise_rating = effective_win_ceil
+
+    # --- Per-loss soft pulls ---
+    # Each loss independently blends the rating toward that loss's implied value.
+    # More unexpected the loss (bigger upset), the harder the pull.
+    #
+    # Unlike the old hard ceiling, no single loss completely overrides win evidence.
+    # Unlike the old threshold filter, upset losses aren't ignored — they pull harder
+    # than near-peer losses, because losing to a much weaker team is more damning
+    # than a close loss to a near-peer (variance on a bad day).
+    #
+    # Pull strength: base 30% blend, up to 65% for extreme upsets (opponent 0.40+
+    # below baseline). Losses processed worst-first (lowest implied) so the most
+    # damning loss has first impact; later losses may not apply if rating already
+    # pulled below their implied.
+    LOSS_BLEND_BASE  = 0.30   # pull toward loss_implied for any loss
+    LOSS_BLEND_UPSET = 0.35   # additional blend at max upset severity (0.40+ below baseline)
+
+    for loss_val in sorted(loss_implied):          # ascending = worst upset first
+        if surprise_rating > loss_val:
+            gap = surprise_rating - loss_val
+            # upset_severity: 0 for near-peer (loss_val ≈ baseline), 1 for big upset
+            upset_severity = min(1.0, max(0.0, (baseline - loss_val) / 0.40))
+            blend = LOSS_BLEND_BASE + LOSS_BLEND_UPSET * upset_severity
+            surprise_rating -= gap * blend
 
     return round(surprise_rating, 4)
 
