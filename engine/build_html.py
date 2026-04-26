@@ -158,6 +158,27 @@ def _global_diff_span(glob, div_rating) -> str:
         return ""
 
 
+def _baseline_diff_span(curr, baseline) -> tuple[str, str]:
+    """
+    Returns (html, sort_key) for the New-vs-Baseline diff column.
+    html: coloured ±0.XX span (or '–' if missing).
+    sort_key: numeric string for data-sort attribute.
+    """
+    if curr is None or baseline is None:
+        return "–", "-999"
+    try:
+        c, b = float(curr), float(baseline)
+        diff = c - b
+        sort_key = f"{diff:.4f}"
+        if abs(diff) < 0.005:
+            return "<span class='gdiff-zero'>0</span>", sort_key
+        sign = "+" if diff > 0 else ""
+        cls = "gdiff-up" if diff > 0 else "gdiff-dn"
+        return f'<span class="{cls}">{sign}{diff:.2f}</span>', sort_key
+    except Exception:
+        return "–", "-999"
+
+
 # ---------------------------------------------------------------------------
 # Validation
 # ---------------------------------------------------------------------------
@@ -534,6 +555,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
                 _wl_sort = str(_w * 100 - _l)
             except (ValueError, IndexError):
                 pass
+        _diff_html, _diff_sort = _baseline_diff_span(curr, baseline)
         rows += (
             f"<tr data-sf='{_esc(sf)}'>"
             f"<td class='pname'>{_esc(p.get('name',''))}</td>"
@@ -542,7 +564,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
             f"<td>{_esc(ntrp_r)}</td>"
             f"<td>{_esc(_fmt_rating(baseline))}</td>"
             f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
-            f"<td>{_global_diff_span(glob, curr)}</td>"
+            f"<td data-sort='{_diff_sort}'>{_diff_html}</td>"
             f"<td data-sort='{_wl_sort}'>{_esc(_wl_str)}</td>"
             f"</tr>\n"
         )
@@ -564,7 +586,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
     <th>NTRP</th>
     <th class="sortable" onclick="sortAP(4)">Base ↕</th>
     <th class="sortable" onclick="sortAP(5)">New ↕</th>
-    <th class="sortable" onclick="sortAP(6)">Gbl ±</th>
+    <th class="sortable" onclick="sortAP(6)">Diff ↕</th>
     <th class="sortable" onclick="sortAP(7)">W–L ↕</th>
   </tr></thead>
   <tbody>{rows}</tbody>
@@ -902,8 +924,9 @@ tr:last-child td { border-bottom: none; }
 /* Row hover highlight */
 .st-table tbody tr:hover, .rpane table tbody tr:hover, #ap-table tbody tr:hover { background: #f5f7fa; }
 /* Global diff column */
-.gdiff-up { font-size: 10px; color: #5a8a2a; font-weight: 500; }
-.gdiff-dn { font-size: 10px; color: #a04000; font-weight: 500; }
+.gdiff-up   { font-size: 10px; color: #5a8a2a; font-weight: 500; }
+.gdiff-dn   { font-size: 10px; color: #a04000; font-weight: 500; }
+.gdiff-zero { font-size: 10px; color: #999; }
 /* Notes column */
 .notes-cell { font-size: 10px; color: #555; line-height: 1.35; min-width: 180px; max-width: 320px; }
 /* Walkover/default win badge in roster notes */
