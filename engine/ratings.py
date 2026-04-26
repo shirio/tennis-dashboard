@@ -289,17 +289,39 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
         surprise = (1.0 if record.won else 0.0) - expected
         return max(-cap, min(cap, surprise * sw * scaling))
 
+    # --- Pre-compute per-set dominance and player-won-set flags ---
+    player_won_set_arr: list[bool] = []
+    dom_arr: list[float] = []
+    for winner_games, loser_games, first_side_won in sets:
+        player_won_set_arr.append(first_side_won == record.won)
+        dom_arr.append(_set_dominance(winner_games, loser_games))
+
+    # --- 3-set tiebreak Scenario 2 attenuation ---
+    # Scenario 2: Player LOST the match, won set 1 more dominantly than the
+    # opponent won set 2. Going to a tiebreak reveals the dominant set 1 win
+    # overstated the player's advantage — attenuate set 1's weight so it
+    # contributes no more than set 2 did (scale factor = dom_set2 / dom_set1).
+    # Example: Kim Knotts wins set 1 6-1 (dom=0.75) but loses set 2 6-4
+    # (dom=0.25) and tiebreak → set 1 weight becomes 0.25/0.75 ≈ 0.33,
+    # so effective dom_set1 = 0.75 × 0.33 = 0.25 — same scale as set 2.
+    set_dom_weights = [1.0] * len(sets)
+    if len(sets) == 3 and not record.won:
+        pws0, pws1, pws2 = player_won_set_arr[0], player_won_set_arr[1], player_won_set_arr[2]
+        dom0, dom1 = dom_arr[0], dom_arr[1]
+        if pws0 and not pws1 and not pws2 and dom0 > dom1 and dom0 > 0:
+            set_dom_weights[0] = dom1 / dom0
+
     # Set-by-set signal weighted by score dominance — no SW here.
     # Score margins are direct performance evidence: Yarisbel winning 6-1 6-3 is
     # a real signal regardless of whether the win was expected. SW would zero out
     # dominant wins against weaker opponents, masking genuine performance quality.
     total_surprise = 0.0
     total_dominance = 0.0
-    for winner_games, loser_games, first_side_won in sets:
-        player_won_set = (first_side_won == record.won)
+    for i, (winner_games, loser_games, first_side_won) in enumerate(sets):
+        player_won_set = player_won_set_arr[i]
         actual_set = 1.0 if player_won_set else 0.0
         base_surprise = actual_set - expected
-        dom = _set_dominance(winner_games, loser_games)
+        dom = dom_arr[i] * set_dom_weights[i]
         total_surprise += base_surprise * dom       # ← no SW on score signal
         total_dominance += dom
 
