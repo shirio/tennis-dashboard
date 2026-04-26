@@ -350,13 +350,22 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
 # ---------------------------------------------------------------------------
 
 _SCORE_GAP = {
-    0: 0.10,   # 6-0 → dominant (bagel vs 2.95 implies ~3.05, not 3.17)
-    1: 0.07,   # 6-1 → strong
-    2: 0.05,   # 6-2 → solid
-    3: 0.03,   # 6-3 → moderate
-    4: 0.01,   # 6-4 → slight
-    5: 0.00,   # 7-5 → essentially even
-    6: 0.00,   # 7-6 → tiebreak, even
+    # What rating advantage (above opponent) is implied by winning a set with
+    # this many loser-games?  Calibrated so that the most-likely explanation for
+    # a 6-N score matches the win-probability table:
+    #   6-0 bagel     → opponent won nothing  → ~0.45 gap  (82-88% win prob per game)
+    #   6-1           → opponent won 1 game   → ~0.28 gap  (~75% win prob)
+    #   6-2           → opponent won 2 games  → ~0.18 gap  (~68% win prob)
+    #   6-3           → solid but contested   → ~0.10 gap  (~60% win prob)
+    #   6-4           → moderate edge         → ~0.05 gap  (~55% win prob)
+    #   7-5 / 7-6     → near-even, slight edge
+    0: 0.45,
+    1: 0.30,
+    2: 0.18,
+    3: 0.10,
+    4: 0.05,
+    5: 0.02,
+    6: 0.00,   # tiebreak — treat as even
 }
 
 
@@ -540,12 +549,6 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
             effective_win_ceil = baseline + evidence_nudge    # Case C
 
     # --- Implied-rating constraints ---
-    FLOOR_BLEND = 0.50
-
-    # Floor: strong win proves a lower bound — blend up toward implied_floor.
-    if implied_floor is not None and surprise_rating < implied_floor:
-        gap = implied_floor - surprise_rating
-        surprise_rating += gap * FLOOR_BLEND
 
     # Win ceiling: hard cap at what wins prove you're capable of.
     if effective_win_ceil is not None and surprise_rating > effective_win_ceil:
@@ -555,25 +558,28 @@ def _compute_v8_rating(baseline: float, matches: list[MatchRecord],
     # Each loss independently blends the rating toward that loss's implied value.
     # More unexpected the loss (bigger upset), the harder the pull.
     #
-    # Unlike the old hard ceiling, no single loss completely overrides win evidence.
-    # Unlike the old threshold filter, upset losses aren't ignored — they pull harder
-    # than near-peer losses, because losing to a much weaker team is more damning
-    # than a close loss to a near-peer (variance on a bad day).
-    #
     # Pull strength: base 30% blend, up to 65% for extreme upsets (opponent 0.40+
     # below baseline). Losses processed worst-first (lowest implied) so the most
     # damning loss has first impact; later losses may not apply if rating already
     # pulled below their implied.
-    LOSS_BLEND_BASE  = 0.30   # pull toward loss_implied for any loss
-    LOSS_BLEND_UPSET = 0.35   # additional blend at max upset severity (0.40+ below baseline)
+    LOSS_BLEND_BASE  = 0.30
+    LOSS_BLEND_UPSET = 0.35
 
     for loss_val in sorted(loss_implied):          # ascending = worst upset first
         if surprise_rating > loss_val:
             gap = surprise_rating - loss_val
-            # upset_severity: 0 for near-peer (loss_val ≈ baseline), 1 for big upset
             upset_severity = min(1.0, max(0.0, (baseline - loss_val) / 0.40))
             blend = LOSS_BLEND_BASE + LOSS_BLEND_UPSET * upset_severity
             surprise_rating -= gap * blend
+
+    # Win floor — enforced AFTER loss pulls.
+    # Wins prove a hard lower bound on ability: if you beat someone rated X with
+    # score Y, you've demonstrated you're at least X+Y level regardless of losses.
+    # Applying this after loss pulls ensures dominant wins anchor the rating even
+    # when prior losses in the sample would otherwise drag it below that proof.
+    # (A 6-1 6-1 win against a 2.79 player proves ≥ 3.09; losses can't override that.)
+    if implied_floor is not None and surprise_rating < implied_floor:
+        surprise_rating = implied_floor
 
     return round(surprise_rating, 4)
 
@@ -926,26 +932,16 @@ def _compute_division_sequential(
                 ))
 
         # Recompute rating for each involved player using all their accumulated
-        # match records (each with historically-correct opponent ratings).
-        # Floor: a win-only date can never lower your rating.  The evidence
-        # scaling can make the batch v8 drop slightly when adding a weak win
-        # (the existing loss gets a higher confidence weight with more matches).
-        # That's a batch-recomputation artifact; a win should always hold or improve.
+        # match records (each with historically-correct opponent ratings)
         for pk in involved:
             if pk not in baselines:
                 continue
             recs = accumulated.get(pk)
-            if not recs:
-                continue
-            new_r = _compute_v8_rating(
-                baselines[pk], recs,
-                n_total_weeks=n_total_weeks, division=division,
-            )
-            # Check whether ALL of today's matches for this player were wins
-            today_recs = [r for r in recs if r.date == date]
-            if today_recs and all(r.won for r in today_recs):
-                new_r = max(new_r, running[pk])
-            running[pk] = new_r
+            if recs:
+                running[pk] = _compute_v8_rating(
+                    baselines[pk], recs,
+                    n_total_weeks=n_total_weeks, division=division,
+                )
 
     return running, pre_match
 

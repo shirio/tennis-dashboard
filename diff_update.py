@@ -551,6 +551,106 @@ def run(dry_run: bool = False) -> int:
     return total_updated
 
 
+PLAYERS_JSON = DATA / "players.json"
+TR_PROFILE_URL = "https://www.tennisrecord.com/adult/profile.aspx?playername={name}"
+
+
+def _lookup_and_add_unknown_players(standings_30: dict, standings_35: dict) -> int:
+    """
+    Scan match scorecard lines for player names that aren't in players.json.
+    For each unknown player, fetch their tennisrecord.com profile to get their
+    dynamic baseline and NTRP, then add them to players.json.
+
+    Returns the number of new players added.
+    """
+    import requests
+    from urllib.parse import quote
+    from scrape_players import parse_player_profile
+
+    players: list[dict] = json.loads(PLAYERS_JSON.read_text()) if PLAYERS_JSON.exists() else []
+    known_names = {p["name"].strip().lower() for p in players}
+
+    # Collect every player name that appears in any match scorecard line
+    names_in_matches: set[str] = set()
+    for standings, ntrp, team_field in [
+        (standings_30, "3.0", "team_30"),
+        (standings_35, "3.5", "team_35"),
+    ]:
+        for sf in standings.get("subflights", []):
+            for match in sf.get("matches", []):
+                if match.get("pending"):
+                    continue
+                for ln in match.get("lines", []):
+                    for field in ("players_home", "players_away"):
+                        raw = ln.get(field, "")
+                        for part in re.split(r"\s*/\s*", raw):
+                            name = part.strip()
+                            if name and name.upper() not in ("N/A", "DEFAULT", "NOT AVAILABLE"):
+                                names_in_matches.add(name)
+
+    unknown = [n for n in sorted(names_in_matches) if n.lower() not in known_names]
+    if not unknown:
+        return 0
+
+    print(f"\n[player lookup] {len(unknown)} unknown player(s) in match data: {unknown}")
+
+    session = requests.Session()
+    session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; tennis-dashboard)"})
+    added = 0
+
+    for name in unknown:
+        url = TR_PROFILE_URL.format(name=quote(name))
+        try:
+            resp = session.get(url, timeout=10)
+            if resp.status_code != 200:
+                print(f"  [skip] {name}: HTTP {resp.status_code}")
+                continue
+            profile = parse_player_profile(resp.text)
+            dynamic = profile.get("dynamic_rating")
+            ntrp_full = profile.get("ntrp_full") or ""
+            ntrp_level = ntrp_full.split()[0] if ntrp_full else None
+
+            if dynamic is None:
+                print(f"  [skip] {name}: no dynamic rating found on tennisrecord.com")
+                continue
+
+            # Determine which division(s) this player plays in based on match data
+            ntrp_divs: set[str] = set()
+            for standings, ntrp in [(standings_30, "3.0"), (standings_35, "3.5")]:
+                for sf in standings.get("subflights", []):
+                    for match in sf.get("matches", []):
+                        for ln in match.get("lines", []):
+                            for field in ("players_home", "players_away"):
+                                if name in re.split(r"\s*/\s*", ln.get(field, "")):
+                                    ntrp_divs.add(ntrp)
+
+            primary_div = sorted(ntrp_divs)[0] if ntrp_divs else (ntrp_level or "3.0")
+            new_entry: dict = {
+                "name": name,
+                "dynamic_rating_baseline": round(dynamic, 4),
+                "ntrp_rating": ntrp_level or primary_div,
+                "division": f"{primary_div} Women",
+            }
+            if "3.0" in ntrp_divs:
+                new_entry["team_30"] = None   # team unknown; will be filled by roster scrape
+            if "3.5" in ntrp_divs:
+                new_entry["team_35"] = None
+
+            players.append(new_entry)
+            known_names.add(name.lower())
+            added += 1
+            print(f"  [added] {name}: baseline={dynamic:.4f}  ntrp={ntrp_full}  div={ntrp_divs}")
+
+        except Exception as e:
+            print(f"  [error] {name}: {e}")
+
+    if added:
+        PLAYERS_JSON.write_text(json.dumps(players, indent=2, ensure_ascii=False))
+        print(f"[player lookup] {added} new player(s) added to players.json")
+
+    return added
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="Show diffs but don't fetch details")
@@ -586,6 +686,9 @@ def main():
             lst.append(sf)
         all_ntrp.append((ntrp, lst))
     _compute_player_stats_from_scorecards(all_ntrp)
+
+    # Look up any player names in match data that aren't yet in players.json
+    _lookup_and_add_unknown_players(s30, s35)
 
     # Run ratings
     from engine.ratings import run_ratings

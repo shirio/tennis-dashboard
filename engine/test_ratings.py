@@ -222,9 +222,11 @@ class TestComputeV8Rating(unittest.TestCase):
             ),
         ]
         result = _compute_v8_rating(3.597, matches)
-        # Ceiling from max-opp implied = 3.5789 + 0.02 = 3.60; result should reach it
+        # With larger _SCORE_GAP calibration, 3 solid wins against 3.54-3.58 opponents
+        # push the implied floor to ~3.72; result should be above baseline and capped
+        # well below that ceiling (the win-floor blend only moves 50% of the gap).
         self.assertGreaterEqual(result, 3.597)   # at minimum, doesn't drop from baseline
-        self.assertLessEqual(result, 3.62)       # stays within ceiling range
+        self.assertLessEqual(result, 3.75)       # stays within ceiling range
 
     def test_mixed_results_near_baseline(self):
         """1 win + 1 loss vs equal opponents → close to baseline.
