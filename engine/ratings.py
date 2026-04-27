@@ -418,34 +418,50 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     """
     Per-match adjustment for the incremental sequential system.
 
-    Returns _match_adjustment clamped to ±SEQ_CAP (0.05), with one key rule for wins:
-    the positive cap is scaled by (1 - expected) so that expected wins earn
-    proportionally less than upsets.
+    Two rules govern positive (win) adjustments:
 
-    Scaling formula for wins:  win_cap = SEQ_CAP × (1 − expected_win_prob)
-      • 50/50 match  → win_cap = 0.025  (half the full cap — even contest)
-      • 70% favorite → win_cap = 0.015  (small credit)
-      • 82% favorite → win_cap = 0.009  (near-zero — weak opponents can't inflate rating)
-      • 18% underdog → win_cap = 0.041  (near-full cap — upset earns maximum credit)
+    1. Minimum surprise gate: the win's scenario signal must exceed the
+       expected signal by at least _MIN_WIN_SURPRISE (0.15). Wins that land
+       within the expected range earn nothing — squeezing through a 3-set
+       tiebreak as the heavy favourite is not evidence of a higher rating.
 
-    This prevents a player from inflating their rating by repeatedly beating much
-    weaker opponents. The loss cap is unchanged: a heavy favorite who loses can
-    still drop by the full SEQ_CAP.
+    2. Win cap scaled by (1 − expected): even when a win clears the gate,
+       the maximum credit is proportional to how unexpected it was.
+         • 18% underdog upset  → win_cap ≈ 0.041  (near-full cap)
+         • 50/50 match winner  → win_cap = 0.025
+         • 68% favourite       → win_cap ≈ 0.016
+         • 82% favourite       → win_cap ≈ 0.009  (tiny)
 
-    Underdog protection (expected < 0.50, won=False → adj floored at 0) lives
-    in _match_adjustment.
+    Loss cap is the flat ±SEQ_CAP. Underdogs expected to lose (expected < 0.50)
+    are floored at 0 by _match_adjustment — they are never penalised for
+    expected losses but CAN earn a positive adj for overperforming.
     """
     adj = _match_adjustment(current_rating, record)
     _SEQ_CAP = 0.05
-    if adj > 0 and record.won:
-        # Scale the positive cap by how unexpected the win was.
-        # Re-compute expected here (cheap — no score parsing needed) so this
-        # function stays self-contained.
+    _MIN_WIN_SURPRISE = 0.15   # surplus above expected_signal needed to earn positive credit
+
+    if record.won and adj > 0:
+        # Win produced positive surprise — gate + scaled cap.
         expected = _cross_pair_expected(
             current_rating, record.partner_rating, record.opponent_ratings
         )
+        # Gate: was the win meaningfully above what ratings predicted?
+        # A tiny positive surprise (e.g. 61% favourite barely winning a 3-set tiebreak)
+        # carries no real information — return 0 rather than a misleading small positive.
+        sets = _parse_sets(record.score)
+        if sets:
+            raw_signal = _scenario_signal(sets, record.won)
+            expected_signal = 2.0 * expected - 1.0
+            if raw_signal - expected_signal < _MIN_WIN_SURPRISE:
+                return 0.0
+        # Cleared the gate: scale cap by upset-ness.
         win_cap = _SEQ_CAP * (1.0 - expected)
         return min(win_cap, adj)
+
+    # Win with negative adj (underperformed expectations) OR a loss:
+    # both pass through the flat ±SEQ_CAP clip unchanged.
+    # Wins CAN decrease a rating when the player won less impressively than
+    # their level implies — e.g. an 82% favourite barely surviving 6-4 6-4.
     return max(-_SEQ_CAP, min(_SEQ_CAP, adj))
 
 

@@ -600,12 +600,16 @@ class TestUnderdogFavorite(unittest.TestCase):
         self.assertLess(adj, 0.01,
                         "Heavy favourite crushing a much weaker opponent earns near-zero")
 
-    def test_heavy_favourite_wins_even_tiny(self):
-        """3.10 beats 2.70 with 6-4 6-4 → adj < 0.015."""
+    def test_heavy_favourite_wins_even_drops(self):
+        """3.10 beats 2.70 with 6-4 6-4 → adj < 0 (underperformed).
+        Even+even win by an 82% favourite: raw_signal(0.60) < expected_signal(0.64)
+        → negative surprise → slight rating drop.  Winning CAN hurt you if you
+        won less impressively than your level implies.
+        """
         rec = self._rec(self._HEAVY_FAV, self._WEAK_OPP, won=True, score="6-4 6-4")
         adj = _sequential_match_adj(self._HEAVY_FAV, rec)
-        self.assertLess(adj, 0.015,
-                        "Heavy favourite winning evenly against weak opponent earns small adj")
+        self.assertLess(adj, 0.0,
+                        "Heavy favourite winning barely-evenly against weak opponent should slightly drop")
 
     def test_favourite_near_opp_win_limited(self):
         """3.10 beats 2.92 (gap=0.18, ~68% fav) → adj < 0.02."""
@@ -617,14 +621,16 @@ class TestUnderdogFavorite(unittest.TestCase):
     def test_repeated_expected_wins_capped_total(self):
         """
         5 wins by 3.10 over 2.72–2.92 opponents should not exceed +0.12 total.
-        Yarisbel scenario: all 5 matches are expected wins.
+        Yarisbel scenario: dominant singles wins against clearly weaker opponents.
+        Each match score is convincingly above the expected_signal threshold,
+        so each earns a small positive adj (wins still count when dominant).
         """
         matches = [
-            ("6-4 6-3", [2.78]),
-            ("6-3 6-1", [2.72]),
-            ("6-1 6-3", [2.81]),
-            ("6-1 6-3", [2.97]),
-            ("6-2 6-2", [2.72]),
+            ("6-4 6-3", [2.78]),   # even+rout: surprise=0.33 > 0.15 → earns small adj
+            ("6-3 6-1", [2.72]),   # rout+rout: surprise=0.36 → earns small adj
+            ("6-1 6-3", [2.81]),   # rout+rout: surprise=0.48 → earns small adj
+            ("6-1 6-3", [2.97]),   # rout+rout: surprise=0.72 → earns small adj
+            ("6-2 6-2", [2.72]),   # rout+rout: surprise=0.36 → earns small adj
         ]
         rating = self._HEAVY_FAV
         total_gain = 0.0
@@ -635,11 +641,39 @@ class TestUnderdogFavorite(unittest.TestCase):
                 match_id="t", line_label="1# Singles", score=score,
             )
             adj = _sequential_match_adj(rating, rec)
-            self.assertGreater(adj, 0, "Should still earn something for each win")
+            self.assertGreaterEqual(adj, 0, "Should earn non-negative adj for each win")
             total_gain += adj
             rating += adj
         self.assertLess(total_gain, 0.12,
                         f"5 expected wins should gain < 0.12 total, got {total_gain:.4f}")
+
+    def test_favourite_barely_wins_tiebreak_earns_nothing(self):
+        """
+        Julie Brown scenario: 3.0+2.82 barely beats 2.82+2.78 in a 3-set tiebreak
+        (score 6-4 4-6 1-0). Julie was a ~61% favourite; the match was totally even.
+        Barely surviving an expected win should produce adj = 0.
+        Surprise = raw_signal(0.30) - expected_signal(0.23) = 0.07 < 0.15 gate.
+        """
+        rec = MatchRecord(
+            opponent_ratings=[2.82, 2.78], partner_rating=2.82,
+            won=True, date="3/21/2026", division="3.0",
+            match_id="w2", line_label="1# Doubles", score="6-4 4-6 1-0",
+        )
+        adj = _sequential_match_adj(3.0, rec)
+        self.assertEqual(adj, 0.0,
+                         "Favourite barely winning a 3-set tiebreak (even match) earns nothing")
+
+    def test_favourite_wins_convincingly_earns_something(self):
+        """
+        A favourite who DOMINATES earns a small positive adj (not zero).
+        3.0 beats 2.80 with 6-1 6-2 (rout+rout): surprise = 1.00 - 0.20 = 0.80 >> 0.15 gate.
+        """
+        rec = self._rec(3.0, 2.80, won=True, score="6-1 6-2")
+        adj = _sequential_match_adj(3.0, rec)
+        self.assertGreater(adj, 0.0,
+                           "Favourite crushing opponent convincingly earns a small positive adj")
+        self.assertLess(adj, 0.03,
+                        "But still kept small (scaled win cap)")
 
     # ------------------------------------------------------------------
     # Rule 4: Heavy favourite loses → always negative adj
