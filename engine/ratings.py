@@ -437,31 +437,44 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     expected losses but CAN earn a positive adj for overperforming.
     """
     adj = _match_adjustment(current_rating, record)
-    _SEQ_CAP = 0.05
-    _MIN_WIN_SURPRISE = 0.15   # surplus above expected_signal needed to earn positive credit
+
+    # SEQ_CAP: maximum a single match can move your sequential rating.
+    # 0.15 lets one genuine outlier match (dominant upset, bad day) move
+    # a rating meaningfully in a short season — rather than capping all
+    # matches at ±0.05 and making real skill invisible for weeks.
+    _SEQ_CAP = 0.15
+
+    # Minimum surplus above expected_signal needed to earn any positive credit.
+    _MIN_WIN_SURPRISE = 0.15
+
+    # Scale for the below-gate penalty: wins that barely met expectations earn
+    # a small negative adj proportional to how far short of the gate they fell.
+    # Max penalty ≈ 0.023 (when surplus = 0, i.e. win exactly at expectation).
+    _BELOW_GATE_SCALE = 0.15
 
     if record.won and adj > 0:
-        # Win produced positive surprise — gate + scaled cap.
         expected = _cross_pair_expected(
             current_rating, record.partner_rating, record.opponent_ratings
         )
-        # Gate: was the win meaningfully above what ratings predicted?
-        # A tiny positive surprise (e.g. 61% favourite barely winning a 3-set tiebreak)
-        # carries no real information — return 0 rather than a misleading small positive.
         sets = _parse_sets(record.score)
         if sets:
             raw_signal = _scenario_signal(sets, record.won)
             expected_signal = 2.0 * expected - 1.0
-            if raw_signal - expected_signal < _MIN_WIN_SURPRISE:
-                return 0.0
-        # Cleared the gate: scale cap by upset-ness.
+            surplus = raw_signal - expected_signal
+            if surplus < _MIN_WIN_SURPRISE:
+                # Below gate: win landed within or barely above expected range.
+                # A slight negative — "you won, but performed at the opponents'
+                # level rather than your own" — proportional to the shortfall.
+                penalty = (_MIN_WIN_SURPRISE - surplus) * _BELOW_GATE_SCALE
+                return -penalty
+        # Cleared the gate: scale cap by how unexpected the win was.
+        # Upsets earn near the full cap; expected wins earn proportionally less.
         win_cap = _SEQ_CAP * (1.0 - expected)
         return min(win_cap, adj)
 
-    # Win with negative adj (underperformed expectations) OR a loss:
-    # both pass through the flat ±SEQ_CAP clip unchanged.
+    # Win with negative adj (underperformed) OR a loss: flat ±SEQ_CAP clip.
     # Wins CAN decrease a rating when the player won less impressively than
-    # their level implies — e.g. an 82% favourite barely surviving 6-4 6-4.
+    # their level implies.  Underdog losses are floored at 0 by _match_adjustment.
     return max(-_SEQ_CAP, min(_SEQ_CAP, adj))
 
 
