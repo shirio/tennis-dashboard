@@ -10,6 +10,7 @@ from engine.ratings import (
     _surprise_weight,
     _set_dominance,
     _match_adjustment,
+    _sequential_match_adj,
     _compute_v8_rating,
     _detect_scorecard_swap,
     _parse_sets,
@@ -511,6 +512,169 @@ class TestScenarioSignal(unittest.TestCase):
             self._sig("6-0 6-1", won=True),
             self._sig("6-4 6-3", won=True),
         )
+
+
+class TestUnderdogFavorite(unittest.TestCase):
+    """
+    Guard against rating inflation from expected wins, and verify that underdogs
+    are always rewarded for upsets or close losses.
+
+    Rules being tested:
+      1. Underdog upset win → always positive sequential adj.
+      2. Underdog close loss → never negative sequential adj (0 or positive).
+      3. Heavy favorite crushing underdog → tiny adj (< 0.01 per match).
+      4. Heavy favorite loses any match → always negative adj.
+      5. Even match winner → moderate positive adj (~0.025).
+    """
+
+    _HEAVY_FAV  = 3.10    # heavy favourite
+    _WEAK_OPP   = 2.70    # weaker opponent (gap=0.40 → ~82% favourite)
+    _NEAR_OPP   = 2.92    # closer but still below (gap=0.18 → ~68% favourite)
+    SEQ_CAP = 0.05
+
+    def _rec(self, player_r, opp_r, won, score, partner_r=None):
+        return MatchRecord(
+            opponent_ratings=[opp_r], partner_rating=partner_r,
+            won=won, date="1/1/2026", division="3.0",
+            match_id="t", line_label="1# Singles", score=score,
+        )
+
+    # ------------------------------------------------------------------
+    # Rule 1: Underdog upset win → always positive
+    # ------------------------------------------------------------------
+
+    def test_underdog_upset_win_rout_positive(self):
+        """Underdog (2.70) beats favourite (3.10) 6-1 6-2 → positive adj."""
+        rec = self._rec(2.70, self._HEAVY_FAV, won=True, score="6-1 6-2")
+        adj = _sequential_match_adj(2.70, rec)
+        self.assertGreater(adj, 0, "Underdog upset win must produce a positive adj")
+
+    def test_underdog_upset_win_even_positive(self):
+        """Underdog (2.70) beats favourite (3.10) 6-4 6-4 → positive adj."""
+        rec = self._rec(2.70, self._HEAVY_FAV, won=True, score="6-4 6-4")
+        adj = _sequential_match_adj(2.70, rec)
+        self.assertGreater(adj, 0, "Underdog close upset win must produce a positive adj")
+
+    def test_underdog_upset_win_near_full_cap(self):
+        """Underdog upset win earns near the full SEQ_CAP (> 75% of cap)."""
+        rec = self._rec(2.70, self._HEAVY_FAV, won=True, score="6-2 6-3")
+        adj = _sequential_match_adj(2.70, rec)
+        self.assertGreater(adj, self.SEQ_CAP * 0.75,
+                           "Upset win should earn close to the full sequential cap")
+
+    # ------------------------------------------------------------------
+    # Rule 2: Underdog close loss → never negative
+    # ------------------------------------------------------------------
+
+    def test_underdog_close_loss_not_penalized(self):
+        """Underdog (2.70) loses 6-4 6-4 to favourite (3.10) → adj ≥ 0."""
+        rec = self._rec(2.70, self._HEAVY_FAV, won=False, score="6-4 6-4")
+        adj = _sequential_match_adj(2.70, rec)
+        self.assertGreaterEqual(adj, 0,
+                                "Underdog losing as expected must not be penalized")
+
+    def test_underdog_rout_loss_not_penalized(self):
+        """Underdog (2.70) gets bageled 6-0 6-1 → adj still ≥ 0."""
+        rec = self._rec(2.70, self._HEAVY_FAV, won=False, score="6-0 6-1")
+        adj = _sequential_match_adj(2.70, rec)
+        self.assertGreaterEqual(adj, 0,
+                                "Underdog rout loss must not be penalized (expected loss)")
+
+    def test_underdog_very_close_loss_positive(self):
+        """Underdog losing a tight tiebreak match can get a positive adj (overperformed expectation)."""
+        # Even loss S1 + Even win S2 → 3-set tiebreak: rank-5 loss signal = -0.35
+        # But expected_signal for big underdog is very negative → surprise is positive
+        rec = self._rec(2.70, self._HEAVY_FAV, won=False, score="6-4 1-6 0-1")
+        adj = _sequential_match_adj(2.70, rec)
+        self.assertGreaterEqual(adj, 0,
+                                "Underdog who pushes to a tiebreak should get neutral or positive adj")
+
+    # ------------------------------------------------------------------
+    # Rule 3: Heavy favourite crushing underdog → tiny adj
+    # ------------------------------------------------------------------
+
+    def test_heavy_favourite_rout_win_tiny(self):
+        """3.10 crushing 2.70 with 6-0 6-1 → adj < 0.01."""
+        rec = self._rec(self._HEAVY_FAV, self._WEAK_OPP, won=True, score="6-0 6-1")
+        adj = _sequential_match_adj(self._HEAVY_FAV, rec)
+        self.assertLess(adj, 0.01,
+                        "Heavy favourite crushing a much weaker opponent earns near-zero")
+
+    def test_heavy_favourite_wins_even_tiny(self):
+        """3.10 beats 2.70 with 6-4 6-4 → adj < 0.015."""
+        rec = self._rec(self._HEAVY_FAV, self._WEAK_OPP, won=True, score="6-4 6-4")
+        adj = _sequential_match_adj(self._HEAVY_FAV, rec)
+        self.assertLess(adj, 0.015,
+                        "Heavy favourite winning evenly against weak opponent earns small adj")
+
+    def test_favourite_near_opp_win_limited(self):
+        """3.10 beats 2.92 (gap=0.18, ~68% fav) → adj < 0.02."""
+        rec = self._rec(self._HEAVY_FAV, self._NEAR_OPP, won=True, score="6-2 6-3")
+        adj = _sequential_match_adj(self._HEAVY_FAV, rec)
+        self.assertLess(adj, 0.02,
+                        "Favourite winning against near (but weaker) opponent earns small adj")
+
+    def test_repeated_expected_wins_capped_total(self):
+        """
+        5 wins by 3.10 over 2.72–2.92 opponents should not exceed +0.12 total.
+        Yarisbel scenario: all 5 matches are expected wins.
+        """
+        matches = [
+            ("6-4 6-3", [2.78]),
+            ("6-3 6-1", [2.72]),
+            ("6-1 6-3", [2.81]),
+            ("6-1 6-3", [2.97]),
+            ("6-2 6-2", [2.72]),
+        ]
+        rating = self._HEAVY_FAV
+        total_gain = 0.0
+        for score, opp_r in matches:
+            rec = MatchRecord(
+                opponent_ratings=opp_r, partner_rating=None,
+                won=True, date="1/1/2026", division="3.0",
+                match_id="t", line_label="1# Singles", score=score,
+            )
+            adj = _sequential_match_adj(rating, rec)
+            self.assertGreater(adj, 0, "Should still earn something for each win")
+            total_gain += adj
+            rating += adj
+        self.assertLess(total_gain, 0.12,
+                        f"5 expected wins should gain < 0.12 total, got {total_gain:.4f}")
+
+    # ------------------------------------------------------------------
+    # Rule 4: Heavy favourite loses → always negative adj
+    # ------------------------------------------------------------------
+
+    def test_favourite_loses_rout_drops(self):
+        """3.10 loses 1-6 1-6 to 2.70 → negative adj."""
+        rec = self._rec(self._HEAVY_FAV, self._WEAK_OPP, won=False, score="6-1 6-1")
+        adj = _sequential_match_adj(self._HEAVY_FAV, rec)
+        self.assertLess(adj, 0, "Favourite losing must produce a negative adj")
+
+    def test_favourite_loses_close_drops(self):
+        """3.10 loses 4-6 4-6 to 2.70 → still negative."""
+        rec = self._rec(self._HEAVY_FAV, self._WEAK_OPP, won=False, score="6-4 6-4")
+        adj = _sequential_match_adj(self._HEAVY_FAV, rec)
+        self.assertLess(adj, 0, "Favourite losing a close match must still produce negative adj")
+
+    # ------------------------------------------------------------------
+    # Rule 5: Even match winner → moderate positive adj
+    # ------------------------------------------------------------------
+
+    def test_even_match_win_moderate(self):
+        """3.0 beats 3.0 evenly → adj in (0.01, 0.04)."""
+        rec = self._rec(3.0, 3.0, won=True, score="7-5 6-4")
+        adj = _sequential_match_adj(3.0, rec)
+        self.assertGreater(adj, 0.01,
+                           "Even match win should earn a moderate positive adj")
+        self.assertLess(adj, 0.04,
+                        "Even match win should not hit the full SEQ_CAP")
+
+    def test_even_match_loss_drops(self):
+        """3.0 loses 4-6 3-6 to 3.0 → negative adj."""
+        rec = self._rec(3.0, 3.0, won=False, score="6-4 6-3")
+        adj = _sequential_match_adj(3.0, rec)
+        self.assertLess(adj, 0, "Even match loss must produce a negative adj")
 
 
 if __name__ == "__main__":

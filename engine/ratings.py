@@ -418,13 +418,34 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     """
     Per-match adjustment for the incremental sequential system.
 
-    Returns _match_adjustment clamped to ±SEQ_CAP (0.05).
+    Returns _match_adjustment clamped to ±SEQ_CAP (0.05), with one key rule for wins:
+    the positive cap is scaled by (1 - expected) so that expected wins earn
+    proportionally less than upsets.
 
-    Underdog protection and all storyline logic lives in _match_adjustment.
-    SEQ_CAP caps drift per match so a 6-week season produces at most ±0.30 swing.
+    Scaling formula for wins:  win_cap = SEQ_CAP × (1 − expected_win_prob)
+      • 50/50 match  → win_cap = 0.025  (half the full cap — even contest)
+      • 70% favorite → win_cap = 0.015  (small credit)
+      • 82% favorite → win_cap = 0.009  (near-zero — weak opponents can't inflate rating)
+      • 18% underdog → win_cap = 0.041  (near-full cap — upset earns maximum credit)
+
+    This prevents a player from inflating their rating by repeatedly beating much
+    weaker opponents. The loss cap is unchanged: a heavy favorite who loses can
+    still drop by the full SEQ_CAP.
+
+    Underdog protection (expected < 0.50, won=False → adj floored at 0) lives
+    in _match_adjustment.
     """
     adj = _match_adjustment(current_rating, record)
     _SEQ_CAP = 0.05
+    if adj > 0 and record.won:
+        # Scale the positive cap by how unexpected the win was.
+        # Re-compute expected here (cheap — no score parsing needed) so this
+        # function stays self-contained.
+        expected = _cross_pair_expected(
+            current_rating, record.partner_rating, record.opponent_ratings
+        )
+        win_cap = _SEQ_CAP * (1.0 - expected)
+        return min(win_cap, adj)
     return max(-_SEQ_CAP, min(_SEQ_CAP, adj))
 
 
