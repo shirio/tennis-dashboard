@@ -575,12 +575,18 @@ class TestUnderdogFavorite(unittest.TestCase):
         self.assertGreaterEqual(adj, 0,
                                 "Underdog losing as expected must not be penalized")
 
-    def test_underdog_rout_loss_not_penalized(self):
-        """Underdog (2.70) gets bageled 6-0 6-1 → adj still ≥ 0."""
+    def test_underdog_rout_loss_barely_penalized(self):
+        """Underdog (2.70) gets bageled 6-0 6-1 → tiny penalty at most.
+
+        Even though losing was expected (expected=0.18), getting absolutely
+        routed is still slightly worse than the expected scenario (surprise < 0).
+        The underdog floor only applies when surprise ≥ 0. However, the loss cap
+        (SEQ_CAP × expected²  ≈ 0.005) ensures the penalty is essentially zero.
+        """
         rec = self._rec(2.70, self._HEAVY_FAV, won=False, score="6-0 6-1")
         adj = _sequential_match_adj(2.70, rec)
-        self.assertGreaterEqual(adj, 0,
-                                "Underdog rout loss must not be penalized (expected loss)")
+        self.assertGreater(adj, -0.01,
+                           "Big underdog rout loss: loss_cap ≈ 0.005 — penalty is negligible")
 
     def test_underdog_very_close_loss_positive(self):
         """Underdog losing a tight tiebreak match can get a positive adj (overperformed expectation)."""
@@ -774,6 +780,24 @@ class TestUnderdogFavorite(unittest.TestCase):
         adj_fav  = _sequential_match_adj(self._HEAVY_FAV, rec_fav)
         self.assertGreater(adj_near, adj_fav,
                            "Near-equal loss should hurt less than heavy-favourite loss (scaled loss cap)")
+
+    def test_slight_underdog_rout_loss_penalized(self):
+        """Amy Arbeli scenario: slight underdog (expected≈0.39) routed 6-1 6-2.
+
+        Getting destroyed when you were a close-to-even underdog is a real signal —
+        it's far worse than losing a close match as expected. The underdog floor
+        (adj ≥ 0) only applies when surprise ≥ 0 (performance at or above expectation).
+        A 6-1 6-2 rout produces surprise = -0.78 → floor does NOT apply.
+        loss_cap = SEQ_CAP × expected² ≈ 0.15 × 0.39² ≈ 0.023 — small but non-zero.
+        """
+        # 2.99 vs 3.12: gap=-0.13, expected≈0.39 (slight underdog)
+        rec = self._rec(2.99, 3.12, won=False, score="6-1 6-2")
+        adj = _sequential_match_adj(2.99, rec)
+        self.assertLess(adj, 0,
+                        "Slight underdog routed 6-1 6-2 must take a small negative adj")
+        self.assertGreater(adj, -0.05,
+                           "But loss_cap keeps the penalty proportional (not a full -0.15)")
+
 
 
 if __name__ == "__main__":

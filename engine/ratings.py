@@ -401,17 +401,18 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
     adj = max(-cap, min(cap, adj))
 
     # Directional enforcement: losses produce negative signals, wins positive.
-    # For losses the scenario signal table always has negative values, so
-    # favorites always get a negative adj. Underdogs who come close produce
-    # a positive *surprise* (expected_signal was very negative, signal is less
-    # negative) — this is intentional: "underdog coming close is a positive signal".
-    # Only explicit floor is needed: underdogs expected to lose (expected < 0.50)
-    # never get penalized for losing — adj is floored at 0.
+    # Favorites (expected ≥ 0.50) who lose must always drop — no floor.
     if not record.won and expected >= 0.50:
         adj = min(adj, 0.0)   # favorite who loses must drop or stay flat
 
-    if not record.won and expected < 0.50:
-        adj = max(adj, 0.0)   # underdog who loses as expected: no penalty
+    # Underdog protection: only apply when the actual performance was at or ABOVE
+    # expectation (surprise ≥ 0). If the underdog lost far worse than their expected
+    # level (surprise < 0 — e.g. a slight underdog getting routed 6-1 6-2), that IS
+    # a meaningful negative signal even if losing was the likely outcome.
+    # "Losing as expected" = close loss by an underdog → no penalty.
+    # "Losing far worse than expected" = rout of a slight underdog → small penalty.
+    if not record.won and expected < 0.50 and surprise >= 0:
+        adj = max(adj, 0.0)   # underdog who lost at or above expectation: no penalty
 
     return adj
 
