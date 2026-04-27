@@ -367,25 +367,51 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     """
     Per-match adjustment for the incremental sequential system.
 
-    Wraps _match_adjustment with a win ceiling: a win can't push a player's
-    rating above what those opponents actually prove. This stops dominant wins
-    against weak opponents from inflating ratings beyond what the competition
-    justifies (e.g. 5× 6-0 vs a 2.80 player can't push you to 3.50).
+    Wraps _match_adjustment with a win ceiling based on the opponents' strength
+    and score dominance. This stops dominant wins against weak opponents from
+    inflating ratings beyond what the competition actually justifies.
 
-    We allow a small minimum gain (MIN_WIN_GAIN) even when the player is already
-    rated above the implied level, so dominant victories still provide a small
-    incremental nudge — but not a free ticket to any rating.
+    WIN CEILING — individual vs. pair credit:
+      Singles: implied = opponent + avg_score_gap
+      Doubles: implied = avg(opponents) + avg_score_gap
 
-    The loss bound (≤ 0) is already enforced inside _match_adjustment.
+      Doubles uses avg_opp (not max_opp) because a partner who matches the
+      opponents makes the win easier without individually proving the player
+      belongs at the max-opponent level. Using max_opp would give the player
+      full team credit for a blowout that their partner contributed equally to.
+      (E.g. Kim 3.03 + Tina 2.77 beating Maddux 2.69 + Laudenslager 2.84 6-1
+      6-1: Tina matches the opponents, so Kim's ceiling is avg_opp+gap=3.07,
+      not max_opp+gap=3.14.)
+
+    A small minimum gain (MIN_WIN_GAIN=0.01) ensures any legitimate win still
+    provides a tiny incremental nudge even when the player is already above
+    the implied level.
+
+    The loss bound (adj ≤ 0) is already enforced inside _match_adjustment.
     """
     adj = _match_adjustment(current_rating, record)
 
-    if record.won and adj > 0:
-        implied = _implied_rating_from_match(record)
-        if implied is not None:
-            MIN_WIN_GAIN = 0.01   # tiny nudge for any legitimate win
-            max_gain = max(MIN_WIN_GAIN, implied - current_rating)
-            adj = min(adj, max_gain)
+    if record.won and adj > 0 and record.opponent_ratings:
+        # Score gap: average across all sets played
+        sets = _parse_sets(record.score)
+        if sets:
+            avg_gap = sum(_SCORE_GAP.get(lg, 0.0) for (_, lg, _) in sets) / len(sets)
+        else:
+            avg_gap = 0.0
+
+        # Opponent benchmark: avg for doubles (partner shares the win),
+        # opponent directly for singles.
+        if record.partner_rating is not None:
+            opp_benchmark = sum(record.opponent_ratings) / len(record.opponent_ratings)
+        else:
+            opp_benchmark = record.opponent_ratings[0] if len(record.opponent_ratings) == 1 else (
+                sum(record.opponent_ratings) / len(record.opponent_ratings)
+            )
+
+        implied = opp_benchmark + avg_gap
+        MIN_WIN_GAIN = 0.01
+        max_gain = max(MIN_WIN_GAIN, implied - current_rating)
+        adj = min(adj, max_gain)
 
     return adj
 
