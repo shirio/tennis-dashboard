@@ -695,15 +695,14 @@ def main():
     if n_new:
         _compute_player_stats_from_scorecards(all_ntrp)
 
-    # Run ratings
+    # Run ratings + rebuild dashboards (same steps as rebuild.py)
     from engine.ratings import run_ratings
+    from engine.build_html import build_dashboards
     run_ratings()
 
     # Regenerate notes and subflight summaries (generate_notes.py handles both)
     subprocess.run(["python3", "generate_notes.py"], check=True)
 
-    # Rebuild dashboards
-    from engine.build_html import build_dashboards
     build_dashboards()
 
     print("\n✓ Done! Dashboards rebuilt. Don't forget to commit + push.")
