@@ -391,22 +391,30 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     """
     adj = _match_adjustment(current_rating, record)
 
-    if record.won and adj > 0 and record.opponent_ratings:
-        # Score gap: average across all sets played
-        sets = _parse_sets(record.score)
-        if sets:
-            avg_gap = sum(_SCORE_GAP.get(lg, 0.0) for (_, lg, _) in sets) / len(sets)
-        else:
-            avg_gap = 0.0
-
-        # Opponent benchmark: avg for doubles (partner shares the win),
-        # opponent directly for singles.
+    # Shared: compute opp_benchmark once (used by both win ceiling and loss floor)
+    opp_benchmark: float | None = None
+    if record.opponent_ratings:
         if record.partner_rating is not None:
             opp_benchmark = sum(record.opponent_ratings) / len(record.opponent_ratings)
         else:
-            opp_benchmark = record.opponent_ratings[0] if len(record.opponent_ratings) == 1 else (
-                sum(record.opponent_ratings) / len(record.opponent_ratings)
-            )
+            opp_benchmark = (record.opponent_ratings[0] if len(record.opponent_ratings) == 1
+                             else sum(record.opponent_ratings) / len(record.opponent_ratings))
+
+    if record.won and adj > 0 and opp_benchmark is not None:
+        # Score gap: average across all sets played.
+        # IMPORTANT: a match tiebreak (winner_games == 1, e.g. "1-0" third set)
+        # is treated as gap=0.00 — it is as close as a 7-6 regular set, not a
+        # bagel. Using _SCORE_GAP[loser_games=0]=0.45 would wrongly imply a
+        # bagel-level advantage from the tightest possible match result.
+        sets = _parse_sets(record.score)
+        if sets:
+            gap_vals = [
+                0.0 if wg == 1 else _SCORE_GAP.get(lg, 0.0)
+                for wg, lg, _ in sets
+            ]
+            avg_gap = sum(gap_vals) / len(gap_vals)
+        else:
+            avg_gap = 0.0
 
         # Discount the score-gap credit proportionally to how much the player
         # is already rated above the opponents. Dominating someone you're
@@ -442,6 +450,18 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
             max_gain = player_max
 
         adj = min(adj, max_gain)
+
+    elif not record.won and adj < 0 and opp_benchmark is not None:
+        # Loss convergence floor: when a player is rated ABOVE their opponents
+        # and loses, the drop is bounded by half the rating gap (both teams
+        # converge toward the midpoint, neither collapses past the other).
+        #
+        # Example: Tayoni (3.015) loses 7-6 6-4 to opponents avg (2.882).
+        # Without floor: adj = -0.156 → lands at 2.859, below both opponents.
+        # With floor:    adj = -0.067 → lands at 2.948, halfway between them.
+        if current_rating > opp_benchmark:
+            convergence_floor = -(current_rating - opp_benchmark) / 2
+            adj = max(adj, convergence_floor)
 
     return adj
 
