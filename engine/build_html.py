@@ -707,6 +707,17 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
     sf_labels = [sf.get("flight_label", str(i)) for i, sf in enumerate(subflights)]
     first_sf = sf_labels[0] if sf_labels else ""
 
+    # Build date → week-label map (W1, W2, …) from all unique match dates
+    # across every subflight, sorted chronologically.
+    _all_dates: set[str] = set()
+    for _sf in subflights:
+        for _m in _sf.get("matches", []):
+            d = _m.get("date", "")
+            if d:
+                _all_dates.add(d)
+    _sorted_dates = sorted(_all_dates, key=_date_to_sort_key)
+    _week_label: dict[str, str] = {d: f"W{i+1}" for i, d in enumerate(_sorted_dates)}
+
     sf_btns = ""
     for i, lbl in enumerate(sf_labels):
         active = " on" if i == 0 else ""
@@ -735,10 +746,12 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
             blocks = ""
             for m in team_matches:
                 badge = _result_badge(m["won"], m["score"], m["pending"])
+                wlabel = _week_label.get(m.get("date", ""), "")
                 blocks += (
                     f'<div class="mblock">'
                     f'<div class="mhdr">'
                     f'<span class="mtitle">vs {_esc(m["opponent"])}</span>'
+                    f'<span class="mweek-lbl">{_esc(wlabel)}</span>'
                     f'<span>{badge}</span>'
                     f'</div>'
                     f'<div class="mdate">{_esc(m["date"])}</div>'
@@ -953,7 +966,10 @@ tr:last-child td { border-bottom: none; }
           padding: .75rem 1rem; margin-bottom: 10px; }
 .mhdr { display: flex; justify-content: space-between;
         align-items: center; margin-bottom: 4px; }
-.mtitle { font-size: 13px; font-weight: 600; }
+.mtitle { font-size: 13px; font-weight: 600; flex: 1; }
+.mweek-lbl { font-size: 11px; font-weight: 700; color: #888;
+             letter-spacing: .04em; text-align: center; flex: 0 0 auto;
+             padding: 0 8px; }
 .mdate { font-size: 11px; color: #888; margin-bottom: 6px; }
 .line-lbl { font-size: 10px; font-weight: 600; color: #aaa;
             text-transform: uppercase; letter-spacing: .05em; margin: 8px 0 3px; }
