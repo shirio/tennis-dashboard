@@ -87,6 +87,52 @@ _CP_TOP_BOT = 0.25
 _CP_BOT_TOP = 0.25
 _CP_BOT_BOT = 0.10
 
+# ---------------------------------------------------------------------------
+# Scenario signal tables — "the story of the set scores"
+# ---------------------------------------------------------------------------
+# Key: (s1_player_won, s1_is_rout, s2_player_won, s2_is_rout)
+# A set is a "rout" when _set_dominance(winner_games, loser_games) >= 0.40
+# (i.e. 6-0 / 6-1 / 6-2 / 6-3). All other sets are "even" (6-4, 7-5, 7-6).
+# In straight sets the player always wins both (won=True) or loses both (won=False),
+# so the match outcome is implied by the set outcomes — no need for a 5th key dimension.
+_SIGNAL_2SET: dict[tuple, float] = {
+    # Straight-set wins (player won both sets)
+    (True,  True,  True,  True):  +1.00,   # Rout win  + Rout win
+    (True,  False, True,  True):  +0.85,   # Even win  + Rout win  (finishing dominant)
+    (True,  True,  True,  False): +0.75,   # Rout win  + Even win
+    (True,  False, True,  False): +0.60,   # Even win  + Even win
+    # Straight-set losses (player lost both sets)
+    (False, True,  False, True):  -1.00,   # Rout loss + Rout loss
+    (False, False, False, True):  -0.85,   # Even loss + Rout loss  (fell apart at the end)
+    (False, True,  False, False): -0.75,   # Rout loss + Even loss
+    (False, False, False, False): -0.60,   # Even loss + Even loss
+}
+
+# Key: (s1_player_won, s1_is_rout, s2_player_won, s2_is_rout, match_won)
+# For 3-set tiebreaks: s1/s2 describe sets 1 & 2; the tiebreak outcome is the match result.
+_SIGNAL_3SET: dict[tuple, float] = {
+    # 3-set tiebreak wins — ranked highest to lowest positive signal
+    (False, False, True,  True,  True):  +0.70,  # Even loss S1 + Rout win S2 (momentum shifted, prevailed)
+    (True,  True,  False, False, True):  +0.60,  # Rout win  S1 + Even loss S2 (blip in S2, still better)
+    (False, True,  True,  True,  True):  +0.50,  # Rout loss S1 + Rout win  S2 (hard momentum shift, won)
+    (False, False, True,  False, True):  +0.45,  # Even loss S1 + Even win  S2 (slight shift, clinched)
+    (False, True,  True,  False, True):  +0.35,  # Rout loss S1 + Even win  S2 (grinded out the win)
+    (True,  False, False, False, True):  +0.30,  # Even win  S1 + Even loss S2 (even match, clinched)
+    (True,  True,  False, True,  True):  +0.25,  # Rout win  S1 + Rout loss S2 (scary, clinched)
+    (True,  False, False, True,  True):  +0.15,  # Even win  S1 + Rout loss S2 (barely survived)
+    # 3-set tiebreak losses — ranked most negative to least negative
+    (True,  False, False, True,  False): -0.70,  # Even win  S1 + Rout loss S2 (had lead, fell apart)
+    (True,  True,  False, True,  False): -0.60,  # Rout win  S1 + Rout loss S2 (dominated S1, collapsed)
+    (False, True,  True,  False, False): -0.50,  # Rout loss S1 + Even win  S2 (grinded back, still lost)
+    (True,  False, False, False, False): -0.45,  # Even win  S1 + Even loss S2 (had slight edge, slipped)
+    (False, False, True,  False, False): -0.35,  # Even loss S1 + Even win  S2 (even match, momentum vs)
+    (True,  True,  False, False, False): -0.30,  # Rout win  S1 + Even loss S2 (dominated S1, lost TB)
+    (False, True,  True,  True,  False): -0.25,  # Rout loss S1 + Rout win  S2 (hard shift, couldn't close)
+    (False, False, True,  True,  False): -0.15,  # Even loss S1 + Rout win  S2 (routed S2, still lost)
+}
+
+_ROUT_THRESHOLD = 0.40   # _set_dominance threshold to classify a set as a "rout"
+
 
 @dataclass
 class RatingsSummary:
@@ -271,162 +317,113 @@ def _surprise_weight(expected: float, won: bool) -> float:
     return 0.10
 
 
+def _scenario_signal(sets: list[tuple[int, int, bool]], won: bool) -> float:
+    """
+    Map the match's set-by-set story to a raw signal in [-1.0, +1.0].
+
+    Classifies set 1 and set 2 from the focal player's perspective (did they win
+    the set, and was it a rout?).  A set is a rout when
+    _set_dominance(winner_games, loser_games) >= _ROUT_THRESHOLD (covers 6-0/6-1/6-2/6-3).
+
+    For 2-set matches: looks up _SIGNAL_2SET.
+    For 3-set tiebreaks: looks up _SIGNAL_3SET using sets 1 & 2 plus match outcome.
+    Falls back to ±0.50 for any unrecognised scenario.
+    """
+    if len(sets) < 2:
+        return 0.50 if won else -0.50
+
+    s1, s2 = sets[0], sets[1]
+
+    # Did the focal player win each of the first two sets?
+    # Convention: score is stored from the LINE WINNER's perspective.
+    # first_side_won=True means the first number in the score was larger (winner's side won that set).
+    # The focal player is the "first side" when record.won=True.
+    s1_pw = (s1[2] == won)
+    s2_pw = (s2[2] == won)
+
+    s1_rout = _set_dominance(s1[0], s1[1]) >= _ROUT_THRESHOLD
+    s2_rout = _set_dominance(s2[0], s2[1]) >= _ROUT_THRESHOLD
+
+    is_3set = len(sets) == 3
+    if is_3set:
+        key = (s1_pw, s1_rout, s2_pw, s2_rout, won)
+        return _SIGNAL_3SET.get(key, 0.50 if won else -0.50)
+    else:
+        key = (s1_pw, s1_rout, s2_pw, s2_rout)
+        return _SIGNAL_2SET.get(key, 0.50 if won else -0.50)
+
+
 def _match_adjustment(player_rating: float, record: MatchRecord,
                       scaling: float = SCALING, cap: float = CAP) -> float:
     """
     Compute the rating adjustment for a single match.
-    Surprise weighting amplifies results that defy rating expectations (symmetrically
-    for wins and losses) since upsets in either direction usually indicate ratings
-    are off, not luck. Score dominance captures margin of victory within the match.
+
+    Uses a scenario-based set signal: the "story" of the set scores maps to a
+    raw_signal in [-1, +1] (e.g. rout-win-both = +1.00, even-loss-both = -0.60).
+    That signal is compared against the expected_signal derived from cross-pair
+    win probability, so upsets produce large adjustments and expected outcomes
+    produce small ones — in both directions.
+
+    Underdog protection: a player expected to lose (expected < 0.50) never gets a
+    negative adjustment from a loss — losing as expected is not evidence of
+    being overrated.
+
+    Singles bonus: singles matches carry a 1.25× multiplier because a 1v1 result
+    is a cleaner signal than doubles (no partner contribution to mask individual ability).
     """
     expected = _cross_pair_expected(
         player_rating, record.partner_rating, record.opponent_ratings
     )
-    sw = _surprise_weight(expected, record.won)
 
     sets = _parse_sets(record.score)
     if not sets:
+        # No score available — fall back to match outcome only with surprise weighting
+        sw = _surprise_weight(expected, record.won)
         surprise = (1.0 if record.won else 0.0) - expected
-        return max(-cap, min(cap, surprise * sw * scaling))
+        adj = surprise * sw * scaling
+        return max(-cap, min(cap, adj))
 
-    # --- Pre-compute per-set dominance and player-won-set flags ---
-    player_won_set_arr: list[bool] = []
-    dom_arr: list[float] = []
-    for winner_games, loser_games, first_side_won in sets:
-        player_won_set_arr.append(first_side_won == record.won)
-        dom_arr.append(_set_dominance(winner_games, loser_games))
+    raw_signal = _scenario_signal(sets, record.won)
 
-    # --- 3-set tiebreak Scenario 2 attenuation ---
-    # Scenario 2: Player LOST the match, won set 1 more dominantly than the
-    # opponent won set 2. Going to a tiebreak reveals the dominant set 1 win
-    # overstated the player's advantage — attenuate set 1's weight so it
-    # contributes no more than set 2 did (scale factor = dom_set2 / dom_set1).
-    # Example: Kim Knotts wins set 1 6-1 (dom=0.75) but loses set 2 6-4
-    # (dom=0.25) and tiebreak → set 1 weight becomes 0.25/0.75 ≈ 0.33,
-    # so effective dom_set1 = 0.75 × 0.33 = 0.25 — same scale as set 2.
-    set_dom_weights = [1.0] * len(sets)
-    if len(sets) == 3 and not record.won:
-        pws0, pws1, pws2 = player_won_set_arr[0], player_won_set_arr[1], player_won_set_arr[2]
-        dom0, dom1 = dom_arr[0], dom_arr[1]
-        if pws0 and not pws1 and not pws2 and dom0 > dom1 and dom0 > 0:
-            set_dom_weights[0] = dom1 / dom0
+    # Map expected [0, 1] → [-1, +1] to match the raw_signal scale.
+    # expected=0.50 → 0.0 (even match), expected=0.80 → +0.60 (favoured)
+    expected_signal = 2.0 * expected - 1.0
+    surprise = raw_signal - expected_signal
 
-    # Set-by-set signal weighted by score dominance — no SW here.
-    # Score margins are direct performance evidence: Yarisbel winning 6-1 6-3 is
-    # a real signal regardless of whether the win was expected. SW would zero out
-    # dominant wins against weaker opponents, masking genuine performance quality.
-    #
-    # KEY RULE: when a player lost the match, their individual set wins do NOT
-    # add positive signal. Winning a set 6-2 inside a match you ultimately lost
-    # is evidence of competitiveness, not of superiority — it cannot justify
-    # raising the rating. We zero out set-win contributions for the overall loser.
-    total_surprise = 0.0
-    total_dominance = 0.0
-    for i, (winner_games, loser_games, first_side_won) in enumerate(sets):
-        player_won_set = player_won_set_arr[i]
-        actual_set = 1.0 if player_won_set else 0.0
-        base_surprise = actual_set - expected
-        dom = dom_arr[i] * set_dom_weights[i]
-        set_contrib = base_surprise * dom
-        if not record.won and player_won_set:
-            set_contrib = 0.0   # loser's set wins contribute nothing
-        total_surprise += set_contrib
-        total_dominance += dom
+    adj = surprise * scaling
 
-    # Match-outcome signal: SW applies here. The outcome (win/loss) is where luck
-    # lives — an upset outcome is a sign ratings are off, an expected outcome is
-    # weak evidence. Score margins within a match are less luck-dependent.
-    # Singles matches carry a 1.25× bonus: a 1v1 result is a cleaner signal than
-    # doubles (no partner contribution to mask individual ability).
-    match_outcome_weight = 0.15 if len(sets) >= 3 else 0.30
-    if record.partner_rating is None:   # singles — boost outcome weight
-        match_outcome_weight *= 1.25
-    match_surprise = (1.0 if record.won else 0.0) - expected
-    total_surprise += match_surprise * match_outcome_weight * sw
-    total_dominance += match_outcome_weight
-
-    if total_dominance > 0:
-        adj = (total_surprise / total_dominance) * scaling * total_dominance
-    else:
-        adj = 0.0
+    # Singles is a cleaner 1v1 signal — amplify slightly before capping
+    if record.partner_rating is None:
+        adj *= 1.25
 
     adj = max(-cap, min(cap, adj))
 
-    # A loss can never raise your rating. Winning individual sets (even
-    # dominantly) is evidence you competed, but losing the match is the
-    # result that counts. The set signal can otherwise produce positive
-    # adjustments after a loss (e.g. won one set 6-2 inside a match you
-    # lost), which makes no intuitive sense.
-    if not record.won:
-        adj = min(adj, 0.0)
+    # Directional enforcement: losses produce negative signals, wins positive.
+    # For losses the scenario signal table always has negative values, so
+    # favorites always get a negative adj. Underdogs who come close produce
+    # a positive *surprise* (expected_signal was very negative, signal is less
+    # negative) — this is intentional: "underdog coming close is a positive signal".
+    # Only explicit floor is needed: underdogs expected to lose (expected < 0.50)
+    # never get penalized for losing — adj is floored at 0.
+    if not record.won and expected >= 0.50:
+        adj = min(adj, 0.0)   # favorite who loses must drop or stay flat
+
+    if not record.won and expected < 0.50:
+        adj = max(adj, 0.0)   # underdog who loses as expected: no penalty
 
     return adj
 
 
 def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     """
-    Per-match adjustment for the incremental sequential system (singles and doubles).
+    Per-match adjustment for the incremental sequential system.
 
-    Returns _match_adjustment clamped to ±_SEQ_CAP (0.05), with a WIN CEILING and
-    an underdog protection rule.
+    Returns _match_adjustment clamped to ±SEQ_CAP (0.05).
 
-    WIN CEILING (positive adj only):
-      implied = opp_benchmark + avg_score_gap
-      player_max = max(0, implied - current_rating)
-      adj = min(adj, player_max)
-
-    NEGATIVE ADJ FOR WINS — favored players only:
-      When a FAVOURITE (expected > 0.50) barely beats a weaker opponent, raw adj
-      can be negative (e.g. 6-0 1-6 1-0 for a player 0.31 above opponent). The
-      ceiling block is skipped and the negative flows through — correct: the
-      favourite underperformed, winner drops, loser rises.
-
-      When an UNDERDOG (expected ≤ 0.50) wins a messy match (e.g. 7-6 2-6 1-0
-      with a bad set loss), raw adj can also be negative because the set-loss
-      signal dominates. But an underdog winning an ugly upset is NOT evidence
-      they are overrated — the match outcome itself (winning) is positive news.
-      Floor underdog wins at 0: team_gain = 0 → nobody moves, rather than the
-      loser incorrectly rising from an upset loss.
-
-    SEQ_CAP = 0.05:
-      Even a dominant expected result caps at 0.05 per match. An equal-rating
-      match that goes to a super-tiebreak should move both players only ~0.02-0.03,
-      not 0.10. Over a 6-week season, max drift is ±0.30.
+    Underdog protection and all storyline logic lives in _match_adjustment.
+    SEQ_CAP caps drift per match so a 6-week season produces at most ±0.30 swing.
     """
     adj = _match_adjustment(current_rating, record)
-
-    if record.won and adj > 0 and record.opponent_ratings:
-        if record.partner_rating is not None:
-            opp_benchmark = sum(record.opponent_ratings) / len(record.opponent_ratings)
-        else:
-            opp_benchmark = (record.opponent_ratings[0] if len(record.opponent_ratings) == 1
-                             else sum(record.opponent_ratings) / len(record.opponent_ratings))
-
-        # Score gap: match tiebreaks (winner_games == 1) treated as 0.00.
-        sets = _parse_sets(record.score)
-        if sets:
-            gap_vals = [
-                0.0 if wg == 1 else _SCORE_GAP.get(lg, 0.0)
-                for wg, lg, _ in sets
-            ]
-            avg_gap = sum(gap_vals) / len(gap_vals)
-        else:
-            avg_gap = 0.0
-
-        implied = opp_benchmark + avg_gap
-        player_max = max(0.0, implied - current_rating)
-        adj = min(adj, player_max)
-
-    # Underdog protection: if the winner was not favoured (expected ≤ 0.50)
-    # and the raw adj came out negative (messy win with bad set), floor at 0.
-    # An underdog winning — however ugly — is not evidence they are overrated.
-    if record.won and adj < 0 and record.opponent_ratings:
-        expected = _cross_pair_expected(
-            current_rating, record.partner_rating, record.opponent_ratings
-        )
-        if expected <= 0.50:
-            adj = 0.0
-
     _SEQ_CAP = 0.05
     return max(-_SEQ_CAP, min(_SEQ_CAP, adj))
 
@@ -993,29 +990,15 @@ def _compute_division_sequential(
         for pk in involved:
             pre_match.setdefault(pk, {})[date] = snap[pk]
 
-        # Zero-sum pairing: compute the team gain from the winners' perspective
-        # first, then apply its NEGATIVE to every loser.  This guarantees that
-        # winners and losers always move by the exact same magnitude — no
-        # asymmetric "phantom" rating points can be created or destroyed.
-        #
-        # The winner gain is bounded by the win ceiling (opponent strength +
-        # score gap, scaled for pre-existing advantage) and _SEQ_CAP (0.10).
-        # That same bound automatically caps the loss, so a close match against
-        # near-equal opponents produces a small symmetrical swing for both sides.
+        # Independent per-player adjustments — no zero-sum coupling.
+        # Every winner and loser is computed from their own current rating and
+        # their own match context.  Cross-rating asymmetry is handled naturally:
+        # a 3.0 beating a 4.0 produces a large positive surprise for the 3.0
+        # and a large negative surprise for the 4.0 — independently, not mirrored.
         updates: dict[str, float] = {}
 
-        _SEQ_CAP = 0.05
         for ev in today:
-            # ---- Universal zero-sum pairing (singles and doubles) -------------
-            # Compute team_gain from EVERY tracked winner; take the MAX so that
-            # one partner above the ceiling doesn't silence the other's signal.
-            #
-            # team_gain > 0: normal win — winners gain, losers drop (zero-sum).
-            # team_gain < 0: bad win by favourite — winners drop, losers rise.
-            # team_gain = 0: ceiling'd expected win OR underdog protection floor.
-            #   → Winners gain 0; losers computed independently from _match_adj
-            #     so upset losers still drop appropriately (Kim loses an upset → drops).
-            team_gain: float | None = None
+            # --- Winners ---
             for pk in ev.winner_keys:
                 if pk not in baselines:
                     continue
@@ -1028,41 +1011,24 @@ def _compute_division_sequential(
                     match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
                 )
                 prev = updates.get(pk, snap[pk])
-                gain = _sequential_match_adj(prev, rec)
-                team_gain = gain if team_gain is None else max(team_gain, gain)
+                adj = _sequential_match_adj(prev, rec)
+                updates[pk] = round(prev + adj, 4)
 
-            if team_gain is not None and team_gain != 0:
-                # Non-zero team_gain: strict zero-sum — winners and losers
-                # move by the same magnitude in opposite directions.
-                for pk in ev.winner_keys:
-                    if pk not in baselines:
-                        continue
-                    prev = updates.get(pk, snap[pk])
-                    updates[pk] = round(prev + team_gain, 4)
-                for pk in ev.loser_keys:
-                    if pk not in baselines:
-                        continue
-                    prev = updates.get(pk, snap[pk])
-                    updates[pk] = round(prev - team_gain, 4)
-            else:
-                # team_gain is 0 (ceiling'd expected win or underdog protection)
-                # OR no tracked winners at all. Winners stay put; compute each
-                # loser independently so upset losers still drop.
-                for pk in ev.loser_keys:
-                    if pk not in baselines:
-                        continue
-                    partners_l = [k for k in ev.loser_keys if k != pk]
-                    partner_r = snap.get(partners_l[0]) if partners_l else None
-                    opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.winner_keys] or [3.0]
-                    rec = MatchRecord(
-                        opponent_ratings=opp_r, partner_rating=partner_r,
-                        won=False, date=date, division=division,
-                        match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
-                    )
-                    prev = updates.get(pk, snap[pk])
-                    adj = _match_adjustment(prev, rec)
-                    adj = max(-_SEQ_CAP, min(0.0, adj))
-                    updates[pk] = round(prev + adj, 4)
+            # --- Losers ---
+            for pk in ev.loser_keys:
+                if pk not in baselines:
+                    continue
+                partners_l = [k for k in ev.loser_keys if k != pk]
+                partner_r = snap.get(partners_l[0]) if partners_l else None
+                opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.winner_keys] or [3.0]
+                rec = MatchRecord(
+                    opponent_ratings=opp_r, partner_rating=partner_r,
+                    won=False, date=date, division=division,
+                    match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                )
+                prev = updates.get(pk, snap[pk])
+                adj = _sequential_match_adj(prev, rec)
+                updates[pk] = round(prev + adj, 4)
 
         running.update(updates)
 
@@ -1089,10 +1055,9 @@ def _compute_global_sequential(
         cur = {k: global_r.get(k, baselines.get(k, 3.0)) for k in all_keys}
 
         updates: dict[str, float] = {}
-        _SEQ_CAP = 0.05
 
-        # Universal zero-sum pairing (singles and doubles) — max over winners
-        team_gain: float | None = None
+        # Independent per-player adjustments — no zero-sum coupling.
+        # --- Winners ---
         for pk in ev.winner_keys:
             if pk not in baselines:
                 continue
@@ -1104,32 +1069,23 @@ def _compute_global_sequential(
                 won=True, date=ev.date, division=ev.division,
                 match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
             )
-            gain = _sequential_match_adj(cur[pk], rec)
-            team_gain = gain if team_gain is None else max(team_gain, gain)
-        if team_gain is not None and team_gain != 0:
-            # Non-zero: strict zero-sum
-            for pk in ev.winner_keys:
-                if pk not in baselines: continue
-                updates[pk] = round(cur[pk] + team_gain, 4)
-            for pk in ev.loser_keys:
-                if pk not in baselines: continue
-                updates[pk] = round(cur[pk] - team_gain, 4)
-        else:
-            # team_gain = 0 (ceiling'd or underdog protection) OR no tracked winners.
-            # Winners stay put; losers computed independently so upset losers drop.
-            for pk in ev.loser_keys:
-                if pk not in baselines: continue
-                partners_l = [k for k in ev.loser_keys if k != pk]
-                partner_r = cur.get(partners_l[0]) if partners_l else None
-                opp_ratings = [cur.get(k, 3.0) for k in ev.winner_keys] or [3.0]
-                rec = MatchRecord(
-                    opponent_ratings=opp_ratings, partner_rating=partner_r,
-                    won=False, date=ev.date, division=ev.division,
-                    match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
-                )
-                adj = _match_adjustment(cur[pk], rec)
-                adj = max(-_SEQ_CAP, min(0.0, adj))
-                updates[pk] = round(cur[pk] + adj, 4)
+            adj = _sequential_match_adj(cur[pk], rec)
+            updates[pk] = round(cur[pk] + adj, 4)
+
+        # --- Losers ---
+        for pk in ev.loser_keys:
+            if pk not in baselines:
+                continue
+            partners_l = [k for k in ev.loser_keys if k != pk]
+            partner_r = cur.get(partners_l[0]) if partners_l else None
+            opp_ratings = [cur.get(k, 3.0) for k in ev.winner_keys] or [3.0]
+            rec = MatchRecord(
+                opponent_ratings=opp_ratings, partner_rating=partner_r,
+                won=False, date=ev.date, division=ev.division,
+                match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+            )
+            adj = _sequential_match_adj(cur[pk], rec)
+            updates[pk] = round(cur[pk] + adj, 4)
 
         global_r.update(updates)
 

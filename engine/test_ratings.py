@@ -13,6 +13,7 @@ from engine.ratings import (
     _compute_v8_rating,
     _detect_scorecard_swap,
     _parse_sets,
+    _scenario_signal,
 )
 
 
@@ -343,6 +344,173 @@ class TestSwapDetection(unittest.TestCase):
             "player b": "DTC #1",
         }
         self.assertFalse(_detect_scorecard_swap(match, lookup))
+
+
+class TestScenarioSignal(unittest.TestCase):
+    """
+    Storyline reviewer: asserts that scenario signal values respect the intended
+    rank ordering.  These tests act as a guard against future changes to the
+    signal table that would violate the match-narrative hierarchy.
+
+    Helper: _sig(score, won) parses the score and calls _scenario_signal.
+    """
+
+    def _sig(self, score: str, won: bool) -> float:
+        sets = _parse_sets(score)
+        return _scenario_signal(sets, won)
+
+    # ---- Straight-set win ordering ----------------------------------------
+
+    def test_straight_win_rank_order(self):
+        """Rout+Rout > Even+Rout > Rout+Even > Even+Even
+        Note: 6-3 is a rout (dom=0.40 >= threshold). Use 6-4 (dom=0.25) for "even".
+        """
+        rout_rout = self._sig("6-1 6-2", won=True)    # rank 1: Rout S1 + Rout S2
+        even_rout = self._sig("6-4 6-2", won=True)    # rank 2: Even S1 + Rout S2
+        rout_even = self._sig("6-1 6-4", won=True)    # rank 3: Rout S1 + Even S2
+        even_even = self._sig("6-4 6-4", won=True)    # rank 4: Even S1 + Even S2
+
+        self.assertGreater(rout_rout, even_rout, "Rout+Rout should beat Even+Rout")
+        self.assertGreater(even_rout, rout_even, "Even+Rout should beat Rout+Even (finishing dominant)")
+        self.assertGreater(rout_even, even_even, "Rout+Even should beat Even+Even")
+
+    def test_straight_win_values(self):
+        self.assertAlmostEqual(self._sig("6-0 6-1", won=True),  +1.00)
+        self.assertAlmostEqual(self._sig("6-4 6-2", won=True),  +0.85)   # Even S1 + Rout S2
+        self.assertAlmostEqual(self._sig("6-2 6-4", won=True),  +0.75)   # Rout S1 + Even S2
+        self.assertAlmostEqual(self._sig("6-4 6-4", won=True),  +0.60)   # Even S1 + Even S2
+
+    # ---- Straight-set loss ordering ----------------------------------------
+
+    def test_straight_loss_rank_order(self):
+        """Rout+Rout < Even+Rout < Rout+Even < Even+Even (all negative)
+        Note: 6-3 is a rout (dom=0.40 >= threshold). Use 6-4 (dom=0.25) for "even".
+        """
+        rout_rout = self._sig("6-1 6-2", won=False)   # rank 1: Rout loss + Rout loss
+        even_rout = self._sig("6-4 6-2", won=False)   # rank 2: Even loss S1 + Rout loss S2
+        rout_even = self._sig("6-2 6-4", won=False)   # rank 3: Rout loss S1 + Even loss S2
+        even_even = self._sig("6-4 6-4", won=False)   # rank 4: Even loss + Even loss
+
+        self.assertLess(rout_rout, even_rout, "Rout+Rout loss worse than Even+Rout loss")
+        self.assertLess(even_rout, rout_even, "Even+Rout loss worse than Rout+Even loss (fell apart at end)")
+        self.assertLess(rout_even, even_even, "Rout+Even loss worse than Even+Even loss")
+
+    def test_straight_loss_values(self):
+        self.assertAlmostEqual(self._sig("6-0 6-1", won=False), -1.00)
+        self.assertAlmostEqual(self._sig("6-4 6-2", won=False), -0.85)   # Even loss S1 + Rout loss S2
+        self.assertAlmostEqual(self._sig("6-2 6-4", won=False), -0.75)   # Rout loss S1 + Even loss S2
+        self.assertAlmostEqual(self._sig("6-4 6-4", won=False), -0.60)   # Even loss + Even loss
+
+    # ---- 3-set tiebreak win ordering (ranks 1-8) ---------------------------
+
+    def test_3set_win_rank_order(self):
+        """Top 4 wins (by rank) each better than the one below."""
+        # Rank 1: Even loss S1 + Rout win S2 → "7-6 6-1 1-0" from first side
+        r1 = self._sig("7-6 6-1 1-0", won=True)   # s1: 7-6 even loss for winner? No...
+        # Wait: in "7-6 6-1 1-0" with won=True, first side is the match winner.
+        # s1=(7,6,True): first_side won set1 → player (first side) won set1 EVENLY
+        # That's Even WIN in S1, not Even LOSS. We need Even LOSS S1 + Rout WIN S2 for rank 1.
+        # Even LOSS S1 means player LOST s1. Since score is from winner's perspective (first number = winner's games in each set),
+        # "lost set 1 evenly" from player perspective means SECOND side won set 1 evenly → "6-7" prefix
+        # "6-7 6-1 1-0": s1=(7,6,False) — second side won s1 evenly. If player won match (won=True),
+        # player is first side → first_side_won=False → player LOST s1. dom(7,6)=0.10<0.40 → Even loss ✓
+        # s2=(6,1,True) — first side won s2. player won s2. dom(6,1)=0.75≥0.40 → Rout win ✓
+        r1 = self._sig("6-7 6-1 1-0", won=True)   # Even loss S1 + Rout win S2
+
+        # Rank 2: Rout win S1 + Even loss S2 → "6-1 7-6 1-0" with won=True
+        r2 = self._sig("6-1 6-7 1-0", won=True)   # Rout win S1 + Even loss S2
+
+        # Rank 3: Rout loss S1 + Rout win S2 → "6-7 ... wait, rout loss means player lost 6-1 style
+        # "1-6 6-1 1-0": s1=(6,1,False) second side won; player is first side (won=True): first_side_won=False → player lost s1. dom(6,1)=0.75≥0.40 → Rout loss ✓. s2=(6,1,True): first side won → player won s2. dom=0.75 → Rout win ✓
+        r3 = self._sig("1-6 6-1 1-0", won=True)   # Rout loss S1 + Rout win S2
+
+        # Rank 5: Rout loss S1 + Even win S2 → "1-6 6-4 1-0"
+        r5 = self._sig("1-6 6-4 1-0", won=True)   # Rout loss S1 + Even win S2
+
+        # Rank 8: Even win S1 + Rout loss S2 → "6-4 1-6 1-0"
+        r8 = self._sig("6-4 1-6 1-0", won=True)   # Even win S1 + Rout loss S2
+
+        self.assertGreater(r1, r2, "rank1 > rank2 in 3-set wins")
+        self.assertGreater(r2, r3, "rank2 > rank3 in 3-set wins")
+        self.assertGreater(r3, r5, "rank3 > rank5 in 3-set wins")
+        self.assertGreater(r5, r8, "rank5 > rank8 in 3-set wins")
+
+    def test_3set_win_positive(self):
+        """All 3-set tiebreak wins produce positive signals."""
+        scores_won = [
+            "6-7 6-1 1-0",   # rank 1
+            "6-1 6-7 1-0",   # rank 2
+            "1-6 6-1 1-0",   # rank 3
+            "6-7 6-4 1-0",   # rank 4: Even loss S1 + Even win S2
+            "1-6 6-4 1-0",   # rank 5
+            "6-4 6-7 1-0",   # rank 6: Even win S1 + Even loss S2
+            "6-1 1-6 1-0",   # rank 7: Rout win S1 + Rout loss S2
+            "6-4 1-6 1-0",   # rank 8
+        ]
+        for sc in scores_won:
+            sig = self._sig(sc, won=True)
+            self.assertGreater(sig, 0, f"Expected positive signal for win: {sc}, got {sig}")
+
+    # ---- 3-set tiebreak loss ordering (ranks 1-8) --------------------------
+
+    def test_3set_loss_rank_order(self):
+        """Top ranks (most negative) are worse than bottom ranks."""
+        # Loss rank 1: Even win S1 + Rout loss S2 → "6-4 6-1 0-1" — player is LOSER
+        # Score stored as winner's perspective: winner got "6-4 6-1 1-0"
+        # For player who LOST (won=False): first_side=winner, so "6-4 6-1 1-0":
+        # s1=(6,4,True): first side won. Player is second side (won=False). Player_won_s1=(True==False)=False. Even loss (dom=0.25). s2=(6,1,True): player lost. dom=0.75 → Rout loss.
+        # That's Even loss S1 + Rout loss S2 for the LOSER — but we want "Even win S1 + Rout loss S2" for the loser.
+        # "Even WIN S1" means player WON set 1 evenly. Player is second side (won=False), so player wins set 1 when first_side_won=False.
+        # Score: "6-7 6-1 1-0" — from winner's view: winner lost s1 (6-7), won s2 (6-1), won tiebreak.
+        # For loser (won=False): s1=(7,6,False): first_side_won=False → player_won_s1=(False==False)=True. dom(7,6)=0.10 → Even win ✓. s2=(6,1,True): player_won_s2=(True==False)=False. dom=0.75 → Rout loss ✓.
+        l1 = self._sig("6-7 6-1 1-0", won=False)   # Even win S1 + Rout loss S2 for loser
+
+        # Loss rank 2: Rout win S1 + Rout loss S2 → loser won s1 by rout, lost s2 by rout
+        # "1-6 6-1 1-0" from winner's view: winner lost s1 (1-6), won s2 (6-1), won tiebreak.
+        # Loser (won=False): s1=(6,1,False): first_side_won=False → player_won=(False==False)=True. dom=0.75 → Rout win ✓. s2=(6,1,True): player_won=(True==False)=False. dom=0.75 → Rout loss ✓.
+        l2 = self._sig("1-6 6-1 1-0", won=False)   # Rout win S1 + Rout loss S2 for loser
+
+        # Loss rank 8: Even loss S1 + Rout win S2 for loser → opponent won s1 evenly, loser won s2 by rout
+        # "6-4 1-6 1-0": winner won s1 (6-4), lost s2 (1-6), won tiebreak.
+        # Loser: s1=(6,4,True): player_won=(True==False)=False. dom(6,4)=0.25 → Even loss ✓. s2=(6,1,False): player_won=(False==False)=True. dom=0.75 → Rout win ✓.
+        l8 = self._sig("6-4 1-6 1-0", won=False)   # Even loss S1 + Rout win S2 for loser
+
+        self.assertLess(l1, l2, "loss rank1 more negative than rank2")
+        self.assertLess(l2, l8, "loss rank2 more negative than rank8")
+
+    def test_3set_loss_negative(self):
+        """All 3-set tiebreak losses produce negative signals."""
+        scores_lost = [
+            "6-7 6-1 1-0",   # Even win S1 + Rout loss S2 for loser (rank 1 most negative)
+            "1-6 6-1 1-0",   # Rout win S1 + Rout loss S2 for loser
+            "6-1 6-4 1-0",   # Rout loss S1 + Even win S2 for loser
+            "6-7 6-4 1-0",   # Even win S1 + Even loss S2 for loser
+            "6-4 6-7 1-0",   # Even loss S1 + Even win S2 for loser
+            "6-1 6-7 1-0",   # Rout loss S1 + Even... wait, winner won s1 6-1, lost s2 6-7
+                              # loser: s1=(6,1,True) player_won=(True==False)=False dom=0.75 Rout loss
+                              #        s2=(7,6,False) player_won=(False==False)=True dom=0.10 Even win
+                              # Rout loss S1 + Even win S2 → already covered above but different key
+            "1-6 6-7 1-0",   # Rout win S1 + Even loss S2 for loser
+            "6-4 1-6 1-0",   # Even loss S1 + Rout win S2 for loser (rank 8 least negative)
+        ]
+        for sc in scores_lost:
+            sig = self._sig(sc, won=False)
+            self.assertLess(sig, 0, f"Expected negative signal for loss: {sc}, got {sig}")
+
+    # ---- Symmetry: wins always > losses for matched scenarios ----------------
+
+    def test_wins_always_positive_losses_always_negative(self):
+        """Any win signal > 0, any loss signal < 0."""
+        for score, is_rout in [("6-0 6-1", True), ("6-4 6-3", False)]:
+            self.assertGreater(self._sig(score, won=True), 0)
+            self.assertLess(self._sig(score, won=False), 0)
+
+    def test_dominant_win_better_than_close_win(self):
+        """6-0 6-1 win signals higher than 6-4 6-3 win."""
+        self.assertGreater(
+            self._sig("6-0 6-1", won=True),
+            self._sig("6-4 6-3", won=True),
+        )
 
 
 if __name__ == "__main__":
