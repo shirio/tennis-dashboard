@@ -365,11 +365,14 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
 
 def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     """
-    Per-match adjustment for the incremental sequential system.
+    Per-match adjustment for the incremental sequential system (WINS ONLY).
 
-    Wraps _match_adjustment with a win ceiling based on the opponents' strength
-    and score dominance. This stops dominant wins against weak opponents from
-    inflating ratings beyond what the competition actually justifies.
+    Wraps _match_adjustment with a win ceiling based on opponent strength and
+    score dominance, then applies a per-match cap (_SEQ_CAP).
+
+    This function is only called for the WINNING side.  Losers receive the
+    exact negative of the winner's adj (zero-sum pairing), so that the two
+    sides always move by the same magnitude — see _compute_division_sequential.
 
     WIN CEILING — individual vs. pair credit:
       Singles: implied = opponent + avg_score_gap
@@ -377,35 +380,26 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
 
       Doubles uses avg_opp (not max_opp) because a partner who matches the
       opponents makes the win easier without individually proving the player
-      belongs at the max-opponent level. Using max_opp would give the player
-      full team credit for a blowout that their partner contributed equally to.
-      (E.g. Kim 3.03 + Tina 2.77 beating Maddux 2.69 + Laudenslager 2.84 6-1
-      6-1: Tina matches the opponents, so Kim's ceiling is avg_opp+gap=3.07,
-      not max_opp+gap=3.14.)
+      belongs at the max-opponent level.
 
-    A small minimum gain (MIN_WIN_GAIN=0.01) ensures any legitimate win still
-    provides a tiny incremental nudge even when the player is already above
-    the implied level.
+    Score-gap credit scales to 0 when the player is already 0.30+ above
+    opponents: dominating someone you're heavily favoured against is expected
+    behaviour, not new evidence of a higher ceiling.
 
-    The loss bound (adj ≤ 0) is already enforced inside _match_adjustment.
+    A minimum gain of 0.01 ensures any legitimate win still nudges the rating
+    even when the player is already above the implied ceiling.
     """
     adj = _match_adjustment(current_rating, record)
 
-    # Shared: compute opp_benchmark once (used by both win ceiling and loss floor)
-    opp_benchmark: float | None = None
-    if record.opponent_ratings:
+    if record.won and adj > 0 and record.opponent_ratings:
         if record.partner_rating is not None:
             opp_benchmark = sum(record.opponent_ratings) / len(record.opponent_ratings)
         else:
             opp_benchmark = (record.opponent_ratings[0] if len(record.opponent_ratings) == 1
                              else sum(record.opponent_ratings) / len(record.opponent_ratings))
 
-    if record.won and adj > 0 and opp_benchmark is not None:
-        # Score gap: average across all sets played.
-        # IMPORTANT: a match tiebreak (winner_games == 1, e.g. "1-0" third set)
-        # is treated as gap=0.00 — it is as close as a 7-6 regular set, not a
-        # bagel. Using _SCORE_GAP[loser_games=0]=0.45 would wrongly imply a
-        # bagel-level advantage from the tightest possible match result.
+        # Score gap: match tiebreaks (winner_games == 1) treated as 0.00,
+        # same as a 7-6 set, not a bagel.
         sets = _parse_sets(record.score)
         if sets:
             gap_vals = [
@@ -416,18 +410,8 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
         else:
             avg_gap = 0.0
 
-        # Discount the score-gap credit proportionally to how much the player
-        # is already rated above the opponents. Dominating someone you're
-        # heavily favoured against is expected — it's weak evidence of a
-        # higher ceiling than you already have.
-        #
-        # scale: 1.0 when evenly matched or as underdog; 0.0 when player is
-        # already 0.30+ above opponents. Linear between those extremes.
-        #
-        # Example: Tayoni (3.02) bagels Amber Candelaria (2.80) — pre-match
-        # advantage is 0.22, so scale=0.27, avg_gap drops from 0.45 → 0.12,
-        # implied=2.92 < current=3.02 → player_max=0.01 (just MIN_WIN_GAIN).
-        _ADV_FULL = 0.30   # advantage at which score-gap credit → 0
+        # Scale gap credit down when player already rated above opponents.
+        _ADV_FULL = 0.30
         pre_match_advantage = current_rating - opp_benchmark
         if pre_match_advantage > 0:
             scale = max(0.0, 1.0 - pre_match_advantage / _ADV_FULL)
@@ -438,12 +422,6 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
         player_max = max(MIN_WIN_GAIN, implied - current_rating)
 
         if record.partner_rating is not None:
-            # Doubles: both partners won together, so both should gain the SAME
-            # amount — capped at the minimum of their individual ceilings.
-            # The more constrained player (usually the higher-rated one who is
-            # already near the implied level) sets the limit for the team.
-            # This prevents a lower-rated partner from receiving a massive boost
-            # by riding a dominant teammate, and keeps partner gains consistent.
             partner_max = max(MIN_WIN_GAIN, implied - record.partner_rating)
             max_gain = min(player_max, partner_max)
         else:
@@ -451,17 +429,13 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
 
         adj = min(adj, max_gain)
 
-    elif not record.won and adj < 0 and opp_benchmark is not None:
-        # Loss convergence floor: when a player is rated ABOVE their opponents
-        # and loses, the drop is bounded by half the rating gap (both teams
-        # converge toward the midpoint, neither collapses past the other).
-        #
-        # Example: Tayoni (3.015) loses 7-6 6-4 to opponents avg (2.882).
-        # Without floor: adj = -0.156 → lands at 2.859, below both opponents.
-        # With floor:    adj = -0.067 → lands at 2.948, halfway between them.
-        if current_rating > opp_benchmark:
-            convergence_floor = -(current_rating - opp_benchmark) / 2
-            adj = max(adj, convergence_floor)
+    # Wins always give at least MIN_WIN_GAIN — a messy win against a weak
+    # opponent can produce a negative raw adj (e.g. getting bageled in one set),
+    # but a win is still a win and deserves a small positive nudge.
+    # Hard cap: no single match moves a rating more than _SEQ_CAP.
+    _SEQ_CAP = 0.10
+    MIN_WIN_GAIN = 0.01
+    adj = max(MIN_WIN_GAIN, min(_SEQ_CAP, adj))
 
     return adj
 
@@ -1028,39 +1002,103 @@ def _compute_division_sequential(
         for pk in involved:
             pre_match.setdefault(pk, {})[date] = snap[pk]
 
-        # Apply each match as an INCREMENTAL adjustment to the current running
-        # rating.  Baseline is never used again after initialization — each
-        # player's running[pk] is the sole source of truth going forward.
+        # Zero-sum pairing: compute the team gain from the winners' perspective
+        # first, then apply its NEGATIVE to every loser.  This guarantees that
+        # winners and losers always move by the exact same magnitude — no
+        # asymmetric "phantom" rating points can be created or destroyed.
+        #
+        # The winner gain is bounded by the win ceiling (opponent strength +
+        # score gap, scaled for pre-existing advantage) and _SEQ_CAP (0.10).
+        # That same bound automatically caps the loss, so a close match against
+        # near-equal opponents produces a small symmetrical swing for both sides.
         updates: dict[str, float] = {}
 
+        _SEQ_CAP = 0.10
         for ev in today:
-            for pk in ev.winner_keys:
-                if pk not in baselines:
-                    continue
-                partners = [k for k in ev.winner_keys if k != pk]
-                partner_r = snap.get(partners[0]) if partners else None
-                opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.loser_keys] or [3.0]
-                rec = MatchRecord(
-                    opponent_ratings=opp_r, partner_rating=partner_r,
-                    won=True, date=date, division=division,
-                    match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
-                )
-                prev = updates.get(pk, snap[pk])
-                updates[pk] = round(prev + _sequential_match_adj(prev, rec), 4)
+            is_singles = (len(ev.winner_keys) == 1 and len(ev.loser_keys) == 1)
 
-            for pk in ev.loser_keys:
-                if pk not in baselines:
-                    continue
-                partners = [k for k in ev.loser_keys if k != pk]
-                partner_r = snap.get(partners[0]) if partners else None
-                opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.winner_keys] or [3.0]
-                rec = MatchRecord(
-                    opponent_ratings=opp_r, partner_rating=partner_r,
-                    won=False, date=date, division=division,
-                    match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
-                )
-                prev = updates.get(pk, snap[pk])
-                updates[pk] = round(prev + _sequential_match_adj(prev, rec), 4)
+            if is_singles:
+                # ---- SINGLES: zero-sum pairing --------------------------------
+                # Compute gain for the winner; loser drops by the exact same
+                # amount. This prevents phantom rating points from being created
+                # or destroyed: whatever Anna Clark gains, Amy Arbeli loses.
+                team_gain: float | None = None
+                for pk in ev.winner_keys:
+                    if pk not in baselines:
+                        continue
+                    opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.loser_keys] or [3.0]
+                    rec = MatchRecord(
+                        opponent_ratings=opp_r, partner_rating=None,
+                        won=True, date=date, division=division,
+                        match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                    )
+                    prev = updates.get(pk, snap[pk])
+                    team_gain = _sequential_match_adj(prev, rec)
+                    break
+
+                if team_gain is not None:
+                    for pk in ev.winner_keys:
+                        if pk not in baselines:
+                            continue
+                        prev = updates.get(pk, snap[pk])
+                        updates[pk] = round(prev + team_gain, 4)
+                    for pk in ev.loser_keys:
+                        if pk not in baselines:
+                            continue
+                        prev = updates.get(pk, snap[pk])
+                        updates[pk] = round(prev - team_gain, 4)
+                else:
+                    # Winner untracked — compute loser's adj independently
+                    for pk in ev.loser_keys:
+                        if pk not in baselines:
+                            continue
+                        opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.winner_keys] or [3.0]
+                        rec = MatchRecord(
+                            opponent_ratings=opp_r, partner_rating=None,
+                            won=False, date=date, division=division,
+                            match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                        )
+                        prev = updates.get(pk, snap[pk])
+                        adj = _match_adjustment(prev, rec)
+                        adj = max(-_SEQ_CAP, min(0.0, adj))
+                        updates[pk] = round(prev + adj, 4)
+
+            else:
+                # ---- DOUBLES: independent per-player computation --------------
+                # avg_opp distortions from weak partners make pure zero-sum
+                # unreliable in doubles (a weak partner drags down implied
+                # ceiling → winners barely gain → losers barely drop even when
+                # they deserved a real penalty). Each player's adj is computed
+                # from their own perspective, capped at _SEQ_CAP.
+                for pk in ev.winner_keys:
+                    if pk not in baselines:
+                        continue
+                    partners = [k for k in ev.winner_keys if k != pk]
+                    partner_r = snap.get(partners[0]) if partners else None
+                    opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.loser_keys] or [3.0]
+                    rec = MatchRecord(
+                        opponent_ratings=opp_r, partner_rating=partner_r,
+                        won=True, date=date, division=division,
+                        match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                    )
+                    prev = updates.get(pk, snap[pk])
+                    updates[pk] = round(prev + _sequential_match_adj(prev, rec), 4)
+
+                for pk in ev.loser_keys:
+                    if pk not in baselines:
+                        continue
+                    partners = [k for k in ev.loser_keys if k != pk]
+                    partner_r = snap.get(partners[0]) if partners else None
+                    opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.winner_keys] or [3.0]
+                    rec = MatchRecord(
+                        opponent_ratings=opp_r, partner_rating=partner_r,
+                        won=False, date=date, division=division,
+                        match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                    )
+                    prev = updates.get(pk, snap[pk])
+                    adj = _match_adjustment(prev, rec)
+                    adj = max(-_SEQ_CAP, min(0.0, adj))
+                    updates[pk] = round(prev + adj, 4)
 
         running.update(updates)
 
@@ -1087,32 +1125,66 @@ def _compute_global_sequential(
         cur = {k: global_r.get(k, baselines.get(k, 3.0)) for k in all_keys}
 
         updates: dict[str, float] = {}
+        _SEQ_CAP = 0.10
+        is_singles = (len(ev.winner_keys) == 1 and len(ev.loser_keys) == 1)
 
-        for pk in ev.winner_keys:
-            if pk not in baselines:
-                continue
-            partners = [k for k in ev.winner_keys if k != pk]
-            partner_r = cur.get(partners[0]) if partners else None
-            opp_ratings = [cur.get(k, 3.0) for k in ev.loser_keys] or [3.0]
-            rec = MatchRecord(
-                opponent_ratings=opp_ratings, partner_rating=partner_r,
-                won=True, date=ev.date, division=ev.division,
-                match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
-            )
-            updates[pk] = cur[pk] + _sequential_match_adj(cur[pk], rec)
-
-        for pk in ev.loser_keys:
-            if pk not in baselines:
-                continue
-            partners = [k for k in ev.loser_keys if k != pk]
-            partner_r = cur.get(partners[0]) if partners else None
-            opp_ratings = [cur.get(k, 3.0) for k in ev.winner_keys] or [3.0]
-            rec = MatchRecord(
-                opponent_ratings=opp_ratings, partner_rating=partner_r,
-                won=False, date=ev.date, division=ev.division,
-                match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
-            )
-            updates[pk] = cur[pk] + _sequential_match_adj(cur[pk], rec)
+        if is_singles:
+            team_gain: float | None = None
+            for pk in ev.winner_keys:
+                if pk not in baselines:
+                    continue
+                opp_ratings = [cur.get(k, 3.0) for k in ev.loser_keys] or [3.0]
+                rec = MatchRecord(
+                    opponent_ratings=opp_ratings, partner_rating=None,
+                    won=True, date=ev.date, division=ev.division,
+                    match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                )
+                team_gain = _sequential_match_adj(cur[pk], rec)
+                break
+            if team_gain is not None:
+                for pk in ev.winner_keys:
+                    if pk not in baselines: continue
+                    updates[pk] = cur[pk] + team_gain
+                for pk in ev.loser_keys:
+                    if pk not in baselines: continue
+                    updates[pk] = cur[pk] - team_gain
+            else:
+                for pk in ev.loser_keys:
+                    if pk not in baselines: continue
+                    opp_ratings = [cur.get(k, 3.0) for k in ev.winner_keys] or [3.0]
+                    rec = MatchRecord(
+                        opponent_ratings=opp_ratings, partner_rating=None,
+                        won=False, date=ev.date, division=ev.division,
+                        match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                    )
+                    adj = _match_adjustment(cur[pk], rec)
+                    adj = max(-_SEQ_CAP, min(0.0, adj))
+                    updates[pk] = cur[pk] + adj
+        else:
+            for pk in ev.winner_keys:
+                if pk not in baselines: continue
+                partners = [k for k in ev.winner_keys if k != pk]
+                partner_r = cur.get(partners[0]) if partners else None
+                opp_ratings = [cur.get(k, 3.0) for k in ev.loser_keys] or [3.0]
+                rec = MatchRecord(
+                    opponent_ratings=opp_ratings, partner_rating=partner_r,
+                    won=True, date=ev.date, division=ev.division,
+                    match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                )
+                updates[pk] = cur[pk] + _sequential_match_adj(cur[pk], rec)
+            for pk in ev.loser_keys:
+                if pk not in baselines: continue
+                partners = [k for k in ev.loser_keys if k != pk]
+                partner_r = cur.get(partners[0]) if partners else None
+                opp_ratings = [cur.get(k, 3.0) for k in ev.winner_keys] or [3.0]
+                rec = MatchRecord(
+                    opponent_ratings=opp_ratings, partner_rating=partner_r,
+                    won=False, date=ev.date, division=ev.division,
+                    match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
+                )
+                adj = _match_adjustment(cur[pk], rec)
+                adj = max(-_SEQ_CAP, min(0.0, adj))
+                updates[pk] = cur[pk] + adj
 
         global_r.update(updates)
 
