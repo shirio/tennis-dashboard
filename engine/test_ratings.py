@@ -556,11 +556,13 @@ class TestUnderdogFavorite(unittest.TestCase):
         self.assertGreater(adj, 0, "Underdog close upset win must produce a positive adj")
 
     def test_underdog_upset_win_near_full_cap(self):
-        """Underdog upset win earns near the full SEQ_CAP (> 75% of cap)."""
+        """Underdog upset win earns well above half the SEQ_CAP (> 60% of cap).
+        win_cap = SEQ_CAP × (1 − 0.18)² ≈ 0.101 (67% of cap).
+        """
         rec = self._rec(2.70, self._HEAVY_FAV, won=True, score="6-2 6-3")
         adj = _sequential_match_adj(2.70, rec)
-        self.assertGreater(adj, self.SEQ_CAP * 0.75,
-                           "Upset win should earn close to the full sequential cap")
+        self.assertGreater(adj, self.SEQ_CAP * 0.60,
+                           "Upset win should earn well above half the sequential cap")
 
     # ------------------------------------------------------------------
     # Rule 2: Underdog close loss → never negative
@@ -627,21 +629,23 @@ class TestUnderdogFavorite(unittest.TestCase):
         self.assertLess(adj, 0.06,
                         "win_cap keeps it modest when opponent is somewhat weaker")
 
-    def test_repeated_expected_wins_capped_total(self):
+    def test_yarisbel_scenario_barely_moves(self):
         """
-        5 wins by 3.10 over 2.72–2.92 opponents: total gain kept modest by win_cap.
-        Yarisbel scenario: all dominant wins, but opponents are clearly weaker.
-        win_cap = 0.15 × (1 − expected) limits each match to 0.027–0.054.
-        Total should stay below 0.25.
+        Regression: 5 wins by 3.10 over 2.72–2.97 opponents should produce
+        only tiny gains — total < 0.08, landing near 3.15.
+        win_cap = SEQ_CAP × (1 − expected)² makes expected wins small:
+          expected=0.82 → win_cap ≈ 0.005
+          expected=0.64 → win_cap ≈ 0.019
+        She's way above everyone she's beaten — it tells us nothing of her ceiling.
         """
         matches = [
-            ("6-4 6-3", [2.78]),   # even+rout: surplus=0.33 > 0.15 gate → earns win_cap
-            ("6-3 6-1", [2.72]),   # rout+rout: surplus=0.36 → earns win_cap
-            ("6-1 6-3", [2.81]),   # rout+rout: surplus=0.48 → earns win_cap
-            ("6-1 6-3", [2.97]),   # rout+rout: surplus=0.72 → earns win_cap
-            ("6-2 6-2", [2.72]),   # rout+rout: surplus=0.36 → earns win_cap
+            ("6-4 6-3", [2.78]),   # even+rout, expected≈0.76 → win_cap≈0.009
+            ("6-3 6-1", [2.72]),   # rout+rout, expected≈0.82 → win_cap≈0.005
+            ("6-1 6-3", [2.81]),   # rout+rout, expected≈0.76 → win_cap≈0.009
+            ("6-1 6-3", [2.97]),   # rout+rout, expected≈0.64 → win_cap≈0.019
+            ("6-2 6-2", [2.72]),   # rout+rout, expected≈0.82 → win_cap≈0.005
         ]
-        rating = self._HEAVY_FAV
+        rating = self._HEAVY_FAV   # 3.10
         total_gain = 0.0
         for score, opp_r in matches:
             rec = MatchRecord(
@@ -650,11 +654,13 @@ class TestUnderdogFavorite(unittest.TestCase):
                 match_id="t", line_label="1# Singles", score=score,
             )
             adj = _sequential_match_adj(rating, rec)
-            self.assertGreater(adj, 0, "Dominant win should still earn positive adj")
+            self.assertGreater(adj, 0, "Dominant win still earns something positive")
             total_gain += adj
             rating += adj
-        self.assertLess(total_gain, 0.25,
-                        f"5 expected wins over weak opponents should not exceed 0.25, got {total_gain:.4f}")
+        self.assertLess(total_gain, 0.08,
+                        f"5 wins over much-weaker opponents: total gain must be < 0.08, got {total_gain:.4f}")
+        self.assertGreater(rating, self._HEAVY_FAV,
+                           "Final rating should be above starting point after 5 wins")
 
     def test_favourite_barely_wins_tiebreak_penalized(self):
         """
@@ -708,14 +714,14 @@ class TestUnderdogFavorite(unittest.TestCase):
     # ------------------------------------------------------------------
 
     def test_even_match_win_moderate(self):
-        """3.0 beats 3.0 evenly → adj in (0.05, 0.09).
-        win_cap = 0.15 × 0.50 = 0.075 for a true 50/50 match.
+        """3.0 beats 3.0 evenly → adj in (0.02, 0.06).
+        win_cap = 0.15 × (0.50)² = 0.0375 for a true 50/50 match.
         """
         rec = self._rec(3.0, 3.0, won=True, score="7-5 6-4")
         adj = _sequential_match_adj(3.0, rec)
-        self.assertGreater(adj, 0.05,
-                           "Even match win earns a meaningful positive adj")
-        self.assertLess(adj, 0.09,
+        self.assertGreater(adj, 0.02,
+                           "Even match win earns a moderate positive adj")
+        self.assertLess(adj, 0.06,
                         "Even match win stays well below full SEQ_CAP")
 
     def test_even_match_loss_drops(self):

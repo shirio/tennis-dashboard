@@ -467,9 +467,15 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
                 # level rather than your own" — proportional to the shortfall.
                 penalty = (_MIN_WIN_SURPRISE - surplus) * _BELOW_GATE_SCALE
                 return -penalty
-        # Cleared the gate: scale cap by how unexpected the win was.
-        # Upsets earn near the full cap; expected wins earn proportionally less.
-        win_cap = _SEQ_CAP * (1.0 - expected)
+        # Cleared the gate: scale cap by how unexpected the win was — squared.
+        # Squaring (1 - expected) makes the decay steep enough that expected wins
+        # (high expected) earn very little, while genuine upsets (low expected)
+        # still earn close to the full cap.
+        #   expected=0.82 (heavy fav)  → win_cap ≈ 0.005
+        #   expected=0.64 (moderate fav) → win_cap ≈ 0.019
+        #   expected=0.50 (even)        → win_cap ≈ 0.038
+        #   expected=0.18 (big underdog) → win_cap ≈ 0.101
+        win_cap = _SEQ_CAP * (1.0 - expected) ** 2
         return min(win_cap, adj)
 
     # Win with negative adj (underperformed) OR a loss: flat ±SEQ_CAP clip.
