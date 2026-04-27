@@ -408,6 +408,23 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
                 sum(record.opponent_ratings) / len(record.opponent_ratings)
             )
 
+        # Discount the score-gap credit proportionally to how much the player
+        # is already rated above the opponents. Dominating someone you're
+        # heavily favoured against is expected — it's weak evidence of a
+        # higher ceiling than you already have.
+        #
+        # scale: 1.0 when evenly matched or as underdog; 0.0 when player is
+        # already 0.30+ above opponents. Linear between those extremes.
+        #
+        # Example: Tayoni (3.02) bagels Amber Candelaria (2.80) — pre-match
+        # advantage is 0.22, so scale=0.27, avg_gap drops from 0.45 → 0.12,
+        # implied=2.92 < current=3.02 → player_max=0.01 (just MIN_WIN_GAIN).
+        _ADV_FULL = 0.30   # advantage at which score-gap credit → 0
+        pre_match_advantage = current_rating - opp_benchmark
+        if pre_match_advantage > 0:
+            scale = max(0.0, 1.0 - pre_match_advantage / _ADV_FULL)
+            avg_gap *= scale
+
         implied = opp_benchmark + avg_gap
         MIN_WIN_GAIN = 0.01
         player_max = max(MIN_WIN_GAIN, implied - current_rating)
