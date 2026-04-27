@@ -315,6 +315,11 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
     # Score margins are direct performance evidence: Yarisbel winning 6-1 6-3 is
     # a real signal regardless of whether the win was expected. SW would zero out
     # dominant wins against weaker opponents, masking genuine performance quality.
+    #
+    # KEY RULE: when a player lost the match, their individual set wins do NOT
+    # add positive signal. Winning a set 6-2 inside a match you ultimately lost
+    # is evidence of competitiveness, not of superiority — it cannot justify
+    # raising the rating. We zero out set-win contributions for the overall loser.
     total_surprise = 0.0
     total_dominance = 0.0
     for i, (winner_games, loser_games, first_side_won) in enumerate(sets):
@@ -322,7 +327,10 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
         actual_set = 1.0 if player_won_set else 0.0
         base_surprise = actual_set - expected
         dom = dom_arr[i] * set_dom_weights[i]
-        total_surprise += base_surprise * dom       # ← no SW on score signal
+        set_contrib = base_surprise * dom
+        if not record.won and player_won_set:
+            set_contrib = 0.0   # loser's set wins contribute nothing
+        total_surprise += set_contrib
         total_dominance += dom
 
     # Match-outcome signal: SW applies here. The outcome (win/loss) is where luck
@@ -342,7 +350,44 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
     else:
         adj = 0.0
 
-    return max(-cap, min(cap, adj))
+    adj = max(-cap, min(cap, adj))
+
+    # A loss can never raise your rating. Winning individual sets (even
+    # dominantly) is evidence you competed, but losing the match is the
+    # result that counts. The set signal can otherwise produce positive
+    # adjustments after a loss (e.g. won one set 6-2 inside a match you
+    # lost), which makes no intuitive sense.
+    if not record.won:
+        adj = min(adj, 0.0)
+
+    return adj
+
+
+def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
+    """
+    Per-match adjustment for the incremental sequential system.
+
+    Wraps _match_adjustment with a win ceiling: a win can't push a player's
+    rating above what those opponents actually prove. This stops dominant wins
+    against weak opponents from inflating ratings beyond what the competition
+    justifies (e.g. 5× 6-0 vs a 2.80 player can't push you to 3.50).
+
+    We allow a small minimum gain (MIN_WIN_GAIN) even when the player is already
+    rated above the implied level, so dominant victories still provide a small
+    incremental nudge — but not a free ticket to any rating.
+
+    The loss bound (≤ 0) is already enforced inside _match_adjustment.
+    """
+    adj = _match_adjustment(current_rating, record)
+
+    if record.won and adj > 0:
+        implied = _implied_rating_from_match(record)
+        if implied is not None:
+            MIN_WIN_GAIN = 0.01   # tiny nudge for any legitimate win
+            max_gain = max(MIN_WIN_GAIN, implied - current_rating)
+            adj = min(adj, max_gain)
+
+    return adj
 
 
 # ---------------------------------------------------------------------------
@@ -925,7 +970,7 @@ def _compute_division_sequential(
                     match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
                 )
                 prev = updates.get(pk, snap[pk])
-                updates[pk] = round(prev + _match_adjustment(prev, rec), 4)
+                updates[pk] = round(prev + _sequential_match_adj(prev, rec), 4)
 
             for pk in ev.loser_keys:
                 if pk not in baselines:
@@ -939,7 +984,7 @@ def _compute_division_sequential(
                     match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
                 )
                 prev = updates.get(pk, snap[pk])
-                updates[pk] = round(prev + _match_adjustment(prev, rec), 4)
+                updates[pk] = round(prev + _sequential_match_adj(prev, rec), 4)
 
         running.update(updates)
 
@@ -978,7 +1023,7 @@ def _compute_global_sequential(
                 won=True, date=ev.date, division=ev.division,
                 match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
             )
-            updates[pk] = cur[pk] + _match_adjustment(cur[pk], rec)
+            updates[pk] = cur[pk] + _sequential_match_adj(cur[pk], rec)
 
         for pk in ev.loser_keys:
             if pk not in baselines:
@@ -991,7 +1036,7 @@ def _compute_global_sequential(
                 won=False, date=ev.date, division=ev.division,
                 match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
             )
-            updates[pk] = cur[pk] + _match_adjustment(cur[pk], rec)
+            updates[pk] = cur[pk] + _sequential_match_adj(cur[pk], rec)
 
         global_r.update(updates)
 
