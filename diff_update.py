@@ -688,7 +688,12 @@ def main():
     _compute_player_stats_from_scorecards(all_ntrp)
 
     # Look up any player names in match data that aren't yet in players.json
-    _lookup_and_add_unknown_players(s30, s35)
+    n_new = _lookup_and_add_unknown_players(s30, s35)
+
+    # If new players were added, recompute their per-division stats (W-L, lines_played)
+    # so they appear correctly in the dashboard on first match
+    if n_new:
+        _compute_player_stats_from_scorecards(all_ntrp)
 
     # Run ratings
     from engine.ratings import run_ratings

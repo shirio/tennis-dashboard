@@ -24488,6 +24488,10 @@
     "global_rating": 2.8223,
     "iter_rating_30": 3.6295,
     "iter_rating_35": 2.8123,
-    "iter_global_rating": 3.6295
+    "iter_global_rating": 3.6295,
+    "lines_played_30": [
+      "D2"
+    ],
+    "wl_record_30": "1-0"
   }
 ]
