@@ -364,7 +364,7 @@ class TestScenarioSignal(unittest.TestCase):
 
     def test_straight_win_rank_order(self):
         """Rout+Rout > Even+Rout > Rout+Even > Even+Even
-        Note: 6-3 is a rout (dom=0.40 >= threshold). Use 6-4 (dom=0.25) for "even".
+        Note: 6-3 has dom=0.40 which is NOT > _ROUT_THRESHOLD → it's "even". Use 6-2 (dom=0.50) for rout.
         """
         rout_rout = self._sig("6-1 6-2", won=True)    # rank 1: Rout S1 + Rout S2
         even_rout = self._sig("6-4 6-2", won=True)    # rank 2: Even S1 + Rout S2
@@ -385,7 +385,7 @@ class TestScenarioSignal(unittest.TestCase):
 
     def test_straight_loss_rank_order(self):
         """Rout+Rout < Even+Rout < Rout+Even < Even+Even (all negative)
-        Note: 6-3 is a rout (dom=0.40 >= threshold). Use 6-4 (dom=0.25) for "even".
+        Note: 6-3 has dom=0.40 which is NOT > _ROUT_THRESHOLD → it's "even". Use 6-2 (dom=0.50) for rout.
         """
         rout_rout = self._sig("6-1 6-2", won=False)   # rank 1: Rout loss + Rout loss
         even_rout = self._sig("6-4 6-2", won=False)   # rank 2: Even loss S1 + Rout loss S2
@@ -638,11 +638,14 @@ class TestUnderdogFavorite(unittest.TestCase):
           expected=0.64 → win_cap ≈ 0.019
         She's way above everyone she's beaten — it tells us nothing of her ceiling.
         """
+        # Note: 6-3 is now "even" (dom=0.40 is NOT > _ROUT_THRESHOLD=0.40).
+        # Match 1: even+even vs expected≈0.76 → surplus=0.08 < gate(0.15) → small negative adj.
+        # Matches 2-5 still pass the gate (rout in at least one set) → tiny positive adj.
         matches = [
-            ("6-4 6-3", [2.78]),   # even+rout, expected≈0.76 → win_cap≈0.009
-            ("6-3 6-1", [2.72]),   # rout+rout, expected≈0.82 → win_cap≈0.005
-            ("6-1 6-3", [2.81]),   # rout+rout, expected≈0.76 → win_cap≈0.009
-            ("6-1 6-3", [2.97]),   # rout+rout, expected≈0.64 → win_cap≈0.019
+            ("6-4 6-3", [2.78]),   # even+even (6-3 is even), expected≈0.76 → below gate → negative
+            ("6-3 6-1", [2.72]),   # even+rout (6-3 even, 6-1 rout), expected≈0.82 → win_cap≈0.005
+            ("6-1 6-3", [2.81]),   # rout+even, expected≈0.76 → win_cap≈0.009
+            ("6-1 6-3", [2.97]),   # rout+even, expected≈0.64 → win_cap≈0.019
             ("6-2 6-2", [2.72]),   # rout+rout, expected≈0.82 → win_cap≈0.005
         ]
         rating = self._HEAVY_FAV   # 3.10
@@ -654,13 +657,16 @@ class TestUnderdogFavorite(unittest.TestCase):
                 match_id="t", line_label="1# Singles", score=score,
             )
             adj = _sequential_match_adj(rating, rec)
-            self.assertGreater(adj, 0, "Dominant win still earns something positive")
+            # Per-match: never a large swing in either direction.
+            # (Match 1 may be slightly negative — barely-expected win within gate range.)
+            self.assertGreater(adj, -0.05, "No single win should cause a large drop")
+            self.assertLess(adj, 0.05,    "No single expected win should earn a large bump")
             total_gain += adj
             rating += adj
         self.assertLess(total_gain, 0.08,
                         f"5 wins over much-weaker opponents: total gain must be < 0.08, got {total_gain:.4f}")
-        self.assertGreater(rating, self._HEAVY_FAV,
-                           "Final rating should be above starting point after 5 wins")
+        self.assertGreater(rating, self._HEAVY_FAV - 0.02,
+                           "Final rating should not drop meaningfully after 5 wins")
 
     def test_favourite_barely_wins_tiebreak_penalized(self):
         """
@@ -729,6 +735,45 @@ class TestUnderdogFavorite(unittest.TestCase):
         rec = self._rec(3.0, 3.0, won=False, score="6-4 6-3")
         adj = _sequential_match_adj(3.0, rec)
         self.assertLess(adj, 0, "Even match loss must produce a negative adj")
+
+    # ------------------------------------------------------------------
+    # Loss cap: symmetric to win cap, scaled by expected²
+    # ------------------------------------------------------------------
+
+    def test_near_equal_loss_capped_small(self):
+        """Anna/Twells scenario: ~50/50 players, loss should be small.
+
+        6-3 6-3 is now even+even (dom=0.40 is NOT > _ROUT_THRESHOLD).
+        loss_cap = SEQ_CAP × expected² ≈ 0.15 × 0.50² = 0.038.
+        Should NOT hit the full SEQ_CAP=0.15.
+        """
+        rec = self._rec(2.92, 2.88, won=False, score="6-3 6-3")
+        adj = _sequential_match_adj(2.92, rec)
+        self.assertLess(adj, 0, "Loss to near-equal opponent must be negative")
+        self.assertGreater(adj, -0.06,
+                           "Near-equal loss should be small — loss_cap ≈ SEQ_CAP × expected²")
+
+    def test_heavy_favourite_loss_capped_larger(self):
+        """Heavy favourite (82%) loses → loss_cap = 0.15 × 0.82² ≈ 0.101.
+        Bigger penalty than a near-equal loss, but still ≤ SEQ_CAP.
+        """
+        rec = self._rec(self._HEAVY_FAV, self._WEAK_OPP, won=False, score="6-4 6-4")
+        adj = _sequential_match_adj(self._HEAVY_FAV, rec)
+        self.assertLess(adj, 0, "Heavy favourite losing must produce a negative adj")
+        self.assertGreater(adj, -0.15, "Even big-favourite loss stays ≤ SEQ_CAP")
+        self.assertLess(adj, -0.03,   "Heavy favourite loss should be meaningfully negative")
+
+    def test_near_equal_loss_smaller_than_heavy_fav_loss(self):
+        """Near-equal loss (expected≈0.50) should be smaller penalty than
+        heavy-favourite loss (expected≈0.82) for the same set score.
+        loss_cap = SEQ_CAP × expected² → scales with how big a favourite you were.
+        """
+        rec_near = self._rec(2.92, 2.88, won=False, score="6-4 6-4")
+        rec_fav  = self._rec(self._HEAVY_FAV, self._WEAK_OPP, won=False, score="6-4 6-4")
+        adj_near = _sequential_match_adj(2.92, rec_near)
+        adj_fav  = _sequential_match_adj(self._HEAVY_FAV, rec_fav)
+        self.assertGreater(adj_near, adj_fav,
+                           "Near-equal loss should hurt less than heavy-favourite loss (scaled loss cap)")
 
 
 if __name__ == "__main__":

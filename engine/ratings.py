@@ -91,8 +91,9 @@ _CP_BOT_BOT = 0.10
 # Scenario signal tables — "the story of the set scores"
 # ---------------------------------------------------------------------------
 # Key: (s1_player_won, s1_is_rout, s2_player_won, s2_is_rout)
-# A set is a "rout" when _set_dominance(winner_games, loser_games) >= 0.40
-# (i.e. 6-0 / 6-1 / 6-2 / 6-3). All other sets are "even" (6-4, 7-5, 7-6).
+# A set is a "rout" when _set_dominance(winner_games, loser_games) > 0.40
+# (i.e. 6-0 / 6-1 / 6-2). All other sets are "even" (6-3, 6-4, 7-5, 7-6).
+# Note: 6-3 has dominance exactly 0.40 — strict > means it is "even", not a rout.
 # In straight sets the player always wins both (won=True) or loses both (won=False),
 # so the match outcome is implied by the set outcomes — no need for a 5th key dimension.
 _SIGNAL_2SET: dict[tuple, float] = {
@@ -131,7 +132,7 @@ _SIGNAL_3SET: dict[tuple, float] = {
     (False, False, True,  True,  False): -0.15,  # Even loss S1 + Rout win  S2 (routed S2, still lost)
 }
 
-_ROUT_THRESHOLD = 0.40   # _set_dominance threshold to classify a set as a "rout"
+_ROUT_THRESHOLD = 0.40   # strict > threshold: dom > 0.40 is a rout (6-0/6-1/6-2); 6-3 (dom=0.40) is even
 
 
 @dataclass
@@ -323,7 +324,8 @@ def _scenario_signal(sets: list[tuple[int, int, bool]], won: bool) -> float:
 
     Classifies set 1 and set 2 from the focal player's perspective (did they win
     the set, and was it a rout?).  A set is a rout when
-    _set_dominance(winner_games, loser_games) >= _ROUT_THRESHOLD (covers 6-0/6-1/6-2/6-3).
+    _set_dominance(winner_games, loser_games) > _ROUT_THRESHOLD (covers 6-0/6-1/6-2 only;
+    6-3 has dominance exactly 0.40 and is classified as "even").
 
     For 2-set matches: looks up _SIGNAL_2SET.
     For 3-set tiebreaks: looks up _SIGNAL_3SET using sets 1 & 2 plus match outcome.
@@ -341,8 +343,8 @@ def _scenario_signal(sets: list[tuple[int, int, bool]], won: bool) -> float:
     s1_pw = (s1[2] == won)
     s2_pw = (s2[2] == won)
 
-    s1_rout = _set_dominance(s1[0], s1[1]) >= _ROUT_THRESHOLD
-    s2_rout = _set_dominance(s2[0], s2[1]) >= _ROUT_THRESHOLD
+    s1_rout = _set_dominance(s1[0], s1[1]) > _ROUT_THRESHOLD
+    s2_rout = _set_dominance(s2[0], s2[1]) > _ROUT_THRESHOLD
 
     is_3set = len(sets) == 3
     if is_3set:
@@ -432,9 +434,14 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
          • 68% favourite       → win_cap ≈ 0.016
          • 82% favourite       → win_cap ≈ 0.009  (tiny)
 
-    Loss cap is the flat ±SEQ_CAP. Underdogs expected to lose (expected < 0.50)
-    are floored at 0 by _match_adjustment — they are never penalised for
-    expected losses but CAN earn a positive adj for overperforming.
+    Loss cap scaled by expected²: symmetrically to the win cap, a loss hurts you
+    more when you were the heavy favourite and less when you were the underdog.
+      • 82% favourite loses → loss_cap = 0.15 × 0.82² ≈ 0.101  (large penalty)
+      • 50/50 match loser  → loss_cap = 0.15 × 0.50² = 0.038
+      • 18% underdog loses → loss_cap = 0.15 × 0.18² ≈ 0.005  (nearly nothing)
+    Underdogs expected to lose (expected < 0.50) are floored at 0 by
+    _match_adjustment — they are never penalised for expected losses but CAN
+    earn a positive adj for overperforming.
     """
     adj = _match_adjustment(current_rating, record)
 
@@ -478,9 +485,16 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
         win_cap = _SEQ_CAP * (1.0 - expected) ** 2
         return min(win_cap, adj)
 
-    # Win with negative adj (underperformed) OR a loss: flat ±SEQ_CAP clip.
-    # Wins CAN decrease a rating when the player won less impressively than
-    # their level implies.  Underdog losses are floored at 0 by _match_adjustment.
+    # Loss: apply scaled loss cap so near-equal losses hurt less than lopsided ones.
+    # Wins that produced a negative adj (via _match_adjustment directly) use flat cap.
+    if not record.won:
+        expected = _cross_pair_expected(
+            current_rating, record.partner_rating, record.opponent_ratings
+        )
+        loss_cap = _SEQ_CAP * expected ** 2
+        return max(-loss_cap, min(_SEQ_CAP, adj))
+
+    # Win with negative adj (underperformed but won): flat clip — rare, keep small.
     return max(-_SEQ_CAP, min(_SEQ_CAP, adj))
 
 
