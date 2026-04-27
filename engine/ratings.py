@@ -367,22 +367,31 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     """
     Per-match adjustment for the incremental sequential system (singles and doubles).
 
-    Returns _match_adjustment clamped to ±_SEQ_CAP (0.10), with a WIN CEILING that
-    prevents rating inflation from expected wins against weaker opponents.
+    Returns _match_adjustment clamped to ±_SEQ_CAP (0.05), with a WIN CEILING and
+    an underdog protection rule.
 
     WIN CEILING (positive adj only):
-      implied = opp_benchmark + avg_score_gap (scaled by pre-match advantage)
+      implied = opp_benchmark + avg_score_gap
       player_max = max(0, implied - current_rating)
       adj = min(adj, player_max)
 
-      If the player is already above the implied level (e.g. Yarisbel 3.1 beating
-      someone implied at 2.88), player_max = 0 → adj = 0 → nobody moves in zero-sum.
-      No partner_max: the partner's position doesn't constrain the focal player's gain.
+    NEGATIVE ADJ FOR WINS — favored players only:
+      When a FAVOURITE (expected > 0.50) barely beats a weaker opponent, raw adj
+      can be negative (e.g. 6-0 1-6 1-0 for a player 0.31 above opponent). The
+      ceiling block is skipped and the negative flows through — correct: the
+      favourite underperformed, winner drops, loser rises.
 
-    NEGATIVE ADJ FOR WINS: intentional. When a heavy favourite barely squeaks past a
-    much weaker opponent (e.g. 6-0 1-6 1-0), _match_adjustment returns a negative
-    raw adj. The ceiling block is skipped (only runs for adj > 0), so the negative
-    flows through. In zero-sum: winner drops, loser rises — exactly right.
+      When an UNDERDOG (expected ≤ 0.50) wins a messy match (e.g. 7-6 2-6 1-0
+      with a bad set loss), raw adj can also be negative because the set-loss
+      signal dominates. But an underdog winning an ugly upset is NOT evidence
+      they are overrated — the match outcome itself (winning) is positive news.
+      Floor underdog wins at 0: team_gain = 0 → nobody moves, rather than the
+      loser incorrectly rising from an upset loss.
+
+    SEQ_CAP = 0.05:
+      Even a dominant expected result caps at 0.05 per match. An equal-rating
+      match that goes to a super-tiebreak should move both players only ~0.02-0.03,
+      not 0.10. Over a 6-week season, max drift is ±0.30.
     """
     adj = _match_adjustment(current_rating, record)
 
@@ -393,8 +402,7 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
             opp_benchmark = (record.opponent_ratings[0] if len(record.opponent_ratings) == 1
                              else sum(record.opponent_ratings) / len(record.opponent_ratings))
 
-        # Score gap: match tiebreaks (winner_games == 1) treated as 0.00,
-        # same as a 7-6 set, not a bagel.
+        # Score gap: match tiebreaks (winner_games == 1) treated as 0.00.
         sets = _parse_sets(record.score)
         if sets:
             gap_vals = [
@@ -405,17 +413,21 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
         else:
             avg_gap = 0.0
 
-        # No scale factor: the raw implied ceiling (opp_benchmark + score_gap)
-        # is sufficient. If the player is already above the implied level they
-        # get 0 gain; if below, they can rise toward it. Scaling was suppressing
-        # gain even for moderate-gap wins (e.g. Yarisbel 3.10 vs 2.97), so it
-        # was removed and the ceiling alone handles inflation prevention.
         implied = opp_benchmark + avg_gap
         player_max = max(0.0, implied - current_rating)
-        # No partner_max: the partner's position is not the focal player's ceiling.
         adj = min(adj, player_max)
 
-    _SEQ_CAP = 0.10
+    # Underdog protection: if the winner was not favoured (expected ≤ 0.50)
+    # and the raw adj came out negative (messy win with bad set), floor at 0.
+    # An underdog winning — however ugly — is not evidence they are overrated.
+    if record.won and adj < 0 and record.opponent_ratings:
+        expected = _cross_pair_expected(
+            current_rating, record.partner_rating, record.opponent_ratings
+        )
+        if expected <= 0.50:
+            adj = 0.0
+
+    _SEQ_CAP = 0.05
     return max(-_SEQ_CAP, min(_SEQ_CAP, adj))
 
 
@@ -992,18 +1004,17 @@ def _compute_division_sequential(
         # near-equal opponents produces a small symmetrical swing for both sides.
         updates: dict[str, float] = {}
 
-        _SEQ_CAP = 0.10
+        _SEQ_CAP = 0.05
         for ev in today:
             # ---- Universal zero-sum pairing (singles and doubles) -------------
-            # Compute the swing from the winners' perspective; apply +swing to
-            # every winner, -swing to every loser. Total rating points conserved.
+            # Compute team_gain from EVERY tracked winner; take the MAX so that
+            # one partner above the ceiling doesn't silence the other's signal.
             #
-            # We compute _sequential_match_adj for EVERY tracked winner and take
-            # the MAX. This handles the doubles case where one partner may already
-            # be above the win ceiling (their adj = 0) while the other is below it
-            # (their adj = positive) — taking the max uses the more informative
-            # signal. Negative adj (bad win) is negative for everyone, so max of
-            # negatives is still the least-negative, which is intentional.
+            # team_gain > 0: normal win — winners gain, losers drop (zero-sum).
+            # team_gain < 0: bad win by favourite — winners drop, losers rise.
+            # team_gain = 0: ceiling'd expected win OR underdog protection floor.
+            #   → Winners gain 0; losers computed independently from _match_adj
+            #     so upset losers still drop appropriately (Kim loses an upset → drops).
             team_gain: float | None = None
             for pk in ev.winner_keys:
                 if pk not in baselines:
@@ -1020,7 +1031,9 @@ def _compute_division_sequential(
                 gain = _sequential_match_adj(prev, rec)
                 team_gain = gain if team_gain is None else max(team_gain, gain)
 
-            if team_gain is not None:
+            if team_gain is not None and team_gain != 0:
+                # Non-zero team_gain: strict zero-sum — winners and losers
+                # move by the same magnitude in opposite directions.
                 for pk in ev.winner_keys:
                     if pk not in baselines:
                         continue
@@ -1032,7 +1045,9 @@ def _compute_division_sequential(
                     prev = updates.get(pk, snap[pk])
                     updates[pk] = round(prev - team_gain, 4)
             else:
-                # All winners untracked — compute each loser's adj independently
+                # team_gain is 0 (ceiling'd expected win or underdog protection)
+                # OR no tracked winners at all. Winners stay put; compute each
+                # loser independently so upset losers still drop.
                 for pk in ev.loser_keys:
                     if pk not in baselines:
                         continue
@@ -1074,7 +1089,7 @@ def _compute_global_sequential(
         cur = {k: global_r.get(k, baselines.get(k, 3.0)) for k in all_keys}
 
         updates: dict[str, float] = {}
-        _SEQ_CAP = 0.10
+        _SEQ_CAP = 0.05
 
         # Universal zero-sum pairing (singles and doubles) — max over winners
         team_gain: float | None = None
@@ -1091,7 +1106,8 @@ def _compute_global_sequential(
             )
             gain = _sequential_match_adj(cur[pk], rec)
             team_gain = gain if team_gain is None else max(team_gain, gain)
-        if team_gain is not None:
+        if team_gain is not None and team_gain != 0:
+            # Non-zero: strict zero-sum
             for pk in ev.winner_keys:
                 if pk not in baselines: continue
                 updates[pk] = round(cur[pk] + team_gain, 4)
@@ -1099,7 +1115,8 @@ def _compute_global_sequential(
                 if pk not in baselines: continue
                 updates[pk] = round(cur[pk] - team_gain, 4)
         else:
-            # All winners untracked — compute each loser independently
+            # team_gain = 0 (ceiling'd or underdog protection) OR no tracked winners.
+            # Winners stay put; losers computed independently so upset losers drop.
             for pk in ev.loser_keys:
                 if pk not in baselines: continue
                 partners_l = [k for k in ev.loser_keys if k != pk]
