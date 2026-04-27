@@ -410,7 +410,20 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
 
         implied = opp_benchmark + avg_gap
         MIN_WIN_GAIN = 0.01
-        max_gain = max(MIN_WIN_GAIN, implied - current_rating)
+        player_max = max(MIN_WIN_GAIN, implied - current_rating)
+
+        if record.partner_rating is not None:
+            # Doubles: both partners won together, so both should gain the SAME
+            # amount — capped at the minimum of their individual ceilings.
+            # The more constrained player (usually the higher-rated one who is
+            # already near the implied level) sets the limit for the team.
+            # This prevents a lower-rated partner from receiving a massive boost
+            # by riding a dominant teammate, and keeps partner gains consistent.
+            partner_max = max(MIN_WIN_GAIN, implied - record.partner_rating)
+            max_gain = min(player_max, partner_max)
+        else:
+            max_gain = player_max
+
         adj = min(adj, max_gain)
 
     return adj
