@@ -390,6 +390,22 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
     # Map expected [0, 1] → [-1, +1] to match the raw_signal scale.
     # expected=0.50 → 0.0 (even match), expected=0.80 → +0.60 (favoured)
     expected_signal = 2.0 * expected - 1.0
+
+    # Heavy underdog loss: the linear formula underestimates how bad a loss
+    # is "expected" to look. A 13.6% underdog is expected to lose in routs
+    # (Rout+Rout = −1.0), not at the −0.73 midpoint. Blend expected_signal
+    # toward −1.0 as underdog severity increases so that any set where the
+    # underdog holds their own reads as a genuine overperformance.
+    #   expected=0.30 → no shift (boundary)
+    #   expected=0.20 → expected_signal ≈ −0.73  (small shift)
+    #   expected=0.13 → expected_signal ≈ −0.88  (meaningful shift)
+    #   expected=0.00 → expected_signal = −1.00  (fully worst-case)
+    if not record.won and expected < 0.30:
+        underdog_factor = (0.30 - expected) / 0.30
+        expected_signal = (
+            expected_signal * (1.0 - underdog_factor) + (-1.0) * underdog_factor
+        )
+
     surprise = raw_signal - expected_signal
 
     adj = surprise * scaling

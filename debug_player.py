@@ -110,12 +110,25 @@ def _explain_adj(
 
     raw_signal    = _scenario_signal(sets, rec.won)
     expected_sig  = 2.0 * expected - 1.0
-    surprise      = raw_signal - expected_sig
+    # Mirror the heavy-underdog-loss shift from _match_adjustment
+    shift_applied = False
+    if not rec.won and expected < 0.30:
+        underdog_factor = (0.30 - expected) / 0.30
+        expected_sig_shifted = expected_sig * (1.0 - underdog_factor) + (-1.0) * underdog_factor
+        shift_applied = True
+    else:
+        expected_sig_shifted = expected_sig
+    surprise      = raw_signal - expected_sig_shifted
     desc          = _scenario_desc(sets, rec.won)
 
     lines.append(f"  Scenario:           {desc}")
     lines.append(f"  Raw signal:        {raw_signal:+.2f}  (from scenario table)")
-    lines.append(f"  Expected signal:   {expected_sig:+.3f}  (2 × {expected:.3f} − 1)")
+    if shift_applied:
+        uf = (0.30 - expected) / 0.30
+        lines.append(f"  Expected signal:   {expected_sig:+.3f}  (2 × {expected:.3f} − 1)")
+        lines.append(f"  Underdog shift:    {expected_sig_shifted:+.3f}  (blended {uf:.2f}× toward −1.0 — expected rout)")
+    else:
+        lines.append(f"  Expected signal:   {expected_sig_shifted:+.3f}  (2 × {expected:.3f} − 1)")
     lines.append(f"  Surprise:          {surprise:+.3f}  (raw − expected)")
 
     # Singles amplifier
