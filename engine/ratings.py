@@ -428,12 +428,13 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
        within the expected range earn nothing — squeezing through a 3-set
        tiebreak as the heavy favourite is not evidence of a higher rating.
 
-    2. Win cap scaled by (1 − expected): even when a win clears the gate,
-       the maximum credit is proportional to how unexpected it was.
-         • 18% underdog upset  → win_cap ≈ 0.041  (near-full cap)
-         • 50/50 match winner  → win_cap = 0.025
-         • 68% favourite       → win_cap ≈ 0.016
-         • 82% favourite       → win_cap ≈ 0.009  (tiny)
+    2. Win cap — two-regime formula, continuous at expected=0.50:
+         Underdogs (< 0.50): linear  SEQ_CAP × (1 − expected)
+         Favourites (≥ 0.50): steep  SEQ_CAP × 2 × (1 − expected)²
+         • 18% underdog upset  → win_cap ≈ 0.123
+         • 50/50 match winner  → win_cap = 0.075
+         • 68% favourite       → win_cap ≈ 0.031
+         • 82% favourite       → win_cap ≈ 0.010  (tiny)
 
     Loss cap scaled by expected²: symmetrically to the win cap, a loss hurts you
     more when you were the heavy favourite and less when you were the underdog.
@@ -475,15 +476,29 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
                 # level rather than your own" — proportional to the shortfall.
                 penalty = (_MIN_WIN_SURPRISE - surplus) * _BELOW_GATE_SCALE
                 return -penalty
-        # Cleared the gate: scale cap by how unexpected the win was — squared.
-        # Squaring (1 - expected) makes the decay steep enough that expected wins
-        # (high expected) earn very little, while genuine upsets (low expected)
-        # still earn close to the full cap.
-        #   expected=0.82 (heavy fav)  → win_cap ≈ 0.005
-        #   expected=0.64 (moderate fav) → win_cap ≈ 0.019
-        #   expected=0.50 (even)        → win_cap ≈ 0.038
-        #   expected=0.18 (big underdog) → win_cap ≈ 0.101
-        win_cap = _SEQ_CAP * (1.0 - expected) ** 2
+        # Cleared the gate: scale win cap by how unexpected the win was.
+        #
+        # Two-regime formula — continuous at expected=0.50:
+        #
+        #   Underdogs (expected < 0.50): linear decay
+        #     win_cap = SEQ_CAP × (1 − expected)
+        #     An 18% underdog earns up to 82% of the cap — the squared formula
+        #     was designed to suppress FAVOURITE inflation, not underdog gains.
+        #
+        #   Favourites (expected ≥ 0.50): 2 × (1 − expected)² — steeper decay
+        #     win_cap = SEQ_CAP × 2 × (1 − expected)²
+        #     At expected=0.50 this equals SEQ_CAP × 0.50 = the linear value,
+        #     so the curve is continuous. Beyond 0.50 it falls rapidly.
+        #
+        #   expected=0.18 (big underdog) → win_cap ≈ 0.123  (was ≈ 0.101)
+        #   expected=0.35 (underdog)     → win_cap ≈ 0.098  (was ≈ 0.064)
+        #   expected=0.50 (even)         → win_cap = 0.075  (was ≈ 0.038)
+        #   expected=0.68 (moderate fav) → win_cap ≈ 0.031  (was ≈ 0.015)
+        #   expected=0.82 (heavy fav)    → win_cap ≈ 0.010  (was ≈ 0.005)
+        if expected < 0.50:
+            win_cap = _SEQ_CAP * (1.0 - expected)
+        else:
+            win_cap = _SEQ_CAP * 2.0 * (1.0 - expected) ** 2
         return min(win_cap, adj)
 
     # Loss: apply scaled loss cap so near-equal losses hurt less than lopsided ones.

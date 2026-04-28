@@ -131,9 +131,14 @@ def _explain_adj(
         lines.append(f"  Gate check:         surplus {surplus:+.3f} < {MIN_WIN_SURPRISE} gate → BELOW GATE")
         lines.append(f"  Below-gate penalty: −({MIN_WIN_SURPRISE} − {surplus:.3f}) × {BELOW_GATE_SCALE} = −{penalty:.4f}")
     elif rec.won:
-        win_cap = SEQ_CAP * (1.0 - expected) ** 2
+        if expected < 0.50:
+            win_cap = SEQ_CAP * (1.0 - expected)
+            formula = f"SEQ_CAP × (1−{expected:.3f})  [linear — underdog]"
+        else:
+            win_cap = SEQ_CAP * 2.0 * (1.0 - expected) ** 2
+            formula = f"SEQ_CAP × 2 × (1−{expected:.3f})²  [favourite]"
         lines.append(f"  Gate check:         surplus {surprise:+.3f} ≥ {MIN_WIN_SURPRISE} gate ✓")
-        lines.append(f"  Win cap:           {win_cap:.4f}  (SEQ_CAP × (1−{expected:.3f})²)")
+        lines.append(f"  Win cap:           {win_cap:.4f}  ({formula})")
     else:
         # Loss
         loss_cap = SEQ_CAP * expected ** 2
