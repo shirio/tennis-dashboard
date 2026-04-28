@@ -478,27 +478,28 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
                 return -penalty
         # Cleared the gate: scale win cap by how unexpected the win was.
         #
-        # Two-regime formula — continuous at expected=0.50:
+        # Heavy underdogs (expected < 0.30 — win prob ≤ 25%): linear
+        #   win_cap = SEQ_CAP × (1 − expected)
+        #   The squared formula was designed to suppress favourite inflation;
+        #   it shouldn't also penalise clearly mis-ranked players.  At 18%
+        #   expected, linear gives 0.123 vs 0.101 from squared — enough to
+        #   surface genuine mis-rankings in a short season.
         #
-        #   Underdogs (expected < 0.50): linear decay
-        #     win_cap = SEQ_CAP × (1 − expected)
-        #     An 18% underdog earns up to 82% of the cap — the squared formula
-        #     was designed to suppress FAVOURITE inflation, not underdog gains.
+        # Everyone else (expected ≥ 0.30): original squared formula
+        #   win_cap = SEQ_CAP × (1 − expected)²
+        #   Even matches (0.50) stay at ≈ 0.038 — a moderate, fair reward.
+        #   Favourites remain tightly capped (0.005 at 82%).
         #
-        #   Favourites (expected ≥ 0.50): 2 × (1 − expected)² — steeper decay
-        #     win_cap = SEQ_CAP × 2 × (1 − expected)²
-        #     At expected=0.50 this equals SEQ_CAP × 0.50 = the linear value,
-        #     so the curve is continuous. Beyond 0.50 it falls rapidly.
-        #
-        #   expected=0.18 (big underdog) → win_cap ≈ 0.123  (was ≈ 0.101)
-        #   expected=0.35 (underdog)     → win_cap ≈ 0.098  (was ≈ 0.064)
-        #   expected=0.50 (even)         → win_cap = 0.075  (was ≈ 0.038)
-        #   expected=0.68 (moderate fav) → win_cap ≈ 0.031  (was ≈ 0.015)
-        #   expected=0.82 (heavy fav)    → win_cap ≈ 0.010  (was ≈ 0.005)
-        if expected < 0.50:
+        #   expected=0.12 (extreme underdog)→ win_cap ≈ 0.132  (was 0.116)
+        #   expected=0.18 (heavy underdog)  → win_cap ≈ 0.123  (was 0.101)
+        #   expected=0.25 (heavy underdog)  → win_cap ≈ 0.113  (was 0.084)
+        #   expected=0.32 (clear underdog)  → win_cap ≈ 0.069  (unchanged)
+        #   expected=0.50 (even)            → win_cap ≈ 0.038  (unchanged)
+        #   expected=0.82 (heavy fav)       → win_cap ≈ 0.005  (unchanged)
+        if expected < 0.30:
             win_cap = _SEQ_CAP * (1.0 - expected)
         else:
-            win_cap = _SEQ_CAP * 2.0 * (1.0 - expected) ** 2
+            win_cap = _SEQ_CAP * (1.0 - expected) ** 2
         return min(win_cap, adj)
 
     # Loss: apply scaled loss cap so near-equal losses hurt less than lopsided ones.

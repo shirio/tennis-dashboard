@@ -726,14 +726,14 @@ class TestUnderdogFavorite(unittest.TestCase):
     # ------------------------------------------------------------------
 
     def test_even_match_win_moderate(self):
-        """3.0 beats 3.0 evenly → adj in (0.02, 0.09).
-        win_cap = SEQ_CAP × 2 × (1−0.50)² = 0.075 at the favourite/underdog boundary.
+        """3.0 beats 3.0 evenly → adj in (0.02, 0.06).
+        win_cap = 0.15 × (0.50)² = 0.0375 for a true 50/50 match.
         """
         rec = self._rec(3.0, 3.0, won=True, score="7-5 6-4")
         adj = _sequential_match_adj(3.0, rec)
         self.assertGreater(adj, 0.02,
                            "Even match win earns a moderate positive adj")
-        self.assertLess(adj, 0.09,
+        self.assertLess(adj, 0.06,
                         "Even match win stays well below full SEQ_CAP")
 
     def test_even_match_loss_drops(self):
