@@ -2693,9 +2693,9 @@
     "tennisrecord_id": null,
     "team": "SPANISH TRAIL #2",
     "division": "2.5 Women",
-    "dynamic_rating_baseline": null,
-    "current_division_rating": null,
-    "global_rating": null,
+    "dynamic_rating_baseline": 2.1,
+    "current_division_rating": 2.1,
+    "global_rating": 2.1,
     "ntrp_rating": "2.5",
     "wl_record": null,
     "lines_played": null,
@@ -2704,7 +2704,11 @@
     "profile_url": "/adult/profile.aspx?playername=Mel Murray",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "",
-    "notes_35": ""
+    "notes_35": "",
+    "rating_30": 2.1,
+    "rating_35": 2.1,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {}
   },
   {
     "id": "vanessa-chiodo",
@@ -2712,9 +2716,9 @@
     "tennisrecord_id": null,
     "team": "ALL AMERICAN TENNIS CENTER",
     "division": "2.5 Women",
-    "dynamic_rating_baseline": null,
-    "current_division_rating": null,
-    "global_rating": null,
+    "dynamic_rating_baseline": 2.1,
+    "current_division_rating": 2.1,
+    "global_rating": 2.1,
     "ntrp_rating": "2.5",
     "wl_record": null,
     "lines_played": null,
@@ -2722,7 +2726,11 @@
     "notes": null,
     "profile_url": "/adult/profile.aspx?playername=Vanessa Chiodo",
     "notes_30": "",
-    "notes_35": ""
+    "notes_35": "",
+    "rating_30": 2.1,
+    "rating_35": 2.1,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {}
   },
   {
     "id": "maria-allen",
@@ -11416,9 +11424,9 @@
     "tennisrecord_id": null,
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
-    "dynamic_rating_baseline": null,
-    "current_division_rating": null,
-    "global_rating": null,
+    "dynamic_rating_baseline": 2.6,
+    "current_division_rating": 2.6,
+    "global_rating": 2.6,
     "ntrp_rating": "3.0 S",
     "wl_record": null,
     "lines_played": null,
@@ -11427,7 +11435,11 @@
     "profile_url": "/adult/profile.aspx?playername=Regina Ilustre",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "",
-    "notes_35": ""
+    "notes_35": "",
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {}
   },
   {
     "id": "seda-sargsyan",
@@ -18189,9 +18201,9 @@
     "tennisrecord_id": null,
     "team": "TPC",
     "division": "3.5 Women B",
-    "dynamic_rating_baseline": null,
-    "current_division_rating": null,
-    "global_rating": null,
+    "dynamic_rating_baseline": 3.1,
+    "current_division_rating": 3.0963,
+    "global_rating": 3.0963,
     "ntrp_rating": "3.5 S",
     "wl_record": null,
     "lines_played": null,
@@ -18205,7 +18217,13 @@
       "D1"
     ],
     "wl_record_35": "0-1",
-    "team_35": "TPC"
+    "team_35": "TPC",
+    "rating_30": 3.1,
+    "rating_35": 3.0963,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {
+      "4/25/2026": 3.1
+    }
   },
   {
     "id": "sydney-lobato",
@@ -18213,9 +18231,9 @@
     "tennisrecord_id": null,
     "team": "DTC #1",
     "division": "3.5 Women B",
-    "dynamic_rating_baseline": null,
-    "current_division_rating": null,
-    "global_rating": null,
+    "dynamic_rating_baseline": 3.1,
+    "current_division_rating": 3.0731,
+    "global_rating": 3.0731,
     "ntrp_rating": "3.5 S",
     "wl_record": null,
     "lines_played": null,
@@ -18229,7 +18247,13 @@
       "D3"
     ],
     "wl_record_35": "0-1",
-    "team_35": "DTC #1"
+    "team_35": "DTC #1",
+    "rating_30": 3.1,
+    "rating_35": 3.0731,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {
+      "4/25/2026": 3.1
+    }
   },
   {
     "id": "katelyn-mccullough",
@@ -22813,9 +22837,9 @@
     "tennisrecord_id": null,
     "team": "SPANISH OAKS",
     "division": "4.0 Women A",
-    "dynamic_rating_baseline": null,
-    "current_division_rating": null,
-    "global_rating": null,
+    "dynamic_rating_baseline": 3.6,
+    "current_division_rating": 3.6,
+    "global_rating": 3.6,
     "ntrp_rating": "3.5",
     "wl_record": null,
     "lines_played": null,
@@ -22824,7 +22848,11 @@
     "profile_url": "/adult/profile.aspx?playername=Sophia Garman",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "",
-    "notes_35": ""
+    "notes_35": "",
+    "rating_30": 3.6,
+    "rating_35": 3.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {}
   },
   {
     "id": "kara-godfrey",

@@ -1233,6 +1233,15 @@ def run_ratings() -> RatingsSummary:
         print("  [ratings] players.json is empty – skipping")
         return summary
 
+    # Assign NTRP-based defaults to players with no dynamic_rating_baseline.
+    # These players were added to the roster but never returned a rating from
+    # Tennis Record (e.g. late subs, missing TennisRecord profiles).
+    # Setting the default here means it is both used in all calculations AND
+    # persisted to players.json so it shows up on the dashboard.
+    for p in players:
+        if p.get("dynamic_rating_baseline") is None and p.get("division"):
+            p["dynamic_rating_baseline"] = ntrp_default(p["division"])
+
     # Build name → player lookup
     players_by_name: dict[str, dict] = {}
     for p in players:
