@@ -46,6 +46,29 @@ _LINE_TIER: dict[str, float] = {
 # Division rating floor (approx lowest dynamic baseline in each division)
 _DIV_FLOOR: dict[str, float] = {"3.0": 2.50, "3.5": 3.00}
 
+# Default baseline for players who have no dynamic_rating_baseline, keyed by NTRP prefix.
+# Used when a player appears in match data but was never rated (e.g. late additions,
+# sub players). Better than a flat 3.0 because it keeps opponent strength estimates
+# consistent within each division.
+_NTRP_DEFAULT_RATING: dict[str, float] = {
+    "2.5": 2.10,
+    "3.0": 2.60,
+    "3.5": 3.10,
+    "4.0": 3.60,
+}
+
+
+def ntrp_default(division: str) -> float:
+    """Return the assumed baseline for a player with no dynamic_rating_baseline.
+
+    Parses the NTRP level from the division string (e.g. '3.0 Women B' → 3.0)
+    and returns the configured default for that level.
+    """
+    for prefix, default in _NTRP_DEFAULT_RATING.items():
+        if division.startswith(prefix):
+            return default
+    return 3.0   # last-resort fallback for unrecognised division strings
+
 # Stepped win-probability table: (gap_threshold, probability)
 # gap = player_rating - opponent_rating
 # Entries checked top-to-bottom; first matching threshold wins.
@@ -1085,7 +1108,7 @@ def _compute_division_sequential(
         # Baseline is ONLY used here to fill in players who have never played
         # before (i.e. their running[pk] hasn't been set yet).
         snap: dict[str, float] = {
-            pk: running.get(pk, baselines.get(pk, 3.0))
+            pk: running.get(pk, baselines.get(pk, ntrp_default("")))
             for pk in involved
         }
 
@@ -1107,7 +1130,7 @@ def _compute_division_sequential(
                     continue
                 partners_w = [k for k in ev.winner_keys if k != pk]
                 partner_r = snap.get(partners_w[0]) if partners_w else None
-                opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.loser_keys] or [3.0]
+                opp_r = [snap.get(k, baselines.get(k, ntrp_default(""))) for k in ev.loser_keys] or [ntrp_default("")]
                 rec = MatchRecord(
                     opponent_ratings=opp_r, partner_rating=partner_r,
                     won=True, date=date, division=division,
@@ -1123,7 +1146,7 @@ def _compute_division_sequential(
                     continue
                 partners_l = [k for k in ev.loser_keys if k != pk]
                 partner_r = snap.get(partners_l[0]) if partners_l else None
-                opp_r = [snap.get(k, baselines.get(k, 3.0)) for k in ev.winner_keys] or [3.0]
+                opp_r = [snap.get(k, baselines.get(k, ntrp_default(""))) for k in ev.winner_keys] or [ntrp_default("")]
                 rec = MatchRecord(
                     opponent_ratings=opp_r, partner_rating=partner_r,
                     won=False, date=date, division=division,
@@ -1155,7 +1178,7 @@ def _compute_global_sequential(
         all_keys = ev.winner_keys + ev.loser_keys
         # Snapshot current ratings for everyone in this court BEFORE any update
         # so both sides see consistent pre-match ratings.
-        cur = {k: global_r.get(k, baselines.get(k, 3.0)) for k in all_keys}
+        cur = {k: global_r.get(k, baselines.get(k, ntrp_default(""))) for k in all_keys}
 
         updates: dict[str, float] = {}
 
@@ -1166,7 +1189,7 @@ def _compute_global_sequential(
                 continue
             partners_w = [k for k in ev.winner_keys if k != pk]
             partner_r = cur.get(partners_w[0]) if partners_w else None
-            opp_ratings = [cur.get(k, 3.0) for k in ev.loser_keys] or [3.0]
+            opp_ratings = [cur.get(k, baselines.get(k, ntrp_default(""))) for k in ev.loser_keys] or [ntrp_default("")]
             rec = MatchRecord(
                 opponent_ratings=opp_ratings, partner_rating=partner_r,
                 won=True, date=ev.date, division=ev.division,
@@ -1181,7 +1204,7 @@ def _compute_global_sequential(
                 continue
             partners_l = [k for k in ev.loser_keys if k != pk]
             partner_r = cur.get(partners_l[0]) if partners_l else None
-            opp_ratings = [cur.get(k, 3.0) for k in ev.winner_keys] or [3.0]
+            opp_ratings = [cur.get(k, baselines.get(k, ntrp_default(""))) for k in ev.winner_keys] or [ntrp_default("")]
             rec = MatchRecord(
                 opponent_ratings=opp_ratings, partner_rating=partner_r,
                 won=False, date=ev.date, division=ev.division,
@@ -1229,8 +1252,9 @@ def run_ratings() -> RatingsSummary:
 
     baselines_all = {
         k: p["dynamic_rating_baseline"]
+           if p.get("dynamic_rating_baseline") is not None
+           else ntrp_default(p.get("division", ""))
         for k, p in players_by_name.items()
-        if p.get("dynamic_rating_baseline") is not None
     }
 
     # Count total match weeks per division (for deployment rate calculation)

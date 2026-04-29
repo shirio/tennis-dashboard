@@ -22,7 +22,7 @@ from engine.ratings import (
     _sequential_match_adj, _detect_scorecard_swap,
     _date_str_sort_key, _ROUT_THRESHOLD,
     PLAYERS_JSON, STANDINGS_30, STANDINGS_35,
-    MatchRecord, CourtEvent,
+    MatchRecord, CourtEvent, ntrp_default,
 )
 
 # ── Scenario descriptions keyed by signal table entries ──────────────────────
@@ -296,9 +296,12 @@ def debug_player(name: str, division: str | None = None):
     print("═" * width)
 
     # Run sequential for the WHOLE division so opponent ratings are accurate
-    running: dict[str, float] = {k: p.get("dynamic_rating_baseline", 3.0)
-                                  for k, p in players_by_key.items()
-                                  if p.get("dynamic_rating_baseline") is not None}
+    running: dict[str, float] = {
+        k: p["dynamic_rating_baseline"]
+           if p.get("dynamic_rating_baseline") is not None
+           else ntrp_default(p.get("division", ""))
+        for k, p in players_by_key.items()
+    }
 
     events_by_date: dict[str, list[CourtEvent]] = defaultdict(list)
     for ev in div_events:
@@ -310,8 +313,12 @@ def debug_player(name: str, division: str | None = None):
         involved = set()
         for ev in today:
             involved.update(ev.winner_keys + ev.loser_keys)
-        snap = {k: running.get(k, players_by_key.get(k, {}).get("dynamic_rating_baseline", 3.0))
-                for k in involved}
+        snap = {
+            k: running.get(k)
+               or players_by_key.get(k, {}).get("dynamic_rating_baseline")
+               or ntrp_default(players_by_key.get(k, {}).get("division", ""))
+            for k in involved
+        }
 
         updates: dict[str, float] = {}
 
@@ -326,8 +333,12 @@ def debug_player(name: str, division: str | None = None):
                 partner_name = players_by_key[partner_k[0]]["name"] if partner_k else None
                 partner_r    = snap.get(partner_k[0]) if partner_k else None
                 opp_names    = [players_by_key[k]["name"] if k in players_by_key else k for k in opp_k]
-                opp_rs       = [snap.get(k, players_by_key.get(k, {}).get("dynamic_rating_baseline", 3.0))
-                                 for k in opp_k]
+                opp_rs       = [
+                    snap.get(k)
+                    or players_by_key.get(k, {}).get("dynamic_rating_baseline")
+                    or ntrp_default(players_by_key.get(k, {}).get("division", ""))
+                    for k in opp_k
+                ]
 
                 prev_r = updates.get(pk, snap[pk])
 
@@ -377,7 +388,12 @@ def debug_player(name: str, division: str | None = None):
                         continue   # already handled above
                     partners = [x for x in side_keys if x != k]
                     p_r  = snap.get(partners[0]) if partners else None
-                    o_rs = [snap.get(x, running.get(x, 3.0)) for x in opp_keys] or [3.0]
+                    o_rs = [
+                        snap.get(x)
+                        or running.get(x)
+                        or ntrp_default(players_by_key.get(x, {}).get("division", ""))
+                        for x in opp_keys
+                    ] or [ntrp_default("")]
                     r    = MatchRecord(
                         opponent_ratings=o_rs, partner_rating=p_r,
                         won=won_flag, date=date, division=div,
