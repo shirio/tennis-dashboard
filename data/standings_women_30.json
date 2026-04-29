@@ -17,7 +17,7 @@
           "games_won": 332,
           "games_lost": 198,
           "games_won_pct": "62.64%",
-          "notes": "Undefeated; top-rated roster in the division. S1 perfect, led by Yarisbel (5–0), the biggest singles threat in the division. Shi (2.74→2.89, 5-0) trending up. Emmy 3–0 at D2."
+          "notes": "Undefeated; top-rated roster in the division. S1 perfect, led by Yarisbel (5–0), the biggest singles threat in the division. Emmy (2.79→2.96, 4-1) trending up. Christine 2–0 at D3."
         },
         {
           "team_name": "SUMMERLIN ARBORS",
@@ -31,7 +31,21 @@
           "games_won": 318,
           "games_lost": 237,
           "games_won_pct": "57.30%",
-          "notes": "Won big over TPC, got swept by SoHi. Brittany Carlson (2.69→2.86, 4-1) trending up. Kim Springer drops hardest: 3.25→3.15. Tayoni 4–0 at S1."
+          "notes": "Won big over TPC, got swept by SoHi. Brittany Carlson (2.69→2.83, 4-1) trending up. Kim Springer drops hardest: 3.25→3.15. Tayoni 4–0 at S1."
+        },
+        {
+          "team_name": "ANTHEM CC",
+          "team_wins": 4,
+          "team_losses": 2,
+          "matches_played": 6,
+          "indiv_wins": 16,
+          "indiv_losses": 14,
+          "sets_won": 37,
+          "sets_lost": 35,
+          "games_won": 270,
+          "games_lost": 261,
+          "games_won_pct": "50.85%",
+          "notes": "Won big over TPC, got swept by DTC #3. Gina drops hardest: 2.97→2.80. S1 is the soft spot (2–4 record). Kelly Twells 2–0 at S2."
         },
         {
           "team_name": "TPC",
@@ -48,20 +62,6 @@
           "notes": "Won big over DTC #2, got swept by Summerlin. S2 is the soft spot (2–3 record). Meghan 3–0 at D2. Jennifer Wang 2–0 at S1."
         },
         {
-          "team_name": "ANTHEM CC",
-          "team_wins": 3,
-          "team_losses": 2,
-          "matches_played": 5,
-          "indiv_wins": 13,
-          "indiv_losses": 12,
-          "sets_won": 30,
-          "sets_lost": 30,
-          "games_won": 221,
-          "games_lost": 223,
-          "games_won_pct": "49.77%",
-          "notes": "Won big over TPC, got swept by DTC #3. Gina drops hardest: 2.97→2.86. Therese deployed every week. S1 is the soft spot (2–3 record)."
-        },
-        {
           "team_name": "LIFE TIME FITNESS/GV",
           "team_wins": 2,
           "team_losses": 4,
@@ -73,7 +73,7 @@
           "games_won": 238,
           "games_lost": 290,
           "games_won_pct": "45.08%",
-          "notes": "D3 is the soft spot (1–4 record). Lisa Williams drops hardest: 2.75→2.65. Han/Kimberly Lippisch/Mary Apone all deployed every week. Kimberly Lippisch 2–0 at S1."
+          "notes": "D3 is the soft spot (1–4 record). Hee drops hardest: 3.02→2.83. Han/Kimberly Lippisch/Mary Apone all deployed every week. Kimberly Lippisch 2–0 at S1."
         },
         {
           "team_name": "DTC #2",
@@ -87,7 +87,7 @@
           "games_won": 254,
           "games_lost": 318,
           "games_won_pct": "44.41%",
-          "notes": "Won big over SoHi, got swept by TPC. Consuelo drops hardest: 2.96→2.86. Tina Shirey + Irene both deployed every week. S2 is the soft spot (1–5 record)."
+          "notes": "Won big over SoHi, got swept by TPC. Elizabeth Abatangelo drops hardest: 2.72→2.58. Tina Shirey + Irene both deployed every week. S2 is the soft spot (1–5 record)."
         },
         {
           "team_name": "RED ROCK CC",
@@ -101,21 +101,21 @@
           "games_won": 245,
           "games_lost": 277,
           "games_won_pct": "46.93%",
-          "notes": "S1 is the soft spot (1–5 record). Courtney 2–0 at D3. Carolina 2–1 at D1. Brenda/Rhianna 2–0 at D1."
+          "notes": "S1 is the soft spot (1–5 record). Desiree drops hardest: 2.85→2.75. Courtney 2–0 at D3. Carolina 2–1 at D1."
         },
         {
           "team_name": "SOUTHERN HIGHLANDS",
           "team_wins": 1,
-          "team_losses": 4,
-          "matches_played": 5,
-          "indiv_wins": 10,
-          "indiv_losses": 15,
-          "sets_won": 23,
-          "sets_lost": 32,
-          "games_won": 215,
-          "games_lost": 250,
-          "games_won_pct": "46.24%",
-          "notes": "Won big over Summerlin, got swept by DTC #2. Gretchen/Danielle/Christa all deployed every week. S1 is the soft spot (0–5 record). Gretchen 3–1 at S2."
+          "team_losses": 5,
+          "matches_played": 6,
+          "indiv_wins": 12,
+          "indiv_losses": 18,
+          "sets_won": 28,
+          "sets_lost": 39,
+          "games_won": 253,
+          "games_lost": 299,
+          "games_won_pct": "45.83%",
+          "notes": "Won big over Summerlin, got swept by DTC #2. Danielle drops hardest: 2.78→2.69. Gretchen deployed every week. S1 is the soft spot (1–5 record)."
         }
       ],
       "matches": [
@@ -1446,12 +1446,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779591",
           "home_team": "ANTHEM CC",
           "away_team": "SOUTHERN HIGHLANDS",
-          "team_wins_home": null,
-          "team_wins_away": null,
+          "team_wins_home": 3,
+          "team_wins_away": 2,
           "score": "",
           "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Nicole Harper",
+              "players_away": "Christie Sanders",
+              "score": "6-3 6-1",
+              "result": "away",
+              "winner_team": "SOUTHERN HIGHLANDS",
+              "loser_team": "ANTHEM CC"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Chelsi Grady",
+              "players_away": "Gretchen Wills",
+              "score": "6-4 6-0",
+              "result": "home",
+              "winner_team": "ANTHEM CC",
+              "loser_team": "SOUTHERN HIGHLANDS"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "ANN MARIE WEAVER / Gina Rivera",
+              "players_away": "Margaret Bruno / Shaza Nayef",
+              "score": "7-5 4-6 1-0",
+              "result": "away",
+              "winner_team": "SOUTHERN HIGHLANDS",
+              "loser_team": "ANTHEM CC"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kelly Twells / Sandra Shearer",
+              "players_away": "Amy Badain / Danielle Britten",
+              "score": "3-6 6-2 1-0",
+              "result": "home",
+              "winner_team": "ANTHEM CC",
+              "loser_team": "SOUTHERN HIGHLANDS"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Amber Pasco / Dylan Underwood",
+              "players_away": "Sandra Walford / Taylor Larson",
+              "score": "6-1 6-1",
+              "result": "home",
+              "winner_team": "ANTHEM CC",
+              "loser_team": "SOUTHERN HIGHLANDS"
+            }
+          ]
         },
         {
           "match_id": "2df2ae364b782f50",
@@ -1794,7 +1840,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "DTC #3 leads A undefeated at 6-0. Summerlin (4-2) is in contention. TPC, Anthem, and LTF are at the bottom. Top risers: Brittany Carlson (Summerlin, 2.69→2.86, 4-1); Shi L Oskooi (DTC #3, 2.74→2.89, 5-0). DTC #3 vs Summerlin (5/2/2026) decides the A title."
+      "subflight_summary": "DTC #3 leads A undefeated at 6-0. Summerlin (4-2), and Anthem (4-2) are in contention. TPC, LTF, and DTC #2 are at the bottom. Top risers: Emmy Perez (DTC #3, 2.79→2.96, 4-1); Shi L Oskooi (DTC #3, 2.74→2.88, 5-0). DTC #3 vs Summerlin (5/2/2026) decides the A title."
     },
     {
       "flight_label": "B",
@@ -1853,7 +1899,7 @@
           "games_won": 273,
           "games_lost": 257,
           "games_won_pct": "51.51%",
-          "notes": "Won big over Ridges, got swept by Whitney Mesa. Maryna (2.86→2.98, 5-1) trending up. D2 is the soft spot (2–4 record). Tiffany 2–1 at D3."
+          "notes": "Won big over Ridges, got swept by Whitney Mesa. Dianne (2.69→2.80, 2-2) trending up. Geraldine drops hardest: 2.80→2.70. Maryna deployed every week."
         },
         {
           "team_name": "DESERT PALM",
@@ -1881,7 +1927,7 @@
           "games_won": 255,
           "games_lost": 266,
           "games_won_pct": "48.94%",
-          "notes": "Won big over Desert Palm, got swept by Sp. Oaks. Erika (2.74→2.84, 3-0) trending up. Geraldine deployed every week. D3 is the soft spot (2–3 record)."
+          "notes": "Won big over Desert Palm, got swept by Sp. Oaks. Erika (2.74→2.85, 3-0) trending up. Geraldine deployed every week. D3 is the soft spot (2–3 record)."
         },
         {
           "team_name": "SPANISH OAKS",
@@ -1895,7 +1941,7 @@
           "games_won": 255,
           "games_lost": 272,
           "games_won_pct": "48.39%",
-          "notes": "Won big over LLV, got swept by DTC #1. Shawanna drops hardest: 2.85→2.63. D1 is the soft spot (1–5 record). Karen Veazey 2–0 at S1."
+          "notes": "Won big over LLV, got swept by DTC #1. Shawanna drops hardest: 2.85→2.62. D1 is the soft spot (1–5 record). Karen Veazey 2–0 at S1."
         },
         {
           "team_name": "CLUB RIDGES",
@@ -1909,7 +1955,7 @@
           "games_won": 142,
           "games_lost": 335,
           "games_won_pct": "29.77%",
-          "notes": "0–6; one 2–3 loss shows they can compete. Christy drops hardest: 3.01→2.82. Michelle Inman deployed every week. D1 is the soft spot (0–6 record)."
+          "notes": "0–6; one 2–3 loss shows they can compete. Christy drops hardest: 3.01→2.80. Michelle Inman deployed every week. D1 is the soft spot (0–6 record)."
         }
       ],
       "matches": [
@@ -3634,7 +3680,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "Sp. Trail, Whitney Mesa, DTC #1, DTC #4, Desert Palm are all tied atop B at 4-2. LLV (2-4), and Sp. Oaks (2-4) are in contention. Ridges (0-6) is fading. Top risers: Maryna Post (DTC #4, 2.86→2.98, 5-1); Olga Bencini (DTC #4, 2.88→2.97, 4-1). Sp. Trail vs Whitney Mesa (5/9/2026) decides the B title."
+      "subflight_summary": "Sp. Trail, Whitney Mesa, DTC #1, DTC #4, Desert Palm are all tied atop B at 4-2. LLV (2-4), and Sp. Oaks (2-4) are in contention. Ridges (0-6) is fading. Top risers: Meryll Ledesma (Sp. Trail, 2.64→2.85, 4-1); Maryna Post (DTC #4, 2.86→2.96, 5-1). Sp. Trail vs Whitney Mesa (5/9/2026) decides the B title."
     }
   ]
 }
