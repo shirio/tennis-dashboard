@@ -35,6 +35,19 @@ def _slug(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", (s or "").lower()).strip("-")
 
 
+def _date_sort_key(d: str) -> tuple:
+    """Convert M/D/YYYY string to (YYYY, MM, DD) tuple for correct chronological sort.
+
+    Plain string sort fails for dates like 5/2 vs 5/16 because '5/1...' < '5/2...'
+    alphabetically, placing week 9 (5/16) before week 7 (5/2).
+    """
+    try:
+        m, day, y = d.split("/")
+        return (int(y), int(m), int(day))
+    except Exception:
+        return (0, 0, 0)
+
+
 # ---------------------------------------------------------------------------
 # Team name abbreviations
 # ---------------------------------------------------------------------------
@@ -237,7 +250,7 @@ def _team_result_for(matches: list[dict], team: str) -> list[dict]:
     Build a per-team list of results (score/won from that team's perspective).
     """
     out = []
-    for m in sorted(matches, key=lambda x: x.get("date", "")):
+    for m in sorted(matches, key=lambda x: _date_sort_key(x.get("date", ""))):
         hw = m.get("team_wins_home")
         aw = m.get("team_wins_away")
         pending = m.get("pending", False)
@@ -634,14 +647,6 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         """Normalise a player name for data-pkey attribute."""
         return re.sub(r"[^a-z0-9]", "-", name.strip().lower())
 
-    def _date_to_sort_key(d: str) -> tuple:
-        """Convert M/D/YYYY string to (YYYY, MM, DD) tuple for comparison."""
-        try:
-            m, day, y = d.split("/")
-            return (int(y), int(m), int(day))
-        except Exception:
-            return (0, 0, 0)
-
     def _pit_rating(nkey: str, match_date: str) -> str:
         """Return the point-in-time rating for a player going into match_date.
 
@@ -658,11 +663,11 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         if match_date in tl:
             return f"{tl[match_date]:.2f}"
         # Most recent entry strictly before match_date
-        match_key = _date_to_sort_key(match_date)
-        prior = [(k, v) for k, v in tl.items() if _date_to_sort_key(k) < match_key]
+        match_key = _date_sort_key(match_date)
+        prior = [(k, v) for k, v in tl.items() if _date_sort_key(k) < match_key]
         if prior:
             # Take the latest prior entry
-            latest_k, latest_v = max(prior, key=lambda kv: _date_to_sort_key(kv[0]))
+            latest_k, latest_v = max(prior, key=lambda kv: _date_sort_key(kv[0]))
             return f"{latest_v:.2f}"
         # No timeline entries before this date → player hadn't played yet → use baseline
         base = _baseline_by_name.get(nkey, "")
@@ -715,7 +720,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
             d = _m.get("date", "")
             if d:
                 _all_dates.add(d)
-    _sorted_dates = sorted(_all_dates, key=_date_to_sort_key)
+    _sorted_dates = sorted(_all_dates, key=_date_sort_key)
     _week_label: dict[str, str] = {d: f"W{i+1}" for i, d in enumerate(_sorted_dates)}
 
     sf_btns = ""
