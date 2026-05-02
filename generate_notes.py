@@ -22,11 +22,17 @@ def _name_key(name):
 def _score_descriptor(score: str) -> str:
     """
     Describe the shape of a score string:
-      'lopsided' → any bagel (6-0) OR both sets conceded ≤1 (straight sets)
-      'dominant' → both sets conceded ≤2 (straight sets)
-      'clear' → 6-3 or similar (straight sets)
-      'tight' → 6-4 / 7-5 / 7-6 (straight sets)
+      'lopsided'     → any bagel (6-0) OR every set conceded ≤1
+      'dominant'     → at least one set conceded ≤2 (but no bagel); e.g. 6-2 6-4, 6-2 6-2
+      'clear'        → tightest set conceded exactly 3; e.g. 6-3 6-3, 6-3 6-4
+      'tight'        → ALL sets conceded ≥4; e.g. 6-4 6-4, 7-5 6-4, 7-6 6-4
       '3-set tiebreak' → has a 1-0 or 0-1 third-set tiebreak
+
+    Straight-sets rule: "tight" requires EVERY set to be close. If any
+    single set was dominant (≤2 conceded), the straight-set match is
+    "dominant" — 6-2 6-4 is dominant, not tight.
+    This does NOT apply to 3-set tiebreaks: 6-1 1-6 1-0 is already
+    handled above as "3-set tiebreak" regardless of individual set shapes.
     """
     if not score:
         return ""
@@ -44,18 +50,21 @@ def _score_descriptor(score: str) -> str:
     if not regular:
         return ""
 
-    min_games = min(min(a, b) for a, b in regular)
-    max_conceded = max(min(a, b) for a, b in regular)
+    # min_conceded: fewest games conceded in any single set — if this is low,
+    # at least one set was dominant regardless of how close the other was.
+    min_conceded = min(min(a, b) for a, b in regular)
 
-    if min_games == 0:
-        return "lopsided"
-    if max_conceded <= 1:
-        return "lopsided"
-    if max_conceded == 2:
-        return "dominant"
-    if max_conceded == 3:
-        return "clear"
-    return "tight"
+    if min_conceded == 0:
+        return "lopsided"                  # at least one bagel
+    if min_conceded == 1 and max(min(a, b) for a, b in regular) <= 1:
+        return "lopsided"                  # all sets ≤1 conceded (e.g. 6-1 6-0)
+    if min_conceded <= 1:
+        return "dominant"                  # one set was 6-0/6-1, other was closer
+    if min_conceded <= 2:
+        return "dominant"                  # at least one set ≤2 conceded (e.g. 6-2 6-4)
+    if min_conceded == 3:
+        return "clear"                     # tightest set was 6-3 (e.g. 6-3 6-3, 6-3 6-4)
+    return "tight"                         # ALL sets ≥4 conceded (6-4 6-4, 7-5 6-4)
 
 
 def _score_phrase(score: str, won: bool) -> str:
