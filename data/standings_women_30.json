@@ -7,9 +7,9 @@
       "teams": [
         {
           "team_name": "DTC #3",
-          "team_wins": 6,
+          "team_wins": 7,
           "team_losses": 0,
-          "matches_played": 6,
+          "matches_played": 7,
           "indiv_wins": 23,
           "indiv_losses": 7,
           "sets_won": 53,
@@ -22,8 +22,8 @@
         {
           "team_name": "SUMMERLIN ARBORS",
           "team_wins": 4,
-          "team_losses": 2,
-          "matches_played": 6,
+          "team_losses": 3,
+          "matches_played": 7,
           "indiv_wins": 20,
           "indiv_losses": 10,
           "sets_won": 43,
@@ -1622,12 +1622,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779593",
           "home_team": "DTC #3",
           "away_team": "SUMMERLIN ARBORS",
-          "team_wins_home": null,
-          "team_wins_away": null,
-          "score": "",
-          "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Yarisbel Schieck",
+              "players_away": "Tayoni Coleman",
+              "score": "?-? 7-6 0-1",
+              "result": "away",
+              "winner_team": "SUMMERLIN ARBORS",
+              "loser_team": "DTC #3"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Prexy Tamayo",
+              "players_away": "Ani Zargaryan",
+              "score": "6-3 6-3",
+              "result": "home",
+              "winner_team": "DTC #3",
+              "loser_team": "SUMMERLIN ARBORS"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Shi L Oskooi / Emmy Perez",
+              "players_away": "Tina Nathalia / Kim Springer",
+              "score": "6-2 6-4",
+              "result": "home",
+              "winner_team": "DTC #3",
+              "loser_team": "SUMMERLIN ARBORS"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Lisa Schnitz / Michelle",
+              "players_away": "Brittany Carlson / Genesis Garcia",
+              "score": "6-4 5-7 0-1",
+              "result": "away",
+              "winner_team": "SUMMERLIN ARBORS",
+              "loser_team": "DTC #3"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Christine LaBarre / Kara Gaston",
+              "players_away": "Tamaris Cotta / Renee Johnson",
+              "score": "6-1 6-0",
+              "result": "home",
+              "winner_team": "DTC #3",
+              "loser_team": "SUMMERLIN ARBORS"
+            }
+          ]
         },
         {
           "match_id": "85733767cb28bc2f",

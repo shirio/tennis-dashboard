@@ -2782,8 +2782,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.25,
-    "current_division_rating": 3.1519,
-    "global_rating": 3.1519,
+    "current_division_rating": 3.0967,
+    "global_rating": 3.0967,
     "ntrp_rating": "3.0 S",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -2799,7 +2799,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Only every-week player. Surprising loss: W1 D1 alongside Tamaris Cotta to Shaza Nayef (2.75) + Shannon Keever (2.98) in a tight match.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D1 beat Carrie Maddux (2.78) + Therese Laudenslager (3.00).",
-    "rating_30": 3.1519,
+    "rating_30": 3.0967,
     "rating_35": 3.25,
     "baseline_date": "03/14/2026",
     "iter_rating_30": 3.4725,
@@ -2811,7 +2811,8 @@
       "3/28/2026": 3.2114,
       "4/11/2026": 3.1594,
       "4/18/2026": 3.1853,
-      "4/25/2026": 3.2071
+      "4/25/2026": 3.2071,
+      "5/2/2026": 3.1519
     },
     "rating_timeline_35": {}
   },
@@ -3027,8 +3028,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.91,
-    "current_division_rating": 2.8703,
-    "global_rating": 3.0298,
+    "current_division_rating": 2.8151,
+    "global_rating": 2.9706,
     "ntrp_rating": "3.0 C",
     "wl_record": "4-4",
     "lines_played": 8,
@@ -3051,7 +3052,7 @@
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "Surprising loss: W1 D3 alongside Danika Johnson to Lindsey Jacobs (2.42) + Christa Shiklanian (2.64) in a third-set tiebreak. Started at D3 (lost in a third-set tiebreak vs weaker opp), moved up to D1 (won with a bagel). Also 3-2 in 3.5 at D1/D2/D3.",
     "notes_35": "Among the most-deployed (5/6 weeks). Upset: W4 D2 alongside Nicole Palichat beat Carroll Welch (3.34) + Andi Berger (3.34) in a tight match — implies playing at 3.34+ level. Outmatched at D1 by Allison Festa (3.34) + Darlene Whittlesy (3.19) in W3. Also 3-2 in 3.0 at D1/D3.",
-    "rating_30": 2.8703,
+    "rating_30": 2.8151,
     "rating_35": 3.0718,
     "baseline_date": "11/16/2025",
     "iter_rating_30": 3.4725,
@@ -3062,7 +3063,8 @@
       "3/21/2026": 2.845,
       "3/28/2026": 2.8746,
       "4/11/2026": 2.8226,
-      "4/18/2026": 2.8485
+      "4/18/2026": 2.8485,
+      "5/2/2026": 2.8703
     },
     "rating_timeline_35": {
       "3/14/2026": 2.91,
@@ -3257,8 +3259,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.03,
-    "current_division_rating": 3.0433,
-    "global_rating": 3.1785,
+    "current_division_rating": 3.0496,
+    "global_rating": 3.1834,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -3278,7 +3280,7 @@
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "Undefeated — no opponent has won more than 1 game off her in any set. Only deployed at D3. Also 3-1 in 3.5 at D3.",
     "notes_35": "Upset: W2 D3 alongside Tina Nathalia beat Sally Ryba (3.37) + Marilyn Fenn (3.11) in a tight match. Also 3-0 in 3.0 at D3.",
-    "rating_30": 3.0433,
+    "rating_30": 3.0496,
     "rating_35": 3.1693,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.4066,
@@ -3287,7 +3289,8 @@
     "default_wins_30": 1,
     "rating_timeline_30": {
       "3/14/2026": 3.03,
-      "4/25/2026": 3.0349
+      "4/25/2026": 3.0349,
+      "5/2/2026": 3.0433
     },
     "rating_timeline_35": {
       "3/21/2026": 3.03,
@@ -3303,8 +3306,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.92,
-    "current_division_rating": 2.8736,
-    "global_rating": 2.9828,
+    "current_division_rating": 2.981,
+    "global_rating": 3.041,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-3",
     "lines_played": 5,
@@ -3326,7 +3329,7 @@
     "team_35": "DTC #3",
     "notes_30": "Upset: W4 S1 beat Gina Rivera (2.97) in a third-set tiebreak. Won 3-set tiebreaks in W1/W4. Also 1-3 in 3.5 at S1/S2.",
     "notes_35": "Among the most-deployed (4/6 weeks). Close singles loss to a stronger opponent — tiebreak vs Vanessa Landreman (3.41). Outmatched at S1 by Stacie Corelle (3.41) in W5. Biggest riser on this roster. Also 4-1 in 3.0 at D1/S1.",
-    "rating_30": 2.8736,
+    "rating_30": 2.981,
     "rating_35": 3.0603,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.8772,
@@ -3337,7 +3340,8 @@
       "3/21/2026": 2.788,
       "4/11/2026": 2.8424,
       "4/18/2026": 2.8871,
-      "4/25/2026": 2.9288
+      "4/25/2026": 2.9288,
+      "5/2/2026": 2.8736
     },
     "rating_timeline_35": {
       "3/28/2026": 2.92,
@@ -3389,8 +3393,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.1,
-    "current_division_rating": 3.1247,
-    "global_rating": 3.1247,
+    "current_division_rating": 3.0479,
+    "global_rating": 3.0479,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -3405,7 +3409,7 @@
     "team_30": "DTC #3",
     "notes_30": "Among the most-deployed (5/6 weeks). Undefeated in straight sets.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S1 beat Gina Rivera (2.97).",
-    "rating_30": 3.1247,
+    "rating_30": 3.0479,
     "rating_35": 3.1,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.8646,
@@ -3416,7 +3420,8 @@
       "3/21/2026": 3.0883,
       "3/28/2026": 3.096,
       "4/18/2026": 3.1061,
-      "4/25/2026": 3.1182
+      "4/25/2026": 3.1182,
+      "5/2/2026": 3.1247
     },
     "rating_timeline_35": {}
   },
@@ -3543,8 +3548,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.99,
-    "current_division_rating": 2.8957,
-    "global_rating": 2.8905,
+    "current_division_rating": 2.928,
+    "global_rating": 2.9233,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -3566,7 +3571,7 @@
     "team_35": "SPANISH TRAIL #2",
     "notes_30": "Surprising loss: W6 D2 alongside Kellie Woods to Debbie D'Amato (2.91) + Meghan Arnold (2.60) in a third-set tiebreak. Tried at D1 (lost in a third-set tiebreak), moved down to D2 (lost in a third-set tiebreak vs weaker opp). Also 0-2 in 3.5 at D1/S1.",
     "notes_35": "Close doubles loss to a stronger pair — tiebreak vs Joann Komanowski (3.48) + Sally Ryba (3.37). Also 0-2 in 3.0 at D1/D2.",
-    "rating_30": 2.8957,
+    "rating_30": 2.928,
     "rating_35": 2.9344,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.0142,
@@ -3574,7 +3579,8 @@
     "iter_global_rating": 3.0569,
     "rating_timeline_30": {
       "3/28/2026": 2.99,
-      "4/25/2026": 2.944
+      "4/25/2026": 2.944,
+      "5/2/2026": 2.8957
     },
     "rating_timeline_35": {
       "3/28/2026": 2.99,
@@ -4436,8 +4442,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.76,
-    "current_division_rating": 2.6899,
-    "global_rating": 2.784,
+    "current_division_rating": 2.6682,
+    "global_rating": 2.7518,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -4459,7 +4465,7 @@
     "team_35": "DTC #3",
     "notes_30": "Surprising loss: W6 D1 alongside Kim Knotts to Jennifer Blais (2.78) + Danielle Caswell (2.63) in a third-set tiebreak. Natural D3 with Darian McCauley above; played D1 by vacancy (lost in a third-set tiebreak). Also 0-3 in 3.5 at D1/D2.",
     "notes_35": "Tried at D1 (lost in a tight match vs much stronger opp), moved down to D2 (lost in a third-set tiebreak vs much stronger opp). Also 0-2 in 3.0 at D1/D3.",
-    "rating_30": 2.6899,
+    "rating_30": 2.6682,
     "rating_35": 2.8493,
     "baseline_date": "11/13/2025",
     "iter_rating_30": 2.6773,
@@ -4467,7 +4473,8 @@
     "iter_global_rating": 2.6419,
     "rating_timeline_30": {
       "3/28/2026": 2.76,
-      "4/25/2026": 2.7379
+      "4/25/2026": 2.7379,
+      "5/2/2026": 2.6899
     },
     "rating_timeline_35": {
       "3/28/2026": 2.76,
@@ -4717,8 +4724,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.96,
-    "current_division_rating": 2.9392,
-    "global_rating": 3.1304,
+    "current_division_rating": 2.9455,
+    "global_rating": 3.1353,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -4740,7 +4747,7 @@
     "team_35": "DTC #3",
     "notes_30": "Surprising loss: W2 D3 alongside Rebecca Dunne to Shaza Nayef (2.75) + Amy Badain (2.72) in a tight match. Won a 3-set tiebreak in W5. Also 1-2 in 3.5 at D1/D2/D3.",
     "notes_35": "Close doubles losses to stronger pairs — Chandra VanPaepeghem (3.28) + Sara Sager (3.50); tiebreak vs Diane Paull (3.31) + Valeria Perdomo (3.31). Biggest riser on this roster. Also 2-1 in 3.0 at D3.",
-    "rating_30": 2.9392,
+    "rating_30": 2.9455,
     "rating_35": 3.1379,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.3774,
@@ -4749,7 +4756,8 @@
     "rating_timeline_30": {
       "3/21/2026": 2.96,
       "4/18/2026": 2.9188,
-      "4/25/2026": 2.9308
+      "4/25/2026": 2.9308,
+      "5/2/2026": 2.9392
     },
     "rating_timeline_35": {
       "3/14/2026": 2.96,
@@ -5552,8 +5560,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.78,
-    "current_division_rating": 2.8509,
-    "global_rating": 2.8509,
+    "current_division_rating": 2.8186,
+    "global_rating": 2.8186,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -5570,7 +5578,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Upset: W4 D2 alongside Jocelyn Herman beat Sandra Shearer (2.94) + ANN MARIE WEAVER (2.84) in a tight match.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Sandra Shearer (2.94) + ANN MARIE WEAVER (2.84) in a tight match.",
-    "rating_30": 2.8509,
+    "rating_30": 2.8186,
     "rating_35": 2.78,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.1217,
@@ -5580,7 +5588,8 @@
       "3/28/2026": 2.78,
       "4/11/2026": 2.7591,
       "4/18/2026": 2.8648,
-      "4/25/2026": 2.9019
+      "4/25/2026": 2.9019,
+      "5/2/2026": 2.8509
     },
     "rating_timeline_35": {}
   },
@@ -5669,8 +5678,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.79,
-    "current_division_rating": 2.9623,
-    "global_rating": 2.9623,
+    "current_division_rating": 3.0175,
+    "global_rating": 3.0175,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-4",
     "lines_played": 4,
@@ -5687,7 +5696,7 @@
     "team_30": "DTC #3",
     "notes_30": "Among the most-deployed (5/6 weeks). Captain's flex weapon — D1/D2/S2. Upset: W4 S2 beat Han Hu (2.98) in a third-set tiebreak.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S2 beat Han Hu (2.98) in a third-set tiebreak.",
-    "rating_30": 2.9623,
+    "rating_30": 3.0175,
     "rating_35": 2.79,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.4845,
@@ -5698,7 +5707,8 @@
       "3/21/2026": 2.8207,
       "3/28/2026": 2.875,
       "4/11/2026": 2.829,
-      "4/18/2026": 2.9352
+      "4/18/2026": 2.9352,
+      "5/2/2026": 2.9623
     },
     "rating_timeline_35": {}
   },
@@ -7168,8 +7178,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.74,
-    "current_division_rating": 2.8785,
-    "global_rating": 2.9266,
+    "current_division_rating": 2.9337,
+    "global_rating": 2.9858,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-4",
     "lines_played": 5,
@@ -7190,7 +7200,7 @@
     "team_35": "DTC #1",
     "notes_30": "Among the most-deployed (5/6 weeks). Captain's flex weapon — D1/D2/S2. Upset: W1 D1 alongside Darian McCauley beat Tina Shirey (3.09) + Irene Frazier (2.95) in a third-set tiebreak — implies playing at 3.02+ level. Won 3-set tiebreaks in W1/W2. Also 1-0 in 3.5 at S2.",
     "notes_35": "Upset: W4 S2 beat Lisa Gaughan (2.82) in a third-set tiebreak. In 3.0: S2 beat Gretchen Wills (2.61) in a third-set tiebreak.",
-    "rating_30": 2.8785,
+    "rating_30": 2.9337,
     "rating_35": 2.8099,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.6607,
@@ -7201,7 +7211,8 @@
       "3/21/2026": 2.8045,
       "3/28/2026": 2.8369,
       "4/11/2026": 2.8185,
-      "4/18/2026": 2.845
+      "4/18/2026": 2.845,
+      "5/2/2026": 2.8785
     },
     "rating_timeline_35": {
       "4/11/2026": 2.74
@@ -8403,8 +8414,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.69,
-    "current_division_rating": 2.8295,
-    "global_rating": 2.8295,
+    "current_division_rating": 2.8161,
+    "global_rating": 2.8161,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -8422,7 +8433,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Captain's flex weapon — D1/D2/D3/S2. Upset: W3 D3 alongside Genesis Garcia beat Lisa Williams (2.75) + Julie Smith (2.78) in a tight match. Playing D1 despite low baseline.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Lisa Williams (2.75) + Julie Smith (2.78) in a tight match.",
-    "rating_30": 2.8295,
+    "rating_30": 2.8161,
     "rating_35": 2.69,
     "baseline_date": "12/10/2025",
     "iter_rating_30": 3.7938,
@@ -8433,7 +8444,8 @@
       "3/21/2026": 2.656,
       "3/28/2026": 2.6856,
       "4/11/2026": 2.7355,
-      "4/18/2026": 2.7834
+      "4/18/2026": 2.7834,
+      "5/2/2026": 2.8295
     },
     "rating_timeline_35": {}
   },
@@ -9188,8 +9200,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.63,
-    "current_division_rating": 2.7382,
-    "global_rating": 2.7382,
+    "current_division_rating": 2.7701,
+    "global_rating": 2.7701,
     "ntrp_rating": "3.0 A",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -9205,7 +9217,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Upset: W3 D3 alongside Brittany Carlson beat Lisa Williams (2.75) + Julie Smith (2.78) in a tight match.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Lisa Williams (2.75) + Julie Smith (2.78) in a tight match.",
-    "rating_30": 2.7382,
+    "rating_30": 2.7701,
     "rating_35": 2.63,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.7938,
@@ -9215,7 +9227,8 @@
       "3/21/2026": 2.63,
       "3/28/2026": 2.6362,
       "4/18/2026": 2.6861,
-      "4/25/2026": 2.6937
+      "4/25/2026": 2.6937,
+      "5/2/2026": 2.7382
     },
     "rating_timeline_35": {}
   },
@@ -9408,8 +9421,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.56,
-    "current_division_rating": 2.6566,
-    "global_rating": 2.6566,
+    "current_division_rating": 2.6516,
+    "global_rating": 2.6516,
     "ntrp_rating": "3.0 A",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -9425,7 +9438,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Upset: W4 D3 alongside Brittany Carlson beat Heather Rosenthal (2.81) + Shari Abdoulah (2.57) in a tight match.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D3 beat Heather Rosenthal (2.81) + Shari Abdoulah (2.57) in a tight match.",
-    "rating_30": 2.6566,
+    "rating_30": 2.6516,
     "rating_35": 2.56,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 2.96,
@@ -9435,7 +9448,8 @@
       "3/14/2026": 2.56,
       "3/21/2026": 2.5425,
       "4/11/2026": 2.5771,
-      "4/25/2026": 2.625
+      "4/25/2026": 2.625,
+      "5/2/2026": 2.6566
     },
     "rating_timeline_35": {}
   },
@@ -11216,8 +11230,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.22,
-    "current_division_rating": 2.1556,
-    "global_rating": 2.1556,
+    "current_division_rating": 2.1506,
+    "global_rating": 2.1506,
     "ntrp_rating": "2.5 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -11233,7 +11247,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Tried at D1 (lost in a tight match vs much stronger opp), moved down to D2 (lost vs much stronger opp).",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 lost to Adrian Cutolo (2.98) + Mary Ann Apone (2.53).",
-    "rating_30": 2.1556,
+    "rating_30": 2.1506,
     "rating_35": 2.22,
     "baseline_date": "12/10/2025",
     "iter_rating_30": 2.1988,
@@ -11241,7 +11255,8 @@
     "iter_global_rating": 2.1988,
     "rating_timeline_30": {
       "3/14/2026": 2.22,
-      "3/28/2026": 2.1765
+      "3/28/2026": 2.1765,
+      "5/2/2026": 2.1556
     },
     "rating_timeline_35": {}
   },
