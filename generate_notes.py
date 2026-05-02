@@ -19,6 +19,54 @@ def _name_key(name):
     return re.sub(r"\s+", " ", name.lower().strip())
 
 
+# ---------------------------------------------------------------------------
+# Point-in-time rating lookup (mirrors build_html._pit_rating)
+# ---------------------------------------------------------------------------
+
+def _date_sort_key(d: str) -> tuple:
+    try:
+        m, day, y = d.split("/")
+        return (int(y), int(m), int(day))
+    except Exception:
+        return (0, 0, 0)
+
+
+def _make_pit_lookup(players, sfx: str):
+    """Return a callable pit(name_key, match_date) -> float | None.
+
+    Returns the player's rating going INTO match_date:
+      1. Timeline entry for that exact date (player played → pre-match snapshot)
+      2. Most recent timeline entry strictly BEFORE match_date
+      3. Baseline (player hadn't played yet in this division)
+      4. None (player unknown)
+    """
+    timelines: dict[str, dict] = {}
+    baselines: dict[str, float] = {}
+    for p in players:
+        k = _name_key(p.get("name", ""))
+        tl = p.get(f"rating_timeline_{sfx}") or {}
+        if tl:
+            timelines[k] = {d: float(v) for d, v in tl.items()}
+        bl = p.get("dynamic_rating_baseline")
+        if bl is not None:
+            baselines[k] = float(bl)
+
+    def pit(name_key: str, match_date: str):
+        tl = timelines.get(name_key)
+        bl = baselines.get(name_key)
+        if not tl:
+            return bl
+        if match_date in tl:
+            return tl[match_date]
+        mk = _date_sort_key(match_date)
+        prior = [(d, v) for d, v in tl.items() if _date_sort_key(d) < mk]
+        if prior:
+            return max(prior, key=lambda kv: _date_sort_key(kv[0]))[1]
+        return bl  # no prior entries → pre-season baseline
+
+    return pit
+
+
 def _score_descriptor(score: str) -> str:
     """
     Describe the shape of a score string:
@@ -120,11 +168,17 @@ def _week_number(date: str, all_dates: list[str]) -> str:
     return ""
 
 
-def _opp_label(m, rating_lookup):
+def _opp_label(m, rating_lookup=None):
+    """Format opponent names with ratings.
+    Prefers PIT ratings stored in the match record (opp_pit_ratings dict),
+    falls back to rating_lookup if provided."""
     pieces = []
+    pit_map = m.get("opp_pit_ratings") or {}
     for n in m["opp_names"]:
-        r = rating_lookup.get(_name_key(n))
-        pieces.append(f"{n} ({r:.2f})" if r else n)
+        r = pit_map.get(_name_key(n))
+        if r is None and rating_lookup:
+            r = rating_lookup.get(_name_key(n))
+        pieces.append(f"{n} ({r:.2f})" if r is not None else n)
     return " + ".join(pieces)
 
 
@@ -1111,9 +1165,15 @@ def main():
     # baseline-only dict (used for lineup context where division is unknown)
     rating = {_name_key(p.get("name", "")): p.get("dynamic_rating_baseline")
               for p in players}
-    # Per-division dicts using current sequential rating, falling back to baseline.
-    # Used for opp_avg in match records so notes reflect actual strength, not
-    # just where players started (e.g. Brittany Carlson shows 2.81 not 2.69).
+    # Per-division point-in-time rating lookups.
+    # pit_by_sfx[sfx](name_key, match_date) returns the player's rating going
+    # INTO that match — the pre-match sequential snapshot.
+    pit_by_sfx = {
+        "30": _make_pit_lookup(players, "30"),
+        "35": _make_pit_lookup(players, "35"),
+    }
+    # Stable per-division rating dicts for contexts where match date is unavailable
+    # (e.g. _closest_higher_teammate lineup lookup). Uses final season rating.
     rating_by_sfx = {
         "30": {_name_key(p.get("name", "")): (
                    p.get("rating_30") or p.get("dynamic_rating_baseline"))
@@ -1203,39 +1263,49 @@ def main():
                     line_label = ln.get("line", "")
                     score = ln.get("score", "")
 
-                    _rdiv = rating_by_sfx[sfx]
+                    _pit = pit_by_sfx[sfx]
+                    _mdate = m.get("date", "")
+
+                    def _build_record(name, own_names, opp_names, won, team):
+                        from engine.ratings import _cross_pair_expected
+                        k = _name_key(name)
+                        # Point-in-time ratings going INTO this match
+                        own_r   = _pit(k, _mdate)
+                        partners = [n for n in own_names if _name_key(n) != k]
+                        partner_r = _pit(_name_key(partners[0]), _mdate) if partners else None
+                        opp_pit = {_name_key(n): _pit(_name_key(n), _mdate) for n in opp_names}
+                        opp_rs  = [v for v in opp_pit.values() if v is not None]
+                        opp_avg = sum(opp_rs) / len(opp_rs) if opp_rs else None
+                        # Cross-pair expected win probability using PIT ratings
+                        if own_r is not None and opp_rs:
+                            expected_prob = _cross_pair_expected(
+                                own_r, partner_r, opp_rs)
+                        else:
+                            expected_prob = None
+                        return {
+                            "date": _mdate, "line": line_label,
+                            "won": won, "opp_names": opp_names,
+                            "opp_avg": opp_avg,
+                            "opp_pit_ratings": opp_pit,
+                            "expected_prob": expected_prob,
+                            "score": score,
+                            "partner": partners[0] if partners else None,
+                            "partner_pit_rating": partner_r,
+                            "own_pit_rating": own_r,
+                            "walkover": walkover,
+                            "winner_team" if won else "loser_team": team,
+                            "higher_teammate": _closest_higher_teammate(
+                                team, line_label, k),
+                        }
+
                     for name in w_names:
                         k = _name_key(name)
-                        opp_rs = [_rdiv.get(_name_key(n)) for n in l_names]
-                        opp_rs = [r for r in opp_rs if r is not None]
-                        partners = [n for n in w_names if _name_key(n) != k]
-                        matches_by_player[k].append({
-                            "date": m.get("date", ""), "line": line_label,
-                            "won": True, "opp_names": l_names,
-                            "opp_avg": sum(opp_rs) / len(opp_rs) if opp_rs else None,
-                            "score": score,
-                            "partner": partners[0] if partners else None,
-                            "walkover": walkover,
-                            "winner_team": winner_team,
-                            "higher_teammate": _closest_higher_teammate(
-                                winner_team, line_label, k),
-                        })
+                        matches_by_player[k].append(
+                            _build_record(name, w_names, l_names, True, winner_team))
                     for name in l_names:
                         k = _name_key(name)
-                        opp_rs = [_rdiv.get(_name_key(n)) for n in w_names]
-                        opp_rs = [r for r in opp_rs if r is not None]
-                        partners = [n for n in l_names if _name_key(n) != k]
-                        matches_by_player[k].append({
-                            "date": m.get("date", ""), "line": line_label,
-                            "won": False, "opp_names": w_names,
-                            "opp_avg": sum(opp_rs) / len(opp_rs) if opp_rs else None,
-                            "score": score,
-                            "partner": partners[0] if partners else None,
-                            "walkover": walkover,
-                            "loser_team": loser_team,
-                            "higher_teammate": _closest_higher_teammate(
-                                loser_team, line_label, k),
-                        })
+                        matches_by_player[k].append(
+                            _build_record(name, l_names, w_names, False, loser_team))
         division_data[sfx] = {
             "all_dates": sorted(all_dates),
             "matches_by_player": matches_by_player,
@@ -1350,49 +1420,50 @@ def main():
                 m for m in losses_this
                 if _score_descriptor(m.get("score", "")) in ("lopsided", "dominant")
                 and _line_short(m["line"]) in ("D1", "S1")
-                and m["opp_avg"] is not None and m["opp_avg"] - bl >= 0.15
+                and _ep(m) is not None and _ep(m) < 0.40
             ]
 
             tiebreak_wins = [m for m in wins_this if _is_tiebreak(m)]
 
-            def _effective_rating(m):
-                """For doubles, return the pair average (player + partner) to use
-                as the comparison baseline. For singles, return the player's own bl.
-                This prevents a weak partner from making a loss look 'surprising'
-                or a strong opponent pair from going unrecognised as a 'competitive' loss."""
-                partner_name = m.get("partner")
-                if not partner_name:
-                    return bl  # singles
-                partner_p = pbn.get(_name_key(partner_name))
-                if not partner_p:
-                    return bl
-                partner_r = (partner_p.get(f"rating_{sfx}")
-                             or partner_p.get("dynamic_rating_baseline"))
-                if partner_r is None:
-                    return bl
-                return (bl + partner_r) / 2
+            # --- Cross-pair win probability classification ---
+            # Uses point-in-time ratings (stored in each match record as expected_prob)
+            # and the cross-pair model from engine.ratings — correct for doubles because
+            # it weights all four individual matchups (top-vs-top, top-vs-bottom, etc.)
+            # rather than comparing pair averages.
+            #
+            # Thresholds:
+            #   surprising_wins:    expected_prob < 0.45  (was underdog, won)
+            #   surprising_losses:  expected_prob > 0.55  (was favourite, lost)
+            #   competitive_losses: expected_prob < 0.40  (heavy underdog, stayed close)
+
+            def _ep(m):
+                """expected_prob for match m, falling back to opp_avg-based estimate."""
+                ep = m.get("expected_prob")
+                if ep is not None:
+                    return ep
+                # Fallback for records without expected_prob (shouldn't happen normally)
+                if m["opp_avg"] is None:
+                    return None
+                diff = bl - m["opp_avg"]
+                from engine.ratings import _win_probability
+                return _win_probability(diff)
 
             surprising_wins = [
                 m for m in this_matches
-                if m["won"] and m["opp_avg"] and m["opp_avg"] - _effective_rating(m) > 0.05
+                if m["won"] and _ep(m) is not None and _ep(m) < 0.45
             ]
-            # Surprising losses: lost to someone below your effective rating.
-            # For doubles, compares pair averages — a weak partner drags down the pair,
-            # so the opponent pair must actually be weaker than the pair (not just the player).
+            # Surprising losses: was a meaningful favourite (>55%) but lost.
             surprising_losses = [
                 m for m in this_matches
-                if not m["won"] and m["opp_avg"]
-                and _effective_rating(m) - m["opp_avg"] > 0.03
+                if not m["won"] and _ep(m) is not None and _ep(m) > 0.55
             ]
 
-            # Competitive close losses: lost a tight match (tiebreak or 6-4/7-5 type)
-            # against a notably stronger opponent.  This is a positive signal — the
-            # player competed above their level even in defeat.
-            # Threshold: opponent ≥0.15 above effective rating (pair-aware for doubles).
+            # Competitive close losses: heavy underdog (<40%) who pushed to a tiebreak
+            # or tight set — positive signal even in defeat.
             competitive_losses = [
                 m for m in losses_this
-                if m["opp_avg"] is not None
-                and m["opp_avg"] - _effective_rating(m) >= 0.15
+                if _ep(m) is not None
+                and _ep(m) < 0.40
                 and (
                     _is_tiebreak(m)
                     or _score_descriptor(m.get("score", "")) == "tight"
@@ -1432,7 +1503,7 @@ def main():
                             other_matches,
                             key=lambda m: abs((m["opp_avg"] or bl) - bl),
                         )
-                    desc = _describe_match(best, rating_by_sfx[other_sfx], other_data["all_dates"],
+                    desc = _describe_match(best, None, other_data["all_dates"],
                                           include_week=False, player_bl=bl)
                     parts.append(f"In {other_div}: {desc}.")
             else:
@@ -1474,7 +1545,7 @@ def main():
                 if surprising_wins:
                     best = max(surprising_wins,
                                key=lambda m: (m["opp_avg"] or 0) - bl)
-                    desc = _describe_match(best, rating_by_sfx[sfx], this_data["all_dates"],
+                    desc = _describe_match(best, None, this_data["all_dates"],
                                           include_partner=True)
                     opp_r = best["opp_avg"]
                     gap = opp_r - bl if opp_r else 0
@@ -1505,7 +1576,7 @@ def main():
                     def _comp_mini(m):
                         """Opponent label only — no raw scores, no line, no week.
                         Mentions tiebreak when applicable."""
-                        opp = _opp_label(m, rating_by_sfx[sfx])
+                        opp = _opp_label(m)
                         d = _score_descriptor(m.get("score", ""))
                         if d == "3-set tiebreak":
                             return f"tiebreak vs {opp}"
@@ -1546,7 +1617,7 @@ def main():
                     tl_str = "/".join(sorted(_top_loss_lines,
                                             key=lambda x: (x[0], x[1:])))
                     top_descs = [
-                        _describe_match(m, rating_by_sfx[sfx], this_data["all_dates"])
+                        _describe_match(m, None, this_data["all_dates"])
                         for m in sorted(top_line_lopsided_losses,
                                         key=lambda m: m["date"])[:2]
                     ]
@@ -1561,7 +1632,7 @@ def main():
                     if lopsided_losses:
                         sorted_losses = sorted(lopsided_losses, key=lambda m: m["date"])
                         descs = [
-                            _describe_match(m, rating_by_sfx[sfx], this_data["all_dates"])
+                            _describe_match(m, None, this_data["all_dates"])
                             for m in sorted_losses[:2]
                         ]
                         if len(descs) == 1:
@@ -1582,7 +1653,7 @@ def main():
                             # Large gap OR a tiebreak — worth naming the specific match.
                             # Tiebreaks are always interesting: even a small-gap surprise
                             # tiebreak loss shows the player was competitive but couldn't close.
-                            desc = _describe_match(worst, rating_by_sfx[sfx], this_data["all_dates"],
+                            desc = _describe_match(worst, None, this_data["all_dates"],
                                                   include_partner=True)
                             parts.append(f"Surprising loss: {desc.replace(' lost to ', ' to ', 1)}.")
                         else:
@@ -1613,7 +1684,7 @@ def main():
                                                  key=lambda x: (x[0], x[1:])))
 
                         def _outmatched_short(m):
-                            opp = _opp_label(m, rating_by_sfx[sfx])
+                            opp = _opp_label(m)
                             wk = _week_number(m["date"], this_data["all_dates"])
                             return f"{opp} in {wk}" if wk else opp
 
@@ -1687,21 +1758,21 @@ def main():
                     m0 = this_matches[0]
                     score_desc = _score_descriptor(m0["score"])
                     if score_desc == "3-set tiebreak":
-                        desc = _describe_match(m0, rating_by_sfx[sfx], this_data["all_dates"],
+                        desc = _describe_match(m0, None, this_data["all_dates"],
                                                include_score=False)
                         if m0["won"]:
                             parts.append(f"{desc}; won in 3 sets.")
                         else:
                             parts.append(f"{desc}; split sets before losing tiebreak.")
                     else:
-                        desc = _describe_match(m0, rating_by_sfx[sfx], this_data["all_dates"],
+                        desc = _describe_match(m0, None, this_data["all_dates"],
                                                player_bl=bl)
                         opp_gap = (m0.get("opp_avg") or 0) - bl
                         if not m0["won"] and opp_gap >= 0.25:
                             # Large-gap predictable loss — tell the captain what the
                             # result means (very little) rather than just listing it.
                             line_s = _line_short(m0["line"]) or m0["line"]
-                            opp_label = _opp_label(m0, rating_by_sfx[sfx])
+                            opp_label = _opp_label(m0)
                             pad_clause = (" Default win pads the record."
                                           if _record_padded else "")
                             parts.append(
@@ -1746,7 +1817,7 @@ def main():
                                         opp_cross_listing = (
                                             f", on {_team_short(op_team_this)}'s {div_label} roster"
                                         )
-                            desc = _describe_match(most_sig, rating_by_sfx[other_sfx],
+                            desc = _describe_match(most_sig, None,
                                                    other_data["all_dates"],
                                                    include_week=False,
                                                    player_bl=bl)
@@ -1754,7 +1825,7 @@ def main():
                             # Reframe the description with cross-listing info
                             if opp_cross_listing:
                                 line_s = _line_short(most_sig["line"]) or most_sig["line"]
-                                opp = _opp_label(most_sig, rating_by_sfx[other_sfx])
+                                opp = _opp_label(most_sig)
                                 phrase = _score_phrase(most_sig.get("score", ""), most_sig["won"])
                                 phrase_clause = f" — {phrase}" if phrase else ""
                                 if not most_sig["won"] and score_desc == "3-set tiebreak":
