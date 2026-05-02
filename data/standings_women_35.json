@@ -1361,9 +1361,9 @@
         },
         {
           "team_name": "DTC #1",
-          "team_wins": 4,
+          "team_wins": 5,
           "team_losses": 1,
-          "matches_played": 5,
+          "matches_played": 6,
           "indiv_wins": 15,
           "indiv_losses": 10,
           "sets_won": 34,
@@ -1371,7 +1371,7 @@
           "games_won": 246,
           "games_lost": 212,
           "games_won_pct": "53.71%",
-          "notes": "Won big over Desert Palm, got swept by Red Rock #2. Karen Kiyono deployed every week. S2 is the soft spot (2–3 record). Amy Waters 2–0 at D1."
+          "notes": "Won big over Sp. Trail #1, got swept by Red Rock #2. EMELIA drops hardest: 3.68→3.58. Valeria 2–0 at D2. Diane 2–0 at D2."
         },
         {
           "team_name": "DRAGONRIDGE CC",
@@ -1418,8 +1418,8 @@
         {
           "team_name": "SPANISH TRAIL #1",
           "team_wins": 1,
-          "team_losses": 4,
-          "matches_played": 5,
+          "team_losses": 5,
+          "matches_played": 6,
           "indiv_wins": 9,
           "indiv_losses": 16,
           "sets_won": 20,
@@ -1427,7 +1427,7 @@
           "games_won": 201,
           "games_lost": 251,
           "games_won_pct": "44.47%",
-          "notes": "Won big over DTC #3, got swept by Dragonridge. Shilpa drops hardest: 3.64→3.41. Sara Sager deployed every week. S2 is the soft spot (1–3 record)."
+          "notes": "Won big over DTC #3, got swept by DTC #1. Chandra (3.28→3.40, 4-1) trending up. Shilpa drops hardest: 3.64→3.41. Sara Sager deployed every week."
         },
         {
           "team_name": "DTC #3",
@@ -2602,12 +2602,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779872",
           "home_team": "DTC #1",
           "away_team": "SPANISH TRAIL #1",
-          "team_wins_home": null,
-          "team_wins_away": null,
-          "score": "",
-          "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Stacie Corelle",
+              "players_away": "Vanessa Nicole Rowe",
+              "score": "6-2 6-1",
+              "result": "home",
+              "winner_team": "DTC #1",
+              "loser_team": "SPANISH TRAIL #1"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Sydney Lobato",
+              "players_away": "Cindy Nguyen",
+              "score": "6-2 6-1",
+              "result": "home",
+              "winner_team": "DTC #1",
+              "loser_team": "SPANISH TRAIL #1"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Amy Waters / Emelia Allen",
+              "players_away": "Chandra VanPaepeghem / Sara Sager",
+              "score": "5-7 7-5 1-0",
+              "result": "away",
+              "winner_team": "SPANISH TRAIL #1",
+              "loser_team": "DTC #1"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Valeria Perdomo / Diane Paull",
+              "players_away": "Alisia Pulella / Natasha Kattau",
+              "score": "6-4 6-3",
+              "result": "home",
+              "winner_team": "DTC #1",
+              "loser_team": "SPANISH TRAIL #1"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Claudia Hernandez / michelle jarvis",
+              "players_away": "vinne chen / My Vuong",
+              "score": "6-2 6-4",
+              "result": "home",
+              "winner_team": "DTC #1",
+              "loser_team": "SPANISH TRAIL #1"
+            }
+          ]
         },
         {
           "match_id": "d553d12c70532536",
@@ -2764,7 +2810,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "Red Rock #2 leads B undefeated at 5-0. DTC #1 (4-1), Dragonridge (3-2), and TPC (3-3) are in contention. Desert Palm, Sp. Trail #1, and DTC #3 are at the bottom. Top risers: Jamie Johnson (TPC, 2.95→3.30, 3-0); Kristyl Addison (Desert Palm, 2.91→3.25, 1-2). Red Rock #2 vs DTC #1 (5/9/2026) decides the B title."
+      "subflight_summary": "Red Rock #2 and DTC #1 share the B lead at 5-0. Dragonridge (3-2), and TPC (3-3) are in contention. Desert Palm, Sp. Trail #1, and DTC #3 are at the bottom. Top risers: Jamie Johnson (TPC, 2.95→3.30, 3-0); Kristyl Addison (Desert Palm, 2.91→3.25, 1-2). Red Rock #2 vs DTC #1 (5/9/2026) decides the B title."
     }
   ]
 }

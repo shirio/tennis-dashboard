@@ -1031,7 +1031,7 @@
     ],
     "wl_record_30": "1-2",
     "team_30": "DTC #1",
-    "notes_30": "Close singles loss to a stronger opponent \u2014 Rochelle Hamatian (2.60).",
+    "notes_30": "Outmatched at S1 by Rochelle Hamatian (2.60) in W6.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S1 lost to Rochelle Hamatian (2.60).",
     "rating_30": 2.1366,
     "rating_35": 2.16,
@@ -5496,7 +5496,7 @@
     ],
     "wl_record_30": "4-1",
     "team_30": "DTC #1",
-    "notes_30": "Among the most-deployed (5/6 weeks). Captain's flex weapon \u2014 D1/D2/S1. Surprising loss: W5 S1 to Laura Vasquez (2.58) in a third-set tiebreak. Won 3-set tiebreaks in W2/W4.",
+    "notes_30": "Among the most-deployed (5/7 weeks). Captain's flex weapon \u2014 D1/D2/S1. Surprising loss: W5 S1 to Laura Vasquez (2.58) in a third-set tiebreak. Won 3-set tiebreaks in W2/W4.",
     "notes_35": "No 3.5 matches played yet. In 3.0: S1 beat Elizabeth Eshragh (2.72) in a third-set tiebreak.",
     "rating_30": 2.6824,
     "rating_35": 2.83,
@@ -8029,7 +8029,7 @@
     ],
     "wl_record_30": "3-2",
     "team_30": "DTC #1",
-    "notes_30": "Among the most-deployed (5/6 weeks). Upset: W3 D2 alongside Sandra Mier beat Bree Carlson (2.69) + Jennifer Roberts (2.87) in a rout. Underperforming at D2 \u2014 lost to a slightly lower-rated opponent.",
+    "notes_30": "Among the most-deployed (5/7 weeks). Upset: W3 D2 alongside Sandra Mier beat Bree Carlson (2.69) + Jennifer Roberts (2.87) in a rout. Underperforming at D2 \u2014 lost to a slightly lower-rated opponent.",
     "notes_35": "No 3.5 matches played yet. In 3.0: D2 beat Bree Carlson (2.69) + Jennifer Roberts (2.87) in a rout.",
     "rating_30": 2.5999,
     "rating_35": 2.57,
@@ -11933,8 +11933,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.66,
-    "current_division_rating": 3.6768,
-    "global_rating": 3.6768,
+    "current_division_rating": 3.597,
+    "global_rating": 3.597,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -11943,15 +11943,15 @@
     "profile_url": "/adult/profile.aspx?playername=Amy Waters",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
-      "D1x2",
+      "D1x3",
       "D2"
     ],
-    "wl_record_35": "3-0",
+    "wl_record_35": "3-1",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Anne Gumm (3.52) + Christina Rich (3.34).",
-    "notes_35": "Undefeated in straight sets. Started at D2 (won comfortably vs much weaker opp), moved up to D1 (won vs much weaker opp).",
+    "notes_35": "Surprising loss: W7 D1 alongside Emelia Allen to Chandra VanPaepeghem (3.28) + Sara Sager (3.50) in a third-set tiebreak. Started at D2 (won comfortably vs much weaker opp), moved up to D1 (lost in a third-set tiebreak vs weaker opp).",
     "rating_30": 3.66,
-    "rating_35": 3.6768,
+    "rating_35": 3.597,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.66,
     "iter_rating_35": 3.7499,
@@ -11960,7 +11960,8 @@
     "rating_timeline_35": {
       "4/11/2026": 3.66,
       "4/18/2026": 3.671,
-      "4/25/2026": 3.6599
+      "4/25/2026": 3.6599,
+      "5/2/2026": 3.6768
     }
   },
   {
@@ -12041,8 +12042,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.68,
-    "current_division_rating": 3.6627,
-    "global_rating": 3.6627,
+    "current_division_rating": 3.5829,
+    "global_rating": 3.5829,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -12051,15 +12052,15 @@
     "profile_url": "/adult/profile.aspx?playername=EMELIA ALLEN",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
-      "D1",
+      "D1x2",
       "D3"
     ],
-    "wl_record_35": "2-0",
+    "wl_record_35": "2-1",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Kelly Nguyen (3.27) + Donna Lefever (3.40).",
-    "notes_35": "Undefeated in straight sets. Started at D3 (won in a tight match vs much weaker opp), moved up to D1 (won in a tight match vs much weaker opp).",
+    "notes_35": "Surprising loss: W7 D1 alongside Amy Waters to Chandra VanPaepeghem (3.28) + Sara Sager (3.50) in a third-set tiebreak. Started at D3 (won vs much weaker opp), moved up to D1 (lost in a third-set tiebreak vs weaker opp).",
     "rating_30": 3.68,
-    "rating_35": 3.6627,
+    "rating_35": 3.5829,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.68,
     "iter_rating_35": 3.6334,
@@ -12067,7 +12068,8 @@
     "rating_timeline_30": {},
     "rating_timeline_35": {
       "3/21/2026": 3.68,
-      "4/18/2026": 3.6738
+      "4/18/2026": 3.6738,
+      "5/2/2026": 3.6627
     }
   },
   {
@@ -12094,7 +12096,7 @@
     "wl_record_35": "1-2",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Val Froman (3.34) + Michelle Castillo (3.34).",
-    "notes_35": "Surprising loss: W3 D2 alongside Kami Adamson to Mary Lind (3.37) + Tyree Judd (3.29) in a tight match.",
+    "notes_35": "Surprising loss: W3 D2 alongside Kami Adamson to Mary Lind (3.37) + Tyree Judd (3.29) decisively.",
     "rating_30": 3.57,
     "rating_35": 3.5071,
     "baseline_date": "12/18/2025",
@@ -12335,8 +12337,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.5,
-    "current_division_rating": 3.4616,
-    "global_rating": 3.4616,
+    "current_division_rating": 3.571,
+    "global_rating": 3.571,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -12345,15 +12347,15 @@
     "profile_url": "/adult/profile.aspx?playername=Sara Sager",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
-      "D1x3",
+      "D1x4",
       "D2x2"
     ],
-    "wl_record_35": "3-2",
+    "wl_record_35": "4-2",
     "team_35": "SPANISH TRAIL #1",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Jamie Warrington (3.47) + Jennifer Hall (3.39) in a tight match.",
-    "notes_35": "Among the most-deployed (5/6 weeks). Surprising loss: W1 D2 alongside Vinne Chen to Karen Hom (3.04) + Stella Chivikas (3.37) decisively.",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Amy Waters (3.66) + Emelia Allen (3.68) in a third-set tiebreak.",
+    "notes_35": "Most-deployed player (6/7 weeks). Upset: W7 D1 alongside Chandra VanPaepeghem beat Amy Waters (3.66) + Emelia Allen (3.68) in a third-set tiebreak. Surprising loss: W1 D2 alongside Vinne Chen to Karen Hom (3.04) + Stella Chivikas (3.37) decisively.",
     "rating_30": 3.5,
-    "rating_35": 3.4616,
+    "rating_35": 3.571,
     "baseline_date": "11/22/2025",
     "iter_rating_30": 3.5,
     "iter_rating_35": 3.9745,
@@ -12364,7 +12366,8 @@
       "3/21/2026": 3.4519,
       "3/28/2026": 3.4825,
       "4/11/2026": 3.5272,
-      "4/18/2026": 3.5073
+      "4/18/2026": 3.5073,
+      "5/2/2026": 3.4616
     }
   },
   {
@@ -12775,8 +12778,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.47,
-    "current_division_rating": 3.3763,
-    "global_rating": 3.3763,
+    "current_division_rating": 3.3416,
+    "global_rating": 3.3416,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -12786,14 +12789,14 @@
     "lines_played_35": [
       "D1",
       "D3",
-      "S1"
+      "S1x2"
     ],
-    "wl_record_35": "1-2",
+    "wl_record_35": "1-3",
     "team_35": "SPANISH TRAIL #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Jaclyn O'Malley (3.48) in a third-set tiebreak.",
-    "notes_35": "Surprising loss: W5 D3 alongside Natasha Kattau to Abigail Cox (3.00) + Jessica Borghoff (3.09) in a tight match. Won a 3-set tiebreak in W2.",
+    "notes_35": "Surprising loss: W5 D3 alongside Natasha Kattau to Abigail Cox (3.00) + Jessica Borghoff (3.09) decisively. Won a 3-set tiebreak in W2.",
     "rating_30": 3.47,
-    "rating_35": 3.3763,
+    "rating_35": 3.3416,
     "baseline_date": "11/22/2025",
     "iter_rating_30": 3.47,
     "iter_rating_35": 3.4734,
@@ -12802,7 +12805,8 @@
     "rating_timeline_35": {
       "3/14/2026": 3.47,
       "3/21/2026": 3.3993,
-      "4/18/2026": 3.4471
+      "4/18/2026": 3.4471,
+      "5/2/2026": 3.3763
     }
   },
   {
@@ -13074,8 +13078,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.41,
-    "current_division_rating": 3.3997,
-    "global_rating": 3.3997,
+    "current_division_rating": 3.4344,
+    "global_rating": 3.4344,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -13084,14 +13088,14 @@
     "profile_url": "/adult/profile.aspx?playername=Stacie Corelle",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
-      "S1x4"
+      "S1x5"
     ],
-    "wl_record_35": "3-1",
+    "wl_record_35": "4-1",
     "team_35": "DTC #1",
-    "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Punam Patel (3.28).",
-    "notes_35": "Surprising loss: W3 S1 to Karina McAffee (3.26) in a third-set tiebreak. Won a 3-set tiebreak in W6.",
+    "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Vanessa Nicole Rowe (3.47) comfortably.",
+    "notes_35": "Among the most-deployed (5/7 weeks). Upset: W7 S1 beat Vanessa Nicole Rowe (3.47) comfortably. Surprising loss: W3 S1 to Karina McAffee (3.26) in a third-set tiebreak.",
     "rating_30": 3.41,
-    "rating_35": 3.3997,
+    "rating_35": 3.4344,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.41,
     "iter_rating_35": 4.3636,
@@ -13101,7 +13105,8 @@
       "3/21/2026": 3.41,
       "3/28/2026": 3.4387,
       "4/18/2026": 3.3635,
-      "4/25/2026": 3.3738
+      "4/25/2026": 3.3738,
+      "5/2/2026": 3.3997
     }
   },
   {
@@ -13127,8 +13132,8 @@
     ],
     "wl_record_35": "3-1",
     "team_35": "DTC #1",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Anne Gumm (3.52) + Christina Rich (3.34).",
-    "notes_35": "Captain's flex weapon \u2014 D1/D2/D3. Started at D3 (won in a tight match vs much weaker opp), moved up to D1 (won).",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Anne Gumm (3.52) + Christina Rich (3.34) comfortably.",
+    "notes_35": "Captain's flex weapon \u2014 D1/D2/D3. Started at D3 (won vs much weaker opp), moved up to D1 (won comfortably).",
     "rating_30": 3.49,
     "rating_35": 3.494,
     "baseline_date": "12/18/2025",
@@ -13702,8 +13707,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.28,
-    "current_division_rating": 3.2897,
-    "global_rating": 3.2897,
+    "current_division_rating": 3.3991,
+    "global_rating": 3.3991,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -13711,15 +13716,15 @@
     "notes": "D1/D2, 3-0. Delta of +0.18. Dynamic of 3.45 was too low. She's Spanish Trail #1's breakout player.",
     "profile_url": "/adult/profile.aspx?playername=Chandra VanPaepeghem",
     "lines_played_35": [
-      "D1x3",
+      "D1x4",
       "D2"
     ],
-    "wl_record_35": "3-1",
+    "wl_record_35": "4-1",
     "team_35": "SPANISH TRAIL #1",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D2 beat Jamie Warrington (3.47) + Jennifer Hall (3.39) in a tight match.",
-    "notes_35": "Upset: W3 D2 alongside Sara Sager beat Jamie Warrington (3.47) + Jennifer Hall (3.39) in a tight match.",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Amy Waters (3.66) + Emelia Allen (3.68) in a third-set tiebreak.",
+    "notes_35": "Upset: W7 D1 alongside Sara Sager beat Amy Waters (3.66) + Emelia Allen (3.68) in a third-set tiebreak \u2014 implies playing at 3.67+ level.",
     "rating_30": 3.28,
-    "rating_35": 3.2897,
+    "rating_35": 3.3991,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.28,
     "iter_rating_35": 3.9745,
@@ -13729,7 +13734,8 @@
       "3/21/2026": 3.28,
       "3/28/2026": 3.3106,
       "4/11/2026": 3.3553,
-      "4/18/2026": 3.3354
+      "4/18/2026": 3.3354,
+      "5/2/2026": 3.2897
     }
   },
   {
@@ -13902,8 +13908,8 @@
     ],
     "wl_record_35": "3-2",
     "team_35": "DTC #1",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Maria Truman (3.58) + Suzy Wirth (3.54) in a tight match.",
-    "notes_35": "Most-deployed player (5/6 weeks). Captain's flex weapon \u2014 D1/D2/D3. Upset: W3 D1 alongside Claudia Hernandez beat Maria Truman (3.58) + Suzy Wirth (3.54) in a tight match. Surprising loss: W4 D1 alongside Claudia Hernandez to Leslie Brodie (2.88) + Arika Carrier (3.16).",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Maria Truman (3.58) + Suzy Wirth (3.54) comfortably.",
+    "notes_35": "Among the most-deployed (5/7 weeks). Captain's flex weapon \u2014 D1/D2/D3. Upset: W3 D1 alongside Claudia Hernandez beat Maria Truman (3.58) + Suzy Wirth (3.54) comfortably. Surprising loss: W4 D1 alongside Claudia Hernandez to Leslie Brodie (2.88) + Arika Carrier (3.16) decisively.",
     "rating_30": 3.33,
     "rating_35": 3.2931,
     "baseline_date": "12/03/2025",
@@ -14109,8 +14115,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.46,
-    "current_division_rating": 3.5021,
-    "global_rating": 3.5021,
+    "current_division_rating": 3.5303,
+    "global_rating": 3.5303,
     "ntrp_rating": "3.5 C",
     "wl_record": "3-0",
     "lines_played": 3,
@@ -14120,14 +14126,15 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
       "D1x2",
-      "D2x2"
+      "D2x2",
+      "D3"
     ],
-    "wl_record_35": "3-1",
+    "wl_record_35": "4-1",
     "team_35": "DTC #1",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Maria Truman (3.58) + Suzy Wirth (3.54) in a tight match.",
-    "notes_35": "Upset: W3 D1 alongside Karen Kiyono beat Maria Truman (3.58) + Suzy Wirth (3.54) in a tight match. Surprising loss: W4 D1 alongside Karen Kiyono to Leslie Brodie (2.88) + Arika Carrier (3.16).",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D1 beat Maria Truman (3.58) + Suzy Wirth (3.54) comfortably.",
+    "notes_35": "Among the most-deployed (5/7 weeks). Captain's flex weapon \u2014 D1/D2/D3. Upset: W3 D1 alongside Karen Kiyono beat Maria Truman (3.58) + Suzy Wirth (3.54) comfortably. Surprising loss: W4 D1 alongside Karen Kiyono to Leslie Brodie (2.88) + Arika Carrier (3.16) decisively.",
     "rating_30": 3.46,
-    "rating_35": 3.5021,
+    "rating_35": 3.5303,
     "baseline_date": "12/11/2025",
     "iter_rating_30": 3.46,
     "iter_rating_35": 4.0939,
@@ -14137,7 +14144,8 @@
       "3/21/2026": 3.46,
       "3/28/2026": 3.4852,
       "4/11/2026": 3.5455,
-      "4/25/2026": 3.4615
+      "4/25/2026": 3.4615,
+      "5/2/2026": 3.5021
     }
   },
   {
@@ -14550,8 +14558,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.31,
-    "current_division_rating": 3.3379,
-    "global_rating": 3.3379,
+    "current_division_rating": 3.3546,
+    "global_rating": 3.3546,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -14560,15 +14568,15 @@
     "profile_url": "/adult/profile.aspx?playername=Diane Paull",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
-      "D2",
+      "D2x2",
       "D3"
     ],
-    "wl_record_35": "2-0",
+    "wl_record_35": "3-0",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Elisabeth Skinner (2.90) + Maggie Skinner (3.55) in a third-set tiebreak.",
-    "notes_35": "Won 3-set tiebreaks in W4/W5. Undefeated but all opponents below baseline (avg 3.04).",
+    "notes_35": "Won 3-set tiebreaks in W4/W5. Undefeated but all opponents below baseline (avg 3.06).",
     "rating_30": 3.31,
-    "rating_35": 3.3379,
+    "rating_35": 3.3546,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.31,
     "iter_rating_35": 3.4,
@@ -14576,7 +14584,8 @@
     "rating_timeline_30": {},
     "rating_timeline_35": {
       "4/11/2026": 3.31,
-      "4/18/2026": 3.3515
+      "4/18/2026": 3.3515,
+      "5/2/2026": 3.3379
     }
   },
   {
@@ -15059,8 +15068,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.31,
-    "current_division_rating": 3.3202,
-    "global_rating": 3.3202,
+    "current_division_rating": 3.3369,
+    "global_rating": 3.3369,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -15069,15 +15078,15 @@
     "profile_url": "/adult/profile.aspx?playername=Valeria Perdomo",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
-      "D2",
+      "D2x2",
       "D3x2"
     ],
-    "wl_record_35": "2-1",
+    "wl_record_35": "3-1",
     "team_35": "DTC #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Elisabeth Skinner (2.90) + Maggie Skinner (3.55) in a third-set tiebreak.",
     "notes_35": "Close doubles loss to a stronger pair \u2014 tiebreak vs Travis Azous (3.43) + Julie MacDonald (3.69). Won 3-set tiebreaks in W4/W5.",
     "rating_30": 3.31,
-    "rating_35": 3.3202,
+    "rating_35": 3.3369,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.31,
     "iter_rating_35": 3.5665,
@@ -15086,7 +15095,8 @@
     "rating_timeline_35": {
       "3/28/2026": 3.31,
       "4/11/2026": 3.2923,
-      "4/18/2026": 3.3338
+      "4/18/2026": 3.3338,
+      "5/2/2026": 3.3202
     }
   },
   {
@@ -15348,8 +15358,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.36,
-    "current_division_rating": 3.3312,
-    "global_rating": 3.3312,
+    "current_division_rating": 3.303,
+    "global_rating": 3.303,
     "ntrp_rating": "3.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -15357,13 +15367,14 @@
     "notes": null,
     "tennisrecord_id": null,
     "rating_30": 3.36,
-    "rating_35": 3.3312,
-    "notes_30": "No 3.0 matches played yet. In 3.5: D2 lost to Jamie Kelvington (3.46) + Lori LaBarbera (3.42) in a third-set tiebreak.",
-    "notes_35": "W5 D2 lost to Jamie Kelvington (3.46) + Lori LaBarbera (3.42); split sets before losing tiebreak.",
+    "rating_35": 3.303,
+    "notes_30": "No 3.0 matches played yet. In 3.5: D3 lost to Claudia Hernandez (3.46) + michelle jarvis (3.10) decisively.",
+    "notes_35": "Underperforming at D3 \u2014 lost to a slightly lower-rated opponent.",
     "lines_played_35": [
-      "D2"
+      "D2",
+      "D3"
     ],
-    "wl_record_35": "0-1",
+    "wl_record_35": "0-2",
     "team_35": "SPANISH TRAIL #1",
     "baseline_date": "02/07/2026",
     "iter_rating_30": 3.36,
@@ -15371,7 +15382,8 @@
     "iter_global_rating": 3.3431,
     "rating_timeline_30": {},
     "rating_timeline_35": {
-      "4/18/2026": 3.36
+      "4/18/2026": 3.36,
+      "5/2/2026": 3.3312
     }
   },
   {
@@ -16390,8 +16402,8 @@
     ],
     "wl_record_35": "1-2",
     "team_35": "DTC #1",
-    "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Gina Thornton (3.37).",
-    "notes_35": "Upset: W2 S2 beat Gina Thornton (3.37).",
+    "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Gina Thornton (3.37) comfortably.",
+    "notes_35": "Upset: W2 S2 beat Gina Thornton (3.37) comfortably.",
     "rating_30": 3.2,
     "rating_35": 3.2167,
     "baseline_date": "12/04/2025",
@@ -16886,8 +16898,8 @@
     ],
     "wl_record_35": "2-3",
     "team_35": "SPANISH TRAIL #1",
-    "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Amanda Verba (3.47) in a tight match.",
-    "notes_35": "Among the most-deployed (5/6 weeks). Surprising loss: W3 D1 alongside Allison Ibarguen to Jamie Johnson (2.95) + Jeralyn Marchesi (2.81) in a tight match.",
+    "notes_30": "No 3.0 matches played yet. In 3.5: S1 beat Amanda Verba (3.47) comfortably.",
+    "notes_35": "Surprising loss: W3 D1 alongside Allison Ibarguen to Jamie Johnson (2.95) + Jeralyn Marchesi (2.81) in a tight match.",
     "rating_30": 3.64,
     "rating_35": 3.4138,
     "baseline_date": "03/14/2026",
@@ -17096,8 +17108,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.15,
-    "current_division_rating": 3.2153,
-    "global_rating": 3.2153,
+    "current_division_rating": 3.1986,
+    "global_rating": 3.1986,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -17106,15 +17118,16 @@
     "profile_url": "/adult/profile.aspx?playername=Alisia Pulella",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
+      "D2",
       "D3x2",
       "S2"
     ],
-    "wl_record_35": "1-2",
+    "wl_record_35": "1-3",
     "team_35": "SPANISH TRAIL #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat LaCheyva Edmonis (3.30) in a tight match.",
     "notes_35": "Upset: W4 S2 beat LaCheyva Edmonis (3.30) in a tight match.",
     "rating_30": 3.15,
-    "rating_35": 3.2153,
+    "rating_35": 3.1986,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.15,
     "iter_rating_35": 3.17,
@@ -17123,7 +17136,8 @@
     "rating_timeline_35": {
       "3/14/2026": 3.15,
       "3/21/2026": 3.1821,
-      "4/11/2026": 3.1666
+      "4/11/2026": 3.1666,
+      "5/2/2026": 3.2153
     }
   },
   {
@@ -17133,8 +17147,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.07,
-    "current_division_rating": 2.9667,
-    "global_rating": 2.9667,
+    "current_division_rating": 2.95,
+    "global_rating": 2.95,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -17143,16 +17157,16 @@
     "profile_url": "/adult/profile.aspx?playername=Natasha Kattau",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
-      "D2",
+      "D2x2",
       "D3",
       "S1"
     ],
-    "wl_record_35": "0-3",
+    "wl_record_35": "0-4",
     "team_35": "SPANISH TRAIL #1",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D3 lost to Abigail Cox (3.00) + Jessica Borghoff (3.09) in a tight match.",
-    "notes_35": "Close singles loss to a stronger opponent \u2014 Monica Baldwin (3.42).",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D3 lost to Abigail Cox (3.00) + Jessica Borghoff (3.09) decisively.",
+    "notes_35": "Outmatched at S1 by Monica Baldwin (3.42) in W3.",
     "rating_30": 3.07,
-    "rating_35": 2.9667,
+    "rating_35": 2.95,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.07,
     "iter_rating_35": 3.0947,
@@ -17161,7 +17175,8 @@
     "rating_timeline_35": {
       "3/21/2026": 3.07,
       "3/28/2026": 3.0474,
-      "4/18/2026": 3.0375
+      "4/18/2026": 3.0375,
+      "5/2/2026": 2.9667
     }
   },
   {
@@ -17198,8 +17213,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.1,
-    "current_division_rating": 3.021,
-    "global_rating": 3.021,
+    "current_division_rating": 3.0492,
+    "global_rating": 3.0492,
     "ntrp_rating": "3.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -17207,14 +17222,14 @@
     "notes": null,
     "profile_url": "/adult/profile.aspx?playername=michelle jarvis",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Alexandria Chang (2.72) + Kristyl Addison (2.91) in a third-set tiebreak.",
-    "notes_35": "W5 D3 beat Alexandria Chang (2.72) + Kristyl Addison (2.91); won in 3 sets.",
+    "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat vinne chen (3.08) + My Vuong (3.36) comfortably.",
+    "notes_35": "Upset: W7 D3 alongside Claudia Hernandez beat vinne chen (3.08) + My Vuong (3.36) comfortably.",
     "rating_30": 3.1,
-    "rating_35": 3.021,
+    "rating_35": 3.0492,
     "lines_played_35": [
-      "D3"
+      "D3x2"
     ],
-    "wl_record_35": "0-1",
+    "wl_record_35": "1-1",
     "team_35": "DTC #1",
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.1,
@@ -17222,7 +17237,8 @@
     "iter_global_rating": 3.0717,
     "rating_timeline_30": {},
     "rating_timeline_35": {
-      "4/18/2026": 3.1
+      "4/18/2026": 3.1,
+      "5/2/2026": 3.021
     }
   },
   {
@@ -17708,8 +17724,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.08,
-    "current_division_rating": 3.1151,
-    "global_rating": 3.1151,
+    "current_division_rating": 3.0869,
+    "global_rating": 3.0869,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -17719,14 +17735,14 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
       "D2x2",
-      "D3"
+      "D3x2"
     ],
-    "wl_record_35": "2-1",
+    "wl_record_35": "2-2",
     "team_35": "SPANISH TRAIL #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: D3 beat Carolyn Wood (3.30) + Elisabeth Skinner (2.90) in a third-set tiebreak.",
     "notes_35": "Won a 3-set tiebreak in W3.",
     "rating_30": 3.08,
-    "rating_35": 3.1151,
+    "rating_35": 3.0869,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.08,
     "iter_rating_35": 3.2571,
@@ -17735,7 +17751,8 @@
     "rating_timeline_35": {
       "3/14/2026": 3.08,
       "3/28/2026": 3.0319,
-      "4/11/2026": 3.0818
+      "4/11/2026": 3.0818,
+      "5/2/2026": 3.1151
     }
   },
   {
@@ -18178,8 +18195,8 @@
     "team": "SPANISH TRAIL #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 2.8,
-    "current_division_rating": 2.816,
-    "global_rating": 2.816,
+    "current_division_rating": 2.8042,
+    "global_rating": 2.8042,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -18189,14 +18206,14 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_35": [
       "S1",
-      "S2"
+      "S2x2"
     ],
-    "wl_record_35": "0-2",
+    "wl_record_35": "0-3",
     "team_35": "SPANISH TRAIL #1",
     "notes_30": "No 3.0 matches played yet. In 3.5: S1 lost to Tayoni Coleman (2.92) decisively.",
-    "notes_35": "Tried at S1 (lost decisively), moved down to S2 (bageled vs much stronger opp).",
+    "notes_35": "Tried at S1 (lost decisively), moved down to S2 (lost decisively vs much stronger opp).",
     "rating_30": 2.8,
-    "rating_35": 2.816,
+    "rating_35": 2.8042,
     "baseline_date": "11/22/2025",
     "iter_rating_30": 2.8,
     "iter_rating_35": 2.8583,
@@ -18204,7 +18221,8 @@
     "rating_timeline_30": {},
     "rating_timeline_35": {
       "4/11/2026": 2.8,
-      "4/18/2026": 2.789
+      "4/18/2026": 2.789,
+      "5/2/2026": 2.816
     }
   },
   {
@@ -18280,8 +18298,8 @@
     "team": "DTC #1",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.1,
-    "current_division_rating": 3.0731,
-    "global_rating": 3.0731,
+    "current_division_rating": 3.0849,
+    "global_rating": 3.0849,
     "ntrp_rating": "3.5 S",
     "wl_record": null,
     "lines_played": null,
@@ -18289,18 +18307,20 @@
     "notes": null,
     "profile_url": "/adult/profile.aspx?playername=Sydney Lobato",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
-    "notes_30": "No 3.0 matches played yet. In 3.5: D3 lost to Katrin Dragnev (3.48) + Lorraine Yarde (3.52).",
-    "notes_35": "D3 loss to Katrin Dragnev (3.48) + Lorraine Yarde (3.52) \u2014 expected result, minimal data.",
+    "notes_30": "No 3.0 matches played yet. In 3.5: S2 beat Cindy Nguyen (2.80).",
+    "notes_35": "",
     "lines_played_35": [
-      "D3"
+      "D3",
+      "S2"
     ],
-    "wl_record_35": "0-1",
+    "wl_record_35": "1-1",
     "team_35": "DTC #1",
     "rating_30": 3.1,
-    "rating_35": 3.0731,
+    "rating_35": 3.0849,
     "rating_timeline_30": {},
     "rating_timeline_35": {
-      "4/25/2026": 3.1
+      "4/25/2026": 3.1,
+      "5/2/2026": 3.0731
     }
   },
   {
