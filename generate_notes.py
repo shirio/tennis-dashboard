@@ -1844,13 +1844,12 @@ def main():
                                 and _lm_ht is None    # alone at the top in the later match
                             )
                             if _vacancy:
-                                # Tell the true story: natural lower-line player,
-                                # filled in at the top when needed.
+                                # Tell the true story: filled in at the higher line
+                                # when the usual anchor wasn't available.
                                 _anchor_name = _em_ht[0] if _em_ht else "anchor"
-                                _anchor_line = _line_short(_em_ht[2]) if _em_ht else _el
                                 _tier_arc_note = (
-                                    f"Natural {_el} with {_anchor_name} above;"
-                                    f" played {_ll} by vacancy ({_lo})."
+                                    f"Filled in at {_ll} when {_anchor_name}"
+                                    f" was unavailable ({_lo})."
                                 )
                             else:
                                 _tier_arc_note = (
