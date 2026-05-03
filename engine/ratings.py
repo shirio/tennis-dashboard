@@ -412,11 +412,12 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
 
     # Underdog tiebreak credit: an underdog (expected < 0.50) who loses in a
     # 3-set tiebreak has overperformed their expectation regardless of the
-    # set-by-set story.  Cap the raw_signal from below at −0.20 so the scenario
-    # table's judgment (e.g. "collapsed in S2") can't turn a genuinely competitive
-    # close loss into a penalising signal.  −0.20 ≈ "even fight, narrowly lost".
+    # set-by-set story.  The tiebreak itself is a coin flip — they performed at
+    # roughly 50% level when expected at <50%.  Floor the raw_signal at −0.15
+    # (the "best" tiebreak-loss scenario in the table: even fight, narrowly lost)
+    # so the scenario table's judgment can't bury a genuinely competitive showing.
     if not record.won and expected < 0.50 and len(sets) == 3:
-        raw_signal = max(raw_signal, -0.20)
+        raw_signal = max(raw_signal, -0.15)
 
     # Map expected [0, 1] → [-1, +1] to match the raw_signal scale.
     # expected=0.50 → 0.0 (even match), expected=0.80 → +0.60 (favoured)
@@ -548,14 +549,24 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
             win_cap = _SEQ_CAP * (1.0 - expected) ** 2
         return min(win_cap, adj)
 
-    # Loss: apply scaled loss cap so near-equal losses hurt less than lopsided ones.
-    # Wins that produced a negative adj (via _match_adjustment directly) use flat cap.
+    # Loss path.
     if not record.won:
         expected = _cross_pair_expected(
             current_rating, record.partner_rating, record.opponent_ratings
         )
+        if adj > 0:
+            # Underdog who overperformed (e.g. pushed to a tiebreak): treat like
+            # a win for capping purposes — the gain should be meaningful but bounded
+            # by how unexpected the result was, same formula as upset wins.
+            if expected < 0.30:
+                win_cap = _SEQ_CAP * (1.0 - expected)
+            else:
+                win_cap = _SEQ_CAP * (1.0 - expected) ** 2
+            return min(win_cap, adj)
+        # Normal loss: cap proportional to expected² so heavy underdogs are
+        # barely penalised and favourites are appropriately penalised.
         loss_cap = _SEQ_CAP * expected ** 2
-        return max(-loss_cap, min(_SEQ_CAP, adj))
+        return max(-loss_cap, adj)
 
     # Win with negative adj (underperformed but won): flat clip — rare, keep small.
     return max(-_SEQ_CAP, min(_SEQ_CAP, adj))
