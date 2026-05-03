@@ -410,6 +410,14 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
 
     raw_signal = _scenario_signal(sets, record.won)
 
+    # Underdog tiebreak credit: an underdog (expected < 0.50) who loses in a
+    # 3-set tiebreak has overperformed their expectation regardless of the
+    # set-by-set story.  Cap the raw_signal from below at −0.20 so the scenario
+    # table's judgment (e.g. "collapsed in S2") can't turn a genuinely competitive
+    # close loss into a penalising signal.  −0.20 ≈ "even fight, narrowly lost".
+    if not record.won and expected < 0.50 and len(sets) == 3:
+        raw_signal = max(raw_signal, -0.20)
+
     # Map expected [0, 1] → [-1, +1] to match the raw_signal scale.
     # expected=0.50 → 0.0 (even match), expected=0.80 → +0.60 (favoured)
     expected_signal = 2.0 * expected - 1.0
@@ -444,14 +452,12 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
     if not record.won and expected >= 0.50:
         adj = min(adj, 0.0)   # favorite who loses must drop or stay flat
 
-    # Underdog protection: only apply when the actual performance was at or ABOVE
-    # expectation (surprise ≥ 0). If the underdog lost far worse than their expected
-    # level (surprise < 0 — e.g. a slight underdog getting routed 6-1 6-2), that IS
-    # a meaningful negative signal even if losing was the likely outcome.
-    # "Losing as expected" = close loss by an underdog → no penalty.
-    # "Losing far worse than expected" = rout of a slight underdog → small penalty.
-    if not record.won and expected < 0.50 and surprise >= 0:
-        adj = max(adj, 0.0)   # underdog who lost at or above expectation: no penalty
+    # Underdog protection: any player expected to lose (expected < 0.50) never gets a
+    # negative adjustment from a loss.  Going to a tiebreak against stronger opponents
+    # is an overperformance regardless of the set-by-set story — the scenario table
+    # is calibrated for neutral players and shouldn't override this floor.
+    if not record.won and expected < 0.50:
+        adj = max(adj, 0.0)   # underdog who lost: never penalised
 
     return adj
 
@@ -496,9 +502,10 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     _MIN_WIN_SURPRISE = 0.15
 
     # Scale for the below-gate penalty: wins that barely met expectations earn
-    # a small negative adj proportional to how far short of the gate they fell.
-    # Max penalty ≈ 0.023 (when surplus = 0, i.e. win exactly at expectation).
-    _BELOW_GATE_SCALE = 0.15
+    # a negative adj proportional to how far short of the gate they fell.
+    # Max penalty = 0.15 × scale (when surplus = 0, i.e. win exactly at expectation).
+    # 0.30 → max ≈ 0.045; at surplus=0.068 (Julie's case): penalty ≈ 0.025
+    _BELOW_GATE_SCALE = 0.30
 
     if record.won and adj > 0:
         expected = _cross_pair_expected(

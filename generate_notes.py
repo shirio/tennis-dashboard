@@ -67,6 +67,38 @@ def _make_pit_lookup(players, sfx: str):
     return pit
 
 
+def _comeback_shape(score: str, require_dominant_s2: bool = False) -> bool:
+    """Return True if the score represents a comeback: player lost set 1, won set 2, won TB.
+
+    Works by identifying the tiebreak winner's side and checking whether they
+    dropped the first set.  Only meaningful for 3-set tiebreak matches.
+
+    If require_dominant_s2 is True, also requires that S2 was dominant
+    (opponent conceded ≤2 games) — the shape change must be dramatic.
+    """
+    sets = re.findall(r"(\d+)-(\d+)", score)
+    if len(sets) != 3:
+        return False
+    tb = sets[2]
+    if tb not in [("1", "0"), ("0", "1")]:
+        return False
+    # The tiebreak winner's side: home=True if tb is "1-0"
+    player_is_home = (tb == ("1", "0"))
+    s1a, s1b = int(sets[0][0]), int(sets[0][1])
+    s2a, s2b = int(sets[1][0]), int(sets[1][1])
+    s1_player = s1a if player_is_home else s1b
+    s1_opp    = s1b if player_is_home else s1a
+    s2_player = s2a if player_is_home else s2b
+    s2_opp    = s2b if player_is_home else s2a
+    # Comeback = player lost the first set
+    if s1_player >= s1_opp:
+        return False
+    # Optional: S2 must be dominant (opponent got ≤2 games)
+    if require_dominant_s2 and s2_opp > 2:
+        return False
+    return True
+
+
 def _score_descriptor(score: str) -> str:
     """
     Describe the shape of a score string:
@@ -1471,7 +1503,7 @@ def main():
             ]
 
             # Line-split story: grinds out tiebreaks at lower lines but outmatched at top.
-            # Only use tiebreak wins not already highlighted individually as upsets.
+            # Exclude tiebreak wins already highlighted as upsets.
             _surprise_win_set = set(id(m) for m in surprising_wins)
             _fresh_tiebreak_wins = [m for m in tiebreak_wins
                                     if id(m) not in _surprise_win_set]
@@ -1522,16 +1554,6 @@ def main():
                 elif is_team_max_tied:
                     parts.append(f"Among the most-deployed ({n_this}/{n_weeks} weeks).")
 
-                # Versatility note for high-deploy multi-line players.
-                # "Flex weapon" only applies when results back it up (winning record).
-                # A player deployed everywhere who keeps losing isn't a weapon —
-                # they're just core rotation that hasn't found their level.
-                if n_this >= 3 and len(line_types) >= 3:
-                    lt_str = "/".join(sorted(line_types, key=lambda x: (x[0], x[1])))
-                    win_rate = len(wins_this) / n_this
-                    if win_rate > 0.5:
-                        parts.append(f"Captain's flex weapon — {lt_str}.")
-
                 # For very low n_this + rich other_matches, weave the cross-division story
                 has_rich_cross = (
                     n_this <= 1 and len(other_matches) >= 1
@@ -1541,20 +1563,73 @@ def main():
                     )
                 )
 
-                # Describe surprising wins (with rich detail)
+                # Describe ALL surprising wins, grouped by line when there are multiple
+                # on the same line.  Include win probability inline (no parens).
                 if surprising_wins:
-                    best = max(surprising_wins,
-                               key=lambda m: (m["opp_avg"] or 0) - bl)
-                    desc = _describe_match(best, None, this_data["all_dates"],
-                                          include_partner=True)
-                    opp_r = best["opp_avg"]
-                    gap = opp_r - bl if opp_r else 0
-                    if gap > 0.25 and len(best["opp_names"]) > 1:
+                    from collections import defaultdict as _ddict
+                    _sw_by_line: dict = _ddict(list)
+                    for _sw in sorted(surprising_wins, key=lambda m: _ep(m) or 1.0):
+                        _sw_by_line[_line_short(_sw["line"])].append(_sw)
+
+                    def _upset_shape_clause(m):
+                        """Concise shape word for an upset description."""
+                        ph = _score_phrase(m.get("score", ""), True)
+                        if ph == "in a third-set tiebreak":
+                            return " in a tiebreak"
+                        return f" {ph}" if ph else ""
+
+                    def _upset_mini(m, include_line=True):
+                        """Mini description for one upset match."""
+                        _wk  = _week_number(m["date"], this_data["all_dates"])
+                        _l   = _line_short(m["line"])
+                        _ptr = m.get("partner")
+                        _ptr_c = f" with {_ptr}" if _ptr else ""
+                        _opp = _opp_label(m)
+                        _shp = _upset_shape_clause(m)
+                        _ep2 = _ep(m)
+                        _prb = f" at {round(_ep2 * 100)}% odds" if _ep2 is not None else ""
+                        _loc = f"{_wk} {_l}" if include_line else _wk
+                        return f"{_loc}{_ptr_c} — beat {_opp}{_shp}{_prb}"
+
+                    _count_words = {1: "One", 2: "Two", 3: "Three", 4: "Four"}
+                    for _l, _grp in sorted(
+                        _sw_by_line.items(),
+                        key=lambda x: (x[0][0], int(x[0][1:]) if x[0][1:].isdigit() else 0)
+                    ):
+                        if len(_grp) == 1:
+                            parts.append(f"Upset: {_upset_mini(_grp[0])}.")
+                        else:
+                            _n_w = _count_words.get(len(_grp), str(len(_grp)))
+                            _minis = [_upset_mini(m, include_line=False) for m in _grp]
+                            parts.append(
+                                f"{_n_w} {_l} upsets: {'; '.join(_minis)}."
+                            )
+
+                # Below-gate blemish: was a heavy favourite but didn't dominate.
+                # Show even when upsets are present — a blemish tells a different
+                # story and both can be true.
+                if True:
+                    _heavy_fav_blemishes = [
+                        m for m in wins_this
+                        if _ep(m) is not None and _ep(m) > 0.65
+                        and _score_descriptor(m.get("score", "")) in ("tight", "clear", "")
+                        and not m.get("walkover")
+                    ]
+                    if _heavy_fav_blemishes:
+                        _blemish = max(_heavy_fav_blemishes, key=lambda m: _ep(m) or 0)
+                        _ep_bl   = _ep(_blemish)
+                        _wk_bl   = _week_number(_blemish["date"], this_data["all_dates"])
+                        _l_bl    = _line_short(_blemish["line"])
+                        _opp_bl  = _opp_label(_blemish)
+                        _pct_bl  = round(_ep_bl * 100) if _ep_bl is not None else None
+                        _shp_bl  = _score_descriptor(_blemish.get("score", ""))
+                        _verb_bl = "scraped past" if _shp_bl == "tight" else "won but failed to dominate against"
+                        _fav_bl  = f" as {_pct_bl}% favourite" if _pct_bl else ""
+                        _expected_clause = " — a rout was expected" if _pct_bl and _pct_bl >= 75 else ""
                         parts.append(
-                            f"Upset: {desc} — implies playing at {opp_r:.2f}+ level."
+                            f"One blemish: {_wk_bl} {_l_bl} — {_verb_bl} {_opp_bl}"
+                            f"{_fav_bl}{_expected_clause}."
                         )
-                    else:
-                        parts.append(f"Upset: {desc}.")
 
                 # Competitive close losses — positive framing before the loss analysis.
                 # Fires when player lost close matches against significantly stronger
@@ -1655,7 +1730,14 @@ def main():
                             # tiebreak loss shows the player was competitive but couldn't close.
                             desc = _describe_match(worst, None, this_data["all_dates"],
                                                   include_partner=True)
-                            parts.append(f"Surprising loss: {desc.replace(' lost to ', ' to ', 1)}.")
+                            _ep_sl = _ep(worst)
+                            _prob_sl = (f" (as {round(_ep_sl * 100)}% favourite)"
+                                        if _ep_sl is not None else "")
+                            parts.append(
+                                f"Surprising loss: "
+                                f"{desc.replace(' lost to ', ' to ', 1)}"
+                                f"{_prob_sl}."
+                            )
                         else:
                             # Small-gap, non-tiebreak loss — summarise the pattern.
                             _sl_lines = sorted(
@@ -1697,18 +1779,6 @@ def main():
                                 + "; ".join(tl_descs) + "."
                             )
 
-                    # Tiebreak wins (not already part of a line-split narrative)
-                    if tiebreak_wins and (len(tiebreak_wins) >= 2 or
-                                          (len(this_matches) >= 3
-                                           and not surprising_wins
-                                           and not lopsided_losses)):
-                        wks = sorted({_week_number(m["date"], this_data["all_dates"])
-                                      for m in tiebreak_wins})
-                        wks_str = "/".join(w for w in wks if w)
-                        if wks_str and len(tiebreak_wins) >= 2:
-                            parts.append(f"Won 3-set tiebreaks in {wks_str}.")
-                        elif wks_str:
-                            parts.append(f"Won a 3-set tiebreak in {wks_str}.")
 
                 # Undefeated with all opponents below baseline — describe the
                 # dominance qualitatively rather than labeling it "ceiling-capped."
@@ -1758,11 +1828,24 @@ def main():
                     m0 = this_matches[0]
                     score_desc = _score_descriptor(m0["score"])
                     if score_desc == "3-set tiebreak":
-                        desc = _describe_match(m0, None, this_data["all_dates"],
-                                               include_score=False)
-                        if m0["won"]:
+                        _ep0 = _ep(m0)
+                        if m0["won"] and _ep0 is not None and _ep0 > 0.60:
+                            # Heavy favourite who barely won — the story is the blemish.
+                            _pct0  = round(_ep0 * 100)
+                            _wk0   = _week_number(m0["date"], this_data["all_dates"])
+                            _l0    = _line_short(m0["line"])
+                            _opp0  = _opp_label(m0)
+                            parts.append(
+                                f"One blemish: {_wk0} {_l0} — scraped past {_opp0}"
+                                f" in 3 sets as {_pct0}% favourite."
+                            )
+                        elif m0["won"]:
+                            desc = _describe_match(m0, None, this_data["all_dates"],
+                                                   include_score=False)
                             parts.append(f"{desc}; won in 3 sets.")
                         else:
+                            desc = _describe_match(m0, None, this_data["all_dates"],
+                                                   include_score=False)
                             parts.append(f"{desc}; split sets before losing tiebreak.")
                     else:
                         desc = _describe_match(m0, None, this_data["all_dates"],

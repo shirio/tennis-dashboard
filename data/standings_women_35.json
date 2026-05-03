@@ -31,7 +31,7 @@
           "games_won": 305,
           "games_lost": 236,
           "games_won_pct": "56.38%",
-          "notes": "S2 perfect, led by Wendy Hopper (2–0), the biggest singles threat in the division; S1 is the soft spot (2–4 record). Kelley drops hardest: 3.43→3.27. Jules 2–1 at S1."
+          "notes": "S2 perfect, led by Wendy Hopper (2–0), the biggest singles threat in the division; S1 is the soft spot (2–4 record). Jane Doe (3.40→3.50, 4-1) trending up. Kelley drops hardest: 3.43→3.27. Jules 2–1 at S1."
         },
         {
           "team_name": "SUMMERLIN ARBORS",
@@ -45,7 +45,7 @@
           "games_won": 295,
           "games_lost": 235,
           "games_won_pct": "55.66%",
-          "notes": "Won big over Anthem, got swept by Red Rock #1. Rika deployed every week. D1 is the soft spot (2–3 record). Rowena 3–0 at D3."
+          "notes": "Won big over Anthem, got swept by Red Rock #1. Hannah Stevens (3.23→3.35, 3-1) trending up. Rika deployed every week. D1 is the soft spot (2–3 record)."
         },
         {
           "team_name": "RED ROCK CC #1",
@@ -59,7 +59,7 @@
           "games_won": 275,
           "games_lost": 265,
           "games_won_pct": "50.93%",
-          "notes": "Won big over Summerlin, got swept by LTF. Carroll drops hardest: 3.34→3.17. Yan deployed every week. D3 is the soft spot (1–5 record)."
+          "notes": "Won big over Summerlin, got swept by LTF. Carroll drops hardest: 3.34→3.18. Yan deployed every week. D3 is the soft spot (1–5 record)."
         },
         {
           "team_name": "ANTHEM CC",
@@ -73,7 +73,7 @@
           "games_won": 224,
           "games_lost": 296,
           "games_won_pct": "43.08%",
-          "notes": "Won big over Sp. Trail #2, got swept by Summerlin. Gina deployed every week. S2 is the soft spot (0–4 record). Lyndsey 3–1 at S1."
+          "notes": "Won big over Sp. Trail #2, got swept by Summerlin. Gina (3.23→3.37, 2-4) trending up. S2 is the soft spot (0–4 record). Lyndsey 3–1 at S1."
         },
         {
           "team_name": "SPANISH TRAIL #2",
@@ -1340,7 +1340,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "DTC #2 leads A at 5-1. LTF (4-2), and Summerlin (4-2) are in contention. Red Rock #1, Anthem, and Sp. Trail #2 are at the bottom. Top risers: Leticia Schoff (Sp. Trail #2, 2.98→3.33, 1-3); Melissa Ruediger (Sp. Trail #2, 3.10→3.37, 1-3). DTC #2 vs LTF (5/30/2026) decides the A title."
+      "subflight_summary": "DTC #2 leads A at 5-1. LTF (4-2), and Summerlin (4-2) are in contention. Red Rock #1, Anthem, and Sp. Trail #2 are at the bottom. Top risers: Leticia Schoff (Sp. Trail #2, 2.98→3.38, 1-3); Melissa Ruediger (Sp. Trail #2, 3.10→3.45, 1-3). DTC #2 vs LTF (5/30/2026) decides the A title."
     },
     {
       "flight_label": "B",
@@ -1371,7 +1371,7 @@
           "games_won": 246,
           "games_lost": 212,
           "games_won_pct": "53.71%",
-          "notes": "Won big over Sp. Trail #1, got swept by Red Rock #2. EMELIA drops hardest: 3.68→3.58. Valeria 2–0 at D2. Diane 2–0 at D2."
+          "notes": "Won big over Sp. Trail #1, got swept by Red Rock #2. Kelly McPherson (3.20→3.35, 1-2) trending up. EMELIA drops hardest: 3.68→3.57. Valeria 2–0 at D2."
         },
         {
           "team_name": "DRAGONRIDGE CC",
@@ -1385,7 +1385,7 @@
           "games_won": 250,
           "games_lost": 199,
           "games_won_pct": "55.68%",
-          "notes": "S2 perfect, led by Vanessa (3–0); D1 is the soft spot (2–3 record). Melanie 4–0 in singles despite low dynamic (3.04). Abigail 2–0 at D3. Maria Allen 2–1 at S1."
+          "notes": "S2 perfect, led by Vanessa (3–0); D1 is the soft spot (2–3 record). Melanie 4–0 in singles despite low dynamic (3.04). Katrin drops hardest: 3.48→3.38. Abigail 2–0 at D3."
         },
         {
           "team_name": "TPC",
@@ -1413,7 +1413,7 @@
           "games_won": 235,
           "games_lost": 239,
           "games_won_pct": "49.58%",
-          "notes": "Won big over DTC #3, got swept by Red Rock #2. gina drops hardest: 3.37→3.25. Punam deployed every week. D2 is the soft spot (1–5 record)."
+          "notes": "Won big over DTC #3, got swept by Red Rock #2. Punam (3.28→3.39, 4-1) trending up. gina drops hardest: 3.37→3.24. D2 is the soft spot (1–5 record)."
         },
         {
           "team_name": "SPANISH TRAIL #1",
@@ -1427,7 +1427,7 @@
           "games_won": 201,
           "games_lost": 251,
           "games_won_pct": "44.47%",
-          "notes": "Won big over DTC #3, got swept by DTC #1. Chandra (3.28→3.40, 4-1) trending up. Shilpa drops hardest: 3.64→3.41. Sara Sager deployed every week."
+          "notes": "Won big over DTC #3, got swept by DTC #1. Chandra (3.28→3.38, 4-1) trending up. Shilpa drops hardest: 3.64→3.41. Sara Sager deployed every week."
         },
         {
           "team_name": "DTC #3",
@@ -1441,7 +1441,7 @@
           "games_won": 195,
           "games_lost": 261,
           "games_won_pct": "42.76%",
-          "notes": "0–5 but 2 of 5 losses were 2–3 splits. Valerie drops hardest: 3.50→3.34. D1 is the soft spot (0–5 record)."
+          "notes": "0–5 but 2 of 5 losses were 2–3 splits. Valerie drops hardest: 3.50→3.36. D1 is the soft spot (0–5 record)."
         }
       ],
       "matches": [
