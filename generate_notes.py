@@ -1720,7 +1720,7 @@ def main():
                     _top_loss_ids = {id(m) for m in top_line_lopsided_losses}
                     _sl_not_top = [m for m in surprising_losses
                                    if id(m) not in _top_loss_ids]
-                    if _sl_not_top and not lopsided_losses and not surprising_wins:
+                    if _sl_not_top and not lopsided_losses:
                         worst = max(_sl_not_top,
                                    key=lambda m: bl - (m["opp_avg"] or 0))
                         worst_gap = bl - (worst["opp_avg"] or bl)
