@@ -6,7 +6,7 @@
         {
           "tag": "your team",
           "tag_class": "you",
-          "content": "DTC #1 won 4-1 over Spanish Trail #1 in W7 — clean as expected. Corelle dominated S1 6-2 6-1, Lobato won S2 6-2 6-1, Perdomo/Paull took D2 6-4 6-3, and Hernandez/Jarvis closed D3 6-2 6-4. The only blemish: Waters/Allen dropped D1 in a tiebreak (5-7 7-5 1-0) to VanPaepeghem/Sager from a team that's 1-5 on the season. That's a warning shot before W8 vs Red Rock #2."
+          "content": "DTC #1 won 4-1 over Spanish Trail #1 in W7 — clean as expected. Corelle dominated S1 6-2 6-1, Lobato won S2 6-2 6-1, Perdomo/Paull took D2 6-4 6-3, and Hernandez/Jarvis closed D3 6-2 6-4. The only blemish: Waters/Allen dropped D1 in a tiebreak (5-7 7-5 1-0) to VanPaepeghem (bl=3.28, r=3.38) / Sager (bl=3.50, r=3.56), who are 4-1 together as a D1 pair. That's a warning shot before W8 vs Red Rock #2."
         },
         {
           "tag": "35B standings",
@@ -26,7 +26,7 @@
         {
           "tag": "waters/allen D1 concern",
           "tag_class": "warn",
-          "content": "Amy Waters (bl=3.66, r=3.58) and Emelia Allen (bl=3.68, r=3.57) are DTC #1's best weapon — but they just dropped a tiebreak at D1 to a Spanish Trail pair (VanPaepeghem bl=3.28 / Sager bl=3.50) from a 1-5 team. Red Rock's expected D1 is MacDonald (3.72)/Chamberlain or Watts (3.57)/MacDonald. Waters/Allen are competitive against any pair Red Rock deploys — but they can't afford a tiebreak loss there."
+          "content": "Amy Waters (bl=3.66, r=3.58) and Emelia Allen (bl=3.68, r=3.57) are DTC #1's best weapon — but they just dropped a tiebreak at D1 to VanPaepeghem/Sager, a legit D1 pair that's 4-1 together. Red Rock's expected D1 is MacDonald (3.72)/Chamberlain or Watts (3.57)/MacDonald — stronger than what they just lost to. Waters/Allen are competitive against any pair Red Rock deploys, but they need to show up clean, not tiebreak-close."
         },
         {
           "tag": "corelle at s1",
