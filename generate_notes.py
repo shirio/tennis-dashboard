@@ -1563,14 +1563,11 @@ def main():
                     )
                 )
 
-                # Describe ALL surprising wins, grouped by line when there are multiple
-                # on the same line.  Include win probability inline (no parens).
+                # Summarise all surprising wins in ONE sentence, never a per-match list.
+                # 1 upset  → "Upset: W3 D1 — beat X at 34% odds."
+                # 2 upsets → "Two upsets: W3 D1 — beat X at 34% odds; W5 S2 — beat Y at 38% odds."
+                # 3+ upsets → "N upsets this season — most surprising: W3 D1 — beat X at 34% odds."
                 if surprising_wins:
-                    from collections import defaultdict as _ddict
-                    _sw_by_line: dict = _ddict(list)
-                    for _sw in sorted(surprising_wins, key=lambda m: _ep(m) or 1.0):
-                        _sw_by_line[_line_short(_sw["line"])].append(_sw)
-
                     def _upset_shape_clause(m):
                         """Concise shape word for an upset description."""
                         ph = _score_phrase(m.get("score", ""), True)
@@ -1591,24 +1588,28 @@ def main():
                         _loc = f"{_wk} {_l}" if include_line else _wk
                         return f"{_loc}{_ptr_c} — beat {_opp}{_shp}{_prb}"
 
-                    _count_words = {1: "One", 2: "Two", 3: "Three", 4: "Four"}
-                    for _l, _grp in sorted(
-                        _sw_by_line.items(),
-                        key=lambda x: (x[0][0], int(x[0][1:]) if x[0][1:].isdigit() else 0)
-                    ):
-                        if len(_grp) == 1:
-                            parts.append(f"Upset: {_upset_mini(_grp[0])}.")
-                        else:
-                            _n_w = _count_words.get(len(_grp), str(len(_grp)))
-                            _minis = [_upset_mini(m, include_line=False) for m in _grp]
-                            parts.append(
-                                f"{_n_w} {_l} upsets: {'; '.join(_minis)}."
-                            )
+                    _count_words = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five"}
+                    # Sort most-surprising first (lowest win probability)
+                    _sw_sorted = sorted(surprising_wins, key=lambda m: _ep(m) or 1.0)
+                    _n = len(_sw_sorted)
+                    if _n == 1:
+                        parts.append(f"Upset: {_upset_mini(_sw_sorted[0])}.")
+                    elif _n == 2:
+                        parts.append(
+                            f"Two upsets: {_upset_mini(_sw_sorted[0])};"
+                            f" {_upset_mini(_sw_sorted[1])}."
+                        )
+                    else:
+                        _nw = _count_words.get(_n, str(_n))
+                        parts.append(
+                            f"{_nw} upsets this season — most surprising:"
+                            f" {_upset_mini(_sw_sorted[0])}."
+                        )
 
                 # Below-gate blemish: was a heavy favourite but didn't dominate.
-                # Show even when upsets are present — a blemish tells a different
-                # story and both can be true.
-                if True:
+                # Suppress when 2+ upsets already dominate the narrative — the
+                # positive story is clear enough.
+                if len(surprising_wins) < 2:
                     _heavy_fav_blemishes = [
                         m for m in wins_this
                         if _ep(m) is not None and _ep(m) > 0.65
@@ -1625,10 +1626,9 @@ def main():
                         _shp_bl  = _score_descriptor(_blemish.get("score", ""))
                         _verb_bl = "scraped past" if _shp_bl == "tight" else "won but failed to dominate against"
                         _fav_bl  = f" as {_pct_bl}% favourite" if _pct_bl else ""
-                        _expected_clause = " — a rout was expected" if _pct_bl and _pct_bl >= 75 else ""
                         parts.append(
                             f"One blemish: {_wk_bl} {_l_bl} — {_verb_bl} {_opp_bl}"
-                            f"{_fav_bl}{_expected_clause}."
+                            f"{_fav_bl}."
                         )
 
                 # Competitive close losses — positive framing before the loss analysis.
@@ -1720,7 +1720,7 @@ def main():
                     _top_loss_ids = {id(m) for m in top_line_lopsided_losses}
                     _sl_not_top = [m for m in surprising_losses
                                    if id(m) not in _top_loss_ids]
-                    if _sl_not_top and not lopsided_losses:
+                    if _sl_not_top and not lopsided_losses and not surprising_wins:
                         worst = max(_sl_not_top,
                                    key=lambda m: bl - (m["opp_avg"] or 0))
                         worst_gap = bl - (worst["opp_avg"] or bl)
@@ -1739,21 +1739,17 @@ def main():
                                 f"{_prob_sl}."
                             )
                         else:
-                            # Small-gap, non-tiebreak loss — summarise the pattern.
-                            _sl_lines = sorted(
-                                {_line_short(m["line"]) for m in _sl_not_top if m["line"]},
-                                key=lambda x: (x[0], x[1:])
-                            )
-                            _sl_line_str = "/".join(_sl_lines) if _sl_lines else "doubles"
+                            # Small-gap, non-tiebreak losses — only note a pattern,
+                            # not a single isolated loss (which says nothing about a 4-1 player).
                             if len(_sl_not_top) > 1:
+                                _sl_lines = sorted(
+                                    {_line_short(m["line"]) for m in _sl_not_top if m["line"]},
+                                    key=lambda x: (x[0], x[1:])
+                                )
+                                _sl_line_str = "/".join(_sl_lines) if _sl_lines else "doubles"
                                 parts.append(
                                     f"Underperforming at {_sl_line_str} — "
                                     f"multiple losses to slightly lower-rated opponents."
-                                )
-                            else:
-                                parts.append(
-                                    f"Underperforming at {_sl_line_str} — "
-                                    f"lost to a slightly lower-rated opponent."
                                 )
 
                     # Top-line lopsided losses without a tiebreak contrast.
