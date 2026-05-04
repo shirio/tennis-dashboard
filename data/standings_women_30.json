@@ -1998,6 +1998,20 @@
           "notes": "Jenny (2.74→2.87, 5-0) trending up. Nancy 2–0 at D3. Roslyn 2–0 at D3. Meryll/sirina 2–0 at D1."
         },
         {
+          "team_name": "DESERT PALM",
+          "team_wins": 5,
+          "team_losses": 2,
+          "matches_played": 7,
+          "indiv_wins": 21,
+          "indiv_losses": 14,
+          "sets_won": 44,
+          "sets_lost": 28,
+          "games_won": 324,
+          "games_lost": 239,
+          "games_won_pct": "57.55%",
+          "notes": "Won big over Ridges, got swept by LLV. Annabel + Kristyl both deployed every week. D2 is the soft spot (2–5 record). Nourjan 3–0 at S1."
+        },
+        {
           "team_name": "DTC #4",
           "team_wins": 5,
           "team_losses": 2,
@@ -2040,20 +2054,6 @@
           "notes": "Laura Vasquez 3–0 in singles despite low dynamic (2.58). D3 is the soft spot (1–4 record). Mayela 2–0 at D2. Tori 3–1 at S1."
         },
         {
-          "team_name": "DESERT PALM",
-          "team_wins": 4,
-          "team_losses": 2,
-          "matches_played": 6,
-          "indiv_wins": 16,
-          "indiv_losses": 14,
-          "sets_won": 34,
-          "sets_lost": 28,
-          "games_won": 264,
-          "games_lost": 229,
-          "games_won_pct": "53.55%",
-          "notes": "Won big over Sp. Oaks, got swept by LLV. Annabel + Kristyl both deployed every week. D2 is the soft spot (1–5 record). Nourjan 3–0 at S1."
-        },
-        {
           "team_name": "SPANISH OAKS",
           "team_wins": 2,
           "team_losses": 5,
@@ -2084,16 +2084,16 @@
         {
           "team_name": "CLUB RIDGES",
           "team_wins": 0,
-          "team_losses": 6,
-          "matches_played": 6,
+          "team_losses": 7,
+          "matches_played": 7,
           "indiv_wins": 4,
-          "indiv_losses": 26,
+          "indiv_losses": 31,
           "sets_won": 12,
-          "sets_lost": 53,
-          "games_won": 142,
-          "games_lost": 335,
-          "games_won_pct": "29.77%",
-          "notes": "0–6; one 2–3 loss shows they can compete. Christy drops hardest: 3.01→2.82. Michelle Inman deployed every week. D1 is the soft spot (0–6 record)."
+          "sets_lost": 63,
+          "games_won": 152,
+          "games_lost": 395,
+          "games_won_pct": "27.79%",
+          "notes": "0–7; one 2–3 loss shows they can compete. Christy drops hardest: 3.01→2.82. Michelle Inman deployed every week. D1 is the soft spot (0–7 record)."
         }
       ],
       "matches": [
@@ -3734,12 +3734,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779537",
           "home_team": "DESERT PALM",
           "away_team": "CLUB RIDGES",
-          "team_wins_home": null,
-          "team_wins_away": null,
+          "team_wins_home": 5,
+          "team_wins_away": 0,
           "score": "",
           "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Rochelle Hamatian",
+              "players_away": "Melissa Hicks",
+              "score": "6-1 6-2",
+              "result": "home",
+              "winner_team": "DESERT PALM",
+              "loser_team": "CLUB RIDGES"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "N/A",
+              "players_away": "Hannah Tang",
+              "score": "6-0 6-0",
+              "result": "home",
+              "winner_team": "DESERT PALM",
+              "loser_team": "CLUB RIDGES"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Michelle Inman / Jennifer Olson",
+              "players_away": "Ara Lee Stimson / Alexandria Chang",
+              "score": "6-2 6-0",
+              "result": "home",
+              "winner_team": "DESERT PALM",
+              "loser_team": "CLUB RIDGES"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Nadine Kluger / Christy Shulman",
+              "players_away": "Kristyl Addison / Gina Alcoser",
+              "score": "6-1 6-1",
+              "result": "home",
+              "winner_team": "DESERT PALM",
+              "loser_team": "CLUB RIDGES"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Sharon Edwards / Helen McDaniel",
+              "players_away": "Annabel Elliott / Yong Mi DeMilliano",
+              "score": "6-1 6-2",
+              "result": "home",
+              "winner_team": "DESERT PALM",
+              "loser_team": "CLUB RIDGES"
+            }
+          ]
         },
         {
           "match_id": "3ebea1103453624f",
@@ -3910,7 +3956,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "Sp. Trail and DTC #4 share the B lead at 5-2. DTC #1 (4-3), Whitney Mesa (4-2), and Desert Palm (4-2) are in contention. Sp. Oaks, LLV, and Ridges are at the bottom. Top risers: Meryll Ledesma (Sp. Trail, 2.64→2.86, 5-1); Dianne Austin (DTC #4, 2.69→2.90, 2-2). Sp. Trail vs DTC #4 (5/16/2026) decides the B title."
+      "subflight_summary": "Sp. Trail, Desert Palm, DTC #4 are all tied atop B at 5-2. DTC #1 (4-3), and Whitney Mesa (4-2) are in contention. Sp. Oaks, LLV, and Ridges are at the bottom. Top risers: Meryll Ledesma (Sp. Trail, 2.64→2.86, 5-1); Dianne Austin (DTC #4, 2.69→2.90, 2-2)."
     }
   ]
 }

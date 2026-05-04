@@ -6,6 +6,20 @@
       "flight_label": "A",
       "teams": [
         {
+          "team_name": "DTC #2",
+          "team_wins": 6,
+          "team_losses": 1,
+          "matches_played": 7,
+          "indiv_wins": 23,
+          "indiv_losses": 12,
+          "sets_won": 50,
+          "sets_lost": 31,
+          "games_won": 360,
+          "games_lost": 256,
+          "games_won_pct": "58.44%",
+          "notes": "Marlaina drops hardest: 3.46→3.36. Megan Bell deployed every week. D3 is the soft spot (2–5 record). Seda 4–0 at S1."
+        },
+        {
           "team_name": "LIFE TIME FITNESS/GV",
           "team_wins": 5,
           "team_losses": 2,
@@ -32,20 +46,6 @@
           "games_lost": 285,
           "games_won_pct": "54.83%",
           "notes": "Won big over Anthem, got swept by Red Rock #1. Samantha 2–0 in singles despite low dynamic (3.19). Hannah Stevens (3.23→3.39, 4-1) trending up. D1 is the soft spot (2–4 record)."
-        },
-        {
-          "team_name": "DTC #2",
-          "team_wins": 5,
-          "team_losses": 1,
-          "matches_played": 6,
-          "indiv_wins": 19,
-          "indiv_losses": 11,
-          "sets_won": 42,
-          "sets_lost": 28,
-          "games_won": 303,
-          "games_lost": 225,
-          "games_won_pct": "57.39%",
-          "notes": "Megan Bell deployed every week. D3 is the soft spot (2–4 record). Seda 3–0 at S1. Marlaina 2–0 at D2."
         },
         {
           "team_name": "RED ROCK CC #1",
@@ -78,16 +78,16 @@
         {
           "team_name": "SPANISH TRAIL #2",
           "team_wins": 1,
-          "team_losses": 5,
-          "matches_played": 6,
-          "indiv_wins": 6,
-          "indiv_losses": 24,
-          "sets_won": 17,
-          "sets_lost": 50,
-          "games_won": 197,
-          "games_lost": 342,
-          "games_won_pct": "36.55%",
-          "notes": "D2 is the soft spot (1–5 record). Christine/Sheri 2–1 at D3."
+          "team_losses": 6,
+          "matches_played": 7,
+          "indiv_wins": 7,
+          "indiv_losses": 28,
+          "sets_won": 20,
+          "sets_lost": 58,
+          "games_won": 228,
+          "games_lost": 399,
+          "games_won_pct": "36.36%",
+          "notes": "D2 is the soft spot (1–6 record). Sheri 2–1 at D3. Christine/Tina Nathalia 2–0 at D3."
         }
       ],
       "matches": [
@@ -1280,12 +1280,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011785023",
           "home_team": "DTC #2",
           "away_team": "SPANISH TRAIL #2",
-          "team_wins_home": null,
-          "team_wins_away": null,
+          "team_wins_home": 4,
+          "team_wins_away": 1,
           "score": "",
           "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Leticia Schoff",
+              "players_away": "Seda Sargsyan",
+              "score": "6-0 6-0",
+              "result": "home",
+              "winner_team": "DTC #2",
+              "loser_team": "SPANISH TRAIL #2"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Prexy Tamayo",
+              "players_away": "Marlaina Harris",
+              "score": "3-6 6-4 1-0",
+              "result": "home",
+              "winner_team": "DTC #2",
+              "loser_team": "SPANISH TRAIL #2"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Nicole Palichat / Melissa Ruediger",
+              "players_away": "Megan Bell / Dawn Anderson",
+              "score": "7-5 6-0",
+              "result": "home",
+              "winner_team": "DTC #2",
+              "loser_team": "SPANISH TRAIL #2"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Caroline Walton / Sheri Cherubino",
+              "players_away": "Christi Lin / Loc Nguyen",
+              "score": "6-2 6-1",
+              "result": "home",
+              "winner_team": "DTC #2",
+              "loser_team": "SPANISH TRAIL #2"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Christine LaBarre / Tina Nathalia",
+              "players_away": "Fiona Yeh / Kim Knotts",
+              "score": "6-4 7-6",
+              "result": "away",
+              "winner_team": "SPANISH TRAIL #2",
+              "loser_team": "DTC #2"
+            }
+          ]
         },
         {
           "match_id": "fa654f05378aab4f",
@@ -1432,7 +1478,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "LTF, Summerlin, DTC #2 are all tied atop A at 5-2. Red Rock #1, Anthem, and Sp. Trail #2 are at the bottom. Top risers: Leticia Schoff (Sp. Trail #2, 2.98→3.34, 1-3); Melissa Ruediger (Sp. Trail #2, 3.10→3.42, 1-3). Summerlin vs LTF (5/9/2026) decides the A title."
+      "subflight_summary": "DTC #2 leads A at 6-1. LTF (5-2), and Summerlin (5-2) are in contention. Red Rock #1, Anthem, and Sp. Trail #2 are at the bottom. Top risers: Leticia Schoff (Sp. Trail #2, 2.98→3.34, 1-4); Melissa Ruediger (Sp. Trail #2, 3.10→3.42, 1-4). DTC #2 vs LTF (5/30/2026) decides the A title."
     },
     {
       "flight_label": "B",
