@@ -175,7 +175,16 @@ body { max-width: 1100px; }
 .mc-l { background: #FCEBEB; color: #791F1F; }
 .mc-p { background: #f1efe8; color: #888; }
 .mx-row { cursor: pointer; }
+.mx-row td { vertical-align: middle; }
 .mx-row:hover td { background: #f5f7fa; }
+/* Main tabs for singles / doubles */
+.mx-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+.mx-tab { padding: 6px 16px; border: 1px solid #ccc; border-radius: 20px;
+          font-size: 13px; background: transparent; color: #666;
+          cursor: pointer; font-weight: 500; }
+.mx-tab.on { background: #eee; color: #222; font-weight: 600; border-color: #999; }
+.mx-pane { display: none; }
+.mx-pane.on { display: block; }
 .mx-exp { font-size: 9px; color: #bbb; margin-left: 4px; transition: transform .15s; }
 .mx-exp.open { display: inline-block; transform: rotate(90deg); }
 .mx-detail td { background: #fafafa; padding: 6px 10px 10px 10px; }
@@ -213,9 +222,14 @@ body { max-width: 1100px; }
   <a href="matchups_35.html" class="cross-link" style="margin-left:auto">3.5 Explorer →</a>
 </div>
 
+<div class="mx-tabs">
+  <button class="mx-tab on" onclick="switchMxTab('singles',this)">Singles</button>
+  <button class="mx-tab" onclick="switchMxTab('doubles',this)">Doubles Pairs</button>
+</div>
+
 <!-- ========= SINGLES ========= -->
+<div id="mx-pane-singles" class="mx-pane on">
 <section class="mx-section" id="singles-section">
-  <p class="mx-section-hdr">Singles Explorer</p>
   <div id="singles-opp-banner" class="opp-banner">
     <span class="opp-banner-lbl"></span>
     <span class="opp-banner-clear" onclick="clearOppFilter('singles')">✕ clear</span>
@@ -635,10 +649,11 @@ body { max-width: 1100px; }
 </tbody>
   </table>
 </section>
+</div>
 
 <!-- ========= DOUBLES ========= -->
+<div id="mx-pane-doubles" class="mx-pane">
 <section class="mx-section" id="doubles-section">
-  <p class="mx-section-hdr">Doubles Pairs Explorer</p>
   <div id="doubles-opp-banner" class="opp-banner">
     <span class="opp-banner-lbl"></span>
     <span class="opp-banner-clear" onclick="clearOppFilter('doubles')">✕ clear</span>
@@ -932,6 +947,7 @@ body { max-width: 1100px; }
 </tbody>
   </table>
 </section>
+</div>
 
 <script>
 function sw(id, btn) {
@@ -1178,8 +1194,21 @@ function filterMxSearch(section) {
 
 // ---- opponent filter ----
 var _oppKey = { singles: '', doubles: '' };
+// Track which detail rows were auto-expanded by the opp filter (so we can collapse them on clear)
+var _autoExpanded = { singles: [], doubles: [] };
+
 function filterByOpp(key, display, section) {
+  // Clicking the same opp again → clear the filter
+  if (_oppKey[section] === key) {
+    clearOppFilter(section);
+    return;
+  }
+  // If switching from a different opp filter, collapse the old auto-expanded rows first
+  _collapseAutoExpanded(section);
+
   _oppKey[section] = key;
+  _autoExpanded[section] = [];
+
   var banner = document.getElementById(section + '-opp-banner');
   if (banner) {
     banner.classList.add('on');
@@ -1199,6 +1228,7 @@ function filterByOpp(key, display, section) {
         det.style.display = '';
         var exp = row.querySelector('.mx-exp');
         if (exp) exp.classList.add('open');
+        _autoExpanded[section].push(detId);  // remember this was auto-expanded
       }
       // highlight matching match rows
       if (det) {
@@ -1209,6 +1239,22 @@ function filterByOpp(key, display, section) {
     }
   });
 }
+
+function _collapseAutoExpanded(section) {
+  (_autoExpanded[section] || []).forEach(function(detId) {
+    var det = document.getElementById(detId);
+    if (det) {
+      det.style.display = 'none';
+      var mainRow = document.querySelector('[data-det="' + detId + '"]');
+      if (mainRow) {
+        var exp = mainRow.querySelector('.mx-exp');
+        if (exp) exp.classList.remove('open');
+      }
+    }
+  });
+  _autoExpanded[section] = [];
+}
+
 function clearOppFilter(section) {
   _oppKey[section] = '';
   var banner = document.getElementById(section + '-opp-banner');
@@ -1219,7 +1265,17 @@ function clearOppFilter(section) {
       mr.classList.remove('mx-hi');
     });
   }
+  _collapseAutoExpanded(section);
   _applyMxFilters(section);
+}
+
+// ---- main tab switcher (Singles / Doubles) ----
+function switchMxTab(section, btn) {
+  document.querySelectorAll('.mx-tab').forEach(function(b) { b.classList.remove('on'); });
+  document.querySelectorAll('.mx-pane').forEach(function(p) { p.classList.remove('on'); });
+  btn.classList.add('on');
+  var pane = document.getElementById('mx-pane-' + section);
+  if (pane) pane.classList.add('on');
 }
 
 function _applyMxFilters(section) {
