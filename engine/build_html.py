@@ -1270,6 +1270,59 @@ ANALYSIS_30 = DATA_DIR / "analysis_30.json"
 ANALYSIS_35 = DATA_DIR / "analysis_35.json"
 
 
+# ---------------------------------------------------------------------------
+# Score descriptor + win probability  (matchup page helpers)
+# ---------------------------------------------------------------------------
+
+def _score_desc_short(score: str) -> str:
+    """Short descriptive label for a score string (used in matchup detail rows)."""
+    if not score:
+        return ""
+    sets = re.findall(r"(\d+)-(\d+)", score)
+    if not sets:
+        return ""
+    has_tb = any((a, b) in [("1", "0"), ("0", "1")] for a, b in sets)
+    if len(sets) >= 3 and has_tb:
+        return "3-set TB"
+    regular = [(int(a), int(b)) for a, b in sets
+               if not (int(a) <= 1 and int(b) <= 1 and (int(a) + int(b)) <= 1)]
+    if not regular:
+        return ""
+    mc = min(min(a, b) for a, b in regular)
+    if mc == 0:
+        return "lopsided"
+    if mc <= 1:
+        return "dominant"
+    if mc <= 2:
+        return "dominant"
+    if mc == 3:
+        return "clear"
+    return "tight"
+
+
+_MX_WIN_PROB_STEPS = [
+    (0.40, 0.82), (0.30, 0.75), (0.20, 0.68), (0.10, 0.58), (0.00, 0.50),
+    (-0.10, 0.42), (-0.20, 0.32), (-0.30, 0.25), (-0.40, 0.18),
+]
+_MX_WIN_PROB_FLOOR = 0.12
+
+
+def _win_prob_gap(gap: float) -> float:
+    """Interpolated win probability from rating gap (player − opponent)."""
+    gap = round(gap, 4)
+    if gap >= _MX_WIN_PROB_STEPS[0][0]:
+        return _MX_WIN_PROB_STEPS[0][1]
+    if gap < _MX_WIN_PROB_STEPS[-1][0]:
+        return _MX_WIN_PROB_FLOOR
+    for i in range(len(_MX_WIN_PROB_STEPS) - 1):
+        hi_gap, hi_prob = _MX_WIN_PROB_STEPS[i]
+        lo_gap, lo_prob = _MX_WIN_PROB_STEPS[i + 1]
+        if gap >= lo_gap:
+            frac = (gap - lo_gap) / (hi_gap - lo_gap) if hi_gap != lo_gap else 0
+            return lo_prob + frac * (hi_prob - lo_prob)
+    return _MX_WIN_PROB_FLOOR
+
+
 def _analysis_tab(ntrp: str) -> str:
     """
     Build the Analysis + Predictions tab from a JSON file.
@@ -1358,12 +1411,15 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict]) -> str:
         for i, (tid, _, html) in enumerate(tab_defs)
     )
 
-    # Cross-dashboard link
+    # Cross-dashboard link + matchups link
     other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
     other_file = f"women_{other_ntrp.replace('.', '')}.html"
+    mx_file = f"matchups_{ntrp.replace('.', '')}.html"
     cross_link = (
         f'<a href="{other_file}" class="cross-link">'
         f'Switch to {_esc(other_ntrp)} Women →</a>'
+        f' &nbsp;|&nbsp; '
+        f'<a href="{mx_file}" class="cross-link">Singles &amp; Doubles Explorer →</a>'
     )
 
     n_matches = sum(len(sf.get("matches", [])) for sf in subflights)
@@ -1393,6 +1449,739 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict]) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Matchup page builder
+# ---------------------------------------------------------------------------
+
+_MATCHUP_CSS = _CSS + """
+/* ---- Matchup-page additions ---- */
+body { max-width: 1100px; }
+.mx-top-bar { display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
+              border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.mx-page-title { font-size: 14px; font-weight: 600; color: #333; }
+.mx-section { margin-bottom: 32px; }
+.mx-section-hdr { font-size: 13px; font-weight: 700; color: #333;
+                  text-transform: uppercase; letter-spacing: .07em;
+                  margin: 0 0 10px 0; padding-bottom: 5px;
+                  border-bottom: 2px solid #e8e8e8; }
+.mx-controls { display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+               flex-wrap: wrap; }
+.mx-search { flex: 1; min-width: 160px; max-width: 300px; padding: 5px 10px;
+             border: 1px solid #ddd; border-radius: 20px; font-size: 12px; }
+.mc-chip { display: inline-block; width: 18px; height: 18px; border-radius: 50%;
+           font-size: 9px; font-weight: 700; line-height: 18px; text-align: center;
+           cursor: default; margin-right: 2px; }
+.mc-w { background: #EAF3DE; color: #27500A; }
+.mc-l { background: #FCEBEB; color: #791F1F; }
+.mc-p { background: #f1efe8; color: #888; }
+.mx-row { cursor: pointer; }
+.mx-row:hover td { background: #f5f7fa; }
+.mx-exp { font-size: 9px; color: #bbb; margin-left: 4px; transition: transform .15s; }
+.mx-exp.open { display: inline-block; transform: rotate(90deg); }
+.mx-detail td { background: #fafafa; padding: 6px 10px 10px 10px; }
+.mx-matches { display: flex; flex-direction: column; gap: 3px; }
+.mx-match-row { display: grid;
+  grid-template-columns: 28px 36px 22px 1fr 90px 68px 68px;
+  gap: 4px 8px; align-items: center; font-size: 11px;
+  padding: 3px 4px; border-radius: 4px; }
+.mx-match-row.mx-hi { background: #fffbe6; outline: 1px solid #e6c800; }
+.mx-wk { font-size: 10px; font-weight: 700; color: #aaa; }
+.mx-win { font-size: 12px; font-weight: 700; }
+.mx-win.w { color: #27500A; }
+.mx-win.l { color: #791F1F; }
+.mx-score { font-size: 11px; font-weight: 600; color: #555; }
+.mx-desc { font-size: 10px; color: #888; font-style: italic; }
+.mx-odds { font-size: 10px; color: #888; }
+.mx-odds.upset { color: #a04000; font-weight: 600; }
+.mx-odds.solid { color: #27500A; font-weight: 600; }
+.opp-link { color: #1a5276; cursor: pointer; border-radius: 3px; padding: 0 2px; }
+.opp-link:hover { background: #e8f0f8; text-decoration: underline; }
+.opp-team-label { color: #aaa; font-size: 10px; }
+.opp-banner { display: none; align-items: center; gap: 8px; padding: 5px 10px;
+              background: #fffbe6; border: 1px solid #e6c800; border-radius: 6px;
+              font-size: 11px; margin-bottom: 8px; }
+.opp-banner.on { display: flex; }
+.opp-banner-clear { cursor: pointer; color: #791F1F; font-weight: 700; }
+.min-matches-btns { display: flex; gap: 4px; margin-left: 8px; }
+"""
+
+_MATCHUP_JS = """
+// ---- expand / collapse detail rows ----
+function toggleDetail(id, triggerEl) {
+  var det = document.getElementById(id);
+  if (!det) return;
+  var isOpen = det.style.display !== 'none';
+  det.style.display = isOpen ? 'none' : '';
+  var exp = triggerEl ? triggerEl.querySelector('.mx-exp') : null;
+  if (!exp) {
+    // find the corresponding main row
+    var mainRow = document.querySelector('[data-det="' + id + '"]');
+    if (mainRow) exp = mainRow.querySelector('.mx-exp');
+  }
+  if (exp) exp.classList.toggle('open', !isOpen);
+}
+
+// ---- SF filter (singles and doubles share the same pattern) ----
+var _mxSF = { singles: 'all', doubles: 'all' };
+function filterMxSF(sf, btn, section) {
+  _mxSF[section] = sf;
+  var grp = btn.parentElement;
+  grp.querySelectorAll('.rtab').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  _applyMxFilters(section);
+}
+
+// ---- search filter ----
+function filterMxSearch(section) {
+  _applyMxFilters(section);
+}
+
+// ---- opponent filter ----
+var _oppKey = { singles: '', doubles: '' };
+function filterByOpp(key, display, section) {
+  _oppKey[section] = key;
+  var banner = document.getElementById(section + '-opp-banner');
+  if (banner) {
+    banner.classList.add('on');
+    var lbl = banner.querySelector('.opp-banner-lbl');
+    if (lbl) lbl.textContent = 'Filtered: players who faced ' + display;
+  }
+  _applyMxFilters(section);
+  // auto-expand matching rows and highlight the specific match
+  var tbody = document.getElementById(section + '-tbody');
+  if (!tbody) return;
+  tbody.querySelectorAll('tr.mx-row').forEach(function(row) {
+    var keys = (row.dataset.oppKeys || '').split(' ');
+    if (keys.indexOf(key) >= 0) {
+      var detId = row.dataset.det;
+      var det = document.getElementById(detId);
+      if (det && det.style.display === 'none') {
+        det.style.display = '';
+        var exp = row.querySelector('.mx-exp');
+        if (exp) exp.classList.add('open');
+      }
+      // highlight matching match rows
+      if (det) {
+        det.querySelectorAll('.mx-match-row').forEach(function(mr) {
+          mr.classList.toggle('mx-hi', mr.dataset.oppKey === key);
+        });
+      }
+    }
+  });
+}
+function clearOppFilter(section) {
+  _oppKey[section] = '';
+  var banner = document.getElementById(section + '-opp-banner');
+  if (banner) banner.classList.remove('on');
+  var tbody = document.getElementById(section + '-tbody');
+  if (tbody) {
+    tbody.querySelectorAll('.mx-match-row').forEach(function(mr) {
+      mr.classList.remove('mx-hi');
+    });
+  }
+  _applyMxFilters(section);
+}
+
+function _applyMxFilters(section) {
+  var sf = _mxSF[section];
+  var oppK = _oppKey[section];
+  var searchEl = document.getElementById(section + '-search');
+  var q = searchEl ? searchEl.value.toLowerCase() : '';
+  var tbody = document.getElementById(section + '-tbody');
+  if (!tbody) return;
+  var rows = tbody.querySelectorAll('tr.mx-row');
+  rows.forEach(function(row) {
+    var sfOk = sf === 'all' || row.dataset.sf === sf;
+    var oppOk = !oppK || (row.dataset.oppKeys || '').split(' ').indexOf(oppK) >= 0;
+    var textOk = !q || (row.dataset.searchText || '').indexOf(q) >= 0;
+    var vis = sfOk && oppOk && textOk;
+    row.style.display = vis ? '' : 'none';
+    // also hide detail row when main row is hidden
+    var det = document.getElementById(row.dataset.det);
+    if (det && !vis) det.style.display = 'none';
+  });
+}
+
+// ---- sorting ----
+var _mxSortDir = {};
+function sortMx(tbodyId, col, dirKey) {
+  _sortTable('#' + tbodyId, col, dirKey);
+  // after sorting, re-pair each main row with its detail row
+  var tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  var rows = Array.from(tbody.querySelectorAll('tr'));
+  // rebuild order: each mx-row followed immediately by its det row
+  var mxRows = rows.filter(function(r) { return r.classList.contains('mx-row'); });
+  mxRows.forEach(function(mr) {
+    tbody.appendChild(mr);
+    var det = document.getElementById(mr.dataset.det);
+    if (det) tbody.appendChild(det);
+  });
+}
+
+// ---- doubles min-matches filter ----
+var _dblMinMatches = 2;
+function setMinMatches(n, btn) {
+  _dblMinMatches = n;
+  btn.parentElement.querySelectorAll('.rtab').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  var tbody = document.getElementById('doubles-tbody');
+  if (!tbody) return;
+  tbody.querySelectorAll('tr.mx-row').forEach(function(row) {
+    var mm = parseInt(row.dataset.matchCount || '0');
+    var vis = mm >= _dblMinMatches;
+    row.style.display = vis ? '' : 'none';
+    var det = document.getElementById(row.dataset.det);
+    if (det && !vis) det.style.display = 'none';
+  });
+  _applyMxFilters('doubles');
+}
+"""
+
+
+def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
+    """Generate matchups_{sfx}.html — singles + doubles explorer."""
+    sfx = ntrp.replace(".", "")
+    year = standings.get("year", "")
+    subflights = standings.get("subflights", [])
+
+    # ── lookup tables from players ──────────────────────────────────────────
+    _baseline_by_name: dict[str, float] = {}
+    _new_by_name: dict[str, float] = {}
+    _timeline_by_name: dict[str, dict[str, float]] = {}
+    _team_by_name: dict[str, str] = {}
+
+    team_to_sf: dict[str, str] = {}
+    for sf_obj in subflights:
+        lbl = sf_obj.get("flight_label", "")
+        for t in sf_obj.get("teams", []):
+            team_to_sf[t.get("team_name", "")] = lbl
+
+    for p in players:
+        norm = re.sub(r"\s+", " ", (p.get("name") or "").strip().lower())
+        if not norm:
+            continue
+        baseline = p.get("dynamic_rating_baseline")
+        if baseline is not None:
+            try:
+                _baseline_by_name[norm] = float(baseline)
+            except (ValueError, TypeError):
+                pass
+        curr = p.get(f"rating_{sfx}")
+        if curr is not None:
+            try:
+                _new_by_name[norm] = float(curr)
+            except (ValueError, TypeError):
+                pass
+        tl = p.get(f"rating_timeline_{sfx}")
+        if tl and isinstance(tl, dict):
+            _timeline_by_name[norm] = {k: float(v) for k, v in tl.items()}
+        team_val = (p.get(f"team_{sfx}") or p.get("team") or "")
+        if team_val:
+            _team_by_name[norm] = team_val
+
+    def _pit_r(nkey: str, date: str) -> Optional[float]:
+        nkey = re.sub(r"\s+", " ", nkey.strip().lower())
+        if nkey in _timeline_by_name:
+            tl = _timeline_by_name[nkey]
+            if date in tl:
+                return tl[date]
+            mk = _date_sort_key(date)
+            prior = [(k, v) for k, v in tl.items() if _date_sort_key(k) < mk]
+            if prior:
+                return max(prior, key=lambda kv: _date_sort_key(kv[0]))[1]
+            return _baseline_by_name.get(nkey)
+        return _new_by_name.get(nkey) or _baseline_by_name.get(nkey)
+
+    # ── week label map ───────────────────────────────────────────────────────
+    all_dates: set[str] = set()
+    for sf in subflights:
+        for m in sf.get("matches", []):
+            d = m.get("date", "")
+            if d:
+                all_dates.add(d)
+    sorted_dates = sorted(all_dates, key=_date_sort_key)
+    week_label: dict[str, str] = {d: f"W{i+1}" for i, d in enumerate(sorted_dates)}
+
+    # ── walk all lines ───────────────────────────────────────────────────────
+    singles_by_player: dict[str, dict] = {}      # norm_name → player data
+    doubles_by_pair: dict[frozenset, dict] = {}  # frozenset(norm1, norm2) → pair data
+
+    for sf in subflights:
+        sf_label = sf.get("flight_label", "")
+        for m in sf.get("matches", []):
+            if m.get("pending"):
+                continue
+            home_team = m.get("home_team", "")
+            away_team = m.get("away_team", "")
+            date = m.get("date", "")
+            wk = week_label.get(date, "")
+
+            for ln in m.get("lines", []):
+                line_str = ln.get("line", "")
+                line_label = _line_label_short(line_str)
+                is_singles = "Singles" in line_str
+                score = ln.get("score", "")
+                winner_team = (ln.get("winner_team") or "").upper()
+
+                ph = (ln.get("players_home") or "").strip()
+                pa = (ln.get("players_away") or "").strip()
+                if ph.upper() in ("", "N/A"):
+                    ph = ""
+                if pa.upper() in ("", "N/A"):
+                    pa = ""
+
+                sides = [
+                    (ph, home_team, pa, away_team),
+                    (pa, away_team, ph, home_team),
+                ]
+
+                if is_singles:
+                    for side_raw, side_team, opp_raw, opp_team in sides:
+                        if not side_raw:
+                            continue
+                        # Normalise all-caps names from scorecards to title case
+                        raw_name = side_raw.strip()
+                        player_name = raw_name.title() if raw_name.isupper() else raw_name
+                        norm = re.sub(r"\s+", " ", player_name.lower())
+                        opp_norm = re.sub(r"\s+", " ", (opp_raw or "").lower())
+
+                        # Use _team_by_name for win detection — handles scorecard swaps
+                        # where players_home/away columns may be swapped but winner_team
+                        # always correctly names the winning team.
+                        actual_team = (_team_by_name.get(norm) or side_team).upper()
+                        won = (winner_team == actual_team) if winner_team else None
+                        if won is None:
+                            continue
+                        # Opponent's actual team (also handles swapped scorecards)
+                        actual_opp_team = _team_by_name.get(opp_norm) or opp_team
+
+                        pit = _pit_r(norm, date)
+                        opp_pit = _pit_r(opp_norm, date)
+                        desc = _score_desc_short(score)
+                        exp_prob: Optional[float] = None
+                        if pit is not None and opp_pit is not None:
+                            exp_prob = _win_prob_gap(pit - opp_pit)
+
+                        if norm not in singles_by_player:
+                            team = _team_by_name.get(norm) or side_team
+                            psf = team_to_sf.get(team, sf_label)
+                            singles_by_player[norm] = {
+                                "name": player_name,
+                                "team": team,
+                                "sf": psf,
+                                "baseline": _baseline_by_name.get(norm),
+                                "rating": _new_by_name.get(norm),
+                                "matches": [],
+                            }
+
+                        opp_key = re.sub(r"[^a-z0-9]+", "-",
+                                         opp_raw.strip().lower()).strip("-")
+                        singles_by_player[norm]["matches"].append({
+                            "date": date,
+                            "week": wk,
+                            "line": line_label,
+                            "won": won,
+                            "score": score,
+                            "desc": desc,
+                            "opp_name": opp_raw,
+                            "opp_key": opp_key,
+                            "opp_team": actual_opp_team,
+                            "opp_rating": opp_pit,
+                            "exp_prob": exp_prob,
+                        })
+
+                else:  # doubles
+                    for side_raw, side_team, opp_raw, opp_team in sides:
+                        if not side_raw:
+                            continue
+                        parts = [x.strip() for x in side_raw.split("/") if x.strip()]
+                        if len(parts) != 2:
+                            continue
+                        # Normalise display names: title-case all-caps names from scorecards
+                        p1_name = parts[0].title() if parts[0].isupper() else parts[0]
+                        p2_name = parts[1].title() if parts[1].isupper() else parts[1]
+                        n1 = re.sub(r"\s+", " ", p1_name.lower())
+                        n2 = re.sub(r"\s+", " ", p2_name.lower())
+                        # Use _team_by_name for win detection (handles swapped scorecards)
+                        actual_d_team = (
+                            _team_by_name.get(n1) or _team_by_name.get(n2) or side_team
+                        ).upper()
+                        won = (winner_team == actual_d_team) if winner_team else None
+                        if won is None:
+                            continue
+
+                        pair_key = frozenset([n1, n2])
+
+                        opp_parts = [x.strip() for x in (opp_raw or "").split("/")
+                                     if x.strip()]
+                        opp_normed = [re.sub(r"\s+", " ", x.lower()) for x in opp_parts]
+                        opp_ratings = [_pit_r(on, date) for on in opp_normed]
+                        opp_ratings_clean = [r for r in opp_ratings if r is not None]
+                        opp_avg = (sum(opp_ratings_clean) / len(opp_ratings_clean)
+                                   if opp_ratings_clean else None)
+                        opp_key = re.sub(r"[^a-z0-9]+", "-",
+                                         (opp_raw or "").strip().lower()).strip("-")
+                        # Opponent's actual team (resolves scorecard swap)
+                        actual_opp_d_team = (
+                            _team_by_name.get(opp_normed[0]) if opp_normed else None
+                        ) or opp_team
+
+                        desc = _score_desc_short(score)
+                        r1 = _pit_r(n1, date)
+                        r2 = _pit_r(n2, date)
+
+                        if pair_key not in doubles_by_pair:
+                            team = _team_by_name.get(n1) or _team_by_name.get(n2) or side_team
+                            psf = team_to_sf.get(team, sf_label)
+                            doubles_by_pair[pair_key] = {
+                                "p1": p1_name, "p2": p2_name,
+                                "team": team, "sf": psf,
+                                "r1": _new_by_name.get(n1),
+                                "r2": _new_by_name.get(n2),
+                                "bl1": _baseline_by_name.get(n1),
+                                "bl2": _baseline_by_name.get(n2),
+                                "matches": [],
+                            }
+
+                        doubles_by_pair[pair_key]["matches"].append({
+                            "date": date,
+                            "week": wk,
+                            "line": line_label,
+                            "won": won,
+                            "score": score,
+                            "desc": desc,
+                            "opp_names": opp_raw,
+                            "opp_key": opp_key,
+                            "opp_team": actual_opp_d_team,
+                            "opp_avg_rating": opp_avg,
+                        })
+
+    # ── compute aggregates ───────────────────────────────────────────────────
+    singles_list = sorted(
+        singles_by_player.values(),
+        key=lambda p: -(p.get("rating") or p.get("baseline") or 0)
+    )
+
+    doubles_list = []
+    for pdata in doubles_by_pair.values():
+        if len(pdata["matches"]) < 2:
+            continue
+        r1 = pdata.get("r1") or pdata.get("bl1") or 0.0
+        r2 = pdata.get("r2") or pdata.get("bl2") or 0.0
+        bl1 = pdata.get("bl1") or r1
+        bl2 = pdata.get("bl2") or r2
+        pdata["avg_rating"] = (r1 + r2) / 2 if r1 and r2 else (r1 or r2)
+        pdata["avg_baseline"] = (bl1 + bl2) / 2 if bl1 and bl2 else (bl1 or bl2)
+        doubles_list.append(pdata)
+    doubles_list.sort(key=lambda p: -p.get("avg_rating", 0))
+
+    # ── HTML generators ──────────────────────────────────────────────────────
+    def _odds_html(exp_prob: Optional[float], won: bool) -> str:
+        if exp_prob is None:
+            return ""
+        pct = int(round(exp_prob * 100))
+        if won:
+            if exp_prob < 0.40:
+                return f'<span class="mx-odds upset">{pct}% odds — upset!</span>'
+            elif exp_prob >= 0.65:
+                return f'<span class="mx-odds solid">{pct}% fav</span>'
+            return f'<span class="mx-odds">{pct}% fav</span>'
+        else:
+            if exp_prob >= 0.65:
+                return f'<span class="mx-odds upset">lost as {pct}% fav</span>'
+            return f'<span class="mx-odds">{pct}% chances</span>'
+
+    def _singles_rows(plist) -> str:
+        rows = ""
+        for i, p in enumerate(plist):
+            matches = sorted(p["matches"], key=lambda x: _date_sort_key(x["date"]))
+            wins = sum(1 for mx in matches if mx["won"])
+            losses = len(matches) - wins
+            win_pct = int(round(wins / len(matches) * 100)) if matches else 0
+            avg_opp = None
+            opp_rs = [mx["opp_rating"] for mx in matches if mx["opp_rating"] is not None]
+            if opp_rs:
+                avg_opp = sum(opp_rs) / len(opp_rs)
+
+            opp_keys_set = " ".join(
+                mx["opp_key"] for mx in matches if mx.get("opp_key"))
+            search_text = (
+                (p["name"] + " " + p["team"]).lower()
+            )
+            det_id = f"sdet-{i}"
+
+            # Mini chips
+            chips = ""
+            for mx in matches:
+                cls = "mc-w" if mx["won"] else "mc-l"
+                lbl = "W" if mx["won"] else "L"
+                tip = (f"{mx['week']} {mx['line']}: vs {mx['opp_name']} {mx['score']}"
+                       .replace('"', "&quot;"))
+                chips += f'<span class="mc-chip {cls}" title="{_esc(tip)}">{lbl}</span>'
+
+            # Rating cell
+            base = p.get("baseline")
+            curr = p.get("rating")
+            rat_html = _rating_span(curr, base, ntrp)
+
+            wl_sort = wins * 100 - losses
+            main_row = (
+                f'<tr class="mx-row" data-sf="{_esc(p["sf"])}" '
+                f'data-opp-keys="{_esc(opp_keys_set)}" '
+                f'data-search-text="{_esc(search_text)}" '
+                f'data-det="{det_id}" '
+                f'onclick="toggleDetail(\'{det_id}\',this)">'
+                f'<td class="pname">{_esc(p["name"])} '
+                f'<span class="mx-exp">▸</span></td>'
+                f'<td>{_esc(_abbrev_team(p["team"]))}</td>'
+                f'<td><span class="sf-pill">{_esc(p["sf"])}</span></td>'
+                f'<td data-sort="{_fmt_rating(base)}">{_esc(_fmt_rating(base))}</td>'
+                f'<td data-sort="{_fmt_rating(curr)}">{rat_html}</td>'
+                f'<td data-sort="{wl_sort}">{wins}–{losses}</td>'
+                f'<td data-sort="{win_pct}">{win_pct}%</td>'
+                f'<td data-sort="{f"{avg_opp:.4f}" if avg_opp else "0"}">'
+                f'{_fmt_rating(avg_opp)}</td>'
+                f'<td>{chips}</td>'
+                f'</tr>\n'
+            )
+
+            # Detail row
+            match_rows = ""
+            for mx in matches:
+                win_cls = "w" if mx["won"] else "l"
+                win_sym = "✓" if mx["won"] else "✗"
+                line_cls = _LINE_PILL_COLORS.get(mx["line"], "pill-d1")
+                opp_r_str = (f"{mx['opp_rating']:.2f}" if mx["opp_rating"] is not None
+                             else "")
+                opp_info = f'({opp_r_str}, {_abbrev_team(mx["opp_team"])})' if opp_r_str else ""
+                odds_h = _odds_html(mx.get("exp_prob"), mx["won"])
+                opp_key = mx.get("opp_key", "")
+                match_rows += (
+                    f'<div class="mx-match-row" data-opp-key="{_esc(opp_key)}">'
+                    f'<span class="mx-wk">{_esc(mx["week"])}</span>'
+                    f'<span class="line-pill {line_cls}">{_esc(mx["line"])}</span>'
+                    f'<span class="mx-win {win_cls}">{win_sym}</span>'
+                    f'<span>vs <span class="opp-link" '
+                    f'onclick="filterByOpp(\'{_esc(opp_key)}\',\'{_esc(mx["opp_name"])}\',\'singles\');event.stopPropagation()">'
+                    f'{_esc(mx["opp_name"])}</span> '
+                    f'<span class="opp-team-label">{_esc(opp_info)}</span></span>'
+                    f'<span class="mx-score">{_esc(mx["score"])}</span>'
+                    f'<span class="mx-desc">{_esc(mx["desc"])}</span>'
+                    f'{odds_h}'
+                    f'</div>\n'
+                )
+
+            det_row = (
+                f'<tr id="{det_id}" class="mx-detail" style="display:none">'
+                f'<td colspan="9" class="mx-det-cell">'
+                f'<div class="mx-matches">{match_rows}</div>'
+                f'</td></tr>\n'
+            )
+            rows += main_row + det_row
+        return rows
+
+    def _doubles_rows(dlist) -> str:
+        rows = ""
+        for i, p in enumerate(dlist):
+            matches = sorted(p["matches"], key=lambda x: _date_sort_key(x["date"]))
+            wins = sum(1 for mx in matches if mx["won"])
+            losses = len(matches) - wins
+            win_pct = int(round(wins / len(matches) * 100)) if matches else 0
+            nm = len(matches)
+
+            # Lines pills
+            from collections import Counter
+            line_counts = Counter(mx["line"] for mx in matches)
+            lines_html = "".join(
+                f'<span class="line-pill {_LINE_PILL_COLORS.get(l, "pill-d1")}">'
+                f'{_esc(l)}{"x" + str(c) if c > 1 else ""}</span>'
+                for l, c in sorted(line_counts.items())
+            )
+
+            opp_keys_set = " ".join(
+                mx["opp_key"] for mx in matches if mx.get("opp_key"))
+            search_text = (
+                (p["p1"] + " " + p["p2"] + " " + p["team"]).lower()
+            )
+            det_id = f"ddet-{i}"
+
+            chips = ""
+            for mx in matches:
+                cls = "mc-w" if mx["won"] else "mc-l"
+                lbl = "W" if mx["won"] else "L"
+                tip = (f"{mx['week']} {mx['line']}: vs {mx['opp_names']} {mx['score']}"
+                       .replace('"', "&quot;"))
+                chips += f'<span class="mc-chip {cls}" title="{_esc(tip)}">{lbl}</span>'
+
+            avg_r = p.get("avg_rating", 0)
+            avg_bl = p.get("avg_baseline", 0)
+            r1 = p.get("r1")
+            r2 = p.get("r2")
+            bl1 = p.get("bl1")
+            bl2 = p.get("bl2")
+
+            if avg_r and avg_bl:
+                if avg_r > avg_bl + 0.005:
+                    avg_cls = "ru"
+                elif avg_r < avg_bl - 0.005:
+                    avg_cls = "rd"
+                else:
+                    avg_cls = "rn"
+                avg_html = f'<span class="{avg_cls}">{avg_r:.2f}</span>'
+            else:
+                avg_html = _fmt_rating(avg_r)
+
+            wl_sort = wins * 100 - losses
+
+            main_row = (
+                f'<tr class="mx-row" data-sf="{_esc(p["sf"])}" '
+                f'data-opp-keys="{_esc(opp_keys_set)}" '
+                f'data-search-text="{_esc(search_text)}" '
+                f'data-match-count="{nm}" '
+                f'data-det="{det_id}" '
+                f'onclick="toggleDetail(\'{det_id}\',this)">'
+                f'<td class="pname">{_esc(p["p1"])} / {_esc(p["p2"])} '
+                f'<span class="mx-exp">▸</span></td>'
+                f'<td>{_esc(_abbrev_team(p["team"]))}</td>'
+                f'<td><span class="sf-pill">{_esc(p["sf"])}</span></td>'
+                f'<td data-sort="{avg_r:.4f}">{avg_html}</td>'
+                f'<td data-sort="{wl_sort}">{wins}–{losses}</td>'
+                f'<td data-sort="{win_pct}">{win_pct}%</td>'
+                f'<td>{lines_html}</td>'
+                f'<td>{chips}</td>'
+                f'</tr>\n'
+            )
+
+            match_rows = ""
+            for mx in matches:
+                win_cls = "w" if mx["won"] else "l"
+                win_sym = "✓" if mx["won"] else "✗"
+                line_cls = _LINE_PILL_COLORS.get(mx["line"], "pill-d1")
+                opp_avg = mx.get("opp_avg_rating")
+                opp_r_str = f"{opp_avg:.2f}" if opp_avg is not None else ""
+                opp_info = f'({opp_r_str} avg, {_abbrev_team(mx["opp_team"])})' if opp_r_str else ""
+                opp_key = mx.get("opp_key", "")
+                match_rows += (
+                    f'<div class="mx-match-row" data-opp-key="{_esc(opp_key)}">'
+                    f'<span class="mx-wk">{_esc(mx["week"])}</span>'
+                    f'<span class="line-pill {line_cls}">{_esc(mx["line"])}</span>'
+                    f'<span class="mx-win {win_cls}">{win_sym}</span>'
+                    f'<span>vs <span class="opp-link" '
+                    f'onclick="filterByOpp(\'{_esc(opp_key)}\',\'{_esc(mx["opp_names"])}\',\'doubles\');event.stopPropagation()">'
+                    f'{_esc(mx["opp_names"])}</span> '
+                    f'<span class="opp-team-label">{_esc(opp_info)}</span></span>'
+                    f'<span class="mx-score">{_esc(mx["score"])}</span>'
+                    f'<span class="mx-desc">{_esc(mx["desc"])}</span>'
+                    f'</div>\n'
+                )
+
+            det_row = (
+                f'<tr id="{det_id}" class="mx-detail" style="display:none">'
+                f'<td colspan="8" class="mx-det-cell">'
+                f'<div class="mx-matches">{match_rows}</div>'
+                f'</td></tr>\n'
+            )
+            rows += main_row + det_row
+        return rows
+
+    s_rows = _singles_rows(singles_list)
+    d_rows = _doubles_rows(doubles_list)
+
+    other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
+    other_mx = f"matchups_{other_ntrp.replace('.', '')}.html"
+    main_dash = f"women_{sfx}.html"
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Singles &amp; Doubles Explorer — {_esc(ntrp)} Women {year}</title>
+<style>{_MATCHUP_CSS}</style>
+</head>
+<body>
+
+<div class="mx-top-bar">
+  <a href="{main_dash}" class="cross-link">← Division Dashboard</a>
+  <span class="mx-page-title">Singles &amp; Doubles Explorer — {_esc(ntrp)} Women {year}</span>
+  <a href="{other_mx}" class="cross-link" style="margin-left:auto">{_esc(other_ntrp)} Explorer →</a>
+</div>
+
+<!-- ========= SINGLES ========= -->
+<section class="mx-section" id="singles-section">
+  <p class="mx-section-hdr">Singles Explorer</p>
+  <div id="singles-opp-banner" class="opp-banner">
+    <span class="opp-banner-lbl"></span>
+    <span class="opp-banner-clear" onclick="clearOppFilter('singles')">✕ clear</span>
+  </div>
+  <div class="mx-controls">
+    <div class="sf-filter-btns">
+      <button class="rtab on" onclick="filterMxSF('all',this,'singles')">All</button>
+      <button class="rtab" onclick="filterMxSF('A',this,'singles')">A</button>
+      <button class="rtab" onclick="filterMxSF('B',this,'singles')">B</button>
+    </div>
+    <input class="mx-search" id="singles-search" placeholder="Search player or team…"
+           oninput="filterMxSearch('singles')">
+  </div>
+  <table>
+    <thead><tr>
+      <th class="sortable" onclick="sortMx('singles-tbody',0,'s0')">Player ↕</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',1,'s1')">Team ↕</th>
+      <th>SF</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',3,'s3')">Base ↕</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',4,'s4')">Rating ↕</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',5,'s5')">W–L ↕</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',6,'s6')">Win% ↕</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',7,'s7')">Avg Opp ↕</th>
+      <th>Matches</th>
+    </tr></thead>
+    <tbody id="singles-tbody">{s_rows}</tbody>
+  </table>
+</section>
+
+<!-- ========= DOUBLES ========= -->
+<section class="mx-section" id="doubles-section">
+  <p class="mx-section-hdr">Doubles Pairs Explorer</p>
+  <div id="doubles-opp-banner" class="opp-banner">
+    <span class="opp-banner-lbl"></span>
+    <span class="opp-banner-clear" onclick="clearOppFilter('doubles')">✕ clear</span>
+  </div>
+  <div class="mx-controls">
+    <div class="sf-filter-btns">
+      <button class="rtab on" onclick="filterMxSF('all',this,'doubles')">All</button>
+      <button class="rtab" onclick="filterMxSF('A',this,'doubles')">A</button>
+      <button class="rtab" onclick="filterMxSF('B',this,'doubles')">B</button>
+    </div>
+    <input class="mx-search" id="doubles-search" placeholder="Search players or team…"
+           oninput="filterMxSearch('doubles')">
+    <div class="min-matches-btns">
+      <span style="font-size:11px;color:#888">min matches:</span>
+      <button class="rtab on" onclick="setMinMatches(2,this)">2+</button>
+      <button class="rtab" onclick="setMinMatches(3,this)">3+</button>
+      <button class="rtab" onclick="setMinMatches(4,this)">4+</button>
+    </div>
+  </div>
+  <table>
+    <thead><tr>
+      <th class="sortable" onclick="sortMx('doubles-tbody',0,'d0')">Players ↕</th>
+      <th class="sortable" onclick="sortMx('doubles-tbody',1,'d1')">Team ↕</th>
+      <th>SF</th>
+      <th class="sortable" onclick="sortMx('doubles-tbody',3,'d3')">Avg Rating ↕</th>
+      <th class="sortable" onclick="sortMx('doubles-tbody',4,'d4')">W–L ↕</th>
+      <th class="sortable" onclick="sortMx('doubles-tbody',5,'d5')">Win% ↕</th>
+      <th>Lines</th>
+      <th>Matches</th>
+    </tr></thead>
+    <tbody id="doubles-tbody">{d_rows}</tbody>
+  </table>
+</section>
+
+<script>{_JS}{_MATCHUP_JS}</script>
+</body>
+</html>"""
+
+
+# ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
 
@@ -1400,19 +2189,22 @@ def build_dashboards() -> dict:
     players = _load(PLAYERS_JSON, [])
     results = {}
 
-    for ntrp, standings_path, out_path in [
-        ("3.0", STANDINGS_30, Path("women_30.html")),
-        ("3.5", STANDINGS_35, Path("women_35.html")),
+    for ntrp, standings_path, out_path, mx_path in [
+        ("3.0", STANDINGS_30, Path("women_30.html"), Path("matchups_30.html")),
+        ("3.5", STANDINGS_35, Path("women_35.html"), Path("matchups_35.html")),
     ]:
         standings = _load(standings_path, {"ntrp": ntrp, "year": 2026, "subflights": []})
         html = _generate_html(ntrp, standings, players)
         out_path.write_text(html, encoding="utf-8")
+        mx_html = _build_matchup_page(ntrp, standings, players)
+        mx_path.write_text(mx_html, encoding="utf-8")
         n = len([p for p in players if p.get("division", "").startswith(ntrp)])
         n_matches = sum(
             len(sf.get("matches", []))
             for sf in standings.get("subflights", [])
         )
         print(f"  [html] {out_path}  ({n} players, {n_matches} matches)")
+        print(f"  [html] {mx_path}  (matchups explorer)")
         results[str(out_path)] = n
 
     return results
