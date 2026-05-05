@@ -62,6 +62,7 @@ _TEAM_ABBREV = {
     "anthem cc":                  "Anthem",
     "club ridges":                "Ridges",
     "desert palm":                "D. Palm",
+    "dragonridge cc":             "Dragonridge",
     "southern highlands":         "SoHi",
     "spanish oaks":               "S. Oaks",
     "spanish trail":              "S. Trail",
