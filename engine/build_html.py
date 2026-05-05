@@ -1474,8 +1474,12 @@ body { max-width: 1100px; }
 .mc-l { background: #FCEBEB; color: #791F1F; }
 .mc-p { background: #f1efe8; color: #888; }
 .mx-row { cursor: pointer; }
-.mx-row td { vertical-align: middle; }
+.mx-row td { vertical-align: middle; white-space: nowrap; }
+.mx-row td:first-child { white-space: normal; }   /* player names may wrap */
 .mx-row:hover td { background: #f5f7fa; }
+/* Clickable team cell */
+.mx-team-cell { cursor: pointer; }
+.mx-team-cell:hover { color: #1a5276; text-decoration: underline; }
 /* Main tabs for singles / doubles */
 .mx-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
 .mx-tab { padding: 6px 16px; border: 1px solid #ccc; border-radius: 20px;
@@ -1629,6 +1633,24 @@ function switchMxTab(section, btn) {
   var pane = document.getElementById('mx-pane-' + section);
   if (pane) pane.classList.add('on');
 }
+
+// ---- team cell click → filter by team ----
+function filterByTeam(abbrevTeam, section, event) {
+  event.stopPropagation();  // don't also expand the row
+  var searchEl = document.getElementById(section + '-search');
+  if (!searchEl) return;
+  // Toggle: clicking same team again clears the filter
+  if (searchEl.value.toLowerCase() === abbrevTeam.toLowerCase()) {
+    searchEl.value = '';
+  } else {
+    searchEl.value = abbrevTeam;
+  }
+  filterMxSearch(section);
+}
+
+// ---- default descending for quality columns (first click shows best first) ----
+// _sortDir state is true → next click will be descending (dir = !true = false → bn-an)
+['s3','s4','s5','s6','s7','d3','d4','d5'].forEach(function(k) { _sortDir[k] = true; });
 
 function _applyMxFilters(section) {
   var sf = _mxSF[section];
@@ -1954,9 +1976,10 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
 
             opp_keys_set = " ".join(
                 mx["opp_key"] for mx in matches if mx.get("opp_key"))
+            abbrev_team = _abbrev_team(p["team"])
             search_text = (
-                (p["name"] + " " + p["team"]).lower()
-            )
+                p["name"] + " " + p["team"] + " " + abbrev_team
+            ).lower()
             det_id = f"sdet-{i}"
 
             # Mini chips
@@ -1982,11 +2005,13 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                 f'onclick="toggleDetail(\'{det_id}\',this)">'
                 f'<td class="pname">{_esc(p["name"])} '
                 f'<span class="mx-exp">▸</span></td>'
-                f'<td>{_esc(_abbrev_team(p["team"]))}</td>'
+                f'<td class="mx-team-cell" '
+                f'onclick="filterByTeam(\'{_esc(abbrev_team)}\',\'singles\',event)">'
+                f'{_esc(abbrev_team)}</td>'
                 f'<td><span class="sf-pill">{_esc(p["sf"])}</span></td>'
                 f'<td data-sort="{_fmt_rating(base)}">{_esc(_fmt_rating(base))}</td>'
                 f'<td data-sort="{_fmt_rating(curr)}">{rat_html}</td>'
-                f'<td data-sort="{wl_sort}">{wins}–{losses}</td>'
+                f'<td data-sort="{wl_sort}" style="white-space:nowrap">{wins}–{losses}</td>'
                 f'<td data-sort="{win_pct}">{win_pct}%</td>'
                 f'<td data-sort="{f"{avg_opp:.4f}" if avg_opp else "0"}">'
                 f'{_fmt_rating(avg_opp)}</td>'
@@ -2049,9 +2074,10 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
 
             opp_keys_set = " ".join(
                 mx["opp_key"] for mx in matches if mx.get("opp_key"))
+            abbrev_team_d = _abbrev_team(p["team"])
             search_text = (
-                (p["p1"] + " " + p["p2"] + " " + p["team"]).lower()
-            )
+                p["p1"] + " " + p["p2"] + " " + p["team"] + " " + abbrev_team_d
+            ).lower()
             det_id = f"ddet-{i}"
 
             chips = ""
@@ -2091,10 +2117,12 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                 f'onclick="toggleDetail(\'{det_id}\',this)">'
                 f'<td class="pname">{_esc(p["p1"])} / {_esc(p["p2"])} '
                 f'<span class="mx-exp">▸</span></td>'
-                f'<td>{_esc(_abbrev_team(p["team"]))}</td>'
+                f'<td class="mx-team-cell" '
+                f'onclick="filterByTeam(\'{_esc(abbrev_team_d)}\',\'doubles\',event)">'
+                f'{_esc(abbrev_team_d)}</td>'
                 f'<td><span class="sf-pill">{_esc(p["sf"])}</span></td>'
                 f'<td data-sort="{avg_r:.4f}">{avg_html}</td>'
-                f'<td data-sort="{wl_sort}">{wins}–{losses}</td>'
+                f'<td data-sort="{wl_sort}" style="white-space:nowrap">{wins}–{losses}</td>'
                 f'<td data-sort="{win_pct}">{win_pct}%</td>'
                 f'<td>{lines_html}</td>'
                 f'<td>{chips}</td>'
