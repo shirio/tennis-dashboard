@@ -1489,7 +1489,7 @@ body { max-width: 1100px; }
 .mx-tab.on { background: #eee; color: #222; font-weight: 600; border-color: #999; }
 .mx-pane { display: none; }
 .mx-pane.on { display: block; }
-.mx-exp { font-size: 9px; color: #bbb; margin-left: 4px; transition: transform .15s; }
+.mx-exp { font-size: 27px; color: #bbb; margin-left: 4px; transition: transform .15s; line-height: 1; vertical-align: middle; }
 .mx-exp.open { display: inline-block; transform: rotate(90deg); }
 .mx-detail td { background: #fafafa; padding: 6px 10px 10px 10px; }
 .mx-matches { display: flex; flex-direction: column; gap: 3px; }
