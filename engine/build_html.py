@@ -1665,7 +1665,7 @@ function _applyMxFilters(section) {
     var sfOk = sf === 'all' || row.dataset.sf === sf;
     var oppOk = !oppK || (row.dataset.oppKeys || '').split(' ').indexOf(oppK) >= 0;
     var textOk = !q || (row.dataset.searchText || '').indexOf(q) >= 0;
-    var mmOk = section !== 'doubles' || parseInt(row.dataset.matchCount || '0') >= _dblMinMatches;
+    var mmOk = parseInt(row.dataset.matchCount || '0') >= _minMatches[section];
     var vis = sfOk && oppOk && textOk && mmOk;
     row.style.display = vis ? '' : 'none';
     // also hide detail row when main row is hidden
@@ -1691,13 +1691,13 @@ function sortMx(tbodyId, col, dirKey) {
   });
 }
 
-// ---- doubles min-matches filter ----
-var _dblMinMatches = 2;
-function setMinMatches(n, btn) {
-  _dblMinMatches = n;
+// ---- min-matches filter (singles + doubles) ----
+var _minMatches = { singles: 1, doubles: 2 };
+function setMinMatches(n, btn, section) {
+  _minMatches[section] = n;
   btn.parentElement.querySelectorAll('.rtab').forEach(function(b) { b.classList.remove('on'); });
   btn.classList.add('on');
-  _applyMxFilters('doubles');
+  _applyMxFilters(section);
 }
 """
 
@@ -2197,6 +2197,12 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
     </div>
     <input class="mx-search" id="singles-search" placeholder="Search player or team…"
            oninput="filterMxSearch('singles')">
+    <div class="min-matches-btns">
+      <span style="font-size:11px;color:#888">min matches:</span>
+      <button class="rtab on" onclick="setMinMatches(1,this,'singles')">All</button>
+      <button class="rtab" onclick="setMinMatches(2,this,'singles')">2+</button>
+      <button class="rtab" onclick="setMinMatches(3,this,'singles')">3+</button>
+    </div>
   </div>
   <table>
     <thead><tr>
@@ -2232,9 +2238,9 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
            oninput="filterMxSearch('doubles')">
     <div class="min-matches-btns">
       <span style="font-size:11px;color:#888">min matches:</span>
-      <button class="rtab on" onclick="setMinMatches(2,this)">2+</button>
-      <button class="rtab" onclick="setMinMatches(3,this)">3+</button>
-      <button class="rtab" onclick="setMinMatches(4,this)">4+</button>
+      <button class="rtab on" onclick="setMinMatches(2,this,'doubles')">2+</button>
+      <button class="rtab" onclick="setMinMatches(3,this,'doubles')">3+</button>
+      <button class="rtab" onclick="setMinMatches(4,this,'doubles')">4+</button>
     </div>
   </div>
   <table>
