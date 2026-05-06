@@ -1994,6 +1994,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                 f'<tr class="mx-row" data-sf="{_esc(p["sf"])}" '
                 f'data-opp-keys="{_esc(opp_keys_set)}" '
                 f'data-search-text="{_esc(search_text)}" '
+                f'data-match-count="{len(matches)}" '
                 f'data-det="{det_id}" '
                 f'onclick="toggleDetail(\'{det_id}\',this)">'
                 f'<td class="pname">{_esc(p["name"])} '
