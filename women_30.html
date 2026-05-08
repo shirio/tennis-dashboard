@@ -988,6 +988,142 @@ tr:last-child td { border-bottom: none; }
 <div id="analysis" class="pane"><p class="sec-title">key findings — updated after W7</p><div class="insight"><span class="itag you">your team</span>DTC #3 beat Summerlin 3-2 in W7 — the must-win delivered. Prexy won S2 6-3 6-3, Shi/Emmy held D1 6-2 6-4, and Christine/Kara closed it out at D3 6-1 6-0. Yari dropped S1 to Tayoni on a tiebreak (first loss of the season), and Lisa/Michelle fell at D2. DTC #3 is now 7-0 — first place is effectively locked.</div><div class="insight"><span class="itag opp">3.0A standings</span>DTC #3 leads 3.0A at 7-0 with a 26-9 individual record. Summerlin drops to 4-3. Anthem is 5-2 after beating Red Rock in W7. TPC is 3-3 (missing one W7 result vs Southern Highlands). No team can catch DTC #3 for first place barring a historic collapse — the math no longer requires a specific W8 result.</div><div class="insight"><span class="itag warn">yarisbel warning</span>Yari lost S1 to Tayoni Coleman (bl=2.92, r=2.98) — an upset. Tayoni is rising fast (2.92 → 2.98) and now has a big win to show for it. Yari's rating dipped from 3.12 to 3.05 and is now below her baseline. She needs a strong run through the final four weeks — she's still the right call at S1 but don't take her for granted.</div><div class="insight"><span class="itag you">risers</span>Emmy Perez (bl=2.79, r=3.02) and Darian McCauley (bl=2.92, r=3.02) have both broken 3.0 on sequential ratings — both are now statistically stronger than their baselines suggest. Shi Oskooi (bl=2.74, r=2.93) is up nearly 0.20 from baseline and is 6-0 on the season. This is the deepest D1/D2 pair in 3.0A.</div><div class="insight"><span class="itag opp">summerlin receding</span>Kim Springer (bl=3.25, r=3.10) has dropped 0.15 from her baseline and went 3-3 on the season. Tina Nathalia (bl=2.91, r=2.82) is below baseline too. Tayoni Coleman (bl=2.92, r=2.98) is the only Summerlin player trending meaningfully up. Their path to playoffs now runs through beating Anthem, not DTC #3.</div><div class="insight"><span class="itag you">depth advantage</span>DTC #3 has 5 players above 3.00 on sequential ratings: Anna Clark (3.09), Christine LaBarre (3.05), Yarisbel Schieck (3.04), Darian McCauley (3.02), Emmy Perez (3.02). No other team in 3.0A has more than two players at that level. The bench depth wins matches when the top line has an off day.</div><p class="sec-title">5/9 — next match preview: DTC #3 vs DTC #2</p><div class="insight"><span class="itag you">matchup</span>DTC #3 (7-0) vs DTC #2 (3-4). DTC #2 bounced back in W7 — beat LTF 4-1 to claw back to .500 on wins. Tina Shirey (bl=3.09, r=3.13) and Irene Frazier (bl=2.95, r=2.99) are their best players. DTC #3 is favored at every line but DTC #2 is not a pushover.</div><div class="insight"><span class="itag you">lineup</span>Keep Yari at S1 — she needs to rebuild after the Tayoni loss, and DTC #2's S1 is manageable. Shi/Emmy or Shi/Darian at D1. This is a match to restore confidence and tune up for the stretch run.</div><div class="insight"><span class="itag you">prediction</span>DTC #3 wins 4-1 or 5-0. Focus on clean sets — avoid tiebreaks and let the ratings do the work. The only risk is complacency.</div><p class="sec-title">remaining schedule outlook</p><div class="insight"><span class="itag you">W8 (5/9)</span>vs DTC #2 (2-4). Comfortable win expected. Good match to restore Yari's confidence after the W7 upset and get Prexy/Shi more reps.</div><div class="insight"><span class="itag you">W9 (5/16)</span>vs SOUTHERN HIGHLANDS (1-5). Already beat them in W2. Southern Highlands won S1 and D1 against Anthem in W6 — they've got a couple capable players. Don't coast.</div><div class="insight"><span class="itag you">W10 (5/30)</span>vs RED ROCK CC (2-4). Red Rock beat LTF 3-2 in W6. Rhianna Schwartz (bl=2.90, r=3.00) is a riser to watch. Manageable but not a bye.</div><div class="insight"><span class="itag you">W11 (6/6)</span>vs LIFE TIME FITNESS/GV (2-4). LTF has lost four straight. Final match of the regular season. Win comfortably and head into playoffs at full strength.</div><div class="insight"><span class="itag you">path to 1st</span>First place is locked. DTC #3 has a 3-match cushion over the field with 4 matches left — even a two-match losing streak only ties with Anthem at best. The priority now is player development, lineup depth, and arriving at playoffs with momentum and healthy ratings.</div></div>
 
 
+
+<style>
+#chat-fab {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9000;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: #1a5276; color: #fff; font-size: 22px;
+  border: none; cursor: pointer; box-shadow: 0 3px 12px rgba(0,0,0,.25);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+#chat-fab:hover { background: #154360; }
+#chat-panel {
+  position: fixed; bottom: 86px; right: 24px; z-index: 9000;
+  width: 370px; max-width: calc(100vw - 32px);
+  height: 500px; max-height: calc(100vh - 110px);
+  background: #fff; border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.18);
+  display: none; flex-direction: column; overflow: hidden;
+}
+#chat-panel.open { display: flex; }
+#chat-hdr {
+  background: #1a5276; color: #fff;
+  padding: 12px 16px; font-size: 13px; font-weight: 600;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-shrink: 0;
+}
+#chat-hdr-close {
+  background: none; border: none; color: #fff; font-size: 18px;
+  cursor: pointer; line-height: 1; padding: 0 2px;
+}
+#chat-msgs {
+  flex: 1; overflow-y: auto; padding: 12px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.chat-msg { max-width: 88%; padding: 8px 11px; border-radius: 12px;
+            font-size: 12px; line-height: 1.5; white-space: pre-wrap; }
+.chat-msg.user { align-self: flex-end; background: #1a5276; color: #fff;
+                 border-bottom-right-radius: 3px; }
+.chat-msg.asst { align-self: flex-start; background: #f0f4f8; color: #222;
+                 border-bottom-left-radius: 3px; }
+.chat-msg.err  { align-self: flex-start; background: #FCEBEB; color: #791F1F;
+                 border-bottom-left-radius: 3px; }
+.chat-msg.typing { color: #aaa; font-style: italic; }
+#chat-input-row {
+  display: flex; gap: 6px; padding: 10px 12px;
+  border-top: 1px solid #eee; flex-shrink: 0;
+}
+#chat-input {
+  flex: 1; padding: 7px 11px; border: 1px solid #ddd; border-radius: 20px;
+  font-size: 12px; outline: none;
+}
+#chat-input:focus { border-color: #1a5276; }
+#chat-send {
+  padding: 7px 14px; background: #1a5276; color: #fff;
+  border: none; border-radius: 20px; font-size: 12px;
+  cursor: pointer; white-space: nowrap;
+}
+#chat-send:hover { background: #154360; }
+#chat-send:disabled { background: #aaa; cursor: default; }
+</style>
+
+<button id="chat-fab" onclick="toggleChatPanel()" title="Ask the Tennis Assistant">🎾</button>
+<div id="chat-panel">
+  <div id="chat-hdr">
+    <span>Tennis Assistant</span>
+    <button id="chat-hdr-close" onclick="toggleChatPanel()">✕</button>
+  </div>
+  <div id="chat-msgs"></div>
+  <div id="chat-input-row">
+    <input id="chat-input" placeholder="Ask about lineups, players, standings…"
+           onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat();}">
+    <button id="chat-send" onclick="sendChat()">Send</button>
+  </div>
+</div>
+<script>
+(function() {
+  var _msgs = [];   // {role, content}
+
+  window.toggleChatPanel = function() {
+    var p = document.getElementById('chat-panel');
+    p.classList.toggle('open');
+    if (p.classList.contains('open')) {
+      setTimeout(function() { document.getElementById('chat-input').focus(); }, 50);
+      if (_msgs.length === 0) addBubble('asst', 'Hi! Ask me anything — player stories, lineup picks, matchup odds, standings math…');
+    }
+  };
+
+  function addBubble(role, text) {
+    var msgs = document.getElementById('chat-msgs');
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + role;
+    div.textContent = text;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return div;
+  }
+
+  window.sendChat = function() {
+    var inp = document.getElementById('chat-input');
+    var btn = document.getElementById('chat-send');
+    var q = inp.value.trim();
+    if (!q || btn.disabled) return;
+
+    inp.value = '';
+    btn.disabled = true;
+    addBubble('user', q);
+    _msgs.push({ role: 'user', content: q });
+
+    var typing = addBubble('asst typing', '…');
+
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: _msgs }),
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      typing.remove();
+      if (data.error) {
+        addBubble('err', '⚠ ' + data.error);
+      } else {
+        addBubble('asst', data.content);
+        _msgs.push({ role: 'assistant', content: data.content });
+      }
+    })
+    .catch(function(e) {
+      typing.remove();
+      addBubble('err', '⚠ Network error: ' + e.message);
+    })
+    .finally(function() {
+      btn.disabled = false;
+      document.getElementById('chat-input').focus();
+    });
+  };
+})();
+</script>
 <script>
 function sw(id, btn) {
   document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
