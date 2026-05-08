@@ -2,6 +2,15 @@ const http = require('http');
 const fs   = require('fs');
 const path = require('path');
 
+// Load .env from project root if present (so ANTHROPIC_API_KEY persists across restarts)
+try {
+  const envPath = path.join(__dirname, '..', '.env');
+  fs.readFileSync(envPath, 'utf8').split('\n').forEach(line => {
+    const m = line.match(/^\s*([^#=\s]+)\s*=\s*(.*)$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^['"]|['"]$/g, '');
+  });
+} catch (_) { /* no .env — that's fine */ }
+
 const ROOT = path.join(__dirname, '..');
 const DATA = path.join(ROOT, 'data');
 const PORT = 8080;
