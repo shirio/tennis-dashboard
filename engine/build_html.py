@@ -1570,7 +1570,10 @@ def _chat_widget_html() -> str:
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ messages: _msgs }),
     })
-    .then(function(r) { return r.json(); })
+    .then(function(r) {
+      if (!r.ok && r.status === 404) throw new Error('Server not running with chat support — restart with ANTHROPIC_API_KEY set.');
+      return r.json().catch(function() { throw new Error('Server returned non-JSON (status ' + r.status + '). Restart the server with ANTHROPIC_API_KEY set.'); });
+    })
     .then(function(data) {
       typing.remove();
       if (data.error) {
@@ -1582,7 +1585,7 @@ def _chat_widget_html() -> str:
     })
     .catch(function(e) {
       typing.remove();
-      addBubble('err', '⚠ Network error: ' + e.message);
+      addBubble('err', '⚠ ' + e.message);
     })
     .finally(function() {
       btn.disabled = false;
