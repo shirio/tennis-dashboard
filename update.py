@@ -26,6 +26,18 @@ from typing import Optional
 from urllib.parse import urljoin, urlparse, parse_qs
 
 # ---------------------------------------------------------------------------
+# HARD STOP — full scrape requires explicit confirmation
+# ---------------------------------------------------------------------------
+print("⚠️  update.py runs a FULL scrape of TennisLink.")
+print("   This is slow, hits the server hard, and is almost never what you want.")
+print("   For weekly result updates, run:  python3 diff_update.py")
+print()
+_answer = input("Type 'yes I want a full scrape' to continue, or anything else to abort: ").strip()
+if _answer != "yes I want a full scrape":
+    print("Aborted. Run python3 diff_update.py instead.")
+    sys.exit(0)
+
+# ---------------------------------------------------------------------------
 # Bootstrap: make sure project root is importable
 # ---------------------------------------------------------------------------
 ROOT = Path(__file__).parent
