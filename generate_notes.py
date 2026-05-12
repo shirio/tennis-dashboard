@@ -1,4 +1,20 @@
 #!/usr/bin/env python3
+# ===========================================================================
+# IMPORTANT NOTES — read before editing or running this file
+# ===========================================================================
+# 1. This script is NOT called by rebuild.py — it must be run explicitly:
+#    python3 generate_notes.py
+# 2. After running, rebuild.py must also be run to regenerate the HTML with
+#    the updated notes.
+# 3. Prose rules: notes should INTERPRET meaning, not narrate numbers.
+#    Scores are visible in the UI — don't retell them in prose.
+# 4. Upsets collapse to a single sentence (do not list each one separately).
+# 5. "Underperforming" label should only fire for MULTIPLE surprising losses,
+#    not a single loss on an otherwise strong record.
+# 6. Surprising losses should always be shown — do not suppress them when
+#    upsets are also present.
+# 7. These notes must be preserved unless the user explicitly says to remove them.
+# ===========================================================================
 """
 Generate per-division player notes (notes_30, notes_35).
 

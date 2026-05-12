@@ -1,3 +1,19 @@
+# ===========================================================================
+# IMPORTANT NOTES — read before editing this file
+# ===========================================================================
+# 1. Win detection in match lines MUST use winner_team/loser_team fields,
+#    NOT the players_home/players_away column position. Scorecards are
+#    sometimes swapped — the column position does not reliably indicate
+#    which team's players are listed. _team_by_name lookup is the safe fallback.
+# 2. This file generates both the main dashboards (women_30/35.html) AND
+#    the matchup explorer pages (matchups_30/35.html). build_dashboards()
+#    calls _generate_html() and _build_matchup_page() for each division.
+# 3. _CSS and _JS are shared by the main dashboards.
+#    _MATCHUP_CSS and _MATCHUP_JS are for the explorer pages only.
+# 4. After editing, run: python3 rebuild.py  (ratings + HTML rebuild)
+#    generate_notes.py must be run separately if notes logic changed.
+# 5. These notes must be preserved unless the user explicitly says to remove them.
+# ===========================================================================
 """
 engine/build_html.py
 Generate women_30.html and women_35.html from standings + player data.

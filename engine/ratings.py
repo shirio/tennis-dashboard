@@ -1,3 +1,13 @@
+# ===========================================================================
+# IMPORTANT NOTES — read before editing this file
+# ===========================================================================
+# 1. This is the v8 sequential ratings engine. Changes here affect ALL player
+#    ratings — run rebuild.py after any edit to recompute.
+# 2. _win_probability() uses a stepped interpolation table (_WIN_PROB_TABLE).
+#    The same logic is duplicated in build_html.py as _win_prob_gap() for the
+#    matchup explorer — keep them in sync if the table changes.
+# 3. These notes must be preserved unless the user explicitly says to remove them.
+# ===========================================================================
 """
 engine/ratings.py
 v8 rating algorithm: cross-pair win probability, gap-significance weighting,

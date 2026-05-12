@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+# ===========================================================================
+# IMPORTANT NOTES — read before editing or running this file
+# ===========================================================================
+# 1. NEVER run this script without explicitly asking the user first.
+#    For weekly result updates, ALWAYS use diff_update.py instead.
+#    This script does a full re-scrape of every team page — it is slow,
+#    hits TennisLink hard, and is almost never the right tool.
+# 2. The hard stop prompt at startup must be preserved in all edits.
+# 3. These notes must be preserved unless the user explicitly says to remove them.
+# ===========================================================================
 """
 update.py – Master weekly update script.
 

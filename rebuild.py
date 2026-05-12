@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+# ===========================================================================
+# IMPORTANT NOTES — read before editing or running this file
+# ===========================================================================
+# 1. This script does NOT scrape — it only recomputes ratings and rebuilds
+#    HTML from whatever is already in data/. Use diff_update.py to fetch new results.
+# 2. Use this after changing the ratings algorithm or HTML templates.
+# 3. generate_notes.py must be run separately — rebuild.py does NOT call it.
+# 4. These notes must be preserved unless the user explicitly says to remove them.
+# ===========================================================================
 """
 Recompute ratings and rebuild dashboards from existing match data.
 

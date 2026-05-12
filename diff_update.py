@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+# ===========================================================================
+# IMPORTANT NOTES — read before editing or running this file
+# ===========================================================================
+# 1. This is the CORRECT script for all weekly result updates.
+#    When the user asks to check for new matches, ALWAYS run this — never update.py.
+# 2. After running, commit and push all changed files (data/, HTML files).
+# 3. These notes must be preserved unless the user explicitly says to remove them.
+# ===========================================================================
 """
 Diff-based TennisLink updater.
 
