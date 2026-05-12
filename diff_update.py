@@ -5,7 +5,10 @@
 # 1. This is the CORRECT script for all weekly result updates.
 #    When the user asks to check for new matches, ALWAYS run this — never update.py.
 # 2. After running, commit and push all changed files (data/, HTML files).
-# 3. These notes must be preserved unless the user explicitly says to remove them.
+# 3. Output format is "WINNER def. LOSER W-L" — always read the WINNER field,
+#    never infer the winner from which team you expect or from score position alone.
+#    home_wins and away_wins are positional; "X vs Y: 3-2" means X (home) won 3-2.
+# 4. These notes must be preserved unless the user explicitly says to remove them.
 # ===========================================================================
 """
 Diff-based TennisLink updater.
@@ -490,12 +493,21 @@ def run(dry_run: bool = False) -> int:
                         for d in diffs:
                             r = d["new_row"]
                             stored = d["stored_match"]
+                            ht, at = r['home_team'], r['away_team']
                             if d["kind"] == "new":
-                                print(f"      NEW: {r['date']} {r['home_team']} vs {r['away_team']} ({r.get('team_wins_home')}-{r.get('team_wins_away')})")
+                                nh, na = r.get("team_wins_home"), r.get("team_wins_away")
+                                winner = ht if (nh is not None and na is not None and nh > na) else (at if (na is not None and nh is not None and na > nh) else "?")
+                                print(f"      NEW: {r['date']} {ht} vs {at} → {winner} wins {max(nh,na) if nh and na else nh}-{min(nh,na) if nh and na else na}")
                             else:
                                 sh, sa = stored.get("team_wins_home"), stored.get("team_wins_away")
                                 nh, na = r.get("team_wins_home"), r.get("team_wins_away")
-                                print(f"      CHANGED: {r['date']} {r['home_team']} vs {r['away_team']}: {sh}-{sa} → {nh}-{na}")
+                                if nh is not None and na is not None:
+                                    winner = ht if nh > na else (at if na > nh else "tie")
+                                    loser  = at if nh > na else ht
+                                    wscore, lscore = (nh, na) if nh > na else (na, nh)
+                                    print(f"      CHANGED: {r['date']} {winner} def. {loser} {wscore}-{lscore}")
+                                else:
+                                    print(f"      CHANGED: {r['date']} {ht} vs {at}: {sh}-{sa} → {nh}-{na}")
                     all_diffs.extend(diffs)
 
                     # Back to flight page for next subflight
