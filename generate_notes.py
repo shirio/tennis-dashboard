@@ -1642,8 +1642,11 @@ def main():
                         _shp_bl  = _score_descriptor(_blemish.get("score", ""))
                         _verb_bl = "scraped past" if _shp_bl == "tight" else "won but failed to dominate against"
                         _fav_bl  = f" as {_pct_bl}% favourite" if _pct_bl else ""
+                        # If there are also surprising losses, "One blemish" is wrong —
+                        # drop "One" so it doesn't imply this is the only negative.
+                        _blemish_prefix = "Blemish" if surprising_losses else "One blemish"
                         parts.append(
-                            f"One blemish: {_wk_bl} {_l_bl} — {_verb_bl} {_opp_bl}"
+                            f"{_blemish_prefix}: {_wk_bl} {_l_bl} — {_verb_bl} {_opp_bl}"
                             f"{_fav_bl}."
                         )
 
@@ -2120,7 +2123,30 @@ def main():
                         else:
                             parts.append(f"Undefeated in {div_label}.")
                     elif losses_this and wins_this:
-                        pass  # mixed record, no standout story
+                        # Mixed record with nothing dramatic — write a brief season summary.
+                        # Describe their primary line and characterise the loss briefly.
+                        from collections import Counter as _Counter
+                        _lc = _Counter(_line_short(m["line"]) for m in this_matches)
+                        _primary = _lc.most_common(1)[0][0] if _lc else ""
+                        _primary_clause = f" at {_primary}" if _primary else ""
+                        _nw = len(wins_this)
+                        _nl = len(losses_this)
+                        # Describe the most recent loss
+                        _loss = sorted(losses_this, key=lambda m: m["date"])[-1]
+                        _loss_ep = _ep(_loss)
+                        _loss_sd = _score_descriptor(_loss.get("score", ""))
+                        _loss_opp = _opp_label(_loss)
+                        _loss_wk = _week_number(_loss["date"], this_data["all_dates"])
+                        if _loss_sd == "3-set tiebreak":
+                            _loss_clause = f"one loss came in a tiebreak ({_loss_wk} vs {_loss_opp})"
+                        elif _loss_ep is not None and _loss_ep > 0.55:
+                            _loss_clause = f"one surprising loss to {_loss_opp} in {_loss_wk}"
+                        else:
+                            _loss_clause = f"one loss to {_loss_opp} in {_loss_wk}"
+                        if _nl == 1:
+                            parts.append(f"{_nw}-1{_primary_clause} — {_loss_clause}.")
+                        else:
+                            parts.append(f"{_nw}-{_nl}{_primary_clause} this season.")
 
                 # Cross-division addendum — weave in naturally when there's an arc.
                 # When we already have a tier-arc story, the other-div record + typical
