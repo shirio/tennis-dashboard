@@ -1447,8 +1447,8 @@ def main():
             pk = _name_key(p.get("name", ""))
             this_matches = [m for m in this_data["matches_by_player"].get(pk, [])
                            if not m.get("walkover")]
-            other_matches = [m for m in other_data["matches_by_player"].get(pk, [])
-                            if not m.get("walkover")]
+            _other_all = other_data["matches_by_player"].get(pk, [])
+            other_matches = [m for m in _other_all if not m.get("walkover")]
             walkover_only_this = (
                 not this_matches
                 and len(this_data["matches_by_player"].get(pk, [])) > 0
@@ -1459,6 +1459,40 @@ def main():
             gr = p.get("global_rating")
             wl_this = p.get(f"wl_record_{sfx}", "")
             wl_other = p.get(f"wl_record_{other_sfx}", "")
+
+            # Build a walkover-corrected display string for the other-division record.
+            # Walkover lines are skipped by _resolve_line_sides (N/A side → returns None),
+            # so they never appear in matches_by_player / other_matches. We infer them by
+            # diffing the stored wl_record (which counts walkovers) vs real match counts.
+            _real_other_w = sum(1 for m in other_matches if m["won"])
+            _real_other_l = sum(1 for m in other_matches if not m["won"])
+            _stored_other_w, _stored_other_l = _real_other_w, _real_other_l
+            if wl_other and "-" in str(wl_other):
+                try:
+                    _stored_other_w, _stored_other_l = map(int, str(wl_other).split("-"))
+                except (ValueError, AttributeError):
+                    pass
+            _other_wo_wins   = max(0, _stored_other_w - _real_other_w)
+            _other_wo_losses = max(0, _stored_other_l - _real_other_l)
+            if _other_wo_wins or _other_wo_losses:
+                _wo_parts = []
+                if _other_wo_wins:
+                    _wo_parts.append(
+                        "a walkover win" if _other_wo_wins == 1
+                        else f"{_other_wo_wins} walkover wins"
+                    )
+                if _other_wo_losses:
+                    _wo_parts.append(
+                        "a walkover loss" if _other_wo_losses == 1
+                        else f"{_other_wo_losses} walkover losses"
+                    )
+                _wo_suffix = " (plus " + " and ".join(_wo_parts) + ")"
+                wl_other_display = (
+                    f"{_real_other_w}-{_real_other_l}{_wo_suffix}"
+                    if (other_matches or _other_wo_wins or _other_wo_losses) else ""
+                )
+            else:
+                wl_other_display = wl_other   # no walkovers — original value is fine
 
             if bl is None:
                 p[notes_field] = ""
@@ -2508,12 +2542,8 @@ def main():
                     _line_clause = f" at {_odl}" if _odl else ""
                     # Ceiling-cap framing: if strong here but struggling in the other div,
                     # frame the cross-div note as a ceiling signal rather than just a record.
-                    _other_wins, _other_losses = 0, 0
-                    if wl_other and "-" in str(wl_other):
-                        try:
-                            _other_wins, _other_losses = map(int, str(wl_other).split("-"))
-                        except (ValueError, AttributeError):
-                            pass
+                    # Use real (non-walkover) counts for the ceiling/upside logic.
+                    _other_wins, _other_losses = _real_other_w, _real_other_l
                     _strong_here = len(wins_this) >= 2 and len(wins_this) >= len(losses_this)
                     _struggling_other = _other_losses >= 2 and _other_wins <= _other_losses
                     # High-upside signal: player is struggling in other div but their losses
@@ -2534,15 +2564,15 @@ def main():
                         parts.append(
                             f"Competitive in {other_div} despite tougher opponents — "
                             f"tiebreak losses to much stronger players suggest more upside "
-                            f"than the {wl_other} record shows."
+                            f"than the {wl_other_display} record shows."
                         )
                     elif _strong_here and _struggling_other:
                         parts.append(
-                            f"{wl_other} in {other_div}{_line_clause} "
+                            f"{wl_other_display} in {other_div}{_line_clause} "
                             f"suggests she's near her ceiling in this division."
                         )
                     else:
-                        parts.append(f"Also {wl_other} in {other_div}{_line_clause}.")
+                        parts.append(f"Also {wl_other_display} in {other_div}{_line_clause}.")
 
             note = " ".join(parts).strip()
             if len(note) > 400:
