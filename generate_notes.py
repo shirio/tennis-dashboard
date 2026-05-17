@@ -1362,9 +1362,11 @@ def main():
 
     # Build pair win-rate lookup: frozenset({name_key, name_key}) -> (wins, losses)
     # Used to detect when "surprising" losses came against pairs that proved to be strong.
-    pair_records: dict[str, dict[str, tuple[int,int]]] = {}  # sfx -> {frozenset_key: (W,L)}
+    # pair_records: sfx -> {frozenset_key: (W, L, win_opp_rating_sum, win_opp_n)}
+    # win_opp_rating_sum / win_opp_n = avg opponent rating in wins (strength of schedule proxy).
+    pair_records: dict[str, dict[str, tuple]] = {}
     for sfx, fname in [("30", "standings_women_30.json"), ("35", "standings_women_35.json")]:
-        _pr: dict[str, tuple[int,int]] = {}
+        _pr: dict[str, tuple] = {}
         _data = json.loads((DATA / fname).read_text())
         for _sf in _data.get("subflights", []):
             for _m in _sf.get("matches", []):
@@ -1391,8 +1393,24 @@ def main():
                                 break
                         _actual = _actual or _side_team
                         _won = _actual == _winner
-                        _w, _l = _pr.get(_pk, (0, 0))
-                        _pr[_pk] = (_w + (1 if _won else 0), _l + (0 if _won else 1))
+                        _w, _l, _wr_sum, _wr_n = _pr.get(_pk, (0, 0, 0.0, 0))
+                        # When this pair wins, accumulate opponent ratings for SoS tracking
+                        _opp_rating_sum, _opp_n = 0.0, 0
+                        if _won:
+                            _opp_side = "players_away" if _side == "players_home" else "players_home"
+                            _opp_names = [n.strip() for n in _ln.get(_opp_side, "").split("/") if n.strip()]
+                            for _on in _opp_names:
+                                _op = pbn.get(_name_key(_on))
+                                _or = (_op.get("dynamic_rating_baseline") if _op else None)
+                                if _or is not None:
+                                    _opp_rating_sum += float(_or)
+                                    _opp_n += 1
+                        _pr[_pk] = (
+                            _w + (1 if _won else 0),
+                            _l + (0 if _won else 1),
+                            _wr_sum + _opp_rating_sum,
+                            _wr_n + _opp_n,
+                        )
         pair_records[sfx] = _pr
 
     # Build per-team deployment rank (within each division)
@@ -1487,6 +1505,18 @@ def main():
 
             wins_this = [m for m in this_matches if m["won"]]
             losses_this = [m for m in this_matches if not m["won"]]
+
+            # Pre-compute S/D split: all wins in one line type, all losses in the other.
+            # Used early (before surprising_losses) to suppress "Tough loss" when the split
+            # is already the primary story — the loss is just part of "all losses in doubles."
+            _sd_split_pre = False
+            if wins_this and losses_this:
+                _win_ltypes_pre  = set(_line_type(m["line"]) for m in wins_this  if _line_type(m["line"]))
+                _loss_ltypes_pre = set(_line_type(m["line"]) for m in losses_this if _line_type(m["line"]))
+                _sd_split_pre = (
+                    len(_win_ltypes_pre) == 1 and len(_loss_ltypes_pre) == 1
+                    and _win_ltypes_pre != _loss_ltypes_pre
+                )
 
             # Peer-level lopsided losses: surprising routs (opponent not >> player).
             # These are the genuinely "shouldn't have happened" losses.
@@ -1787,22 +1817,44 @@ def main():
                             _ep_sl = _ep(worst)
                             _prob_sl = (f" (as {round(_ep_sl * 100)}% favourite)"
                                         if _ep_sl is not None else "")
-                            # Check if the opposing pair turned out to be strong on the season
-                            # (win rate ≥ 60% with 2+ matches together) — if so, reframe the loss.
+                            # Check if the opposing pair turned out to be strong on the season:
+                            # undefeated (or ≥60% win rate) with 2+ matches AND their wins came
+                            # against quality opponents (avg opp baseline ≥ threshold).
+                            # Suppress "Tough loss" when the S/D split is already the primary story
+                            # (the loss is already absorbed into "all losses in doubles").
                             _opp_names_sl = worst.get("opp_names", [])
                             _opp_pair_key = str(frozenset(_name_key(n) for n in _opp_names_sl))
                             _opp_pr = pair_records.get(sfx, {}).get(_opp_pair_key)
+                            _div_qual_threshold = 2.75 if sfx == "30" else 3.10
+                            _opp_pr_avg_qual = (
+                                _opp_pr[2] / _opp_pr[3]
+                                if _opp_pr and _opp_pr[3] > 0 else 0.0
+                            )
                             _opp_pr_strong = (
-                                _opp_pr is not None
-                                and sum(_opp_pr) >= 2
-                                and _opp_pr[0] / sum(_opp_pr) >= 0.60
+                                not _sd_split_pre   # don't "Tough loss" when split is primary story
+                                and _opp_pr is not None
+                                and sum(_opp_pr[:2]) >= 2
+                                and _opp_pr[0] / sum(_opp_pr[:2]) >= 0.60
+                                and _opp_pr_avg_qual >= _div_qual_threshold  # won against quality opps
                             )
                             if _opp_pr_strong:
-                                _opp_pr_str = f"{_opp_pr[0]}-{_opp_pr[1]} on the season"
+                                # Story-driven prose: use last names, no raw ratings (those were
+                                # wrong/underrated — the whole point is the pair was better than
+                                # the baseline numbers suggested). Don't repeat score detail
+                                # (visible in the UI).
+                                _opp_lnames = [n.split()[-1] for n in _opp_names_sl if n]
+                                _opp_name_str = "/".join(_opp_lnames) if _opp_lnames else "the opponents"
+                                _ptr_sl = worst.get("partner", "")
+                                _ptr_fn = _ptr_sl.split()[0] if _ptr_sl else ""
+                                _ptr_clause = f" alongside {_ptr_fn}" if _ptr_fn else ""
+                                _wk_sl = _week_number(worst["date"], this_data["all_dates"])
+                                _ln_sl = _line_short(worst.get("line", ""))
+                                _opp_record = f"{_opp_pr[0]}-{_opp_pr[1]}"
+                                _undefeated_clause = ", undefeated" if _opp_pr[1] == 0 else ""
                                 parts.append(
-                                    f"Tough loss: "
-                                    f"{desc.replace(' lost to ', ' to ', 1)} "
-                                    f"(opponents {_opp_pr_str})."
+                                    f"Tough loss in {_wk_sl} {_ln_sl}{_ptr_clause} to "
+                                    f"{_opp_name_str} — one of the division's top pairs "
+                                    f"({_opp_record}{_undefeated_clause})."
                                 )
                             else:
                                 parts.append(
