@@ -1360,6 +1360,41 @@ def main():
             "n_weeks": len(all_dates),
         }
 
+    # Build pair win-rate lookup: frozenset({name_key, name_key}) -> (wins, losses)
+    # Used to detect when "surprising" losses came against pairs that proved to be strong.
+    pair_records: dict[str, dict[str, tuple[int,int]]] = {}  # sfx -> {frozenset_key: (W,L)}
+    for sfx, fname in [("30", "standings_women_30.json"), ("35", "standings_women_35.json")]:
+        _pr: dict[str, tuple[int,int]] = {}
+        _data = json.loads((DATA / fname).read_text())
+        for _sf in _data.get("subflights", []):
+            for _m in _sf.get("matches", []):
+                if _m.get("pending"):
+                    continue
+                for _ln in _m.get("lines", []):
+                    if "Doubles" not in _ln.get("line", ""):
+                        continue
+                    for _side in ("players_home", "players_away"):
+                        _names = [n.strip() for n in _ln.get(_side, "").split("/") if n.strip()]
+                        if len(_names) != 2:
+                            continue
+                        _pk = str(frozenset(_name_key(n) for n in _names))
+                        _winner = (_ln.get("winner_team") or "").upper()
+                        _side_team = (_m.get("home_team") if _side == "players_home"
+                                      else _m.get("away_team") or "").upper()
+                        # Resolve actual team via player lookup (handles scorecard swaps)
+                        _actual = None
+                        for _n in _names:
+                            _nk = _name_key(_n)
+                            _p = pbn.get(_nk)
+                            if _p and _p.get(f"team_{sfx}"):
+                                _actual = _p[f"team_{sfx}"].upper()
+                                break
+                        _actual = _actual or _side_team
+                        _won = _actual == _winner
+                        _w, _l = _pr.get(_pk, (0, 0))
+                        _pr[_pk] = (_w + (1 if _won else 0), _l + (0 if _won else 1))
+        pair_records[sfx] = _pr
+
     # Build per-team deployment rank (within each division)
     # team_deploy_rank[sfx][team] = [(player_name, n_matches), ...] sorted by n_matches desc
     team_deploy = defaultdict(lambda: defaultdict(list))
@@ -1752,11 +1787,29 @@ def main():
                             _ep_sl = _ep(worst)
                             _prob_sl = (f" (as {round(_ep_sl * 100)}% favourite)"
                                         if _ep_sl is not None else "")
-                            parts.append(
-                                f"Surprising loss: "
-                                f"{desc.replace(' lost to ', ' to ', 1)}"
-                                f"{_prob_sl}."
+                            # Check if the opposing pair turned out to be strong on the season
+                            # (win rate ≥ 60% with 2+ matches together) — if so, reframe the loss.
+                            _opp_names_sl = worst.get("opp_names", [])
+                            _opp_pair_key = str(frozenset(_name_key(n) for n in _opp_names_sl))
+                            _opp_pr = pair_records.get(sfx, {}).get(_opp_pair_key)
+                            _opp_pr_strong = (
+                                _opp_pr is not None
+                                and sum(_opp_pr) >= 2
+                                and _opp_pr[0] / sum(_opp_pr) >= 0.60
                             )
+                            if _opp_pr_strong:
+                                _opp_pr_str = f"{_opp_pr[0]}-{_opp_pr[1]} on the season"
+                                parts.append(
+                                    f"Tough loss: "
+                                    f"{desc.replace(' lost to ', ' to ', 1)} "
+                                    f"(opponents {_opp_pr_str})."
+                                )
+                            else:
+                                parts.append(
+                                    f"Surprising loss: "
+                                    f"{desc.replace(' lost to ', ' to ', 1)}"
+                                    f"{_prob_sl}."
+                                )
                         else:
                             # Small-gap, non-tiebreak losses — only note a pattern,
                             # not a single isolated loss (which says nothing about a 4-1 player).
@@ -1897,8 +1950,8 @@ def main():
                                                      if _other_ptr else "")
                                     parts.append(
                                         f"Wins {_win_clause}. "
-                                        f"Loss with {_pattern_ptr} fits her tiebreak-loss "
-                                        f"pattern{_other_clause}."
+                                        f"Loss with {_pattern_ptr} fits {_pattern_ptr}'s "
+                                        f"tiebreak-loss pattern{_other_clause}."
                                     )
                                 else:
                                     parts.append(
@@ -1916,8 +1969,14 @@ def main():
                 # signals inability to close tight matches and that it hurts partner records.
                 # Fire even when a single tiebreak loss is already mentioned — the PATTERN
                 # of three is a different, additive finding.
+                # SUPPRESS when the majority of tiebreak losses are against opponents
+                # rated significantly above the player's baseline (gap > 0.20) — those are
+                # competitive performances against much stronger players, not a "can't close" flaw.
                 _tb_losses = [m for m in losses_this if _is_tiebreak(m)]
-                if (len(_tb_losses) >= 3
+                _tb_outmatched = [m for m in _tb_losses
+                                  if _ep(m) is not None and _ep(m) < 0.40]
+                _tb_pattern_legit = len(_tb_losses) >= 3 and len(_tb_outmatched) < len(_tb_losses) * 0.6
+                if (_tb_pattern_legit
                         and not any("tiebreak losses" in p_.lower() for p_ in parts)):
                     _tb_partners = [m["partner"] for m in _tb_losses if m.get("partner")]
                     _tb_ptr_str = ""
@@ -1932,8 +1991,32 @@ def main():
                         f"struggles to close out tight matches."
                     )
 
+                # Singles/doubles split: all wins in one line type, all losses in the other.
+                # This is the primary story — name it before underperformance fires.
+                _sd_split_fired = False
+                if wins_this and losses_this:
+                    _win_ltypes  = set(_line_type(m["line"]) for m in wins_this  if _line_type(m["line"]))
+                    _loss_ltypes = set(_line_type(m["line"]) for m in losses_this if _line_type(m["line"]))
+                    if (len(_win_ltypes) == 1 and len(_loss_ltypes) == 1
+                            and _win_ltypes != _loss_ltypes
+                            and not any("singles" in p_.lower() or "doubles" in p_.lower() for p_ in parts)):
+                        _wtype = list(_win_ltypes)[0]
+                        _ltype = list(_loss_ltypes)[0]
+                        _wword = "singles" if _wtype == "S" else "doubles"
+                        _lword = "singles" if _ltype == "S" else "doubles"
+                        # Describe win quality
+                        _sw_descs = [_score_descriptor(m.get("score","")) for m in wins_this]
+                        _n_dom_sd = sum(1 for d in _sw_descs if d in ("lopsided","dominant","rout"))
+                        _dom_clause = " — wins have been dominant" if _n_dom_sd >= len(wins_this) * 0.6 else ""
+                        parts.append(
+                            f"Undefeated in {_wword}{_dom_clause}; "
+                            f"all losses in {_lword}."
+                        )
+                        _sd_split_fired = True
+
                 # High-baseline underperformance: a notably strong baseline player
                 # with a ≤.500 record is underperforming expectations.
+                # SUPPRESS when a S/D split already explains the mixed record.
                 # Use dynamic_rating_baseline (the original pre-season number) not the
                 # current computed rating, so the sentence reads naturally.
                 _orig_bl = p.get("dynamic_rating_baseline")
@@ -1946,6 +2029,7 @@ def main():
                     and _win_rate <= 0.50
                     and n_this >= 2
                     and not top_line_lopsided_losses
+                    and not _sd_split_fired          # split explains the record — not underperformance
                     and not any("nderperform" in p_.lower() for p_ in parts)
                     and not any("Outmatched" in p_ for p_ in parts)
                 )
@@ -2378,9 +2462,29 @@ def main():
                             _other_wins, _other_losses = map(int, str(wl_other).split("-"))
                         except (ValueError, AttributeError):
                             pass
-                    _strong_here = len(wins_this) >= 3 and len(wins_this) > len(losses_this)
+                    _strong_here = len(wins_this) >= 2 and len(wins_this) >= len(losses_this)
                     _struggling_other = _other_losses >= 2 and _other_wins <= _other_losses
-                    if _strong_here and _struggling_other:
+                    # High-upside signal: player is struggling in other div but their losses
+                    # there are tiebreaks against opponents rated significantly above baseline.
+                    # That's "competitive when outmatched" — the opposite of a ceiling story.
+                    _other_tb_losses = [m for m in other_matches
+                                        if not m["won"] and _is_tiebreak(m)]
+                    _other_bl = p.get("dynamic_rating_baseline") or bl
+                    _other_strong_tb = [m for m in _other_tb_losses
+                                        if m.get("opp_avg") and m["opp_avg"] - _other_bl > 0.20]
+                    _is_high_upside = (
+                        _struggling_other
+                        and len(_other_strong_tb) >= 1
+                        and len(_other_tb_losses) >= 2
+                        and len(_other_strong_tb) >= len(_other_tb_losses) * 0.5
+                    )
+                    if _strong_here and _is_high_upside:
+                        parts.append(
+                            f"Competitive in {other_div} despite tougher opponents — "
+                            f"tiebreak losses to much stronger players suggest more upside "
+                            f"than the {wl_other} record shows."
+                        )
+                    elif _strong_here and _struggling_other:
                         parts.append(
                             f"{wl_other} in {other_div}{_line_clause} "
                             f"suggests she's near her ceiling in this division."
