@@ -1884,11 +1884,10 @@ def main():
                                 _wk_sl = _week_number(worst["date"], this_data["all_dates"])
                                 _ln_sl = _line_short(worst.get("line", ""))
                                 _opp_record = f"{_opp_pr[0]}-{_opp_pr[1]}"
-                                _undefeated_clause = ", undefeated" if _opp_pr[1] == 0 else ""
                                 parts.append(
                                     f"Tough loss in {_wk_sl} {_ln_sl}{_ptr_clause} to "
                                     f"{_opp_name_str} — one of the division's top pairs "
-                                    f"({_opp_record}{_undefeated_clause})."
+                                    f"({_opp_record})."
                                 )
                             else:
                                 parts.append(
