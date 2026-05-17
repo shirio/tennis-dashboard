@@ -1472,25 +1472,12 @@ def main():
                     _stored_other_w, _stored_other_l = map(int, str(wl_other).split("-"))
                 except (ValueError, AttributeError):
                     pass
-            _other_wo_wins   = max(0, _stored_other_w - _real_other_w)
-            _other_wo_losses = max(0, _stored_other_l - _real_other_l)
-            if _other_wo_wins or _other_wo_losses:
-                _wo_parts = []
-                if _other_wo_wins:
-                    _wo_parts.append(
-                        "a walkover" if _other_wo_wins == 1
-                        else f"{_other_wo_wins} walkovers"
-                    )
-                if _other_wo_losses:
-                    _wo_parts.append(
-                        "a walkover loss" if _other_wo_losses == 1
-                        else f"{_other_wo_losses} walkover losses"
-                    )
-                _wo_suffix = " (plus " + " and ".join(_wo_parts) + ")"
-                wl_other_display = (
-                    f"{_real_other_w}-{_real_other_l}{_wo_suffix}"
-                    if (other_matches or _other_wo_wins or _other_wo_losses) else ""
-                )
+            # Walkovers only produce a free win — there is no such thing as a walkover loss.
+            # Any discrepancy in loss counts is a data anomaly; ignore it.
+            _other_wo_wins = max(0, _stored_other_w - _real_other_w)
+            if _other_wo_wins:
+                _wo_str = "a walkover" if _other_wo_wins == 1 else f"{_other_wo_wins} walkovers"
+                wl_other_display = f"{_real_other_w}-{_real_other_l} (plus {_wo_str})"
             else:
                 wl_other_display = wl_other   # no walkovers — original value is fine
 
