@@ -1797,8 +1797,7 @@ def main():
 
                 # Partner correlation: detect when doubles losses cluster with
                 # specific partners while wins come with a different set.
-                # Require 2+ doubles wins to establish a reliable "wins with" claim.
-                # (1 win with 1 partner isn't a pattern — it's just one match.)
+                # Require 2+ doubles wins to establish the "wins" side of the story.
                 _dbl_losses_p = [m for m in losses_this
                                  if _line_type(m["line"]) == "D" and m.get("partner")]
                 _dbl_wins_p   = [m for m in wins_this
@@ -1809,19 +1808,109 @@ def main():
                     _unique_to_losses = _loss_ptr_set - _win_ptr_set
                     _unique_to_wins   = _win_ptr_set  - _loss_ptr_set
                     if _unique_to_losses and _unique_to_wins:
-                        # All losses with partners who never appear in wins
                         _n_dbl_l = len(_dbl_losses_p)
-                        _lp_str = "/".join(p.split()[0] for p in sorted(_unique_to_losses))
-                        _wp_str = "/".join(p.split()[0] for p in sorted(_unique_to_wins))
                         _has_s_wins = any(_line_type(m["line"]) == "S" for m in wins_this)
-                        _also_solo = " (and solo)" if _has_s_wins else ""
+                        _also_solo = " and solo" if _has_s_wins else ""
+
+                        # Distinguish "reliably with X" (partner appears 2+ times)
+                        # from "across a diverse set" (each partner appears once).
+                        from collections import Counter as _WinPtrCnt
+                        _win_ptr_counts = _WinPtrCnt(m["partner"] for m in _dbl_wins_p)
+                        _repeated_win_ptrs = [p for p, c in _win_ptr_counts.items()
+                                              if c >= 2 and p not in _loss_ptr_set]
+                        _diverse_wins = len(_unique_to_wins) >= 3 or (
+                            len(_unique_to_wins) >= 2 and not _repeated_win_ptrs
+                        )
+
+                        if _diverse_wins:
+                            # Wins spread across many different partners — the signal is
+                            # versatility, not a specific chemistry. List partners briefly.
+                            _wp_first = sorted(_unique_to_wins, key=lambda p: p.split()[-1])
+                            _wp_str = "/".join(p.split()[0] for p in _wp_first)
+                            _win_clause = f"across a range of partners ({_wp_str}{_also_solo})"
+                        elif _repeated_win_ptrs:
+                            # Has a go-to partner(s) with multiple wins
+                            _rp_str = "/".join(p.split()[0] for p in sorted(_repeated_win_ptrs))
+                            _also_others = (f", and others" if len(_unique_to_wins) > len(_repeated_win_ptrs)
+                                            else "")
+                            _win_clause = f"reliably with {_rp_str}{_also_others}{_also_solo}"
+                        else:
+                            _wp_str = "/".join(p.split()[0] for p in sorted(_unique_to_wins))
+                            _win_clause = f"with {_wp_str}{_also_solo}"
+
+                        # Characterise each loss side separately when they tell different stories.
+                        # A loss vs clearly stronger opponents (high opp_avg) is legitimate;
+                        # a loss vs peers is the avoidable one.
+                        # This is independent of the win-clause framing above.
                         _loss_count_word = ("both" if _n_dbl_l == 2
                                             else "all three" if _n_dbl_l == 3
                                             else f"all {_n_dbl_l}")
-                        parts.append(
-                            f"Wins reliably with {_wp_str}{_also_solo}; "
-                            f"{_loss_count_word} doubles losses came with {_lp_str}."
-                        )
+                        if _n_dbl_l == 2:
+                            _dl_sorted = sorted(_dbl_losses_p, key=lambda m: -(m.get("opp_avg") or 0))
+                            _strong_loss = _dl_sorted[0]  # higher opp_avg = stronger opponents
+                            _weak_loss   = _dl_sorted[1]
+                            _sl_opp = _strong_loss.get("opp_avg") or 0
+                            _wl_opp = _weak_loss.get("opp_avg")   or 0
+                            # Compare losses to each other, not vs player's current rating
+                            # (current rating inflates after upsets; original bl is more stable).
+                            # Split characterisation when the two losses faced notably different
+                            # opponent strengths (>= 0.06 gap between the two opp_avgs).
+                            if _sl_opp - _wl_opp >= 0.06:
+                                # Two losses with clearly different opponent strengths — split them
+                                _sl_ptr = _strong_loss["partner"].split()[0]
+                                _wl_ptr = _weak_loss["partner"].split()[0]
+                                parts.append(
+                                    f"Wins {_win_clause}. "
+                                    f"Loss with {_sl_ptr} came against a stronger pair; "
+                                    f"loss with {_wl_ptr} was the avoidable one."
+                                )
+                            else:
+                                # Opponent strengths are similar — check if one loss partner
+                                # has a documented tiebreak-loss pattern (cross-player signal).
+                                _lp_str = "/".join(p.split()[0] for p in sorted(_unique_to_losses))
+                                _pattern_ptr = None
+                                for _lm in _dbl_losses_p:
+                                    _lptr = _lm.get("partner")
+                                    if not _lptr: continue
+                                    _lptr_key = _name_key(_lptr)
+                                    _lptr_matches = this_data["matches_by_player"].get(_lptr_key, [])
+                                    _lptr_tb_losses = [m for m in _lptr_matches
+                                                       if not m["won"] and _is_tiebreak(m)]
+                                    if len(_lptr_tb_losses) >= 3:
+                                        _pattern_ptr = _lptr.split()[0]
+                                        break
+                                if _pattern_ptr:
+                                    # One loss partner has their own documented tiebreak-loss
+                                    # pattern — that loss says more about the partner than this player.
+                                    # Suppress the "other loss" clause if it's already named
+                                    # in a prior parts sentence (e.g. surprising_losses).
+                                    _other_ptr = next(
+                                        (m["partner"].split()[0] for m in _dbl_losses_p
+                                         if m.get("partner") and m["partner"].split()[0] != _pattern_ptr),
+                                        None
+                                    )
+                                    _already_named = _other_ptr and any(
+                                        _other_ptr in p_ for p_ in parts
+                                    )
+                                    _other_clause = ("" if _already_named
+                                                     else f"; loss with {_other_ptr} was the tighter call"
+                                                     if _other_ptr else "")
+                                    parts.append(
+                                        f"Wins {_win_clause}. "
+                                        f"Loss with {_pattern_ptr} fits her tiebreak-loss "
+                                        f"pattern{_other_clause}."
+                                    )
+                                else:
+                                    parts.append(
+                                        f"Wins {_win_clause}; "
+                                        f"{_loss_count_word} doubles losses came with {_lp_str}."
+                                    )
+                        else:
+                            _lp_str = "/".join(p.split()[0] for p in sorted(_unique_to_losses))
+                            parts.append(
+                                f"Wins {_win_clause}; "
+                                f"{_loss_count_word} doubles losses came with {_lp_str}."
+                            )
 
                 # Tiebreak-loss pattern: 3+ tiebreak losses is a distinct story —
                 # signals inability to close tight matches and that it hurts partner records.
