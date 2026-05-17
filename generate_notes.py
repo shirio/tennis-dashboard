@@ -1795,6 +1795,77 @@ def main():
                             )
 
 
+                # Partner correlation: detect when doubles losses cluster with
+                # specific partners while wins come with a different set.
+                # Require 2+ doubles wins to establish a reliable "wins with" claim.
+                # (1 win with 1 partner isn't a pattern — it's just one match.)
+                _dbl_losses_p = [m for m in losses_this
+                                 if _line_type(m["line"]) == "D" and m.get("partner")]
+                _dbl_wins_p   = [m for m in wins_this
+                                 if _line_type(m["line"]) == "D" and m.get("partner")]
+                if len(_dbl_losses_p) >= 2 and len(_dbl_wins_p) >= 2:
+                    _loss_ptr_set = set(m["partner"] for m in _dbl_losses_p)
+                    _win_ptr_set  = set(m["partner"] for m in _dbl_wins_p)
+                    _unique_to_losses = _loss_ptr_set - _win_ptr_set
+                    _unique_to_wins   = _win_ptr_set  - _loss_ptr_set
+                    if _unique_to_losses and _unique_to_wins:
+                        # All losses with partners who never appear in wins
+                        _n_dbl_l = len(_dbl_losses_p)
+                        _lp_str = "/".join(p.split()[0] for p in sorted(_unique_to_losses))
+                        _wp_str = "/".join(p.split()[0] for p in sorted(_unique_to_wins))
+                        _has_s_wins = any(_line_type(m["line"]) == "S" for m in wins_this)
+                        _also_solo = " (and solo)" if _has_s_wins else ""
+                        _loss_count_word = ("both" if _n_dbl_l == 2
+                                            else "all three" if _n_dbl_l == 3
+                                            else f"all {_n_dbl_l}")
+                        parts.append(
+                            f"Wins reliably with {_wp_str}{_also_solo}; "
+                            f"{_loss_count_word} doubles losses came with {_lp_str}."
+                        )
+
+                # Tiebreak-loss pattern: 3+ tiebreak losses is a distinct story —
+                # signals inability to close tight matches and that it hurts partner records.
+                # Fire even when a single tiebreak loss is already mentioned — the PATTERN
+                # of three is a different, additive finding.
+                _tb_losses = [m for m in losses_this if _is_tiebreak(m)]
+                if (len(_tb_losses) >= 3
+                        and not any("tiebreak losses" in p_.lower() for p_ in parts)):
+                    _tb_partners = [m["partner"] for m in _tb_losses if m.get("partner")]
+                    _tb_ptr_str = ""
+                    if _tb_partners and len(set(_tb_partners)) >= 2:
+                        _unique_tb_ptrs = list(dict.fromkeys(_tb_partners))
+                        _names = ', '.join(p.split()[0] for p in _unique_tb_ptrs[:3])
+                        _tb_ptr_str = (
+                            f" — {_names} have each taken a tiebreak loss alongside her"
+                        )
+                    parts.append(
+                        f"{len(_tb_losses)} tiebreak losses this season{_tb_ptr_str}; "
+                        f"struggles to close out tight matches."
+                    )
+
+                # High-baseline underperformance: a notably strong baseline player
+                # with a ≤.500 record is underperforming expectations.
+                # Use dynamic_rating_baseline (the original pre-season number) not the
+                # current computed rating, so the sentence reads naturally.
+                _orig_bl = p.get("dynamic_rating_baseline")
+                _div_floor_local = 2.50 if sfx == "30" else 3.00
+                _high_bl_threshold = _div_floor_local + 0.35  # e.g. 2.85 for 3.0 div
+                _is_high_bl = _orig_bl is not None and _orig_bl >= _high_bl_threshold
+                _win_rate = len(wins_this) / n_this if n_this else 1.0
+                _is_underperforming_bl = (
+                    _is_high_bl
+                    and _win_rate <= 0.50
+                    and n_this >= 2
+                    and not top_line_lopsided_losses
+                    and not any("nderperform" in p_.lower() for p_ in parts)
+                    and not any("Outmatched" in p_ for p_ in parts)
+                )
+                if _is_underperforming_bl:
+                    parts.append(
+                        f"Below expectations for a {_orig_bl:.2f} baseline — "
+                        f"losses to opponents she should be beating."
+                    )
+
                 # Undefeated with all opponents below baseline — describe the
                 # dominance qualitatively rather than labeling it "ceiling-capped."
                 # (The ceiling-capped concept is misleading for a top player whose
@@ -2123,30 +2194,82 @@ def main():
                         else:
                             parts.append(f"Undefeated in {div_label}.")
                     elif losses_this and wins_this:
-                        # Mixed record with nothing dramatic — write a brief season summary.
-                        # Describe their primary line and characterise the loss briefly.
-                        from collections import Counter as _Counter
-                        _lc = _Counter(_line_short(m["line"]) for m in this_matches)
-                        _primary = _lc.most_common(1)[0][0] if _lc else ""
-                        _primary_clause = f" at {_primary}" if _primary else ""
-                        _nw = len(wins_this)
-                        _nl = len(losses_this)
-                        # Describe the most recent loss
-                        _loss = sorted(losses_this, key=lambda m: m["date"])[-1]
-                        _loss_ep = _ep(_loss)
-                        _loss_sd = _score_descriptor(_loss.get("score", ""))
-                        _loss_opp = _opp_label(_loss)
-                        _loss_wk = _week_number(_loss["date"], this_data["all_dates"])
-                        if _loss_sd == "3-set tiebreak":
-                            _loss_clause = f"one loss came in a tiebreak ({_loss_wk} vs {_loss_opp})"
-                        elif _loss_ep is not None and _loss_ep > 0.55:
-                            _loss_clause = f"one surprising loss to {_loss_opp} in {_loss_wk}"
+                        # Mixed record with nothing dramatic — produce an insight that goes
+                        # BEYOND the visible column data (never echo W-L or line counts).
+                        # Priority: trajectory arc > win quality > loss context.
+                        _sorted_fb = sorted(this_matches, key=lambda m: m["date"])
+                        _all_dates_list = sorted(this_data["all_dates"],
+                                                 key=lambda d: _date_sort_key(d))
+                        _n_total_dates = len(_all_dates_list)
+                        _cutoff = _all_dates_list[_n_total_dates // 3] if _n_total_dates >= 3 else None
+
+                        # Trajectory: all losses in the first third, wins dominating since
+                        _early_losses = ([m for m in losses_this
+                                          if _cutoff and _date_sort_key(m["date"]) <= _date_sort_key(_cutoff)]
+                                         if _cutoff else [])
+                        _late_losses  = [m for m in losses_this if m not in _early_losses]
+                        _late_wins    = ([m for m in wins_this
+                                          if _cutoff and _date_sort_key(m["date"]) > _date_sort_key(_cutoff)]
+                                         if _cutoff else [])
+
+                        if _early_losses and not _late_losses and len(_late_wins) >= 2:
+                            # Found form: early stumble, winning since
+                            _early_loss = _early_losses[0]
+                            _el_opp = _opp_label(_early_loss)
+                            _el_wk  = _week_number(_early_loss["date"], this_data["all_dates"])
+                            # Are the later wins dominant?
+                            _late_sdesc = [_score_descriptor(m.get("score","")) for m in _late_wins]
+                            _n_dominant = sum(1 for d in _late_sdesc if d in ("lopsided","dominant","rout"))
+                            _dom_clause = (f", often dominantly" if _n_dominant >= len(_late_wins) // 2
+                                           else "")
+                            parts.append(
+                                f"Struggled early — {_el_wk} loss to {_el_opp} — "
+                                f"but has won {len(_late_wins)} straight since{_dom_clause}."
+                            )
                         else:
-                            _loss_clause = f"one loss to {_loss_opp} in {_loss_wk}"
-                        if _nl == 1:
-                            parts.append(f"{_nw}-1{_primary_clause} — {_loss_clause}.")
-                        else:
-                            parts.append(f"{_nw}-{_nl}{_primary_clause} this season.")
+                            # Describe the one loss contextually without naming W-L numbers
+                            _loss = sorted(losses_this, key=lambda m: m["date"])[-1]
+                            _loss_ep  = _ep(_loss)
+                            _loss_sd  = _score_descriptor(_loss.get("score", ""))
+                            _loss_opp = _opp_label(_loss)
+                            _loss_wk  = _week_number(_loss["date"], this_data["all_dates"])
+                            _loss_opp_avg = _loss.get("opp_avg") or 0
+                            if _loss_sd == "3-set tiebreak":
+                                parts.append(
+                                    f"Solid overall; the one blemish was a tiebreak loss "
+                                    f"to {_loss_opp} in {_loss_wk}."
+                                )
+                            elif _loss_ep is not None and _loss_ep > 0.55:
+                                # Check if wins have been dominant — stronger framing
+                                _wq = [_score_descriptor(m.get("score","")) for m in wins_this]
+                                _n_dom_wq = sum(1 for d in _wq if d in ("lopsided","dominant","rout"))
+                                if _n_dom_wq >= len(wins_this) * 0.6:
+                                    parts.append(
+                                        f"Dominant in wins; the one loss to {_loss_opp} in "
+                                        f"{_loss_wk} is the only blemish."
+                                    )
+                                else:
+                                    parts.append(
+                                        f"Solid overall; the one loss to {_loss_opp} in "
+                                        f"{_loss_wk} was unexpected."
+                                    )
+                            elif _loss_opp_avg > bl + 0.15:
+                                # Loss to clearly stronger opponents — contextualise as expected
+                                parts.append(
+                                    f"Loss in {_loss_wk} came against significantly "
+                                    f"stronger opponents ({_loss_opp}); wins have been consistent."
+                                )
+                            else:
+                                # Describe win quality instead of the loss
+                                _win_descs = [_score_descriptor(m.get("score","")) for m in wins_this]
+                                _n_dom_w = sum(1 for d in _win_descs if d in ("lopsided","dominant","rout"))
+                                if _n_dom_w >= len(wins_this) * 0.6:
+                                    parts.append("Wins have been dominant; one loss hasn't changed the picture.")
+                                else:
+                                    parts.append(
+                                        f"Competitive season — loss to {_loss_opp} in {_loss_wk} "
+                                        f"is the main blemish."
+                                    )
 
                 # Cross-division addendum — weave in naturally when there's an arc.
                 # When we already have a tier-arc story, the other-div record + typical
@@ -2158,7 +2281,23 @@ def main():
                 if wl_other and not cross_mentioned:
                     _odl = _other_div_line_summary(other_matches) if other_matches else ""
                     _line_clause = f" at {_odl}" if _odl else ""
-                    parts.append(f"Also {wl_other} in {other_div}{_line_clause}.")
+                    # Ceiling-cap framing: if strong here but struggling in the other div,
+                    # frame the cross-div note as a ceiling signal rather than just a record.
+                    _other_wins, _other_losses = 0, 0
+                    if wl_other and "-" in str(wl_other):
+                        try:
+                            _other_wins, _other_losses = map(int, str(wl_other).split("-"))
+                        except (ValueError, AttributeError):
+                            pass
+                    _strong_here = len(wins_this) >= 3 and len(wins_this) > len(losses_this)
+                    _struggling_other = _other_losses >= 2 and _other_wins <= _other_losses
+                    if _strong_here and _struggling_other:
+                        parts.append(
+                            f"{wl_other} in {other_div}{_line_clause} "
+                            f"suggests she's near her ceiling in this division."
+                        )
+                    else:
+                        parts.append(f"Also {wl_other} in {other_div}{_line_clause}.")
 
             note = " ".join(parts).strip()
             if len(note) > 400:
