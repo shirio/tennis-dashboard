@@ -1478,8 +1478,8 @@ def main():
                 _wo_parts = []
                 if _other_wo_wins:
                     _wo_parts.append(
-                        "a walkover win" if _other_wo_wins == 1
-                        else f"{_other_wo_wins} walkover wins"
+                        "a walkover" if _other_wo_wins == 1
+                        else f"{_other_wo_wins} walkovers"
                     )
                 if _other_wo_losses:
                     _wo_parts.append(
