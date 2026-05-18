@@ -1205,20 +1205,18 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
                         if court_label:
                             lines_count[ntrp][key][court_label] += 1
 
-                        # Determine which side this player is actually on:
-                        # 1. If registered team matches one of the match teams → use that
-                        # 2. Otherwise, use parsed side but flip it if the scorecard is swapped
-                        pteam = player_team.get(key, "")
-                        if pteam and match_home and match_away:
-                            if pteam == match_home:
-                                actual_home = True
-                            elif pteam == match_away:
-                                actual_home = False
-                            else:
-                                # Unknown team: flip if scorecard is swapped
-                                actual_home = (not parsed_is_home) if is_swapped else parsed_is_home
-                        else:
-                            actual_home = (not parsed_is_home) if is_swapped else parsed_is_home
+                        # Determine which side this player is actually on.
+                        # Trust scorecard position + swap detection exclusively.
+                        #
+                        # Previously this used a team-name override (if player's
+                        # primary team == match_home → actual_home = True), but that
+                        # breaks for cross-division players (e.g. Kristyl Addison is
+                        # DESERT PALM in 3.0 but DTC#3 in 3.5 — in a DESERT PALM vs
+                        # DTC#3 3.5 match the override incorrectly places her on the
+                        # DESERT PALM side). Swap detection operates over all lines in
+                        # the match (5 lines × 2 players = up to 10 votes) and is
+                        # robust enough without the per-player override.
+                        actual_home = (not parsed_is_home) if is_swapped else parsed_is_home
 
                         # Record which team they played for in this division
                         if match_home and match_away:

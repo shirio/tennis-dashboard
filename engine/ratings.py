@@ -1195,13 +1195,15 @@ def _compute_division_sequential(
 
     # Lever 4 — detect "high-confidence under-rating" pattern per player.
     # Tracks running W-L and opponent quality. Criteria (all must hold):
-    #   ≥3 matches; ≥65% win rate; avg opp baseline ≥ player baseline.
-    # Once detected, the per-match adj is doubled (cap effectively lifts to
-    # 0.30 from 0.15). Targets Lippisch (BL 2.18, beats real 3.0s) and
-    # Arika (BL 3.16, dominates her 3.5 opponents).
+    #   ≥3 matches; ≥65% win rate; avg opp baseline ≥ player baseline + 0.25.
+    # The +0.25 gap is critical: it targets players who are clearly misclassified
+    # (Lippisch BL 2.18 beating real 3.0 opponents BL ~2.85, gap 0.67; Arika
+    # BL 3.16 dominating 3.5 opponents BL ~3.40+). It prevents normal 3.0
+    # players with good records (Kristyl BL 2.91, avg opp ~2.91) from triggering
+    # the doubled cap just because they have a winning season.
     _UNDERRATED_MIN_MATCHES = 3
     _UNDERRATED_WIN_RATE = 0.65
-    _UNDERRATED_OPP_GAP = 0.0   # just require opp ≥ baseline (not lower-tier)
+    _UNDERRATED_OPP_GAP = 0.25   # avg opp must be 0.25 above player baseline
     underrated_stats: dict[str, dict] = {}   # pk -> {wins, total, opp_sum, opp_n}
 
     def _is_underrated(pk: str) -> bool:
@@ -1450,7 +1452,7 @@ def _compute_global_sequential(
     # Lever 4 — underrated pattern detector (global scope, cross-division)
     _UNDERRATED_MIN_MATCHES = 3
     _UNDERRATED_WIN_RATE = 0.65
-    _UNDERRATED_OPP_GAP = 0.0
+    _UNDERRATED_OPP_GAP = 0.25   # avg opp must be 0.25 above player baseline
     underrated_stats: dict[str, dict] = {}
 
     def _is_underrated(pk: str) -> bool:

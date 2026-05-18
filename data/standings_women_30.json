@@ -17,7 +17,7 @@
           "games_won": 497,
           "games_lost": 278,
           "games_won_pct": "64.13%",
-          "notes": "Undefeated; top-rated roster in the division. Shi (2.74→3.25, 7-0) trending up. Christine 4–0 at D3. Emmy 3–0 at D2."
+          "notes": "Undefeated; top-rated roster in the division. Shi (2.74→3.11, 7-0) trending up. Christine 4–0 at D3. Emmy 3–0 at D2."
         },
         {
           "team_name": "SUMMERLIN ARBORS",
@@ -59,7 +59,7 @@
           "games_won": 358,
           "games_lost": 357,
           "games_won_pct": "50.07%",
-          "notes": "Won big over Red Rock, got swept by Summerlin. Jeralyn (2.81→3.34, 4-0) trending up. Meghan 3–0 at D2. Jennifer Wang 2–0 at S1."
+          "notes": "Won big over Red Rock, got swept by Summerlin. Jeralyn (2.81→3.27, 4-0) trending up. Meghan 3–0 at D2. Jennifer Wang 2–0 at S1."
         },
         {
           "team_name": "DTC #2",
@@ -73,7 +73,7 @@
           "games_won": 382,
           "games_lost": 448,
           "games_won_pct": "46.02%",
-          "notes": "Won big over LTF, got swept by DTC #3. Stephanie Stern (2.70→2.90, 2-4) trending up. NANCIE drops hardest: 2.78→2.69. Tina Shirey + Irene both deployed every week."
+          "notes": "Won big over LTF, got swept by DTC #3. Stephanie Stern (2.70→2.90, 2-4) trending up. NANCIE drops hardest: 2.78→2.68. Tina Shirey + Irene both deployed every week."
         },
         {
           "team_name": "RED ROCK CC",
@@ -87,7 +87,7 @@
           "games_won": 376,
           "games_lost": 434,
           "games_won_pct": "46.42%",
-          "notes": "S1 is the soft spot (2–7 record). Rhianna (2.90→3.17, 4-0) trending up. Carolina 2–1 at D1. Courtney 2–1 at D3."
+          "notes": "S1 is the soft spot (2–7 record). Rhianna (2.90→3.14, 4-0) trending up. Carolina 2–1 at D1. Courtney 2–1 at D3."
         },
         {
           "team_name": "LIFE TIME FITNESS/GV",
@@ -115,7 +115,7 @@
           "games_won": 341,
           "games_lost": 461,
           "games_won_pct": "42.52%",
-          "notes": "Won big over Summerlin, got swept by Summerlin. Margaret (2.82→3.04, 4-4) trending up. S1 is the soft spot (1–7 record). Shaza 2–0 at D1."
+          "notes": "Won big over Summerlin, got swept by Summerlin. Margaret (2.82→2.99, 4-4) trending up. S1 is the soft spot (1–7 record). Shaza 2–0 at D1."
         }
       ],
       "matches": [
@@ -2346,7 +2346,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "DTC #3 leads A undefeated at 9-0. Summerlin, Anthem, and TPC are at the bottom. Top risers: Jeralyn Marchesi (TPC, 2.81→3.34, 4-0); Shi L Oskooi (DTC #3, 2.74→3.25, 7-0)."
+      "subflight_summary": "DTC #3 leads A undefeated at 9-0. Summerlin, Anthem, and TPC are at the bottom. Top risers: Jeralyn Marchesi (TPC, 2.81→3.27, 4-0); Shi L Oskooi (DTC #3, 2.74→3.11, 7-0)."
     },
     {
       "flight_label": "B",
@@ -2363,7 +2363,7 @@
           "games_won": 434,
           "games_lost": 289,
           "games_won_pct": "60.03%",
-          "notes": "Maria Allen (3.10→3.33, 3-0) trending up. D3 is the soft spot (2–5 record). Tori 2–0 at S2. Abigail 2–0 at D2."
+          "notes": "Maria Allen (3.10→3.32, 3-0) trending up. D3 is the soft spot (2–5 record). Tori 2–0 at S2. Abigail 2–0 at D2."
         },
         {
           "team_name": "DTC #4",
@@ -2419,7 +2419,7 @@
           "games_won": 407,
           "games_lost": 340,
           "games_won_pct": "54.48%",
-          "notes": "Maggie (2.74→2.99, 4-1) trending up. Wendy Cashin drops hardest: 2.83→2.67. S1 is the soft spot (4–5 record). Jaqueline 4–1 at D1."
+          "notes": "Maggie (2.74→2.91, 4-1) trending up. Wendy Cashin drops hardest: 2.83→2.67. S1 is the soft spot (4–5 record). Jaqueline 4–1 at D1."
         },
         {
           "team_name": "SPANISH OAKS",
