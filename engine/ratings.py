@@ -1496,11 +1496,14 @@ def _compute_global_sequential(
     # Their unified rating is currently inflated by the lower-div success.
     wl_by_div: dict[str, dict[str, list[int]]] = {}   # pk -> div -> [w, l]
 
-    # Timeline: global running rating going INTO each match, split by division.
-    # Used by the HTML results tab to show accurate point-in-time ratings.
-    # setdefault(date, ...) ensures same-day multi-match players record the
-    # rating before their FIRST match that day (not after each intermediate match).
-    global_timeline: dict[str, dict[str, dict[str, float]]] = {}   # pk->div->{date:rating}
+    # Two timelines, both split by division:
+    #   global_timeline:      pre-match  (rating going INTO the first match of each day)
+    #   global_post_timeline: post-match (rating AFTER all matches on each day)
+    # The results tab uses pre-match for exact-date hits (showing what the player
+    # was rated going in) and post-match for prior-date fallback (showing what an
+    # opponent was rated *after* their last played week, not before it).
+    global_timeline: dict[str, dict[str, dict[str, float]]] = {}       # pk->div->{date:pre}
+    global_post_timeline: dict[str, dict[str, dict[str, float]]] = {}  # pk->div->{date:post}
 
     for ev in sorted(court_events, key=_date_sort_key):
         all_keys = ev.winner_keys + ev.loser_keys
@@ -1578,6 +1581,15 @@ def _compute_global_sequential(
 
         global_r.update(updates)
 
+        # Record post-match snapshot for every player in this event (overwrites
+        # on each subsequent event of the same day so the final value per day is
+        # captured — used by _pit_rating fallback for opponent lookups).
+        for pk in all_keys:
+            if pk in baselines:
+                (global_post_timeline
+                 .setdefault(pk, {})
+                 .setdefault(ev.division, {})[ev.date]) = round(global_r.get(pk, baselines.get(pk, 0)), 4)
+
     # Lever 5b post-pass — cross-division ceiling for struggling-in-higher-div.
     # MUST run before Lever 6 so the D3-lock penalty can push a capped player
     # below the ceiling (otherwise Lever 6 fires → Lever 5b snaps back to cap,
@@ -1635,7 +1647,7 @@ def _compute_global_sequential(
         if adj_total != 0:
             global_r[pk] = round(global_r.get(pk, baseline) + adj_total, 4)
 
-    return global_r, global_timeline
+    return global_r, global_timeline, global_post_timeline
 
 
 # ---------------------------------------------------------------------------
@@ -1711,7 +1723,7 @@ def run_ratings() -> RatingsSummary:
     )
 
     # --- Global sequential (cross-division base blend) ---
-    global_sequential, global_timeline = _compute_global_sequential(court_events, baselines_all)
+    global_sequential, global_timeline, global_post_timeline = _compute_global_sequential(court_events, baselines_all)
 
     # --- Lever 3: singles-anchored cross-division reconciliation ---
     # Compute singles-only and doubles-only sequential ratings, then apply
@@ -1723,8 +1735,8 @@ def run_ratings() -> RatingsSummary:
     #   • within 0.15 → blend
     singles_events = [ev for ev in court_events if "Singles" in ev.line_label]
     doubles_events = [ev for ev in court_events if "Doubles" in ev.line_label]
-    singles_only_rating, _ = _compute_global_sequential(singles_events, baselines_all)
-    doubles_only_rating, _ = _compute_global_sequential(doubles_events, baselines_all)
+    singles_only_rating, _, _ = _compute_global_sequential(singles_events, baselines_all)
+    doubles_only_rating, _, _ = _compute_global_sequential(doubles_events, baselines_all)
     earned_doubles_set = _compute_earned_doubles(court_events, baselines_all)
 
     # Apply reconciliation as a post-pass adjustment to global_sequential
@@ -1867,12 +1879,16 @@ def run_ratings() -> RatingsSummary:
         has_35 = any(m.division == "3.5" for m in matches)
         player["rating_30"] = unified if has_30 else baseline
         player["rating_35"] = unified if has_35 else baseline
-        # Timelines show global sequential running values going into each match,
-        # split by division. These reflect running opponent ratings (not frozen
-        # baselines), so the results tab shows accurate point-in-time ratings.
-        _gtl = global_timeline.get(k, {})
-        player["rating_timeline_30"] = _gtl.get("3.0", {})
-        player["rating_timeline_35"] = _gtl.get("3.5", {})
+        # Timelines show global sequential running values, split by division.
+        # pre-match: rating going INTO each date (exact-hit display for active players).
+        # post-match: rating AFTER all matches on each date (fallback for opponent lookups
+        #             from future weeks — shows the updated value after any big upset win).
+        _gtl  = global_timeline.get(k, {})
+        _gptl = global_post_timeline.get(k, {})
+        player["rating_timeline_30"]      = _gtl.get("3.0", {})
+        player["rating_timeline_35"]      = _gtl.get("3.5", {})
+        player["rating_post_timeline_30"] = _gptl.get("3.0", {})
+        player["rating_post_timeline_35"] = _gptl.get("3.5", {})
 
         # current_division_rating = unified (their one true rating)
         player["current_division_rating"] = unified

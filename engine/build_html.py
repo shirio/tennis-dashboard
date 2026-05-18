@@ -625,8 +625,13 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
     # Build name → baseline and name → new (division) rating lookups
     _baseline_by_name: dict[str, str] = {}
     _new_by_name: dict[str, str] = {}
-    # name → {date: pre-match rating} for point-in-time display
+    # name → {date: pre-match rating} — used for exact-date hits (active player display)
     _timeline_by_name: dict[str, dict[str, float]] = {}
+    # name → {date: post-match rating} — used for prior-date fallback (opponent display)
+    # Shows the player's rating AFTER their last played week, not before it.
+    # Example: Shi's W7 upset win pushes her from 2.95 → 3.11; her W8 opponent
+    # display should show 3.11 (post-W7), not 2.95 (pre-W7).
+    _post_timeline_by_name: dict[str, dict[str, float]] = {}
     _team_by_name: dict[str, str] = {}
     if players:
         for p in players:
@@ -645,10 +650,14 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                     _new_by_name[norm] = f"{float(raw_new):.2f}"
                 except (ValueError, TypeError):
                     pass
-            # Timeline: per-date pre-match rating stored by sequential computation
+            # Pre-match timeline: rating going INTO each played date
             timeline = p.get(f"rating_timeline_{sfx}") if sfx else None
             if timeline and isinstance(timeline, dict):
                 _timeline_by_name[norm] = {k: float(v) for k, v in timeline.items()}
+            # Post-match timeline: rating AFTER all matches on each played date
+            post_tl = p.get(f"rating_post_timeline_{sfx}") if sfx else None
+            if post_tl and isinstance(post_tl, dict):
+                _post_timeline_by_name[norm] = {k: float(v) for k, v in post_tl.items()}
             # For swap detection in *this division's* pages we MUST use the
             # division-specific team (team_30 or team_35). Falling back to the
             # primary `team` for cross-listed players gives wrong votes — e.g.
@@ -672,28 +681,34 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         return re.sub(r"[^a-z0-9]", "-", name.strip().lower())
 
     def _pit_rating(nkey: str, match_date: str) -> str:
-        """Return the point-in-time rating for a player going into match_date.
+        """Return the point-in-time rating for a player at match_date.
 
         Priority:
-        1. Exact timeline entry for match_date (player played that date → pre-match snapshot)
-        2. Most recent timeline entry BEFORE match_date (last known rating)
-        3. Baseline (player hadn't played yet in this division)
-        4. Final season rating (no timeline at all — e.g. opponents from other divisions)
+        1. Exact pre-match timeline entry for match_date
+           → player played this date: show their rating going IN.
+        2. Most recent POST-match entry strictly before match_date
+           → player last played an earlier week: show their rating AFTER that week
+             (e.g. Shi's W7 upset bumped her 2.95→3.11; show 3.11 in W8, not 2.95).
+        3. Baseline (player hasn't played yet in this division)
+        4. Final season rating (no timeline at all — opponents from other divisions)
         """
-        if nkey not in _timeline_by_name:
-            return _new_by_name.get(nkey, "")
-        tl = _timeline_by_name[nkey]
-        # Exact hit
-        if match_date in tl:
-            return f"{tl[match_date]:.2f}"
-        # Most recent entry strictly before match_date
+        # Exact hit on pre-match timeline (player is active this date)
+        pre_tl = _timeline_by_name.get(nkey, {})
+        if match_date in pre_tl:
+            return f"{pre_tl[match_date]:.2f}"
+        # Fallback: most recent POST-match entry before this date
         match_key = _date_sort_key(match_date)
-        prior = [(k, v) for k, v in tl.items() if _date_sort_key(k) < match_key]
-        if prior:
-            # Take the latest prior entry
-            latest_k, latest_v = max(prior, key=lambda kv: _date_sort_key(kv[0]))
+        post_tl = _post_timeline_by_name.get(nkey, {})
+        prior_post = [(k, v) for k, v in post_tl.items() if _date_sort_key(k) < match_key]
+        if prior_post:
+            _, latest_v = max(prior_post, key=lambda kv: _date_sort_key(kv[0]))
             return f"{latest_v:.2f}"
-        # No timeline entries before this date → player hadn't played yet → use baseline
+        # Pre-match fallback (older data without post-timeline)
+        prior_pre = [(k, v) for k, v in pre_tl.items() if _date_sort_key(k) < match_key]
+        if prior_pre:
+            _, latest_v = max(prior_pre, key=lambda kv: _date_sort_key(kv[0]))
+            return f"{latest_v:.2f}"
+        # No prior matches → baseline
         base = _baseline_by_name.get(nkey, "")
         return base if base else _new_by_name.get(nkey, "")
 
