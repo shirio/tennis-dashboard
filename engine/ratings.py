@@ -1735,6 +1735,62 @@ def run_ratings() -> RatingsSummary:
                 global_sequential[pk] = round(bl + s_delta, 4)
             # else: keep the blend (Tina/Irene case)
 
+    # --- Lever 5b floor: prevent higher-div losses from sinking rating below
+    #     the level already established in the lower division.
+    #
+    # Problem: Melissa Hicks goes 6-1 in 3.0 (peaked at 3.07) but 0-4 in 3.5.
+    # The unified sequential interleaves all matches, so the 3.5 losses drag her
+    # global below baseline (2.89) — wiping out all of the 3.0 gains. That's
+    # wrong. A player who "crushes 3.0 but loses 3.5" should sit in the zone
+    # [3.0_rating, baseline+0.15], not below baseline.
+    #
+    # Fix: after the global sequential (and Lever 3 reconciliation), apply a
+    # floor = the lower-division sequential final rating for any player who
+    # triggers the "struggling in higher division" pattern (≥4 matches, <30%
+    # win rate in the higher division). The Lever 5b cap (baseline+0.15) already
+    # exists inside _compute_global_sequential(); this floor is the complementary
+    # lower bound.
+    _STRUGGLE_MIN_5B   = 4
+    _STRUGGLE_RATE_5B  = 0.30
+    _STRUGGLE_CAP_5B   = 0.15    # delta above baseline (matches internal cap)
+
+    _wl_by_div_5b: dict[str, dict[str, list[int]]] = {}
+    for ev in court_events:
+        for pk in ev.winner_keys:
+            _wl_by_div_5b.setdefault(pk, {}).setdefault(ev.division, [0, 0])[0] += 1
+        for pk in ev.loser_keys:
+            _wl_by_div_5b.setdefault(pk, {}).setdefault(ev.division, [0, 0])[1] += 1
+
+    for pk, divs in _wl_by_div_5b.items():
+        if len(divs) < 2:
+            continue
+        bl = baselines_all.get(pk)
+        if bl is None:
+            continue
+        higher_div = max(divs, key=lambda d: {"3.0": 1, "3.5": 2}.get(d, 0))
+        lower_div  = min(divs, key=lambda d: {"3.0": 1, "3.5": 2}.get(d, 0))
+        w, l = divs[higher_div]
+        n = w + l
+        if n < _STRUGGLE_MIN_5B:
+            continue
+        if w / n >= _STRUGGLE_RATE_5B:
+            continue
+        # Player struggles in higher div — floor their global at the peak
+        # pre-match rating from the lower-division timeline. Using the peak
+        # (not the final sequential value) avoids the case where a close win
+        # vs a badly-depleted opponent generates a negative surprise and pulls
+        # the final sequential below the ceiling the player genuinely hit.
+        if lower_div == "3.0":
+            lower_div_tl = seq_30_timeline.get(pk, {})
+        else:
+            lower_div_tl = seq_35_timeline.get(pk, {})
+        peak_lower = max(lower_div_tl.values(), default=bl) if lower_div_tl else bl
+        floor   = max(bl, peak_lower)   # never floor below baseline
+        cap     = round(bl + _STRUGGLE_CAP_5B, 4)
+        current = global_sequential.get(pk, bl)
+        if current < floor:
+            global_sequential[pk] = round(min(cap, floor), 4)
+
     for player in players:
         k = _name_key(player.get("name", ""))
         matches = all_records.get(k, [])

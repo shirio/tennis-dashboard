@@ -449,6 +449,34 @@ def _resolve_line_sides(ln: dict, match: dict, team_by_name: dict):
             home_votes += 1
         elif away_team in pt_set:
             away_votes += 1
+
+    # Tie-break: when home/away votes are equal (common with cross-listed players
+    # who appear in both teams), use winner_team / loser_team from the line data
+    # to determine the correct column assignment.
+    if home_votes == away_votes and home_votes > 0:
+        wt_field = ln.get("winner_team", "")
+        lt_field = ln.get("loser_team", "")
+        if wt_field and lt_field:
+            # Count how many players_home names map to the line's winner/loser teams.
+            wt_upper = wt_field.strip().upper()
+            lt_upper = lt_field.strip().upper()
+            wt_home_votes = lt_home_votes = 0
+            for pn in [x.strip() for x in ph.split("/") if x.strip()]:
+                pt_set = team_by_name.get(_name_key(pn)) or set()
+                if isinstance(pt_set, str):
+                    pt_set = {pt_set}
+                pt_upper = {t.upper() for t in pt_set}
+                if wt_upper in pt_upper:
+                    wt_home_votes += 1
+                if lt_upper in pt_upper:
+                    lt_home_votes += 1
+            # If more home-column players belong to the line's loser_team than
+            # winner_team, the columns are swapped.
+            if lt_home_votes > wt_home_votes:
+                away_votes = home_votes + 1   # force swap
+            elif wt_home_votes > lt_home_votes:
+                home_votes = away_votes + 1   # force no swap
+
     is_swapped = away_votes > home_votes
 
     if is_swapped:
@@ -1920,9 +1948,26 @@ def main():
                             )
 
 
-                # Partner correlation: detect when doubles losses cluster with
-                # specific partners while wins come with a different set.
-                # Require 2+ doubles wins to establish the "wins" side of the story.
+                # ── Partner correlation ────────────────────────────────────────────
+                # Philosophy: every sentence must tell something interesting —
+                # not just repeat who was involved. Only emit when the story is
+                # about WHAT it means (partner dependency, strength mismatch),
+                # not just WHO was paired in losses.
+                #
+                # NEVER emit:
+                #   • "N of M losses came with X" — data dump, not insight
+                #   • "all N losses came with X" — same (reader can see who lost)
+                #   • "Wins with X" when it's only 1 win and X is already in an
+                #     upset sentence above — redundant
+                #   • ", and others" appended to a go-to partner — dilutes the story
+                #
+                # DO emit:
+                #   • "Wins reliably with X" (2+ wins with X, no losses with X) —
+                #     reveals a go-to chemistry partner
+                #   • "Loss with X came against stronger pair; loss with Y was
+                #     avoidable" — actionable loss context
+                #   • Partner tiebreak-pattern attribution — cross-player insight
+                #   • "Partner-dependent" signal when wins require a specific carrier
                 _dbl_losses_p = [m for m in losses_this
                                  if _line_type(m["line"]) == "D" and m.get("partner")]
                 _dbl_wins_p   = [m for m in wins_this
@@ -1937,8 +1982,7 @@ def main():
                         _has_s_wins = any(_line_type(m["line"]) == "S" for m in wins_this)
                         _also_solo = " and solo" if _has_s_wins else ""
 
-                        # Distinguish "reliably with X" (partner appears 2+ times)
-                        # from "across a diverse set" (each partner appears once).
+                        # Build win clause — no "and others" appended
                         from collections import Counter as _WinPtrCnt
                         _win_ptr_counts = _WinPtrCnt(m["partner"] for m in _dbl_wins_p)
                         _repeated_win_ptrs = [p for p, c in _win_ptr_counts.items()
@@ -1948,40 +1992,27 @@ def main():
                         )
 
                         if _diverse_wins:
-                            # Wins spread across many different partners — the signal is
-                            # versatility, not a specific chemistry. List partners briefly.
                             _wp_first = sorted(_unique_to_wins, key=lambda p: p.split()[-1])
                             _wp_str = "/".join(p.split()[0] for p in _wp_first)
                             _win_clause = f"across a range of partners ({_wp_str}{_also_solo})"
                         elif _repeated_win_ptrs:
-                            # Has a go-to partner(s) with multiple wins
+                            # Go-to partner — name them without "and others"
                             _rp_str = "/".join(p.split()[0] for p in sorted(_repeated_win_ptrs))
-                            _also_others = (f", and others" if len(_unique_to_wins) > len(_repeated_win_ptrs)
-                                            else "")
-                            _win_clause = f"reliably with {_rp_str}{_also_others}{_also_solo}"
+                            _win_clause = f"reliably with {_rp_str}{_also_solo}"
                         else:
                             _wp_str = "/".join(p.split()[0] for p in sorted(_unique_to_wins))
                             _win_clause = f"with {_wp_str}{_also_solo}"
 
-                        # Characterise each loss side separately when they tell different stories.
-                        # A loss vs clearly stronger opponents (high opp_avg) is legitimate;
-                        # a loss vs peers is the avoidable one.
-                        # This is independent of the win-clause framing above.
-                        _loss_count_word = ("both" if _n_dbl_l == 2
-                                            else "all three" if _n_dbl_l == 3
-                                            else f"all {_n_dbl_l}")
+                        # Loss context — only emit when it conveys insight
                         if _n_dbl_l == 2:
                             _dl_sorted = sorted(_dbl_losses_p, key=lambda m: -(m.get("opp_avg") or 0))
-                            _strong_loss = _dl_sorted[0]  # higher opp_avg = stronger opponents
+                            _strong_loss = _dl_sorted[0]
                             _weak_loss   = _dl_sorted[1]
                             _sl_opp = _strong_loss.get("opp_avg") or 0
                             _wl_opp = _weak_loss.get("opp_avg")   or 0
-                            # Compare losses to each other, not vs player's current rating
-                            # (current rating inflates after upsets; original bl is more stable).
-                            # Split characterisation when the two losses faced notably different
-                            # opponent strengths (>= 0.06 gap between the two opp_avgs).
                             if _sl_opp - _wl_opp >= 0.06:
-                                # Two losses with clearly different opponent strengths — split them
+                                # Two losses with clearly different contexts — name the contrast.
+                                # This is genuinely insightful: one loss is legitimate, one is avoidable.
                                 _sl_ptr = _strong_loss["partner"].split()[0]
                                 _wl_ptr = _weak_loss["partner"].split()[0]
                                 parts.append(
@@ -1990,9 +2021,8 @@ def main():
                                     f"loss with {_wl_ptr} was the avoidable one."
                                 )
                             else:
-                                # Opponent strengths are similar — check if one loss partner
-                                # has a documented tiebreak-loss pattern (cross-player signal).
-                                _lp_str = "/".join(p.split()[0] for p in sorted(_unique_to_losses))
+                                # Opponent strengths are similar — only emit if there's a
+                                # cross-player tiebreak-loss pattern worth noting.
                                 _pattern_ptr = None
                                 for _lm in _dbl_losses_p:
                                     _lptr = _lm.get("partner")
@@ -2005,10 +2035,6 @@ def main():
                                         _pattern_ptr = _lptr.split()[0]
                                         break
                                 if _pattern_ptr:
-                                    # One loss partner has their own documented tiebreak-loss
-                                    # pattern — that loss says more about the partner than this player.
-                                    # Suppress the "other loss" clause if it's already named
-                                    # in a prior parts sentence (e.g. surprising_losses).
                                     _other_ptr = next(
                                         (m["partner"].split()[0] for m in _dbl_losses_p
                                          if m.get("partner") and m["partner"].split()[0] != _pattern_ptr),
@@ -2025,43 +2051,34 @@ def main():
                                         f"Loss with {_pattern_ptr} fits {_pattern_ptr}'s "
                                         f"tiebreak-loss pattern{_other_clause}."
                                     )
-                                else:
-                                    # Only claim "all N losses came with X" if it's actually
-                                    # true — count losses that are with unique-to-loss partners.
-                                    _losses_with_unique = sum(
-                                        1 for m in _dbl_losses_p
-                                        if m["partner"] in _unique_to_losses
-                                    )
-                                    if _losses_with_unique == _n_dbl_l:
-                                        parts.append(
-                                            f"Wins {_win_clause}; "
-                                            f"{_loss_count_word} doubles losses came with {_lp_str}."
-                                        )
-                                    else:
-                                        # Some losses were with shared partners (who also won).
-                                        # Phrase as "N of M losses came with X" to stay accurate.
-                                        parts.append(
-                                            f"Wins {_win_clause}; "
-                                            f"{_losses_with_unique} of {_n_dbl_l} "
-                                            f"doubles losses came with {_lp_str}."
-                                        )
+                                elif _repeated_win_ptrs:
+                                    # Has a clear go-to partner — emit the win story.
+                                    # Skip the loss-partner naming (not insightful without a "why").
+                                    parts.append(f"Wins {_win_clause}.")
+                                # else: nothing insightful to say — skip entirely
                         else:
-                            _lp_str = "/".join(p.split()[0] for p in sorted(_unique_to_losses))
-                            _losses_with_unique = sum(
-                                1 for m in _dbl_losses_p
-                                if m["partner"] in _unique_to_losses
-                            )
-                            if _losses_with_unique == _n_dbl_l:
+                            # 3+ losses — only emit if there's a tiebreak-loss pattern to cite.
+                            # Naming who all the loss partners are is a data dump.
+                            _pattern_ptr = None
+                            for _lm in _dbl_losses_p:
+                                _lptr = _lm.get("partner")
+                                if not _lptr: continue
+                                _lptr_key = _name_key(_lptr)
+                                _lptr_matches = this_data["matches_by_player"].get(_lptr_key, [])
+                                _lptr_tb_losses = [m for m in _lptr_matches
+                                                   if not m["won"] and _is_tiebreak(m)]
+                                if len(_lptr_tb_losses) >= 3:
+                                    _pattern_ptr = _lptr.split()[0]
+                                    break
+                            if _pattern_ptr:
                                 parts.append(
-                                    f"Wins {_win_clause}; "
-                                    f"{_loss_count_word} doubles losses came with {_lp_str}."
+                                    f"Wins {_win_clause}. "
+                                    f"Loss with {_pattern_ptr} fits {_pattern_ptr}'s "
+                                    f"tiebreak-loss pattern."
                                 )
-                            else:
-                                parts.append(
-                                    f"Wins {_win_clause}; "
-                                    f"{_losses_with_unique} of {_n_dbl_l} "
-                                    f"doubles losses came with {_lp_str}."
-                                )
+                            elif _repeated_win_ptrs:
+                                # Only the win story is interesting — skip loss-partner detail
+                                parts.append(f"Wins {_win_clause}.")
 
                 # Tiebreak-loss pattern: 3+ tiebreak losses is a distinct story —
                 # signals inability to close tight matches and that it hurts partner records.
