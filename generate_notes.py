@@ -440,41 +440,64 @@ def _resolve_line_sides(ln: dict, match: dict, team_by_name: dict):
 
     # Detect scorecard swap: if majority of players_home names belong to
     # the away team, the columns are swapped.
+    # Cross-listed players (membership in BOTH teams) abstain rather than
+    # voting for home — the old if/elif made them always vote home_votes.
     home_votes = away_votes = 0
     for pn in [x.strip() for x in ph.split("/") if x.strip()]:
         pt_set = team_by_name.get(_name_key(pn)) or set()
         if isinstance(pt_set, str):
             pt_set = {pt_set}
-        if home_team in pt_set:
+        has_home = home_team in pt_set
+        has_away = away_team in pt_set
+        if has_home and not has_away:
             home_votes += 1
-        elif away_team in pt_set:
+        elif has_away and not has_home:
             away_votes += 1
+        # else: cross-listed or unknown → abstain
 
-    # Tie-break: when home/away votes are equal (common with cross-listed players
-    # who appear in both teams), use winner_team / loser_team from the line data
-    # to determine the correct column assignment.
-    if home_votes == away_votes and home_votes > 0:
+    # Tie-break: when votes are equal (including 0-0 from cross-listed players),
+    # use winner_team / loser_team + result consistency to decide.
+    # For each unambiguous player in either column: +1 if their column placement
+    # is consistent with a no-swap interpretation, -1 if it contradicts it.
+    # Negative total → columns are swapped.
+    if home_votes == away_votes:
         wt_field = ln.get("winner_team", "")
         lt_field = ln.get("loser_team", "")
         if wt_field and lt_field:
-            # Count how many players_home names map to the line's winner/loser teams.
             wt_upper = wt_field.strip().upper()
             lt_upper = lt_field.strip().upper()
-            wt_home_votes = lt_home_votes = 0
+            result_consistent_votes = 0
+            # Home column: in a no-swap world, home col = home_team players
             for pn in [x.strip() for x in ph.split("/") if x.strip()]:
                 pt_set = team_by_name.get(_name_key(pn)) or set()
                 if isinstance(pt_set, str):
                     pt_set = {pt_set}
                 pt_upper = {t.upper() for t in pt_set}
-                if wt_upper in pt_upper:
-                    wt_home_votes += 1
-                if lt_upper in pt_upper:
-                    lt_home_votes += 1
-            # If more home-column players belong to the line's loser_team than
-            # winner_team, the columns are swapped.
-            if lt_home_votes > wt_home_votes:
+                has_wt = wt_upper in pt_upper
+                has_lt = lt_upper in pt_upper
+                if has_wt and not has_lt:
+                    # Winner in home col → consistent iff result=="home"
+                    result_consistent_votes += (1 if result == "home" else -1)
+                elif has_lt and not has_wt:
+                    # Loser in home col → consistent iff result=="away"
+                    result_consistent_votes += (1 if result == "away" else -1)
+            # Away column: in a no-swap world, away col = away_team players
+            for pn in [x.strip() for x in pa.split("/") if x.strip()]:
+                pt_set = team_by_name.get(_name_key(pn)) or set()
+                if isinstance(pt_set, str):
+                    pt_set = {pt_set}
+                pt_upper = {t.upper() for t in pt_set}
+                has_wt = wt_upper in pt_upper
+                has_lt = lt_upper in pt_upper
+                if has_wt and not has_lt:
+                    # Winner in away col → consistent iff result=="away"
+                    result_consistent_votes += (1 if result == "away" else -1)
+                elif has_lt and not has_wt:
+                    # Loser in away col → consistent iff result=="home"
+                    result_consistent_votes += (1 if result == "home" else -1)
+            if result_consistent_votes < 0:
                 away_votes = home_votes + 1   # force swap
-            elif wt_home_votes > lt_home_votes:
+            elif result_consistent_votes > 0:
                 home_votes = away_votes + 1   # force no swap
 
     is_swapped = away_votes > home_votes
