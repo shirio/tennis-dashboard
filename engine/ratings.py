@@ -1434,12 +1434,20 @@ def _compute_earned_doubles(
 def _compute_global_sequential(
     court_events: list[CourtEvent],
     baselines: dict[str, float],
-) -> dict[str, float]:
+) -> tuple[dict[str, float], dict[str, dict[str, dict[str, float]]]]:
     """
     Compute global ratings by processing all court lines in chronological order,
     treating all divisions as one pool. Opponent strength at each step uses
     the running global rating (not the frozen baseline), so earlier results
     inform later ones.
+
+    Returns:
+        (global_r, global_timeline) where:
+          global_r:        {player_key: final_rating}
+          global_timeline: {player_key: {division: {date: pre_match_rating}}}
+                           Records the running global rating going INTO each match.
+                           Split by division so the results tab can display correct
+                           point-in-time ratings per division page.
 
     Applies Levers 1-6 in the unified pass:
       • L1/L2 — embedded in _sequential_match_adj (per-match line/partner mult)
@@ -1488,9 +1496,23 @@ def _compute_global_sequential(
     # Their unified rating is currently inflated by the lower-div success.
     wl_by_div: dict[str, dict[str, list[int]]] = {}   # pk -> div -> [w, l]
 
+    # Timeline: global running rating going INTO each match, split by division.
+    # Used by the HTML results tab to show accurate point-in-time ratings.
+    # setdefault(date, ...) ensures same-day multi-match players record the
+    # rating before their FIRST match that day (not after each intermediate match).
+    global_timeline: dict[str, dict[str, dict[str, float]]] = {}   # pk->div->{date:rating}
+
     for ev in sorted(court_events, key=_date_sort_key):
         all_keys = ev.winner_keys + ev.loser_keys
         cur = {k: global_r.get(k, baselines.get(k, ntrp_default(""))) for k in all_keys}
+
+        # Record pre-match snapshot for each known player before any updates
+        for pk in all_keys:
+            if pk in baselines:
+                (global_timeline
+                 .setdefault(pk, {})
+                 .setdefault(ev.division, {})
+                 .setdefault(ev.date, round(cur[pk], 4)))
 
         updates: dict[str, float] = {}
 
@@ -1613,7 +1635,7 @@ def _compute_global_sequential(
         if adj_total != 0:
             global_r[pk] = round(global_r.get(pk, baseline) + adj_total, 4)
 
-    return global_r
+    return global_r, global_timeline
 
 
 # ---------------------------------------------------------------------------
@@ -1689,7 +1711,7 @@ def run_ratings() -> RatingsSummary:
     )
 
     # --- Global sequential (cross-division base blend) ---
-    global_sequential = _compute_global_sequential(court_events, baselines_all)
+    global_sequential, global_timeline = _compute_global_sequential(court_events, baselines_all)
 
     # --- Lever 3: singles-anchored cross-division reconciliation ---
     # Compute singles-only and doubles-only sequential ratings, then apply
@@ -1701,8 +1723,8 @@ def run_ratings() -> RatingsSummary:
     #   • within 0.15 → blend
     singles_events = [ev for ev in court_events if "Singles" in ev.line_label]
     doubles_events = [ev for ev in court_events if "Doubles" in ev.line_label]
-    singles_only_rating = _compute_global_sequential(singles_events, baselines_all)
-    doubles_only_rating = _compute_global_sequential(doubles_events, baselines_all)
+    singles_only_rating, _ = _compute_global_sequential(singles_events, baselines_all)
+    doubles_only_rating, _ = _compute_global_sequential(doubles_events, baselines_all)
     earned_doubles_set = _compute_earned_doubles(court_events, baselines_all)
 
     # Apply reconciliation as a post-pass adjustment to global_sequential
@@ -1732,8 +1754,15 @@ def run_ratings() -> RatingsSummary:
         d_delta = d - bl
         gap = s_delta - d_delta   # >0 means singles signal stronger
         if gap > _RECONCILE_GAP:
-            # Singles much stronger → anchor up (Prexy)
-            global_sequential[pk] = round(bl + s_delta, 4)
+            # Singles much stronger than doubles → anchor up ONLY if singles
+            # signal is genuinely positive (s_delta > 0.08).  Without this
+            # gate, a player who wins all their (easy) singles matches while
+            # losing their (hard) doubles matches triggers the upward anchor
+            # from a near-zero s_delta — inflating their rating for noise.
+            # Prexy (s_delta ≈ +0.17): passes.  Kim Springer (s_delta ≈ +0.02,
+            # 3 easy wins over sub-2.6 opponents): blocked.
+            if s_delta > 0.08:
+                global_sequential[pk] = round(bl + s_delta, 4)
         elif gap < -_RECONCILE_GAP:
             # Doubles much stronger → only preserve if earned
             if pk not in earned_doubles_set:
@@ -1838,9 +1867,12 @@ def run_ratings() -> RatingsSummary:
         has_35 = any(m.division == "3.5" for m in matches)
         player["rating_30"] = unified if has_30 else baseline
         player["rating_35"] = unified if has_35 else baseline
-        # Timelines still show per-division evolution (display context)
-        player["rating_timeline_30"] = seq_30_timeline.get(k, {})
-        player["rating_timeline_35"] = seq_35_timeline.get(k, {})
+        # Timelines show global sequential running values going into each match,
+        # split by division. These reflect running opponent ratings (not frozen
+        # baselines), so the results tab shows accurate point-in-time ratings.
+        _gtl = global_timeline.get(k, {})
+        player["rating_timeline_30"] = _gtl.get("3.0", {})
+        player["rating_timeline_35"] = _gtl.get("3.5", {})
 
         # current_division_rating = unified (their one true rating)
         player["current_division_rating"] = unified
