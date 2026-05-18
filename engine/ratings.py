@@ -1480,6 +1480,12 @@ def _compute_global_sequential(
     # Lever 6 — deployment tracker (per-division because tier semantics differ)
     line_deployment: dict[str, dict[str, dict[str, int]]] = {}   # pk -> div -> {line: n}
 
+    # Lever 5b — per-division W-L for "struggling-in-higher-division" detection.
+    # Tracks W-L per division so we can detect the Anna Clark / Leticia pattern:
+    # cross-listed player who dominates lower division but loses in higher one.
+    # Their unified rating is currently inflated by the lower-div success.
+    wl_by_div: dict[str, dict[str, list[int]]] = {}   # pk -> div -> [w, l]
+
     for ev in sorted(court_events, key=_date_sort_key):
         all_keys = ev.winner_keys + ev.loser_keys
         cur = {k: global_r.get(k, baselines.get(k, ntrp_default(""))) for k in all_keys}
@@ -1517,6 +1523,7 @@ def _compute_global_sequential(
                     _us["opp_n"] += 1
             _div_dep = line_deployment.setdefault(pk, {}).setdefault(ev.division, {})
             _div_dep[ev.line_label] = _div_dep.get(ev.line_label, 0) + 1
+            wl_by_div.setdefault(pk, {}).setdefault(ev.division, [0, 0])[0] += 1
 
         # --- Losers ---
         for pk in ev.loser_keys:
@@ -1543,6 +1550,7 @@ def _compute_global_sequential(
             _us["total"] += 1
             _div_dep = line_deployment.setdefault(pk, {}).setdefault(ev.division, {})
             _div_dep[ev.line_label] = _div_dep.get(ev.line_label, 0) + 1
+            wl_by_div.setdefault(pk, {}).setdefault(ev.division, [0, 0])[1] += 1
 
         global_r.update(updates)
 
@@ -1572,6 +1580,32 @@ def _compute_global_sequential(
                 adj_total += _BOTTOM_LOCK_PENALTY
         if adj_total != 0:
             global_r[pk] = round(global_r.get(pk, baseline) + adj_total, 4)
+
+    # Lever 5b post-pass — cross-division ceiling for struggling-in-higher-div.
+    # Pattern: cross-listed player who wins in lower division but loses in
+    # higher. Their unified rating is currently inflated by the lower-div
+    # success — cap it to baseline + 0.15 so they sit at the right
+    # "wins in lower, loses in higher" zone (the Anna Clark / Leticia profile).
+    _STRUGGLE_MIN_MATCHES = 4
+    _STRUGGLE_WIN_RATE = 0.30
+    _STRUGGLE_CAP_DELTA = 0.15
+    # Higher division = the one with higher floor
+    for pk, divs in wl_by_div.items():
+        if len(divs) < 2:
+            continue   # not cross-listed
+        baseline = baselines.get(pk, 0)
+        higher_div = max(divs.keys(),
+                         key=lambda d: _DIV_FLOOR.get(d, 0))
+        w, l = divs[higher_div]
+        n = w + l
+        if n < _STRUGGLE_MIN_MATCHES:
+            continue
+        if w / n >= _STRUGGLE_WIN_RATE:
+            continue
+        # Player struggles in higher division — cap unified rating.
+        cap = baseline + _STRUGGLE_CAP_DELTA
+        if global_r.get(pk, baseline) > cap:
+            global_r[pk] = round(cap, 4)
 
     return global_r
 
