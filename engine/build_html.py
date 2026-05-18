@@ -499,7 +499,7 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
                     f"<td>{_esc(ntrp_r)}</td>"
                     f"<td>{_esc(_fmt_rating(baseline))}</td>"
                     f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
-                    f"<td>{_esc(str(wl))}</td>"
+                    f"<td style='white-space:nowrap'>{_esc(str(wl))}</td>"
                     f"<td>{_lines_pills_html(lines)}</td>"
                     f"<td class='notes-cell'>{pnotes}</td>"
                     f"</tr>\n"
@@ -592,7 +592,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
             f"<td>{_esc(_fmt_rating(baseline))}</td>"
             f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
             f"<td data-sort='{_diff_sort}'>{_diff_html}</td>"
-            f"<td data-sort='{_wl_sort}'>{_esc(_wl_str)}</td>"
+            f"<td data-sort='{_wl_sort}' style='white-space:nowrap'>{_esc(_wl_str)}</td>"
             f"</tr>\n"
         )
     return f"""
