@@ -53,6 +53,69 @@ _LINE_TIER: dict[str, float] = {
     "2# Singles": 4.0, "2# Doubles": 3.0,
     "3# Doubles": 1.5,
 }
+
+# Lever 1 — Per-match line-difficulty weighting.
+# Replaces the old flat singles 1.25× multiplier. A win at S1 against a real
+# opponent says more about your skill than a 3rd-doubles closeout win against
+# a weaker pair. The multipliers below scale each match's adjustment.
+# Singles still gets a small lift over equivalent doubles line because of
+# its cleaner 1v1 signal, but doubles top lines now get rewarded too.
+_LINE_DIFFICULTY_MULT: dict[str, float] = {
+    "1# Singles": 1.30,
+    "1# Doubles": 1.20,
+    "2# Singles": 1.15,
+    "2# Doubles": 1.00,
+    "3# Doubles": 0.70,
+}
+_LINE_DIFFICULTY_DEFAULT = 1.0
+
+# Lever 2 — Partner-asymmetric credit in doubles.
+# When a doubles team's partner-gap (|player − partner|) is large, the credit/
+# blame should be redistributed: a strong player who wins alongside a weaker
+# partner gets MORE credit (carrying signal); the weaker partner gets LESS
+# (they were carried). Inverse for losses: the stronger player takes LESS
+# blame because the loss was partially their partner's contribution.
+#
+# Parameters:
+#   gap_threshold:  ratings gap below which no asymmetry is applied (0.20)
+#   gap_ceiling:    gap at which the multiplier hits its extreme (0.50)
+#                   = threshold + 0.30 (linear ramp over that range)
+#   win_boost:      max multiplier for stronger partner in a win   (+0.40)
+#   win_damp:       symmetric dampen for weaker partner in a win   (−0.40)
+#   loss_dampen:    multiplier scale-down for stronger partner's blame in a loss (0.30)
+#                   → stronger pays 0.7× of normal at full ramp
+#   loss_amplify:   multiplier scale-up for weaker partner's blame  (+0.30)
+#                   → weaker pays 1.3× of normal at full ramp
+_PARTNER_GAP_THRESHOLD = 0.20
+_PARTNER_GAP_CEILING = 0.50
+_PARTNER_WIN_BOOST = 0.40
+_PARTNER_WIN_DAMP = 0.40
+_PARTNER_LOSS_DAMPEN = 0.30
+_PARTNER_LOSS_AMPLIFY = 0.30
+
+
+def _partner_mult(player_r: float, partner_r: Optional[float], won: bool) -> float:
+    """Compute the Lever 2 partner-asymmetric multiplier for a doubles match.
+
+    Returns 1.0 for singles (partner_r is None) or when the partner-gap is
+    below threshold. Otherwise scales linearly between threshold and ceiling.
+    """
+    if partner_r is None or player_r is None:
+        return 1.0
+    gap = abs(player_r - partner_r)
+    if gap < _PARTNER_GAP_THRESHOLD:
+        return 1.0
+    ramp = min(1.0, (gap - _PARTNER_GAP_THRESHOLD)
+               / (_PARTNER_GAP_CEILING - _PARTNER_GAP_THRESHOLD))
+    is_stronger = player_r > partner_r
+    if won:
+        if is_stronger:
+            return 1.0 + _PARTNER_WIN_BOOST * ramp     # up to 1.40×
+        return 1.0 - _PARTNER_WIN_DAMP * ramp          # down to 0.60×
+    # Loss
+    if is_stronger:
+        return 1.0 - _PARTNER_LOSS_DAMPEN * ramp       # down to 0.70× (less blame)
+    return 1.0 + _PARTNER_LOSS_AMPLIFY * ramp          # up to 1.30× (more blame)
 # Division rating floor (approx lowest dynamic baseline in each division)
 _DIV_FLOOR: dict[str, float] = {"3.0": 2.50, "3.5": 3.00}
 
@@ -452,10 +515,6 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
 
     adj = surprise * scaling
 
-    # Singles is a cleaner 1v1 signal — amplify slightly before capping
-    if record.partner_rating is None:
-        adj *= 1.25
-
     adj = max(-cap, min(cap, adj))
 
     # Directional enforcement: losses produce negative signals, wins positive.
@@ -518,6 +577,17 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     # 0.30 → max ≈ 0.045; at surplus=0.068 (Julie's case): penalty ≈ 0.025
     _BELOW_GATE_SCALE = 0.30
 
+    # Lever 1 — per-match line-difficulty multiplier applied to the FINAL output
+    # (after caps), so a D3 win moves you less and an S1 win moves you more.
+    line_mult = _LINE_DIFFICULTY_MULT.get(record.line_label, _LINE_DIFFICULTY_DEFAULT)
+    # Lever 2 — partner-asymmetric credit. The carrier gets more credit;
+    # the carried partner gets less. For losses, the stronger partner takes
+    # less blame.
+    partner_mult = _partner_mult(current_rating, record.partner_rating, record.won)
+
+    def _scale(x: float) -> float:
+        return x * line_mult * partner_mult
+
     if record.won and adj > 0:
         expected = _cross_pair_expected(
             current_rating, record.partner_rating, record.opponent_ratings
@@ -532,7 +602,7 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
                 # A slight negative — "you won, but performed at the opponents'
                 # level rather than your own" — proportional to the shortfall.
                 penalty = (_MIN_WIN_SURPRISE - surplus) * _BELOW_GATE_SCALE
-                return -penalty
+                return _scale(-penalty)
         # Cleared the gate: scale win cap by how unexpected the win was.
         #
         # Heavy underdogs (expected < 0.30 — win prob ≤ 25%): linear
@@ -557,7 +627,7 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
             win_cap = _SEQ_CAP * (1.0 - expected)
         else:
             win_cap = _SEQ_CAP * (1.0 - expected) ** 2
-        return min(win_cap, adj)
+        return _scale(min(win_cap, adj))
 
     # Loss path.
     if not record.won:
@@ -572,14 +642,14 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
                 win_cap = _SEQ_CAP * (1.0 - expected)
             else:
                 win_cap = _SEQ_CAP * (1.0 - expected) ** 2
-            return min(win_cap, adj)
+            return _scale(min(win_cap, adj))
         # Normal loss: cap proportional to expected² so heavy underdogs are
         # barely penalised and favourites are appropriately penalised.
         loss_cap = _SEQ_CAP * expected ** 2
-        return max(-loss_cap, adj)
+        return _scale(max(-loss_cap, adj))
 
     # Win with negative adj (underperformed but won): flat clip — rare, keep small.
-    return max(-_SEQ_CAP, min(_SEQ_CAP, adj))
+    return _scale(max(-_SEQ_CAP, min(_SEQ_CAP, adj)))
 
 
 # ---------------------------------------------------------------------------
@@ -1123,6 +1193,52 @@ def _compute_division_sequential(
     # pre_match_timeline[player_key][date] = rating going INTO that date
     pre_match: dict[str, dict[str, float]] = {}
 
+    # Lever 4 — detect "high-confidence under-rating" pattern per player.
+    # Tracks running W-L and opponent quality. Criteria (all must hold):
+    #   ≥3 matches; ≥65% win rate; avg opp baseline ≥ player baseline.
+    # Once detected, the per-match adj is doubled (cap effectively lifts to
+    # 0.30 from 0.15). Targets Lippisch (BL 2.18, beats real 3.0s) and
+    # Arika (BL 3.16, dominates her 3.5 opponents).
+    _UNDERRATED_MIN_MATCHES = 3
+    _UNDERRATED_WIN_RATE = 0.65
+    _UNDERRATED_OPP_GAP = 0.0   # just require opp ≥ baseline (not lower-tier)
+    underrated_stats: dict[str, dict] = {}   # pk -> {wins, total, opp_sum, opp_n}
+
+    def _is_underrated(pk: str) -> bool:
+        s = underrated_stats.get(pk)
+        if not s or s["total"] < _UNDERRATED_MIN_MATCHES:
+            return False
+        if s["wins"] / s["total"] < _UNDERRATED_WIN_RATE:
+            return False
+        if s["opp_n"] == 0:
+            return False
+        avg_opp = s["opp_sum"] / s["opp_n"]
+        player_bl = baselines.get(pk, 0)
+        return avg_opp >= player_bl + _UNDERRATED_OPP_GAP
+
+    # Lever 6 — coach-trust line-deployment tracking.
+    # We track each player's line distribution; after all matches a post-pass
+    # rewards consistent top-line deployment (S1/D1) and penalizes D3-lock
+    # for players whose baseline is high enough to expect better.
+    line_deployment: dict[str, dict[str, int]] = {}   # pk -> {line_label: count}
+
+    # Lever 5 — chronic-loser positive-move ceiling.
+    # Track running W-L per player IN THIS DIVISION. Once a player has ≥3
+    # matches and <30% win rate, any further LOSSES in this division cannot
+    # contribute a positive adj (games-stolen-via-strong-partner inflation).
+    # Wins still count normally — a chronic loser who actually wins gets the
+    # full upside signal.
+    _CHRONIC_MIN_MATCHES = 3
+    _CHRONIC_WIN_RATE_CEILING = 0.30
+    wl_counts: dict[str, list[int]] = {}   # pk -> [wins, losses]
+
+    def _is_chronic_loser(pk: str) -> bool:
+        w, l = wl_counts.get(pk, (0, 0))[0], wl_counts.get(pk, (0, 0))[1]
+        n = w + l
+        if n < _CHRONIC_MIN_MATCHES:
+            return False
+        return (w / n) < _CHRONIC_WIN_RATE_CEILING
+
     for date in dates_sorted:
         today = events_by_date[date]
 
@@ -1166,7 +1282,28 @@ def _compute_division_sequential(
                 )
                 prev = updates.get(pk, snap[pk])
                 adj = _sequential_match_adj(prev, rec)
+                # Lever 4 — underrated-player aggressive uplift.
+                # If pattern detected, scale up the adj by 2× (effectively
+                # raising the seq cap from 0.15 → 0.30 for this match only).
+                if adj > 0 and _is_underrated(pk):
+                    adj = min(adj * 2.0, 0.30)
                 updates[pk] = round(prev + adj, 4)
+                # Lever 5 W-L bookkeeping
+                wl_counts.setdefault(pk, [0, 0])[0] += 1
+                # Lever 6 deployment bookkeeping
+                _dep = line_deployment.setdefault(pk, {})
+                _dep[ev.line_label] = _dep.get(ev.line_label, 0) + 1
+                # Lever 4 bookkeeping (winners): record opp baselines
+                _us = underrated_stats.setdefault(pk, {
+                    "wins": 0, "total": 0, "opp_sum": 0.0, "opp_n": 0
+                })
+                _us["wins"] += 1
+                _us["total"] += 1
+                for ok in ev.loser_keys:
+                    _opp_bl = baselines.get(ok)
+                    if _opp_bl is not None:
+                        _us["opp_sum"] += _opp_bl
+                        _us["opp_n"] += 1
 
             # --- Losers ---
             for pk in ev.loser_keys:
@@ -1182,11 +1319,114 @@ def _compute_division_sequential(
                 )
                 prev = updates.get(pk, snap[pk])
                 adj = _sequential_match_adj(prev, rec)
+                # Lever 5 — chronic loser: block positive contributions from
+                # *losses* (games-stolen narrow-loss signals). Real wins still
+                # count above; only positive adj from losses is suppressed.
+                if adj > 0 and _is_chronic_loser(pk):
+                    adj = 0.0
                 updates[pk] = round(prev + adj, 4)
+                # Lever 5 W-L bookkeeping
+                wl_counts.setdefault(pk, [0, 0])[1] += 1
+                # Lever 6 deployment bookkeeping
+                _dep = line_deployment.setdefault(pk, {})
+                _dep[ev.line_label] = _dep.get(ev.line_label, 0) + 1
+                # Lever 4 bookkeeping (losers): only update total count
+                _us = underrated_stats.setdefault(pk, {
+                    "wins": 0, "total": 0, "opp_sum": 0.0, "opp_n": 0
+                })
+                _us["total"] += 1
 
         running.update(updates)
 
+    # Lever 6 post-pass — coach-trust deployment signal.
+    # Looking at each player's full-season line distribution:
+    #   • ≥75% at top lines (S1 or D1) and ≥3 matches → +0.04 (coach trust)
+    #   • ≥75% at D3 and ≥3 matches and baseline justifies higher → −0.03
+    #     (D3 lock despite skill baseline = signal of weaker actual ability)
+    _TOP_LINES = {"1# Singles", "1# Doubles"}
+    _BOTTOM_LINES = {"3# Doubles"}
+    _TOP_LOCK_FRAC = 0.75
+    _BOTTOM_LOCK_FRAC = 0.75
+    _TOP_LOCK_BONUS = 0.04
+    _BOTTOM_LOCK_PENALTY = -0.03
+    _BOTTOM_LOCK_BL_THRESHOLD = 0.30   # above div_floor + 0.30 → eligible for penalty
+
+    div_floor = _DIV_FLOOR.get(division, 2.50)
+    for pk, dist in line_deployment.items():
+        total = sum(dist.values())
+        if total < 3:
+            continue
+        top_frac = sum(dist.get(l, 0) for l in _TOP_LINES) / total
+        bot_frac = sum(dist.get(l, 0) for l in _BOTTOM_LINES) / total
+        baseline = baselines.get(pk, 0)
+        if top_frac >= _TOP_LOCK_FRAC:
+            running[pk] = round(running.get(pk, baseline) + _TOP_LOCK_BONUS, 4)
+        elif bot_frac >= _BOTTOM_LOCK_FRAC and baseline >= div_floor + _BOTTOM_LOCK_BL_THRESHOLD:
+            running[pk] = round(running.get(pk, baseline) + _BOTTOM_LOCK_PENALTY, 4)
+
     return running, pre_match
+
+
+def _compute_earned_doubles(
+    court_events: list[CourtEvent],
+    baselines: dict[str, float],
+) -> set[str]:
+    """Lever 3 — flag players whose doubles record is *earned*, not partner-inflated.
+
+    Criteria (any one qualifies):
+      1. ≥ 3 doubles wins AND avg opp baseline in those wins ≥ player_bl − 0.05
+         (won against opponents at or above the player's own level)
+      2. ≥ 3 different doubles partners AND won with ≥ 2 of them
+         (success doesn't depend on one specific strong partner)
+
+    Used to decide whether a doubles-favored rating should be preserved
+    (Tina/Irene case) or overridden by the singles-anchor (Lisa case).
+    """
+    from collections import defaultdict
+
+    win_counts: dict[str, int] = defaultdict(int)
+    opp_bl_sum: dict[str, float] = defaultdict(float)
+    opp_bl_n: dict[str, int] = defaultdict(int)
+    win_partners: dict[str, set[str]] = defaultdict(set)
+    partners_seen: dict[str, set[str]] = defaultdict(set)
+
+    for ev in court_events:
+        if "Doubles" not in ev.line_label:
+            continue
+        # Track partners across all doubles matches (wins or losses)
+        if len(ev.winner_keys) >= 2:
+            for pk in ev.winner_keys:
+                other = [k for k in ev.winner_keys if k != pk]
+                if other:
+                    partners_seen[pk].add(other[0])
+                    win_partners[pk].add(other[0])
+            for pk in ev.loser_keys:
+                other = [k for k in ev.loser_keys if k != pk]
+                if other:
+                    partners_seen[pk].add(other[0])
+            # Accumulate win stats
+            for pk in ev.winner_keys:
+                win_counts[pk] += 1
+                for ok in ev.loser_keys:
+                    bl = baselines.get(ok)
+                    if bl is not None:
+                        opp_bl_sum[pk] += bl
+                        opp_bl_n[pk] += 1
+
+    earned: set[str] = set()
+    for pk, w in win_counts.items():
+        if w < 3:
+            continue
+        player_bl = baselines.get(pk, 0)
+        avg_opp_bl = opp_bl_sum[pk] / opp_bl_n[pk] if opp_bl_n[pk] > 0 else 0
+        cond_quality = avg_opp_bl >= player_bl - 0.05
+        cond_partners = (
+            len(partners_seen.get(pk, set())) >= 3
+            and len(win_partners.get(pk, set())) >= 2
+        )
+        if cond_quality or cond_partners:
+            earned.add(pk)
+    return earned
 
 
 def _compute_global_sequential(
@@ -1198,19 +1438,54 @@ def _compute_global_sequential(
     treating all divisions as one pool. Opponent strength at each step uses
     the running global rating (not the frozen baseline), so earlier results
     inform later ones.
-    """
 
+    Applies Levers 1-6 in the unified pass:
+      • L1/L2 — embedded in _sequential_match_adj (per-match line/partner mult)
+      • L4 — underrated-player aggressive uplift (≥3 matches, ≥65% wr, opp≥bl)
+      • L5 — chronic-loser positive-move ceiling (≥3 matches, <30% wr)
+      • L6 — coach-trust deployment post-pass (top-line bonus, D3-lock penalty)
+    """
     global_r: dict[str, float] = dict(baselines)
 
-    for ev in sorted(court_events, key=_date_sort_key):  # module-level _date_sort_key
+    # Lever 4 — underrated pattern detector (global scope, cross-division)
+    _UNDERRATED_MIN_MATCHES = 3
+    _UNDERRATED_WIN_RATE = 0.65
+    _UNDERRATED_OPP_GAP = 0.0
+    underrated_stats: dict[str, dict] = {}
+
+    def _is_underrated(pk: str) -> bool:
+        s = underrated_stats.get(pk)
+        if not s or s["total"] < _UNDERRATED_MIN_MATCHES:
+            return False
+        if s["wins"] / s["total"] < _UNDERRATED_WIN_RATE:
+            return False
+        if s["opp_n"] == 0:
+            return False
+        avg_opp = s["opp_sum"] / s["opp_n"]
+        player_bl = baselines.get(pk, 0)
+        return avg_opp >= player_bl + _UNDERRATED_OPP_GAP
+
+    # Lever 5 — chronic-loser tracker (global scope across all matches)
+    _CHRONIC_MIN_MATCHES = 3
+    _CHRONIC_WIN_RATE_CEILING = 0.30
+    wl_counts: dict[str, list[int]] = {}
+
+    def _is_chronic_loser(pk: str) -> bool:
+        w, l = wl_counts.get(pk, [0, 0])
+        n = w + l
+        if n < _CHRONIC_MIN_MATCHES:
+            return False
+        return (w / n) < _CHRONIC_WIN_RATE_CEILING
+
+    # Lever 6 — deployment tracker (per-division because tier semantics differ)
+    line_deployment: dict[str, dict[str, dict[str, int]]] = {}   # pk -> div -> {line: n}
+
+    for ev in sorted(court_events, key=_date_sort_key):
         all_keys = ev.winner_keys + ev.loser_keys
-        # Snapshot current ratings for everyone in this court BEFORE any update
-        # so both sides see consistent pre-match ratings.
         cur = {k: global_r.get(k, baselines.get(k, ntrp_default(""))) for k in all_keys}
 
         updates: dict[str, float] = {}
 
-        # Independent per-player adjustments — no zero-sum coupling.
         # --- Winners ---
         for pk in ev.winner_keys:
             if pk not in baselines:
@@ -1224,7 +1499,24 @@ def _compute_global_sequential(
                 match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
             )
             adj = _sequential_match_adj(cur[pk], rec)
+            # Lever 4: lift cap when underrated pattern detected
+            if adj > 0 and _is_underrated(pk):
+                adj = min(adj * 2.0, 0.30)
             updates[pk] = round(cur[pk] + adj, 4)
+            # Bookkeeping
+            wl_counts.setdefault(pk, [0, 0])[0] += 1
+            _us = underrated_stats.setdefault(pk, {
+                "wins": 0, "total": 0, "opp_sum": 0.0, "opp_n": 0
+            })
+            _us["wins"] += 1
+            _us["total"] += 1
+            for ok in ev.loser_keys:
+                _bl = baselines.get(ok)
+                if _bl is not None:
+                    _us["opp_sum"] += _bl
+                    _us["opp_n"] += 1
+            _div_dep = line_deployment.setdefault(pk, {}).setdefault(ev.division, {})
+            _div_dep[ev.line_label] = _div_dep.get(ev.line_label, 0) + 1
 
         # --- Losers ---
         for pk in ev.loser_keys:
@@ -1239,9 +1531,47 @@ def _compute_global_sequential(
                 match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
             )
             adj = _sequential_match_adj(cur[pk], rec)
+            # Lever 5: chronic loser → block positive bumps from losses
+            if adj > 0 and _is_chronic_loser(pk):
+                adj = 0.0
             updates[pk] = round(cur[pk] + adj, 4)
+            # Bookkeeping
+            wl_counts.setdefault(pk, [0, 0])[1] += 1
+            _us = underrated_stats.setdefault(pk, {
+                "wins": 0, "total": 0, "opp_sum": 0.0, "opp_n": 0
+            })
+            _us["total"] += 1
+            _div_dep = line_deployment.setdefault(pk, {}).setdefault(ev.division, {})
+            _div_dep[ev.line_label] = _div_dep.get(ev.line_label, 0) + 1
 
         global_r.update(updates)
+
+    # Lever 6 post-pass — coach-trust deployment bonus / D3-lock penalty.
+    # Applied per-division (tier semantics differ between 3.0 and 3.5).
+    _TOP_LINES = {"1# Singles", "1# Doubles"}
+    _BOTTOM_LINES = {"3# Doubles"}
+    _TOP_LOCK_FRAC = 0.75
+    _BOTTOM_LOCK_FRAC = 0.75
+    _TOP_LOCK_BONUS = 0.04
+    _BOTTOM_LOCK_PENALTY = -0.03
+    _BOTTOM_LOCK_BL_THRESHOLD = 0.30
+
+    for pk, by_div in line_deployment.items():
+        baseline = baselines.get(pk, 0)
+        adj_total = 0.0
+        for div, dist in by_div.items():
+            total = sum(dist.values())
+            if total < 3:
+                continue
+            top_frac = sum(dist.get(l, 0) for l in _TOP_LINES) / total
+            bot_frac = sum(dist.get(l, 0) for l in _BOTTOM_LINES) / total
+            div_floor = _DIV_FLOOR.get(div, 2.50)
+            if top_frac >= _TOP_LOCK_FRAC:
+                adj_total += _TOP_LOCK_BONUS
+            elif bot_frac >= _BOTTOM_LOCK_FRAC and baseline >= div_floor + _BOTTOM_LOCK_BL_THRESHOLD:
+                adj_total += _BOTTOM_LOCK_PENALTY
+        if adj_total != 0:
+            global_r[pk] = round(global_r.get(pk, baseline) + adj_total, 4)
 
     return global_r
 
@@ -1318,8 +1648,58 @@ def run_ratings() -> RatingsSummary:
         court_events, "3.5", baselines_all, weeks_by_div.get("3.5", 4),
     )
 
-    # --- Global sequential (cross-division, existing approach) ---
+    # --- Global sequential (cross-division base blend) ---
     global_sequential = _compute_global_sequential(court_events, baselines_all)
+
+    # --- Lever 3: singles-anchored cross-division reconciliation ---
+    # Compute singles-only and doubles-only sequential ratings, then apply
+    # asymmetric override:
+    #   • singles > doubles + 0.15  → use singles (Prexy ↗, exposes strong-singles players)
+    #   • doubles > singles + 0.15  → check "earned doubles" badge:
+    #       earned → keep blend (Tina/Irene preserved)
+    #       not earned → use singles-anchor (Lisa ↘, strips partner-inflated rating)
+    #   • within 0.15 → blend
+    singles_events = [ev for ev in court_events if "Singles" in ev.line_label]
+    doubles_events = [ev for ev in court_events if "Doubles" in ev.line_label]
+    singles_only_rating = _compute_global_sequential(singles_events, baselines_all)
+    doubles_only_rating = _compute_global_sequential(doubles_events, baselines_all)
+    earned_doubles_set = _compute_earned_doubles(court_events, baselines_all)
+
+    # Apply reconciliation as a post-pass adjustment to global_sequential
+    _RECONCILE_GAP = 0.15
+    def _has_singles(pk):
+        return any(pk in ev.winner_keys + ev.loser_keys
+                   for ev in singles_events)
+    def _has_doubles(pk):
+        return any(pk in ev.winner_keys + ev.loser_keys
+                   for ev in doubles_events)
+
+    for pk in list(global_sequential.keys()):
+        s = singles_only_rating.get(pk)
+        d = doubles_only_rating.get(pk)
+        bl = baselines_all.get(pk)
+        if bl is None:
+            continue
+        # Only meaningful if player has both kinds of matches
+        if not (_has_singles(pk) and _has_doubles(pk)):
+            continue
+        if s is None or d is None:
+            continue
+        # Compare singles signal vs doubles signal as DELTAS from baseline,
+        # not raw values — divisional levels differ so absolute comparison
+        # isn't apples-to-apples.
+        s_delta = s - bl
+        d_delta = d - bl
+        gap = s_delta - d_delta   # >0 means singles signal stronger
+        if gap > _RECONCILE_GAP:
+            # Singles much stronger → anchor up (Prexy)
+            global_sequential[pk] = round(bl + s_delta, 4)
+        elif gap < -_RECONCILE_GAP:
+            # Doubles much stronger → only preserve if earned
+            if pk not in earned_doubles_set:
+                # Un-earned doubles inflation (Lisa) → anchor down
+                global_sequential[pk] = round(bl + s_delta, 4)
+            # else: keep the blend (Tina/Irene case)
 
     for player in players:
         k = _name_key(player.get("name", ""))
@@ -1351,23 +1731,26 @@ def run_ratings() -> RatingsSummary:
         else:
             primary_ntrp = "3.0"
 
-        # Per-division ratings and timelines from sequential computation
-        player["rating_30"] = seq_30_finals.get(k, baseline)
-        player["rating_35"] = seq_35_finals.get(k, baseline)
+        # Lever 7 — unified global rating is the source of truth.
+        # rating_30 / rating_35 become "the player's rating during this season"
+        # filtered to players who played in that division. For cross-division
+        # players, all three values converge — there's no longer a "different
+        # rating for each level"; the global rating, informed by Levers 1-6
+        # and the singles-anchored reconciliation (Lever 3), is the truth.
+        unified = global_sequential.get(k, baseline)
+        has_30 = any(m.division == "3.0" for m in matches)
+        has_35 = any(m.division == "3.5" for m in matches)
+        player["rating_30"] = unified if has_30 else baseline
+        player["rating_35"] = unified if has_35 else baseline
+        # Timelines still show per-division evolution (display context)
         player["rating_timeline_30"] = seq_30_timeline.get(k, {})
         player["rating_timeline_35"] = seq_35_timeline.get(k, {})
 
-        # current_division_rating = primary division's sequential result
-        sfx_primary = primary_ntrp.replace(".", "")
-        player["current_division_rating"] = player[f"rating_{sfx_primary}"]
+        # current_division_rating = unified (their one true rating)
+        player["current_division_rating"] = unified
 
-        # Global: sequential cross-division — only meaningful for cross-listed players
-        has_30 = any(m.division == "3.0" for m in matches)
-        has_35 = any(m.division == "3.5" for m in matches)
-        if has_30 and has_35:
-            player["global_rating"] = global_sequential.get(k, baseline)
-        else:
-            player["global_rating"] = player["current_division_rating"]
+        # global_rating = unified
+        player["global_rating"] = unified
 
         summary.players_updated += 1
 
