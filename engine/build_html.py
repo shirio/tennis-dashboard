@@ -483,7 +483,6 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
                 ntrp_r = p.get("ntrp_rating", "") or ""
                 baseline = p.get("dynamic_rating_baseline")
                 curr = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
-                glob = p.get("global_rating")
                 # Use per-division stats only — legacy wl_record is a combined total across
                 # all divisions and is wrong for cross-listed players.
                 wl    = p.get(f"wl_record_{_sfx}") or "–"
@@ -500,14 +499,13 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
                     f"<td>{_esc(ntrp_r)}</td>"
                     f"<td>{_esc(_fmt_rating(baseline))}</td>"
                     f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
-                    f"<td>{_global_diff_span(glob, curr)}</td>"
                     f"<td>{_esc(str(wl))}</td>"
                     f"<td>{_lines_pills_html(lines)}</td>"
                     f"<td class='notes-cell'>{pnotes}</td>"
                     f"</tr>\n"
                 )
             if not rows:
-                rows = "<tr><td colspan='8' class='muted'>No players yet.</td></tr>"
+                rows = "<tr><td colspan='7' class='muted'>No players yet.</td></tr>"
 
             team_tabs += (
                 f'<button class="rtab{active}" data-sf="{_esc(sf_lbl)}"{visible} '
@@ -523,7 +521,6 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
                 f'<th>NTRP</th>'
                 f'<th class="sortable" onclick="sortRoster(2)">Base ↕</th>'
                 f'<th class="sortable" onclick="sortRoster(3)">New ↕</th>'
-                f'<th class="sortable" onclick="sortRoster(4)">Gbl ±</th>'
                 f'<th>W–L</th><th>Lines</th><th>Notes</th>'
                 f'</tr></thead><tbody>{rows}</tbody></table></div>\n'
             )
