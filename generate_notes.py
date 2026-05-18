@@ -683,7 +683,11 @@ _COMMON_FIRST_NAMES = {
 
 def _pname(full_name: str) -> str:
     """First name normally; first + last when first name is very common."""
-    parts = full_name.strip().split()
+    name = full_name.strip()
+    # TennisLink sometimes stores names in ALL-CAPS — normalize to title case.
+    if name and name == name.upper() and name.replace(" ", "").isalpha():
+        name = name.title()
+    parts = name.split()
     if not parts:
         return full_name
     first = parts[0]
@@ -1737,9 +1741,17 @@ def main():
                         )
 
                 # Below-gate blemish: was a heavy favourite but didn't dominate.
-                # Suppress when 2+ upsets already dominate the narrative — the
-                # positive story is clear enough.
-                if len(surprising_wins) < 2:
+                # Only emit when there's nothing more interesting to say.
+                # Suppress when ANY of the following is true:
+                #   • there are upsets (even 1) — the positive story speaks louder
+                #   • there are surprising losses — far more interesting signal
+                #   • there are competitive losses (close battles vs stronger opponents)
+                # "Won but failed to dominate" is the lowest-value note we produce —
+                # it's filler.  Reserve it for players whose entire note would otherwise
+                # be "undefeated" with no other distinguishing moments.
+                if (not surprising_wins
+                        and not surprising_losses
+                        and not competitive_losses):
                     _heavy_fav_blemishes = [
                         m for m in wins_this
                         if _ep(m) is not None and _ep(m) > 0.65
@@ -1894,7 +1906,7 @@ def main():
                                 _opp_lnames = [n.split()[-1] for n in _opp_names_sl if n]
                                 _opp_name_str = "/".join(_opp_lnames) if _opp_lnames else "the opponents"
                                 _ptr_sl = worst.get("partner", "")
-                                _ptr_fn = _ptr_sl.split()[0] if _ptr_sl else ""
+                                _ptr_fn = _pname(_ptr_sl) if _ptr_sl else ""
                                 _ptr_clause = f" alongside {_ptr_fn}" if _ptr_fn else ""
                                 _wk_sl = _week_number(worst["date"], this_data["all_dates"])
                                 _ln_sl = _line_short(worst.get("line", ""))
@@ -1993,14 +2005,14 @@ def main():
 
                         if _diverse_wins:
                             _wp_first = sorted(_unique_to_wins, key=lambda p: p.split()[-1])
-                            _wp_str = "/".join(p.split()[0] for p in _wp_first)
+                            _wp_str = "/".join(_pname(p) for p in _wp_first)
                             _win_clause = f"across a range of partners ({_wp_str}{_also_solo})"
                         elif _repeated_win_ptrs:
                             # Go-to partner — name them without "and others"
-                            _rp_str = "/".join(p.split()[0] for p in sorted(_repeated_win_ptrs))
+                            _rp_str = "/".join(_pname(p) for p in sorted(_repeated_win_ptrs))
                             _win_clause = f"reliably with {_rp_str}{_also_solo}"
                         else:
-                            _wp_str = "/".join(p.split()[0] for p in sorted(_unique_to_wins))
+                            _wp_str = "/".join(_pname(p) for p in sorted(_unique_to_wins))
                             _win_clause = f"with {_wp_str}{_also_solo}"
 
                         # Loss context — only emit when it conveys insight
@@ -2013,8 +2025,8 @@ def main():
                             if _sl_opp - _wl_opp >= 0.06:
                                 # Two losses with clearly different contexts — name the contrast.
                                 # This is genuinely insightful: one loss is legitimate, one is avoidable.
-                                _sl_ptr = _strong_loss["partner"].split()[0]
-                                _wl_ptr = _weak_loss["partner"].split()[0]
+                                _sl_ptr = _pname(_strong_loss["partner"])
+                                _wl_ptr = _pname(_weak_loss["partner"])
                                 parts.append(
                                     f"Wins {_win_clause}. "
                                     f"Loss with {_sl_ptr} came against a stronger pair; "
@@ -2032,12 +2044,12 @@ def main():
                                     _lptr_tb_losses = [m for m in _lptr_matches
                                                        if not m["won"] and _is_tiebreak(m)]
                                     if len(_lptr_tb_losses) >= 3:
-                                        _pattern_ptr = _lptr.split()[0]
+                                        _pattern_ptr = _pname(_lptr)
                                         break
                                 if _pattern_ptr:
                                     _other_ptr = next(
-                                        (m["partner"].split()[0] for m in _dbl_losses_p
-                                         if m.get("partner") and m["partner"].split()[0] != _pattern_ptr),
+                                        (_pname(m["partner"]) for m in _dbl_losses_p
+                                         if m.get("partner") and _pname(m["partner"]) != _pattern_ptr),
                                         None
                                     )
                                     _already_named = _other_ptr and any(
@@ -2097,7 +2109,7 @@ def main():
                     _tb_ptr_str = ""
                     if _tb_partners and len(set(_tb_partners)) >= 2:
                         _unique_tb_ptrs = list(dict.fromkeys(_tb_partners))
-                        _names = ', '.join(p.split()[0] for p in _unique_tb_ptrs[:3])
+                        _names = ', '.join(_pname(p) for p in _unique_tb_ptrs[:3])
                         _tb_ptr_str = (
                             f" — {_names} have each taken a tiebreak loss alongside her"
                         )
@@ -2651,8 +2663,20 @@ def main():
                         parts.append(f"Also {wl_other_display} in {other_div}{_line_clause}.")
 
             note = " ".join(parts).strip()
-            if len(note) > 400:
-                note = note[:397] + "..."
+            # Safety valve: if the note is still too long, drop trailing sentences
+            # one at a time rather than cutting mid-word.  400 chars is generous;
+            # if we're hitting it the blemish-suppression logic above should have
+            # already trimmed the least-interesting content.
+            _NOTE_MAX = 400
+            if len(note) > _NOTE_MAX:
+                # Try dropping the last sentence (the cross-div context line) first,
+                # then keep dropping until we're under the limit.
+                _sentences = [s.strip() for s in note.split(". ") if s.strip()]
+                while len(". ".join(_sentences) + ".") > _NOTE_MAX and len(_sentences) > 1:
+                    _sentences.pop()
+                note = ". ".join(_sentences)
+                if not note.endswith("."):
+                    note += "."
 
             p[notes_field] = note
             n_updated += 1

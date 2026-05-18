@@ -1556,8 +1556,38 @@ def _compute_global_sequential(
 
         global_r.update(updates)
 
+    # Lever 5b post-pass — cross-division ceiling for struggling-in-higher-div.
+    # MUST run before Lever 6 so the D3-lock penalty can push a capped player
+    # below the ceiling (otherwise Lever 6 fires → Lever 5b snaps back to cap,
+    # and the penalty is absorbed).  Example: Kara Gaston (BL 2.96) is capped
+    # at 3.11 by Lever 5b; Lever 6 then applies -0.03 D3-lock → 3.08, which
+    # is the intended result (below Darian McCauley at 3.09, who has no cap
+    # and plays D1/D2 — a stronger deployment signal).
+    _STRUGGLE_MIN_MATCHES = 4
+    _STRUGGLE_WIN_RATE = 0.30
+    _STRUGGLE_CAP_DELTA = 0.15
+    # Higher division = the one with higher floor
+    for pk, divs in wl_by_div.items():
+        if len(divs) < 2:
+            continue   # not cross-listed
+        baseline = baselines.get(pk, 0)
+        higher_div = max(divs.keys(),
+                         key=lambda d: _DIV_FLOOR.get(d, 0))
+        w, l = divs[higher_div]
+        n = w + l
+        if n < _STRUGGLE_MIN_MATCHES:
+            continue
+        if w / n >= _STRUGGLE_WIN_RATE:
+            continue
+        # Player struggles in higher division — cap unified rating.
+        cap = baseline + _STRUGGLE_CAP_DELTA
+        if global_r.get(pk, baseline) > cap:
+            global_r[pk] = round(cap, 4)
+
     # Lever 6 post-pass — coach-trust deployment bonus / D3-lock penalty.
-    # Applied per-division (tier semantics differ between 3.0 and 3.5).
+    # Runs AFTER Lever 5b ceiling so the penalty meaningfully shifts a capped
+    # player downward (the D3-lock signal should override the hard cap boundary
+    # and let the more nuanced deployment evidence pull the value lower).
     _TOP_LINES = {"1# Singles", "1# Doubles"}
     _BOTTOM_LINES = {"3# Doubles"}
     _TOP_LOCK_FRAC = 0.75
@@ -1582,32 +1612,6 @@ def _compute_global_sequential(
                 adj_total += _BOTTOM_LOCK_PENALTY
         if adj_total != 0:
             global_r[pk] = round(global_r.get(pk, baseline) + adj_total, 4)
-
-    # Lever 5b post-pass — cross-division ceiling for struggling-in-higher-div.
-    # Pattern: cross-listed player who wins in lower division but loses in
-    # higher. Their unified rating is currently inflated by the lower-div
-    # success — cap it to baseline + 0.15 so they sit at the right
-    # "wins in lower, loses in higher" zone (the Anna Clark / Leticia profile).
-    _STRUGGLE_MIN_MATCHES = 4
-    _STRUGGLE_WIN_RATE = 0.30
-    _STRUGGLE_CAP_DELTA = 0.15
-    # Higher division = the one with higher floor
-    for pk, divs in wl_by_div.items():
-        if len(divs) < 2:
-            continue   # not cross-listed
-        baseline = baselines.get(pk, 0)
-        higher_div = max(divs.keys(),
-                         key=lambda d: _DIV_FLOOR.get(d, 0))
-        w, l = divs[higher_div]
-        n = w + l
-        if n < _STRUGGLE_MIN_MATCHES:
-            continue
-        if w / n >= _STRUGGLE_WIN_RATE:
-            continue
-        # Player struggles in higher division — cap unified rating.
-        cap = baseline + _STRUGGLE_CAP_DELTA
-        if global_r.get(pk, baseline) > cap:
-            global_r[pk] = round(cap, 4)
 
     return global_r
 
