@@ -2026,16 +2026,42 @@ def main():
                                         f"tiebreak-loss pattern{_other_clause}."
                                     )
                                 else:
-                                    parts.append(
-                                        f"Wins {_win_clause}; "
-                                        f"{_loss_count_word} doubles losses came with {_lp_str}."
+                                    # Only claim "all N losses came with X" if it's actually
+                                    # true — count losses that are with unique-to-loss partners.
+                                    _losses_with_unique = sum(
+                                        1 for m in _dbl_losses_p
+                                        if m["partner"] in _unique_to_losses
                                     )
+                                    if _losses_with_unique == _n_dbl_l:
+                                        parts.append(
+                                            f"Wins {_win_clause}; "
+                                            f"{_loss_count_word} doubles losses came with {_lp_str}."
+                                        )
+                                    else:
+                                        # Some losses were with shared partners (who also won).
+                                        # Phrase as "N of M losses came with X" to stay accurate.
+                                        parts.append(
+                                            f"Wins {_win_clause}; "
+                                            f"{_losses_with_unique} of {_n_dbl_l} "
+                                            f"doubles losses came with {_lp_str}."
+                                        )
                         else:
                             _lp_str = "/".join(p.split()[0] for p in sorted(_unique_to_losses))
-                            parts.append(
-                                f"Wins {_win_clause}; "
-                                f"{_loss_count_word} doubles losses came with {_lp_str}."
+                            _losses_with_unique = sum(
+                                1 for m in _dbl_losses_p
+                                if m["partner"] in _unique_to_losses
                             )
+                            if _losses_with_unique == _n_dbl_l:
+                                parts.append(
+                                    f"Wins {_win_clause}; "
+                                    f"{_loss_count_word} doubles losses came with {_lp_str}."
+                                )
+                            else:
+                                parts.append(
+                                    f"Wins {_win_clause}; "
+                                    f"{_losses_with_unique} of {_n_dbl_l} "
+                                    f"doubles losses came with {_lp_str}."
+                                )
 
                 # Tiebreak-loss pattern: 3+ tiebreak losses is a distinct story —
                 # signals inability to close tight matches and that it hurts partner records.
@@ -2085,6 +2111,53 @@ def main():
                             f"all losses in {_lword}."
                         )
                         _sd_split_fired = True
+
+                # Dynamic-deployment pattern: player has roughly equal numbers of
+                # singles and doubles matches (rare — most players specialize).
+                # Articulate the W-L split per format so the reader sees whether
+                # they're a "dynamic winner" (Megan Bell), "good at one not the
+                # other" (Tayoni), or "balanced both ways" (rating stuck).
+                if (not _sd_split_fired
+                    and not any("singles" in p_.lower() or "doubles" in p_.lower() for p_ in parts)):
+                    _s_matches = [m for m in this_matches if _line_type(m["line"]) == "S"]
+                    _d_matches = [m for m in this_matches if _line_type(m["line"]) == "D"]
+                    if (len(_s_matches) >= 3 and len(_d_matches) >= 3
+                            and abs(len(_s_matches) - len(_d_matches)) <= 1):
+                        _sw = sum(1 for m in _s_matches if m["won"])
+                        _sl = len(_s_matches) - _sw
+                        _dw = sum(1 for m in _d_matches if m["won"])
+                        _dl = len(_d_matches) - _dw
+                        # Categorize the deployment story
+                        _both_good = _sw >= _sl and _dw >= _dl and (_sw + _dw) >= 4
+                        _both_poor = _sw < _sl and _dw < _dl
+                        _singles_only = _sw > _sl and _dw <= _dl
+                        _doubles_only = _dw > _dl and _sw <= _sl
+                        if _both_good:
+                            parts.append(
+                                f"Dynamically deployed across formats — wins both in singles "
+                                f"({_sw}-{_sl}) and doubles ({_dw}-{_dl})."
+                            )
+                        elif _both_poor:
+                            parts.append(
+                                f"Deployed in both singles ({_sw}-{_sl}) and doubles "
+                                f"({_dw}-{_dl}) but hasn't separated herself in either."
+                            )
+                        elif _singles_only:
+                            parts.append(
+                                f"Singles is the bright spot ({_sw}-{_sl}); doubles "
+                                f"hasn't clicked ({_dw}-{_dl})."
+                            )
+                        elif _doubles_only:
+                            parts.append(
+                                f"Doubles is the bright spot ({_dw}-{_dl}); singles "
+                                f"hasn't clicked ({_sw}-{_sl})."
+                            )
+                        else:
+                            # Even split (e.g., 1-1 both)
+                            parts.append(
+                                f"Dynamically deployed across formats — singles "
+                                f"({_sw}-{_sl}) and doubles ({_dw}-{_dl})."
+                            )
 
                 # High-baseline underperformance: a notably strong baseline player
                 # with a ≤.500 record is underperforming expectations.

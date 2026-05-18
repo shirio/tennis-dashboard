@@ -652,13 +652,23 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
             timeline = p.get(f"rating_timeline_{sfx}") if sfx else None
             if timeline and isinstance(timeline, dict):
                 _timeline_by_name[norm] = {k: float(v) for k, v in timeline.items()}
-            # Include all team fields so swap detection works for cross-listed players
-            for _tf in ("team", "team_30", "team_35"):
-                _tv = p.get(_tf)
-                if _tv:
-                    _team_by_name[norm] = _tv
-            if p.get("team"):
-                _team_by_name[norm] = p["team"]  # primary team wins
+            # For swap detection in *this division's* pages we MUST use the
+            # division-specific team (team_30 or team_35). Falling back to the
+            # primary `team` for cross-listed players gives wrong votes — e.g.
+            # Melissa Hicks plays DESERT PALM in 3.0 but DTC #3 in 3.5, and on
+            # the 3.5 page she needs to count as DTC #3 for swap detection.
+            div_team = p.get(f"team_{sfx}") if sfx else None
+            if div_team:
+                _team_by_name[norm] = div_team
+            elif p.get("team"):
+                _team_by_name[norm] = p["team"]
+            else:
+                # Last resort: any other team field
+                for _tf in ("team_30", "team_35"):
+                    _tv = p.get(_tf)
+                    if _tv:
+                        _team_by_name[norm] = _tv
+                        break
 
     def _pname_key(name: str) -> str:
         """Normalise a player name for data-pkey attribute."""
