@@ -1495,6 +1495,10 @@ def _compute_global_sequential(
     # cross-listed player who dominates lower division but loses in higher one.
     # Their unified rating is currently inflated by the lower-div success.
     wl_by_div: dict[str, dict[str, list[int]]] = {}   # pk -> div -> [w, l]
+    # Lever 5b constants (also used in inline cap below and in post-pass safety net)
+    _STRUGGLE_MIN_MATCHES = 4
+    _STRUGGLE_WIN_RATE    = 0.30
+    _STRUGGLE_CAP_DELTA   = 0.15
 
     # Two timelines, both split by division:
     #   global_timeline:      pre-match  (rating going INTO the first match of each day)
@@ -1581,6 +1585,28 @@ def _compute_global_sequential(
 
         global_r.update(updates)
 
+        # Lever 5b inline cap — apply cross-division ceiling immediately after
+        # each update so the timelines capture the capped values.  Without this,
+        # the post-pass Lever 5b corrects the final global_r but the timelines
+        # already contain the inflated values, causing the results tab to show
+        # ratings like 3.40 for players whose roster rating is capped at 3.13.
+        for pk in all_keys:
+            if pk not in baselines:
+                continue
+            divs_pk = wl_by_div.get(pk, {})
+            if len(divs_pk) < 2:
+                continue   # not cross-listed yet
+            higher_div_pk = max(divs_pk.keys(), key=lambda d: _DIV_FLOOR.get(d, 0))
+            _w5b, _l5b = divs_pk[higher_div_pk]
+            _n5b = _w5b + _l5b
+            if _n5b < _STRUGGLE_MIN_MATCHES:
+                continue
+            if _w5b / _n5b >= _STRUGGLE_WIN_RATE:
+                continue
+            _cap5b = baselines.get(pk, 0) + _STRUGGLE_CAP_DELTA
+            if global_r.get(pk, baselines.get(pk, 0)) > _cap5b:
+                global_r[pk] = round(_cap5b, 4)
+
         # Record post-match snapshot for every player in this event (overwrites
         # on each subsequent event of the same day so the final value per day is
         # captured — used by _pit_rating fallback for opponent lookups).
@@ -1590,16 +1616,14 @@ def _compute_global_sequential(
                  .setdefault(pk, {})
                  .setdefault(ev.division, {})[ev.date]) = round(global_r.get(pk, baselines.get(pk, 0)), 4)
 
-    # Lever 5b post-pass — cross-division ceiling for struggling-in-higher-div.
+    # Lever 5b post-pass safety net — catches any edge cases the inline cap
+    # missed (e.g. the qualifying threshold crossed on the very last event).
     # MUST run before Lever 6 so the D3-lock penalty can push a capped player
     # below the ceiling (otherwise Lever 6 fires → Lever 5b snaps back to cap,
     # and the penalty is absorbed).  Example: Kara Gaston (BL 2.96) is capped
     # at 3.11 by Lever 5b; Lever 6 then applies -0.03 D3-lock → 3.08, which
     # is the intended result (below Darian McCauley at 3.09, who has no cap
     # and plays D1/D2 — a stronger deployment signal).
-    _STRUGGLE_MIN_MATCHES = 4
-    _STRUGGLE_WIN_RATE = 0.30
-    _STRUGGLE_CAP_DELTA = 0.15
     # Higher division = the one with higher floor
     for pk, divs in wl_by_div.items():
         if len(divs) < 2:
