@@ -432,8 +432,38 @@ def _resolve_line_sides(ln: dict, match: dict, team_by_name: dict):
     result = ln.get("result", "").strip().lower()
     if not ph or not pa or result not in ("home", "away"):
         return None
+    # If one side is N/A (forfeit / unknown), infer winner/loser from
+    # winner_team and the side that has real player names.  We cannot rely
+    # on the players_home/away column to determine team membership (the
+    # columns are sometimes swapped), so look up each real player in
+    # team_by_name to decide whether they won or lost.
     if _is_default(ph) or _is_default(pa):
-        return None
+        wt = ln.get("winner_team", "")
+        lt = ln.get("loser_team", "")
+        if not wt or not lt:
+            return None
+        known_side = pa if _is_default(ph) else ph
+        real_names = [n.strip() for n in known_side.split("/")
+                      if n.strip() and not _is_default(n.strip())]
+        if not real_names:
+            return None
+        # Determine the team of the real players via team_by_name
+        real_team = None
+        for rn in real_names:
+            pt_set = team_by_name.get(_name_key(rn)) or set()
+            if wt in pt_set:
+                real_team = wt
+                break
+            if lt in pt_set:
+                real_team = lt
+                break
+        if real_team is None:
+            return None
+        na_names = ["N/A"]
+        if real_team.upper() == wt.upper():
+            return (real_names, na_names, wt, lt, False)
+        else:
+            return (na_names, real_names, wt, lt, False)
 
     home_team = match.get("home_team", "")
     away_team = match.get("away_team", "")
