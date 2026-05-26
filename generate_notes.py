@@ -1677,8 +1677,11 @@ def main():
             if walkover_only_this:
                 parts.append("Only match was a default — no competitive data.")
             elif n_this == 0 and other_matches:
-                # No matches in this division — note it but keep brief
+                # No matches in this division — surface the cross-div record first
+                wl_other = p.get(f"wl_record_{other_sfx}", "") or ""
                 parts.append(f"No {div_label} matches played yet.")
+                if wl_other:
+                    parts.append(f"{wl_other} in {other_div}.")
                 if len(other_matches) >= 1:
                     # Describe one interesting cross-division match
                     best = None

@@ -1901,8 +1901,11 @@ def run_ratings() -> RatingsSummary:
         unified = global_sequential.get(k, baseline)
         has_30 = any(m.division == "3.0" for m in matches)
         has_35 = any(m.division == "3.5" for m in matches)
-        player["rating_30"] = unified if has_30 else baseline
-        player["rating_35"] = unified if has_35 else baseline
+        # Always store the unified global rating in rating_30/35 so the
+        # correct value is displayed in each division's dashboard — even for
+        # cross-listed players who have matches only in the other division.
+        player["rating_30"] = unified
+        player["rating_35"] = unified
         # Timelines show global sequential running values, split by division.
         # pre-match: rating going INTO each date (exact-hit display for active players).
         # post-match: rating AFTER all matches on each date (fallback for opponent lookups
