@@ -460,10 +460,12 @@ def _resolve_line_sides(ln: dict, match: dict, team_by_name: dict):
         if real_team is None:
             return None
         na_names = ["N/A"]
+        # N/A opponent = defaulted line → mark as walkover so it is excluded
+        # from competitive match counts and noted separately as a default win.
         if real_team.upper() == wt.upper():
-            return (real_names, na_names, wt, lt, False)
+            return (real_names, na_names, wt, lt, True)
         else:
-            return (na_names, real_names, wt, lt, False)
+            return (na_names, real_names, wt, lt, True)
 
     home_team = match.get("home_team", "")
     away_team = match.get("away_team", "")
