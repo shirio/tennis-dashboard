@@ -17,21 +17,21 @@
           "games_won": 497,
           "games_lost": 278,
           "games_won_pct": "64.13%",
-          "notes": "Undefeated; top-rated roster in the division. Shi (2.74→3.11, 7-0) trending up. Christine 4–0 at D3. Emmy 3–0 at D2."
+          "notes": "Undefeated; top-rated roster in the division. Shi (2.74→3.15, 7-0) trending up. Christine 4–0 at D3. Emmy 3–0 at D2."
         },
         {
           "team_name": "SUMMERLIN ARBORS",
-          "team_wins": 6,
+          "team_wins": 7,
           "team_losses": 3,
-          "matches_played": 9,
-          "indiv_wins": 29,
+          "matches_played": 10,
+          "indiv_wins": 34,
           "indiv_losses": 16,
-          "sets_won": 59,
+          "sets_won": 69,
           "sets_lost": 40,
-          "games_won": 452,
-          "games_lost": 360,
-          "games_won_pct": "55.67%",
-          "notes": "Won big over SoHi, got swept by SoHi. Tina Nathalia (2.91→3.21, 5-3) trending up. Kim Springer drops hardest: 3.25→3.12. D1 is the soft spot (4–5 record)."
+          "games_won": 514,
+          "games_lost": 380,
+          "games_won_pct": "57.49%",
+          "notes": "Won big over SoHi, got swept by SoHi. Tina Nathalia (2.91→3.21, 5-3) trending up. Kim Springer drops hardest: 3.25→3.17. Tayoni 6–0 at S1."
         },
         {
           "team_name": "ANTHEM CC",
@@ -45,7 +45,7 @@
           "games_won": 423,
           "games_lost": 386,
           "games_won_pct": "52.29%",
-          "notes": "Won big over LTF, got swept by DTC #3. Kelly Twells (3.01→3.15, 8-0) trending up. Ann Weaver drops hardest: 2.84→2.68. D1 is the soft spot (3–6 record)."
+          "notes": "Won big over LTF, got swept by DTC #3. CHRISTINE (3.03→3.20, 2-0) trending up. Ann Weaver drops hardest: 2.84→2.68. D1 is the soft spot (3–6 record)."
         },
         {
           "team_name": "TPC",
@@ -92,16 +92,16 @@
         {
           "team_name": "LIFE TIME FITNESS/GV",
           "team_wins": 2,
-          "team_losses": 7,
-          "matches_played": 9,
+          "team_losses": 8,
+          "matches_played": 10,
           "indiv_wins": 15,
-          "indiv_losses": 30,
+          "indiv_losses": 35,
           "sets_won": 37,
-          "sets_lost": 64,
-          "games_won": 329,
-          "games_lost": 446,
-          "games_won_pct": "42.45%",
-          "notes": "S2 is the soft spot (2–7 record). Margo (2.99→3.11, 3-3) trending up. Lisa Williams drops hardest: 2.75→2.58. Mary Apone deployed every week."
+          "sets_lost": 74,
+          "games_won": 349,
+          "games_lost": 508,
+          "games_won_pct": "40.72%",
+          "notes": "S2 is the soft spot (2–8 record). Lisa Williams drops hardest: 2.75→2.58. Mary Apone deployed every week. Kimberly Lippisch 3–0 at S1."
         },
         {
           "team_name": "SOUTHERN HIGHLANDS",
@@ -2060,12 +2060,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779607",
           "home_team": "SUMMERLIN ARBORS",
           "away_team": "LIFE TIME FITNESS/GV",
-          "team_wins_home": null,
-          "team_wins_away": null,
+          "team_wins_home": 5,
+          "team_wins_away": 0,
           "score": "",
           "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Tayoni Coleman",
+              "players_away": "Ningyi Zheng",
+              "score": "6-0 6-0",
+              "result": "home",
+              "winner_team": "SUMMERLIN ARBORS",
+              "loser_team": "LIFE TIME FITNESS/GV"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Danika Johnson",
+              "players_away": "Yusria Malik",
+              "score": "6-2 6-2",
+              "result": "home",
+              "winner_team": "SUMMERLIN ARBORS",
+              "loser_team": "LIFE TIME FITNESS/GV"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Ani Zargaryan / Kim Springer",
+              "players_away": "Margo Isler / Han Hu",
+              "score": "7-6 6-3",
+              "result": "home",
+              "winner_team": "SUMMERLIN ARBORS",
+              "loser_team": "LIFE TIME FITNESS/GV"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Genesis Garcia / Renee Johnson",
+              "players_away": "Mary Ann Apone / Kimberly Lippisch",
+              "score": "7-5 6-2",
+              "result": "home",
+              "winner_team": "SUMMERLIN ARBORS",
+              "loser_team": "LIFE TIME FITNESS/GV"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jocelyn Herman / Tamaris Cotta",
+              "players_away": "N/A",
+              "score": "6-0 6-0",
+              "result": "home",
+              "winner_team": "SUMMERLIN ARBORS",
+              "loser_team": "LIFE TIME FITNESS/GV"
+            }
+          ]
         },
         {
           "match_id": "c109c09a353d2b66",
@@ -2392,122 +2438,122 @@
           "lines": []
         }
       ],
-      "subflight_summary": "DTC #3 leads A undefeated at 9-0. Summerlin, Anthem, and TPC are at the bottom. Top risers: Jeralyn Marchesi (TPC, 2.81→3.29, 5-0); Shi L Oskooi (DTC #3, 2.74→3.11, 7-0)."
+      "subflight_summary": "DTC #3 leads A undefeated at 9-0. Summerlin (7-3) is in contention. Anthem, TPC, and DTC #2 are at the bottom. Top risers: Jeralyn Marchesi (TPC, 2.81→3.29, 5-0); Shi L Oskooi (DTC #3, 2.74→3.15, 7-0)."
     },
     {
       "flight_label": "B",
       "teams": [
         {
           "team_name": "WHITNEY MESA PARK",
-          "team_wins": 7,
+          "team_wins": 8,
           "team_losses": 2,
-          "matches_played": 9,
-          "indiv_wins": 29,
+          "matches_played": 10,
+          "indiv_wins": 34,
           "indiv_losses": 16,
-          "sets_won": 63,
+          "sets_won": 73,
           "sets_lost": 35,
-          "games_won": 434,
-          "games_lost": 289,
-          "games_won_pct": "60.03%",
-          "notes": "Maria Allen (3.10→3.32, 3-0) trending up. D3 is the soft spot (2–5 record). Tori 2–0 at S2. Abigail 2–0 at D2."
+          "games_won": 494,
+          "games_lost": 301,
+          "games_won_pct": "62.14%",
+          "notes": "Maria Allen (3.10→3.32, 3-0) trending up. D3 is the soft spot (2–5 record). Tori 2–0 at S2. Abigail 2–0 at D1."
         },
         {
           "team_name": "DTC #4",
-          "team_wins": 7,
+          "team_wins": 8,
           "team_losses": 2,
-          "matches_played": 9,
-          "indiv_wins": 27,
+          "matches_played": 10,
+          "indiv_wins": 32,
           "indiv_losses": 18,
-          "sets_won": 55,
+          "sets_won": 65,
           "sets_lost": 42,
-          "games_won": 410,
-          "games_lost": 352,
-          "games_won_pct": "53.81%",
-          "notes": "Won big over LLV, got swept by Whitney Mesa. Maryna (2.86→3.11, 7-2) trending up. S2 is the soft spot (3–4 record). Elena 4–0 at S1."
+          "games_won": 470,
+          "games_lost": 368,
+          "games_won_pct": "56.09%",
+          "notes": "Won big over LLV, got swept by Whitney Mesa. Maryna (2.86→3.12, 8-2) trending up. Elena 4–0 at S1. Dianne 2–0 at D1."
+        },
+        {
+          "team_name": "DTC #1",
+          "team_wins": 6,
+          "team_losses": 4,
+          "matches_played": 10,
+          "indiv_wins": 28,
+          "indiv_losses": 22,
+          "sets_won": 62,
+          "sets_lost": 50,
+          "games_won": 459,
+          "games_lost": 381,
+          "games_won_pct": "54.64%",
+          "notes": "Maggie (2.74→2.92, 5-1) trending up. Wendy Cashin drops hardest: 2.83→2.63. D3 is the soft spot (4–5 record). Anjelica 2–0 at D1."
         },
         {
           "team_name": "DESERT PALM",
           "team_wins": 6,
-          "team_losses": 3,
-          "matches_played": 9,
+          "team_losses": 4,
+          "matches_played": 10,
           "indiv_wins": 26,
-          "indiv_losses": 19,
+          "indiv_losses": 24,
           "sets_won": 55,
-          "sets_lost": 39,
-          "games_won": 409,
-          "games_lost": 330,
-          "games_won_pct": "55.35%",
-          "notes": "Won big over Ridges, got swept by DTC #1. Kristyl (2.91→3.27, 7-1) trending up. Gina drops hardest: 2.81→2.71. S2 is the soft spot (3–4 record)."
+          "sets_lost": 49,
+          "games_won": 421,
+          "games_lost": 390,
+          "games_won_pct": "51.91%",
+          "notes": "Won big over Ridges, got swept by DTC #1. Kristyl (2.91→3.27, 7-1) trending up. Gina drops hardest: 2.81→2.71. S2 is the soft spot (3–5 record)."
         },
         {
           "team_name": "SPANISH TRAIL",
           "team_wins": 5,
-          "team_losses": 4,
-          "matches_played": 9,
-          "indiv_wins": 26,
-          "indiv_losses": 19,
-          "sets_won": 55,
-          "sets_lost": 41,
-          "games_won": 397,
-          "games_lost": 364,
-          "games_won_pct": "52.17%",
-          "notes": "Won big over Ridges, got swept by Whitney Mesa. Jenny (2.74→2.88, 5-1) trending up. Nancy 2–0 at D3. Lora 2–1 at S2."
+          "team_losses": 5,
+          "matches_played": 10,
+          "indiv_wins": 28,
+          "indiv_losses": 22,
+          "sets_won": 60,
+          "sets_lost": 48,
+          "games_won": 445,
+          "games_lost": 409,
+          "games_won_pct": "52.11%",
+          "notes": "Won big over Ridges, got swept by Whitney Mesa. Jenny (2.74→2.88, 5-1) trending up. Nancy 2–0 at D3. Lora 3–1 at S2."
         },
         {
-          "team_name": "DTC #1",
-          "team_wins": 5,
-          "team_losses": 4,
-          "matches_played": 9,
-          "indiv_wins": 25,
-          "indiv_losses": 20,
-          "sets_won": 55,
-          "sets_lost": 46,
-          "games_won": 407,
-          "games_lost": 340,
-          "games_won_pct": "54.48%",
-          "notes": "Maggie (2.74→2.91, 4-1) trending up. Wendy Cashin drops hardest: 2.83→2.67. S1 is the soft spot (4–5 record). Jaqueline 4–1 at D1."
+          "team_name": "LAKE LAS VEGAS SPORTS CLUB",
+          "team_wins": 4,
+          "team_losses": 6,
+          "matches_played": 10,
+          "indiv_wins": 23,
+          "indiv_losses": 27,
+          "sets_won": 50,
+          "sets_lost": 57,
+          "games_won": 395,
+          "games_lost": 453,
+          "games_won_pct": "46.58%",
+          "notes": "Won big over Desert Palm, got swept by DTC #4. Robi (2.87→3.11, 7-2) trending up. Heather Rose drops hardest: 3.03→2.92. S1 is the soft spot (4–6 record)."
         },
         {
           "team_name": "SPANISH OAKS",
           "team_wins": 3,
-          "team_losses": 6,
-          "matches_played": 9,
-          "indiv_wins": 22,
-          "indiv_losses": 23,
-          "sets_won": 47,
-          "sets_lost": 49,
-          "games_won": 388,
-          "games_lost": 393,
-          "games_won_pct": "49.68%",
-          "notes": "Won big over Ridges, got swept by Desert Palm. Shawanna drops hardest: 2.85→2.63. D1 is the soft spot (2–7 record). Michele 4–0 at D3."
-        },
-        {
-          "team_name": "LAKE LAS VEGAS SPORTS CLUB",
-          "team_wins": 3,
-          "team_losses": 6,
-          "matches_played": 9,
-          "indiv_wins": 20,
-          "indiv_losses": 25,
-          "sets_won": 43,
-          "sets_lost": 52,
-          "games_won": 350,
-          "games_lost": 405,
-          "games_won_pct": "46.36%",
-          "notes": "Won big over Desert Palm, got swept by DTC #4. Robi (2.87→3.05, 6-2) trending up. Heather Rose drops hardest: 3.03→2.92. S1 is the soft spot (3–6 record)."
+          "team_losses": 7,
+          "matches_played": 10,
+          "indiv_wins": 24,
+          "indiv_losses": 26,
+          "sets_won": 51,
+          "sets_lost": 56,
+          "games_won": 429,
+          "games_lost": 445,
+          "games_won_pct": "49.08%",
+          "notes": "Won big over Ridges, got swept by Desert Palm. Shawanna drops hardest: 2.85→2.63. D1 is the soft spot (2–8 record). Nicole Horton 3–0 at S2."
         },
         {
           "team_name": "CLUB RIDGES",
           "team_wins": 0,
-          "team_losses": 9,
-          "matches_played": 9,
+          "team_losses": 10,
+          "matches_played": 10,
           "indiv_wins": 5,
-          "indiv_losses": 40,
+          "indiv_losses": 45,
           "sets_won": 13,
-          "sets_lost": 82,
-          "games_won": 188,
-          "games_lost": 510,
-          "games_won_pct": "26.93%",
-          "notes": "0–9; one 2–3 loss shows they can compete. D1 is the soft spot (0–9 record). Jennifer Lake/Nadine 2–1 at D2."
+          "sets_lost": 92,
+          "games_won": 204,
+          "games_lost": 570,
+          "games_won_pct": "26.36%",
+          "notes": "0–10; one 2–3 loss shows they can compete. D1 is the soft spot (0–10 record). Jennifer Lake/Nadine 2–1 at D2."
         }
       ],
       "matches": [
@@ -4438,12 +4484,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779549",
           "home_team": "SPANISH TRAIL",
           "away_team": "LAKE LAS VEGAS SPORTS CLUB",
-          "team_wins_home": null,
-          "team_wins_away": null,
+          "team_wins_home": 2,
+          "team_wins_away": 3,
           "score": "",
           "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Aida Shirley",
+              "players_away": "Courtney Beine",
+              "score": "6-2 6-2",
+              "result": "away",
+              "winner_team": "LAKE LAS VEGAS SPORTS CLUB",
+              "loser_team": "SPANISH TRAIL"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Lora Saginoff",
+              "players_away": "Tonya Guidi",
+              "score": "6-1 6-7 1-0",
+              "result": "home",
+              "winner_team": "SPANISH TRAIL",
+              "loser_team": "LAKE LAS VEGAS SPORTS CLUB"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Sirina Shouldis / Meryll Ledesma",
+              "players_away": "Robi Hinton / Elizabeth Eshragh",
+              "score": "4-6 6-2 1-0",
+              "result": "away",
+              "winner_team": "LAKE LAS VEGAS SPORTS CLUB",
+              "loser_team": "SPANISH TRAIL"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Nancy Ozun / Roslyn Katz",
+              "players_away": "Stacy Burr / Brianne Pepperman",
+              "score": "7-5 7-6",
+              "result": "away",
+              "winner_team": "LAKE LAS VEGAS SPORTS CLUB",
+              "loser_team": "SPANISH TRAIL"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Stacy Sheeley Reyes / Chelsie Hawkinson",
+              "players_away": "N/A",
+              "score": "6-0 6-0",
+              "result": "home",
+              "winner_team": "SPANISH TRAIL",
+              "loser_team": "LAKE LAS VEGAS SPORTS CLUB"
+            }
+          ]
         },
         {
           "match_id": "12eb054b750e0628",
@@ -4452,12 +4544,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779551",
           "home_team": "DTC #4",
           "away_team": "CLUB RIDGES",
-          "team_wins_home": null,
-          "team_wins_away": null,
+          "team_wins_home": 5,
+          "team_wins_away": 0,
           "score": "",
           "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "DeVita Robinson",
+              "players_away": "Helen McDaniel",
+              "score": "6-0 6-2",
+              "result": "home",
+              "winner_team": "DTC #4",
+              "loser_team": "CLUB RIDGES"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Angela Xin",
+              "players_away": "Martha Langer",
+              "score": "6-2 6-0",
+              "result": "home",
+              "winner_team": "DTC #4",
+              "loser_team": "CLUB RIDGES"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Dianne Austin / Michelle Brinlee",
+              "players_away": "Jennifer Lake / Nadine Kluger",
+              "score": "6-4 6-2",
+              "result": "home",
+              "winner_team": "DTC #4",
+              "loser_team": "CLUB RIDGES"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Amy Bernstein / Geraldine Davis",
+              "players_away": "Christy Cropper / Shannon Demus",
+              "score": "6-3 6-3",
+              "result": "home",
+              "winner_team": "DTC #4",
+              "loser_team": "CLUB RIDGES"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Maryna Post / Olga Bencini",
+              "players_away": "Sharon Edwards / Christy Shulman",
+              "score": "6-0 6-0",
+              "result": "home",
+              "winner_team": "DTC #4",
+              "loser_team": "CLUB RIDGES"
+            }
+          ]
         },
         {
           "match_id": "f5c611a81b1087cb",
@@ -4466,12 +4604,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779548",
           "home_team": "DTC #1",
           "away_team": "SPANISH OAKS",
-          "team_wins_home": null,
-          "team_wins_away": null,
+          "team_wins_home": 3,
+          "team_wins_away": 2,
           "score": "",
           "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Allyssandra Prodoehl",
+              "players_away": "Nicole Horton",
+              "score": "6-0 7-6",
+              "result": "home",
+              "winner_team": "DTC #1",
+              "loser_team": "SPANISH OAKS"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Maggie Pacholuk",
+              "players_away": "Shawanna Johnson",
+              "score": "6-3 6-2",
+              "result": "home",
+              "winner_team": "DTC #1",
+              "loser_team": "SPANISH OAKS"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jaqueline Schultz / Anjelica Moore",
+              "players_away": "Adrienne Berman / Nancy McPartlin",
+              "score": "6-3 6-2",
+              "result": "home",
+              "winner_team": "DTC #1",
+              "loser_team": "SPANISH OAKS"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Wendy Cashin / Sonja Rogers",
+              "players_away": "Julie Schoolmeester / Maureen Caruso",
+              "score": "6-2 6-2",
+              "result": "away",
+              "winner_team": "SPANISH OAKS",
+              "loser_team": "DTC #1"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Megan Johnson / Lexi Fleury",
+              "players_away": "Sally Morley / Karen Veazey",
+              "score": "6-4 6-7 1-0",
+              "result": "away",
+              "winner_team": "SPANISH OAKS",
+              "loser_team": "DTC #1"
+            }
+          ]
         },
         {
           "match_id": "25261ddd24b15bf8",
@@ -4480,12 +4664,58 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779550",
           "home_team": "WHITNEY MESA PARK",
           "away_team": "DESERT PALM",
-          "team_wins_home": null,
-          "team_wins_away": null,
+          "team_wins_home": 5,
+          "team_wins_away": 0,
           "score": "",
           "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Heather Hartzell",
+              "players_away": "Tori Walker",
+              "score": "6-0 6-2",
+              "result": "home",
+              "winner_team": "WHITNEY MESA PARK",
+              "loser_team": "DESERT PALM"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Alexandria Chang",
+              "players_away": "Shiniqual Washington",
+              "score": "6-4 6-1",
+              "result": "home",
+              "winner_team": "WHITNEY MESA PARK",
+              "loser_team": "DESERT PALM"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Annabel Elliott / Yong Mi DeMilliano",
+              "players_away": "Francine Mazza / Abigail Cox",
+              "score": "6-1 6-4",
+              "result": "home",
+              "winner_team": "WHITNEY MESA PARK",
+              "loser_team": "DESERT PALM"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "N/A",
+              "players_away": "Katie Sanders / Jenni Pevoto",
+              "score": "6-0 6-0",
+              "result": "home",
+              "winner_team": "WHITNEY MESA PARK",
+              "loser_team": "DESERT PALM"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "N/A",
+              "players_away": "Mimi Fumo / Ada Vera",
+              "score": "6-0 6-0",
+              "result": "home",
+              "winner_team": "WHITNEY MESA PARK",
+              "loser_team": "DESERT PALM"
+            }
+          ]
         },
         {
           "match_id": "257b2e0e48ecfa56",
@@ -4784,7 +5014,7 @@
           "lines": []
         }
       ],
-      "subflight_summary": "Whitney Mesa and DTC #4 share the B lead at 7-2. Desert Palm (6-3), Sp. Trail (5-4), and DTC #1 (5-4) are in contention. Sp. Oaks, LLV, and Ridges are at the bottom. Top risers: Kristyl Addison (Desert Palm, 2.91→3.27, 7-1); Meryll Ledesma (Sp. Trail, 2.64→2.98, 6-2)."
+      "subflight_summary": "Whitney Mesa and DTC #4 share the B lead at 8-2. DTC #1 (6-4), and Desert Palm (6-4) are in contention. Sp. Trail, LLV, and Sp. Oaks are at the bottom. Top risers: Kristyl Addison (Desert Palm, 2.91→3.27, 7-1); Meryll Ledesma (Sp. Trail, 2.64→2.92, 6-3)."
     }
   ]
 }
