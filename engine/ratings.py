@@ -1749,6 +1749,15 @@ def run_ratings() -> RatingsSummary:
     # --- Global sequential (cross-division base blend) ---
     global_sequential, global_timeline, global_post_timeline = _compute_global_sequential(court_events, baselines_all)
 
+    # Snapshot of global_sequential before any post-pass adjustments (Lever 3,
+    # Lever 5b floor).  After those levers modify global_sequential we will
+    # compute the per-player delta and patch every timeline entry by the same
+    # amount so the results-tab "running rating" tracks the final roster rating
+    # rather than the raw sequential value.  Without this, a player boosted by
+    # Lever 3 (e.g. Prexy, +0.12 singles-anchor) shows 2.99 "going into" their
+    # last match even though the roster shows 3.25.
+    _pre_lever_sequential: dict[str, float] = dict(global_sequential)
+
     # --- Lever 3: singles-anchored cross-division reconciliation ---
     # Compute singles-only and doubles-only sequential ratings, then apply
     # asymmetric override:
@@ -1861,6 +1870,35 @@ def run_ratings() -> RatingsSummary:
         current = global_sequential.get(pk, bl)
         if current < floor:
             global_sequential[pk] = round(min(cap, floor), 4)
+
+    # --- Patch timelines to reflect post-pass adjustments (Lever 3 + 5b floor) ---
+    # Any player whose global_sequential value was changed by the post-pass
+    # levers needs their timeline entries bumped by the same delta so the
+    # results-tab running ratings are consistent with the final roster rating.
+    #
+    # Example: Prexy Tamayo — Lever 3 singles-anchor raises her from ~3.13
+    # (raw sequential) to 3.25 (final).  Without this patch every result in
+    # the 3.5 tab shows "2.93 → 2.95 → 2.99" while the roster says 3.25,
+    # which the user correctly flags as "clearly wrong."
+    #
+    # The delta is added uniformly to ALL entries in pre- and post-match
+    # timelines.  This preserves the relative shape of the season trajectory
+    # (wins still show up-ticks, losses show down-ticks) while anchoring the
+    # endpoint to the Lever 3/5b-adjusted final value.
+    for pk in list(global_sequential.keys()):
+        pre_val  = _pre_lever_sequential.get(pk)
+        post_val = global_sequential.get(pk)
+        if pre_val is None or post_val is None:
+            continue
+        delta = round(post_val - pre_val, 4)
+        if abs(delta) < 0.001:
+            continue  # no adjustment needed
+        for div_dict in global_timeline.get(pk, {}).values():
+            for date in list(div_dict.keys()):
+                div_dict[date] = round(div_dict[date] + delta, 4)
+        for div_dict in global_post_timeline.get(pk, {}).values():
+            for date in list(div_dict.keys()):
+                div_dict[date] = round(div_dict[date] + delta, 4)
 
     for player in players:
         k = _name_key(player.get("name", ""))
