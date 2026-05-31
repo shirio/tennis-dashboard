@@ -162,4 +162,21 @@ http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': TYPES[path.extname(filePath)] || 'text/plain' });
     res.end(data);
   });
-}).listen(PORT, () => console.log(`Serving ${ROOT} on http://localhost:${PORT}`));
+});
+
+// Self-heal: if the port is already in use (stale server from a previous
+// session), kill the old process and retry.  Without this, Claude Code's
+// preview tool keeps retrying for ~60 seconds before giving up.
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.log(`[server] Port ${PORT} already in use — killing stale process and retrying…`);
+    try {
+      require('child_process').execSync(`lsof -ti :${PORT} | xargs kill -9`, { stdio: 'ignore' });
+    } catch (_) { /* nothing on the port after all */ }
+    setTimeout(() => server.listen(PORT, () => console.log(`Serving ${ROOT} on http://localhost:${PORT}`)), 300);
+  } else {
+    throw err;
+  }
+});
+
+server.listen(PORT, () => console.log(`Serving ${ROOT} on http://localhost:${PORT}`));
