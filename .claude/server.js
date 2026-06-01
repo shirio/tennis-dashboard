@@ -167,6 +167,7 @@ const server = http.createServer((req, res) => {
 // Self-heal: if the port is already in use (stale server from a previous
 // session), kill the old process and retry.  Without this, Claude Code's
 // preview tool keeps retrying for ~60 seconds before giving up.
+// For all other errors (ECONNRESET, etc.) just log — never crash the process.
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
     console.log(`[server] Port ${PORT} already in use — killing stale process and retrying…`);
@@ -175,8 +176,18 @@ server.on('error', (err) => {
     } catch (_) { /* nothing on the port after all */ }
     setTimeout(() => server.listen(PORT, () => console.log(`Serving ${ROOT} on http://localhost:${PORT}`)), 300);
   } else {
-    throw err;
+    // Log but never crash — ECONNRESET / EPIPE / etc. are normal client disconnects
+    console.error(`[server] Non-fatal error: ${err.code} — ${err.message}`);
   }
+});
+
+// Catch-all: prevent any stray unhandled rejection or exception from killing
+// the process (Node v24 makes unhandled rejections fatal by default).
+process.on('unhandledRejection', (reason) => {
+  console.error('[server] Unhandled rejection (ignored):', reason);
+});
+process.on('uncaughtException', (err) => {
+  console.error('[server] Uncaught exception (ignored):', err.message);
 });
 
 server.listen(PORT, () => console.log(`Serving ${ROOT} on http://localhost:${PORT}`));
