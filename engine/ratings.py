@@ -1811,8 +1811,19 @@ def run_ratings() -> RatingsSummary:
         elif gap < -_RECONCILE_GAP:
             # Doubles much stronger → only preserve if earned
             if pk not in earned_doubles_set:
-                # Un-earned doubles inflation (Lisa) → anchor down
-                global_sequential[pk] = round(bl + s_delta, 4)
+                # Require at least 2 singles matches before anchoring down.
+                # One singles win — even a dominant one (e.g. Bencini 6-1 6-3)
+                # produces a tiny singles delta because it's one data point vs
+                # a potentially weaker opponent.  That's not evidence of weak
+                # singles; it's evidence of thin data.  Penalising a dominant
+                # doubles player (8-1) for rarely playing singles is wrong.
+                n_singles = sum(1 for ev in singles_events
+                                if pk in ev.winner_keys + ev.loser_keys)
+                if n_singles < 2:
+                    pass  # not enough singles data to anchor down — leave blend
+                else:
+                    # Un-earned doubles inflation (Lisa) → anchor down
+                    global_sequential[pk] = round(bl + s_delta, 4)
             # else: keep the blend (Tina/Irene case)
 
     # --- Lever 5b floor: prevent higher-div losses from sinking rating below
