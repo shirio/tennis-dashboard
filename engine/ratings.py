@@ -1893,12 +1893,28 @@ def run_ratings() -> RatingsSummary:
         delta = round(post_val - pre_val, 4)
         if abs(delta) < 0.001:
             continue  # no adjustment needed
+        bl = baselines_all.get(pk, 0)
         for div_dict in global_timeline.get(pk, {}).values():
             for date in list(div_dict.keys()):
                 div_dict[date] = round(div_dict[date] + delta, 4)
         for div_dict in global_post_timeline.get(pk, {}).values():
             for date in list(div_dict.keys()):
                 div_dict[date] = round(div_dict[date] + delta, 4)
+
+    # Clamp each player's FIRST pre-match timeline entry to at least their
+    # baseline.  Large downward Lever 3 corrections (e.g. doubles-only player
+    # like Bencini, –0.18 delta) can shift the opening entry below baseline,
+    # which is always wrong — before match 1 the algorithm only knew baseline.
+    for pk, div_map in global_timeline.items():
+        bl = baselines_all.get(pk)
+        if bl is None:
+            continue
+        for tl in div_map.values():
+            if not tl:
+                continue
+            first_date = min(tl.keys(), key=_date_sort_key)
+            if tl[first_date] < bl:
+                tl[first_date] = round(bl, 4)
 
     for player in players:
         k = _name_key(player.get("name", ""))
