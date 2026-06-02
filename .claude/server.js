@@ -1,6 +1,7 @@
-const http = require('http');
-const fs   = require('fs');
-const path = require('path');
+const http   = require('http');
+const fs     = require('fs');
+const path   = require('path');
+const zlib   = require('zlib');
 
 // Load .env from project root if present (so ANTHROPIC_API_KEY persists across restarts)
 try {
@@ -153,14 +154,27 @@ const server = http.createServer((req, res) => {
 
   if (req.method === 'POST' && req.url === '/api/chat') return handleChat(req, res);
 
-  // Static files
-  if (req.url === '/') { res.writeHead(302, { Location: '/women_35.html' }); return res.end(); }
+  // Static files — served with gzip when the client accepts it
+  if (req.url === '/') { res.writeHead(302, { Location: '/index.html' }); return res.end(); }
   let filePath = path.join(ROOT, req.url.split('?')[0]);
   if (!filePath.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
   fs.readFile(filePath, (err, data) => {
     if (err) { res.writeHead(404); return res.end('Not found'); }
-    res.writeHead(200, { 'Content-Type': TYPES[path.extname(filePath)] || 'text/plain' });
-    res.end(data);
+    const mime = TYPES[path.extname(filePath)] || 'text/plain';
+    const acceptsGzip = (req.headers['accept-encoding'] || '').includes('gzip');
+    if (acceptsGzip && data.length > 1024) {
+      zlib.gzip(data, (zerr, compressed) => {
+        if (zerr) {
+          res.writeHead(200, { 'Content-Type': mime });
+          return res.end(data);
+        }
+        res.writeHead(200, { 'Content-Type': mime, 'Content-Encoding': 'gzip' });
+        res.end(compressed);
+      });
+    } else {
+      res.writeHead(200, { 'Content-Type': mime });
+      res.end(data);
+    }
   });
 });
 
@@ -180,6 +194,12 @@ server.on('error', (err) => {
     console.error(`[server] Non-fatal error: ${err.code} — ${err.message}`);
   }
 });
+
+// Ignore SIGTERM so the preview tool can't kill this process when the
+// preview pane closes.  The server stays alive between sessions — the next
+// preview_start call gets "reused: true" and opens instantly instead of
+// doing a cold start every time.  Kill manually with: lsof -ti:8080 | xargs kill
+process.on('SIGTERM', () => console.log('[server] SIGTERM ignored — staying alive'));
 
 // Catch-all: prevent any stray unhandled rejection or exception from killing
 // the process (Node v24 makes unhandled rejections fatal by default).
