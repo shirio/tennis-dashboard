@@ -676,12 +676,14 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                         }
                         player_histories.setdefault(nk, []).append(rec)
                         st = player_stats.setdefault(
-                            nk, {"sw":0,"sl":0,"gw":0,"gl":0,
+                            nk, {"sw30":0,"sl30":0,"gw30":0,"gl30":0,
+                                 "sw35":0,"sl35":0,"gw35":0,"gl35":0,
                                  "w":0,"l":0,"w30":0,"l30":0,"w35":0,"l35":0}
                         )
                         if not is_walkover:
-                            st["sw"] += sw; st["sl"] += sl
-                            st["gw"] += gw; st["gl"] += gl
+                            d = div.replace(".", "")
+                            st[f"sw{d}"] += sw; st[f"sl{d}"] += sl
+                            st[f"gw{d}"] += gw; st[f"gl{d}"] += gl
                             if won: st["w"] += 1
                             else:   st["l"] += 1
                             if div == "3.0":
@@ -724,8 +726,8 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         _diff_html, _diff_sort = _baseline_diff_span(curr, baseline)
 
         st = player_stats.get(nk, {})
-        sw = st.get("sw", 0); sl = st.get("sl", 0)
-        gw = st.get("gw", 0); gl = st.get("gl", 0)
+        sw = st.get(f"sw{_sfx}", 0); sl = st.get(f"sl{_sfx}", 0)
+        gw = st.get(f"gw{_sfx}", 0); gl = st.get(f"gl{_sfx}", 0)
         sets_str  = f"{sw}–{sl}" if (sw + sl) else "–"
         games_str = f"{gw}–{gl}" if (gw + gl) else "–"
         sets_sort  = str(sw * 100 - sl) if (sw + sl) else "0"
