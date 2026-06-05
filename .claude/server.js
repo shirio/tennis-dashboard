@@ -3,6 +3,53 @@ const fs     = require('fs');
 const path   = require('path');
 const zlib   = require('zlib');
 
+// ─── Daemon self-spawn ───────────────────────────────────────────────────────
+// Strategy: two roles for this file.
+//
+//   WATCHDOG (no --daemon flag) — the process the preview tool launches and
+//   kills.  It checks if a real HTTP server is already running; if not it
+//   spawns a fully-detached daemon copy, waits for it to bind, then just
+//   keeps itself alive with setInterval.  When the tool kills this watchdog
+//   the daemon is unaffected.
+//
+//   DAEMON (--daemon flag) — runs the actual HTTP server.  Skips all spawn
+//   logic and falls straight through to the server code below.
+//
+if (!process.argv.includes('--daemon')) {
+  const { execSync, spawn } = require('child_process');
+
+  function portInUse() {
+    try { execSync('lsof -ti:8080', { stdio: 'ignore' }); return true; }
+    catch (_) { return false; }
+  }
+
+  if (!portInUse()) {
+    // Kill any zombie that somehow held the port without responding.
+    try { execSync('lsof -ti:8080 | xargs kill -9', { stdio: 'ignore' }); } catch (_) {}
+
+    const child = spawn(process.execPath, [__filename, '--daemon'], {
+      detached: true,
+      stdio:    'ignore',
+      env:      process.env,
+      cwd:      path.join(__dirname, '..'),
+    });
+    child.unref();
+
+    // Wait up to 4 s for daemon to bind the port.
+    const t0 = Date.now();
+    while (!portInUse() && Date.now() - t0 < 4000) {
+      execSync('sleep 0.1', { stdio: 'ignore' });
+    }
+  }
+
+  // Become the watchdog: ignore SIGTERM so it doesn't kill Node abruptly,
+  // and keep the event loop alive forever.
+  process.on('SIGTERM', () => {});
+  setInterval(() => {}, 2 ** 31 - 1);
+  // Do NOT fall through — the watchdog never starts an HTTP server.
+  // (The module-level code below only runs in the --daemon process.)
+} else {
+
 // Load .env from project root if present (so ANTHROPIC_API_KEY persists across restarts)
 try {
   const envPath = path.join(__dirname, '..', '.env');
@@ -195,12 +242,6 @@ server.on('error', (err) => {
   }
 });
 
-// Ignore SIGTERM so the preview tool can't kill this process when the
-// preview pane closes.  The server stays alive between sessions — the next
-// preview_start call gets "reused: true" and opens instantly instead of
-// doing a cold start every time.  Kill manually with: lsof -ti:8080 | xargs kill
-process.on('SIGTERM', () => console.log('[server] SIGTERM ignored — staying alive'));
-
 // Catch-all: prevent any stray unhandled rejection or exception from killing
 // the process (Node v24 makes unhandled rejections fatal by default).
 process.on('unhandledRejection', (reason) => {
@@ -211,3 +252,5 @@ process.on('uncaughtException', (err) => {
 });
 
 server.listen(PORT, () => console.log(`Serving ${ROOT} on http://localhost:${PORT}`));
+
+} // end else (daemon path)

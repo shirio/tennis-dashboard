@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "dashboard",
-      "runtimeExecutable": "bash",
-      "runtimeArgs": [".claude/start-server.sh"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": [".claude/server.js"],
       "port": 8080
     }
   ]
