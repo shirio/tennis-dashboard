@@ -648,8 +648,21 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                             continue
                         _seen.add(dedup)
 
-                        is_home = (side == "home")
-                        if is_home:
+                        # Two separate uses of "home" that must be computed
+                        # independently, because players_home/away columns are
+                        # often swapped vs the match-level home_team:
+                        #
+                        # • is_home_col  (column position) → partners vs opponents
+                        #   Players on the same column side are partners.
+                        # • is_home_score (actual home_team) → score parsing
+                        #   Scores are always listed as "home_team - away_team"
+                        #   per set, so we need the TRUE home team, not the column.
+                        is_home_col   = (side == "home")
+                        is_home_score = player_team.lower() in (
+                            match.get("home_team", "") or ""
+                        ).lower()
+
+                        if is_home_col:
                             partners = [n for n in home_names if _nkey(n) != nk]
                             opps     = away_names if not is_walkover else []
                         else:
@@ -664,7 +677,16 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                             )
 
                         opp_team = lt if won else wt
-                        sw, sl, gw, gl = _parse_score(score, is_home)
+                        # Parse score both ways and pick the interpretation
+                        # consistent with the known win/loss outcome.
+                        # This handles inconsistent home_team / score-direction
+                        # alignment across different scorecard entries.
+                        sw_h, sl_h, gw_h, gl_h = _parse_score(score, True)
+                        sw_a, sl_a, gw_a, gl_a = _parse_score(score, False)
+                        if won:
+                            sw, sl, gw, gl = (sw_h, sl_h, gw_h, gl_h) if sw_h >= sl_h else (sw_a, sl_a, gw_a, gl_a)
+                        else:
+                            sw, sl, gw, gl = (sw_h, sl_h, gw_h, gl_h) if sl_h >= sw_h else (sw_a, sl_a, gw_a, gl_a)
 
                         rec = {
                             "date": date, "div": div, "line": line_label,
@@ -733,13 +755,55 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         sets_sort  = str(sw * 100 - sl) if (sw + sl) else "0"
         games_sort = str(gw * 100 - gl) if (gw + gl) else "0"
 
-        has_history = bool(player_histories.get(nk))
+        hist = player_histories.get(nk, [])
+        has_history = bool(hist)
         expand_cls = " expandable" if has_history else ""
+
+        # Build compact combined-record string for the history header.
+        # Only show "X overall (A in 3.0, B in 3.5)" when player has matches
+        # in BOTH divisions; single-division players just show "X–Y in 3.0".
+        w_total = st.get("w", 0); l_total = st.get("l", 0)
+        w30 = st.get("w30", 0); l30 = st.get("l30", 0)
+        w35 = st.get("w35", 0); l35 = st.get("l35", 0)
+        combined_parts = []
+        if w30 + l30: combined_parts.append(f"{w30}–{l30} in 3.0")
+        if w35 + l35: combined_parts.append(f"{w35}–{l35} in 3.5")
+        if len(combined_parts) == 2:
+            combined_str = f"{w_total}–{l_total} overall  ({', '.join(combined_parts)})"
+        elif combined_parts:
+            combined_str = combined_parts[0]   # e.g. "7–0 in 3.0"
+        else:
+            combined_str = f"{w_total}–{l_total}"
+
+        # Embed match history as compact JSON on the row.
+        # JS renders the detail pane on first click — keeps the DOM lean
+        # and the HTML file small (vs pre-rendering hidden HTML for every player).
+        import json as _json
+        hist_json = ""
+        if has_history:
+            hist_compact = [
+                {k: v for k, v in {
+                    "dt": rec["date"],
+                    "dv": rec["div"].replace(".", ""),
+                    "ln": _abbrev_line(rec["line"]),
+                    "w":  rec["won"],
+                    "sc": rec["score"],
+                    "wk": rec.get("wko", False) or None,
+                    "pt": rec["partners"] or None,
+                    "op": rec["opps"] or None,
+                    "or": [r for r in rec["opp_r"] if r] or None,
+                    "ot": _abbrev_team(rec.get("opp_team", "")) or None,
+                }.items() if v is not None}
+                for rec in hist
+            ]
+            hist_json = _json.dumps(hist_compact, separators=(",", ":"))
 
         rows += (
             f"<tr data-sf='{_esc(sf)}' data-pkey='{_esc(nk)}'"
             f" class='player-row{expand_cls}'"
-            f" onclick=\"toggleHistory(this)\">"
+            + (f" data-history='{hist_json.replace(chr(39), '&apos;')}'"
+               f" data-combined='{_esc(combined_str)}'" if has_history else "")
+            + f" onclick=\"toggleHistory(this)\">"
             f"<td class='pname'>{_esc(p.get('name',''))}</td>"
             f"<td>{_esc(_abbrev_team((_sfx and p.get(f'team_{_sfx}')) or p.get('team','') or ''))}</td>"
             f"<td><span class='sf-pill'>{_esc(sf)}</span></td>"
@@ -752,72 +816,6 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             f"<td data-sort='{games_sort}' style='white-space:nowrap'>{games_str}</td>"
             f"</tr>\n"
         )
-
-        # ── History detail row (hidden by default) ────────────────────────────
-        if has_history:
-            hist = player_histories[nk]
-            w_total = st.get("w", 0); l_total = st.get("l", 0)
-            w30 = st.get("w30", 0); l30 = st.get("l30", 0)
-            w35 = st.get("w35", 0); l35 = st.get("l35", 0)
-            combined_parts = []
-            if w30 + l30:
-                combined_parts.append(f"{w30}–{l30} in 3.0")
-            if w35 + l35:
-                combined_parts.append(f"{w35}–{l35} in 3.5")
-            if len(combined_parts) == 2:
-                combined_str = f"{w_total}–{l_total} overall &nbsp;({', '.join(combined_parts)})"
-            elif combined_parts:
-                combined_str = f"{w_total}–{l_total} ({combined_parts[0]})"
-            else:
-                combined_str = f"{w_total}–{l_total}"
-
-            hist_rows = ""
-            for rec in hist:
-                div_cls  = "dp30" if rec["div"] == "3.0" else "dp35"
-                div_pill = f'<span class="dp {div_cls}">{rec["div"]}</span>'
-                wko      = rec.get("wko", False)
-                result_cls = "hw" if rec["won"] else "hl"
-                result_txt = "DEFAULT" if wko else ("W" if rec["won"] else "L")
-                result_html = f'<span class="{result_cls}">{result_txt}</span>'
-                partner_html = (", ".join(_esc(p2) for p2 in rec["partners"])
-                                if rec["partners"] else "—")
-                opp_parts = []
-                for o, r in zip(rec["opps"], rec["opp_r"]):
-                    if r:
-                        opp_parts.append(f'{_esc(o)}<em class="hr"> ({r})</em>')
-                    else:
-                        opp_parts.append(_esc(o))
-                opp_html     = " / ".join(opp_parts) if opp_parts else '<em class="hr">default</em>'
-                opp_team_html = _esc(_abbrev_team(rec.get("opp_team", "")))
-                score_disp   = _esc(rec["score"]) if not wko else '<em class="hr">default</em>'
-                line_short   = _esc(_abbrev_line(rec["line"]))
-
-                hist_rows += (
-                    f"<tr>"
-                    f"<td style='white-space:nowrap'>{_esc(rec['date'])}</td>"
-                    f"<td>{div_pill}</td>"
-                    f"<td>{line_short}</td>"
-                    f"<td>{result_html}</td>"
-                    f"<td style='white-space:nowrap'>{score_disp}</td>"
-                    f"<td>{partner_html}</td>"
-                    f"<td>{opp_html}</td>"
-                    f"<td>{opp_team_html}</td>"
-                    f"</tr>\n"
-                )
-
-            rows += (
-                f"<tr class='history-row' data-pkey='{_esc(nk)}' style='display:none'>"
-                f"<td colspan='10' style='padding:0'>"
-                f"<div class='history-wrap'>"
-                f"<div class='history-summary'>{combined_str}</div>"
-                f"<table class='history-table'>"
-                f"<thead><tr>"
-                f"<th>Date</th><th>Div</th><th>Line</th><th>Result</th>"
-                f"<th>Score</th><th>Partner(s)</th><th>Opponent(s)</th><th>Opp Team</th>"
-                f"</tr></thead>"
-                f"<tbody>{hist_rows}</tbody>"
-                f"</table></div></td></tr>\n"
-            )
 
     return f"""
 <div class="ap-controls">
@@ -1449,9 +1447,49 @@ function filterPlayers() {
 }
 function toggleHistory(tr) {
   if (!tr.classList.contains('expandable')) return;
-  var next = tr.nextElementSibling;
-  if (!next || !next.classList.contains('history-row')) return;
   var open = tr.classList.toggle('expanded');
+  var next = tr.nextElementSibling;
+  // First click: render the detail row from JSON, then insert it
+  if (!next || !next.classList.contains('history-row')) {
+    var data = JSON.parse(tr.dataset.history || '[]');
+    var combined = tr.dataset.combined || '';
+    var html = '<div class="history-wrap"><div class="history-summary">' + combined + '</div>'
+      + '<table class="history-table"><thead><tr>'
+      + '<th>Date</th><th>Div</th><th>Line</th><th>Result</th>'
+      + '<th>Score</th><th>Partner(s)</th><th>Opponent(s)</th><th>Opp Team</th>'
+      + '</tr></thead><tbody>';
+    data.forEach(function(r) {
+      var dv = r.dv || '';
+      var divPill = '<span class="dp dp' + dv + '">' + (dv === '30' ? '3.0' : '3.5') + '</span>';
+      var wko = r.wk;
+      var resCls = wko ? '' : (r.w ? 'hw' : 'hl');
+      var resTxt = wko ? 'DEFAULT' : (r.w ? 'W' : 'L');
+      var opArr = r.op || [], orArr = r.or || [];
+      var opHtml = opArr.length
+        ? opArr.map(function(o,i){ return o + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
+        : '<em class="hr">default</em>';
+      var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
+      html += '<tr>'
+        + '<td style="white-space:nowrap">' + (r.dt||'') + '</td>'
+        + '<td>' + divPill + '</td>'
+        + '<td>' + (r.ln||'') + '</td>'
+        + '<td><span class="' + resCls + '">' + resTxt + '</span></td>'
+        + '<td style="white-space:nowrap">' + sc + '</td>'
+        + '<td>' + ((r.pt||[]).join(', ')||'—') + '</td>'
+        + '<td>' + opHtml + '</td>'
+        + '<td>' + (r.ot||'') + '</td>'
+        + '</tr>';
+    });
+    html += '</tbody></table></div>';
+    var htr = document.createElement('tr');
+    htr.className = 'history-row';
+    var td = document.createElement('td');
+    td.colSpan = 10; td.style.padding = '0';
+    td.innerHTML = html;
+    htr.appendChild(td);
+    tr.parentNode.insertBefore(htr, tr.nextSibling);
+    next = htr;
+  }
   next.style.display = open ? '' : 'none';
 }
 function applyPlayerFilters() {
