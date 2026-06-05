@@ -1475,6 +1475,8 @@ function filterByTeam(abbrevTeam, section, event) {
 // ---- default descending for quality columns (first click shows best first) ----
 // _sortDir state is true → next click will be descending (dir = !true = false → bn-an)
 ['s3','s4','s5','s6','s7','d3','d4','d5'].forEach(function(k) { _sortDir[k] = true; });
+// All-players table: cols 3-9 (NTRP, Base, New, Diff, W-L, Sets, Games) default descending
+[3,4,5,6,7,8,9].forEach(function(c) { _sortDir['ap-' + c] = true; });
 
 function _applyMxFilters(section) {
   var sf = _mxSF[section];
