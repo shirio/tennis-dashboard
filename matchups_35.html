@@ -1194,7 +1194,7 @@ function toggleHistory(tr) {
     var htr = document.createElement('tr');
     htr.className = 'history-row';
     var td = document.createElement('td');
-    td.colSpan = 10; td.style.padding = '0';
+    td.colSpan = 11; td.style.padding = '0';
     td.innerHTML = html;
     htr.appendChild(td);
     tr.parentNode.insertBefore(htr, tr.nextSibling);
@@ -1342,7 +1342,7 @@ function goToResult(slug, sf) {
   }, 40);
 }
 // All-players table: cols 3-9 (NTRP, Base, New, Diff, W-L, Sets, Games) default descending
-[3,4,5,6,7,8,9].forEach(function(c) { _sortDir['ap-' + c] = true; });
+[3,4,5,6,7,8,9,10].forEach(function(c) { _sortDir['ap-' + c] = true; });
 
 // ---- expand / collapse detail rows ----
 function toggleDetail(id, triggerEl) {

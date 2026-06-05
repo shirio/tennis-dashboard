@@ -706,6 +706,14 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                             d = div.replace(".", "")
                             st[f"sw{d}"] += sw; st[f"sl{d}"] += sl
                             st[f"gw{d}"] += gw; st[f"gl{d}"] += gl
+                            # Accumulate opponent ratings for avg-opp calculation
+                            for _or in opp_r_list:
+                                if _or:
+                                    try:
+                                        st[f"or_sum{d}"] = st.get(f"or_sum{d}", 0.0) + float(_or)
+                                        st[f"or_n{d}"]   = st.get(f"or_n{d}",   0)   + 1
+                                    except ValueError:
+                                        pass
                             if won: st["w"] += 1
                             else:   st["l"] += 1
                             if div == "3.0":
@@ -754,6 +762,11 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         games_str = f"{gw}–{gl}" if (gw + gl) else "–"
         sets_sort  = str(sw * 100 - sl) if (sw + sl) else "0"
         games_sort = str(gw * 100 - gl) if (gw + gl) else "0"
+        _or_sum = st.get(f"or_sum{_sfx}", 0.0)
+        _or_n   = st.get(f"or_n{_sfx}",  0)
+        avg_opp_val  = _or_sum / _or_n if _or_n else None
+        avg_opp_str  = f"{avg_opp_val:.2f}" if avg_opp_val else "–"
+        avg_opp_sort = f"{avg_opp_val:.4f}" if avg_opp_val else "0"
 
         hist = player_histories.get(nk, [])
         has_history = bool(hist)
@@ -825,6 +838,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             f"<td data-sort='{_wl_sort}' style='white-space:nowrap'>{_esc(_wl_str)}</td>"
             f"<td data-sort='{sets_sort}' style='white-space:nowrap'>{sets_str}</td>"
             f"<td data-sort='{games_sort}' style='white-space:nowrap'>{games_str}</td>"
+            f"<td data-sort='{avg_opp_sort}'>{avg_opp_str}</td>"
             f"</tr>\n"
         )
 
@@ -850,6 +864,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
     <th class="sortable" onclick="sortAP(7)">W–L ↕</th>
     <th class="sortable" onclick="sortAP(8)">Sets ↕</th>
     <th class="sortable" onclick="sortAP(9)">Games ↕</th>
+    <th class="sortable" onclick="sortAP(10)">Avg Opp ↕</th>
   </tr></thead>
   <tbody>{rows}</tbody>
 </table>"""
@@ -1499,7 +1514,7 @@ function toggleHistory(tr) {
     var htr = document.createElement('tr');
     htr.className = 'history-row';
     var td = document.createElement('td');
-    td.colSpan = 10; td.style.padding = '0';
+    td.colSpan = 11; td.style.padding = '0';
     td.innerHTML = html;
     htr.appendChild(td);
     tr.parentNode.insertBefore(htr, tr.nextSibling);
@@ -1647,7 +1662,7 @@ function goToResult(slug, sf) {
   }, 40);
 }
 // All-players table: cols 3-9 (NTRP, Base, New, Diff, W-L, Sets, Games) default descending
-[3,4,5,6,7,8,9].forEach(function(c) { _sortDir['ap-' + c] = true; });
+[3,4,5,6,7,8,9,10].forEach(function(c) { _sortDir['ap-' + c] = true; });
 """
 
 
