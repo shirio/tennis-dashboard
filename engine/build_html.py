@@ -769,7 +769,18 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         if w30 + l30: combined_parts.append(f"{w30}–{l30} in 3.0")
         if w35 + l35: combined_parts.append(f"{w35}–{l35} in 3.5")
         if len(combined_parts) == 2:
-            combined_str = f"{w_total}–{l_total} overall  ({', '.join(combined_parts)})"
+            # Cross-division: add total sets + games to the summary line
+            sw_tot = st.get("sw30", 0) + st.get("sw35", 0)
+            sl_tot = st.get("sl30", 0) + st.get("sl35", 0)
+            gw_tot = st.get("gw30", 0) + st.get("gw35", 0)
+            gl_tot = st.get("gl30", 0) + st.get("gl35", 0)
+            sets_tot  = f"{sw_tot}–{sl_tot}" if (sw_tot + sl_tot) else ""
+            games_tot = f"{gw_tot}–{gl_tot}" if (gw_tot + gl_tot) else ""
+            sg_str = "  ·  " + "  ".join(filter(None, [
+                f"{sets_tot} sets"  if sets_tot  else "",
+                f"{games_tot} games" if games_tot else "",
+            ])) if (sets_tot or games_tot) else ""
+            combined_str = f"{w_total}–{l_total} overall  ({', '.join(combined_parts)}){sg_str}"
         elif combined_parts:
             combined_str = combined_parts[0]   # e.g. "7–0 in 3.0"
         else:
