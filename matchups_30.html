@@ -65,6 +65,28 @@ tr:last-child td { border-bottom: none; }
 .sf-pill { display: inline-block; padding: 0 5px; border-radius: 8px;
            font-size: 10px; font-weight: 600; background: #e8edf5;
            color: #3a5a8c; vertical-align: middle; }
+/* All-players history expansion */
+.player-row.expandable { cursor: pointer; }
+.player-row.expandable:hover { background: #f5f7fa; }
+.player-row.expanded > td:first-child::before { content: "▾ "; color: #888; font-size: 10px; }
+.player-row:not(.expanded) > td:first-child::before { content: "▸ "; color: #ccc; font-size: 10px; }
+.player-row:not(.expandable) > td:first-child::before { content: ""; }
+.history-row td { background: #fafbfd; padding: 0; }
+.history-wrap { padding: 8px 12px 12px 24px; }
+.history-summary { font-size: 11px; font-weight: 600; color: #555; margin-bottom: 6px; }
+.history-table { font-size: 11px; width: auto; min-width: 60%; }
+.history-table th { font-size: 10px; padding: 3px 8px; }
+.history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+.history-table tr:last-child td { border-bottom: none; }
+/* Division pills in history */
+.dp { display: inline-block; padding: 1px 6px; border-radius: 8px;
+      font-size: 10px; font-weight: 700; white-space: nowrap; }
+.dp30 { background: #ddeeff; color: #1a5a9a; }
+.dp35 { background: #fff0d8; color: #8a5200; }
+/* W/L in history */
+.hw { color: #27500A; font-weight: 700; }
+.hl { color: #791F1F; font-weight: 700; }
+.hr { color: #aaa; font-style: normal; font-size: 10px; }
 /* Search + SF filter row */
 .ap-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
 .ap-controls input { flex: 1; min-width: 160px; max-width: 320px; padding: 5px 10px;
@@ -1355,12 +1377,25 @@ function filterPlayerSF(sf, btn) {
 function filterPlayers() {
   applyPlayerFilters();
 }
+function toggleHistory(tr) {
+  if (!tr.classList.contains('expandable')) return;
+  var next = tr.nextElementSibling;
+  if (!next || !next.classList.contains('history-row')) return;
+  var open = tr.classList.toggle('expanded');
+  next.style.display = open ? '' : 'none';
+}
 function applyPlayerFilters() {
   var q = (document.getElementById('player-search') || {value:''}).value.toLowerCase();
-  document.querySelectorAll('#ap-table tbody tr').forEach(tr => {
+  document.querySelectorAll('#ap-table tbody tr.player-row').forEach(tr => {
     var sfMatch = _apSF === 'all' || tr.dataset.sf === _apSF;
     var textMatch = !q || tr.innerText.toLowerCase().includes(q);
-    tr.style.display = (sfMatch && textMatch) ? '' : 'none';
+    var show = sfMatch && textMatch;
+    tr.style.display = show ? '' : 'none';
+    // Hide associated history row when parent is hidden
+    var next = tr.nextElementSibling;
+    if (next && next.classList.contains('history-row')) {
+      if (!show) next.style.display = 'none';
+    }
   });
 }
 var _sortDir = {};
@@ -1389,7 +1424,37 @@ function _sortTable(tbodyOrSelector, col, dirKey) {
   rows.forEach(r => tbody.appendChild(r));
 }
 function sortAP(col) {
-  _sortTable('#ap-table tbody', col, 'ap-' + col);
+  var tbody = document.querySelector('#ap-table tbody');
+  if (!tbody) return;
+  var dir = (_sortDir['ap-' + col] = !_sortDir['ap-' + col]);
+  // Collect only player rows (not history rows), paired with their history row
+  var pairs = [];
+  var rows = Array.from(tbody.children);
+  for (var i = 0; i < rows.length; i++) {
+    if (rows[i].classList.contains('player-row')) {
+      var hist = (i + 1 < rows.length && rows[i+1].classList.contains('history-row'))
+        ? rows[i+1] : null;
+      pairs.push([rows[i], hist]);
+    }
+  }
+  pairs.sort(function(a, b) {
+    var ac = a[0].cells[col], bc = b[0].cells[col];
+    var ads = ac ? ac.dataset.sort : undefined;
+    var bds = bc ? bc.dataset.sort : undefined;
+    if (ads !== undefined && bds !== undefined) {
+      var an2 = parseFloat(ads), bn2 = parseFloat(bds);
+      if (!isNaN(an2) && !isNaN(bn2)) return dir ? an2 - bn2 : bn2 - an2;
+    }
+    var av = ac ? ac.innerText.trim() : '';
+    var bv = bc ? bc.innerText.trim() : '';
+    var an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return dir ? an - bn : bn - an;
+    return dir ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  pairs.forEach(function(pair) {
+    tbody.appendChild(pair[0]);
+    if (pair[1]) tbody.appendChild(pair[1]);
+  });
 }
 function sortRoster(col) {
   // Sort the currently visible roster pane's table

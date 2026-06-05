@@ -405,6 +405,40 @@ def _standings_tab(subflights: list[dict], warnings: list[str]) -> str:
     )
 
 
+def _parse_score(score: str, player_is_home: bool) -> tuple[int, int, int, int]:
+    """Parse a score string into (sets_won, sets_lost, games_won, games_lost).
+    Score format is always home-away per set, e.g. "6-3 4-6 1-0".
+    """
+    sw = sl = gw = gl = 0
+    for part in (score or "").split():
+        if "-" not in part:
+            continue
+        a, _, b = part.partition("-")
+        try:
+            hg, ag = int(a), int(b)
+        except ValueError:
+            continue  # skip "?-?" tokens
+        mg = hg if player_is_home else ag
+        og = ag if player_is_home else hg
+        gw += mg
+        gl += og
+        if mg > og:
+            sw += 1
+        else:
+            sl += 1
+    return sw, sl, gw, gl
+
+
+def _abbrev_line(line_label: str) -> str:
+    """Convert '1# Doubles' → 'D1', '2# Singles' → 'S2', etc."""
+    import re as _re
+    m = _re.match(r'(\d+)#\s*(Singles|Doubles)', line_label or "")
+    if not m:
+        return line_label or ""
+    n, t = m.group(1), m.group(2)
+    return ("S" if t == "Singles" else "D") + n
+
+
 def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") -> str:
     # Field suffix for per-division stats ("3.0" -> "30", "3.5" -> "35")
     _sfx = ntrp.replace(".", "") if ntrp else ""
@@ -532,10 +566,13 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
     )
 
 
-def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) -> str:
+def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
+                 other_subflights: list[dict] = None) -> str:
     _sfx = ntrp.replace(".", "") if ntrp else ""
+    other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
+    _other_sfx = other_ntrp.replace(".", "")
 
-    # Build team → subflight label lookup so dual-division players get the right SF pill
+    # Build team → subflight label lookup
     team_to_sf: dict[str, str] = {}
     for sf_obj in (subflights or []):
         lbl = sf_obj.get("flight_label", "")
@@ -555,36 +592,152 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
                         p.get("current_division_rating") or
                         p.get("dynamic_rating_baseline") or 0)
     )
+
+    # ── Build per-player match histories from both divisions ──────────────────
+    def _nkey(n: str) -> str:
+        return re.sub(r"\s+", " ", n.strip().lower())
+
+    by_name = {_nkey(p.get("name", "")): p for p in players if p.get("name")}
+
+    # player_histories: nkey → list of match records (sorted by date)
+    # player_stats:     nkey → {sw,sl,gw,gl,w,l,w30,l30,w35,l35}
+    player_histories: dict[str, list[dict]] = {}
+    player_stats: dict[str, dict] = {}
+    _seen: set[tuple] = set()
+
+    for div, sfs in [(ntrp, subflights or []), (other_ntrp, other_subflights or [])]:
+        div_sfx = div.replace(".", "")
+        for sf in sfs:
+            for match in sf.get("matches", []):
+                if match.get("pending"):
+                    continue
+                date = match.get("date", "")
+                mid = match.get("match_id", "")
+                for line in match.get("lines", []):
+                    home_raw = line.get("players_home", "") or ""
+                    away_raw = line.get("players_away", "") or ""
+                    wt = line.get("winner_team", "") or ""
+                    lt = line.get("loser_team", "") or ""
+                    score = line.get("score", "") or ""
+                    line_label = line.get("line", "") or ""
+
+                    home_names = [n.strip() for n in home_raw.split("/")
+                                  if n.strip() and n.strip().upper() != "N/A"]
+                    away_names = [n.strip() for n in away_raw.split("/")
+                                  if n.strip() and n.strip().upper() != "N/A"]
+                    is_walkover = not home_names or not away_names
+
+                    all_side = ([("home", n) for n in home_names] +
+                                [("away", n) for n in away_names])
+
+                    for side, nm in all_side:
+                        nk = _nkey(nm)
+                        pdata = by_name.get(nk)
+                        if not pdata:
+                            continue
+                        player_team = (pdata.get(f"team_{div_sfx}") or
+                                       pdata.get("team") or "").strip()
+                        if not player_team:
+                            continue
+                        won  = player_team.lower() in wt.lower()
+                        lost = player_team.lower() in lt.lower()
+                        if not won and not lost:
+                            continue
+                        dedup = (mid, line_label, nk, div)
+                        if dedup in _seen:
+                            continue
+                        _seen.add(dedup)
+
+                        is_home = (side == "home")
+                        if is_home:
+                            partners = [n for n in home_names if _nkey(n) != nk]
+                            opps     = away_names if not is_walkover else []
+                        else:
+                            partners = [n for n in away_names if _nkey(n) != nk]
+                            opps     = home_names if not is_walkover else []
+
+                        opp_r_list = []
+                        for o in opps:
+                            op = by_name.get(_nkey(o))
+                            opp_r_list.append(
+                                f"{op.get('rating_30'):.2f}" if op and op.get("rating_30") else ""
+                            )
+
+                        opp_team = lt if won else wt
+                        sw, sl, gw, gl = _parse_score(score, is_home)
+
+                        rec = {
+                            "date": date, "div": div, "line": line_label,
+                            "won": won, "score": score, "wko": is_walkover,
+                            "partners": partners,
+                            "opps": opps, "opp_r": opp_r_list,
+                            "opp_team": opp_team,
+                            "sw": sw, "sl": sl, "gw": gw, "gl": gl,
+                        }
+                        player_histories.setdefault(nk, []).append(rec)
+                        st = player_stats.setdefault(
+                            nk, {"sw":0,"sl":0,"gw":0,"gl":0,
+                                 "w":0,"l":0,"w30":0,"l30":0,"w35":0,"l35":0}
+                        )
+                        if not is_walkover:
+                            st["sw"] += sw; st["sl"] += sl
+                            st["gw"] += gw; st["gl"] += gl
+                            if won: st["w"] += 1
+                            else:   st["l"] += 1
+                            if div == "3.0":
+                                if won: st["w30"] += 1
+                                else:   st["l30"] += 1
+                            else:
+                                if won: st["w35"] += 1
+                                else:   st["l35"] += 1
+
+    # Sort each player's history chronologically
+    for nk in player_histories:
+        player_histories[nk].sort(key=lambda r: _date_sort_key(r["date"]))
+
+    # ── Build HTML rows ───────────────────────────────────────────────────────
     rows = ""
     for p in div_players:
-        ntrp_r = p.get("ntrp_rating", "") or ""
+        ntrp_r   = p.get("ntrp_rating", "") or ""
         baseline = p.get("dynamic_rating_baseline")
-        curr = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
-        glob = p.get("global_rating")
-        wl = p.get(f"wl_record_{_sfx}") or "–"
+        curr     = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
+        wl       = p.get(f"wl_record_{_sfx}") or "–"
         division = p.get("division", "")
-        # For players registered in this division, read subflight from their division string.
-        # For dual-division players, look up the subflight of their actual team in this division.
+        nk = _nkey(p.get("name", ""))
+
         if division.startswith(ntrp):
             sf = division.split()[-1] if division else ""
         else:
             div_team = (p.get(f"team_{_sfx}", "") or "") if _sfx else ""
             sf = team_to_sf.get(div_team, "")
-        # Numeric sort key for W-L: wins * 100 + total_matches
-        # (sort by most wins first; more matches breaks ties at same win count)
+
         _wl_sort = "0"
-        _wl_str = str(wl) if wl else "–"
+        _wl_str  = str(wl) if wl else "–"
         if "-" in _wl_str and _wl_str != "–":
             _wparts = _wl_str.split("-")
             try:
                 _w, _l = int(_wparts[0]), int(_wparts[1])
-                # Primary: wins (higher = better). Secondary: fewer losses (4-0 > 4-1).
                 _wl_sort = str(_w * 100 - _l)
             except (ValueError, IndexError):
                 pass
+
         _diff_html, _diff_sort = _baseline_diff_span(curr, baseline)
+
+        st = player_stats.get(nk, {})
+        sw = st.get("sw", 0); sl = st.get("sl", 0)
+        gw = st.get("gw", 0); gl = st.get("gl", 0)
+        sets_str  = f"{sw}–{sl}" if (sw + sl) else "–"
+        games_str = f"{gw}–{gl}" if (gw + gl) else "–"
+        sets_sort  = str(sw * 100 - sl) if (sw + sl) else "0"
+        games_sort = str(gw * 100 - gl) if (gw + gl) else "0"
+
+        has_history = bool(player_histories.get(nk))
+        expand_cls = " expandable" if has_history else ""
+
         rows += (
-            f"<tr data-sf='{_esc(sf)}'>"
+            f"<tr data-sf='{_esc(sf)}' data-pkey='{_esc(nk)}'"
+            f" class='player-row{expand_cls}'"
+            f" onclick=\"toggleHistory(this)\">"
             f"<td class='pname'>{_esc(p.get('name',''))}</td>"
             f"<td>{_esc(_abbrev_team((_sfx and p.get(f'team_{_sfx}')) or p.get('team','') or ''))}</td>"
             f"<td><span class='sf-pill'>{_esc(sf)}</span></td>"
@@ -593,8 +746,77 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
             f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
             f"<td data-sort='{_diff_sort}'>{_diff_html}</td>"
             f"<td data-sort='{_wl_sort}' style='white-space:nowrap'>{_esc(_wl_str)}</td>"
+            f"<td data-sort='{sets_sort}' style='white-space:nowrap'>{sets_str}</td>"
+            f"<td data-sort='{games_sort}' style='white-space:nowrap'>{games_str}</td>"
             f"</tr>\n"
         )
+
+        # ── History detail row (hidden by default) ────────────────────────────
+        if has_history:
+            hist = player_histories[nk]
+            w_total = st.get("w", 0); l_total = st.get("l", 0)
+            w30 = st.get("w30", 0); l30 = st.get("l30", 0)
+            w35 = st.get("w35", 0); l35 = st.get("l35", 0)
+            combined_parts = []
+            if w30 + l30:
+                combined_parts.append(f"{w30}–{l30} in 3.0")
+            if w35 + l35:
+                combined_parts.append(f"{w35}–{l35} in 3.5")
+            if len(combined_parts) == 2:
+                combined_str = f"{w_total}–{l_total} overall &nbsp;({', '.join(combined_parts)})"
+            elif combined_parts:
+                combined_str = f"{w_total}–{l_total} ({combined_parts[0]})"
+            else:
+                combined_str = f"{w_total}–{l_total}"
+
+            hist_rows = ""
+            for rec in hist:
+                div_cls  = "dp30" if rec["div"] == "3.0" else "dp35"
+                div_pill = f'<span class="dp {div_cls}">{rec["div"]}</span>'
+                wko      = rec.get("wko", False)
+                result_cls = "hw" if rec["won"] else "hl"
+                result_txt = "DEFAULT" if wko else ("W" if rec["won"] else "L")
+                result_html = f'<span class="{result_cls}">{result_txt}</span>'
+                partner_html = (", ".join(_esc(p2) for p2 in rec["partners"])
+                                if rec["partners"] else "—")
+                opp_parts = []
+                for o, r in zip(rec["opps"], rec["opp_r"]):
+                    if r:
+                        opp_parts.append(f'{_esc(o)}<em class="hr"> ({r})</em>')
+                    else:
+                        opp_parts.append(_esc(o))
+                opp_html     = " / ".join(opp_parts) if opp_parts else '<em class="hr">default</em>'
+                opp_team_html = _esc(_abbrev_team(rec.get("opp_team", "")))
+                score_disp   = _esc(rec["score"]) if not wko else '<em class="hr">default</em>'
+                line_short   = _esc(_abbrev_line(rec["line"]))
+
+                hist_rows += (
+                    f"<tr>"
+                    f"<td style='white-space:nowrap'>{_esc(rec['date'])}</td>"
+                    f"<td>{div_pill}</td>"
+                    f"<td>{line_short}</td>"
+                    f"<td>{result_html}</td>"
+                    f"<td style='white-space:nowrap'>{score_disp}</td>"
+                    f"<td>{partner_html}</td>"
+                    f"<td>{opp_html}</td>"
+                    f"<td>{opp_team_html}</td>"
+                    f"</tr>\n"
+                )
+
+            rows += (
+                f"<tr class='history-row' data-pkey='{_esc(nk)}' style='display:none'>"
+                f"<td colspan='10' style='padding:0'>"
+                f"<div class='history-wrap'>"
+                f"<div class='history-summary'>{combined_str}</div>"
+                f"<table class='history-table'>"
+                f"<thead><tr>"
+                f"<th>Date</th><th>Div</th><th>Line</th><th>Result</th>"
+                f"<th>Score</th><th>Partner(s)</th><th>Opponent(s)</th><th>Opp Team</th>"
+                f"</tr></thead>"
+                f"<tbody>{hist_rows}</tbody>"
+                f"</table></div></td></tr>\n"
+            )
+
     return f"""
 <div class="ap-controls">
   <input type="text" id="player-search" placeholder="Filter by name or team…"
@@ -615,6 +837,8 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None) 
     <th class="sortable" onclick="sortAP(5)">New ↕</th>
     <th class="sortable" onclick="sortAP(6)">Diff ↕</th>
     <th class="sortable" onclick="sortAP(7)">W–L ↕</th>
+    <th class="sortable" onclick="sortAP(8)">Sets ↕</th>
+    <th class="sortable" onclick="sortAP(9)">Games ↕</th>
   </tr></thead>
   <tbody>{rows}</tbody>
 </table>"""
@@ -1000,6 +1224,28 @@ tr:last-child td { border-bottom: none; }
 .sf-pill { display: inline-block; padding: 0 5px; border-radius: 8px;
            font-size: 10px; font-weight: 600; background: #e8edf5;
            color: #3a5a8c; vertical-align: middle; }
+/* All-players history expansion */
+.player-row.expandable { cursor: pointer; }
+.player-row.expandable:hover { background: #f5f7fa; }
+.player-row.expanded > td:first-child::before { content: "▾ "; color: #888; font-size: 10px; }
+.player-row:not(.expanded) > td:first-child::before { content: "▸ "; color: #ccc; font-size: 10px; }
+.player-row:not(.expandable) > td:first-child::before { content: ""; }
+.history-row td { background: #fafbfd; padding: 0; }
+.history-wrap { padding: 8px 12px 12px 24px; }
+.history-summary { font-size: 11px; font-weight: 600; color: #555; margin-bottom: 6px; }
+.history-table { font-size: 11px; width: auto; min-width: 60%; }
+.history-table th { font-size: 10px; padding: 3px 8px; }
+.history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+.history-table tr:last-child td { border-bottom: none; }
+/* Division pills in history */
+.dp { display: inline-block; padding: 1px 6px; border-radius: 8px;
+      font-size: 10px; font-weight: 700; white-space: nowrap; }
+.dp30 { background: #ddeeff; color: #1a5a9a; }
+.dp35 { background: #fff0d8; color: #8a5200; }
+/* W/L in history */
+.hw { color: #27500A; font-weight: 700; }
+.hl { color: #791F1F; font-weight: 700; }
+.hr { color: #aaa; font-style: normal; font-size: 10px; }
 /* Search + SF filter row */
 .ap-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
 .ap-controls input { flex: 1; min-width: 160px; max-width: 320px; padding: 5px 10px;
@@ -1199,12 +1445,25 @@ function filterPlayerSF(sf, btn) {
 function filterPlayers() {
   applyPlayerFilters();
 }
+function toggleHistory(tr) {
+  if (!tr.classList.contains('expandable')) return;
+  var next = tr.nextElementSibling;
+  if (!next || !next.classList.contains('history-row')) return;
+  var open = tr.classList.toggle('expanded');
+  next.style.display = open ? '' : 'none';
+}
 function applyPlayerFilters() {
   var q = (document.getElementById('player-search') || {value:''}).value.toLowerCase();
-  document.querySelectorAll('#ap-table tbody tr').forEach(tr => {
+  document.querySelectorAll('#ap-table tbody tr.player-row').forEach(tr => {
     var sfMatch = _apSF === 'all' || tr.dataset.sf === _apSF;
     var textMatch = !q || tr.innerText.toLowerCase().includes(q);
-    tr.style.display = (sfMatch && textMatch) ? '' : 'none';
+    var show = sfMatch && textMatch;
+    tr.style.display = show ? '' : 'none';
+    // Hide associated history row when parent is hidden
+    var next = tr.nextElementSibling;
+    if (next && next.classList.contains('history-row')) {
+      if (!show) next.style.display = 'none';
+    }
   });
 }
 var _sortDir = {};
@@ -1233,7 +1492,37 @@ function _sortTable(tbodyOrSelector, col, dirKey) {
   rows.forEach(r => tbody.appendChild(r));
 }
 function sortAP(col) {
-  _sortTable('#ap-table tbody', col, 'ap-' + col);
+  var tbody = document.querySelector('#ap-table tbody');
+  if (!tbody) return;
+  var dir = (_sortDir['ap-' + col] = !_sortDir['ap-' + col]);
+  // Collect only player rows (not history rows), paired with their history row
+  var pairs = [];
+  var rows = Array.from(tbody.children);
+  for (var i = 0; i < rows.length; i++) {
+    if (rows[i].classList.contains('player-row')) {
+      var hist = (i + 1 < rows.length && rows[i+1].classList.contains('history-row'))
+        ? rows[i+1] : null;
+      pairs.push([rows[i], hist]);
+    }
+  }
+  pairs.sort(function(a, b) {
+    var ac = a[0].cells[col], bc = b[0].cells[col];
+    var ads = ac ? ac.dataset.sort : undefined;
+    var bds = bc ? bc.dataset.sort : undefined;
+    if (ads !== undefined && bds !== undefined) {
+      var an2 = parseFloat(ads), bn2 = parseFloat(bds);
+      if (!isNaN(an2) && !isNaN(bn2)) return dir ? an2 - bn2 : bn2 - an2;
+    }
+    var av = ac ? ac.innerText.trim() : '';
+    var bv = bc ? bc.innerText.trim() : '';
+    var an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return dir ? an - bn : bn - an;
+    return dir ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  pairs.forEach(function(pair) {
+    tbody.appendChild(pair[0]);
+    if (pair[1]) tbody.appendChild(pair[1]);
+  });
 }
 function sortRoster(col) {
   // Sort the currently visible roster pane's table
@@ -1416,7 +1705,8 @@ def _analysis_tab(ntrp: str) -> str:
     return html
 
 
-def _generate_html(ntrp: str, standings: dict, players: list[dict]) -> str:
+def _generate_html(ntrp: str, standings: dict, players: list[dict],
+                   other_standings: dict = None) -> str:
     year = standings.get("year", "")
     subflights = standings.get("subflights", [])
 
@@ -1428,7 +1718,8 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict]) -> str:
     cards_html = _summary_cards(ntrp, year, subflights)
     standings_html = _standings_tab(subflights, warnings)
     rosters_html = _rosters_tab(subflights, players, ntrp)
-    players_html = _players_tab(players, ntrp, subflights)
+    other_subflights = (other_standings or {}).get("subflights", [])
+    players_html = _players_tab(players, ntrp, subflights, other_subflights)
     results_html = _results_tab(subflights, players, sfx=ntrp.replace(".", ""))
     analysis_html = _analysis_tab(ntrp)
 
@@ -2311,12 +2602,14 @@ def build_dashboards() -> dict:
     players = _load(PLAYERS_JSON, [])
     results = {}
 
-    for ntrp, standings_path, out_path, mx_path in [
-        ("3.0", STANDINGS_30, Path("women_30.html"), Path("matchups_30.html")),
-        ("3.5", STANDINGS_35, Path("women_35.html"), Path("matchups_35.html")),
+    s30 = _load(STANDINGS_30, {"ntrp": "3.0", "year": 2026, "subflights": []})
+    s35 = _load(STANDINGS_35, {"ntrp": "3.5", "year": 2026, "subflights": []})
+
+    for ntrp, standings, other_standings, out_path, mx_path in [
+        ("3.0", s30, s35, Path("women_30.html"), Path("matchups_30.html")),
+        ("3.5", s35, s30, Path("women_35.html"), Path("matchups_35.html")),
     ]:
-        standings = _load(standings_path, {"ntrp": ntrp, "year": 2026, "subflights": []})
-        html = _generate_html(ntrp, standings, players)
+        html = _generate_html(ntrp, standings, players, other_standings)
         out_path.write_text(html, encoding="utf-8")
         mx_html = _build_matchup_page(ntrp, standings, players)
         mx_path.write_text(mx_html, encoding="utf-8")
