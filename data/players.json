@@ -6,8 +6,8 @@
     "team": "DTC #2",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.53,
-    "current_division_rating": 2.6302,
-    "global_rating": 2.6302,
+    "current_division_rating": 2.6983,
+    "global_rating": 2.6983,
     "ntrp_rating": "2.5 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -16,15 +16,15 @@
     "profile_url": "/adult/profile.aspx?playername=Venetia Espinueva",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D2x2",
+      "D2x3",
       "D3x5"
     ],
-    "wl_record_30": "3-4",
+    "wl_record_30": "4-4",
     "team_30": "DTC #4",
-    "notes_30": "Two upsets: W5 D3 with Dianne Austin — beat Jocelyn Goldman (2.66) + Valerie Valow-Orris (3.02) in a tight match at 31% odds; W7 D3 with Tiffany Vance — beat Debra Kelleher (2.53) + Debbie Fleury (2.78) with a bagel at 35% odds. Wins reliably with Tiffany.",
-    "notes_35": "No 3.5 matches played yet. 3-4 in 3.0. In 3.0: D3 beat Jocelyn Goldman (2.66) + Valerie Valow-Orris (3.02) in a tight match.",
-    "rating_30": 2.6302,
-    "rating_35": 2.6302,
+    "notes_30": "Three upsets this season — most surprising: W5 D3 with Dianne Austin — beat Jocelyn Goldman (2.66) + Valerie Valow-Orris (3.02) in a tight match at 31% odds. Wins reliably with Tiffany.",
+    "notes_35": "No 3.5 matches played yet. 4-4 in 3.0. In 3.0: D3 beat Jocelyn Goldman (2.66) + Valerie Valow-Orris (3.02) in a tight match.",
+    "rating_30": 2.6983,
+    "rating_35": 2.6983,
     "baseline_date": "12/10/2025",
     "iter_rating_30": 3.8455,
     "iter_rating_35": 2.53,
@@ -36,7 +36,8 @@
       "4/18/2026": 2.53,
       "4/25/2026": 2.5798,
       "5/2/2026": 2.5798,
-      "5/16/2026": 2.6236
+      "5/16/2026": 2.6236,
+      "6/6/2026": 2.6302
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -46,7 +47,8 @@
       "4/18/2026": 2.5798,
       "4/25/2026": 2.5798,
       "5/2/2026": 2.6236,
-      "5/16/2026": 2.6302
+      "5/16/2026": 2.6302,
+      "6/6/2026": 2.6983
     },
     "rating_post_timeline_35": {}
   },
@@ -69,13 +71,13 @@
     "lines_played_30": [
       "D1",
       "D2",
-      "S1x2",
+      "S1x3",
       "S2x5"
     ],
-    "wl_record_30": "3-6",
+    "wl_record_30": "3-7",
     "team_30": "DESERT PALM",
-    "notes_30": "Upset: W2 S2 — beat Shawanna Johnson (2.85) comfortably at 18% odds. Outmatched at S1 — Jenny Mulopulos (2.86) in W6; Tori Walker (2.86) in W10.",
-    "notes_35": "No 3.5 matches played yet. 3-6 in 3.0. In 3.0: S2 beat Shawanna Johnson (2.85) comfortably.",
+    "notes_30": "Two upsets: W2 S2 — beat Shawanna Johnson (2.85) comfortably at 18% odds; W9 D1 with Eva Gryczon — beat Julie Schoolmeester (2.73) + Karen Veazey (2.79) comfortably at 43% odds. Outmatched at S1 — Jenny Mulopulos (2.86) in W6; Tori Walker (2.86) in W10.",
+    "notes_35": "No 3.5 matches played yet. 3-7 in 3.0. In 3.0: S2 beat Shawanna Johnson (2.85) comfortably.",
     "rating_30": 2.596,
     "rating_35": 2.596,
     "baseline_date": "12/13/2025",
@@ -91,7 +93,8 @@
       "4/25/2026": 2.5474,
       "5/9/2026": 2.5474,
       "5/16/2026": 2.5474,
-      "5/30/2026": 2.596
+      "5/30/2026": 2.596,
+      "6/6/2026": 2.596
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -102,7 +105,8 @@
       "4/25/2026": 2.5474,
       "5/9/2026": 2.5474,
       "5/16/2026": 2.596,
-      "5/30/2026": 2.596
+      "5/30/2026": 2.596,
+      "6/6/2026": 2.596
     },
     "rating_post_timeline_35": {}
   },
@@ -123,15 +127,16 @@
     "profile_url": "/adult/profile.aspx?playername=Kimberly Lippisch",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
+      "D1",
       "D2x3",
       "D3",
       "S1x3",
       "S2x2"
     ],
-    "wl_record_30": "5-4",
+    "wl_record_30": "5-5",
     "team_30": "LIFE TIME FITNESS/GV",
-    "notes_30": "Four upsets this season — most surprising: W5 S1 — beat Danielle Britten (2.85) with a bagel at 12% odds. Two lopsided losses: W6 S2 lost to Brenda Cambridge (2.96) bageled in a set; W9 D3 lost to Michelle Simister (2.87) + Jennifer Blais (2.84) bageled in a set. Singles is the bright spot (4-1); doubles hasn't clicked (1-3).",
-    "notes_35": "No 3.5 matches played yet. 5-4 in 3.0. In 3.0: S1 beat Elsy Flores Rojas (2.88) in a third-set tiebreak.",
+    "notes_30": "Among the most-deployed (10/11 weeks). Four upsets this season — most surprising: W5 S1 — beat Danielle Britten (2.85) with a bagel at 12% odds. Two lopsided losses: W6 S2 lost to Brenda Cambridge (2.96) bageled in a set; W9 D3 lost to Michelle Simister (2.87) + Jennifer Blais (2.84) bageled in a set. Outmatched at D1 by Moon-Hui Choi (2.84) + Christine LaBarre (3.18) in W11.",
+    "notes_35": "No 3.5 matches played yet. 5-5 in 3.0. In 3.0: S1 beat Elsy Flores Rojas (2.88) in a third-set tiebreak.",
     "rating_30": 2.8378,
     "rating_35": 2.8378,
     "baseline_date": "01/29/2026",
@@ -147,7 +152,8 @@
       "4/25/2026": 2.7364,
       "5/2/2026": 2.7364,
       "5/16/2026": 2.8773,
-      "5/30/2026": 2.8773
+      "5/30/2026": 2.8773,
+      "6/6/2026": 2.8378
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -159,7 +165,8 @@
       "4/25/2026": 2.7364,
       "5/2/2026": 2.8773,
       "5/16/2026": 2.8773,
-      "5/30/2026": 2.8378
+      "5/30/2026": 2.8378,
+      "6/6/2026": 2.8378
     },
     "rating_post_timeline_35": {}
   },
@@ -350,8 +357,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.51,
-    "current_division_rating": 2.7555,
-    "global_rating": 2.7555,
+    "current_division_rating": 2.7912,
+    "global_rating": 2.7912,
     "ntrp_rating": "2.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -361,14 +368,14 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl04_LinkButton2",
     "lines_played_30": [
       "D2x5",
-      "D3x3"
+      "D3x4"
     ],
-    "wl_record_30": "7-1",
+    "wl_record_30": "8-1",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Four upsets this season — most surprising: W4 D2 with Ani Zargaryan — beat Sandra Shearer (2.94) + ANN MARIE WEAVER (2.84) at 31% odds.",
-    "notes_35": "No 3.5 matches played yet. 7-1 in 3.0. In 3.0: D2 beat Sandra Shearer (2.94) + ANN MARIE WEAVER (2.84).",
-    "rating_30": 2.7555,
-    "rating_35": 2.7555,
+    "notes_30": "Five upsets this season — most surprising: W4 D2 with Ani Zargaryan — beat Sandra Shearer (2.94) + ANN MARIE WEAVER (2.84) at 31% odds.",
+    "notes_35": "No 3.5 matches played yet. 8-1 in 3.0. In 3.0: D2 beat Sandra Shearer (2.94) + ANN MARIE WEAVER (2.84).",
+    "rating_30": 2.7912,
+    "rating_35": 2.7912,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.8199,
     "iter_rating_35": 2.51,
@@ -380,7 +387,8 @@
       "4/18/2026": 2.5795,
       "4/25/2026": 2.6328,
       "5/9/2026": 2.6833,
-      "5/16/2026": 2.7379
+      "5/16/2026": 2.7379,
+      "6/6/2026": 2.7555
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -390,7 +398,8 @@
       "4/18/2026": 2.6328,
       "4/25/2026": 2.6833,
       "5/9/2026": 2.7379,
-      "5/16/2026": 2.7555
+      "5/16/2026": 2.7555,
+      "6/6/2026": 2.7912
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -798,8 +807,8 @@
     "team": "DTC #2",
     "division": "2.5 Women",
     "dynamic_rating_baseline": 2.36,
-    "current_division_rating": 2.4308,
-    "global_rating": 2.4308,
+    "current_division_rating": 2.4368,
+    "global_rating": 2.4368,
     "ntrp_rating": "2.5 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -809,14 +818,14 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D3x2",
-      "S2x2"
+      "S2x3"
     ],
-    "wl_record_30": "0-4",
+    "wl_record_30": "1-4",
     "team_30": "DTC #1",
     "notes_30": "Close doubles loss to a stronger pair — tiebreak vs Sally Morley (2.73) + Karen Veazey (2.73).",
-    "notes_35": "No 3.5 matches played yet. 0-4 in 3.0. In 3.0: S2 lost to Lora Saginoff (2.40) in a third-set tiebreak.",
-    "rating_30": 2.4308,
-    "rating_35": 2.4308,
+    "notes_35": "No 3.5 matches played yet. 1-4 in 3.0. In 3.0: S2 beat Leah Martin (2.04).",
+    "rating_30": 2.4368,
+    "rating_35": 2.4368,
     "baseline_date": "12/10/2025",
     "iter_rating_30": 2.5642,
     "iter_rating_35": 2.36,
@@ -825,14 +834,16 @@
       "3/14/2026": 2.36,
       "4/11/2026": 2.36,
       "5/2/2026": 2.36,
-      "5/30/2026": 2.4308
+      "5/30/2026": 2.4308,
+      "6/6/2026": 2.4308
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/14/2026": 2.36,
       "4/11/2026": 2.36,
       "5/2/2026": 2.4308,
-      "5/30/2026": 2.4308
+      "5/30/2026": 2.4308,
+      "6/6/2026": 2.4368
     },
     "rating_post_timeline_35": {}
   },
@@ -2373,12 +2384,13 @@
     "profile_url": "/adult/profile.aspx?playername=Leah Martin&s=4",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "S1"
+      "S1",
+      "S2"
     ],
-    "wl_record_30": "0-1",
+    "wl_record_30": "0-2",
     "team_30": "SPANISH TRAIL",
     "notes_30": "Outmatched at S1 by Tori Walker (2.77) in W1.",
-    "notes_35": "No 3.5 matches played yet. 0-1 in 3.0. In 3.0: S1 lost to Tori Walker (2.77).",
+    "notes_35": "No 3.5 matches played yet. 0-2 in 3.0. In 3.0: S2 lost to Lexi Fleury (2.43).",
     "rating_30": 2.04,
     "rating_35": 2.04,
     "baseline_date": "12/06/2025",
@@ -2386,11 +2398,13 @@
     "iter_rating_35": 2.04,
     "iter_global_rating": 2.1204,
     "rating_timeline_30": {
-      "3/14/2026": 2.04
+      "3/14/2026": 2.04,
+      "6/6/2026": 2.04
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
-      "3/14/2026": 2.04
+      "3/14/2026": 2.04,
+      "6/6/2026": 2.04
     },
     "rating_post_timeline_35": {}
   },
@@ -3002,13 +3016,13 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1x7",
-      "S1x2",
+      "S1x3",
       "S2"
     ],
-    "wl_record_30": "6-4",
+    "wl_record_30": "6-5",
     "team_30": "SUMMERLIN ARBORS",
     "notes_30": "Only every-week player. Tough loss in W6 D1 alongside Tayoni to Shirey/Frazier — one of the division's top pairs (7-2).",
-    "notes_35": "No 3.5 matches played yet. 6-4 in 3.0. In 3.0: D1 beat Margo Isler (3.07) + Han Hu (3.03).",
+    "notes_35": "No 3.5 matches played yet. 6-5 in 3.0. In 3.0: D1 beat Margo Isler (3.07) + Han Hu (3.03).",
     "rating_30": 3.1695,
     "rating_35": 3.1695,
     "baseline_date": "03/14/2026",
@@ -3025,7 +3039,8 @@
       "5/2/2026": 3.1264,
       "5/9/2026": 3.0566,
       "5/16/2026": 3.0629,
-      "5/30/2026": 3.0757
+      "5/30/2026": 3.0757,
+      "6/6/2026": 3.1295
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -3038,7 +3053,8 @@
       "5/2/2026": 3.0566,
       "5/9/2026": 3.0629,
       "5/16/2026": 3.0757,
-      "5/30/2026": 3.1295
+      "5/30/2026": 3.1295,
+      "6/6/2026": 3.1295
     },
     "rating_post_timeline_35": {}
   },
@@ -3121,7 +3137,7 @@
     ],
     "wl_record_30": "7-2",
     "team_30": "DTC #2",
-    "notes_30": "Among the most-deployed (9/10 weeks). Upset: W6 D1 with Irene Frazier — beat Tayoni Coleman (3.09) + Kim Springer (3.20) in a tight match at 35% odds. Tough loss in W1 D1 alongside Irene to McCauley/Oskooi — one of the division's top pairs (4-0).",
+    "notes_30": "Among the most-deployed (9/11 weeks). Upset: W6 D1 with Irene Frazier — beat Tayoni Coleman (3.09) + Kim Springer (3.20) in a tight match at 35% odds. Tough loss in W1 D1 alongside Irene to McCauley/Oskooi — one of the division's top pairs (4-0).",
     "notes_35": "No 3.5 matches played yet. 7-2 in 3.0. In 3.0: D1 beat Tayoni Coleman (3.09) + Kim Springer (3.20) in a tight match.",
     "rating_30": 3.2373,
     "rating_35": 3.2373,
@@ -3261,8 +3277,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.03,
-    "current_division_rating": 3.1992,
-    "global_rating": 3.1992,
+    "current_division_rating": 3.2777,
+    "global_rating": 3.2777,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -3271,9 +3287,9 @@
     "profile_url": "/adult/profile.aspx?playername=CHRISTINE McNair",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "S1x2"
+      "S1x3"
     ],
-    "wl_record_30": "2-0",
+    "wl_record_30": "3-0",
     "lines_played_35": [
       "S1x2",
       "S2x3"
@@ -3281,17 +3297,18 @@
     "wl_record_35": "2-3",
     "team_30": "ANTHEM CC",
     "team_35": "ANTHEM CC",
-    "notes_30": "One blemish: W9 S1 — won but failed to dominate against Kathryn Wilson (2.65) as 80% favourite. Undefeated but all opponents below baseline (avg 2.80). 2-3 in 3.5 at S1/S2 suggests she's near her ceiling in this division.",
-    "notes_35": "Upset: W11 S2 — beat Tracey Lee (3.51) in a tiebreak at 12% odds. Outmatched at S1 by Samantha Schuster (3.24) in W7. Also 2-0 in 3.0 at S1.",
-    "rating_30": 3.1992,
-    "rating_35": 3.1992,
+    "notes_30": "One blemish: W9 S1 — won but failed to dominate against Kathryn Wilson (2.65) as 80% favourite. Undefeated but all opponents below baseline (avg 2.91). 2-3 in 3.5 at S1/S2 suggests she's near her ceiling in this division.",
+    "notes_35": "Upset: W11 S2 — beat Tracey Lee (3.51) in a tiebreak at 12% odds. Outmatched at S1 by Samantha Schuster (3.24) in W7. Also 3-0 in 3.0 at S1.",
+    "rating_30": 3.2777,
+    "rating_35": 3.2777,
     "baseline_date": "01/03/2026",
     "iter_rating_30": 3.0365,
     "iter_rating_35": 3.6315,
     "iter_global_rating": 3.6315,
     "rating_timeline_30": {
       "3/28/2026": 3.03,
-      "5/16/2026": 3.0271
+      "5/16/2026": 3.0271,
+      "6/6/2026": 3.1992
     },
     "rating_timeline_35": {
       "3/28/2026": 3.0671,
@@ -3301,7 +3318,8 @@
     },
     "rating_post_timeline_30": {
       "3/28/2026": 3.0671,
-      "5/16/2026": 3.0226
+      "5/16/2026": 3.0226,
+      "6/6/2026": 3.2377
     },
     "rating_post_timeline_35": {
       "3/28/2026": 3.0271,
@@ -3317,8 +3335,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.91,
-    "current_division_rating": 3.2112,
-    "global_rating": 3.2112,
+    "current_division_rating": 3.266,
+    "global_rating": 3.266,
     "ntrp_rating": "3.0 C",
     "wl_record": "4-4",
     "lines_played": 8,
@@ -3327,11 +3345,11 @@
     "profile_url": "/adult/profile.aspx?playername=Tina Nathalia",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x6",
+      "D1x7",
       "D2",
       "D3"
     ],
-    "wl_record_30": "5-3",
+    "wl_record_30": "6-3",
     "lines_played_35": [
       "D1x2",
       "D2x4",
@@ -3340,10 +3358,10 @@
     "wl_record_35": "4-4",
     "team_30": "SUMMERLIN ARBORS",
     "team_35": "SPANISH TRAIL #2",
-    "notes_30": "Surprising loss: W1 D3 alongside Danika Johnson to Lindsey Jacobs (2.42) + Christa Shiklanian (2.64) in a third-set tiebreak (as 66% favourite). Wins reliably with Brittany Carlson. 4-4 in 3.5 at D1/D2/D3 suggests she's near her ceiling in this division.",
-    "notes_35": "Two upsets: W4 D2 with Nicole Palichat — beat Carroll Welch (3.29) + Andi Berger (3.34) in a tight match at 23% odds; W2 D3 with Christine LaBarre — beat Sally Ryba (3.37) + Marilyn Fenn (3.11) at 26% odds. Wins reliably with Christine. Also 5-3 in 3.0 at D1/D2/D3.",
-    "rating_30": 3.2112,
-    "rating_35": 3.2112,
+    "notes_30": "Surprising loss: W1 D3 alongside Danika Johnson to Lindsey Jacobs (2.42) + Christa Shiklanian (2.64) in a third-set tiebreak (as 66% favourite). Wins across a range of partners (Brittany Carlson/Tayoni/Ani). 4-4 in 3.5 at D1/D2/D3 suggests she's near her ceiling in this division.",
+    "notes_35": "Two upsets: W4 D2 with Nicole Palichat — beat Carroll Welch (3.29) + Andi Berger (3.34) in a tight match at 23% odds; W2 D3 with Christine LaBarre — beat Sally Ryba (3.37) + Marilyn Fenn (3.11) at 26% odds. Wins reliably with Christine. Also 6-3 in 3.0 at D1/D2/D3.",
+    "rating_30": 3.266,
+    "rating_35": 3.266,
     "baseline_date": "11/16/2025",
     "iter_rating_30": 4.4264,
     "iter_rating_35": 3.9621,
@@ -3356,7 +3374,8 @@
       "4/18/2026": 3.0554,
       "5/2/2026": 3.073,
       "5/9/2026": 3.0268,
-      "5/16/2026": 3.1145
+      "5/16/2026": 3.1145,
+      "6/6/2026": 3.1712
     },
     "rating_timeline_35": {
       "3/14/2026": 2.91,
@@ -3376,7 +3395,8 @@
       "4/18/2026": 3.073,
       "5/2/2026": 3.0032,
       "5/9/2026": 3.0373,
-      "5/16/2026": 3.1289
+      "5/16/2026": 3.1289,
+      "6/6/2026": 3.226
     },
     "rating_post_timeline_35": {
       "3/14/2026": 2.8727,
@@ -3396,8 +3416,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.04,
-    "current_division_rating": 3.0709,
-    "global_rating": 3.0709,
+    "current_division_rating": 3.0591,
+    "global_rating": 3.0591,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -3406,15 +3426,15 @@
     "profile_url": "/adult/profile.aspx?playername=Kari Allen",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x2",
+      "D1x3",
       "D3"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "2-2",
     "team_30": "ANTHEM CC",
     "notes_30": "Outmatched at D1 by Tina Shirey (3.17) + Irene Frazier (3.03) in W9.",
-    "notes_35": "No 3.5 matches played yet. 2-1 in 3.0. In 3.0: D3 beat Jennifer Blais (2.85) + Michelle Simister (2.89) in a third-set tiebreak.",
-    "rating_30": 3.0709,
-    "rating_35": 3.0709,
+    "notes_35": "No 3.5 matches played yet. 2-2 in 3.0. In 3.0: D3 beat Jennifer Blais (2.85) + Michelle Simister (2.89) in a third-set tiebreak.",
+    "rating_30": 3.0591,
+    "rating_35": 3.0591,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.2608,
     "iter_rating_35": 3.04,
@@ -3422,13 +3442,15 @@
     "rating_timeline_30": {
       "3/14/2026": 3.04,
       "5/16/2026": 3.051,
-      "5/30/2026": 3.051
+      "5/30/2026": 3.051,
+      "6/6/2026": 3.0709
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/14/2026": 3.051,
       "5/16/2026": 3.051,
-      "5/30/2026": 3.0709
+      "5/30/2026": 3.0709,
+      "6/6/2026": 3.0191
     },
     "rating_post_timeline_35": {}
   },
@@ -3639,8 +3661,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.03,
-    "current_division_rating": 3.1474,
-    "global_rating": 3.1474,
+    "current_division_rating": 3.1777,
+    "global_rating": 3.1777,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -3649,19 +3671,20 @@
     "profile_url": "/adult/profile.aspx?playername=Christine LaBarre",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
+      "D1",
       "D3x5"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "6-0",
     "lines_played_35": [
       "D3x6"
     ],
     "wl_record_35": "4-2",
     "team_30": "DTC #3",
     "team_35": "SPANISH TRAIL #2",
-    "notes_30": "Undefeated — no opponent has won more than 1 game off her in any set. Only deployed at D3. Also 4-2 in 3.5 at D3.",
-    "notes_35": "Upset: W2 D3 with Tina Nathalia — beat Sally Ryba (3.37) + Marilyn Fenn (3.11) at 26% odds. Wins reliably with Tina Nathalia. Loss with Sheri came against a stronger pair; loss with Jennifer Dalby was the avoidable one. Also 4-0 (plus a walkover) in 3.0 at D3.",
-    "rating_30": 3.1474,
-    "rating_35": 3.1474,
+    "notes_30": "Undefeated in straight sets. Started at D3 (won with a bagel vs much weaker opp), moved up to D1 (won comfortably vs much weaker opp). Also 4-2 in 3.5 at D3.",
+    "notes_35": "Upset: W2 D3 with Tina Nathalia — beat Sally Ryba (3.37) + Marilyn Fenn (3.11) at 26% odds. Wins reliably with Tina Nathalia. Loss with Sheri came against a stronger pair; loss with Jennifer Dalby was the avoidable one. Also 5-0 (plus a walkover) in 3.0 at D1/D3.",
+    "rating_30": 3.1777,
+    "rating_35": 3.1777,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 4.2974,
     "iter_rating_35": 3.9621,
@@ -3671,7 +3694,8 @@
       "3/14/2026": 3.03,
       "4/25/2026": 3.1436,
       "5/2/2026": 3.147,
-      "5/9/2026": 3.174
+      "5/9/2026": 3.174,
+      "6/6/2026": 3.1774
     },
     "rating_timeline_35": {
       "3/21/2026": 3.0335,
@@ -3685,7 +3709,8 @@
       "3/14/2026": 3.0335,
       "4/25/2026": 3.147,
       "5/2/2026": 3.1504,
-      "5/9/2026": 3.1774
+      "5/9/2026": 3.1774,
+      "6/6/2026": 3.2077
     },
     "rating_post_timeline_35": {
       "3/21/2026": 3.1111,
@@ -3714,9 +3739,10 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1x3",
-      "S1x6"
+      "S1x6",
+      "S2"
     ],
-    "wl_record_30": "7-2",
+    "wl_record_30": "8-2",
     "lines_played_35": [
       "D1x2",
       "D2",
@@ -3727,7 +3753,7 @@
     "team_30": "SUMMERLIN ARBORS",
     "team_35": "DTC #3",
     "notes_30": "Two upsets: W2 S1 — beat Brenda Cambridge (2.91) in a tight match at 39% odds; W7 S1 — beat Yarisbel Schieck (3.13) in a tight match at 40% odds. Tough loss in W6 D1 alongside Kim Springer to Shirey/Frazier — one of the division's top pairs (7-2). 1-6 in 3.5 at D1/D2/S1/S2 suggests she's near her ceiling in this division.",
-    "notes_35": "Among the most-deployed (7/11 weeks). Close singles loss to a stronger opponent — tiebreak vs Vanessa Landreman (3.41). Outmatched at D1/S1 — Stacie Corelle (3.35) in W5; Chelsea Gray (3.51) + Christina Rich (3.37) in W10. Also 7-2 in 3.0 at D1/S1.",
+    "notes_35": "Among the most-deployed (7/11 weeks). Close singles loss to a stronger opponent — tiebreak vs Vanessa Landreman (3.41). Outmatched at D1/S1 — Stacie Corelle (3.35) in W5; Chelsea Gray (3.51) + Christina Rich (3.37) in W10. Also 8-2 in 3.0 at D1/S1/S2.",
     "rating_30": 3.11,
     "rating_35": 3.11,
     "baseline_date": "12/13/2025",
@@ -3743,7 +3769,8 @@
       "5/2/2026": 3.0125,
       "5/9/2026": 3.07,
       "5/16/2026": 3.07,
-      "5/30/2026": 3.07
+      "5/30/2026": 3.07,
+      "6/6/2026": 3.07
     },
     "rating_timeline_35": {
       "3/28/2026": 2.92,
@@ -3763,7 +3790,8 @@
       "5/2/2026": 3.07,
       "5/9/2026": 3.07,
       "5/16/2026": 3.07,
-      "5/30/2026": 3.07
+      "5/30/2026": 3.07,
+      "6/6/2026": 3.07
     },
     "rating_post_timeline_35": {
       "3/28/2026": 3.0064,
@@ -3782,8 +3810,8 @@
     "team": "DTC #1",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.08,
-    "current_division_rating": 3.2242,
-    "global_rating": 3.2242,
+    "current_division_rating": 3.256,
+    "global_rating": 3.256,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -3792,14 +3820,14 @@
     "profile_url": "/adult/profile.aspx?playername=Jaqueline Schultz",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x6"
+      "D1x7"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "6-1",
     "team_30": "DTC #1",
-    "notes_30": "Upset: W8 D1 with Maggie Pacholuk — beat Alexandria Chang (2.87) + Melissa Hicks (3.28) comfortably at 39% odds. Tough loss in W1 D1 alongside Maggie to Chang/Stimson — one of the division's top pairs (3-0).",
-    "notes_35": "No 3.5 matches played yet. 5-1 in 3.0. In 3.0: D1 beat Alexandria Chang (2.87) + Melissa Hicks (3.28) comfortably.",
-    "rating_30": 3.2242,
-    "rating_35": 3.2242,
+    "notes_30": "Upset: W8 D1 with Maggie Pacholuk — beat Alexandria Chang (2.87) + Melissa Hicks (3.28) comfortably at 39% odds. Tough loss in W1 D1 alongside Maggie to Chang/Stimson — one of the division's top pairs (4-0).",
+    "notes_35": "No 3.5 matches played yet. 6-1 in 3.0. In 3.0: D1 beat Alexandria Chang (2.87) + Melissa Hicks (3.28) comfortably.",
+    "rating_30": 3.256,
+    "rating_35": 3.256,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 4.5604,
     "iter_rating_35": 3.08,
@@ -3810,7 +3838,8 @@
       "3/28/2026": 3.0346,
       "5/2/2026": 3.0539,
       "5/9/2026": 3.0948,
-      "5/30/2026": 3.1413
+      "5/30/2026": 3.1413,
+      "6/6/2026": 3.1842
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -3819,7 +3848,8 @@
       "3/28/2026": 3.0539,
       "5/2/2026": 3.0948,
       "5/9/2026": 3.1413,
-      "5/30/2026": 3.1842
+      "5/30/2026": 3.1842,
+      "6/6/2026": 3.216
     },
     "rating_post_timeline_35": {}
   },
@@ -3845,7 +3875,7 @@
     ],
     "wl_record_30": "7-2",
     "team_30": "DTC #3",
-    "notes_30": "Most-deployed player (8/10 weeks). Surprising loss: W10 D1 alongside Lisa Schnitz to Brenda Cambridge (3.05) + Kinsey Wolanski (2.20) decisively (as 58% favourite).",
+    "notes_30": "Among the most-deployed (8/11 weeks). Surprising loss: W10 D1 alongside Lisa Schnitz to Brenda Cambridge (3.05) + Kinsey Wolanski (2.20) decisively (as 58% favourite).",
     "notes_35": "No 3.5 matches played yet. 7-2 in 3.0. In 3.0: S1 beat Gina Rivera (2.91) comfortably.",
     "rating_30": 3.0655,
     "rating_35": 3.0655,
@@ -4109,7 +4139,7 @@
     ],
     "wl_record_30": "7-2",
     "team_30": "DTC #2",
-    "notes_30": "Among the most-deployed (9/10 weeks). Upset: W6 D1 with Tina Shirey — beat Tayoni Coleman (3.09) + Kim Springer (3.20) in a tight match at 35% odds. Tough loss in W1 D1 alongside Tina Shirey to McCauley/Oskooi — one of the division's top pairs (4-0).",
+    "notes_30": "Among the most-deployed (9/11 weeks). Upset: W6 D1 with Tina Shirey — beat Tayoni Coleman (3.09) + Kim Springer (3.20) in a tight match at 35% odds. Tough loss in W1 D1 alongside Tina Shirey to McCauley/Oskooi — one of the division's top pairs (4-0).",
     "notes_35": "No 3.5 matches played yet. 7-2 in 3.0. In 3.0: D1 beat Tayoni Coleman (3.09) + Kim Springer (3.20) in a tight match.",
     "rating_30": 3.0973,
     "rating_35": 3.0973,
@@ -4149,8 +4179,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.98,
-    "current_division_rating": 3.0033,
-    "global_rating": 3.0033,
+    "current_division_rating": 2.956,
+    "global_rating": 2.956,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -4160,14 +4190,14 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1",
-      "D2x2"
+      "D2x3"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "2-2",
     "team_30": "LIFE TIME FITNESS/GV",
-    "notes_30": "One blemish: W9 D2 — won but failed to dominate against Jennifer Wang (2.84) + Kelley Candito (2.29) as 73% favourite. Started at D2 (won comfortably vs much weaker opp), moved up to D1 (lost in a third-set tiebreak).",
-    "notes_35": "No 3.5 matches played yet. 2-1 in 3.0. In 3.0: D2 beat Jennifer Wang (2.84) + Kelley Candito (2.29).",
-    "rating_30": 3.0033,
-    "rating_35": 3.0033,
+    "notes_30": "Surprising loss: W11 D2 alongside Lisa Williams to Kim Knotts (2.73) + Kimberly Cunningham (2.60) in a third-set tiebreak (as 64% favourite). Wins with Mary Apone. Loss with Margo came against a stronger pair; loss with Lisa Williams was the avoidable one. Below expectations for a 2.98 baseline — losses to opponents she should be beating.",
+    "notes_35": "No 3.5 matches played yet. 2-2 in 3.0. In 3.0: D2 beat Jennifer Wang (2.84) + Kelley Candito (2.29).",
+    "rating_30": 2.956,
+    "rating_35": 2.956,
     "baseline_date": "12/03/2025",
     "iter_rating_30": 3.3912,
     "iter_rating_35": 2.98,
@@ -4175,13 +4205,15 @@
     "rating_timeline_30": {
       "3/28/2026": 2.98,
       "5/2/2026": 3.0076,
-      "5/16/2026": 3.0076
+      "5/16/2026": 3.0076,
+      "6/6/2026": 3.0033
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/28/2026": 3.0076,
       "5/2/2026": 3.0076,
-      "5/16/2026": 3.0033
+      "5/16/2026": 3.0033,
+      "6/6/2026": 2.956
     },
     "rating_post_timeline_35": {}
   },
@@ -4262,8 +4294,8 @@
     "team": "DESERT PALM",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.94,
-    "current_division_rating": 3.0746,
-    "global_rating": 3.0746,
+    "current_division_rating": 3.136,
+    "global_rating": 3.136,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -4271,15 +4303,15 @@
     "notes": "D1/D2, 2-1. Dynamic of 3.03. Solid top-of-lineup doubles contributor.",
     "profile_url": "/adult/profile.aspx?playername=Ara Lee Stimson",
     "lines_played_30": [
-      "D1x3",
+      "D1x4",
       "D2x2"
     ],
-    "wl_record_30": "4-1",
+    "wl_record_30": "5-1",
     "team_30": "DESERT PALM",
-    "notes_30": "Upset: W1 D1 with Alexandria Chang — beat Maggie Pacholuk (2.74) + Jaqueline Schultz (3.08) in a tight match at 42% odds. Lopsided loss: W3 D2 lost to Francine Mazza (2.81) + Abigail Cox (3.02) bageled in a set.",
-    "notes_35": "No 3.5 matches played yet. 4-1 in 3.0. In 3.0: D2 beat Sandra Mier (2.92) + Yesenia Arias (2.98) comfortably.",
-    "rating_30": 3.0746,
-    "rating_35": 3.0746,
+    "notes_30": "Two upsets: W1 D1 with Alexandria Chang — beat Maggie Pacholuk (2.74) + Jaqueline Schultz (3.08) in a tight match at 42% odds; W11 D1 with Alexandria Chang — beat Maryna Post (3.08) + Olga Bencini (3.04) at 43% odds. Lopsided loss: W3 D2 lost to Francine Mazza (2.81) + Abigail Cox (3.02) bageled in a set.",
+    "notes_35": "No 3.5 matches played yet. 5-1 in 3.0. In 3.0: D1 beat Maryna Post (3.08) + Olga Bencini (3.04).",
+    "rating_30": 3.136,
+    "rating_35": 3.136,
     "baseline_date": "12/11/2025",
     "iter_rating_30": 4.4238,
     "iter_rating_35": 2.94,
@@ -4289,7 +4321,8 @@
       "3/21/2026": 3.0017,
       "3/28/2026": 3.0378,
       "5/2/2026": 3.0378,
-      "5/9/2026": 3.0536
+      "5/9/2026": 3.0536,
+      "6/6/2026": 3.0746
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -4297,7 +4330,8 @@
       "3/21/2026": 3.0378,
       "3/28/2026": 3.0378,
       "5/2/2026": 3.0536,
-      "5/9/2026": 3.0746
+      "5/9/2026": 3.0746,
+      "6/6/2026": 3.136
     },
     "rating_post_timeline_35": {}
   },
@@ -4308,8 +4342,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.01,
-    "current_division_rating": 3.1543,
-    "global_rating": 3.1543,
+    "current_division_rating": 3.1025,
+    "global_rating": 3.1025,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-3",
     "lines_played": 4,
@@ -4318,13 +4352,13 @@
     "profile_url": "/adult/profile.aspx?playername=Kelly Twells",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1",
+      "D1x2",
       "D2",
       "D3",
       "S1",
       "S2x4"
     ],
-    "wl_record_30": "8-0",
+    "wl_record_30": "8-1",
     "lines_played_35": [
       "D2",
       "S2x2"
@@ -4332,10 +4366,10 @@
     "wl_record_35": "0-3",
     "team_30": "ANTHEM CC",
     "team_35": "ANTHEM CC",
-    "notes_30": "Among the most-deployed (8/10 weeks). Upset: W5 S2 — beat Anna Clark (3.23) at 32% odds. 0-3 in 3.5 at D2/S2 suggests she's near her ceiling in this division.",
-    "notes_35": "Close singles loss to a stronger opponent — tiebreak vs Linda Guastella (3.27). Also 8-0 in 3.0 at D1/D2/D3/S1/S2.",
-    "rating_30": 3.1543,
-    "rating_35": 3.1543,
+    "notes_30": "Most-deployed player (9/11 weeks). Upset: W5 S2 — beat Anna Clark (3.23) at 32% odds. Dynamically deployed across formats — wins both in singles (5-0) and doubles (3-1). 0-3 in 3.5 at D2/S2 suggests she's near her ceiling in this division.",
+    "notes_35": "Close singles loss to a stronger opponent — tiebreak vs Linda Guastella (3.27). Also 8-1 in 3.0 at D1/D2/D3/S1/S2.",
+    "rating_30": 3.1025,
+    "rating_35": 3.1025,
     "baseline_date": "11/13/2025",
     "iter_rating_30": 4.2778,
     "iter_rating_35": 3.1418,
@@ -4348,7 +4382,8 @@
       "4/25/2026": 3.1046,
       "5/2/2026": 3.1159,
       "5/9/2026": 3.1254,
-      "5/16/2026": 3.1727
+      "5/16/2026": 3.1727,
+      "6/6/2026": 3.1543
     },
     "rating_timeline_35": {
       "4/25/2026": 3.1159,
@@ -4362,7 +4397,8 @@
       "4/25/2026": 3.1159,
       "5/2/2026": 3.1254,
       "5/9/2026": 3.1458,
-      "5/16/2026": 3.1543
+      "5/16/2026": 3.1543,
+      "6/6/2026": 3.1025
     },
     "rating_post_timeline_35": {
       "4/25/2026": 3.1159,
@@ -4474,8 +4510,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.97,
-    "current_division_rating": 2.9642,
-    "global_rating": 2.9642,
+    "current_division_rating": 2.8762,
+    "global_rating": 2.8762,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -4485,16 +4521,17 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1",
+      "D2",
       "D3",
       "S1x4",
       "S2"
     ],
-    "wl_record_30": "3-4",
+    "wl_record_30": "3-5",
     "team_30": "ANTHEM CC",
-    "notes_30": "Upset: W10 S1 — beat Christina Smith (2.94) comfortably at 43% odds. Surprising loss: W3 S2 to Rachel Corpuz (2.74) in a third-set tiebreak (as 71% favourite). Outmatched at S1 by Yarisbel Schieck (3.10) in W5. 3 tiebreak losses this season; struggles to close out tight matches.",
-    "notes_35": "No 3.5 matches played yet. 3-4 in 3.0. In 3.0: S1 beat Christina Smith (2.94) comfortably.",
-    "rating_30": 2.9642,
-    "rating_35": 2.9642,
+    "notes_30": "Upset: W10 S1 — beat Christina Smith (2.94) comfortably at 43% odds. Surprising loss: W3 S2 to Rachel Corpuz (2.74) in a third-set tiebreak (as 71% favourite). Outmatched at S1 by Yarisbel Schieck (3.10) in W5. 4 tiebreak losses this season; struggles to close out tight matches.",
+    "notes_35": "No 3.5 matches played yet. 3-5 in 3.0. In 3.0: S1 beat Christina Smith (2.94) comfortably.",
+    "rating_30": 2.8762,
+    "rating_35": 2.8762,
     "baseline_date": "11/11/2025",
     "iter_rating_30": 3.1382,
     "iter_rating_35": 2.97,
@@ -4505,7 +4542,8 @@
       "4/11/2026": 2.8936,
       "4/18/2026": 2.9121,
       "4/25/2026": 2.9121,
-      "5/30/2026": 2.8616
+      "5/30/2026": 2.8616,
+      "6/6/2026": 2.9242
     },
     "rating_timeline_35": {},
     "default_wins_30": 1,
@@ -4515,7 +4553,8 @@
       "4/11/2026": 2.9121,
       "4/18/2026": 2.9121,
       "4/25/2026": 2.8616,
-      "5/30/2026": 2.9242
+      "5/30/2026": 2.9242,
+      "6/6/2026": 2.8762
     },
     "rating_post_timeline_35": {}
   },
@@ -4621,8 +4660,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.9,
-    "current_division_rating": 3.136,
-    "global_rating": 3.136,
+    "current_division_rating": 3.1447,
+    "global_rating": 3.1447,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -4631,14 +4670,14 @@
     "profile_url": "/adult/profile.aspx?playername=Rhianna Schwartz",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x4"
+      "D1x5"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "5-0",
     "team_30": "RED ROCK CC",
     "notes_30": "Two upsets: W3 D1 with Brenda Cambridge — beat Prexy Tamayo (3.11) + Emmy Perez (2.87) in a tiebreak at 37% odds; W5 D1 with Brenda Cambridge — beat Tina Shirey (3.10) + Irene Frazier (2.96) comfortably at 40% odds.",
-    "notes_35": "No 3.5 matches played yet. 4-0 in 3.0. In 3.0: D1 beat Tina Shirey (3.10) + Irene Frazier (2.96) comfortably.",
-    "rating_30": 3.136,
-    "rating_35": 3.136,
+    "notes_35": "No 3.5 matches played yet. 5-0 in 3.0. In 3.0: D1 beat Tina Shirey (3.10) + Irene Frazier (2.96) comfortably.",
+    "rating_30": 3.1447,
+    "rating_35": 3.1447,
     "baseline_date": "12/02/2025",
     "iter_rating_30": 4.4259,
     "iter_rating_35": 2.9,
@@ -4647,14 +4686,16 @@
       "3/28/2026": 2.9,
       "4/18/2026": 2.9564,
       "5/2/2026": 3.0214,
-      "5/16/2026": 3.0575
+      "5/16/2026": 3.0575,
+      "6/6/2026": 3.096
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/28/2026": 2.9564,
       "4/18/2026": 3.0214,
       "5/2/2026": 3.0575,
-      "5/16/2026": 3.096
+      "5/16/2026": 3.096,
+      "6/6/2026": 3.1047
     },
     "rating_post_timeline_35": {}
   },
@@ -4665,8 +4706,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.91,
-    "current_division_rating": 3.1763,
-    "global_rating": 3.1763,
+    "current_division_rating": 3.185,
+    "global_rating": 3.185,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -4675,16 +4716,16 @@
     "profile_url": "/adult/profile.aspx?playername=Brenda Cambridge",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x5",
+      "D1x6",
       "S1",
       "S2x2"
     ],
-    "wl_record_30": "7-1",
+    "wl_record_30": "8-1",
     "team_30": "RED ROCK CC",
-    "notes_30": "Among the most-deployed (7/10 weeks). Three upsets this season — most surprising: W3 D1 with Rhianna Schwartz — beat Prexy Tamayo (3.11) + Emmy Perez (2.87) in a tiebreak at 37% odds. Surprising loss: W2 S1 to Tayoni Coleman (2.78) in a tight match (as 61% favourite).",
-    "notes_35": "No 3.5 matches played yet. 7-1 in 3.0. In 3.0: D1 beat Tina Shirey (3.10) + Irene Frazier (2.96) comfortably.",
-    "rating_30": 3.1763,
-    "rating_35": 3.1763,
+    "notes_30": "Among the most-deployed (8/11 weeks). Three upsets this season — most surprising: W3 D1 with Rhianna Schwartz — beat Prexy Tamayo (3.11) + Emmy Perez (2.87) in a tiebreak at 37% odds. Surprising loss: W2 S1 to Tayoni Coleman (2.78) in a tight match (as 61% favourite).",
+    "notes_35": "No 3.5 matches played yet. 8-1 in 3.0. In 3.0: D1 beat Tina Shirey (3.10) + Irene Frazier (2.96) comfortably.",
+    "rating_30": 3.185,
+    "rating_35": 3.185,
     "baseline_date": "12/09/2025",
     "iter_rating_30": 4.4617,
     "iter_rating_35": 2.91,
@@ -4697,7 +4738,8 @@
       "4/25/2026": 2.9595,
       "5/2/2026": 2.9774,
       "5/16/2026": 3.0135,
-      "5/30/2026": 3.052
+      "5/30/2026": 3.052,
+      "6/6/2026": 3.1363
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -4707,7 +4749,8 @@
       "4/25/2026": 2.9774,
       "5/2/2026": 3.0135,
       "5/16/2026": 3.052,
-      "5/30/2026": 3.1363
+      "5/30/2026": 3.1363,
+      "6/6/2026": 3.145
     },
     "rating_post_timeline_35": {}
   },
@@ -4774,7 +4817,7 @@
     ],
     "wl_record_30": "7-2",
     "team_30": "LAKE LAS VEGAS SPORTS CLUB",
-    "notes_30": "Most-deployed player (9/10 weeks). Three upsets this season — most surprising: W5 D1 with Melissa Arcella — beat Alexandria Chang (2.75) + Kristyl Addison (3.09) with a bagel at 42% odds.",
+    "notes_30": "Most-deployed player (9/11 weeks). Three upsets this season — most surprising: W5 D1 with Melissa Arcella — beat Alexandria Chang (2.75) + Kristyl Addison (3.09) with a bagel at 42% odds.",
     "notes_35": "No 3.5 matches played yet. 7-2 in 3.0. In 3.0: D1 beat Sirina Shouldis (3.00) + Meryll Ledesma (2.98) in a third-set tiebreak.",
     "rating_30": 3.1091,
     "rating_35": 3.1091,
@@ -4947,8 +4990,8 @@
     "team": "DTC #4",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.86,
-    "current_division_rating": 3.1188,
-    "global_rating": 3.1188,
+    "current_division_rating": 3.0608,
+    "global_rating": 3.0608,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-4",
     "lines_played": 4,
@@ -4957,16 +5000,16 @@
     "profile_url": "/adult/profile.aspx?playername=Maryna Post",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x8",
+      "D1x9",
       "D2",
       "D3"
     ],
-    "wl_record_30": "8-2",
+    "wl_record_30": "8-3",
     "team_30": "DTC #4",
-    "notes_30": "Only every-week player. Lopsided loss: W7 D1 lost to Maggie Pacholuk (2.79) + Jaqueline Schultz (3.05) bageled in a set. Wins with Dianne. Loss with Olga came against a stronger pair; loss with Kristin was the avoidable one.",
-    "notes_35": "No 3.5 matches played yet. 8-2 in 3.0. In 3.0: D1 beat Robi Hinton (3.01) + Melissa Arcella (2.95) in a third-set tiebreak.",
-    "rating_30": 3.1188,
-    "rating_35": 3.1188,
+    "notes_30": "Only every-week player. Lopsided loss: W7 D1 lost to Maggie Pacholuk (2.79) + Jaqueline Schultz (3.05) bageled in a set.",
+    "notes_35": "No 3.5 matches played yet. 8-3 in 3.0. In 3.0: D1 beat Robi Hinton (3.01) + Melissa Arcella (2.95) in a third-set tiebreak.",
+    "rating_30": 3.0608,
+    "rating_35": 3.0608,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 4.4198,
     "iter_rating_35": 2.86,
@@ -4981,7 +5024,8 @@
       "5/2/2026": 2.9958,
       "5/9/2026": 2.9958,
       "5/16/2026": 3.0415,
-      "5/30/2026": 3.0673
+      "5/30/2026": 3.0673,
+      "6/6/2026": 3.0788
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -4994,7 +5038,8 @@
       "5/2/2026": 2.9958,
       "5/9/2026": 3.0415,
       "5/16/2026": 3.0673,
-      "5/30/2026": 3.0788
+      "5/30/2026": 3.0788,
+      "6/6/2026": 3.0208
     },
     "rating_post_timeline_35": {}
   },
@@ -5057,8 +5102,8 @@
     "team": "DESERT PALM",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.96,
-    "current_division_rating": 2.9083,
-    "global_rating": 2.9083,
+    "current_division_rating": 2.8548,
+    "global_rating": 2.8548,
     "ntrp_rating": "3.0 C",
     "wl_record": "3-1",
     "lines_played": 4,
@@ -5068,15 +5113,15 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1",
-      "D2x2",
+      "D2x3",
       "D3x6"
     ],
-    "wl_record_30": "4-5",
+    "wl_record_30": "4-6",
     "team_30": "DESERT PALM",
-    "notes_30": "Most-deployed player (9/10 weeks). Upset: W6 D3 with Eva Gryczon — beat Kelly Perkins (2.90) + Holly Crosby (3.02) with a bagel at 39% odds. Surprising loss: W5 D2 alongside Gina Alcoser to Jena Domingue (2.05) + Sydney Collins (2.94) (as 58% favourite). Outmatched at D1 by Francine Mazza (2.80) + Abigail Cox (3.17) in W10.",
-    "notes_35": "No 3.5 matches played yet. 4-5 in 3.0. In 3.0: D3 beat Kelly Perkins (2.90) + Holly Crosby (3.02) with a bagel.",
-    "rating_30": 2.9083,
-    "rating_35": 2.9083,
+    "notes_30": "Most-deployed player (10/11 weeks). Upset: W6 D3 with Eva Gryczon — beat Kelly Perkins (2.90) + Holly Crosby (3.02) with a bagel at 37% odds. Surprising loss: W5 D2 alongside Gina Alcoser to Jena Domingue (2.05) + Sydney Collins (2.94) (as 58% favourite). Outmatched at D1 by Francine Mazza (2.80) + Abigail Cox (3.17) in W10.",
+    "notes_35": "No 3.5 matches played yet. 4-6 in 3.0. In 3.0: D3 beat Kelly Perkins (2.90) + Holly Crosby (3.02) with a bagel.",
+    "rating_30": 2.8548,
+    "rating_35": 2.8548,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.6233,
     "iter_rating_35": 2.96,
@@ -5090,7 +5135,8 @@
       "4/25/2026": 2.8838,
       "5/2/2026": 2.9233,
       "5/16/2026": 2.9309,
-      "5/30/2026": 2.9083
+      "5/30/2026": 2.9083,
+      "6/6/2026": 2.9083
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -5102,7 +5148,8 @@
       "4/25/2026": 2.9233,
       "5/2/2026": 2.9309,
       "5/16/2026": 2.9083,
-      "5/30/2026": 2.9083
+      "5/30/2026": 2.9083,
+      "6/6/2026": 2.8548
     },
     "rating_post_timeline_35": {}
   },
@@ -5159,8 +5206,8 @@
     "team": "DTC #1",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.01,
-    "current_division_rating": 2.9318,
-    "global_rating": 2.9318,
+    "current_division_rating": 2.9237,
+    "global_rating": 2.9237,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -5170,14 +5217,15 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1x2",
-      "D2x4"
+      "D2x4",
+      "D3"
     ],
-    "wl_record_30": "4-2",
+    "wl_record_30": "5-2",
     "team_30": "DTC #1",
     "notes_30": "Upset: W5 D1 with Maggie Pacholuk — beat Jeannie Collins (2.76) + Ada Vera (3.06) in a tiebreak at 41% odds.",
-    "notes_35": "No 3.5 matches played yet. 4-2 in 3.0. In 3.0: D1 beat Jeannie Collins (2.76) + Ada Vera (3.06) in a third-set tiebreak.",
-    "rating_30": 2.9318,
-    "rating_35": 2.9318,
+    "notes_35": "No 3.5 matches played yet. 5-2 in 3.0. In 3.0: D1 beat Jeannie Collins (2.76) + Ada Vera (3.06) in a third-set tiebreak.",
+    "rating_30": 2.9237,
+    "rating_35": 2.9237,
     "baseline_date": "12/02/2025",
     "iter_rating_30": 4.0546,
     "iter_rating_35": 3.01,
@@ -5188,7 +5236,8 @@
       "4/18/2026": 2.9119,
       "5/2/2026": 2.9736,
       "5/9/2026": 2.979,
-      "5/16/2026": 2.979
+      "5/16/2026": 2.979,
+      "6/6/2026": 2.9318
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -5197,7 +5246,8 @@
       "4/18/2026": 2.9736,
       "5/2/2026": 2.979,
       "5/9/2026": 2.979,
-      "5/16/2026": 2.9318
+      "5/16/2026": 2.9318,
+      "6/6/2026": 2.9237
     },
     "rating_post_timeline_35": {}
   },
@@ -5315,8 +5365,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.97,
-    "current_division_rating": 3.0509,
-    "global_rating": 3.0509,
+    "current_division_rating": 3.0948,
+    "global_rating": 3.0948,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -5326,14 +5376,14 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1",
-      "D2x3"
+      "D2x4"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "3-2",
     "team_30": "RED ROCK CC",
-    "notes_30": "Wins with Kinsey. Loss with Carolina came against a stronger pair; loss with Carine was the avoidable one. Below expectations for a 2.97 baseline — losses to opponents she should be beating.",
-    "notes_35": "No 3.5 matches played yet. 2-2 in 3.0. In 3.0: D1 beat Mary Ann Apone (2.55) + Julie Smith (2.95).",
-    "rating_30": 3.0509,
-    "rating_35": 3.0509,
+    "notes_30": "Wins across a range of partners (Kellye/Kinsey). Loss with Carolina came against a stronger pair; loss with Carine was the avoidable one.",
+    "notes_35": "No 3.5 matches played yet. 3-2 in 3.0. In 3.0: D2 beat Margaret Bruno (2.97) + Amy Badain (2.88) in a tight match.",
+    "rating_30": 3.0948,
+    "rating_35": 3.0948,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 4.1195,
     "iter_rating_35": 2.97,
@@ -5342,14 +5392,16 @@
       "3/14/2026": 2.97,
       "4/11/2026": 2.97,
       "4/25/2026": 3.0187,
-      "5/9/2026": 3.0509
+      "5/9/2026": 3.0509,
+      "6/6/2026": 3.0509
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/14/2026": 2.97,
       "4/11/2026": 3.0187,
       "4/25/2026": 3.0509,
-      "5/9/2026": 3.0509
+      "5/9/2026": 3.0509,
+      "6/6/2026": 3.0948
     },
     "rating_post_timeline_35": {}
   },
@@ -5409,8 +5461,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.98,
-    "current_division_rating": 2.9786,
-    "global_rating": 2.9786,
+    "current_division_rating": 3.0186,
+    "global_rating": 3.0186,
     "ntrp_rating": "3.0 S",
     "wl_record": "3-1",
     "lines_played": 4,
@@ -5420,15 +5472,15 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1x3",
-      "S1x2",
+      "S1x3",
       "S2x2"
     ],
-    "wl_record_30": "5-2",
+    "wl_record_30": "5-3",
     "team_30": "LIFE TIME FITNESS/GV",
-    "notes_30": "Upset: W3 D1 with Margo Isler — beat Tina Nathalia (2.98) + Kim Springer (3.22) in a tiebreak at 39% odds. Surprising loss: W4 S2 to Emmy Perez (2.82) in a third-set tiebreak (as 73% favourite). Dynamically deployed across formats — wins both in singles (3-1) and doubles (2-1).",
-    "notes_35": "No 3.5 matches played yet. 5-2 in 3.0. In 3.0: D1 beat Tina Nathalia (2.98) + Kim Springer (3.22) in a third-set tiebreak.",
-    "rating_30": 2.9786,
-    "rating_35": 2.9786,
+    "notes_30": "Upset: W3 D1 with Margo Isler — beat Tina Nathalia (2.98) + Kim Springer (3.22) in a tiebreak at 39% odds. Surprising loss: W4 S2 to Emmy Perez (2.82) in a third-set tiebreak (as 73% favourite).",
+    "notes_35": "No 3.5 matches played yet. 5-3 in 3.0. In 3.0: D1 beat Tina Nathalia (2.98) + Kim Springer (3.22) in a third-set tiebreak.",
+    "rating_30": 3.0186,
+    "rating_35": 3.0186,
     "baseline_date": "03/19/2026",
     "iter_rating_30": 4.2326,
     "iter_rating_35": 2.98,
@@ -5440,7 +5492,8 @@
       "4/11/2026": 3.0925,
       "4/18/2026": 3.0001,
       "4/25/2026": 3.0157,
-      "5/30/2026": 3.0323
+      "5/30/2026": 3.0323,
+      "6/6/2026": 2.9786
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -5450,7 +5503,8 @@
       "4/11/2026": 3.0001,
       "4/18/2026": 3.0157,
       "4/25/2026": 3.0323,
-      "5/30/2026": 2.9786
+      "5/30/2026": 2.9786,
+      "6/6/2026": 2.9786
     },
     "rating_post_timeline_35": {}
   },
@@ -5508,8 +5562,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.74,
-    "current_division_rating": 2.7335,
-    "global_rating": 2.7335,
+    "current_division_rating": 2.7973,
+    "global_rating": 2.7973,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-4",
     "lines_played": 4,
@@ -5519,10 +5573,10 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1x2",
-      "D2x3",
+      "D2x4",
       "D3"
     ],
-    "wl_record_30": "3-3",
+    "wl_record_30": "4-3",
     "lines_played_35": [
       "D1",
       "D3x2"
@@ -5530,10 +5584,10 @@
     "wl_record_35": "0-3",
     "team_30": "DTC #3",
     "team_35": "DTC #2",
-    "notes_30": "Upset: W2 D2 with Emmy Perez — beat Shannon Keever (3.04) + Christa Shiklanian (2.69) comfortably at 40% odds. Surprising loss: W4 D2 alongside Kellie Woods to Kimberly Lippisch (2.40) + Julie Smith (2.87) in a third-set tiebreak (as 58% favourite). Wins reliably with Emmy. Loss with Kellie fits Kellie's tiebreak-loss pattern. 0-3 in 3.5 at D1/D3 suggests she's near her ceiling in this division.",
-    "notes_35": "Outmatched at D1 by Hayley Rodes (3.40) + Michele Howser (3.46) in W3. Also 3-3 in 3.0 at D1/D2/D3.",
-    "rating_30": 2.7335,
-    "rating_35": 2.7335,
+    "notes_30": "Two upsets: W11 D2 with Kimberly Cunningham — beat Adrian Cutolo (3.00) + Lisa Williams (2.58) in a tiebreak at 35% odds; W2 D2 with Emmy Perez — beat Shannon Keever (3.04) + Christa Shiklanian (2.69) comfortably at 40% odds. Surprising loss: W4 D2 alongside Kellie Woods to Kimberly Lippisch (2.40) + Julie Smith (2.87) in a third-set tiebreak (as 58% favourite).",
+    "notes_35": "Outmatched at D1 by Hayley Rodes (3.40) + Michele Howser (3.46) in W3. Also 4-3 in 3.0 at D1/D2/D3.",
+    "rating_30": 2.7973,
+    "rating_35": 2.7973,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 4.1646,
     "iter_rating_35": 2.9246,
@@ -5544,7 +5598,8 @@
       "4/11/2026": 2.8248,
       "4/25/2026": 2.7746,
       "5/9/2026": 2.7197,
-      "5/30/2026": 2.7197
+      "5/30/2026": 2.7197,
+      "6/6/2026": 2.7335
     },
     "rating_timeline_35": {
       "3/28/2026": 2.8248,
@@ -5557,7 +5612,8 @@
       "4/11/2026": 2.7746,
       "4/25/2026": 2.7197,
       "5/9/2026": 2.7197,
-      "5/30/2026": 2.7335
+      "5/30/2026": 2.7335,
+      "6/6/2026": 2.7973
     },
     "rating_post_timeline_35": {
       "3/28/2026": 2.8248,
@@ -5888,12 +5944,12 @@
     "lines_played_30": [
       "D1x2",
       "D2",
-      "D3"
+      "D3x2"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "3-2",
     "team_30": "DTC #3",
     "notes_30": "Wins reliably with Kellie. Loss with Kim Knotts came against a stronger pair; loss with Michelle Mortensen was the avoidable one. Below expectations for a 3.00 baseline — losses to opponents she should be beating.",
-    "notes_35": "No 3.5 matches played yet. 2-2 in 3.0. In 3.0: D2 beat Kellye Ray (2.73) + Carolina Nigro (2.89) in a third-set tiebreak.",
+    "notes_35": "No 3.5 matches played yet. 3-2 in 3.0. In 3.0: D2 beat Kellye Ray (2.73) + Carolina Nigro (2.89) in a third-set tiebreak.",
     "rating_30": 3.0159,
     "rating_35": 3.0159,
     "baseline_date": "11/23/2025",
@@ -5913,7 +5969,8 @@
       "5/16/2026": 2.9739,
       "5/30/2026": 3.0159
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "default_wins_30": 1
   },
   {
     "id": "kelly-boyers",
@@ -6049,8 +6106,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.81,
-    "current_division_rating": 2.7339,
-    "global_rating": 2.7339,
+    "current_division_rating": 2.766,
+    "global_rating": 2.766,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -6060,16 +6117,16 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1x3",
-      "D2",
+      "D2x2",
       "D3",
       "S2x2"
     ],
-    "wl_record_30": "2-5",
+    "wl_record_30": "3-5",
     "team_30": "RED ROCK CC",
-    "notes_30": "Among the most-deployed (7/10 weeks). Surprising loss: W5 S2 to Stephanie Stern (2.70) in a third-set tiebreak (as 57% favourite). Wins with Courtney. Loss with Carolina fits Carolina's tiebreak-loss pattern. 3 tiebreak losses this season; struggles to close out tight matches.",
-    "notes_35": "No 3.5 matches played yet. 2-5 in 3.0. In 3.0: D3 beat Lisa Schnitz (2.87) + Kimberly Cunningham (2.55) in a third-set tiebreak.",
-    "rating_30": 2.7339,
-    "rating_35": 2.7339,
+    "notes_30": "Among the most-deployed (8/11 weeks). Surprising loss: W5 S2 to Stephanie Stern (2.70) in a third-set tiebreak (as 57% favourite). Wins across a range of partners (Courtney/Kimberly Yang). Loss with Carolina fits Carolina's tiebreak-loss pattern. 3 tiebreak losses this season; struggles to close out tight matches.",
+    "notes_35": "No 3.5 matches played yet. 3-5 in 3.0. In 3.0: D2 beat Margaret Bruno (2.97) + Amy Badain (2.88) in a tight match.",
+    "rating_30": 2.766,
+    "rating_35": 2.766,
     "baseline_date": "12/09/2025",
     "iter_rating_30": 3.3664,
     "iter_rating_35": 2.81,
@@ -6081,7 +6138,8 @@
       "4/11/2026": 2.7743,
       "4/18/2026": 2.7904,
       "5/9/2026": 2.7339,
-      "5/30/2026": 2.7339
+      "5/30/2026": 2.7339,
+      "6/6/2026": 2.7339
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -6091,7 +6149,8 @@
       "4/11/2026": 2.7904,
       "4/18/2026": 2.7339,
       "5/9/2026": 2.7339,
-      "5/30/2026": 2.7339
+      "5/30/2026": 2.7339,
+      "6/6/2026": 2.766
     },
     "rating_post_timeline_35": {}
   },
@@ -6160,13 +6219,14 @@
     "profile_url": "/adult/profile.aspx?playername=Holly Crosby",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
+      "D1",
       "D2",
       "D3x2"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "2-2",
     "team_30": "SPANISH TRAIL",
-    "notes_30": "Lopsided loss: W6 D3 lost to Eva Gryczon (2.77) + Annabel Elliott (2.88) bageled in a set.",
-    "notes_35": "No 3.5 matches played yet. 2-1 in 3.0. In 3.0: D2 beat Francine Mazza (2.85) + Leona Kiely (2.78) in a third-set tiebreak.",
+    "notes_30": "Lopsided loss: W6 D3 lost to Eva Gryczon (2.71) + Annabel Elliott (2.88) bageled in a set. Wins across a range of partners (Roslyn/Nancy). Loss with Sirina came against a stronger pair; loss with Kelly Perkins was the avoidable one. Below expectations for a 2.96 baseline — losses to opponents she should be beating.",
+    "notes_35": "No 3.5 matches played yet. 2-2 in 3.0. In 3.0: D2 beat Francine Mazza (2.85) + Leona Kiely (2.78) in a third-set tiebreak.",
     "rating_30": 3.0103,
     "rating_35": 3.0103,
     "baseline_date": "12/19/2025",
@@ -6176,13 +6236,15 @@
     "rating_timeline_30": {
       "3/14/2026": 2.96,
       "4/25/2026": 3.0192,
-      "5/2/2026": 2.9797
+      "5/2/2026": 2.9797,
+      "6/6/2026": 3.0103
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/14/2026": 3.0192,
       "4/25/2026": 2.9797,
-      "5/2/2026": 3.0103
+      "5/2/2026": 3.0103,
+      "6/6/2026": 3.0103
     },
     "rating_post_timeline_35": {}
   },
@@ -6332,8 +6394,8 @@
     "team": "SOUTHERN HIGHLANDS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.82,
-    "current_division_rating": 3.0149,
-    "global_rating": 3.0149,
+    "current_division_rating": 2.9369,
+    "global_rating": 2.9369,
     "ntrp_rating": "3.0 C",
     "wl_record": "3-0",
     "lines_played": 3,
@@ -6343,14 +6405,15 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1x6",
+      "D2",
       "D3x2"
     ],
-    "wl_record_30": "4-4",
+    "wl_record_30": "4-5",
     "team_30": "SOUTHERN HIGHLANDS",
-    "notes_30": "Among the most-deployed (8/10 weeks). Close doubles losses to stronger pairs — Tina Shirey (3.06) + Irene Frazier (2.92); tiebreak vs Julie Brown (3.00) + Kellie Woods (2.82). Outmatched at D1 — Han Hu (3.00) + Margo Isler (3.06) in W5; Jeralyn Marchesi (3.18) + Leticia Schoff (3.13) in W7.",
-    "notes_35": "No 3.5 matches played yet. 4-4 in 3.0. In 3.0: D1 beat Kellie Woods (2.69) + Emmy Perez (3.04) in a third-set tiebreak.",
-    "rating_30": 3.0149,
-    "rating_35": 3.0149,
+    "notes_30": "Among the most-deployed (9/11 weeks). Close doubles losses to stronger pairs — Tina Shirey (3.06) + Irene Frazier (2.92); tiebreak vs Julie Brown (3.00) + Kellie Woods (2.82). Outmatched at D1 — Han Hu (3.00) + Margo Isler (3.06) in W5; Jeralyn Marchesi (3.18) + Leticia Schoff (3.13) in W7.",
+    "notes_35": "No 3.5 matches played yet. 4-5 in 3.0. In 3.0: D1 beat Kellie Woods (2.69) + Emmy Perez (3.04) in a third-set tiebreak.",
+    "rating_30": 2.9369,
+    "rating_35": 2.9369,
     "baseline_date": "11/11/2025",
     "iter_rating_30": 3.8912,
     "iter_rating_35": 2.82,
@@ -6363,7 +6426,8 @@
       "4/25/2026": 2.8704,
       "5/2/2026": 2.9209,
       "5/9/2026": 2.9209,
-      "5/16/2026": 2.926
+      "5/16/2026": 2.926,
+      "6/6/2026": 2.9749
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -6374,7 +6438,8 @@
       "4/25/2026": 2.9209,
       "5/2/2026": 2.9209,
       "5/9/2026": 2.926,
-      "5/16/2026": 2.9749
+      "5/16/2026": 2.9749,
+      "6/6/2026": 2.9369
     },
     "rating_post_timeline_35": {}
   },
@@ -6385,8 +6450,8 @@
     "team": "DTC #4",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.88,
-    "current_division_rating": 3.0442,
-    "global_rating": 3.0442,
+    "current_division_rating": 2.9862,
+    "global_rating": 2.9862,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -6395,17 +6460,17 @@
     "profile_url": "/adult/profile.aspx?playername=Olga Bencini",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x6",
+      "D1x7",
       "D2",
       "D3",
       "S2"
     ],
-    "wl_record_30": "8-1",
+    "wl_record_30": "8-2",
     "team_30": "DTC #4",
-    "notes_30": "Struggled early — W4 loss to Kristyl Addison (2.98) + Melissa Hicks (3.22) — but has won 6 straight since, often dominantly.",
-    "notes_35": "No 3.5 matches played yet. 8-1 in 3.0. In 3.0: D1 beat Robi Hinton (3.01) + Melissa Arcella (2.95) in a third-set tiebreak.",
-    "rating_30": 3.0442,
-    "rating_35": 3.0442,
+    "notes_30": "Dominant in wins; the one loss to Alexandria Chang (2.83) + Ara Lee Stimson (3.07) in W11 is the only blemish.",
+    "notes_35": "No 3.5 matches played yet. 8-2 in 3.0. In 3.0: D1 beat Robi Hinton (3.01) + Melissa Arcella (2.95) in a third-set tiebreak.",
+    "rating_30": 2.9862,
+    "rating_35": 2.9862,
     "baseline_date": "03/14/2026",
     "iter_rating_30": 4.4198,
     "iter_rating_35": 2.88,
@@ -6419,7 +6484,8 @@
       "5/2/2026": 2.975,
       "5/9/2026": 2.9612,
       "5/16/2026": 3.0069,
-      "5/30/2026": 3.0327
+      "5/30/2026": 3.0327,
+      "6/6/2026": 3.0442
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -6431,7 +6497,8 @@
       "5/2/2026": 2.9612,
       "5/9/2026": 3.0069,
       "5/16/2026": 3.0327,
-      "5/30/2026": 3.0442
+      "5/30/2026": 3.0442,
+      "6/6/2026": 2.9862
     },
     "rating_post_timeline_35": {}
   },
@@ -6457,7 +6524,7 @@
     ],
     "wl_record_30": "8-1",
     "team_30": "WHITNEY MESA PARK",
-    "notes_30": "Most-deployed player (9/10 weeks). Outmatched at S1 by Nourjan Bonney (2.96) in W3.",
+    "notes_30": "Most-deployed player (9/11 weeks). Outmatched at S1 by Nourjan Bonney (2.96) in W3.",
     "notes_35": "No 3.5 matches played yet. 8-1 in 3.0. In 3.0: S1 beat Geraldine Davis (2.75) comfortably.",
     "rating_30": 2.9152,
     "rating_35": 2.9152,
@@ -6507,13 +6574,13 @@
     "profile_url": "/adult/profile.aspx?playername=sirina Shouldis",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x6",
+      "D1x7",
       "D2x2"
     ],
-    "wl_record_30": "5-3",
+    "wl_record_30": "5-4",
     "team_30": "SPANISH TRAIL",
     "notes_30": "Surprising loss: W10 D1 alongside Meryll Ledesma to Robi Hinton (3.01) + Elizabeth Eshragh (2.76) in a third-set tiebreak (as 56% favourite). Outmatched at D1 by Kristyl Addison (3.13) + Alexandria Chang (2.74) in W6.",
-    "notes_35": "No 3.5 matches played yet. 5-3 in 3.0. In 3.0: D1 beat Valerie Valow-Orris (2.98) + Sally Morley (2.78) comfortably.",
+    "notes_35": "No 3.5 matches played yet. 5-4 in 3.0. In 3.0: D1 beat Valerie Valow-Orris (2.98) + Sally Morley (2.78) comfortably.",
     "rating_30": 2.9804,
     "rating_35": 2.9804,
     "baseline_date": "12/19/2025",
@@ -6528,7 +6595,8 @@
       "4/25/2026": 2.9511,
       "5/2/2026": 2.9511,
       "5/16/2026": 2.9969,
-      "5/30/2026": 2.9969
+      "5/30/2026": 2.9969,
+      "6/6/2026": 2.9404
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -6539,7 +6607,8 @@
       "4/25/2026": 2.9511,
       "5/2/2026": 2.9969,
       "5/16/2026": 2.9969,
-      "5/30/2026": 2.9404
+      "5/30/2026": 2.9404,
+      "6/6/2026": 2.9404
     },
     "rating_post_timeline_35": {}
   },
@@ -6550,8 +6619,8 @@
     "team": "DTC #1",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.83,
-    "current_division_rating": 2.6316,
-    "global_rating": 2.6316,
+    "current_division_rating": 2.6845,
+    "global_rating": 2.6845,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-4",
     "lines_played": 4,
@@ -6562,15 +6631,15 @@
     "lines_played_30": [
       "D1",
       "D2x4",
-      "S1x2",
+      "S1x3",
       "S2"
     ],
-    "wl_record_30": "5-3",
+    "wl_record_30": "6-3",
     "team_30": "DTC #1",
-    "notes_30": "Most-deployed player (8/10 weeks). Lopsided loss: W9 D2 lost to Elizabeth Eshragh (2.73) + Courtney Beine (2.63) bageled in a set. Wins reliably with Yesenia and solo. Playing S1/D1 despite low baseline.",
-    "notes_35": "No 3.5 matches played yet. 5-3 in 3.0. In 3.0: S1 beat Elizabeth Eshragh (2.77) in a third-set tiebreak.",
-    "rating_30": 2.6316,
-    "rating_35": 2.6316,
+    "notes_30": "Most-deployed player (9/11 weeks). Lopsided loss: W9 D2 lost to Elizabeth Eshragh (2.73) + Courtney Beine (2.63) bageled in a set. Wins reliably with Yesenia and solo. Dynamically deployed across formats — wins both in singles (3-1) and doubles (3-2). Playing S1/D1 despite low baseline.",
+    "notes_35": "No 3.5 matches played yet. 6-3 in 3.0. In 3.0: S1 beat Elizabeth Eshragh (2.77) in a third-set tiebreak.",
+    "rating_30": 2.6845,
+    "rating_35": 2.6845,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 4.0546,
     "iter_rating_35": 2.83,
@@ -6583,7 +6652,8 @@
       "4/18/2026": 2.7018,
       "5/9/2026": 2.6403,
       "5/16/2026": 2.6716,
-      "5/30/2026": 2.6716
+      "5/30/2026": 2.6716,
+      "6/6/2026": 2.6316
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -6594,7 +6664,8 @@
       "4/18/2026": 2.6403,
       "5/9/2026": 2.6716,
       "5/16/2026": 2.6716,
-      "5/30/2026": 2.6316
+      "5/30/2026": 2.6316,
+      "6/6/2026": 2.6845
     },
     "rating_post_timeline_35": {}
   },
@@ -6622,7 +6693,7 @@
     ],
     "wl_record_30": "3-5",
     "team_30": "SOUTHERN HIGHLANDS",
-    "notes_30": "Among the most-deployed (8/10 weeks). Close doubles losses to stronger pairs — tiebreak vs Kelly Twells (3.10) + Sandra Shearer (2.87); Tina Shirey (3.06) + Irene Frazier (2.92). Lopsided loss: W5 S1 lost to Kimberly Lippisch (2.44) bageled in a set. Outmatched at D1 by Jeralyn Marchesi (3.18) + Leticia Schoff (3.13) in W7.",
+    "notes_30": "Close doubles losses to stronger pairs — tiebreak vs Kelly Twells (3.10) + Sandra Shearer (2.87); Tina Shirey (3.06) + Irene Frazier (2.92). Lopsided loss: W5 S1 lost to Kimberly Lippisch (2.44) bageled in a set. Outmatched at D1 by Jeralyn Marchesi (3.18) + Leticia Schoff (3.13) in W7.",
     "notes_35": "No 3.5 matches played yet. 3-5 in 3.0. In 3.0: D1 beat Kellie Woods (2.69) + Emmy Perez (3.04) in a third-set tiebreak.",
     "rating_30": 2.8785,
     "rating_35": 2.8785,
@@ -6660,8 +6731,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.78,
-    "current_division_rating": 2.9277,
-    "global_rating": 2.9277,
+    "current_division_rating": 2.9765,
+    "global_rating": 2.9765,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -6670,17 +6741,17 @@
     "profile_url": "/adult/profile.aspx?playername=Ani Zargaryan",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x2",
+      "D1x3",
       "D2x2",
       "S1",
       "S2x3"
     ],
-    "wl_record_30": "4-4",
+    "wl_record_30": "5-4",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Upset: W4 D2 with Jocelyn Herman — beat Sandra Shearer (2.94) + ANN MARIE WEAVER (2.84) at 31% odds. Surprising loss: W6 S1 to Elsy Flores Rojas (2.82) (as 57% favourite). Wins across a range of partners (Jocelyn/Kim Springer and solo). Loss with Tayoni came against a stronger pair; loss with Tamaris was the avoidable one.",
-    "notes_35": "No 3.5 matches played yet. 4-4 in 3.0. In 3.0: D1 beat Margo Isler (3.07) + Han Hu (3.03).",
-    "rating_30": 2.9277,
-    "rating_35": 2.9277,
+    "notes_30": "Upset: W4 D2 with Jocelyn Herman — beat Sandra Shearer (2.94) + ANN MARIE WEAVER (2.84) at 31% odds. Surprising loss: W6 S1 to Elsy Flores Rojas (2.82) (as 57% favourite). Wins across a range of partners (Jocelyn/Tina Nathalia/Kim Springer and solo). Loss with Tayoni came against a stronger pair; loss with Tamaris was the avoidable one.",
+    "notes_35": "No 3.5 matches played yet. 5-4 in 3.0. In 3.0: D1 beat Kelly Twells (3.15) + Kari Allen (3.07) in a third-set tiebreak.",
+    "rating_30": 2.9765,
+    "rating_35": 2.9765,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 4.4639,
     "iter_rating_35": 2.78,
@@ -6693,7 +6764,8 @@
       "5/2/2026": 2.8416,
       "5/9/2026": 2.8416,
       "5/16/2026": 2.8741,
-      "5/30/2026": 2.8741
+      "5/30/2026": 2.8741,
+      "6/6/2026": 2.9277
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -6704,7 +6776,8 @@
       "5/2/2026": 2.8416,
       "5/9/2026": 2.8741,
       "5/16/2026": 2.8741,
-      "5/30/2026": 2.9277
+      "5/30/2026": 2.9277,
+      "6/6/2026": 2.9765
     },
     "rating_post_timeline_35": {}
   },
@@ -6715,8 +6788,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.88,
-    "current_division_rating": 2.8625,
-    "global_rating": 2.8625,
+    "current_division_rating": 2.8268,
+    "global_rating": 2.8268,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -6727,15 +6800,16 @@
     "lines_played_30": [
       "D1",
       "D2x2",
+      "D3",
       "S1",
       "S2x2"
     ],
-    "wl_record_30": "3-3",
+    "wl_record_30": "3-4",
     "team_30": "ANTHEM CC",
-    "notes_30": "Upset: W3 D1 with Crystal Ziebarth — beat Laurie Lenhart (3.07) + Debbie D'Amato (2.93) at 34% odds. Doubles is the bright spot (2-1); singles hasn't clicked (1-2). Below expectations for a 2.88 baseline — losses to opponents she should be beating.",
-    "notes_35": "No 3.5 matches played yet. 3-3 in 3.0. In 3.0: D1 beat Laurie Lenhart (3.07) + Debbie D'Amato (2.93).",
-    "rating_30": 2.8625,
-    "rating_35": 2.8625,
+    "notes_30": "Upset: W3 D1 with Crystal Ziebarth — beat Laurie Lenhart (3.07) + Debbie D'Amato (2.93) at 34% odds. Underperforming at D3/S2 — multiple losses to slightly lower-rated opponents. Dynamically deployed across formats — singles (1-2) and doubles (2-2).",
+    "notes_35": "No 3.5 matches played yet. 3-4 in 3.0. In 3.0: D1 beat Laurie Lenhart (3.07) + Debbie D'Amato (2.93).",
+    "rating_30": 2.8268,
+    "rating_35": 2.8268,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 4.251,
     "iter_rating_35": 2.88,
@@ -6746,7 +6820,8 @@
       "3/28/2026": 2.8732,
       "4/25/2026": 2.9507,
       "5/16/2026": 2.9749,
-      "5/30/2026": 2.9353
+      "5/30/2026": 2.9353,
+      "6/6/2026": 2.8625
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -6755,7 +6830,8 @@
       "3/28/2026": 2.9507,
       "4/25/2026": 2.9749,
       "5/16/2026": 2.9353,
-      "5/30/2026": 2.8625
+      "5/30/2026": 2.8625,
+      "6/6/2026": 2.8268
     },
     "rating_post_timeline_35": {}
   },
@@ -6816,8 +6892,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.79,
-    "current_division_rating": 2.9995,
-    "global_rating": 2.9995,
+    "current_division_rating": 3.045,
+    "global_rating": 3.045,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-4",
     "lines_played": 4,
@@ -6828,14 +6904,15 @@
     "lines_played_30": [
       "D1x3",
       "D2x3",
+      "S1",
       "S2"
     ],
-    "wl_record_30": "5-2",
+    "wl_record_30": "6-2",
     "team_30": "DTC #3",
-    "notes_30": "Three upsets this season — most surprising: W4 S2 — beat Han Hu (3.09) in a tiebreak at 27% odds. Tough loss in W3 D1 alongside Prexy to Cambridge/Schwartz — one of the division's top pairs (4-0). Wins across a range of partners (Moon-Hui/Kim Knotts/Shi and solo). Loss with Kellie fits Kellie's tiebreak-loss pattern.",
-    "notes_35": "No 3.5 matches played yet. 5-2 in 3.0. In 3.0: D1 beat Tina Nathalia (3.07) + Kim Springer (3.13) comfortably.",
-    "rating_30": 2.9995,
-    "rating_35": 2.9995,
+    "notes_30": "Among the most-deployed (8/11 weeks). Three upsets this season — most surprising: W4 S2 — beat Han Hu (3.09) in a tiebreak at 27% odds. Tough loss in W3 D1 alongside Prexy to Cambridge/Schwartz — one of the division's top pairs (5-0). Wins across a range of partners (Moon-Hui/Kim Knotts/Shi and solo). Loss with Kellie fits Kellie's tiebreak-loss pattern.",
+    "notes_35": "No 3.5 matches played yet. 6-2 in 3.0. In 3.0: D1 beat Tina Nathalia (3.07) + Kim Springer (3.13) comfortably.",
+    "rating_30": 3.045,
+    "rating_35": 3.045,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 4.4076,
     "iter_rating_35": 2.79,
@@ -6847,7 +6924,8 @@
       "4/11/2026": 2.8184,
       "4/18/2026": 2.9446,
       "5/2/2026": 2.9711,
-      "5/16/2026": 3.0409
+      "5/16/2026": 3.0409,
+      "6/6/2026": 2.9995
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -6857,7 +6935,8 @@
       "4/11/2026": 2.9446,
       "4/18/2026": 2.9711,
       "5/2/2026": 3.0409,
-      "5/16/2026": 2.9995
+      "5/16/2026": 2.9995,
+      "6/6/2026": 3.045
     },
     "rating_post_timeline_35": {}
   },
@@ -7263,19 +7342,19 @@
     "tennisrecord_id": null,
     "lines_played_30": [
       "D3x2",
-      "S2"
+      "S2x2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-0",
     "team_30": "DTC #3",
     "notes_30": "Undefeated but all opponents below baseline (avg 2.61).",
-    "notes_35": "No 3.5 matches played yet. 3-0 in 3.0. In 3.0: S2 beat Golssa Moridi (2.77) in a third-set tiebreak.",
+    "notes_35": "No 3.5 matches played yet. 4-0 in 3.0. In 3.0: S2 beat Golssa Moridi (2.77) in a third-set tiebreak.",
     "rating_30": 2.8716,
     "rating_35": 2.8716,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.2778,
     "iter_rating_35": 2.83,
     "iter_global_rating": 3.2778,
-    "default_wins_30": 1,
+    "default_wins_30": 2,
     "rating_timeline_30": {
       "4/18/2026": 2.83,
       "5/30/2026": 2.8369
@@ -7294,8 +7373,8 @@
     "team": "DESERT PALM",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.86,
-    "current_division_rating": 2.8701,
-    "global_rating": 2.8701,
+    "current_division_rating": 2.7509,
+    "global_rating": 2.7509,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -7306,32 +7385,34 @@
     "lines_played_30": [
       "D1",
       "D3x3",
-      "S2"
+      "S2x2"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "2-4",
     "team_30": "DESERT PALM",
-    "notes_30": "Upset: W6 D3 with Annabel Elliott — beat Kelly Perkins (2.90) + Holly Crosby (3.02) with a bagel at 39% odds. Surprising loss: W4 S2 to Elena Bolha (2.75) decisively (as 56% favourite). Wins with Heather Hartzell. Loss with Annabel came against a stronger pair; loss with Yong was the avoidable one. Below expectations for a 2.86 baseline — losses to opponents she should be beating.",
-    "notes_35": "No 3.5 matches played yet. 2-3 in 3.0. In 3.0: D3 beat Kelly Perkins (2.90) + Holly Crosby (3.02) with a bagel.",
-    "rating_30": 2.8701,
-    "rating_35": 2.8701,
+    "notes_30": "Two upsets: W6 D3 with Annabel Elliott — beat Kelly Perkins (2.90) + Holly Crosby (3.02) with a bagel at 37% odds; W9 D1 with Heather Hartzell — beat Julie Schoolmeester (2.73) + Karen Veazey (2.79) comfortably at 43% odds. Lopsided loss: W11 S2 lost to DeVita Robinson (2.76) bageled in a set. Wins with Heather Hartzell.",
+    "notes_35": "No 3.5 matches played yet. 2-4 in 3.0. In 3.0: D3 beat Kelly Perkins (2.90) + Holly Crosby (3.02) with a bagel.",
+    "rating_30": 2.7509,
+    "rating_35": 2.7509,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.6233,
     "iter_rating_35": 2.86,
     "iter_global_rating": 3.6233,
     "rating_timeline_30": {
       "3/21/2026": 2.86,
-      "4/11/2026": 2.8272,
-      "4/18/2026": 2.7728,
-      "4/25/2026": 2.7728,
-      "5/16/2026": 2.8123
+      "4/11/2026": 2.7684,
+      "4/18/2026": 2.714,
+      "4/25/2026": 2.714,
+      "5/16/2026": 2.7535,
+      "6/6/2026": 2.8113
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
-      "3/21/2026": 2.8272,
-      "4/11/2026": 2.7728,
-      "4/18/2026": 2.7728,
-      "4/25/2026": 2.8123,
-      "5/16/2026": 2.8701
+      "3/21/2026": 2.7684,
+      "4/11/2026": 2.714,
+      "4/18/2026": 2.714,
+      "4/25/2026": 2.7535,
+      "5/16/2026": 2.8113,
+      "6/6/2026": 2.7509
     },
     "rating_post_timeline_35": {}
   },
@@ -7442,8 +7523,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.78,
-    "current_division_rating": 2.8327,
-    "global_rating": 2.8327,
+    "current_division_rating": 2.797,
+    "global_rating": 2.797,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-0",
     "lines_played": 2,
@@ -7454,14 +7535,14 @@
     "lines_played_30": [
       "D1",
       "D2",
-      "D3"
+      "D3x2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "3-1",
     "team_30": "ANTHEM CC",
     "notes_30": "Upset: W3 D1 with Chelsi Grady — beat Laurie Lenhart (3.07) + Debbie D'Amato (2.93) at 34% odds.",
-    "notes_35": "No 3.5 matches played yet. 3-0 in 3.0. In 3.0: D1 beat Laurie Lenhart (3.07) + Debbie D'Amato (2.93).",
-    "rating_30": 2.8327,
-    "rating_35": 2.8327,
+    "notes_35": "No 3.5 matches played yet. 3-1 in 3.0. In 3.0: D1 beat Laurie Lenhart (3.07) + Debbie D'Amato (2.93).",
+    "rating_30": 2.797,
+    "rating_35": 2.797,
     "baseline_date": "12/09/2025",
     "iter_rating_30": 3.7443,
     "iter_rating_35": 2.78,
@@ -7469,13 +7550,15 @@
     "rating_timeline_30": {
       "3/21/2026": 2.78,
       "3/28/2026": 2.768,
-      "5/2/2026": 2.8455
+      "5/2/2026": 2.8455,
+      "6/6/2026": 2.8327
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/21/2026": 2.768,
       "3/28/2026": 2.8455,
-      "5/2/2026": 2.8327
+      "5/2/2026": 2.8327,
+      "6/6/2026": 2.797
     },
     "rating_post_timeline_35": {}
   },
@@ -7548,8 +7631,8 @@
     "team": "SOUTHERN HIGHLANDS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.72,
-    "current_division_rating": 2.7591,
-    "global_rating": 2.7591,
+    "current_division_rating": 2.8198,
+    "global_rating": 2.8198,
     "ntrp_rating": "3.0 C",
     "wl_record": "4-0",
     "lines_played": 4,
@@ -7559,15 +7642,15 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D2x2",
-      "S1",
+      "S1x2",
       "S2x2"
     ],
-    "wl_record_30": "1-4",
+    "wl_record_30": "2-4",
     "team_30": "SOUTHERN HIGHLANDS",
-    "notes_30": "Competitive at S2 (tiebreak wins in W1) but outmatched at S1: W2 S1 lost to Yarisbel Schieck (3.07) decisively.",
-    "notes_35": "No 3.5 matches played yet. 1-4 in 3.0. In 3.0: S2 beat Brittany Carlson (2.69) in a third-set tiebreak.",
-    "rating_30": 2.7591,
-    "rating_35": 2.7591,
+    "notes_30": "Upset: W11 S1 — beat Maryam Kaveh (2.83) with a bagel at 44% odds. Competitive at S2 (tiebreak wins in W1) but outmatched at S1: W2 S1 lost to Yarisbel Schieck (3.07) decisively.",
+    "notes_35": "No 3.5 matches played yet. 2-4 in 3.0. In 3.0: S1 beat Maryam Kaveh (2.83) with a bagel.",
+    "rating_30": 2.8198,
+    "rating_35": 2.8198,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 4.148,
     "iter_rating_35": 2.72,
@@ -7577,7 +7660,8 @@
       "3/21/2026": 2.7591,
       "3/28/2026": 2.7591,
       "4/11/2026": 2.7591,
-      "5/9/2026": 2.7591
+      "5/9/2026": 2.7591,
+      "6/6/2026": 2.7591
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -7585,7 +7669,8 @@
       "3/21/2026": 2.7591,
       "3/28/2026": 2.7591,
       "4/11/2026": 2.7591,
-      "5/9/2026": 2.7591
+      "5/9/2026": 2.7591,
+      "6/6/2026": 2.8198
     },
     "rating_post_timeline_35": {}
   },
@@ -7680,8 +7765,8 @@
     "team": "DESERT PALM",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.72,
-    "current_division_rating": 2.8706,
-    "global_rating": 2.8706,
+    "current_division_rating": 2.9252,
+    "global_rating": 2.9252,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -7690,11 +7775,11 @@
     "profile_url": "/adult/profile.aspx?playername=Alexandria Chang",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x6",
+      "D1x7",
       "D2",
       "S2"
     ],
-    "wl_record_30": "5-3",
+    "wl_record_30": "6-3",
     "lines_played_35": [
       "D1",
       "D3x4"
@@ -7702,10 +7787,10 @@
     "wl_record_35": "2-3",
     "team_30": "DESERT PALM",
     "team_35": "DTC #3",
-    "notes_30": "Upset: W1 D1 with Ara Lee Stimson — beat Maggie Pacholuk (2.74) + Jaqueline Schultz (3.08) in a tight match at 42% odds. Lopsided loss: W5 D1 lost to Robi Hinton (2.88) + Melissa Arcella (2.87) bageled in a set. Wins reliably with Ara. Loss with Melissa Hicks came against a stronger pair; loss with Kristyl was the avoidable one. 2-3 in 3.5 at D1/D3 suggests she's near her ceiling in this division.",
-    "notes_35": "Two upsets: W5 D3 with Kristyl Addison — beat Karen Kiyono (3.33) + Michelle Jarvis (3.10) in a tiebreak at 26% odds; W6 D3 with Kristyl Addison — beat Lana Penrose (3.31) + Monica Johnson (3.23) comfortably at 30% odds. Wins reliably with Kristyl. Playing D1 despite low baseline. Also 5-3 in 3.0 at D1/D2/S2.",
-    "rating_30": 2.8706,
-    "rating_35": 2.8706,
+    "notes_30": "Two upsets: W1 D1 with Ara Lee Stimson — beat Maggie Pacholuk (2.74) + Jaqueline Schultz (3.08) in a tight match at 42% odds; W11 D1 with Ara Lee Stimson — beat Maryna Post (3.08) + Olga Bencini (3.04) at 43% odds. Lopsided loss: W5 D1 lost to Robi Hinton (2.88) + Melissa Arcella (2.87) bageled in a set. Wins reliably with Ara.",
+    "notes_35": "Two upsets: W5 D3 with Kristyl Addison — beat Karen Kiyono (3.33) + Michelle Jarvis (3.10) in a tiebreak at 26% odds; W6 D3 with Kristyl Addison — beat Lana Penrose (3.31) + Monica Johnson (3.23) comfortably at 30% odds. Wins reliably with Kristyl. Playing D1 despite low baseline. Also 6-3 in 3.0 at D1/D2/S2.",
+    "rating_30": 2.9252,
+    "rating_35": 2.9252,
     "baseline_date": "11/23/2025",
     "iter_rating_30": 4.4467,
     "iter_rating_35": 4.0765,
@@ -7718,7 +7803,8 @@
       "5/2/2026": 2.796,
       "5/9/2026": 2.8673,
       "5/16/2026": 2.8673,
-      "5/30/2026": 2.8749
+      "5/30/2026": 2.8749,
+      "6/6/2026": 2.8306
     },
     "rating_timeline_35": {
       "3/14/2026": 2.7785,
@@ -7735,7 +7821,8 @@
       "5/2/2026": 2.8242,
       "5/9/2026": 2.8673,
       "5/16/2026": 2.8749,
-      "5/30/2026": 2.8306
+      "5/30/2026": 2.8306,
+      "6/6/2026": 2.8852
     },
     "rating_post_timeline_35": {
       "3/14/2026": 2.7166,
@@ -7762,15 +7849,15 @@
     "profile_url": "/adult/profile.aspx?playername=Shaza Nayef",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x2",
+      "D1x3",
       "D2x2",
       "D3",
       "S1"
     ],
-    "wl_record_30": "3-3",
+    "wl_record_30": "3-4",
     "team_30": "SOUTHERN HIGHLANDS",
-    "notes_30": "Upset: W1 D1 with Shannon Keever — beat Tamaris Cotta (2.22) + Kim Springer (3.25) comfortably at 43% odds. Surprising loss: W3 S1 to Elsy Flores Rojas (2.68) (as 64% favourite).",
-    "notes_35": "No 3.5 matches played yet. 3-3 in 3.0. In 3.0: D1 beat ANN MARIE WEAVER (2.77) + Gina Rivera (2.91) in a third-set tiebreak.",
+    "notes_30": "Upset: W1 D1 with Shannon Keever — beat Tamaris Cotta (2.22) + Kim Springer (3.25) comfortably at 43% odds. Surprising loss: W3 S1 to Elsy Flores Rojas (2.68) (as 64% favourite). Outmatched at D1 by Rhianna Schwartz (3.10) + Brenda Cambridge (3.14) in W11.",
+    "notes_35": "No 3.5 matches played yet. 3-4 in 3.0. In 3.0: D1 beat ANN MARIE WEAVER (2.77) + Gina Rivera (2.91) in a third-set tiebreak.",
     "rating_30": 2.8074,
     "rating_35": 2.8074,
     "baseline_date": "11/17/2025",
@@ -7783,7 +7870,8 @@
       "3/28/2026": 2.8361,
       "4/25/2026": 2.7569,
       "5/2/2026": 2.8074,
-      "5/16/2026": 2.8074
+      "5/16/2026": 2.8074,
+      "6/6/2026": 2.8074
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -7792,7 +7880,8 @@
       "3/28/2026": 2.7569,
       "4/25/2026": 2.8074,
       "5/2/2026": 2.8074,
-      "5/16/2026": 2.8074
+      "5/16/2026": 2.8074,
+      "6/6/2026": 2.8074
     },
     "rating_post_timeline_35": {}
   },
@@ -8046,16 +8135,27 @@
     "notes": null,
     "profile_url": "/adult/profile.aspx?playername=Ashley Richas",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
-    "notes_30": "",
-    "notes_35": "",
+    "notes_30": "Outmatched at D1 by Rhianna Schwartz (3.10) + Brenda Cambridge (3.14) in W11.",
+    "notes_35": "No 3.5 matches played yet. 0-1 in 3.0. In 3.0: D1 lost to Rhianna Schwartz (3.10) + Brenda Cambridge (3.14).",
     "rating_30": 2.67,
     "rating_35": 2.67,
     "baseline_date": "11/18/2025",
     "iter_rating_30": 2.67,
     "iter_rating_35": 2.67,
     "iter_global_rating": 2.67,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "rating_timeline_30": {
+      "6/6/2026": 2.67
+    },
+    "rating_timeline_35": {},
+    "lines_played_30": [
+      "D1"
+    ],
+    "wl_record_30": "0-1",
+    "team_30": "SOUTHERN HIGHLANDS",
+    "rating_post_timeline_30": {
+      "6/6/2026": 2.67
+    },
+    "rating_post_timeline_35": {}
   },
   {
     "id": "jenny-mulopulos",
@@ -8150,8 +8250,8 @@
     "team": "DTC #1",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.79,
-    "current_division_rating": 2.9641,
-    "global_rating": 2.9641,
+    "current_division_rating": 2.9912,
+    "global_rating": 2.9912,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -8160,16 +8260,16 @@
     "profile_url": "/adult/profile.aspx?playername=Anjelica Moore",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1x2",
+      "D1x3",
       "S1x4",
       "S2"
     ],
-    "wl_record_30": "5-2",
+    "wl_record_30": "6-2",
     "team_30": "DTC #1",
-    "notes_30": "Upset: W9 S1 — beat Heather Rose (3.03) comfortably at 26% odds. Started at S2 (won comfortably vs much weaker opp), moved up to S1 (won comfortably vs much weaker opp).",
-    "notes_35": "No 3.5 matches played yet. 5-2 in 3.0. In 3.0: S1 beat Heather Rose (3.03) comfortably.",
-    "rating_30": 2.9641,
-    "rating_35": 2.9641,
+    "notes_30": "Upset: W9 S1 — beat Heather Rose (3.03) comfortably at 26% odds.",
+    "notes_35": "No 3.5 matches played yet. 6-2 in 3.0. In 3.0: S1 beat Heather Rose (3.03) comfortably.",
+    "rating_30": 2.9912,
+    "rating_35": 2.9912,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.6128,
     "iter_rating_35": 2.79,
@@ -8181,7 +8281,8 @@
       "5/2/2026": 2.7816,
       "5/9/2026": 2.7303,
       "5/16/2026": 2.7425,
-      "5/30/2026": 2.887
+      "5/30/2026": 2.887,
+      "6/6/2026": 2.9241
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -8191,7 +8292,8 @@
       "5/2/2026": 2.7303,
       "5/9/2026": 2.7425,
       "5/16/2026": 2.887,
-      "5/30/2026": 2.9241
+      "5/30/2026": 2.9241,
+      "6/6/2026": 2.9512
     },
     "rating_post_timeline_35": {}
   },
@@ -8254,8 +8356,8 @@
     "team": "DTC #4",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.73,
-    "current_division_rating": 2.7582,
-    "global_rating": 2.7582,
+    "current_division_rating": 2.8186,
+    "global_rating": 2.8186,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-2",
     "lines_played": 2,
@@ -8265,14 +8367,14 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "S1x2",
-      "S2"
+      "S2x2"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "3-1",
     "team_30": "DTC #4",
-    "notes_30": "Upset: W3 S2 — beat Jennifer Olson (2.79) with a bagel at 41% odds.",
-    "notes_35": "No 3.5 matches played yet. 2-1 in 3.0. In 3.0: S2 beat Jennifer Olson (2.79) with a bagel.",
-    "rating_30": 2.7582,
-    "rating_35": 2.7582,
+    "notes_30": "Upset: W3 S2 — beat Jennifer Olson (2.79) with a bagel at 41% odds. Tried at S1 (lost), moved down to S2 (won with a bagel).",
+    "notes_35": "No 3.5 matches played yet. 3-1 in 3.0. In 3.0: S2 beat Eva Gryczon (2.81) with a bagel.",
+    "rating_30": 2.8186,
+    "rating_35": 2.8186,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.1138,
     "iter_rating_35": 2.73,
@@ -8280,13 +8382,15 @@
     "rating_timeline_30": {
       "3/14/2026": 2.73,
       "3/28/2026": 2.6797,
-      "5/30/2026": 2.7398
+      "5/30/2026": 2.7398,
+      "6/6/2026": 2.7582
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/14/2026": 2.6797,
       "3/28/2026": 2.7398,
-      "5/30/2026": 2.7582
+      "5/30/2026": 2.7582,
+      "6/6/2026": 2.8186
     },
     "rating_post_timeline_35": {}
   },
@@ -8297,8 +8401,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.86,
-    "current_division_rating": 2.8485,
-    "global_rating": 2.8485,
+    "current_division_rating": 2.8679,
+    "global_rating": 2.8679,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -8307,14 +8411,14 @@
     "profile_url": "/adult/profile.aspx?playername=Courtney Long",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D3x3"
+      "D3x4"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "3-1",
     "team_30": "RED ROCK CC",
-    "notes_30": "Competitive season — loss to Candace Sartini (2.39) + Kristen Radlosky (2.76) in W8 is the main blemish.",
-    "notes_35": "No 3.5 matches played yet. 2-1 in 3.0. In 3.0: D3 beat Lisa Schnitz (2.87) + Kimberly Cunningham (2.55) in a third-set tiebreak.",
-    "rating_30": 2.8485,
-    "rating_35": 2.8485,
+    "notes_30": "Only deployed at D3.",
+    "notes_35": "No 3.5 matches played yet. 3-1 in 3.0. In 3.0: D3 beat Lisa Schnitz (2.87) + Kimberly Cunningham (2.55) in a third-set tiebreak.",
+    "rating_30": 2.8679,
+    "rating_35": 2.8679,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.3664,
     "iter_rating_35": 2.86,
@@ -8322,13 +8426,15 @@
     "rating_timeline_30": {
       "3/28/2026": 2.86,
       "4/25/2026": 2.8756,
-      "5/9/2026": 2.8983
+      "5/9/2026": 2.8983,
+      "6/6/2026": 2.8785
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/28/2026": 2.8756,
       "4/25/2026": 2.8983,
-      "5/9/2026": 2.8785
+      "5/9/2026": 2.8785,
+      "6/6/2026": 2.8979
     },
     "rating_post_timeline_35": {}
   },
@@ -8355,7 +8461,7 @@
     ],
     "wl_record_30": "3-5",
     "team_30": "ANTHEM CC",
-    "notes_30": "Among the most-deployed (8/10 weeks). Competitive at D2/D3 (tiebreak wins in W10/W3) but outmatched at D1: W9 D1 lost to Tina Shirey (3.17) + Irene Frazier (3.03) decisively.",
+    "notes_30": "Competitive at D2/D3 (tiebreak wins in W10/W3) but outmatched at D1: W9 D1 lost to Tina Shirey (3.17) + Irene Frazier (3.03) decisively.",
     "notes_35": "No 3.5 matches played yet. 3-5 in 3.0. In 3.0: D3 beat Jennifer Blais (2.85) + Michelle Simister (2.89) in a third-set tiebreak.",
     "rating_30": 2.8538,
     "rating_35": 2.8538,
@@ -8403,15 +8509,15 @@
     "profile_url": "/adult/profile.aspx?playername=Julie Smith&s=28",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl35_LinkButton2",
     "lines_played_30": [
-      "D1x2",
+      "D1x3",
       "D2",
       "D3x2",
       "S2"
     ],
-    "wl_record_30": "2-4",
+    "wl_record_30": "2-5",
     "team_30": "LIFE TIME FITNESS/GV",
-    "notes_30": "Upset: W4 D2 with Kimberly Lippisch — beat Kim Knotts (2.82) + Kellie Woods (2.79) in a tiebreak at 40% odds. Lopsided loss: W6 D1 lost to Carolina Nigro (2.78) + Kimberly Yang (3.02) bageled in a set. Outmatched at D1 by Carolina Nigro (2.78) + Kimberly Yang (3.02) in W6.",
-    "notes_35": "No 3.5 matches played yet. 2-4 in 3.0. In 3.0: D2 beat Kim Knotts (2.82) + Kellie Woods (2.79) in a third-set tiebreak.",
+    "notes_30": "Upset: W4 D2 with Kimberly Lippisch — beat Kim Knotts (2.82) + Kellie Woods (2.79) in a tiebreak at 40% odds. Lopsided loss: W6 D1 lost to Carolina Nigro (2.78) + Kimberly Yang (3.02) bageled in a set. Outmatched at D1 — Carolina Nigro (2.78) + Kimberly Yang (3.02) in W6; Moon-Hui Choi (2.84) + Christine LaBarre (3.18) in W11.",
+    "notes_35": "No 3.5 matches played yet. 2-5 in 3.0. In 3.0: D2 beat Kim Knotts (2.82) + Kellie Woods (2.79) in a third-set tiebreak.",
     "rating_30": 2.9495,
     "rating_35": 2.9495,
     "baseline_date": "03/19/2026",
@@ -8426,7 +8532,8 @@
       "4/11/2026": 2.8716,
       "4/18/2026": 2.9381,
       "4/25/2026": 2.9495,
-      "5/9/2026": 2.9495
+      "5/9/2026": 2.9495,
+      "6/6/2026": 2.9495
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -8435,7 +8542,8 @@
       "4/11/2026": 2.9381,
       "4/18/2026": 2.9495,
       "4/25/2026": 2.9495,
-      "5/9/2026": 2.9495
+      "5/9/2026": 2.9495,
+      "6/6/2026": 2.9495
     },
     "rating_post_timeline_35": {}
   },
@@ -8596,7 +8704,7 @@
     ],
     "wl_record_30": "2-5",
     "team_30": "SPANISH TRAIL",
-    "notes_30": "Upset: W1 D3 with Chelsie Hawkinson — beat Francie Angelov (2.37) + Linda English (3.03) comfortably at 44% odds. Two lopsided losses: W4 D3 lost to Sonja Rogers (2.69) + Roni Tarr (2.55) bageled in a set; W6 D3 lost to Eva Gryczon (2.77) + Annabel Elliott (2.88) bageled in a set.",
+    "notes_30": "Upset: W1 D3 with Chelsie Hawkinson — beat Francie Angelov (2.37) + Linda English (3.03) comfortably at 44% odds. Two lopsided losses: W4 D3 lost to Sonja Rogers (2.69) + Roni Tarr (2.55) bageled in a set; W6 D3 lost to Eva Gryczon (2.71) + Annabel Elliott (2.88) bageled in a set.",
     "notes_35": "No 3.5 matches played yet. 2-5 in 3.0. In 3.0: D3 beat Francie Angelov (2.37) + Linda English (3.03) comfortably.",
     "rating_30": 2.8606,
     "rating_35": 2.8606,
@@ -8643,12 +8751,13 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1x2",
-      "D2x3"
+      "D2x3",
+      "D3"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "3-3",
     "team_30": "DTC #3",
     "notes_30": "Surprising loss: W4 D2 alongside Kim Knotts to Kimberly Lippisch (2.40) + Julie Smith (2.87) in a third-set tiebreak (as 58% favourite). Wins reliably with Julie. 3 tiebreak losses this season — Kim Knotts, Prexy, Emmy have each taken a tiebreak loss alongside her; struggles to close out tight matches. Playing D1 despite low baseline.",
-    "notes_35": "No 3.5 matches played yet. 2-3 in 3.0. In 3.0: D2 beat Kellye Ray (2.73) + Carolina Nigro (2.89) in a third-set tiebreak.",
+    "notes_35": "No 3.5 matches played yet. 3-3 in 3.0. In 3.0: D2 beat Kellye Ray (2.73) + Carolina Nigro (2.89) in a third-set tiebreak.",
     "rating_30": 2.6597,
     "rating_35": 2.6597,
     "baseline_date": "12/05/2025",
@@ -8670,7 +8779,8 @@
       "5/16/2026": 2.6311,
       "5/30/2026": 2.6597
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "default_wins_30": 1
   },
   {
     "id": "cynthia-lau",
@@ -8863,8 +8973,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8,
-    "current_division_rating": 2.8436,
-    "global_rating": 2.8436,
+    "current_division_rating": 2.8648,
+    "global_rating": 2.8648,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -8873,15 +8983,16 @@
     "profile_url": "/adult/profile.aspx?playername=Moon-hui Choi",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
+      "D1",
       "D2",
       "D3x2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-0",
     "team_30": "DTC #3",
-    "notes_30": "Undefeated in straight sets.",
-    "notes_35": "No 3.5 matches played yet. 3-0 in 3.0. In 3.0: D2 beat Sandra Shearer (2.87) + Angela Roylance (2.67) in a tight match.",
-    "rating_30": 2.8436,
-    "rating_35": 2.8436,
+    "notes_30": "Started at D3 (won with a bagel vs much weaker opp), moved up to D1 (won comfortably).",
+    "notes_35": "No 3.5 matches played yet. 4-0 in 3.0. In 3.0: D1 beat Kimberly Lippisch (2.84) + Julie Smith (2.95) comfortably.",
+    "rating_30": 2.8648,
+    "rating_35": 2.8648,
     "baseline_date": "12/18/2025",
     "iter_rating_30": 3.5979,
     "iter_rating_35": 2.8,
@@ -8889,13 +9000,15 @@
     "rating_timeline_30": {
       "3/14/2026": 2.8,
       "4/18/2026": 2.8033,
-      "5/30/2026": 2.8298
+      "5/30/2026": 2.8298,
+      "6/6/2026": 2.8436
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/14/2026": 2.8033,
       "4/18/2026": 2.8298,
-      "5/30/2026": 2.8436
+      "5/30/2026": 2.8436,
+      "6/6/2026": 2.8648
     },
     "rating_post_timeline_35": {}
   },
@@ -8922,7 +9035,7 @@
     ],
     "wl_record_30": "4-2",
     "team_30": "SPANISH OAKS",
-    "notes_30": "Among the most-deployed (6/10 weeks). Lopsided loss: W2 S1 lost to Nourjan Bonney (2.92) bageled in a set.",
+    "notes_30": "Among the most-deployed (6/11 weeks). Lopsided loss: W2 S1 lost to Nourjan Bonney (2.92) bageled in a set.",
     "notes_35": "No 3.5 matches played yet. 4-2 in 3.0. In 3.0: D3 beat Geraldine Wright (2.65) + Sydney Collins (3.02) comfortably.",
     "rating_30": 2.9186,
     "rating_35": 2.9186,
@@ -8956,8 +9069,8 @@
     "team": "DTC #4",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.75,
-    "current_division_rating": 2.9304,
-    "global_rating": 2.9304,
+    "current_division_rating": 2.943,
+    "global_rating": 2.943,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -8966,15 +9079,15 @@
     "profile_url": "/adult/profile.aspx?playername=Elena Bolha",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "S1x4",
+      "S1x5",
       "S2"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "6-0",
     "team_30": "DTC #4",
-    "notes_30": "Two upsets: W4 S2 — beat Eva Gryczon (2.83) comfortably at 44% odds; W9 S1 — beat Jenny Mulopulos (2.89) comfortably at 45% odds. Started at S2 (won comfortably), moved up to S1 (won comfortably vs much weaker opp).",
-    "notes_35": "No 3.5 matches played yet. 5-0 in 3.0. In 3.0: S1 beat Jenny Mulopulos (2.89) comfortably.",
-    "rating_30": 2.9304,
-    "rating_35": 2.9304,
+    "notes_30": "Upset: W9 S1 — beat Jenny Mulopulos (2.89) comfortably at 45% odds. Started at S2 (won comfortably), moved up to S1 (won comfortably vs much weaker opp).",
+    "notes_35": "No 3.5 matches played yet. 6-0 in 3.0. In 3.0: S1 beat Jenny Mulopulos (2.89) comfortably.",
+    "rating_30": 2.943,
+    "rating_35": 2.943,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.8644,
     "iter_rating_35": 2.75,
@@ -8984,7 +9097,8 @@
       "4/18/2026": 2.8044,
       "5/2/2026": 2.7653,
       "5/9/2026": 2.8166,
-      "5/16/2026": 2.8313
+      "5/16/2026": 2.8313,
+      "6/6/2026": 2.8904
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -8992,7 +9106,8 @@
       "4/18/2026": 2.7653,
       "5/2/2026": 2.8166,
       "5/9/2026": 2.8313,
-      "5/16/2026": 2.8904
+      "5/16/2026": 2.8904,
+      "6/6/2026": 2.903
     },
     "rating_post_timeline_35": {}
   },
@@ -9100,8 +9215,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.64,
-    "current_division_rating": 2.8385,
-    "global_rating": 2.8385,
+    "current_division_rating": 2.8637,
+    "global_rating": 2.8637,
     "ntrp_rating": "3.0 S",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -9111,15 +9226,15 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1",
-      "D2x2",
+      "D2x3",
       "D3"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "3-2",
     "team_30": "SPANISH TRAIL",
-    "notes_30": "Started at D3 (won vs much weaker opp), moved up to D1 (lost in a third-set tiebreak).",
-    "notes_35": "No 3.5 matches played yet. 2-2 in 3.0. In 3.0: D2 beat Geraldine Wright (2.57) + Courtney Beine (2.62).",
-    "rating_30": 2.8385,
-    "rating_35": 2.8385,
+    "notes_30": "Close doubles losses to stronger pairs — tiebreak vs Olga Bencini (3.01) + Maryna Post (3.04); tiebreak vs Wendy Cashin (2.82) + Yesenia Arias (3.03).",
+    "notes_35": "No 3.5 matches played yet. 3-2 in 3.0. In 3.0: D2 beat Robin Gordon (2.81) + Debbie Fleury (2.74) with a bagel.",
+    "rating_30": 2.8637,
+    "rating_35": 2.8637,
     "baseline_date": "03/21/2026",
     "iter_rating_30": 4.068,
     "iter_rating_35": 2.64,
@@ -9128,14 +9243,16 @@
       "3/21/2026": 2.64,
       "3/28/2026": 2.6534,
       "4/11/2026": 2.6849,
-      "5/16/2026": 2.7937
+      "5/16/2026": 2.7937,
+      "6/6/2026": 2.8385
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/21/2026": 2.6534,
       "3/28/2026": 2.6849,
       "4/11/2026": 2.7937,
-      "5/16/2026": 2.8385
+      "5/16/2026": 2.8385,
+      "6/6/2026": 2.8637
     },
     "rating_post_timeline_35": {}
   },
@@ -9146,8 +9263,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.64,
-    "current_division_rating": 2.9226,
-    "global_rating": 2.9226,
+    "current_division_rating": 2.9478,
+    "global_rating": 2.9478,
     "ntrp_rating": "3.0 S",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -9157,15 +9274,15 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1x5",
-      "D2x3",
+      "D2x4",
       "D3"
     ],
-    "wl_record_30": "6-3",
+    "wl_record_30": "7-3",
     "team_30": "SPANISH TRAIL",
-    "notes_30": "Most-deployed player (9/10 weeks). Upset: W8 D1 with Chelsie Hawkinson — beat Francine Mazza (2.87) + Ada Vera (3.01) comfortably at 37% odds. Surprising loss: W10 D1 alongside Sirina Shouldis to Robi Hinton (3.01) + Elizabeth Eshragh (2.76) in a third-set tiebreak (as 56% favourite).",
-    "notes_35": "No 3.5 matches played yet. 6-3 in 3.0. In 3.0: D1 beat Francine Mazza (2.87) + Ada Vera (3.01) comfortably.",
-    "rating_30": 2.9226,
-    "rating_35": 2.9226,
+    "notes_30": "Most-deployed player (10/11 weeks). Upset: W8 D1 with Chelsie Hawkinson — beat Francine Mazza (2.87) + Ada Vera (3.01) comfortably at 37% odds. Surprising loss: W10 D1 alongside Sirina Shouldis to Robi Hinton (3.01) + Elizabeth Eshragh (2.76) in a third-set tiebreak (as 56% favourite).",
+    "notes_35": "No 3.5 matches played yet. 7-3 in 3.0. In 3.0: D1 beat Francine Mazza (2.87) + Ada Vera (3.01) comfortably.",
+    "rating_30": 2.9478,
+    "rating_35": 2.9478,
     "baseline_date": "03/21/2026",
     "iter_rating_30": 4.176,
     "iter_rating_35": 2.64,
@@ -9179,7 +9296,8 @@
       "5/2/2026": 2.8161,
       "5/9/2026": 2.8619,
       "5/16/2026": 2.9343,
-      "5/30/2026": 2.9791
+      "5/30/2026": 2.9791,
+      "6/6/2026": 2.9226
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -9191,7 +9309,8 @@
       "5/2/2026": 2.8619,
       "5/9/2026": 2.9343,
       "5/16/2026": 2.9791,
-      "5/30/2026": 2.9226
+      "5/30/2026": 2.9226,
+      "6/6/2026": 2.9478
     },
     "rating_post_timeline_35": {}
   },
@@ -9363,13 +9482,13 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1x2",
-      "D2",
+      "D2x2",
       "D3"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "2-3",
     "team_30": "DTC #1",
-    "notes_30": "Lopsided loss: W4 D1 lost to Chelsie Hawkinson (2.68) + Sirina Shouldis (2.95) bageled in a set. Outmatched at D1 by Chelsie Hawkinson (2.68) + Sirina Shouldis (2.95) in W4. Wins across a range of partners (Debbie/Sandra). Loss with Ali came against a stronger pair; loss with Ali was the avoidable one.",
-    "notes_35": "No 3.5 matches played yet. 2-2 in 3.0. In 3.0: D2 beat Jenni Pevoto (2.14) + Lora Brown (2.63).",
+    "notes_30": "Two lopsided losses: W4 D1 lost to Chelsie Hawkinson (2.68) + Sirina Shouldis (2.95) bageled in a set; W11 D2 lost to Maria Cheng (2.84) + Meryll Ledesma (2.92) bageled in a set. Outmatched at D1 by Chelsie Hawkinson (2.68) + Sirina Shouldis (2.95) in W4.",
+    "notes_35": "No 3.5 matches played yet. 2-3 in 3.0. In 3.0: D2 beat Jenni Pevoto (2.14) + Lora Brown (2.63).",
     "rating_30": 2.8106,
     "rating_35": 2.8106,
     "baseline_date": "12/06/2025",
@@ -9380,14 +9499,16 @@
       "4/11/2026": 2.79,
       "4/18/2026": 2.79,
       "4/25/2026": 2.8037,
-      "5/16/2026": 2.8106
+      "5/16/2026": 2.8106,
+      "6/6/2026": 2.8106
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/11/2026": 2.79,
       "4/18/2026": 2.8037,
       "4/25/2026": 2.8106,
-      "5/16/2026": 2.8106
+      "5/16/2026": 2.8106,
+      "6/6/2026": 2.8106
     },
     "rating_post_timeline_35": {}
   },
@@ -9548,8 +9669,8 @@
     "team": "ANTHEM CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.84,
-    "current_division_rating": 2.7231,
-    "global_rating": 2.7231,
+    "current_division_rating": 2.675,
+    "global_rating": 2.675,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -9558,20 +9679,20 @@
     "profile_url": "/adult/profile.aspx?playername=ANN MARIE WEAVER",
     "lines_played_30": [
       "D1x2",
-      "D2x2",
+      "D2x3",
       "D3"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "2-4",
     "lines_played_35": [
       "D3"
     ],
     "wl_record_35": "0-1",
     "team_30": "ANTHEM CC",
     "team_35": "ANTHEM CC",
-    "notes_30": "Upset: W10 D1 with Casey Primmer — beat Jeralyn Marchesi (3.29) + Candace Sartini (2.41) comfortably at 43% odds. Wins reliably with Casey Primmer. Loss with Gina fits Gina's tiebreak-loss pattern. Also 0-1 in 3.5 at D3.",
-    "notes_35": "D3 loss to Megan Bell (3.40) + Shellene Goudge (3.40) — expected result, minimal data. In 3.0: D3 beat Scarlett Cavalli (2.03) + Yusria Malik (2.47).",
-    "rating_30": 2.7231,
-    "rating_35": 2.7231,
+    "notes_30": "Upset: W10 D1 with Casey Primmer — beat Jeralyn Marchesi (3.29) + Candace Sartini (2.41) comfortably at 43% odds. Underperforming at D2 — multiple losses to slightly lower-rated opponents. Wins reliably with Casey Primmer. Loss with Gina fits Gina's tiebreak-loss pattern.",
+    "notes_35": "D3 loss to Megan Bell (3.40) + Shellene Goudge (3.40) — expected result, minimal data. In 3.0: D1 lost to Margaret Bruno (2.87) + Shaza Nayef (2.76) in a third-set tiebreak. Qualitative signal her ceiling is higher than baseline.",
+    "rating_30": 2.675,
+    "rating_35": 2.675,
     "baseline_date": "12/09/2025",
     "iter_rating_30": 2.86,
     "iter_rating_35": 2.8554,
@@ -9581,7 +9702,8 @@
       "4/11/2026": 2.8432,
       "4/25/2026": 2.7747,
       "5/16/2026": 2.7242,
-      "5/30/2026": 2.6804
+      "5/30/2026": 2.6804,
+      "6/6/2026": 2.7231
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -9589,7 +9711,8 @@
       "4/11/2026": 2.7747,
       "4/25/2026": 2.7242,
       "5/16/2026": 2.6804,
-      "5/30/2026": 2.7231
+      "5/30/2026": 2.7231,
+      "6/6/2026": 2.675
     },
     "rating_post_timeline_35": {}
   },
@@ -9710,7 +9833,7 @@
     ],
     "wl_record_30": "3-5",
     "team_30": "TPC",
-    "notes_30": "Most-deployed player (8/10 weeks). Two upsets: W3 S2 — beat Gina Rivera (2.98) in a tiebreak at 29% odds; W10 S2 — beat Chelsi Grady (2.94) in a tight match at 38% odds. Surprising loss: W5 D2 alongside Jennifer Blais to Jocelyn Herman (2.58) + Brittany Carlson (2.79) in a third-set tiebreak (as 61% favourite).",
+    "notes_30": "Most-deployed player (8/11 weeks). Two upsets: W3 S2 — beat Gina Rivera (2.98) in a tiebreak at 29% odds; W10 S2 — beat Chelsi Grady (2.94) in a tight match at 38% odds. Surprising loss: W5 D2 alongside Jennifer Blais to Jocelyn Herman (2.58) + Brittany Carlson (2.79) in a third-set tiebreak (as 61% favourite).",
     "notes_35": "No 3.5 matches played yet. 3-5 in 3.0. In 3.0: S2 beat Gina Rivera (2.98) in a third-set tiebreak.",
     "rating_30": 2.8632,
     "rating_35": 2.8632,
@@ -9764,7 +9887,7 @@
     ],
     "wl_record_30": "3-3",
     "team_30": "SPANISH OAKS",
-    "notes_30": "Among the most-deployed (6/10 weeks). Lopsided loss: W3 S1 lost to Maggie Pacholuk (2.67) bageled in a set. Wins across a range of partners (Maureen/Lynn Row and solo). Loss with Nicole Horton came against a stronger pair; loss with Karen Veazey was the avoidable one.",
+    "notes_30": "Among the most-deployed (6/11 weeks). Lopsided loss: W3 S1 lost to Maggie Pacholuk (2.67) bageled in a set. Wins across a range of partners (Maureen/Lynn Row and solo). Loss with Nicole Horton came against a stronger pair; loss with Karen Veazey was the avoidable one.",
     "notes_35": "No 3.5 matches played yet. 3-3 in 3.0. In 3.0: D2 beat Wendy Cashin (2.67) + Sonja Rogers (2.76) comfortably.",
     "rating_30": 2.7159,
     "rating_35": 2.7159,
@@ -9798,8 +9921,8 @@
     "team": "DTC #1",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.57,
-    "current_division_rating": 2.6144,
-    "global_rating": 2.6144,
+    "current_division_rating": 2.6085,
+    "global_rating": 2.6085,
     "ntrp_rating": "2.5 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -9809,14 +9932,14 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D2x4",
-      "D3x3"
+      "D3x4"
     ],
-    "wl_record_30": "4-3",
+    "wl_record_30": "5-3",
     "team_30": "DTC #1",
     "notes_30": "Upset: W3 D2 with Sandra Mier — beat Bree Carlson (2.69) + Jennifer Roberts (2.88) in a rout at 43% odds. Lopsided loss: W9 D2 lost to Elizabeth Eshragh (2.73) + Courtney Beine (2.63) bageled in a set.",
-    "notes_35": "No 3.5 matches played yet. 4-3 in 3.0. In 3.0: D2 beat Bree Carlson (2.69) + Jennifer Roberts (2.88) in a rout.",
-    "rating_30": 2.6144,
-    "rating_35": 2.6144,
+    "notes_35": "No 3.5 matches played yet. 5-3 in 3.0. In 3.0: D2 beat Bree Carlson (2.69) + Jennifer Roberts (2.88) in a rout.",
+    "rating_30": 2.6085,
+    "rating_35": 2.6085,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.4412,
     "iter_rating_35": 2.57,
@@ -9828,7 +9951,8 @@
       "4/18/2026": 2.5808,
       "4/25/2026": 2.5854,
       "5/9/2026": 2.5873,
-      "5/16/2026": 2.6144
+      "5/16/2026": 2.6144,
+      "6/6/2026": 2.6144
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -9838,7 +9962,8 @@
       "4/18/2026": 2.5854,
       "4/25/2026": 2.5873,
       "5/9/2026": 2.6144,
-      "5/16/2026": 2.6144
+      "5/16/2026": 2.6144,
+      "6/6/2026": 2.6085
     },
     "rating_post_timeline_35": {}
   },
@@ -9849,8 +9974,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.68,
-    "current_division_rating": 2.6576,
-    "global_rating": 2.6576,
+    "current_division_rating": 2.6047,
+    "global_rating": 2.6047,
     "ntrp_rating": "3.0 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -9860,15 +9985,15 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D2",
-      "S1x2",
+      "S1x3",
       "S2x3"
     ],
-    "wl_record_30": "3-3",
+    "wl_record_30": "3-4",
     "team_30": "SPANISH TRAIL",
     "notes_30": "Playing S1 despite low baseline.",
-    "notes_35": "No 3.5 matches played yet. 3-3 in 3.0. In 3.0: S2 beat Civia McCaffrey (2.56) comfortably.",
-    "rating_30": 2.6576,
-    "rating_35": 2.6576,
+    "notes_35": "No 3.5 matches played yet. 3-4 in 3.0. In 3.0: S2 beat Civia McCaffrey (2.56) comfortably.",
+    "rating_30": 2.6047,
+    "rating_35": 2.6047,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.1211,
     "iter_rating_35": 2.68,
@@ -9879,7 +10004,8 @@
       "5/2/2026": 2.6873,
       "5/9/2026": 2.6873,
       "5/16/2026": 2.6873,
-      "5/30/2026": 2.714
+      "5/30/2026": 2.714,
+      "6/6/2026": 2.6576
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -9887,7 +10013,8 @@
       "5/2/2026": 2.6873,
       "5/9/2026": 2.6873,
       "5/16/2026": 2.714,
-      "5/30/2026": 2.6576
+      "5/30/2026": 2.6576,
+      "6/6/2026": 2.6047
     },
     "rating_post_timeline_35": {}
   },
@@ -10048,13 +10175,13 @@
     "profile_url": "/adult/profile.aspx?playername=Debbie Fleury",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D2",
+      "D2x2",
       "D3x3"
     ],
-    "wl_record_30": "1-3",
+    "wl_record_30": "1-4",
     "team_30": "DTC #1",
-    "notes_30": "Lopsided loss: W7 D3 lost to Venetia Espinueva (2.58) + Tiffany Vance (2.42) bageled in a set.",
-    "notes_35": "No 3.5 matches played yet. 1-3 in 3.0. In 3.0: D2 beat Jenni Pevoto (2.14) + Lora Brown (2.63).",
+    "notes_30": "Two lopsided losses: W7 D3 lost to Venetia Espinueva (2.58) + Tiffany Vance (2.42) bageled in a set; W11 D2 lost to Maria Cheng (2.84) + Meryll Ledesma (2.92) bageled in a set.",
+    "notes_35": "No 3.5 matches played yet. 1-4 in 3.0. In 3.0: D2 beat Jenni Pevoto (2.14) + Lora Brown (2.63).",
     "rating_30": 2.7424,
     "rating_35": 2.7424,
     "baseline_date": "01/10/2026",
@@ -10065,14 +10192,16 @@
       "3/14/2026": 2.77,
       "3/28/2026": 2.77,
       "4/18/2026": 2.77,
-      "5/2/2026": 2.7837
+      "5/2/2026": 2.7837,
+      "6/6/2026": 2.7424
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/14/2026": 2.77,
       "3/28/2026": 2.77,
       "4/18/2026": 2.7837,
-      "5/2/2026": 2.7424
+      "5/2/2026": 2.7424,
+      "6/6/2026": 2.7424
     },
     "rating_post_timeline_35": {}
   },
@@ -10083,8 +10212,8 @@
     "team": "SOUTHERN HIGHLANDS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.72,
-    "current_division_rating": 2.8818,
-    "global_rating": 2.8818,
+    "current_division_rating": 2.8438,
+    "global_rating": 2.8438,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -10093,15 +10222,15 @@
     "profile_url": "/adult/profile.aspx?playername=Amy Badain",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D2",
+      "D2x2",
       "D3x2"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "2-2",
     "team_30": "SOUTHERN HIGHLANDS",
-    "notes_30": "Close doubles loss to a stronger pair — tiebreak vs Kelly Twells (3.10) + Sandra Shearer (2.87).",
-    "notes_35": "No 3.5 matches played yet. 2-1 in 3.0. In 3.0: D3 beat Rebecca Dunne (2.49) + Kara Gaston (2.97) comfortably.",
-    "rating_30": 2.8818,
-    "rating_35": 2.8818,
+    "notes_30": "Close doubles loss to a stronger pair — tiebreak vs Kelly Twells (3.10) + Sandra Shearer (2.87). Wins across a range of partners (Shaza/Addy). Loss with Danielle came against a stronger pair; loss with Margaret was the avoidable one.",
+    "notes_35": "No 3.5 matches played yet. 2-2 in 3.0. In 3.0: D3 beat Rebecca Dunne (2.49) + Kara Gaston (2.97) comfortably.",
+    "rating_30": 2.8438,
+    "rating_35": 2.8438,
     "baseline_date": "12/09/2025",
     "iter_rating_30": 3.4192,
     "iter_rating_35": 2.72,
@@ -10109,13 +10238,15 @@
     "rating_timeline_30": {
       "3/21/2026": 2.72,
       "4/25/2026": 2.749,
-      "5/16/2026": 2.8588
+      "5/16/2026": 2.8588,
+      "6/6/2026": 2.8818
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/21/2026": 2.749,
       "4/25/2026": 2.8588,
-      "5/16/2026": 2.8818
+      "5/16/2026": 2.8818,
+      "6/6/2026": 2.8438
     },
     "rating_post_timeline_35": {}
   },
@@ -10126,8 +10257,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.75,
-    "current_division_rating": 2.5803,
-    "global_rating": 2.5803,
+    "current_division_rating": 2.5059,
+    "global_rating": 2.5059,
     "ntrp_rating": "3.0 C",
     "wl_record": "1-0",
     "lines_played": 1,
@@ -10136,15 +10267,15 @@
     "profile_url": "/adult/profile.aspx?playername=Lisa Williams&s=5",
     "lines_played_30": [
       "D1",
-      "D2x2",
+      "D2x3",
       "D3x2"
     ],
-    "wl_record_30": "1-4",
+    "wl_record_30": "1-5",
     "team_30": "LIFE TIME FITNESS/GV",
     "notes_30": "Surprising loss: W7 D3 alongside Hee Park to Maureen Kelly (2.49) + Charlotte Durisseau (2.25) decisively (as 78% favourite). Outmatched at D1 by Therese Laudenslager (3.04) + Carrie Maddux (2.78) in W8.",
-    "notes_35": "No 3.5 matches played yet. 1-4 in 3.0. In 3.0: D2 beat Maria Dellett (2.66) + Golssa Moridi (2.77) comfortably.",
-    "rating_30": 2.5803,
-    "rating_35": 2.5803,
+    "notes_35": "No 3.5 matches played yet. 1-5 in 3.0. In 3.0: D2 beat Maria Dellett (2.66) + Golssa Moridi (2.77) comfortably.",
+    "rating_30": 2.5059,
+    "rating_35": 2.5059,
     "baseline_date": "03/28/2026",
     "iter_rating_30": 4.221,
     "iter_rating_35": 2.75,
@@ -10154,7 +10285,8 @@
       "4/18/2026": 2.7064,
       "4/25/2026": 2.6132,
       "5/2/2026": 2.6496,
-      "5/9/2026": 2.5803
+      "5/9/2026": 2.5803,
+      "6/6/2026": 2.5803
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -10162,7 +10294,8 @@
       "4/18/2026": 2.6132,
       "4/25/2026": 2.6496,
       "5/2/2026": 2.5803,
-      "5/9/2026": 2.5803
+      "5/9/2026": 2.5803,
+      "6/6/2026": 2.5059
     },
     "rating_post_timeline_35": {}
   },
@@ -10303,8 +10436,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.69,
-    "current_division_rating": 2.8178,
-    "global_rating": 2.8178,
+    "current_division_rating": 2.8658,
+    "global_rating": 2.8658,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-2",
     "lines_played": 4,
@@ -10314,16 +10447,16 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D1",
-      "D2x3",
+      "D2x4",
       "D3x2",
       "S2"
     ],
-    "wl_record_30": "6-1",
+    "wl_record_30": "7-1",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Two upsets: W3 D3 with Genesis Garcia — beat Lisa Williams (2.75) + Julie Smith (2.92) comfortably at 36% odds; W5 D2 with Jocelyn Herman — beat Jennifer Blais (2.83) + Rachel Corpuz (2.87) in a tiebreak at 39% odds. Undefeated in doubles; all losses in singles.",
-    "notes_35": "No 3.5 matches played yet. 6-1 in 3.0. In 3.0: D2 beat Jennifer Blais (2.83) + Rachel Corpuz (2.87) in a third-set tiebreak.",
-    "rating_30": 2.8178,
-    "rating_35": 2.8178,
+    "notes_30": "Three upsets this season — most surprising: W3 D3 with Genesis Garcia — beat Lisa Williams (2.75) + Julie Smith (2.92) comfortably at 36% odds. Undefeated in doubles; all losses in singles.",
+    "notes_35": "No 3.5 matches played yet. 7-1 in 3.0. In 3.0: D2 beat Jennifer Blais (2.83) + Rachel Corpuz (2.87) in a third-set tiebreak.",
+    "rating_30": 2.8658,
+    "rating_35": 2.8658,
     "baseline_date": "12/10/2025",
     "iter_rating_30": 4.241,
     "iter_rating_35": 2.69,
@@ -10335,7 +10468,8 @@
       "4/11/2026": 2.7649,
       "4/18/2026": 2.7949,
       "5/2/2026": 2.8504,
-      "5/16/2026": 2.807
+      "5/16/2026": 2.807,
+      "6/6/2026": 2.8178
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -10345,7 +10479,8 @@
       "4/11/2026": 2.7949,
       "4/18/2026": 2.8504,
       "5/2/2026": 2.807,
-      "5/16/2026": 2.8178
+      "5/16/2026": 2.8178,
+      "6/6/2026": 2.8658
     },
     "rating_post_timeline_35": {}
   },
@@ -10597,7 +10732,7 @@
     ],
     "wl_record_30": "3-3",
     "team_30": "SPANISH OAKS",
-    "notes_30": "Among the most-deployed (6/10 weeks). Outmatched at D1 by Wendy Cashin (2.80) + Jaqueline Schultz (3.03) in W3.",
+    "notes_30": "Among the most-deployed (6/11 weeks). Outmatched at D1 by Wendy Cashin (2.80) + Jaqueline Schultz (3.03) in W3.",
     "notes_35": "No 3.5 matches played yet. 3-3 in 3.0. In 3.0: D3 beat Annabel Elliott (2.93) + Yong Mi DeMilliano (2.56).",
     "rating_30": 2.635,
     "rating_35": 2.635,
@@ -10752,7 +10887,7 @@
     ],
     "wl_record_30": "1-8",
     "team_30": "CLUB RIDGES",
-    "notes_30": "Most-deployed player (9/10 weeks). Two lopsided losses: W2 D2 lost to Mayela Moneo (2.76) + Shiniqual Washington (2.78) bageled in a set; W3 D2 lost to Maryna Post (2.93) + Olga Bencini (2.91) bageled in a set. Below expectations for a 3.01 baseline — losses to opponents she should be beating.",
+    "notes_30": "Most-deployed player (9/11 weeks). Two lopsided losses: W2 D2 lost to Mayela Moneo (2.76) + Shiniqual Washington (2.78) bageled in a set; W3 D2 lost to Maryna Post (2.93) + Olga Bencini (2.91) bageled in a set. Below expectations for a 3.01 baseline — losses to opponents she should be beating.",
     "notes_35": "No 3.5 matches played yet. 1-8 in 3.0. In 3.0: D3 beat Francie Angelov (2.33) + Leona Kiely (2.77).",
     "rating_30": 2.9463,
     "rating_35": 2.9463,
@@ -10898,8 +11033,8 @@
     "team": "DESERT PALM",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.56,
-    "current_division_rating": 2.5303,
-    "global_rating": 2.5303,
+    "current_division_rating": 2.4536,
+    "global_rating": 2.4536,
     "ntrp_rating": "3.0 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -10908,15 +11043,15 @@
     "profile_url": "/adult/profile.aspx?playername=Yong Mi deMilliano",
     "lines_played_30": [
       "D1",
-      "D2x3",
+      "D2x4",
       "D3x4"
     ],
-    "wl_record_30": "2-6",
+    "wl_record_30": "2-7",
     "team_30": "DESERT PALM",
     "notes_30": "Outmatched at D1 by Francine Mazza (2.80) + Abigail Cox (3.17) in W10.",
-    "notes_35": "No 3.5 matches played yet. 2-6 in 3.0. In 3.0: D2 beat Maureen Caruso (2.68) + Miriam Jimenez (2.76) in a rout.",
-    "rating_30": 2.5303,
-    "rating_35": 2.5303,
+    "notes_35": "No 3.5 matches played yet. 2-7 in 3.0. In 3.0: D2 beat Maureen Caruso (2.68) + Miriam Jimenez (2.76) in a rout.",
+    "rating_30": 2.4536,
+    "rating_35": 2.4536,
     "baseline_date": "11/23/2025",
     "iter_rating_30": 3.3935,
     "iter_rating_35": 2.56,
@@ -10929,7 +11064,8 @@
       "5/2/2026": 2.5839,
       "5/9/2026": 2.5891,
       "5/16/2026": 2.562,
-      "5/30/2026": 2.5303
+      "5/30/2026": 2.5303,
+      "6/6/2026": 2.5303
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -10940,7 +11076,8 @@
       "5/2/2026": 2.5891,
       "5/9/2026": 2.562,
       "5/16/2026": 2.5303,
-      "5/30/2026": 2.5303
+      "5/30/2026": 2.5303,
+      "6/6/2026": 2.4536
     },
     "rating_post_timeline_35": {}
   },
@@ -11329,8 +11466,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.63,
-    "current_division_rating": 2.7409,
-    "global_rating": 2.7409,
+    "current_division_rating": 2.7766,
+    "global_rating": 2.7766,
     "ntrp_rating": "3.0 A",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -11340,15 +11477,15 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D2x3",
-      "D3x3",
+      "D3x4",
       "S2"
     ],
-    "wl_record_30": "6-1",
+    "wl_record_30": "7-1",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Three upsets this season — most surprising: W3 D3 with Brittany Carlson — beat Lisa Williams (2.75) + Julie Smith (2.92) comfortably at 36% odds. Undefeated in doubles — wins have been dominant; all losses in singles.",
-    "notes_35": "No 3.5 matches played yet. 6-1 in 3.0. In 3.0: D3 beat Lisa Williams (2.75) + Julie Smith (2.92) comfortably.",
-    "rating_30": 2.7409,
-    "rating_35": 2.7409,
+    "notes_30": "Four upsets this season — most surprising: W3 D3 with Brittany Carlson — beat Lisa Williams (2.75) + Julie Smith (2.92) comfortably at 36% odds. Undefeated in doubles — wins have been dominant; all losses in singles.",
+    "notes_35": "No 3.5 matches played yet. 7-1 in 3.0. In 3.0: D3 beat Crystal Ziebarth (2.83) + Chelsi Grady (2.86) comfortably.",
+    "rating_30": 2.7766,
+    "rating_35": 2.7766,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 4.241,
     "iter_rating_35": 2.63,
@@ -11360,7 +11497,8 @@
       "4/25/2026": 2.6845,
       "5/2/2026": 2.735,
       "5/16/2026": 2.6916,
-      "5/30/2026": 2.6916
+      "5/30/2026": 2.6916,
+      "6/6/2026": 2.7409
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -11370,7 +11508,8 @@
       "4/25/2026": 2.735,
       "5/2/2026": 2.6916,
       "5/16/2026": 2.6916,
-      "5/30/2026": 2.7409
+      "5/30/2026": 2.7409,
+      "6/6/2026": 2.7766
     },
     "rating_post_timeline_35": {}
   },
@@ -11569,12 +11708,12 @@
     "lines_played_30": [
       "D2x3",
       "S1",
-      "S2x4"
+      "S2x5"
     ],
-    "wl_record_30": "2-6",
+    "wl_record_30": "3-6",
     "team_30": "RED ROCK CC",
-    "notes_30": "Among the most-deployed (7/10 weeks). Upset: W5 D2 with Maria Dellett — beat Jihee Anh (2.96) + Meekyoung Lee (2.76) with a bagel at 27% odds. Outmatched at S1 by Kim Springer (3.06) in W9. Deployed in both singles (0-4) and doubles (1-2) but hasn't separated herself in either.",
-    "notes_35": "No 3.5 matches played yet. 2-6 in 3.0. In 3.0: D2 beat Jihee Anh (2.96) + Meekyoung Lee (2.76) with a bagel.",
+    "notes_30": "Upset: W5 D2 with Maria Dellett — beat Jihee Anh (2.96) + Meekyoung Lee (2.76) with a bagel at 27% odds. Outmatched at S1 by Kim Springer (3.06) in W9. Deployed in both singles (0-4) and doubles (1-2) but hasn't separated herself in either.",
+    "notes_35": "No 3.5 matches played yet. 3-6 in 3.0. In 3.0: D2 beat Jihee Anh (2.96) + Meekyoung Lee (2.76) with a bagel.",
     "rating_30": 2.7724,
     "rating_35": 2.7724,
     "baseline_date": "12/09/2025",
@@ -11591,7 +11730,7 @@
       "5/30/2026": 2.7724
     },
     "rating_timeline_35": {},
-    "default_wins_30": 1,
+    "default_wins_30": 2,
     "rating_post_timeline_30": {
       "3/28/2026": 2.6622,
       "4/11/2026": 2.6622,
@@ -11610,8 +11749,8 @@
     "team": "SUMMERLIN ARBORS",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.56,
-    "current_division_rating": 2.7033,
-    "global_rating": 2.7033,
+    "current_division_rating": 2.7513,
+    "global_rating": 2.7513,
     "ntrp_rating": "3.0 A",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -11620,15 +11759,15 @@
     "profile_url": "/adult/profile.aspx?playername=Renee Johnson&s=2",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D2x3",
+      "D2x4",
       "D3x4"
     ],
-    "wl_record_30": "4-3",
+    "wl_record_30": "5-3",
     "team_30": "SUMMERLIN ARBORS",
-    "notes_30": "Upset: W10 D2 with Genesis Garcia — beat Mary Ann Apone (2.50) + Kimberly Lippisch (2.88) comfortably at 44% odds. Wins across a range of partners (Brittany Carlson/Genesis/Jessica Marx).",
-    "notes_35": "No 3.5 matches played yet. 4-3 in 3.0. In 3.0: D3 beat Heather Rosenthal (2.85) + Shari Abdoulah (2.57) comfortably.",
-    "rating_30": 2.7033,
-    "rating_35": 2.7033,
+    "notes_30": "Two upsets: W11 D2 with Brittany Carlson — beat ANN MARIE WEAVER (2.72) + Gina Rivera (2.92) in a tiebreak at 43% odds; W10 D2 with Genesis Garcia — beat Mary Ann Apone (2.50) + Kimberly Lippisch (2.88) comfortably at 44% odds. Wins across a range of partners (Brittany Carlson/Genesis/Jessica Marx).",
+    "notes_35": "No 3.5 matches played yet. 5-3 in 3.0. In 3.0: D2 beat ANN MARIE WEAVER (2.72) + Gina Rivera (2.92) in a third-set tiebreak.",
+    "rating_30": 2.7513,
+    "rating_35": 2.7513,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 3.3777,
     "iter_rating_35": 2.56,
@@ -11640,7 +11779,8 @@
       "4/25/2026": 2.6262,
       "5/2/2026": 2.654,
       "5/9/2026": 2.654,
-      "5/30/2026": 2.654
+      "5/30/2026": 2.654,
+      "6/6/2026": 2.7033
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -11650,7 +11790,8 @@
       "4/25/2026": 2.654,
       "5/2/2026": 2.654,
       "5/9/2026": 2.654,
-      "5/30/2026": 2.7033
+      "5/30/2026": 2.7033,
+      "6/6/2026": 2.7513
     },
     "rating_post_timeline_35": {}
   },
@@ -11661,8 +11802,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.81,
-    "current_division_rating": 2.8713,
-    "global_rating": 2.8713,
+    "current_division_rating": 2.8106,
+    "global_rating": 2.8106,
     "ntrp_rating": "3.0 A",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -11671,14 +11812,14 @@
     "profile_url": "/adult/profile.aspx?playername=Maryam Kaveh",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "S1x7"
+      "S1x8"
     ],
-    "wl_record_30": "2-5",
+    "wl_record_30": "2-6",
     "team_30": "RED ROCK CC",
-    "notes_30": "Among the most-deployed (7/10 weeks). Upset: W8 S1 — beat Rachel Corpuz (2.85) in a tiebreak at 44% odds. Surprising loss: W5 S1 to Elsy Flores Rojas (2.76) in a third-set tiebreak (as 56% favourite). Outmatched at S1 — Yarisbel Schieck (3.08) in W3; Han Hu (3.02) in W6.",
-    "notes_35": "No 3.5 matches played yet. 2-5 in 3.0. In 3.0: S1 beat Rachel Corpuz (2.85) in a third-set tiebreak.",
-    "rating_30": 2.8713,
-    "rating_35": 2.8713,
+    "notes_30": "Among the most-deployed (8/11 weeks). Upset: W8 S1 — beat Rachel Corpuz (2.85) in a tiebreak at 44% odds. Lopsided loss: W11 S1 lost to Daniella Toms (2.76) bageled in a set. Outmatched at S1 — Yarisbel Schieck (3.08) in W3; Han Hu (3.02) in W6.",
+    "notes_35": "No 3.5 matches played yet. 2-6 in 3.0. In 3.0: S1 beat Rachel Corpuz (2.85) in a third-set tiebreak.",
+    "rating_30": 2.8106,
+    "rating_35": 2.8106,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 4.1245,
     "iter_rating_35": 2.81,
@@ -11690,7 +11831,8 @@
       "4/25/2026": 2.7749,
       "5/2/2026": 2.7749,
       "5/9/2026": 2.7749,
-      "5/30/2026": 2.8313
+      "5/30/2026": 2.8313,
+      "6/6/2026": 2.8313
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -11700,7 +11842,8 @@
       "4/25/2026": 2.7749,
       "5/2/2026": 2.7749,
       "5/9/2026": 2.8313,
-      "5/30/2026": 2.8313
+      "5/30/2026": 2.8313,
+      "6/6/2026": 2.7706
     },
     "rating_post_timeline_35": {}
   },
@@ -11858,13 +12001,13 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D2x3",
-      "D3x3",
+      "D3x4",
       "S2x2"
     ],
-    "wl_record_30": "1-7",
+    "wl_record_30": "1-8",
     "team_30": "SOUTHERN HIGHLANDS",
-    "notes_30": "Among the most-deployed (8/10 weeks). Upset: W1 D3 with Lindsey Jacobs — beat Tina Nathalia (2.91) + Danika Johnson (2.53) in a tiebreak at 33% odds. Surprising loss: W7 S2 to Kristen Bedell (2.31) in a third-set tiebreak (as 73% favourite).",
-    "notes_35": "No 3.5 matches played yet. 1-7 in 3.0. In 3.0: D3 beat Tina Nathalia (2.91) + Danika Johnson (2.53) in a third-set tiebreak.",
+    "notes_30": "Among the most-deployed (9/11 weeks). Upset: W1 D3 with Lindsey Jacobs — beat Tina Nathalia (2.91) + Danika Johnson (2.53) in a tiebreak at 33% odds. Surprising loss: W7 S2 to Kristen Bedell (2.31) in a third-set tiebreak (as 73% favourite).",
+    "notes_35": "No 3.5 matches played yet. 1-8 in 3.0. In 3.0: D3 beat Tina Nathalia (2.91) + Danika Johnson (2.53) in a third-set tiebreak.",
     "rating_30": 2.4341,
     "rating_35": 2.4341,
     "baseline_date": "12/09/2025",
@@ -11879,7 +12022,8 @@
       "4/18/2026": 2.5916,
       "5/2/2026": 2.5916,
       "5/9/2026": 2.4985,
-      "5/16/2026": 2.4341
+      "5/16/2026": 2.4341,
+      "6/6/2026": 2.4341
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -11890,7 +12034,8 @@
       "4/18/2026": 2.5916,
       "5/2/2026": 2.4985,
       "5/9/2026": 2.4341,
-      "5/16/2026": 2.4341
+      "5/16/2026": 2.4341,
+      "6/6/2026": 2.4341
     },
     "rating_post_timeline_35": {}
   },
@@ -11901,8 +12046,8 @@
     "team": "DTC #3",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.55,
-    "current_division_rating": 2.5955,
-    "global_rating": 2.5955,
+    "current_division_rating": 2.6593,
+    "global_rating": 2.6593,
     "ntrp_rating": "2.5 C",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -11911,27 +12056,29 @@
     "profile_url": "/adult/profile.aspx?playername=Kimberly Cunningham&s=3",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D2",
+      "D2x2",
       "D3"
     ],
-    "wl_record_30": "1-1",
+    "wl_record_30": "2-1",
     "team_30": "DTC #3",
-    "notes_30": "Solid overall; the one blemish was a tiebreak loss to Courtney Long (2.86) + Kellye Ray (2.76) in W3.",
-    "notes_35": "No 3.5 matches played yet. 1-1 in 3.0. In 3.0: D2 beat Jihee Anh (2.92) + Stephanie Stern (2.76).",
-    "rating_30": 2.5955,
-    "rating_35": 2.5955,
+    "notes_30": "Upset: W11 D2 with Kim Knotts — beat Adrian Cutolo (3.00) + Lisa Williams (2.58) in a tiebreak at 35% odds.",
+    "notes_35": "No 3.5 matches played yet. 2-1 in 3.0. In 3.0: D2 beat Jihee Anh (2.92) + Stephanie Stern (2.76).",
+    "rating_30": 2.6593,
+    "rating_35": 2.6593,
     "baseline_date": "12/12/2025",
     "iter_rating_30": 3.6356,
     "iter_rating_35": 2.55,
     "iter_global_rating": 3.6356,
     "rating_timeline_30": {
       "3/28/2026": 2.55,
-      "5/9/2026": 2.5724
+      "5/9/2026": 2.5724,
+      "6/6/2026": 2.5955
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/28/2026": 2.5724,
-      "5/9/2026": 2.5955
+      "5/9/2026": 2.5955,
+      "6/6/2026": 2.6593
     },
     "rating_post_timeline_35": {}
   },
@@ -11985,8 +12132,8 @@
     "team": "RED ROCK CC",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.55,
-    "current_division_rating": 2.6602,
-    "global_rating": 2.6602,
+    "current_division_rating": 2.6787,
+    "global_rating": 2.6787,
     "ntrp_rating": "3.0 A",
     "wl_record": "1-2",
     "lines_played": 3,
@@ -11997,14 +12144,14 @@
     "lines_played_30": [
       "D1",
       "D2x2",
-      "D3x3"
+      "D3x4"
     ],
-    "wl_record_30": "1-5",
+    "wl_record_30": "2-5",
     "team_30": "RED ROCK CC",
     "notes_30": "Upset: W5 D2 with Golssa Moridi — beat Jihee Anh (2.96) + Meekyoung Lee (2.76) with a bagel at 27% odds.",
-    "notes_35": "No 3.5 matches played yet. 1-5 in 3.0. In 3.0: D2 beat Jihee Anh (2.96) + Meekyoung Lee (2.76) with a bagel.",
-    "rating_30": 2.6602,
-    "rating_35": 2.6602,
+    "notes_35": "No 3.5 matches played yet. 2-5 in 3.0. In 3.0: D2 beat Jihee Anh (2.96) + Meekyoung Lee (2.76) with a bagel.",
+    "rating_30": 2.6787,
+    "rating_35": 2.6787,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 4.2473,
     "iter_rating_35": 2.55,
@@ -12015,7 +12162,8 @@
       "4/11/2026": 2.55,
       "4/18/2026": 2.55,
       "4/25/2026": 2.6602,
-      "5/16/2026": 2.6602
+      "5/16/2026": 2.6602,
+      "6/6/2026": 2.6602
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -12024,7 +12172,8 @@
       "4/11/2026": 2.55,
       "4/18/2026": 2.6602,
       "4/25/2026": 2.6602,
-      "5/16/2026": 2.6602
+      "5/16/2026": 2.6602,
+      "6/6/2026": 2.6787
     },
     "rating_post_timeline_35": {}
   },
@@ -12417,7 +12566,7 @@
     ],
     "wl_record_30": "2-8",
     "team_30": "LIFE TIME FITNESS/GV",
-    "notes_30": "Only every-week player. Outmatched at D1 by Carolina Nigro (2.78) + Kimberly Yang (3.02) in W6.",
+    "notes_30": "Among the most-deployed (10/11 weeks). Outmatched at D1 by Carolina Nigro (2.78) + Kimberly Yang (3.02) in W6.",
     "notes_35": "No 3.5 matches played yet. 2-8 in 3.0. In 3.0: D2 beat Tamaris Cotta (2.15) + Ani Zargaryan (2.78) comfortably.",
     "rating_30": 2.4446,
     "rating_35": 2.4446,
@@ -12501,8 +12650,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.5,
-    "current_division_rating": 2.5,
-    "global_rating": 2.5,
+    "current_division_rating": 2.5222,
+    "global_rating": 2.5222,
     "ntrp_rating": "3.0 A",
     "wl_record": "0-1",
     "lines_played": 1,
@@ -12511,24 +12660,27 @@
     "profile_url": "/adult/profile.aspx?playername=Elizabeth Templeton",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D1"
+      "D1",
+      "D3"
     ],
-    "wl_record_30": "0-1",
+    "wl_record_30": "0-2",
     "team_30": "SPANISH TRAIL",
-    "notes_30": "Outmatched at D1 by Jeannie Collins (2.74) + Ada Vera (3.05) in W1.",
-    "notes_35": "No 3.5 matches played yet. 0-1 in 3.0. In 3.0: D1 lost to Jeannie Collins (2.74) + Ada Vera (3.05).",
-    "rating_30": 2.5,
-    "rating_35": 2.5,
+    "notes_30": "Close doubles loss to a stronger pair — Roni Tarr (2.61) + Yesenia Arias (2.93). Outmatched at D1 by Jeannie Collins (2.74) + Ada Vera (3.05) in W1.",
+    "notes_35": "No 3.5 matches played yet. 0-2 in 3.0. In 3.0: D3 lost to Roni Tarr (2.61) + Yesenia Arias (2.93).",
+    "rating_30": 2.5222,
+    "rating_35": 2.5222,
     "baseline_date": "01/10/2026",
     "iter_rating_30": 2.531,
     "iter_rating_35": 2.5,
     "iter_global_rating": 2.531,
     "rating_timeline_30": {
-      "3/14/2026": 2.5
+      "3/14/2026": 2.5,
+      "6/6/2026": 2.5
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
-      "3/14/2026": 2.5
+      "3/14/2026": 2.5,
+      "6/6/2026": 2.5222
     },
     "rating_post_timeline_35": {}
   },
@@ -12589,14 +12741,14 @@
     "profile_url": "/adult/profile.aspx?playername=Cheryl Kypreos",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "",
-    "notes_35": "No 3.5 matches played yet. 0-2 in 3.0. In 3.0: D3 lost to Courtney Beine (2.62) + Brianne Pepperman (2.59) decisively.",
+    "notes_35": "No 3.5 matches played yet. 1-2 in 3.0. In 3.0: D3 lost to Courtney Beine (2.62) + Brianne Pepperman (2.59) decisively.",
     "rating_30": 2.53,
     "rating_35": 2.53,
     "lines_played_30": [
       "D2",
-      "D3"
+      "D3x2"
     ],
-    "wl_record_30": "0-2",
+    "wl_record_30": "1-2",
     "team_30": "DTC #4",
     "baseline_date": "12/06/2025",
     "iter_rating_30": 2.5384,
@@ -12611,7 +12763,8 @@
       "4/18/2026": 2.53,
       "5/9/2026": 2.53
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "default_wins_30": 1
   },
   {
     "id": "nancy-ozun",
@@ -12665,8 +12818,8 @@
     "team": "SPANISH TRAIL",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.45,
-    "current_division_rating": 2.4938,
-    "global_rating": 2.4938,
+    "current_division_rating": 2.516,
+    "global_rating": 2.516,
     "ntrp_rating": "2.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -12676,14 +12829,14 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D2x3",
-      "D3x3"
+      "D3x4"
     ],
-    "wl_record_30": "3-3",
+    "wl_record_30": "3-4",
     "team_30": "SPANISH TRAIL",
-    "notes_30": "Loss in W8 came against significantly stronger opponents (Mimi Fumo (2.84) + Leona Kiely (2.76)); wins have been consistent.",
-    "notes_35": "No 3.5 matches played yet. 3-3 in 3.0. In 3.0: D3 beat Jocelyn Goldman (2.61) + Jennifer Roberts (2.83) comfortably.",
-    "rating_30": 2.4938,
-    "rating_35": 2.4938,
+    "notes_30": "Close doubles loss to a stronger pair — Roni Tarr (2.61) + Yesenia Arias (2.93).",
+    "notes_35": "No 3.5 matches played yet. 3-4 in 3.0. In 3.0: D3 beat Jocelyn Goldman (2.61) + Jennifer Roberts (2.83) comfortably.",
+    "rating_30": 2.516,
+    "rating_35": 2.516,
     "baseline_date": "12/10/2025",
     "iter_rating_30": 3.5707,
     "iter_rating_35": 2.45,
@@ -12694,7 +12847,8 @@
       "5/2/2026": 2.4806,
       "5/9/2026": 2.4938,
       "5/16/2026": 2.4938,
-      "5/30/2026": 2.4938
+      "5/30/2026": 2.4938,
+      "6/6/2026": 2.4938
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -12703,7 +12857,8 @@
       "5/2/2026": 2.4938,
       "5/9/2026": 2.4938,
       "5/16/2026": 2.4938,
-      "5/30/2026": 2.4938
+      "5/30/2026": 2.4938,
+      "6/6/2026": 2.516
     },
     "rating_post_timeline_35": {}
   },
@@ -12768,8 +12923,8 @@
     "team": "DTC #4",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.36,
-    "current_division_rating": 2.4677,
-    "global_rating": 2.4677,
+    "current_division_rating": 2.5358,
+    "global_rating": 2.5358,
     "ntrp_rating": "2.5 C",
     "wl_record": "0-4",
     "lines_played": 4,
@@ -12778,15 +12933,15 @@
     "profile_url": "/adult/profile.aspx?playername=Tiffany Vance",
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
-      "D2x2",
+      "D2x3",
       "D3x5"
     ],
-    "wl_record_30": "5-2",
+    "wl_record_30": "6-2",
     "team_30": "DTC #4",
-    "notes_30": "Upset: W7 D3 with Venetia Espinueva — beat Debra Kelleher (2.53) + Debbie Fleury (2.78) with a bagel at 35% odds.",
-    "notes_35": "No 3.5 matches played yet. 5-2 in 3.0. In 3.0: D3 beat Debra Kelleher (2.53) + Debbie Fleury (2.78) with a bagel.",
-    "rating_30": 2.4677,
-    "rating_35": 2.4677,
+    "notes_30": "Two upsets: W11 D2 with Venetia Espinueva — beat Yong Mi DeMilliano (2.53) + Annabel Elliott (2.91) at 33% odds; W7 D3 with Venetia Espinueva — beat Debra Kelleher (2.53) + Debbie Fleury (2.78) with a bagel at 35% odds.",
+    "notes_35": "No 3.5 matches played yet. 6-2 in 3.0. In 3.0: D2 beat Yong Mi DeMilliano (2.53) + Annabel Elliott (2.91).",
+    "rating_30": 2.5358,
+    "rating_35": 2.5358,
     "baseline_date": "12/10/2025",
     "iter_rating_30": 3.6783,
     "iter_rating_35": 2.36,
@@ -12798,7 +12953,8 @@
       "4/11/2026": 2.388,
       "4/25/2026": 2.4173,
       "5/2/2026": 2.4173,
-      "5/16/2026": 2.4611
+      "5/16/2026": 2.4611,
+      "6/6/2026": 2.4677
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -12808,7 +12964,8 @@
       "4/11/2026": 2.4173,
       "4/25/2026": 2.4173,
       "5/2/2026": 2.4611,
-      "5/16/2026": 2.4677
+      "5/16/2026": 2.4677,
+      "6/6/2026": 2.5358
     },
     "rating_post_timeline_35": {}
   },
@@ -12957,7 +13114,7 @@
     ],
     "wl_record_30": "2-5",
     "team_30": "RED ROCK CC",
-    "notes_30": "Among the most-deployed (7/10 weeks). Upset: W10 D1 with Brenda Cambridge — beat Yarisbel Schieck (3.07) + Lisa Schnitz (2.87) comfortably at 40% odds. Wins across a range of partners (Brenda/Kimberly Yang). Loss with Carolina fits Carolina's tiebreak-loss pattern.",
+    "notes_30": "Upset: W10 D1 with Brenda Cambridge — beat Yarisbel Schieck (3.07) + Lisa Schnitz (2.87) comfortably at 40% odds. Wins across a range of partners (Brenda/Kimberly Yang). Loss with Carolina fits Carolina's tiebreak-loss pattern.",
     "notes_35": "No 3.5 matches played yet. 2-5 in 3.0. In 3.0: D1 beat Yarisbel Schieck (3.07) + Lisa Schnitz (2.87) comfortably.",
     "rating_30": 2.2369,
     "rating_35": 2.2369,
@@ -13257,12 +13414,12 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "S1",
-      "S2"
+      "S2x2"
     ],
-    "wl_record_30": "1-1",
+    "wl_record_30": "1-2",
     "team_30": "ANTHEM CC",
     "notes_30": "Upset: W2 S2 — beat Elsy Flores Rojas (2.79) in a tiebreak at 12% odds. Outmatched at S1 by Christie Sanders (2.66) in W6.",
-    "notes_35": "No 3.5 matches played yet. 1-1 in 3.0. In 3.0: S2 beat Elsy Flores Rojas (2.79) in a third-set tiebreak.",
+    "notes_35": "No 3.5 matches played yet. 1-2 in 3.0. In 3.0: S2 beat Elsy Flores Rojas (2.79) in a third-set tiebreak.",
     "rating_30": 2.3418,
     "rating_35": 2.3418,
     "baseline_date": "12/13/2025",
@@ -13271,12 +13428,14 @@
     "iter_global_rating": 4.2026,
     "rating_timeline_30": {
       "3/21/2026": 2.19,
-      "4/25/2026": 2.3418
+      "4/25/2026": 2.3418,
+      "6/6/2026": 2.3418
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "3/21/2026": 2.3418,
-      "4/25/2026": 2.3418
+      "4/25/2026": 2.3418,
+      "6/6/2026": 2.3418
     },
     "rating_post_timeline_35": {}
   },
@@ -13298,13 +13457,13 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "lines_played_30": [
       "D2",
-      "D3",
+      "D3x2",
       "S2x3"
     ],
-    "wl_record_30": "1-4",
+    "wl_record_30": "2-4",
     "team_30": "DTC #4",
     "notes_30": "Lopsided loss: W2 S2 lost to Lora Saginoff (2.35) bageled in a set.",
-    "notes_35": "No 3.5 matches played yet. 1-4 in 3.0. In 3.0: S2 beat Martha Langer (2.14).",
+    "notes_35": "No 3.5 matches played yet. 2-4 in 3.0. In 3.0: S2 beat Martha Langer (2.14).",
     "rating_30": 2.3824,
     "rating_35": 2.3824,
     "baseline_date": "12/03/2025",
@@ -13326,7 +13485,8 @@
       "5/9/2026": 2.3667,
       "5/30/2026": 2.3824
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "default_wins_30": 1
   },
   {
     "id": "carine-tsveniashvili",
@@ -29232,26 +29392,29 @@
     "division": "3.0 Women",
     "team_30": "SOUTHERN HIGHLANDS",
     "lines_played_30": [
-      "D2x2"
+      "D2x2",
+      "D3"
     ],
-    "wl_record_30": "0-2",
+    "wl_record_30": "0-3",
     "rating_30": 2.8349,
     "rating_35": 2.8349,
     "rating_timeline_30": {
       "5/9/2026": 2.8796,
-      "5/16/2026": 2.8349
+      "5/16/2026": 2.8349,
+      "6/6/2026": 2.8349
     },
     "rating_timeline_35": {},
     "current_division_rating": 2.8349,
     "global_rating": 2.8349,
     "notes_30": "Surprising loss: W8 D2 alongside Christa Shiklanian to Jessica Marx (2.51) + Jocelyn Herman (2.68) decisively (as 60% favourite). Below expectations for a 2.88 baseline — losses to opponents she should be beating.",
-    "notes_35": "No 3.5 matches played yet. 0-2 in 3.0. In 3.0: D2 lost to Kara Gaston (3.11) + Lisa Schnitz (2.85) decisively.",
+    "notes_35": "No 3.5 matches played yet. 0-3 in 3.0. In 3.0: D3 lost to Courtney Long (2.88) + Maria Dellett (2.66) in a tight match.",
     "iter_rating_30": 2.8072,
     "iter_rating_35": 2.8796,
     "iter_global_rating": 2.8072,
     "rating_post_timeline_30": {
       "5/9/2026": 2.8349,
-      "5/16/2026": 2.8349
+      "5/16/2026": 2.8349,
+      "6/6/2026": 2.8349
     },
     "rating_post_timeline_35": {}
   }

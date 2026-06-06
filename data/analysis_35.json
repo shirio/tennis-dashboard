@@ -1,82 +1,57 @@
 {
   "sections": [
     {
-      "title": "key findings — updated after W7",
+      "title": "key findings — updated after W10 (regular season complete)",
       "insights": [
         {
           "tag": "your team",
           "tag_class": "you",
-          "content": "DTC #1 won 4-1 over Spanish Trail #1 in W7 — clean as expected. Corelle dominated S1 6-2 6-1, Lobato won S2 6-2 6-1, Perdomo/Paull took D2 6-4 6-3, and Hernandez/Jarvis closed D3 6-2 6-4. The only blemish: Waters/Allen dropped D1 in a tiebreak (5-7 7-5 1-0) to VanPaepeghem (bl=3.28, r=3.38) / Sager (bl=3.50, r=3.56), who are 4-1 together as a D1 pair. That's a warning shot before W8 vs Red Rock #2."
+          "content": "DTC #1 closes the regular season 7-3. W10 (5/30) beat DTC #3 3-2: Lobato won S2 6-3 6-1, Hernandez/Kiyono took D1 6-4 6-2, Allen/Drees closed D3 with a walkover. Shi dropped S1 to Witherspoon (DTC #3) 7-5 6-3, and Paull/Waters dropped D2. The 3-2 result held — DTC #1 took the matches they needed to and finished on the right side of a close one."
         },
         {
-          "tag": "35B standings",
+          "tag": "3.5B final standings",
           "tag_class": "opp",
-          "content": "Red Rock CC #2 leads 35B at 6-0 after sweeping DTC #3 5-0 in W7 — all five lines, no tiebreaks. DTC #1 is 5-1, Dragonridge is 4-2 (beat Desert Palm 4-1). The 35B title comes down to W8: DTC #1 vs Red Rock CC #2. A DTC #1 win makes it a one-match gap with four rounds to go; a loss puts Red Rock up 2 with 3 left and effectively hands them the division."
+          "content": "Red Rock CC #2 wins 3.5B — finishing 10-0 after today's match vs DTC #3. Dragonridge (7-2) also plays today vs Desert Palm. DTC #1 is done at 7-3. If Dragonridge wins today, DTC #1 is 3rd seed from Sub B. If Dragonridge loses, DTC #1 ties at 7-3 and the tiebreak (individual line record) decides 2nd place. Dragonridge is heavily favored vs Desert Palm."
         },
         {
-          "tag": "35A shift",
+          "tag": "3.5A final",
           "tag_class": "opp",
-          "content": "35A has a three-way logjam at the top. DTC #2 is 5-1 but had a W7 bye. Summerlin (5-2) and LTF (5-2) both won in W7 — Summerlin beat Anthem 3-2, LTF beat Red Rock #1 3-2. DTC #2 still holds the tiebreak edge, but if they drop one of their remaining two matches, Summerlin or LTF could sneak into first. 35A is a race to the wire."
+          "content": "DTC #2 wins 3.5A at 9-1 — convincing. LTF finishes 2nd at 7-3. Summerlin is 3rd at 6-4. DTC #2 enters playoffs as a strong 1st seed from Sub A and will be the team to beat across both subflights."
         },
         {
-          "tag": "red rock #2 machine",
-          "tag_class": "warn",
-          "content": "Red Rock CC #2 is 6-0 and hasn't been seriously tested. Their W7 sweep used a mid-tier lineup — McAffee (3.34) at S1, Truman (3.58) at S2, and Watts (3.57)/MacDonald (3.72) at D1. Their top players (Toft 3.61, Chamberlain 3.61) were held back. Expect a full lineup for W8 against DTC #1. The depth at the top goes 5-6 players deep above 3.49."
-        },
-        {
-          "tag": "waters/allen D1 concern",
-          "tag_class": "warn",
-          "content": "Amy Waters (bl=3.66, r=3.58) and Emelia Allen (bl=3.68, r=3.57) are DTC #1's best weapon — but they just dropped a tiebreak at D1 to VanPaepeghem/Sager, a legit D1 pair that's 4-1 together. Red Rock's expected D1 is MacDonald (3.72)/Chamberlain or Watts (3.57)/MacDonald — stronger than what they just lost to. Waters/Allen are competitive against any pair Red Rock deploys, but they need to show up clean, not tiebreak-close."
-        },
-        {
-          "tag": "corelle at s1",
+          "tag": "corelle + kiyono",
           "tag_class": "you",
-          "content": "Stacie Corelle (bl=3.41, r=3.43) is playing her best tennis — 4-1 on the season at S1, including a comeback tiebreak win over Maria Allen in W6. She's DTC #1's most dangerous player by record. Red Rock's S1 option (Toft bl=3.54, r=3.61 or Chamberlain bl=3.56, r=3.61) is a tough assignment, but Corelle can compete. The singles lines are the hardest path for DTC #1 in W8."
+          "content": "Stacie Corelle (bl=3.41, r=3.51, 6-1) is the backbone of DTC #1 — the only player with both a high rating and a dominant record. Karen Kiyono (bl=3.33, r=3.41, 6-2) is the biggest riser on the team and quietly the most reliable doubles player. Together Hernandez/Kiyono at D1 went 5-3 this season, winning the line in W10's decisive match."
+        },
+        {
+          "tag": "waters concern",
+          "tag_class": "warn",
+          "content": "Amy Waters (bl=3.66, r=3.43, 3-3) is down 0.23 from her ceiling — the biggest drop on the team. She's lost D1 or D2 in all three of DTC #1's losses and dropped D2 again in W10. Allen (bl=3.68, r=3.57, 4-1) and Drees (bl=3.57, r=3.62, 4-2) are both playing above baseline. Waters needs to rediscover her game before playoffs, or the D1 slot may need a different partner."
+        },
+        {
+          "tag": "shi at 3.5",
+          "tag_class": "warn",
+          "content": "Shi Oskooi is 2-2 at 3.5 S1 (r=3.20, bl=2.74). She wins the winnable matches but has lost to the stronger players — Witherspoon (DTC #3) in W10, and presumably one early loss. At 3.5, the S1 field is meaningfully stronger than 3.0A. She's not the same lock she is in 3.0."
         }
       ]
     },
     {
-      "title": "5/9 — next match preview: DTC #1 vs RED ROCK CC #2",
+      "title": "playoff outlook — DTC #1 likely 3rd seed from 3.5B",
       "insights": [
         {
-          "tag": "matchup",
-          "tag_class": "warn",
-          "content": "DTC #1 (5-1) vs Red Rock CC #2 (6-0) — the 35B title match. Red Rock is the highest-rated roster in either subflight. MacDonald (bl=3.69, r=3.72), Toft (bl=3.54, r=3.61), Chamberlain (bl=3.56, r=3.61), Truman (bl=3.58, r=3.58), Watts (bl=3.49, r=3.57), Lind (bl=3.37, r=3.54). Six players rated 3.54 or above. DTC #1 is the underdog, but not dramatically at D1."
-        },
-        {
-          "tag": "lineup",
+          "tag": "position",
           "tag_class": "you",
-          "content": "Put Waters/Allen at D1 — they're the best chance to steal a line from Red Rock. Corelle at S1 is the right call even against a strong opponent. Curtis/Hernandez or Hernandez/Perdomo at D2 gives depth. The goal is to win 3 lines: D1, D2, and one of the singles or D3. Avoid resting anyone — this is the match that decides the division."
+          "content": "DTC #1 enters playoffs at 7-3 — 3rd seed from 3.5B if Dragonridge wins today (likely), 2nd if they don't. Either way, DTC #1 avoided the bottom half of the bracket and has the wins to justify a deep run. Red Rock CC #2 (10-0) is the clear top seed and the team to avoid until the final."
         },
         {
-          "tag": "prediction",
-          "tag_class": "warn",
-          "content": "DTC #1 wins 3-2 or loses 2-3. D1 is a toss-up. Singles are uphill. If Waters/Allen win D1 and Corelle steals S1 or S2, DTC #1 can take this. Red Rock's depth means every line is contested — don't expect any freebies."
-        }
-      ]
-    },
-    {
-      "title": "remaining schedule outlook",
-      "insights": [
-        {
-          "tag": "W8 (5/9)",
-          "tag_class": "warn",
-          "content": "vs RED ROCK CC #2 (6-0) — the season-defining match. Win and DTC #1 is in the driver's seat for first place. Lose and Red Rock leads by 2 with 3 left. DTC #1's most important match of the year."
-        },
-        {
-          "tag": "W9 (5/16)",
+          "tag": "lineup for playoffs",
           "tag_class": "you",
-          "content": "vs SPANISH TRAIL #1 (1-5). Second meeting — DTC #1 won W1 5-0 against them. Even with the D1 stumble in W7, this is a comfortable win. Use it to rest top players if needed."
+          "content": "Lead with Corelle at S1 — 6-1 is the best record on the team and she's battle-tested. Allen/Drees at D1 gives the best individual ratings. Kiyono in every doubles lineup she can play — she's been the most consistent player on the roster. Consider pairing Waters with a steadier partner at D2 rather than putting her under pressure at D1."
         },
         {
-          "tag": "W10 (5/23)",
+          "tag": "DTC #2 matchup",
           "tag_class": "warn",
-          "content": "vs DRAGONRIDGE CC (4-2). Isbell (bl=3.04, r=3.33), Yarde (bl=3.52, r=3.54), and Gray (bl=3.53, r=3.52) make Dragonridge dangerous. DTC #1 won W6 3-2 in a competitive match. Expect another close one. Win here and DTC #1 finishes 7-3 minimum — a strong playoff position."
-        },
-        {
-          "tag": "path to playoffs",
-          "tag_class": "you",
-          "content": "DTC #1 finishes top 2 in 35B with wins in W9 and W10, regardless of W8. A W8 win over Red Rock puts DTC #1 in contention for first and would be one of the best results in the division all season. The ceiling is high — the floor is a solid playoff seed."
+          "content": "If DTC #1 meets DTC #2 (9-1, 3.5A winner), that's the hardest possible draw. DTC #2's roster has three players rated 3.49+ (Lobato, Paull, Corelle equivalents). DTC #1 has beaten DTC #2 before, but not with DTC #2 running at full form as a 1-seed. Win D1 and find a split in singles — that's the path."
         }
       ]
     }
