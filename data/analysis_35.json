@@ -14,9 +14,9 @@
           "content": "Red Rock CC #2 wins Sub B at 10-0 — the best record in 3.5 by a wide margin. DTC #1 and Dragonridge are both 7-3. Head-to-head: DTC #1 won the only matchup 3-2 (4/25). Line record: Dragonridge leads 36-14 vs DTC #1's 30-20. The tiebreaker that applies first determines seeding — head-to-head gives DTC #1 the 2nd seed."
         },
         {
-          "tag": "dragonridge W11 red flag",
-          "tag_class": "warn",
-          "content": "Dragonridge lost 2-3 to Desert Palm in W11 despite being a heavy favorite. Maria Allen (their best player, r=3.32) lost S1 to Amanda Verba 6-4 6-2. They won only D2 and D3. This could be load management before playoffs — or it could reflect real vulnerabilities against aggressive baseliners. Worth noting before any potential playoff matchup."
+          "tag": "dragonridge W11 context",
+          "tag_class": "opp",
+          "content": "Dragonridge lost 2-3 to Desert Palm in W11. The S1 loss (Allen to Verba 6-4 6-2) was not an upset — Verba (bl=3.47, r=3.65) is significantly higher-rated than Allen (r=3.32) and was the expected winner. Cox/Borghoff won D2 6-2 6-3, which is the more telling result. The loss came from S2 and a tight D1 match tiebreak. Dragonridge dropped this match on their weaker lines, not because their top players failed."
         },
         {
           "tag": "3.5A final",
