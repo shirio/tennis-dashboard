@@ -1381,6 +1381,379 @@ def _navigate_to_champ_listing(page: Page, cfg: dict, ntrp: str, year: int,
     return False
 
 
+def _scrape_championship_page(page: Page) -> tuple[list, list] | None:
+    """Scrape standings and matches from the current championship reports page.
+    Returns (standings, matches_list) or None if no data found."""
+
+    _click_tab(page, "Team Standings")
+
+    champ_table = page.evaluate("""() => {
+        const t = document.getElementById('tblCPTeamStanding');
+        if (!t) return null;
+        const rows = [];
+        t.querySelectorAll('tr').forEach(tr => {
+            const cells = Array.from(tr.querySelectorAll('td, th')).map(c => c.innerText.trim());
+            rows.push(cells);
+        });
+        return rows;
+    }""")
+    if champ_table:
+        print(f"    Standings table ({len(champ_table)} rows):")
+        for r in champ_table[:8]:
+            print(f"      {r[:8]}")
+
+    standings = _extract_standings_from_page(page)
+    if not standings:
+        standings = _extract_champ_standings(page)
+
+    if not standings:
+        _click_tab(page, "Match Summary")
+        card_teams = page.evaluate("""() => {
+            const teams = new Set();
+            const tbl = document.getElementById('tblCPMatchSummary');
+            if (tbl) {
+                tbl.querySelectorAll('tr').forEach(tr => {
+                    const tds = Array.from(tr.querySelectorAll('td'));
+                    if (tds.length < 15) return;
+                    const texts = tds.map(td => td.innerText.trim());
+                    if (!/^\\d{5,}$/.test(texts[0])) return;
+                    const home = (texts[11] || '').replace(/\\n/g, ' ').trim();
+                    const away = (texts[13] || '').replace(/\\n/g, ' ').trim();
+                    if (home) teams.add(home);
+                    if (away) teams.add(away);
+                });
+            }
+            if (teams.size > 0) return Array.from(teams);
+            const body = document.body.innerText;
+            const matches = body.matchAll(/#(\\d{5,})\\s+\\d{2}\\/\\d{2}\\/\\d{4}/g);
+            for (const m of matches) {
+                const idx = body.indexOf(m[0]);
+                const chunk = body.substring(idx, idx + 200);
+                const lines = chunk.split('\\n').map(l => l.trim()).filter(Boolean);
+                for (const line of lines.slice(1)) {
+                    if (line.length > 2 && line.length < 50
+                        && !/^\\d/.test(line) && !/^#/.test(line)
+                        && !line.includes('Date:') && !line.includes('Team:')
+                        && !line.includes('Opponent:') && !line.includes('Action:')
+                        && !line.includes('View Score') && !line.includes('AM')
+                        && !line.includes('PM')
+                        && !/^\\d{2}\\/\\d{2}/.test(line))
+                        teams.add(line);
+                }
+            }
+            return Array.from(teams);
+        }""")
+        if card_teams:
+            print(f"    Bracket format: teams from match cards: {card_teams}")
+            standings = [{"team_name": t, "team_wins": 0, "team_losses": 0,
+                          "matches_played": 0} for t in card_teams]
+
+    team_names = [s["team_name"] for s in standings]
+    print(f"    Found {len(team_names)} teams: {team_names}")
+
+    if not team_names:
+        print(f"    [info] no teams found — championship may not have been played yet")
+        return None
+
+    all_matches: dict[str, dict] = {}
+
+    _click_tab(page, "Match Summary")
+
+    match_rows = page.evaluate("""() => {
+        const tbl = document.getElementById('tblCPMatchSummary');
+        if (!tbl) return [];
+        const rows = [];
+        tbl.querySelectorAll('tr').forEach(tr => {
+            const tds = Array.from(tr.querySelectorAll('td'));
+            if (tds.length < 15) return;
+            const texts = tds.map(td => td.innerText.trim());
+            if (!/^\\d{5,}$/.test(texts[0])) return;
+            let viewScoreAction = null;
+            tds.forEach(td => {
+                td.querySelectorAll('a').forEach(a => {
+                    const t = a.innerText.trim();
+                    const h = a.getAttribute('href') || '';
+                    const oc = a.getAttribute('onclick') || '';
+                    if (t === 'View Score' || oc.includes('ViewScore')) {
+                        viewScoreAction = oc || h;
+                    }
+                });
+            });
+            rows.push({
+                matchId: texts[0],
+                date: texts[9] || texts[2],
+                homeTeam: (texts[11] || texts[4]).replace(/\\n/g, ' '),
+                awayTeam: (texts[13] || texts[6]).replace(/\\n/g, ' '),
+                homeWins: texts[15] || '',
+                awayWins: texts[16] || '',
+                status: texts[19] || '',
+                facility: texts[20] || '',
+                viewScoreAction: viewScoreAction
+            });
+        });
+        return rows;
+    }""")
+
+    print(f"    Match Summary: {len(match_rows)} matches")
+    for mr in match_rows[:3]:
+        print(f"      {mr['date']} {mr['homeTeam']} vs {mr['awayTeam']} "
+              f"({mr['homeWins']}-{mr['awayWins']})")
+
+    for mr in match_rows:
+        tl_id = mr.get("matchId")
+        date_str = mr.get("date", "")
+        home = mr.get("homeTeam", "")
+        away = mr.get("awayTeam", "")
+        if not date_str or not home or not away:
+            continue
+
+        h_wins = _safe_int(mr.get("homeWins", ""))
+        a_wins = _safe_int(mr.get("awayWins", ""))
+        score = f"{h_wins}-{a_wins}" if h_wins is not None and a_wins is not None else ""
+        status = mr.get("status", "")
+        sc_url = f"{SCORECARD_BASE_URL}?matchnum={tl_id}" if tl_id else None
+
+        key = _match_key(date_str, home, away)
+        if key not in all_matches:
+            all_matches[key] = {
+                "match_id": key, "date": date_str,
+                "tl_match_id": tl_id, "scorecard_url": sc_url,
+                "home_team": home, "away_team": away,
+                "team_wins_home": h_wins, "team_wins_away": a_wins,
+                "score": score, "status": status,
+                "pending": not score, "lines": [],
+                "_view_score_action": mr.get("viewScoreAction"),
+            }
+
+    n_sc = 0
+    matches_needing_lines = [
+        (key, m) for key, m in all_matches.items()
+        if not m.get("lines") and m.get("_view_score_action")
+    ]
+
+    if matches_needing_lines:
+        vs_source = page.evaluate("""() => {
+            if (typeof ViewScore === 'function') return ViewScore.toString();
+            return 'NOT_FOUND';
+        }""")
+        print(f"    ViewScore function: {vs_source[:80]}")
+
+        for key, match in matches_needing_lines:
+            action = match.get("_view_score_action", "")
+            tl_id = match.get("tl_match_id", "")
+            if not action:
+                continue
+
+            exec_action = re.sub(r'^return\s+', '', action.strip())
+            try:
+                page.evaluate(exec_action)
+                _wait_for_network(page, 15_000)
+                sleep(1.5)
+
+                lines = _parse_match_detail_page(page)
+                if not lines:
+                    body = page.query_selector("body")
+                    body_text = body.inner_text() if body else ""
+                    lines = _parse_scorecard_text(body_text) if body_text else []
+
+                if lines:
+                    match["lines"] = lines
+                    n_sc += 1
+
+                page.go_back(wait_until="domcontentloaded", timeout=15_000)
+                _wait_for_network(page, 10_000)
+                sleep(1)
+            except Exception as e:
+                print(f"      [warn] ViewScore for {tl_id} failed: {e}")
+                try:
+                    page.go_back(wait_until="domcontentloaded", timeout=10_000)
+                    sleep(1)
+                except Exception:
+                    pass
+
+    if n_sc:
+        print(f"    Scraped {n_sc}/{len(matches_needing_lines)} match line details")
+
+    for key, match in all_matches.items():
+        match.pop("_view_score_action", None)
+
+    matches_list = sorted(all_matches.values(), key=lambda m: m.get("date", ""))
+    return standings, matches_list
+
+
+def _get_champ_listing_entries(page: Page, cfg: dict, ntrp: str,
+                                year: int = 2026) -> list[dict]:
+    """Navigate to the championship search form and return all entries."""
+    page.goto(f"{BASE_URL}/Leagues/Main/StatsAndStandings.aspx",
+              wait_until="domcontentloaded", timeout=30_000)
+    _wait_for_network(page, 10_000)
+    sleep(2)
+
+    _make_champ_form_visible(page)
+    sleep(1)
+
+    P = "#ctl00_mainContent_"
+    fv = {}
+    fv["year"] = _js_set_select(page, "ddlCYear", str(year))
+    fv["div"] = _js_set_select(page, "ddlDivision", "Adult 18")
+    fv["ntrp"] = _js_set_select(page, "ddlNTRPlevelChampionlevel", ntrp)
+    fv["gender"] = _js_set_select(page, "ddlGenderChampion", "Female")
+    fv["level"] = _js_set_select(page, "ddlClevel", "District")
+    fv["section"] = _js_set_select(page, "ddlSection", "Intermountain")
+    print(f"    Champ form (pre-postback): {fv}")
+
+    try:
+        page.select_option(f"{P}ddlSection", label="USTA/INTERMOUNTAIN")
+        _wait_for_network(page, 10_000)
+        sleep(2)
+        _make_champ_form_visible(page)
+
+        fv["district"] = _js_set_select(page, "ddlDistrict", cfg["district"])
+        print(f"    Champ form district: {fv['district']}")
+
+        btn = page.query_selector(f"{P}btnSearchMatch")
+        if btn:
+            print(f"    Clicking championship search button...")
+            btn.click()
+            _wait_for_network(page, 15_000)
+            sleep(3)
+        else:
+            print(f"    [warn] search button not found")
+            return []
+    except Exception as e:
+        print(f"    [warn] championship search form failed: {e}")
+        return []
+
+    body_preview = page.evaluate("document.body.innerText.substring(0, 1500)")
+    print(f"    Listing page preview: {body_preview[:500]}")
+
+    entries = page.evaluate("""() => {
+        return Array.from(document.querySelectorAll('a')).filter(a => {
+            const href = a.getAttribute('href') || '';
+            const txt = a.innerText.trim();
+            return href.includes('doPostBack') && txt.length > 10 && txt.length < 200
+                && /W\\s*3\\.\\d|flight|final|district|playoff|round|championship/i.test(txt);
+        }).map(a => ({
+            text: a.innerText.trim(),
+            href: a.getAttribute('href').substring(0, 180)
+        }));
+    }""")
+    if entries:
+        print(f"    Found {len(entries)} championship entries on listing page")
+    else:
+        all_links = page.evaluate("""() => {
+            return Array.from(document.querySelectorAll('a')).filter(a => {
+                const href = a.getAttribute('href') || '';
+                const txt = a.innerText.trim();
+                return href.includes('doPostBack') && txt.length > 10 && txt.length < 200;
+            }).map(a => a.innerText.trim()).slice(0, 20);
+        }""")
+        print(f"    [debug] No matching entries. All postback links: {all_links}")
+    return entries or []
+
+
+def scrape_all_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
+    """Scrape ALL championship levels (flight playoffs + final rounds) for a state.
+    All levels are combined into one Championships subflight."""
+    cfg = _get_state_config(state_code)
+    print(f"\n=== DISTRICTS (all levels): {state_code} {ntrp} Women ===")
+
+    if not cfg.get("has_districts", False):
+        print(f"  [skip] {state_code} does not have districts yet")
+        return
+
+    entries = _get_champ_listing_entries(page, cfg, ntrp, year)
+    if not entries:
+        print(f"  [warn] no championship entries found for {cfg['district']}")
+        print(f"  Falling back to single-level scraper...")
+        scrape_districts(page, state_code, ntrp, year)
+        return
+
+    print(f"  Found {len(entries)} championship entries:")
+    for e in entries:
+        print(f"    - {e['text']}")
+
+    ntrp_short = ntrp.replace(".", "")
+    standings_path = _output_path(state_code, ntrp_short)
+    if standings_path.exists():
+        existing = json.loads(standings_path.read_text())
+    else:
+        existing = {"ntrp": ntrp, "year": year, "subflights": []}
+
+    existing["subflights"] = [
+        sf for sf in existing.get("subflights", [])
+        if not sf.get("flight_label", "").startswith("Championships")
+    ]
+
+    all_champ_teams = []
+    all_champ_matches = []
+
+    for i, entry in enumerate(entries):
+        print(f"\n  --- Entry {i+1}/{len(entries)}: {entry['text']!r} ---")
+
+        if i > 0:
+            fresh_entries = _get_champ_listing_entries(page, cfg, ntrp, year)
+            if not fresh_entries:
+                print(f"    [warn] could not re-navigate to championship listing")
+                break
+            fresh_match = None
+            for fe in fresh_entries:
+                if fe["text"] == entry["text"]:
+                    fresh_match = fe
+                    break
+            if not fresh_match:
+                print(f"    [warn] entry {entry['text']!r} not found on re-navigation")
+                continue
+            entry = fresh_match
+
+        m = re.search(r"__doPostBack\('([^']+)','([^']*)'\)", entry["href"])
+        if not m:
+            print(f"    [skip] no postback in href")
+            continue
+
+        _safe_postback(page, m.group(1), m.group(2))
+        _wait_for_network(page, 15_000)
+        sleep(2)
+
+        result = _scrape_championship_page(page)
+        if not result:
+            continue
+
+        standings, matches = result
+        all_champ_teams.extend(standings)
+        all_champ_matches.extend(matches)
+
+        label = entry["text"].strip()
+        print(f"    Scraped: {len(standings)} teams, {len(matches)} matches "
+              f"from {label!r}")
+
+    if not all_champ_teams and not all_champ_matches:
+        print(f"  [warn] no championship data scraped")
+        return
+
+    seen_teams = {}
+    for t in all_champ_teams:
+        tn = t["team_name"]
+        if tn not in seen_teams:
+            seen_teams[tn] = t
+
+    seen_matches = {}
+    for m_item in all_champ_matches:
+        key = m_item.get("match_id", m_item.get("tl_match_id", ""))
+        if key not in seen_matches:
+            seen_matches[key] = m_item
+
+    champ_subflight = {
+        "flight_label": "Championships",
+        "teams": list(seen_teams.values()),
+        "matches": sorted(seen_matches.values(), key=lambda m: m.get("date", "")),
+    }
+    existing["subflights"].append(champ_subflight)
+    save_json(standings_path, existing)
+    print(f"\n  Saved Championships ({len(seen_teams)} teams, "
+          f"{len(seen_matches)} matches) to {standings_path}")
+
+
 def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
     """
     Scrape district championship matches for a given state/ntrp.
@@ -1401,44 +1774,47 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
         print(f"  [warn] could not navigate to {cfg['district']} championships")
         return
 
-    # We're now on a Championship Reports page. It shows tabs:
-    # Team Standings, Match Summary, Player Roster.
-    # First, click Team Standings to load standings data.
-    body_preview = page.evaluate("document.body.innerText.substring(0, 800)")
-    print(f"  Championship page: {body_preview[:400]}")
+    # Accumulate data from ALL championship levels we pass through
+    _accumulated_teams = []
+    _accumulated_matches = []
 
-    body_upper = page.evaluate(
-        "document.body.innerText.substring(0, 800)").upper()
-
-    # Check if we're on a flight playoff (not the final/district championship).
-    # The page has a "Championship" column with text like
-    # "FLIGHT PLAYOFF / W 3.0 - DEN 1". If it says "FINAL ROUND" or
-    # "DISTRICT CHAMPIONSHIP" in that column, we're already on the right page.
-    # Note: "District" also appears as a table column HEADER ("Section District
-    # Area League Flight") so we check for "DISTRICT CHAMPIONSHIP" specifically.
-    champ_text = page.evaluate("""() => {
-        const rows = document.querySelectorAll('table tr');
-        for (const tr of rows) {
-            const tds = tr.querySelectorAll('td');
-            for (const td of tds) {
-                const t = td.innerText.trim().toUpperCase();
-                if (t.includes('FLIGHT PLAYOFF') || t.includes('FINAL ROUND')
-                    || t.includes('DISTRICT CHAMP')) return t;
+    def _detect_champ_level():
+        return page.evaluate("""() => {
+            const rows = document.querySelectorAll('table tr');
+            for (const tr of rows) {
+                const tds = tr.querySelectorAll('td');
+                for (const td of tds) {
+                    const t = td.innerText.trim().toUpperCase();
+                    if (t.includes('FLIGHT PLAYOFF') || t.includes('FINAL ROUND')
+                        || t.includes('DISTRICT CHAMP')) return t;
+                }
             }
-        }
-        // Also check the Championship anchor table header
-        const anchor = document.getElementById('ctl00_mainContent_tblCPFlightAnchor');
-        if (anchor) {
-            const t = anchor.innerText.toUpperCase();
-            if (t.includes('FLIGHT') || t.includes('FINAL') || t.includes('DISTRICT'))
-                return t;
-        }
-        return '';
-    }""").upper()
+            const anchor = document.getElementById('ctl00_mainContent_tblCPFlightAnchor');
+            if (anchor) {
+                const t = anchor.innerText.toUpperCase();
+                if (t.includes('FLIGHT') || t.includes('FINAL') || t.includes('DISTRICT'))
+                    return t;
+            }
+            return '';
+        }""").upper()
+
+    def _scrape_current_level(level_name):
+        print(f"  Scraping level: {level_name!r}")
+        result = _scrape_championship_page(page)
+        if result:
+            teams, matches = result
+            _accumulated_teams.extend(teams)
+            _accumulated_matches.extend(matches)
+            print(f"    Got {len(teams)} teams, {len(matches)} matches")
+
+    champ_text = _detect_champ_level()
     is_flight_playoff = ("FLIGHT PLAYOFF" in champ_text
                          and "FINAL" not in champ_text
                          and "DISTRICT CHAMP" not in champ_text)
     print(f"  Championship text: {champ_text[:120]!r} → flight_playoff={is_flight_playoff}")
+
+    if not is_flight_playoff:
+        _scrape_current_level(champ_text)
 
     if is_flight_playoff:
         print(f"  [info] on flight playoff page — looking for teams to find "
@@ -1554,6 +1930,7 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
                 }""")
                 print(f"  Now on: {new_champ[:120]!r}")
                 nu = new_champ.upper()
+                _scrape_current_level(new_champ[:120])
                 if "FINAL" in nu:
                     print(f"  >> Reached Final Rounds!")
                     break
@@ -1626,239 +2003,29 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
                 if not advanced:
                     break
 
-    # Click Team Standings tab
-    _click_tab(page, "Team Standings")
+    # If we haven't accumulated anything yet (no intermediate levels), scrape
+    # the current page as the final level
+    if not _accumulated_teams and not _accumulated_matches:
+        result = _scrape_championship_page(page)
+        if result:
+            _accumulated_teams.extend(result[0])
+            _accumulated_matches.extend(result[1])
 
-    # Debug: dump championship standings table content
-    champ_table = page.evaluate("""() => {
-        const t = document.getElementById('tblCPTeamStanding');
-        if (!t) return null;
-        const rows = [];
-        t.querySelectorAll('tr').forEach(tr => {
-            const cells = Array.from(tr.querySelectorAll('td, th')).map(c => c.innerText.trim());
-            rows.push(cells);
-        });
-        return rows;
-    }""")
-    if champ_table:
-        print(f"  Championship standings table ({len(champ_table)} rows):")
-        for r in champ_table[:8]:
-            print(f"    {r[:8]}")
-
-    # Extract standings — championship page uses #tblCPTeamStanding
-    standings = _extract_standings_from_page(page)
-    if not standings:
-        standings = _extract_champ_standings(page)
-
-    if not standings:
-        # Bracket/elimination format: no standings table. Extract team names
-        # from the Match Summary table (tblCPMatchSummary) which has them in
-        # a structured format, falling back to match card text parsing.
-        _click_tab(page, "Match Summary")
-        card_teams = page.evaluate("""() => {
-            const teams = new Set();
-            // Try structured table first
-            const tbl = document.getElementById('tblCPMatchSummary');
-            if (tbl) {
-                tbl.querySelectorAll('tr').forEach(tr => {
-                    const tds = Array.from(tr.querySelectorAll('td'));
-                    if (tds.length < 15) return;
-                    const texts = tds.map(td => td.innerText.trim());
-                    if (!/^\\d{5,}$/.test(texts[0])) return;
-                    // Home team at index 11, away at index 13
-                    const home = (texts[11] || '').replace(/\\n/g, ' ').trim();
-                    const away = (texts[13] || '').replace(/\\n/g, ' ').trim();
-                    if (home) teams.add(home);
-                    if (away) teams.add(away);
-                });
-            }
-            if (teams.size > 0) return Array.from(teams);
-            // Fallback: parse match cards from body text
-            const body = document.body.innerText;
-            const matches = body.matchAll(/#(\\d{5,})\\s+\\d{2}\\/\\d{2}\\/\\d{4}/g);
-            for (const m of matches) {
-                const idx = body.indexOf(m[0]);
-                const chunk = body.substring(idx, idx + 200);
-                const lines = chunk.split('\\n').map(l => l.trim()).filter(Boolean);
-                for (const line of lines.slice(1)) {
-                    if (line.length > 2 && line.length < 50
-                        && !/^\\d/.test(line) && !/^#/.test(line)
-                        && !line.includes('Date:') && !line.includes('Team:')
-                        && !line.includes('Opponent:') && !line.includes('Action:')
-                        && !line.includes('View Score') && !line.includes('AM')
-                        && !line.includes('PM')
-                        && !/^\\d{2}\\/\\d{2}/.test(line))
-                        teams.add(line);
-                }
-            }
-            return Array.from(teams);
-        }""")
-        if card_teams:
-            print(f"  Bracket format: found teams from match cards: {card_teams}")
-            standings = [{"team_name": t, "team_wins": 0, "team_losses": 0,
-                          "matches_played": 0} for t in card_teams]
-
-    team_names = [s["team_name"] for s in standings]
-    print(f"  Found {len(team_names)} teams: {team_names}")
-
-    if not team_names:
-        print(f"  [info] no teams found — championship may not have been played yet")
+    if not _accumulated_teams and not _accumulated_matches:
+        print(f"  [warn] no championship data found")
         return
 
-    all_matches: dict[str, dict] = {}
-    all_rosters: dict[str, list] = {}
-
-    # Click "Match Summary" tab to get championship matches
-    _click_tab(page, "Match Summary")
-
-    # Extract match data from #tblCPMatchSummary
-    # Row structure: cells 0-8 are card-style (Match ID, Date:, date, Team:,
-    # team, Opponent:, opponent, Action:, View Score), then cells 9+ are tabular
-    # (date, time, home, homeID, away, awayID, homeWins, awayWins, scoreH,
-    # scoreV, status, facility)
-    match_rows = page.evaluate("""() => {
-        const tbl = document.getElementById('tblCPMatchSummary');
-        if (!tbl) return [];
-        const rows = [];
-        tbl.querySelectorAll('tr').forEach(tr => {
-            const tds = Array.from(tr.querySelectorAll('td'));
-            if (tds.length < 15) return;
-            const texts = tds.map(td => td.innerText.trim());
-            // Match ID is a numeric string in first cell
-            if (!/^\\d{5,}$/.test(texts[0])) return;
-            // Find the View Score link's onclick/href for match detail navigation
-            let viewScoreAction = null;
-            tds.forEach(td => {
-                td.querySelectorAll('a').forEach(a => {
-                    const t = a.innerText.trim();
-                    const h = a.getAttribute('href') || '';
-                    const oc = a.getAttribute('onclick') || '';
-                    if (t === 'View Score' || oc.includes('ViewScore')) {
-                        viewScoreAction = oc || h;
-                    }
-                });
-            });
-            rows.push({
-                matchId: texts[0],
-                date: texts[9] || texts[2],
-                homeTeam: (texts[11] || texts[4]).replace(/\\n/g, ' '),
-                awayTeam: (texts[13] || texts[6]).replace(/\\n/g, ' '),
-                homeWins: texts[15] || '',
-                awayWins: texts[16] || '',
-                status: texts[19] || '',
-                facility: texts[20] || '',
-                viewScoreAction: viewScoreAction
-            });
-        });
-        return rows;
-    }""")
-
-    # Debug: dump raw row data from the table
-    raw_rows = page.evaluate("""() => {
-        const tbl = document.getElementById('tblCPMatchSummary');
-        if (!tbl) return [];
-        const out = [];
-        tbl.querySelectorAll('tr').forEach((tr, i) => {
-            if (i > 5) return;
-            const tds = Array.from(tr.querySelectorAll('td, th'));
-            out.push(tds.map(td => td.innerText.trim().substring(0, 30)));
-        });
-        return out;
-    }""")
-    for i, r in enumerate(raw_rows):
-        print(f"  raw_row[{i}]: {r}")
-
-    print(f"  Match Summary: {len(match_rows)} matches")
-    for mr in match_rows[:3]:
-        print(f"    {mr['date']} {mr['homeTeam']} vs {mr['awayTeam']} ({mr['homeWins']}-{mr['awayWins']}) id={mr['matchId']} action={mr.get('viewScoreAction','')[:60]}")
-
-    for mr in match_rows:
-        tl_id = mr.get("matchId")
-        date_str = mr.get("date", "")
-        home = mr.get("homeTeam", "")
-        away = mr.get("awayTeam", "")
-        if not date_str or not home or not away:
-            continue
-
-        h_wins = _safe_int(mr.get("homeWins", ""))
-        a_wins = _safe_int(mr.get("awayWins", ""))
-        score = f"{h_wins}-{a_wins}" if h_wins is not None and a_wins is not None else ""
-        status = mr.get("status", "")
-        sc_url = f"{SCORECARD_BASE_URL}?matchnum={tl_id}" if tl_id else None
-
-        key = _match_key(date_str, home, away)
-        if key not in all_matches:
-            all_matches[key] = {
-                "match_id": key, "date": date_str,
-                "tl_match_id": tl_id, "scorecard_url": sc_url,
-                "home_team": home, "away_team": away,
-                "team_wins_home": h_wins, "team_wins_away": a_wins,
-                "score": score, "status": status,
-                "pending": not score, "lines": [],
-                "_view_score_action": mr.get("viewScoreAction"),
-            }
-
-    # Scrape line details via ViewScore popup windows
-    n_sc = 0
-    matches_needing_lines = [
-        (key, m) for key, m in all_matches.items()
-        if not m.get("lines") and m.get("_view_score_action")
-    ]
-
-    if matches_needing_lines:
-        # Dump ViewScore function source for debugging (first time only)
-        vs_source = page.evaluate("""() => {
-            if (typeof ViewScore === 'function') return ViewScore.toString();
-            return 'NOT_FOUND';
-        }""")
-        print(f"  ViewScore function: {vs_source}")
-
-        for key, match in matches_needing_lines:
-            action = match.get("_view_score_action", "")
-            tl_id = match.get("tl_match_id", "")
-            if not action:
-                continue
-
-            exec_action = re.sub(r'^return\s+', '', action.strip())
-            try:
-                # ViewScore navigates via location.href — not a popup
-                page.evaluate(exec_action)
-                _wait_for_network(page, 15_000)
-                sleep(1.5)
-
-                lines = _parse_match_detail_page(page)
-                if not lines:
-                    body = page.query_selector("body")
-                    body_text = body.inner_text() if body else ""
-                    lines = _parse_scorecard_text(body_text) if body_text else []
-                    if n_sc == 0 and not lines:
-                        print(f"    [debug] ViewScore url: {page.url}")
-                        print(f"    [debug] ViewScore body: {body_text[:1500]}")
-
-                if lines:
-                    match["lines"] = lines
-                    n_sc += 1
-
-                # Navigate back
-                page.go_back(wait_until="domcontentloaded", timeout=15_000)
-                _wait_for_network(page, 10_000)
-                sleep(1)
-            except Exception as e:
-                print(f"    [warn] ViewScore for {tl_id} failed: {e}")
-                try:
-                    page.go_back(wait_until="domcontentloaded", timeout=10_000)
-                    sleep(1)
-                except Exception:
-                    pass
-
-    if n_sc:
-        print(f"  Scraped {n_sc}/{len(matches_needing_lines)} match details for line data")
-
-    # Clean up internal fields before saving
-    for key, match in all_matches.items():
-        match.pop("_view_score_action", None)
-
-    matches_list = sorted(all_matches.values(), key=lambda m: m.get("date", ""))
+    # Deduplicate teams and matches
+    seen_teams = {}
+    for t in _accumulated_teams:
+        tn = t.get("team_name", "")
+        if tn and tn not in seen_teams:
+            seen_teams[tn] = t
+    seen_matches = {}
+    for m_item in _accumulated_matches:
+        key = m_item.get("match_id", m_item.get("tl_match_id", ""))
+        if key and key not in seen_matches:
+            seen_matches[key] = m_item
 
     # Append as a "Championships" subflight to the existing standings file
     ntrp_short = ntrp.replace(".", "")
@@ -1868,22 +2035,21 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
     else:
         existing = {"ntrp": ntrp, "year": year, "subflights": []}
 
-    # Remove any existing Championships subflight
+    # Remove any existing Championships subflight(s)
     existing["subflights"] = [
         sf for sf in existing.get("subflights", [])
-        if sf.get("flight_label") != "Championships"
+        if not sf.get("flight_label", "").startswith("Championships")
     ]
 
     champ_subflight = {
         "flight_label": "Championships",
-        "teams": standings,
-        "matches": matches_list,
-        "rosters": all_rosters,
+        "teams": list(seen_teams.values()),
+        "matches": sorted(seen_matches.values(), key=lambda m: m.get("date", "")),
     }
     existing["subflights"].append(champ_subflight)
     save_json(standings_path, existing)
-    print(f"  Saved Championships subflight ({len(team_names)} teams, "
-          f"{len(matches_list)} matches) to {standings_path}")
+    print(f"  Saved Championships ({len(seen_teams)} teams, "
+          f"{len(seen_matches)} matches) to {standings_path}")
 
 
 # ---------------------------------------------------------------------------
@@ -3572,7 +3738,7 @@ def main():
 
             if args.mode in ("districts", "all"):
                 for ntrp in ["3.0"]:
-                    scrape_districts(page, state_code, ntrp, args.year)
+                    scrape_all_districts(page, state_code, ntrp, args.year)
 
         finally:
             context.close()

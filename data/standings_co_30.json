@@ -31134,6 +31134,58 @@
       "flight_label": "Championships",
       "teams": [
         {
+          "team_name": "BRMST RED",
+          "team_wins": 2,
+          "matches_played": 3,
+          "team_losses": 1,
+          "indiv_wins": 10,
+          "indiv_losses": 5,
+          "sets_won": 23,
+          "sets_lost": 10,
+          "games_won": 107,
+          "games_lost": 23,
+          "games_won_pct": "10"
+        },
+        {
+          "team_name": "TTA PINK",
+          "team_wins": 2,
+          "matches_played": 3,
+          "team_losses": 1,
+          "indiv_wins": 9,
+          "indiv_losses": 6,
+          "sets_won": 19,
+          "sets_lost": 15,
+          "games_won": 112,
+          "games_lost": 19,
+          "games_won_pct": "15"
+        },
+        {
+          "team_name": "WP RED",
+          "team_wins": 2,
+          "matches_played": 3,
+          "team_losses": 1,
+          "indiv_wins": 8,
+          "indiv_losses": 7,
+          "sets_won": 17,
+          "sets_lost": 16,
+          "games_won": 133,
+          "games_lost": 17,
+          "games_won_pct": "16"
+        },
+        {
+          "team_name": "DTC BLUE",
+          "team_wins": 0,
+          "matches_played": 3,
+          "team_losses": 3,
+          "indiv_wins": 3,
+          "indiv_losses": 12,
+          "sets_won": 7,
+          "sets_lost": 25,
+          "games_won": 160,
+          "games_lost": 7,
+          "games_won_pct": "25"
+        },
+        {
           "team_name": "LTFC BLUE",
           "team_wins": 0,
           "team_losses": 0,
@@ -31144,21 +31196,309 @@
           "team_wins": 0,
           "team_losses": 0,
           "matches_played": 0
-        },
-        {
-          "team_name": "BRMST RED",
-          "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
-        },
-        {
-          "team_name": "TTA PINK",
-          "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
         }
       ],
       "matches": [
+        {
+          "match_id": "3bf2876d68824c8f",
+          "date": "6/19/2026",
+          "tl_match_id": "3150603",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3150603",
+          "home_team": "WP RED",
+          "away_team": "DTC BLUE",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Caroline Shutley",
+              "players_away": "Jill Stein",
+              "score": "6-3 2-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "",
+              "players_away": "Kerry Lyden",
+              "score": "6-0 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Madeline Sapyta / Emma Klebe",
+              "players_away": "Tracy McIlroy / Willa FAWER",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jessica Gutschenritter / Katie Ezell",
+              "players_away": "Sara Recht / Becky Gilligan",
+              "score": "6-1 6-3",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Sara Riso / Karleigh Page",
+              "players_away": "Jynx Messacar / Tiffany Smink",
+              "score": "6-0 6-2",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "be5712c75f26ad1c",
+          "date": "6/19/2026",
+          "tl_match_id": "3150604",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3150604",
+          "home_team": "BRMST RED",
+          "away_team": "TTA PINK",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Confirmed by BRMST RED",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jennifer Cooper",
+              "players_away": "Shonee Lesh",
+              "score": "6-3 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Rumi Arakawa",
+              "players_away": "Jenna McCormick",
+              "score": "7-5 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jody Knaley / Suzanna Black",
+              "players_away": "Stacy Hudson / Sarah White",
+              "score": "6-2 2-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Janine Huber / Tracy Klein",
+              "players_away": "Carey Price / Maggie Mastay",
+              "score": "6-3 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Karen Gallo / Sarah Monzyk",
+              "players_away": "Melissa Dini / Jennifer Arbuckle",
+              "score": "6-2 6-7 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "fc9f8958cfbc505a",
+          "date": "6/20/2026",
+          "tl_match_id": "3150605",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3150605",
+          "home_team": "TTA PINK",
+          "away_team": "WP RED",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Confirmed by TTA PINK",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Shonee Lesh",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jenna McCormick",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Melissa Dini / Jennifer Arbuckle",
+              "players_away": "Caroline Shutley / Emma Klebe",
+              "score": "6-1 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sarah White / Stacy Hudson",
+              "players_away": "Katie Ezell / Jessica Gutschenritter",
+              "score": "7-5 6-3",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Julie Aragon / Maggie Mastay",
+              "players_away": "Sara Riso / Karleigh Page",
+              "score": "3-6 7-6 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "d12269cd2cd0aad1",
+          "date": "6/20/2026",
+          "tl_match_id": "3150606",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3150606",
+          "home_team": "DTC BLUE",
+          "away_team": "BRMST RED",
+          "team_wins_home": 0,
+          "team_wins_away": 5,
+          "score": "0-5",
+          "status": "Confirmed by BRMST RED",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Mary Dryden",
+              "players_away": "Jennifer Cooper",
+              "score": "6-2 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "",
+              "players_away": "Sarah Monzyk",
+              "score": "6-0 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Tracy McIlroy / Willa FAWER",
+              "players_away": "Rumi Arakawa / Tracy Klein",
+              "score": "6-2 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sara Recht / Tiffany Smink",
+              "players_away": "Suzanna Black / Jody Knaley",
+              "score": "7-5 6-3",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Becky Gilligan / Kerry Lyden",
+              "players_away": "Lisa Shaver / Micheline Gardner",
+              "score": "6-3 6-1",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "46a847cc9ac38f72",
+          "date": "6/20/2026",
+          "tl_match_id": "3150607",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3150607",
+          "home_team": "WP RED",
+          "away_team": "BRMST RED",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Confirmed by BRMST RED",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Caroline Shutley",
+              "players_away": "Rumi Arakawa",
+              "score": "6-4 7-6",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "",
+              "players_away": "Micheline Gardner",
+              "score": "6-0 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Madeline Sapyta / Emma Klebe",
+              "players_away": "Suzanna Black / Jennifer Cooper",
+              "score": "6-3 7-5",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Katie Ezell / Jessica Gutschenritter",
+              "players_away": "Janine Huber / Tracy Klein",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Sara Riso / Karleigh Page",
+              "players_away": "Sarah Monzyk / Jody Knaley",
+              "score": "3-6 6-4 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "1ae13d447d8f635c",
+          "date": "6/20/2026",
+          "tl_match_id": "3150608",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3150608",
+          "home_team": "TTA PINK",
+          "away_team": "DTC BLUE",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Shonee Lesh",
+              "players_away": "Jill Stein",
+              "score": "2-6 6-4 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jenna McCormick",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Arbuckle / Melissa Dini",
+              "players_away": "Tracy McIlroy / Willa FAWER",
+              "score": "6-2 6-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Carey Price / Maggie Mastay",
+              "players_away": "Sara Recht / Mary Dryden",
+              "score": "6-3 7-6",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Sarah White / Stacy Hudson",
+              "players_away": "Kerry Lyden / Tiffany Smink",
+              "score": "6-1 6-1",
+              "result": "home"
+            }
+          ]
+        },
         {
           "match_id": "9b970025f3938782",
           "date": "6/21/2026",
@@ -31309,8 +31649,7 @@
             }
           ]
         }
-      ],
-      "rosters": {}
+      ]
     }
   ]
 }

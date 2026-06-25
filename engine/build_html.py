@@ -458,8 +458,42 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
         tab_lbl, _, _ = sf_display.get(sf_raw, (sf_raw, sf_raw, ""))
         lbl    = _esc(tab_lbl)
         teams  = sf.get("teams", [])
+        matches = sf.get("matches", [])
         summary = _esc(sf.get("subflight_summary", "") or "")
         visible = "" if i == 0 else ' style="display:none"'
+
+        _all_zero = all(t.get("team_wins", 0) == 0 and t.get("team_losses", 0) == 0 for t in teams)
+        if _all_zero and matches:
+            _wl_computed: dict[str, list[int]] = {}
+            for m in matches:
+                ht, at = m.get("home_team", ""), m.get("away_team", "")
+                hw = m.get("team_wins_home")
+                aw = m.get("team_wins_away")
+                if hw is None or aw is None:
+                    sc = m.get("score", "")
+                    parts = re.split(r"[–\-]", sc) if sc else []
+                    if len(parts) == 2:
+                        try:
+                            hw, aw = int(parts[0].strip()), int(parts[1].strip())
+                        except ValueError:
+                            continue
+                    else:
+                        continue
+                if hw is None or aw is None:
+                    continue
+                _wl_computed.setdefault(ht, [0, 0])
+                _wl_computed.setdefault(at, [0, 0])
+                if hw > aw:
+                    _wl_computed[ht][0] += 1
+                    _wl_computed[at][1] += 1
+                elif aw > hw:
+                    _wl_computed[at][0] += 1
+                    _wl_computed[ht][1] += 1
+            for t in teams:
+                tn = t.get("team_name", "")
+                if tn in _wl_computed:
+                    t["team_wins"], t["team_losses"] = _wl_computed[tn]
+            teams.sort(key=lambda t: (-t.get("team_wins", 0), t.get("team_losses", 99)))
 
         rows = ""
         for j, t in enumerate(teams, 1):
