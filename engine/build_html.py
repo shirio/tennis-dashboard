@@ -593,11 +593,14 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
     _other_sfx = other_ntrp.replace(".", "")
 
     # Build team → subflight label lookup
+    # Don't let "Championships" override a team's regular-season subflight
     team_to_sf: dict[str, str] = {}
     for sf_obj in (subflights or []):
         lbl = sf_obj.get("flight_label", "")
         for t in sf_obj.get("teams", []):
-            team_to_sf[t.get("team_name", "")] = lbl
+            tn = t.get("team_name", "")
+            if tn not in team_to_sf or lbl != "Championships":
+                team_to_sf[tn] = lbl
 
     def _in_ntrp(p):
         if p.get("division", "").startswith(ntrp):
@@ -2174,7 +2177,9 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
     for sf_obj in subflights:
         lbl = sf_obj.get("flight_label", "")
         for t in sf_obj.get("teams", []):
-            team_to_sf[t.get("team_name", "")] = lbl
+            tn = t.get("team_name", "")
+            if tn not in team_to_sf or lbl != "Championships":
+                team_to_sf[tn] = lbl
 
     for p in players:
         norm = re.sub(r"\s+", " ", (p.get("name") or "").strip().lower())
