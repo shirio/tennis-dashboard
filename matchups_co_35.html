@@ -23,8 +23,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 .tab.on { background: #eee; color: #222; font-weight: 600; border-color: #999; }
 .pane { display: none; } .pane.on { display: block; }
 /* Sub-tabs */
-.rtabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.rtabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; align-items: center; }
 .rtabs.scrollable { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+.rtabs .sf-group-label { font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 2px 2px 2px 8px; white-space: nowrap; }
 .re-rating-toggle { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
 .re-rtog-label { font-size: 11px; color: #888; }
 .rtab { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px;
@@ -96,7 +98,9 @@ tr:last-child td { border-bottom: none; }
 .ap-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
 .ap-controls input { flex: 1; min-width: 160px; max-width: 320px; padding: 5px 10px;
   border: 1px solid #ddd; border-radius: 20px; font-size: 12px; }
-.sf-filter-btns { display: flex; gap: 4px; }
+.sf-filter-btns { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+.sf-group-label { font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 2px 6px; margin-left: 4px; white-space: nowrap; }
 /* Match blocks */
 .mblock { border: 1px solid #eee; border-radius: 8px;
           padding: .75rem 1rem; margin-bottom: 10px; }

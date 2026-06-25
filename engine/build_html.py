@@ -108,6 +108,84 @@ def _abbrev_team(name: str) -> str:
     return _TEAM_ABBREV.get((name or "").lower().strip(), name)
 
 
+def _simplify_subflight_labels(subflights: list[dict], ntrp: str = "") -> dict[str, tuple[str, str, str]]:
+    """Build display names for subflight labels.
+
+    Returns {raw_label: (tab_label, column_label, group_name)} where:
+    - tab_label: shown on the subflight tab button (e.g. "A: South I")
+    - column_label: shown in the SF column in All Players (e.g. "A")
+    - group_name: grouping header for visual separation (e.g. "Denver Metro")
+    """
+    raw_labels = [sf.get("flight_label", "") for sf in subflights]
+    mapping: dict[str, tuple[str, str, str]] = {}
+
+    champ_labels = {"championships", "districts", "playoffs"}
+
+    for lbl in raw_labels:
+        ll = lbl.lower().strip()
+        if ll in champ_labels:
+            mapping[lbl] = ("Districts", "Dist", "Districts")
+            continue
+
+    regular = [l for l in raw_labels if l.lower().strip() not in champ_labels]
+    if not regular:
+        return mapping
+
+    # Already simple labels (single word/letter like "A", "B")
+    if all(len(l.split()) <= 1 and len(l) <= 3 for l in regular):
+        for lbl in regular:
+            mapping[lbl] = (lbl, lbl, "")
+        return mapping
+
+    # UT pattern: "UT-AM 3.0W AM Teal" → color is the last word
+    _colors = r'\b(Teal|Green|Gold|Pink|Indigo|Yellow|Blue|White|Orange|Ivory|Red|Purple)\s*$'
+    if all(re.search(_colors, l, re.IGNORECASE) for l in regular):
+        for lbl in regular:
+            color = lbl.rsplit(None, 1)[-1]
+            mapping[lbl] = (color, color, "")
+        return mapping
+
+    # CO-style pattern: many subflights with region prefixes
+    cleaned = {}
+    for lbl in regular:
+        cleaned[lbl] = re.sub(r'^[A-Z]{2}-', '', lbl)
+
+    # Find the single dominant prefix shared by the most labels.
+    # Prefer longer prefixes at the same count (e.g. "DENVER METRO" over "DENVER").
+    best_prefix = ""
+    best_count = 0
+    for cl in cleaned.values():
+        words = cl.split()
+        for prefix_len in range(1, len(words)):
+            pfx = " ".join(words[:prefix_len])
+            cnt = sum(1 for c in cleaned.values() if c.startswith(pfx + " "))
+            if cnt >= 3 and (cnt > best_count or (cnt == best_count and len(pfx) > len(best_prefix))):
+                best_count = cnt
+                best_prefix = pfx
+
+    # Assign letter codes, grouped: dominant region first, then others
+    dominant = sorted([l for l in regular if cleaned[l].startswith(best_prefix + " ")]) if best_prefix else []
+    others = sorted([l for l in regular if l not in dominant])
+
+    letter_idx = 0
+    for lbl in dominant + others:
+        letter = chr(ord('A') + letter_idx)
+        letter_idx += 1
+        clean = cleaned[lbl]
+        suffix = clean[len(best_prefix):].strip() if lbl in dominant else clean
+        # Determine group name
+        if lbl in dominant:
+            group_name = best_prefix.title()
+        else:
+            # Use the cleaned label as group, or "" if few non-dominant entries
+            remaining = [l for l in regular if l not in dominant]
+            group_name = "" if len(remaining) <= 2 else "Other Regions"
+        tab_label = f"{letter}: {suffix}"
+        mapping[lbl] = (tab_label, letter, group_name)
+
+    return mapping
+
+
 # ---------------------------------------------------------------------------
 # Line label helpers
 # ---------------------------------------------------------------------------
@@ -346,30 +424,39 @@ def _wl_cell(w, l) -> str:
     return f"{int(w or 0)}–{int(l or 0)}"
 
 
-def _standings_tab(subflights: list[dict], warnings: list[str]) -> str:
+def _standings_tab(subflights: list[dict], warnings: list[str],
+                   sf_display: dict | None = None) -> str:
     warn_html = ""
     if warnings:
         items = "".join(f"<li>{_esc(w)}</li>" for w in warnings)
         warn_html = f'<div class="warn-box">⚠ Data validation warnings:<ul>{items}</ul></div>'
 
-    # Build subflight tabs
-    sf_labels = [sf.get("flight_label", str(i)) for i, sf in enumerate(subflights)]
-    first_sf = sf_labels[0] if sf_labels else ""
+    sf_display = sf_display or {}
 
+    # Build subflight tabs with group separators
     sf_btns = ""
-    for i, lbl in enumerate(sf_labels):
+    prev_group = None
+    for i, sf in enumerate(subflights):
+        lbl = sf.get("flight_label", str(i))
+        tab_lbl, _, group = sf_display.get(lbl, (lbl, lbl, ""))
         active = " on" if i == 0 else ""
+        if group and group != prev_group:
+            sf_btns += f'<span class="sf-group-label">{_esc(group)}</span>\n'
+            prev_group = group
+        elif not group and prev_group:
+            prev_group = None
         sf_btns += (
             f'<button class="rtab sf-switcher{active}" '
             f'data-sf="{_esc(lbl)}" '
             f'onclick="filterStandingsSF(\'{_esc(lbl)}\')">'
-            f'{_esc(lbl)}</button>\n'
+            f'{_esc(tab_lbl)}</button>\n'
         )
 
     panes = ""
     for i, sf in enumerate(subflights):
-        lbl    = _esc(sf.get("flight_label", "?"))
         sf_raw = sf.get("flight_label", "")
+        tab_lbl, _, _ = sf_display.get(sf_raw, (sf_raw, sf_raw, ""))
+        lbl    = _esc(tab_lbl)
         teams  = sf.get("teams", [])
         summary = _esc(sf.get("subflight_summary", "") or "")
         visible = "" if i == 0 else ' style="display:none"'
@@ -461,7 +548,8 @@ def _abbrev_line(line_label: str) -> str:
     return ("S" if t == "Singles" else "D") + n
 
 
-def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") -> str:
+def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
+                 sf_display: dict | None = None) -> str:
     # Field suffix for per-division stats ("3.0" -> "30", "3.5" -> "35")
     _sfx = ntrp.replace(".", "") if ntrp else ""
 
@@ -501,17 +589,25 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
             by_team[div_team].append(p)
 
     # Build panes grouped by subflight
+    sf_display = sf_display or {}
     sf_labels = [sf.get("flight_label", str(i)) for i, sf in enumerate(subflights)]
     first_sf = sf_labels[0] if sf_labels else ""
 
     sf_btns = ""
+    prev_group = None
     for i, lbl in enumerate(sf_labels):
+        tab_lbl, _, group = sf_display.get(lbl, (lbl, lbl, ""))
         active = " on" if i == 0 else ""
+        if group and group != prev_group:
+            sf_btns += f'<span class="sf-group-label">{_esc(group)}</span>\n'
+            prev_group = group
+        elif not group and prev_group:
+            prev_group = None
         sf_btns += (
             f'<button class="rtab sf-switcher{active}" '
             f'data-sf="{_esc(lbl)}" '
             f'onclick="filterSF(\'{_esc(lbl)}\',this,\'ro-sf-tabs\',\'ro-tabs\',\'ro\')">'
-            f'{_esc(lbl)}</button>\n'
+            f'{_esc(tab_lbl)}</button>\n'
         )
 
     team_tabs, rpanes = "", ""
@@ -738,20 +834,25 @@ def _traverse_match_histories(
 def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                  other_subflights: list[dict] = None,
                  is_sectionals: bool = False,
-                 all_players_pool: list[dict] = None) -> str:
+                 all_players_pool: list[dict] = None,
+                 sf_display: dict | None = None) -> str:
     _sfx = ntrp.replace(".", "") if ntrp else ""
     other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
     _other_sfx = other_ntrp.replace(".", "")
+    sf_display = sf_display or {}
 
-    # Build team → subflight label lookup
+    # Build team → subflight column label lookup
     # Don't let "Championships" override a team's regular-season subflight
     team_to_sf: dict[str, str] = {}
+    team_to_sf_raw: dict[str, str] = {}
     for sf_obj in (subflights or []):
-        lbl = sf_obj.get("flight_label", "")
+        raw_lbl = sf_obj.get("flight_label", "")
+        _, col_lbl, _ = sf_display.get(raw_lbl, (raw_lbl, raw_lbl, ""))
         for t in sf_obj.get("teams", []):
             tn = t.get("team_name", "")
-            if tn not in team_to_sf or lbl != "Championships":
-                team_to_sf[tn] = lbl
+            if tn not in team_to_sf or raw_lbl.lower() != "championships":
+                team_to_sf[tn] = col_lbl
+                team_to_sf_raw[tn] = raw_lbl
 
     def _in_ntrp(p):
         if p.get("division", "").startswith(ntrp):
@@ -792,11 +893,12 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         else:
             wl = p.get(f"wl_record_{_sfx}") or "–"
 
-        if division.startswith(ntrp):
-            sf = division.split()[-1] if division else ""
-        else:
-            div_team = (p.get(f"team_{_sfx}", "") or "") if _sfx else ""
-            sf = team_to_sf.get(div_team, "")
+        div_team = (p.get(f"team_{_sfx}", "") or "") if _sfx else ""
+        _primary_team = p.get("team", "") or ""
+        sf = team_to_sf.get(div_team, "") or team_to_sf.get(_primary_team, "")
+        sf_raw = team_to_sf_raw.get(div_team, "") or team_to_sf_raw.get(_primary_team, "")
+        if not sf and division.startswith(ntrp) and division:
+            sf = division.split()[-1]
 
         _wl_sort = "0"
         _wl_display = str(wl) if wl else "–"
@@ -884,7 +986,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                      if not is_sectionals
                      else f"<td class='sortable-cell'>{_esc(col3_val)}</td>")
         rows += (
-            f"<tr data-sf='{_esc(sf)}' data-pkey='{_esc(nk)}' data-state='{_esc(p_state)}'"
+            f"<tr data-sf='{_esc(sf_raw or sf)}' data-pkey='{_esc(nk)}' data-state='{_esc(p_state)}'"
             f" class='player-row{expand_cls}'"
             + (f" data-history='{hist_json.replace(chr(39), '&apos;')}'"
                f" data-combined='{_esc(combined_str)}'" if has_history else "")
@@ -903,26 +1005,30 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             f"</tr>\n"
         )
 
-    # Build unique states and subflight labels for filter buttons
-    player_states = sorted({p.get("state", "") or "" for p in div_players} - {""})
-    sf_labels = sorted({team_to_sf.get(p.get(f"team_{_sfx}") or p.get("team", ""), "")
-                        for p in div_players} - {""})
+    # Build unique subflight raw labels for filter buttons (using display map for text)
+    sf_raw_labels = []
+    _seen = set()
+    for sf_obj in (subflights or []):
+        raw = sf_obj.get("flight_label", "")
+        if raw and raw not in _seen:
+            _seen.add(raw)
+            sf_raw_labels.append(raw)
 
     state_btns = ""
-    if len(player_states) > 1:
-        state_btns = (
-            '<div class="sf-filter-btns" id="state-filter-btns">'
-            '<button class="rtab on" onclick="filterPlayerState(\'all\',this)">All States</button>'
-        )
-        for st in player_states:
-            state_btns += f'<button class="rtab" onclick="filterPlayerState(\'{_esc(st)}\',this)">{_esc(st)}</button>'
-        state_btns += '</div>'
 
     sf_section = ""
     if not is_sectionals:
         sf_btns = '<button class="rtab on" onclick="filterPlayerSF(\'all\',this)">All</button>'
-        for lbl in sf_labels:
-            sf_btns += f'<button class="rtab" onclick="filterPlayerSF(\'{_esc(lbl)}\',this)">{_esc(lbl)}</button>'
+        prev_group = None
+        for raw_lbl in sf_raw_labels:
+            tab_lbl, _, group = sf_display.get(raw_lbl, (raw_lbl, raw_lbl, ""))
+            if group and group != prev_group:
+                sf_btns += f'<span class="sf-group-label">{_esc(group)}</span>'
+                prev_group = group
+            elif not group and prev_group:
+                prev_group = None
+            sf_btns += (f'<button class="rtab" onclick="filterPlayerSF(\'{_esc(raw_lbl)}\',this)">'
+                        f'{_esc(tab_lbl)}</button>')
         sf_section = f'<div class="sf-filter-btns" id="sf-filter-btns">{sf_btns}</div>'
 
     col3_hdr = ('<th class="sortable" onclick="sortAP(2)">State ↕</th>'
@@ -955,7 +1061,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
 
 
 def _results_tab(subflights: list[dict], players: list[dict] | None = None,
-                 sfx: str = "") -> str:
+                 sfx: str = "", sf_display: dict | None = None) -> str:
     # Build name → baseline and name → new (division) rating lookups
     _baseline_by_name: dict[str, str] = {}
     _new_by_name: dict[str, str] = {}
@@ -1082,6 +1188,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
             )
         return " / ".join(rendered) if rendered else _esc(raw)
 
+    sf_display = sf_display or {}
     sf_labels = [sf.get("flight_label", str(i)) for i, sf in enumerate(subflights)]
     first_sf = sf_labels[0] if sf_labels else ""
 
@@ -1097,13 +1204,20 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
     _week_label: dict[str, str] = {d: f"W{i+1}" for i, d in enumerate(_sorted_dates)}
 
     sf_btns = ""
+    prev_group = None
     for i, lbl in enumerate(sf_labels):
+        tab_lbl, _, group = sf_display.get(lbl, (lbl, lbl, ""))
         active = " on" if i == 0 else ""
+        if group and group != prev_group:
+            sf_btns += f'<span class="sf-group-label">{_esc(group)}</span>\n'
+            prev_group = group
+        elif not group and prev_group:
+            prev_group = None
         sf_btns += (
             f'<button class="rtab sf-switcher{active}" '
             f'data-sf="{_esc(lbl)}" '
             f'onclick="filterSF(\'{_esc(lbl)}\',this,\'re-sf-tabs\',\'re-tabs\',\'re\')">'
-            f'{_esc(lbl)}</button>\n'
+            f'{_esc(tab_lbl)}</button>\n'
         )
 
     team_tabs, rpanes = "", ""
@@ -1111,6 +1225,9 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
     for sf in subflights:
         sf_lbl = sf.get("flight_label", "")
         matches = sf.get("matches", [])
+        _all_home = sum(1 for m in matches for ln in m.get("lines", []) if ln.get("result") == "home")
+        _all_total = sum(1 for m in matches for ln in m.get("lines", []) if ln.get("result") in ("home", "away"))
+        _sf_line_data_reliable = _all_total > 0 and (_all_home / _all_total) < 0.95
         for t in sf.get("teams", []):
             tname = t.get("team_name", "")
             if not tname:
@@ -1152,6 +1269,8 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                             elif _pt == _mat: _away_votes += 1
                     _is_swapped = (_away_votes > _home_votes)
 
+                    _courts_reliable = _sf_line_data_reliable
+
                     blocks += '<div class="line-lbl">line results</div>'
                     for ln in lines:
                         # Keep original scorecard layout (home col left, away col right)
@@ -1169,13 +1288,13 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                         lnum = _line_label_short(ln.get("line", ""))
                         # result="home"/"away" = which TEAM won (not which column).
                         # If swapped, home team players are in the right (away) column.
-                        result = ln.get("result", "")
-                        if result == "home":
-                            hw, aw = ("", "w") if _is_swapped else ("w", "")
-                        elif result == "away":
-                            hw, aw = ("w", "") if _is_swapped else ("", "w")
-                        else:
-                            hw = aw = ""
+                        hw = aw = ""
+                        if _courts_reliable:
+                            result = ln.get("result", "")
+                            if result == "home":
+                                hw, aw = ("", "w") if _is_swapped else ("w", "")
+                            elif result == "away":
+                                hw, aw = ("w", "") if _is_swapped else ("", "w")
                         blocks += (
                             f'<div class="line-row">'
                             f'<span class="lh {hw}"><span class="lr-lbl">{_esc(lnum)}</span> {left}</span>'
@@ -1293,8 +1412,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 .tab.on { background: #eee; color: #222; font-weight: 600; border-color: #999; }
 .pane { display: none; } .pane.on { display: block; }
 /* Sub-tabs */
-.rtabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.rtabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; align-items: center; }
 .rtabs.scrollable { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+.rtabs .sf-group-label { font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 2px 2px 2px 8px; white-space: nowrap; }
 .re-rating-toggle { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
 .re-rtog-label { font-size: 11px; color: #888; }
 .rtab { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px;
@@ -1366,7 +1487,9 @@ tr:last-child td { border-bottom: none; }
 .ap-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
 .ap-controls input { flex: 1; min-width: 160px; max-width: 320px; padding: 5px 10px;
   border: 1px solid #ddd; border-radius: 20px; font-size: 12px; }
-.sf-filter-btns { display: flex; gap: 4px; }
+.sf-filter-btns { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+.sf-group-label { font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 2px 6px; margin-left: 4px; white-space: nowrap; }
 /* Match blocks */
 .mblock { border: 1px solid #eee; border-radius: 8px;
           padding: .75rem 1rem; margin-bottom: 10px; }
@@ -1892,12 +2015,21 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
         for w in warnings:
             print(f"  [VALIDATION] {w}")
 
+    sf_display = _simplify_subflight_labels(subflights, ntrp)
+
+    # Filter players to this state only for per-state dashboards
+    state_players = [p for p in players if p.get("state") == state_code]
+    # But keep ALL players available for match history cross-references
+    all_players_pool = players
+
     cards_html = _summary_cards(ntrp, year, subflights, region_label)
-    standings_html = _standings_tab(subflights, warnings)
-    rosters_html = _rosters_tab(subflights, players, ntrp)
+    standings_html = _standings_tab(subflights, warnings, sf_display=sf_display)
+    rosters_html = _rosters_tab(subflights, state_players, ntrp, sf_display=sf_display)
     other_subflights = (other_standings or {}).get("subflights", [])
-    players_html = _players_tab(players, ntrp, subflights, other_subflights)
-    results_html = _results_tab(subflights, players, sfx=ntrp.replace(".", ""))
+    players_html = _players_tab(state_players, ntrp, subflights, other_subflights,
+                                all_players_pool=all_players_pool, sf_display=sf_display)
+    results_html = _results_tab(subflights, state_players, sfx=ntrp.replace(".", ""),
+                                sf_display=sf_display)
 
     tab_defs = [
         ("standings",  "standings",    standings_html),
@@ -2820,7 +2952,8 @@ def build_dashboards(states: list[str] | None = None) -> dict:
             out_path.write_text(html, encoding="utf-8")
             mx_html = _build_matchup_page(ntrp, standings, players)
             mx_path.write_text(mx_html, encoding="utf-8")
-            n = len([p for p in players if p.get("division", "").startswith(ntrp)])
+            state_p = [p for p in players if p.get("state") == state_code]
+            n = len([p for p in state_p if p.get("division", "").startswith(ntrp)])
             n_matches = sum(
                 len(sf.get("matches", []))
                 for sf in standings.get("subflights", [])
