@@ -7,25 +7,36 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-       padding: 2rem; max-width: 700px; margin: 0 auto; color: #222; }
+       padding: 2rem; max-width: 700px; margin: 0 auto; color: #222;
+       background: #fafafa; }
 h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
 .subtitle { color: #666; margin-bottom: 2rem; font-size: 0.95rem; }
+
+.cta { display: block; margin-bottom: 2rem; padding: 1rem 1.6rem;
+       background: #1a73e8; color: #fff; border-radius: 10px;
+       text-decoration: none; font-weight: 700; font-size: 1.1rem;
+       text-align: center; transition: background 0.15s, transform 0.1s;
+       box-shadow: 0 2px 8px rgba(26,115,232,0.3); }
+.cta:hover { background: #1557b0; transform: translateY(-1px);
+             box-shadow: 0 4px 12px rgba(26,115,232,0.4); }
+.cta:active { transform: translateY(0); }
+.cta-arrow { margin-left: 0.4rem; }
+
 .section { margin-bottom: 1.8rem; }
 .section-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem;
                  padding-bottom: 0.3rem; border-bottom: 2px solid #e0e0e0; }
-.cta { display: block; margin-bottom: 1.5rem; padding: 1rem 1.4rem;
-       background: #1a73e8; color: #fff; border-radius: 10px;
-       text-decoration: none; font-weight: 700; font-size: 1.15rem;
-       text-align: center; transition: background 0.15s; }
-.cta:hover { background: #1557b0; }
-.state-row { display: flex; align-items: center; gap: 0.6rem;
-             padding: 0.6rem 0; border-bottom: 1px solid #f0f0f0; }
-.state-label { font-weight: 600; min-width: 160px; }
-.state-links a { display: inline-block; padding: 0.35rem 0.9rem; margin: 0.15rem;
-                 background: #f3f3f3; border-radius: 6px; text-decoration: none;
-                 color: #333; font-size: 0.9rem; font-weight: 500; transition: background 0.12s; }
-.state-links a:hover { background: #e0e0e0; }
-.state-links .coming-soon { color: #999; font-style: italic; font-size: 0.9rem; }
+
+.state-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px;
+              padding: 1rem 1.2rem; margin-bottom: 0.7rem;
+              transition: box-shadow 0.12s; }
+.state-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.state-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+.state-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.state-links a { display: inline-flex; align-items: center; gap: 0.3rem;
+                 padding: 0.4rem 1rem; background: #f0f4ff; border: 1px solid #d0daf0;
+                 border-radius: 6px; text-decoration: none; color: #1a5fb4;
+                 font-size: 0.9rem; font-weight: 600; transition: all 0.12s; }
+.state-links a:hover { background: #dde6f9; border-color: #1a73e8; color: #1a73e8; }
 </style>
 </head>
 <body>
@@ -33,40 +44,42 @@ h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
 <h1>Tennis Dashboard</h1>
 <p class="subtitle">Intermountain Sectionals 2026 — Women's 3.0 + 3.5</p>
 
-<a class="cta" href="sectionals_30.html">Sectionals Scouting</a>
+<a class="cta" href="sectionals_30.html">
+  Sectionals Scouting — All Qualified Teams <span class="cta-arrow">&rarr;</span>
+</a>
 
 <div class="section">
   <div class="section-title">State Dashboards</div>
 
-  <div class="state-row">
-    <span class="state-label">Nevada (NV Area F)</span>
+  <div class="state-card">
+    <div class="state-name">Nevada (NV Area F)</div>
     <span class="state-links">
-      <a href="women_nv_30.html">3.0 Women</a>
-      <a href="women_nv_35.html">3.5 Women</a>
+      <a href="women_nv_30.html">3.0 Women &rarr;</a>
+      <a href="women_nv_35.html">3.5 Women &rarr;</a>
     </span>
   </div>
 
-  <div class="state-row">
-    <span class="state-label">Colorado</span>
+  <div class="state-card">
+    <div class="state-name">Colorado</div>
     <span class="state-links">
-      <a href="women_co_30.html">3.0 Women</a>
-      <a href="women_co_35.html">3.5 Women</a>
+      <a href="women_co_30.html">3.0 Women &rarr;</a>
+      <a href="women_co_35.html">3.5 Women &rarr;</a>
     </span>
   </div>
 
-  <div class="state-row">
-    <span class="state-label">Utah</span>
+  <div class="state-card">
+    <div class="state-name">Utah</div>
     <span class="state-links">
-      <a href="women_ut_30.html">3.0 Women</a>
-      <a href="women_ut_35.html">3.5 Women</a>
+      <a href="women_ut_30.html">3.0 Women &rarr;</a>
+      <a href="women_ut_35.html">3.5 Women &rarr;</a>
     </span>
   </div>
 
-  <div class="state-row">
-    <span class="state-label">Idaho</span>
+  <div class="state-card">
+    <div class="state-name">Idaho</div>
     <span class="state-links">
-      <a href="women_id_30.html">3.0 Women</a>
-      <a href="women_id_35.html">3.5 Women</a>
+      <a href="women_id_30.html">3.0 Women &rarr;</a>
+      <a href="women_id_35.html">3.5 Women &rarr;</a>
     </span>
   </div>
 </div>

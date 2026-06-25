@@ -260,6 +260,8 @@ def _validate(subflights: list[dict]) -> list[str]:
             name = t.get("team_name", "")
             sw, sl = (t.get("team_wins") or 0), (t.get("team_losses") or 0)
             rw, rl = wins.get(name, 0), losses.get(name, 0)
+            if sw == 0 and sl == 0 and (rw > 0 or rl > 0):
+                continue
             if rw != sw or rl != sl:
                 warnings.append(
                     f"Subflight {label} — {name}: "
@@ -586,8 +588,153 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "") ->
     )
 
 
+def _nkey(n: str) -> str:
+    return re.sub(r"\s+", " ", n.strip().lower())
+
+
+def _traverse_match_histories(
+    player_pool: list[dict],
+    ntrp: str,
+    subflights: list[dict] | None,
+    other_subflights: list[dict] | None,
+) -> tuple[dict[str, list[dict]], dict[str, dict]]:
+    other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
+    by_name = {_nkey(p.get("name", "")): p for p in player_pool if p.get("name")}
+
+    player_histories: dict[str, list[dict]] = {}
+    player_stats: dict[str, dict] = {}
+    _seen: set[tuple] = set()
+
+    for div, sfs in [(ntrp, subflights or []), (other_ntrp, other_subflights or [])]:
+        div_sfx = div.replace(".", "")
+        for sf in sfs:
+            for match in sf.get("matches", []):
+                if match.get("pending"):
+                    continue
+                date = match.get("date", "")
+                mid = match.get("match_id", "")
+                m_home_team = (match.get("home_team") or "").strip()
+                m_away_team = (match.get("away_team") or "").strip()
+                for line in match.get("lines", []):
+                    home_raw = line.get("players_home", "") or ""
+                    away_raw = line.get("players_away", "") or ""
+                    wt = line.get("winner_team", "") or ""
+                    lt = line.get("loser_team", "") or ""
+                    if not wt and not lt and m_home_team and m_away_team:
+                        line_result = (line.get("result") or "").lower()
+                        if line_result == "home":
+                            wt, lt = m_home_team, m_away_team
+                        elif line_result == "away":
+                            wt, lt = m_away_team, m_home_team
+                    score = line.get("score", "") or ""
+                    line_label = line.get("line", "") or ""
+
+                    home_names = [n.strip() for n in home_raw.split("/")
+                                  if n.strip() and n.strip().upper() != "N/A"]
+                    away_names = [n.strip() for n in away_raw.split("/")
+                                  if n.strip() and n.strip().upper() != "N/A"]
+                    is_walkover = not home_names or not away_names
+
+                    all_side = ([("home", n) for n in home_names] +
+                                [("away", n) for n in away_names])
+
+                    for side, nm in all_side:
+                        nk = _nkey(nm)
+                        pdata = by_name.get(nk)
+                        if not pdata:
+                            continue
+                        player_team = None
+                        for _tf in (f"team_{div_sfx}", "team", "team_30", "team_35"):
+                            _tv = (pdata.get(_tf) or "").strip().lower()
+                            if _tv and (_tv == m_home_team.lower() or
+                                        _tv == m_away_team.lower()):
+                                player_team = _tv
+                                break
+                        if not player_team:
+                            player_team = (pdata.get(f"team_{div_sfx}") or
+                                           pdata.get("team") or "").strip()
+                        if not player_team:
+                            continue
+                        won  = player_team.lower() in wt.lower()
+                        lost = player_team.lower() in lt.lower()
+                        if not won and not lost:
+                            continue
+                        dedup = (mid, line_label, nk, div)
+                        if dedup in _seen:
+                            continue
+                        _seen.add(dedup)
+
+                        is_home_col   = (side == "home")
+                        is_home_score = player_team.lower() in (
+                            match.get("home_team", "") or ""
+                        ).lower()
+
+                        if is_home_col:
+                            partners = [n for n in home_names if _nkey(n) != nk]
+                            opps     = away_names if not is_walkover else []
+                        else:
+                            partners = [n for n in away_names if _nkey(n) != nk]
+                            opps     = home_names if not is_walkover else []
+
+                        opp_r_list = []
+                        for o in opps:
+                            op = by_name.get(_nkey(o))
+                            opp_r_list.append(
+                                f"{op.get('rating_30'):.2f}" if op and op.get("rating_30") else ""
+                            )
+
+                        opp_team = lt if won else wt
+                        sw_h, sl_h, gw_h, gl_h = _parse_score(score, True)
+                        sw_a, sl_a, gw_a, gl_a = _parse_score(score, False)
+                        if won:
+                            sw, sl, gw, gl = (sw_h, sl_h, gw_h, gl_h) if sw_h >= sl_h else (sw_a, sl_a, gw_a, gl_a)
+                        else:
+                            sw, sl, gw, gl = (sw_h, sl_h, gw_h, gl_h) if sl_h >= sw_h else (sw_a, sl_a, gw_a, gl_a)
+
+                        rec = {
+                            "date": date, "div": div, "line": line_label,
+                            "won": won, "score": score, "wko": is_walkover,
+                            "partners": partners,
+                            "opps": opps, "opp_r": opp_r_list,
+                            "opp_team": opp_team,
+                            "sw": sw, "sl": sl, "gw": gw, "gl": gl,
+                        }
+                        player_histories.setdefault(nk, []).append(rec)
+                        st = player_stats.setdefault(
+                            nk, {"sw30":0,"sl30":0,"gw30":0,"gl30":0,
+                                 "sw35":0,"sl35":0,"gw35":0,"gl35":0,
+                                 "w":0,"l":0,"w30":0,"l30":0,"w35":0,"l35":0}
+                        )
+                        if not is_walkover:
+                            d = div.replace(".", "")
+                            st[f"sw{d}"] += sw; st[f"sl{d}"] += sl
+                            st[f"gw{d}"] += gw; st[f"gl{d}"] += gl
+                            for _or in opp_r_list:
+                                if _or:
+                                    try:
+                                        st[f"or_sum{d}"] = st.get(f"or_sum{d}", 0.0) + float(_or)
+                                        st[f"or_n{d}"]   = st.get(f"or_n{d}",   0)   + 1
+                                    except ValueError:
+                                        pass
+                            if won: st["w"] += 1
+                            else:   st["l"] += 1
+                            if div == "3.0":
+                                if won: st["w30"] += 1
+                                else:   st["l30"] += 1
+                            else:
+                                if won: st["w35"] += 1
+                                else:   st["l35"] += 1
+
+    for nk in player_histories:
+        player_histories[nk].sort(key=lambda r: _date_sort_key(r["date"]))
+
+    return player_histories, player_stats
+
+
 def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
-                 other_subflights: list[dict] = None) -> str:
+                 other_subflights: list[dict] = None,
+                 is_sectionals: bool = False,
+                 all_players_pool: list[dict] = None) -> str:
     _sfx = ntrp.replace(".", "") if ntrp else ""
     other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
     _other_sfx = other_ntrp.replace(".", "")
@@ -617,138 +764,9 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
     )
 
     # ── Build per-player match histories from both divisions ──────────────────
-    def _nkey(n: str) -> str:
-        return re.sub(r"\s+", " ", n.strip().lower())
-
-    by_name = {_nkey(p.get("name", "")): p for p in players if p.get("name")}
-
-    # player_histories: nkey → list of match records (sorted by date)
-    # player_stats:     nkey → {sw,sl,gw,gl,w,l,w30,l30,w35,l35}
-    player_histories: dict[str, list[dict]] = {}
-    player_stats: dict[str, dict] = {}
-    _seen: set[tuple] = set()
-
-    for div, sfs in [(ntrp, subflights or []), (other_ntrp, other_subflights or [])]:
-        div_sfx = div.replace(".", "")
-        for sf in sfs:
-            for match in sf.get("matches", []):
-                if match.get("pending"):
-                    continue
-                date = match.get("date", "")
-                mid = match.get("match_id", "")
-                for line in match.get("lines", []):
-                    home_raw = line.get("players_home", "") or ""
-                    away_raw = line.get("players_away", "") or ""
-                    wt = line.get("winner_team", "") or ""
-                    lt = line.get("loser_team", "") or ""
-                    score = line.get("score", "") or ""
-                    line_label = line.get("line", "") or ""
-
-                    home_names = [n.strip() for n in home_raw.split("/")
-                                  if n.strip() and n.strip().upper() != "N/A"]
-                    away_names = [n.strip() for n in away_raw.split("/")
-                                  if n.strip() and n.strip().upper() != "N/A"]
-                    is_walkover = not home_names or not away_names
-
-                    all_side = ([("home", n) for n in home_names] +
-                                [("away", n) for n in away_names])
-
-                    for side, nm in all_side:
-                        nk = _nkey(nm)
-                        pdata = by_name.get(nk)
-                        if not pdata:
-                            continue
-                        player_team = (pdata.get(f"team_{div_sfx}") or
-                                       pdata.get("team") or "").strip()
-                        if not player_team:
-                            continue
-                        won  = player_team.lower() in wt.lower()
-                        lost = player_team.lower() in lt.lower()
-                        if not won and not lost:
-                            continue
-                        dedup = (mid, line_label, nk, div)
-                        if dedup in _seen:
-                            continue
-                        _seen.add(dedup)
-
-                        # Two separate uses of "home" that must be computed
-                        # independently, because players_home/away columns are
-                        # often swapped vs the match-level home_team:
-                        #
-                        # • is_home_col  (column position) → partners vs opponents
-                        #   Players on the same column side are partners.
-                        # • is_home_score (actual home_team) → score parsing
-                        #   Scores are always listed as "home_team - away_team"
-                        #   per set, so we need the TRUE home team, not the column.
-                        is_home_col   = (side == "home")
-                        is_home_score = player_team.lower() in (
-                            match.get("home_team", "") or ""
-                        ).lower()
-
-                        if is_home_col:
-                            partners = [n for n in home_names if _nkey(n) != nk]
-                            opps     = away_names if not is_walkover else []
-                        else:
-                            partners = [n for n in away_names if _nkey(n) != nk]
-                            opps     = home_names if not is_walkover else []
-
-                        opp_r_list = []
-                        for o in opps:
-                            op = by_name.get(_nkey(o))
-                            opp_r_list.append(
-                                f"{op.get('rating_30'):.2f}" if op and op.get("rating_30") else ""
-                            )
-
-                        opp_team = lt if won else wt
-                        # Parse score both ways and pick the interpretation
-                        # consistent with the known win/loss outcome.
-                        # This handles inconsistent home_team / score-direction
-                        # alignment across different scorecard entries.
-                        sw_h, sl_h, gw_h, gl_h = _parse_score(score, True)
-                        sw_a, sl_a, gw_a, gl_a = _parse_score(score, False)
-                        if won:
-                            sw, sl, gw, gl = (sw_h, sl_h, gw_h, gl_h) if sw_h >= sl_h else (sw_a, sl_a, gw_a, gl_a)
-                        else:
-                            sw, sl, gw, gl = (sw_h, sl_h, gw_h, gl_h) if sl_h >= sw_h else (sw_a, sl_a, gw_a, gl_a)
-
-                        rec = {
-                            "date": date, "div": div, "line": line_label,
-                            "won": won, "score": score, "wko": is_walkover,
-                            "partners": partners,
-                            "opps": opps, "opp_r": opp_r_list,
-                            "opp_team": opp_team,
-                            "sw": sw, "sl": sl, "gw": gw, "gl": gl,
-                        }
-                        player_histories.setdefault(nk, []).append(rec)
-                        st = player_stats.setdefault(
-                            nk, {"sw30":0,"sl30":0,"gw30":0,"gl30":0,
-                                 "sw35":0,"sl35":0,"gw35":0,"gl35":0,
-                                 "w":0,"l":0,"w30":0,"l30":0,"w35":0,"l35":0}
-                        )
-                        if not is_walkover:
-                            d = div.replace(".", "")
-                            st[f"sw{d}"] += sw; st[f"sl{d}"] += sl
-                            st[f"gw{d}"] += gw; st[f"gl{d}"] += gl
-                            # Accumulate opponent ratings for avg-opp calculation
-                            for _or in opp_r_list:
-                                if _or:
-                                    try:
-                                        st[f"or_sum{d}"] = st.get(f"or_sum{d}", 0.0) + float(_or)
-                                        st[f"or_n{d}"]   = st.get(f"or_n{d}",   0)   + 1
-                                    except ValueError:
-                                        pass
-                            if won: st["w"] += 1
-                            else:   st["l"] += 1
-                            if div == "3.0":
-                                if won: st["w30"] += 1
-                                else:   st["l30"] += 1
-                            else:
-                                if won: st["w35"] += 1
-                                else:   st["l35"] += 1
-
-    # Sort each player's history chronologically
-    for nk in player_histories:
-        player_histories[nk].sort(key=lambda r: _date_sort_key(r["date"]))
+    _pool = all_players_pool if all_players_pool else players
+    player_histories, player_stats = _traverse_match_histories(
+        _pool, ntrp, subflights, other_subflights)
 
     # ── Build HTML rows ───────────────────────────────────────────────────────
     rows = ""
@@ -756,9 +774,16 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         ntrp_r   = p.get("ntrp_rating", "") or ""
         baseline = p.get("dynamic_rating_baseline")
         curr     = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
-        wl       = p.get(f"wl_record_{_sfx}") or "–"
         division = p.get("division", "")
         nk = _nkey(p.get("name", ""))
+
+        pst = player_stats.get(nk, {})
+        _w_computed = pst.get("w", 0)
+        _l_computed = pst.get("l", 0)
+        if _w_computed + _l_computed > 0:
+            wl = f"{_w_computed}-{_l_computed}"
+        else:
+            wl = p.get(f"wl_record_{_sfx}") or "–"
 
         if division.startswith(ntrp):
             sf = division.split()[-1] if division else ""
@@ -846,6 +871,10 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             hist_json = _json.dumps(hist_compact, separators=(",", ":"))
 
         p_state = p.get("state", "") or ""
+        col3_val = p_state if is_sectionals else sf
+        col3_html = (f"<td><span class='sf-pill'>{_esc(col3_val)}</span></td>"
+                     if not is_sectionals
+                     else f"<td class='sortable-cell'>{_esc(col3_val)}</td>")
         rows += (
             f"<tr data-sf='{_esc(sf)}' data-pkey='{_esc(nk)}' data-state='{_esc(p_state)}'"
             f" class='player-row{expand_cls}'"
@@ -854,7 +883,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             + f" onclick=\"toggleHistory(this)\">"
             f"<td class='pname'>{_esc(p.get('name',''))}</td>"
             f"<td>{_esc(_abbrev_team((_sfx and p.get(f'team_{_sfx}')) or p.get('team','') or ''))}</td>"
-            f"<td><span class='sf-pill'>{_esc(sf)}</span></td>"
+            f"{col3_html}"
             f"<td>{_esc(ntrp_r)}</td>"
             f"<td>{_esc(_fmt_rating(baseline))}</td>"
             f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
@@ -881,24 +910,28 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             state_btns += f'<button class="rtab" onclick="filterPlayerState(\'{_esc(st)}\',this)">{_esc(st)}</button>'
         state_btns += '</div>'
 
-    sf_btns = '<button class="rtab on" onclick="filterPlayerSF(\'all\',this)">All</button>'
-    for lbl in sf_labels:
-        sf_btns += f'<button class="rtab" onclick="filterPlayerSF(\'{_esc(lbl)}\',this)">{_esc(lbl)}</button>'
+    sf_section = ""
+    if not is_sectionals:
+        sf_btns = '<button class="rtab on" onclick="filterPlayerSF(\'all\',this)">All</button>'
+        for lbl in sf_labels:
+            sf_btns += f'<button class="rtab" onclick="filterPlayerSF(\'{_esc(lbl)}\',this)">{_esc(lbl)}</button>'
+        sf_section = f'<div class="sf-filter-btns" id="sf-filter-btns">{sf_btns}</div>'
+
+    col3_hdr = ('<th class="sortable" onclick="sortAP(2)">State ↕</th>'
+                if is_sectionals else '<th>SF</th>')
 
     return f"""
 <div class="ap-controls">
   <input type="text" id="player-search" placeholder="Filter by name or team…"
          oninput="filterPlayers()">
   {state_btns}
-  <div class="sf-filter-btns" id="sf-filter-btns">
-    {sf_btns}
-  </div>
+  {sf_section}
 </div>
 <table id="ap-table">
   <thead><tr>
     <th class="sortable" onclick="sortAP(0)">Player ↕</th>
     <th class="sortable" onclick="sortAP(1)">Team ↕</th>
-    <th>SF</th>
+    {col3_hdr}
     <th>NTRP</th>
     <th class="sortable" onclick="sortAP(4)">Base ↕</th>
     <th class="sortable" onclick="sortAP(5)">New ↕</th>
@@ -1521,8 +1554,10 @@ function filterPlayerState(st, btn) {
   btn.classList.add('on');
   applyPlayerFilters();
 }
+var _filterTimer;
 function filterPlayers() {
-  applyPlayerFilters();
+  clearTimeout(_filterTimer);
+  _filterTimer = setTimeout(applyPlayerFilters, 120);
 }
 function toggleHistory(tr) {
   if (!tr.classList.contains('expandable')) return;
@@ -1573,17 +1608,26 @@ function toggleHistory(tr) {
 }
 function applyPlayerFilters() {
   var q = (document.getElementById('player-search') || {value:''}).value.toLowerCase();
-  document.querySelectorAll('#ap-table tbody tr.player-row').forEach(tr => {
+  var rows = document.querySelectorAll('#ap-table tbody tr.player-row');
+  for (var i = 0; i < rows.length; i++) {
+    var tr = rows[i];
     var sfMatch = _apSF === 'all' || tr.dataset.sf === _apSF;
     var stMatch = _apState === 'all' || tr.dataset.state === _apState;
-    var textMatch = !q || tr.innerText.toLowerCase().includes(q);
+    var textMatch = true;
+    if (q) {
+      if (!tr.dataset.search) {
+        var c = tr.cells;
+        tr.dataset.search = ((c[0]||{}).textContent + ' ' + (c[1]||{}).textContent).toLowerCase();
+      }
+      textMatch = tr.dataset.search.includes(q);
+    }
     var show = sfMatch && stMatch && textMatch;
     tr.style.display = show ? '' : 'none';
     var next = tr.nextElementSibling;
     if (next && next.classList.contains('history-row')) {
       if (!show) next.style.display = 'none';
     }
-  });
+  }
 }
 var _sortDir = {};
 function _sortTable(tbodyOrSelector, col, dirKey) {
@@ -2804,6 +2848,85 @@ def build_dashboards_legacy() -> dict:
 SECTIONALS_QUALIFIED_JSON = DATA_DIR / "sectionals_qualified.json"
 
 
+def _build_sectionals_rosters(
+    qualified_players: list[dict],
+    teams: list[dict],
+    all_subflights_30: list[dict],
+    ntrp: str,
+    player_stats: dict[str, dict] | None = None,
+) -> str:
+    _sfx = ntrp.replace(".", "") if ntrp else ""
+
+    # Group players by state; each state has one qualifying team
+    by_state: dict[str, list] = {}
+    state_team_name: dict[str, str] = {}
+    for t in teams:
+        state_team_name[t["state"]] = t["team"]
+    for p in qualified_players:
+        st = p.get("state", "") or "?"
+        by_state.setdefault(st, []).append(p)
+
+    state_btns = ""
+    rpanes = ""
+    first = True
+
+    for st in sorted(by_state.keys()):
+        active = " on" if first else ""
+        tid = f"sect-ro-{_slug(st)}"
+        tname = state_team_name.get(st, st)
+        state_btns += (
+            f'<button class="rtab{active}" '
+            f'onclick="sr(\'{tid}\',this,\'sect-state-tabs\')">'
+            f'{_esc(st)}</button>\n'
+        )
+
+        roster = sorted(
+            by_state[st],
+            key=lambda p: -(p.get(f"rating_{_sfx}") or
+                            p.get("current_division_rating") or
+                            p.get("dynamic_rating_baseline") or 0)
+        )
+        rows = ""
+        for p in roster:
+            ntrp_r = p.get("ntrp_rating", "") or ""
+            baseline = p.get("dynamic_rating_baseline")
+            curr = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
+            nk = _nkey(p.get("name", ""))
+            pst = (player_stats or {}).get(nk, {})
+            _w = pst.get("w", 0)
+            _l = pst.get("l", 0)
+            wl = f"{_w}-{_l}" if _w + _l > 0 else (p.get(f"wl_record_{_sfx}") or "–")
+            lines = p.get(f"lines_played_{_sfx}") or "–"
+            rows += (
+                f"<tr>"
+                f"<td>{_esc(p.get('name',''))}</td>"
+                f"<td>{_esc(ntrp_r)}</td>"
+                f"<td>{_esc(_fmt_rating(baseline))}</td>"
+                f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
+                f"<td style='white-space:nowrap'>{_esc(str(wl))}</td>"
+                f"<td>{_lines_pills_html(lines)}</td>"
+                f"</tr>\n"
+            )
+        if not rows:
+            rows = "<tr><td colspan='6' class='muted'>No players yet.</td></tr>"
+
+        rpanes += (
+            f'<div id="{tid}" class="rpane{active}">'
+            f'<p class="sec-title">{_esc(tname)} &mdash; {_esc(st)}</p>'
+            f'<table><thead><tr>'
+            f'<th>Player</th><th>NTRP</th>'
+            f'<th>Base</th><th>New</th>'
+            f'<th>W–L</th><th>Lines</th>'
+            f'</tr></thead><tbody>{rows}</tbody></table></div>\n'
+        )
+        first = False
+
+    return (
+        f'<div class="rtabs" id="sect-state-tabs">{state_btns}</div>'
+        + rpanes
+    )
+
+
 def build_sectionals_page() -> str | None:
     """
     Build sectionals_30.html — a comparison dashboard showing only
@@ -2842,13 +2965,20 @@ def build_sectionals_page() -> str | None:
         for sf in s35.get("subflights", []):
             all_subflights_35.append(sf)
 
-    # Filter players to those on qualified teams
+    # Filter players to those on qualified teams in the 3.0 division
+    # (team names like "DTC #3" exist across multiple NTRP levels)
     qualified_players = []
     for p in players:
         st = p.get("state", "")
-        team_30 = (p.get("team_30") or p.get("team") or "").lower().strip()
+        team_30 = (p.get("team_30") or "").lower().strip()
+        div = p.get("division", "")
+        has_30_stats = bool(p.get("wl_record_30") or p.get("lines_played_30"))
         if st in qualified_teams_by_state:
-            if team_30 in qualified_teams_by_state[st]:
+            if team_30 and team_30 in qualified_teams_by_state[st]:
+                qualified_players.append(p)
+            elif div.startswith("3.0") and (p.get("team") or "").lower().strip() in qualified_teams_by_state[st]:
+                qualified_players.append(p)
+            elif has_30_stats and (p.get("team") or "").lower().strip() in qualified_teams_by_state[st]:
                 qualified_players.append(p)
 
     if not qualified_players:
@@ -2860,12 +2990,29 @@ def build_sectionals_page() -> str | None:
 
     # Build the HTML using existing tab builders
     ntrp = "3.0"
-    players_html = _players_tab(qualified_players, ntrp, all_subflights_30, all_subflights_35)
+    _sfx = "30"
 
-    # Build matchup explorer content (reuse the same function's internal logic)
-    # For now, use the All Players tab as the primary view
+    # Compute traversal-based W-L for all players (used by both tabs)
+    _, sect_player_stats = _traverse_match_histories(
+        players, ntrp, all_subflights_30, all_subflights_35)
+
+    players_html = _players_tab(qualified_players, ntrp, all_subflights_30,
+                                all_subflights_35, is_sectionals=True,
+                                all_players_pool=players)
+
+    # Build team rosters tab grouped by state
+    rosters_html = _build_sectionals_rosters(
+        qualified_players, teams, all_subflights_30, ntrp,
+        player_stats=sect_player_stats,
+    )
+
+    # Build match results tab
+    results_html = _results_tab(all_subflights_30, qualified_players, sfx=_sfx)
+
     tab_defs = [
+        ("rosters", "team rosters", rosters_html),
         ("allplayers", "all players", players_html),
+        ("allresults", "match results", results_html),
     ]
 
     tab_btns = "".join(

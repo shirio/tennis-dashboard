@@ -446,8 +446,10 @@ function filterPlayerState(st, btn) {
   btn.classList.add('on');
   applyPlayerFilters();
 }
+var _filterTimer;
 function filterPlayers() {
-  applyPlayerFilters();
+  clearTimeout(_filterTimer);
+  _filterTimer = setTimeout(applyPlayerFilters, 120);
 }
 function toggleHistory(tr) {
   if (!tr.classList.contains('expandable')) return;
@@ -498,17 +500,26 @@ function toggleHistory(tr) {
 }
 function applyPlayerFilters() {
   var q = (document.getElementById('player-search') || {value:''}).value.toLowerCase();
-  document.querySelectorAll('#ap-table tbody tr.player-row').forEach(tr => {
+  var rows = document.querySelectorAll('#ap-table tbody tr.player-row');
+  for (var i = 0; i < rows.length; i++) {
+    var tr = rows[i];
     var sfMatch = _apSF === 'all' || tr.dataset.sf === _apSF;
     var stMatch = _apState === 'all' || tr.dataset.state === _apState;
-    var textMatch = !q || tr.innerText.toLowerCase().includes(q);
+    var textMatch = true;
+    if (q) {
+      if (!tr.dataset.search) {
+        var c = tr.cells;
+        tr.dataset.search = ((c[0]||{}).textContent + ' ' + (c[1]||{}).textContent).toLowerCase();
+      }
+      textMatch = tr.dataset.search.includes(q);
+    }
     var show = sfMatch && stMatch && textMatch;
     tr.style.display = show ? '' : 'none';
     var next = tr.nextElementSibling;
     if (next && next.classList.contains('history-row')) {
       if (!show) next.style.display = 'none';
     }
-  });
+  }
 }
 var _sortDir = {};
 function _sortTable(tbodyOrSelector, col, dirKey) {
