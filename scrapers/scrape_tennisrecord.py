@@ -20,7 +20,7 @@ import json
 import re
 import time
 from pathlib import Path
-from urllib.parse import urlencode, urlparse, parse_qs
+from urllib.parse import urlencode, urlparse, parse_qs, quote
 
 import requests
 from bs4 import BeautifulSoup
@@ -171,6 +171,84 @@ def fetch_ratings_table(url: str | None = None) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
+# Step 1b – search for a player by name and get their s_id + NTRP + dynamic
+# ---------------------------------------------------------------------------
+
+_search_session = None
+
+def search_player(name: str, state_hint: str = "") -> dict | None:
+    """
+    Search tennisrecord.com for a player by name (POST form) and return their info.
+    Returns {name, s_id, ntrp_rating, profile_url} or None.
+    """
+    global _search_session
+    search_url = f"{BASE_URL}/adult/search.aspx"
+
+    try:
+        if _search_session is None:
+            _search_session = requests.Session()
+
+        resp = _search_session.get(search_url, headers=HEADERS, timeout=15)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+
+        form_data = {}
+        for inp in soup.find_all("input"):
+            n = inp.get("name", "")
+            if n:
+                form_data[n] = inp.get("value", "")
+
+        parts = name.strip().rsplit(" ", 1)
+        form_data["firstname"] = parts[0] if len(parts) > 1 else ""
+        form_data["lastname"] = parts[-1]
+
+        resp2 = _search_session.post(search_url, data=form_data, headers=HEADERS, timeout=15)
+        resp2.raise_for_status()
+        soup2 = BeautifulSoup(resp2.text, "html.parser")
+    except Exception as e:
+        print(f"    [warn] search failed for {name}: {e}")
+        return None
+
+    candidates = []
+    for row in soup2.find_all("tr"):
+        link = row.find("a")
+        if not link or "profile.aspx" not in link.get("href", ""):
+            continue
+        rname = link.get_text(strip=True)
+        if _norm(rname) != _norm(name):
+            continue
+
+        href = link["href"]
+        qs = parse_qs(urlparse(href).query)
+        s_id = qs["s"][0] if "s" in qs else None
+
+        cells = [c.get_text(strip=True) for c in row.find_all("td")]
+        location = cells[1] if len(cells) > 1 else ""
+        ntrp = cells[3] if len(cells) > 3 else ""
+
+        candidates.append({
+            "name": rname,
+            "s_id": s_id,
+            "ntrp_rating": ntrp,
+            "location": location,
+            "profile_url": f"{BASE_URL}{href}",
+        })
+
+    if not candidates:
+        return None
+
+    if state_hint and len(candidates) > 1:
+        st = state_hint.upper()
+        state_matches = [c for c in candidates
+                         if f", {st}" in c.get("location", "").upper()
+                         or state_hint.lower() in c.get("location", "").lower()]
+        if state_matches:
+            return state_matches[0]
+
+    return candidates[0]
+
+
+# ---------------------------------------------------------------------------
 # Step 2 – fetch a profile page and extract division + team info
 # ---------------------------------------------------------------------------
 
@@ -299,10 +377,11 @@ def update_players(records: list[dict], state_code: str | None = None):
         if chosen:
             if chosen.get("ntrp_rating"):
                 p["ntrp_rating"] = chosen["ntrp_rating"]
-            # NEVER overwrite an existing baseline — it is a frozen pre-2026 value.
-            # Only set it if the player has no baseline yet (first-time lookup).
-            if chosen.get("dynamic_rating") is not None and p.get("dynamic_rating_baseline") is None:
-                p["dynamic_rating_baseline"] = chosen["dynamic_rating"]
+            if chosen.get("dynamic_rating") is not None:
+                existing = p.get("dynamic_rating_baseline")
+                _is_default = existing is None or existing in (2.10, 2.60, 3.10, 3.60, 3.0)
+                if _is_default:
+                    p["dynamic_rating_baseline"] = chosen["dynamic_rating"]
             updated += 1
 
     _save_json(PLAYERS_JSON, players)
@@ -317,13 +396,105 @@ def update_players(records: list[dict], state_code: str | None = None):
 # Main
 # ---------------------------------------------------------------------------
 
+def search_and_update_baselines(state_code: str | None = None,
+                                 only_sectionals: bool = False):
+    """
+    For players still pending tennisrecord lookup, search by name to find
+    their s_id, then scrape match history for pre-2026 baseline.
+    """
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+    from scrape_baselines import get_baseline
+
+    players = _load_json(PLAYERS_JSON, [])
+
+    if only_sectionals:
+        qualified = _load_json(DATA_DIR / "sectionals_qualified.json", {})
+        q_teams = set()
+        for t in qualified.get("qualified_teams", []):
+            q_teams.add(t["team"].lower().strip())
+        targets = [p for p in players
+                   if p.get("pending_tennisrecord_lookup")
+                   and ((p.get("team_30") or "").lower().strip() in q_teams
+                        or (p.get("team") or "").lower().strip() in q_teams)]
+    elif state_code:
+        targets = [p for p in players
+                   if p.get("state") == state_code
+                   and p.get("pending_tennisrecord_lookup")]
+    else:
+        targets = [p for p in players if p.get("pending_tennisrecord_lookup")]
+
+    print(f"=== Search + baseline scrape for {len(targets)} players ===")
+
+    updated = 0
+    not_found = 0
+    no_baseline = 0
+
+    for i, p in enumerate(targets):
+        name = p.get("name", "")
+        state = p.get("state", "")
+        if not name:
+            continue
+
+        time.sleep(DELAY)
+        result = search_player(name, state)
+
+        if not result:
+            not_found += 1
+            if (i + 1) % 10 == 0:
+                print(f"  [{i+1}/{len(targets)}] {updated} updated, {not_found} not found")
+            continue
+
+        s_id = result.get("s_id")
+        if s_id:
+            p["tennisrecord_id"] = s_id
+        p["profile_url"] = result.get("profile_url", "")
+
+        if result.get("ntrp_rating"):
+            p["ntrp_rating"] = result["ntrp_rating"]
+
+        time.sleep(DELAY)
+        date_str, baseline, err = get_baseline(name, s_id)
+
+        if baseline is not None:
+            p["dynamic_rating_baseline"] = baseline
+            p.pop("pending_tennisrecord_lookup", None)
+            updated += 1
+        elif result.get("dynamic_rating"):
+            existing = p.get("dynamic_rating_baseline")
+            _is_default = existing is None or existing in (2.10, 2.60, 3.10, 3.60, 3.0)
+            if _is_default:
+                p["dynamic_rating_baseline"] = result["dynamic_rating"]
+            p.pop("pending_tennisrecord_lookup", None)
+            updated += 1
+            no_baseline += 1
+        else:
+            no_baseline += 1
+
+        if (i + 1) % 10 == 0:
+            print(f"  [{i+1}/{len(targets)}] {updated} updated, {not_found} not found, {no_baseline} no baseline")
+            _save_json(PLAYERS_JSON, players)
+
+    _save_json(PLAYERS_JSON, players)
+    print(f"  Done: {updated} updated, {not_found} not found, {no_baseline} no baseline")
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Scrape tennisrecord.com ratings")
     parser.add_argument("--state", default="NV", help="State code (NV, CO, UT, ID)")
+    parser.add_argument("--search-baselines", action="store_true",
+                        help="Search + match history baseline scrape for pending players")
+    parser.add_argument("--sectionals-only", action="store_true",
+                        help="Only process sectionals-qualified players")
     args = parser.parse_args()
 
     state_code = args.state.upper()
+
+    if args.search_baselines:
+        search_and_update_baselines(state_code, only_sectionals=args.sectionals_only)
+        return
+
     cfg = _get_state_config(state_code)
 
     section = cfg["_section"]
