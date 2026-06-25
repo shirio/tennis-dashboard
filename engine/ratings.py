@@ -30,8 +30,40 @@ from typing import Optional
 DATA_DIR = Path("data")
 PLAYERS_JSON = DATA_DIR / "players.json"
 MATCHES_JSON = DATA_DIR / "matches_all_players.json"
+REGIONS_JSON = DATA_DIR / "regions.json"
+
+# Legacy single-state paths (kept for backward compat; symlinks to standings_nv_*.json)
 STANDINGS_30 = DATA_DIR / "standings_women_30.json"
 STANDINGS_35 = DATA_DIR / "standings_women_35.json"
+
+
+def _discover_standings_files() -> list[tuple[Path, str]]:
+    """
+    Discover all standings + districts files across all states.
+    Returns [(path, div_suffix), ...] e.g. [(standings_nv_30.json, "30"), ...].
+    """
+    files = []
+    regions = json.loads(REGIONS_JSON.read_text()) if REGIONS_JSON.exists() else {}
+    states = list(regions.get("states", {}).keys())
+    if not states:
+        # Fallback to legacy files
+        return [(STANDINGS_30, "30"), (STANDINGS_35, "35")]
+
+    for st in states:
+        st_lower = st.lower()
+        for ntrp_suffix in ["30", "35"]:
+            # Regular season standings
+            standings_path = DATA_DIR / f"standings_{st_lower}_{ntrp_suffix}.json"
+            if standings_path.exists():
+                files.append((standings_path, ntrp_suffix))
+            # Districts
+            districts_path = DATA_DIR / f"districts_{st_lower}_{ntrp_suffix}.json"
+            if districts_path.exists():
+                files.append((districts_path, ntrp_suffix))
+
+    if not files:
+        return [(STANDINGS_30, "30"), (STANDINGS_35, "35")]
+    return files
 
 
 # ---------------------------------------------------------------------------
@@ -1705,11 +1737,9 @@ def run_ratings() -> RatingsSummary:
         if k:
             players_by_name[k] = p
 
-    # Collect per-player match records from both divisions
-    standings_files = [
-        (STANDINGS_30, "30"),
-        (STANDINGS_35, "35"),
-    ]
+    # Collect per-player match records from all states and divisions
+    standings_files = _discover_standings_files()
+    print(f"  [ratings] Loading {len(standings_files)} standings/districts files")
     all_records = _collect_match_records(standings_files, players_by_name)
 
     # Collect unique court events for sequential global rating
@@ -2030,7 +2060,7 @@ def run_ratings_iterative(
         if k:
             players_by_name[k] = p
 
-    standings_files = [(STANDINGS_30, "30"), (STANDINGS_35, "35")]
+    standings_files = _discover_standings_files()
 
     # Count weeks per division (same as run_ratings)
     weeks_by_div: dict[str, int] = {}

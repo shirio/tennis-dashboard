@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Intermountain Sectionals 2026 – 3.0 Women Scouting</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+       padding: 1rem; background: #fff; color: #222; font-size: 13px; }
+/* Cards */
+.cards-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
+             gap: 10px; margin-bottom: 16px; }
+.mcard { background: #f5f4f0; border-radius: 8px; padding: .75rem 1rem; }
+.mcard-label { font-size: 11px; color: #888; margin-bottom: 3px; }
+.mcard-val { font-size: 20px; font-weight: 600; }
+.mcard-sub { font-size: 11px; color: #888; margin-top: 2px; }
+/* Main tabs */
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.tab { padding: 6px 14px; border: 1px solid #ccc; border-radius: 20px;
+       font-size: 13px; background: transparent; color: #666;
+       cursor: pointer; font-weight: 500; }
+.tab.on { background: #eee; color: #222; font-weight: 600; border-color: #999; }
+.pane { display: none; } .pane.on { display: block; }
+/* Sub-tabs */
+.rtabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.rtabs.scrollable { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+.re-rating-toggle { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+.re-rtog-label { font-size: 11px; color: #888; }
+.rtab { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px;
+        font-size: 11px; background: transparent; color: #666; cursor: pointer;
+        white-space: nowrap; }
+.rtab.on { background: #eee; color: #222; font-weight: 600; }
+.rpane { display: none; } .rpane.on { display: block; }
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { text-align: left; padding: 5px 6px; color: #888; font-weight: 600;
+     border-bottom: 1px solid #eee; font-size: 11px; }
+th.sortable { cursor: pointer; }
+th.sortable:hover { color: #333; }
+td { padding: 5px 6px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+.rank { color: #aaa; width: 1.5rem; }
+.tname { font-weight: 500; max-width: 140px; overflow: hidden; text-overflow: ellipsis; }
+.pname { font-weight: 500; }
+#ap-table td { vertical-align: middle; }
+.st-table td:nth-child(n+4):nth-child(-n+6) { white-space: nowrap; font-size: 11px; }
+/* Courts/Sets/Games split sub-columns */
+.st-w { text-align: right; padding-right: 2px; padding-left: 6px; white-space: nowrap; font-size: 11px; width: 1.6rem; }
+.st-l { text-align: right; padding-left: 2px; padding-right: 10px; white-space: nowrap; font-size: 11px; color: #aaa; width: 1.6rem; }
+.st-table thead th[colspan] { text-align: center; }
+.rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
+.muted { color: #aaa; font-size: 11px; }
+/* Badges */
+.badge { display: inline-block; padding: 1px 7px; border-radius: 10px;
+         font-size: 11px; font-weight: 600; white-space: nowrap; }
+.bw { background: #EAF3DE; color: #27500A; }
+.bl { background: #FCEBEB; color: #791F1F; }
+.bn { background: #F1EFE8; color: #444; }
+/* Ratings */
+.ru { color: #27500A; font-weight: 600; }
+.rd { color: #791F1F; }
+.rn { color: #888; }
+/* SF pill */
+.sf-pill { display: inline-block; padding: 0 5px; border-radius: 8px;
+           font-size: 10px; font-weight: 600; background: #e8edf5;
+           color: #3a5a8c; vertical-align: middle; }
+/* All-players table column constraints */
+#ap-table th { white-space: nowrap; }
+#ap-table td:nth-child(3), #ap-table th:nth-child(3) { width: 26px; text-align: center; }
+/* All-players history expansion */
+.player-row.expandable { cursor: pointer; }
+.player-row.expandable:hover { background: #f5f7fa; }
+.player-row.expanded > td:first-child::before { content: "▾ "; color: #888; font-size: 10px; }
+.player-row:not(.expanded) > td:first-child::before { content: "▸ "; color: #ccc; font-size: 10px; }
+.player-row:not(.expandable) > td:first-child::before { content: ""; }
+.history-row td { background: #fafbfd; padding: 0; }
+.history-wrap { padding: 8px 12px 12px 24px; }
+.history-summary { font-size: 11px !important; font-weight: 600; color: #555; margin-bottom: 6px;
+                   -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.history-table { font-size: 11px; width: auto; min-width: 60%; }
+.history-table th { font-size: 10px; padding: 3px 8px; }
+.history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+.history-table tr:last-child td { border-bottom: none; }
+/* Division pills in history */
+.dp { display: inline-block; padding: 1px 6px; border-radius: 8px;
+      font-size: 10px; font-weight: 700; white-space: nowrap; }
+.dp30 { background: #ddeeff; color: #1a5a9a; }
+.dp35 { background: #fff0d8; color: #8a5200; }
+/* W/L in history */
+.hw { color: #27500A; font-weight: 700; }
+.hl { color: #791F1F; font-weight: 700; }
+.hr { color: #aaa; font-style: normal; font-size: 10px; }
+/* Search + SF filter row */
+.ap-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.ap-controls input { flex: 1; min-width: 160px; max-width: 320px; padding: 5px 10px;
+  border: 1px solid #ddd; border-radius: 20px; font-size: 12px; }
+.sf-filter-btns { display: flex; gap: 4px; }
+/* Match blocks */
+.mblock { border: 1px solid #eee; border-radius: 8px;
+          padding: .75rem 1rem; margin-bottom: 10px; }
+.mhdr { display: flex; justify-content: space-between;
+        align-items: center; margin-bottom: 4px; }
+.mtitle { font-size: 13px; font-weight: 600; flex: 1; }
+.mweek-lbl { font-size: 11px; font-weight: 700; color: #888;
+             letter-spacing: .04em; text-align: center; flex: 0 0 auto;
+             padding: 0 8px; }
+.mdate { font-size: 11px; color: #888; margin-bottom: 6px; }
+.line-lbl { font-size: 10px; font-weight: 600; color: #aaa;
+            text-transform: uppercase; letter-spacing: .05em; margin: 8px 0 3px; }
+.line-row { display: grid; grid-template-columns: 1fr auto 1fr;
+            gap: 2px 8px; font-size: 12px; align-items: center; padding: 2px 0; }
+.lh { color: #aaa; } .lh.w { color: #27500A; font-weight: 600; }
+.la { color: #aaa; text-align: right; } .la.w { color: #27500A; font-weight: 600; }
+.ls { text-align: center; font-weight: 600; font-size: 11px; color: #aaa; }
+/* Clickable player names in results tab */
+.pname { cursor: pointer; border-radius: 3px; padding: 0 2px; transition: background .1s; }
+.pname:hover { background: #f0f4ff; }
+.pname.phi { background: #fff3b0; outline: 1px solid #e6c800; }
+.prating { font-size: 10px; color: #aaa; font-style: normal; font-weight: 400; margin-left: 2px; }
+.lh.w .prating, .la.w .prating { color: #5a8a2a; }
+/* Section title */
+.sec-title { font-size: 11px; font-weight: 600; color: #888;
+             text-transform: uppercase; letter-spacing: .07em; margin: 0 0 8px; }
+/* Standings subflight header */
+.sf-header { font-size: 12px; font-weight: 700; color: #555;
+             text-transform: uppercase; letter-spacing: .06em;
+             margin: 18px 0 6px; padding-bottom: 4px;
+             border-bottom: 2px solid #e8e8e8; }
+.sf-header:first-child { margin-top: 0; }
+.st-table { margin-bottom: 6px; }
+/* Validation warning */
+.warn-box { background: #fffbe6; border: 1px solid #f0c040;
+            border-radius: 6px; padding: .6rem .9rem;
+            font-size: 12px; margin-bottom: 10px; }
+.warn-box ul { margin: 4px 0 0 1.2em; }
+.warn-box li { margin: 2px 0; }
+/* Line court pills */
+.line-pill { display: inline-block; padding: 1px 6px; border-radius: 8px;
+             font-size: 10px; font-weight: 700; margin-right: 3px;
+             letter-spacing: .02em; }
+.pill-s1 { background: #FDEBD0; color: #A04000; }
+.pill-s2 { background: #FAD7A0; color: #784212; }
+.pill-s3 { background: #F9E79F; color: #7D6608; }
+.pill-d1 { background: #D6EAF8; color: #1A5276; }
+.pill-d2 { background: #D5F5E3; color: #1E8449; }
+.pill-d3 { background: #E8DAEF; color: #6C3483; }
+/* Line label in line-row */
+.lr-lbl { display: inline-block; font-size: 10px; font-weight: 700;
+          color: #aaa; min-width: 20px; }
+/* Standings clickable team / record links */
+.team-link { color: inherit; text-decoration: none; }
+.team-link:hover { color: #1a5276; text-decoration: underline; cursor: pointer; }
+/* Cross-dashboard link */
+.top-bar { text-align: right; margin-bottom: 8px; }
+.cross-link { font-size: 12px; color: #1a5276; text-decoration: none; font-weight: 500; }
+.cross-link:hover { text-decoration: underline; }
+/* Row hover highlight */
+.st-table tbody tr:hover, .rpane table tbody tr:hover, #ap-table tbody tr:hover { background: #f5f7fa; }
+/* Global diff column */
+.gdiff-up   { font-size: 10px; color: #5a8a2a; font-weight: 500; }
+.gdiff-dn   { font-size: 10px; color: #a04000; font-weight: 500; }
+.gdiff-zero { font-size: 10px; color: #999; }
+/* Notes column */
+.notes-cell { font-size: 10px; color: #555; line-height: 1.35; min-width: 180px; max-width: 320px; }
+/* Walkover/default win badge in roster notes */
+.default-win-badge { display: inline-block; font-size: 9px; color: #888; background: #f3f3f3;
+  border: 1px solid #ddd; border-radius: 3px; padding: 1px 4px; margin-top: 2px; font-style: italic; }
+/* Default marker in results tab */
+.default-marker { color: #999; font-style: italic; font-size: 11px; }
+/* Subflight summary in standings */
+.sf-summary { font-size: 12px; color: #444; line-height: 1.55; margin: 0 0 12px 0;
+              padding: 10px 12px; background: #f9f9f9; border-left: 3px solid #d0d0d0; border-radius: 4px; }
+/* Analysis + Predictions tab */
+.insight { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 12px; line-height: 1.6; }
+.insight:last-child { border-bottom: none; }
+.itag { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 6px;
+        border-radius: 8px; margin-right: 5px; background: #E6F1FB; color: #0C447C; }
+.itag.you { background: #EAF3DE; color: #27500A; }
+.itag.warn { background: #FAEEDA; color: #633806; }
+.itag.opp { background: #EEEDFE; color: #3C3489; }
+</style>
+</head>
+<body>
+
+<div class="top-bar"><a href="index.html" class="cross-link">← All States</a></div>
+
+<div class="cards-row">
+  <div class="mcard">
+    <div class="mcard-label">competition</div>
+    <div class="mcard-val">Sectionals</div>
+    <div class="mcard-sub">Intermountain · 2026</div>
+  </div>
+  <div class="mcard">
+    <div class="mcard-label">states</div>
+    <div class="mcard-val">CO, NV, UT</div>
+    <div class="mcard-sub">3 qualifying teams</div>
+  </div>
+  <div class="mcard">
+    <div class="mcard-label">players</div>
+    <div class="mcard-val">59</div>
+    <div class="mcard-sub">across all qualified rosters</div>
+  </div>
+</div>
+
+<div class="tabs"><button class="tab on" onclick="sw('allplayers',this)">all players</button>
+</div>
+
+<div id="allplayers" class="pane on">
+<div class="ap-controls">
+  <input type="text" id="player-search" placeholder="Filter by name or team…"
+         oninput="filterPlayers()">
+  <div class="sf-filter-btns" id="state-filter-btns"><button class="rtab on" onclick="filterPlayerState('all',this)">All States</button><button class="rtab" onclick="filterPlayerState('CO',this)">CO</button><button class="rtab" onclick="filterPlayerState('NV',this)">NV</button><button class="rtab" onclick="filterPlayerState('UT',this)">UT</button></div>
+  <div class="sf-filter-btns" id="sf-filter-btns">
+    <button class="rtab on" onclick="filterPlayerSF('all',this)">All</button><button class="rtab" onclick="filterPlayerSF('Championships',this)">Championships</button>
+  </div>
+</div>
+<table id="ap-table">
+  <thead><tr>
+    <th class="sortable" onclick="sortAP(0)">Player ↕</th>
+    <th class="sortable" onclick="sortAP(1)">Team ↕</th>
+    <th>SF</th>
+    <th>NTRP</th>
+    <th class="sortable" onclick="sortAP(4)">Base ↕</th>
+    <th class="sortable" onclick="sortAP(5)">New ↕</th>
+    <th class="sortable" onclick="sortAP(6)">Diff ↕</th>
+    <th class="sortable" onclick="sortAP(7)">W–L ↕</th>
+    <th class="sortable" onclick="sortAP(8)">Sets ↕</th>
+    <th class="sortable" onclick="sortAP(9)">Games ↕</th>
+    <th class="sortable" onclick="sortAP(10)">Avg Opp ↕</th>
+  </tr></thead>
+  <tbody><tr data-sf='A' data-pkey='shi l oskooi' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"30","ln":"D1","w":true,"sc":"7-5 5-7 1-0","pt":["Darian McCauley"],"op":["Tina Shirey","Irene Frazier"],"ot":"DTC #2"},{"dt":"3/21/2026","dv":"30","ln":"S2","w":true,"sc":"6-7 6-1 1-0","op":["Gretchen Wills"],"ot":"SoHi"},{"dt":"3/28/2026","dv":"30","ln":"D2","w":true,"sc":"6-4 6-4","pt":["Darian McCauley"],"op":["Golssa Moridi","Elizabeth Pierce"],"ot":"Red Rock"},{"dt":"4/11/2026","dv":"30","ln":"D1","w":true,"sc":"6-1 6-0","pt":["Darian McCauley"],"op":["Mary Ann Apone","Hee Park"],"ot":"LTF"},{"dt":"4/11/2026","dv":"35","ln":"S2","w":true,"sc":"4-6 6-2 1-0","op":["Lisa Gaughan"],"ot":"TPC"},{"dt":"4/18/2026","dv":"30","ln":"D1","w":true,"sc":"6-2 6-3","pt":["Darian McCauley"],"op":["Carrie Maddux","Therese Laudenslager"],"ot":"Anthem"},{"dt":"5/2/2026","dv":"30","ln":"D1","w":true,"sc":"6-2 6-4","pt":["Emmy Perez"],"op":["Tina Nathalia","Kim Springer"],"ot":"Summerlin"},{"dt":"5/9/2026","dv":"30","ln":"S2","w":true,"sc":"6-0 6-0","op":["N","A"],"ot":"DTC #2"},{"dt":"5/9/2026","dv":"35","ln":"S1","w":false,"sc":"6-3 6-2","op":["Anne Kellogg"],"ot":"Red Rock #2"},{"dt":"5/16/2026","dv":"35","ln":"S1","w":true,"sc":"6-1 6-0","op":["Vinne Chen"],"ot":"S. Trail #1"},{"dt":"5/30/2026","dv":"30","ln":"S1","w":true,"sc":"6-0 6-2","op":["Maryam Kaveh"],"ot":"Red Rock"},{"dt":"5/30/2026","dv":"35","ln":"S1","w":false,"sc":"7-5 6-3","op":["Valerie Witherspoon"],"or":["3.39"],"ot":"DTC #3"}]' data-combined='10–2 overall  (8–0 in 3.0, 2–2 in 3.5)  ·  20–7 sets  134–76 games' onclick="toggleHistory(this)"><td class='pname'>Shi L Oskooi</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>2.74</td><td><span class="ru">3.20</span></td><td data-sort='0.4621'><span class="gdiff-up">+0.46</span></td><td data-sort='999' style='white-space:nowrap'>10-1</td><td data-sort='1598' style='white-space:nowrap'>16–2</td><td data-sort='9758' style='white-space:nowrap'>98–42</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='prexy tamayo' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/28/2026","dv":"30","ln":"D1","w":false,"sc":"4-6 6-3 1-0","pt":["Emmy Perez"],"op":["Brenda Cambridge","Rhianna Schwartz"],"ot":"Red Rock"},{"dt":"3/28/2026","dv":"35","ln":"S1","w":false,"sc":"7-6 2-6 1-0","op":["CHRISTINE McNair"],"ot":"Anthem"},{"dt":"4/25/2026","dv":"30","ln":"D2","w":false,"sc":"6-3 4-6 0-1","pt":["Kellie Woods"],"op":["Debbie D&apos;Amato","Meghan Arnold"],"ot":"TPC"},{"dt":"4/25/2026","dv":"35","ln":"D1","w":false,"sc":"4-6 6-4 1-0","pt":["Melissa Ruediger"],"op":["Joann Komanowski","Sally Ryba"],"ot":"LTF"},{"dt":"5/2/2026","dv":"30","ln":"S2","w":true,"sc":"6-3 6-3","op":["Ani Zargaryan"],"ot":"Summerlin"},{"dt":"5/2/2026","dv":"35","ln":"S2","w":false,"sc":"3-6 6-4 1-0","op":["Marlaina Harris"],"ot":"DTC #2"},{"dt":"5/9/2026","dv":"35","ln":"D3","w":true,"sc":"3-6 6-3 1-0","pt":["Jennifer Dalby"],"op":["Andra Starr Scano","Heidi Thornhill"],"ot":"Anthem"},{"dt":"5/16/2026","dv":"30","ln":"S2","w":true,"sc":"6-0 6-0","op":["Christa Shiklanian"],"ot":"SoHi"},{"dt":"5/30/2026","dv":"35","ln":"S2","w":false,"sc":"6-3 1-6 1-0","op":["Kelly Kedge"],"ot":"Summerlin"}]' data-combined='3–6 overall  (2–2 in 3.0, 1–4 in 3.5)  ·  12–13 sets  94–75 games' onclick="toggleHistory(this)"><td class='pname'>Prexy Tamayo</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>2.99</td><td><span class="ru">3.15</span></td><td data-sort='0.1625'><span class="gdiff-up">+0.16</span></td><td data-sort='397' style='white-space:nowrap'>4-3</td><td data-sort='596' style='white-space:nowrap'>6–4</td><td data-sort='4273' style='white-space:nowrap'>43–27</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='christine labarre' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"30","ln":"D3","w":true,"sc":"6-0 6-1","pt":["Moon-Hui Choi"],"op":["Charlotte Durisseau","Monica Taylor"],"ot":"DTC #2"},{"dt":"3/21/2026","dv":"35","ln":"D3","w":true,"sc":"7-5 6-3","pt":["Tina Nathalia"],"op":["Sally Ryba","Marilyn Fenn"],"ot":"LTF"},{"dt":"3/28/2026","dv":"35","ln":"D3","w":true,"sc":"6-3 6-4","pt":["Sheri Cherubino"],"op":["Alex Schrack","Judith Watson"],"ot":"Anthem"},{"dt":"4/11/2026","dv":"30","ln":"D3","w":true,"sc":"6-0 6-0","pt":["Rachel Glaze"],"op":["N","A"],"ot":"LTF"},{"dt":"4/18/2026","dv":"35","ln":"D3","w":true,"sc":"7-6 7-6","pt":["Sheri Cherubino"],"op":["Mari Valvo","Kim Knotts"],"or":["2.84"],"ot":"DTC #2"},{"dt":"4/25/2026","dv":"30","ln":"D3","w":true,"sc":"6-1 6-1","pt":["Kara Gaston"],"op":["Trish Metriyakool","Jill Kreston"],"ot":"TPC"},{"dt":"4/25/2026","dv":"35","ln":"D3","w":false,"sc":"6-0 6-1","pt":["Sheri Cherubino"],"op":["Jane Doe","Jan Willis"],"ot":"LTF"},{"dt":"5/2/2026","dv":"30","ln":"D3","w":true,"sc":"6-1 6-0","pt":["Kara Gaston"],"op":["Tamaris Cotta","Renee Johnson"],"ot":"Summerlin"},{"dt":"5/2/2026","dv":"35","ln":"D3","w":true,"sc":"6-4 7-6","pt":["Tina Nathalia"],"op":["Fiona Yeh","Kim Knotts"],"or":["2.84"],"ot":"DTC #2"},{"dt":"5/9/2026","dv":"30","ln":"D3","w":true,"sc":"6-1 6-1","pt":["Kara Gaston"],"op":["Meekyoung Lee","Charlotte Durisseau"],"ot":"DTC #2"},{"dt":"5/16/2026","dv":"35","ln":"D3","w":false,"sc":"6-4 7-5","pt":["Jennifer Dalby"],"op":["Andi Berger","Britney Jensen"],"ot":"Red Rock #1"},{"dt":"6/6/2026","dv":"30","ln":"D1","w":true,"sc":"7-5 6-2","pt":["Moon-Hui Choi"],"op":["Kimberly Lippisch","Julie Smith"],"ot":"LTF"}]' data-combined='10–2 overall  (6–0 in 3.0, 4–2 in 3.5)  ·  20–4 sets  135–75 games' onclick="toggleHistory(this)"><td class='pname'>Christine LaBarre</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>3.03</td><td><span class="ru">3.15</span></td><td data-sort='0.1216'><span class="gdiff-up">+0.12</span></td><td data-sort='800' style='white-space:nowrap'>8-0</td><td data-sort='1200' style='white-space:nowrap'>12–0</td><td data-sort='7287' style='white-space:nowrap'>73–13</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='anna clark' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"30","ln":"S2","w":true,"sc":"6-2 6-4","op":["Meekyoung Lee"],"ot":"DTC #2"},{"dt":"3/14/2026","dv":"35","ln":"D3","w":true,"sc":"6-4 6-0","pt":["Kara Gaston"],"op":["Christina Smith","Jennifer Wang"],"ot":"TPC"},{"dt":"3/28/2026","dv":"30","ln":"S2","w":true,"sc":"6-1 6-1","op":["Kinsey Wolanski"],"ot":"Red Rock"},{"dt":"3/28/2026","dv":"35","ln":"D3","w":false,"sc":"6-4 6-0","pt":["NANCIE WEBSTER"],"op":["Christina Rich","Abigail Cox"],"ot":"Dragonridge"},{"dt":"4/11/2026","dv":"30","ln":"S1","w":true,"sc":"7-6 4-6 1-0","op":["Margo Isler"],"ot":"LTF"},{"dt":"4/11/2026","dv":"35","ln":"D1","w":false,"sc":"7-6 7-6","pt":["Kara Gaston"],"op":["Chandra VanPaepeghem","Sara Sager"],"ot":"S. Trail #1"},{"dt":"4/18/2026","dv":"30","ln":"S2","w":false,"sc":"6-3 6-3","op":["Kelly Twells"],"ot":"Anthem"},{"dt":"4/25/2026","dv":"30","ln":"S2","w":true,"sc":"6-1 6-2","op":["Amy Arbeli"],"ot":"TPC"},{"dt":"4/25/2026","dv":"35","ln":"D2","w":false,"sc":"7-5 6-3","pt":["Melissa Hicks"],"op":["Michelle Castillo","Gina Thornton"],"ot":"D. Palm"}]' data-combined='5–4 overall  (4–1 in 3.0, 1–3 in 3.5)  ·  10–9 sets  90–78 games' onclick="toggleHistory(this)"><td class='pname'>Anna Clark</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>3.12</td><td><span class="ru">3.14</span></td><td data-sort='0.0248'><span class="gdiff-up">+0.02</span></td><td data-sort='398' style='white-space:nowrap'>4-2</td><td data-sort='797' style='white-space:nowrap'>8–3</td><td data-sort='5365' style='white-space:nowrap'>54–35</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='darian mccauley' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"30","ln":"D1","w":true,"sc":"7-5 5-7 1-0","pt":["Shi L Oskooi"],"op":["Tina Shirey","Irene Frazier"],"ot":"DTC #2"},{"dt":"3/28/2026","dv":"30","ln":"D2","w":true,"sc":"6-4 6-4","pt":["Shi L Oskooi"],"op":["Golssa Moridi","Elizabeth Pierce"],"ot":"Red Rock"},{"dt":"4/11/2026","dv":"30","ln":"D1","w":true,"sc":"6-1 6-0","pt":["Shi L Oskooi"],"op":["Mary Ann Apone","Hee Park"],"ot":"LTF"},{"dt":"4/18/2026","dv":"30","ln":"D1","w":true,"sc":"6-2 6-3","pt":["Shi L Oskooi"],"op":["Carrie Maddux","Therese Laudenslager"],"ot":"Anthem"},{"dt":"5/9/2026","dv":"30","ln":"D2","w":true,"sc":"6-4 6-3","pt":["Kimberly Cunningham"],"op":["Jihee Anh","Stephanie Stern"],"ot":"DTC #2"}]' data-combined='5–0 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Darian McCauley</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>2.92</td><td><span class="ru">3.14</span></td><td data-sort='0.2178'><span class="gdiff-up">+0.22</span></td><td data-sort='600' style='white-space:nowrap'>6-0</td><td data-sort='999' style='white-space:nowrap'>10–1</td><td data-sort='6067' style='white-space:nowrap'>61–33</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='julie brown' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/21/2026","dv":"30","ln":"D1","w":true,"sc":"6-4 4-6 1-0","pt":["Kellie Woods"],"op":["Margaret Bruno","Danielle Britten"],"ot":"SoHi"},{"dt":"5/9/2026","dv":"30","ln":"D1","w":false,"sc":"6-3 6-3","pt":["Kim Knotts"],"op":["Irene Frazier","Tina Shirey"],"ot":"DTC #2"},{"dt":"5/16/2026","dv":"30","ln":"D3","w":false,"sc":"3-6 7-6 1-0","pt":["Michelle Mortensen"],"op":["Amy Badain","Addy Iveth Zilberman"],"ot":"SoHi"},{"dt":"5/30/2026","dv":"30","ln":"D2","w":true,"sc":"4-6 6-2 1-0","pt":["Kellie Woods"],"op":["Kellye Ray","Carolina Nigro"],"ot":"Red Rock"},{"dt":"6/6/2026","dv":"30","ln":"D3","w":true,"sc":"6-0 6-0","pt":["Kellie Woods"],"op":["N","A"],"ot":"LTF"}]' data-combined='3–2 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Julie Brown</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>3.00</td><td><span class="ru">3.06</span></td><td data-sort='0.0610'><span class="gdiff-up">+0.06</span></td><td data-sort='398' style='white-space:nowrap'>4-2</td><td data-sort='694' style='white-space:nowrap'>7–6</td><td data-sort='5159' style='white-space:nowrap'>52–41</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='emmy perez' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"30","ln":"D2","w":true,"sc":"6-2 6-4","pt":["Kim Knotts"],"op":["Elizabeth Abatangelo","Kathryn Wilson"],"ot":"DTC #2"},{"dt":"3/21/2026","dv":"30","ln":"D2","w":true,"sc":"6-1 6-3","pt":["Kim Knotts"],"op":["Shannon Keever","Christa Shiklanian"],"ot":"SoHi"},{"dt":"3/28/2026","dv":"30","ln":"D1","w":false,"sc":"4-6 6-3 1-0","pt":["Prexy Tamayo"],"op":["Brenda Cambridge","Rhianna Schwartz"],"ot":"Red Rock"},{"dt":"4/11/2026","dv":"30","ln":"S2","w":true,"sc":"3-6 6-4 1-0","op":["Han Hu"],"ot":"LTF"},{"dt":"4/18/2026","dv":"30","ln":"D2","w":true,"sc":"6-4 6-4","pt":["Moon-Hui Choi"],"op":["Sandra Shearer","Angela Roylance"],"ot":"Anthem"},{"dt":"5/2/2026","dv":"30","ln":"D1","w":true,"sc":"6-2 6-4","pt":["Shi L Oskooi"],"op":["Tina Nathalia","Kim Springer"],"ot":"Summerlin"},{"dt":"5/16/2026","dv":"30","ln":"D1","w":false,"sc":"6-4 1-6 1-0","pt":["Kellie Woods"],"op":["Margaret Bruno","Danielle Britten"],"ot":"SoHi"},{"dt":"6/6/2026","dv":"30","ln":"S1","w":true,"sc":"6-3 6-1","op":["Han Hu"],"ot":"LTF"}]' data-combined='6–2 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Emmy Perez</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>2.79</td><td><span class="ru">3.04</span></td><td data-sort='0.2498'><span class="gdiff-up">+0.25</span></td><td data-sort='797' style='white-space:nowrap'>8-3</td><td data-sort='1395' style='white-space:nowrap'>14–5</td><td data-sort='8843' style='white-space:nowrap'>89–57</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='yarisbel schieck' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"30","ln":"S1","w":true,"sc":"6-4 6-3","op":["Elsy Flores Rojas"],"ot":"DTC #2"},{"dt":"3/21/2026","dv":"30","ln":"S1","w":true,"sc":"6-3 6-1","op":["Daniella Toms"],"ot":"SoHi"},{"dt":"3/28/2026","dv":"30","ln":"S1","w":true,"sc":"6-1 6-3","op":["Maryam Kaveh"],"ot":"Red Rock"},{"dt":"4/18/2026","dv":"30","ln":"S1","w":true,"sc":"6-1 6-3","op":["Gina Rivera"],"ot":"Anthem"},{"dt":"4/25/2026","dv":"30","ln":"S1","w":true,"sc":"6-2 6-2","op":["Rachel Corpuz"],"ot":"TPC"},{"dt":"5/2/2026","dv":"30","ln":"S1","w":false,"sc":"?-? 7-6 0-1","op":["Tayoni Coleman"],"ot":"Summerlin"},{"dt":"5/9/2026","dv":"30","ln":"S1","w":true,"sc":"6-3 4-0","op":["Elsy Flores Rojas"],"ot":"DTC #2"},{"dt":"5/16/2026","dv":"30","ln":"S1","w":true,"sc":"6-0 6-0","op":["N","A"],"ot":"SoHi"},{"dt":"5/30/2026","dv":"30","ln":"D1","w":false,"sc":"6-2 7-6","pt":["Lisa Schnitz"],"op":["Brenda Cambridge","Kinsey Wolanski"],"ot":"Red Rock"}]' data-combined='7–2 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Yarisbel Schieck</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>3.10</td><td><span class="rd">3.00</span></td><td data-sort='-0.1044'><span class="gdiff-dn">-0.10</span></td><td data-sort='897' style='white-space:nowrap'>9-3</td><td data-sort='1497' style='white-space:nowrap'>15–3</td><td data-sort='9654' style='white-space:nowrap'>97–46</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='kara gaston' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"35","ln":"D3","w":true,"sc":"6-4 6-0","pt":["Anna Clark"],"op":["Christina Smith","Jennifer Wang"],"ot":"TPC"},{"dt":"3/21/2026","dv":"30","ln":"D3","w":false,"sc":"6-2 6-4","pt":["Rebecca Dunne"],"op":["Shaza Nayef","Amy Badain"],"ot":"SoHi"},{"dt":"4/11/2026","dv":"35","ln":"D1","w":false,"sc":"7-6 7-6","pt":["Anna Clark"],"op":["Chandra VanPaepeghem","Sara Sager"],"ot":"S. Trail #1"},{"dt":"4/18/2026","dv":"30","ln":"D3","w":true,"sc":"4-6 6-1 1-0","pt":["Rachel Glaze"],"op":["Amber Pasco","Dylan Underwood"],"ot":"Anthem"},{"dt":"4/18/2026","dv":"35","ln":"D2","w":false,"sc":"6-1 6-7 1-0","pt":["Lisa Schnitz"],"op":["Diane Paull","Valeria Perdomo"],"ot":"DTC #1"},{"dt":"4/25/2026","dv":"30","ln":"D3","w":true,"sc":"6-1 6-1","pt":["Christine LaBarre"],"op":["Trish Metriyakool","Jill Kreston"],"ot":"TPC"},{"dt":"5/2/2026","dv":"30","ln":"D3","w":true,"sc":"6-1 6-0","pt":["Christine LaBarre"],"op":["Tamaris Cotta","Renee Johnson"],"ot":"Summerlin"},{"dt":"5/2/2026","dv":"35","ln":"S2","w":false,"sc":"6-1 6-2","op":["Maria Truman"],"ot":"Red Rock #2"},{"dt":"5/9/2026","dv":"30","ln":"D3","w":true,"sc":"6-1 6-1","pt":["Christine LaBarre"],"op":["Meekyoung Lee","Charlotte Durisseau"],"ot":"DTC #2"},{"dt":"5/16/2026","dv":"30","ln":"D2","w":true,"sc":"6-2 6-4","pt":["Lisa Schnitz"],"op":["Shaza Nayef","Brenda Rowles"],"ot":"SoHi"},{"dt":"5/23/2026","dv":"35","ln":"D2","w":false,"sc":"6-2 6-3","pt":["Lisa Schnitz"],"op":["Lori LaBarbera","Jamie Kelvington"],"ot":"Dragonridge"},{"dt":"6/6/2026","dv":"35","ln":"S1","w":false,"sc":"6-1 6-1","op":["Anne Kellogg"],"ot":"Red Rock #2"}]' data-combined='6–6 overall  (5–1 in 3.0, 1–5 in 3.5)  ·  13–13 sets  107–97 games' onclick="toggleHistory(this)"><td class='pname'>Kara Gaston</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>2.96</td><td><span class="ru">2.99</span></td><td data-sort='0.0309'><span class="gdiff-up">+0.03</span></td><td data-sort='598' style='white-space:nowrap'>6-2</td><td data-sort='997' style='white-space:nowrap'>10–3</td><td data-sort='6470' style='white-space:nowrap'>65–30</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='moon-hui choi' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"30","ln":"D3","w":true,"sc":"6-0 6-1","pt":["Christine LaBarre"],"op":["Charlotte Durisseau","Monica Taylor"],"ot":"DTC #2"},{"dt":"4/18/2026","dv":"30","ln":"D2","w":true,"sc":"6-4 6-4","pt":["Emmy Perez"],"op":["Sandra Shearer","Angela Roylance"],"ot":"Anthem"},{"dt":"5/30/2026","dv":"30","ln":"D3","w":true,"sc":"6-3 6-0","pt":["Kim Knotts"],"op":["Elizabeth Pierce","Carine Tsveniashvili"],"ot":"Red Rock"},{"dt":"6/6/2026","dv":"30","ln":"D1","w":true,"sc":"7-5 6-2","pt":["Christine LaBarre"],"op":["Kimberly Lippisch","Julie Smith"],"ot":"LTF"}]' data-combined='4–0 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Moon-hui Choi</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>2.80</td><td><span class="ru">2.90</span></td><td data-sort='0.0983'><span class="gdiff-up">+0.10</span></td><td data-sort='600' style='white-space:nowrap'>6-0</td><td data-sort='800' style='white-space:nowrap'>8–0</td><td data-sort='4881' style='white-space:nowrap'>49–19</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='tracy klein' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Tracy Klein</td><td>BRMST RED</td><td><span class='sf-pill'>A</span></td><td>3</td><td>2.60</td><td><span class="ru">2.87</span></td><td data-sort='0.2719'><span class="gdiff-up">+0.27</span></td><td data-sort='1499' style='white-space:nowrap'>15-1</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='kelti palmer' data-state='UT' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Kelti Palmer</td><td>HARVEY/CONRAD</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.85</span></td><td data-sort='0.2546'><span class="gdiff-up">+0.25</span></td><td data-sort='698' style='white-space:nowrap'>7-2</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='kim knotts' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"30","ln":"D2","w":true,"sc":"6-2 6-4","pt":["Emmy Perez"],"op":["Elizabeth Abatangelo","Kathryn Wilson"],"ot":"DTC #2"},{"dt":"3/21/2026","dv":"30","ln":"D2","w":true,"sc":"6-1 6-3","pt":["Emmy Perez"],"op":["Shannon Keever","Christa Shiklanian"],"ot":"SoHi"},{"dt":"3/28/2026","dv":"35","ln":"D1","w":false,"sc":"6-3 6-1","pt":["Stephanie McGregor"],"op":["Hayley Rodes","Michele Howser"],"ot":"Red Rock #1"},{"dt":"4/11/2026","dv":"30","ln":"D2","w":false,"sc":"1-6 6-4 1-0","pt":["Kellie Woods"],"op":["Kimberly Lippisch","Julie Smith"],"ot":"LTF"},{"dt":"4/18/2026","dv":"35","ln":"D3","w":false,"sc":"7-6 7-6","pt":["Mari Valvo"],"op":["Sheri Cherubino","Christine LaBarre"],"or":["3.15"],"ot":"S. Trail #2"},{"dt":"4/25/2026","dv":"30","ln":"D1","w":false,"sc":"3-6 6-2 0-1","pt":["Lisa Schnitz"],"op":["Jennifer Blais","Danielle Caswell"],"ot":"TPC"},{"dt":"5/2/2026","dv":"35","ln":"D3","w":false,"sc":"6-4 7-6","pt":["Fiona Yeh"],"op":["Christine LaBarre","Tina Nathalia"],"or":["3.15"],"ot":"S. Trail #2"},{"dt":"5/9/2026","dv":"30","ln":"D1","w":false,"sc":"6-3 6-3","pt":["Julie Brown"],"op":["Irene Frazier","Tina Shirey"],"ot":"DTC #2"},{"dt":"5/30/2026","dv":"30","ln":"D3","w":true,"sc":"6-3 6-0","pt":["Moon-Hui Choi"],"op":["Elizabeth Pierce","Carine Tsveniashvili"],"ot":"Red Rock"},{"dt":"6/6/2026","dv":"30","ln":"D2","w":true,"sc":"6-4 1-6 1-0","pt":["Kimberly Cunningham"],"op":["Adrian Cutolo","Lisa Williams"],"ot":"LTF"}]' data-combined='4–6 overall  (4–3 in 3.0, 0–3 in 3.5)  ·  10–13 sets  95–91 games' onclick="toggleHistory(this)"><td class='pname'>Kim Knotts</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>2.74</td><td><span class="ru">2.84</span></td><td data-sort='0.1039'><span class="gdiff-up">+0.10</span></td><td data-sort='497' style='white-space:nowrap'>5-3</td><td data-sort='993' style='white-space:nowrap'>10–7</td><td data-sort='6848' style='white-space:nowrap'>69–52</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='rachel glaze' data-state='NV' class='player-row expandable' data-history='[{"dt":"4/11/2026","dv":"30","ln":"D3","w":true,"sc":"6-0 6-0","pt":["Christine LaBarre"],"op":["N","A"],"ot":"LTF"},{"dt":"4/18/2026","dv":"30","ln":"D3","w":true,"sc":"4-6 6-1 1-0","pt":["Kara Gaston"],"op":["Amber Pasco","Dylan Underwood"],"ot":"Anthem"},{"dt":"5/30/2026","dv":"30","ln":"S2","w":true,"sc":"6-3 3-6 1-0","op":["Golssa Moridi"],"ot":"Red Rock"},{"dt":"6/6/2026","dv":"30","ln":"S2","w":true,"sc":"6-0 6-0","op":["N","A"],"ot":"LTF"}]' data-combined='4–0 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Rachel Glaze</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>2.83</td><td><span class="rn">2.83</span></td><td data-sort='0.0010'><span class='gdiff-zero'>0</span></td><td data-sort='399' style='white-space:nowrap'>4-1</td><td data-sort='798' style='white-space:nowrap'>8–2</td><td data-sort='4484' style='white-space:nowrap'>45–16</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='rumi arakawa' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Rumi Arakawa</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.81</span></td><td data-sort='0.2132'><span class="gdiff-up">+0.21</span></td><td data-sort='799' style='white-space:nowrap'>8-1</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='lisa schnitz' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/28/2026","dv":"30","ln":"D3","w":false,"sc":"1-6 6-2 1-0","pt":["Kimberly Cunningham"],"op":["Courtney Long","Kellye Ray"],"ot":"Red Rock"},{"dt":"3/28/2026","dv":"35","ln":"D1","w":false,"sc":"6-4 7-5","pt":["Kelly Nguyen"],"op":["Lorraine Yarde","Katrin Dragnev"],"ot":"Dragonridge"},{"dt":"4/11/2026","dv":"35","ln":"D2","w":false,"sc":"6-2 6-3","pt":["Kelly Nguyen"],"op":["Vinne Chen","Jill Morrison"],"ot":"S. Trail #1"},{"dt":"4/18/2026","dv":"35","ln":"D2","w":false,"sc":"6-1 6-7 1-0","pt":["Kara Gaston"],"op":["Diane Paull","Valeria Perdomo"],"ot":"DTC #1"},{"dt":"4/25/2026","dv":"30","ln":"D1","w":false,"sc":"3-6 6-2 0-1","pt":["Kim Knotts"],"op":["Jennifer Blais","Danielle Caswell"],"ot":"TPC"},{"dt":"5/2/2026","dv":"30","ln":"D2","w":false,"sc":"6-4 5-7 0-1","pt":["Michelle Mortensen"],"op":["Brittany Carlson","Genesis Garcia"],"ot":"Summerlin"},{"dt":"5/2/2026","dv":"35","ln":"D3","w":false,"sc":"6-0 7-5","pt":["Alexandria Chang"],"op":["Tanya Hale","Travis Azous"],"ot":"Red Rock #2"},{"dt":"5/16/2026","dv":"30","ln":"D2","w":true,"sc":"6-2 6-4","pt":["Kara Gaston"],"op":["Shaza Nayef","Brenda Rowles"],"ot":"SoHi"},{"dt":"5/16/2026","dv":"35","ln":"D3","w":false,"sc":"6-0 6-3","pt":["Patti Oakes"],"op":["Judith Milligan","Katie Kerestesi"],"ot":"TPC"},{"dt":"5/23/2026","dv":"35","ln":"D2","w":false,"sc":"6-2 6-3","pt":["Kara Gaston"],"op":["Lori LaBarbera","Jamie Kelvington"],"ot":"Dragonridge"},{"dt":"5/30/2026","dv":"30","ln":"D1","w":false,"sc":"6-2 7-6","pt":["Yarisbel Schieck"],"op":["Brenda Cambridge","Kinsey Wolanski"],"ot":"Red Rock"}]' data-combined='1–10 overall  (1–4 in 3.0, 0–6 in 3.5)  ·  6–20 sets  83–123 games' onclick="toggleHistory(this)"><td class='pname'>Lisa Schnitz</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>2.76</td><td><span class="ru">2.80</span></td><td data-sort='0.0447'><span class="gdiff-up">+0.04</span></td><td data-sort='96' style='white-space:nowrap'>1-4</td><td data-sort='492' style='white-space:nowrap'>5–8</td><td data-sort='4752' style='white-space:nowrap'>48–48</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='suzanna black' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Suzanna Black</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.80</span></td><td data-sort='0.2000'><span class="gdiff-up">+0.20</span></td><td data-sort='699' style='white-space:nowrap'>7-1</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='jennifer cooper' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Jennifer Cooper</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.79</span></td><td data-sort='0.1944'><span class="gdiff-up">+0.19</span></td><td data-sort='599' style='white-space:nowrap'>6-1</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='lisa permenter' data-state='UT' class='player-row' onclick="toggleHistory(this)"><td class='pname'>LISA PERMENTER</td><td>HARVEY/CONRAD</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.78</span></td><td data-sort='0.1776'><span class="gdiff-up">+0.18</span></td><td data-sort='699' style='white-space:nowrap'>7-1</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='micheline gardner' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Micheline Gardner</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.77</span></td><td data-sort='0.1683'><span class="gdiff-up">+0.17</span></td><td data-sort='499' style='white-space:nowrap'>5-1</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='jamison harvey' data-state='UT' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Jamison Harvey</td><td>HARVEY/CONRAD</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.77</span></td><td data-sort='0.1650'><span class="gdiff-up">+0.17</span></td><td data-sort='599' style='white-space:nowrap'>6-1</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='jody knaley' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Jody Knaley</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.75</span></td><td data-sort='0.1478'><span class="gdiff-up">+0.15</span></td><td data-sort='699' style='white-space:nowrap'>7-1</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='sarah monzyk' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Sarah Monzyk</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.74</span></td><td data-sort='0.1424'><span class="gdiff-up">+0.14</span></td><td data-sort='500' style='white-space:nowrap'>5-0</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='tricia buss' data-state='UT' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Tricia Buss</td><td>HARVEY/CONRAD</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.74</span></td><td data-sort='0.1414'><span class="gdiff-up">+0.14</span></td><td data-sort='698' style='white-space:nowrap'>7-2</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='karen gallo' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Karen Gallo</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.69</span></td><td data-sort='0.0924'><span class="gdiff-up">+0.09</span></td><td data-sort='400' style='white-space:nowrap'>4-0</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='lisa shaver' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Lisa Shaver</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.69</span></td><td data-sort='0.0902'><span class="gdiff-up">+0.09</span></td><td data-sort='499' style='white-space:nowrap'>5-1</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='janine huber' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Janine Huber</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.69</span></td><td data-sort='0.0880'><span class="gdiff-up">+0.09</span></td><td data-sort='699' style='white-space:nowrap'>7-1</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='isabel cristina lau' data-state='UT' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Isabel Cristina Lau</td><td>HARVEY/CONRAD</td><td><span class='sf-pill'>A</span></td><td>3</td><td>2.60</td><td><span class="ru">2.67</span></td><td data-sort='0.0688'><span class="gdiff-up">+0.07</span></td><td data-sort='100' style='white-space:nowrap'>1-0</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='kimberly cunningham' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/28/2026","dv":"30","ln":"D3","w":false,"sc":"1-6 6-2 1-0","pt":["Lisa Schnitz"],"op":["Courtney Long","Kellye Ray"],"ot":"Red Rock"},{"dt":"5/9/2026","dv":"30","ln":"D2","w":true,"sc":"6-4 6-3","pt":["Darian McCauley"],"op":["Jihee Anh","Stephanie Stern"],"ot":"DTC #2"},{"dt":"6/6/2026","dv":"30","ln":"D2","w":true,"sc":"6-4 1-6 1-0","pt":["Kim Knotts"],"op":["Adrian Cutolo","Lisa Williams"],"ot":"LTF"}]' data-combined='2–1 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Kimberly Cunningham</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>2.5 C</td><td>2.55</td><td><span class="ru">2.66</span></td><td data-sort='0.1093'><span class="gdiff-up">+0.11</span></td><td data-sort='199' style='white-space:nowrap'>2-1</td><td data-sort='497' style='white-space:nowrap'>5–3</td><td data-sort='2775' style='white-space:nowrap'>28–25</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='jean whitlock' data-state='UT' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Jean Whitlock</td><td>HARVEY/CONRAD</td><td><span class='sf-pill'>A</span></td><td>3</td><td>2.60</td><td><span class="ru">2.66</span></td><td data-sort='0.0586'><span class="gdiff-up">+0.06</span></td><td data-sort='400' style='white-space:nowrap'>4-0</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='lori claussen' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Lori Claussen</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="ru">2.64</span></td><td data-sort='0.0407'><span class="gdiff-up">+0.04</span></td><td data-sort='200' style='white-space:nowrap'>2-0</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='B' data-pkey='jennifer carlson' data-state='CO' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Jennifer Carlson</td><td>BRMST RED</td><td><span class='sf-pill'>B</span></td><td>3</td><td>2.60</td><td><span class="rn">2.60</span></td><td data-sort='0.0000'><span class='gdiff-zero'>0</span></td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='kellie woods' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/21/2026","dv":"30","ln":"D1","w":true,"sc":"6-4 4-6 1-0","pt":["Julie Brown"],"op":["Margaret Bruno","Danielle Britten"],"ot":"SoHi"},{"dt":"4/11/2026","dv":"30","ln":"D2","w":false,"sc":"1-6 6-4 1-0","pt":["Kim Knotts"],"op":["Kimberly Lippisch","Julie Smith"],"ot":"LTF"},{"dt":"4/25/2026","dv":"30","ln":"D2","w":false,"sc":"6-3 4-6 0-1","pt":["Prexy Tamayo"],"op":["Debbie D&apos;Amato","Meghan Arnold"],"ot":"TPC"},{"dt":"5/16/2026","dv":"30","ln":"D1","w":false,"sc":"6-4 1-6 1-0","pt":["Emmy Perez"],"op":["Margaret Bruno","Danielle Britten"],"ot":"SoHi"},{"dt":"5/30/2026","dv":"30","ln":"D2","w":true,"sc":"4-6 6-2 1-0","pt":["Julie Brown"],"op":["Kellye Ray","Carolina Nigro"],"ot":"Red Rock"},{"dt":"6/6/2026","dv":"30","ln":"D3","w":true,"sc":"6-0 6-0","pt":["Julie Brown"],"op":["N","A"],"ot":"LTF"}]' data-combined='3–3 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Kellie Woods</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>3.0 C</td><td>2.82</td><td><span class="rd">2.55</span></td><td data-sort='-0.2670'><span class="gdiff-dn">-0.27</span></td><td data-sort='296' style='white-space:nowrap'>3-4</td><td data-sort='892' style='white-space:nowrap'>9–8</td><td data-sort='6356' style='white-space:nowrap'>64–44</td><td data-sort='0'>–</td></tr>
+<tr data-sf='Championships' data-pkey='rebecca dunne' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/21/2026","dv":"30","ln":"D3","w":false,"sc":"6-2 6-4","pt":["Kara Gaston"],"op":["Shaza Nayef","Amy Badain"],"ot":"SoHi"}]' data-combined='0–1 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Rebecca Dunne</td><td>DTC #3</td><td><span class='sf-pill'>Championships</span></td><td>2.5 C</td><td>2.49</td><td><span class="rd">2.45</span></td><td data-sort='-0.0371'><span class="gdiff-dn">-0.04</span></td><td data-sort='-1' style='white-space:nowrap'>0-1</td><td data-sort='-2' style='white-space:nowrap'>0–2</td><td data-sort='588' style='white-space:nowrap'>6–12</td><td data-sort='0'>–</td></tr>
+<tr data-sf='A' data-pkey='michelle mortensen' data-state='NV' class='player-row expandable' data-history='[{"dt":"5/2/2026","dv":"30","ln":"D2","w":false,"sc":"6-4 5-7 0-1","pt":["Lisa Schnitz"],"op":["Brittany Carlson","Genesis Garcia"],"ot":"Summerlin"},{"dt":"5/16/2026","dv":"30","ln":"D3","w":false,"sc":"3-6 7-6 1-0","pt":["Julie Brown"],"op":["Amy Badain","Addy Iveth Zilberman"],"ot":"SoHi"}]' data-combined='0–2 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Michelle Mortensen</td><td>DTC #3</td><td><span class='sf-pill'>A</span></td><td>2.5 C</td><td>2.16</td><td><span class="ru">2.25</span></td><td data-sort='0.0871'><span class="gdiff-up">+0.09</span></td><td data-sort='-2' style='white-space:nowrap'>0-2</td><td data-sort='196' style='white-space:nowrap'>2–4</td><td data-sort='2277' style='white-space:nowrap'>23–23</td><td data-sort='0'>–</td></tr>
+</tbody>
+</table></div>
+
+
+<script>
+function sw(id, btn) {
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+function sr(id, btn, groupId) {
+  // Deactivate all tabs in the group
+  var grp = document.getElementById(groupId);
+  if (grp) grp.querySelectorAll('.rtab').forEach(b => b.classList.remove('on'));
+  // Hide all rpanes that share the same prefix (e.g. "ro-" or "re-")
+  var prefix = id.split('-')[0] + '-';
+  document.querySelectorAll('[id^="' + prefix + '"]').forEach(p => {
+    if (p.classList.contains('rpane')) p.classList.remove('on');
+  });
+  document.getElementById(id).classList.add('on');
+  if (btn) btn.classList.add('on');
+}
+
+// Switch A/B subflight in rosters or results tab
+// Simple subflight switcher for the standings tab (no team sub-tabs)
+function filterStandingsSF(sf) {
+  var tabs = document.getElementById('st-sf-tabs');
+  if (tabs) {
+    tabs.querySelectorAll('.rtab').forEach(function(b) {
+      b.classList.toggle('on', b.dataset.sf === sf);
+    });
+  }
+  document.querySelectorAll('.st-pane').forEach(function(p) {
+    p.style.display = (p.dataset.sf === sf) ? '' : 'none';
+  });
+}
+
+function filterSF(sf, btn, sfTabsId, teamTabsId, prefix) {
+  // Update SF tab highlight
+  var sfTabs = document.getElementById(sfTabsId);
+  if (sfTabs) sfTabs.querySelectorAll('.rtab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+
+  // Show/hide team tabs based on data-sf
+  var teamTabs = document.getElementById(teamTabsId);
+  var firstVisible = null;
+  if (teamTabs) {
+    teamTabs.querySelectorAll('.rtab').forEach(b => {
+      if (b.dataset.sf === sf) {
+        b.style.display = '';
+        if (!firstVisible) firstVisible = b;
+      } else {
+        b.style.display = 'none';
+        b.classList.remove('on');
+      }
+    });
+  }
+
+  // Hide all rpanes for this prefix, then show the first visible team's pane
+  document.querySelectorAll('[id^="' + prefix + '-"]').forEach(p => {
+    if (p.classList.contains('rpane')) p.classList.remove('on');
+  });
+  if (firstVisible) {
+    firstVisible.classList.add('on');
+    var targetId = firstVisible.getAttribute('onclick').match(/'([^']+)'/)[1];
+    var pane = document.getElementById(targetId);
+    if (pane) pane.classList.add('on');
+  }
+}
+
+// Highlight all occurrences of a player name in the results tab
+function setResultRatingMode(mode, btn) {
+  // Update toggle button state
+  document.querySelectorAll('.re-rating-toggle .rtab').forEach(function(b) {
+    b.classList.remove('on');
+  });
+  btn.classList.add('on');
+  // Update every rating badge in the results pane
+  document.querySelectorAll('.rpane .prating').forEach(function(em) {
+    if (mode === 'none') {
+      em.style.display = 'none';
+    } else {
+      em.style.display = '';
+      var val = mode === 'base' ? em.dataset.base : em.dataset.new;
+      em.textContent = val ? '(' + val + ')' : '';
+    }
+  });
+}
+
+function highlightPlayer(el) {
+  var key = el.dataset.pkey;
+  if (!key) return;
+  var already = el.classList.contains('phi');
+  // Clear all highlights first
+  document.querySelectorAll('.pname.phi').forEach(function(n) { n.classList.remove('phi'); });
+  if (!already) {
+    document.querySelectorAll('.pname[data-pkey="' + key + '"]').forEach(function(n) {
+      n.classList.add('phi');
+    });
+  }
+}
+
+var _apSF = 'all', _apState = 'all';
+function filterPlayerSF(sf, btn) {
+  _apSF = sf;
+  document.querySelectorAll('#sf-filter-btns .rtab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applyPlayerFilters();
+}
+function filterPlayerState(st, btn) {
+  _apState = st;
+  document.querySelectorAll('#state-filter-btns .rtab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applyPlayerFilters();
+}
+function filterPlayers() {
+  applyPlayerFilters();
+}
+function toggleHistory(tr) {
+  if (!tr.classList.contains('expandable')) return;
+  var open = tr.classList.toggle('expanded');
+  var next = tr.nextElementSibling;
+  // First click: render the detail row from JSON, then insert it
+  if (!next || !next.classList.contains('history-row')) {
+    var data = JSON.parse(tr.dataset.history || '[]');
+    var combined = tr.dataset.combined || '';
+    var html = '<div class="history-wrap"><div class="history-summary">' + combined + '</div>'
+      + '<table class="history-table"><thead><tr>'
+      + '<th>Date</th><th>Div</th><th>Line</th><th>Result</th>'
+      + '<th>Score</th><th>Partner(s)</th><th>Opponent(s)</th><th>Opp Team</th>'
+      + '</tr></thead><tbody>';
+    data.forEach(function(r) {
+      var dv = r.dv || '';
+      var divPill = '<span class="dp dp' + dv + '">' + (dv === '30' ? '3.0' : '3.5') + '</span>';
+      var wko = r.wk;
+      var resCls = wko ? '' : (r.w ? 'hw' : 'hl');
+      var resTxt = wko ? 'DEFAULT' : (r.w ? 'W' : 'L');
+      var opArr = r.op || [], orArr = r.or || [];
+      var opHtml = opArr.length
+        ? opArr.map(function(o,i){ return o + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
+        : '<em class="hr">default</em>';
+      var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
+      html += '<tr>'
+        + '<td style="white-space:nowrap">' + (r.dt||'') + '</td>'
+        + '<td>' + divPill + '</td>'
+        + '<td>' + (r.ln||'') + '</td>'
+        + '<td><span class="' + resCls + '">' + resTxt + '</span></td>'
+        + '<td style="white-space:nowrap">' + sc + '</td>'
+        + '<td>' + ((r.pt||[]).join(', ')||'—') + '</td>'
+        + '<td>' + opHtml + '</td>'
+        + '<td>' + (r.ot||'') + '</td>'
+        + '</tr>';
+    });
+    html += '</tbody></table></div>';
+    var htr = document.createElement('tr');
+    htr.className = 'history-row';
+    var td = document.createElement('td');
+    td.colSpan = 11; td.style.padding = '0';
+    td.innerHTML = html;
+    htr.appendChild(td);
+    tr.parentNode.insertBefore(htr, tr.nextSibling);
+    next = htr;
+  }
+  next.style.display = open ? '' : 'none';
+}
+function applyPlayerFilters() {
+  var q = (document.getElementById('player-search') || {value:''}).value.toLowerCase();
+  document.querySelectorAll('#ap-table tbody tr.player-row').forEach(tr => {
+    var sfMatch = _apSF === 'all' || tr.dataset.sf === _apSF;
+    var stMatch = _apState === 'all' || tr.dataset.state === _apState;
+    var textMatch = !q || tr.innerText.toLowerCase().includes(q);
+    var show = sfMatch && stMatch && textMatch;
+    tr.style.display = show ? '' : 'none';
+    var next = tr.nextElementSibling;
+    if (next && next.classList.contains('history-row')) {
+      if (!show) next.style.display = 'none';
+    }
+  });
+}
+var _sortDir = {};
+function _sortTable(tbodyOrSelector, col, dirKey) {
+  var tbody = typeof tbodyOrSelector === 'string'
+    ? document.querySelector(tbodyOrSelector)
+    : tbodyOrSelector;
+  if (!tbody) return;
+  var rows = Array.from(tbody.querySelectorAll('tr'));
+  var dir = (_sortDir[dirKey] = !_sortDir[dirKey]);
+  rows.sort(function(a, b) {
+    var ac = a.cells[col], bc = b.cells[col];
+    // Prefer data-sort numeric attribute when present (e.g. W-L cells)
+    var ads = ac ? ac.dataset.sort : undefined;
+    var bds = bc ? bc.dataset.sort : undefined;
+    if (ads !== undefined && bds !== undefined) {
+      var an2 = parseFloat(ads), bn2 = parseFloat(bds);
+      if (!isNaN(an2) && !isNaN(bn2)) return dir ? an2 - bn2 : bn2 - an2;
+    }
+    var av = ac ? ac.innerText.trim() : '';
+    var bv = bc ? bc.innerText.trim() : '';
+    var an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return dir ? an - bn : bn - an;
+    return dir ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+function sortAP(col) {
+  var tbody = document.querySelector('#ap-table tbody');
+  if (!tbody) return;
+  var dir = (_sortDir['ap-' + col] = !_sortDir['ap-' + col]);
+  // Collect only player rows (not history rows), paired with their history row
+  var pairs = [];
+  var rows = Array.from(tbody.children);
+  for (var i = 0; i < rows.length; i++) {
+    if (rows[i].classList.contains('player-row')) {
+      var hist = (i + 1 < rows.length && rows[i+1].classList.contains('history-row'))
+        ? rows[i+1] : null;
+      pairs.push([rows[i], hist]);
+    }
+  }
+  pairs.sort(function(a, b) {
+    var ac = a[0].cells[col], bc = b[0].cells[col];
+    var ads = ac ? ac.dataset.sort : undefined;
+    var bds = bc ? bc.dataset.sort : undefined;
+    if (ads !== undefined && bds !== undefined) {
+      var an2 = parseFloat(ads), bn2 = parseFloat(bds);
+      if (!isNaN(an2) && !isNaN(bn2)) return dir ? an2 - bn2 : bn2 - an2;
+    }
+    var av = ac ? ac.innerText.trim() : '';
+    var bv = bc ? bc.innerText.trim() : '';
+    var an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return dir ? an - bn : bn - an;
+    return dir ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  pairs.forEach(function(pair) {
+    tbody.appendChild(pair[0]);
+    if (pair[1]) tbody.appendChild(pair[1]);
+  });
+}
+function sortRoster(col) {
+  // Sort the currently visible roster pane's table
+  var pane = document.querySelector('.rpane.on[id^="ro-"]');
+  if (!pane) return;
+  var tbody = pane.querySelector('tbody');
+  _sortTable(tbody, col, 'ro-' + col + '-' + (pane ? pane.id : ''));
+}
+
+// Navigate from standings → team rosters tab for a specific team
+function goToRoster(slug, sf) {
+  // Switch to Team Rosters main tab
+  document.querySelectorAll('.pane').forEach(function(p) { p.classList.remove('on'); });
+  document.querySelectorAll('.tab').forEach(function(b) {
+    b.classList.remove('on');
+    if (b.textContent.trim().toLowerCase() === 'team rosters') b.classList.add('on');
+  });
+  var rPane = document.getElementById('rosters');
+  if (rPane) rPane.classList.add('on');
+  // Switch subflight
+  if (sf) {
+    var sfBtn = document.querySelector('#ro-sf-tabs .rtab[data-sf="' + sf + '"]');
+    if (sfBtn) filterSF(sf, sfBtn, 'ro-sf-tabs', 'ro-tabs', 'ro');
+  }
+  // Activate the team pane
+  setTimeout(function() {
+    var targetId = 'ro-' + slug;
+    var pane = document.getElementById(targetId);
+    if (!pane) return;
+    document.querySelectorAll('[id^="ro-"].rpane').forEach(function(p) { p.classList.remove('on'); });
+    pane.classList.add('on');
+    document.querySelectorAll('#ro-tabs .rtab').forEach(function(b) {
+      b.classList.remove('on');
+      var oc = b.getAttribute('onclick') || '';
+      if (oc.indexOf(targetId) >= 0) b.classList.add('on');
+    });
+  }, 40);
+}
+
+// Navigate from standings → all results tab for a specific team
+function goToResult(slug, sf) {
+  // Switch to All Results main tab
+  document.querySelectorAll('.pane').forEach(function(p) { p.classList.remove('on'); });
+  document.querySelectorAll('.tab').forEach(function(b) {
+    b.classList.remove('on');
+    if (b.textContent.trim().toLowerCase() === 'all results') b.classList.add('on');
+  });
+  var rPane = document.getElementById('allresults');
+  if (rPane) rPane.classList.add('on');
+  // Switch subflight
+  if (sf) {
+    var sfBtn = document.querySelector('#re-sf-tabs .rtab[data-sf="' + sf + '"]');
+    if (sfBtn) filterSF(sf, sfBtn, 're-sf-tabs', 're-tabs', 're');
+  }
+  // Activate the team pane
+  setTimeout(function() {
+    var targetId = 're-' + slug;
+    var pane = document.getElementById(targetId);
+    if (!pane) return;
+    document.querySelectorAll('[id^="re-"].rpane').forEach(function(p) { p.classList.remove('on'); });
+    pane.classList.add('on');
+    document.querySelectorAll('#re-tabs .rtab').forEach(function(b) {
+      b.classList.remove('on');
+      var oc = b.getAttribute('onclick') || '';
+      if (oc.indexOf(targetId) >= 0) b.classList.add('on');
+    });
+  }, 40);
+}
+// All-players table: cols 3-9 (NTRP, Base, New, Diff, W-L, Sets, Games) default descending
+[3,4,5,6,7,8,9,10].forEach(function(c) { _sortDir['ap-' + c] = true; });
+</script>
+</body>
+</html>

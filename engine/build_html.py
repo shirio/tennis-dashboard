@@ -29,8 +29,22 @@ from typing import Optional
 
 DATA_DIR = Path("data")
 PLAYERS_JSON = DATA_DIR / "players.json"
+REGIONS_JSON = DATA_DIR / "regions.json"
 STANDINGS_30 = DATA_DIR / "standings_women_30.json"
 STANDINGS_35 = DATA_DIR / "standings_women_35.json"
+
+
+def _load_regions() -> dict:
+    if REGIONS_JSON.exists():
+        return json.loads(REGIONS_JSON.read_text())
+    return {}
+
+
+def _get_state_config(state_code: str) -> dict:
+    regions = _load_regions()
+    cfg = regions.get("states", {}).get(state_code, {})
+    cfg["_state_code"] = state_code
+    return cfg
 
 
 # ---------------------------------------------------------------------------
@@ -228,12 +242,17 @@ def _validate(subflights: list[dict]) -> list[str]:
                 continue
             hw = m.get("team_wins_home") or 0
             aw = m.get("team_wins_away") or 0
-            if hw == aw:
-                continue
+            status = (m.get("status") or "").lower()
             if hw > aw:
                 wins[m["home_team"]] += 1
                 losses[m["away_team"]] += 1
-            else:
+            elif aw > hw:
+                wins[m["away_team"]] += 1
+                losses[m["home_team"]] += 1
+            elif "won" in status:
+                wins[m["home_team"]] += 1
+                losses[m["away_team"]] += 1
+            elif "lost" in status:
                 wins[m["away_team"]] += 1
                 losses[m["home_team"]] += 1
 
@@ -271,17 +290,18 @@ def _team_result_for(matches: list[dict], team: str) -> list[dict]:
         hw = m.get("team_wins_home")
         aw = m.get("team_wins_away")
         pending = m.get("pending", False)
+        status = (m.get("status") or "").lower()
         if m.get("home_team") == team:
             opp = m.get("away_team", "")
             if not pending and hw is not None and aw is not None:
-                won = hw > aw
+                won = hw > aw if hw != aw else ("won" in status)
                 score = f"{hw}–{aw}"
             else:
                 won, score = None, ""
         elif m.get("away_team") == team:
             opp = m.get("home_team", "")
             if not pending and hw is not None and aw is not None:
-                won = aw > hw
+                won = aw > hw if hw != aw else ("lost" in status)
                 score = f"{aw}–{hw}"
             else:
                 won, score = None, ""
@@ -822,8 +842,9 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             ]
             hist_json = _json.dumps(hist_compact, separators=(",", ":"))
 
+        p_state = p.get("state", "") or ""
         rows += (
-            f"<tr data-sf='{_esc(sf)}' data-pkey='{_esc(nk)}'"
+            f"<tr data-sf='{_esc(sf)}' data-pkey='{_esc(nk)}' data-state='{_esc(p_state)}'"
             f" class='player-row{expand_cls}'"
             + (f" data-history='{hist_json.replace(chr(39), '&apos;')}'"
                f" data-combined='{_esc(combined_str)}'" if has_history else "")
@@ -842,14 +863,32 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             f"</tr>\n"
         )
 
+    # Build unique states and subflight labels for filter buttons
+    player_states = sorted({p.get("state", "") or "" for p in div_players} - {""})
+    sf_labels = sorted({team_to_sf.get(p.get(f"team_{_sfx}") or p.get("team", ""), "")
+                        for p in div_players} - {""})
+
+    state_btns = ""
+    if len(player_states) > 1:
+        state_btns = (
+            '<div class="sf-filter-btns" id="state-filter-btns">'
+            '<button class="rtab on" onclick="filterPlayerState(\'all\',this)">All States</button>'
+        )
+        for st in player_states:
+            state_btns += f'<button class="rtab" onclick="filterPlayerState(\'{_esc(st)}\',this)">{_esc(st)}</button>'
+        state_btns += '</div>'
+
+    sf_btns = '<button class="rtab on" onclick="filterPlayerSF(\'all\',this)">All</button>'
+    for lbl in sf_labels:
+        sf_btns += f'<button class="rtab" onclick="filterPlayerSF(\'{_esc(lbl)}\',this)">{_esc(lbl)}</button>'
+
     return f"""
 <div class="ap-controls">
   <input type="text" id="player-search" placeholder="Filter by name or team…"
          oninput="filterPlayers()">
-  <div class="sf-filter-btns">
-    <button class="rtab on" onclick="filterPlayerSF('all',this)">All</button>
-    <button class="rtab" onclick="filterPlayerSF('A',this)">A</button>
-    <button class="rtab" onclick="filterPlayerSF('B',this)">B</button>
+  {state_btns}
+  <div class="sf-filter-btns" id="sf-filter-btns">
+    {sf_btns}
   </div>
 </div>
 <table id="ap-table">
@@ -1134,7 +1173,8 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
 # Summary cards
 # ---------------------------------------------------------------------------
 
-def _summary_cards(ntrp: str, year: int, subflights: list[dict]) -> str:
+def _summary_cards(ntrp: str, year: int, subflights: list[dict],
+                   region_label: str = "NV Area F") -> str:
     total_teams = sum(len(sf.get("teams", [])) for sf in subflights)
     total_matches = sum(len(sf.get("matches", [])) for sf in subflights)
     played = sum(
@@ -1165,7 +1205,7 @@ def _summary_cards(ntrp: str, year: int, subflights: list[dict]) -> str:
   <div class="mcard">
     <div class="mcard-label">division</div>
     <div class="mcard-val">{_esc(ntrp)} Women</div>
-    <div class="mcard-sub">NV Area F · {year}</div>
+    <div class="mcard-sub">{_esc(region_label)} · {year}</div>
   </div>
   <div class="mcard">
     <div class="mcard-label">teams</div>
@@ -1465,10 +1505,16 @@ function highlightPlayer(el) {
   }
 }
 
-var _apSF = 'all';
+var _apSF = 'all', _apState = 'all';
 function filterPlayerSF(sf, btn) {
   _apSF = sf;
-  document.querySelectorAll('.sf-filter-btns .rtab').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('#sf-filter-btns .rtab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applyPlayerFilters();
+}
+function filterPlayerState(st, btn) {
+  _apState = st;
+  document.querySelectorAll('#state-filter-btns .rtab').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   applyPlayerFilters();
 }
@@ -1526,10 +1572,10 @@ function applyPlayerFilters() {
   var q = (document.getElementById('player-search') || {value:''}).value.toLowerCase();
   document.querySelectorAll('#ap-table tbody tr.player-row').forEach(tr => {
     var sfMatch = _apSF === 'all' || tr.dataset.sf === _apSF;
+    var stMatch = _apState === 'all' || tr.dataset.state === _apState;
     var textMatch = !q || tr.innerText.toLowerCase().includes(q);
-    var show = sfMatch && textMatch;
+    var show = sfMatch && stMatch && textMatch;
     tr.style.display = show ? '' : 'none';
-    // Hide associated history row when parent is hidden
     var next = tr.nextElementSibling;
     if (next && next.classList.contains('history-row')) {
       if (!show) next.style.display = 'none';
@@ -1778,7 +1824,9 @@ def _analysis_tab(ntrp: str) -> str:
 
 
 def _generate_html(ntrp: str, standings: dict, players: list[dict],
-                   other_standings: dict = None) -> str:
+                   other_standings: dict = None,
+                   state_code: str = "NV",
+                   region_label: str = "NV Area F") -> str:
     year = standings.get("year", "")
     subflights = standings.get("subflights", [])
 
@@ -1787,21 +1835,24 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
         for w in warnings:
             print(f"  [VALIDATION] {w}")
 
-    cards_html = _summary_cards(ntrp, year, subflights)
+    cards_html = _summary_cards(ntrp, year, subflights, region_label)
     standings_html = _standings_tab(subflights, warnings)
     rosters_html = _rosters_tab(subflights, players, ntrp)
     other_subflights = (other_standings or {}).get("subflights", [])
     players_html = _players_tab(players, ntrp, subflights, other_subflights)
     results_html = _results_tab(subflights, players, sfx=ntrp.replace(".", ""))
-    analysis_html = _analysis_tab(ntrp)
 
     tab_defs = [
         ("standings",  "standings",    standings_html),
         ("rosters",    "team rosters", rosters_html),
         ("allplayers", "all players",  players_html),
         ("allresults", "all results",  results_html),
-        ("analysis",   "analysis + predictions", analysis_html),
     ]
+
+    # Only include analysis tab for NV (the only state with AI-generated analysis)
+    if state_code == "NV":
+        analysis_html = _analysis_tab(ntrp)
+        tab_defs.append(("analysis", "analysis + predictions", analysis_html))
 
     tab_btns = "".join(
         f'<button class="tab{" on" if i==0 else ""}" '
@@ -1815,13 +1866,18 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
 
     # Cross-dashboard link + matchups link
     other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
-    other_file = f"women_{other_ntrp.replace('.', '')}.html"
-    mx_file = f"matchups_{ntrp.replace('.', '')}.html"
+    st_lower = state_code.lower()
+    other_file = f"women_{st_lower}_{other_ntrp.replace('.', '')}.html"
+    mx_file = f"matchups_{st_lower}_{ntrp.replace('.', '')}.html"
     cross_link = (
+        f'<a href="index.html" class="cross-link">← All States</a>'
+        f' &nbsp;|&nbsp; '
         f'<a href="{other_file}" class="cross-link">'
         f'Switch to {_esc(other_ntrp)} Women →</a>'
         f' &nbsp;|&nbsp; '
         f'<a href="{mx_file}" class="cross-link">Singles &amp; Doubles Explorer →</a>'
+        f' &nbsp;|&nbsp; '
+        f'<a href="sectionals_30.html" class="cross-link">Sectionals →</a>'
     )
 
     n_matches = sum(len(sf.get("matches", [])) for sf in subflights)
@@ -1832,7 +1888,7 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>USTA {_esc(ntrp)} Women {year} – NV Area F</title>
+<title>USTA {_esc(ntrp)} Women {year} – {_esc(region_label)}</title>
 <style>{_CSS}</style>
 </head>
 <body>
@@ -2669,13 +2725,60 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
 # Entry point
 # ---------------------------------------------------------------------------
 
-def build_dashboards() -> dict:
+def build_dashboards(states: list[str] | None = None) -> dict:
+    """Build dashboards for the specified states (or all states in regions.json)."""
     players = _load(PLAYERS_JSON, [])
+    regions = _load_regions()
     results = {}
 
+    if states is None:
+        states = list(regions.get("states", {}).keys())
+    if not states:
+        states = ["NV"]
+
+    for state_code in states:
+        cfg = _get_state_config(state_code)
+        region_label = cfg.get("label", state_code)
+        st_lower = state_code.lower()
+
+        # Load standings for this state
+        s30_path = DATA_DIR / f"standings_{st_lower}_30.json"
+        s35_path = DATA_DIR / f"standings_{st_lower}_35.json"
+
+        if not s30_path.exists() and not s35_path.exists():
+            print(f"  [html] No standings data for {state_code}, skipping")
+            continue
+
+        s30 = _load(s30_path, {"ntrp": "3.0", "year": 2026, "subflights": []})
+        s35 = _load(s35_path, {"ntrp": "3.5", "year": 2026, "subflights": []})
+
+        for ntrp, standings, other_standings in [("3.0", s30, s35), ("3.5", s35, s30)]:
+            out_path = Path(f"women_{st_lower}_{ntrp.replace('.', '')}.html")
+            mx_path = Path(f"matchups_{st_lower}_{ntrp.replace('.', '')}.html")
+
+            html = _generate_html(ntrp, standings, players, other_standings,
+                                  state_code=state_code, region_label=region_label)
+            out_path.write_text(html, encoding="utf-8")
+            mx_html = _build_matchup_page(ntrp, standings, players)
+            mx_path.write_text(mx_html, encoding="utf-8")
+            n = len([p for p in players if p.get("division", "").startswith(ntrp)])
+            n_matches = sum(
+                len(sf.get("matches", []))
+                for sf in standings.get("subflights", [])
+            )
+            print(f"  [html] {out_path}  ({n} players, {n_matches} matches, {region_label})")
+            print(f"  [html] {mx_path}  (matchups explorer)")
+            results[str(out_path)] = n
+
+    return results
+
+
+def build_dashboards_legacy() -> dict:
+    """Legacy single-state builder for backward compat. Generates women_30/35.html."""
+    players = _load(PLAYERS_JSON, [])
+    results = {}
     s30 = _load(STANDINGS_30, {"ntrp": "3.0", "year": 2026, "subflights": []})
     s35 = _load(STANDINGS_35, {"ntrp": "3.5", "year": 2026, "subflights": []})
-
     for ntrp, standings, other_standings, out_path, mx_path in [
         ("3.0", s30, s35, Path("women_30.html"), Path("matchups_30.html")),
         ("3.5", s35, s30, Path("women_35.html"), Path("matchups_35.html")),
@@ -2685,15 +2788,141 @@ def build_dashboards() -> dict:
         mx_html = _build_matchup_page(ntrp, standings, players)
         mx_path.write_text(mx_html, encoding="utf-8")
         n = len([p for p in players if p.get("division", "").startswith(ntrp)])
-        n_matches = sum(
-            len(sf.get("matches", []))
-            for sf in standings.get("subflights", [])
-        )
-        print(f"  [html] {out_path}  ({n} players, {n_matches} matches)")
-        print(f"  [html] {mx_path}  (matchups explorer)")
         results[str(out_path)] = n
-
     return results
+
+
+# ---------------------------------------------------------------------------
+# Sectionals comparison page
+# ---------------------------------------------------------------------------
+
+SECTIONALS_QUALIFIED_JSON = DATA_DIR / "sectionals_qualified.json"
+
+
+def build_sectionals_page() -> str | None:
+    """
+    Build sectionals_30.html — a comparison dashboard showing only
+    sectionals-qualified players from all states.
+    """
+    qualified = _load(SECTIONALS_QUALIFIED_JSON, {})
+    teams = qualified.get("qualified_teams", [])
+    if not teams:
+        print("  [sectionals] No qualified teams found, skipping")
+        return None
+
+    players = _load(PLAYERS_JSON, [])
+    regions = _load_regions()
+
+    # Build set of qualified team names (lowered) by state
+    qualified_teams_by_state: dict[str, set[str]] = {}
+    for t in teams:
+        st = t["state"]
+        qualified_teams_by_state.setdefault(st, set()).add(t["team"].lower().strip())
+
+    # Collect all standings across all states (for match history)
+    all_subflights_30: list[dict] = []
+    all_subflights_35: list[dict] = []
+    for st in qualified_teams_by_state:
+        st_lower = st.lower()
+        s30 = _load(DATA_DIR / f"standings_{st_lower}_30.json", {})
+        for sf in s30.get("subflights", []):
+            all_subflights_30.append(sf)
+        # Districts
+        d30 = _load(DATA_DIR / f"districts_{st_lower}_30.json", {})
+        if d30.get("matches"):
+            all_subflights_30.append({"flight_label": "Districts", "teams": d30.get("teams", []),
+                                      "matches": d30.get("matches", [])})
+        # 3.5 for cross-division
+        s35 = _load(DATA_DIR / f"standings_{st_lower}_35.json", {})
+        for sf in s35.get("subflights", []):
+            all_subflights_35.append(sf)
+
+    # Filter players to those on qualified teams
+    qualified_players = []
+    for p in players:
+        st = p.get("state", "")
+        team_30 = (p.get("team_30") or p.get("team") or "").lower().strip()
+        if st in qualified_teams_by_state:
+            if team_30 in qualified_teams_by_state[st]:
+                qualified_players.append(p)
+
+    if not qualified_players:
+        print("  [sectionals] No qualified players found")
+        return None
+
+    print(f"  [sectionals] {len(qualified_players)} qualified players from "
+          f"{len(qualified_teams_by_state)} states")
+
+    # Build the HTML using existing tab builders
+    ntrp = "3.0"
+    players_html = _players_tab(qualified_players, ntrp, all_subflights_30, all_subflights_35)
+
+    # Build matchup explorer content (reuse the same function's internal logic)
+    # For now, use the All Players tab as the primary view
+    tab_defs = [
+        ("allplayers", "all players", players_html),
+    ]
+
+    tab_btns = "".join(
+        f'<button class="tab{" on" if i==0 else ""}" '
+        f'onclick="sw(\'{tid}\',this)">{_esc(lbl)}</button>\n'
+        for i, (tid, lbl, _) in enumerate(tab_defs)
+    )
+    tab_panes = "".join(
+        f'<div id="{tid}" class="pane{" on" if i==0 else ""}">{html}</div>\n'
+        for i, (tid, _, html) in enumerate(tab_defs)
+    )
+
+    cross_link = (
+        f'<a href="index.html" class="cross-link">← All States</a>'
+    )
+
+    # Summary info
+    states_str = ", ".join(sorted(qualified_teams_by_state.keys()))
+    n_players = len(qualified_players)
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Intermountain Sectionals 2026 – 3.0 Women Scouting</title>
+<style>{_CSS}</style>
+</head>
+<body>
+
+<div class="top-bar">{cross_link}</div>
+
+<div class="cards-row">
+  <div class="mcard">
+    <div class="mcard-label">competition</div>
+    <div class="mcard-val">Sectionals</div>
+    <div class="mcard-sub">Intermountain · 2026</div>
+  </div>
+  <div class="mcard">
+    <div class="mcard-label">states</div>
+    <div class="mcard-val">{states_str}</div>
+    <div class="mcard-sub">{len(qualified_teams_by_state)} qualifying teams</div>
+  </div>
+  <div class="mcard">
+    <div class="mcard-label">players</div>
+    <div class="mcard-val">{n_players}</div>
+    <div class="mcard-sub">across all qualified rosters</div>
+  </div>
+</div>
+
+<div class="tabs">{tab_btns}</div>
+
+{tab_panes}
+
+<script>{_JS}</script>
+</body>
+</html>"""
+
+    out_path = Path("sectionals_30.html")
+    out_path.write_text(html, encoding="utf-8")
+    print(f"  [html] {out_path}  ({n_players} qualified players)")
+    return str(out_path)
 
 
 if __name__ == "__main__":

@@ -44,8 +44,12 @@ from scrapers.scrape_tennislink import (
 )
 
 DATA = Path("data")
-STANDINGS_30 = DATA / "standings_women_30.json"
-STANDINGS_35 = DATA / "standings_women_35.json"
+REGIONS_JSON = DATA / "regions.json"
+
+
+def _standings_paths(state_code: str) -> tuple[Path, Path]:
+    st = state_code.lower()
+    return DATA / f"standings_{st}_30.json", DATA / f"standings_{st}_35.json"
 
 MATCH_VIEW_URL = f"{BASE_URL}/Leagues/Main/StatsAndStandings.aspx?t=7&par1={{mid}}&par2=0&par3=0"
 
@@ -252,13 +256,13 @@ def _find_match_diffs(stored_standings: dict, summary_rows: list[dict]) -> list[
 # Standings teams recompute
 # ---------------------------------------------------------------------------
 
-def _normalize_lines_inline():
+def _normalize_lines_inline(state_code: str = "NV"):
     """
     For each match line that has result='home'/'away' but is missing
     winner_team/loser_team, derive those fields from the match's home/away teams.
     Writes updated standings back to disk.
     """
-    for path in (STANDINGS_30, STANDINGS_35):
+    for path in _standings_paths(state_code):
         data = json.loads(path.read_text())
         changed = False
         for sf in data.get("subflights", []):
@@ -282,13 +286,13 @@ def _normalize_lines_inline():
 
 # ---------------------------------------------------------------------------
 
-def _recompute_standings_teams():
+def _recompute_standings_teams(state_code: str = "NV"):
     """
     Recompute the `teams` array for every subflight from actual match results.
     Keeps standings W-L, individual line wins, sets, and games in sync after
     diff updates (the TennisLink scrape only populates these on full scrapes).
     """
-    for path in (STANDINGS_30, STANDINGS_35):
+    for path in _standings_paths(state_code):
         data = json.loads(path.read_text())
         changed = False
         for sf in data.get("subflights", []):
@@ -402,7 +406,7 @@ def _recompute_standings_teams():
 # Main flow
 # ---------------------------------------------------------------------------
 
-def run(dry_run: bool = False) -> int:
+def run(dry_run: bool = False, state_code: str = "NV") -> int:
     """
     Returns number of matches updated.
     """
@@ -412,8 +416,9 @@ def run(dry_run: bool = False) -> int:
         print("  [error] TENNISLINK_USER / TENNISLINK_PASS not set in .env")
         return 0
 
-    standings_30 = json.loads(STANDINGS_30.read_text())
-    standings_35 = json.loads(STANDINGS_35.read_text())
+    path_30, path_35 = _standings_paths(state_code)
+    standings_30 = json.loads(path_30.read_text())
+    standings_35 = json.loads(path_35.read_text())
 
     total_updated = 0
 
@@ -560,9 +565,9 @@ def run(dry_run: bool = False) -> int:
 
                 # Save after each NTRP
                 if not dry_run:
-                    path = STANDINGS_30 if ntrp == "3.0" else STANDINGS_35
-                    path.write_text(json.dumps(standings, indent=2, ensure_ascii=False))
-                    print(f"  [saved] {path.name}")
+                    save_path = path_30 if ntrp == "3.0" else path_35
+                    save_path.write_text(json.dumps(standings, indent=2, ensure_ascii=False))
+                    print(f"  [saved] {save_path.name}")
                 print()
         finally:
             ctx.close()
@@ -674,9 +679,12 @@ def _lookup_and_add_unknown_players(standings_30: dict, standings_35: dict) -> i
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="Show diffs but don't fetch details")
+    ap.add_argument("--state", default="NV",
+                    help="State code to update (e.g. NV, CO, UT). Default: NV")
     args = ap.parse_args()
 
-    n_updated = run(dry_run=args.dry_run)
+    state_code = args.state.upper()
+    n_updated = run(dry_run=args.dry_run, state_code=state_code)
 
     if args.dry_run:
         print(f"Dry run complete.")
@@ -688,44 +696,34 @@ def main():
 
     print(f"\n=== Post-processing ({n_updated} matches updated) ===")
 
-    # Re-normalize winner/loser fields inline (convert result:"home"/"away" → winner_team/loser_team)
     import subprocess
-    _normalize_lines_inline()
+    _normalize_lines_inline(state_code)
+    _recompute_standings_teams(state_code)
 
-    # Recompute standings teams table (W-L, indiv wins, sets, games) from match results
-    _recompute_standings_teams()
-
-    # Recompute player stats from updated scorecards
     from scrapers.scrape_tennislink import _compute_player_stats_from_scorecards
-    s30 = json.loads(STANDINGS_30.read_text())
-    s35 = json.loads(STANDINGS_35.read_text())
+    path_30, path_35 = _standings_paths(state_code)
+    s30 = json.loads(path_30.read_text())
+    s35 = json.loads(path_35.read_text())
     all_ntrp = []
     for ntrp, st in [("3.0", s30), ("3.5", s35)]:
-        lst = []
-        for sf in st.get("subflights", []):
-            lst.append(sf)
-        all_ntrp.append((ntrp, lst))
+        all_ntrp.append((ntrp, [sf for sf in st.get("subflights", [])]))
     _compute_player_stats_from_scorecards(all_ntrp)
 
-    # Look up any player names in match data that aren't yet in players.json
     n_new = _lookup_and_add_unknown_players(s30, s35)
-
-    # If new players were added, recompute their per-division stats (W-L, lines_played)
-    # so they appear correctly in the dashboard on first match
     if n_new:
         _compute_player_stats_from_scorecards(all_ntrp)
 
-    # Run ratings + rebuild dashboards (same steps as rebuild.py)
     from engine.ratings import run_ratings
-    from engine.build_html import build_dashboards
+    from engine.build_html import build_dashboards, build_sectionals_page
     run_ratings()
 
-    # Regenerate notes and subflight summaries (generate_notes.py handles both)
-    subprocess.run(["python3", "generate_notes.py"], check=True)
+    if state_code == "NV":
+        subprocess.run(["python3", "generate_notes.py"], check=True)
 
-    build_dashboards()
+    build_dashboards([state_code])
+    build_sectionals_page()
 
-    print("\n✓ Done! Dashboards rebuilt. Don't forget to commit + push.")
+    print(f"\n✓ Done! {state_code} dashboards rebuilt. Don't forget to commit + push.")
 
 
 if __name__ == "__main__":

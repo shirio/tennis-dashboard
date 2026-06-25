@@ -1,0 +1,104 @@
+{
+  "section": "Intermountain",
+  "states": {
+    "NV": {
+      "district": "Nevada",
+      "tennisrecord_district": "Nevada",
+      "tennisrecord_area": "Area",
+      "areas": [
+        {
+          "area": "Area F",
+          "usta_pivot": "2019825517"
+        }
+      ],
+      "label": "NV Area F",
+      "your_team_30": "DTC #3",
+      "your_team_35": "DTC #3",
+      "has_districts": true
+    },
+    "CO": {
+      "district": "Colorado",
+      "tennisrecord_district": "Colorado",
+      "tennisrecord_area": null,
+      "tennisrecord_areas": [
+        "Aspen and Mountains",
+        "Denver Metro",
+        "Northern Colorado",
+        "Southern Colorado",
+        "Western Slope"
+      ],
+      "areas": [
+        {
+          "area": "CO-DENVER METRO",
+          "flight_suffix": null
+        },
+        {
+          "area": "CO-MOUNTAINS",
+          "flight_suffix": "MOUNTAINS"
+        },
+        {
+          "area": "CO-NORTHERN COLORADO",
+          "flight_suffix": "NOCO"
+        },
+        {
+          "area": "CO-SOUTHERN COLORADO",
+          "flight_suffix": "SOCO"
+        },
+        {
+          "area": "CO-WESTERN SLOPE",
+          "flight_suffix": "WS"
+        }
+      ],
+      "label": "Colorado",
+      "your_team_30": null,
+      "your_team_35": null,
+      "has_districts": true
+    },
+    "UT": {
+      "district": "Utah",
+      "tennisrecord_district": "Utah",
+      "tennisrecord_area": null,
+      "tennisrecord_areas": [
+        "Northern Utah",
+        "Salt Lake City",
+        "St. George"
+      ],
+      "areas": [
+        {
+          "area": "UT-AM",
+          "flight_suffix": "AM"
+        },
+        {
+          "area": "UT-PM",
+          "flight_suffix": "PM"
+        }
+      ],
+      "label": "Utah",
+      "your_team_30": null,
+      "your_team_35": null,
+      "has_districts": true
+    },
+    "ID": {
+      "district": "Idaho",
+      "tennisrecord_district": "Idaho",
+      "tennisrecord_area": null,
+      "tennisrecord_areas": [
+        "Treasure Valley",
+        "Sun Valley",
+        "Idaho Falls",
+        "Pocatello",
+        "McCall",
+        "Twin Falls"
+      ],
+      "areas": [
+        {
+          "area": "Idaho"
+        }
+      ],
+      "label": "Idaho",
+      "your_team_30": null,
+      "your_team_35": null,
+      "has_districts": false
+    }
+  }
+}

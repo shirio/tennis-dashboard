@@ -1,0 +1,24 @@
+{
+  "year": 2026,
+  "ntrp": "3.0",
+  "gender": "Female",
+  "level": "Sectionals",
+  "section": "Intermountain",
+  "qualified_teams": [
+    {
+      "state": "NV",
+      "team": "DTC #3",
+      "source": "districts_winner"
+    },
+    {
+      "state": "CO",
+      "team": "BRMST RED",
+      "source": "districts_winner"
+    },
+    {
+      "state": "UT",
+      "team": "Harvey/Conrad",
+      "source": "districts_winner"
+    }
+  ]
+}

@@ -1,0 +1,858 @@
+{
+  "ntrp": "3.0",
+  "year": 2026,
+  "state": "ID",
+  "subflights": [
+    {
+      "flight_label": "A",
+      "teams": [
+        {
+          "team_name": "Hailey Ball",
+          "team_wins": 7,
+          "matches_played": 7,
+          "team_losses": 0,
+          "indiv_wins": 28,
+          "indiv_losses": 7,
+          "sets_won": 57,
+          "sets_lost": 21,
+          "games_won": 369,
+          "games_lost": 257,
+          "games_won_pct": "58.95%"
+        },
+        {
+          "team_name": "The Real Housewives of the Hard Court",
+          "team_wins": 5,
+          "matches_played": 8,
+          "team_losses": 3,
+          "indiv_wins": 26,
+          "indiv_losses": 14,
+          "sets_won": 58,
+          "sets_lost": 31,
+          "games_won": 421,
+          "games_lost": 301,
+          "games_won_pct": "58.31%"
+        },
+        {
+          "team_name": "Lucky Strings",
+          "team_wins": 2,
+          "matches_played": 8,
+          "team_losses": 6,
+          "indiv_wins": 12,
+          "indiv_losses": 28,
+          "sets_won": 30,
+          "sets_lost": 57,
+          "games_won": 308,
+          "games_lost": 400,
+          "games_won_pct": "43.50%"
+        },
+        {
+          "team_name": "Idaho Falls",
+          "team_wins": 1,
+          "matches_played": 7,
+          "team_losses": 6,
+          "indiv_wins": 9,
+          "indiv_losses": 26,
+          "sets_won": 19,
+          "sets_lost": 55,
+          "games_won": 226,
+          "games_lost": 366,
+          "games_won_pct": "38.18%"
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "028685d7f0d57ef3",
+          "date": "5/14/2026",
+          "tl_match_id": "1011969505",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969505",
+          "home_team": "Hailey Ball",
+          "away_team": "Lucky Strings",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Joanie Anderson",
+              "players_away": "Hailey Ball",
+              "score": "2-6 6-3 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Cori Cannon",
+              "players_away": "Breanna Aldrich",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Cherie Ball / Megan Keller",
+              "players_away": "Tina Taylor / Katilyn Onkes",
+              "score": "7-6 3-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sonja Facer / Aleesa Wilcox",
+              "players_away": "Cari Boyle / Christi Ball",
+              "score": "4-6 6-3 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Hailey Bradshaw / Lisa Hone",
+              "players_away": "JESSICA SKIDMORE / Lexie Kerby",
+              "score": "6-3 6-1",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "d4de469a36d9567e",
+          "date": "5/14/2026",
+          "tl_match_id": "1011969504",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969504",
+          "home_team": "The Real Housewives of the Hard Court",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Abigail Belnap",
+              "players_away": "Ashley Brusman",
+              "score": "6-3 1-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Nicole Baldwin",
+              "players_away": "Emily McCormick",
+              "score": "6-3 6-3",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Heidi Southwick / Crista Rostrom",
+              "players_away": "Jennifer Sewell / Heather Redd",
+              "score": "6-4 5-7 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jennifer Jennings / Camille Aguinaga",
+              "players_away": "Lisa Packer / Karen Walker",
+              "score": "2-6 6-2 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Sharon Oliver / Ashley Benson",
+              "players_away": "Monica Kuhn / Michelle Marlowe",
+              "score": "6-0 6-1",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "67d540c2445924ab",
+          "date": "5/21/2026",
+          "tl_match_id": "1011969506",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969506",
+          "home_team": "Hailey Ball",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Hailey Ball",
+              "players_away": "Abigail Belnap",
+              "score": "6-2 6-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Tina Taylor",
+              "players_away": "Jennifer Jennings",
+              "score": "6-2 6-1",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Tera Craig / Katilyn Onkes",
+              "players_away": "Crista Rostrom / Coleen Niemann",
+              "score": "6-1 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Cari Boyle / Christi Ball",
+              "players_away": "Nicole Baldwin / Sharon Oliver",
+              "score": "6-3 7-6",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Breanna Aldrich / Kodi Howell",
+              "players_away": "Indiea Rasmussen / Camille Aguinaga",
+              "score": "6-1 6-3",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "f59ea986567d4b58",
+          "date": "5/21/2026",
+          "tl_match_id": "1011969507",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969507",
+          "home_team": "The Real Housewives of the Hard Court",
+          "away_team": "Lucky Strings",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Taralynn Sibbett",
+              "players_away": "Cori Cannon",
+              "score": "6-4 7-6",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Emily McCormick",
+              "players_away": "Sonja Facer",
+              "score": "6-3 6-1",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Ashley Brusman / Rebecca Hansen",
+              "players_away": "Lindsey Johnson / Brooke Hedin",
+              "score": "6-2 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Michelle Marlowe / Kimberly Wynn",
+              "players_away": "Joanie Anderson / Cherie Ball",
+              "score": "7-5 6-3",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kristine Parker / Kara Petersen",
+              "players_away": "Betsy Hunsicker / Lisa Hone",
+              "score": "6-3 6-1",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "986317555046b0ec",
+          "date": "5/28/2026",
+          "tl_match_id": "1011969509",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969509",
+          "home_team": "Hailey Ball",
+          "away_team": "The Real Housewives of the Hard Court",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Kodi Howell",
+              "players_away": "Emily McCormick",
+              "score": "6-3 6-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Breanna Aldrich",
+              "players_away": "Taralynn Sibbett",
+              "score": "6-0 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Tina Taylor / Hailey Ball",
+              "players_away": "Michelle Marlowe / Ashley Brusman",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Tera Craig / Katilyn Onkes",
+              "players_away": "Joanna Bennett / Holly Russell",
+              "score": "3-6 6-4 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Christi Ball / Cari Boyle",
+              "players_away": "Jennifer Sewell / Karen Walker",
+              "score": "6-7 7-6 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "fd94267fe3e0a65d",
+          "date": "5/28/2026",
+          "tl_match_id": "1011969508",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969508",
+          "home_team": "Lucky Strings",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Crista Rostrom",
+              "players_away": "Lindsey Johnson",
+              "score": "6-3 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Ashley Benson",
+              "players_away": "Betsy Hunsicker",
+              "score": "6-3 6-4",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Jennings / Camille Aguinaga",
+              "players_away": "Cherie Ball / Nichole Ball",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sharon Oliver / Coleen Niemann",
+              "players_away": "Brooke Bedke / Sonja Facer",
+              "score": "6-2 6-4",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Indiea Rasmussen / Megan Black",
+              "players_away": "Lisa Hone / Aleesa Wilcox",
+              "score": "6-2 6-2",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "facec042b220a76a",
+          "date": "6/11/2026",
+          "tl_match_id": "1011969512",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969512",
+          "home_team": "Hailey Ball",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Heidi Southwick",
+              "players_away": "Kodi Howell",
+              "score": "6-1 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Abigail Belnap",
+              "players_away": "Breanna Aldrich",
+              "score": "6-1 6-4",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Camille Aguinaga / Nicole Baldwin",
+              "players_away": "Tera Craig / Katilyn Onkes",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Crista Rostrom / Sharon Oliver",
+              "players_away": "JESSICA SKIDMORE / Lexie Kerby",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Ashley Benson / Indiea Rasmussen",
+              "players_away": "Christi Ball / Natalie Buttars",
+              "score": "7-5 6-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "c6c863b3c395e0eb",
+          "date": "6/11/2026",
+          "tl_match_id": "1011969513",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969513",
+          "home_team": "The Real Housewives of the Hard Court",
+          "away_team": "Lucky Strings",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Brooke Bedke",
+              "players_away": "Holly Russell",
+              "score": "6-3 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Joanie Anderson",
+              "players_away": "Larcen Petersen",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Nichole Ball / Cori Cannon",
+              "players_away": "Joanna Bennett / Emily McCormick",
+              "score": "6-4 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Megan Keller / Lisa Hone",
+              "players_away": "Michelle Marlowe / Kimberly Wynn",
+              "score": "7-5 5-7 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Brooke Hedin / Hailey Bradshaw",
+              "players_away": "Jennifer Sewell / Rebecca Hansen",
+              "score": "6-1 6-1",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "34ec30bf290655f7",
+          "date": "6/16/2026",
+          "tl_match_id": "1011969515",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969515",
+          "home_team": "Hailey Ball",
+          "away_team": "The Real Housewives of the Hard Court",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Holly Russell",
+              "players_away": "Hailey Ball",
+              "score": "6-4 4-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Larcen Petersen",
+              "players_away": "Kodi Howell",
+              "score": "6-3 7-5",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Heather Redd / Melissa Marshall",
+              "players_away": "JESSICA SKIDMORE / Katilyn Onkes",
+              "score": "7-6 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kara Petersen / Jennifer Sewell",
+              "players_away": "Lexie Kerby / Natalie Buttars",
+              "score": "6-3 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Monica Kuhn / Kristine Parker",
+              "players_away": "Tera Craig / Cari Boyle",
+              "score": "6-3 6-4",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "d687104144dd501a",
+          "date": "6/16/2026",
+          "tl_match_id": "1011969514",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969514",
+          "home_team": "Lucky Strings",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Nichole Ball",
+              "players_away": "Nicole Baldwin",
+              "score": "6-2 6-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Lisa Hone",
+              "players_away": "Coleen Niemann",
+              "score": "6-0 7-6",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Betsy Hunsicker / Megan Keller",
+              "players_away": "Ashley Benson / Crista Rostrom",
+              "score": "6-4 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Aleesa Wilcox / Cherie Ball",
+              "players_away": "Sharon Oliver / Heidi Southwick",
+              "score": "6-1 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Brooke Bedke / Hailey Bradshaw",
+              "players_away": "Megan Black / Indiea Rasmussen",
+              "score": "6-0 6-2",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "f11134b947ad902e",
+          "date": "6/19/2026",
+          "tl_match_id": "1011969517",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969517",
+          "home_team": "Hailey Ball",
+          "away_team": "Lucky Strings",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Brooke Bedke",
+              "players_away": "JESSICA SKIDMORE",
+              "score": "6-2 7-5",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Aleesa Wilcox",
+              "players_away": "Natalie Buttars",
+              "score": "1-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lisa Hone / Sonja Facer",
+              "players_away": "Tina Taylor / Lexie Kerby",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Betsy Hunsicker / Nichole Ball",
+              "players_away": "Hailey Ball / Katilyn Onkes",
+              "score": "6-3 7-5",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Megan Keller / Brooke Hedin",
+              "players_away": "Tera Craig / Cari Boyle",
+              "score": "6-0 6-2",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "1c8a0a1946b191e5",
+          "date": "6/19/2026",
+          "tl_match_id": "1011969516",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969516",
+          "home_team": "The Real Housewives of the Hard Court",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Ashley Benson",
+              "players_away": "Kara Petersen",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Crista Rostrom",
+              "players_away": "Joanna Bennett",
+              "score": "6-3 6-3",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Abigail Belnap / Heidi Southwick",
+              "players_away": "Heather Redd / Kristine Parker",
+              "score": "6-2 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Coleen Niemann / Sharon Oliver",
+              "players_away": "Monica Kuhn / Melissa Marshall",
+              "score": "7-5 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Indiea Rasmussen / Megan Black",
+              "players_away": "Kimberly Wynn / Rebecca Hansen",
+              "score": "7-5 6-1",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "29e78a6dbda800ab",
+          "date": "6/23/2026",
+          "tl_match_id": "1011969518",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969518",
+          "home_team": "Hailey Ball",
+          "away_team": "Idaho Falls",
+          "team_wins_home": null,
+          "team_wins_away": null,
+          "score": "",
+          "status": "Not Played",
+          "pending": true,
+          "lines": []
+        },
+        {
+          "match_id": "6eb1c4d38b5948c9",
+          "date": "6/23/2026",
+          "tl_match_id": "1011969519",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969519",
+          "home_team": "The Real Housewives of the Hard Court",
+          "away_team": "Lucky Strings",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Reported",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Emily McCormick",
+              "players_away": "Betsy Hunsicker",
+              "score": "4-6 6-3 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Holly Russell",
+              "players_away": "Megan Keller",
+              "score": "6-4 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Joanna Bennett / Taralynn Sibbett",
+              "players_away": "Aleesa Wilcox / Lisa Hone",
+              "score": "6-0 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Rebecca Hansen / Monica Kuhn",
+              "players_away": "Lindsey Johnson / Joanie Anderson",
+              "score": "7-5 7-5",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Lisa Packer / Kara Petersen",
+              "players_away": "Brooke Bedke / Brooke Hedin",
+              "score": "6-1 6-3",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "d8c9ff5c3e05c006",
+          "date": "6/25/2026",
+          "tl_match_id": "1011969521",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969521",
+          "home_team": "Hailey Ball",
+          "away_team": "The Real Housewives of the Hard Court",
+          "team_wins_home": null,
+          "team_wins_away": null,
+          "score": "",
+          "status": "Not Played",
+          "pending": true,
+          "lines": []
+        },
+        {
+          "match_id": "607da176e07747e8",
+          "date": "6/25/2026",
+          "tl_match_id": "1011969520",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969520",
+          "home_team": "Lucky Strings",
+          "away_team": "Idaho Falls",
+          "team_wins_home": null,
+          "team_wins_away": null,
+          "score": "",
+          "status": "Not Played",
+          "pending": true,
+          "lines": []
+        },
+        {
+          "match_id": "22032cb83a4bf331",
+          "date": "6/4/2026",
+          "tl_match_id": "1011969511",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969511",
+          "home_team": "Hailey Ball",
+          "away_team": "Lucky Strings",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Kodi Howell",
+              "players_away": "Cori Cannon",
+              "score": "7-5 4-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Breanna Aldrich",
+              "players_away": "Sonja Facer",
+              "score": "6-4 6-3",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Hailey Ball / Lexie Kerby",
+              "players_away": "Lindsey Johnson / Joanie Anderson",
+              "score": "6-0 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Cari Boyle / Tera Craig",
+              "players_away": "Betsy Hunsicker / Nichole Ball",
+              "score": "6-3 4-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "JESSICA SKIDMORE / Natalie Buttars",
+              "players_away": "Cherie Ball / Brooke Hedin",
+              "score": "6-2 6-2",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "a26374d3d23234ea",
+          "date": "6/4/2026",
+          "tl_match_id": "1011969510",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011969510",
+          "home_team": "The Real Housewives of the Hard Court",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Taralynn Sibbett",
+              "players_away": "Nicole Baldwin",
+              "score": "2-6 6-3 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Joanna Bennett",
+              "players_away": "Camille Aguinaga",
+              "score": "6-0 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lisa Packer / Jennifer Sewell",
+              "players_away": "Jennifer Jennings / Ashley Benson",
+              "score": "6-3 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Ashley Brusman / Melissa Marshall",
+              "players_away": "Indiea Rasmussen / Abigail Belnap",
+              "score": "6-0 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Larcen Petersen / Heather Redd",
+              "players_away": "Heidi Southwick / Sharon Oliver",
+              "score": "7-6 6-2",
+              "result": "home"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -26,13 +26,47 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.tennisrecord.com"
+DATA_DIR = Path("data")
+PLAYERS_JSON = DATA_DIR / "players.json"
+REGIONS_JSON = DATA_DIR / "regions.json"
+
+# Legacy default (NV)
 RATINGS_URL = (
     f"{BASE_URL}/adult/ratings.aspx?"
     "sectionname=Intermountain&districtname=Nevada&areaname=Area"
     "&gender=F&orderby=NTRPRating"
 )
-DATA_DIR = Path("data")
-PLAYERS_JSON = DATA_DIR / "players.json"
+
+
+def _build_ratings_url(section: str = "Intermountain",
+                       district: str = "Nevada",
+                       area: str = "Area",
+                       gender: str = "F") -> str:
+    """Build tennisrecord ratings table URL for a given region."""
+    params = {
+        "sectionname": section,
+        "districtname": district,
+        "areaname": area,
+        "gender": gender,
+        "orderby": "NTRPRating",
+    }
+    return f"{BASE_URL}/adult/ratings.aspx?{urlencode(params)}"
+
+
+def _load_regions() -> dict:
+    if REGIONS_JSON.exists():
+        return json.loads(REGIONS_JSON.read_text())
+    return {}
+
+
+def _get_state_config(state_code: str) -> dict:
+    regions = _load_regions()
+    cfg = regions.get("states", {}).get(state_code)
+    if not cfg:
+        raise ValueError(f"No config for state {state_code!r} in {REGIONS_JSON}")
+    cfg["_section"] = regions.get("section", "Intermountain")
+    cfg["_state_code"] = state_code
+    return cfg
 
 HEADERS = {
     "User-Agent": (
@@ -67,14 +101,26 @@ def _save_json(path: Path, data):
 # Step 1 – scrape the ratings table
 # ---------------------------------------------------------------------------
 
-def fetch_ratings_table() -> list[dict]:
+def fetch_ratings_table(url: str | None = None) -> list[dict]:
     """
     Download the full ratings table and return a list of:
       {name, name_norm, ntrp_rating, dynamic_rating, s_id, profile_url}
     """
-    print(f"  Fetching ratings table …")
-    resp = requests.get(RATINGS_URL, headers=HEADERS, timeout=30)
-    resp.raise_for_status()
+    url = url or RATINGS_URL
+    print(f"  Fetching ratings table from {url} …")
+    for attempt in range(3):
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=60)
+            resp.raise_for_status()
+            break
+        except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError) as e:
+            if attempt < 2:
+                wait = 5 * (attempt + 1)
+                print(f"    [retry] attempt {attempt+1} failed ({e.__class__.__name__}), waiting {wait}s...")
+                time.sleep(wait)
+            else:
+                print(f"    [error] all 3 attempts failed for {url}")
+                return []
 
     soup = BeautifulSoup(resp.text, "html.parser")
     tables = soup.find_all("table")
@@ -172,7 +218,7 @@ def fetch_profile_info(profile_url: str) -> dict:
 # Step 3 – match and update players.json
 # ---------------------------------------------------------------------------
 
-def update_players(records: list[dict]):
+def update_players(records: list[dict], state_code: str | None = None):
     players = _load_json(PLAYERS_JSON, [])
 
     # Build lookup: name_norm -> list of rating records
@@ -272,9 +318,35 @@ def update_players(records: list[dict]):
 # ---------------------------------------------------------------------------
 
 def main():
-    print("=== Scraping tennisrecord.com ratings ===")
-    records = fetch_ratings_table()
-    update_players(records)
+    import argparse
+    parser = argparse.ArgumentParser(description="Scrape tennisrecord.com ratings")
+    parser.add_argument("--state", default="NV", help="State code (NV, CO, UT, ID)")
+    args = parser.parse_args()
+
+    state_code = args.state.upper()
+    cfg = _get_state_config(state_code)
+
+    section = cfg["_section"]
+    district = cfg.get("tennisrecord_district", cfg["district"])
+
+    tr_areas = cfg.get("tennisrecord_areas") or []
+    single_area = cfg.get("tennisrecord_area", "")
+
+    if tr_areas:
+        all_records = []
+        for area_name in tr_areas:
+            url = _build_ratings_url(section, district, area_name)
+            print(f"=== Scraping tennisrecord.com ratings for {state_code} / {area_name} ===")
+            records = fetch_ratings_table(url)
+            all_records.extend(records)
+        print(f"  Total: {len(all_records)} records across {len(tr_areas)} areas")
+        update_players(all_records, state_code)
+    else:
+        url = _build_ratings_url(section, district, single_area or "")
+        print(f"=== Scraping tennisrecord.com ratings for {state_code} ({district}) ===")
+        records = fetch_ratings_table(url)
+        update_players(records, state_code)
+
     print("Done.")
 
 

@@ -545,6 +545,13 @@ def _players_needing_mode2(players: list[dict]) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def main():
+    import argparse as _ap
+    parser = _ap.ArgumentParser(description="Full TennisLink scrape + rebuild")
+    parser.add_argument("--state", default="NV",
+                        help="State code to scrape (e.g. NV, CO, UT). Default: NV")
+    cli_args = parser.parse_args()
+    state_code = cli_args.state.upper()
+
     username = os.getenv("TENNISLINK_USER", "")
     password = os.getenv("TENNISLINK_PASS", "")
     if not username or not password:
@@ -552,7 +559,8 @@ def main():
         sys.exit(1)
 
     year = 2026
-    standings_files = [OUTPUT_STANDINGS_30, OUTPUT_STANDINGS_35]
+    st = state_code.lower()
+    standings_files = [DATA_DIR / f"standings_{st}_30.json", DATA_DIR / f"standings_{st}_35.json"]
 
     # Counters for final summary
     n_standings_matches_before = sum(
@@ -588,11 +596,11 @@ def main():
             login(page, username, password)
 
             # Step 1
-            run_mode1(page, year)
+            run_mode1(page, year, state_code=state_code)
 
             # Compute per-player W/L and lines played from scorecard data
-            standings_30 = load_json(OUTPUT_STANDINGS_30, {})
-            standings_35 = load_json(OUTPUT_STANDINGS_35, {})
+            standings_30 = load_json(standings_files[0], {})
+            standings_35 = load_json(standings_files[1], {})
             _compute_player_stats_from_scorecards([
                 ("3.0", standings_30.get("subflights", [])),
                 ("3.5", standings_35.get("subflights", [])),
@@ -665,7 +673,7 @@ def main():
     print("\n" + "="*60)
     print("  STEP 7 – Rebuild HTML dashboards")
     print("="*60)
-    build_dashboards()
+    build_dashboards([state_code])
 
     # ── Summary ─────────────────────────────────────────────────────────────
     print("\n" + "="*60)

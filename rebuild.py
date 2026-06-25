@@ -11,33 +11,69 @@
 """
 Recompute ratings and rebuild dashboards from existing match data.
 
-Use this after changing the ratings algorithm or HTML templates —
-no scraping needed. All input data (players.json, matches_all_players.json)
-is read as-is from the data/ directory.
+Supports multi-state: loads all states' standings from data/ directory,
+runs unified cross-state ratings, then builds per-state dashboards
+plus the sectionals comparison page.
 
 Usage:
-    python3 rebuild.py
+    python3 rebuild.py              # all states
+    python3 rebuild.py --state NV   # just Nevada
 """
+import argparse
 import json
 from pathlib import Path
 
 from scrapers.scrape_tennislink import _compute_player_stats_from_scorecards
 from engine.ratings import run_ratings
-from engine.build_html import build_dashboards
+from engine.build_html import build_dashboards, build_sectionals_page
 
 DATA_DIR = Path("data")
+REGIONS_JSON = DATA_DIR / "regions.json"
 
-# Recompute per-player lines/W-L/team from scorecards before ratings,
-# so manually entered matches (e.g. W7 entered without scraping) are
-# reflected in the roster stats.
-s30 = json.loads((DATA_DIR / "standings_women_30.json").read_text())
-s35 = json.loads((DATA_DIR / "standings_women_35.json").read_text())
-all_ntrp = [
-    ("3.0", s30.get("subflights", [])),
-    ("3.5", s35.get("subflights", [])),
-]
-_compute_player_stats_from_scorecards(all_ntrp)
 
-run_ratings()
-build_dashboards()
-print("\n✓ Done! Dashboards rebuilt. Don't forget to commit + push.")
+def main():
+    parser = argparse.ArgumentParser(description="Rebuild ratings + dashboards")
+    parser.add_argument("--state", default=None,
+                        help="Rebuild only this state (e.g. NV, CO). Default: all states")
+    args = parser.parse_args()
+
+    # Determine which states to process
+    regions = json.loads(REGIONS_JSON.read_text()) if REGIONS_JSON.exists() else {}
+    all_states = list(regions.get("states", {}).keys()) or ["NV"]
+    states = [args.state.upper()] if args.state else all_states
+
+    # Recompute per-player lines/W-L/team from scorecards for all states
+    all_ntrp = []
+    for st in states:
+        st_lower = st.lower()
+        for ntrp_label, suffix in [("3.0", "30"), ("3.5", "35")]:
+            path = DATA_DIR / f"standings_{st_lower}_{suffix}.json"
+            if path.exists():
+                data = json.loads(path.read_text())
+                all_ntrp.append((ntrp_label, data.get("subflights", [])))
+            # Also include districts matches
+            d_path = DATA_DIR / f"districts_{st_lower}_{suffix}.json"
+            if d_path.exists():
+                d_data = json.loads(d_path.read_text())
+                if d_data.get("matches"):
+                    all_ntrp.append((ntrp_label, [{"flight_label": "Districts",
+                                                    "teams": d_data.get("teams", []),
+                                                    "matches": d_data.get("matches", [])}]))
+
+    if all_ntrp:
+        _compute_player_stats_from_scorecards(all_ntrp)
+
+    # Unified cross-state ratings
+    run_ratings()
+
+    # Build per-state dashboards
+    build_dashboards(states)
+
+    # Build sectionals comparison page
+    build_sectionals_page()
+
+    print(f"\nDone! Dashboards rebuilt for {', '.join(states)}.")
+
+
+if __name__ == "__main__":
+    main()

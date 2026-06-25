@@ -1,0 +1,2358 @@
+{
+  "ntrp": "3.5",
+  "year": 2026,
+  "state": "ID",
+  "subflights": [
+    {
+      "flight_label": "A",
+      "teams": [
+        {
+          "team_name": "Aloha Beaches 18+",
+          "team_wins": 7,
+          "matches_played": 8,
+          "team_losses": 1,
+          "indiv_wins": 33,
+          "indiv_losses": 7,
+          "sets_won": 70,
+          "sets_lost": 21,
+          "games_won": 450,
+          "games_lost": 266,
+          "games_won_pct": "62.22%"
+        },
+        {
+          "team_name": "Honey Deuce 18's",
+          "team_wins": 7,
+          "matches_played": 9,
+          "team_losses": 2,
+          "indiv_wins": 28,
+          "indiv_losses": 17,
+          "sets_won": 60,
+          "sets_lost": 42,
+          "games_won": 426,
+          "games_lost": 366,
+          "games_won_pct": "53.79%"
+        },
+        {
+          "team_name": "Each Hit",
+          "team_wins": 6,
+          "matches_played": 9,
+          "team_losses": 3,
+          "indiv_wins": 27,
+          "indiv_losses": 18,
+          "sets_won": 60,
+          "sets_lost": 43,
+          "games_won": 430,
+          "games_lost": 399,
+          "games_won_pct": "51.87%"
+        },
+        {
+          "team_name": "Play It Forward",
+          "team_wins": 6,
+          "matches_played": 9,
+          "team_losses": 3,
+          "indiv_wins": 23,
+          "indiv_losses": 22,
+          "sets_won": 54,
+          "sets_lost": 52,
+          "games_won": 419,
+          "games_lost": 429,
+          "games_won_pct": "49.41%"
+        },
+        {
+          "team_name": "Nothing But Love youngsters",
+          "team_wins": 5,
+          "matches_played": 9,
+          "team_losses": 4,
+          "indiv_wins": 28,
+          "indiv_losses": 17,
+          "sets_won": 60,
+          "sets_lost": 42,
+          "games_won": 468,
+          "games_lost": 384,
+          "games_won_pct": "54.29%"
+        },
+        {
+          "team_name": "Nice Hits 18+",
+          "team_wins": 4,
+          "matches_played": 8,
+          "team_losses": 4,
+          "indiv_wins": 23,
+          "indiv_losses": 17,
+          "sets_won": 52,
+          "sets_lost": 41,
+          "games_won": 414,
+          "games_lost": 326,
+          "games_won_pct": "55.22%"
+        },
+        {
+          "team_name": "SLAY!",
+          "team_wins": 4,
+          "matches_played": 9,
+          "team_losses": 5,
+          "indiv_wins": 19,
+          "indiv_losses": 26,
+          "sets_won": 45,
+          "sets_lost": 56,
+          "games_won": 413,
+          "games_lost": 447,
+          "games_won_pct": "47.29%"
+        },
+        {
+          "team_name": "YOURS!",
+          "team_wins": 2,
+          "matches_played": 9,
+          "team_losses": 7,
+          "indiv_wins": 19,
+          "indiv_losses": 26,
+          "sets_won": 46,
+          "sets_lost": 55,
+          "games_won": 418,
+          "games_lost": 421,
+          "games_won_pct": "49.82%"
+        },
+        {
+          "team_name": "Net Positive 18+",
+          "team_wins": 2,
+          "matches_played": 9,
+          "team_losses": 7,
+          "indiv_wins": 13,
+          "indiv_losses": 32,
+          "sets_won": 33,
+          "sets_lost": 68,
+          "games_won": 306,
+          "games_lost": 464,
+          "games_won_pct": "42.38%"
+        },
+        {
+          "team_name": "Simply Smashing",
+          "team_wins": 1,
+          "matches_played": 9,
+          "team_losses": 8,
+          "indiv_wins": 7,
+          "indiv_losses": 38,
+          "sets_won": 18,
+          "sets_lost": 78,
+          "games_won": 262,
+          "games_lost": 504,
+          "games_won_pct": "33.69%"
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "b08bfee633442f83",
+          "date": "5/19/2026",
+          "tl_match_id": "1011960966",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960966",
+          "home_team": "Aloha Beaches 18+",
+          "away_team": "Each Hit",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Liz Given",
+              "players_away": "Emily Sloop",
+              "score": "4-6 6-1 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Brittney Lacey",
+              "players_away": "Erica Laursen",
+              "score": "6-0 6-1",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Amy Wendel / Katie Nelson",
+              "players_away": "Tina Measham / Marnie Newton",
+              "score": "6-1 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Trang Pham / Chrissy Rose",
+              "players_away": "Jane Perlaky / Margie Waddel",
+              "score": "7-5 6-4",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Hailey Smith / Kimberlee Megale",
+              "players_away": "Anna Orrison / Zel Mertz",
+              "score": "6-3 6-3",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "7fe0e7e5ec032f7e",
+          "date": "5/19/2026",
+          "tl_match_id": "1011960967",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960967",
+          "home_team": "Honey Deuce 18's",
+          "away_team": "Net Positive 18+",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Kelli Kennedy",
+              "players_away": "Christy Siemons",
+              "score": "1-6 6-1 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Monica Hubbard",
+              "players_away": "Kaitie Neely",
+              "score": "6-4 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Averi Lopez / Angela Abbott",
+              "players_away": "Diane Cercle / Loria Sylvia",
+              "score": "6-0 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kathy Hansen / Gillian Donahey",
+              "players_away": "Erin Kohler / Tiffany Roberts",
+              "score": "6-0 4-2",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Allison Knight / MARISA MANGUM",
+              "players_away": "Dana Rusin / Terri Mulcahy",
+              "score": "5-7 6-3 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "0c9a2d14cfa71b1d",
+          "date": "5/19/2026",
+          "tl_match_id": "1011960970",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960970",
+          "home_team": "Play It Forward",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Ashley Bryngelson",
+              "players_away": "Shannon Stith",
+              "score": "7-6 6-7 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Hilary Sauder",
+              "players_away": "Kari Forney",
+              "score": "6-0 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Robin Toney / Gracie Franks",
+              "players_away": "Lina Zenner / Shawna Ianson",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Ginger Cummins / Heidi Friend",
+              "players_away": "Sherri Matney / JoLyn Janecko",
+              "score": "6-1 2-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jill Peterson / Jill Yost",
+              "players_away": "Alaina Sayers / Maureen Sykes",
+              "score": "3-6 6-1 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "ddd4dcd1484bc396",
+          "date": "5/19/2026",
+          "tl_match_id": "1011960968",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960968",
+          "home_team": "Nothing But Love youngsters",
+          "away_team": "YOURS!",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Allison Young",
+              "players_away": "Lauren Osburn",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jenessa Taylor",
+              "players_away": "Erica Gonzalez",
+              "score": "7-6 7-5",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Abbie Hover / Kylie Nesbit",
+              "players_away": "Jessika Hulewsky / Mandy Bergstrom",
+              "score": "6-3 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Donna Moussalli / Kim Buchanan",
+              "players_away": "Nelda Denton / Fariss Mcgee",
+              "score": "6-4 6-4",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Lynn Clanton / Rebecca Clift-French",
+              "players_away": "Carrie Fischer / Michelle Francel",
+              "score": "6-4 6-4",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "e46724a14359fdd4",
+          "date": "5/19/2026",
+          "tl_match_id": "1011960969",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960969",
+          "home_team": "Nice Hits 18+",
+          "away_team": "SLAY!",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Paige Gustavsen",
+              "players_away": "Chynna Castoro",
+              "score": "6-3 7-5",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Molly Schafer",
+              "players_away": "Andrea Reynolds",
+              "score": "6-0 7-6",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Cynthia Copple / Jennifer Wilson",
+              "players_away": "Amy Costello / Amy Pugsley",
+              "score": "6-3 4-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Stacey Strong / Emily Allen",
+              "players_away": "Suzie Wilson / Lori Hosac",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Melissa Nielsen / Betsy McDonald",
+              "players_away": "Shawnee Perdue / Farrell Kessler",
+              "score": "6-2 7-5",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "686b580577820835",
+          "date": "5/26/2026",
+          "tl_match_id": "1011960975",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960975",
+          "home_team": "Play It Forward",
+          "away_team": "Nice Hits 18+",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Cathy Wood",
+              "players_away": "Breanna Taylor",
+              "score": "6-4 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Chandra Zenner-Ford",
+              "players_away": "Lindsey Cassidy",
+              "score": "6-2 6-7 1-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jen Hunter / Kimberly Shansby",
+              "players_away": "Stacey Strong / Emily Allen",
+              "score": "7-5 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Vicki Goss / Hillary Lilya",
+              "players_away": "Cynthia Copple / Paige Gustavsen",
+              "score": "6-3 6-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kari Forney / Margo Showers",
+              "players_away": "Stephanie Churchman / Jennifer Johnson",
+              "score": "6-4 6-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "805d404f6dfae008",
+          "date": "5/26/2026",
+          "tl_match_id": "1011960973",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960973",
+          "home_team": "SLAY!",
+          "away_team": "Net Positive 18+",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jule Ryan",
+              "players_away": "Kristin Bailey",
+              "score": "6-2 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Chynna Castoro",
+              "players_away": "Krystal Patel",
+              "score": "6-2 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Amy Pugsley / Morgan White",
+              "players_away": "Averi Lopez / Vasey Stephens",
+              "score": "7-5 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jill Mckinney / Kim Agler",
+              "players_away": "Allison Darnall / Gillian Donahey",
+              "score": "4-6 6-0 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Dyan Goulet / Suzie Wilson",
+              "players_away": "MARISA MANGUM / Breanna Taylor",
+              "score": "6-1 7-5",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "83f88a8c2758fbaf",
+          "date": "5/26/2026",
+          "tl_match_id": "1011960974",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960974",
+          "home_team": "YOURS!",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jessika Hulewsky",
+              "players_away": "KATIE RATLIFF",
+              "score": "6-1 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Gabrielle Bohdel",
+              "players_away": "Anke Heineck",
+              "score": "6-3 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Monica Reagan / Angel Marie Bowie",
+              "players_away": "Kristin Mumford / Jill Peterson",
+              "score": "6-3 7-6",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Carrie Fischer / Alice Livesay",
+              "players_away": "Hilary Sauder / Heidi Friend",
+              "score": "6-3 6-2",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Leah Hart / Esther Rowland",
+              "players_away": "Jennifer Rusk / Christine Cannon",
+              "score": "6-2 6-4",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "c8810376e410af14",
+          "date": "5/28/2026",
+          "tl_match_id": "1011960976",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960976",
+          "home_team": "Aloha Beaches 18+",
+          "away_team": "Nothing But Love youngsters",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Katherine Bleth",
+              "players_away": "Jenessa Taylor",
+              "score": "3-6 6-3 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Susan Riley",
+              "players_away": "Sonia Ivanova",
+              "score": "6-7 6-4 1-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Trang Pham / Chrissy Rose",
+              "players_away": "Donna Moussalli / Allison Young",
+              "score": "6-2 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kristina Kingery / Liz Given",
+              "players_away": "Christeena Sevy / Delaney Seymour",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Michele Inghram / Mardianne Howell",
+              "players_away": "Alexandra Geffon / Madison Vilay",
+              "score": "6-1 6-4",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "dd88ecad6fa1032e",
+          "date": "5/28/2026",
+          "tl_match_id": "1011960977",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960977",
+          "home_team": "Honey Deuce 18's",
+          "away_team": "SLAY!",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Erin Kohler",
+              "players_away": "Chynna Castoro",
+              "score": "6-3 4-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Kaitie Neely",
+              "players_away": "Eileen Ursillo",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Small / Tiffany Roberts",
+              "players_away": "Morgan White / Jule Ryan",
+              "score": "6-3 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jennifer Sukow / Loria Sylvia",
+              "players_away": "Dyan Goulet / Lori Hosac",
+              "score": "6-0 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Emily Cole / Katherine Frisk",
+              "players_away": "Suzie Wilson / Jill Mckinney",
+              "score": "7-5 6-2",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "7c4a5f05a6462435",
+          "date": "5/28/2026",
+          "tl_match_id": "1011960978",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960978",
+          "home_team": "Each Hit",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Kristin Mumford",
+              "players_away": "Emily Sloop",
+              "score": "6-4 6-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Ashley Bryngelson",
+              "players_away": "Erica Laursen",
+              "score": "6-4 6-1",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jill Peterson / Jill Yost",
+              "players_away": "Shawna Byington / Leann Gilberg",
+              "score": "6-3 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Gracie Franks / Robin Toney",
+              "players_away": "Heidi Hawkins / Rachel Boren",
+              "score": "6-4 6-3",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kim Balangue / Christine Cannon",
+              "players_away": "Marnie Newton / Paige Brown",
+              "score": "6-1 6-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "028022aba1180243",
+          "date": "5/28/2026",
+          "tl_match_id": "1011960979",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960979",
+          "home_team": "Play It Forward",
+          "away_team": "Net Positive 18+",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Angela Abbott",
+              "players_away": "Cathy Wood",
+              "score": "6-4 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Amanda Finnegan",
+              "players_away": "Shannon Stith",
+              "score": "6-4 6-3",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "MARISA MANGUM / Breanna Taylor",
+              "players_away": "Jen Hunter / Julienne Ferguson",
+              "score": "7-6 4-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Andi Trued / Kathy Hansen",
+              "players_away": "Vicki Goss / Alaina Sayers",
+              "score": "4-6 6-2 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Gillian Donahey / Allison Darnall",
+              "players_away": "Sherri Matney / Lori Barnum",
+              "score": "6-2 6-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "f046dd76acdc3e6d",
+          "date": "5/28/2026",
+          "tl_match_id": "1011960980",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960980",
+          "home_team": "Nice Hits 18+",
+          "away_team": "YOURS!",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Molly Otter",
+              "players_away": "Erica Gonzalez",
+              "score": "6-3 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Glory Questad",
+              "players_away": "Nelda Denton",
+              "score": "6-4 6-3",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Cynthia Copple / Jennifer Wilson",
+              "players_away": "Jessika Hulewsky / Mandy Bergstrom",
+              "score": "6-3 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Rebecca Fitzpatrick / Jennifer Johnson",
+              "players_away": "Fariss Mcgee / Karie Pappani",
+              "score": "7-6 3-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Melissa Nielsen / Amy Boettcher",
+              "players_away": "Angel Marie Bowie / Esther Rowland",
+              "score": "3-6 6-1 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "cb943b6207f6a6e1",
+          "date": "6/11/2026",
+          "tl_match_id": "1011960996",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960996",
+          "home_team": "Aloha Beaches 18+",
+          "away_team": "Nice Hits 18+",
+          "team_wins_home": null,
+          "team_wins_away": null,
+          "score": "",
+          "status": "Not Played",
+          "pending": true,
+          "lines": []
+        },
+        {
+          "match_id": "38c52c55c7766fac",
+          "date": "6/11/2026",
+          "tl_match_id": "1011961000",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961000",
+          "home_team": "Honey Deuce 18's",
+          "away_team": "Nothing But Love youngsters",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Stacia Albiston",
+              "players_away": "Sonia Ivanova",
+              "score": "2-6 6-1 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Kaitie Neely",
+              "players_away": "Jenessa Taylor",
+              "score": "4-6 7-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Emily Cole / Jennifer Sukow",
+              "players_away": "Kylie Nesbit / Christeena Sevy",
+              "score": "6-4 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Diane Cercle / Jean Nielsen",
+              "players_away": "Kim Buchanan / Donna Moussalli",
+              "score": "7-6 6-4",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Terri Mulcahy / Dana Rusin",
+              "players_away": "Abbie Hover / Rebecca Clift-French",
+              "score": "6-4 6-3",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "fa56ca9ed4caea83",
+          "date": "6/11/2026",
+          "tl_match_id": "1011960999",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960999",
+          "home_team": "Each Hit",
+          "away_team": "SLAY!",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Chynna Castoro",
+              "players_away": "Rachel Boren",
+              "score": "6-0 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Andrea Reynolds",
+              "players_away": "Leann Gilberg",
+              "score": "4-6 7-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Amy Costello / Dyan Goulet",
+              "players_away": "Tina Measham / Zel Mertz",
+              "score": "6-4 3-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jule Ryan / Morgan White",
+              "players_away": "Marnie Newton / Margie Waddel",
+              "score": "4-6 7-5 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kristina Winterling / Farrell Kessler",
+              "players_away": "Heidi Hawkins / Patty Jackson",
+              "score": "7-6 1-6 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "a29d5e8dbe5aa080",
+          "date": "6/11/2026",
+          "tl_match_id": "1011960997",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960997",
+          "home_team": "Play It Forward",
+          "away_team": "YOURS!",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Cathy Wood",
+              "players_away": "Erica Gonzalez",
+              "score": "6-7 6-2 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Shannon Stith",
+              "players_away": "Gabrielle Bohdel",
+              "score": "6-3 1-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Kimberly Shansby / Hillary Lilya",
+              "players_away": "Mandy Bergstrom / Jamie Hammond",
+              "score": "6-4 4-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sherri Matney / Elizabeth Engroff",
+              "players_away": "Wendy Bee Ping Ong Mullin / Alice Livesay",
+              "score": "6-1 7-5",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Saundra Coronado / Monica Sorensen",
+              "players_away": "Fariss Mcgee / Esther Rowland",
+              "score": "7-5 6-3",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "1c061e6b5c0ae65b",
+          "date": "6/11/2026",
+          "tl_match_id": "1011960998",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960998",
+          "home_team": "Net Positive 18+",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Gillian Donahey",
+              "players_away": "Hilary Sauder",
+              "score": "6-1 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "N/A",
+              "players_away": "Kim Balangue",
+              "score": "6-0 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Andi Trued / Molly Henrie",
+              "players_away": "Robin Toney / Kristin Mumford",
+              "score": "6-4 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Breanna Taylor / Angela Abbott",
+              "players_away": "Jennifer Rusk / Kathy Deahl",
+              "score": "6-1 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kelli Kennedy / Katie McHargue",
+              "players_away": "Ginger Cummins / Anke Heineck",
+              "score": "6-3 4-6 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "af32c39144b5cca1",
+          "date": "6/16/2026",
+          "tl_match_id": "1011961001",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961001",
+          "home_team": "Aloha Beaches 18+",
+          "away_team": "YOURS!",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Nelda Denton",
+              "players_away": "Brittney Lacey",
+              "score": "6-3 5-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Lauren Osburn",
+              "players_away": "Susan Riley",
+              "score": "6-1 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Mandy Bergstrom / Jessika Hulewsky",
+              "players_away": "Kristina Kingery / Mardianne Howell",
+              "score": "6-2 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Esther Rowland / Jamie Hammond",
+              "players_away": "Kimberlee Megale / Michele Inghram",
+              "score": "6-3 6-3",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Gabrielle Bohdel / Michelle Francel",
+              "players_away": "Vanessa Schulte / Katherine Bleth",
+              "score": "6-1 6-2",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "6fc693b8bd298e45",
+          "date": "6/16/2026",
+          "tl_match_id": "1011961004",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961004",
+          "home_team": "Honey Deuce 18's",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Kim Balangue",
+              "players_away": "Emily Cole",
+              "score": "6-0 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jennifer Rusk",
+              "players_away": "Jean Nielsen",
+              "score": "6-0 6-1",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Robin Toney / Christine Cannon",
+              "players_away": "Dana Rusin / Terri Mulcahy",
+              "score": "6-3 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jill Yost / Anke Heineck",
+              "players_away": "Jennifer Small / Stacey Walker",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Heidi Friend / Kathy Deahl",
+              "players_away": "Katherine Frisk / Christy Siemons",
+              "score": "6-1 4-6 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "7c5a5236623b994b",
+          "date": "6/16/2026",
+          "tl_match_id": "1011961005",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961005",
+          "home_team": "Nothing But Love youngsters",
+          "away_team": "SLAY!",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Sonia Ivanova",
+              "players_away": "Kristina Winterling",
+              "score": "6-0 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Abbie Hover",
+              "players_away": "Addie Harris",
+              "score": "6-1 6-4",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lori Sato / Donna Moussalli",
+              "players_away": "Dyan Goulet / Allison Rohnert",
+              "score": "6-2 7-5",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Lynn Clanton / Kylie Nesbit",
+              "players_away": "Amy Costello / Andrea Reynolds",
+              "score": "7-6 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Madison Vilay / Alexandra Geffon",
+              "players_away": "Farrell Kessler / Jill Mckinney",
+              "score": "6-4 5-7 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "bb958ca9a64de3f6",
+          "date": "6/16/2026",
+          "tl_match_id": "1011961002",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961002",
+          "home_team": "Nice Hits 18+",
+          "away_team": "Net Positive 18+",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Paige Gustavsen",
+              "players_away": "Kristin Bailey",
+              "score": "6-4 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Molly Schafer",
+              "players_away": "Angela Abbott",
+              "score": "6-2 6-1",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Tannan Koehl / Caitlin Bower",
+              "players_away": "MARISA MANGUM / Kelli Kennedy",
+              "score": "6-4 5-7 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Stacey Strong / Nancy Raeber",
+              "players_away": "Vasey Stephens / Allison Darnall",
+              "score": "6-2 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Emily Allen / Molly Otter",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "539f510fc6962edb",
+          "date": "6/18/2026",
+          "tl_match_id": "1011961006",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961006",
+          "home_team": "Aloha Beaches 18+",
+          "away_team": "Net Positive 18+",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Katherine Bleth",
+              "players_away": "Angela Abbott",
+              "score": "6-1 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Elise Connor",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Hailey Smith / Mardianne Howell",
+              "players_away": "MARISA MANGUM / Breanna Taylor",
+              "score": "6-7 6-1 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Amy Wendel / Trang Pham",
+              "players_away": "Andi Trued / Kelli Kennedy",
+              "score": "6-2 4-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kristina Kingery / Teresa McDonald",
+              "players_away": "Allison Darnall / Katie McHargue",
+              "score": "6-2 7-5",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "658a3f3c43b58d9a",
+          "date": "6/18/2026",
+          "tl_match_id": "1011961008",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961008",
+          "home_team": "Honey Deuce 18's",
+          "away_team": "Nice Hits 18+",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Christy Siemons",
+              "players_away": "Molly Schafer",
+              "score": "6-2 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Stacia Albiston",
+              "players_away": "Paige Gustavsen",
+              "score": "6-0 7-6",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Stacey Walker / Tiffany Roberts",
+              "players_away": "Caitlin Bower / Michelle Johnston",
+              "score": "2-6 6-2 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Emily Cole / Jennifer Sukow",
+              "players_away": "Stacey Strong / Nancy Raeber",
+              "score": "7-6 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jean Nielsen / Kiley Holt",
+              "players_away": "Rebecca Fitzpatrick / Cynthia Copple",
+              "score": "6-4 6-2",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "495a0d401fd6ea55",
+          "date": "6/18/2026",
+          "tl_match_id": "1011961007",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961007",
+          "home_team": "Each Hit",
+          "away_team": "YOURS!",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Gabrielle Bohdel",
+              "players_away": "Christine Quintana",
+              "score": "6-1 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jessika Hulewsky",
+              "players_away": "Paige Brown",
+              "score": "6-1 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Mandy Bergstrom / Jamie Hammond",
+              "players_away": "Anna Orrison / Zel Mertz",
+              "score": "4-6 6-2 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Karie Pappani / Carrie Fischer",
+              "players_away": "Shawna Byington / Leann Gilberg",
+              "score": "7-5 5-7 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Nelda Denton / Fariss Mcgee",
+              "players_away": "Heidi Hawkins / Patty Jackson",
+              "score": "7-6 6-3",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "7c1dd31571d88b16",
+          "date": "6/18/2026",
+          "tl_match_id": "1011961009",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961009",
+          "home_team": "Play It Forward",
+          "away_team": "Nothing But Love youngsters",
+          "team_wins_home": 0,
+          "team_wins_away": 5,
+          "score": "0-5",
+          "status": "Lost 0-5 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Cathy Wood",
+              "players_away": "Sonia Ivanova",
+              "score": "6-3 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Alaina Sayers",
+              "players_away": "Allison Young",
+              "score": "6-3 6-3",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Hillary Lilya / Kimberly Shansby",
+              "players_away": "Kylie Nesbit / Christeena Sevy",
+              "score": "6-2 6-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jen Hunter / Jennifer Stevens",
+              "players_away": "Lori Sato / Donna Moussalli",
+              "score": "6-7 6-4 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Saundra Coronado / Monica Sorensen",
+              "players_away": "Abbie Hover / Lynn Clanton",
+              "score": "6-2 6-7 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "4240b2aee80c2d7d",
+          "date": "6/18/2026",
+          "tl_match_id": "1011961010",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961010",
+          "home_team": "SLAY!",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Kristina Winterling",
+              "players_away": "KATIE RATLIFF",
+              "score": "7-5 7-6",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Eileen Ursillo",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Allison Rohnert / Suzie Wilson",
+              "players_away": "Jennifer Rusk / Ashley Bryngelson",
+              "score": "6-4 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Lori Hosac / Dyan Goulet",
+              "players_away": "Heidi Friend / Karen Sheehan",
+              "score": "7-6 6-4",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Shawnee Perdue / Farrell Kessler",
+              "players_away": "Jill Yost / Christine Cannon",
+              "score": "6-4 6-3",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "de7c90c3c2f4334b",
+          "date": "6/19/2026",
+          "tl_match_id": "1011961003",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011961003",
+          "home_team": "Each Hit",
+          "away_team": "Play It Forward",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Christine Quintana",
+              "players_away": "Cathy Wood",
+              "score": "6-2 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Leann Gilberg",
+              "players_away": "Hillary Lilya",
+              "score": "6-3 6-3",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Zel Mertz / Margie Waddel",
+              "players_away": "Jen Hunter / Kimberly Shansby",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Marnie Newton / Patty Jackson",
+              "players_away": "Vicki Goss / Alaina Sayers",
+              "score": "7-6 7-5",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Shawna Byington / Rachel Boren",
+              "players_away": "Monica Sorensen / Jennifer Stevens",
+              "score": "6-2 6-2",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "b5c81fbc24661f20",
+          "date": "6/2/2026",
+          "tl_match_id": "1011960981",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960981",
+          "home_team": "Aloha Beaches 18+",
+          "away_team": "SLAY!",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jule Ryan",
+              "players_away": "Brittney Lacey",
+              "score": "6-0 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Eileen Ursillo",
+              "players_away": "Elise Connor",
+              "score": "7-5 6-4",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Suzie Wilson / Andrea Reynolds",
+              "players_away": "Amy Wendel / Katie Nelson",
+              "score": "6-3 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jill Mckinney / Lori Hosac",
+              "players_away": "Liz Given / Nancy Mallory",
+              "score": "6-4 6-3",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Morgan White / Amy Pugsley",
+              "players_away": "Kimberlee Megale / Amy Hanson",
+              "score": "5-7 7-5 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "21e3e7127608fa3e",
+          "date": "6/2/2026",
+          "tl_match_id": "1011960983",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960983",
+          "home_team": "Honey Deuce 18's",
+          "away_team": "Play It Forward",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Cathy Wood",
+              "players_away": "Jean Nielsen",
+              "score": "2-6 6-4 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Shannon Stith",
+              "players_away": "Emily Cole",
+              "score": "6-3 7-5",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lina Zenner / Kimberly Shansby",
+              "players_away": "Stacia Albiston / Tiffany Roberts",
+              "score": "7-6 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "JoLyn Janecko / Vicki Goss",
+              "players_away": "Stacey Walker / Erin Kohler",
+              "score": "6-2 6-4",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Shawna Ianson / Alaina Sayers",
+              "players_away": "Jennifer Small / Katherine Frisk",
+              "score": "6-2 3-6 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "8f4c2a8ab404b27e",
+          "date": "6/2/2026",
+          "tl_match_id": "1011960984",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960984",
+          "home_team": "Each Hit",
+          "away_team": "Nice Hits 18+",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Paige Brown",
+              "players_away": "Caitlin Bower",
+              "score": "6-3 3-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Emily Sloop",
+              "players_away": "Breanna Taylor",
+              "score": "6-3 7-6",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Anna Orrison / Tina Measham",
+              "players_away": "Emily Allen / Betsy McDonald",
+              "score": "6-4 4-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Marnie Newton / Margie Waddel",
+              "players_away": "Jennifer Johnson / Cynthia Copple",
+              "score": "6-4 6-2",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Rachel Boren / Shawna Byington",
+              "players_away": "Melissa Nielsen / Amy Boettcher",
+              "score": "6-2 4-6 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "aa9c7a865f9f45a1",
+          "date": "6/2/2026",
+          "tl_match_id": "1011960982",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960982",
+          "home_team": "Nothing But Love youngsters",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Allison Young",
+              "players_away": "Ashley Bryngelson",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Treva Pline",
+              "players_away": "Jill Peterson",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Kim Buchanan / Lori Sato",
+              "players_away": "Kristin Mumford / Gracie Franks",
+              "score": "7-5 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Alexandra Geffon / Madison Vilay",
+              "players_away": "Karen Sheehan / Heidi Friend",
+              "score": "6-4 6-4",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jenessa Taylor / Jill Ball",
+              "players_away": "Christine Cannon / Kathy Deahl",
+              "score": "6-3 6-4",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "0b0ecc47ae7c00f8",
+          "date": "6/2/2026",
+          "tl_match_id": "1011960985",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960985",
+          "home_team": "YOURS!",
+          "away_team": "Net Positive 18+",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jessika Hulewsky",
+              "players_away": "Averi Lopez",
+              "score": "6-3 1-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Lauren Osburn",
+              "players_away": "Krystal Patel",
+              "score": "6-1 6-1",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Nelda Denton / Carrie Fischer",
+              "players_away": "MARISA MANGUM / Breanna Taylor",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Alice Livesay / Esther Rowland",
+              "players_away": "Angela Abbott / Kathy Hansen",
+              "score": "6-1 7-5",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Mandy Bergstrom / Leah Hart",
+              "players_away": "Amanda Finnegan / Vasey Stephens",
+              "score": "6-3 6-4",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "f4ec217e80b7901f",
+          "date": "6/23/2026",
+          "tl_match_id": "1011960971",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960971",
+          "home_team": "Aloha Beaches 18+",
+          "away_team": "Honey Deuce 18's",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Reported",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Kaitie Neely",
+              "players_away": "Brittney Lacey",
+              "score": "2-6 6-1 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jean Nielsen",
+              "players_away": "Liz Given",
+              "score": "3-6 6-2 1-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Tiffany Roberts / Stacia Albiston",
+              "players_away": "Amy Wendel / Katie Nelson",
+              "score": "6-4 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Katherine Frisk / Jennifer Sukow",
+              "players_away": "Kristina Kingery / Susan Riley",
+              "score": "6-1 7-6",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kiley Holt / Emily Cole",
+              "players_away": "Vanessa Schulte / Trang Pham",
+              "score": "6-3 6-4",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "64ae8b31eefaaa26",
+          "date": "6/23/2026",
+          "tl_match_id": "1011960972",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960972",
+          "home_team": "Each Hit",
+          "away_team": "Nothing But Love youngsters",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Reported",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Emily Sloop",
+              "players_away": "Sonia Ivanova",
+              "score": "6-4 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Christine Quintana",
+              "players_away": "Jenessa Taylor",
+              "score": "7-5 6-1",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jane Perlaky / Margie Waddel",
+              "players_away": "Kylie Nesbit / Lori Sato",
+              "score": "6-1 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Marnie Newton / Heidi Hawkins",
+              "players_away": "Donna Moussalli / Allison Young",
+              "score": "6-7 6-2 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Shawna Byington / Leann Gilberg",
+              "players_away": "Treva Pline / Delaney Seymour",
+              "score": "3-6 6-3 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "230fc293e1fbfcf6",
+          "date": "6/23/2026",
+          "tl_match_id": "1011960987",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960987",
+          "home_team": "Play It Forward",
+          "away_team": "SLAY!",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Reported",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Chynna Castoro",
+              "players_away": "Cathy Wood",
+              "score": "6-4 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Kristina Winterling",
+              "players_away": "Margo Showers",
+              "score": "6-1 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Amy Costello / Amy Pugsley",
+              "players_away": "Chandra Zenner-Ford / Julienne Ferguson",
+              "score": "6-3 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kim Agler / Allison Rohnert",
+              "players_away": "Jen Hunter / Alaina Sayers",
+              "score": "6-0 6-2",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Shawnee Perdue / Addie Harris",
+              "players_away": "Elizabeth Engroff / Maureen Sykes",
+              "score": "7-6 7-6",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "077f9e1f8fe19b1b",
+          "date": "6/4/2026",
+          "tl_match_id": "1011960986",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960986",
+          "home_team": "Aloha Beaches 18+",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Elise Connor",
+              "players_away": "KATIE RATLIFF",
+              "score": "6-3 6-4",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Katherine Bleth",
+              "players_away": "Hilary Sauder",
+              "score": "6-1 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Amy Hanson / Nancy Mallory",
+              "players_away": "Jill Peterson / Kristin Mumford",
+              "score": "7-6 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Michele Inghram / Mardianne Howell",
+              "players_away": "Gracie Franks / Jennifer Rusk",
+              "score": "6-0 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Teresa McDonald / Susan Riley",
+              "players_away": "Karen Sheehan / Jill Yost",
+              "score": "6-0 6-3",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "8b243abde345fbaa",
+          "date": "6/4/2026",
+          "tl_match_id": "1011960989",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960989",
+          "home_team": "Honey Deuce 18's",
+          "away_team": "YOURS!",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Erin Kohler",
+              "players_away": "Carrie Fischer",
+              "score": "1-6 6-3 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Stacey Walker",
+              "players_away": "Nelda Denton",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Dana Rusin / Jennifer Sukow",
+              "players_away": "Jessika Hulewsky / Mandy Bergstrom",
+              "score": "6-0 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jennifer Small / Jean Nielsen",
+              "players_away": "Monica Reagan / Karie Pappani",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Diane Cercle / Loria Sylvia",
+              "players_away": "Wendy Bee Ping Ong Mullin / Gabrielle Bohdel",
+              "score": "6-3 6-2",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "bdce411f2e8e7d37",
+          "date": "6/4/2026",
+          "tl_match_id": "1011960990",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960990",
+          "home_team": "Each Hit",
+          "away_team": "Net Positive 18+",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Angela Abbott",
+              "players_away": "Emily Sloop",
+              "score": "6-1 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Vasey Stephens",
+              "players_away": "Paige Brown",
+              "score": "6-1 6-2",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Molly Henrie / Andi Trued",
+              "players_away": "Heidi Hawkins / Margie Waddel",
+              "score": "4-6 7-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Krystal Patel / Katie McHargue",
+              "players_away": "Leann Gilberg / Shawna Byington",
+              "score": "6-3 6-4",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "MARISA MANGUM / Breanna Taylor",
+              "players_away": "Patty Jackson / Rachel Boren",
+              "score": "7-5 6-4",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "cbdc638e639e47e4",
+          "date": "6/4/2026",
+          "tl_match_id": "1011960988",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960988",
+          "home_team": "Nothing But Love youngsters",
+          "away_team": "Nice Hits 18+",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Paige Gustavsen",
+              "players_away": "Allison Young",
+              "score": "6-4 7-5",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Lindsey Cassidy",
+              "players_away": "Jenessa Taylor",
+              "score": "7-6 2-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Stephanie Churchman / Jennifer Wilson",
+              "players_away": "Kylie Nesbit / Lynn Clanton",
+              "score": "6-4 6-7 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Amy Boettcher / Melissa Nielsen",
+              "players_away": "Donna Moussalli / Christeena Sevy",
+              "score": "6-3 6-4",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Michelle Johnston / Tannan Koehl",
+              "players_away": "Kim Buchanan / Lori Sato",
+              "score": "0-6 7-6 1-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "0f653c39744d2ff7",
+          "date": "6/9/2026",
+          "tl_match_id": "1011960991",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960991",
+          "home_team": "Aloha Beaches 18+",
+          "away_team": "Play It Forward",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Cathy Wood",
+              "players_away": "Vanessa Schulte",
+              "score": "6-3 2-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Chandra Zenner-Ford",
+              "players_away": "Katherine Bleth",
+              "score": "7-6 7-5",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jen Hunter / Lina Zenner",
+              "players_away": "Amy Wendel / Katie Nelson",
+              "score": "4-6 6-4 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kimberly Shansby / JoLyn Janecko",
+              "players_away": "Liz Given / Nancy Mallory",
+              "score": "7-5 2-6 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Shawna Ianson / Elizabeth Engroff",
+              "players_away": "Amy Hanson / Chrissy Rose",
+              "score": "6-0 6-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "26e120f31058fba2",
+          "date": "6/9/2026",
+          "tl_match_id": "1011960995",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960995",
+          "home_team": "Honey Deuce 18's",
+          "away_team": "Each Hit",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Emily Sloop",
+              "players_away": "Jean Nielsen",
+              "score": "6-2 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Paige Brown",
+              "players_away": "Emily Cole",
+              "score": "6-2 6-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Zel Mertz / Tina Measham",
+              "players_away": "Stacia Albiston / Tiffany Roberts",
+              "score": "6-1 6-3",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jane Perlaky / Margie Waddel",
+              "players_away": "Kiley Holt / Stacey Walker",
+              "score": "6-3 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Heidi Hawkins / Patty Jackson",
+              "players_away": "Kaitie Neely / Jennifer Small",
+              "score": "6-4 6-3",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "ca9a87c1dd020cc0",
+          "date": "6/9/2026",
+          "tl_match_id": "1011960994",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960994",
+          "home_team": "Nothing But Love youngsters",
+          "away_team": "Net Positive 18+",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jenessa Taylor",
+              "players_away": "Angela Abbott",
+              "score": "6-3 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Sonia Ivanova",
+              "players_away": "Katie McHargue",
+              "score": "6-0 6-1",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Donna Moussalli / Allison Young",
+              "players_away": "Kelli Kennedy / Gillian Donahey",
+              "score": "6-3 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kylie Nesbit / Kim Buchanan",
+              "players_away": "MARISA MANGUM / Breanna Taylor",
+              "score": "7-5 6-3",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Lynn Clanton / Rebecca Clift-French",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "a7822d9308077dd9",
+          "date": "6/9/2026",
+          "tl_match_id": "1011960992",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960992",
+          "home_team": "Nice Hits 18+",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "KATIE RATLIFF",
+              "players_away": "Breanna Taylor",
+              "score": "6-1 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Ashley Bryngelson",
+              "players_away": "Lindsey Cassidy",
+              "score": "2-6 6-3 1-0",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Robin Toney / Gracie Franks",
+              "players_away": "Tannan Koehl / Caitlin Bower",
+              "score": "6-4 6-1",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Ginger Cummins / Anke Heineck",
+              "players_away": "Molly Schafer / Michelle Johnston",
+              "score": "6-1 6-1",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Heidi Friend / Kim Balangue",
+              "players_away": "Cynthia Copple / Nancy Raeber",
+              "score": "6-1 6-0",
+              "result": "home"
+            }
+          ]
+        },
+        {
+          "match_id": "0a36976f76b7d4f6",
+          "date": "6/9/2026",
+          "tl_match_id": "1011960993",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960993",
+          "home_team": "SLAY!",
+          "away_team": "YOURS!",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Mandy Bergstrom",
+              "players_away": "Chynna Castoro",
+              "score": "6-2 6-2",
+              "result": "home"
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jamie Hammond",
+              "players_away": "Kristina Winterling",
+              "score": "6-2 7-6",
+              "result": "home"
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Karie Pappani / Monica Reagan",
+              "players_away": "Dyan Goulet / Andrea Reynolds",
+              "score": "6-7 6-4 1-0",
+              "result": "home"
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Alice Livesay / Wendy Bee Ping Ong Mullin",
+              "players_away": "Jule Ryan / Morgan White",
+              "score": "7-6 6-7 1-0",
+              "result": "home"
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Nelda Denton / Leah Hart",
+              "players_away": "Eileen Ursillo / Lori Hosac",
+              "score": "6-4 7-6",
+              "result": "home"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

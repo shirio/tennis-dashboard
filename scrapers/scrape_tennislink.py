@@ -39,17 +39,39 @@ LOGIN_URL = f"{BASE_URL}/Dashboard/Main/Login.aspx"
 # TennisLink standings search URL (SearchType=2 = Teams/Flights/Leagues panel)
 STANDINGS_SEARCH_URL = f"{BASE_URL}/Leagues/Main/StatsAndStandings.aspx?SearchType=2"
 
-# Search criteria for NV Area F women's leagues
-SEARCH_SECTION  = "Intermountain"
-SEARCH_DISTRICT = "Nevada"
-SEARCH_AREA     = "Area F"   # also seen as "Area" or "NV Area F"
-
 DATA_DIR = Path("data")
 PLAYERS_JSON = DATA_DIR / "players.json"
+REGIONS_JSON = DATA_DIR / "regions.json"
 
+OUTPUT_MATCHES_ALL = DATA_DIR / "matches_all_players.json"
+
+# Legacy output paths (NV default — kept for backward compat)
 OUTPUT_STANDINGS_30 = DATA_DIR / "standings_women_30.json"
 OUTPUT_STANDINGS_35 = DATA_DIR / "standings_women_35.json"
-OUTPUT_MATCHES_ALL = DATA_DIR / "matches_all_players.json"
+
+
+def _load_regions() -> dict:
+    """Load regions config from data/regions.json."""
+    return json.loads(REGIONS_JSON.read_text()) if REGIONS_JSON.exists() else {}
+
+
+def _get_state_config(state_code: str) -> dict:
+    """Return config for a state code (e.g. 'NV', 'CO')."""
+    regions = _load_regions()
+    cfg = regions.get("states", {}).get(state_code)
+    if not cfg:
+        raise ValueError(f"No config found for state {state_code!r} in {REGIONS_JSON}")
+    cfg["_section"] = regions.get("section", "Intermountain")
+    cfg["_state_code"] = state_code
+    return cfg
+
+
+def _output_path(state_code: str, ntrp: str, kind: str = "standings") -> Path:
+    """Return the data file path for a state/ntrp combo.
+    kind: 'standings' or 'districts'
+    """
+    sfx = ntrp.replace(".", "")  # "3.0" -> "30"
+    return DATA_DIR / f"{kind}_{state_code.lower()}_{sfx}.json"
 
 DELAY = 1.2   # seconds between page loads
 
@@ -219,7 +241,6 @@ def login(page: Page, username: str, password: str):
 # ---------------------------------------------------------------------------
 
 SCORECARD_BASE_URL = f"{BASE_URL}/Leagues/Scorecard/printscorecard.aspx"
-USTA_NUMBER = "2019825517"   # Player USTA# used as navigation entry point
 USTA_SEARCH_URL = f"{BASE_URL}/Leagues/Main/StatsAndStandings.aspx?SearchType=3"
 
 # Navigation link texts to skip when looking for team links on subflight pages
@@ -232,12 +253,20 @@ _NAV_SKIP_EXACT = {
 _NAV_SKIP_KEYWORDS = ("USTA ADULT", "LEAGUE 18", "& OVER", "WOMEN-", "MEN-")
 
 
+_FLIGHT_NAME_RE = re.compile(r"^/?\ ?\d\.\d[WM]\b", re.IGNORECASE)
+
 def _is_nav_link(txt: str) -> bool:
     """Return True if txt looks like a navigation breadcrumb rather than a team name."""
     if txt in _NAV_SKIP_EXACT:
         return True
     upper = txt.upper()
-    return any(kw in upper for kw in _NAV_SKIP_KEYWORDS)
+    if any(kw in upper for kw in _NAV_SKIP_KEYWORDS):
+        return True
+    if _FLIGHT_NAME_RE.match(txt):
+        return True
+    if txt.startswith("/"):
+        return True
+    return False
 
 
 def _wait_for_network(page: Page, timeout: int = 10_000):
@@ -249,11 +278,12 @@ def _wait_for_network(page: Page, timeout: int = 10_000):
     sleep(0.6)
 
 
-def _navigate_to_my_team(page: Page, ntrp: str, year: int) -> bool:
+def _navigate_to_my_team(page: Page, ntrp: str, year: int,
+                         usta_number: str = "2019825517") -> bool:
     """Search by USTA# and click the matching Women's Adult team for given ntrp/year."""
     page.goto(USTA_SEARCH_URL, wait_until="domcontentloaded", timeout=30_000)
     sleep(DELAY)
-    page.fill("#ctl00_mainContent_txtUSTANum", USTA_NUMBER)
+    page.fill("#ctl00_mainContent_txtUSTANum", usta_number)
     page.click("#ctl00_mainContent_btnSearchStatsAndStandings")
     _wait_for_network(page, 12_000)
     sleep(1)
@@ -300,6 +330,39 @@ def _extract_standings_from_page(page: Page) -> list[dict]:
             "games_won":      _safe_int(cells[10]) if len(cells) > 10 else None,
             "games_lost":     _safe_int(cells[11]) if len(cells) > 11 else None,
             "games_won_pct":  cells[12] if len(cells) > 12 else (cells[-1] if cells else None),
+        })
+    return standings
+
+
+def _extract_champ_standings(page: Page) -> list[dict]:
+    """Extract team standings from #tblCPTeamStanding (championship page format).
+    Columns: Team ID | Team Name | Matches Played | Games Won* | Points* |
+             Team Wins | Team Losses | Indiv Wins | Indiv Losses |
+             Sets Won | Sets Lost | Games Won | Games Lost | Game Win%"""
+    standings = []
+    tbl = page.query_selector("#tblCPTeamStanding")
+    if not tbl:
+        return standings
+    for tr in tbl.query_selector_all("tr"):
+        cells = [td.inner_text().strip() for td in tr.query_selector_all(":scope > td")]
+        if len(cells) < 7:
+            continue
+        # Skip header/disclaimer rows — data rows have a team name in cells[1]
+        # and a numeric matches_played in cells[2]
+        if not cells[1] or not re.match(r'\d+', cells[2]):
+            continue
+        standings.append({
+            "team_name":      cells[1],
+            "team_wins":      _safe_int(cells[5]),
+            "matches_played": _safe_int(cells[2]),
+            "team_losses":    _safe_int(cells[6]),
+            "indiv_wins":     _safe_int(cells[7]) if len(cells) > 7 else None,
+            "indiv_losses":   _safe_int(cells[8]) if len(cells) > 8 else None,
+            "sets_won":       _safe_int(cells[9]) if len(cells) > 9 else None,
+            "sets_lost":      _safe_int(cells[10]) if len(cells) > 10 else None,
+            "games_won":      _safe_int(cells[11]) if len(cells) > 11 else None,
+            "games_lost":     _safe_int(cells[12]) if len(cells) > 12 else None,
+            "games_won_pct":  cells[13] if len(cells) > 13 else None,
         })
     return standings
 
@@ -452,16 +515,15 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
     if cutoff != -1:
         text = text[:cutoff]
 
-    # Split into line sections by pattern like "1# Singles", "2# Singles", "1# Doubles"
-    line_sections = re.split(r'\n(?=\d+#\s+(?:Singles|Doubles))', text)
+    # Split into line sections by pattern like "1# Singles", "#1 Singles"
+    line_sections = re.split(r'\n(?=(?:\d+#|#\d+)\s+(?:Singles|Doubles))', text)
     court_idx = 0
     for section in line_sections:
-        # Match "1# Singles" or "2# Doubles"
-        lm = re.match(r'^(\d+)#\s+(Singles|Doubles)', section.strip())
+        lm = re.match(r'^(?:(\d+)#|#(\d+))\s+(Singles|Doubles)', section.strip())
         if not lm:
             continue
-        line_num = int(lm.group(1))
-        line_type = lm.group(2)
+        line_num = int(lm.group(1) or lm.group(2))
+        line_type = lm.group(3)
         line_label = f"{line_num}# {line_type}"
 
         # Extract player names and score from section
@@ -478,6 +540,14 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
         scores: list[str] = []
         in_away = False
 
+        # Check if header line has player name after tab: "#1 Singles\tElena Bolha"
+        header_line = lines_in_section[0] if lines_in_section else ""
+        header_parts = header_line.split('\t', 1)
+        if len(header_parts) == 2:
+            p = header_parts[1].strip().replace('\xa0', '').strip()
+            if p and re.search(r'[a-zA-Z]', p) and len(p) > 1 and p.lower() not in _noise:
+                home_players.append(p)
+
         for raw_token in lines_in_section[1:]:  # skip header
             t = raw_token.strip().replace('\xa0', '').strip()
             tl = t.lower()
@@ -485,29 +555,37 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
             if not t:
                 continue
 
-            # Time line may have player appended after a tab: "2:00 PM\tElsy Flores Rojas"
-            if re.match(r'^\d+:\d+\s*(am|pm)', tl, re.I):
-                parts = t.split('\t', 1)
-                if len(parts) == 2:
-                    player_part = parts[1].strip().replace('\xa0', '').strip()
-                    if player_part and re.search(r'[a-zA-Z]', player_part) and len(player_part) > 1:
-                        (away_players if in_away else home_players).append(player_part)
-                continue
+            # Expand tab-separated tokens (championship format: "Vs.\tPlayer Name")
+            tab_parts = [p.strip() for p in t.split('\t') if p.strip()]
+            tokens_to_process = []
+            for tp in tab_parts:
+                tokens_to_process.append(tp)
 
-            if tl in _noise:
-                continue
-            if tl == 'vs.':
-                in_away = True
-                continue
-            if re.match(r'^\d+-\d+$', t):
-                scores.append(t)
-                continue
-            if tl in ('n/a', 'n/a / n/a', 'not available', 'default'):
-                continue
-            t = t.split('\t')[0].strip()
-            tl = t.lower()
-            if re.search(r'[a-zA-Z]', t) and len(t) > 1:
-                (away_players if in_away else home_players).append(t)
+            for t in tokens_to_process:
+                tl = t.lower().replace('\xa0', '').strip()
+                t = t.replace('\xa0', '').strip()
+
+                if not t:
+                    continue
+
+                # Time line may have player appended: "2:00 PM"
+                if re.match(r'^\d+:\d+\s*(am|pm)$', tl, re.I):
+                    continue
+
+                if tl in _noise:
+                    continue
+                if tl == 'vs.':
+                    in_away = True
+                    continue
+                if re.match(r'^[\d]+-[\d]+(\s+[\d]+-[\d]+)*$', t):
+                    scores.extend(re.findall(r'\d+-\d+', t))
+                    continue
+                if tl in ('n/a', 'n/a / n/a', 'not available', 'default'):
+                    continue
+                if re.match(r'3rd set tie-break', tl):
+                    continue
+                if re.search(r'[a-zA-Z]', t) and len(t) > 1:
+                    (away_players if in_away else home_players).append(t)
 
         score_str = " ".join(scores)
 
@@ -657,6 +735,1161 @@ def _match_key(date: str, team_a: str, team_b: str) -> str:
     return hashlib.md5(combined.encode()).hexdigest()[:16]
 
 
+# ---------------------------------------------------------------------------
+# League search navigation (for states without a USTA pivot number)
+# ---------------------------------------------------------------------------
+
+def _navigate_via_league_search(page: Page, section: str, district: str, area: str,
+                                ntrp: str, year: int, gender: str = "Female") -> bool:
+    """
+    Navigate to a team page using the league search form (SearchType=2).
+    Flow: set section/district/area dropdowns → search → find matching league → click team.
+    Returns True if we land on a team page within the target league.
+    """
+    page.goto(STANDINGS_SEARCH_URL, wait_until="domcontentloaded", timeout=30_000)
+    sleep(DELAY)
+
+    # ASP.NET form with IDs: ddlChampYear, ddlDivisionForTeams, ddlSection,
+    # ddlNTRPLevel, ddlGender. Dropdowns may be inside collapsed panels so we
+    # always use JS to set values and __doPostBack for server round-trips.
+
+    def _aspnet_set(short_id, value, postback=False):
+        """Set a dropdown value via JS. If postback=True, trigger __doPostBack."""
+        full = f"ctl00_mainContent_{short_id}"
+        page.evaluate(f"""(() => {{
+            const el = document.getElementById('{full}');
+            if (!el) return;
+            el.value = '{value}';
+        }})()""")
+        if postback:
+            name = f"ctl00$mainContent${short_id}"
+            page.evaluate(f"__doPostBack('{name}', '')")
+            _wait_for_network(page, 8_000)
+            sleep(1)
+
+    def _aspnet_set_by_text(short_id, match_text, postback=False):
+        """Set a dropdown by matching option text. Returns the matched value."""
+        full = f"ctl00_mainContent_{short_id}"
+        matched = page.evaluate(f"""(() => {{
+            const el = document.getElementById('{full}');
+            if (!el) return null;
+            const target = '{match_text}'.toLowerCase();
+            for (const opt of el.options) {{
+                if (opt.text.toLowerCase().includes(target)) {{
+                    el.value = opt.value;
+                    return opt.value;
+                }}
+            }}
+            return null;
+        }})()""")
+        if matched is not None and postback:
+            name = f"ctl00$mainContent${short_id}"
+            page.evaluate(f"__doPostBack('{name}', '')")
+            _wait_for_network(page, 8_000)
+            sleep(1)
+        return matched
+
+    # ASP.NET requires postbacks for EventValidation. We set Division and
+    # Section via JS+postback (so the server registers them), then set the
+    # remaining filters, and submit.
+
+    # Division = Adult 18&Over (postback)
+    _aspnet_set_by_text("ddlDivisionForTeams", "adult 18", postback=True)
+
+    # Section = Intermountain (postback — server registers it in EventValidation)
+    _aspnet_set_by_text("ddlSection", "intermountain", postback=True)
+
+    # After Section postback, re-set Division (may have been reset)
+    _aspnet_set_by_text("ddlDivisionForTeams", "adult 18")
+
+    # Set remaining filters (no postback needed)
+    _aspnet_set("ddlChampYear", str(year))
+    _aspnet_set_by_text("ddlNTRPLevel", ntrp)
+    _aspnet_set_by_text("ddlGender", "female")
+
+    # Check for district/area dropdowns that appeared after Section postback
+    for maybe_id in ["ddlDistrict", "ddlDistrictForTeams"]:
+        exists = page.evaluate(
+            f"!!document.getElementById('ctl00_mainContent_{maybe_id}')")
+        if exists:
+            _aspnet_set_by_text(maybe_id, district.lower())
+            break
+
+    # Verify
+    vals = page.evaluate("""(() => {
+        const g = id => {
+            const e = document.getElementById('ctl00_mainContent_' + id);
+            return e ? e.options[e.selectedIndex]?.text || e.value : 'N/A';
+        };
+        return g('ddlDivisionForTeams') + ' | ' + g('ddlSection') + ' | ' +
+               g('ddlNTRPLevel') + ' | ' + g('ddlGender');
+    })()""")
+    print(f"    Form values: {vals}")
+
+    # Submit via Find Teams button postback
+    page.evaluate("__doPostBack('ctl00$mainContent$btnSearchTeamByName', '')")
+    _wait_for_network(page, 15_000)
+    sleep(3)
+
+    body_text = page.inner_text("body")[:3000] if page.query_selector("body") else ""
+    body_upper = body_text.upper()
+
+    teams_found = re.search(r"(\d+)\s+Teams?\s+found", body_text)
+    if teams_found:
+        print(f"    Search returned {teams_found.group(1)} teams")
+
+    # Load flight_suffix from regions.json for area-specific matching
+    _regions = json.loads(Path("data/regions.json").read_text()) if Path("data/regions.json").exists() else {}
+    flight_suffix = None
+    _found_suffix_config = False
+    for st_cfg in _regions.get("states", {}).values():
+        for a_cfg in st_cfg.get("areas", []):
+            if a_cfg.get("area", "").upper() == area.upper():
+                flight_suffix = a_cfg.get("flight_suffix")
+                _found_suffix_config = True
+                break
+        if _found_suffix_config:
+            break
+
+    # Collect all sibling suffixes for the same state (to exclude them for the default area)
+    sibling_suffixes = []
+    if _found_suffix_config and flight_suffix is None:
+        state_prefix = area.split("-")[0] + "-" if "-" in area else ""
+        for st_cfg in _regions.get("states", {}).values():
+            for a_cfg in st_cfg.get("areas", []):
+                a_name = a_cfg.get("area", "").upper()
+                if state_prefix and a_name.startswith(state_prefix) and a_cfg.get("flight_suffix"):
+                    sibling_suffixes.append(a_cfg["flight_suffix"].upper())
+
+    # Legacy fallback: strip state prefix from area name
+    area_match = area.upper()
+    for prefix in ("CO-", "UT-", "ID-", "NV-"):
+        area_match = area_match.replace(prefix, "")
+
+    # Extract team rows from the results table via JS
+    rows = page.evaluate("""(() => {
+        const results = [];
+        document.querySelectorAll('table tr').forEach(tr => {
+            const tds = Array.from(tr.querySelectorAll('td'));
+            if (tds.length >= 4) {
+                const link = tds[0].querySelector('a');
+                if (link && link.innerText.trim().length > 2) {
+                    results.push({
+                        team: link.innerText.trim(),
+                        flight: tds[4] ? tds[4].innerText.trim() : '',
+                        href: link.getAttribute('href') || ''
+                    });
+                }
+            }
+        });
+        return results;
+    })()""")
+
+    def _flight_matches_area(flight_upper):
+        """Check if a flight string matches our target area."""
+        if ntrp not in flight_upper:
+            return False
+        if _found_suffix_config:
+            if flight_suffix:
+                return flight_suffix.upper() in flight_upper
+            else:
+                # Default area (e.g. Denver Metro): match flights WITHOUT any sibling suffix
+                return not any(s in flight_upper for s in sibling_suffixes)
+        # Legacy fallback: match area name in flight text
+        return area_match in flight_upper
+
+    # Also filter by district column if available
+    district_upper = district.upper()
+
+    # First pass: team in target area with matching NTRP and district
+    for r in rows:
+        flight_upper = r.get("flight", "").upper()
+        row_district = r.get("district", "").upper()
+        if row_district and district_upper not in row_district:
+            continue
+        if _flight_matches_area(flight_upper):
+            print(f"    Found team in target area: {r['team']} ({r['flight']})")
+            href = r["href"]
+            if href.startswith("javascript:"):
+                page.evaluate(href)
+            else:
+                page.goto(abs_url(href), wait_until="domcontentloaded", timeout=30_000)
+            _wait_for_network(page, 12_000)
+            sleep(2)
+            return True
+
+    # Fallback: any team matching NTRP in district
+    for r in rows:
+        flight_upper = r.get("flight", "").upper()
+        row_district = r.get("district", "").upper()
+        if row_district and district_upper not in row_district:
+            continue
+        if ntrp in flight_upper:
+            print(f"    Fallback team: {r['team']} ({r['flight']})")
+            href = r["href"]
+            if href.startswith("javascript:"):
+                page.evaluate(href)
+            else:
+                page.goto(abs_url(href), wait_until="domcontentloaded", timeout=30_000)
+            _wait_for_network(page, 12_000)
+            sleep(2)
+            return True
+
+    print(f"    [debug] Found {len(rows)} row(s), body preview: {body_text[:300]}")
+    print(f"    [warn] no matching {ntrp} Women's league found for {district}/{area}")
+    return False
+
+
+def discover_areas(page: Page, section: str, district: str) -> list[str]:
+    """
+    Navigate to the league search form and enumerate available Area options
+    for the given section/district.
+    """
+    page.goto(STANDINGS_SEARCH_URL, wait_until="domcontentloaded", timeout=30_000)
+    sleep(DELAY)
+
+    # Set Section
+    section_sel = page.query_selector("#ctl00_mainContent_ddlSection")
+    if section_sel:
+        for opt in section_sel.query_selector_all("option"):
+            if section.lower() in opt.inner_text().lower():
+                page.select_option("#ctl00_mainContent_ddlSection", opt.get_attribute("value"))
+                _wait_for_network(page, 8_000)
+                break
+
+    # Set District
+    dist_sel = page.query_selector("#ctl00_mainContent_ddlDistrict")
+    if dist_sel:
+        for opt in dist_sel.query_selector_all("option"):
+            if district.lower() in opt.inner_text().lower():
+                page.select_option("#ctl00_mainContent_ddlDistrict", opt.get_attribute("value"))
+                _wait_for_network(page, 8_000)
+                break
+
+    # Read Area dropdown options
+    areas = []
+    area_sel = page.query_selector("#ctl00_mainContent_ddlArea")
+    if area_sel:
+        for opt in area_sel.query_selector_all("option"):
+            val = opt.get_attribute("value") or ""
+            txt = opt.inner_text().strip()
+            if val and txt and txt.lower() not in ("", "select", "all", "-- select --"):
+                areas.append(txt)
+
+    print(f"  Areas for {district}: {areas}")
+    return areas
+
+
+# ---------------------------------------------------------------------------
+# Championships/Districts scraper
+# ---------------------------------------------------------------------------
+
+CHAMP_SEARCH_URL = f"{BASE_URL}/Leagues/Main/StatsAndStandings.aspx"
+
+
+def _dismiss_cookie_banner(page: Page):
+    """Remove OneTrust cookie consent banner that blocks clicks."""
+    page.evaluate("""() => {
+        const b = document.querySelector('#onetrust-consent-sdk');
+        if (b) b.remove();
+    }""")
+
+
+def _pw_select_by_label(page: Page, sel_id: str, label: str) -> str:
+    """Select a dropdown option using Playwright's native select_option (preserves ViewState)."""
+    sel = f"#ctl00_mainContent_{sel_id}"
+    try:
+        page.select_option(sel, label=label)
+        return f"OK:{label}"
+    except Exception:
+        pass
+    # Partial match fallback
+    try:
+        val = page.evaluate(f"""(() => {{
+            const el = document.querySelector('{sel}');
+            if (!el) return null;
+            const target = '{label.lower()}';
+            for (const o of el.options) {{
+                if (o.text.toLowerCase().includes(target)) return o.value;
+            }}
+            return null;
+        }})()""")
+        if val is not None:
+            page.select_option(sel, value=str(val))
+            return f"OK:{label}(partial)"
+    except Exception:
+        pass
+    return f"FAIL:{sel_id}"
+
+
+def _make_champ_form_visible(page: Page):
+    """Force the championship search form elements visible so Playwright can interact."""
+    page.evaluate("""() => {
+        // Force all championship panel elements visible
+        const ids = ['ddlCYear','ddlDivision','ddlNTRPlevelChampionlevel',
+                     'ddlGenderChampion','ddlClevel','ddlSection',
+                     'ddlDistrict','btnSearchMatch'];
+        for (const id of ids) {
+            const el = document.getElementById('ctl00_mainContent_' + id);
+            if (!el) continue;
+            // Walk up and force all ancestors visible
+            let p = el;
+            while (p && p !== document.body) {
+                if (p.style) {
+                    p.style.display = '';
+                    p.style.visibility = 'visible';
+                    p.style.height = 'auto';
+                    p.style.overflow = 'visible';
+                    p.style.opacity = '1';
+                    p.style.position = 'static';
+                }
+                // Remove jQuery UI accordion hidden class
+                if (p.classList) p.classList.remove('ui-helper-hidden');
+                // Handle aria-hidden
+                if (p.getAttribute('aria-hidden') === 'true')
+                    p.removeAttribute('aria-hidden');
+                p = p.parentElement;
+            }
+        }
+    }""")
+    sleep(0.5)
+
+
+def _js_set_select(page: Page, sel_id: str, match_text: str) -> str:
+    """Set a select value via JS text match without triggering change/postback."""
+    P = "#ctl00_mainContent_"
+    return page.evaluate(f"""(() => {{
+        const el = document.querySelector('{P}{sel_id}');
+        if (!el) return 'NOT_FOUND';
+        const target = '{match_text}'.toLowerCase();
+        for (const o of el.options) {{
+            if (o.text.toLowerCase().includes(target)) {{
+                el.value = o.value;
+                return 'OK:' + o.text.trim();
+            }}
+        }}
+        return 'NO_MATCH:' + Array.from(el.options).map(o => o.text.trim()).join('|');
+    }})()""")
+
+
+def _click_tab(page: Page, tab_name: str) -> bool:
+    """Click a tab link (e.g. 'Team Standings', 'Match Summary') on the current page."""
+    for a in page.query_selector_all("a"):
+        try:
+            txt = (a.inner_text() or "").strip()
+            href = a.get_attribute("href") or ""
+            if txt == tab_name and "javascript:__doPostBack" in href:
+                print(f"  Clicking '{tab_name}' tab")
+                a.click()
+                _wait_for_network(page, 12_000)
+                sleep(2)
+                return True
+        except Exception:
+            pass
+    return False
+
+
+def _find_champ_advancement_links(page: Page) -> list[tuple[str, str]]:
+    """Find all Championship Advancements doPostBack links on the current page.
+    Returns list of (link_text, href) tuples, with district-level links first."""
+    links = []
+    for a in page.query_selector_all("a"):
+        try:
+            href = a.get_attribute("href") or ""
+            if "rptChampAdvancementForTeamSummary" in href and "doPostBack" in href:
+                txt = (a.inner_text() or "").strip()
+                links.append((txt, href))
+        except Exception:
+            pass
+    links.sort(key=lambda x: (0 if "district" in x[0].lower() else 1, -len(x[0])))
+    return links
+
+
+def _find_champ_advancement_link(page: Page) -> Optional[str]:
+    """Look for a Championship Advancements doPostBack link on the current team page.
+    Returns the doPostBack href string if found, None otherwise."""
+    links = _find_champ_advancement_links(page)
+    if links:
+        txt, href = links[0]
+        print(f"    Found championship advancement link: {txt!r}")
+        if len(links) > 1:
+            print(f"    (also found: {', '.join(repr(t) for t, _ in links[1:])})")
+        return href
+    return None
+
+
+def _click_champ_advancement(page: Page) -> bool:
+    """If the current page has a championship advancement link, click it and return True."""
+    href = _find_champ_advancement_link(page)
+    if not href:
+        return False
+    m = re.search(r"__doPostBack\('([^']+)','([^']*)'\)", href)
+    if not m:
+        return False
+    page.evaluate(f"__doPostBack('{m.group(1)}', '{m.group(2)}')")
+    _wait_for_network(page, 15_000)
+    sleep(2)
+    return True
+
+
+def _navigate_to_championships(page: Page, state_code: str, ntrp: str,
+                                year: int = 2026) -> bool:
+    """
+    Navigate to district championships results via Championship Advancements.
+    Flow: navigate to team pages in the league → find one with a Championship
+    Advancements link → click it → land on district championship page.
+    """
+    cfg = _get_state_config(state_code)
+
+    # Navigate to any team page first
+    if not _navigate_to_team_page(page, ntrp, year, cfg):
+        print(f"    [warn] could not navigate to team page")
+        return False
+
+    # Check the current team page for championship advancement
+    if _click_champ_advancement(page):
+        return True
+
+    # Go to flight page and iterate through subflights on the page
+    if not _go_to_flight_page(page):
+        print(f"    [warn] could not navigate to flight page")
+        return False
+
+    # Discover subflight links on the flight page
+    sf_links_info = page.evaluate("""() => {
+        return Array.from(document.querySelectorAll('a')).filter(a => {
+            const href = a.getAttribute('href') || '';
+            return href.includes('rptSubFlightsForFlightSummary')
+                   && href.includes('__doPostBack');
+        }).map(a => ({
+            text: a.innerText.trim(),
+            href: a.getAttribute('href')
+        }));
+    }""")
+    # Also check for single-letter subflights (NV style)
+    if not sf_links_info:
+        sf_links_info = page.evaluate("""() => {
+            return Array.from(document.querySelectorAll('a')).filter(a => {
+                const txt = a.innerText.trim();
+                const href = a.getAttribute('href') || '';
+                return /^[A-E]$/.test(txt) && href.includes('__doPostBack');
+            }).map(a => ({
+                text: a.innerText.trim(),
+                href: a.getAttribute('href')
+            }));
+        }""")
+
+    print(f"    Found {len(sf_links_info)} subflights on flight page")
+
+    for sf_info in sf_links_info:
+        sf_text = sf_info["text"]
+
+        # Navigate to team page → flight page → click this subflight
+        if not _navigate_to_team_page(page, ntrp, year, cfg):
+            break
+        if not _go_to_flight_page(page):
+            break
+
+        # Click this subflight
+        clicked = False
+        for a in page.query_selector_all("a"):
+            try:
+                txt = a.inner_text().strip()
+                href = a.get_attribute("href") or ""
+                if txt == sf_text and "doPostBack" in href:
+                    print(f"    Clicking subflight {sf_text!r}")
+                    a.click()
+                    _wait_for_network(page, 12_000)
+                    sleep(1)
+                    clicked = True
+                    break
+            except Exception:
+                pass
+        if not clicked:
+            continue
+
+        # Find team links — try #TeamSummary first, then scan for team-like links
+        tbl = page.query_selector("#TeamSummary")
+        team_links = tbl.query_selector_all("a") if tbl else []
+
+        if not team_links:
+            # On flight page, teams may be in the subflight expansion, not in #TeamSummary.
+            # Look for doPostBack links that look like team names (ALL CAPS, no nav links)
+            _nav_texts = {"Home", "LOGOUT", "MY TENNIS", "Team Standings", "Match Summary",
+                          "Player Roster", "USTA LEAGUE", "TOURNAMENTS", sf_text}
+            team_links = []
+            for a in page.query_selector_all("a"):
+                try:
+                    txt = (a.inner_text() or "").strip()
+                    href = a.get_attribute("href") or ""
+                    if (txt and "doPostBack" in href and len(txt) > 2
+                            and txt not in _nav_texts
+                            and "rptTeams" in href):
+                        team_links.append(a)
+                except Exception:
+                    pass
+
+        first_team = None
+        for a in team_links[:1]:
+            try:
+                txt = (a.inner_text() or "").strip()
+                href = a.get_attribute("href") or ""
+                if txt and "doPostBack" in href:
+                    first_team = txt
+                    print(f"    Clicking first team in subflight {sf_text!r}: {txt!r}")
+                    a.click()
+                    _wait_for_network(page, 12_000)
+                    sleep(2)
+                    break
+            except Exception:
+                pass
+        if not first_team:
+            continue
+
+        if _click_champ_advancement(page):
+            return True
+
+    print(f"    [warn] no team has championship advancement links")
+    return False
+
+
+def _safe_postback(page: Page, event_target: str, event_arg: str = ""):
+    """Trigger ASP.NET __doPostBack without strict-mode issues."""
+    page.evaluate(f"""
+        (function() {{
+            document.getElementById('__EVENTTARGET').value = '{event_target}';
+            document.getElementById('__EVENTARGUMENT').value = '{event_arg}';
+            document.forms[0].submit();
+        }})()
+    """)
+
+
+def _navigate_to_champ_listing(page: Page, cfg: dict, ntrp: str, year: int,
+                                ntrp_tags: list[str],
+                                _matches_ntrp) -> bool:
+    """Navigate to the championship listing page via the championship search form.
+    This shows ALL championships (Flight A/B/C, Final Rounds, District, etc.)
+    rather than just one team's specific championship.
+
+    After finding the listing, clicks into the best championship
+    (Final Rounds > District > Flight).
+    """
+    # Navigate to the Stats & Standings page
+    page.goto(f"{BASE_URL}/Leagues/Main/StatsAndStandings.aspx",
+              wait_until="domcontentloaded", timeout=30_000)
+    _wait_for_network(page, 10_000)
+    sleep(2)
+
+    # Make championship form visible (it's hidden in an accordion panel)
+    _make_champ_form_visible(page)
+    sleep(1)
+
+    P = "#ctl00_mainContent_"
+
+    # Set all championship search form values at once (no intermediate postbacks)
+    form_vals = {}
+    form_vals["ddlCYear"] = _js_set_select(page, "ddlCYear", str(year))
+    form_vals["ddlDivision"] = _js_set_select(page, "ddlDivision", "Adult 18")
+    form_vals["ddlNTRPlevelChampionlevel"] = _js_set_select(page, "ddlNTRPlevelChampionlevel", ntrp)
+    form_vals["ddlGenderChampion"] = _js_set_select(page, "ddlGenderChampion", "Female")
+    form_vals["ddlClevel"] = _js_set_select(page, "ddlClevel", "District")
+    form_vals["ddlSection"] = _js_set_select(page, "ddlSection", "Intermountain")
+
+    # Trigger Section postback to load District dropdown (cascading)
+    section_el = page.query_selector(f"{P}ddlSection")
+    if section_el:
+        section_el.dispatch_event("change")
+        _wait_for_network(page, 10_000)
+        sleep(2)
+        _make_champ_form_visible(page)
+
+    form_vals["ddlDistrict"] = _js_set_select(page, "ddlDistrict", cfg["district"])
+
+    for k, v in form_vals.items():
+        print(f"    {k}: {v}")
+
+    has_critical = any("NOT_FOUND" in form_vals.get(k, "") for k in
+                       ["ddlCYear", "ddlDivision", "ddlNTRPlevelChampionlevel",
+                        "ddlGenderChampion", "ddlClevel", "ddlSection"])
+    if has_critical:
+        print(f"  [warn] championship search form: critical fields missing")
+        return False
+
+    # Use Playwright's native select_option for proper ASP.NET interaction
+    # First trigger Section postback properly using native selection
+    try:
+        page.select_option(f"{P}ddlSection", label="USTA/INTERMOUNTAIN")
+        _wait_for_network(page, 10_000)
+        sleep(2)
+        _make_champ_form_visible(page)
+
+        # Now set district
+        form_vals["ddlDistrict"] = _js_set_select(page, "ddlDistrict", cfg["district"])
+        print(f"    ddlDistrict (retry): {form_vals['ddlDistrict']}")
+
+        # Click search via native click
+        btn = page.query_selector(f"{P}btnSearchMatch")
+        if btn:
+            print(f"  Clicking championship search button...")
+            btn.click()
+            _wait_for_network(page, 15_000)
+            sleep(3)
+    except Exception as e:
+        print(f"  [warn] native form interaction failed: {e}")
+
+    # We should now be on the championship listing page
+    body_preview = page.evaluate("document.body.innerText.substring(0, 3000)")
+    print(f"  Championship listing: {body_preview[:1200]}")
+
+    # Find all championship links
+    champ_entries = page.evaluate("""() => {
+        return Array.from(document.querySelectorAll('a')).filter(a => {
+            const href = a.getAttribute('href') || '';
+            const txt = a.innerText.trim();
+            return href.includes('doPostBack') && txt.length > 10 && txt.length < 200
+                && /W\s*3\.\d|flight|final|district|playoff|round|championship/i.test(txt);
+        }).map(a => ({
+            text: a.innerText.trim(),
+            href: a.getAttribute('href').substring(0, 180)
+        }));
+    }""")
+    if champ_entries:
+        print(f"  Championship entries: {[e['text'] for e in champ_entries]}")
+        # Click best: Final > District > any
+        best = None
+        for entry in champ_entries:
+            txt_upper = entry["text"].upper()
+            if "FINAL" in txt_upper:
+                best = entry
+                break
+            if "DISTRICT" in txt_upper:
+                best = entry
+                break
+        if not best:
+            best = champ_entries[-1]
+        if best:
+            print(f"  Clicking: {best['text']!r}")
+            m = re.search(r"__doPostBack\('([^']+)','([^']*)'\)", best["href"])
+            if m:
+                _safe_postback(page, m.group(1), m.group(2))
+                _wait_for_network(page, 15_000)
+                sleep(2)
+                return True
+    else:
+        print(f"  [info] no championship entries found on listing page")
+
+    return False
+
+
+def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
+    """
+    Scrape district championship matches for a given state/ntrp.
+    Uses Championship Advancements on team pages to navigate to the
+    district championship page, which has the same structure as regular
+    league pages (Team Standings, Match Summary, Player Roster).
+    Saves results to data/standings_{state}_{ntrp_short}.json as a new
+    "Championships" subflight appended to the existing subflights.
+    """
+    cfg = _get_state_config(state_code)
+    print(f"\n=== DISTRICTS: {state_code} {ntrp} Women ===")
+
+    if not cfg.get("has_districts", False):
+        print(f"  [skip] {state_code} does not have districts yet")
+        return
+
+    if not _navigate_to_championships(page, state_code, ntrp, year):
+        print(f"  [warn] could not navigate to {cfg['district']} championships")
+        return
+
+    # We're now on a Championship Reports page. It shows tabs:
+    # Team Standings, Match Summary, Player Roster.
+    # First, click Team Standings to load standings data.
+    body_preview = page.evaluate("document.body.innerText.substring(0, 800)")
+    print(f"  Championship page: {body_preview[:400]}")
+
+    body_upper = page.evaluate(
+        "document.body.innerText.substring(0, 800)").upper()
+
+    # Check if we're on a flight playoff (not the final/district championship).
+    # The page has a "Championship" column with text like
+    # "FLIGHT PLAYOFF / W 3.0 - DEN 1". If it says "FINAL ROUND" or
+    # "DISTRICT CHAMPIONSHIP" in that column, we're already on the right page.
+    # Note: "District" also appears as a table column HEADER ("Section District
+    # Area League Flight") so we check for "DISTRICT CHAMPIONSHIP" specifically.
+    champ_text = page.evaluate("""() => {
+        const rows = document.querySelectorAll('table tr');
+        for (const tr of rows) {
+            const tds = tr.querySelectorAll('td');
+            for (const td of tds) {
+                const t = td.innerText.trim().toUpperCase();
+                if (t.includes('FLIGHT PLAYOFF') || t.includes('FINAL ROUND')
+                    || t.includes('DISTRICT CHAMP')) return t;
+            }
+        }
+        // Also check the Championship anchor table header
+        const anchor = document.getElementById('ctl00_mainContent_tblCPFlightAnchor');
+        if (anchor) {
+            const t = anchor.innerText.toUpperCase();
+            if (t.includes('FLIGHT') || t.includes('FINAL') || t.includes('DISTRICT'))
+                return t;
+        }
+        return '';
+    }""").upper()
+    is_flight_playoff = ("FLIGHT PLAYOFF" in champ_text
+                         and "FINAL" not in champ_text
+                         and "DISTRICT CHAMP" not in champ_text)
+    print(f"  Championship text: {champ_text[:120]!r} → flight_playoff={is_flight_playoff}")
+
+    if is_flight_playoff:
+        print(f"  [info] on flight playoff page — looking for teams to find "
+              f"Final Rounds advancement...")
+        # Find team links on the championship page (team names in match data)
+        team_links_on_page = page.evaluate("""() => {
+            const navTexts = new Set(['Home', 'LOGOUT', 'MY TENNIS', 'Team Standings',
+                'Match Summary', 'Player Roster', 'Team Standings By Champion',
+                'Team Standings By Championship Report',
+                'Send to Excel', 'Print Report', 'Link to this Page',
+                'View Score', 'USTA LEAGUE', 'TOURNAMENTS',
+                'JUNIOR TEAM TENNIS', 'USTA FLEX LEAGUES', 'NET GENERATION',
+                'TENNISLINK', 'NATIONAL CAMPUS', 'NATIONAL TENNIS CENTER',
+                'PLAYER DEVELOPMENT', 'USTA FOUNDATION', 'USTA COACHING',
+                'RED BALL TENNIS', 'VIEW MAP', 'CAREERS', 'INTERNSHIPS',
+                'CONTACT US', 'Enable accessibility']);
+            return Array.from(document.querySelectorAll('a')).filter(a => {
+                const href = a.getAttribute('href') || '';
+                const txt = a.innerText.trim();
+                const u = txt.toUpperCase();
+                return href.includes('__doPostBack') && txt.length > 2
+                    && txt.length < 50 && !navTexts.has(txt) && !navTexts.has(u)
+                    && !/^\\d/.test(txt) && !/^#/.test(txt)
+                    && !u.includes('USTA ADULT') && !u.includes('USTA/')
+                    && !u.includes('FLIGHT') && !u.includes('CHAMPIONSHIP')
+                    && !txt.includes('http')
+                    && !href.includes('lnkSection') && !href.includes('lnkDistrict')
+                    && !href.includes('lnkArea') && !href.includes('lnkFlight')
+                    && !href.includes('lnkLeague');
+            }).map(a => ({
+                text: a.innerText.trim(),
+                href: a.getAttribute('href')
+            }));
+        }""")
+        # Deduplicate
+        seen_teams = set()
+        unique_teams = []
+        for tl in team_links_on_page:
+            if tl["text"] not in seen_teams:
+                seen_teams.add(tl["text"])
+                unique_teams.append(tl)
+        print(f"  Team links found: {[t['text'] for t in unique_teams]}")
+
+        # Follow the advancement chain: click teams to find one with a
+        # HIGHER level advancement link (not the current flight playoff).
+        # Then keep following until we reach the deepest level.
+        current_champ_text = champ_text  # e.g. "FLIGHT PLAYOFF / W 3.0 - DEN 1"
+        found_higher = False
+        # Filter to only actual team links
+        _nav_prefixes = ("USTA/", "COLORADO", "CO-", "UT-", "NV-", "ID-",
+                         "UTAH", "NEVADA", "IDAHO", "INTERMOUNTAIN",
+                         "WOMEN", "3.0", "3.5")
+        for team_info in unique_teams:
+            if any(team_info["text"].upper().startswith(p)
+                   for p in _nav_prefixes):
+                continue
+            print(f"  Checking team {team_info['text']!r} for higher advancement...")
+            m = re.search(r"__doPostBack\('([^']+)','([^']*)'\)",
+                          team_info["href"])
+            if not m:
+                continue
+            page.evaluate(f"__doPostBack('{m.group(1)}', '{m.group(2)}')")
+            _wait_for_network(page, 12_000)
+            sleep(2)
+
+            adv_links = _find_champ_advancement_links(page)
+            adv_texts = [t for t, _ in adv_links]
+            print(f"    Advancement links: {adv_texts}")
+
+            # Find an advancement link that's NOT the current championship
+            for link_text, link_href in adv_links:
+                if not link_text.strip():
+                    continue
+                lt = link_text.upper()
+                # Skip if this is the same championship we came from
+                if lt in current_champ_text or current_champ_text in lt:
+                    continue
+                # Skip if it looks like a subflight name
+                if any(lt.startswith(s) for s in
+                       ("SOUTH", "NORTH", "CENTRAL", "WEST", "EAST", "SOUTHEAST")):
+                    continue
+                print(f"  >> Following advancement: {link_text!r}")
+                m2 = re.search(r"__doPostBack\('([^']+)','([^']*)'\)",
+                               link_href)
+                if m2:
+                    page.evaluate(
+                        f"__doPostBack('{m2.group(1)}', '{m2.group(2)}')")
+                    _wait_for_network(page, 15_000)
+                    sleep(2)
+                    found_higher = True
+                break
+            if found_higher:
+                break
+            page.go_back()
+            _wait_for_network(page, 10_000)
+            sleep(1)
+
+        # Keep following the advancement chain until we reach Final Rounds.
+        # The chain is: Flight Playoff → Flight A/B/C → Final Rounds.
+        # At each level, find the winning team and follow their next advancement.
+        if found_higher:
+            for _depth in range(5):
+                new_champ = page.evaluate("""() => {
+                    const rows = document.querySelectorAll('table tr');
+                    for (const tr of rows) {
+                        for (const td of tr.querySelectorAll('td')) {
+                            const t = td.innerText.trim().toUpperCase();
+                            if (t.includes('FLIGHT') || t.includes('FINAL')
+                                || t.includes('DISTRICT')) return t;
+                        }
+                    }
+                    return '';
+                }""")
+                print(f"  Now on: {new_champ[:120]!r}")
+                nu = new_champ.upper()
+                if "FINAL" in nu:
+                    print(f"  >> Reached Final Rounds!")
+                    break
+                # Not at Final Rounds yet. Find winning team, follow their
+                # "FINAL ROUNDS" advancement link.
+                _click_tab(page, "Team Standings")
+                _lvl_standings = _extract_champ_standings(page)
+                if not _lvl_standings:
+                    print(f"  [warn] no standings at this level")
+                    break
+                _lvl_standings.sort(key=lambda s: (
+                    -s.get("team_wins", 0), s.get("team_losses", 99)))
+                _winner = _lvl_standings[0]
+                print(f"  Winner: {_winner['team_name']!r} "
+                      f"({_winner.get('team_wins', '?')}-"
+                      f"{_winner.get('team_losses', '?')})")
+                # Click the winner to go to their team page
+                clicked = False
+                for a in page.query_selector_all("a"):
+                    try:
+                        txt = (a.inner_text() or "").strip()
+                        href = a.get_attribute("href") or ""
+                        if txt == _winner["team_name"] and "doPostBack" in href:
+                            a.click()
+                            _wait_for_network(page, 12_000)
+                            sleep(2)
+                            clicked = True
+                            break
+                    except Exception:
+                        pass
+                if not clicked:
+                    break
+                # Find "FINAL ROUNDS" advancement link
+                adv = _find_champ_advancement_links(page)
+                print(f"  {_winner['team_name']} adv: "
+                      f"{[t for t, _ in adv]}")
+                advanced = False
+                # First pass: look for "FINAL" explicitly
+                for lt2, lh2 in adv:
+                    if "FINAL" in lt2.upper():
+                        m3 = re.search(
+                            r"__doPostBack\('([^']+)','([^']*)'\)", lh2)
+                        if m3:
+                            print(f"  >> Advancing to: {lt2!r}")
+                            page.evaluate(
+                                f"__doPostBack('{m3.group(1)}', "
+                                f"'{m3.group(2)}')")
+                            _wait_for_network(page, 15_000)
+                            sleep(2)
+                            advanced = True
+                            break
+                if not advanced:
+                    # Second pass: any link not matching current level
+                    for lt2, lh2 in adv:
+                        ltu = lt2.upper().strip()
+                        if (not ltu or "FLIGHT PLAYOFF" in ltu
+                                or nu[:15] in ltu):
+                            continue
+                        m3 = re.search(
+                            r"__doPostBack\('([^']+)','([^']*)'\)", lh2)
+                        if m3:
+                            print(f"  >> Advancing to: {lt2!r}")
+                            page.evaluate(
+                                f"__doPostBack('{m3.group(1)}', "
+                                f"'{m3.group(2)}')")
+                            _wait_for_network(page, 15_000)
+                            sleep(2)
+                            advanced = True
+                            break
+                if not advanced:
+                    break
+
+    # Click Team Standings tab
+    _click_tab(page, "Team Standings")
+
+    # Debug: dump championship standings table content
+    champ_table = page.evaluate("""() => {
+        const t = document.getElementById('tblCPTeamStanding');
+        if (!t) return null;
+        const rows = [];
+        t.querySelectorAll('tr').forEach(tr => {
+            const cells = Array.from(tr.querySelectorAll('td, th')).map(c => c.innerText.trim());
+            rows.push(cells);
+        });
+        return rows;
+    }""")
+    if champ_table:
+        print(f"  Championship standings table ({len(champ_table)} rows):")
+        for r in champ_table[:8]:
+            print(f"    {r[:8]}")
+
+    # Extract standings — championship page uses #tblCPTeamStanding
+    standings = _extract_standings_from_page(page)
+    if not standings:
+        standings = _extract_champ_standings(page)
+
+    if not standings:
+        # Bracket/elimination format: no standings table. Extract team names
+        # from the Match Summary table (tblCPMatchSummary) which has them in
+        # a structured format, falling back to match card text parsing.
+        _click_tab(page, "Match Summary")
+        card_teams = page.evaluate("""() => {
+            const teams = new Set();
+            // Try structured table first
+            const tbl = document.getElementById('tblCPMatchSummary');
+            if (tbl) {
+                tbl.querySelectorAll('tr').forEach(tr => {
+                    const tds = Array.from(tr.querySelectorAll('td'));
+                    if (tds.length < 15) return;
+                    const texts = tds.map(td => td.innerText.trim());
+                    if (!/^\\d{5,}$/.test(texts[0])) return;
+                    // Home team at index 11, away at index 13
+                    const home = (texts[11] || '').replace(/\\n/g, ' ').trim();
+                    const away = (texts[13] || '').replace(/\\n/g, ' ').trim();
+                    if (home) teams.add(home);
+                    if (away) teams.add(away);
+                });
+            }
+            if (teams.size > 0) return Array.from(teams);
+            // Fallback: parse match cards from body text
+            const body = document.body.innerText;
+            const matches = body.matchAll(/#(\\d{5,})\\s+\\d{2}\\/\\d{2}\\/\\d{4}/g);
+            for (const m of matches) {
+                const idx = body.indexOf(m[0]);
+                const chunk = body.substring(idx, idx + 200);
+                const lines = chunk.split('\\n').map(l => l.trim()).filter(Boolean);
+                for (const line of lines.slice(1)) {
+                    if (line.length > 2 && line.length < 50
+                        && !/^\\d/.test(line) && !/^#/.test(line)
+                        && !line.includes('Date:') && !line.includes('Team:')
+                        && !line.includes('Opponent:') && !line.includes('Action:')
+                        && !line.includes('View Score') && !line.includes('AM')
+                        && !line.includes('PM')
+                        && !/^\\d{2}\\/\\d{2}/.test(line))
+                        teams.add(line);
+                }
+            }
+            return Array.from(teams);
+        }""")
+        if card_teams:
+            print(f"  Bracket format: found teams from match cards: {card_teams}")
+            standings = [{"team_name": t, "team_wins": 0, "team_losses": 0,
+                          "matches_played": 0} for t in card_teams]
+
+    team_names = [s["team_name"] for s in standings]
+    print(f"  Found {len(team_names)} teams: {team_names}")
+
+    if not team_names:
+        print(f"  [info] no teams found — championship may not have been played yet")
+        return
+
+    all_matches: dict[str, dict] = {}
+    all_rosters: dict[str, list] = {}
+
+    # Click "Match Summary" tab to get championship matches
+    _click_tab(page, "Match Summary")
+
+    # Extract match data from #tblCPMatchSummary
+    # Row structure: cells 0-8 are card-style (Match ID, Date:, date, Team:,
+    # team, Opponent:, opponent, Action:, View Score), then cells 9+ are tabular
+    # (date, time, home, homeID, away, awayID, homeWins, awayWins, scoreH,
+    # scoreV, status, facility)
+    match_rows = page.evaluate("""() => {
+        const tbl = document.getElementById('tblCPMatchSummary');
+        if (!tbl) return [];
+        const rows = [];
+        tbl.querySelectorAll('tr').forEach(tr => {
+            const tds = Array.from(tr.querySelectorAll('td'));
+            if (tds.length < 15) return;
+            const texts = tds.map(td => td.innerText.trim());
+            // Match ID is a numeric string in first cell
+            if (!/^\\d{5,}$/.test(texts[0])) return;
+            // Find the View Score link's onclick/href for match detail navigation
+            let viewScoreAction = null;
+            tds.forEach(td => {
+                td.querySelectorAll('a').forEach(a => {
+                    const t = a.innerText.trim();
+                    const h = a.getAttribute('href') || '';
+                    const oc = a.getAttribute('onclick') || '';
+                    if (t === 'View Score' || oc.includes('ViewScore')) {
+                        viewScoreAction = oc || h;
+                    }
+                });
+            });
+            rows.push({
+                matchId: texts[0],
+                date: texts[9] || texts[2],
+                homeTeam: (texts[11] || texts[4]).replace(/\\n/g, ' '),
+                awayTeam: (texts[13] || texts[6]).replace(/\\n/g, ' '),
+                homeWins: texts[15] || '',
+                awayWins: texts[16] || '',
+                status: texts[19] || '',
+                facility: texts[20] || '',
+                viewScoreAction: viewScoreAction
+            });
+        });
+        return rows;
+    }""")
+
+    # Debug: dump raw row data from the table
+    raw_rows = page.evaluate("""() => {
+        const tbl = document.getElementById('tblCPMatchSummary');
+        if (!tbl) return [];
+        const out = [];
+        tbl.querySelectorAll('tr').forEach((tr, i) => {
+            if (i > 5) return;
+            const tds = Array.from(tr.querySelectorAll('td, th'));
+            out.push(tds.map(td => td.innerText.trim().substring(0, 30)));
+        });
+        return out;
+    }""")
+    for i, r in enumerate(raw_rows):
+        print(f"  raw_row[{i}]: {r}")
+
+    print(f"  Match Summary: {len(match_rows)} matches")
+    for mr in match_rows[:3]:
+        print(f"    {mr['date']} {mr['homeTeam']} vs {mr['awayTeam']} ({mr['homeWins']}-{mr['awayWins']}) id={mr['matchId']} action={mr.get('viewScoreAction','')[:60]}")
+
+    for mr in match_rows:
+        tl_id = mr.get("matchId")
+        date_str = mr.get("date", "")
+        home = mr.get("homeTeam", "")
+        away = mr.get("awayTeam", "")
+        if not date_str or not home or not away:
+            continue
+
+        h_wins = _safe_int(mr.get("homeWins", ""))
+        a_wins = _safe_int(mr.get("awayWins", ""))
+        score = f"{h_wins}-{a_wins}" if h_wins is not None and a_wins is not None else ""
+        status = mr.get("status", "")
+        sc_url = f"{SCORECARD_BASE_URL}?matchnum={tl_id}" if tl_id else None
+
+        key = _match_key(date_str, home, away)
+        if key not in all_matches:
+            all_matches[key] = {
+                "match_id": key, "date": date_str,
+                "tl_match_id": tl_id, "scorecard_url": sc_url,
+                "home_team": home, "away_team": away,
+                "team_wins_home": h_wins, "team_wins_away": a_wins,
+                "score": score, "status": status,
+                "pending": not score, "lines": [],
+                "_view_score_action": mr.get("viewScoreAction"),
+            }
+
+    # Scrape line details via ViewScore popup windows
+    n_sc = 0
+    matches_needing_lines = [
+        (key, m) for key, m in all_matches.items()
+        if not m.get("lines") and m.get("_view_score_action")
+    ]
+
+    if matches_needing_lines:
+        # Dump ViewScore function source for debugging (first time only)
+        vs_source = page.evaluate("""() => {
+            if (typeof ViewScore === 'function') return ViewScore.toString();
+            return 'NOT_FOUND';
+        }""")
+        print(f"  ViewScore function: {vs_source}")
+
+        for key, match in matches_needing_lines:
+            action = match.get("_view_score_action", "")
+            tl_id = match.get("tl_match_id", "")
+            if not action:
+                continue
+
+            exec_action = re.sub(r'^return\s+', '', action.strip())
+            try:
+                # ViewScore navigates via location.href — not a popup
+                page.evaluate(exec_action)
+                _wait_for_network(page, 15_000)
+                sleep(1.5)
+
+                lines = _parse_match_detail_page(page)
+                if not lines:
+                    body = page.query_selector("body")
+                    body_text = body.inner_text() if body else ""
+                    lines = _parse_scorecard_text(body_text) if body_text else []
+                    if n_sc == 0 and not lines:
+                        print(f"    [debug] ViewScore url: {page.url}")
+                        print(f"    [debug] ViewScore body: {body_text[:1500]}")
+
+                if lines:
+                    match["lines"] = lines
+                    n_sc += 1
+
+                # Navigate back
+                page.go_back(wait_until="domcontentloaded", timeout=15_000)
+                _wait_for_network(page, 10_000)
+                sleep(1)
+            except Exception as e:
+                print(f"    [warn] ViewScore for {tl_id} failed: {e}")
+                try:
+                    page.go_back(wait_until="domcontentloaded", timeout=10_000)
+                    sleep(1)
+                except Exception:
+                    pass
+
+    if n_sc:
+        print(f"  Scraped {n_sc}/{len(matches_needing_lines)} match details for line data")
+
+    # Clean up internal fields before saving
+    for key, match in all_matches.items():
+        match.pop("_view_score_action", None)
+
+    matches_list = sorted(all_matches.values(), key=lambda m: m.get("date", ""))
+
+    # Append as a "Championships" subflight to the existing standings file
+    ntrp_short = ntrp.replace(".", "")
+    standings_path = _output_path(state_code, ntrp_short)
+    if standings_path.exists():
+        existing = json.loads(standings_path.read_text())
+    else:
+        existing = {"ntrp": ntrp, "year": year, "subflights": []}
+
+    # Remove any existing Championships subflight
+    existing["subflights"] = [
+        sf for sf in existing.get("subflights", [])
+        if sf.get("flight_label") != "Championships"
+    ]
+
+    champ_subflight = {
+        "flight_label": "Championships",
+        "teams": standings,
+        "matches": matches_list,
+        "rosters": all_rosters,
+    }
+    existing["subflights"].append(champ_subflight)
+    save_json(standings_path, existing)
+    print(f"  Saved Championships subflight ({len(team_names)} teams, "
+          f"{len(matches_list)} matches) to {standings_path}")
+
+
+# ---------------------------------------------------------------------------
+# Flight page navigation
+# ---------------------------------------------------------------------------
+
 def _go_to_flight_page(page: Page) -> bool:
     """From a team page, click the Flight link to reach the flight-level page."""
     flight_link = page.query_selector("#ctl00_mainContent_lnkFlightForTeams")
@@ -679,12 +1912,33 @@ def _go_to_flight_page(page: Page) -> bool:
     return True
 
 
-def _discover_subflight_labels(page: Page, ntrp: str, year: int) -> list[str]:
+def _navigate_to_team_page(page: Page, ntrp: str, year: int,
+                           state_cfg: dict | None = None) -> bool:
+    """Navigate to any team page for the given ntrp/year.
+    Uses USTA# pivot if available in state_cfg, else league search form."""
+    if state_cfg:
+        # Try USTA pivot first
+        areas = state_cfg.get("areas", [])
+        for area_info in areas:
+            pivot = area_info.get("usta_pivot")
+            if pivot:
+                if _navigate_to_my_team(page, ntrp, year, usta_number=pivot):
+                    return True
+        # Fall back to league search
+        section = state_cfg.get("_section", "Intermountain")
+        district = state_cfg["district"]
+        area = areas[0]["area"] if areas else ""
+        return _navigate_via_league_search(page, section, district, area, ntrp, year)
+    return _navigate_to_my_team(page, ntrp, year)
+
+
+def _discover_subflight_labels(page: Page, ntrp: str, year: int,
+                               state_cfg: dict | None = None) -> list[str]:
     """
     Navigate to the flight page for this ntrp/year and return all subflight labels
     (e.g. ["A", "B"]). Labels are the single-letter doPostBack links on the flight page.
     """
-    if not _navigate_to_my_team(page, ntrp, year):
+    if not _navigate_to_team_page(page, ntrp, year, state_cfg):
         return []
     if not _go_to_flight_page(page):
         return []
@@ -693,7 +1947,14 @@ def _discover_subflight_labels(page: Page, ntrp: str, year: int) -> list[str]:
         try:
             txt = a.inner_text().strip()
             href = a.get_attribute("href") or ""
-            if txt in ("A", "B", "C", "D", "E") and "javascript:__doPostBack" in href:
+            if not href or "javascript:__doPostBack" not in href:
+                continue
+            # Single-letter subflights (NV style: A, B, C)
+            if txt in ("A", "B", "C", "D", "E"):
+                if txt not in labels:
+                    labels.append(txt)
+            # Named subflights (CO Denver Metro style: SOUTH I, CENTRAL III, etc.)
+            elif "rptSubFlightsForFlightSummary" in href and 1 < len(txt) < 30:
                 if txt not in labels:
                     labels.append(txt)
         except Exception:
@@ -701,13 +1962,14 @@ def _discover_subflight_labels(page: Page, ntrp: str, year: int) -> list[str]:
     return labels
 
 
-def _navigate_to_subflight(page: Page, ntrp: str, year: int, label: str) -> bool:
+def _navigate_to_subflight(page: Page, ntrp: str, year: int, label: str,
+                           state_cfg: dict | None = None) -> bool:
     """
     Navigate to a specific subflight label (e.g. "A" or "B") and click the first team.
-    Flow: my team → Flight page → subflight label link → first team link.
+    Flow: team page → Flight page → subflight label link → first team link.
     Returns True if successfully on a team page within that subflight.
     """
-    if not _navigate_to_my_team(page, ntrp, year):
+    if not _navigate_to_team_page(page, ntrp, year, state_cfg):
         return False
     if not _go_to_flight_page(page):
         return False
@@ -732,22 +1994,57 @@ def _navigate_to_subflight(page: Page, ntrp: str, year: int, label: str) -> bool
     _wait_for_network(page, 12_000)
     sleep(2)
 
-    # Click the first real team link on the subflight page
-    for tbl in page.query_selector_all("table"):
-        if not tbl.is_visible():
-            continue
-        for a in tbl.query_selector_all("a"):
+    # Some states land on subflight Summary tab after clicking a subflight label.
+    # Try clicking "Team Standings" tab, then look for team links.
+    # Also look for team links in summary view (rptTeamsForSubFlightSummary).
+    for a in page.query_selector_all("a"):
+        try:
+            txt = (a.inner_text() or "").strip()
+            href = a.get_attribute("href") or ""
+            if txt == "Team Standings" and "javascript:__doPostBack" in href:
+                print(f"    Clicking 'Team Standings' tab")
+                a.click()
+                _wait_for_network(page, 12_000)
+                sleep(2)
+                break
+        except Exception:
+            pass
+
+    # Click the first real team link — prefer links in known team repeaters
+    def _find_team_link():
+        # First: look for links in team standings/summary repeaters (most reliable)
+        for a in page.query_selector_all("a"):
             try:
-                txt = (a.inner_text() or "").strip()
                 href = a.get_attribute("href") or ""
-                if "javascript:__doPostBack" in href and txt and not _is_nav_link(txt):
-                    print(f"    Clicking first team in subflight {label}: {txt!r}")
-                    a.click()
-                    _wait_for_network(page, 12_000)
-                    sleep(2)
-                    return True
+                txt = (a.inner_text() or "").strip()
+                if not txt or not href or "javascript:__doPostBack" not in href:
+                    continue
+                if ("rptTeamStandings" in href or "rptTeamsForSubFlight" in href):
+                    if not _is_nav_link(txt) and len(txt) > 2:
+                        return a, txt
             except Exception:
                 pass
+        # Fallback: any non-nav link in a visible table
+        for tbl in page.query_selector_all("table"):
+            if not tbl.is_visible():
+                continue
+            for a in tbl.query_selector_all("a"):
+                try:
+                    txt = (a.inner_text() or "").strip()
+                    href = a.get_attribute("href") or ""
+                    if "javascript:__doPostBack" in href and txt and not _is_nav_link(txt) and len(txt) > 2:
+                        return a, txt
+                except Exception:
+                    pass
+        return None, None
+
+    team_link, team_txt = _find_team_link()
+    if team_link:
+        print(f"    Clicking first team in subflight {label}: {team_txt!r}")
+        team_link.click()
+        _wait_for_network(page, 12_000)
+        sleep(2)
+        return True
 
     print(f"    [warn] no team links found on subflight {label!r} page")
     return False
@@ -1288,7 +2585,8 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
     print(f"  [player stats] Updated per-division lines/W-L/team for {updated} player(s)")
 
 
-def _update_players_from_rosters(rosters_a: dict, rosters_b: dict, ntrp: str):
+def _update_players_from_rosters(rosters_a: dict, rosters_b: dict, ntrp: str,
+                                 state_code: str = "NV"):
     """Add new players or update ntrp_rating from scraped rosters into players.json."""
     players = load_json(PLAYERS_JSON, [])
     existing_by_name = {p["name"].lower().strip(): p for p in players}
@@ -1307,6 +2605,8 @@ def _update_players_from_rosters(rosters_a: dict, rosters_b: dict, ntrp: str):
                         p["ntrp_rating"] = ntrp_val
                     if not p.get("team"):
                         p["team"] = team_name
+                    if not p.get("state"):
+                        p["state"] = state_code
                 else:
                     try:
                         from scrape_players import slugify
@@ -1329,6 +2629,7 @@ def _update_players_from_rosters(rosters_a: dict, rosters_b: dict, ntrp: str):
                         "lines_played": None,
                         "lines_html": None,
                         "notes": None,
+                        "state": state_code,
                         "pending_tennisrecord_lookup": True,
                     }
                     players.append(stub)
@@ -1336,75 +2637,275 @@ def _update_players_from_rosters(rosters_a: dict, rosters_b: dict, ntrp: str):
                     added += 1
 
     save_json(PLAYERS_JSON, players)
-    print(f"  [players] {added} new player(s) added from rosters")
+    print(f"  [players] {added} new player(s) added from rosters ({state_code})")
 
 
 # ---------------------------------------------------------------------------
 # MODE 1 main
 # ---------------------------------------------------------------------------
 
-def run_mode1(page: Page, year: int):
-    print("\n=== MODE 1: Standings + match results (USTA# navigation) ===")
+def _scrape_area_subflights(page: Page, ntrp: str, year: int,
+                            state_cfg: dict, area_info: dict,
+                            state_code: str) -> list[dict]:
+    """Scrape all subflights for a single area within a state. Returns list of subflight dicts."""
+    area_name = area_info.get("area", "")
+    area_cfg = {**state_cfg, "areas": [area_info]}
+    print(f"\n  --- Area: {area_name} ---")
 
-    for ntrp, out_path in [("3.0", OUTPUT_STANDINGS_30), ("3.5", OUTPUT_STANDINGS_35)]:
-        print(f"\n--- {ntrp} Women ---")
+    _skip_nav_for_first = False
+    labels = _discover_subflight_labels(page, ntrp, year, area_cfg)
+    if not labels:
+        # No A/B/C subflight labels — treat entire flight as a single subflight.
+        # We're on the flight page after _discover_subflight_labels navigated there.
+        # Click the first team link on the flight page and scrape as subflight "A".
+        print(f"    No subflight labels for {area_name}; treating flight as single subflight")
+        if not _navigate_to_team_page(page, ntrp, year, area_cfg):
+            print(f"    [warn] could not navigate to team page for {area_name}")
+            return []
+        if not _go_to_flight_page(page):
+            print(f"    [warn] could not navigate to flight page for {area_name}")
+            return []
+        # Click Team Standings tab if available (some states land on Summary)
+        for a in page.query_selector_all("a"):
+            try:
+                txt = (a.inner_text() or "").strip()
+                href = a.get_attribute("href") or ""
+                if txt == "Team Standings" and "javascript:__doPostBack" in href:
+                    a.click()
+                    _wait_for_network(page, 12_000)
+                    sleep(2)
+                    break
+            except Exception:
+                pass
+        # Click first team — prefer links in team repeaters
+        first_team_clicked = False
+        for a in page.query_selector_all("a"):
+            try:
+                txt = (a.inner_text() or "").strip()
+                href = a.get_attribute("href") or ""
+                if (txt and "javascript:__doPostBack" in href
+                        and ("rptTeamStandings" in href or "rptTeamsForSubFlight" in href
+                             or "rptTeamsForFlight" in href)
+                        and not _is_nav_link(txt) and len(txt) > 2):
+                    print(f"    Clicking first team in flight: {txt!r}")
+                    a.click()
+                    _wait_for_network(page, 12_000)
+                    sleep(2)
+                    first_team_clicked = True
+                    break
+            except Exception:
+                pass
+        if not first_team_clicked:
+            # Fallback: any non-nav link in a visible table
+            for tbl in page.query_selector_all("table"):
+                if not tbl.is_visible():
+                    continue
+                for a in tbl.query_selector_all("a"):
+                    try:
+                        txt = (a.inner_text() or "").strip()
+                        href = a.get_attribute("href") or ""
+                        if "javascript:__doPostBack" in href and txt and not _is_nav_link(txt) and len(txt) > 2:
+                            print(f"    Clicking first team in flight: {txt!r}")
+                            a.click()
+                            _wait_for_network(page, 12_000)
+                            sleep(2)
+                            first_team_clicked = True
+                            break
+                    except Exception:
+                        pass
+                if first_team_clicked:
+                    break
+        if not first_team_clicked:
+            print(f"    [warn] no team links on flight page for {area_name}")
+            return []
+        labels = ["A"]
+        _skip_nav_for_first = True
+        # Now on a team page — fall through to normal scraping
+    print(f"    Subflights: {labels}")
 
-        # Discover all subflight labels (A, B, ...) from the flight page
-        print(f"  Discovering subflights for {ntrp} Women {year} ...")
-        labels = _discover_subflight_labels(page, ntrp, year)
-        if not labels:
-            print(f"  [warn] no subflights found for {ntrp} Women – skipping")
+    area_subflights = []
+    for i_sf, label in enumerate(labels):
+        sf_label_full = f"{area_name} {label}" if len(state_cfg.get("areas", [])) > 1 else label
+        if _skip_nav_for_first:
+            _skip_nav_for_first = False
+            ok = True
+            print(f"    Already on team page for single-flight area")
+        elif i_sf == 0:
+            # First subflight: full navigation (search → team → flight → subflight)
+            print(f"    Navigating to subflight {label!r} ...")
+            ok = _navigate_to_subflight(page, ntrp, year, label, area_cfg)
+        else:
+            # Subsequent subflights: go back to flight page from current team page
+            print(f"    Navigating to subflight {label!r} (via flight page) ...")
+            ok = False
+            if _go_to_flight_page(page):
+                sf_link = None
+                for a in page.query_selector_all("a"):
+                    try:
+                        txt = a.inner_text().strip()
+                        href = a.get_attribute("href") or ""
+                        if txt == label and "javascript:__doPostBack" in href:
+                            sf_link = a
+                            break
+                    except Exception:
+                        pass
+                if sf_link:
+                    sf_link.click()
+                    _wait_for_network(page, 12_000)
+                    sleep(2)
+                    # Click Team Standings tab if we landed on Summary
+                    for a2 in page.query_selector_all("a"):
+                        try:
+                            t2 = (a2.inner_text() or "").strip()
+                            h2 = a2.get_attribute("href") or ""
+                            if t2 == "Team Standings" and "javascript:__doPostBack" in h2:
+                                a2.click()
+                                _wait_for_network(page, 12_000)
+                                sleep(2)
+                                break
+                        except Exception:
+                            pass
+                    # Click first team — prefer links in team repeaters
+                    for a in page.query_selector_all("a"):
+                        try:
+                            txt = (a.inner_text() or "").strip()
+                            href = a.get_attribute("href") or ""
+                            if (txt and "javascript:__doPostBack" in href
+                                    and ("rptTeamStandings" in href or "rptTeamsForSubFlight" in href)
+                                    and not _is_nav_link(txt) and len(txt) > 2):
+                                print(f"    Clicking first team in subflight {label}: {txt!r}")
+                                a.click()
+                                _wait_for_network(page, 12_000)
+                                sleep(2)
+                                ok = True
+                                break
+                        except Exception:
+                            pass
+                        if ok:
+                            break
+            if not ok:
+                # Fallback: full re-navigation
+                print(f"    [warn] fast nav failed, falling back to full search")
+                ok = _navigate_to_subflight(page, ntrp, year, label, area_cfg)
+        if not ok:
+            print(f"    [warn] could not navigate to subflight {label!r}")
             continue
-        print(f"  Found subflights: {labels}")
+        sf_data = _scrape_subflight(page, label)
+        if len(state_cfg.get("areas", [])) > 1:
+            sf_data["flight_label"] = sf_label_full
+
+        print(f"    Fetching TennisLink match IDs for subflight {label!r} ...")
+        tl_id_map = _fetch_tl_match_ids_for_subflight(page, ntrp, year, label)
+        n_enriched = 0
+        for m in sf_data["matches"]:
+            key = m["match_id"]
+            if key in tl_id_map and not m.get("tl_match_id"):
+                tl_id = tl_id_map[key]
+                m["tl_match_id"] = tl_id
+                m["scorecard_url"] = f"{SCORECARD_BASE_URL}?matchnum={tl_id}"
+                n_enriched += 1
+        print(f"      {n_enriched}/{len(sf_data['matches'])} matches enriched with TL IDs")
+
+        # After TL ID fetch, page may be on subflight Match Summary tab.
+        # Navigate back to a team page so next iteration can use _go_to_flight_page.
+        if i_sf < len(labels) - 1:
+            _nav_back = False
+            for tab_txt in ("Team Standings",):
+                for a in page.query_selector_all("a"):
+                    try:
+                        if tab_txt in (a.inner_text() or ""):
+                            a.click()
+                            _wait_for_network(page, 10_000)
+                            sleep(1)
+                            _nav_back = True
+                            break
+                    except Exception:
+                        pass
+                if _nav_back:
+                    break
+            if _nav_back:
+                _found_team = False
+                for a in page.query_selector_all("a"):
+                    try:
+                        txt = (a.inner_text() or "").strip()
+                        href = a.get_attribute("href") or ""
+                        if (txt and len(txt) > 2
+                                and "javascript:__doPostBack" in href
+                                and ("rptTeamStandings" in href or "rptTeamsForSubFlight" in href)
+                                and not _is_nav_link(txt)):
+                            a.click()
+                            _wait_for_network(page, 10_000)
+                            sleep(1)
+                            _found_team = True
+                            break
+                    except Exception:
+                        pass
+                if not _found_team:
+                    for tbl in page.query_selector_all("table"):
+                        if not tbl.is_visible():
+                            continue
+                        for a in tbl.query_selector_all("a"):
+                            try:
+                                txt = (a.inner_text() or "").strip()
+                                href = a.get_attribute("href") or ""
+                                if "javascript:__doPostBack" in href and txt and len(txt) > 2 and not _is_nav_link(txt):
+                                    a.click()
+                                    _wait_for_network(page, 10_000)
+                                    sleep(1)
+                                    _found_team = True
+                                    break
+                            except Exception:
+                                pass
+                        if _found_team:
+                            break
+
+        sf_rosters = sf_data.get("rosters", {})
+        is_b = label != labels[0]
+        _update_players_from_rosters(
+            {} if is_b else sf_rosters,
+            sf_rosters if is_b else {},
+            ntrp,
+            state_code=state_code,
+        )
+
+        area_subflights.append(sf_data)
+
+    return area_subflights
+
+
+def run_mode1(page: Page, year: int, state_code: str = "NV"):
+    """Scrape standings + match results for a given state."""
+    state_cfg = _get_state_config(state_code)
+    print(f"\n=== MODE 1: Standings + match results ({state_code} – {state_cfg['label']}) ===")
+
+    areas = state_cfg.get("areas", [])
+    if not areas:
+        areas = [{"area": ""}]
+
+    for ntrp in ["3.0", "3.5"]:
+        out_path = _output_path(state_code, ntrp)
+        print(f"\n--- {state_code} {ntrp} Women ---")
 
         all_subflights = []
-        all_rosters: dict[str, list] = {}
 
-        for label in labels:
-            print(f"  Navigating to subflight {label!r} ...")
-            ok = _navigate_to_subflight(page, ntrp, year, label)
-            if not ok:
-                print(f"  [warn] could not navigate to subflight {label!r}")
-                continue
-            sf_data = _scrape_subflight(page, label)
-
-            # Enrich matches with TennisLink numeric match IDs (from Match Summary tab)
-            print(f"  Fetching TennisLink match IDs for subflight {label!r} ...")
-            tl_id_map = _fetch_tl_match_ids_for_subflight(page, ntrp, year, label)
-            n_enriched = 0
-            for m in sf_data["matches"]:
-                key = m["match_id"]
-                if key in tl_id_map and not m.get("tl_match_id"):
-                    tl_id = tl_id_map[key]
-                    m["tl_match_id"] = tl_id
-                    m["scorecard_url"] = f"{SCORECARD_BASE_URL}?matchnum={tl_id}"
-                    n_enriched += 1
-            print(f"    {n_enriched}/{len(sf_data['matches'])} matches enriched with TL IDs")
-
-            all_subflights.append(sf_data)
-            all_rosters.update(sf_data.get("rosters", {}))
+        if len(areas) <= 1:
+            all_subflights = _scrape_area_subflights(
+                page, ntrp, year, state_cfg, areas[0] if areas else {}, state_code)
+        else:
+            for area_info in areas:
+                area_sfs = _scrape_area_subflights(
+                    page, ntrp, year, state_cfg, area_info, state_code)
+                all_subflights.extend(area_sfs)
 
         if not all_subflights:
             print(f"  [warn] no subflights scraped for {ntrp} Women")
             continue
 
-        # Persist player roster data into players.json
-        # Split rosters by subflight for correct division labeling
-        for sf in all_subflights:
-            sf_label = sf["flight_label"]
-            sf_rosters = sf.get("rosters", {})
-            is_b = sf_label != labels[0]  # first label = A equivalent
-            _update_players_from_rosters(
-                {} if is_b else sf_rosters,
-                sf_rosters if is_b else {},
-                ntrp,
-            )
-
-        # Save standings file (strip rosters – stored in players.json)
         total_matches = sum(len(sf["matches"]) for sf in all_subflights)
         result = {
             "ntrp": ntrp,
             "year": year,
+            "state": state_code,
             "subflights": [{k: v for k, v in sf.items() if k != "rosters"}
                            for sf in all_subflights],
         }
@@ -2006,15 +3507,21 @@ def main():
     parser = argparse.ArgumentParser(description="TennisLink Playwright scraper")
     parser.add_argument(
         "--mode",
-        choices=["1", "2", "all"],
+        choices=["1", "2", "all", "districts", "discover-areas"],
         required=True,
-        help="1=standings/results, 2=player history, all=both",
+        help="1=standings/results, 2=player history, all=both, "
+             "districts=championship results, discover-areas=list area options",
+    )
+    parser.add_argument(
+        "--state",
+        default="NV",
+        help="State code (NV, CO, UT, ID). Default: NV",
     )
     parser.add_argument(
         "--year",
         type=int,
-        default=2025,
-        help="League year (default: 2025)",
+        default=2026,
+        help="League year (default: 2026)",
     )
     parser.add_argument(
         "--headless",
@@ -2029,6 +3536,8 @@ def main():
     if not username or not password:
         print("ERROR: Set TENNISLINK_USER and TENNISLINK_PASS in .env (see .env.example)")
         sys.exit(1)
+
+    state_code = args.state.upper()
 
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=args.headless)
@@ -2045,11 +3554,25 @@ def main():
         try:
             login(page, username, password)
 
+            if args.mode == "discover-areas":
+                cfg = _get_state_config(state_code)
+                areas = discover_areas(page, cfg["_section"], cfg["district"])
+                print(f"\nAreas for {state_code} ({cfg['district']}): {areas}")
+                # Update regions.json with discovered areas
+                regions = _load_regions()
+                state_obj = regions["states"][state_code]
+                state_obj["areas"] = [{"area": a} for a in areas]
+                save_json(REGIONS_JSON, regions)
+
             if args.mode in ("1", "all"):
-                run_mode1(page, args.year)
+                run_mode1(page, args.year, state_code)
 
             if args.mode in ("2", "all"):
                 run_mode2(page)
+
+            if args.mode in ("districts", "all"):
+                for ntrp in ["3.0"]:
+                    scrape_districts(page, state_code, ntrp, args.year)
 
         finally:
             context.close()

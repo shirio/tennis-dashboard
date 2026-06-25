@@ -29,6 +29,12 @@ from bs4 import BeautifulSoup
 # Constants
 # ---------------------------------------------------------------------------
 BASE_URL = "https://www.tennisrecord.com"
+ENTRY_URL_TEMPLATE = (
+    "https://www.tennisrecord.com/adult/league/leaguefind.aspx"
+    "?year={year}&lt=1&sectionname={section}"
+    "&districtname={district}&areaname={area}&gender=F"
+)
+# Legacy alias
 ENTRY_URL = (
     "https://www.tennisrecord.com/adult/league/leaguefind.aspx"
     "?year={year}&lt=1&sectionname=Intermountain"
@@ -36,6 +42,34 @@ ENTRY_URL = (
 )
 CACHE_DIR = Path("data/.cache")
 OUTPUT_PATH = Path("data/players.json")
+REGIONS_JSON = Path("data/regions.json")
+
+
+def _load_regions() -> dict:
+    if REGIONS_JSON.exists():
+        return json.loads(REGIONS_JSON.read_text())
+    return {}
+
+
+def _get_state_config(state_code: str) -> dict:
+    regions = _load_regions()
+    cfg = regions.get("states", {}).get(state_code)
+    if not cfg:
+        raise ValueError(f"No config for state {state_code!r} in {REGIONS_JSON}")
+    cfg["_section"] = regions.get("section", "Intermountain")
+    cfg["_state_code"] = state_code
+    return cfg
+
+
+def build_entry_url(state_code: str, year: int) -> str:
+    """Build the tennisrecord league finder URL for a given state."""
+    cfg = _get_state_config(state_code)
+    return ENTRY_URL_TEMPLATE.format(
+        year=year,
+        section=cfg["_section"],
+        district=cfg.get("tennisrecord_district", cfg["district"]),
+        area=cfg.get("tennisrecord_area", "Area"),
+    )
 DEFAULT_DELAY = 1.5  # seconds between requests
 
 # ---------------------------------------------------------------------------
@@ -518,8 +552,10 @@ def sort_players(players: list[dict]) -> list[dict]:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Scrape tennisrecord.com player data for NV Area F women's divisions."
+        description="Scrape tennisrecord.com player data for women's divisions."
     )
+    parser.add_argument("--state", default="NV",
+                        help="State code (NV, CO, UT, ID). Default: NV")
     parser.add_argument("--profiles", action="store_true",
                         help="Also scrape individual player profile pages (slower)")
     parser.add_argument("--no-cache", action="store_true",
@@ -535,6 +571,7 @@ def main():
     parser.add_argument("--dry-run", action="store_true",
                         help="Parse and display results without writing output")
     args = parser.parse_args()
+    state_code = args.state.upper()
 
     use_cache = not args.no_cache
     session = requests.Session()
@@ -548,7 +585,7 @@ def main():
     # -----------------------------------------------------------------------
     # Level 1: Fetch entry page -> subflight list
     # -----------------------------------------------------------------------
-    entry_url = ENTRY_URL.format(year=args.year)
+    entry_url = build_entry_url(state_code, args.year)
     print(f"[1/4] Fetching league finder: {entry_url}")
     html = fetch(entry_url, session, delay=args.delay,
                  use_cache=use_cache, cache_only=args.cache_only)
@@ -618,6 +655,7 @@ def main():
                     "lines_played": None,
                     "lines_html": None,
                     "notes": None,
+                    "state": state_code,
                 })
 
     print(f"       Total: {len(all_players)} player entries (before dedup)")

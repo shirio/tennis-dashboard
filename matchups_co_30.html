@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Singles &amp; Doubles Explorer — 3.0 Women 2026</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+       padding: 1rem; background: #fff; color: #222; font-size: 13px; }
+/* Cards */
+.cards-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
+             gap: 10px; margin-bottom: 16px; }
+.mcard { background: #f5f4f0; border-radius: 8px; padding: .75rem 1rem; }
+.mcard-label { font-size: 11px; color: #888; margin-bottom: 3px; }
+.mcard-val { font-size: 20px; font-weight: 600; }
+.mcard-sub { font-size: 11px; color: #888; margin-top: 2px; }
+/* Main tabs */
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.tab { padding: 6px 14px; border: 1px solid #ccc; border-radius: 20px;
+       font-size: 13px; background: transparent; color: #666;
+       cursor: pointer; font-weight: 500; }
+.tab.on { background: #eee; color: #222; font-weight: 600; border-color: #999; }
+.pane { display: none; } .pane.on { display: block; }
+/* Sub-tabs */
+.rtabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.rtabs.scrollable { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+.re-rating-toggle { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+.re-rtog-label { font-size: 11px; color: #888; }
+.rtab { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px;
+        font-size: 11px; background: transparent; color: #666; cursor: pointer;
+        white-space: nowrap; }
+.rtab.on { background: #eee; color: #222; font-weight: 600; }
+.rpane { display: none; } .rpane.on { display: block; }
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { text-align: left; padding: 5px 6px; color: #888; font-weight: 600;
+     border-bottom: 1px solid #eee; font-size: 11px; }
+th.sortable { cursor: pointer; }
+th.sortable:hover { color: #333; }
+td { padding: 5px 6px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+.rank { color: #aaa; width: 1.5rem; }
+.tname { font-weight: 500; max-width: 140px; overflow: hidden; text-overflow: ellipsis; }
+.pname { font-weight: 500; }
+#ap-table td { vertical-align: middle; }
+.st-table td:nth-child(n+4):nth-child(-n+6) { white-space: nowrap; font-size: 11px; }
+/* Courts/Sets/Games split sub-columns */
+.st-w { text-align: right; padding-right: 2px; padding-left: 6px; white-space: nowrap; font-size: 11px; width: 1.6rem; }
+.st-l { text-align: right; padding-left: 2px; padding-right: 10px; white-space: nowrap; font-size: 11px; color: #aaa; width: 1.6rem; }
+.st-table thead th[colspan] { text-align: center; }
+.rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
+.muted { color: #aaa; font-size: 11px; }
+/* Badges */
+.badge { display: inline-block; padding: 1px 7px; border-radius: 10px;
+         font-size: 11px; font-weight: 600; white-space: nowrap; }
+.bw { background: #EAF3DE; color: #27500A; }
+.bl { background: #FCEBEB; color: #791F1F; }
+.bn { background: #F1EFE8; color: #444; }
+/* Ratings */
+.ru { color: #27500A; font-weight: 600; }
+.rd { color: #791F1F; }
+.rn { color: #888; }
+/* SF pill */
+.sf-pill { display: inline-block; padding: 0 5px; border-radius: 8px;
+           font-size: 10px; font-weight: 600; background: #e8edf5;
+           color: #3a5a8c; vertical-align: middle; }
+/* All-players table column constraints */
+#ap-table th { white-space: nowrap; }
+#ap-table td:nth-child(3), #ap-table th:nth-child(3) { width: 26px; text-align: center; }
+/* All-players history expansion */
+.player-row.expandable { cursor: pointer; }
+.player-row.expandable:hover { background: #f5f7fa; }
+.player-row.expanded > td:first-child::before { content: "▾ "; color: #888; font-size: 10px; }
+.player-row:not(.expanded) > td:first-child::before { content: "▸ "; color: #ccc; font-size: 10px; }
+.player-row:not(.expandable) > td:first-child::before { content: ""; }
+.history-row td { background: #fafbfd; padding: 0; }
+.history-wrap { padding: 8px 12px 12px 24px; }
+.history-summary { font-size: 11px !important; font-weight: 600; color: #555; margin-bottom: 6px;
+                   -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+.history-table { font-size: 11px; width: auto; min-width: 60%; }
+.history-table th { font-size: 10px; padding: 3px 8px; }
+.history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+.history-table tr:last-child td { border-bottom: none; }
+/* Division pills in history */
+.dp { display: inline-block; padding: 1px 6px; border-radius: 8px;
+      font-size: 10px; font-weight: 700; white-space: nowrap; }
+.dp30 { background: #ddeeff; color: #1a5a9a; }
+.dp35 { background: #fff0d8; color: #8a5200; }
+/* W/L in history */
+.hw { color: #27500A; font-weight: 700; }
+.hl { color: #791F1F; font-weight: 700; }
+.hr { color: #aaa; font-style: normal; font-size: 10px; }
+/* Search + SF filter row */
+.ap-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.ap-controls input { flex: 1; min-width: 160px; max-width: 320px; padding: 5px 10px;
+  border: 1px solid #ddd; border-radius: 20px; font-size: 12px; }
+.sf-filter-btns { display: flex; gap: 4px; }
+/* Match blocks */
+.mblock { border: 1px solid #eee; border-radius: 8px;
+          padding: .75rem 1rem; margin-bottom: 10px; }
+.mhdr { display: flex; justify-content: space-between;
+        align-items: center; margin-bottom: 4px; }
+.mtitle { font-size: 13px; font-weight: 600; flex: 1; }
+.mweek-lbl { font-size: 11px; font-weight: 700; color: #888;
+             letter-spacing: .04em; text-align: center; flex: 0 0 auto;
+             padding: 0 8px; }
+.mdate { font-size: 11px; color: #888; margin-bottom: 6px; }
+.line-lbl { font-size: 10px; font-weight: 600; color: #aaa;
+            text-transform: uppercase; letter-spacing: .05em; margin: 8px 0 3px; }
+.line-row { display: grid; grid-template-columns: 1fr auto 1fr;
+            gap: 2px 8px; font-size: 12px; align-items: center; padding: 2px 0; }
+.lh { color: #aaa; } .lh.w { color: #27500A; font-weight: 600; }
+.la { color: #aaa; text-align: right; } .la.w { color: #27500A; font-weight: 600; }
+.ls { text-align: center; font-weight: 600; font-size: 11px; color: #aaa; }
+/* Clickable player names in results tab */
+.pname { cursor: pointer; border-radius: 3px; padding: 0 2px; transition: background .1s; }
+.pname:hover { background: #f0f4ff; }
+.pname.phi { background: #fff3b0; outline: 1px solid #e6c800; }
+.prating { font-size: 10px; color: #aaa; font-style: normal; font-weight: 400; margin-left: 2px; }
+.lh.w .prating, .la.w .prating { color: #5a8a2a; }
+/* Section title */
+.sec-title { font-size: 11px; font-weight: 600; color: #888;
+             text-transform: uppercase; letter-spacing: .07em; margin: 0 0 8px; }
+/* Standings subflight header */
+.sf-header { font-size: 12px; font-weight: 700; color: #555;
+             text-transform: uppercase; letter-spacing: .06em;
+             margin: 18px 0 6px; padding-bottom: 4px;
+             border-bottom: 2px solid #e8e8e8; }
+.sf-header:first-child { margin-top: 0; }
+.st-table { margin-bottom: 6px; }
+/* Validation warning */
+.warn-box { background: #fffbe6; border: 1px solid #f0c040;
+            border-radius: 6px; padding: .6rem .9rem;
+            font-size: 12px; margin-bottom: 10px; }
+.warn-box ul { margin: 4px 0 0 1.2em; }
+.warn-box li { margin: 2px 0; }
+/* Line court pills */
+.line-pill { display: inline-block; padding: 1px 6px; border-radius: 8px;
+             font-size: 10px; font-weight: 700; margin-right: 3px;
+             letter-spacing: .02em; }
+.pill-s1 { background: #FDEBD0; color: #A04000; }
+.pill-s2 { background: #FAD7A0; color: #784212; }
+.pill-s3 { background: #F9E79F; color: #7D6608; }
+.pill-d1 { background: #D6EAF8; color: #1A5276; }
+.pill-d2 { background: #D5F5E3; color: #1E8449; }
+.pill-d3 { background: #E8DAEF; color: #6C3483; }
+/* Line label in line-row */
+.lr-lbl { display: inline-block; font-size: 10px; font-weight: 700;
+          color: #aaa; min-width: 20px; }
+/* Standings clickable team / record links */
+.team-link { color: inherit; text-decoration: none; }
+.team-link:hover { color: #1a5276; text-decoration: underline; cursor: pointer; }
+/* Cross-dashboard link */
+.top-bar { text-align: right; margin-bottom: 8px; }
+.cross-link { font-size: 12px; color: #1a5276; text-decoration: none; font-weight: 500; }
+.cross-link:hover { text-decoration: underline; }
+/* Row hover highlight */
+.st-table tbody tr:hover, .rpane table tbody tr:hover, #ap-table tbody tr:hover { background: #f5f7fa; }
+/* Global diff column */
+.gdiff-up   { font-size: 10px; color: #5a8a2a; font-weight: 500; }
+.gdiff-dn   { font-size: 10px; color: #a04000; font-weight: 500; }
+.gdiff-zero { font-size: 10px; color: #999; }
+/* Notes column */
+.notes-cell { font-size: 10px; color: #555; line-height: 1.35; min-width: 180px; max-width: 320px; }
+/* Walkover/default win badge in roster notes */
+.default-win-badge { display: inline-block; font-size: 9px; color: #888; background: #f3f3f3;
+  border: 1px solid #ddd; border-radius: 3px; padding: 1px 4px; margin-top: 2px; font-style: italic; }
+/* Default marker in results tab */
+.default-marker { color: #999; font-style: italic; font-size: 11px; }
+/* Subflight summary in standings */
+.sf-summary { font-size: 12px; color: #444; line-height: 1.55; margin: 0 0 12px 0;
+              padding: 10px 12px; background: #f9f9f9; border-left: 3px solid #d0d0d0; border-radius: 4px; }
+/* Analysis + Predictions tab */
+.insight { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 12px; line-height: 1.6; }
+.insight:last-child { border-bottom: none; }
+.itag { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 6px;
+        border-radius: 8px; margin-right: 5px; background: #E6F1FB; color: #0C447C; }
+.itag.you { background: #EAF3DE; color: #27500A; }
+.itag.warn { background: #FAEEDA; color: #633806; }
+.itag.opp { background: #EEEDFE; color: #3C3489; }
+
+/* ---- Matchup-page additions ---- */
+body { max-width: 1100px; }
+.mx-top-bar { display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
+              border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.mx-page-title { font-size: 14px; font-weight: 600; color: #333; }
+.mx-section { margin-bottom: 32px; }
+.mx-section-hdr { font-size: 13px; font-weight: 700; color: #333;
+                  text-transform: uppercase; letter-spacing: .07em;
+                  margin: 0 0 10px 0; padding-bottom: 5px;
+                  border-bottom: 2px solid #e8e8e8; }
+.mx-controls { display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+               flex-wrap: wrap; }
+.mx-search { flex: 1; min-width: 160px; max-width: 300px; padding: 5px 10px;
+             border: 1px solid #ddd; border-radius: 20px; font-size: 12px; }
+.mc-chip { display: inline-block; width: 18px; height: 18px; border-radius: 50%;
+           font-size: 9px; font-weight: 700; line-height: 18px; text-align: center;
+           cursor: default; margin-right: 2px; }
+.mc-w { background: #EAF3DE; color: #27500A; }
+.mc-l { background: #FCEBEB; color: #791F1F; }
+.mc-p { background: #f1efe8; color: #888; }
+.mx-row { cursor: pointer; }
+.mx-row td { vertical-align: middle; white-space: nowrap; }
+.mx-row td:first-child { white-space: normal; display: flex; align-items: center; }
+.mx-row:hover td { background: #f5f7fa; }
+/* Clickable team cell */
+.mx-team-cell { cursor: pointer; }
+.mx-team-cell:hover { color: #1a5276; text-decoration: underline; }
+/* Main tabs for singles / doubles */
+.mx-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+.mx-tab { padding: 6px 16px; border: 1px solid #ccc; border-radius: 20px;
+          font-size: 13px; background: transparent; color: #666;
+          cursor: pointer; font-weight: 500; }
+.mx-tab.on { background: #eee; color: #222; font-weight: 600; border-color: #999; }
+.mx-pane { display: none; }
+.mx-pane.on { display: block; }
+.mx-exp { font-size: 20px; color: #bbb; margin-left: 4px; transition: transform .15s; line-height: 1; vertical-align: middle; }
+.mx-exp.open { display: inline-block; transform: rotate(90deg); }
+.mx-detail td { background: #fafafa; padding: 6px 10px 10px 10px; }
+.mx-matches { display: flex; flex-direction: column; gap: 3px; }
+.mx-match-row { display: grid;
+  grid-template-columns: 28px 36px 22px 1fr 90px 68px 68px;
+  gap: 4px 8px; align-items: center; font-size: 11px;
+  padding: 3px 4px; border-radius: 4px; }
+.mx-match-row.mx-hi { background: #fffbe6; outline: 1px solid #e6c800; }
+.mx-wk { font-size: 10px; font-weight: 700; color: #aaa; }
+.mx-win { font-size: 12px; font-weight: 700; }
+.mx-win.w { color: #27500A; }
+.mx-win.l { color: #791F1F; }
+.mx-score { font-size: 11px; font-weight: 600; color: #555; }
+.mx-desc { font-size: 10px; color: #888; font-style: italic; }
+.mx-odds { font-size: 10px; color: #888; }
+.mx-odds.upset { color: #a04000; font-weight: 600; }
+.mx-odds.solid { color: #27500A; font-weight: 600; }
+.opp-link { color: #1a5276; cursor: pointer; border-radius: 3px; padding: 0 2px; }
+.opp-link:hover { background: #e8f0f8; text-decoration: underline; }
+.opp-team-label { color: #aaa; font-size: 10px; }
+.opp-banner { display: none; align-items: center; gap: 8px; padding: 5px 10px;
+              background: #fffbe6; border: 1px solid #e6c800; border-radius: 6px;
+              font-size: 11px; margin-bottom: 8px; }
+.opp-banner.on { display: flex; }
+.opp-banner-clear { cursor: pointer; color: #791F1F; font-weight: 700; }
+.min-matches-btns { display: flex; gap: 4px; margin-left: 8px; }
+</style>
+</head>
+<body>
+
+<div class="mx-top-bar">
+  <a href="women_30.html" class="cross-link">← Division Dashboard</a>
+  <span class="mx-page-title">Singles &amp; Doubles Explorer — 3.0 Women 2026</span>
+  <a href="matchups_35.html" class="cross-link" style="margin-left:auto">3.5 Explorer →</a>
+</div>
+
+<div class="mx-tabs">
+  <button class="mx-tab on" onclick="switchMxTab('singles',this)">Singles</button>
+  <button class="mx-tab" onclick="switchMxTab('doubles',this)">Doubles Pairs</button>
+</div>
+
+<!-- ========= SINGLES ========= -->
+<div id="mx-pane-singles" class="mx-pane on">
+<section class="mx-section" id="singles-section">
+  <div id="singles-opp-banner" class="opp-banner">
+    <span class="opp-banner-lbl"></span>
+    <span class="opp-banner-clear" onclick="clearOppFilter('singles')">✕ clear</span>
+  </div>
+  <div class="mx-controls">
+    <div class="sf-filter-btns">
+      <button class="rtab on" onclick="filterMxSF('all',this,'singles')">All</button>
+      <button class="rtab" onclick="filterMxSF('A',this,'singles')">A</button>
+      <button class="rtab" onclick="filterMxSF('B',this,'singles')">B</button>
+    </div>
+    <input class="mx-search" id="singles-search" placeholder="Search player or team…"
+           oninput="filterMxSearch('singles')">
+    <div class="min-matches-btns">
+      <span style="font-size:11px;color:#888">min matches:</span>
+      <button class="rtab on" onclick="setMinMatches(1,this,'singles')">All</button>
+      <button class="rtab" onclick="setMinMatches(2,this,'singles')">2+</button>
+      <button class="rtab" onclick="setMinMatches(3,this,'singles')">3+</button>
+    </div>
+  </div>
+  <table>
+    <thead><tr>
+      <th class="sortable" onclick="sortMx('singles-tbody',0,'s0')">Player ↕</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',1,'s1')">Team ↕</th>
+      <th>SF</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',3,'s3')">Base ↕</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',4,'s4')">Rating ↕</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',5,'s5')">W–L ↕</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',6,'s6')">Win% ↕</th>
+      <th class="sortable" onclick="sortMx('singles-tbody',7,'s7')">Avg Opp ↕</th>
+      <th>Matches</th>
+    </tr></thead>
+    <tbody id="singles-tbody"></tbody>
+  </table>
+</section>
+</div>
+
+<!-- ========= DOUBLES ========= -->
+<div id="mx-pane-doubles" class="mx-pane">
+<section class="mx-section" id="doubles-section">
+  <div id="doubles-opp-banner" class="opp-banner">
+    <span class="opp-banner-lbl"></span>
+    <span class="opp-banner-clear" onclick="clearOppFilter('doubles')">✕ clear</span>
+  </div>
+  <div class="mx-controls">
+    <div class="sf-filter-btns">
+      <button class="rtab on" onclick="filterMxSF('all',this,'doubles')">All</button>
+      <button class="rtab" onclick="filterMxSF('A',this,'doubles')">A</button>
+      <button class="rtab" onclick="filterMxSF('B',this,'doubles')">B</button>
+    </div>
+    <input class="mx-search" id="doubles-search" placeholder="Search players or team…"
+           oninput="filterMxSearch('doubles')">
+    <div class="min-matches-btns">
+      <span style="font-size:11px;color:#888">min matches:</span>
+      <button class="rtab on" onclick="setMinMatches(2,this,'doubles')">2+</button>
+      <button class="rtab" onclick="setMinMatches(3,this,'doubles')">3+</button>
+      <button class="rtab" onclick="setMinMatches(4,this,'doubles')">4+</button>
+    </div>
+  </div>
+  <table>
+    <thead><tr>
+      <th class="sortable" onclick="sortMx('doubles-tbody',0,'d0')">Players ↕</th>
+      <th class="sortable" onclick="sortMx('doubles-tbody',1,'d1')">Team ↕</th>
+      <th>SF</th>
+      <th class="sortable" onclick="sortMx('doubles-tbody',3,'d3')">Avg Rating ↕</th>
+      <th class="sortable" onclick="sortMx('doubles-tbody',4,'d4')">W–L ↕</th>
+      <th class="sortable" onclick="sortMx('doubles-tbody',5,'d5')">Win% ↕</th>
+      <th>Lines</th>
+      <th>Matches</th>
+    </tr></thead>
+    <tbody id="doubles-tbody"></tbody>
+  </table>
+</section>
+</div>
+
+<script>
+function sw(id, btn) {
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+function sr(id, btn, groupId) {
+  // Deactivate all tabs in the group
+  var grp = document.getElementById(groupId);
+  if (grp) grp.querySelectorAll('.rtab').forEach(b => b.classList.remove('on'));
+  // Hide all rpanes that share the same prefix (e.g. "ro-" or "re-")
+  var prefix = id.split('-')[0] + '-';
+  document.querySelectorAll('[id^="' + prefix + '"]').forEach(p => {
+    if (p.classList.contains('rpane')) p.classList.remove('on');
+  });
+  document.getElementById(id).classList.add('on');
+  if (btn) btn.classList.add('on');
+}
+
+// Switch A/B subflight in rosters or results tab
+// Simple subflight switcher for the standings tab (no team sub-tabs)
+function filterStandingsSF(sf) {
+  var tabs = document.getElementById('st-sf-tabs');
+  if (tabs) {
+    tabs.querySelectorAll('.rtab').forEach(function(b) {
+      b.classList.toggle('on', b.dataset.sf === sf);
+    });
+  }
+  document.querySelectorAll('.st-pane').forEach(function(p) {
+    p.style.display = (p.dataset.sf === sf) ? '' : 'none';
+  });
+}
+
+function filterSF(sf, btn, sfTabsId, teamTabsId, prefix) {
+  // Update SF tab highlight
+  var sfTabs = document.getElementById(sfTabsId);
+  if (sfTabs) sfTabs.querySelectorAll('.rtab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+
+  // Show/hide team tabs based on data-sf
+  var teamTabs = document.getElementById(teamTabsId);
+  var firstVisible = null;
+  if (teamTabs) {
+    teamTabs.querySelectorAll('.rtab').forEach(b => {
+      if (b.dataset.sf === sf) {
+        b.style.display = '';
+        if (!firstVisible) firstVisible = b;
+      } else {
+        b.style.display = 'none';
+        b.classList.remove('on');
+      }
+    });
+  }
+
+  // Hide all rpanes for this prefix, then show the first visible team's pane
+  document.querySelectorAll('[id^="' + prefix + '-"]').forEach(p => {
+    if (p.classList.contains('rpane')) p.classList.remove('on');
+  });
+  if (firstVisible) {
+    firstVisible.classList.add('on');
+    var targetId = firstVisible.getAttribute('onclick').match(/'([^']+)'/)[1];
+    var pane = document.getElementById(targetId);
+    if (pane) pane.classList.add('on');
+  }
+}
+
+// Highlight all occurrences of a player name in the results tab
+function setResultRatingMode(mode, btn) {
+  // Update toggle button state
+  document.querySelectorAll('.re-rating-toggle .rtab').forEach(function(b) {
+    b.classList.remove('on');
+  });
+  btn.classList.add('on');
+  // Update every rating badge in the results pane
+  document.querySelectorAll('.rpane .prating').forEach(function(em) {
+    if (mode === 'none') {
+      em.style.display = 'none';
+    } else {
+      em.style.display = '';
+      var val = mode === 'base' ? em.dataset.base : em.dataset.new;
+      em.textContent = val ? '(' + val + ')' : '';
+    }
+  });
+}
+
+function highlightPlayer(el) {
+  var key = el.dataset.pkey;
+  if (!key) return;
+  var already = el.classList.contains('phi');
+  // Clear all highlights first
+  document.querySelectorAll('.pname.phi').forEach(function(n) { n.classList.remove('phi'); });
+  if (!already) {
+    document.querySelectorAll('.pname[data-pkey="' + key + '"]').forEach(function(n) {
+      n.classList.add('phi');
+    });
+  }
+}
+
+var _apSF = 'all', _apState = 'all';
+function filterPlayerSF(sf, btn) {
+  _apSF = sf;
+  document.querySelectorAll('#sf-filter-btns .rtab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applyPlayerFilters();
+}
+function filterPlayerState(st, btn) {
+  _apState = st;
+  document.querySelectorAll('#state-filter-btns .rtab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  applyPlayerFilters();
+}
+function filterPlayers() {
+  applyPlayerFilters();
+}
+function toggleHistory(tr) {
+  if (!tr.classList.contains('expandable')) return;
+  var open = tr.classList.toggle('expanded');
+  var next = tr.nextElementSibling;
+  // First click: render the detail row from JSON, then insert it
+  if (!next || !next.classList.contains('history-row')) {
+    var data = JSON.parse(tr.dataset.history || '[]');
+    var combined = tr.dataset.combined || '';
+    var html = '<div class="history-wrap"><div class="history-summary">' + combined + '</div>'
+      + '<table class="history-table"><thead><tr>'
+      + '<th>Date</th><th>Div</th><th>Line</th><th>Result</th>'
+      + '<th>Score</th><th>Partner(s)</th><th>Opponent(s)</th><th>Opp Team</th>'
+      + '</tr></thead><tbody>';
+    data.forEach(function(r) {
+      var dv = r.dv || '';
+      var divPill = '<span class="dp dp' + dv + '">' + (dv === '30' ? '3.0' : '3.5') + '</span>';
+      var wko = r.wk;
+      var resCls = wko ? '' : (r.w ? 'hw' : 'hl');
+      var resTxt = wko ? 'DEFAULT' : (r.w ? 'W' : 'L');
+      var opArr = r.op || [], orArr = r.or || [];
+      var opHtml = opArr.length
+        ? opArr.map(function(o,i){ return o + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
+        : '<em class="hr">default</em>';
+      var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
+      html += '<tr>'
+        + '<td style="white-space:nowrap">' + (r.dt||'') + '</td>'
+        + '<td>' + divPill + '</td>'
+        + '<td>' + (r.ln||'') + '</td>'
+        + '<td><span class="' + resCls + '">' + resTxt + '</span></td>'
+        + '<td style="white-space:nowrap">' + sc + '</td>'
+        + '<td>' + ((r.pt||[]).join(', ')||'—') + '</td>'
+        + '<td>' + opHtml + '</td>'
+        + '<td>' + (r.ot||'') + '</td>'
+        + '</tr>';
+    });
+    html += '</tbody></table></div>';
+    var htr = document.createElement('tr');
+    htr.className = 'history-row';
+    var td = document.createElement('td');
+    td.colSpan = 11; td.style.padding = '0';
+    td.innerHTML = html;
+    htr.appendChild(td);
+    tr.parentNode.insertBefore(htr, tr.nextSibling);
+    next = htr;
+  }
+  next.style.display = open ? '' : 'none';
+}
+function applyPlayerFilters() {
+  var q = (document.getElementById('player-search') || {value:''}).value.toLowerCase();
+  document.querySelectorAll('#ap-table tbody tr.player-row').forEach(tr => {
+    var sfMatch = _apSF === 'all' || tr.dataset.sf === _apSF;
+    var stMatch = _apState === 'all' || tr.dataset.state === _apState;
+    var textMatch = !q || tr.innerText.toLowerCase().includes(q);
+    var show = sfMatch && stMatch && textMatch;
+    tr.style.display = show ? '' : 'none';
+    var next = tr.nextElementSibling;
+    if (next && next.classList.contains('history-row')) {
+      if (!show) next.style.display = 'none';
+    }
+  });
+}
+var _sortDir = {};
+function _sortTable(tbodyOrSelector, col, dirKey) {
+  var tbody = typeof tbodyOrSelector === 'string'
+    ? document.querySelector(tbodyOrSelector)
+    : tbodyOrSelector;
+  if (!tbody) return;
+  var rows = Array.from(tbody.querySelectorAll('tr'));
+  var dir = (_sortDir[dirKey] = !_sortDir[dirKey]);
+  rows.sort(function(a, b) {
+    var ac = a.cells[col], bc = b.cells[col];
+    // Prefer data-sort numeric attribute when present (e.g. W-L cells)
+    var ads = ac ? ac.dataset.sort : undefined;
+    var bds = bc ? bc.dataset.sort : undefined;
+    if (ads !== undefined && bds !== undefined) {
+      var an2 = parseFloat(ads), bn2 = parseFloat(bds);
+      if (!isNaN(an2) && !isNaN(bn2)) return dir ? an2 - bn2 : bn2 - an2;
+    }
+    var av = ac ? ac.innerText.trim() : '';
+    var bv = bc ? bc.innerText.trim() : '';
+    var an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return dir ? an - bn : bn - an;
+    return dir ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+function sortAP(col) {
+  var tbody = document.querySelector('#ap-table tbody');
+  if (!tbody) return;
+  var dir = (_sortDir['ap-' + col] = !_sortDir['ap-' + col]);
+  // Collect only player rows (not history rows), paired with their history row
+  var pairs = [];
+  var rows = Array.from(tbody.children);
+  for (var i = 0; i < rows.length; i++) {
+    if (rows[i].classList.contains('player-row')) {
+      var hist = (i + 1 < rows.length && rows[i+1].classList.contains('history-row'))
+        ? rows[i+1] : null;
+      pairs.push([rows[i], hist]);
+    }
+  }
+  pairs.sort(function(a, b) {
+    var ac = a[0].cells[col], bc = b[0].cells[col];
+    var ads = ac ? ac.dataset.sort : undefined;
+    var bds = bc ? bc.dataset.sort : undefined;
+    if (ads !== undefined && bds !== undefined) {
+      var an2 = parseFloat(ads), bn2 = parseFloat(bds);
+      if (!isNaN(an2) && !isNaN(bn2)) return dir ? an2 - bn2 : bn2 - an2;
+    }
+    var av = ac ? ac.innerText.trim() : '';
+    var bv = bc ? bc.innerText.trim() : '';
+    var an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return dir ? an - bn : bn - an;
+    return dir ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  pairs.forEach(function(pair) {
+    tbody.appendChild(pair[0]);
+    if (pair[1]) tbody.appendChild(pair[1]);
+  });
+}
+function sortRoster(col) {
+  // Sort the currently visible roster pane's table
+  var pane = document.querySelector('.rpane.on[id^="ro-"]');
+  if (!pane) return;
+  var tbody = pane.querySelector('tbody');
+  _sortTable(tbody, col, 'ro-' + col + '-' + (pane ? pane.id : ''));
+}
+
+// Navigate from standings → team rosters tab for a specific team
+function goToRoster(slug, sf) {
+  // Switch to Team Rosters main tab
+  document.querySelectorAll('.pane').forEach(function(p) { p.classList.remove('on'); });
+  document.querySelectorAll('.tab').forEach(function(b) {
+    b.classList.remove('on');
+    if (b.textContent.trim().toLowerCase() === 'team rosters') b.classList.add('on');
+  });
+  var rPane = document.getElementById('rosters');
+  if (rPane) rPane.classList.add('on');
+  // Switch subflight
+  if (sf) {
+    var sfBtn = document.querySelector('#ro-sf-tabs .rtab[data-sf="' + sf + '"]');
+    if (sfBtn) filterSF(sf, sfBtn, 'ro-sf-tabs', 'ro-tabs', 'ro');
+  }
+  // Activate the team pane
+  setTimeout(function() {
+    var targetId = 'ro-' + slug;
+    var pane = document.getElementById(targetId);
+    if (!pane) return;
+    document.querySelectorAll('[id^="ro-"].rpane').forEach(function(p) { p.classList.remove('on'); });
+    pane.classList.add('on');
+    document.querySelectorAll('#ro-tabs .rtab').forEach(function(b) {
+      b.classList.remove('on');
+      var oc = b.getAttribute('onclick') || '';
+      if (oc.indexOf(targetId) >= 0) b.classList.add('on');
+    });
+  }, 40);
+}
+
+// Navigate from standings → all results tab for a specific team
+function goToResult(slug, sf) {
+  // Switch to All Results main tab
+  document.querySelectorAll('.pane').forEach(function(p) { p.classList.remove('on'); });
+  document.querySelectorAll('.tab').forEach(function(b) {
+    b.classList.remove('on');
+    if (b.textContent.trim().toLowerCase() === 'all results') b.classList.add('on');
+  });
+  var rPane = document.getElementById('allresults');
+  if (rPane) rPane.classList.add('on');
+  // Switch subflight
+  if (sf) {
+    var sfBtn = document.querySelector('#re-sf-tabs .rtab[data-sf="' + sf + '"]');
+    if (sfBtn) filterSF(sf, sfBtn, 're-sf-tabs', 're-tabs', 're');
+  }
+  // Activate the team pane
+  setTimeout(function() {
+    var targetId = 're-' + slug;
+    var pane = document.getElementById(targetId);
+    if (!pane) return;
+    document.querySelectorAll('[id^="re-"].rpane').forEach(function(p) { p.classList.remove('on'); });
+    pane.classList.add('on');
+    document.querySelectorAll('#re-tabs .rtab').forEach(function(b) {
+      b.classList.remove('on');
+      var oc = b.getAttribute('onclick') || '';
+      if (oc.indexOf(targetId) >= 0) b.classList.add('on');
+    });
+  }, 40);
+}
+// All-players table: cols 3-9 (NTRP, Base, New, Diff, W-L, Sets, Games) default descending
+[3,4,5,6,7,8,9,10].forEach(function(c) { _sortDir['ap-' + c] = true; });
+
+// ---- expand / collapse detail rows ----
+function toggleDetail(id, triggerEl) {
+  var det = document.getElementById(id);
+  if (!det) return;
+  var isOpen = det.style.display !== 'none';
+  det.style.display = isOpen ? 'none' : '';
+  var exp = triggerEl ? triggerEl.querySelector('.mx-exp') : null;
+  if (!exp) {
+    // find the corresponding main row
+    var mainRow = document.querySelector('[data-det="' + id + '"]');
+    if (mainRow) exp = mainRow.querySelector('.mx-exp');
+  }
+  if (exp) exp.classList.toggle('open', !isOpen);
+}
+
+// ---- SF filter (singles and doubles share the same pattern) ----
+var _mxSF = { singles: 'all', doubles: 'all' };
+function filterMxSF(sf, btn, section) {
+  _mxSF[section] = sf;
+  var grp = btn.parentElement;
+  grp.querySelectorAll('.rtab').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  _applyMxFilters(section);
+}
+
+// ---- search filter ----
+function filterMxSearch(section) {
+  _applyMxFilters(section);
+}
+
+// ---- opponent filter ----
+var _oppKey = { singles: '', doubles: '' };
+// Track which detail rows were auto-expanded by the opp filter (so we can collapse them on clear)
+var _autoExpanded = { singles: [], doubles: [] };
+
+function filterByOpp(key, display, section) {
+  // Clicking the same opp again → clear the filter
+  if (_oppKey[section] === key) {
+    clearOppFilter(section);
+    return;
+  }
+  // If switching from a different opp filter, collapse the old auto-expanded rows first
+  _collapseAutoExpanded(section);
+
+  _oppKey[section] = key;
+  _autoExpanded[section] = [];
+
+  var banner = document.getElementById(section + '-opp-banner');
+  if (banner) {
+    banner.classList.add('on');
+    var lbl = banner.querySelector('.opp-banner-lbl');
+    if (lbl) lbl.textContent = 'Filtered: players who faced ' + display;
+  }
+  _applyMxFilters(section);
+  // auto-expand matching rows and highlight the specific match
+  var tbody = document.getElementById(section + '-tbody');
+  if (!tbody) return;
+  tbody.querySelectorAll('tr.mx-row').forEach(function(row) {
+    var keys = (row.dataset.oppKeys || '').split(' ');
+    if (keys.indexOf(key) >= 0) {
+      var detId = row.dataset.det;
+      var det = document.getElementById(detId);
+      if (det && det.style.display === 'none') {
+        det.style.display = '';
+        var exp = row.querySelector('.mx-exp');
+        if (exp) exp.classList.add('open');
+        _autoExpanded[section].push(detId);  // remember this was auto-expanded
+      }
+      // highlight matching match rows
+      if (det) {
+        det.querySelectorAll('.mx-match-row').forEach(function(mr) {
+          mr.classList.toggle('mx-hi', mr.dataset.oppKey === key);
+        });
+      }
+    }
+  });
+}
+
+function _collapseAutoExpanded(section) {
+  (_autoExpanded[section] || []).forEach(function(detId) {
+    var det = document.getElementById(detId);
+    if (det) {
+      det.style.display = 'none';
+      var mainRow = document.querySelector('[data-det="' + detId + '"]');
+      if (mainRow) {
+        var exp = mainRow.querySelector('.mx-exp');
+        if (exp) exp.classList.remove('open');
+      }
+    }
+  });
+  _autoExpanded[section] = [];
+}
+
+function clearOppFilter(section) {
+  _oppKey[section] = '';
+  var banner = document.getElementById(section + '-opp-banner');
+  if (banner) banner.classList.remove('on');
+  var tbody = document.getElementById(section + '-tbody');
+  if (tbody) {
+    tbody.querySelectorAll('.mx-match-row').forEach(function(mr) {
+      mr.classList.remove('mx-hi');
+    });
+  }
+  _collapseAutoExpanded(section);
+  _applyMxFilters(section);
+}
+
+// ---- main tab switcher (Singles / Doubles) ----
+function switchMxTab(section, btn) {
+  document.querySelectorAll('.mx-tab').forEach(function(b) { b.classList.remove('on'); });
+  document.querySelectorAll('.mx-pane').forEach(function(p) { p.classList.remove('on'); });
+  btn.classList.add('on');
+  var pane = document.getElementById('mx-pane-' + section);
+  if (pane) pane.classList.add('on');
+}
+
+// ---- team cell click → filter by team ----
+function filterByTeam(abbrevTeam, section, event) {
+  event.stopPropagation();  // don't also expand the row
+  var searchEl = document.getElementById(section + '-search');
+  if (!searchEl) return;
+  // Toggle: clicking same team again clears the filter
+  if (searchEl.value.toLowerCase() === abbrevTeam.toLowerCase()) {
+    searchEl.value = '';
+  } else {
+    searchEl.value = abbrevTeam;
+  }
+  filterMxSearch(section);
+}
+
+// ---- default descending for quality columns (first click shows best first) ----
+// _sortDir state is true → next click will be descending (dir = !true = false → bn-an)
+['s3','s4','s5','s6','s7','d3','d4','d5'].forEach(function(k) { _sortDir[k] = true; });
+function _applyMxFilters(section) {
+  var sf = _mxSF[section];
+  var oppK = _oppKey[section];
+  var searchEl = document.getElementById(section + '-search');
+  var q = searchEl ? searchEl.value.toLowerCase() : '';
+  var tbody = document.getElementById(section + '-tbody');
+  if (!tbody) return;
+  var rows = tbody.querySelectorAll('tr.mx-row');
+  rows.forEach(function(row) {
+    var sfOk = sf === 'all' || row.dataset.sf === sf;
+    var oppOk = !oppK || (row.dataset.oppKeys || '').split(' ').indexOf(oppK) >= 0;
+    var textOk = !q || (row.dataset.searchText || '').indexOf(q) >= 0;
+    var mmOk = parseInt(row.dataset.matchCount || '0') >= _minMatches[section];
+    var vis = sfOk && oppOk && textOk && mmOk;
+    row.style.display = vis ? '' : 'none';
+    // also hide detail row when main row is hidden
+    var det = document.getElementById(row.dataset.det);
+    if (det && !vis) det.style.display = 'none';
+  });
+}
+
+// ---- sorting ----
+var _mxSortDir = {};
+function sortMx(tbodyId, col, dirKey) {
+  _sortTable('#' + tbodyId, col, dirKey);
+  // after sorting, re-pair each main row with its detail row
+  var tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  var rows = Array.from(tbody.querySelectorAll('tr'));
+  // rebuild order: each mx-row followed immediately by its det row
+  var mxRows = rows.filter(function(r) { return r.classList.contains('mx-row'); });
+  mxRows.forEach(function(mr) {
+    tbody.appendChild(mr);
+    var det = document.getElementById(mr.dataset.det);
+    if (det) tbody.appendChild(det);
+  });
+}
+
+// ---- min-matches filter (singles + doubles) ----
+var _minMatches = { singles: 1, doubles: 2 };
+function setMinMatches(n, btn, section) {
+  _minMatches[section] = n;
+  btn.parentElement.querySelectorAll('.rtab').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  _applyMxFilters(section);
+}
+</script>
+</body>
+</html>
