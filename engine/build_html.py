@@ -629,10 +629,12 @@ def _traverse_match_histories(
                     score = line.get("score", "") or ""
                     line_label = line.get("line", "") or ""
 
-                    home_names = [n.strip() for n in home_raw.split("/")
-                                  if n.strip() and n.strip().upper() != "N/A"]
-                    away_names = [n.strip() for n in away_raw.split("/")
-                                  if n.strip() and n.strip().upper() != "N/A"]
+                    _home_na = home_raw.strip().upper() in ("N/A", "NA", "")
+                    _away_na = away_raw.strip().upper() in ("N/A", "NA", "")
+                    home_names = [] if _home_na else [
+                        n.strip() for n in home_raw.split("/") if n.strip()]
+                    away_names = [] if _away_na else [
+                        n.strip() for n in away_raw.split("/") if n.strip()]
                     is_walkover = not home_names or not away_names
 
                     all_side = ([("home", n) for n in home_names] +
@@ -705,7 +707,9 @@ def _traverse_match_histories(
                                  "sw35":0,"sl35":0,"gw35":0,"gl35":0,
                                  "w":0,"l":0,"w30":0,"l30":0,"w35":0,"l35":0}
                         )
-                        if not is_walkover:
+                        if is_walkover:
+                            st["wko"] = st.get("wko", 0) + 1
+                        else:
                             d = div.replace(".", "")
                             st[f"sw{d}"] += sw; st[f"sl{d}"] += sl
                             st[f"gw{d}"] += gw; st[f"gl{d}"] += gl
@@ -780,8 +784,11 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         pst = player_stats.get(nk, {})
         _w_computed = pst.get("w", 0)
         _l_computed = pst.get("l", 0)
+        _wko = pst.get("wko", 0)
         if _w_computed + _l_computed > 0:
             wl = f"{_w_computed}-{_l_computed}"
+            if _wko:
+                wl += "*"
         else:
             wl = p.get(f"wl_record_{_sfx}") or "–"
 
@@ -792,9 +799,10 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             sf = team_to_sf.get(div_team, "")
 
         _wl_sort = "0"
-        _wl_str  = str(wl) if wl else "–"
-        if "-" in _wl_str and _wl_str != "–":
-            _wparts = _wl_str.split("-")
+        _wl_display = str(wl) if wl else "–"
+        _wl_clean = _wl_display.rstrip("*")
+        if "-" in _wl_clean and _wl_clean != "–":
+            _wparts = _wl_clean.split("-")
             try:
                 _w, _l = int(_wparts[0]), int(_wparts[1])
                 _wl_sort = str(_w * 100 - _l)
@@ -888,7 +896,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             f"<td>{_esc(_fmt_rating(baseline))}</td>"
             f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
             f"<td data-sort='{_diff_sort}'>{_diff_html}</td>"
-            f"<td data-sort='{_wl_sort}' style='white-space:nowrap'>{_esc(_wl_str)}</td>"
+            f"<td data-sort='{_wl_sort}' style='white-space:nowrap'>{_esc(_wl_display)}</td>"
             f"<td data-sort='{sets_sort}' style='white-space:nowrap'>{sets_str}</td>"
             f"<td data-sort='{games_sort}' style='white-space:nowrap'>{games_str}</td>"
             f"<td data-sort='{avg_opp_sort}'>{avg_opp_str}</td>"
@@ -942,7 +950,8 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
     <th class="sortable" onclick="sortAP(10)">Avg Opp ↕</th>
   </tr></thead>
   <tbody>{rows}</tbody>
-</table>"""
+</table>
+<p class="wl-footnote">* W–L excludes defaults/walkovers (opponent absent)</p>"""
 
 
 def _results_tab(subflights: list[dict], players: list[dict] | None = None,
@@ -1312,6 +1321,7 @@ tr:last-child td { border-bottom: none; }
 .st-table thead th[colspan] { text-align: center; }
 .rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
 .muted { color: #aaa; font-size: 11px; }
+.wl-footnote { color: #999; font-size: 11px; margin-top: 0.4rem; padding-left: 0.3rem; }
 /* Badges */
 .badge { display: inline-block; padding: 1px 7px; border-radius: 10px;
          font-size: 11px; font-weight: 600; white-space: nowrap; }
@@ -2895,7 +2905,11 @@ def _build_sectionals_rosters(
             pst = (player_stats or {}).get(nk, {})
             _w = pst.get("w", 0)
             _l = pst.get("l", 0)
-            wl = f"{_w}-{_l}" if _w + _l > 0 else (p.get(f"wl_record_{_sfx}") or "–")
+            _wko = pst.get("wko", 0)
+            if _w + _l > 0:
+                wl = f"{_w}-{_l}" + ("*" if _wko else "")
+            else:
+                wl = p.get(f"wl_record_{_sfx}") or "–"
             lines = p.get(f"lines_played_{_sfx}") or "–"
             rows += (
                 f"<tr>"
@@ -2924,6 +2938,7 @@ def _build_sectionals_rosters(
     return (
         f'<div class="rtabs" id="sect-state-tabs">{state_btns}</div>'
         + rpanes
+        + '<p class="wl-footnote">* W–L excludes defaults/walkovers (opponent absent)</p>'
     )
 
 
