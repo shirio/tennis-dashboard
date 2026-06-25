@@ -652,7 +652,7 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
             tname = t.get("team_name", "")
             if not tname:
                 continue
-            tid = f"ro-{_slug(tname)}"
+            tid = f"ro-{_slug(sf_lbl)}-{_slug(tname)}"
             # First tab of first subflight is active
             active = " on" if first_seen else ""
             visible = "" if sf_lbl == first_sf else ' style="display:none"'
@@ -1266,7 +1266,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
             tname = t.get("team_name", "")
             if not tname:
                 continue
-            tid = f"re-{_slug(tname)}"
+            tid = f"re-{_slug(sf_lbl)}-{_slug(tname)}"
             active = " on" if first_seen else ""
             visible = "" if sf_lbl == first_sf else ' style="display:none"'
             first_seen = False
@@ -3188,8 +3188,28 @@ def build_sectionals_page() -> str | None:
         player_stats=sect_player_stats,
     )
 
-    # Build match results tab
-    results_html = _results_tab(all_subflights_30, qualified_players, sfx=_sfx)
+    # Build match results tab — only Districts subflights, one per state
+    districts_subflights = []
+    for st in sorted(qualified_teams_by_state):
+        st_lower = st.lower()
+        d30 = _load(DATA_DIR / f"districts_{st_lower}_30.json", {})
+        if d30.get("matches"):
+            districts_subflights.append({
+                "flight_label": f"{st} Districts",
+                "teams": d30.get("teams", []),
+                "matches": d30.get("matches", []),
+            })
+        s30 = _load(DATA_DIR / f"standings_{st_lower}_30.json", {})
+        for sf in s30.get("subflights", []):
+            if sf.get("flight_label", "").startswith("Championships"):
+                districts_subflights.append({
+                    "flight_label": f"{st} Championships",
+                    "teams": sf.get("teams", []),
+                    "matches": sf.get("matches", []),
+                })
+    results_html = _results_tab(
+        districts_subflights if districts_subflights else all_subflights_30,
+        qualified_players, sfx=_sfx)
 
     tab_defs = [
         ("rosters", "team rosters", rosters_html),
