@@ -119,15 +119,25 @@ def _simplify_subflight_labels(subflights: list[dict], ntrp: str = "") -> dict[s
     raw_labels = [sf.get("flight_label", "") for sf in subflights]
     mapping: dict[str, tuple[str, str, str]] = {}
 
-    champ_labels = {"championships", "districts", "playoffs"}
+    _champ_exact = {"championships", "districts", "playoffs"}
+
+    def _is_champ(lbl):
+        ll = lbl.lower().strip()
+        return ll in _champ_exact or ll.startswith("championships ")
 
     for lbl in raw_labels:
-        ll = lbl.lower().strip()
-        if ll in champ_labels:
-            mapping[lbl] = ("Districts", "Dist", "Districts")
+        if _is_champ(lbl):
+            ll = lbl.lower().strip()
+            if ll in _champ_exact:
+                mapping[lbl] = ("Districts", "Dist", "Districts")
+            else:
+                suffix = lbl[len("Championships"):].strip()
+                short = re.sub(r'(?i)\s*(playoff|district|championship)s?\s*$', '', suffix).strip()
+                tab = short if short else "Districts"
+                mapping[lbl] = (tab, tab[:4], "Districts")
             continue
 
-    regular = [l for l in raw_labels if l.lower().strip() not in champ_labels]
+    regular = [l for l in raw_labels if not _is_champ(l)]
     if not regular:
         return mapping
 
@@ -441,7 +451,7 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
         tab_lbl, _, group = sf_display.get(lbl, (lbl, lbl, ""))
         active = " on" if i == 0 else ""
         if group and group != prev_group:
-            sf_btns += f'<span class="sf-group-label">{_esc(group)}</span>\n'
+            sf_btns += (f'<div class="sf-break"></div>' if group.lower() == "districts" else '') + f'<span class="sf-group-label{"" if group.lower() != "districts" else " sf-group-inline"}">{_esc(group)}</span>\n'
             prev_group = group
         elif not group and prev_group:
             prev_group = None
@@ -633,7 +643,7 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
         tab_lbl, _, group = sf_display.get(lbl, (lbl, lbl, ""))
         active = " on" if i == 0 else ""
         if group and group != prev_group:
-            sf_btns += f'<span class="sf-group-label">{_esc(group)}</span>\n'
+            sf_btns += (f'<div class="sf-break"></div>' if group.lower() == "districts" else '') + f'<span class="sf-group-label{"" if group.lower() != "districts" else " sf-group-inline"}">{_esc(group)}</span>\n'
             prev_group = group
         elif not group and prev_group:
             prev_group = None
@@ -884,7 +894,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         _, col_lbl, _ = sf_display.get(raw_lbl, (raw_lbl, raw_lbl, ""))
         for t in sf_obj.get("teams", []):
             tn = t.get("team_name", "")
-            if tn not in team_to_sf or raw_lbl.lower() != "championships":
+            if tn not in team_to_sf or not raw_lbl.lower().startswith("championships"):
                 team_to_sf[tn] = col_lbl
                 team_to_sf_raw[tn] = raw_lbl
 
@@ -1057,7 +1067,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         for raw_lbl in sf_raw_labels:
             tab_lbl, _, group = sf_display.get(raw_lbl, (raw_lbl, raw_lbl, ""))
             if group and group != prev_group:
-                sf_btns += f'<span class="sf-group-label">{_esc(group)}</span>'
+                sf_btns += (f'<div class="sf-break"></div>' if group.lower() == "districts" else '') + f'<span class="sf-group-label{"" if group.lower() != "districts" else " sf-group-inline"}">{_esc(group)}</span>'
                 prev_group = group
             elif not group and prev_group:
                 prev_group = None
@@ -1243,7 +1253,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         tab_lbl, _, group = sf_display.get(lbl, (lbl, lbl, ""))
         active = " on" if i == 0 else ""
         if group and group != prev_group:
-            sf_btns += f'<span class="sf-group-label">{_esc(group)}</span>\n'
+            sf_btns += (f'<div class="sf-break"></div>' if group.lower() == "districts" else '') + f'<span class="sf-group-label{"" if group.lower() != "districts" else " sf-group-inline"}">{_esc(group)}</span>\n'
             prev_group = group
         elif not group and prev_group:
             prev_group = None
@@ -1462,8 +1472,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 /* Sub-tabs */
 .rtabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; align-items: center; }
 .rtabs.scrollable { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
-.rtabs .sf-group-label { font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;
-  letter-spacing: 0.5px; padding: 2px 2px 2px 8px; white-space: nowrap; }
+.rtabs .sf-group-label { flex-basis: 100%; font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 4px 2px 2px 8px; white-space: nowrap; }
+.rtabs .sf-group-label.sf-group-inline { flex-basis: auto; }
+.sf-break { flex-basis: 100%; height: 0; }
 .re-rating-toggle { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
 .re-rtog-label { font-size: 11px; color: #888; }
 .rtab { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px;
@@ -1536,8 +1548,9 @@ tr:last-child td { border-bottom: none; }
 .ap-controls input { flex: 1; min-width: 160px; max-width: 320px; padding: 5px 10px;
   border: 1px solid #ddd; border-radius: 20px; font-size: 12px; }
 .sf-filter-btns { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
-.sf-group-label { font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;
-  letter-spacing: 0.5px; padding: 2px 6px; margin-left: 4px; white-space: nowrap; }
+.sf-group-label { flex-basis: 100%; font-size: 10px; font-weight: 700; color: #888; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 4px 6px 2px; margin-left: 4px; white-space: nowrap; }
+.sf-group-label.sf-group-inline { flex-basis: auto; }
 /* Match blocks */
 .mblock { border: 1px solid #eee; border-radius: 8px;
           padding: .75rem 1rem; margin-bottom: 10px; }
@@ -2065,6 +2078,13 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
 
     sf_display = _simplify_subflight_labels(subflights, ntrp)
 
+    # Sort subflights: regular A→Z first, then championships last
+    def _sf_sort_key(sf):
+        _, col, group = sf_display.get(sf.get("flight_label", ""), ("zzz", "zzz", ""))
+        is_champ = 1 if group.lower() == "districts" else 0
+        return (is_champ, col)
+    subflights = sorted(subflights, key=_sf_sort_key)
+
     # Filter players to this state only for per-state dashboards
     state_players = [p for p in players if p.get("state") == state_code]
     # But keep ALL players available for match history cross-references
@@ -2412,7 +2432,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
         lbl = sf_obj.get("flight_label", "")
         for t in sf_obj.get("teams", []):
             tn = t.get("team_name", "")
-            if tn not in team_to_sf or lbl != "Championships":
+            if tn not in team_to_sf or not lbl.startswith("Championships"):
                 team_to_sf[tn] = lbl
 
     for p in players:
@@ -3215,9 +3235,12 @@ def build_sectionals_page() -> str | None:
             })
         s30 = _load(DATA_DIR / f"standings_{st_lower}_30.json", {})
         for sf in s30.get("subflights", []):
-            if sf.get("flight_label", "").startswith("Championships"):
+            fl = sf.get("flight_label", "")
+            if fl.startswith("Championships"):
+                suffix = fl[len("Championships"):].strip()
+                lbl = f"{st} {suffix}" if suffix else f"{st} Championships"
                 districts_subflights.append({
-                    "flight_label": f"{st} Championships",
+                    "flight_label": lbl,
                     "teams": sf.get("teams", []),
                     "matches": sf.get("matches", []),
                 })

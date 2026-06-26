@@ -1581,6 +1581,33 @@ def _scrape_championship_page(page: Page) -> tuple[list, list] | None:
     return standings, matches_list
 
 
+def _champ_entry_label(raw_text: str) -> str:
+    """Derive a short subflight label from a championship entry/level text.
+    Handles both entry link text ('W 3.0 Flight A Playoff 2026...')
+    and page title text ('2026 USTA ADULT 18 & OVER - DISTRICT CHAMPIONSHIPS - W 3.0 - FLIGHT A').
+    """
+    t = raw_text.strip()
+    # Extract flight name from dash-separated page titles
+    # e.g. "... - W 3.0 - FLIGHT A" → "FLIGHT A"
+    parts = [p.strip() for p in t.split(" - ")]
+    # Find the most specific part (last meaningful segment)
+    for part in reversed(parts):
+        pu = part.upper()
+        if re.search(r'FLIGHT\s+[A-Z]', pu) or "FINAL" in pu:
+            t = part
+            break
+    # Clean up
+    t = re.sub(r'^\d{4}\s*', '', t).strip()
+    t = re.sub(r'\s*\d{4}\s*$', '', t).strip()
+    t = re.sub(r'^.*?USTA\s+ADULT.*?-\s*', '', t, flags=re.I).strip()
+    t = re.sub(r'^.*?DISTRICT\s+CHAMPIONSHIPS?\s*-?\s*', '', t, flags=re.I).strip()
+    t = re.sub(r'^[WM]\s*\d\.\d\s*-?\s*', '', t).strip()
+    t = re.sub(r'\s*(Playoff|District|Championship)s?\s*$', '', t, flags=re.I).strip()
+    if not t:
+        return "Championships"
+    return f"Championships {t.title()}"
+
+
 def _get_champ_listing_entries(page: Page, cfg: dict, ntrp: str,
                                 year: int = 2026) -> list[dict]:
     """Navigate to the championship search form and return all entries."""
@@ -1685,8 +1712,7 @@ def scrape_all_districts(page: Page, state_code: str, ntrp: str, year: int = 202
         if not sf.get("flight_label", "").startswith("Championships")
     ]
 
-    all_champ_teams = []
-    all_champ_matches = []
+    champ_subflights = []
 
     for i, entry in enumerate(entries):
         print(f"\n  --- Entry {i+1}/{len(entries)}: {entry['text']!r} ---")
@@ -1720,48 +1746,41 @@ def scrape_all_districts(page: Page, state_code: str, ntrp: str, year: int = 202
             continue
 
         standings, matches = result
-        all_champ_teams.extend(standings)
-        all_champ_matches.extend(matches)
 
-        label = entry["text"].strip()
+        # Derive a short label from the entry text
+        raw = entry["text"].strip()
+        label = _champ_entry_label(raw)
+
         print(f"    Scraped: {len(standings)} teams, {len(matches)} matches "
-              f"from {label!r}")
+              f"from {raw!r} → {label!r}")
 
-    if not all_champ_teams and not all_champ_matches:
+        champ_subflights.append({
+            "flight_label": label,
+            "teams": standings,
+            "matches": sorted(matches, key=lambda m_item: m_item.get("date", "")),
+        })
+
+    if not champ_subflights:
         print(f"  [warn] no championship data scraped")
         return
 
-    seen_teams = {}
-    for t in all_champ_teams:
-        tn = t["team_name"]
-        if tn not in seen_teams:
-            seen_teams[tn] = t
+    for csf in champ_subflights:
+        existing["subflights"].append(csf)
 
-    seen_matches = {}
-    for m_item in all_champ_matches:
-        key = m_item.get("match_id", m_item.get("tl_match_id", ""))
-        if key not in seen_matches:
-            seen_matches[key] = m_item
-
-    champ_subflight = {
-        "flight_label": "Championships",
-        "teams": list(seen_teams.values()),
-        "matches": sorted(seen_matches.values(), key=lambda m: m.get("date", "")),
-    }
-    existing["subflights"].append(champ_subflight)
     save_json(standings_path, existing)
-    print(f"\n  Saved Championships ({len(seen_teams)} teams, "
-          f"{len(seen_matches)} matches) to {standings_path}")
+    total_teams = sum(len(sf["teams"]) for sf in champ_subflights)
+    total_matches = sum(len(sf["matches"]) for sf in champ_subflights)
+    print(f"\n  Saved {len(champ_subflights)} championship flights "
+          f"({total_teams} teams, {total_matches} matches) to {standings_path}")
 
 
 def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
     """
     Scrape district championship matches for a given state/ntrp.
     Uses Championship Advancements on team pages to navigate to the
-    district championship page, which has the same structure as regular
-    league pages (Team Standings, Match Summary, Player Roster).
-    Saves results to data/standings_{state}_{ntrp_short}.json as a new
-    "Championships" subflight appended to the existing subflights.
+    district championship page, then discovers ALL flights (A, B, C, ...)
+    and Final Rounds by following team advancement links from Final Rounds.
+    Each flight is saved as a separate subflight.
     """
     cfg = _get_state_config(state_code)
     print(f"\n=== DISTRICTS: {state_code} {ntrp} Women ===")
@@ -1774,9 +1793,7 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
         print(f"  [warn] could not navigate to {cfg['district']} championships")
         return
 
-    # Accumulate data from ALL championship levels we pass through
-    _accumulated_teams = []
-    _accumulated_matches = []
+    champ_subflights: list[dict] = []
 
     def _detect_champ_level():
         return page.evaluate("""() => {
@@ -1798,14 +1815,20 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
             return '';
         }""").upper()
 
-    def _scrape_current_level(level_name):
+    def _scrape_and_save_level(level_name):
         print(f"  Scraping level: {level_name!r}")
         result = _scrape_championship_page(page)
         if result:
             teams, matches = result
-            _accumulated_teams.extend(teams)
-            _accumulated_matches.extend(matches)
-            print(f"    Got {len(teams)} teams, {len(matches)} matches")
+            label = _champ_entry_label(level_name)
+            champ_subflights.append({
+                "flight_label": label,
+                "teams": teams,
+                "matches": sorted(matches, key=lambda m: m.get("date", "")),
+            })
+            print(f"    Got {len(teams)} teams, {len(matches)} matches → {label!r}")
+            return teams
+        return []
 
     champ_text = _detect_champ_level()
     is_flight_playoff = ("FLIGHT PLAYOFF" in champ_text
@@ -1814,12 +1837,11 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
     print(f"  Championship text: {champ_text[:120]!r} → flight_playoff={is_flight_playoff}")
 
     if not is_flight_playoff:
-        _scrape_current_level(champ_text)
+        _scrape_and_save_level(champ_text)
 
     if is_flight_playoff:
         print(f"  [info] on flight playoff page — looking for teams to find "
-              f"Final Rounds advancement...")
-        # Find team links on the championship page (team names in match data)
+              f"higher championship levels...")
         team_links_on_page = page.evaluate("""() => {
             const navTexts = new Set(['Home', 'LOGOUT', 'MY TENNIS', 'Team Standings',
                 'Match Summary', 'Player Roster', 'Team Standings By Champion',
@@ -1849,21 +1871,16 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
                 href: a.getAttribute('href')
             }));
         }""")
-        # Deduplicate
-        seen_teams = set()
+        seen_teams_set = set()
         unique_teams = []
         for tl in team_links_on_page:
-            if tl["text"] not in seen_teams:
-                seen_teams.add(tl["text"])
+            if tl["text"] not in seen_teams_set:
+                seen_teams_set.add(tl["text"])
                 unique_teams.append(tl)
         print(f"  Team links found: {[t['text'] for t in unique_teams]}")
 
-        # Follow the advancement chain: click teams to find one with a
-        # HIGHER level advancement link (not the current flight playoff).
-        # Then keep following until we reach the deepest level.
-        current_champ_text = champ_text  # e.g. "FLIGHT PLAYOFF / W 3.0 - DEN 1"
+        current_champ_text = champ_text
         found_higher = False
-        # Filter to only actual team links
         _nav_prefixes = ("USTA/", "COLORADO", "CO-", "UT-", "NV-", "ID-",
                          "UTAH", "NEVADA", "IDAHO", "INTERMOUNTAIN",
                          "WOMEN", "3.0", "3.5")
@@ -1884,15 +1901,12 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
             adv_texts = [t for t, _ in adv_links]
             print(f"    Advancement links: {adv_texts}")
 
-            # Find an advancement link that's NOT the current championship
             for link_text, link_href in adv_links:
                 if not link_text.strip():
                     continue
                 lt = link_text.upper()
-                # Skip if this is the same championship we came from
                 if lt in current_champ_text or current_champ_text in lt:
                     continue
-                # Skip if it looks like a subflight name
                 if any(lt.startswith(s) for s in
                        ("SOUTH", "NORTH", "CENTRAL", "WEST", "EAST", "SOUTHEAST")):
                     continue
@@ -1912,30 +1926,15 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
             _wait_for_network(page, 10_000)
             sleep(1)
 
-        # Keep following the advancement chain until we reach Final Rounds.
-        # The chain is: Flight Playoff → Flight A/B/C → Final Rounds.
-        # At each level, find the winning team and follow their next advancement.
+        # Follow chain until Final Rounds, scraping each level as its own subflight
         if found_higher:
             for _depth in range(5):
-                new_champ = page.evaluate("""() => {
-                    const rows = document.querySelectorAll('table tr');
-                    for (const tr of rows) {
-                        for (const td of tr.querySelectorAll('td')) {
-                            const t = td.innerText.trim().toUpperCase();
-                            if (t.includes('FLIGHT') || t.includes('FINAL')
-                                || t.includes('DISTRICT')) return t;
-                        }
-                    }
-                    return '';
-                }""")
+                new_champ = _detect_champ_level()
                 print(f"  Now on: {new_champ[:120]!r}")
-                nu = new_champ.upper()
-                _scrape_current_level(new_champ[:120])
-                if "FINAL" in nu:
+                _scrape_and_save_level(new_champ[:120])
+                if "FINAL" in new_champ.upper():
                     print(f"  >> Reached Final Rounds!")
                     break
-                # Not at Final Rounds yet. Find winning team, follow their
-                # "FINAL ROUNDS" advancement link.
                 _click_tab(page, "Team Standings")
                 _lvl_standings = _extract_champ_standings(page)
                 if not _lvl_standings:
@@ -1947,7 +1946,6 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
                 print(f"  Winner: {_winner['team_name']!r} "
                       f"({_winner.get('team_wins', '?')}-"
                       f"{_winner.get('team_losses', '?')})")
-                # Click the winner to go to their team page
                 clicked = False
                 for a in page.query_selector_all("a"):
                     try:
@@ -1963,12 +1961,10 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
                         pass
                 if not clicked:
                     break
-                # Find "FINAL ROUNDS" advancement link
                 adv = _find_champ_advancement_links(page)
                 print(f"  {_winner['team_name']} adv: "
                       f"{[t for t, _ in adv]}")
                 advanced = False
-                # First pass: look for "FINAL" explicitly
                 for lt2, lh2 in adv:
                     if "FINAL" in lt2.upper():
                         m3 = re.search(
@@ -1983,7 +1979,7 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
                             advanced = True
                             break
                 if not advanced:
-                    # Second pass: any link not matching current level
+                    nu = new_champ.upper()
                     for lt2, lh2 in adv:
                         ltu = lt2.upper().strip()
                         if (not ltu or "FLIGHT PLAYOFF" in ltu
@@ -2003,31 +1999,141 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
                 if not advanced:
                     break
 
-    # If we haven't accumulated anything yet (no intermediate levels), scrape
-    # the current page as the final level
-    if not _accumulated_teams and not _accumulated_matches:
+    # Discover sibling flights we didn't traverse.
+    # Final Rounds teams come from different flights — click each team,
+    # follow their flight advancement link, scrape, then return to Final Rounds.
+    final_sf = next((sf for sf in champ_subflights
+                     if "Final" in sf["flight_label"]), None)
+    scraped_labels = {sf["flight_label"] for sf in champ_subflights}
+    if final_sf:
+        print(f"\n  Discovering sibling flights from Final Rounds teams...")
+        for team in final_sf["teams"]:
+            tn = team.get("team_name", "")
+            if not tn:
+                continue
+            # Click team name on the Final Rounds championship page
+            clicked = False
+            for a in page.query_selector_all("a"):
+                try:
+                    txt = (a.inner_text() or "").strip()
+                    href = a.get_attribute("href") or ""
+                    if txt == tn and "doPostBack" in href:
+                        a.click()
+                        _wait_for_network(page, 12_000)
+                        sleep(2)
+                        clicked = True
+                        break
+                except Exception:
+                    pass
+            if not clicked:
+                continue
+            adv_links = _find_champ_advancement_links(page)
+            # Find a flight link we haven't scraped yet
+            target_link = None
+            target_label = None
+            final_link = None
+            for lt, lh in adv_links:
+                lt_clean = lt.strip().lstrip("- ").strip()
+                lt_upper = lt_clean.upper()
+                if "FINAL" in lt_upper:
+                    final_link = lh
+                if (not lt_clean or "FLIGHT PLAYOFF" in lt_upper
+                        or "FINAL" in lt_upper or "W 3" in lt_upper):
+                    continue
+                label = _champ_entry_label(lt_clean)
+                if label not in scraped_labels:
+                    target_link = lh
+                    target_label = label
+            if not target_link:
+                # This team's flight is already scraped — go back to Final Rounds
+                if final_link:
+                    m_fr = re.search(r"__doPostBack\('([^']+)','([^']*)'\)", final_link)
+                    if m_fr:
+                        page.evaluate(f"__doPostBack('{m_fr.group(1)}', '{m_fr.group(2)}')")
+                        _wait_for_network(page, 12_000)
+                        sleep(2)
+                        continue
+                page.go_back()
+                _wait_for_network(page, 10_000)
+                sleep(1)
+                continue
+
+            # Navigate directly to the new flight from this team page
+            print(f"    {tn} → navigating to {target_label!r}")
+            m_fl = re.search(r"__doPostBack\('([^']+)','([^']*)'\)", target_link)
+            if not m_fl:
+                page.go_back()
+                _wait_for_network(page, 10_000)
+                sleep(1)
+                continue
+            page.evaluate(f"__doPostBack('{m_fl.group(1)}', '{m_fl.group(2)}')")
+            _wait_for_network(page, 15_000)
+            sleep(2)
+
+            # Scrape this flight
+            result = _scrape_championship_page(page)
+            if result:
+                teams_found, matches_found = result
+                champ_subflights.append({
+                    "flight_label": target_label,
+                    "teams": teams_found,
+                    "matches": sorted(matches_found, key=lambda m_item: m_item.get("date", "")),
+                })
+                scraped_labels.add(target_label)
+                print(f"    Got {len(teams_found)} teams, {len(matches_found)} matches")
+
+            # Return to Final Rounds: click a known Final Rounds team on
+            # this flight page, then follow their Final Rounds advancement link
+            _returned = False
+            final_team_names = {t.get("team_name", "") for t in final_sf["teams"]}
+            for _tab_name in ["Match Summary", "Team Standings"]:
+                if _returned:
+                    break
+                _click_tab(page, _tab_name)
+                for a in page.query_selector_all("a"):
+                    try:
+                        txt = (a.inner_text() or "").strip()
+                        href = a.get_attribute("href") or ""
+                        if txt in final_team_names and "doPostBack" in href:
+                            a.click()
+                            _wait_for_network(page, 12_000)
+                            sleep(1)
+                            adv2 = _find_champ_advancement_links(page)
+                            for lt2, lh2 in adv2:
+                                if "FINAL" in lt2.upper():
+                                    m_ret = re.search(r"__doPostBack\('([^']+)','([^']*)'\)", lh2)
+                                    if m_ret:
+                                        page.evaluate(f"__doPostBack('{m_ret.group(1)}', '{m_ret.group(2)}')")
+                                        _wait_for_network(page, 12_000)
+                                        sleep(2)
+                                        _returned = True
+                                    break
+                            if _returned:
+                                break
+                            page.go_back()
+                            _wait_for_network(page, 8_000)
+                            sleep(1)
+                    except Exception:
+                        pass
+            if not _returned:
+                print(f"    [warn] could not return to Final Rounds, stopping sibling discovery")
+                break
+
+    # If we haven't scraped anything, try the current page as fallback
+    if not champ_subflights:
         result = _scrape_championship_page(page)
         if result:
-            _accumulated_teams.extend(result[0])
-            _accumulated_matches.extend(result[1])
+            teams, matches = result
+            champ_subflights.append({
+                "flight_label": "Championships",
+                "teams": teams,
+                "matches": sorted(matches, key=lambda m_item: m_item.get("date", "")),
+            })
 
-    if not _accumulated_teams and not _accumulated_matches:
+    if not champ_subflights:
         print(f"  [warn] no championship data found")
         return
 
-    # Deduplicate teams and matches
-    seen_teams = {}
-    for t in _accumulated_teams:
-        tn = t.get("team_name", "")
-        if tn and tn not in seen_teams:
-            seen_teams[tn] = t
-    seen_matches = {}
-    for m_item in _accumulated_matches:
-        key = m_item.get("match_id", m_item.get("tl_match_id", ""))
-        if key and key not in seen_matches:
-            seen_matches[key] = m_item
-
-    # Append as a "Championships" subflight to the existing standings file
     ntrp_short = ntrp.replace(".", "")
     standings_path = _output_path(state_code, ntrp_short)
     if standings_path.exists():
@@ -2035,21 +2141,19 @@ def scrape_districts(page: Page, state_code: str, ntrp: str, year: int = 2026):
     else:
         existing = {"ntrp": ntrp, "year": year, "subflights": []}
 
-    # Remove any existing Championships subflight(s)
     existing["subflights"] = [
         sf for sf in existing.get("subflights", [])
         if not sf.get("flight_label", "").startswith("Championships")
     ]
 
-    champ_subflight = {
-        "flight_label": "Championships",
-        "teams": list(seen_teams.values()),
-        "matches": sorted(seen_matches.values(), key=lambda m: m.get("date", "")),
-    }
-    existing["subflights"].append(champ_subflight)
+    for csf in champ_subflights:
+        existing["subflights"].append(csf)
+
     save_json(standings_path, existing)
-    print(f"  Saved Championships ({len(seen_teams)} teams, "
-          f"{len(seen_matches)} matches) to {standings_path}")
+    total_teams = sum(len(sf["teams"]) for sf in champ_subflights)
+    total_matches = sum(len(sf["matches"]) for sf in champ_subflights)
+    print(f"\n  Saved {len(champ_subflights)} championship flights "
+          f"({total_teams} teams, {total_matches} matches) to {standings_path}")
 
 
 # ---------------------------------------------------------------------------
