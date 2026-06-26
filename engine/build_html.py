@@ -1288,11 +1288,6 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                 lines = m.get("lines", [])
                 courts_verified = m.get("courts_verified", False)
                 if lines:
-                    # Detect scorecard swap at match level: TennisLink sometimes lists
-                    # the away team's players in the "home" column and vice versa.
-                    # result="home" means the HOME TEAM won that court (TL radio label),
-                    # NOT that the players_home column player won. Swap detection tells
-                    # us which column actually has the home team's players.
                     _mht = m.get("home_team", "")
                     _mat = m.get("away_team", "")
                     _home_votes = _away_votes = 0
@@ -1303,14 +1298,30 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                             elif _pt == _mat: _away_votes += 1
                     _is_swapped = (_away_votes > _home_votes)
 
-                    _courts_reliable = _sf_line_data_reliable
+                    # Per-court winner strategy:
+                    # 1. If subflight has reliable mixed home/away results → use them
+                    # 2. Else infer from team score: 5-0 or 0-5 → all courts go to one side
+                    # 3. Otherwise we can't determine per-court winners (scores are winner-first)
+                    _match_score = m.get("score", "")
+                    _ms_parts = re.split(r"[–\-]", _match_score) if _match_score else []
+                    _match_hw = _match_aw = -1
+                    if len(_ms_parts) == 2:
+                        try:
+                            _match_hw, _match_aw = int(_ms_parts[0].strip()), int(_ms_parts[1].strip())
+                        except ValueError:
+                            pass
+                    _unanimous_winner = ""
+                    if not _sf_line_data_reliable:
+                        n_courts = len(lines)
+                        if _match_hw == n_courts and _match_aw == 0:
+                            _unanimous_winner = "home"
+                        elif _match_aw == n_courts and _match_hw == 0:
+                            _unanimous_winner = "away"
 
                     blocks += '<div class="line-lbl">line results</div>'
                     for ln in lines:
-                        # Keep original scorecard layout (home col left, away col right)
                         ph_raw = ln.get("players_home", "")
                         pa_raw = ln.get("players_away", "")
-                        # Show "default" for empty/N/A player slots
                         def _default_or_render(raw, _mdate=m["date"]):
                             s = raw.strip()
                             if not s or s.upper() == "N/A":
@@ -1320,14 +1331,17 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                         right = _default_or_render(pa_raw)
                         sc = _esc(ln.get("score", ""))
                         lnum = _line_label_short(ln.get("line", ""))
-                        # result="home"/"away" = which TEAM won (not which column).
-                        # If swapped, home team players are in the right (away) column.
                         hw = aw = ""
-                        if _courts_reliable:
+                        if _sf_line_data_reliable:
                             result = ln.get("result", "")
                             if result == "home":
                                 hw, aw = ("", "w") if _is_swapped else ("w", "")
                             elif result == "away":
+                                hw, aw = ("w", "") if _is_swapped else ("", "w")
+                        elif _unanimous_winner:
+                            if _unanimous_winner == "home":
+                                hw, aw = ("", "w") if _is_swapped else ("w", "")
+                            else:
                                 hw, aw = ("w", "") if _is_swapped else ("", "w")
                         blocks += (
                             f'<div class="line-row">'

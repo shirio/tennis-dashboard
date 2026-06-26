@@ -460,35 +460,44 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
     text = body.inner_text()
 
     # --- Per-court winner via radio buttons ---
-    # Parse the raw HTML (server-rendered ASP.NET WebForms) to find the `checked`
-    # attribute on strWinner radio buttons.  We use page.content() + BeautifulSoup
-    # rather than page.evaluate() because the attribute is set server-side and
-    # evaluate() only sees the JS `.checked` property which may not reflect the
-    # HTML attribute on disabled/readonly inputs.
+    # Try two approaches:
+    # 1. page.evaluate() — reads the JS .checked property (works when checked
+    #    state is set via JavaScript, common on non-NV TennisLink regions)
+    # 2. BeautifulSoup HTML attribute fallback — reads the checked attribute
+    #    from server-rendered HTML (works for NV)
+    court_winners: list[str] = []
     try:
-        from bs4 import BeautifulSoup as _BS4
-        _html = page.content()
-        _soup = _BS4(_html, "html.parser")
-        _radio_inputs = _soup.find_all("input", {"type": "radio", "name": "strWinner"})
-        # Build list of {value, checked}
-        radio_data = [
-            {
-                "value": inp.get("value", ""),
-                "checked": inp.has_attr("checked"),
-            }
-            for inp in _radio_inputs
-        ]
+        radio_data = page.evaluate("""() => {
+            const radios = document.querySelectorAll('input[type="radio"][name="strWinner"]');
+            return Array.from(radios).map(r => ({
+                value: (r.value || '').toLowerCase(),
+                checked: r.checked
+            }));
+        }""")
     except Exception:
         radio_data = []
 
-    # Build court_winners list: one entry per court in DOM order.
-    # Each court has a consecutive Home + Visitor radio pair.
-    court_winners: list[str] = []
+    if not any(r.get("checked") for r in radio_data):
+        try:
+            from bs4 import BeautifulSoup as _BS4
+            _html = page.content()
+            _soup = _BS4(_html, "html.parser")
+            _radio_inputs = _soup.find_all("input", {"type": "radio", "name": "strWinner"})
+            radio_data = [
+                {
+                    "value": (inp.get("value") or "").lower(),
+                    "checked": inp.has_attr("checked"),
+                }
+                for inp in _radio_inputs
+            ]
+        except Exception:
+            radio_data = []
+
     i = 0
     while i + 1 < len(radio_data):
         pair = radio_data[i: i + 2]
-        home_btn = next((r for r in pair if (r.get("value") or "").lower() == "home"), None)
-        vis_btn  = next((r for r in pair if (r.get("value") or "").lower() in ("visitor", "away")), None)
+        home_btn = next((r for r in pair if r.get("value") == "home"), None)
+        vis_btn  = next((r for r in pair if r.get("value") in ("visitor", "away")), None)
         if home_btn is None or vis_btn is None:
             i += 1
             continue
@@ -589,23 +598,14 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
 
         score_str = " ".join(scores)
 
-        # Winner: use radio button result if available; fall back to score parsing
+        # Winner: use radio button result if available. Score-based fallback is
+        # unreliable because TennisLink displays scores winner-first (the larger
+        # number always comes first regardless of home/away), so score parsing
+        # always yields "home". Leave result empty when radio buttons aren't found.
         if court_idx < len(court_winners) and court_winners[court_idx]:
             result = court_winners[court_idx]
         else:
-            home_games = away_games = 0
-            for s in scores:
-                parts = s.split('-')
-                if len(parts) == 2:
-                    try:
-                        h, a = int(parts[0]), int(parts[1])
-                        if h > a:
-                            home_games += 1
-                        elif a > h:
-                            away_games += 1
-                    except Exception:
-                        pass
-            result = "home" if home_games > away_games else ("away" if away_games > home_games else "")
+            result = ""
 
         court_idx += 1
 
