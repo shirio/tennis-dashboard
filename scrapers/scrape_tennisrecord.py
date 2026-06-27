@@ -296,6 +296,21 @@ def fetch_profile_info(profile_url: str) -> dict:
 # Step 3 – match and update players.json
 # ---------------------------------------------------------------------------
 
+def _ntrp_compatible(player_div: str, tr_ntrp: str) -> bool:
+    """Check if a tennisrecord NTRP rating is plausible for a player's division.
+    A 3.0 or 3.5 league player should have an NTRP ≤ 3.5 (with some tolerance
+    for C+ ratings near the boundary). 4.0+ is never valid for 3.0/3.5 leagues."""
+    if not tr_ntrp:
+        return True
+    try:
+        ntrp_num = float(tr_ntrp.split()[0])
+    except (ValueError, IndexError):
+        return True
+    if ntrp_num >= 4.0:
+        return False
+    return True
+
+
 def update_players(records: list[dict], state_code: str | None = None):
     players = _load_json(PLAYERS_JSON, [])
 
@@ -307,9 +322,12 @@ def update_players(records: list[dict], state_code: str | None = None):
     updated = 0
     skipped_no_match = 0
     skipped_collision = 0
+    skipped_ntrp = 0
     profile_fetches = 0
 
     for p in players:
+        if state_code and p.get("state") != state_code:
+            continue
         pname = _norm(p.get("name", ""))
         if not pname:
             continue
@@ -320,10 +338,11 @@ def update_players(records: list[dict], state_code: str | None = None):
             skipped_no_match += 1
             continue
 
+        player_div = p.get("division", "") or ""
+
         chosen = None
 
         if len(matches) == 1:
-            # Unique name match → use directly
             chosen = matches[0]
 
         else:
@@ -337,41 +356,51 @@ def update_players(records: list[dict], state_code: str | None = None):
                         chosen = m
                         break
 
-            # (b) If no tennisrecord_id, fetch profiles and match by division + team
+            # (b) Pre-filter to NTRP-compatible candidates
             if not chosen:
-                player_ntrp_prefix = (p.get("division", "") or "")[:3]  # "3.0" or "3.5"
-                player_team_norm = _norm(p.get("team", ""))
-                best = None
-                best_score = -1
+                compatible = [m for m in matches
+                              if _ntrp_compatible(player_div, m.get("ntrp_rating", ""))]
+                if len(compatible) == 1:
+                    chosen = compatible[0]
+                elif len(compatible) > 1:
+                    # Fetch profiles and match by division + team
+                    player_ntrp_prefix = player_div[:3]  # "3.0" or "3.5"
+                    player_team_norm = _norm(p.get("team", ""))
+                    best = None
+                    best_score = -1
 
-                for m in matches:
-                    time.sleep(DELAY)
-                    profile_fetches += 1
-                    info = fetch_profile_info(m["profile_url"])
+                    for m in compatible:
+                        time.sleep(DELAY)
+                        profile_fetches += 1
+                        info = fetch_profile_info(m["profile_url"])
 
-                    score = 0
-                    # Division match
-                    for div in info["divisions"]:
-                        if player_ntrp_prefix and player_ntrp_prefix in div:
-                            score += 2
-                    # Team match (partial)
-                    if player_team_norm and info["team"]:
-                        if player_team_norm in _norm(info["team"]) or \
-                           _norm(info["team"]) in player_team_norm:
-                            score += 3
+                        score = 0
+                        for div in info["divisions"]:
+                            if player_ntrp_prefix and player_ntrp_prefix in div:
+                                score += 2
+                        if player_team_norm and info["team"]:
+                            if player_team_norm in _norm(info["team"]) or \
+                               _norm(info["team"]) in player_team_norm:
+                                score += 3
 
-                    if score > best_score:
-                        best_score = score
-                        best = m
+                        if score > best_score:
+                            best_score = score
+                            best = m
 
-                if best and best_score > 0:
-                    chosen = best
-                    # Also store the s_id as tennisrecord_id if we found it
-                    if best.get("s_id") and not p.get("tennisrecord_id"):
-                        p["tennisrecord_id"] = best["s_id"]
+                    if best and best_score > 0:
+                        chosen = best
+                        if best.get("s_id") and not p.get("tennisrecord_id"):
+                            p["tennisrecord_id"] = best["s_id"]
+                    else:
+                        skipped_collision += 1
+                        continue
                 else:
                     skipped_collision += 1
                     continue
+
+        if chosen and not _ntrp_compatible(player_div, chosen.get("ntrp_rating", "")):
+            skipped_ntrp += 1
+            continue
 
         # Apply the chosen record's ratings
         if chosen:
@@ -382,12 +411,14 @@ def update_players(records: list[dict], state_code: str | None = None):
                 _is_default = existing is None or existing in (2.10, 2.60, 3.10, 3.60, 3.0)
                 if _is_default:
                     p["dynamic_rating_baseline"] = chosen["dynamic_rating"]
+            p.pop("pending_tennisrecord_lookup", None)
             updated += 1
 
     _save_json(PLAYERS_JSON, players)
     print(
         f"  Updated: {updated}  |  No match: {skipped_no_match}  "
         f"|  Collision skipped: {skipped_collision}  "
+        f"|  NTRP rejected: {skipped_ntrp}  "
         f"|  Profile fetches: {profile_fetches}"
     )
 
