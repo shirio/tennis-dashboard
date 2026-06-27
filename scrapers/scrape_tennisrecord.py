@@ -298,17 +298,28 @@ def fetch_profile_info(profile_url: str) -> dict:
 
 def _ntrp_compatible(player_div: str, tr_ntrp: str) -> bool:
     """Check if a tennisrecord NTRP rating is plausible for a player's division.
-    A 3.0 or 3.5 league player should have an NTRP ≤ 3.5 (with some tolerance
-    for C+ ratings near the boundary). 4.0+ is never valid for 3.0/3.5 leagues."""
+    A non-D player's NTRP number must equal their division level (they can play
+    up to 0.5 above, so a 3.0 C plays in 3.0 or 3.5). "D" means moved down one
+    level: 3.5 D plays 3.0, 4.0 D plays 3.5. Players never play below their level
+    unless they have a D designation."""
     if not tr_ntrp:
         return True
+    parts = tr_ntrp.split()
     try:
-        ntrp_num = float(tr_ntrp.split()[0])
+        ntrp_num = float(parts[0])
     except (ValueError, IndexError):
         return True
-    if ntrp_num >= 4.0:
-        return False
-    return True
+    letter = parts[1].upper() if len(parts) > 1 else ""
+    try:
+        div_num = float(player_div[:3])
+    except (ValueError, IndexError):
+        return True
+    if letter == "D":
+        # D player's effective level is one step below their number
+        effective = ntrp_num - 0.5
+        return effective <= div_num and effective >= div_num - 0.5
+    # Non-D: NTRP number is their base level, can play up 0.5
+    return ntrp_num >= div_num - 0.5 and ntrp_num <= div_num
 
 
 def update_players(records: list[dict], state_code: str | None = None):
