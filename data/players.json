@@ -30882,8 +30882,8 @@
     "team": "LTFC ORANGE",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.88,
-    "current_division_rating": 2.9238,
-    "global_rating": 2.9238,
+    "current_division_rating": 3.0052,
+    "global_rating": 3.0052,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -30897,11 +30897,11 @@
       "S1",
       "S2x5"
     ],
-    "wl_record_30": "16-3",
+    "wl_record_30": "18-1",
     "default_wins_30": 1,
     "team_30": "BRMST RED",
-    "rating_30": 2.9238,
-    "rating_35": 2.9238,
+    "rating_30": 3.0052,
+    "rating_35": 3.0052,
     "rating_timeline_30": {
       "4/13/2026": 2.88,
       "4/20/2026": 2.9231,
@@ -30909,10 +30909,7 @@
       "5/4/2026": 2.9683,
       "5/11/2026": 2.934,
       "5/18/2026": 2.9198,
-      "5/25/2026": 2.9939,
-      "6/19/2026": 3.0052,
-      "6/20/2026": 3.0229,
-      "6/21/2026": 2.9306
+      "5/25/2026": 2.9939
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -30922,10 +30919,7 @@
       "5/4/2026": 2.934,
       "5/11/2026": 2.9198,
       "5/18/2026": 2.9939,
-      "5/25/2026": 3.0052,
-      "6/19/2026": 3.0229,
-      "6/20/2026": 2.9306,
-      "6/21/2026": 2.9238
+      "5/25/2026": 3.0052
     },
     "rating_post_timeline_35": {},
     "tennisrecord_id": "2"
@@ -51355,8 +51349,8 @@
     "team": "TTA PINK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6098,
-    "current_division_rating": 2.9061,
-    "global_rating": 2.9061,
+    "current_division_rating": 2.8074,
+    "global_rating": 2.8074,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -51370,16 +51364,14 @@
     ],
     "wl_record_30": "7-1",
     "team_30": "TTA PINK",
-    "rating_30": 2.9061,
-    "rating_35": 2.9061,
+    "rating_30": 2.8074,
+    "rating_35": 2.8074,
     "rating_timeline_30": {
       "4/13/2026": 2.6098,
       "4/20/2026": 2.6636,
       "4/27/2026": 2.6898,
       "5/4/2026": 2.7231,
-      "5/11/2026": 2.7508,
-      "6/19/2026": 2.8074,
-      "6/20/2026": 2.8074
+      "5/11/2026": 2.7508
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -51387,9 +51379,7 @@
       "4/20/2026": 2.6898,
       "4/27/2026": 2.7231,
       "5/4/2026": 2.7508,
-      "5/11/2026": 2.8074,
-      "6/19/2026": 2.8074,
-      "6/20/2026": 2.9061
+      "5/11/2026": 2.8074
     },
     "rating_post_timeline_35": {}
   },
@@ -51401,8 +51391,8 @@
     "team": "TTA PINK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6175,
-    "current_division_rating": 2.7426,
-    "global_rating": 2.7426,
+    "current_division_rating": 2.7331,
+    "global_rating": 2.7331,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -51416,22 +51406,18 @@
     ],
     "wl_record_30": "4-1",
     "team_30": "TTA PINK",
-    "rating_30": 2.7426,
-    "rating_35": 2.7426,
+    "rating_30": 2.7331,
+    "rating_35": 2.7331,
     "rating_timeline_30": {
       "4/13/2026": 2.6175,
       "5/4/2026": 2.6713,
-      "5/18/2026": 2.7105,
-      "6/20/2026": 2.7331,
-      "6/21/2026": 2.7714
+      "5/18/2026": 2.7105
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 2.6713,
       "5/4/2026": 2.7105,
-      "5/18/2026": 2.7331,
-      "6/20/2026": 2.7714,
-      "6/21/2026": 2.7426
+      "5/18/2026": 2.7331
     },
     "rating_post_timeline_35": {}
   },
@@ -51443,8 +51429,8 @@
     "team": "TTA PINK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8084,
-    "current_division_rating": 2.9461,
-    "global_rating": 2.9461,
+    "current_division_rating": 2.8746,
+    "global_rating": 2.8746,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -51458,22 +51444,16 @@
     ],
     "wl_record_30": "4-2",
     "team_30": "TTA PINK",
-    "rating_30": 2.9461,
-    "rating_35": 2.9461,
+    "rating_30": 2.8746,
+    "rating_35": 2.8746,
     "rating_timeline_30": {
       "5/18/2026": 2.8084,
-      "5/25/2026": 2.8412,
-      "6/19/2026": 2.8746,
-      "6/20/2026": 2.8746,
-      "6/21/2026": 2.9461
+      "5/25/2026": 2.8412
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "5/18/2026": 2.8412,
-      "5/25/2026": 2.8746,
-      "6/19/2026": 2.8746,
-      "6/20/2026": 2.9461,
-      "6/21/2026": 2.9461
+      "5/25/2026": 2.8746
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -51486,8 +51466,8 @@
     "team": "TTA PINK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7625,
-    "current_division_rating": 2.8656,
-    "global_rating": 2.8656,
+    "current_division_rating": 2.8757,
+    "global_rating": 2.8757,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -51501,18 +51481,15 @@
     ],
     "wl_record_30": "8-2",
     "team_30": "TTA PINK",
-    "rating_30": 2.8656,
-    "rating_35": 2.8656,
+    "rating_30": 2.8757,
+    "rating_35": 2.8757,
     "rating_timeline_30": {
       "4/13/2026": 2.7625,
       "4/20/2026": 2.7685,
       "4/27/2026": 2.7922,
       "5/4/2026": 2.8197,
       "5/11/2026": 2.836,
-      "5/25/2026": 2.8558,
-      "6/19/2026": 2.8757,
-      "6/20/2026": 2.8373,
-      "6/21/2026": 2.9482
+      "5/25/2026": 2.8558
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -51521,10 +51498,7 @@
       "4/27/2026": 2.8197,
       "5/4/2026": 2.836,
       "5/11/2026": 2.8558,
-      "5/25/2026": 2.8757,
-      "6/19/2026": 2.8373,
-      "6/20/2026": 2.9482,
-      "6/21/2026": 2.8656
+      "5/25/2026": 2.8757
     },
     "rating_post_timeline_35": {}
   },
@@ -51536,8 +51510,8 @@
     "team": "TTA PINK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8995,
-    "current_division_rating": 2.9315,
-    "global_rating": 2.9315,
+    "current_division_rating": 3.0003,
+    "global_rating": 3.0003,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -51552,16 +51526,14 @@
     ],
     "wl_record_30": "7-2",
     "team_30": "TTA PINK",
-    "rating_30": 2.9315,
-    "rating_35": 2.9315,
+    "rating_30": 3.0003,
+    "rating_35": 3.0003,
     "rating_timeline_30": {
       "4/20/2026": 2.8995,
       "4/27/2026": 2.909,
       "5/4/2026": 2.905,
       "5/11/2026": 2.9306,
-      "5/25/2026": 2.9973,
-      "6/19/2026": 2.9603,
-      "6/21/2026": 2.9603
+      "5/25/2026": 2.9973
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -51569,9 +51541,7 @@
       "4/27/2026": 2.905,
       "5/4/2026": 2.9306,
       "5/11/2026": 2.9973,
-      "5/25/2026": 2.9603,
-      "6/19/2026": 2.9603,
-      "6/21/2026": 2.9315
+      "5/25/2026": 2.9603
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 2
@@ -51584,8 +51554,8 @@
     "team": "TTA PINK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8241,
-    "current_division_rating": 2.9624,
-    "global_rating": 2.9624,
+    "current_division_rating": 2.896,
+    "global_rating": 2.896,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -51601,26 +51571,20 @@
     ],
     "wl_record_30": "6-2",
     "team_30": "TTA PINK",
-    "rating_30": 2.9624,
-    "rating_35": 2.9624,
+    "rating_30": 2.896,
+    "rating_35": 2.896,
     "rating_timeline_30": {
       "4/13/2026": 2.8241,
       "4/20/2026": 2.8027,
       "4/27/2026": 2.8443,
-      "5/18/2026": 2.8616,
-      "6/19/2026": 2.896,
-      "6/20/2026": 2.9425,
-      "6/21/2026": 3.0076
+      "5/18/2026": 2.8616
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 2.8027,
       "4/20/2026": 2.8443,
       "4/27/2026": 2.8616,
-      "5/18/2026": 2.896,
-      "6/19/2026": 2.9425,
-      "6/20/2026": 3.0076,
-      "6/21/2026": 2.9624
+      "5/18/2026": 2.896
     },
     "rating_post_timeline_35": {}
   },
@@ -51632,8 +51596,8 @@
     "team": "TTA PINK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.625,
-    "current_division_rating": 2.89,
-    "global_rating": 2.89,
+    "current_division_rating": 2.8258,
+    "global_rating": 2.8258,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -51648,16 +51612,14 @@
     ],
     "wl_record_30": "6-1",
     "team_30": "TTA PINK",
-    "rating_30": 2.89,
-    "rating_35": 2.89,
+    "rating_30": 2.8258,
+    "rating_35": 2.8258,
     "rating_timeline_30": {
       "4/13/2026": 2.625,
       "4/27/2026": 2.6959,
       "5/4/2026": 2.7234,
       "5/11/2026": 2.7626,
-      "5/25/2026": 2.7952,
-      "6/19/2026": 2.8258,
-      "6/20/2026": 2.8258
+      "5/25/2026": 2.7952
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -51665,9 +51627,7 @@
       "4/27/2026": 2.7234,
       "5/4/2026": 2.7626,
       "5/11/2026": 2.7952,
-      "5/25/2026": 2.8258,
-      "6/19/2026": 2.8258,
-      "6/20/2026": 2.89
+      "5/25/2026": 2.8258
     },
     "rating_post_timeline_35": {}
   },
@@ -51716,8 +51676,8 @@
     "team": "TTA PINK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6,
-    "current_division_rating": 2.9574,
-    "global_rating": 2.9574,
+    "current_division_rating": 2.8905,
+    "global_rating": 2.8905,
     "ntrp_rating": "3",
     "wl_record": null,
     "lines_played": null,
@@ -51733,8 +51693,8 @@
     ],
     "wl_record_30": "11-2",
     "team_30": "TTA PINK",
-    "rating_30": 2.9574,
-    "rating_35": 2.9574,
+    "rating_30": 2.8905,
+    "rating_35": 2.8905,
     "rating_timeline_30": {
       "4/13/2026": 2.6,
       "4/20/2026": 2.6709,
@@ -51742,10 +51702,7 @@
       "5/4/2026": 2.7461,
       "5/11/2026": 2.8044,
       "5/18/2026": 2.8487,
-      "5/25/2026": 2.8831,
-      "6/19/2026": 2.8905,
-      "6/20/2026": 2.937,
-      "6/21/2026": 3.0026
+      "5/25/2026": 2.8831
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -51755,10 +51712,7 @@
       "5/4/2026": 2.8044,
       "5/11/2026": 2.8487,
       "5/18/2026": 2.8831,
-      "5/25/2026": 2.8905,
-      "6/19/2026": 2.937,
-      "6/20/2026": 3.0026,
-      "6/21/2026": 2.9574
+      "5/25/2026": 2.8905
     },
     "rating_post_timeline_35": {}
   },
@@ -51770,8 +51724,8 @@
     "team": "TTA PINK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8371,
-    "current_division_rating": 2.9081,
-    "global_rating": 2.9081,
+    "current_division_rating": 2.8701,
+    "global_rating": 2.8701,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -51785,15 +51739,14 @@
     ],
     "wl_record_30": "5-1",
     "team_30": "TTA PINK",
-    "rating_30": 2.9081,
-    "rating_35": 2.9081,
+    "rating_30": 2.8701,
+    "rating_35": 2.8701,
     "rating_timeline_30": {
       "4/13/2026": 2.8371,
       "4/20/2026": 2.9003,
       "4/27/2026": 2.9574,
       "5/4/2026": 2.9984,
-      "5/18/2026": 3.004,
-      "6/21/2026": 2.8701
+      "5/18/2026": 3.004
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -51801,8 +51754,7 @@
       "4/20/2026": 2.9574,
       "4/27/2026": 2.9984,
       "5/4/2026": 3.004,
-      "5/18/2026": 2.8701,
-      "6/21/2026": 2.9081
+      "5/18/2026": 2.8701
     },
     "rating_post_timeline_35": {}
   },
@@ -51814,8 +51766,8 @@
     "team": "TTA PINK",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0067,
-    "current_division_rating": 3.1338,
-    "global_rating": 3.1338,
+    "current_division_rating": 3.1482,
+    "global_rating": 3.1482,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -51829,8 +51781,8 @@
     ],
     "wl_record_30": "9-2",
     "team_30": "TTA PINK",
-    "rating_30": 3.1338,
-    "rating_35": 3.1338,
+    "rating_30": 3.1482,
+    "rating_35": 3.1482,
     "rating_timeline_30": {
       "4/13/2026": 3.0067,
       "4/20/2026": 3.0135,
@@ -51838,10 +51790,7 @@
       "5/4/2026": 3.0575,
       "5/11/2026": 3.0755,
       "5/18/2026": 3.1196,
-      "5/25/2026": 3.1243,
-      "6/19/2026": 3.1482,
-      "6/20/2026": 3.115,
-      "6/21/2026": 3.2072
+      "5/25/2026": 3.1243
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -51851,10 +51800,7 @@
       "5/4/2026": 3.0755,
       "5/11/2026": 3.1196,
       "5/18/2026": 3.1243,
-      "5/25/2026": 3.1482,
-      "6/19/2026": 3.115,
-      "6/20/2026": 3.2072,
-      "6/21/2026": 3.1338
+      "5/25/2026": 3.1482
     },
     "rating_post_timeline_35": {}
   },
@@ -62591,10 +62537,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1x3",
-      "S1x3",
-      "S2"
+      "S1x5",
+      "S2x2"
     ],
-    "wl_record_30": "7-0",
+    "wl_record_30": "9-1",
     "team_30": "CVTA BLACK",
     "rating_30": 2.8384,
     "rating_35": 2.8384,
@@ -62637,10 +62583,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D2x2",
+      "D1",
+      "D2x4",
       "D3x3"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "7-1",
     "team_30": "CVTA BLACK",
     "rating_30": 2.6951,
     "rating_35": 2.6951,
@@ -62724,10 +62671,10 @@
     "lines_played_30": [
       "D1x2",
       "D2",
-      "S1x2",
-      "S2"
+      "S1x3",
+      "S2x3"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "8-1",
     "team_30": "CVTA BLACK",
     "rating_30": 2.8728,
     "rating_35": 2.8728,
@@ -62748,7 +62695,8 @@
       "5/11/2026": 2.847,
       "5/25/2026": 2.8728
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "default_wins_30": 1
   },
   {
     "id": "justine-allison",
@@ -62768,10 +62716,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
+      "D1x2",
       "D2",
-      "D3x2"
+      "D3x3"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "5-1",
     "team_30": "CVTA BLACK",
     "rating_30": 2.6953,
     "rating_35": 2.6953,
@@ -62806,11 +62755,12 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
+      "D1",
       "D2",
-      "D3",
+      "D3x2",
       "S2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "5-0",
     "team_30": "CVTA BLACK",
     "rating_30": 2.7649,
     "rating_35": 2.7649,
@@ -62887,11 +62837,11 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1",
-      "D2x2",
-      "D3x2",
+      "D2x3",
+      "D3x4",
       "S2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "8-1",
     "team_30": "CVTA BLACK",
     "rating_30": 2.9366,
     "rating_35": 2.9366,
@@ -62932,10 +62882,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
+      "D1",
       "D3",
       "S2"
     ],
-    "wl_record_30": "2-0",
+    "wl_record_30": "2-1",
     "default_wins_30": 1,
     "team_30": "CVTA BLACK",
     "rating_30": 2.7489,
@@ -63043,10 +62994,11 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1x2",
-      "D2",
+      "D2x2",
+      "D3x2",
       "S1"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "6-1",
     "team_30": "CVTA BLACK",
     "rating_30": 2.986,
     "rating_35": 2.986,
@@ -63083,9 +63035,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
+      "D1",
+      "D2x2",
       "D3x2"
     ],
-    "wl_record_30": "2-0",
+    "wl_record_30": "4-1",
     "default_wins_30": 1,
     "team_30": "CVTA BLACK",
     "rating_30": 2.6103,
@@ -70531,10 +70485,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1",
-      "S1x5"
+      "D1x2",
+      "S1x6",
+      "S2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "7-2",
     "team_30": "PH GREEN",
     "rating_30": 3.086,
     "rating_35": 3.086,
@@ -70598,9 +70553,9 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D2x2",
-      "D3"
+      "D3x3"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-1",
     "team_30": "PH GREEN",
     "rating_30": 2.8906,
     "rating_35": 2.8906,
@@ -70637,9 +70592,9 @@
     "lines_played_30": [
       "D1x3",
       "D2x3",
-      "D3"
+      "D3x3"
     ],
-    "wl_record_30": "7-0",
+    "wl_record_30": "8-1",
     "team_30": "PH GREEN",
     "rating_30": 2.8492,
     "rating_35": 2.8492,
@@ -70682,9 +70637,9 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x3"
+      "D1x6"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-2",
     "team_30": "PH GREEN",
     "rating_30": 3.0662,
     "rating_35": 3.0662,
@@ -70720,9 +70675,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D3x2",
+      "S1",
       "S2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-0",
     "team_30": "PH GREEN",
     "rating_30": 2.5874,
     "rating_35": 2.5874,
@@ -70757,9 +70713,9 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D3x2"
+      "D3x4"
     ],
-    "wl_record_30": "2-0",
+    "wl_record_30": "2-2",
     "team_30": "PH GREEN",
     "rating_30": 2.8387,
     "rating_35": 2.8387,
@@ -70829,10 +70785,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x3",
+      "D1x5",
       "D2"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "4-2",
     "team_30": "PH GREEN",
     "rating_30": 2.9902,
     "rating_35": 2.9902,
@@ -70870,10 +70826,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1",
-      "D2x4",
+      "D2x7",
       "D3"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "7-2",
     "team_30": "PH GREEN",
     "rating_30": 2.9406,
     "rating_35": 2.9406,
@@ -70960,10 +70916,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1x2",
-      "D2x3",
+      "D2x6",
       "D3"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "7-2",
     "team_30": "PH GREEN",
     "rating_30": 2.9623,
     "rating_35": 2.9623,
@@ -71041,9 +70997,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "S2x3"
+      "S1",
+      "S2x5"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-2",
     "team_30": "PH GREEN",
     "rating_30": 2.9336,
     "rating_35": 2.9336,
@@ -74662,8 +74619,8 @@
     "team": "BRMST RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.82,
-    "current_division_rating": 2.946,
-    "global_rating": 2.946,
+    "current_division_rating": 3.019,
+    "global_rating": 3.019,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -74675,20 +74632,17 @@
       "D2x5",
       "D3"
     ],
-    "wl_record_30": "8-2",
+    "wl_record_30": "9-1",
     "default_wins_30": 1,
     "team_30": "BRMST RED",
-    "rating_30": 2.946,
-    "rating_35": 2.946,
+    "rating_30": 3.019,
+    "rating_35": 3.019,
     "rating_timeline_30": {
       "4/13/2026": 2.82,
       "4/27/2026": 2.8452,
       "5/11/2026": 2.8678,
       "5/18/2026": 2.8522,
-      "5/25/2026": 2.9143,
-      "6/19/2026": 2.979,
-      "6/20/2026": 2.9967,
-      "6/21/2026": 2.9528
+      "5/25/2026": 2.9143
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -74696,10 +74650,7 @@
       "4/27/2026": 2.8678,
       "5/11/2026": 2.8522,
       "5/18/2026": 2.9143,
-      "5/25/2026": 2.979,
-      "6/19/2026": 2.9967,
-      "6/20/2026": 2.9528,
-      "6/21/2026": 2.946
+      "5/25/2026": 2.979
     },
     "rating_post_timeline_35": {}
   },
@@ -74711,8 +74662,8 @@
     "team": "BRMST RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.86,
-    "current_division_rating": 2.9115,
-    "global_rating": 2.9115,
+    "current_division_rating": 2.8827,
+    "global_rating": 2.8827,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -74723,26 +74674,22 @@
       "D2x2",
       "D3x5"
     ],
-    "wl_record_30": "5-2",
+    "wl_record_30": "7-0",
     "team_30": "BRMST RED",
-    "rating_30": 2.9115,
-    "rating_35": 2.9115,
+    "rating_30": 2.8827,
+    "rating_35": 2.8827,
     "rating_timeline_30": {
       "5/4/2026": 2.86,
       "5/11/2026": 2.8806,
       "5/18/2026": 2.865,
-      "5/25/2026": 2.8898,
-      "6/20/2026": 2.8827,
-      "6/21/2026": 2.8827
+      "5/25/2026": 2.8898
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "5/4/2026": 2.8806,
       "5/11/2026": 2.865,
       "5/18/2026": 2.8898,
-      "5/25/2026": 2.8827,
-      "6/20/2026": 2.8827,
-      "6/21/2026": 2.9115
+      "5/25/2026": 2.8827
     },
     "rating_post_timeline_35": {}
   },
@@ -74754,8 +74701,8 @@
     "team": "BRMST RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.71,
-    "current_division_rating": 2.8656,
-    "global_rating": 2.8656,
+    "current_division_rating": 2.8301,
+    "global_rating": 2.8301,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -74767,20 +74714,17 @@
       "D2x3",
       "S2x3"
     ],
-    "wl_record_30": "8-3",
+    "wl_record_30": "10-1",
     "team_30": "BRMST RED",
-    "rating_30": 2.8656,
-    "rating_35": 2.8656,
+    "rating_30": 2.8301,
+    "rating_35": 2.8301,
     "rating_timeline_30": {
       "4/20/2026": 2.71,
       "4/27/2026": 2.7156,
       "5/4/2026": 2.7642,
       "5/11/2026": 2.785,
       "5/18/2026": 2.7954,
-      "5/25/2026": 2.8166,
-      "6/19/2026": 2.8301,
-      "6/20/2026": 2.7855,
-      "6/21/2026": 2.7855
+      "5/25/2026": 2.8166
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -74789,10 +74733,7 @@
       "5/4/2026": 2.785,
       "5/11/2026": 2.7954,
       "5/18/2026": 2.8166,
-      "5/25/2026": 2.8301,
-      "6/19/2026": 2.7855,
-      "6/20/2026": 2.7855,
-      "6/21/2026": 2.8656
+      "5/25/2026": 2.8301
     },
     "rating_post_timeline_35": {}
   },
@@ -74804,8 +74745,8 @@
     "team": "BRMST RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7799,
-    "current_division_rating": 2.8864,
-    "global_rating": 2.8864,
+    "current_division_rating": 2.8506,
+    "global_rating": 2.8506,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -74820,20 +74761,18 @@
     "wl_record_30": "5-0",
     "default_wins_30": 1,
     "team_30": "BRMST RED",
-    "rating_30": 2.8864,
-    "rating_35": 2.8864,
+    "rating_30": 2.8506,
+    "rating_35": 2.8506,
     "rating_timeline_30": {
       "4/13/2026": 2.7799,
       "4/20/2026": 2.7969,
-      "4/27/2026": 2.8051,
-      "6/19/2026": 2.8506
+      "4/27/2026": 2.8051
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 2.7969,
       "4/20/2026": 2.8051,
-      "4/27/2026": 2.8506,
-      "6/19/2026": 2.8864
+      "4/27/2026": 2.8506
     },
     "rating_post_timeline_35": {}
   },
@@ -74845,8 +74784,8 @@
     "team": "BRMST RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.01,
-    "current_division_rating": 3.1228,
-    "global_rating": 3.1228,
+    "current_division_rating": 3.1411,
+    "global_rating": 3.1411,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -74857,19 +74796,16 @@
       "D1x2",
       "S1x8"
     ],
-    "wl_record_30": "7-3",
+    "wl_record_30": "9-1",
     "team_30": "BRMST RED",
-    "rating_30": 3.1228,
-    "rating_35": 3.1228,
+    "rating_30": 3.1411,
+    "rating_35": 3.1411,
     "rating_timeline_30": {
       "4/13/2026": 3.01,
       "4/20/2026": 3.0187,
       "5/11/2026": 3.025,
       "5/18/2026": 3.0509,
-      "5/25/2026": 3.0634,
-      "6/19/2026": 3.1011,
-      "6/20/2026": 3.1188,
-      "6/21/2026": 3.0489
+      "5/25/2026": 3.0634
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -74877,10 +74813,7 @@
       "4/20/2026": 3.025,
       "5/11/2026": 3.0509,
       "5/18/2026": 3.0634,
-      "5/25/2026": 3.1011,
-      "6/19/2026": 3.1188,
-      "6/20/2026": 3.0489,
-      "6/21/2026": 3.0828
+      "5/25/2026": 3.1011
     },
     "rating_post_timeline_35": {},
     "tennisrecord_id": "4"
@@ -74893,8 +74826,8 @@
     "team": "BRMST RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0085,
-    "current_division_rating": 2.9975,
-    "global_rating": 2.9975,
+    "current_division_rating": 3.1477,
+    "global_rating": 3.1477,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -74907,10 +74840,10 @@
       "D2x4",
       "D3x3"
     ],
-    "wl_record_30": "8-3",
+    "wl_record_30": "10-1",
     "team_30": "BRMST RED",
-    "rating_30": 2.9975,
-    "rating_35": 2.9975,
+    "rating_30": 3.1477,
+    "rating_35": 3.1477,
     "rating_timeline_30": {
       "4/13/2026": 3.0085,
       "4/20/2026": 3.0263,
@@ -74918,10 +74851,7 @@
       "5/4/2026": 3.0585,
       "5/11/2026": 3.0853,
       "5/18/2026": 3.1012,
-      "5/25/2026": 3.1294,
-      "6/19/2026": 3.1477,
-      "6/20/2026": 3.0865,
-      "6/21/2026": 2.9975
+      "5/25/2026": 3.1294
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -74931,10 +74861,7 @@
       "5/4/2026": 3.0853,
       "5/11/2026": 3.1012,
       "5/18/2026": 3.1294,
-      "5/25/2026": 3.1477,
-      "6/19/2026": 3.0865,
-      "6/20/2026": 2.9975,
-      "6/21/2026": 2.9975
+      "5/25/2026": 3.1477
     },
     "rating_post_timeline_35": {}
   },
@@ -74946,8 +74873,8 @@
     "team": "BRMST RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9884,
-    "current_division_rating": 3.0318,
-    "global_rating": 3.0318,
+    "current_division_rating": 3.101,
+    "global_rating": 3.101,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -74961,10 +74888,10 @@
       "S1x3",
       "S2x5"
     ],
-    "wl_record_30": "9-3",
+    "wl_record_30": "11-1",
     "team_30": "BRMST RED",
-    "rating_30": 3.0318,
-    "rating_35": 3.0318,
+    "rating_30": 3.101,
+    "rating_35": 3.101,
     "rating_timeline_30": {
       "4/13/2026": 2.9884,
       "4/20/2026": 3.0062,
@@ -74972,10 +74899,7 @@
       "5/4/2026": 3.0451,
       "5/11/2026": 3.0417,
       "5/18/2026": 3.0676,
-      "5/25/2026": 3.0954,
-      "6/19/2026": 3.101,
-      "6/20/2026": 3.1258,
-      "6/21/2026": 3.0064
+      "5/25/2026": 3.0954
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -74985,10 +74909,7 @@
       "5/4/2026": 3.0417,
       "5/11/2026": 3.0676,
       "5/18/2026": 3.0954,
-      "5/25/2026": 3.101,
-      "6/19/2026": 3.1258,
-      "6/20/2026": 3.0064,
-      "6/21/2026": 3.0318
+      "5/25/2026": 3.101
     },
     "rating_post_timeline_35": {}
   },
@@ -75023,8 +74944,8 @@
     "team": "BRMST RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7444,
-    "current_division_rating": 2.8614,
-    "global_rating": 2.8614,
+    "current_division_rating": 2.8326,
+    "global_rating": 2.8326,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -75037,26 +74958,22 @@
       "D3x5",
       "S2x2"
     ],
-    "wl_record_30": "5-3",
+    "wl_record_30": "7-1",
     "team_30": "BRMST RED",
-    "rating_30": 2.8614,
-    "rating_35": 2.8614,
+    "rating_30": 2.8326,
+    "rating_35": 2.8326,
     "rating_timeline_30": {
       "4/13/2026": 2.7444,
       "5/4/2026": 2.7943,
       "5/18/2026": 2.8149,
-      "5/25/2026": 2.8397,
-      "6/20/2026": 2.8326,
-      "6/21/2026": 2.8326
+      "5/25/2026": 2.8397
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 2.7943,
       "5/4/2026": 2.8149,
       "5/18/2026": 2.8397,
-      "5/25/2026": 2.8326,
-      "6/20/2026": 2.8326,
-      "6/21/2026": 2.8614
+      "5/25/2026": 2.8326
     },
     "rating_post_timeline_35": {}
   },
@@ -75068,8 +74985,8 @@
     "team": "BRMST RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9379,
-    "current_division_rating": 3.0822,
-    "global_rating": 3.0822,
+    "current_division_rating": 3.0086,
+    "global_rating": 3.0086,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -75083,27 +75000,21 @@
       "D3x4",
       "S2"
     ],
-    "wl_record_30": "6-2",
-    "default_wins_30": 1,
+    "wl_record_30": "7-1",
+    "default_wins_30": 2,
     "team_30": "BRMST RED",
-    "rating_30": 3.0822,
-    "rating_35": 3.0822,
+    "rating_30": 3.0086,
+    "rating_35": 3.0086,
     "rating_timeline_30": {
       "4/13/2026": 2.9379,
       "4/20/2026": 2.9549,
-      "4/27/2026": 2.9631,
-      "6/19/2026": 3.0086,
-      "6/20/2026": 3.0444,
-      "6/21/2026": 2.9991
+      "4/27/2026": 2.9631
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 2.9549,
       "4/20/2026": 2.9631,
-      "4/27/2026": 3.0086,
-      "6/19/2026": 3.0444,
-      "6/20/2026": 2.9991,
-      "6/21/2026": 3.0822
+      "4/27/2026": 3.0086
     },
     "rating_post_timeline_35": {}
   },
@@ -78728,9 +78639,9 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D3x4"
+      "D3x7"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "4-3",
     "team_30": "HV SILVER",
     "rating_30": 2.7382,
     "rating_35": 2.7382,
@@ -78810,11 +78721,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x2",
-      "D2x2",
+      "D1x3",
+      "D2x3",
       "D3"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "5-2",
     "team_30": "HV SILVER",
     "rating_30": 2.9112,
     "rating_35": 2.9112,
@@ -78853,10 +78764,12 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
+      "D1",
       "D2x3",
-      "S1x2"
+      "S1x2",
+      "S2"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "5-2",
     "team_30": "HV SILVER",
     "rating_30": 2.9118,
     "rating_35": 2.9118,
@@ -78895,12 +78808,12 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x3",
+      "D1x4",
       "D3",
-      "S1",
+      "S1x2",
       "S2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "6-2",
     "team_30": "HV SILVER",
     "rating_30": 3.0178,
     "rating_35": 3.0178,
@@ -78941,10 +78854,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D2x2",
-      "D3x2"
+      "D2x3",
+      "D3x4"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "4-3",
     "team_30": "HV SILVER",
     "rating_30": 2.8018,
     "rating_35": 2.8018,
@@ -78982,9 +78895,9 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D2x2",
-      "D3x2"
+      "D3x3"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "4-1",
     "team_30": "HV SILVER",
     "rating_30": 2.5965,
     "rating_35": 2.5965,
@@ -79021,11 +78934,12 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x2",
+      "D1x4",
       "D2",
+      "S1",
       "S2x2"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "5-3",
     "team_30": "HV SILVER",
     "rating_30": 2.8941,
     "rating_35": 2.8941,
@@ -79106,11 +79020,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x3",
-      "D2",
+      "D1x4",
+      "D2x3",
       "S2"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "5-3",
     "team_30": "HV SILVER",
     "rating_30": 2.9285,
     "rating_35": 2.9285,
@@ -79150,10 +79064,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1x2",
-      "D2",
+      "D2x3",
       "D3"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "4-2",
     "team_30": "HV SILVER",
     "rating_30": 2.6538,
     "rating_35": 2.6538,
@@ -82736,8 +82650,8 @@
     "team": "SS-LGT ORANGE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9682,
-    "current_division_rating": 2.9189,
-    "global_rating": 2.9189,
+    "current_division_rating": 3.0019,
+    "global_rating": 3.0019,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -82746,22 +82660,21 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x3",
-      "D2",
+      "D1x5",
+      "D2x2",
       "S1",
       "S2"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "7-2",
     "team_30": "SS-LGT ORANGE",
-    "rating_30": 2.9189,
-    "rating_35": 2.9189,
+    "rating_30": 3.0019,
+    "rating_35": 3.0019,
     "rating_timeline_30": {
       "4/13/2026": 2.9682,
       "4/20/2026": 2.9918,
       "5/4/2026": 2.9976,
       "5/11/2026": 3.0202,
-      "5/18/2026": 2.9803,
-      "6/21/2026": 2.9619
+      "5/18/2026": 2.9803
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -82769,8 +82682,7 @@
       "4/20/2026": 2.9976,
       "5/4/2026": 3.0202,
       "5/11/2026": 2.9803,
-      "5/18/2026": 2.9619,
-      "6/21/2026": 2.9189
+      "5/18/2026": 2.9619
     },
     "rating_post_timeline_35": {}
   },
@@ -82804,8 +82716,8 @@
     "team": "SS-LGT ORANGE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.782,
-    "current_division_rating": 2.9312,
-    "global_rating": 2.9312,
+    "current_division_rating": 2.9289,
+    "global_rating": 2.9289,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -82814,21 +82726,20 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D2x4",
+      "D2x5",
       "D3",
-      "S1"
+      "S1x2"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "6-2",
     "team_30": "SS-LGT ORANGE",
-    "rating_30": 2.9312,
-    "rating_35": 2.9312,
+    "rating_30": 2.9289,
+    "rating_35": 2.9289,
     "rating_timeline_30": {
       "4/20/2026": 2.782,
       "4/27/2026": 2.8037,
       "5/4/2026": 2.8288,
       "5/18/2026": 2.8591,
-      "5/25/2026": 2.9029,
-      "6/21/2026": 2.9289
+      "5/25/2026": 2.9029
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -82836,8 +82747,7 @@
       "4/27/2026": 2.8288,
       "5/4/2026": 2.8591,
       "5/18/2026": 2.9029,
-      "5/25/2026": 2.9289,
-      "6/21/2026": 2.9312
+      "5/25/2026": 2.9289
     },
     "rating_post_timeline_35": {}
   },
@@ -82899,10 +82809,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D3x2",
+      "D3x3",
       "S2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "3-1",
     "default_wins_30": 1,
     "team_30": "SS-LGT ORANGE",
     "rating_30": 2.703,
@@ -82926,8 +82836,8 @@
     "team": "SS-LGT ORANGE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8412,
-    "current_division_rating": 2.9318,
-    "global_rating": 2.9318,
+    "current_division_rating": 2.9295,
+    "global_rating": 2.9295,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -82938,19 +82848,18 @@
     "lines_played_30": [
       "D1x2",
       "D2",
-      "D3x3"
+      "D3x5"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "7-1",
     "team_30": "SS-LGT ORANGE",
-    "rating_30": 2.9318,
-    "rating_35": 2.9318,
+    "rating_30": 2.9295,
+    "rating_35": 2.9295,
     "rating_timeline_30": {
       "4/13/2026": 2.8412,
       "4/27/2026": 2.85,
       "5/4/2026": 2.8867,
       "5/11/2026": 2.8985,
-      "5/18/2026": 2.906,
-      "6/21/2026": 2.9295
+      "5/18/2026": 2.906
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -82958,8 +82867,7 @@
       "4/27/2026": 2.8867,
       "5/4/2026": 2.8985,
       "5/11/2026": 2.906,
-      "5/18/2026": 2.9295,
-      "6/21/2026": 2.9318
+      "5/18/2026": 2.9295
     },
     "rating_post_timeline_35": {}
   },
@@ -82971,8 +82879,8 @@
     "team": "SS-LGT ORANGE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8388,
-    "current_division_rating": 2.9754,
-    "global_rating": 2.9754,
+    "current_division_rating": 2.9585,
+    "global_rating": 2.9585,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -82981,26 +82889,25 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1",
+      "D1x2",
       "D3x2",
-      "S1"
+      "S1",
+      "S2"
     ],
-    "wl_record_30": "3-1",
+    "wl_record_30": "5-1",
     "team_30": "SS-LGT ORANGE",
-    "rating_30": 2.9754,
-    "rating_35": 2.9754,
+    "rating_30": 2.9585,
+    "rating_35": 2.9585,
     "rating_timeline_30": {
-      "4/13/2026": 2.9132,
-      "5/18/2026": 3.0498,
-      "5/25/2026": 3.0544,
-      "6/21/2026": 3.0329
+      "4/13/2026": 2.8388,
+      "5/18/2026": 2.9754,
+      "5/25/2026": 2.98
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
-      "4/13/2026": 3.0498,
-      "5/18/2026": 3.0544,
-      "5/25/2026": 3.0329,
-      "6/21/2026": 2.9754
+      "4/13/2026": 2.9754,
+      "5/18/2026": 2.98,
+      "5/25/2026": 2.9585
     },
     "rating_post_timeline_35": {}
   },
@@ -83023,10 +82930,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D2",
-      "D3",
-      "S2x4"
+      "D3x2",
+      "S2x5"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "6-2",
     "team_30": "SS-LGT ORANGE",
     "rating_30": 2.8646,
     "rating_35": 2.8646,
@@ -83035,8 +82942,7 @@
       "4/20/2026": 2.7651,
       "4/27/2026": 2.7802,
       "5/11/2026": 2.8332,
-      "5/18/2026": 2.8522,
-      "6/21/2026": 2.8646
+      "5/18/2026": 2.8522
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -83044,8 +82950,7 @@
       "4/20/2026": 2.7802,
       "4/27/2026": 2.8332,
       "5/11/2026": 2.8522,
-      "5/18/2026": 2.8646,
-      "6/21/2026": 2.8646
+      "5/18/2026": 2.8646
     },
     "rating_post_timeline_35": {}
   },
@@ -83068,9 +82973,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D3",
-      "S1x2"
+      "S1x3",
+      "S2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "5-0",
     "team_30": "SS-LGT ORANGE",
     "rating_30": 3.0027,
     "rating_35": 3.0027,
@@ -83105,9 +83011,9 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D3x5"
+      "D3x6"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "5-1",
     "default_wins_30": 1,
     "team_30": "SS-LGT ORANGE",
     "rating_30": 2.8973,
@@ -83146,11 +83052,12 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1",
-      "D2x2",
-      "S1",
+      "D2x3",
+      "D3",
+      "S1x2",
       "S2x2"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "7-2",
     "team_30": "SS-LGT ORANGE",
     "rating_30": 3.0366,
     "rating_35": 3.0366,
@@ -83159,8 +83066,7 @@
       "4/27/2026": 2.992,
       "5/4/2026": 3.0287,
       "5/11/2026": 3.0496,
-      "5/25/2026": 3.055,
-      "6/21/2026": 3.0366
+      "5/25/2026": 3.055
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -83168,8 +83074,7 @@
       "4/27/2026": 3.0287,
       "5/4/2026": 3.0496,
       "5/11/2026": 3.055,
-      "5/25/2026": 3.0366,
-      "6/21/2026": 3.0366
+      "5/25/2026": 3.0366
     },
     "rating_post_timeline_35": {}
   },
@@ -83181,8 +83086,8 @@
     "team": "SS-LGT ORANGE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6969,
-    "current_division_rating": 2.7348,
-    "global_rating": 2.7348,
+    "current_division_rating": 2.7923,
+    "global_rating": 2.7923,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -83191,21 +83096,20 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1",
-      "D2x4",
+      "D1x2",
+      "D2x6",
       "D3"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "7-2",
     "team_30": "SS-LGT ORANGE",
-    "rating_30": 2.7348,
-    "rating_35": 2.7348,
+    "rating_30": 2.7923,
+    "rating_35": 2.7923,
     "rating_timeline_30": {
       "4/20/2026": 2.6969,
       "4/27/2026": 2.7186,
       "5/4/2026": 2.7236,
       "5/18/2026": 2.7539,
-      "5/25/2026": 2.7663,
-      "6/21/2026": 2.7923
+      "5/25/2026": 2.7663
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -83213,8 +83117,7 @@
       "4/27/2026": 2.7236,
       "5/4/2026": 2.7539,
       "5/18/2026": 2.7663,
-      "5/25/2026": 2.7923,
-      "6/21/2026": 2.7348
+      "5/25/2026": 2.7923
     },
     "rating_post_timeline_35": {}
   },
@@ -83285,8 +83188,8 @@
     "team": "SS-LGT ORANGE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0187,
-    "current_division_rating": 3.0626,
-    "global_rating": 3.0626,
+    "current_division_rating": 3.1056,
+    "global_rating": 3.1056,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -83295,21 +83198,20 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x3",
-      "D2",
+      "D1x5",
+      "D2x2",
       "S1x2"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "7-2",
     "team_30": "SS-LGT ORANGE",
-    "rating_30": 3.0626,
-    "rating_35": 3.0626,
+    "rating_30": 3.1056,
+    "rating_35": 3.1056,
     "rating_timeline_30": {
       "4/20/2026": 3.0187,
       "4/27/2026": 3.0245,
       "5/4/2026": 3.0559,
       "5/11/2026": 3.0785,
-      "5/25/2026": 3.0874,
-      "6/21/2026": 3.0656
+      "5/25/2026": 3.0874
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -83317,8 +83219,7 @@
       "4/27/2026": 3.0559,
       "5/4/2026": 3.0785,
       "5/11/2026": 3.0874,
-      "5/25/2026": 3.0656,
-      "6/21/2026": 3.0226
+      "5/25/2026": 3.0656
     },
     "rating_post_timeline_35": {}
   },
@@ -86919,8 +86820,8 @@
     "team": "WP RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8149,
-    "current_division_rating": 2.998,
-    "global_rating": 2.998,
+    "current_division_rating": 2.9042,
+    "global_rating": 2.9042,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -86935,16 +86836,14 @@
     ],
     "wl_record_30": "7-1",
     "team_30": "WP RED",
-    "rating_30": 2.998,
-    "rating_35": 2.998,
+    "rating_30": 2.9042,
+    "rating_35": 2.9042,
     "rating_timeline_30": {
       "4/20/2026": 2.8149,
       "5/4/2026": 2.8235,
       "5/11/2026": 2.8533,
       "5/18/2026": 2.8621,
-      "5/25/2026": 2.894,
-      "6/19/2026": 2.9042,
-      "6/20/2026": 2.9541
+      "5/25/2026": 2.894
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -86952,9 +86851,7 @@
       "5/4/2026": 2.8533,
       "5/11/2026": 2.8621,
       "5/18/2026": 2.894,
-      "5/25/2026": 2.9042,
-      "6/19/2026": 2.9541,
-      "6/20/2026": 2.998
+      "5/25/2026": 2.9042
     },
     "rating_post_timeline_35": {}
   },
@@ -87049,8 +86946,8 @@
     "team": "WP RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0416,
-    "current_division_rating": 3.0846,
-    "global_rating": 3.0846,
+    "current_division_rating": 3.1118,
+    "global_rating": 3.1118,
     "ntrp_rating": "3.0 S",
     "wl_record": null,
     "lines_played": null,
@@ -87067,17 +86964,15 @@
     ],
     "wl_record_30": "8-1",
     "team_30": "WP RED",
-    "rating_30": 3.0846,
-    "rating_35": 3.0846,
+    "rating_30": 3.1118,
+    "rating_35": 3.1118,
     "rating_timeline_30": {
       "4/13/2026": 3.0416,
       "4/20/2026": 3.0492,
       "4/27/2026": 3.0555,
       "5/11/2026": 3.0715,
       "5/18/2026": 3.0827,
-      "5/25/2026": 3.1055,
-      "6/19/2026": 3.1118,
-      "6/20/2026": 3.0943
+      "5/25/2026": 3.1055
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -87086,9 +86981,7 @@
       "4/27/2026": 3.0715,
       "5/11/2026": 3.0827,
       "5/18/2026": 3.1055,
-      "5/25/2026": 3.1118,
-      "6/19/2026": 3.0943,
-      "6/20/2026": 3.0846
+      "5/25/2026": 3.1118
     },
     "rating_post_timeline_35": {}
   },
@@ -87100,8 +86993,8 @@
     "team": "WP RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.1604,
-    "current_division_rating": 3.161,
-    "global_rating": 3.161,
+    "current_division_rating": 3.1509,
+    "global_rating": 3.1509,
     "ntrp_rating": "3.0 S",
     "wl_record": null,
     "lines_played": null,
@@ -87115,17 +87008,15 @@
     ],
     "wl_record_30": "8-1",
     "team_30": "WP RED",
-    "rating_30": 3.161,
-    "rating_35": 3.161,
+    "rating_30": 3.1509,
+    "rating_35": 3.1509,
     "rating_timeline_30": {
       "4/13/2026": 3.1604,
       "4/20/2026": 3.1906,
       "4/27/2026": 3.2045,
       "5/4/2026": 3.2108,
       "5/11/2026": 3.2241,
-      "5/25/2026": 3.2381,
-      "6/19/2026": 3.1109,
-      "6/20/2026": 3.1454
+      "5/25/2026": 3.2381
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -87134,9 +87025,7 @@
       "4/27/2026": 3.2108,
       "5/4/2026": 3.2241,
       "5/11/2026": 3.2381,
-      "5/25/2026": 3.1109,
-      "6/19/2026": 3.1454,
-      "6/20/2026": 3.121
+      "5/25/2026": 3.1109
     },
     "rating_post_timeline_35": {}
   },
@@ -87148,8 +87037,8 @@
     "team": "WP RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7345,
-    "current_division_rating": 2.9492,
-    "global_rating": 2.9492,
+    "current_division_rating": 2.8009,
+    "global_rating": 2.8009,
     "ntrp_rating": "3.0 S",
     "wl_record": null,
     "lines_played": null,
@@ -87163,17 +87052,15 @@
     ],
     "wl_record_30": "8-0",
     "team_30": "WP RED",
-    "rating_30": 2.9492,
-    "rating_35": 2.9492,
+    "rating_30": 2.8009,
+    "rating_35": 2.8009,
     "rating_timeline_30": {
       "4/13/2026": 2.7345,
       "4/27/2026": 2.7507,
       "5/4/2026": 2.8585,
       "5/11/2026": 2.8673,
       "5/18/2026": 2.838,
-      "5/25/2026": 2.8849,
-      "6/19/2026": 2.8009,
-      "6/20/2026": 2.8717
+      "5/25/2026": 2.8849
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -87182,9 +87069,7 @@
       "5/4/2026": 2.8673,
       "5/11/2026": 2.838,
       "5/18/2026": 2.8849,
-      "5/25/2026": 2.8009,
-      "6/19/2026": 2.8717,
-      "6/20/2026": 2.9092
+      "5/25/2026": 2.8009
     },
     "rating_post_timeline_35": {}
   },
@@ -87196,8 +87081,8 @@
     "team": "WP RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7119,
-    "current_division_rating": 2.8653,
-    "global_rating": 2.8653,
+    "current_division_rating": 2.8113,
+    "global_rating": 2.8113,
     "ntrp_rating": "3.0 S",
     "wl_record": null,
     "lines_played": null,
@@ -87211,24 +87096,20 @@
     ],
     "wl_record_30": "6-1",
     "team_30": "WP RED",
-    "rating_30": 2.8653,
-    "rating_35": 2.8653,
+    "rating_30": 2.8113,
+    "rating_35": 2.8113,
     "rating_timeline_30": {
       "4/13/2026": 2.7119,
       "4/20/2026": 2.7172,
       "4/27/2026": 2.7525,
-      "5/4/2026": 2.7646,
-      "6/19/2026": 2.8113,
-      "6/20/2026": 2.8583
+      "5/4/2026": 2.7646
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 2.7172,
       "4/20/2026": 2.7525,
       "4/27/2026": 2.7646,
-      "5/4/2026": 2.8113,
-      "6/19/2026": 2.8583,
-      "6/20/2026": 2.8653
+      "5/4/2026": 2.8113
     },
     "rating_post_timeline_35": {}
   },
@@ -87240,8 +87121,8 @@
     "team": "WP RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7772,
-    "current_division_rating": 2.9342,
-    "global_rating": 2.9342,
+    "current_division_rating": 2.8907,
+    "global_rating": 2.8907,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -87256,16 +87137,14 @@
     ],
     "wl_record_30": "7-1",
     "team_30": "WP RED",
-    "rating_30": 2.9342,
-    "rating_35": 2.9342,
+    "rating_30": 2.8907,
+    "rating_35": 2.8907,
     "rating_timeline_30": {
       "4/13/2026": 2.7772,
       "4/20/2026": 2.7889,
       "5/4/2026": 2.8433,
       "5/11/2026": 2.8731,
-      "5/18/2026": 2.8438,
-      "6/19/2026": 2.8907,
-      "6/20/2026": 2.9272
+      "5/18/2026": 2.8438
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -87273,9 +87152,7 @@
       "4/20/2026": 2.8433,
       "5/4/2026": 2.8731,
       "5/11/2026": 2.8438,
-      "5/18/2026": 2.8907,
-      "6/19/2026": 2.9272,
-      "6/20/2026": 2.9342
+      "5/18/2026": 2.8907
     },
     "rating_post_timeline_35": {}
   },
@@ -87287,8 +87164,8 @@
     "team": "WP RED",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6346,
-    "current_division_rating": 2.951,
-    "global_rating": 2.951,
+    "current_division_rating": 2.847,
+    "global_rating": 2.847,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -87303,17 +87180,15 @@
     ],
     "wl_record_30": "8-1",
     "team_30": "WP RED",
-    "rating_30": 2.951,
-    "rating_35": 2.951,
+    "rating_30": 2.847,
+    "rating_35": 2.847,
     "rating_timeline_30": {
       "4/13/2026": 2.6346,
       "4/27/2026": 2.6445,
       "5/4/2026": 2.7523,
       "5/11/2026": 2.7906,
       "5/18/2026": 2.8098,
-      "5/25/2026": 2.8417,
-      "6/19/2026": 2.847,
-      "6/20/2026": 2.9071
+      "5/25/2026": 2.8417
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -87322,9 +87197,7 @@
       "5/4/2026": 2.7906,
       "5/11/2026": 2.8098,
       "5/18/2026": 2.8417,
-      "5/25/2026": 2.847,
-      "6/19/2026": 2.9071,
-      "6/20/2026": 2.951
+      "5/25/2026": 2.847
     },
     "rating_post_timeline_35": {}
   },
@@ -90955,8 +90828,8 @@
     "team": "LTFC BLUE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8542,
-    "current_division_rating": 2.9675,
-    "global_rating": 2.9675,
+    "current_division_rating": 2.9343,
+    "global_rating": 2.9343,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -90965,21 +90838,20 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x2",
-      "D2x2",
+      "D1x3",
+      "D2x3",
       "D3x3"
     ],
-    "wl_record_30": "7-0",
+    "wl_record_30": "8-1",
     "team_30": "LTFC BLUE",
-    "rating_30": 2.9675,
-    "rating_35": 2.9675,
+    "rating_30": 2.9343,
+    "rating_35": 2.9343,
     "rating_timeline_30": {
       "4/20/2026": 2.8542,
       "4/27/2026": 2.8672,
       "5/4/2026": 2.8975,
       "5/11/2026": 2.9111,
-      "5/25/2026": 2.9174,
-      "6/21/2026": 2.9343
+      "5/25/2026": 2.9174
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -90987,8 +90859,7 @@
       "4/27/2026": 2.8975,
       "5/4/2026": 2.9111,
       "5/11/2026": 2.9174,
-      "5/25/2026": 2.9343,
-      "6/21/2026": 2.9675
+      "5/25/2026": 2.9343
     },
     "rating_post_timeline_35": {}
   },
@@ -91000,8 +90871,8 @@
     "team": "LTFC BLUE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9824,
-    "current_division_rating": 3.0933,
-    "global_rating": 3.0933,
+    "current_division_rating": 3.0167,
+    "global_rating": 3.0167,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -91011,28 +90882,26 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1",
-      "D2x4",
-      "D3x2"
+      "D2x5",
+      "D3x4"
     ],
-    "wl_record_30": "7-0",
+    "wl_record_30": "9-1",
     "default_wins_30": 1,
     "team_30": "LTFC BLUE",
-    "rating_30": 3.0933,
-    "rating_35": 3.0933,
+    "rating_30": 3.0167,
+    "rating_35": 3.0167,
     "rating_timeline_30": {
       "4/27/2026": 2.9824,
       "5/4/2026": 2.9879,
       "5/18/2026": 2.9949,
-      "5/25/2026": 2.9998,
-      "6/21/2026": 3.0167
+      "5/25/2026": 2.9998
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/27/2026": 2.9879,
       "5/4/2026": 2.9949,
       "5/18/2026": 2.9998,
-      "5/25/2026": 3.0167,
-      "6/21/2026": 3.0933
+      "5/25/2026": 3.0167
     },
     "rating_post_timeline_35": {}
   },
@@ -91044,8 +90913,8 @@
     "team": "LTFC BLUE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7648,
-    "current_division_rating": 2.9402,
-    "global_rating": 2.9402,
+    "current_division_rating": 2.8307,
+    "global_rating": 2.8307,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -91056,26 +90925,24 @@
     "lines_played_30": [
       "D1",
       "D2x2",
-      "D3x3"
+      "D3x4"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "6-1",
     "team_30": "LTFC BLUE",
-    "rating_30": 2.9402,
-    "rating_35": 2.9402,
+    "rating_30": 2.8307,
+    "rating_35": 2.8307,
     "rating_timeline_30": {
       "4/13/2026": 2.7648,
       "4/27/2026": 2.7835,
       "5/18/2026": 2.8121,
-      "5/25/2026": 2.8155,
-      "6/21/2026": 2.8307
+      "5/25/2026": 2.8155
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 2.7835,
       "4/27/2026": 2.8121,
       "5/18/2026": 2.8155,
-      "5/25/2026": 2.8307,
-      "6/21/2026": 2.9402
+      "5/25/2026": 2.8307
     },
     "rating_post_timeline_35": {}
   },
@@ -91087,8 +90954,8 @@
     "team": "LTFC BLUE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0494,
-    "current_division_rating": 3.1841,
-    "global_rating": 3.1841,
+    "current_division_rating": 3.0911,
+    "global_rating": 3.0911,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -91097,14 +90964,14 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x2",
-      "S1x6",
+      "D1x4",
+      "S1x7",
       "S2"
     ],
-    "wl_record_30": "9-0",
+    "wl_record_30": "11-1",
     "team_30": "LTFC BLUE",
-    "rating_30": 3.1841,
-    "rating_35": 3.1841,
+    "rating_30": 3.0911,
+    "rating_35": 3.0911,
     "rating_timeline_30": {
       "4/13/2026": 3.0494,
       "4/20/2026": 3.0597,
@@ -91112,8 +90979,7 @@
       "5/4/2026": 3.075,
       "5/11/2026": 3.1059,
       "5/18/2026": 3.1117,
-      "5/25/2026": 3.0426,
-      "6/21/2026": 3.0511
+      "5/25/2026": 3.0426
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -91123,8 +90989,7 @@
       "5/4/2026": 3.1059,
       "5/11/2026": 3.1117,
       "5/18/2026": 3.0426,
-      "5/25/2026": 3.0511,
-      "6/21/2026": 3.1441
+      "5/25/2026": 3.0511
     },
     "rating_post_timeline_35": {}
   },
@@ -91136,8 +91001,8 @@
     "team": "LTFC BLUE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8392,
-    "current_division_rating": 3.0089,
-    "global_rating": 3.0089,
+    "current_division_rating": 2.9723,
+    "global_rating": 2.9723,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -91146,27 +91011,25 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x4",
-      "D2x2"
+      "D1x5",
+      "D2x3"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "7-1",
     "team_30": "LTFC BLUE",
-    "rating_30": 3.0089,
-    "rating_35": 3.0089,
+    "rating_30": 2.9723,
+    "rating_35": 2.9723,
     "rating_timeline_30": {
       "4/13/2026": 2.8392,
       "4/20/2026": 2.8546,
       "5/4/2026": 2.9038,
-      "5/18/2026": 2.9174,
-      "6/21/2026": 2.9323
+      "5/18/2026": 2.9174
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 2.8546,
       "4/20/2026": 2.9038,
       "5/4/2026": 2.9174,
-      "5/18/2026": 2.9323,
-      "6/21/2026": 3.0089
+      "5/18/2026": 2.9323
     },
     "rating_post_timeline_35": {}
   },
@@ -91178,8 +91041,8 @@
     "team": "LTFC BLUE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7891,
-    "current_division_rating": 2.9223,
-    "global_rating": 2.9223,
+    "current_division_rating": 2.8128,
+    "global_rating": 2.8128,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -91190,27 +91053,25 @@
     "lines_played_30": [
       "D1x2",
       "D2x2",
-      "D3x3"
+      "D3x5"
     ],
-    "wl_record_30": "7-0",
+    "wl_record_30": "8-1",
     "default_wins_30": 1,
     "team_30": "LTFC BLUE",
-    "rating_30": 2.9223,
-    "rating_35": 2.9223,
+    "rating_30": 2.8128,
+    "rating_35": 2.8128,
     "rating_timeline_30": {
       "4/13/2026": 2.7891,
       "4/27/2026": 2.7656,
       "5/18/2026": 2.7942,
-      "5/25/2026": 2.7976,
-      "6/21/2026": 2.8128
+      "5/25/2026": 2.7976
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 2.7656,
       "4/27/2026": 2.7942,
       "5/18/2026": 2.7976,
-      "5/25/2026": 2.8128,
-      "6/21/2026": 2.9223
+      "5/25/2026": 2.8128
     },
     "rating_post_timeline_35": {}
   },
@@ -91257,8 +91118,8 @@
     "team": "LTFC BLUE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.04,
-    "current_division_rating": 3.1021,
-    "global_rating": 3.1021,
+    "current_division_rating": 3.0689,
+    "global_rating": 3.0689,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -91267,21 +91128,20 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1",
-      "D2x4",
+      "D1x2",
+      "D2x6",
       "D3x2"
     ],
-    "wl_record_30": "7-0",
+    "wl_record_30": "9-1",
     "team_30": "LTFC BLUE",
-    "rating_30": 3.1021,
-    "rating_35": 3.1021,
+    "rating_30": 3.0689,
+    "rating_35": 3.0689,
     "rating_timeline_30": {
       "4/13/2026": 3.04,
       "4/20/2026": 3.0131,
       "5/4/2026": 3.0507,
       "5/11/2026": 3.0577,
-      "5/18/2026": 3.064,
-      "6/21/2026": 3.0689
+      "5/18/2026": 3.064
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -91289,8 +91149,7 @@
       "4/20/2026": 3.0507,
       "5/4/2026": 3.0577,
       "5/11/2026": 3.064,
-      "5/18/2026": 3.0689,
-      "6/21/2026": 3.1021
+      "5/18/2026": 3.0689
     },
     "rating_post_timeline_35": {}
   },
@@ -91312,10 +91171,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x5",
-      "D2"
+      "D1x6",
+      "D2x2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "8-0",
     "team_30": "LTFC BLUE",
     "rating_30": 3.0914,
     "rating_35": 3.0914,
@@ -91356,11 +91215,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D3",
-      "S2x4"
+      "D3x2",
+      "S2x6"
     ],
-    "wl_record_30": "5-0",
-    "default_wins_30": 1,
+    "wl_record_30": "8-0",
+    "default_wins_30": 2,
     "team_30": "LTFC BLUE",
     "rating_30": 2.7221,
     "rating_35": 2.7221,
@@ -91387,8 +91246,8 @@
     "team": "LTFC BLUE",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9786,
-    "current_division_rating": 3.0842,
-    "global_rating": 3.0842,
+    "current_division_rating": 3.0595,
+    "global_rating": 3.0595,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -91397,28 +91256,26 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "S1x3",
-      "S2x4"
+      "S1x5",
+      "S2x5"
     ],
-    "wl_record_30": "7-0",
-    "default_wins_30": 1,
+    "wl_record_30": "9-1",
+    "default_wins_30": 2,
     "team_30": "LTFC BLUE",
-    "rating_30": 3.0842,
-    "rating_35": 3.0842,
+    "rating_30": 3.0595,
+    "rating_35": 3.0595,
     "rating_timeline_30": {
       "4/20/2026": 2.9786,
       "4/27/2026": 2.9715,
       "5/11/2026": 2.9771,
-      "5/25/2026": 3.0132,
-      "6/21/2026": 3.0195
+      "5/25/2026": 3.0132
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/20/2026": 2.9715,
       "4/27/2026": 2.9771,
       "5/11/2026": 3.0132,
-      "5/25/2026": 3.0195,
-      "6/21/2026": 3.0842
+      "5/25/2026": 3.0195
     },
     "rating_post_timeline_35": {}
   },
@@ -94832,11 +94689,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D2x3",
-      "D3",
+      "D2x4",
+      "D3x2",
       "S2"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "7-0",
     "team_30": "LEBTC GOLD",
     "rating_30": 2.8724,
     "rating_35": 2.8724,
@@ -94875,10 +94732,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x5",
+      "D1x7",
+      "S1",
       "S2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "8-1",
     "team_30": "LEBTC GOLD",
     "rating_30": 3.0307,
     "rating_35": 3.0307,
@@ -94919,9 +94777,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "S1x6"
+      "S1x7",
+      "S2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "8-0",
     "team_30": "LEBTC GOLD",
     "rating_30": 3.037,
     "rating_35": 3.037,
@@ -94962,9 +94821,9 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D3x4"
+      "D3x6"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "5-1",
     "team_30": "LEBTC GOLD",
     "rating_30": 2.6424,
     "rating_35": 2.6424,
@@ -95001,11 +94860,12 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x4",
-      "D2",
+      "D1x5",
+      "D2x2",
+      "S1",
       "S2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "8-1",
     "team_30": "LEBTC GOLD",
     "rating_30": 3.182,
     "rating_35": 3.182,
@@ -95082,10 +94942,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x4",
-      "D2x2"
+      "D1x6",
+      "D2x3"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "8-1",
     "team_30": "LEBTC GOLD",
     "rating_30": 2.811,
     "rating_35": 2.811,
@@ -95126,10 +94986,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D2x3",
-      "D3"
+      "D2x4",
+      "D3",
+      "S2"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "5-1",
     "team_30": "LEBTC GOLD",
     "rating_30": 2.6775,
     "rating_35": 2.6775,
@@ -95188,11 +95049,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D2x3",
-      "D3x2",
+      "D2x4",
+      "D3x3",
       "S2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "7-1",
     "team_30": "LEBTC GOLD",
     "rating_30": 2.7163,
     "rating_35": 2.7163,
@@ -95233,13 +95094,13 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1",
-      "D2",
-      "D3",
+      "D1x2",
+      "D2x2",
+      "D3x2",
       "S1",
       "S2"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "7-1",
     "team_30": "LEBTC GOLD",
     "rating_30": 2.8389,
     "rating_35": 2.8389,
@@ -95278,10 +95139,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D3x4",
-      "S2x2"
+      "D3x5",
+      "S2x3"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "7-1",
     "team_30": "LEBTC GOLD",
     "rating_30": 2.7312,
     "rating_35": 2.7312,
@@ -100066,10 +99927,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1",
-      "D2",
-      "D3"
+      "D2x2",
+      "D3x2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-1",
     "team_30": "FCCC WHITE",
     "rating_30": 2.8941,
     "rating_35": 2.8941,
@@ -100214,10 +100075,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D3",
-      "S1x2"
+      "D3x2",
+      "S1x2",
+      "S2x2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-2",
     "team_30": "FCCC WHITE",
     "rating_30": 2.7737,
     "rating_35": 2.7737,
@@ -100252,12 +100114,12 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1",
-      "D2x2",
+      "D1x2",
+      "D2x3",
       "D3",
       "S1"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "6-1",
     "team_30": "FCCC WHITE",
     "rating_30": 3.241,
     "rating_35": 3.241,
@@ -100297,10 +100159,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D2x2",
-      "S1x2",
+      "S1x4",
       "S2"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "5-2",
     "team_30": "FCCC WHITE",
     "rating_30": 3.0674,
     "rating_35": 3.0674,
@@ -100339,10 +100201,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x2",
+      "D1x3",
+      "D2",
       "D3"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-1",
     "team_30": "FCCC WHITE",
     "rating_30": 2.8431,
     "rating_35": 2.8431,
@@ -100377,9 +100240,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D2x2"
+      "D1",
+      "D2x3",
+      "D3"
     ],
-    "wl_record_30": "2-0",
+    "wl_record_30": "3-2",
     "team_30": "FCCC WHITE",
     "rating_30": 2.6823,
     "rating_35": 2.6823,
@@ -100412,9 +100277,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x3"
+      "D1x4",
+      "D2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-1",
     "team_30": "FCCC WHITE",
     "rating_30": 3.0802,
     "rating_35": 3.0802,
@@ -100449,11 +100315,13 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1",
+      "D1x2",
       "D2",
+      "D3",
+      "S1",
       "S2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-2",
     "team_30": "FCCC WHITE",
     "rating_30": 3.1401,
     "rating_35": 3.1401,
@@ -100559,10 +100427,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D2",
+      "D2x2",
       "D3"
     ],
-    "wl_record_30": "2-0",
+    "wl_record_30": "2-1",
     "team_30": "FCCC WHITE",
     "rating_30": 2.2748,
     "rating_35": 2.2748,
@@ -100595,9 +100463,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
+      "D3",
       "S2x2"
     ],
-    "wl_record_30": "2-0",
+    "wl_record_30": "2-1",
     "team_30": "FCCC WHITE",
     "rating_30": 2.815,
     "rating_35": 2.815,
@@ -100630,9 +100499,10 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
+      "D1",
       "D3x2"
     ],
-    "wl_record_30": "2-0",
+    "wl_record_30": "2-1",
     "team_30": "FCCC WHITE",
     "rating_30": 2.6533,
     "rating_35": 2.6533,
@@ -100665,10 +100535,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
+      "D3",
       "S1",
-      "S2x2"
+      "S2x3"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-1",
     "team_30": "FCCC WHITE",
     "rating_30": 2.7974,
     "rating_35": 2.7974,
@@ -103839,12 +103710,13 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x3",
+      "D1x4",
       "D2",
       "D3",
+      "S1",
       "S2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "7-1",
     "team_30": "LTFCS OSTLY",
     "rating_30": 2.9126,
     "rating_35": 2.9126,
@@ -103886,10 +103758,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1",
-      "D2x3",
+      "D2x5",
       "D3"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "6-1",
     "team_30": "LTFCS OSTLY",
     "rating_30": 2.8923,
     "rating_35": 2.8923,
@@ -103928,11 +103800,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x2",
+      "D1x4",
       "D2x2",
       "D3"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "6-1",
     "team_30": "LTFCS OSTLY",
     "rating_30": 3.1533,
     "rating_35": 3.1533,
@@ -103972,9 +103844,9 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "S1x2",
-      "S2x3"
+      "S2x5"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "5-2",
     "team_30": "LTFCS OSTLY",
     "rating_30": 2.8946,
     "rating_35": 2.8946,
@@ -104014,10 +103886,10 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1",
-      "D2",
-      "D3x2"
+      "D2x2",
+      "D3x3"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "5-1",
     "team_30": "LTFCS OSTLY",
     "rating_30": 2.9021,
     "rating_35": 2.9021,
@@ -104054,12 +103926,12 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1",
+      "D1x3",
       "D2",
       "D3x2",
       "S1"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "6-1",
     "team_30": "LTFCS OSTLY",
     "rating_30": 2.7345,
     "rating_35": 2.7345,
@@ -104099,10 +103971,11 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1x2",
-      "D2",
-      "D3"
+      "D2x2",
+      "D3",
+      "S2"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "5-1",
     "team_30": "LTFCS OSTLY",
     "rating_30": 2.9018,
     "rating_35": 2.9018,
@@ -104178,10 +104051,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
+      "D1",
       "D3x2",
       "S2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "3-1",
     "team_30": "LTFCS OSTLY",
     "rating_30": 2.6432,
     "rating_35": 2.6432,
@@ -104217,10 +104091,11 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D1x3",
-      "D2",
+      "D2x3",
+      "D3",
       "S2"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "6-2",
     "team_30": "LTFCS OSTLY",
     "rating_30": 3.085,
     "rating_35": 3.085,
@@ -104260,9 +104135,9 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D2",
-      "D3x2"
+      "D3x4"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "3-2",
     "team_30": "LTFCS OSTLY",
     "rating_30": 2.7549,
     "rating_35": 2.7549,
@@ -104297,10 +104172,11 @@
     "state": "CO",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "S1x4",
+      "D3",
+      "S1x6",
       "S2"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "6-2",
     "team_30": "LTFCS OSTLY",
     "rating_30": 3.0533,
     "rating_35": 3.0533,
@@ -104340,9 +104216,9 @@
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
       "D2x2",
-      "D3"
+      "D3x2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "3-1",
     "team_30": "LTFCS OSTLY",
     "rating_30": 2.9252,
     "rating_35": 2.9252,

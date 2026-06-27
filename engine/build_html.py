@@ -748,6 +748,11 @@ def _traverse_match_histories(
     for div, sfs in [(ntrp, subflights or []), (other_ntrp, other_subflights or [])]:
         div_sfx = div.replace(".", "")
         for sf in sfs:
+            _h_count = sum(1 for m in sf.get("matches", [])
+                           for ln in m.get("lines", []) if ln.get("result") == "home")
+            _t_count = sum(1 for m in sf.get("matches", [])
+                           for ln in m.get("lines", []) if ln.get("result") in ("home", "away"))
+            _sf_rel = _t_count > 0 and (_h_count / _t_count) < 0.95
             for match in sf.get("matches", []):
                 if match.get("pending"):
                     continue
@@ -755,6 +760,21 @@ def _traverse_match_histories(
                 mid = match.get("match_id", "")
                 m_home_team = (match.get("home_team") or "").strip()
                 m_away_team = (match.get("away_team") or "").strip()
+                _mscore = match.get("score", "")
+                _ms_parts = re.split(r"[–\-]", _mscore) if _mscore else []
+                _m_hw = _m_aw = -1
+                if len(_ms_parts) == 2:
+                    try:
+                        _m_hw, _m_aw = int(_ms_parts[0].strip()), int(_ms_parts[1].strip())
+                    except ValueError:
+                        pass
+                _n_lines = len(match.get("lines", []))
+                _unanimous = ""
+                if not _sf_rel and _n_lines > 0:
+                    if _m_hw == _n_lines and _m_aw == 0:
+                        _unanimous = "home"
+                    elif _m_aw == _n_lines and _m_hw == 0:
+                        _unanimous = "away"
                 for line in match.get("lines", []):
                     home_raw = line.get("players_home", "") or ""
                     away_raw = line.get("players_away", "") or ""
@@ -762,10 +782,16 @@ def _traverse_match_histories(
                     lt = line.get("loser_team", "") or ""
                     if not wt and not lt and m_home_team and m_away_team:
                         line_result = (line.get("result") or "").lower()
-                        if line_result == "home":
-                            wt, lt = m_home_team, m_away_team
-                        elif line_result == "away":
-                            wt, lt = m_away_team, m_home_team
+                        if _sf_rel and line_result in ("home", "away"):
+                            if line_result == "home":
+                                wt, lt = m_home_team, m_away_team
+                            else:
+                                wt, lt = m_away_team, m_home_team
+                        elif _unanimous:
+                            if _unanimous == "home":
+                                wt, lt = m_home_team, m_away_team
+                            else:
+                                wt, lt = m_away_team, m_home_team
                     score = line.get("score", "") or ""
                     line_label = line.get("line", "") or ""
 
@@ -2487,6 +2513,11 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
 
     for sf in subflights:
         sf_label = sf.get("flight_label", "")
+        _all_home = sum(1 for m in sf.get("matches", [])
+                        for ln in m.get("lines", []) if ln.get("result") == "home")
+        _all_total = sum(1 for m in sf.get("matches", [])
+                         for ln in m.get("lines", []) if ln.get("result") in ("home", "away"))
+        _sf_reliable = _all_total > 0 and (_all_home / _all_total) < 0.95
         for m in sf.get("matches", []):
             if m.get("pending"):
                 continue
@@ -2494,6 +2525,21 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
             away_team = m.get("away_team", "")
             date = m.get("date", "")
             wk = week_label.get(date, "")
+            _mscore = m.get("score", "")
+            _ms_parts = re.split(r"[–\-]", _mscore) if _mscore else []
+            _m_hw = _m_aw = -1
+            if len(_ms_parts) == 2:
+                try:
+                    _m_hw, _m_aw = int(_ms_parts[0].strip()), int(_ms_parts[1].strip())
+                except ValueError:
+                    pass
+            _n_lines = len(m.get("lines", []))
+            _unanimous = ""
+            if not _sf_reliable and _n_lines > 0:
+                if _m_hw == _n_lines and _m_aw == 0:
+                    _unanimous = "home"
+                elif _m_aw == _n_lines and _m_hw == 0:
+                    _unanimous = "away"
 
             for ln in m.get("lines", []):
                 line_str = ln.get("line", "")
@@ -2501,6 +2547,12 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                 is_singles = "Singles" in line_str
                 score = ln.get("score", "")
                 winner_team = (ln.get("winner_team") or "").upper()
+                if not winner_team:
+                    _lr = ln.get("result", "")
+                    if _sf_reliable and _lr in ("home", "away"):
+                        winner_team = (home_team if _lr == "home" else away_team).upper()
+                    elif _unanimous:
+                        winner_team = (home_team if _unanimous == "home" else away_team).upper()
 
                 ph = (ln.get("players_home") or "").strip()
                 pa = (ln.get("players_away") or "").strip()
