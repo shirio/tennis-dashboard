@@ -1325,8 +1325,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                 blocks += (
                     f'<div class="mblock">'
                     f'<div class="mhdr">'
-                    f'<span class="mweek-lbl">{_esc(wlabel)}</span>'
-                    f'<span>{badge}</span>'
+                    f'<span class="mweek-lbl">{_esc(wlabel)} {badge}</span>'
                     f'<span class="mtitle">vs {_esc(m["opponent"])}</span>'
                     f'</div>'
                     f'<div class="mdate">{_esc(m["date"])}</div>'
