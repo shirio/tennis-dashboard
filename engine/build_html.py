@@ -362,33 +362,13 @@ def _validate(subflights: list[dict]) -> list[str]:
 # Per-court winner detection helpers
 # ---------------------------------------------------------------------------
 
-def _match_result_reliable(lines: list[dict], team_wins: int | None,
-                           opp_wins: int | None) -> bool:
-    """Check if a specific match's result fields are trustworthy.
-
-    Compares the per-court result tally against the match-level score.
-    If they match, the radio button data is real; if not, it's defaults.
-    """
-    if team_wins is None or opp_wins is None:
-        return False
-    h = sum(1 for ln in lines if (ln.get("result") or "").lower() == "home")
-    a = sum(1 for ln in lines if (ln.get("result") or "").lower() == "away")
-    return h == team_wins and a == opp_wins
-
-
-def _court_winner_team(line: dict, match_home_team: str,
-                       match_away_team: str,
-                       result_reliable: bool) -> str | None:
+def _court_winner_team(line: dict) -> str | None:
     """Return team name that won this court, or None if unknown.
 
-    The result field ("home"/"away") from scorecard radio buttons refers to
-    the match-level home/away team, NOT the scorecard column layout.
-    No swap correction is needed.
+    Reads the canonical `winner_team` field set by engine/normalize.py.
+    No heuristics — if the field isn't set, we don't know.
     """
-    result = (line.get("result") or "").lower()
-    if result_reliable and result in ("home", "away"):
-        return match_home_team if result == "home" else match_away_team
-    return None
+    return (line.get("winner_team") or "").strip() or None
 
 
 def _match_winner_team(match: dict) -> str | None:
@@ -825,41 +805,40 @@ def _traverse_match_histories(
                 mid = match.get("match_id", "")
                 m_home_team = (match.get("home_team") or "").strip()
                 m_away_team = (match.get("away_team") or "").strip()
-                _mr_trav = _match_result_reliable(
-                    match.get("lines", []),
-                    match.get("team_wins_home"),
-                    match.get("team_wins_away"))
                 _match_wt = _match_winner_team(match)
                 for line in match.get("lines", []):
                     home_raw = line.get("players_home", "") or ""
                     away_raw = line.get("players_away", "") or ""
-                    wt = line.get("winner_team", "") or ""
-                    lt = line.get("loser_team", "") or ""
-                    if not wt and not lt and m_home_team and m_away_team:
-                        _cwt = _court_winner_team(
-                            line, m_home_team, m_away_team, _mr_trav)
-                        if _cwt:
-                            if _cwt.upper() == m_home_team.upper():
-                                wt, lt = m_home_team, m_away_team
-                            else:
-                                wt, lt = m_away_team, m_home_team
+                    wt = (line.get("winner_team") or "").strip()
+                    lt = (line.get("loser_team") or "").strip()
+                    cw = line.get("court_winner")
                     score = line.get("score", "") or ""
                     line_label = line.get("line", "") or ""
 
-                    _home_na = home_raw.strip().upper() in ("N/A", "NA", "")
-                    _away_na = away_raw.strip().upper() in ("N/A", "NA", "")
-                    home_names = [] if _home_na else [
-                        n.strip() for n in home_raw.split("/")
-                        if n.strip() and not _is_noise_name(n)]
-                    away_names = [] if _away_na else [
-                        n.strip() for n in away_raw.split("/")
-                        if n.strip() and not _is_noise_name(n)]
-                    is_walkover = not home_names or not away_names
+                    winner_names = line.get("winner_names") or []
+                    loser_names = line.get("loser_names") or []
+                    is_walkover = not winner_names or not loser_names
 
-                    all_side = ([("home", n) for n in home_names] +
-                                [("away", n) for n in away_names])
+                    all_players: list[tuple[str, bool | None]] = []
+                    if cw is not None:
+                        for nm in winner_names:
+                            all_players.append((nm, True))
+                        for nm in loser_names:
+                            all_players.append((nm, False))
+                    else:
+                        home_names = [n.strip() for n in home_raw.split("/")
+                                      if n.strip() and not _is_noise_name(n)]
+                        away_names = [n.strip() for n in away_raw.split("/")
+                                      if n.strip() and not _is_noise_name(n)]
+                        is_walkover = not home_names or not away_names
+                        if _match_wt:
+                            for nm in home_names + away_names:
+                                all_players.append((nm, None))
+                        else:
+                            for nm in home_names + away_names:
+                                all_players.append((nm, None))
 
-                    for side, nm in all_side:
+                    for nm, court_won in all_players:
                         nk = _nkey(nm)
                         pdata = by_name.get(nk)
                         if not pdata:
@@ -876,29 +855,30 @@ def _traverse_match_histories(
                                            pdata.get("team") or "").strip()
                         if not player_team:
                             continue
-                        won  = player_team.lower() in wt.lower()
-                        lost = player_team.lower() in lt.lower()
-                        if not won and not lost and _match_wt:
+                        if court_won is not None:
+                            won = court_won
+                            lost = not court_won
+                        elif _match_wt:
                             won = player_team.lower() in _match_wt.lower()
                             lost = not won
-                        if not won and not lost:
+                        else:
                             continue
                         dedup = (mid, line_label, nk, div)
                         if dedup in _seen:
                             continue
                         _seen.add(dedup)
 
-                        is_home_col   = (side == "home")
-                        is_home_score = player_team.lower() in (
-                            match.get("home_team", "") or ""
-                        ).lower()
-
-                        if is_home_col:
-                            partners = [n for n in home_names if _nkey(n) != nk]
-                            opps     = away_names if not is_walkover else []
+                        if won:
+                            partners = [n for n in winner_names if _nkey(n) != nk]
+                            opps = loser_names if not is_walkover else []
                         else:
-                            partners = [n for n in away_names if _nkey(n) != nk]
-                            opps     = home_names if not is_walkover else []
+                            partners = [n for n in loser_names if _nkey(n) != nk]
+                            opps = winner_names if not is_walkover else []
+                        if not partners and not opps and cw is None:
+                            all_names = [n.strip() for n in (home_raw + " / " + away_raw).split("/")
+                                         if n.strip() and not _is_noise_name(n)]
+                            partners = [n for n in all_names if _nkey(n) != nk]
+                            opps = []
 
                         opp_r_list = []
                         for o in opps:
@@ -1438,20 +1418,6 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                     blocks += '<div class="line-lbl">line results</div>'
                     _m_ht = m.get("home_team", "")
                     _m_at = m.get("away_team", "")
-                    # Per-match reliability: parse score into home/away wins
-                    _m_score = m.get("score", "")
-                    _ms = re.split(r"[–\-]", _m_score) if _m_score else []
-                    _is_home = tname.upper() == _m_ht.upper()
-                    if len(_ms) == 2:
-                        try:
-                            _tw, _ow = int(_ms[0].strip()), int(_ms[1].strip())
-                            _hw = _tw if _is_home else _ow
-                            _aw = _ow if _is_home else _tw
-                        except ValueError:
-                            _hw = _aw = None
-                    else:
-                        _hw = _aw = None
-                    _mr = _match_result_reliable(lines, _hw, _aw)
                     for ln in lines:
                         ph_raw = ln.get("players_home", "")
                         pa_raw = ln.get("players_away", "")
@@ -1465,8 +1431,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                                 return '<em class="default-marker">default</em>'
                             return _render_players(raw, _mdate)
 
-                        _cwt = _court_winner_team(
-                            ln, _m_ht, _m_at, _mr)
+                        _cwt = _court_winner_team(ln)
                         if _cwt:
                             _our_team_won = _cwt.upper() == tname.upper()
                         else:
@@ -1481,8 +1446,8 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                                 _ph_is_our_team = True
                                 break
 
-                        if _our_team_won is None and m["won"] is not None:
-                            _our_team_won = m["won"]
+                        # Don't fall back to match-level win — that would
+                        # highlight all courts the same color on a 3-2 match.
 
                         if _ph_is_our_team:
                             left_html = _default_or_render(ph_raw)
@@ -2642,21 +2607,12 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
             away_team = m.get("away_team", "")
             date = m.get("date", "")
             wk = week_label.get(date, "")
-            _mr_mx = _match_result_reliable(
-                m.get("lines", []),
-                m.get("team_wins_home"),
-                m.get("team_wins_away"))
             for ln in m.get("lines", []):
                 line_str = ln.get("line", "")
                 line_label = _line_label_short(line_str)
                 is_singles = "Singles" in line_str
                 score = ln.get("score", "")
                 winner_team = (ln.get("winner_team") or "").upper()
-                if not winner_team:
-                    _cwt = _court_winner_team(
-                        ln, home_team, away_team, _mr_mx)
-                    if _cwt:
-                        winner_team = _cwt.upper()
                 _match_wt_mx = _match_winner_team(m) if not winner_team else None
 
                 ph = (ln.get("players_home") or "").strip()

@@ -24,6 +24,7 @@ import json
 from pathlib import Path
 
 from scrapers.scrape_tennislink import _compute_player_stats_from_scorecards
+from engine.normalize import normalize_all
 from engine.ratings import run_ratings
 from engine.build_html import build_dashboards, build_sectionals_page
 
@@ -62,6 +63,9 @@ def main():
 
     if all_ntrp:
         _compute_player_stats_from_scorecards(all_ntrp)
+
+    # Normalize match results (canonical court_winner field)
+    normalize_all()
 
     # Unified cross-state ratings
     run_ratings()

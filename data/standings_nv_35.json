@@ -111,7 +111,14 @@
               "score": "6-3 6-4",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Sarah Perez"
+              ],
+              "loser_names": [
+                "Linda Guastella"
+              ]
             },
             {
               "line": "2# Singles",
@@ -120,7 +127,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Shaun Bruce"
+              ],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -129,7 +141,13 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Lisa Cook",
+                "Jen Liong"
+              ],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -138,7 +156,16 @@
               "score": "6-1 6-2",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Hannah Stevens",
+                "Rika Cook"
+              ],
+              "loser_names": [
+                "Tina Nathalia",
+                "Nicole Palichat"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -147,7 +174,16 @@
               "score": "6-4 6-4",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Kelly Kedge",
+                "Rowena Messner"
+              ],
+              "loser_names": [
+                "Leticia Schoff",
+                "Ashlee Rowerdink"
+              ]
             }
           ]
         },
@@ -171,7 +207,14 @@
               "score": "6-3 6-3",
               "result": "away",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Marlaina Harris"
+              ],
+              "loser_names": [
+                "Jules Mitchell"
+              ]
             },
             {
               "line": "2# Singles",
@@ -180,7 +223,14 @@
               "score": "6-1 6-1",
               "result": "away",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Fiona Yeh"
+              ],
+              "loser_names": [
+                "Wendy Hopper"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -189,7 +239,16 @@
               "score": "7-6 3-2",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Emily Courville",
+                "Jennifer Petrie"
+              ],
+              "loser_names": [
+                "Melissa Kwong-Blais",
+                "Nicole Reyes"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -198,7 +257,16 @@
               "score": "6-1 6-2",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Jane Doe",
+                "Jan Willis"
+              ],
+              "loser_names": [
+                "Megan Bell",
+                "Loc Nguyen"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -207,7 +275,16 @@
               "score": "1-6 7-6 1-0",
               "result": "away",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Shellene Goudge",
+                "Chantel Vu"
+              ],
+              "loser_names": [
+                "Holly Dexter",
+                "Joan Perricone"
+              ]
             }
           ]
         },
@@ -231,7 +308,14 @@
               "score": "6-1 6-0",
               "result": "home",
               "winner_team": "ANTHEM CC",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Michelle Brinlee"
+              ],
+              "loser_names": [
+                "Lyndsey van der Laan"
+              ]
             },
             {
               "line": "2# Singles",
@@ -240,7 +324,12 @@
               "score": "6-0 6-0",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [],
+              "loser_names": [
+                "Paige Song"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -249,7 +338,16 @@
               "score": "6-2 6-3",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Alisun Vehar",
+                "Gina Case"
+              ],
+              "loser_names": [
+                "Michele Howser",
+                "Mimi Liu"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -258,7 +356,16 @@
               "score": "6-0 6-1",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Darlene Whittlesy",
+                "Heidi Thornhill"
+              ],
+              "loser_names": [
+                "Tracey Lee",
+                "Yan Uyeno"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -267,7 +374,16 @@
               "score": "6-3 6-4",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Patricia Delgado",
+                "Alex Schrack"
+              ],
+              "loser_names": [
+                "Kathryn Garlan",
+                "Rachel Lamb"
+              ]
             }
           ]
         },
@@ -291,7 +407,14 @@
               "score": "6-2 6-1",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Misti Webb"
+              ],
+              "loser_names": [
+                "Kelly Kedge"
+              ]
             },
             {
               "line": "2# Singles",
@@ -300,7 +423,14 @@
               "score": "6-4 6-3",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Hong Lee"
+              ],
+              "loser_names": [
+                "Samantha Schuster"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -309,7 +439,16 @@
               "score": "6-1 6-1",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Shiangyuh Wu",
+                "Jen Liong"
+              ],
+              "loser_names": [
+                "Mimi Liu",
+                "Yan Uyeno"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -318,7 +457,16 @@
               "score": "3-6 6-0 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Amanda Gumberg",
+                "Rachel Lamb"
+              ],
+              "loser_names": [
+                "Rika Cook",
+                "Nancy Holland"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -327,7 +475,16 @@
               "score": "6-4 7-6",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Carroll Welch",
+                "Tracey Lee"
+              ],
+              "loser_names": [
+                "Hannah Stevens",
+                "Amrita Soli"
+              ]
             }
           ]
         },
@@ -351,7 +508,14 @@
               "score": "6-1 6-2",
               "result": "away",
               "winner_team": "ANTHEM CC",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Lyndsey van der Laan"
+              ],
+              "loser_names": [
+                "Preslyn Harris"
+              ]
             },
             {
               "line": "2# Singles",
@@ -360,7 +524,14 @@
               "score": "6-3 7-6",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Chantel Vu"
+              ],
+              "loser_names": [
+                "CHRISTINE McNair"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -369,7 +540,16 @@
               "score": "6-2 6-2",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Melissa Kwong-Blais",
+                "Nicole Reyes"
+              ],
+              "loser_names": [
+                "Andra Starr Scano",
+                "Gina Case"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -378,7 +558,16 @@
               "score": "6-1 6-1",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Marlaina Harris",
+                "Lisa Krzyzaniak"
+              ],
+              "loser_names": [
+                "Kelly Twells",
+                "Alex Schrack"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -387,7 +576,16 @@
               "score": "6-1 6-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Megan Bell",
+                "Shellene Goudge"
+              ],
+              "loser_names": [
+                "Casey Primmer",
+                "ANN MARIE WEAVER"
+              ]
             }
           ]
         },
@@ -411,7 +609,14 @@
               "score": "6-3 6-3",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Leticia Schoff"
+              ],
+              "loser_names": [
+                "Wendy Hopper"
+              ]
             },
             {
               "line": "2# Singles",
@@ -420,7 +625,14 @@
               "score": "6-0 6-2",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Ashlee Rowerdink"
+              ],
+              "loser_names": [
+                "Jules Mitchell"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -429,7 +641,16 @@
               "score": "6-3 6-1",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Linda Guastella",
+                "Nicole Palichat"
+              ],
+              "loser_names": [
+                "Cathy Vanderford",
+                "Jane Doe"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -438,7 +659,16 @@
               "score": "4-6 6-4 1-0",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Melissa Ruediger",
+                "Sheri Cherubino"
+              ],
+              "loser_names": [
+                "Kelley Ferrence",
+                "Holly Dexter"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -447,7 +677,16 @@
               "score": "7-5 6-3",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "away",
+              "winner_names": [
+                "Sally Ryba",
+                "Marilyn Fenn"
+              ],
+              "loser_names": [
+                "Tina Nathalia",
+                "Christine LaBarre"
+              ]
             }
           ]
         },
@@ -471,7 +710,14 @@
               "score": "6-3 7-5",
               "result": "away",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Kelly Kedge"
+              ],
+              "loser_names": [
+                "Tracey Cutler"
+              ]
             },
             {
               "line": "2# Singles",
@@ -480,7 +726,14 @@
               "score": "6-1 6-1",
               "result": "away",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Ramona Acosta"
+              ],
+              "loser_names": [
+                "Jane Doe"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -489,7 +742,16 @@
               "score": "6-2 6-4",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Joann Komanowski",
+                "Debi Marimberga"
+              ],
+              "loser_names": [
+                "Rika Cook",
+                "Shiangyuh Wu"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -498,7 +760,16 @@
               "score": "6-4 6-4",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Cathy Vanderford",
+                "Holly Dexter"
+              ],
+              "loser_names": [
+                "Lisa Cook",
+                "Nancy Holland"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -507,7 +778,16 @@
               "score": "6-2 7-5",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Jennifer Petrie",
+                "Jan Willis"
+              ],
+              "loser_names": [
+                "Rowena Messner",
+                "Sarah Perez"
+              ]
             }
           ]
         },
@@ -531,7 +811,14 @@
               "score": "6-0 6-1",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Carroll Welch"
+              ],
+              "loser_names": [
+                "Seda Sargsyan"
+              ]
             },
             {
               "line": "2# Singles",
@@ -540,7 +827,14 @@
               "score": "6-2 6-3",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Paige Song"
+              ],
+              "loser_names": [
+                "Megan Bell"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -549,7 +843,16 @@
               "score": "6-3 6-1",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Stephanie McGregor",
+                "Kim Knotts"
+              ],
+              "loser_names": [
+                "Hayley Rodes",
+                "Michele Howser"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -558,7 +861,16 @@
               "score": "6-1 7-5",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Loc Nguyen",
+                "Melissa Kwong-Blais"
+              ],
+              "loser_names": [
+                "Tracey Lee",
+                "Yan Uyeno"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -567,7 +879,16 @@
               "score": "6-7 6-2 1-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Misti Webb",
+                "Kathryn Garlan"
+              ],
+              "loser_names": [
+                "Dawn Anderson",
+                "Kate Alred"
+              ]
             }
           ]
         },
@@ -591,7 +912,14 @@
               "score": "7-6 2-6 1-0",
               "result": "home",
               "winner_team": "ANTHEM CC",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Prexy Tamayo"
+              ],
+              "loser_names": [
+                "CHRISTINE McNair"
+              ]
             },
             {
               "line": "2# Singles",
@@ -600,7 +928,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "ANTHEM CC",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [],
+              "loser_names": [
+                "Crystal LaTour"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -609,7 +942,16 @@
               "score": "6-2 6-1",
               "result": "home",
               "winner_team": "ANTHEM CC",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Lisa Gobel",
+                "Tina Nathalia"
+              ],
+              "loser_names": [
+                "Allison Festa",
+                "Darlene Whittlesy"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -618,7 +960,16 @@
               "score": "6-4 6-3",
               "result": "home",
               "winner_team": "ANTHEM CC",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Jennifer Dalby",
+                "Ashlee Rowerdink"
+              ],
+              "loser_names": [
+                "Patricia Delgado",
+                "Gina Case"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -627,7 +978,16 @@
               "score": "6-3 6-4",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Alex Schrack",
+                "Judith Watson"
+              ],
+              "loser_names": [
+                "Sheri Cherubino",
+                "Christine LaBarre"
+              ]
             }
           ]
         },
@@ -651,7 +1011,14 @@
               "score": "6-1 6-1",
               "result": "away",
               "winner_team": "DTC #2",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Seda Sargsyan"
+              ],
+              "loser_names": [
+                "Ramona Acosta"
+              ]
             },
             {
               "line": "2# Singles",
@@ -660,7 +1027,14 @@
               "score": "6-3 6-2",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Hannah Stevens"
+              ],
+              "loser_names": [
+                "Chantel Vu"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -669,7 +1043,16 @@
               "score": "2-6 6-3 1-0",
               "result": "away",
               "winner_team": "DTC #2",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Nicole Reyes",
+                "Loc Nguyen"
+              ],
+              "loser_names": [
+                "Nancy Holland",
+                "Rika Cook"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -678,7 +1061,16 @@
               "score": "6-4 3-6 1-0",
               "result": "away",
               "winner_team": "DTC #2",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Marlaina Harris",
+                "Megan Bell"
+              ],
+              "loser_names": [
+                "Christine Ballard",
+                "Jen Liong"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -687,7 +1079,16 @@
               "score": "6-3 3-6 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Rowena Messner",
+                "Shiangyuh Wu"
+              ],
+              "loser_names": [
+                "Christi Lin",
+                "Shellene Goudge"
+              ]
             }
           ]
         },
@@ -711,7 +1112,14 @@
               "score": "7-6 6-4",
               "result": "away",
               "winner_team": "ANTHEM CC",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "away",
+              "winner_names": [
+                "Jules Mitchell"
+              ],
+              "loser_names": [
+                "Lyndsey van der Laan"
+              ]
             },
             {
               "line": "2# Singles",
@@ -720,7 +1128,14 @@
               "score": "6-1 6-4",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Crystal LaTour"
+              ],
+              "loser_names": [
+                "Wendy Hopper"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -729,7 +1144,16 @@
               "score": "2-6 6-0 1-0",
               "result": "away",
               "winner_team": "ANTHEM CC",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "away",
+              "winner_names": [
+                "Joan Perricone",
+                "Joann Komanowski"
+              ],
+              "loser_names": [
+                "Alisun Vehar",
+                "Gina Case"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -738,7 +1162,16 @@
               "score": "6-4 6-2",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Patricia Delgado",
+                "Kirsten Ingram"
+              ],
+              "loser_names": [
+                "Janet Wellman",
+                "Jennifer Petrie"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -747,7 +1180,16 @@
               "score": "6-2 6-3",
               "result": "away",
               "winner_team": "ANTHEM CC",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "away",
+              "winner_names": [
+                "Kelley Ferrence",
+                "Debi Marimberga"
+              ],
+              "loser_names": [
+                "Alex Schrack",
+                "Judith Watson"
+              ]
             }
           ]
         },
@@ -771,7 +1213,14 @@
               "score": "7-5 6-4",
               "result": "home",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Hayley Rodes"
+              ],
+              "loser_names": [
+                "Caroline Walton"
+              ]
             },
             {
               "line": "2# Singles",
@@ -780,7 +1229,14 @@
               "score": "6-2 3-6 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Ashlee Rowerdink"
+              ],
+              "loser_names": [
+                "Misti Webb"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -789,7 +1245,16 @@
               "score": "7-5 6-3",
               "result": "home",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Tracey Lee",
+                "Yan Uyeno"
+              ],
+              "loser_names": [
+                "Lisa Gobel",
+                "Jennifer Dalby"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -798,7 +1263,16 @@
               "score": "7-6 7-6",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Tina Nathalia",
+                "Nicole Palichat"
+              ],
+              "loser_names": [
+                "Carroll Welch",
+                "Andi Berger"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -807,7 +1281,16 @@
               "score": "6-2 4-6 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Leticia Schoff",
+                "Melissa Ruediger"
+              ],
+              "loser_names": [
+                "Michelle Brinlee",
+                "Michele Howser"
+              ]
             }
           ]
         },
@@ -831,7 +1314,14 @@
               "score": "6-3 4-6 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Sarah Perez"
+              ],
+              "loser_names": [
+                "Lyndsey van der Laan"
+              ]
             },
             {
               "line": "2# Singles",
@@ -840,7 +1330,14 @@
               "score": "5-7 6-4 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Kelly Kedge"
+              ],
+              "loser_names": [
+                "Darlene Whittlesy"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -849,7 +1346,16 @@
               "score": "6-3 6-2",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Nancy Holland",
+                "Rika Cook"
+              ],
+              "loser_names": [
+                "Andra Starr Scano",
+                "Patricia Delgado"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -858,7 +1364,16 @@
               "score": "6-4 5-7 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Rowena Messner",
+                "Shiangyuh Wu"
+              ],
+              "loser_names": [
+                "Alisun Vehar",
+                "Gina Case"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -867,7 +1382,13 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Christine Ballard",
+                "Michelle Willoughby"
+              ],
+              "loser_names": []
             }
           ]
         },
@@ -891,7 +1412,14 @@
               "score": "6-1 6-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Seda Sargsyan"
+              ],
+              "loser_names": [
+                "Linda Guastella"
+              ]
             },
             {
               "line": "2# Singles",
@@ -900,7 +1428,14 @@
               "score": "6-0 6-2",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Loc Nguyen"
+              ],
+              "loser_names": [
+                "Caroline Walton"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -909,7 +1444,16 @@
               "score": "6-1 4-6 1-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Megan Bell",
+                "Nicole Reyes"
+              ],
+              "loser_names": [
+                "Leticia Schoff",
+                "Melissa Ruediger"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -918,7 +1462,16 @@
               "score": "6-2 6-7 1-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Lisa Krzyzaniak",
+                "Marchelle Locke"
+              ],
+              "loser_names": [
+                "Nicole Palichat",
+                "Jennifer Dalby"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -927,7 +1480,16 @@
               "score": "7-6 7-6",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Sheri Cherubino",
+                "Christine LaBarre"
+              ],
+              "loser_names": [
+                "Mari Valvo",
+                "Kim Knotts"
+              ]
             }
           ]
         },
@@ -951,7 +1513,14 @@
               "score": "6-2 7-5",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Jules Mitchell"
+              ],
+              "loser_names": [
+                "Michele Howser"
+              ]
             },
             {
               "line": "2# Singles",
@@ -960,7 +1529,14 @@
               "score": "6-2 6-1",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Tracey Cutler"
+              ],
+              "loser_names": [
+                "Tracey Lee"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -969,7 +1545,16 @@
               "score": "4-6 7-6 1-0",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Holly Dexter",
+                "Jane Doe"
+              ],
+              "loser_names": [
+                "Mimi Liu",
+                "Yan Uyeno"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -978,7 +1563,16 @@
               "score": "6-2 6-4",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "away",
+              "winner_names": [
+                "Kathryn Garlan",
+                "Amanda Gumberg"
+              ],
+              "loser_names": [
+                "Jan Willis",
+                "Janet Wellman"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -987,7 +1581,16 @@
               "score": "6-4 6-4",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Cathy Vanderford",
+                "Debi Marimberga"
+              ],
+              "loser_names": [
+                "Misti Webb",
+                "Hong Lee"
+              ]
             }
           ]
         },
@@ -1011,7 +1614,14 @@
               "score": "3-6 6-2 1-0",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Hayley Rodes"
+              ],
+              "loser_names": [
+                "Sarah Perez"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1020,7 +1630,14 @@
               "score": "6-3 6-0",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Yan Uyeno"
+              ],
+              "loser_names": [
+                "Hannah Stevens"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1029,7 +1646,16 @@
               "score": "6-4 6-1",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Mimi Liu",
+                "Kathryn Garlan"
+              ],
+              "loser_names": [
+                "Christine Ballard",
+                "Kelly Kedge"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1038,7 +1664,16 @@
               "score": "7-6 6-3",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Amanda Gumberg",
+                "Michele Howser"
+              ],
+              "loser_names": [
+                "Nancy Holland",
+                "Shiangyuh Wu"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1047,7 +1682,16 @@
               "score": "6-3 6-2",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Ramona Acosta",
+                "Rika Cook"
+              ],
+              "loser_names": [
+                "Hong Lee",
+                "Michelle Brinlee"
+              ]
             }
           ]
         },
@@ -1071,7 +1715,14 @@
               "score": "6-3 6-2",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Darlene Whittlesy"
+              ],
+              "loser_names": [
+                "Megan Bell"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1080,7 +1731,14 @@
               "score": "6-0 6-1",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Kelly Twells"
+              ],
+              "loser_names": [
+                "Marlaina Harris"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1089,7 +1747,16 @@
               "score": "6-3 4-6 1-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Alisun Vehar",
+                "Gina Case"
+              ],
+              "loser_names": [
+                "Shellene Goudge",
+                "Nicole Reyes"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1098,7 +1765,16 @@
               "score": "7-5 5-7 1-0",
               "result": "away",
               "winner_team": "ANTHEM CC",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Preslyn Harris",
+                "Fiona Yeh"
+              ],
+              "loser_names": [
+                "Heidi Thornhill",
+                "Kirsten Ingram"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1107,7 +1783,16 @@
               "score": "2-6 6-4 1-0",
               "result": "away",
               "winner_team": "ANTHEM CC",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Lisa Krzyzaniak",
+                "Marchelle Locke"
+              ],
+              "loser_names": [
+                "Andra Starr Scano",
+                "Alex Schrack"
+              ]
             }
           ]
         },
@@ -1131,7 +1816,14 @@
               "score": "6-3 6-3",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Wendy Hopper"
+              ],
+              "loser_names": [
+                "Linda Guastella"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1140,7 +1832,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Jules Mitchell"
+              ],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -1149,7 +1846,16 @@
               "score": "4-6 6-4 1-0",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Joann Komanowski",
+                "Sally Ryba"
+              ],
+              "loser_names": [
+                "Melissa Ruediger",
+                "Prexy Tamayo"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1158,7 +1864,16 @@
               "score": "6-3 7-5",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Cathy Vanderford",
+                "PJ Shouldis"
+              ],
+              "loser_names": [
+                "Tina Nathalia",
+                "Nicole Palichat"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1167,7 +1882,16 @@
               "score": "6-0 6-1",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Jane Doe",
+                "Jan Willis"
+              ],
+              "loser_names": [
+                "Christine LaBarre",
+                "Sheri Cherubino"
+              ]
             }
           ]
         },
@@ -1191,7 +1915,14 @@
               "score": "6-4 6-1",
               "result": "away",
               "winner_team": "DTC #2",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Samantha Schuster"
+              ],
+              "loser_names": [
+                "Loc Nguyen"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1200,7 +1931,14 @@
               "score": "6-2 7-5",
               "result": "away",
               "winner_team": "DTC #2",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Kelly Kedge"
+              ],
+              "loser_names": [
+                "Marlaina Harris"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1209,7 +1947,16 @@
               "score": "6-2 5-7 1-0",
               "result": "away",
               "winner_team": "DTC #2",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Nancy Holland",
+                "Jen Liong"
+              ],
+              "loser_names": [
+                "Nicole Reyes",
+                "Melissa Kwong-Blais"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1218,7 +1965,16 @@
               "score": "6-4 6-1",
               "result": "away",
               "winner_team": "DTC #2",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Angela Stevens",
+                "Hannah Stevens"
+              ],
+              "loser_names": [
+                "Dawn Anderson",
+                "Kate Alred"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1227,7 +1983,16 @@
               "score": "6-1 4-6 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Preslyn Harris",
+                "Marchelle Locke"
+              ],
+              "loser_names": [
+                "Shiangyuh Wu",
+                "Shaun Bruce"
+              ]
             }
           ]
         },
@@ -1251,7 +2016,14 @@
               "score": "7-5 6-4",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Jules Mitchell"
+              ],
+              "loser_names": [
+                "Lyndsey van der Laan"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1260,7 +2032,14 @@
               "score": "6-4 6-2",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Wendy Hopper"
+              ],
+              "loser_names": [
+                "CHRISTINE McNair"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1269,7 +2048,16 @@
               "score": "6-1 6-3",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Joann Komanowski",
+                "PJ Shouldis"
+              ],
+              "loser_names": [
+                "Gina Case",
+                "Andra Starr Scano"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1278,7 +2066,16 @@
               "score": "6-1 6-2",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Jane Doe",
+                "Cathy Vanderford"
+              ],
+              "loser_names": [
+                "Judith Watson",
+                "Patricia Delgado"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1287,7 +2084,16 @@
               "score": "6-0 6-2",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Joan Perricone",
+                "Jennifer Petrie"
+              ],
+              "loser_names": [
+                "Darlene Whittlesy",
+                "Alex Schrack"
+              ]
             }
           ]
         },
@@ -1311,7 +2117,14 @@
               "score": "6-3 1-6 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Yan Uyeno"
+              ],
+              "loser_names": [
+                "Caroline Walton"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1320,7 +2133,14 @@
               "score": "6-2 6-1",
               "result": "home",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Ashlee Rowerdink"
+              ],
+              "loser_names": [
+                "Tracey Lee"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1329,7 +2149,16 @@
               "score": "4-6 6-2 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Paige Song",
+                "Amanda Gumberg"
+              ],
+              "loser_names": [
+                "Melissa Ruediger",
+                "Leticia Schoff"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1338,7 +2167,16 @@
               "score": "6-7 6-1 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Carroll Welch",
+                "Hong Lee"
+              ],
+              "loser_names": [
+                "Nicole Palichat",
+                "Tina Nathalia"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1347,7 +2185,16 @@
               "score": "6-4 7-5",
               "result": "home",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Jennifer Dalby",
+                "Christine LaBarre"
+              ],
+              "loser_names": [
+                "Andi Berger",
+                "Britney Jensen"
+              ]
             }
           ]
         },
@@ -1371,7 +2218,14 @@
               "score": "6-1 6-3",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "CHRISTINE McNair"
+              ],
+              "loser_names": [
+                "Samantha Schuster"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1380,7 +2234,14 @@
               "score": "7-6 7-5",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Crystal LaTour"
+              ],
+              "loser_names": [
+                "Hannah Stevens"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1389,7 +2250,16 @@
               "score": "5-7 7-5 1-0",
               "result": "away",
               "winner_team": "ANTHEM CC",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Nancy Holland",
+                "Lisa Cook"
+              ],
+              "loser_names": [
+                "Alisun Vehar",
+                "Gina Case"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1398,7 +2268,16 @@
               "score": "6-4 3-6 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Allison Festa",
+                "Darlene Whittlesy"
+              ],
+              "loser_names": [
+                "Sarah Perez",
+                "Kelly Kedge"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1407,7 +2286,16 @@
               "score": "6-2 6-1",
               "result": "away",
               "winner_team": "ANTHEM CC",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Michelle Willoughby",
+                "Amrita Soli"
+              ],
+              "loser_names": [
+                "Kirsten Ingram",
+                "Heidi Thornhill"
+              ]
             }
           ]
         },
@@ -1431,7 +2319,14 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Leticia Schoff"
+              ],
+              "loser_names": [
+                "Seda Sargsyan"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1440,7 +2335,14 @@
               "score": "3-6 6-4 1-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Prexy Tamayo"
+              ],
+              "loser_names": [
+                "Marlaina Harris"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1449,7 +2351,16 @@
               "score": "7-5 6-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Nicole Palichat",
+                "Melissa Ruediger"
+              ],
+              "loser_names": [
+                "Megan Bell",
+                "Dawn Anderson"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1458,7 +2369,16 @@
               "score": "6-2 6-1",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Caroline Walton",
+                "Sheri Cherubino"
+              ],
+              "loser_names": [
+                "Christi Lin",
+                "Loc Nguyen"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1467,7 +2387,16 @@
               "score": "6-4 7-6",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Fiona Yeh",
+                "Kim Knotts"
+              ],
+              "loser_names": [
+                "Christine LaBarre",
+                "Tina Nathalia"
+              ]
             }
           ]
         },
@@ -1491,7 +2420,14 @@
               "score": "6-2 6-1",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Michelle Brinlee"
+              ],
+              "loser_names": [
+                "Amber Welby"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1500,7 +2436,14 @@
               "score": "6-1 6-2",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Hong Lee"
+              ],
+              "loser_names": [
+                "Jules Mitchell"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1509,7 +2452,16 @@
               "score": "6-2 6-0",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "away",
+              "winner_names": [
+                "Marilyn Fenn",
+                "Sally Ryba"
+              ],
+              "loser_names": [
+                "Tracey Lee",
+                "Yan Uyeno"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1518,7 +2470,16 @@
               "score": "6-0 7-5",
               "result": "home",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Paige Song",
+                "Misti Webb"
+              ],
+              "loser_names": [
+                "Tracey Cutler",
+                "Joan Perricone"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1527,7 +2488,16 @@
               "score": "6-3 6-2",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "away",
+              "winner_names": [
+                "Jane Doe",
+                "Jan Willis"
+              ],
+              "loser_names": [
+                "Britney Jensen",
+                "Amanda Gumberg"
+              ]
             }
           ]
         },
@@ -1551,7 +2521,14 @@
               "score": "6-4 6-4",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Linda Guastella"
+              ],
+              "loser_names": [
+                "Sarah Perez"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1560,7 +2537,14 @@
               "score": "6-3 1-6 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Prexy Tamayo"
+              ],
+              "loser_names": [
+                "Kelly Kedge"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1569,7 +2553,16 @@
               "score": "1-6 6-2 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Nicole Palichat",
+                "Caroline Walton"
+              ],
+              "loser_names": [
+                "Christine Ballard",
+                "Shaun Bruce"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1578,7 +2571,16 @@
               "score": "4-6 6-3 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Sheri Cherubino",
+                "Melissa Ruediger"
+              ],
+              "loser_names": [
+                "Angela Stevens",
+                "Hannah Stevens"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1587,7 +2589,13 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [],
+              "loser_names": [
+                "Amrita Soli",
+                "Shiangyuh Wu"
+              ]
             }
           ]
         },
@@ -1611,7 +2619,14 @@
               "score": "6-1 3-1",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Megan Bell"
+              ],
+              "loser_names": [
+                "Amber Welby"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1620,7 +2635,14 @@
               "score": "7-5 7-5",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Chantel Vu"
+              ],
+              "loser_names": [
+                "Jan Willis"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1629,7 +2651,16 @@
               "score": "6-4 6-4",
               "result": "away",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Joan Perricone",
+                "Holly Dexter"
+              ],
+              "loser_names": [
+                "Dawn Anderson",
+                "Shellene Goudge"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1638,7 +2669,16 @@
               "score": "6-3 6-1",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Fiona Yeh",
+                "Christi Lin"
+              ],
+              "loser_names": [
+                "Debi Marimberga",
+                "Marilyn Fenn"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1647,7 +2687,16 @@
               "score": "7-5 1-6 1-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Mari Valvo",
+                "Stephanie McGregor"
+              ],
+              "loser_names": [
+                "Sally Ryba",
+                "PJ Shouldis"
+              ]
             }
           ]
         },
@@ -1671,7 +2720,14 @@
               "score": "6-1 6-1",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Hayley Rodes"
+              ],
+              "loser_names": [
+                "Crystal LaTour"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1680,7 +2736,14 @@
               "score": "6-4 3-6 1-0",
               "result": "home",
               "winner_team": "ANTHEM CC",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "CHRISTINE McNair"
+              ],
+              "loser_names": [
+                "Tracey Lee"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1689,7 +2752,16 @@
               "score": "7-5 3-6 1-0",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Michele Howser",
+                "Mimi Liu"
+              ],
+              "loser_names": [
+                "Gina Case",
+                "Alisun Vehar"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1698,7 +2770,16 @@
               "score": "6-7 6-3 1-0",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Paige Song",
+                "Amanda Gumberg"
+              ],
+              "loser_names": [
+                "Alex Schrack",
+                "Patricia Delgado"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1707,7 +2788,16 @@
               "score": "6-4 6-4",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Hong Lee",
+                "Andi Berger"
+              ],
+              "loser_names": [
+                "Darlene Whittlesy",
+                "Andra Starr Scano"
+              ]
             }
           ]
         },
@@ -1731,7 +2821,14 @@
               "score": "6-7 6-3 1-0",
               "result": "away",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Wendy Hopper"
+              ],
+              "loser_names": [
+                "Sarah Perez"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1740,7 +2837,14 @@
               "score": "6-0 6-7 1-0",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Hannah Stevens"
+              ],
+              "loser_names": [
+                "Cathy Vanderford"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1749,7 +2853,16 @@
               "score": "3-6 6-3 1-0",
               "result": "away",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Marilyn Fenn",
+                "Joann Komanowski"
+              ],
+              "loser_names": [
+                "Christine Ballard",
+                "Jen Liong"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1758,7 +2871,16 @@
               "score": "6-3 6-1",
               "result": "home",
               "winner_team": "SUMMERLIN ARBORS",
-              "loser_team": "LIFE TIME FITNESS/GV"
+              "loser_team": "LIFE TIME FITNESS/GV",
+              "court_winner": "home",
+              "winner_names": [
+                "Shiangyuh Wu",
+                "Rika Cook"
+              ],
+              "loser_names": [
+                "Holly Dexter",
+                "Jennifer Petrie"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1767,7 +2889,16 @@
               "score": "6-4 6-3",
               "result": "away",
               "winner_team": "LIFE TIME FITNESS/GV",
-              "loser_team": "SUMMERLIN ARBORS"
+              "loser_team": "SUMMERLIN ARBORS",
+              "court_winner": "away",
+              "winner_names": [
+                "Jan Willis",
+                "Sally Ryba"
+              ],
+              "loser_names": [
+                "Nancy Holland",
+                "Kelly Kedge"
+              ]
             }
           ]
         },
@@ -1791,7 +2922,14 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Seda Sargsyan"
+              ],
+              "loser_names": [
+                "Paige Song"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1800,7 +2938,14 @@
               "score": "6-3 6-2",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Loc Nguyen"
+              ],
+              "loser_names": [
+                "Hayley Rodes"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1809,7 +2954,16 @@
               "score": "6-3 4-6 1-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Nicole Reyes",
+                "Megan Bell"
+              ],
+              "loser_names": [
+                "Yan Uyeno",
+                "Tracey Lee"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1818,7 +2972,16 @@
               "score": "3-6 7-5 1-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "RED ROCK CC #1"
+              "loser_team": "RED ROCK CC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Christi Lin",
+                "Lisa Krzyzaniak"
+              ],
+              "loser_names": [
+                "Michelle Brinlee",
+                "Michele Howser"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1827,7 +2990,16 @@
               "score": "6-3 6-1",
               "result": "away",
               "winner_team": "RED ROCK CC #1",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Mimi Liu",
+                "Kathryn Garlan"
+              ],
+              "loser_names": [
+                "Mari Valvo",
+                "Stephanie McGregor"
+              ]
             }
           ]
         },
@@ -1851,7 +3023,14 @@
               "score": "6-4 4-6 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Caroline Walton"
+              ],
+              "loser_names": [
+                "Lyndsey van der Laan"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1860,7 +3039,14 @@
               "score": "3-6 6-4 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Linda Guastella"
+              ],
+              "loser_names": [
+                "Kelly Twells"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1869,7 +3055,16 @@
               "score": "6-3 6-4",
               "result": "home",
               "winner_team": "ANTHEM CC",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Gina Case",
+                "Alisun Vehar"
+              ],
+              "loser_names": [
+                "Nicole Palichat",
+                "Tina Nathalia"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1878,7 +3073,16 @@
               "score": "6-4 2-6 1-0",
               "result": "home",
               "winner_team": "ANTHEM CC",
-              "loser_team": "SPANISH TRAIL #2"
+              "loser_team": "SPANISH TRAIL #2",
+              "court_winner": "home",
+              "winner_names": [
+                "Patricia Delgado",
+                "Darlene Whittlesy"
+              ],
+              "loser_names": [
+                "Ashlee Rowerdink",
+                "Leticia Schoff"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1887,7 +3091,16 @@
               "score": "3-6 6-3 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #2",
-              "loser_team": "ANTHEM CC"
+              "loser_team": "ANTHEM CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Jennifer Dalby",
+                "Prexy Tamayo"
+              ],
+              "loser_names": [
+                "Andra Starr Scano",
+                "Heidi Thornhill"
+              ]
             }
           ]
         }
@@ -2017,7 +3230,14 @@
               "score": "6-2 6-4",
               "result": "away",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Maria Allen"
+              ],
+              "loser_names": [
+                "Karina McAffee"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2026,7 +3246,14 @@
               "score": "6-3 7-5",
               "result": "away",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Melanie Isbell"
+              ],
+              "loser_names": [
+                "Blair May"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2035,7 +3262,16 @@
               "score": "6-3 4-6 1-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Mary Lind",
+                "Kathleen Chamberlain"
+              ],
+              "loser_names": [
+                "Anne Gumm",
+                "Chelsea Gray"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2044,7 +3280,16 @@
               "score": "6-1 6-1",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Travis Azous",
+                "Tanya Hale"
+              ],
+              "loser_names": [
+                "Christina Rich",
+                "Joan Stertzer"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2053,7 +3298,16 @@
               "score": "6-3 7-5",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "home",
+              "winner_names": [
+                "Megan Galli",
+                "Patti Zack"
+              ],
+              "loser_names": [
+                "Katrin Dragnev",
+                "Lori LaBarbera"
+              ]
             }
           ]
         },
@@ -2077,7 +3331,14 @@
               "score": "6-4 4-6 1-0",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Monica Baldwin"
+              ],
+              "loser_names": [
+                "Mai Le"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2086,7 +3347,14 @@
               "score": "6-4 7-5",
               "result": "away",
               "winner_team": "DTC #3",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Valerie Witherspoon"
+              ],
+              "loser_names": [
+                "Lisa Gaughan"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2095,7 +3363,16 @@
               "score": "6-4 6-0",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Susan Grady",
+                "Arika Carrier"
+              ],
+              "loser_names": [
+                "LaCheyva Edmonis",
+                "Alexandria Chang"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2104,7 +3381,16 @@
               "score": "6-1 7-6",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Jamie Johnson",
+                "Jeralyn Marchesi"
+              ],
+              "loser_names": [
+                "Kelly Nguyen",
+                "Melissa Hicks"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2113,7 +3399,16 @@
               "score": "6-4 6-0",
               "result": "away",
               "winner_team": "DTC #3",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Anna Clark",
+                "Kara Gaston"
+              ],
+              "loser_names": [
+                "Christina Smith",
+                "Jennifer Wang"
+              ]
             }
           ]
         },
@@ -2137,7 +3432,14 @@
               "score": "6-1 6-4",
               "result": "home",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Amanda Verba"
+              ],
+              "loser_names": [
+                "Shilpa Daulat"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2146,7 +3448,14 @@
               "score": "6-3 6-0",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Kelsey Spence"
+              ],
+              "loser_names": [
+                "Punam Patel"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2155,7 +3464,16 @@
               "score": "4-6 7-6 1-0",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Vanessa Nicole Rowe",
+                "Allison Ibarguen"
+              ],
+              "loser_names": [
+                "Amy Cooper",
+                "Michelle Castillo"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2164,7 +3482,16 @@
               "score": "6-2 6-2",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Vinne Chen",
+                "Sara Sager"
+              ],
+              "loser_names": [
+                "Karen Hom",
+                "Stella Chivikas"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2173,7 +3500,16 @@
               "score": "6-4 6-4",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Jill Morrison",
+                "Alisia Pulella"
+              ],
+              "loser_names": [
+                "Lana Penrose",
+                "Jenny Baxter"
+              ]
             }
           ]
         },
@@ -2197,7 +3533,14 @@
               "score": "6-3 4-6 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Jaclyn O'Malley"
+              ],
+              "loser_names": [
+                "Vanessa Nicole Rowe"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2206,7 +3549,14 @@
               "score": "6-4 6-4",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Shilpa Daulat"
+              ],
+              "loser_names": [
+                "Maria Truman"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2215,7 +3565,16 @@
               "score": "6-1 6-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Liz Jones",
+                "Anne Kellogg"
+              ],
+              "loser_names": [
+                "Sara Sager",
+                "Chandra VanPaepeghem"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2224,7 +3583,16 @@
               "score": "6-4 4-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Nicole Medas",
+                "Natasha Kattau"
+              ],
+              "loser_names": [
+                "Patti Zack",
+                "Mary Lind"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2233,7 +3601,16 @@
               "score": "6-1 6-1",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Alisia Pulella",
+                "Kelsey Spence"
+              ],
+              "loser_names": [
+                "Karen Watts",
+                "Tanya Hale"
+              ]
             }
           ]
         },
@@ -2257,7 +3634,14 @@
               "score": "6-3 4-6 1-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [
+                "Maria Allen"
+              ],
+              "loser_names": [
+                "Monica Baldwin"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2266,7 +3650,14 @@
               "score": "6-2 6-3",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [
+                "Melanie Isbell"
+              ],
+              "loser_names": [
+                "Lisa Gaughan"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2275,7 +3666,16 @@
               "score": "6-3 6-1",
               "result": "away",
               "winner_team": "TPC",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Arika Carrier",
+                "Jamie Warrington"
+              ],
+              "loser_names": [
+                "Anne Gumm",
+                "Katrin Dragnev"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2284,7 +3684,16 @@
               "score": "6-3 6-3",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [
+                "Lori LaBarbera",
+                "Lorraine Yarde"
+              ],
+              "loser_names": [
+                "Carolyn Wood",
+                "Susan Grady"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2293,7 +3702,16 @@
               "score": "7-6 2-1",
               "result": "away",
               "winner_team": "TPC",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Liliya Pummill",
+                "Judith Milligan"
+              ],
+              "loser_names": [
+                "Amy Kirk",
+                "Joan Stertzer"
+              ]
             }
           ]
         },
@@ -2317,7 +3735,14 @@
               "score": "6-3 6-1",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Stacie Corelle"
+              ],
+              "loser_names": [
+                "Punam Patel"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2326,7 +3751,14 @@
               "score": "6-3 6-1",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Kelly McPherson"
+              ],
+              "loser_names": [
+                "Gina Thornton"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2335,7 +3767,16 @@
               "score": "7-6 6-4",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Kami Adamson",
+                "Christina Drees"
+              ],
+              "loser_names": [
+                "Val Froman",
+                "Michelle Castillo"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2344,7 +3785,16 @@
               "score": "6-0 6-4",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Claudia Hernandez",
+                "Karen Kiyono"
+              ],
+              "loser_names": [
+                "Karen Hom",
+                "Stella Chivikas"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2353,7 +3803,16 @@
               "score": "6-3 7-5",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Sabine Curtis",
+                "EMELIA ALLEN"
+              ],
+              "loser_names": [
+                "RACQUEL DIZON",
+                "Monica Johnson"
+              ]
             }
           ]
         },
@@ -2377,7 +3836,14 @@
               "score": "5-7 7-6 1-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Stacie Corelle"
+              ],
+              "loser_names": [
+                "Karina McAffee"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2386,7 +3852,14 @@
               "score": "6-7 6-0 1-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Kelly McPherson"
+              ],
+              "loser_names": [
+                "Shanna Toft"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2395,7 +3868,16 @@
               "score": "6-1 6-4",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Maria Truman",
+                "Suzy Wirth"
+              ],
+              "loser_names": [
+                "Claudia Hernandez",
+                "Karen Kiyono"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2404,7 +3886,16 @@
               "score": "7-6 6-2",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Christina Drees",
+                "Kami Adamson"
+              ],
+              "loser_names": [
+                "Mary Lind",
+                "Tyree Judd"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2413,7 +3904,16 @@
               "score": "5-7 6-3 1-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Valeria Perdomo",
+                "Sabine Curtis"
+              ],
+              "loser_names": [
+                "Travis Azous",
+                "Julie MacDonald"
+              ]
             }
           ]
         },
@@ -2437,7 +3937,14 @@
               "score": "4-6 6-2 1-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Melanie Isbell"
+              ],
+              "loser_names": [
+                "Valerie Witherspoon"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2446,7 +3953,14 @@
               "score": "6-1 2-6 1-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Vanessa Landreman"
+              ],
+              "loser_names": [
+                "Tayoni Coleman"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2455,7 +3969,16 @@
               "score": "6-4 7-5",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Lorraine Yarde",
+                "Katrin Dragnev"
+              ],
+              "loser_names": [
+                "Kelly Nguyen",
+                "Lisa Schnitz"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2464,7 +3987,16 @@
               "score": "6-2 6-2",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Anne Gumm",
+                "Chelsea Gray"
+              ],
+              "loser_names": [
+                "LaCheyva Edmonis",
+                "Melissa Hicks"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2473,7 +4005,16 @@
               "score": "6-4 6-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Christina Rich",
+                "Abigail Cox"
+              ],
+              "loser_names": [
+                "NANCIE WEBSTER",
+                "Anna Clark"
+              ]
             }
           ]
         },
@@ -2497,7 +4038,14 @@
               "score": "6-4 6-1",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Monica Baldwin"
+              ],
+              "loser_names": [
+                "Natasha Kattau"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2506,7 +4054,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Liliya Pummill"
+              ],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -2515,7 +4068,16 @@
               "score": "6-4 7-5",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Jamie Johnson",
+                "Jeralyn Marchesi"
+              ],
+              "loser_names": [
+                "Shilpa Daulat",
+                "Allison Ibarguen"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2524,7 +4086,16 @@
               "score": "6-4 6-1",
               "result": "away",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Chandra VanPaepeghem",
+                "Sara Sager"
+              ],
+              "loser_names": [
+                "Jamie Warrington",
+                "Jennifer Hall"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2533,7 +4104,16 @@
               "score": "6-0 5-7 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Jill Morrison",
+                "Vinne Chen"
+              ],
+              "loser_names": [
+                "Carolyn Wood",
+                "Elisabeth Skinner"
+              ]
             }
           ]
         },
@@ -2557,7 +4137,14 @@
               "score": "7-5 7-6",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Amanda Verba"
+              ],
+              "loser_names": [
+                "Shanna Toft"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2566,7 +4153,14 @@
               "score": "6-1 6-2",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Tyree Judd"
+              ],
+              "loser_names": [
+                "Punam Patel"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2575,7 +4169,16 @@
               "score": "7-6 7-5",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Jenny Baxter",
+                "Amy Cooper"
+              ],
+              "loser_names": [
+                "Julie MacDonald",
+                "Karen Watts"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2584,7 +4187,16 @@
               "score": "6-4 6-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "RACQUEL DIZON",
+                "Lana Penrose"
+              ],
+              "loser_names": [
+                "Suzy Wirth",
+                "Maria Truman"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2593,7 +4205,16 @@
               "score": "6-4 6-4",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Karen Hom",
+                "Michelle Castillo"
+              ],
+              "loser_names": [
+                "Travis Azous",
+                "Mary Lind"
+              ]
             }
           ]
         },
@@ -2617,7 +4238,14 @@
               "score": "6-2 6-2",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Shawanna Johnson"
+              ],
+              "loser_names": [
+                "Monica Baldwin"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2626,7 +4254,14 @@
               "score": "4-6 6-2 1-0",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Lisa Gaughan"
+              ],
+              "loser_names": [
+                "Shi L Oskooi"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2635,7 +4270,16 @@
               "score": "6-2 6-3",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Claudia Hernandez",
+                "Karen Kiyono"
+              ],
+              "loser_names": [
+                "Leslie Brodie",
+                "Arika Carrier"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2644,7 +4288,16 @@
               "score": "6-2 6-2",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Carolyn Wood",
+                "Jennifer Hall"
+              ],
+              "loser_names": [
+                "Sabine Curtis",
+                "Amy Waters"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2653,7 +4306,16 @@
               "score": "5-7 6-1 1-0",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Elisabeth Skinner",
+                "Maggie Skinner"
+              ],
+              "loser_names": [
+                "Valeria Perdomo",
+                "Diane Paull"
+              ]
             }
           ]
         },
@@ -2677,7 +4339,14 @@
               "score": "6-2 6-2",
               "result": "away",
               "winner_team": "DTC #3",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Tayoni Coleman"
+              ],
+              "loser_names": [
+                "Cindy Nguyen"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2686,7 +4355,14 @@
               "score": "7-5",
               "result": "home",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Alisia Pulella"
+              ],
+              "loser_names": [
+                "LaCheyva Edmonis"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2695,7 +4371,16 @@
               "score": "7-6 7-6",
               "result": "home",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Chandra VanPaepeghem",
+                "Sara Sager"
+              ],
+              "loser_names": [
+                "Anna Clark",
+                "Kara Gaston"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2704,7 +4389,16 @@
               "score": "6-2 6-3",
               "result": "home",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Vinne Chen",
+                "Jill Morrison"
+              ],
+              "loser_names": [
+                "Lisa Schnitz",
+                "Kelly Nguyen"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2713,7 +4407,16 @@
               "score": "7-5 7-5",
               "result": "home",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Allison Ibarguen",
+                "Shilpa Daulat"
+              ],
+              "loser_names": [
+                "Kristyl Addison",
+                "Patti Oakes"
+              ]
             }
           ]
         },
@@ -2737,7 +4440,14 @@
               "score": "6-4 6-4",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Melanie Isbell"
+              ],
+              "loser_names": [
+                "Shilpa Daulat"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2746,7 +4456,14 @@
               "score": "6-3 6-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Vanessa Landreman"
+              ],
+              "loser_names": [
+                "Cindy Nguyen"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2755,7 +4472,16 @@
               "score": "6-3 5-7 1-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Teisha Hunsaker",
+                "Tricia Colbert"
+              ],
+              "loser_names": [
+                "Chandra VanPaepeghem",
+                "Sara Sager"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2764,7 +4490,16 @@
               "score": "6-3 6-7 1-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Jamie Kelvington",
+                "Lori LaBarbera"
+              ],
+              "loser_names": [
+                "My Vuong",
+                "Nicole Medas"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2773,7 +4508,16 @@
               "score": "6-1 6-4",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Abigail Cox",
+                "Jessica Borghoff"
+              ],
+              "loser_names": [
+                "Natasha Kattau",
+                "Vanessa Nicole Rowe"
+              ]
             }
           ]
         },
@@ -2797,7 +4541,14 @@
               "score": "3-6 7-6 1-0",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Amanda Verba"
+              ],
+              "loser_names": [
+                "Monica Baldwin"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2806,7 +4557,14 @@
               "score": "6-0 6-1",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Punam Patel"
+              ],
+              "loser_names": [
+                "Lisa Gaughan"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2815,7 +4573,16 @@
               "score": "7-5 7-5",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Arika Carrier",
+                "Jennifer Hall"
+              ],
+              "loser_names": [
+                "Jenny Baxter",
+                "Val Froman"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2824,7 +4591,16 @@
               "score": "6-2 7-5",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Susan Castelli",
+                "Jamie Warrington"
+              ],
+              "loser_names": [
+                "Amy Cooper",
+                "Stella Chivikas"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2833,7 +4609,16 @@
               "score": "2-6 7-6 1-0",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Jamie Johnson",
+                "Christina Smith"
+              ],
+              "loser_names": [
+                "Tracey Willson",
+                "Gina Thornton"
+              ]
             }
           ]
         },
@@ -2857,7 +4642,14 @@
               "score": "6-3 6-0",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Tayoni Coleman"
+              ],
+              "loser_names": [
+                "Stacie Corelle"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2866,7 +4658,14 @@
               "score": "6-3 6-3",
               "result": "away",
               "winner_team": "DTC #3",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Shawanna Johnson"
+              ],
+              "loser_names": [
+                "Valerie Witherspoon"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2875,7 +4674,16 @@
               "score": "6-4 6-3",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Kelly Nguyen",
+                "Donna Lefever"
+              ],
+              "loser_names": [
+                "EMELIA ALLEN",
+                "Amy Waters"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2884,7 +4692,16 @@
               "score": "6-1 6-7 1-0",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Lisa Schnitz",
+                "Kara Gaston"
+              ],
+              "loser_names": [
+                "Diane Paull",
+                "Valeria Perdomo"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2893,7 +4710,16 @@
               "score": "3-6 6-1 1-0",
               "result": "away",
               "winner_team": "DTC #3",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Karen Kiyono",
+                "Michelle Jarvis"
+              ],
+              "loser_names": [
+                "Alexandria Chang",
+                "Kristyl Addison"
+              ]
             }
           ]
         },
@@ -2917,7 +4743,14 @@
               "score": "6-2 6-1",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [
+                "Jamie Warrington"
+              ],
+              "loser_names": [
+                "Shanna Toft"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2926,7 +4759,14 @@
               "score": "6-2 7-5",
               "result": "away",
               "winner_team": "TPC",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Jaclyn O'Malley"
+              ],
+              "loser_names": [
+                "Monica Baldwin"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2935,7 +4775,16 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [
+                "Susan Grady",
+                "Kathryn Marmor"
+              ],
+              "loser_names": [
+                "Megan Galli",
+                "Kathleen Chamberlain"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2944,7 +4793,16 @@
               "score": "6-1 6-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [
+                "Maggie Skinner",
+                "Jennifer Wang"
+              ],
+              "loser_names": [
+                "Mary Lind",
+                "Patti Zack"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2953,7 +4811,16 @@
               "score": "6-4 4-6 1-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [
+                "Jeralyn Marchesi",
+                "Susan Castelli"
+              ],
+              "loser_names": [
+                "Karen Watts",
+                "Deborah Protell"
+              ]
             }
           ]
         },
@@ -2977,7 +4844,14 @@
               "score": "3-6 6-0 1-0",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Maria Allen"
+              ],
+              "loser_names": [
+                "Stacie Corelle"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2986,7 +4860,14 @@
               "score": "6-0 6-2",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Kelly McPherson"
+              ],
+              "loser_names": [
+                "Vanessa Landreman"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2995,7 +4876,16 @@
               "score": "6-2 6-3",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Anne Gumm",
+                "Christina Rich"
+              ],
+              "loser_names": [
+                "Sabine Curtis",
+                "Amy Waters"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3004,7 +4894,16 @@
               "score": "7-5 6-2",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Lori LaBarbera",
+                "Tricia Colbert"
+              ],
+              "loser_names": [
+                "Claudia Hernandez",
+                "Karen Kiyono"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3013,7 +4912,16 @@
               "score": "6-2 6-1",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Christina Drees",
+                "Sydney Lobato"
+              ],
+              "loser_names": [
+                "Katrin Dragnev",
+                "Lorraine Yarde"
+              ]
             }
           ]
         },
@@ -3037,7 +4945,14 @@
               "score": "6-3 6-2",
               "result": "home",
               "winner_team": "DESERT PALM",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Valerie Witherspoon"
+              ],
+              "loser_names": [
+                "Amanda Verba"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3046,7 +4961,14 @@
               "score": "6-1 6-1",
               "result": "home",
               "winner_team": "DESERT PALM",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Tayoni Coleman"
+              ],
+              "loser_names": [
+                "Punam Patel"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3055,7 +4977,16 @@
               "score": "6-4 6-2",
               "result": "home",
               "winner_team": "DESERT PALM",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "NANCIE WEBSTER",
+                "Donna Lefever"
+              ],
+              "loser_names": [
+                "Karen Hom",
+                "Val Froman"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3064,7 +4995,16 @@
               "score": "7-5 6-3",
               "result": "home",
               "winner_team": "DESERT PALM",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Anna Clark",
+                "Melissa Hicks"
+              ],
+              "loser_names": [
+                "Michelle Castillo",
+                "Gina Thornton"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3073,7 +5013,16 @@
               "score": "6-3 6-2",
               "result": "away",
               "winner_team": "DTC #3",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "away",
+              "winner_names": [
+                "Lana Penrose",
+                "Monica Johnson"
+              ],
+              "loser_names": [
+                "Alexandria Chang",
+                "Kristyl Addison"
+              ]
             }
           ]
         },
@@ -3097,7 +5046,14 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Shanna Toft"
+              ],
+              "loser_names": [
+                "Monica Johnson"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3106,7 +5062,14 @@
               "score": "7-6 6-4",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Maria Truman"
+              ],
+              "loser_names": [
+                "Gina Thornton"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3115,7 +5078,16 @@
               "score": "6-0 6-3",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Patti Zack",
+                "Anne Kellogg"
+              ],
+              "loser_names": [
+                "Jenny Baxter",
+                "Michelle Castillo"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3124,7 +5096,16 @@
               "score": "6-3 7-6",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Travis Azous",
+                "Julie MacDonald"
+              ],
+              "loser_names": [
+                "Val Froman",
+                "Amy Cooper"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3133,7 +5114,13 @@
               "score": "6-0 6-0",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "RACQUEL DIZON",
+                "Tracey Willson"
+              ],
+              "loser_names": []
             }
           ]
         },
@@ -3157,7 +5144,14 @@
               "score": "7-6 0-6 1-0",
               "result": "away",
               "winner_team": "DTC #3",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Jamie Warrington"
+              ],
+              "loser_names": [
+                "Valerie Witherspoon"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3166,7 +5160,12 @@
               "score": "6-0 6-0",
               "result": "away",
               "winner_team": "DTC #3",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [],
+              "loser_names": [
+                "Melissa Hicks"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3175,7 +5174,16 @@
               "score": "5-7 6-4 1-0",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Donna Lefever",
+                "LaCheyva Edmonis"
+              ],
+              "loser_names": [
+                "Jennifer Hall",
+                "Carolyn Wood"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3184,7 +5192,16 @@
               "score": "6-3 6-1",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Mai Le",
+                "Kelly Nguyen"
+              ],
+              "loser_names": [
+                "Jeralyn Marchesi",
+                "Christina Smith"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3193,7 +5210,16 @@
               "score": "6-0 6-3",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Patti Oakes",
+                "Lisa Schnitz"
+              ],
+              "loser_names": [
+                "Judith Milligan",
+                "Katie Kerestesi"
+              ]
             }
           ]
         },
@@ -3217,7 +5243,14 @@
               "score": "6-1 6-0",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Shi L Oskooi"
+              ],
+              "loser_names": [
+                "Vinne Chen"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3226,7 +5259,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Stacie Corelle"
+              ],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -3235,7 +5273,16 @@
               "score": "6-1 6-0",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Christina Drees",
+                "Kami Adamson"
+              ],
+              "loser_names": [
+                "Allison Ibarguen",
+                "Vanessa Nicole Rowe"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3244,7 +5291,16 @@
               "score": "6-2 3-6 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Natasha Kattau",
+                "Sara Sager"
+              ],
+              "loser_names": [
+                "Claudia Hernandez",
+                "Diane Paull"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3253,7 +5309,13 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Michelle Jarvis",
+                "Kelly McPherson"
+              ],
+              "loser_names": []
             }
           ]
         },
@@ -3277,7 +5339,14 @@
               "score": "6-2 6-3",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Karina McAffee"
+              ],
+              "loser_names": [
+                "Mai Le"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3286,7 +5355,14 @@
               "score": "6-1 6-2",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Maria Truman"
+              ],
+              "loser_names": [
+                "Kara Gaston"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3295,7 +5371,16 @@
               "score": "6-2 6-1",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Karen Watts",
+                "Julie MacDonald"
+              ],
+              "loser_names": [
+                "LaCheyva Edmonis",
+                "Donna Lefever"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3304,7 +5389,16 @@
               "score": "6-1 6-2",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Deborah Protell",
+                "Anne Kellogg"
+              ],
+              "loser_names": [
+                "Tayoni Coleman",
+                "Melissa Hicks"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3313,7 +5407,16 @@
               "score": "6-0 7-5",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Tanya Hale",
+                "Travis Azous"
+              ],
+              "loser_names": [
+                "Lisa Schnitz",
+                "Alexandria Chang"
+              ]
             }
           ]
         },
@@ -3337,7 +5440,14 @@
               "score": "6-3 6-3",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Vanessa Landreman"
+              ],
+              "loser_names": [
+                "Monica Johnson"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3346,7 +5456,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Vicky Huangfu"
+              ],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -3355,7 +5470,16 @@
               "score": "7-5 6-4",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Amanda Verba",
+                "Michelle Castillo"
+              ],
+              "loser_names": [
+                "Katrin Dragnev",
+                "Lorraine Yarde"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3364,7 +5488,16 @@
               "score": "6-2 7-5",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Chelsea Gray",
+                "Jamie Kelvington"
+              ],
+              "loser_names": [
+                "Tracey Willson",
+                "Gina Thornton"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3373,7 +5506,16 @@
               "score": "6-3 6-4",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Abigail Cox",
+                "Jessica Borghoff"
+              ],
+              "loser_names": [
+                "Amy Cooper",
+                "Lana Penrose"
+              ]
             }
           ]
         },
@@ -3397,7 +5539,14 @@
               "score": "6-2 6-1",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Stacie Corelle"
+              ],
+              "loser_names": [
+                "Vanessa Nicole Rowe"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3406,7 +5555,14 @@
               "score": "6-2 6-1",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Sydney Lobato"
+              ],
+              "loser_names": [
+                "Cindy Nguyen"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3415,7 +5571,16 @@
               "score": "5-7 7-5 1-0",
               "result": "home",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Chandra VanPaepeghem",
+                "Sara Sager"
+              ],
+              "loser_names": [
+                "Amy Waters",
+                "Emelia Allen"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3424,7 +5589,16 @@
               "score": "6-4 6-3",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Valeria Perdomo",
+                "Diane Paull"
+              ],
+              "loser_names": [
+                "Alisia Pulella",
+                "Natasha Kattau"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3433,7 +5607,16 @@
               "score": "6-2 6-4",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Claudia Hernandez",
+                "michelle jarvis"
+              ],
+              "loser_names": [
+                "vinne chen",
+                "My Vuong"
+              ]
             }
           ]
         },
@@ -3457,7 +5640,14 @@
               "score": "6-3 4-6 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Shilpa Daulat"
+              ],
+              "loser_names": [
+                "Shanna Toft"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3466,7 +5656,14 @@
               "score": "6-2 6-2",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Patti Zack"
+              ],
+              "loser_names": [
+                "Cindy Nguyen"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3475,7 +5672,16 @@
               "score": "3-6 6-2 1-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Travis Azous",
+                "Kathleen Chamberlain"
+              ],
+              "loser_names": [
+                "Sara Sager",
+                "My Vuong"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3484,7 +5690,16 @@
               "score": "6-4 6-4",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Mary Lind",
+                "Blair May"
+              ],
+              "loser_names": [
+                "Allison Ibarguen",
+                "Vinne Chen"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3493,7 +5708,16 @@
               "score": "6-4 6-2",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Tanya Hale",
+                "Karen Watts"
+              ],
+              "loser_names": [
+                "Nicole Medas",
+                "Natasha Kattau"
+              ]
             }
           ]
         },
@@ -3517,7 +5741,14 @@
               "score": "6-1 6-1",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Melanie Isbell"
+              ],
+              "loser_names": [
+                "Valerie Witherspoon"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3526,7 +5757,14 @@
               "score": "6-1 6-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Vanessa Landreman"
+              ],
+              "loser_names": [
+                "Mai Le"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3535,7 +5773,16 @@
               "score": "6-2 6-2",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Chelsea Gray",
+                "Christina Rich"
+              ],
+              "loser_names": [
+                "LaCheyva Edmonis",
+                "Tayoni Coleman"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3544,7 +5791,16 @@
               "score": "6-2 6-3",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Lori LaBarbera",
+                "Jamie Kelvington"
+              ],
+              "loser_names": [
+                "Lisa Schnitz",
+                "Kara Gaston"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3553,7 +5809,16 @@
               "score": "6-0 6-2",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Anne Gumm",
+                "Maria Allen"
+              ],
+              "loser_names": [
+                "Kelly Nguyen",
+                "Alexandria Chang"
+              ]
             }
           ]
         },
@@ -3577,7 +5842,14 @@
               "score": "6-0 6-3",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Gina Thornton"
+              ],
+              "loser_names": [
+                "Stacie Corelle"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3586,7 +5858,14 @@
               "score": "6-2 6-2",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Kelly McPherson"
+              ],
+              "loser_names": [
+                "Karen Hom"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3595,7 +5874,16 @@
               "score": "7-6 6-2",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Claudia Hernandez",
+                "Sabine Curtis"
+              ],
+              "loser_names": [
+                "Michelle Castillo",
+                "Val Froman"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3604,7 +5892,16 @@
               "score": "6-2 7-6",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Lana Penrose",
+                "Tracey Willson"
+              ],
+              "loser_names": [
+                "Karen Kiyono",
+                "EMELIA ALLEN"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3613,7 +5910,16 @@
               "score": "6-2 7-5",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Michelle Jarvis",
+                "Diane Paull"
+              ],
+              "loser_names": [
+                "Jenny Baxter",
+                "Amy Cooper"
+              ]
             }
           ]
         },
@@ -3637,7 +5943,14 @@
               "score": "6-1 6-3",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [
+                "Monica Baldwin"
+              ],
+              "loser_names": [
+                "Chelsea Gray"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3646,7 +5959,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [],
+              "loser_names": [
+                "Vicky Huangfu"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3655,7 +5973,16 @@
               "score": "6-2 6-3",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [
+                "Carolyn Wood",
+                "Jennifer Hall"
+              ],
+              "loser_names": [
+                "Lorraine Yarde",
+                "Katrin Dragnev"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3664,7 +5991,16 @@
               "score": "6-2 6-2",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "home",
+              "winner_names": [
+                "Judith Milligan",
+                "Katie Kerestesi"
+              ],
+              "loser_names": [
+                "Lori LaBarbera",
+                "Anne Gumm"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3673,7 +6009,16 @@
               "score": "2-6 6-4 1-0",
               "result": "away",
               "winner_team": "TPC",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Amy Kirk",
+                "Christina Rich"
+              ],
+              "loser_names": [
+                "Susan Castelli",
+                "Christina Smith"
+              ]
             }
           ]
         },
@@ -3697,7 +6042,14 @@
               "score": "7-5 6-3",
               "result": "away",
               "winner_team": "DTC #3",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "Valerie Witherspoon"
+              ],
+              "loser_names": [
+                "Shi L Oskooi"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3706,7 +6058,14 @@
               "score": "6-3 6-1",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Sydney Lobato"
+              ],
+              "loser_names": [
+                "Mai Le"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3715,7 +6074,16 @@
               "score": "6-4 6-2",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Claudia Hernandez",
+                "Karen Kiyono"
+              ],
+              "loser_names": [
+                "Tayoni Coleman",
+                "Donna Lefever"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3724,7 +6092,16 @@
               "score": "6-2 7-5",
               "result": "away",
               "winner_team": "DTC #3",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "away",
+              "winner_names": [
+                "LaCheyva Edmonis",
+                "Kelly Nguyen"
+              ],
+              "loser_names": [
+                "Diane Paull",
+                "Amy Waters"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3733,7 +6110,13 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "DTC #1",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "EMELIA ALLEN",
+                "Christina Drees"
+              ],
+              "loser_names": []
             }
           ]
         },
@@ -3757,7 +6140,14 @@
               "score": "6-3 6-2",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Anne Kellogg"
+              ],
+              "loser_names": [
+                "Shi L Oskooi"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3766,7 +6156,12 @@
               "score": "6-0 6-0",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Shawanna Johnson"
+              ],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -3775,7 +6170,16 @@
               "score": "5-7 7-5 1-0",
               "result": "away",
               "winner_team": "DTC #1",
-              "loser_team": "RED ROCK CC #2"
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Christina Drees",
+                "Karen Kiyono"
+              ],
+              "loser_names": [
+                "Tyree Judd",
+                "Mary Lind"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3784,7 +6188,16 @@
               "score": "1-6 6-3 1-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Tanya Hale",
+                "Deborah Protell"
+              ],
+              "loser_names": [
+                "Sabine Curtis",
+                "Amy Waters"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3793,7 +6206,16 @@
               "score": "6-1 6-1",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1"
+              "loser_team": "DTC #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Travis Azous",
+                "Kathleen Chamberlain"
+              ],
+              "loser_names": [
+                "Kelly McPherson",
+                "Michelle Jarvis"
+              ]
             }
           ]
         },
@@ -3817,7 +6239,14 @@
               "score": "4-6 6-0 1-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Shilpa Daulat"
+              ],
+              "loser_names": [
+                "Melanie Isbell"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3826,7 +6255,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [],
+              "loser_names": [
+                "Maria Allen"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3835,7 +6269,16 @@
               "score": "6-2 3-6 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Teisha Hunsaker",
+                "Tricia Colbert"
+              ],
+              "loser_names": [
+                "Allison Ibarguen",
+                "Vanessa Nicole Rowe"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3844,7 +6287,16 @@
               "score": "6-0 6-2",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Nicole Medas",
+                "Vinne Chen"
+              ],
+              "loser_names": [
+                "Jamie Kelvington",
+                "Anne Gumm"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3853,7 +6305,16 @@
               "score": "3-6 6-2 1-0",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Alisia Pulella",
+                "Natasha Kattau"
+              ],
+              "loser_names": [
+                "Andrea Dawson",
+                "Christina Rich"
+              ]
             }
           ]
         },
@@ -3877,7 +6338,14 @@
               "score": "6-1 6-3",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Monica Baldwin"
+              ],
+              "loser_names": [
+                "Amanda Verba"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3886,7 +6354,14 @@
               "score": "6-1 6-1",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Lisa Gaughan"
+              ],
+              "loser_names": [
+                "Punam Patel"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3895,7 +6370,16 @@
               "score": "6-7 7-6 1-0",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Arika Carrier",
+                "Leslie Brodie"
+              ],
+              "loser_names": [
+                "Michelle Castillo",
+                "Stella Chivikas"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3904,7 +6388,16 @@
               "score": "6-0 6-0",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Kathryn Marmor",
+                "Katie Kerestesi"
+              ],
+              "loser_names": [
+                "Karen Hom",
+                "Val Froman"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3913,7 +6406,16 @@
               "score": "6-4 6-4",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Lana Penrose",
+                "Gina Thornton"
+              ],
+              "loser_names": [
+                "Jennifer Hall",
+                "Jamie Johnson"
+              ]
             }
           ]
         },
@@ -3937,7 +6439,14 @@
               "score": "6-1 6-1",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Kara Gaston"
+              ],
+              "loser_names": [
+                "Anne Kellogg"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3946,7 +6455,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [],
+              "loser_names": [
+                "Karina McAffee"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3955,7 +6469,16 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Kelly Nguyen",
+                "Donna Lefever"
+              ],
+              "loser_names": [
+                "Travis Azous",
+                "Kathleen Chamberlain"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3964,7 +6487,16 @@
               "score": "6-0 6-2",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [
+                "Tayoni Coleman",
+                "LaCheyva Edmonis"
+              ],
+              "loser_names": [
+                "Tanya Hale",
+                "Tyree Judd"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3973,7 +6505,13 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #3"
+              "loser_team": "DTC #3",
+              "court_winner": "home",
+              "winner_names": [],
+              "loser_names": [
+                "Liz Jones",
+                "Megan Galli"
+              ]
             }
           ]
         },
@@ -3997,7 +6535,14 @@
               "score": "6-4 6-2",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Maria Allen"
+              ],
+              "loser_names": [
+                "Amanda Verba"
+              ]
             },
             {
               "line": "2# Singles",
@@ -4006,7 +6551,14 @@
               "score": "6-4 6-1",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Vicky Huangfu"
+              ],
+              "loser_names": [
+                "Punam Patel"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -4015,7 +6567,16 @@
               "score": "6-1 6-7 1-0",
               "result": "away",
               "winner_team": "DESERT PALM",
-              "loser_team": "DRAGONRIDGE CC"
+              "loser_team": "DRAGONRIDGE CC",
+              "court_winner": "away",
+              "winner_names": [
+                "Anne Gumm",
+                "Teisha Hunsaker"
+              ],
+              "loser_names": [
+                "Michelle Castillo",
+                "Stella Chivikas"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -4024,7 +6585,16 @@
               "score": "6-2 6-3",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Monica Johnson",
+                "Gina Thornton"
+              ],
+              "loser_names": [
+                "Abigail Cox",
+                "Jessica Borghoff"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -4033,7 +6603,16 @@
               "score": "6-1 6-4",
               "result": "home",
               "winner_team": "DRAGONRIDGE CC",
-              "loser_team": "DESERT PALM"
+              "loser_team": "DESERT PALM",
+              "court_winner": "home",
+              "winner_names": [
+                "Val Froman",
+                "RACQUEL DIZON"
+              ],
+              "loser_names": [
+                "Lori LaBarbera",
+                "Christina Rich"
+              ]
             }
           ]
         },
@@ -4057,7 +6636,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [],
+              "loser_names": [
+                "Liliya Pummill"
+              ]
             },
             {
               "line": "2# Singles",
@@ -4066,7 +6650,12 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [],
+              "loser_names": [
+                "Megan Meyers"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -4075,7 +6664,16 @@
               "score": "7-6 4-6 1-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [
+                "Arika Carrier",
+                "Susan Grady"
+              ],
+              "loser_names": [
+                "Chandra VanPaepeghem",
+                "Sara Sager"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -4084,7 +6682,16 @@
               "score": "3-6 6-2 1-0",
               "result": "home",
               "winner_team": "TPC",
-              "loser_team": "SPANISH TRAIL #1"
+              "loser_team": "SPANISH TRAIL #1",
+              "court_winner": "home",
+              "winner_names": [
+                "Vinne Chen",
+                "Jill Morrison"
+              ],
+              "loser_names": [
+                "Judith Milligan",
+                "Carolyn Wood"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -4093,7 +6700,13 @@
               "score": "6-0 6-0",
               "result": "away",
               "winner_team": "SPANISH TRAIL #1",
-              "loser_team": "TPC"
+              "loser_team": "TPC",
+              "court_winner": "away",
+              "winner_names": [],
+              "loser_names": [
+                "Kelsey Spence",
+                "Catherine Perez"
+              ]
             }
           ]
         }

@@ -1015,52 +1015,19 @@ def _collect_match_records(
                 match_id = match.get("match_id", "")
                 date = match.get("date", "")
 
-                # Detect scorecard swap once per match (new-format lines only)
-                _swap = _detect_scorecard_swap(match, team_lookup)
-                # Per-match reliability: verify result radio buttons match match score
-                _lines = match.get("lines", [])
-                _twh = match.get("team_wins_home")
-                _twa = match.get("team_wins_away")
-                _result_ok = True
-                if _twh is not None and _twa is not None:
-                    _rh = sum(1 for _l in _lines if (_l.get("result") or "").lower() == "home")
-                    _ra = sum(1 for _l in _lines if (_l.get("result") or "").lower() == "away")
-                    _result_ok = (_rh == _twh and _ra == _twa)
-
                 for ln in match.get("lines", []):
-                    # Defaults/walkovers: one side has no players listed.
-                    # These are a total no-op for ratings — skip immediately.
-                    # Represented as: empty string ("") or literal "N/A" / "N/A / N/A".
-                    def _is_default_side(s: str) -> bool:
-                        s = (s or "").strip().upper()
-                        return not s or s in ("N/A", "N/A / N/A", "DEFAULT", "NOT AVAILABLE")
-                    _ph = ln.get("players_home") or ln.get("winners") or ""
-                    _pa = ln.get("players_away") or ln.get("losers") or ""
-                    if _is_default_side(_ph) or _is_default_side(_pa):
+                    # Use canonical winner/loser fields from normalization
+                    cw = ln.get("court_winner")
+                    if cw is None:
                         continue
 
-                    # Support both old format (winners/losers) and new scraper
-                    # format (players_home / players_away / result: "home"|"away")
-                    w_raw = ln.get("winners", "")
-                    l_raw = ln.get("losers", "")
-                    if not w_raw or not l_raw:
-                        home_raw   = ln.get("players_home", "")
-                        away_raw   = ln.get("players_away", "")
-                        result_raw = ln.get("result", "").strip().lower()
-                        if not _result_ok or not home_raw or not away_raw or result_raw not in ("home", "away"):
-                            continue
-                        # If columns are swapped, flip home↔away before applying result
-                        if _swap:
-                            home_raw, away_raw = away_raw, home_raw
-                        if result_raw == "home":
-                            w_raw, l_raw = home_raw, away_raw
-                        else:
-                            w_raw, l_raw = away_raw, home_raw
-                    # Skip walkovers
-                    if w_raw.strip().upper() == "N/A" or l_raw.strip().upper() == "N/A":
+                    w_names = ln.get("winner_names") or []
+                    l_names = ln.get("loser_names") or []
+                    if not w_names or not l_names:
                         continue
-                    if not w_raw.strip() or not l_raw.strip():
-                        continue
+
+                    w_raw = " / ".join(w_names)
+                    l_raw = " / ".join(l_names)
 
                     winner_names = _parse_player_names(w_raw)
                     loser_names = _parse_player_names(l_raw)
@@ -1127,16 +1094,6 @@ def _collect_court_events(
                     continue
                 match_id = match.get("match_id", "")
                 date = match.get("date", "")
-                _swap = _detect_scorecard_swap(match, team_lookup)
-                _lines_e = match.get("lines", [])
-                _twh_e = match.get("team_wins_home")
-                _twa_e = match.get("team_wins_away")
-                _result_ok_e = True
-                if _twh_e is not None and _twa_e is not None:
-                    _rh_e = sum(1 for _l in _lines_e if (_l.get("result") or "").lower() == "home")
-                    _ra_e = sum(1 for _l in _lines_e if (_l.get("result") or "").lower() == "away")
-                    _result_ok_e = (_rh_e == _twh_e and _ra_e == _twa_e)
-
                 for ln in match.get("lines", []):
                     line_label = ln.get("line", "")
                     dedup_key = (match_id, line_label)
@@ -1144,24 +1101,17 @@ def _collect_court_events(
                         continue
                     seen.add(dedup_key)
 
-                    def _is_default_side(s: str) -> bool:
-                        s = (s or "").strip().upper()
-                        return not s or s in ("N/A", "N/A / N/A", "DEFAULT", "NOT AVAILABLE")
-                    if _is_default_side(ln.get("players_home", "")) or \
-                       _is_default_side(ln.get("players_away", "")):
+                    cw = ln.get("court_winner")
+                    if cw is None:
                         continue
 
-                    w_raw = ln.get("winners", "")
-                    l_raw = ln.get("losers", "")
-                    if not w_raw or not l_raw:
-                        home_raw = ln.get("players_home", "")
-                        away_raw = ln.get("players_away", "")
-                        result_raw = ln.get("result", "").strip().lower()
-                        if not _result_ok_e or not home_raw or not away_raw or result_raw not in ("home", "away"):
-                            continue
-                        if _swap:
-                            home_raw, away_raw = away_raw, home_raw
-                        w_raw, l_raw = (home_raw, away_raw) if result_raw == "home" else (away_raw, home_raw)
+                    w_names = ln.get("winner_names") or []
+                    l_names = ln.get("loser_names") or []
+                    if not w_names or not l_names:
+                        continue
+
+                    w_raw = " / ".join(w_names)
+                    l_raw = " / ".join(l_names)
 
                     winner_keys = [
                         _name_key(n) for n in _parse_player_names(w_raw)
