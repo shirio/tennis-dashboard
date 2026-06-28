@@ -748,11 +748,6 @@ def _traverse_match_histories(
     for div, sfs in [(ntrp, subflights or []), (other_ntrp, other_subflights or [])]:
         div_sfx = div.replace(".", "")
         for sf in sfs:
-            _h_count = sum(1 for m in sf.get("matches", [])
-                           for ln in m.get("lines", []) if ln.get("result") == "home")
-            _t_count = sum(1 for m in sf.get("matches", [])
-                           for ln in m.get("lines", []) if ln.get("result") in ("home", "away"))
-            _sf_rel = _t_count > 0 and (_h_count / _t_count) < 0.95
             for match in sf.get("matches", []):
                 if match.get("pending"):
                     continue
@@ -760,38 +755,24 @@ def _traverse_match_histories(
                 mid = match.get("match_id", "")
                 m_home_team = (match.get("home_team") or "").strip()
                 m_away_team = (match.get("away_team") or "").strip()
-                _mscore = match.get("score", "")
-                _ms_parts = re.split(r"[–\-]", _mscore) if _mscore else []
-                _m_hw = _m_aw = -1
-                if len(_ms_parts) == 2:
-                    try:
-                        _m_hw, _m_aw = int(_ms_parts[0].strip()), int(_ms_parts[1].strip())
-                    except ValueError:
-                        pass
-                _n_lines = len(match.get("lines", []))
-                _unanimous = ""
-                if not _sf_rel and _n_lines > 0:
-                    if _m_hw == _n_lines and _m_aw == 0:
-                        _unanimous = "home"
-                    elif _m_aw == _n_lines and _m_hw == 0:
-                        _unanimous = "away"
                 for line in match.get("lines", []):
                     home_raw = line.get("players_home", "") or ""
                     away_raw = line.get("players_away", "") or ""
+                    # players_home = court winner (TennisLink always lists
+                    # winner first). Determine winner team by membership.
                     wt = line.get("winner_team", "") or ""
                     lt = line.get("loser_team", "") or ""
                     if not wt and not lt and m_home_team and m_away_team:
-                        line_result = (line.get("result") or "").lower()
-                        if _sf_rel and line_result in ("home", "away"):
-                            if line_result == "home":
-                                wt, lt = m_home_team, m_away_team
-                            else:
-                                wt, lt = m_away_team, m_home_team
-                        elif _unanimous:
-                            if _unanimous == "home":
-                                wt, lt = m_home_team, m_away_team
-                            else:
-                                wt, lt = m_away_team, m_home_team
+                        _home_names = [n.strip() for n in home_raw.split("/") if n.strip()]
+                        for _hn in _home_names:
+                            _hk = re.sub(r"\s+", " ", _hn.lower().strip())
+                            _ht = by_name.get(_hk, {}).get("team") or by_name.get(_hk, {}).get("team_30") or ""
+                            if _ht:
+                                if _ht.upper() == m_home_team.upper():
+                                    wt, lt = m_home_team, m_away_team
+                                elif _ht.upper() == m_away_team.upper():
+                                    wt, lt = m_away_team, m_home_team
+                                break
                     score = line.get("score", "") or ""
                     line_label = line.get("line", "") or ""
 
@@ -1295,9 +1276,6 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
     for sf in subflights:
         sf_lbl = sf.get("flight_label", "")
         matches = sf.get("matches", [])
-        _all_home = sum(1 for m in matches for ln in m.get("lines", []) if ln.get("result") == "home")
-        _all_total = sum(1 for m in matches for ln in m.get("lines", []) if ln.get("result") in ("home", "away"))
-        _sf_line_data_reliable = _all_total > 0 and (_all_home / _all_total) < 0.95
         for t in sf.get("teams", []):
             tname = t.get("team_name", "")
             if not tname:
@@ -1322,38 +1300,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                     f'<div class="mdate">{_esc(m["date"])}</div>'
                 )
                 lines = m.get("lines", [])
-                courts_verified = m.get("courts_verified", False)
                 if lines:
-                    _mht = m.get("home_team", "")
-                    _mat = m.get("away_team", "")
-                    _home_votes = _away_votes = 0
-                    for _vln in lines:
-                        for _pn in [x.strip() for x in _vln.get("players_home", "").split("/") if x.strip()]:
-                            _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
-                            if _pt == _mht: _home_votes += 1
-                            elif _pt == _mat: _away_votes += 1
-                    _is_swapped = (_away_votes > _home_votes)
-
-                    # Per-court winner strategy:
-                    # 1. If subflight has reliable mixed home/away results → use them
-                    # 2. Else infer from team score: 5-0 or 0-5 → all courts go to one side
-                    # 3. Otherwise we can't determine per-court winners (scores are winner-first)
-                    _match_score = m.get("score", "")
-                    _ms_parts = re.split(r"[–\-]", _match_score) if _match_score else []
-                    _match_hw = _match_aw = -1
-                    if len(_ms_parts) == 2:
-                        try:
-                            _match_hw, _match_aw = int(_ms_parts[0].strip()), int(_ms_parts[1].strip())
-                        except ValueError:
-                            pass
-                    _unanimous_winner = ""
-                    if not _sf_line_data_reliable:
-                        n_courts = len(lines)
-                        if _match_hw == n_courts and _match_aw == 0:
-                            _unanimous_winner = "home"
-                        elif _match_aw == n_courts and _match_hw == 0:
-                            _unanimous_winner = "away"
-
                     blocks += '<div class="line-lbl">line results</div>'
                     for ln in lines:
                         ph_raw = ln.get("players_home", "")
@@ -1363,27 +1310,59 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                             if not s or s.upper() == "N/A":
                                 return '<em class="default-marker">default</em>'
                             return _render_players(raw, _mdate)
-                        left = _default_or_render(ph_raw)
-                        right = _default_or_render(pa_raw)
+
+                        # players_home = court winner (TennisLink always
+                        # lists winner first). Determine which team won
+                        # this court by checking player membership.
+                        _winner_team = ""
+                        for _pn in [x.strip() for x in ph_raw.split("/") if x.strip()]:
+                            _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
+                            if _pt:
+                                _winner_team = _pt
+                                break
+                        _our_team_won = _winner_team.upper() == tname.upper() if _winner_team else None
+                        # If we can't identify the winner by team membership,
+                        # fall back: if ALL courts were won by the same side
+                        # (5-0/0-5), use the match result.
+                        if _our_team_won is None and m["won"] is not None:
+                            _match_score = m.get("score", "")
+                            _ms_parts = re.split(r"[–\-]", _match_score) if _match_score else []
+                            if len(_ms_parts) == 2:
+                                try:
+                                    _tw, _ow = int(_ms_parts[0].strip()), int(_ms_parts[1].strip())
+                                    if (_tw == len(lines) and _ow == 0) or (_ow == len(lines) and _tw == 0):
+                                        _our_team_won = m["won"]
+                                except ValueError:
+                                    pass
+
+                        # Always show selected team on left, opponent on right.
+                        # players_home may be from either team — check membership.
+                        _ph_is_our_team = False
+                        for _pn in [x.strip() for x in ph_raw.split("/") if x.strip()]:
+                            _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
+                            if _pt and _pt.upper() == tname.upper():
+                                _ph_is_our_team = True
+                                break
+
+                        if _ph_is_our_team:
+                            left_html = _default_or_render(ph_raw)
+                            right_html = _default_or_render(pa_raw)
+                        else:
+                            left_html = _default_or_render(pa_raw)
+                            right_html = _default_or_render(ph_raw)
+
                         sc = _esc(ln.get("score", ""))
                         lnum = _line_label_short(ln.get("line", ""))
-                        hw = aw = ""
-                        if _sf_line_data_reliable:
-                            result = ln.get("result", "")
-                            if result == "home":
-                                hw, aw = ("", "w") if _is_swapped else ("w", "")
-                            elif result == "away":
-                                hw, aw = ("w", "") if _is_swapped else ("", "w")
-                        elif _unanimous_winner:
-                            if _unanimous_winner == "home":
-                                hw, aw = ("", "w") if _is_swapped else ("w", "")
-                            else:
-                                hw, aw = ("w", "") if _is_swapped else ("", "w")
+                        lw = rw = ""
+                        if _our_team_won is True:
+                            lw = "w"
+                        elif _our_team_won is False:
+                            rw = "w"
                         blocks += (
                             f'<div class="line-row">'
-                            f'<span class="lh {hw}"><span class="lr-lbl">{_esc(lnum)}</span> {left}</span>'
+                            f'<span class="lh {lw}"><span class="lr-lbl">{_esc(lnum)}</span> {left_html}</span>'
                             f'<span class="ls">{sc}</span>'
-                            f'<span class="la {aw}">{right}</span>'
+                            f'<span class="la {rw}">{right_html}</span>'
                             f'</div>'
                         )
                 blocks += "</div>\n"
@@ -2513,11 +2492,6 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
 
     for sf in subflights:
         sf_label = sf.get("flight_label", "")
-        _all_home = sum(1 for m in sf.get("matches", [])
-                        for ln in m.get("lines", []) if ln.get("result") == "home")
-        _all_total = sum(1 for m in sf.get("matches", [])
-                         for ln in m.get("lines", []) if ln.get("result") in ("home", "away"))
-        _sf_reliable = _all_total > 0 and (_all_home / _all_total) < 0.95
         for m in sf.get("matches", []):
             if m.get("pending"):
                 continue
@@ -2525,21 +2499,6 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
             away_team = m.get("away_team", "")
             date = m.get("date", "")
             wk = week_label.get(date, "")
-            _mscore = m.get("score", "")
-            _ms_parts = re.split(r"[–\-]", _mscore) if _mscore else []
-            _m_hw = _m_aw = -1
-            if len(_ms_parts) == 2:
-                try:
-                    _m_hw, _m_aw = int(_ms_parts[0].strip()), int(_ms_parts[1].strip())
-                except ValueError:
-                    pass
-            _n_lines = len(m.get("lines", []))
-            _unanimous = ""
-            if not _sf_reliable and _n_lines > 0:
-                if _m_hw == _n_lines and _m_aw == 0:
-                    _unanimous = "home"
-                elif _m_aw == _n_lines and _m_hw == 0:
-                    _unanimous = "away"
 
             for ln in m.get("lines", []):
                 line_str = ln.get("line", "")
@@ -2548,11 +2507,16 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                 score = ln.get("score", "")
                 winner_team = (ln.get("winner_team") or "").upper()
                 if not winner_team:
-                    _lr = ln.get("result", "")
-                    if _sf_reliable and _lr in ("home", "away"):
-                        winner_team = (home_team if _lr == "home" else away_team).upper()
-                    elif _unanimous:
-                        winner_team = (home_team if _unanimous == "home" else away_team).upper()
+                    # players_home = court winner; determine their team
+                    _ph = (ln.get("players_home") or "").strip()
+                    for _pn in [x.strip() for x in _ph.split("/") if x.strip()]:
+                        _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
+                        if _pt:
+                            if _pt.upper() == home_team.upper():
+                                winner_team = home_team.upper()
+                            elif _pt.upper() == away_team.upper():
+                                winner_team = away_team.upper()
+                            break
 
                 ph = (ln.get("players_home") or "").strip()
                 pa = (ln.get("players_away") or "").strip()
@@ -3298,7 +3262,7 @@ def build_sectionals_page() -> str | None:
                 })
     results_html = _results_tab(
         districts_subflights if districts_subflights else all_subflights_30,
-        qualified_players, sfx=_sfx)
+        players, sfx=_sfx)
 
     tab_defs = [
         ("rosters", "team rosters", rosters_html),
