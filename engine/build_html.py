@@ -1293,9 +1293,9 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                 blocks += (
                     f'<div class="mblock">'
                     f'<div class="mhdr">'
-                    f'<span class="mtitle">vs {_esc(m["opponent"])}</span>'
                     f'<span class="mweek-lbl">{_esc(wlabel)}</span>'
                     f'<span>{badge}</span>'
+                    f'<span class="mtitle">vs {_esc(m["opponent"])}</span>'
                     f'</div>'
                     f'<div class="mdate">{_esc(m["date"])}</div>'
                 )
@@ -1561,10 +1561,11 @@ tr:last-child td { border-bottom: none; }
           padding: .75rem 1rem; margin-bottom: 10px; }
 .mhdr { display: flex; justify-content: space-between;
         align-items: center; margin-bottom: 4px; }
-.mtitle { font-size: 13px; font-weight: 600; flex: 1; }
+.mtitle { font-size: 13px; font-weight: 600; flex: 0 0 auto;
+          text-align: right; color: #555; }
 .mweek-lbl { font-size: 11px; font-weight: 700; color: #888;
-             letter-spacing: .04em; text-align: center; flex: 0 0 auto;
-             padding: 0 8px; }
+             letter-spacing: .04em; text-align: left; flex: 1;
+             padding: 0 8px 0 0; }
 .mdate { font-size: 11px; color: #888; margin-bottom: 6px; }
 .line-lbl { font-size: 10px; font-weight: 600; color: #aaa;
             text-transform: uppercase; letter-spacing: .05em; margin: 8px 0 3px; }
