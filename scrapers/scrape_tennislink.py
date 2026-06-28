@@ -542,7 +542,8 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
         # Filter out noise tokens
         _noise = {'completed', 'not played', 'default', 'retired',
                   '2:00 pm', '3:00 pm', '4:00 pm', '10:00 am', '11:00 am', '12:00 pm',
-                  'am', 'pm', 'n/a'}
+                  '12:00 midnight', '12:00 noon',
+                  'am', 'pm', 'midnight', 'noon', 'n/a'}
 
         home_players: list[str] = []
         away_players: list[str] = []
@@ -577,8 +578,8 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
                 if not t:
                     continue
 
-                # Time line may have player appended: "2:00 PM"
-                if re.match(r'^\d+:\d+\s*(am|pm)$', tl, re.I):
+                # Time line may have player appended: "2:00 PM", "12:00 Midnight"
+                if re.match(r'^\d+:\d+\s*(am|pm|midnight|noon)$', tl, re.I):
                     continue
 
                 if tl in _noise:

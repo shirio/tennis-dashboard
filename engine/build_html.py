@@ -391,17 +391,17 @@ def _court_winner_team(line: dict, match_home_team: str,
     return None
 
 
-def _score_winner_side(score: str) -> str | None:
-    """Return 'home' or 'away' based on which scorecard column won per score.
-
-    Score format is always home-away per set. Counts sets won by each side.
-    Returns None if score is missing, tied, or unparseable.
-    """
-    sw_h, sl_h, _, _ = _parse_score(score, True)
-    if sw_h > sl_h:
-        return "home"
-    if sl_h > sw_h:
-        return "away"
+def _match_winner_team(match: dict) -> str | None:
+    """Return the team name that won the overall match, or None if unknown."""
+    tw = match.get("team_wins_home")
+    ta = match.get("team_wins_away")
+    ht = (match.get("home_team") or "").strip()
+    at = (match.get("away_team") or "").strip()
+    if tw is not None and ta is not None and ht and at:
+        if tw > ta:
+            return ht
+        if ta > tw:
+            return at
     return None
 
 
@@ -785,6 +785,23 @@ def _nkey(n: str) -> str:
     return re.sub(r"\s+", " ", n.strip().lower())
 
 
+_NOISE_NAMES = frozenset({
+    "12:00 midnight", "12:00 noon", "dbl. default", "default",
+    "n/a", "na", "n", "a", "(dq)", "note -",
+})
+
+
+def _is_noise_name(name: str) -> bool:
+    s = name.strip().lower()
+    if s in _NOISE_NAMES:
+        return True
+    if re.match(r"^\d+:\d+\s*(am|pm|midnight|noon)$", s, re.I):
+        return True
+    if len(s) <= 1 and not s.isalpha():
+        return True
+    return False
+
+
 def _traverse_match_histories(
     player_pool: list[dict],
     ntrp: str,
@@ -812,6 +829,7 @@ def _traverse_match_histories(
                     match.get("lines", []),
                     match.get("team_wins_home"),
                     match.get("team_wins_away"))
+                _match_wt = _match_winner_team(match)
                 for line in match.get("lines", []):
                     home_raw = line.get("players_home", "") or ""
                     away_raw = line.get("players_away", "") or ""
@@ -827,14 +845,15 @@ def _traverse_match_histories(
                                 wt, lt = m_away_team, m_home_team
                     score = line.get("score", "") or ""
                     line_label = line.get("line", "") or ""
-                    _score_side = _score_winner_side(score) if not wt else None
 
                     _home_na = home_raw.strip().upper() in ("N/A", "NA", "")
                     _away_na = away_raw.strip().upper() in ("N/A", "NA", "")
                     home_names = [] if _home_na else [
-                        n.strip() for n in home_raw.split("/") if n.strip()]
+                        n.strip() for n in home_raw.split("/")
+                        if n.strip() and not _is_noise_name(n)]
                     away_names = [] if _away_na else [
-                        n.strip() for n in away_raw.split("/") if n.strip()]
+                        n.strip() for n in away_raw.split("/")
+                        if n.strip() and not _is_noise_name(n)]
                     is_walkover = not home_names or not away_names
 
                     all_side = ([("home", n) for n in home_names] +
@@ -859,8 +878,8 @@ def _traverse_match_histories(
                             continue
                         won  = player_team.lower() in wt.lower()
                         lost = player_team.lower() in lt.lower()
-                        if not won and not lost and _score_side:
-                            won = (side == _score_side)
+                        if not won and not lost and _match_wt:
+                            won = player_team.lower() in _match_wt.lower()
                             lost = not won
                         if not won and not lost:
                             continue
@@ -982,6 +1001,58 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
     player_histories, player_stats = _traverse_match_histories(
         _pool, ntrp, subflights, other_subflights)
 
+    # ── Rating timeline lookups (for point-in-time rating in match history) ──
+    _tl_pre: dict[str, dict[str, float]] = {}
+    _tl_post: dict[str, dict[str, float]] = {}
+    _tl_base: dict[str, str] = {}
+    _tl_final: dict[str, str] = {}
+    for p in _pool:
+        norm = _nkey(p.get("name", ""))
+        if not norm:
+            continue
+        for sfx in (_sfx, _other_sfx):
+            tl = p.get(f"rating_timeline_{sfx}")
+            if tl and isinstance(tl, dict):
+                existing = _tl_pre.get(norm, {})
+                existing.update({k: float(v) for k, v in tl.items()})
+                _tl_pre[norm] = existing
+            ptl = p.get(f"rating_post_timeline_{sfx}")
+            if ptl and isinstance(ptl, dict):
+                existing = _tl_post.get(norm, {})
+                existing.update({k: float(v) for k, v in ptl.items()})
+                _tl_post[norm] = existing
+        raw_base = p.get("dynamic_rating_baseline")
+        if raw_base is not None:
+            try:
+                _tl_base[norm] = f"{float(raw_base):.2f}"
+            except (ValueError, TypeError):
+                pass
+        for sfx_c in (_sfx, _other_sfx):
+            raw_r = p.get(f"rating_{sfx_c}")
+            if raw_r is not None:
+                try:
+                    _tl_final[norm] = f"{float(raw_r):.2f}"
+                except (ValueError, TypeError):
+                    pass
+
+    def _ap_pit_rating(nkey: str, match_date: str) -> str:
+        pre_tl = _tl_pre.get(nkey, {})
+        if match_date in pre_tl:
+            return f"{pre_tl[match_date]:.2f}"
+        match_key = _date_sort_key(match_date)
+        post_tl = _tl_post.get(nkey, {})
+        prior_post = [(k, v) for k, v in post_tl.items()
+                      if _date_sort_key(k) < match_key]
+        if prior_post:
+            _, latest_v = max(prior_post, key=lambda kv: _date_sort_key(kv[0]))
+            return f"{latest_v:.2f}"
+        prior_pre = [(k, v) for k, v in pre_tl.items()
+                     if _date_sort_key(k) < match_key]
+        if prior_pre:
+            _, latest_v = max(prior_pre, key=lambda kv: _date_sort_key(kv[0]))
+            return f"{latest_v:.2f}"
+        return _tl_base.get(nkey, "") or _tl_final.get(nkey, "")
+
     # ── Build HTML rows ───────────────────────────────────────────────────────
     rows = ""
     for p in div_players:
@@ -1084,6 +1155,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                     "op": rec["opps"] or None,
                     "or": [r for r in rec["opp_r"] if r] or None,
                     "ot": _abbrev_team(rec.get("opp_team", "")) or None,
+                    "pr": _ap_pit_rating(nk, rec["date"]) or None,
                 }.items() if v is not None}
                 for rec in hist
             ]
@@ -1268,7 +1340,8 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         data-new shows the player's rating going *into* that match (based on all
         prior matches in the division), not their final end-of-season rating.
         """
-        parts = [p.strip() for p in raw.split("/") if p.strip()]
+        parts = [p.strip() for p in raw.split("/")
+                 if p.strip() and not _is_noise_name(p)]
         rendered = []
         for name in parts:
             nkey = re.sub(r"\s+", " ", name.lower())
@@ -1295,7 +1368,11 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                 f'<span class="pname" data-pkey="{key}" '
                 f'onclick="highlightPlayer(this)">{_esc(name)}{rating_html}</span>'
             )
-        return " / ".join(rendered) if rendered else _esc(raw)
+        if not rendered:
+            if _is_noise_name(raw):
+                return '<em class="hr">—</em>'
+            return _esc(raw)
+        return " / ".join(rendered)
 
     sf_display = sf_display or {}
     sf_labels = [sf.get("flight_label", str(i)) for i, sf in enumerate(subflights)]
@@ -1382,6 +1459,10 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                             s = raw.strip()
                             if not s or s.upper() == "N/A":
                                 return '<em class="default-marker">default</em>'
+                            cleaned = [n.strip() for n in s.split("/")
+                                       if n.strip() and not _is_noise_name(n)]
+                            if not cleaned:
+                                return '<em class="default-marker">default</em>'
                             return _render_players(raw, _mdate)
 
                         _cwt = _court_winner_team(
@@ -1393,18 +1474,15 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
 
                         # Always show selected team on left, opponent on right.
                         _ph_is_our_team = False
-                        for _pn in [x.strip() for x in ph_raw.split("/") if x.strip()]:
+                        for _pn in [x.strip() for x in ph_raw.split("/")
+                                    if x.strip() and not _is_noise_name(x)]:
                             _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
                             if _pt and _pt.upper() == tname.upper():
                                 _ph_is_our_team = True
                                 break
 
-                        # Score-based fallback: determine court winner from score
-                        if _our_team_won is None:
-                            _sc_side = _score_winner_side(ln.get("score", ""))
-                            if _sc_side:
-                                _home_col_won = (_sc_side == "home")
-                                _our_team_won = (_home_col_won == _ph_is_our_team)
+                        if _our_team_won is None and m["won"] is not None:
+                            _our_team_won = m["won"]
 
                         if _ph_is_our_team:
                             left_html = _default_or_render(ph_raw)
@@ -1831,7 +1909,7 @@ function toggleHistory(tr) {
     var combined = tr.dataset.combined || '';
     var html = '<div class="history-wrap"><div class="history-summary">' + combined + '</div>'
       + '<table class="history-table"><thead><tr>'
-      + '<th>Date</th><th>Div</th><th>Line</th><th>Result</th>'
+      + '<th>Date</th><th>Div</th><th>Line</th><th>Rating</th><th>Result</th>'
       + '<th>Score</th><th>Partner(s)</th><th>Opponent(s)</th><th>Opp Team</th>'
       + '</tr></thead><tbody>';
     data.forEach(function(r) {
@@ -1845,10 +1923,12 @@ function toggleHistory(tr) {
         ? opArr.map(function(o,i){ return o + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
         : '<em class="hr">default</em>';
       var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
+      var prHtml = r.pr ? '<em class="prating">(' + r.pr + ')</em>' : '';
       html += '<tr>'
         + '<td style="white-space:nowrap">' + (r.dt||'') + '</td>'
         + '<td>' + divPill + '</td>'
         + '<td>' + (r.ln||'') + '</td>'
+        + '<td>' + prHtml + '</td>'
         + '<td><span class="' + resCls + '">' + resTxt + '</span></td>'
         + '<td style="white-space:nowrap">' + sc + '</td>'
         + '<td>' + ((r.pt||[]).join(', ')||'—') + '</td>'
@@ -2577,7 +2657,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                         ln, home_team, away_team, _mr_mx)
                     if _cwt:
                         winner_team = _cwt.upper()
-                _sc_side_mx = _score_winner_side(score) if not winner_team else None
+                _match_wt_mx = _match_winner_team(m) if not winner_team else None
 
                 ph = (ln.get("players_home") or "").strip()
                 pa = (ln.get("players_away") or "").strip()
@@ -2585,14 +2665,18 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                     ph = ""
                 if pa.upper() in ("", "N/A"):
                     pa = ""
+                ph = " / ".join(n.strip() for n in ph.split("/")
+                                if n.strip() and not _is_noise_name(n))
+                pa = " / ".join(n.strip() for n in pa.split("/")
+                                if n.strip() and not _is_noise_name(n))
 
                 sides = [
-                    (ph, home_team, pa, away_team, "home"),
-                    (pa, away_team, ph, home_team, "away"),
+                    (ph, home_team, pa, away_team),
+                    (pa, away_team, ph, home_team),
                 ]
 
                 if is_singles:
-                    for side_raw, side_team, opp_raw, opp_team, sc_col in sides:
+                    for side_raw, side_team, opp_raw, opp_team in sides:
                         if not side_raw:
                             continue
                         # Normalise all-caps names from scorecards to title case
@@ -2606,8 +2690,8 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                         # always correctly names the winning team.
                         actual_team = (_team_by_name.get(norm) or side_team).upper()
                         won = (winner_team == actual_team) if winner_team else None
-                        if won is None and _sc_side_mx:
-                            won = (sc_col == _sc_side_mx)
+                        if won is None and _match_wt_mx:
+                            won = actual_team == _match_wt_mx.upper()
                         if won is None:
                             continue
                         # Opponent's actual team (also handles swapped scorecards)
@@ -2649,7 +2733,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                         })
 
                 else:  # doubles
-                    for side_raw, side_team, opp_raw, opp_team, sc_col in sides:
+                    for side_raw, side_team, opp_raw, opp_team in sides:
                         if not side_raw:
                             continue
                         parts = [x.strip() for x in side_raw.split("/") if x.strip()]
@@ -2665,8 +2749,8 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                             _team_by_name.get(n1) or _team_by_name.get(n2) or side_team
                         ).upper()
                         won = (winner_team == actual_d_team) if winner_team else None
-                        if won is None and _sc_side_mx:
-                            won = (sc_col == _sc_side_mx)
+                        if won is None and _match_wt_mx:
+                            won = actual_d_team == _match_wt_mx.upper()
                         if won is None:
                             continue
 

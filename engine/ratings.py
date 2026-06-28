@@ -1017,6 +1017,15 @@ def _collect_match_records(
 
                 # Detect scorecard swap once per match (new-format lines only)
                 _swap = _detect_scorecard_swap(match, team_lookup)
+                # Per-match reliability: verify result radio buttons match match score
+                _lines = match.get("lines", [])
+                _twh = match.get("team_wins_home")
+                _twa = match.get("team_wins_away")
+                _result_ok = True
+                if _twh is not None and _twa is not None:
+                    _rh = sum(1 for _l in _lines if (_l.get("result") or "").lower() == "home")
+                    _ra = sum(1 for _l in _lines if (_l.get("result") or "").lower() == "away")
+                    _result_ok = (_rh == _twh and _ra == _twa)
 
                 for ln in match.get("lines", []):
                     # Defaults/walkovers: one side has no players listed.
@@ -1038,7 +1047,7 @@ def _collect_match_records(
                         home_raw   = ln.get("players_home", "")
                         away_raw   = ln.get("players_away", "")
                         result_raw = ln.get("result", "").strip().lower()
-                        if not home_raw or not away_raw or result_raw not in ("home", "away"):
+                        if not _result_ok or not home_raw or not away_raw or result_raw not in ("home", "away"):
                             continue
                         # If columns are swapped, flip home↔away before applying result
                         if _swap:
@@ -1119,6 +1128,14 @@ def _collect_court_events(
                 match_id = match.get("match_id", "")
                 date = match.get("date", "")
                 _swap = _detect_scorecard_swap(match, team_lookup)
+                _lines_e = match.get("lines", [])
+                _twh_e = match.get("team_wins_home")
+                _twa_e = match.get("team_wins_away")
+                _result_ok_e = True
+                if _twh_e is not None and _twa_e is not None:
+                    _rh_e = sum(1 for _l in _lines_e if (_l.get("result") or "").lower() == "home")
+                    _ra_e = sum(1 for _l in _lines_e if (_l.get("result") or "").lower() == "away")
+                    _result_ok_e = (_rh_e == _twh_e and _ra_e == _twa_e)
 
                 for ln in match.get("lines", []):
                     line_label = ln.get("line", "")
@@ -1140,7 +1157,7 @@ def _collect_court_events(
                         home_raw = ln.get("players_home", "")
                         away_raw = ln.get("players_away", "")
                         result_raw = ln.get("result", "").strip().lower()
-                        if not home_raw or not away_raw or result_raw not in ("home", "away"):
+                        if not _result_ok_e or not home_raw or not away_raw or result_raw not in ("home", "away"):
                             continue
                         if _swap:
                             home_raw, away_raw = away_raw, home_raw
