@@ -359,6 +359,39 @@ def _validate(subflights: list[dict]) -> list[str]:
 
 
 # ---------------------------------------------------------------------------
+# Per-court winner detection helpers
+# ---------------------------------------------------------------------------
+
+def _match_result_reliable(lines: list[dict], team_wins: int | None,
+                           opp_wins: int | None) -> bool:
+    """Check if a specific match's result fields are trustworthy.
+
+    Compares the per-court result tally against the match-level score.
+    If they match, the radio button data is real; if not, it's defaults.
+    """
+    if team_wins is None or opp_wins is None:
+        return False
+    h = sum(1 for ln in lines if (ln.get("result") or "").lower() == "home")
+    a = sum(1 for ln in lines if (ln.get("result") or "").lower() == "away")
+    return h == team_wins and a == opp_wins
+
+
+def _court_winner_team(line: dict, match_home_team: str,
+                       match_away_team: str,
+                       result_reliable: bool) -> str | None:
+    """Return team name that won this court, or None if unknown.
+
+    The result field ("home"/"away") from scorecard radio buttons refers to
+    the match-level home/away team, NOT the scorecard column layout.
+    No swap correction is needed.
+    """
+    result = (line.get("result") or "").lower()
+    if result_reliable and result in ("home", "away"):
+        return match_home_team if result == "home" else match_away_team
+    return None
+
+
+# ---------------------------------------------------------------------------
 # Badge / record helpers
 # ---------------------------------------------------------------------------
 
@@ -755,24 +788,23 @@ def _traverse_match_histories(
                 mid = match.get("match_id", "")
                 m_home_team = (match.get("home_team") or "").strip()
                 m_away_team = (match.get("away_team") or "").strip()
+                _mr_trav = _match_result_reliable(
+                    match.get("lines", []),
+                    match.get("team_wins_home"),
+                    match.get("team_wins_away"))
                 for line in match.get("lines", []):
                     home_raw = line.get("players_home", "") or ""
                     away_raw = line.get("players_away", "") or ""
-                    # players_home = court winner (TennisLink always lists
-                    # winner first). Determine winner team by membership.
                     wt = line.get("winner_team", "") or ""
                     lt = line.get("loser_team", "") or ""
                     if not wt and not lt and m_home_team and m_away_team:
-                        _home_names = [n.strip() for n in home_raw.split("/") if n.strip()]
-                        for _hn in _home_names:
-                            _hk = re.sub(r"\s+", " ", _hn.lower().strip())
-                            _ht = by_name.get(_hk, {}).get("team") or by_name.get(_hk, {}).get("team_30") or ""
-                            if _ht:
-                                if _ht.upper() == m_home_team.upper():
-                                    wt, lt = m_home_team, m_away_team
-                                elif _ht.upper() == m_away_team.upper():
-                                    wt, lt = m_away_team, m_home_team
-                                break
+                        _cwt = _court_winner_team(
+                            line, m_home_team, m_away_team, _mr_trav)
+                        if _cwt:
+                            if _cwt.upper() == m_home_team.upper():
+                                wt, lt = m_home_team, m_away_team
+                            else:
+                                wt, lt = m_away_team, m_home_team
                     score = line.get("score", "") or ""
                     line_label = line.get("line", "") or ""
 
@@ -1302,6 +1334,22 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                 lines = m.get("lines", [])
                 if lines:
                     blocks += '<div class="line-lbl">line results</div>'
+                    _m_ht = m.get("home_team", "")
+                    _m_at = m.get("away_team", "")
+                    # Per-match reliability: parse score into home/away wins
+                    _m_score = m.get("score", "")
+                    _ms = re.split(r"[–\-]", _m_score) if _m_score else []
+                    _is_home = tname.upper() == _m_ht.upper()
+                    if len(_ms) == 2:
+                        try:
+                            _tw, _ow = int(_ms[0].strip()), int(_ms[1].strip())
+                            _hw = _tw if _is_home else _ow
+                            _aw = _ow if _is_home else _tw
+                        except ValueError:
+                            _hw = _aw = None
+                    else:
+                        _hw = _aw = None
+                    _mr = _match_result_reliable(lines, _hw, _aw)
                     for ln in lines:
                         ph_raw = ln.get("players_home", "")
                         pa_raw = ln.get("players_away", "")
@@ -1311,19 +1359,13 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                                 return '<em class="default-marker">default</em>'
                             return _render_players(raw, _mdate)
 
-                        # players_home = court winner (TennisLink always
-                        # lists winner first). Determine which team won
-                        # this court by checking player membership.
-                        _winner_team = ""
-                        for _pn in [x.strip() for x in ph_raw.split("/") if x.strip()]:
-                            _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
-                            if _pt:
-                                _winner_team = _pt
-                                break
-                        _our_team_won = _winner_team.upper() == tname.upper() if _winner_team else None
-                        # If we can't identify the winner by team membership,
-                        # fall back: if ALL courts were won by the same side
-                        # (5-0/0-5), use the match result.
+                        _cwt = _court_winner_team(
+                            ln, _m_ht, _m_at, _mr)
+                        if _cwt:
+                            _our_team_won = _cwt.upper() == tname.upper()
+                        else:
+                            _our_team_won = None
+                        # Fallback: unanimous match (5-0/0-5) only
                         if _our_team_won is None and m["won"] is not None:
                             _match_score = m.get("score", "")
                             _ms_parts = re.split(r"[–\-]", _match_score) if _match_score else []
@@ -1336,7 +1378,6 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                                     pass
 
                         # Always show selected team on left, opponent on right.
-                        # players_home may be from either team — check membership.
                         _ph_is_our_team = False
                         for _pn in [x.strip() for x in ph_raw.split("/") if x.strip()]:
                             _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
@@ -2500,7 +2541,10 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
             away_team = m.get("away_team", "")
             date = m.get("date", "")
             wk = week_label.get(date, "")
-
+            _mr_mx = _match_result_reliable(
+                m.get("lines", []),
+                m.get("team_wins_home"),
+                m.get("team_wins_away"))
             for ln in m.get("lines", []):
                 line_str = ln.get("line", "")
                 line_label = _line_label_short(line_str)
@@ -2508,16 +2552,10 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                 score = ln.get("score", "")
                 winner_team = (ln.get("winner_team") or "").upper()
                 if not winner_team:
-                    # players_home = court winner; determine their team
-                    _ph = (ln.get("players_home") or "").strip()
-                    for _pn in [x.strip() for x in _ph.split("/") if x.strip()]:
-                        _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
-                        if _pt:
-                            if _pt.upper() == home_team.upper():
-                                winner_team = home_team.upper()
-                            elif _pt.upper() == away_team.upper():
-                                winner_team = away_team.upper()
-                            break
+                    _cwt = _court_winner_team(
+                        ln, home_team, away_team, _mr_mx)
+                    if _cwt:
+                        winner_team = _cwt.upper()
 
                 ph = (ln.get("players_home") or "").strip()
                 pa = (ln.get("players_away") or "").strip()
