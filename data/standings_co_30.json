@@ -24306,60 +24306,86 @@
               "players_home": "Anna Masiello",
               "players_away": "Neha Sitole",
               "score": "6-2 1-6 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "KC-CC GREEN",
+              "loser_team": "BM BLUE",
+              "winner_names": [
+                "Neha Sitole"
+              ],
+              "loser_names": [
+                "Anna Masiello"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Sara Lynn",
               "players_away": "Ashley Miller",
               "score": "6-4 6-4",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "KC-CC GREEN",
+              "loser_team": "BM BLUE",
+              "winner_names": [
+                "Ashley Miller"
+              ],
+              "loser_names": [
+                "Sara Lynn"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Mallory Clark / Judy Delzell",
               "players_away": "Kimberly Sperry / Katherine Johnson",
               "score": "6-0 6-1",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "KC-CC GREEN",
+              "loser_team": "BM BLUE",
+              "winner_names": [
+                "Kimberly Sperry",
+                "Katherine Johnson"
+              ],
+              "loser_names": [
+                "Mallory Clark",
+                "Judy Delzell"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Ashley Barto / Christine McElhinney",
               "players_away": "Tracy Sickels / Nathalia Faribault",
               "score": "6-1 7-6",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "KC-CC GREEN",
+              "loser_team": "BM BLUE",
+              "winner_names": [
+                "Tracy Sickels",
+                "Nathalia Faribault"
+              ],
+              "loser_names": [
+                "Ashley Barto",
+                "Christine McElhinney"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Christine Angelini / Courtney Gocha",
               "players_away": "Brenda Sears / Kimberly Picchietti",
               "score": "6-3 6-1",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "KC-CC GREEN",
+              "loser_team": "BM BLUE",
+              "winner_names": [
+                "Brenda Sears",
+                "Kimberly Picchietti"
+              ],
+              "loser_names": [
+                "Christine Angelini",
+                "Courtney Gocha"
+              ]
             }
           ]
         },

@@ -25508,60 +25508,86 @@
               "players_home": "Nghi Hoang",
               "players_away": "Taylor Pardun",
               "score": "2-6 7-5 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "WP GREEN",
+              "loser_team": "CM BLUE",
+              "winner_names": [
+                "Taylor Pardun"
+              ],
+              "loser_names": [
+                "Nghi Hoang"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Connie Friedman",
               "players_away": "Paula Cohen",
               "score": "7-6 6-1",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "WP GREEN",
+              "loser_team": "CM BLUE",
+              "winner_names": [
+                "Paula Cohen"
+              ],
+              "loser_names": [
+                "Connie Friedman"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Phaedra Harbaugh / Brae Holdridge",
               "players_away": "Cathy Roper / Margaret Deline",
               "score": "6-0 6-4",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "WP GREEN",
+              "loser_team": "CM BLUE",
+              "winner_names": [
+                "Cathy Roper",
+                "Margaret Deline"
+              ],
+              "loser_names": [
+                "Phaedra Harbaugh",
+                "Brae Holdridge"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Dana Breitenstein / Callie Hennessy",
               "players_away": "Romi Hovey / Lea VanSchaack",
               "score": "6-3 6-4",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "WP GREEN",
+              "loser_team": "CM BLUE",
+              "winner_names": [
+                "Romi Hovey",
+                "Lea VanSchaack"
+              ],
+              "loser_names": [
+                "Dana Breitenstein",
+                "Callie Hennessy"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Camille Reuter / Meredith Giske",
               "players_away": "Katie McCrimmon / Skye McCrimmon",
               "score": "7-5 2-6 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "WP GREEN",
+              "loser_team": "CM BLUE",
+              "winner_names": [
+                "Katie McCrimmon",
+                "Skye McCrimmon"
+              ],
+              "loser_names": [
+                "Camille Reuter",
+                "Meredith Giske"
+              ]
             }
           ]
         },

@@ -8,16 +8,16 @@
       "teams": [
         {
           "team_name": "Aloha Beaches 18+",
-          "team_wins": 7,
-          "matches_played": 8,
+          "team_wins": 8,
+          "matches_played": 9,
           "team_losses": 1,
-          "indiv_wins": 33,
-          "indiv_losses": 7,
-          "sets_won": 70,
-          "sets_lost": 21,
-          "games_won": 450,
-          "games_lost": 266,
-          "games_won_pct": "62.22%"
+          "indiv_wins": 37,
+          "indiv_losses": 8,
+          "sets_won": 78,
+          "sets_lost": 25,
+          "games_won": 505,
+          "games_lost": 314,
+          "games_won_pct": "61.09%"
         },
         {
           "team_name": "Honey Deuce 18's",
@@ -74,15 +74,15 @@
         {
           "team_name": "Nice Hits 18+",
           "team_wins": 4,
-          "matches_played": 8,
-          "team_losses": 4,
-          "indiv_wins": 23,
-          "indiv_losses": 17,
-          "sets_won": 52,
-          "sets_lost": 41,
-          "games_won": 414,
-          "games_lost": 326,
-          "games_won_pct": "55.22%"
+          "matches_played": 9,
+          "team_losses": 5,
+          "indiv_wins": 24,
+          "indiv_losses": 21,
+          "sets_won": 56,
+          "sets_lost": 49,
+          "games_won": 462,
+          "games_lost": 381,
+          "games_won_pct": "54.15%"
         },
         {
           "team_name": "SLAY!",
@@ -156,12 +156,16 @@
               "players_home": "Liz Given",
               "players_away": "Emily Sloop",
               "score": "4-6 6-1 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Each Hit",
+              "loser_team": "Aloha Beaches 18+",
+              "winner_names": [
+                "Emily Sloop"
+              ],
+              "loser_names": [
+                "Liz Given"
+              ]
             },
             {
               "line": "2# Singles",
@@ -169,11 +173,15 @@
               "players_away": "Erica Laursen",
               "score": "6-0 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Brittney Lacey"
+              ],
+              "loser_names": [
+                "Erica Laursen"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -181,11 +189,17 @@
               "players_away": "Tina Measham / Marnie Newton",
               "score": "6-1 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Amy Wendel",
+                "Katie Nelson"
+              ],
+              "loser_names": [
+                "Tina Measham",
+                "Marnie Newton"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -193,23 +207,35 @@
               "players_away": "Jane Perlaky / Margie Waddel",
               "score": "7-5 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Trang Pham",
+                "Chrissy Rose"
+              ],
+              "loser_names": [
+                "Jane Perlaky",
+                "Margie Waddel"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Hailey Smith / Kimberlee Megale",
               "players_away": "Anna Orrison / Zel Mertz",
               "score": "6-3 6-3",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Each Hit",
+              "loser_team": "Aloha Beaches 18+",
+              "winner_names": [
+                "Anna Orrison",
+                "Zel Mertz"
+              ],
+              "loser_names": [
+                "Hailey Smith",
+                "Kimberlee Megale"
+              ]
             }
           ]
         },
@@ -232,11 +258,15 @@
               "players_away": "Christy Siemons",
               "score": "1-6 6-1 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Kelli Kennedy"
+              ],
+              "loser_names": [
+                "Christy Siemons"
+              ]
             },
             {
               "line": "2# Singles",
@@ -244,23 +274,33 @@
               "players_away": "Kaitie Neely",
               "score": "6-4 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Monica Hubbard"
+              ],
+              "loser_names": [
+                "Kaitie Neely"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Averi Lopez / Angela Abbott",
               "players_away": "Diane Cercle / Loria Sylvia",
               "score": "6-0 6-3",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Diane Cercle",
+                "Loria Sylvia"
+              ],
+              "loser_names": [
+                "Averi Lopez",
+                "Angela Abbott"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -268,11 +308,17 @@
               "players_away": "Erin Kohler / Tiffany Roberts",
               "score": "6-0 4-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Kathy Hansen",
+                "Gillian Donahey"
+              ],
+              "loser_names": [
+                "Erin Kohler",
+                "Tiffany Roberts"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -280,11 +326,17 @@
               "players_away": "Dana Rusin / Terri Mulcahy",
               "score": "5-7 6-3 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Allison Knight",
+                "MARISA MANGUM"
+              ],
+              "loser_names": [
+                "Dana Rusin",
+                "Terri Mulcahy"
+              ]
             }
           ]
         },
@@ -306,12 +358,16 @@
               "players_home": "Ashley Bryngelson",
               "players_away": "Shannon Stith",
               "score": "7-6 6-7 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Shannon Stith"
+              ],
+              "loser_names": [
+                "Ashley Bryngelson"
+              ]
             },
             {
               "line": "2# Singles",
@@ -319,11 +375,15 @@
               "players_away": "Kari Forney",
               "score": "6-0 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Hilary Sauder"
+              ],
+              "loser_names": [
+                "Kari Forney"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -331,11 +391,17 @@
               "players_away": "Lina Zenner / Shawna Ianson",
               "score": "6-2 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Robin Toney",
+                "Gracie Franks"
+              ],
+              "loser_names": [
+                "Lina Zenner",
+                "Shawna Ianson"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -343,11 +409,17 @@
               "players_away": "Sherri Matney / JoLyn Janecko",
               "score": "6-1 2-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Ginger Cummins",
+                "Heidi Friend"
+              ],
+              "loser_names": [
+                "Sherri Matney",
+                "JoLyn Janecko"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -355,11 +427,17 @@
               "players_away": "Alaina Sayers / Maureen Sykes",
               "score": "3-6 6-1 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Jill Peterson",
+                "Jill Yost"
+              ],
+              "loser_names": [
+                "Alaina Sayers",
+                "Maureen Sykes"
+              ]
             }
           ]
         },
@@ -382,11 +460,15 @@
               "players_away": "Lauren Osburn",
               "score": "6-2 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Allison Young"
+              ],
+              "loser_names": [
+                "Lauren Osburn"
+              ]
             },
             {
               "line": "2# Singles",
@@ -394,35 +476,51 @@
               "players_away": "Erica Gonzalez",
               "score": "7-6 7-5",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Jenessa Taylor"
+              ],
+              "loser_names": [
+                "Erica Gonzalez"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Abbie Hover / Kylie Nesbit",
               "players_away": "Jessika Hulewsky / Mandy Bergstrom",
               "score": "6-3 6-4",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Jessika Hulewsky",
+                "Mandy Bergstrom"
+              ],
+              "loser_names": [
+                "Abbie Hover",
+                "Kylie Nesbit"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Donna Moussalli / Kim Buchanan",
               "players_away": "Nelda Denton / Fariss Mcgee",
               "score": "6-4 6-4",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Nelda Denton",
+                "Fariss Mcgee"
+              ],
+              "loser_names": [
+                "Donna Moussalli",
+                "Kim Buchanan"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -430,11 +528,17 @@
               "players_away": "Carrie Fischer / Michelle Francel",
               "score": "6-4 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Lynn Clanton",
+                "Rebecca Clift-French"
+              ],
+              "loser_names": [
+                "Carrie Fischer",
+                "Michelle Francel"
+              ]
             }
           ]
         },
@@ -456,12 +560,16 @@
               "players_home": "Paige Gustavsen",
               "players_away": "Chynna Castoro",
               "score": "6-3 7-5",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLAY!",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Chynna Castoro"
+              ],
+              "loser_names": [
+                "Paige Gustavsen"
+              ]
             },
             {
               "line": "2# Singles",
@@ -469,11 +577,15 @@
               "players_away": "Andrea Reynolds",
               "score": "6-0 7-6",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Molly Schafer"
+              ],
+              "loser_names": [
+                "Andrea Reynolds"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -481,11 +593,17 @@
               "players_away": "Amy Costello / Amy Pugsley",
               "score": "6-3 4-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Cynthia Copple",
+                "Jennifer Wilson"
+              ],
+              "loser_names": [
+                "Amy Costello",
+                "Amy Pugsley"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -493,11 +611,17 @@
               "players_away": "Suzie Wilson / Lori Hosac",
               "score": "6-2 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Stacey Strong",
+                "Emily Allen"
+              ],
+              "loser_names": [
+                "Suzie Wilson",
+                "Lori Hosac"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -505,11 +629,17 @@
               "players_away": "Shawnee Perdue / Farrell Kessler",
               "score": "6-2 7-5",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Melissa Nielsen",
+                "Betsy McDonald"
+              ],
+              "loser_names": [
+                "Shawnee Perdue",
+                "Farrell Kessler"
+              ]
             }
           ]
         },
@@ -532,23 +662,31 @@
               "players_away": "Breanna Taylor",
               "score": "6-4 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Cathy Wood"
+              ],
+              "loser_names": [
+                "Breanna Taylor"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Chandra Zenner-Ford",
               "players_away": "Lindsey Cassidy",
               "score": "6-2 6-7 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Lindsey Cassidy"
+              ],
+              "loser_names": [
+                "Chandra Zenner-Ford"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -556,23 +694,35 @@
               "players_away": "Stacey Strong / Emily Allen",
               "score": "7-5 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Jen Hunter",
+                "Kimberly Shansby"
+              ],
+              "loser_names": [
+                "Stacey Strong",
+                "Emily Allen"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Vicki Goss / Hillary Lilya",
               "players_away": "Cynthia Copple / Paige Gustavsen",
               "score": "6-3 6-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Cynthia Copple",
+                "Paige Gustavsen"
+              ],
+              "loser_names": [
+                "Vicki Goss",
+                "Hillary Lilya"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -580,11 +730,17 @@
               "players_away": "Stephanie Churchman / Jennifer Johnson",
               "score": "6-4 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Kari Forney",
+                "Margo Showers"
+              ],
+              "loser_names": [
+                "Stephanie Churchman",
+                "Jennifer Johnson"
+              ]
             }
           ]
         },
@@ -607,11 +763,15 @@
               "players_away": "Kristin Bailey",
               "score": "6-2 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "SLAY!",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Jule Ryan"
+              ],
+              "loser_names": [
+                "Kristin Bailey"
+              ]
             },
             {
               "line": "2# Singles",
@@ -619,11 +779,15 @@
               "players_away": "Krystal Patel",
               "score": "6-2 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "SLAY!",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Chynna Castoro"
+              ],
+              "loser_names": [
+                "Krystal Patel"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -631,11 +795,17 @@
               "players_away": "Averi Lopez / Vasey Stephens",
               "score": "7-5 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "SLAY!",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Amy Pugsley",
+                "Morgan White"
+              ],
+              "loser_names": [
+                "Averi Lopez",
+                "Vasey Stephens"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -643,23 +813,35 @@
               "players_away": "Allison Darnall / Gillian Donahey",
               "score": "4-6 6-0 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "SLAY!",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Jill Mckinney",
+                "Kim Agler"
+              ],
+              "loser_names": [
+                "Allison Darnall",
+                "Gillian Donahey"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Dyan Goulet / Suzie Wilson",
               "players_away": "MARISA MANGUM / Breanna Taylor",
               "score": "6-1 7-5",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "MARISA MANGUM",
+                "Breanna Taylor"
+              ],
+              "loser_names": [
+                "Dyan Goulet",
+                "Suzie Wilson"
+              ]
             }
           ]
         },
@@ -682,11 +864,15 @@
               "players_away": "KATIE RATLIFF",
               "score": "6-1 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "YOURS!",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Jessika Hulewsky"
+              ],
+              "loser_names": [
+                "KATIE RATLIFF"
+              ]
             },
             {
               "line": "2# Singles",
@@ -694,23 +880,33 @@
               "players_away": "Anke Heineck",
               "score": "6-3 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "YOURS!",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Gabrielle Bohdel"
+              ],
+              "loser_names": [
+                "Anke Heineck"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Monica Reagan / Angel Marie Bowie",
               "players_away": "Kristin Mumford / Jill Peterson",
               "score": "6-3 7-6",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Kristin Mumford",
+                "Jill Peterson"
+              ],
+              "loser_names": [
+                "Monica Reagan",
+                "Angel Marie Bowie"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -718,11 +914,17 @@
               "players_away": "Hilary Sauder / Heidi Friend",
               "score": "6-3 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "YOURS!",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Carrie Fischer",
+                "Alice Livesay"
+              ],
+              "loser_names": [
+                "Hilary Sauder",
+                "Heidi Friend"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -730,11 +932,17 @@
               "players_away": "Jennifer Rusk / Christine Cannon",
               "score": "6-2 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "YOURS!",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Leah Hart",
+                "Esther Rowland"
+              ],
+              "loser_names": [
+                "Jennifer Rusk",
+                "Christine Cannon"
+              ]
             }
           ]
         },
@@ -757,35 +965,49 @@
               "players_away": "Jenessa Taylor",
               "score": "3-6 6-3 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Katherine Bleth"
+              ],
+              "loser_names": [
+                "Jenessa Taylor"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Susan Riley",
               "players_away": "Sonia Ivanova",
               "score": "6-7 6-4 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Aloha Beaches 18+",
+              "winner_names": [
+                "Sonia Ivanova"
+              ],
+              "loser_names": [
+                "Susan Riley"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Trang Pham / Chrissy Rose",
               "players_away": "Donna Moussalli / Allison Young",
               "score": "6-2 6-1",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Aloha Beaches 18+",
+              "winner_names": [
+                "Donna Moussalli",
+                "Allison Young"
+              ],
+              "loser_names": [
+                "Trang Pham",
+                "Chrissy Rose"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -793,11 +1015,17 @@
               "players_away": "Christeena Sevy / Delaney Seymour",
               "score": "6-2 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Kristina Kingery",
+                "Liz Given"
+              ],
+              "loser_names": [
+                "Christeena Sevy",
+                "Delaney Seymour"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -805,11 +1033,17 @@
               "players_away": "Alexandra Geffon / Madison Vilay",
               "score": "6-1 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Michele Inghram",
+                "Mardianne Howell"
+              ],
+              "loser_names": [
+                "Alexandra Geffon",
+                "Madison Vilay"
+              ]
             }
           ]
         },
@@ -832,11 +1066,15 @@
               "players_away": "Chynna Castoro",
               "score": "6-3 4-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Erin Kohler"
+              ],
+              "loser_names": [
+                "Chynna Castoro"
+              ]
             },
             {
               "line": "2# Singles",
@@ -844,23 +1082,33 @@
               "players_away": "Eileen Ursillo",
               "score": "6-2 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Kaitie Neely"
+              ],
+              "loser_names": [
+                "Eileen Ursillo"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Jennifer Small / Tiffany Roberts",
               "players_away": "Morgan White / Jule Ryan",
               "score": "6-3 6-4",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLAY!",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Morgan White",
+                "Jule Ryan"
+              ],
+              "loser_names": [
+                "Jennifer Small",
+                "Tiffany Roberts"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -868,11 +1116,17 @@
               "players_away": "Dyan Goulet / Lori Hosac",
               "score": "6-0 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Jennifer Sukow",
+                "Loria Sylvia"
+              ],
+              "loser_names": [
+                "Dyan Goulet",
+                "Lori Hosac"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -880,11 +1134,17 @@
               "players_away": "Suzie Wilson / Jill Mckinney",
               "score": "7-5 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Emily Cole",
+                "Katherine Frisk"
+              ],
+              "loser_names": [
+                "Suzie Wilson",
+                "Jill Mckinney"
+              ]
             }
           ]
         },
@@ -1008,11 +1268,15 @@
               "players_away": "Cathy Wood",
               "score": "6-4 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Angela Abbott"
+              ],
+              "loser_names": [
+                "Cathy Wood"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1020,47 +1284,69 @@
               "players_away": "Shannon Stith",
               "score": "6-4 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Amanda Finnegan"
+              ],
+              "loser_names": [
+                "Shannon Stith"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "MARISA MANGUM / Breanna Taylor",
               "players_away": "Jen Hunter / Julienne Ferguson",
               "score": "7-6 4-6 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Jen Hunter",
+                "Julienne Ferguson"
+              ],
+              "loser_names": [
+                "MARISA MANGUM",
+                "Breanna Taylor"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Andi Trued / Kathy Hansen",
               "players_away": "Vicki Goss / Alaina Sayers",
               "score": "4-6 6-2 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Vicki Goss",
+                "Alaina Sayers"
+              ],
+              "loser_names": [
+                "Andi Trued",
+                "Kathy Hansen"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Gillian Donahey / Allison Darnall",
               "players_away": "Sherri Matney / Lori Barnum",
               "score": "6-2 6-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Sherri Matney",
+                "Lori Barnum"
+              ],
+              "loser_names": [
+                "Gillian Donahey",
+                "Allison Darnall"
+              ]
             }
           ]
         },
@@ -1083,11 +1369,15 @@
               "players_away": "Erica Gonzalez",
               "score": "6-3 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Molly Otter"
+              ],
+              "loser_names": [
+                "Erica Gonzalez"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1095,35 +1385,51 @@
               "players_away": "Nelda Denton",
               "score": "6-4 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Glory Questad"
+              ],
+              "loser_names": [
+                "Nelda Denton"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Cynthia Copple / Jennifer Wilson",
               "players_away": "Jessika Hulewsky / Mandy Bergstrom",
               "score": "6-3 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Jessika Hulewsky",
+                "Mandy Bergstrom"
+              ],
+              "loser_names": [
+                "Cynthia Copple",
+                "Jennifer Wilson"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Rebecca Fitzpatrick / Jennifer Johnson",
               "players_away": "Fariss Mcgee / Karie Pappani",
               "score": "7-6 3-6 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Fariss Mcgee",
+                "Karie Pappani"
+              ],
+              "loser_names": [
+                "Rebecca Fitzpatrick",
+                "Jennifer Johnson"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1131,11 +1437,17 @@
               "players_away": "Angel Marie Bowie / Esther Rowland",
               "score": "3-6 6-1 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Melissa Nielsen",
+                "Amy Boettcher"
+              ],
+              "loser_names": [
+                "Angel Marie Bowie",
+                "Esther Rowland"
+              ]
             }
           ]
         },
@@ -1146,12 +1458,99 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011960996",
           "home_team": "Aloha Beaches 18+",
           "away_team": "Nice Hits 18+",
-          "team_wins_home": null,
-          "team_wins_away": null,
-          "score": "",
-          "status": "Not Played",
-          "pending": true,
-          "lines": []
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Brittney Lacey",
+              "players_away": "Glory Questad",
+              "score": "6-3 6-7 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Brittney Lacey"
+              ],
+              "loser_names": [
+                "Glory Questad"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Elise Connor",
+              "players_away": "Paige Gustavsen",
+              "score": "6-1 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Aloha Beaches 18+",
+              "winner_names": [
+                "Paige Gustavsen"
+              ],
+              "loser_names": [
+                "Elise Connor"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Hailey Smith / Michele Inghram",
+              "players_away": "Molly Otter / Lindsey Cassidy",
+              "score": "7-5 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Hailey Smith",
+                "Michele Inghram"
+              ],
+              "loser_names": [
+                "Molly Otter",
+                "Lindsey Cassidy"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Amy Wendel / Katie Nelson",
+              "players_away": "Molly Schafer / Rebecca Fitzpatrick",
+              "score": "7-5 6-7 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Amy Wendel",
+                "Katie Nelson"
+              ],
+              "loser_names": [
+                "Molly Schafer",
+                "Rebecca Fitzpatrick"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Liz Given / Susan Riley",
+              "players_away": "Betsy McDonald / Emily Allen",
+              "score": "6-4 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Liz Given",
+                "Susan Riley"
+              ],
+              "loser_names": [
+                "Betsy McDonald",
+                "Emily Allen"
+              ]
+            }
+          ]
         },
         {
           "match_id": "38c52c55c7766fac",
@@ -1171,12 +1570,16 @@
               "players_home": "Stacia Albiston",
               "players_away": "Sonia Ivanova",
               "score": "2-6 6-1 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Sonia Ivanova"
+              ],
+              "loser_names": [
+                "Stacia Albiston"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1184,23 +1587,33 @@
               "players_away": "Jenessa Taylor",
               "score": "4-6 7-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Kaitie Neely"
+              ],
+              "loser_names": [
+                "Jenessa Taylor"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Emily Cole / Jennifer Sukow",
               "players_away": "Kylie Nesbit / Christeena Sevy",
               "score": "6-4 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Kylie Nesbit",
+                "Christeena Sevy"
+              ],
+              "loser_names": [
+                "Emily Cole",
+                "Jennifer Sukow"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1208,11 +1621,17 @@
               "players_away": "Kim Buchanan / Donna Moussalli",
               "score": "7-6 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Diane Cercle",
+                "Jean Nielsen"
+              ],
+              "loser_names": [
+                "Kim Buchanan",
+                "Donna Moussalli"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1220,11 +1639,17 @@
               "players_away": "Abbie Hover / Rebecca Clift-French",
               "score": "6-4 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Terri Mulcahy",
+                "Dana Rusin"
+              ],
+              "loser_names": [
+                "Abbie Hover",
+                "Rebecca Clift-French"
+              ]
             }
           ]
         },
@@ -1246,12 +1671,16 @@
               "players_home": "Chynna Castoro",
               "players_away": "Rachel Boren",
               "score": "6-0 6-1",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLAY!",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Rachel Boren"
+              ],
+              "loser_names": [
+                "Chynna Castoro"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1259,35 +1688,51 @@
               "players_away": "Leann Gilberg",
               "score": "4-6 7-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Andrea Reynolds"
+              ],
+              "loser_names": [
+                "Leann Gilberg"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Amy Costello / Dyan Goulet",
               "players_away": "Tina Measham / Zel Mertz",
               "score": "6-4 3-6 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLAY!",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Tina Measham",
+                "Zel Mertz"
+              ],
+              "loser_names": [
+                "Amy Costello",
+                "Dyan Goulet"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Jule Ryan / Morgan White",
               "players_away": "Marnie Newton / Margie Waddel",
               "score": "4-6 7-5 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLAY!",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Marnie Newton",
+                "Margie Waddel"
+              ],
+              "loser_names": [
+                "Jule Ryan",
+                "Morgan White"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1295,11 +1740,17 @@
               "players_away": "Heidi Hawkins / Patty Jackson",
               "score": "7-6 1-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Kristina Winterling",
+                "Farrell Kessler"
+              ],
+              "loser_names": [
+                "Heidi Hawkins",
+                "Patty Jackson"
+              ]
             }
           ]
         },
@@ -1322,11 +1773,15 @@
               "players_away": "Erica Gonzalez",
               "score": "6-7 6-2 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Cathy Wood"
+              ],
+              "loser_names": [
+                "Erica Gonzalez"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1334,11 +1789,15 @@
               "players_away": "Gabrielle Bohdel",
               "score": "6-3 1-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Shannon Stith"
+              ],
+              "loser_names": [
+                "Gabrielle Bohdel"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1346,35 +1805,53 @@
               "players_away": "Mandy Bergstrom / Jamie Hammond",
               "score": "6-4 4-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Kimberly Shansby",
+                "Hillary Lilya"
+              ],
+              "loser_names": [
+                "Mandy Bergstrom",
+                "Jamie Hammond"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Sherri Matney / Elizabeth Engroff",
               "players_away": "Wendy Bee Ping Ong Mullin / Alice Livesay",
               "score": "6-1 7-5",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Wendy Bee Ping Ong Mullin",
+                "Alice Livesay"
+              ],
+              "loser_names": [
+                "Sherri Matney",
+                "Elizabeth Engroff"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Saundra Coronado / Monica Sorensen",
               "players_away": "Fariss Mcgee / Esther Rowland",
               "score": "7-5 6-3",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Fariss Mcgee",
+                "Esther Rowland"
+              ],
+              "loser_names": [
+                "Saundra Coronado",
+                "Monica Sorensen"
+              ]
             }
           ]
         },
@@ -1397,22 +1874,28 @@
               "players_away": "Hilary Sauder",
               "score": "6-1 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Gillian Donahey"
+              ],
+              "loser_names": [
+                "Hilary Sauder"
+              ]
             },
             {
               "line": "2# Singles",
-              "players_home": "N/A",
+              "players_home": "",
               "players_away": "Kim Balangue",
               "score": "6-0 6-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Kim Balangue"
+              ],
               "loser_names": []
             },
             {
@@ -1421,11 +1904,17 @@
               "players_away": "Robin Toney / Kristin Mumford",
               "score": "6-4 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Andi Trued",
+                "Molly Henrie"
+              ],
+              "loser_names": [
+                "Robin Toney",
+                "Kristin Mumford"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1433,11 +1922,17 @@
               "players_away": "Jennifer Rusk / Kathy Deahl",
               "score": "6-1 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Breanna Taylor",
+                "Angela Abbott"
+              ],
+              "loser_names": [
+                "Jennifer Rusk",
+                "Kathy Deahl"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1445,11 +1940,17 @@
               "players_away": "Ginger Cummins / Anke Heineck",
               "score": "6-3 4-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Kelli Kennedy",
+                "Katie McHargue"
+              ],
+              "loser_names": [
+                "Ginger Cummins",
+                "Anke Heineck"
+              ]
             }
           ]
         },
@@ -1971,12 +2472,16 @@
               "players_home": "Christy Siemons",
               "players_away": "Molly Schafer",
               "score": "6-2 6-1",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Molly Schafer"
+              ],
+              "loser_names": [
+                "Christy Siemons"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1984,11 +2489,15 @@
               "players_away": "Paige Gustavsen",
               "score": "6-0 7-6",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Stacia Albiston"
+              ],
+              "loser_names": [
+                "Paige Gustavsen"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1996,11 +2505,17 @@
               "players_away": "Caitlin Bower / Michelle Johnston",
               "score": "2-6 6-2 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Stacey Walker",
+                "Tiffany Roberts"
+              ],
+              "loser_names": [
+                "Caitlin Bower",
+                "Michelle Johnston"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2008,11 +2523,17 @@
               "players_away": "Stacey Strong / Nancy Raeber",
               "score": "7-6 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Emily Cole",
+                "Jennifer Sukow"
+              ],
+              "loser_names": [
+                "Stacey Strong",
+                "Nancy Raeber"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2020,11 +2541,17 @@
               "players_away": "Rebecca Fitzpatrick / Cynthia Copple",
               "score": "6-4 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Jean Nielsen",
+                "Kiley Holt"
+              ],
+              "loser_names": [
+                "Rebecca Fitzpatrick",
+                "Cynthia Copple"
+              ]
             }
           ]
         },
@@ -2047,23 +2574,31 @@
               "players_away": "Christine Quintana",
               "score": "6-1 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Gabrielle Bohdel"
+              ],
+              "loser_names": [
+                "Christine Quintana"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Jessika Hulewsky",
               "players_away": "Paige Brown",
               "score": "6-1 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Paige Brown"
+              ],
+              "loser_names": [
+                "Jessika Hulewsky"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2071,23 +2606,35 @@
               "players_away": "Anna Orrison / Zel Mertz",
               "score": "4-6 6-2 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Mandy Bergstrom",
+                "Jamie Hammond"
+              ],
+              "loser_names": [
+                "Anna Orrison",
+                "Zel Mertz"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Karie Pappani / Carrie Fischer",
               "players_away": "Shawna Byington / Leann Gilberg",
               "score": "7-5 5-7 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Shawna Byington",
+                "Leann Gilberg"
+              ],
+              "loser_names": [
+                "Karie Pappani",
+                "Carrie Fischer"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2095,11 +2642,17 @@
               "players_away": "Heidi Hawkins / Patty Jackson",
               "score": "7-6 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Nelda Denton",
+                "Fariss Mcgee"
+              ],
+              "loser_names": [
+                "Heidi Hawkins",
+                "Patty Jackson"
+              ]
             }
           ]
         },
@@ -2121,60 +2674,86 @@
               "players_home": "Cathy Wood",
               "players_away": "Sonia Ivanova",
               "score": "6-3 6-1",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Sonia Ivanova"
+              ],
+              "loser_names": [
+                "Cathy Wood"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Alaina Sayers",
               "players_away": "Allison Young",
               "score": "6-3 6-3",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Allison Young"
+              ],
+              "loser_names": [
+                "Alaina Sayers"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Hillary Lilya / Kimberly Shansby",
               "players_away": "Kylie Nesbit / Christeena Sevy",
               "score": "6-2 6-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Kylie Nesbit",
+                "Christeena Sevy"
+              ],
+              "loser_names": [
+                "Hillary Lilya",
+                "Kimberly Shansby"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Jen Hunter / Jennifer Stevens",
               "players_away": "Lori Sato / Donna Moussalli",
               "score": "6-7 6-4 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Lori Sato",
+                "Donna Moussalli"
+              ],
+              "loser_names": [
+                "Jen Hunter",
+                "Jennifer Stevens"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Saundra Coronado / Monica Sorensen",
               "players_away": "Abbie Hover / Lynn Clanton",
               "score": "6-2 6-7 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Abbie Hover",
+                "Lynn Clanton"
+              ],
+              "loser_names": [
+                "Saundra Coronado",
+                "Monica Sorensen"
+              ]
             }
           ]
         },
@@ -2295,36 +2874,50 @@
               "players_home": "Christine Quintana",
               "players_away": "Cathy Wood",
               "score": "6-2 6-1",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Play It Forward",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Cathy Wood"
+              ],
+              "loser_names": [
+                "Christine Quintana"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Leann Gilberg",
               "players_away": "Hillary Lilya",
               "score": "6-3 6-3",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Play It Forward",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Hillary Lilya"
+              ],
+              "loser_names": [
+                "Leann Gilberg"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Zel Mertz / Margie Waddel",
               "players_away": "Jen Hunter / Kimberly Shansby",
               "score": "6-2 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Play It Forward",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Jen Hunter",
+                "Kimberly Shansby"
+              ],
+              "loser_names": [
+                "Zel Mertz",
+                "Margie Waddel"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2332,11 +2925,17 @@
               "players_away": "Vicki Goss / Alaina Sayers",
               "score": "7-6 7-5",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Marnie Newton",
+                "Patty Jackson"
+              ],
+              "loser_names": [
+                "Vicki Goss",
+                "Alaina Sayers"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2344,11 +2943,17 @@
               "players_away": "Monica Sorensen / Jennifer Stevens",
               "score": "6-2 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Shawna Byington",
+                "Rachel Boren"
+              ],
+              "loser_names": [
+                "Monica Sorensen",
+                "Jennifer Stevens"
+              ]
             }
           ]
         },
@@ -2472,11 +3077,15 @@
               "players_away": "Jean Nielsen",
               "score": "2-6 6-4 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Cathy Wood"
+              ],
+              "loser_names": [
+                "Jean Nielsen"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2484,23 +3093,33 @@
               "players_away": "Emily Cole",
               "score": "6-3 7-5",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Shannon Stith"
+              ],
+              "loser_names": [
+                "Emily Cole"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Lina Zenner / Kimberly Shansby",
               "players_away": "Stacia Albiston / Tiffany Roberts",
               "score": "7-6 6-3",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Play It Forward",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Stacia Albiston",
+                "Tiffany Roberts"
+              ],
+              "loser_names": [
+                "Lina Zenner",
+                "Kimberly Shansby"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2508,23 +3127,35 @@
               "players_away": "Stacey Walker / Erin Kohler",
               "score": "6-2 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "JoLyn Janecko",
+                "Vicki Goss"
+              ],
+              "loser_names": [
+                "Stacey Walker",
+                "Erin Kohler"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Shawna Ianson / Alaina Sayers",
               "players_away": "Jennifer Small / Katherine Frisk",
               "score": "6-2 3-6 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Play It Forward",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Jennifer Small",
+                "Katherine Frisk"
+              ],
+              "loser_names": [
+                "Shawna Ianson",
+                "Alaina Sayers"
+              ]
             }
           ]
         },
@@ -2546,12 +3177,16 @@
               "players_home": "Paige Brown",
               "players_away": "Caitlin Bower",
               "score": "6-3 3-6 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Caitlin Bower"
+              ],
+              "loser_names": [
+                "Paige Brown"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2559,11 +3194,15 @@
               "players_away": "Breanna Taylor",
               "score": "6-3 7-6",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Emily Sloop"
+              ],
+              "loser_names": [
+                "Breanna Taylor"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2571,11 +3210,17 @@
               "players_away": "Emily Allen / Betsy McDonald",
               "score": "6-4 4-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Anna Orrison",
+                "Tina Measham"
+              ],
+              "loser_names": [
+                "Emily Allen",
+                "Betsy McDonald"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2583,23 +3228,35 @@
               "players_away": "Jennifer Johnson / Cynthia Copple",
               "score": "6-4 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Marnie Newton",
+                "Margie Waddel"
+              ],
+              "loser_names": [
+                "Jennifer Johnson",
+                "Cynthia Copple"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Rachel Boren / Shawna Byington",
               "players_away": "Melissa Nielsen / Amy Boettcher",
               "score": "6-2 4-6 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Melissa Nielsen",
+                "Amy Boettcher"
+              ],
+              "loser_names": [
+                "Rachel Boren",
+                "Shawna Byington"
+              ]
             }
           ]
         },
@@ -2622,23 +3279,31 @@
               "players_away": "Ashley Bryngelson",
               "score": "6-2 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Allison Young"
+              ],
+              "loser_names": [
+                "Ashley Bryngelson"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Treva Pline",
               "players_away": "Jill Peterson",
               "score": "6-2 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Jill Peterson"
+              ],
+              "loser_names": [
+                "Treva Pline"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2646,35 +3311,53 @@
               "players_away": "Kristin Mumford / Gracie Franks",
               "score": "7-5 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Kim Buchanan",
+                "Lori Sato"
+              ],
+              "loser_names": [
+                "Kristin Mumford",
+                "Gracie Franks"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Alexandra Geffon / Madison Vilay",
               "players_away": "Karen Sheehan / Heidi Friend",
               "score": "6-4 6-4",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Karen Sheehan",
+                "Heidi Friend"
+              ],
+              "loser_names": [
+                "Alexandra Geffon",
+                "Madison Vilay"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Jenessa Taylor / Jill Ball",
               "players_away": "Christine Cannon / Kathy Deahl",
               "score": "6-3 6-4",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Christine Cannon",
+                "Kathy Deahl"
+              ],
+              "loser_names": [
+                "Jenessa Taylor",
+                "Jill Ball"
+              ]
             }
           ]
         },
@@ -2696,12 +3379,16 @@
               "players_home": "Jessika Hulewsky",
               "players_away": "Averi Lopez",
               "score": "6-3 1-6 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Averi Lopez"
+              ],
+              "loser_names": [
+                "Jessika Hulewsky"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2709,23 +3396,33 @@
               "players_away": "Krystal Patel",
               "score": "6-1 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "YOURS!",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Lauren Osburn"
+              ],
+              "loser_names": [
+                "Krystal Patel"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Nelda Denton / Carrie Fischer",
               "players_away": "MARISA MANGUM / Breanna Taylor",
               "score": "6-2 6-3",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "MARISA MANGUM",
+                "Breanna Taylor"
+              ],
+              "loser_names": [
+                "Nelda Denton",
+                "Carrie Fischer"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2733,11 +3430,17 @@
               "players_away": "Angela Abbott / Kathy Hansen",
               "score": "6-1 7-5",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "YOURS!",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Alice Livesay",
+                "Esther Rowland"
+              ],
+              "loser_names": [
+                "Angela Abbott",
+                "Kathy Hansen"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2745,11 +3448,17 @@
               "players_away": "Amanda Finnegan / Vasey Stephens",
               "score": "6-3 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "YOURS!",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Mandy Bergstrom",
+                "Leah Hart"
+              ],
+              "loser_names": [
+                "Amanda Finnegan",
+                "Vasey Stephens"
+              ]
             }
           ]
         },
@@ -2763,7 +3472,7 @@
           "team_wins_home": 5,
           "team_wins_away": 0,
           "score": "5-0",
-          "status": "Won 5-0 Reported",
+          "status": "Won 5-0 Confirmed",
           "pending": false,
           "lines": [
             {
@@ -2864,7 +3573,7 @@
           "team_wins_home": 3,
           "team_wins_away": 2,
           "score": "3-2",
-          "status": "Won 3-2 Reported",
+          "status": "Won 3-2 Confirmed",
           "pending": false,
           "lines": [
             {
@@ -2873,11 +3582,15 @@
               "players_away": "Sonia Ivanova",
               "score": "6-4 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Emily Sloop"
+              ],
+              "loser_names": [
+                "Sonia Ivanova"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2885,35 +3598,51 @@
               "players_away": "Jenessa Taylor",
               "score": "7-5 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Christine Quintana"
+              ],
+              "loser_names": [
+                "Jenessa Taylor"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Jane Perlaky / Margie Waddel",
               "players_away": "Kylie Nesbit / Lori Sato",
               "score": "6-1 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Kylie Nesbit",
+                "Lori Sato"
+              ],
+              "loser_names": [
+                "Jane Perlaky",
+                "Margie Waddel"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Marnie Newton / Heidi Hawkins",
               "players_away": "Donna Moussalli / Allison Young",
               "score": "6-7 6-2 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Donna Moussalli",
+                "Allison Young"
+              ],
+              "loser_names": [
+                "Marnie Newton",
+                "Heidi Hawkins"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2921,11 +3650,17 @@
               "players_away": "Treva Pline / Delaney Seymour",
               "score": "3-6 6-3 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Shawna Byington",
+                "Leann Gilberg"
+              ],
+              "loser_names": [
+                "Treva Pline",
+                "Delaney Seymour"
+              ]
             }
           ]
         },
@@ -2939,7 +3674,7 @@
           "team_wins_home": 3,
           "team_wins_away": 2,
           "score": "3-2",
-          "status": "Won 3-2 Reported",
+          "status": "Won 3-2 Confirmed",
           "pending": false,
           "lines": [
             {
@@ -2947,24 +3682,32 @@
               "players_home": "Chynna Castoro",
               "players_away": "Cathy Wood",
               "score": "6-4 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLAY!",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Cathy Wood"
+              ],
+              "loser_names": [
+                "Chynna Castoro"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Kristina Winterling",
               "players_away": "Margo Showers",
               "score": "6-1 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLAY!",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Margo Showers"
+              ],
+              "loser_names": [
+                "Kristina Winterling"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2972,11 +3715,17 @@
               "players_away": "Chandra Zenner-Ford / Julienne Ferguson",
               "score": "6-3 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Amy Costello",
+                "Amy Pugsley"
+              ],
+              "loser_names": [
+                "Chandra Zenner-Ford",
+                "Julienne Ferguson"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2984,11 +3733,17 @@
               "players_away": "Jen Hunter / Alaina Sayers",
               "score": "6-0 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Kim Agler",
+                "Allison Rohnert"
+              ],
+              "loser_names": [
+                "Jen Hunter",
+                "Alaina Sayers"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2996,11 +3751,17 @@
               "players_away": "Elizabeth Engroff / Maureen Sykes",
               "score": "7-6 7-6",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Play It Forward",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Shawnee Perdue",
+                "Addie Harris"
+              ],
+              "loser_names": [
+                "Elizabeth Engroff",
+                "Maureen Sykes"
+              ]
             }
           ]
         },
@@ -3124,11 +3885,15 @@
               "players_away": "Carrie Fischer",
               "score": "1-6 6-3 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Erin Kohler"
+              ],
+              "loser_names": [
+                "Carrie Fischer"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3136,35 +3901,51 @@
               "players_away": "Nelda Denton",
               "score": "6-2 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Stacey Walker"
+              ],
+              "loser_names": [
+                "Nelda Denton"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Dana Rusin / Jennifer Sukow",
               "players_away": "Jessika Hulewsky / Mandy Bergstrom",
               "score": "6-0 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Jessika Hulewsky",
+                "Mandy Bergstrom"
+              ],
+              "loser_names": [
+                "Dana Rusin",
+                "Jennifer Sukow"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Jennifer Small / Jean Nielsen",
               "players_away": "Monica Reagan / Karie Pappani",
               "score": "6-2 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Monica Reagan",
+                "Karie Pappani"
+              ],
+              "loser_names": [
+                "Jennifer Small",
+                "Jean Nielsen"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3172,11 +3953,17 @@
               "players_away": "Wendy Bee Ping Ong Mullin / Gabrielle Bohdel",
               "score": "6-3 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Diane Cercle",
+                "Loria Sylvia"
+              ],
+              "loser_names": [
+                "Wendy Bee Ping Ong Mullin",
+                "Gabrielle Bohdel"
+              ]
             }
           ]
         },
@@ -3199,11 +3986,15 @@
               "players_away": "Emily Sloop",
               "score": "6-1 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Angela Abbott"
+              ],
+              "loser_names": [
+                "Emily Sloop"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3211,11 +4002,15 @@
               "players_away": "Paige Brown",
               "score": "6-1 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Vasey Stephens"
+              ],
+              "loser_names": [
+                "Paige Brown"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3223,11 +4018,17 @@
               "players_away": "Heidi Hawkins / Margie Waddel",
               "score": "4-6 7-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Molly Henrie",
+                "Andi Trued"
+              ],
+              "loser_names": [
+                "Heidi Hawkins",
+                "Margie Waddel"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3235,23 +4036,35 @@
               "players_away": "Leann Gilberg / Shawna Byington",
               "score": "6-3 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Each Hit",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Krystal Patel",
+                "Katie McHargue"
+              ],
+              "loser_names": [
+                "Leann Gilberg",
+                "Shawna Byington"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "MARISA MANGUM / Breanna Taylor",
               "players_away": "Patty Jackson / Rachel Boren",
               "score": "7-5 6-4",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Patty Jackson",
+                "Rachel Boren"
+              ],
+              "loser_names": [
+                "MARISA MANGUM",
+                "Breanna Taylor"
+              ]
             }
           ]
         },
@@ -3274,11 +4087,15 @@
               "players_away": "Allison Young",
               "score": "6-4 7-5",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Paige Gustavsen"
+              ],
+              "loser_names": [
+                "Allison Young"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3286,35 +4103,51 @@
               "players_away": "Jenessa Taylor",
               "score": "7-6 2-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Lindsey Cassidy"
+              ],
+              "loser_names": [
+                "Jenessa Taylor"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Stephanie Churchman / Jennifer Wilson",
               "players_away": "Kylie Nesbit / Lynn Clanton",
               "score": "6-4 6-7 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Kylie Nesbit",
+                "Lynn Clanton"
+              ],
+              "loser_names": [
+                "Stephanie Churchman",
+                "Jennifer Wilson"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Amy Boettcher / Melissa Nielsen",
               "players_away": "Donna Moussalli / Christeena Sevy",
               "score": "6-3 6-4",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "Donna Moussalli",
+                "Christeena Sevy"
+              ],
+              "loser_names": [
+                "Amy Boettcher",
+                "Melissa Nielsen"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3322,11 +4155,17 @@
               "players_away": "Kim Buchanan / Lori Sato",
               "score": "0-6 7-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Michelle Johnston",
+                "Tannan Koehl"
+              ],
+              "loser_names": [
+                "Kim Buchanan",
+                "Lori Sato"
+              ]
             }
           ]
         },
@@ -3348,36 +4187,50 @@
               "players_home": "Cathy Wood",
               "players_away": "Vanessa Schulte",
               "score": "6-3 2-6 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Play It Forward",
+              "loser_team": "Aloha Beaches 18+",
+              "winner_names": [
+                "Vanessa Schulte"
+              ],
+              "loser_names": [
+                "Cathy Wood"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Chandra Zenner-Ford",
               "players_away": "Katherine Bleth",
               "score": "7-6 7-5",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Play It Forward",
+              "loser_team": "Aloha Beaches 18+",
+              "winner_names": [
+                "Katherine Bleth"
+              ],
+              "loser_names": [
+                "Chandra Zenner-Ford"
+              ]
             },
             {
               "line": "1# Doubles",
               "players_home": "Jen Hunter / Lina Zenner",
               "players_away": "Amy Wendel / Katie Nelson",
               "score": "4-6 6-4 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Play It Forward",
+              "loser_team": "Aloha Beaches 18+",
+              "winner_names": [
+                "Amy Wendel",
+                "Katie Nelson"
+              ],
+              "loser_names": [
+                "Jen Hunter",
+                "Lina Zenner"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3385,11 +4238,17 @@
               "players_away": "Liz Given / Nancy Mallory",
               "score": "7-5 2-6 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Kimberly Shansby",
+                "JoLyn Janecko"
+              ],
+              "loser_names": [
+                "Liz Given",
+                "Nancy Mallory"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3397,11 +4256,17 @@
               "players_away": "Amy Hanson / Chrissy Rose",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Aloha Beaches 18+",
+              "loser_team": "Play It Forward",
+              "winner_names": [
+                "Shawna Ianson",
+                "Elizabeth Engroff"
+              ],
+              "loser_names": [
+                "Amy Hanson",
+                "Chrissy Rose"
+              ]
             }
           ]
         },
@@ -3423,12 +4288,16 @@
               "players_home": "Emily Sloop",
               "players_away": "Jean Nielsen",
               "score": "6-2 6-3",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Each Hit",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Jean Nielsen"
+              ],
+              "loser_names": [
+                "Emily Sloop"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3436,11 +4305,15 @@
               "players_away": "Emily Cole",
               "score": "6-2 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Paige Brown"
+              ],
+              "loser_names": [
+                "Emily Cole"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3448,35 +4321,53 @@
               "players_away": "Stacia Albiston / Tiffany Roberts",
               "score": "6-1 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Honey Deuce 18's",
+              "loser_team": "Each Hit",
+              "winner_names": [
+                "Zel Mertz",
+                "Tina Measham"
+              ],
+              "loser_names": [
+                "Stacia Albiston",
+                "Tiffany Roberts"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Jane Perlaky / Margie Waddel",
               "players_away": "Kiley Holt / Stacey Walker",
               "score": "6-3 6-1",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Each Hit",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Kiley Holt",
+                "Stacey Walker"
+              ],
+              "loser_names": [
+                "Jane Perlaky",
+                "Margie Waddel"
+              ]
             },
             {
               "line": "3# Doubles",
               "players_home": "Heidi Hawkins / Patty Jackson",
               "players_away": "Kaitie Neely / Jennifer Small",
               "score": "6-4 6-3",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Each Hit",
+              "loser_team": "Honey Deuce 18's",
+              "winner_names": [
+                "Kaitie Neely",
+                "Jennifer Small"
+              ],
+              "loser_names": [
+                "Heidi Hawkins",
+                "Patty Jackson"
+              ]
             }
           ]
         },
@@ -3499,11 +4390,15 @@
               "players_away": "Angela Abbott",
               "score": "6-3 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Jenessa Taylor"
+              ],
+              "loser_names": [
+                "Angela Abbott"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3511,11 +4406,15 @@
               "players_away": "Katie McHargue",
               "score": "6-0 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Sonia Ivanova"
+              ],
+              "loser_names": [
+                "Katie McHargue"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3523,23 +4422,35 @@
               "players_away": "Kelli Kennedy / Gillian Donahey",
               "score": "6-3 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Donna Moussalli",
+                "Allison Young"
+              ],
+              "loser_names": [
+                "Kelli Kennedy",
+                "Gillian Donahey"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Kylie Nesbit / Kim Buchanan",
               "players_away": "MARISA MANGUM / Breanna Taylor",
               "score": "7-5 6-3",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Net Positive 18+",
+              "loser_team": "Nothing But Love youngsters",
+              "winner_names": [
+                "MARISA MANGUM",
+                "Breanna Taylor"
+              ],
+              "loser_names": [
+                "Kylie Nesbit",
+                "Kim Buchanan"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3547,10 +4458,13 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
+              "court_winner": "home",
+              "winner_team": "Nothing But Love youngsters",
+              "loser_team": "Net Positive 18+",
+              "winner_names": [
+                "Lynn Clanton",
+                "Rebecca Clift-French"
+              ],
               "loser_names": []
             }
           ]
@@ -3574,23 +4488,31 @@
               "players_away": "Breanna Taylor",
               "score": "6-1 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "KATIE RATLIFF"
+              ],
+              "loser_names": [
+                "Breanna Taylor"
+              ]
             },
             {
               "line": "2# Singles",
               "players_home": "Ashley Bryngelson",
               "players_away": "Lindsey Cassidy",
               "score": "2-6 6-3 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Nice Hits 18+",
+              "winner_names": [
+                "Lindsey Cassidy"
+              ],
+              "loser_names": [
+                "Ashley Bryngelson"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3598,11 +4520,17 @@
               "players_away": "Tannan Koehl / Caitlin Bower",
               "score": "6-4 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Robin Toney",
+                "Gracie Franks"
+              ],
+              "loser_names": [
+                "Tannan Koehl",
+                "Caitlin Bower"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3610,11 +4538,17 @@
               "players_away": "Molly Schafer / Michelle Johnston",
               "score": "6-1 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Ginger Cummins",
+                "Anke Heineck"
+              ],
+              "loser_names": [
+                "Molly Schafer",
+                "Michelle Johnston"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3622,11 +4556,17 @@
               "players_away": "Cynthia Copple / Nancy Raeber",
               "score": "6-1 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Nice Hits 18+",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Heidi Friend",
+                "Kim Balangue"
+              ],
+              "loser_names": [
+                "Cynthia Copple",
+                "Nancy Raeber"
+              ]
             }
           ]
         },
@@ -3648,12 +4588,16 @@
               "players_home": "Mandy Bergstrom",
               "players_away": "Chynna Castoro",
               "score": "6-2 6-2",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Chynna Castoro"
+              ],
+              "loser_names": [
+                "Mandy Bergstrom"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3661,11 +4605,15 @@
               "players_away": "Kristina Winterling",
               "score": "6-2 7-6",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "SLAY!",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Jamie Hammond"
+              ],
+              "loser_names": [
+                "Kristina Winterling"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3673,23 +4621,35 @@
               "players_away": "Dyan Goulet / Andrea Reynolds",
               "score": "6-7 6-4 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "SLAY!",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Karie Pappani",
+                "Monica Reagan"
+              ],
+              "loser_names": [
+                "Dyan Goulet",
+                "Andrea Reynolds"
+              ]
             },
             {
               "line": "2# Doubles",
               "players_home": "Alice Livesay / Wendy Bee Ping Ong Mullin",
               "players_away": "Jule Ryan / Morgan White",
               "score": "7-6 6-7 1-0",
-              "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "YOURS!",
+              "loser_team": "SLAY!",
+              "winner_names": [
+                "Jule Ryan",
+                "Morgan White"
+              ],
+              "loser_names": [
+                "Alice Livesay",
+                "Wendy Bee Ping Ong Mullin"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3697,11 +4657,17 @@
               "players_away": "Eileen Ursillo / Lori Hosac",
               "score": "6-4 7-6",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "SLAY!",
+              "loser_team": "YOURS!",
+              "winner_names": [
+                "Nelda Denton",
+                "Leah Hart"
+              ],
+              "loser_names": [
+                "Eileen Ursillo",
+                "Lori Hosac"
+              ]
             }
           ]
         }

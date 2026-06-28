@@ -459,12 +459,12 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
         return lines
     text = body.inner_text()
 
-    # --- Per-court winner via radio buttons ---
-    # Try two approaches:
-    # 1. page.evaluate() — reads the JS .checked property (works when checked
-    #    state is set via JavaScript, common on non-NV TennisLink regions)
-    # 2. BeautifulSoup HTML attribute fallback — reads the checked attribute
-    #    from server-rendered HTML (works for NV)
+    # --- Per-court winner detection ---
+    # Three detection methods, tried in order:
+    # 1. Radio buttons via JS .checked property (NV TennisLink)
+    # 2. Radio buttons via HTML checked attribute (NV fallback)
+    # 3. Green checkmark images (mark.gif) — used by UT/CO/ID scorecards
+    #    imgHomePlayer = home won, imgVisitorPlayer = visitor won
     court_winners: list[str] = []
     try:
         radio_data = page.evaluate("""() => {
@@ -508,6 +508,37 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
         else:
             court_winners.append("")
         i += 2
+
+    # Fallback: green checkmark images (mark.gif) on UT/CO/ID scorecards
+    if not any(court_winners):
+        try:
+            mark_data = page.evaluate("""() => {
+                const marks = document.querySelectorAll('img[src*="mark.gif"]');
+                return Array.from(marks).map(img => ({
+                    id: img.id || '',
+                    visible: img.offsetWidth > 0 && img.offsetHeight > 0
+                }));
+            }""")
+        except Exception:
+            mark_data = []
+        if mark_data:
+            num_courts = max(
+                int(re.search(r'rptScoreCard_ctl(\d+)', m["id"]).group(1))
+                for m in mark_data
+                if re.search(r'rptScoreCard_ctl(\d+)', m["id"])
+            ) + 1
+            court_winners = [""] * num_courts
+            for m in mark_data:
+                idx_m = re.search(r'rptScoreCard_ctl(\d+)', m["id"])
+                if not idx_m:
+                    continue
+                court_idx = int(idx_m.group(1))
+                if court_idx >= len(court_winners):
+                    continue
+                if "imgHomePlayer" in m["id"]:
+                    court_winners[court_idx] = "home"
+                elif "imgVisitorPlayer" in m["id"] or "imgVisitPlayer" in m["id"]:
+                    court_winners[court_idx] = "away"
 
     # --- Home/away team names ---
     home_team = ""
