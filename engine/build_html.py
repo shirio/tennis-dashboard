@@ -391,6 +391,20 @@ def _court_winner_team(line: dict, match_home_team: str,
     return None
 
 
+def _score_winner_side(score: str) -> str | None:
+    """Return 'home' or 'away' based on which scorecard column won per score.
+
+    Score format is always home-away per set. Counts sets won by each side.
+    Returns None if score is missing, tied, or unparseable.
+    """
+    sw_h, sl_h, _, _ = _parse_score(score, True)
+    if sw_h > sl_h:
+        return "home"
+    if sl_h > sw_h:
+        return "away"
+    return None
+
+
 # ---------------------------------------------------------------------------
 # Badge / record helpers
 # ---------------------------------------------------------------------------
@@ -636,6 +650,13 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
         for sf in subflights
         for t in sf.get("teams", [])
     }
+    _standings_lower = {tn.lower(): tn for tn in _standings_teams}
+
+    def _resolve_team(name: str) -> str:
+        """Match a team name to its canonical standings form (case-insensitive)."""
+        if name in _standings_teams:
+            return name
+        return _standings_lower.get(name.lower(), name)
 
     # Include a player in this division's rosters if:
     #   (a) their registered division matches this NTRP level → place in their registered team
@@ -649,7 +670,7 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
         in_div = not ntrp or div.startswith(ntrp)
 
         # The team they actually played for in this division (set during stats computation)
-        div_team = (p.get(f"team_{_sfx}", "") or "") if _sfx else ""
+        div_team = _resolve_team((p.get(f"team_{_sfx}", "") or "")) if _sfx else ""
 
         has_ntrp_stats = bool(
             _sfx and (p.get(f"lines_played_{_sfx}") or p.get(f"wl_record_{_sfx}"))
@@ -662,7 +683,6 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
         if in_div and effective_team:
             by_team[effective_team].append(p)
         elif has_ntrp_stats and div_team and div_team in _standings_teams:
-            # Dual-division player: place in the team they actually competed with
             by_team[div_team].append(p)
 
     # Build panes grouped by subflight
@@ -807,6 +827,7 @@ def _traverse_match_histories(
                                 wt, lt = m_away_team, m_home_team
                     score = line.get("score", "") or ""
                     line_label = line.get("line", "") or ""
+                    _score_side = _score_winner_side(score) if not wt else None
 
                     _home_na = home_raw.strip().upper() in ("N/A", "NA", "")
                     _away_na = away_raw.strip().upper() in ("N/A", "NA", "")
@@ -838,6 +859,9 @@ def _traverse_match_histories(
                             continue
                         won  = player_team.lower() in wt.lower()
                         lost = player_team.lower() in lt.lower()
+                        if not won and not lost and _score_side:
+                            won = (side == _score_side)
+                            lost = not won
                         if not won and not lost:
                             continue
                         dedup = (mid, line_label, nk, div)
@@ -864,7 +888,9 @@ def _traverse_match_histories(
                                 f"{op.get('rating_30'):.2f}" if op and op.get("rating_30") else ""
                             )
 
-                        opp_team = lt if won else wt
+                        opp_team = (lt if won else wt) or (
+                            m_away_team if player_team.lower() in m_home_team.lower()
+                            else m_home_team)
                         sw_h, sl_h, gw_h, gl_h = _parse_score(score, True)
                         sw_a, sl_a, gw_a, gl_a = _parse_score(score, False)
                         if won:
@@ -1364,17 +1390,6 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                             _our_team_won = _cwt.upper() == tname.upper()
                         else:
                             _our_team_won = None
-                        # Fallback: unanimous match (5-0/0-5) only
-                        if _our_team_won is None and m["won"] is not None:
-                            _match_score = m.get("score", "")
-                            _ms_parts = re.split(r"[–\-]", _match_score) if _match_score else []
-                            if len(_ms_parts) == 2:
-                                try:
-                                    _tw, _ow = int(_ms_parts[0].strip()), int(_ms_parts[1].strip())
-                                    if (_tw == len(lines) and _ow == 0) or (_ow == len(lines) and _tw == 0):
-                                        _our_team_won = m["won"]
-                                except ValueError:
-                                    pass
 
                         # Always show selected team on left, opponent on right.
                         _ph_is_our_team = False
@@ -1383,6 +1398,13 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                             if _pt and _pt.upper() == tname.upper():
                                 _ph_is_our_team = True
                                 break
+
+                        # Score-based fallback: determine court winner from score
+                        if _our_team_won is None:
+                            _sc_side = _score_winner_side(ln.get("score", ""))
+                            if _sc_side:
+                                _home_col_won = (_sc_side == "home")
+                                _our_team_won = (_home_col_won == _ph_is_our_team)
 
                         if _ph_is_our_team:
                             left_html = _default_or_render(ph_raw)
@@ -2555,6 +2577,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                         ln, home_team, away_team, _mr_mx)
                     if _cwt:
                         winner_team = _cwt.upper()
+                _sc_side_mx = _score_winner_side(score) if not winner_team else None
 
                 ph = (ln.get("players_home") or "").strip()
                 pa = (ln.get("players_away") or "").strip()
@@ -2564,12 +2587,12 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                     pa = ""
 
                 sides = [
-                    (ph, home_team, pa, away_team),
-                    (pa, away_team, ph, home_team),
+                    (ph, home_team, pa, away_team, "home"),
+                    (pa, away_team, ph, home_team, "away"),
                 ]
 
                 if is_singles:
-                    for side_raw, side_team, opp_raw, opp_team in sides:
+                    for side_raw, side_team, opp_raw, opp_team, sc_col in sides:
                         if not side_raw:
                             continue
                         # Normalise all-caps names from scorecards to title case
@@ -2583,6 +2606,8 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                         # always correctly names the winning team.
                         actual_team = (_team_by_name.get(norm) or side_team).upper()
                         won = (winner_team == actual_team) if winner_team else None
+                        if won is None and _sc_side_mx:
+                            won = (sc_col == _sc_side_mx)
                         if won is None:
                             continue
                         # Opponent's actual team (also handles swapped scorecards)
@@ -2624,7 +2649,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                         })
 
                 else:  # doubles
-                    for side_raw, side_team, opp_raw, opp_team in sides:
+                    for side_raw, side_team, opp_raw, opp_team, sc_col in sides:
                         if not side_raw:
                             continue
                         parts = [x.strip() for x in side_raw.split("/") if x.strip()]
@@ -2640,6 +2665,8 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                             _team_by_name.get(n1) or _team_by_name.get(n2) or side_team
                         ).upper()
                         won = (winner_team == actual_d_team) if winner_team else None
+                        if won is None and _sc_side_mx:
+                            won = (sc_col == _sc_side_mx)
                         if won is None:
                             continue
 
