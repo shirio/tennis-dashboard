@@ -239,25 +239,32 @@ _SIGNAL_2SET: dict[tuple, float] = {
 
 # Key: (s1_player_won, s1_is_rout, s2_player_won, s2_is_rout, match_won)
 # For 3-set tiebreaks: s1/s2 describe sets 1 & 2; the tiebreak outcome is the match result.
+#
+# Design: the tiebreak (whether a 10-point supertiebreak or a full third set) is
+# treated as a near-coin-flip that resolves a tie — not a meaningful skill signal on
+# its own. Only the S1/S2 story matters for magnitude; the TB result just determines
+# sign. Signals are symmetric: winning the TB gives +M, losing it gives -M, where M
+# depends on the S1/S2 dominance pattern. Range is compressed ~3× vs. straight-set
+# signals so a 3-set win never overpowers a dominant 2-set result.
 _SIGNAL_3SET: dict[tuple, float] = {
-    # 3-set tiebreak wins — ranked highest to lowest positive signal
-    (False, False, True,  True,  True):  +0.70,  # Even loss S1 + Rout win S2 (momentum shifted, prevailed)
-    (True,  True,  False, False, True):  +0.60,  # Rout win  S1 + Even loss S2 (blip in S2, still better)
-    (False, True,  True,  True,  True):  +0.50,  # Rout loss S1 + Rout win  S2 (hard momentum shift, won)
-    (False, False, True,  False, True):  +0.45,  # Even loss S1 + Even win  S2 (slight shift, clinched)
-    (False, True,  True,  False, True):  +0.35,  # Rout loss S1 + Even win  S2 (grinded out the win)
-    (True,  False, False, False, True):  +0.30,  # Even win  S1 + Even loss S2 (even match, clinched)
-    (True,  True,  False, True,  True):  +0.25,  # Rout win  S1 + Rout loss S2 (scary, clinched)
-    (True,  False, False, True,  True):  +0.15,  # Even win  S1 + Rout loss S2 (barely survived)
-    # 3-set tiebreak losses — ranked most negative to least negative
-    (True,  False, False, True,  False): -0.70,  # Even win  S1 + Rout loss S2 (had lead, fell apart)
-    (True,  True,  False, True,  False): -0.60,  # Rout win  S1 + Rout loss S2 (dominated S1, collapsed)
-    (False, True,  True,  False, False): -0.50,  # Rout loss S1 + Even win  S2 (grinded back, still lost)
-    (True,  False, False, False, False): -0.45,  # Even win  S1 + Even loss S2 (had slight edge, slipped)
-    (False, False, True,  False, False): -0.35,  # Even loss S1 + Even win  S2 (even match, momentum vs)
-    (True,  True,  False, False, False): -0.30,  # Rout win  S1 + Even loss S2 (dominated S1, lost TB)
-    (False, True,  True,  True,  False): -0.25,  # Rout loss S1 + Rout win  S2 (hard shift, couldn't close)
-    (False, False, True,  True,  False): -0.15,  # Even loss S1 + Rout win  S2 (routed S2, still lost)
+    # Won the tiebreak — S1/S2 story determines how much credit
+    (False, False, True,  True,  True):  +0.25,  # Even S1 loss  + Rout S2 win  → won TB
+    (True,  True,  False, False, True):  +0.20,  # Rout S1 win   + Even S2 loss → won TB
+    (False, True,  True,  True,  True):  +0.15,  # Rout S1 loss  + Rout S2 win  → won TB
+    (False, False, True,  False, True):  +0.13,  # Even S1 loss  + Even S2 win  → won TB
+    (False, True,  True,  False, True):  +0.12,  # Rout S1 loss  + Even S2 win  → won TB
+    (True,  False, False, False, True):  +0.10,  # Even S1 win   + Even S2 loss → won TB (even match)
+    (True,  True,  False, True,  True):  +0.08,  # Rout S1 win   + Rout S2 loss → won TB
+    (True,  False, False, True,  True):  +0.05,  # Even S1 win   + Rout S2 loss → won TB
+    # Lost the tiebreak — symmetric: same S1/S2 magnitude, negated
+    (False, False, True,  True,  False): -0.25,  # Even S1 loss  + Rout S2 win  → lost TB
+    (True,  True,  False, False, False): -0.20,  # Rout S1 win   + Even S2 loss → lost TB
+    (False, True,  True,  True,  False): -0.15,  # Rout S1 loss  + Rout S2 win  → lost TB
+    (False, False, True,  False, False): -0.13,  # Even S1 loss  + Even S2 win  → lost TB
+    (False, True,  True,  False, False): -0.12,  # Rout S1 loss  + Even S2 win  → lost TB
+    (True,  False, False, False, False): -0.10,  # Even S1 win   + Even S2 loss → lost TB (even match)
+    (True,  True,  False, True,  False): -0.08,  # Rout S1 win   + Rout S2 loss → lost TB
+    (True,  False, False, True,  False): -0.05,  # Even S1 win   + Rout S2 loss → lost TB
 }
 
 _ROUT_THRESHOLD = 0.40   # strict > threshold: dom > 0.40 is a rout (6-0/6-1/6-2); 6-3 (dom=0.40) is even
