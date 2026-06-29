@@ -1094,7 +1094,13 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         sf = team_to_sf.get(div_team, "") or team_to_sf.get(_primary_team, "")
         sf_raw = team_to_sf_raw.get(div_team, "") or team_to_sf_raw.get(_primary_team, "")
         if not sf and division.startswith(ntrp) and division:
-            sf = division.split()[-1]
+            _fallback = division.split()[-1]
+            # Only use letter fallback when the SF display labels are actually letter-based
+            # (e.g. NV "A"/"B"). For color-based labels (e.g. UT "Teal"/"Green"), this
+            # would wrongly show "A" or "B" from the division registration field.
+            _sf_col_labels = {v[1] for v in sf_display.values() if not v[2].lower().startswith("dist")}
+            if _fallback in _sf_col_labels:
+                sf = _fallback
 
         _wl_sort = "0"
         _wl_display = str(wl) if wl else "–"
