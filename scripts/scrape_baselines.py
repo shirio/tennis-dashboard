@@ -114,11 +114,19 @@ def get_baseline(name, s_param):
 
     req = urllib.request.Request(url, headers=headers)
 
-    try:
-        with urllib.request.urlopen(req, timeout=10) as response:
-            html = response.read().decode("utf-8", errors="replace")
-    except Exception as e:
-        return None, None, str(e)
+    html = None
+    last_err = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=20) as response:
+                html = response.read().decode("utf-8", errors="replace")
+            break
+        except Exception as e:
+            last_err = str(e)
+            if attempt < 2:
+                time.sleep(2)
+    if html is None:
+        return None, None, last_err
 
     parser = RatingHistoryParser()
     parser.feed(html)

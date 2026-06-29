@@ -7,7 +7,7 @@ update data/players.json in place.
 Sources:
   Ratings page: https://www.tennisrecord.com/adult/ratings.aspx?...
     - "Current NTRP" column  -> ntrp_rating (e.g. "3.0 C", "3.5 S")
-    - "2026 Estimated Dynamic" column -> dynamic_rating_baseline (e.g. 2.98)
+    - "2026 Estimated Dynamic" column -> used for matching only, NOT for baseline
   Profile page: /adult/profile.aspx?playername=NAME&s=ID
     - Used to disambiguate players with the same name by checking division/team.
 
@@ -417,11 +417,8 @@ def update_players(records: list[dict], state_code: str | None = None):
         if chosen:
             if chosen.get("ntrp_rating"):
                 p["ntrp_rating"] = chosen["ntrp_rating"]
-            if chosen.get("dynamic_rating") is not None:
-                existing = p.get("dynamic_rating_baseline")
-                _is_default = existing is None or existing in (2.10, 2.60, 3.10, 3.60, 3.0)
-                if _is_default:
-                    p["dynamic_rating_baseline"] = chosen["dynamic_rating"]
+            if chosen.get("s_id") and not p.get("tennisrecord_id"):
+                p["tennisrecord_id"] = chosen["s_id"]
             p.pop("pending_tennisrecord_lookup", None)
             updated += 1
 
@@ -500,18 +497,12 @@ def search_and_update_baselines(state_code: str | None = None,
 
         if baseline is not None:
             p["dynamic_rating_baseline"] = baseline
+            p["baseline_source"] = "oldest_fallback" if err == "oldest_fallback" else "history"
             p.pop("pending_tennisrecord_lookup", None)
             updated += 1
-        elif result.get("dynamic_rating"):
-            existing = p.get("dynamic_rating_baseline")
-            _is_default = existing is None or existing in (2.10, 2.60, 3.10, 3.60, 3.0)
-            if _is_default:
-                p["dynamic_rating_baseline"] = result["dynamic_rating"]
-            p.pop("pending_tennisrecord_lookup", None)
-            updated += 1
-            no_baseline += 1
         else:
             no_baseline += 1
+            p.pop("pending_tennisrecord_lookup", None)
 
         if (i + 1) % 10 == 0:
             print(f"  [{i+1}/{len(targets)}] {updated} updated, {not_found} not found, {no_baseline} no baseline")

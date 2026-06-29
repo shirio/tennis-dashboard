@@ -791,6 +791,29 @@ def _traverse_match_histories(
     other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
     by_name = {_nkey(p.get("name", "")): p for p in player_pool if p.get("name")}
 
+    def _pit_r(nk: str, match_date: str, div: str) -> str:
+        """Point-in-time rating for a player at match_date in given division."""
+        p = by_name.get(nk)
+        if not p:
+            return ""
+        sfx = div.replace(".", "")
+        pre_tl = p.get(f"rating_timeline_{sfx}") or {}
+        if match_date in pre_tl:
+            return f"{float(pre_tl[match_date]):.2f}"
+        post_tl = p.get(f"rating_post_timeline_{sfx}") or {}
+        match_key = _date_sort_key(match_date)
+        prior = [(k, v) for k, v in post_tl.items() if _date_sort_key(k) < match_key]
+        if prior:
+            prior.sort(key=lambda x: _date_sort_key(x[0]), reverse=True)
+            return f"{float(prior[0][1]):.2f}"
+        base = p.get("dynamic_rating_baseline")
+        if base is not None:
+            return f"{float(base):.2f}"
+        final = p.get(f"rating_{sfx}")
+        if final is not None:
+            return f"{float(final):.2f}"
+        return ""
+
     player_histories: dict[str, list[dict]] = {}
     player_stats: dict[str, dict] = {}
     _seen: set[tuple] = set()
@@ -817,6 +840,16 @@ def _traverse_match_histories(
 
                     winner_names = line.get("winner_names") or []
                     loser_names = line.get("loser_names") or []
+
+                    # Fix defaults/forfeits: if one side has no players,
+                    # the side WITH players won by default.
+                    home_has = bool(home_raw and home_raw.strip())
+                    away_has = bool(away_raw and away_raw.strip())
+                    if not winner_names and loser_names and (not home_has or not away_has):
+                        winner_names = loser_names
+                        loser_names = []
+                    elif winner_names and not loser_names:
+                        pass  # already correct
                     is_walkover = not winner_names or not loser_names
 
                     all_players: list[tuple[str, bool | None]] = []
@@ -886,19 +919,9 @@ def _traverse_match_histories(
                             partners = [n for n in my_side if _nkey(n) != nk]
                             opps = opp_side if not is_walkover else []
 
-                        opp_r_list = []
-                        for o in opps:
-                            op = by_name.get(_nkey(o))
-                            opp_r_list.append(
-                                f"{op.get('rating_30'):.2f}" if op and op.get("rating_30") else ""
-                            )
+                        opp_r_list = [_pit_r(_nkey(o), date, div) for o in opps]
 
-                        partner_r_list = []
-                        for pt in partners:
-                            pp = by_name.get(_nkey(pt))
-                            partner_r_list.append(
-                                f"{pp.get('rating_30'):.2f}" if pp and pp.get("rating_30") else ""
-                            )
+                        partner_r_list = [_pit_r(_nkey(pt), date, div) for pt in partners]
 
                         opp_team = (lt if won else wt) or (
                             m_away_team if player_team.lower() in m_home_team.lower()
@@ -2563,6 +2586,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
     _baseline_by_name: dict[str, float] = {}
     _new_by_name: dict[str, float] = {}
     _timeline_by_name: dict[str, dict[str, float]] = {}
+    _post_timeline_by_name: dict[str, dict[str, float]] = {}
     _team_by_name: dict[str, str] = {}
 
     team_to_sf: dict[str, str] = {}
@@ -2592,22 +2616,27 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
         tl = p.get(f"rating_timeline_{sfx}")
         if tl and isinstance(tl, dict):
             _timeline_by_name[norm] = {k: float(v) for k, v in tl.items()}
+        post_tl = p.get(f"rating_post_timeline_{sfx}")
+        if post_tl and isinstance(post_tl, dict):
+            _post_timeline_by_name[norm] = {k: float(v) for k, v in post_tl.items()}
         team_val = (p.get(f"team_{sfx}") or p.get("team") or "")
         if team_val:
             _team_by_name[norm] = team_val
 
     def _pit_r(nkey: str, date: str) -> Optional[float]:
         nkey = re.sub(r"\s+", " ", nkey.strip().lower())
-        if nkey in _timeline_by_name:
-            tl = _timeline_by_name[nkey]
-            if date in tl:
-                return tl[date]
-            mk = _date_sort_key(date)
-            prior = [(k, v) for k, v in tl.items() if _date_sort_key(k) < mk]
-            if prior:
-                return max(prior, key=lambda kv: _date_sort_key(kv[0]))[1]
-            return _baseline_by_name.get(nkey)
-        return _new_by_name.get(nkey) or _baseline_by_name.get(nkey)
+        pre_tl = _timeline_by_name.get(nkey, {})
+        if date in pre_tl:
+            return pre_tl[date]
+        mk = _date_sort_key(date)
+        post_tl = _post_timeline_by_name.get(nkey, {})
+        prior_post = [(k, v) for k, v in post_tl.items() if _date_sort_key(k) < mk]
+        if prior_post:
+            return max(prior_post, key=lambda kv: _date_sort_key(kv[0]))[1]
+        prior_pre = [(k, v) for k, v in pre_tl.items() if _date_sort_key(k) < mk]
+        if prior_pre:
+            return max(prior_pre, key=lambda kv: _date_sort_key(kv[0]))[1]
+        return _baseline_by_name.get(nkey) or _new_by_name.get(nkey)
 
     # ── week label map ───────────────────────────────────────────────────────
     all_dates: set[str] = set()
