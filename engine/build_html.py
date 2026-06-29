@@ -1023,6 +1023,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
     _tl_post: dict[str, dict[str, dict[str, float]]] = {}
     _tl_base: dict[str, str] = {}
     _tl_final: dict[str, str] = {}
+    _tl_lever: dict[str, float] = {}  # cached Lever-3 delta per player
     for p in _pool:
         norm = _nkey(p.get("name", ""))
         if not norm:
@@ -1051,26 +1052,61 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                 except (ValueError, TypeError):
                     pass
 
+    def _lever3_delta(nkey: str) -> float:
+        """Lever-3 shift delta for a player (cached).
+
+        Lever 3 adds a constant to every timeline entry. We recover it from
+        the very first pre-match entry (= Lever-3-shifted baseline) minus
+        the stored baseline. All displayed timeline values are then de-levered
+        so they sit on the same scale as the baseline.
+        """
+        if nkey in _tl_lever:
+            return _tl_lever[nkey]
+        delta = 0.0
+        baseline_str = _tl_base.get(nkey) or _tl_final.get(nkey)
+        if baseline_str:
+            baseline_val = float(baseline_str)
+            all_dates: set[str] = set()
+            for sfx in ("30", "35"):
+                all_dates.update(_tl_pre.get(nkey, {}).get(sfx, {}).keys())
+            if all_dates:
+                first_date = min(all_dates, key=_date_sort_key)
+                p30 = _tl_pre.get(nkey, {}).get("30", {}).get(first_date)
+                p35 = _tl_pre.get(nkey, {}).get("35", {}).get(first_date)
+                q30 = _tl_post.get(nkey, {}).get("30", {}).get(first_date)
+                q35 = _tl_post.get(nkey, {}).get("35", {}).get(first_date)
+                # Identify the "un-chained" pre value = going-in to the first
+                # ever match (not chained from same-day other-div output).
+                if p30 is not None and p35 is not None:
+                    # Both divs played on the same first date. The chained one
+                    # equals the other div's same-day post.
+                    if q35 is not None and abs(p30 - q35) < 0.0003:
+                        first_pre = p35  # 3.5 ran first
+                    else:
+                        first_pre = p30  # 3.0 ran first (default)
+                elif p30 is not None:
+                    first_pre = p30
+                elif p35 is not None:
+                    first_pre = p35
+                else:
+                    first_pre = None
+                if first_pre is not None:
+                    delta = first_pre - baseline_val
+        _tl_lever[nkey] = delta
+        return delta
+
     def _ap_pit_rating(nkey: str, match_date: str, rec_sfx: str) -> str:
         """Pre-match rating for the focal player going into a specific match.
 
-        Uses division-specific timelines to avoid cross-division date collisions.
-        Two rules on top of the basic lookup:
-
-        1. First-ever match: post-processing (Lever 3 etc.) may shift the first
-           timeline entry above the player's baseline. Before any match the only
-           known value IS baseline, so return that.
-
-        2. Same-day cross-division chaining: if the other division ran first today
-           (detectable because post_other[date] == pre_this[date]), the pre_this
-           value correctly reflects the post-other result — use it as-is rather
-           than substituting baseline.
+        All Lever-3-shifted timeline values are de-levered before display so
+        the sequence sits on the same absolute scale as the stored baseline.
         """
         other_sfx = "35" if rec_sfx == "30" else "30"
         pre_this  = _tl_pre.get(nkey, {}).get(rec_sfx, {})
         post_this = _tl_post.get(nkey, {}).get(rec_sfx, {})
         post_other = _tl_post.get(nkey, {}).get(other_sfx, {})
         match_key = _date_sort_key(match_date)
+        delta = _lever3_delta(nkey)
 
         if match_date in pre_this:
             pre_val = pre_this[match_date]
@@ -1082,19 +1118,18 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             )
 
             if not has_prior:
-                # No matches before today at all. Check same-day cross-div chain:
-                # if post_other[today] == pre_this[today] the other div ran first
-                # and pre_this is already the chained post-other value — keep it.
+                # No matches before today. Check same-day cross-div chain:
+                # post_other[today] == pre_this[today] means other div ran first.
                 other_post_today = post_other.get(match_date)
                 other_ran_first = (
                     other_post_today is not None
                     and abs(other_post_today - pre_val) < 0.0003
                 )
                 if not other_ran_first:
-                    # This is the player's absolute first match — show baseline.
+                    # Absolute first match — show unshifted baseline.
                     return _tl_base.get(nkey, "") or _tl_final.get(nkey, "")
 
-            return f"{pre_val:.2f}"
+            return f"{pre_val - delta:.2f}"
 
         # No pre-timeline entry for this date: fall back to most recent prior
         # post-timeline across both divisions.
@@ -1105,7 +1140,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                     all_prior.append((k, v))
         if all_prior:
             _, latest_v = max(all_prior, key=lambda kv: _date_sort_key(kv[0]))
-            return f"{latest_v:.2f}"
+            return f"{latest_v - delta:.2f}"
         return _tl_base.get(nkey, "") or _tl_final.get(nkey, "")
 
     # ── Build HTML rows ───────────────────────────────────────────────────────
