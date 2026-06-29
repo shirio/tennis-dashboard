@@ -75,88 +75,88 @@
           "lines": [
             {
               "line": "1# Singles",
-              "players_home": "Joanie Anderson",
-              "players_away": "Hailey Ball",
+              "players_home": "Hailey Ball",
+              "players_away": "Joanie Anderson",
               "score": "2-6 6-3 1-0",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Joanie Anderson"
+                "Hailey Ball"
               ],
               "loser_names": [
-                "Hailey Ball"
+                "Joanie Anderson"
               ]
             },
             {
               "line": "2# Singles",
-              "players_home": "Cori Cannon",
-              "players_away": "Breanna Aldrich",
+              "players_home": "Breanna Aldrich",
+              "players_away": "Cori Cannon",
               "score": "6-2 6-2",
               "result": "away",
               "court_winner": "away",
               "winner_team": "Lucky Strings",
               "loser_team": "Hailey Ball",
               "winner_names": [
-                "Breanna Aldrich"
+                "Cori Cannon"
               ],
               "loser_names": [
-                "Cori Cannon"
+                "Breanna Aldrich"
               ]
             },
             {
               "line": "1# Doubles",
-              "players_home": "Cherie Ball / Megan Keller",
-              "players_away": "Tina Taylor / Katilyn Onkes",
+              "players_home": "Tina Taylor / Katilyn Onkes",
+              "players_away": "Cherie Ball / Megan Keller",
               "score": "7-6 3-6 1-0",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Cherie Ball",
-                "Megan Keller"
-              ],
-              "loser_names": [
                 "Tina Taylor",
                 "Katilyn Onkes"
+              ],
+              "loser_names": [
+                "Cherie Ball",
+                "Megan Keller"
               ]
             },
             {
               "line": "2# Doubles",
-              "players_home": "Sonja Facer / Aleesa Wilcox",
-              "players_away": "Cari Boyle / Christi Ball",
+              "players_home": "Cari Boyle / Christi Ball",
+              "players_away": "Sonja Facer / Aleesa Wilcox",
               "score": "4-6 6-3 1-0",
               "result": "away",
               "court_winner": "away",
               "winner_team": "Lucky Strings",
               "loser_team": "Hailey Ball",
               "winner_names": [
-                "Cari Boyle",
-                "Christi Ball"
-              ],
-              "loser_names": [
                 "Sonja Facer",
                 "Aleesa Wilcox"
+              ],
+              "loser_names": [
+                "Cari Boyle",
+                "Christi Ball"
               ]
             },
             {
               "line": "3# Doubles",
-              "players_home": "Hailey Bradshaw / Lisa Hone",
-              "players_away": "JESSICA SKIDMORE / Lexie Kerby",
+              "players_home": "JESSICA SKIDMORE / Lexie Kerby",
+              "players_away": "Hailey Bradshaw / Lisa Hone",
               "score": "6-3 6-1",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Hailey Bradshaw",
-                "Lisa Hone"
-              ],
-              "loser_names": [
                 "JESSICA SKIDMORE",
                 "Lexie Kerby"
+              ],
+              "loser_names": [
+                "Hailey Bradshaw",
+                "Lisa Hone"
               ]
             }
           ]
@@ -176,88 +176,88 @@
           "lines": [
             {
               "line": "1# Singles",
-              "players_home": "Abigail Belnap",
-              "players_away": "Ashley Brusman",
+              "players_home": "Ashley Brusman",
+              "players_away": "Abigail Belnap",
               "score": "6-3 1-6 1-0",
               "result": "away",
               "court_winner": "away",
               "winner_team": "Idaho Falls",
               "loser_team": "The Real Housewives of the Hard Court",
               "winner_names": [
-                "Ashley Brusman"
+                "Abigail Belnap"
               ],
               "loser_names": [
-                "Abigail Belnap"
+                "Ashley Brusman"
               ]
             },
             {
               "line": "2# Singles",
-              "players_home": "Nicole Baldwin",
-              "players_away": "Emily McCormick",
+              "players_home": "Emily McCormick",
+              "players_away": "Nicole Baldwin",
               "score": "6-3 6-3",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Nicole Baldwin"
+                "Emily McCormick"
               ],
               "loser_names": [
-                "Emily McCormick"
+                "Nicole Baldwin"
               ]
             },
             {
               "line": "1# Doubles",
-              "players_home": "Heidi Southwick / Crista Rostrom",
-              "players_away": "Jennifer Sewell / Heather Redd",
+              "players_home": "Jennifer Sewell / Heather Redd",
+              "players_away": "Heidi Southwick / Crista Rostrom",
               "score": "6-4 5-7 1-0",
               "result": "away",
               "court_winner": "away",
               "winner_team": "Idaho Falls",
               "loser_team": "The Real Housewives of the Hard Court",
               "winner_names": [
-                "Jennifer Sewell",
-                "Heather Redd"
-              ],
-              "loser_names": [
                 "Heidi Southwick",
                 "Crista Rostrom"
+              ],
+              "loser_names": [
+                "Jennifer Sewell",
+                "Heather Redd"
               ]
             },
             {
               "line": "2# Doubles",
-              "players_home": "Jennifer Jennings / Camille Aguinaga",
-              "players_away": "Lisa Packer / Karen Walker",
+              "players_home": "Lisa Packer / Karen Walker",
+              "players_away": "Jennifer Jennings / Camille Aguinaga",
               "score": "2-6 6-2 1-0",
               "result": "away",
               "court_winner": "away",
               "winner_team": "Idaho Falls",
               "loser_team": "The Real Housewives of the Hard Court",
               "winner_names": [
-                "Lisa Packer",
-                "Karen Walker"
-              ],
-              "loser_names": [
                 "Jennifer Jennings",
                 "Camille Aguinaga"
+              ],
+              "loser_names": [
+                "Lisa Packer",
+                "Karen Walker"
               ]
             },
             {
               "line": "3# Doubles",
-              "players_home": "Sharon Oliver / Ashley Benson",
-              "players_away": "Monica Kuhn / Michelle Marlowe",
+              "players_home": "Monica Kuhn / Michelle Marlowe",
+              "players_away": "Sharon Oliver / Ashley Benson",
               "score": "6-0 6-1",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Sharon Oliver",
-                "Ashley Benson"
-              ],
-              "loser_names": [
                 "Monica Kuhn",
                 "Michelle Marlowe"
+              ],
+              "loser_names": [
+                "Sharon Oliver",
+                "Ashley Benson"
               ]
             }
           ]
@@ -580,88 +580,88 @@
           "lines": [
             {
               "line": "1# Singles",
-              "players_home": "Crista Rostrom",
-              "players_away": "Lindsey Johnson",
+              "players_home": "Lindsey Johnson",
+              "players_away": "Crista Rostrom",
               "score": "6-3 6-2",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Lucky Strings",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Crista Rostrom"
+                "Lindsey Johnson"
               ],
               "loser_names": [
-                "Lindsey Johnson"
+                "Crista Rostrom"
               ]
             },
             {
               "line": "2# Singles",
-              "players_home": "Ashley Benson",
-              "players_away": "Betsy Hunsicker",
+              "players_home": "Betsy Hunsicker",
+              "players_away": "Ashley Benson",
               "score": "6-3 6-4",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Lucky Strings",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Ashley Benson"
+                "Betsy Hunsicker"
               ],
               "loser_names": [
-                "Betsy Hunsicker"
+                "Ashley Benson"
               ]
             },
             {
               "line": "1# Doubles",
-              "players_home": "Jennifer Jennings / Camille Aguinaga",
-              "players_away": "Cherie Ball / Nichole Ball",
+              "players_home": "Cherie Ball / Nichole Ball",
+              "players_away": "Jennifer Jennings / Camille Aguinaga",
               "score": "6-2 6-3",
               "result": "away",
               "court_winner": "away",
               "winner_team": "Idaho Falls",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Cherie Ball",
-                "Nichole Ball"
-              ],
-              "loser_names": [
                 "Jennifer Jennings",
                 "Camille Aguinaga"
+              ],
+              "loser_names": [
+                "Cherie Ball",
+                "Nichole Ball"
               ]
             },
             {
               "line": "2# Doubles",
-              "players_home": "Sharon Oliver / Coleen Niemann",
-              "players_away": "Brooke Bedke / Sonja Facer",
+              "players_home": "Brooke Bedke / Sonja Facer",
+              "players_away": "Sharon Oliver / Coleen Niemann",
               "score": "6-2 6-4",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Lucky Strings",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Sharon Oliver",
-                "Coleen Niemann"
-              ],
-              "loser_names": [
                 "Brooke Bedke",
                 "Sonja Facer"
+              ],
+              "loser_names": [
+                "Sharon Oliver",
+                "Coleen Niemann"
               ]
             },
             {
               "line": "3# Doubles",
-              "players_home": "Indiea Rasmussen / Megan Black",
-              "players_away": "Lisa Hone / Aleesa Wilcox",
+              "players_home": "Lisa Hone / Aleesa Wilcox",
+              "players_away": "Indiea Rasmussen / Megan Black",
               "score": "6-2 6-2",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Lucky Strings",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Indiea Rasmussen",
-                "Megan Black"
-              ],
-              "loser_names": [
                 "Lisa Hone",
                 "Aleesa Wilcox"
+              ],
+              "loser_names": [
+                "Indiea Rasmussen",
+                "Megan Black"
               ]
             }
           ]
@@ -681,88 +681,88 @@
           "lines": [
             {
               "line": "1# Singles",
-              "players_home": "Heidi Southwick",
-              "players_away": "Kodi Howell",
+              "players_home": "Kodi Howell",
+              "players_away": "Heidi Southwick",
               "score": "6-1 6-3",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Heidi Southwick"
+                "Kodi Howell"
               ],
               "loser_names": [
-                "Kodi Howell"
+                "Heidi Southwick"
               ]
             },
             {
               "line": "2# Singles",
-              "players_home": "Abigail Belnap",
-              "players_away": "Breanna Aldrich",
+              "players_home": "Breanna Aldrich",
+              "players_away": "Abigail Belnap",
               "score": "6-1 6-4",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Abigail Belnap"
+                "Breanna Aldrich"
               ],
               "loser_names": [
-                "Breanna Aldrich"
+                "Abigail Belnap"
               ]
             },
             {
               "line": "1# Doubles",
-              "players_home": "Camille Aguinaga / Nicole Baldwin",
-              "players_away": "Tera Craig / Katilyn Onkes",
+              "players_home": "Tera Craig / Katilyn Onkes",
+              "players_away": "Camille Aguinaga / Nicole Baldwin",
               "score": "6-2 6-2",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Camille Aguinaga",
-                "Nicole Baldwin"
-              ],
-              "loser_names": [
                 "Tera Craig",
                 "Katilyn Onkes"
+              ],
+              "loser_names": [
+                "Camille Aguinaga",
+                "Nicole Baldwin"
               ]
             },
             {
               "line": "2# Doubles",
-              "players_home": "Crista Rostrom / Sharon Oliver",
-              "players_away": "JESSICA SKIDMORE / Lexie Kerby",
+              "players_home": "JESSICA SKIDMORE / Lexie Kerby",
+              "players_away": "Crista Rostrom / Sharon Oliver",
               "score": "6-2 6-2",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Crista Rostrom",
-                "Sharon Oliver"
-              ],
-              "loser_names": [
                 "JESSICA SKIDMORE",
                 "Lexie Kerby"
+              ],
+              "loser_names": [
+                "Crista Rostrom",
+                "Sharon Oliver"
               ]
             },
             {
               "line": "3# Doubles",
-              "players_home": "Ashley Benson / Indiea Rasmussen",
-              "players_away": "Christi Ball / Natalie Buttars",
+              "players_home": "Christi Ball / Natalie Buttars",
+              "players_away": "Ashley Benson / Indiea Rasmussen",
               "score": "7-5 6-0",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Ashley Benson",
-                "Indiea Rasmussen"
-              ],
-              "loser_names": [
                 "Christi Ball",
                 "Natalie Buttars"
+              ],
+              "loser_names": [
+                "Ashley Benson",
+                "Indiea Rasmussen"
               ]
             }
           ]
@@ -782,88 +782,88 @@
           "lines": [
             {
               "line": "1# Singles",
-              "players_home": "Brooke Bedke",
-              "players_away": "Holly Russell",
+              "players_home": "Holly Russell",
+              "players_away": "Brooke Bedke",
               "score": "6-3 6-1",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Brooke Bedke"
+                "Holly Russell"
               ],
               "loser_names": [
-                "Holly Russell"
+                "Brooke Bedke"
               ]
             },
             {
               "line": "2# Singles",
-              "players_home": "Joanie Anderson",
-              "players_away": "Larcen Petersen",
+              "players_home": "Larcen Petersen",
+              "players_away": "Joanie Anderson",
               "score": "6-2 6-3",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Joanie Anderson"
+                "Larcen Petersen"
               ],
               "loser_names": [
-                "Larcen Petersen"
+                "Joanie Anderson"
               ]
             },
             {
               "line": "1# Doubles",
-              "players_home": "Nichole Ball / Cori Cannon",
-              "players_away": "Joanna Bennett / Emily McCormick",
+              "players_home": "Joanna Bennett / Emily McCormick",
+              "players_away": "Nichole Ball / Cori Cannon",
               "score": "6-4 6-3",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Nichole Ball",
-                "Cori Cannon"
-              ],
-              "loser_names": [
                 "Joanna Bennett",
                 "Emily McCormick"
+              ],
+              "loser_names": [
+                "Nichole Ball",
+                "Cori Cannon"
               ]
             },
             {
               "line": "2# Doubles",
-              "players_home": "Megan Keller / Lisa Hone",
-              "players_away": "Michelle Marlowe / Kimberly Wynn",
+              "players_home": "Michelle Marlowe / Kimberly Wynn",
+              "players_away": "Megan Keller / Lisa Hone",
               "score": "7-5 5-7 1-0",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Megan Keller",
-                "Lisa Hone"
-              ],
-              "loser_names": [
                 "Michelle Marlowe",
                 "Kimberly Wynn"
+              ],
+              "loser_names": [
+                "Megan Keller",
+                "Lisa Hone"
               ]
             },
             {
               "line": "3# Doubles",
-              "players_home": "Brooke Hedin / Hailey Bradshaw",
-              "players_away": "Jennifer Sewell / Rebecca Hansen",
+              "players_home": "Jennifer Sewell / Rebecca Hansen",
+              "players_away": "Brooke Hedin / Hailey Bradshaw",
               "score": "6-1 6-1",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Brooke Hedin",
-                "Hailey Bradshaw"
-              ],
-              "loser_names": [
                 "Jennifer Sewell",
                 "Rebecca Hansen"
+              ],
+              "loser_names": [
+                "Brooke Hedin",
+                "Hailey Bradshaw"
               ]
             }
           ]
@@ -883,88 +883,88 @@
           "lines": [
             {
               "line": "1# Singles",
-              "players_home": "Holly Russell",
-              "players_away": "Hailey Ball",
+              "players_home": "Hailey Ball",
+              "players_away": "Holly Russell",
               "score": "6-4 4-6 1-0",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "The Real Housewives of the Hard Court",
               "winner_names": [
-                "Holly Russell"
+                "Hailey Ball"
               ],
               "loser_names": [
-                "Hailey Ball"
+                "Holly Russell"
               ]
             },
             {
               "line": "2# Singles",
-              "players_home": "Larcen Petersen",
-              "players_away": "Kodi Howell",
+              "players_home": "Kodi Howell",
+              "players_away": "Larcen Petersen",
               "score": "6-3 7-5",
               "result": "away",
               "court_winner": "away",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Hailey Ball",
               "winner_names": [
-                "Kodi Howell"
+                "Larcen Petersen"
               ],
               "loser_names": [
-                "Larcen Petersen"
+                "Kodi Howell"
               ]
             },
             {
               "line": "1# Doubles",
-              "players_home": "Heather Redd / Melissa Marshall",
-              "players_away": "JESSICA SKIDMORE / Katilyn Onkes",
+              "players_home": "JESSICA SKIDMORE / Katilyn Onkes",
+              "players_away": "Heather Redd / Melissa Marshall",
               "score": "7-6 6-2",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "The Real Housewives of the Hard Court",
               "winner_names": [
-                "Heather Redd",
-                "Melissa Marshall"
-              ],
-              "loser_names": [
                 "JESSICA SKIDMORE",
                 "Katilyn Onkes"
+              ],
+              "loser_names": [
+                "Heather Redd",
+                "Melissa Marshall"
               ]
             },
             {
               "line": "2# Doubles",
-              "players_home": "Kara Petersen / Jennifer Sewell",
-              "players_away": "Lexie Kerby / Natalie Buttars",
+              "players_home": "Lexie Kerby / Natalie Buttars",
+              "players_away": "Kara Petersen / Jennifer Sewell",
               "score": "6-3 6-1",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "The Real Housewives of the Hard Court",
               "winner_names": [
-                "Kara Petersen",
-                "Jennifer Sewell"
-              ],
-              "loser_names": [
                 "Lexie Kerby",
                 "Natalie Buttars"
+              ],
+              "loser_names": [
+                "Kara Petersen",
+                "Jennifer Sewell"
               ]
             },
             {
               "line": "3# Doubles",
-              "players_home": "Monica Kuhn / Kristine Parker",
-              "players_away": "Tera Craig / Cari Boyle",
+              "players_home": "Tera Craig / Cari Boyle",
+              "players_away": "Monica Kuhn / Kristine Parker",
               "score": "6-3 6-4",
               "result": "away",
               "court_winner": "away",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Hailey Ball",
               "winner_names": [
-                "Tera Craig",
-                "Cari Boyle"
-              ],
-              "loser_names": [
                 "Monica Kuhn",
                 "Kristine Parker"
+              ],
+              "loser_names": [
+                "Tera Craig",
+                "Cari Boyle"
               ]
             }
           ]
@@ -1085,88 +1085,88 @@
           "lines": [
             {
               "line": "1# Singles",
-              "players_home": "Brooke Bedke",
-              "players_away": "JESSICA SKIDMORE",
+              "players_home": "JESSICA SKIDMORE",
+              "players_away": "Brooke Bedke",
               "score": "6-2 7-5",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Brooke Bedke"
+                "JESSICA SKIDMORE"
               ],
               "loser_names": [
-                "JESSICA SKIDMORE"
+                "Brooke Bedke"
               ]
             },
             {
               "line": "2# Singles",
-              "players_home": "Aleesa Wilcox",
-              "players_away": "Natalie Buttars",
+              "players_home": "Natalie Buttars",
+              "players_away": "Aleesa Wilcox",
               "score": "1-0",
               "result": "away",
               "court_winner": "away",
               "winner_team": "Lucky Strings",
               "loser_team": "Hailey Ball",
               "winner_names": [
-                "Natalie Buttars"
+                "Aleesa Wilcox"
               ],
               "loser_names": [
-                "Aleesa Wilcox"
+                "Natalie Buttars"
               ]
             },
             {
               "line": "1# Doubles",
-              "players_home": "Lisa Hone / Sonja Facer",
-              "players_away": "Tina Taylor / Lexie Kerby",
+              "players_home": "Tina Taylor / Lexie Kerby",
+              "players_away": "Lisa Hone / Sonja Facer",
               "score": "6-2 6-3",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Lisa Hone",
-                "Sonja Facer"
-              ],
-              "loser_names": [
                 "Tina Taylor",
                 "Lexie Kerby"
+              ],
+              "loser_names": [
+                "Lisa Hone",
+                "Sonja Facer"
               ]
             },
             {
               "line": "2# Doubles",
-              "players_home": "Betsy Hunsicker / Nichole Ball",
-              "players_away": "Hailey Ball / Katilyn Onkes",
+              "players_home": "Hailey Ball / Katilyn Onkes",
+              "players_away": "Betsy Hunsicker / Nichole Ball",
               "score": "6-3 7-5",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Betsy Hunsicker",
-                "Nichole Ball"
-              ],
-              "loser_names": [
                 "Hailey Ball",
                 "Katilyn Onkes"
+              ],
+              "loser_names": [
+                "Betsy Hunsicker",
+                "Nichole Ball"
               ]
             },
             {
               "line": "3# Doubles",
-              "players_home": "Megan Keller / Brooke Hedin",
-              "players_away": "Tera Craig / Cari Boyle",
+              "players_home": "Tera Craig / Cari Boyle",
+              "players_away": "Megan Keller / Brooke Hedin",
               "score": "6-0 6-2",
               "result": "home",
               "court_winner": "home",
               "winner_team": "Hailey Ball",
               "loser_team": "Lucky Strings",
               "winner_names": [
-                "Megan Keller",
-                "Brooke Hedin"
-              ],
-              "loser_names": [
                 "Tera Craig",
                 "Cari Boyle"
+              ],
+              "loser_names": [
+                "Megan Keller",
+                "Brooke Hedin"
               ]
             }
           ]
@@ -1186,88 +1186,88 @@
           "lines": [
             {
               "line": "1# Singles",
-              "players_home": "Ashley Benson",
-              "players_away": "Kara Petersen",
+              "players_home": "Kara Petersen",
+              "players_away": "Ashley Benson",
               "score": "6-2 6-2",
               "result": "away",
               "court_winner": "away",
               "winner_team": "Idaho Falls",
               "loser_team": "The Real Housewives of the Hard Court",
               "winner_names": [
-                "Kara Petersen"
+                "Ashley Benson"
               ],
               "loser_names": [
-                "Ashley Benson"
+                "Kara Petersen"
               ]
             },
             {
               "line": "2# Singles",
-              "players_home": "Crista Rostrom",
-              "players_away": "Joanna Bennett",
+              "players_home": "Joanna Bennett",
+              "players_away": "Crista Rostrom",
               "score": "6-3 6-3",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Crista Rostrom"
+                "Joanna Bennett"
               ],
               "loser_names": [
-                "Joanna Bennett"
+                "Crista Rostrom"
               ]
             },
             {
               "line": "1# Doubles",
-              "players_home": "Abigail Belnap / Heidi Southwick",
-              "players_away": "Heather Redd / Kristine Parker",
+              "players_home": "Heather Redd / Kristine Parker",
+              "players_away": "Abigail Belnap / Heidi Southwick",
               "score": "6-2 6-4",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Abigail Belnap",
-                "Heidi Southwick"
-              ],
-              "loser_names": [
                 "Heather Redd",
                 "Kristine Parker"
+              ],
+              "loser_names": [
+                "Abigail Belnap",
+                "Heidi Southwick"
               ]
             },
             {
               "line": "2# Doubles",
-              "players_home": "Coleen Niemann / Sharon Oliver",
-              "players_away": "Monica Kuhn / Melissa Marshall",
+              "players_home": "Monica Kuhn / Melissa Marshall",
+              "players_away": "Coleen Niemann / Sharon Oliver",
               "score": "7-5 6-1",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Coleen Niemann",
-                "Sharon Oliver"
-              ],
-              "loser_names": [
                 "Monica Kuhn",
                 "Melissa Marshall"
+              ],
+              "loser_names": [
+                "Coleen Niemann",
+                "Sharon Oliver"
               ]
             },
             {
               "line": "3# Doubles",
-              "players_home": "Indiea Rasmussen / Megan Black",
-              "players_away": "Kimberly Wynn / Rebecca Hansen",
+              "players_home": "Kimberly Wynn / Rebecca Hansen",
+              "players_away": "Indiea Rasmussen / Megan Black",
               "score": "7-5 6-1",
               "result": "home",
               "court_winner": "home",
               "winner_team": "The Real Housewives of the Hard Court",
               "loser_team": "Idaho Falls",
               "winner_names": [
-                "Indiea Rasmussen",
-                "Megan Black"
-              ],
-              "loser_names": [
                 "Kimberly Wynn",
                 "Rebecca Hansen"
+              ],
+              "loser_names": [
+                "Indiea Rasmussen",
+                "Megan Black"
               ]
             }
           ]

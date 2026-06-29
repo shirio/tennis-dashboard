@@ -27,6 +27,10 @@ _NOISE = frozenset({
 })
 
 
+def _nkey(n: str) -> str:
+    return re.sub(r"\s+", " ", n.strip().lower())
+
+
 def _is_noise(name: str) -> bool:
     s = name.strip().lower()
     if s in _NOISE:
@@ -78,22 +82,54 @@ def _fix_swapped_results(match: dict) -> bool:
                 ln["result"] = "away"
             elif r == "away":
                 ln["result"] = "home"
+            ph, pa = ln.get("players_home", ""), ln.get("players_away", "")
+            ln["players_home"], ln["players_away"] = pa, ph
         return True
     return False
 
 
-def normalize_match(match: dict) -> None:
+def _fix_player_alignment(match: dict, player_teams: dict[str, set[str]]) -> bool:
+    """Swap players_home/away if they don't match the team alignment.
+
+    Detects cases where result fields were previously flipped to match-level
+    coordinates but players_home/away remained in scorecard coordinates.
+    """
+    home_team = (match.get("home_team") or "").strip().lower()
+    away_team = (match.get("away_team") or "").strip().lower()
+    if not home_team or not away_team or not player_teams:
+        return False
+
+    ph_on_home = 0
+    ph_on_away = 0
+    for ln in match.get("lines", []):
+        for name in _clean_names(ln.get("players_home", "")):
+            teams = player_teams.get(_nkey(name), set())
+            if home_team in teams:
+                ph_on_home += 1
+            elif away_team in teams:
+                ph_on_away += 1
+
+    if ph_on_away > ph_on_home and ph_on_away >= 2:
+        for ln in match.get("lines", []):
+            ph, pa = ln.get("players_home", ""), ln.get("players_away", "")
+            ln["players_home"], ln["players_away"] = pa, ph
+        return True
+    return False
+
+
+def normalize_match(match: dict, player_teams: dict[str, set[str]] | None = None) -> None:
     """Add canonical winner/loser fields to every line in a match."""
     home_team = (match.get("home_team") or "").strip()
     away_team = (match.get("away_team") or "").strip()
     _fix_swapped_results(match)
+    if player_teams:
+        _fix_player_alignment(match, player_teams)
     reliable = _match_result_reliable(match)
 
     for ln in match.get("lines", []):
         ph = _clean_names(ln.get("players_home", ""))
         pa = _clean_names(ln.get("players_away", ""))
 
-        # Determine court_winner using the best available signal
         cw = _determine_court_winner(ln, reliable)
         ln["court_winner"] = cw
 
@@ -144,24 +180,45 @@ def _determine_court_winner(ln: dict, result_reliable: bool) -> str | None:
     return None
 
 
-def normalize_standings_file(path: Path) -> int:
+def _load_player_teams() -> dict[str, set[str]]:
+    """Load player→team mapping from players.json for alignment detection."""
+    player_teams: dict[str, set[str]] = {}
+    players_path = DATA_DIR / "players.json"
+    if not players_path.exists():
+        return player_teams
+    try:
+        players = json.loads(players_path.read_text())
+        for p in players:
+            nk = _nkey(p.get("name", ""))
+            if not nk:
+                continue
+            for field in ("team_30", "team_35", "team"):
+                t = (p.get(field) or "").strip()
+                if t:
+                    player_teams.setdefault(nk, set()).add(t.lower())
+    except Exception:
+        pass
+    return player_teams
+
+
+def normalize_standings_file(path: Path, player_teams: dict[str, set[str]] | None = None) -> int:
     """Normalize all matches in a standings JSON file. Returns count of lines processed."""
     data = json.loads(path.read_text())
     count = 0
     for sf in data.get("subflights", []):
         for m in sf.get("matches", []):
-            normalize_match(m)
+            normalize_match(m, player_teams)
             count += len(m.get("lines", []))
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
     return count
 
 
-def normalize_districts_file(path: Path) -> int:
+def normalize_districts_file(path: Path, player_teams: dict[str, set[str]] | None = None) -> int:
     """Normalize all matches in a districts JSON file."""
     data = json.loads(path.read_text())
     count = 0
     for m in data.get("matches", []):
-        normalize_match(m)
+        normalize_match(m, player_teams)
         count += len(m.get("lines", []))
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
     return count
@@ -169,10 +226,14 @@ def normalize_districts_file(path: Path) -> int:
 
 def normalize_all() -> None:
     """Normalize all standings and districts files in data/."""
+    player_teams = _load_player_teams()
+    if player_teams:
+        print(f"  [normalize] Loaded {len(player_teams)} player→team mappings")
+
     total = 0
     unknown = 0
     for path in sorted(DATA_DIR.glob("standings_*_*.json")):
-        n = normalize_standings_file(path)
+        n = normalize_standings_file(path, player_teams)
         data = json.loads(path.read_text())
         unk = sum(
             1 for sf in data.get("subflights", [])
@@ -185,7 +246,7 @@ def normalize_all() -> None:
         print(f"  [normalize] {path.name}: {n} lines, {unk} unknown winners")
 
     for path in sorted(DATA_DIR.glob("districts_*_*.json")):
-        n = normalize_districts_file(path)
+        n = normalize_districts_file(path, player_teams)
         data = json.loads(path.read_text())
         unk = sum(
             1 for m in data.get("matches", [])
