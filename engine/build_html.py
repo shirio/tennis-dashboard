@@ -3367,11 +3367,10 @@ def build_sectionals_page() -> str | None:
         div = p.get("division", "")
         has_30_stats = bool(p.get("wl_record_30") or p.get("lines_played_30"))
         if st in qualified_teams_by_state:
+            # Only use team_30 — never fall back to generic `team` field since
+            # that may be set to the player's 3.5 team (e.g. DTC #3 for a 3.5
+            # player whose 3.0 team is DTC #4).
             if team_30 and team_30 in qualified_teams_by_state[st]:
-                qualified_players.append(p)
-            elif div.startswith("3.0") and (p.get("team") or "").lower().strip() in qualified_teams_by_state[st]:
-                qualified_players.append(p)
-            elif has_30_stats and (p.get("team") or "").lower().strip() in qualified_teams_by_state[st]:
                 qualified_players.append(p)
 
     if not qualified_players:
