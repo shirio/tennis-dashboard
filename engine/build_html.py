@@ -1018,25 +1018,25 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         _pool, ntrp, subflights, other_subflights)
 
     # ── Rating timeline lookups (for point-in-time rating in match history) ──
-    _tl_pre: dict[str, dict[str, float]] = {}
-    _tl_post: dict[str, dict[str, float]] = {}
+    # Keyed nkey -> sfx -> {date: rating} (NOT flat-merged — see _ap_pit_rating)
+    _tl_pre: dict[str, dict[str, dict[str, float]]] = {}
+    _tl_post: dict[str, dict[str, dict[str, float]]] = {}
     _tl_base: dict[str, str] = {}
     _tl_final: dict[str, str] = {}
     for p in _pool:
         norm = _nkey(p.get("name", ""))
         if not norm:
             continue
+        # Keep timelines per-division (do NOT merge with .update() — same-date entries
+        # from different divisions would overwrite each other, causing both same-day
+        # cross-division matches to show the later division's "going in" value).
         for sfx in (_sfx, _other_sfx):
             tl = p.get(f"rating_timeline_{sfx}")
             if tl and isinstance(tl, dict):
-                existing = _tl_pre.get(norm, {})
-                existing.update({k: float(v) for k, v in tl.items()})
-                _tl_pre[norm] = existing
+                _tl_pre.setdefault(norm, {})[sfx] = {k: float(v) for k, v in tl.items()}
             ptl = p.get(f"rating_post_timeline_{sfx}")
             if ptl and isinstance(ptl, dict):
-                existing = _tl_post.get(norm, {})
-                existing.update({k: float(v) for k, v in ptl.items()})
-                _tl_post[norm] = existing
+                _tl_post.setdefault(norm, {})[sfx] = {k: float(v) for k, v in ptl.items()}
         raw_base = p.get("dynamic_rating_baseline")
         if raw_base is not None:
             try:
@@ -1051,21 +1051,60 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                 except (ValueError, TypeError):
                     pass
 
-    def _ap_pit_rating(nkey: str, match_date: str) -> str:
-        pre_tl = _tl_pre.get(nkey, {})
-        if match_date in pre_tl:
-            return f"{pre_tl[match_date]:.2f}"
+    def _ap_pit_rating(nkey: str, match_date: str, rec_sfx: str) -> str:
+        """Pre-match rating for the focal player going into a specific match.
+
+        Uses division-specific timelines to avoid cross-division date collisions.
+        Two rules on top of the basic lookup:
+
+        1. First-ever match: post-processing (Lever 3 etc.) may shift the first
+           timeline entry above the player's baseline. Before any match the only
+           known value IS baseline, so return that.
+
+        2. Same-day cross-division chaining: if the other division ran first today
+           (detectable because post_other[date] == pre_this[date]), the pre_this
+           value correctly reflects the post-other result — use it as-is rather
+           than substituting baseline.
+        """
+        other_sfx = "35" if rec_sfx == "30" else "30"
+        pre_this  = _tl_pre.get(nkey, {}).get(rec_sfx, {})
+        post_this = _tl_post.get(nkey, {}).get(rec_sfx, {})
+        post_other = _tl_post.get(nkey, {}).get(other_sfx, {})
         match_key = _date_sort_key(match_date)
-        post_tl = _tl_post.get(nkey, {})
-        prior_post = [(k, v) for k, v in post_tl.items()
-                      if _date_sort_key(k) < match_key]
-        if prior_post:
-            _, latest_v = max(prior_post, key=lambda kv: _date_sort_key(kv[0]))
-            return f"{latest_v:.2f}"
-        prior_pre = [(k, v) for k, v in pre_tl.items()
-                     if _date_sort_key(k) < match_key]
-        if prior_pre:
-            _, latest_v = max(prior_pre, key=lambda kv: _date_sort_key(kv[0]))
+
+        if match_date in pre_this:
+            pre_val = pre_this[match_date]
+
+            # Any prior post-timeline entry (either div) before this date?
+            has_prior = (
+                any(_date_sort_key(k) < match_key for k in post_this) or
+                any(_date_sort_key(k) < match_key for k in post_other)
+            )
+
+            if not has_prior:
+                # No matches before today at all. Check same-day cross-div chain:
+                # if post_other[today] == pre_this[today] the other div ran first
+                # and pre_this is already the chained post-other value — keep it.
+                other_post_today = post_other.get(match_date)
+                other_ran_first = (
+                    other_post_today is not None
+                    and abs(other_post_today - pre_val) < 0.0003
+                )
+                if not other_ran_first:
+                    # This is the player's absolute first match — show baseline.
+                    return _tl_base.get(nkey, "") or _tl_final.get(nkey, "")
+
+            return f"{pre_val:.2f}"
+
+        # No pre-timeline entry for this date: fall back to most recent prior
+        # post-timeline across both divisions.
+        all_prior: list[tuple[str, float]] = []
+        for sfx2 in (rec_sfx, other_sfx):
+            for k, v in _tl_post.get(nkey, {}).get(sfx2, {}).items():
+                if _date_sort_key(k) < match_key:
+                    all_prior.append((k, v))
+        if all_prior:
+            _, latest_v = max(all_prior, key=lambda kv: _date_sort_key(kv[0]))
             return f"{latest_v:.2f}"
         return _tl_base.get(nkey, "") or _tl_final.get(nkey, "")
 
@@ -1178,7 +1217,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                     "op": rec["opps"] or None,
                     "or": [r for r in rec["opp_r"] if r] or None,
                     "ot": _abbrev_team(rec.get("opp_team", "")) or None,
-                    "pr": _ap_pit_rating(nk, rec["date"]) or None,
+                    "pr": _ap_pit_rating(nk, rec["date"], rec["div"].replace(".", "")) or None,
                 }.items() if v is not None}
                 for rec in hist
             ]
