@@ -1574,6 +1574,10 @@ function toggleHistory(tr) {
       var opHtml = opArr.length
         ? opArr.map(function(o,i){ return o + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
         : '<em class="hr">default</em>';
+      var ptArr = r.pt || [], ptrArr = r.ptr || [];
+      var ptHtml = ptArr.length
+        ? ptArr.map(function(p,i){ return p + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : ''); }).join(', ')
+        : '—';
       var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
       var prHtml = r.pr ? '<em class="prating">(' + r.pr + ')</em>' : '';
       html += '<tr>'
@@ -1583,7 +1587,7 @@ function toggleHistory(tr) {
         + '<td>' + prHtml + '</td>'
         + '<td><span class="' + resCls + '">' + resTxt + '</span></td>'
         + '<td style="white-space:nowrap">' + sc + '</td>'
-        + '<td>' + ((r.pt||[]).join(', ')||'—') + '</td>'
+        + '<td>' + ptHtml + '</td>'
         + '<td>' + opHtml + '</td>'
         + '<td>' + (r.ot||'') + '</td>'
         + '</tr>';
@@ -1683,7 +1687,7 @@ function sortAP(col) {
 }
 function sortRoster(col) {
   // Sort the currently visible roster pane's table
-  var pane = document.querySelector('.rpane.on[id^="ro-"]');
+  var pane = document.querySelector('.rpane.on[id^="ro-"]') || document.querySelector('.rpane.on[id^="sect-ro-"]');
   if (!pane) return;
   var tbody = pane.querySelector('tbody');
   _sortTable(tbody, col, 'ro-' + col + '-' + (pane ? pane.id : ''));

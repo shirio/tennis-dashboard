@@ -747,10 +747,10 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
                 f'<p class="sec-title">{_esc(tname)} &mdash; Subflight {_esc(sf_lbl)}</p>'
                 f'<table><thead><tr>'
                 f'<th class="sortable" onclick="sortRoster(0)">Player ↕</th>'
-                f'<th>NTRP</th>'
+                f'<th class="sortable" onclick="sortRoster(1)">NTRP ↕</th>'
                 f'<th class="sortable" onclick="sortRoster(2)">Base ↕</th>'
                 f'<th class="sortable" onclick="sortRoster(3)">New ↕</th>'
-                f'<th>W–L</th><th>Lines</th><th>Notes</th>'
+                f'<th class="sortable" onclick="sortRoster(4)">W–L ↕</th><th>Lines</th><th>Notes</th>'
                 f'</tr></thead><tbody>{rows}</tbody></table></div>\n'
             )
 
@@ -868,23 +868,36 @@ def _traverse_match_histories(
                             continue
                         _seen.add(dedup)
 
-                        if won:
-                            partners = [n for n in winner_names if _nkey(n) != nk]
-                            opps = loser_names if not is_walkover else []
+                        if winner_names or loser_names:
+                            if won:
+                                partners = [n for n in winner_names if _nkey(n) != nk]
+                                opps = loser_names if not is_walkover else []
+                            else:
+                                partners = [n for n in loser_names if _nkey(n) != nk]
+                                opps = winner_names if not is_walkover else []
                         else:
-                            partners = [n for n in loser_names if _nkey(n) != nk]
-                            opps = winner_names if not is_walkover else []
-                        if not partners and not opps and cw is None:
-                            all_names = [n.strip() for n in (home_raw + " / " + away_raw).split("/")
-                                         if n.strip() and not _is_noise_name(n)]
-                            partners = [n for n in all_names if _nkey(n) != nk]
-                            opps = []
+                            h_names = [n.strip() for n in home_raw.split("/")
+                                       if n.strip() and not _is_noise_name(n)]
+                            a_names = [n.strip() for n in away_raw.split("/")
+                                       if n.strip() and not _is_noise_name(n)]
+                            player_is_home = nk in [_nkey(n) for n in h_names]
+                            my_side = h_names if player_is_home else a_names
+                            opp_side = a_names if player_is_home else h_names
+                            partners = [n for n in my_side if _nkey(n) != nk]
+                            opps = opp_side if not is_walkover else []
 
                         opp_r_list = []
                         for o in opps:
                             op = by_name.get(_nkey(o))
                             opp_r_list.append(
                                 f"{op.get('rating_30'):.2f}" if op and op.get("rating_30") else ""
+                            )
+
+                        partner_r_list = []
+                        for pt in partners:
+                            pp = by_name.get(_nkey(pt))
+                            partner_r_list.append(
+                                f"{pp.get('rating_30'):.2f}" if pp and pp.get("rating_30") else ""
                             )
 
                         opp_team = (lt if won else wt) or (
@@ -900,7 +913,7 @@ def _traverse_match_histories(
                         rec = {
                             "date": date, "div": div, "line": line_label,
                             "won": won, "score": score, "wko": is_walkover,
-                            "partners": partners,
+                            "partners": partners, "partner_r": partner_r_list,
                             "opps": opps, "opp_r": opp_r_list,
                             "opp_team": opp_team,
                             "sw": sw, "sl": sl, "gw": gw, "gl": gl,
@@ -1132,6 +1145,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                     "sc": rec["score"],
                     "wk": rec.get("wko", False) or None,
                     "pt": rec["partners"] or None,
+                    "ptr": [r for r in rec["partner_r"] if r] or None,
                     "op": rec["opps"] or None,
                     "or": [r for r in rec["opp_r"] if r] or None,
                     "ot": _abbrev_team(rec.get("opp_team", "")) or None,
@@ -1176,6 +1190,13 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             sf_raw_labels.append(raw)
 
     state_btns = ""
+    if is_sectionals:
+        states_in_data = sorted({p.get("state", "") for p in players if p.get("state")})
+        if len(states_in_data) > 1:
+            sb = '<button class="rtab on" onclick="filterPlayerState(\'all\',this)">All States</button>'
+            for s in states_in_data:
+                sb += f'<button class="rtab" onclick="filterPlayerState(\'{_esc(s)}\',this)">{_esc(s)}</button>'
+            state_btns = f'<div class="sf-filter-btns" id="state-filter-btns">{sb}</div>'
 
     sf_section = ""
     if not is_sectionals:
@@ -1887,6 +1908,10 @@ function toggleHistory(tr) {
       var opHtml = opArr.length
         ? opArr.map(function(o,i){ return o + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
         : '<em class="hr">default</em>';
+      var ptArr = r.pt || [], ptrArr = r.ptr || [];
+      var ptHtml = ptArr.length
+        ? ptArr.map(function(p,i){ return p + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : ''); }).join(', ')
+        : '—';
       var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
       var prHtml = r.pr ? '<em class="prating">(' + r.pr + ')</em>' : '';
       html += '<tr>'
@@ -1896,7 +1921,7 @@ function toggleHistory(tr) {
         + '<td>' + prHtml + '</td>'
         + '<td><span class="' + resCls + '">' + resTxt + '</span></td>'
         + '<td style="white-space:nowrap">' + sc + '</td>'
-        + '<td>' + ((r.pt||[]).join(', ')||'—') + '</td>'
+        + '<td>' + ptHtml + '</td>'
         + '<td>' + opHtml + '</td>'
         + '<td>' + (r.ot||'') + '</td>'
         + '</tr>';
@@ -1996,7 +2021,7 @@ function sortAP(col) {
 }
 function sortRoster(col) {
   // Sort the currently visible roster pane's table
-  var pane = document.querySelector('.rpane.on[id^="ro-"]');
+  var pane = document.querySelector('.rpane.on[id^="ro-"]') || document.querySelector('.rpane.on[id^="sect-ro-"]');
   if (!pane) return;
   var tbody = pane.querySelector('tbody');
   _sortTable(tbody, col, 'ro-' + col + '-' + (pane ? pane.id : ''));
@@ -3250,9 +3275,11 @@ def _build_sectionals_rosters(
             f'<div id="{tid}" class="rpane{active}">'
             f'<p class="sec-title">{_esc(tname)} &mdash; {_esc(st)}</p>'
             f'<table><thead><tr>'
-            f'<th>Player</th><th>NTRP</th>'
-            f'<th>Base</th><th>New</th>'
-            f'<th>W–L</th><th>Lines</th>'
+            f'<th class="sortable" onclick="sortRoster(0)">Player ↕</th>'
+            f'<th class="sortable" onclick="sortRoster(1)">NTRP ↕</th>'
+            f'<th class="sortable" onclick="sortRoster(2)">Base ↕</th>'
+            f'<th class="sortable" onclick="sortRoster(3)">New ↕</th>'
+            f'<th class="sortable" onclick="sortRoster(4)">W–L ↕</th><th>Lines</th>'
             f'</tr></thead><tbody>{rows}</tbody></table></div>\n'
         )
         first = False

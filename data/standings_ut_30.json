@@ -2993,11 +2993,15 @@
               "players_away": "Chelsie Otteson",
               "score": "7-5 6-1",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Wasatch High School-Davis/Watts",
+              "loser_team": "Utah/Nebeker/18&Over/3.0W",
+              "winner_names": [
+                "Chelsie Otteson"
+              ],
+              "loser_names": [
+                "Linda Lasater"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3005,11 +3009,15 @@
               "players_away": "Tracy Davis",
               "score": "6-0 6-4",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Wasatch High School-Davis/Watts",
+              "loser_team": "Utah/Nebeker/18&Over/3.0W",
+              "winner_names": [
+                "Tracy Davis"
+              ],
+              "loser_names": [
+                "Caitlin Lutsch - (DQ)*"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3017,11 +3025,17 @@
               "players_away": "Sabina Boies / Kristin Finlayson",
               "score": "6-2 6-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Wasatch High School-Davis/Watts",
+              "loser_team": "Utah/Nebeker/18&Over/3.0W",
+              "winner_names": [
+                "Sabina Boies",
+                "Kristin Finlayson"
+              ],
+              "loser_names": [
+                "Carina Lambert",
+                "Kari Bennett"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3029,11 +3043,17 @@
               "players_away": "Nike Hawkes / Crystal Nielsen",
               "score": "7-5 6-1",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Wasatch High School-Davis/Watts",
+              "loser_team": "Utah/Nebeker/18&Over/3.0W",
+              "winner_names": [
+                "Nike Hawkes",
+                "Crystal Nielsen"
+              ],
+              "loser_names": [
+                "Cortney Nebeker",
+                "Annie Lindsley"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3041,11 +3061,20 @@
               "players_away": "Kathey Maxfield / Alyson Kelly",
               "score": "6-1 6-1",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Wasatch High School-Davis/Watts",
+              "loser_team": "Utah/Nebeker/18&Over/3.0W",
+              "winner_names": [
+                "Kathey Maxfield",
+                "Alyson Kelly"
+              ],
+              "loser_names": [
+                "Brooke Iverson",
+                "Tiffany VandenAkker",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ]
             }
           ]
         },
@@ -3371,11 +3400,15 @@
               "players_away": "Ashley Bradley",
               "score": "6-2 6-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Nebeker/18&Over/3.0W",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Kari Bennett"
+              ],
+              "loser_names": [
+                "Ashley Bradley"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3383,11 +3416,15 @@
               "players_away": "Shannon Taylor",
               "score": "6-3 6-3",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Nebeker/18&Over/3.0W",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Annie Lindsley"
+              ],
+              "loser_names": [
+                "Shannon Taylor"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3395,11 +3432,17 @@
               "players_away": "Babetta Kelly / Shannon Child",
               "score": "6-1 6-2",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Nebeker/18&Over/3.0W",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Kelli Hall",
+                "Cortney Nebeker"
+              ],
+              "loser_names": [
+                "Babetta Kelly",
+                "Shannon Child"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3407,11 +3450,17 @@
               "players_away": "Risa Karras / Paulette Santiago",
               "score": "6-3 6-2",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Nebeker/18&Over/3.0W",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Jen Solomon",
+                "Caitlin Lutsch - (DQ)*"
+              ],
+              "loser_names": [
+                "Risa Karras",
+                "Paulette Santiago"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3419,11 +3468,20 @@
               "players_away": "Mysha Bolen / Christy Denney / Note - / (DQ) - This player has been disqualified on this team / (DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing / * - Match awarded to opposing team by default in current standing",
               "score": "6-1 6-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Nebeker/18&Over/3.0W",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Katie Murphy",
+                "Wendy Hopkins"
+              ],
+              "loser_names": [
+                "Mysha Bolen",
+                "Christy Denney",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ]
             }
           ]
         },
@@ -4134,11 +4192,15 @@
               "players_away": "Lisa King",
               "score": "6-4 6-2",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Nebeker/18&Over/3.0W",
+              "loser_team": "SunPro-Lucky Shots",
+              "winner_names": [
+                "Jamie Sorensen"
+              ],
+              "loser_names": [
+                "Lisa King"
+              ]
             },
             {
               "line": "2# Singles",
@@ -4146,11 +4208,15 @@
               "players_away": "Natali King",
               "score": "3-6 6-4 1-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Nebeker/18&Over/3.0W",
+              "loser_team": "SunPro-Lucky Shots",
+              "winner_names": [
+                "Linda Lasater"
+              ],
+              "loser_names": [
+                "Natali King"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -4158,11 +4224,17 @@
               "players_away": "Shirley Johnson / Christina Marshall",
               "score": "6-3 6-4",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Nebeker/18&Over/3.0W",
+              "loser_team": "SunPro-Lucky Shots",
+              "winner_names": [
+                "Laura Espinosa",
+                "Brooke Iverson"
+              ],
+              "loser_names": [
+                "Shirley Johnson",
+                "Christina Marshall"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -4170,11 +4242,17 @@
               "players_away": "Suzette Greer / Cynthia Bedford",
               "score": "1-6 6-4 1-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Nebeker/18&Over/3.0W",
+              "loser_team": "SunPro-Lucky Shots",
+              "winner_names": [
+                "Katie Murphy",
+                "Wendy Hopkins"
+              ],
+              "loser_names": [
+                "Suzette Greer",
+                "Cynthia Bedford"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -4182,11 +4260,20 @@
               "players_away": "Laura Wills-Mitchell / Cyndi Madsen / Note - / (DQ) - This player has been disqualified on this team / (DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing / * - Match awarded to opposing team by default in current standing",
               "score": "6-3 6-1",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Nebeker/18&Over/3.0W",
+              "loser_team": "SunPro-Lucky Shots",
+              "winner_names": [
+                "Nicholl Doolin",
+                "Caitlin Lutsch - (DQ)*"
+              ],
+              "loser_names": [
+                "Laura Wills-Mitchell",
+                "Cyndi Madsen",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ]
             }
           ]
         },
@@ -6568,11 +6655,15 @@
               "players_away": "Sierra Richardson",
               "score": "6-4 6-2",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Park City Flying Squirrels",
+              "winner_names": [
+                "Sierra Richardson"
+              ],
+              "loser_names": [
+                "Kelley Schorn"
+              ]
             },
             {
               "line": "2# Singles",
@@ -6580,11 +6671,15 @@
               "players_away": "Marci Mortensen",
               "score": "6-3 6-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Park City Flying Squirrels",
+              "winner_names": [
+                "Marci Mortensen"
+              ],
+              "loser_names": [
+                "Jaron Santelli"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -6592,11 +6687,17 @@
               "players_away": "Jenni Guynn - (DQ)* / Aly King",
               "score": "6-1 6-4",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Park City Flying Squirrels",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Margaret Bloomer",
+                "Dania Lees"
+              ],
+              "loser_names": [
+                "Jenni Guynn - (DQ)*",
+                "Aly King"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -6604,11 +6705,17 @@
               "players_away": "Kimberly Duncan / Natalie Farley",
               "score": "6-2 7-5",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Park City Flying Squirrels",
+              "winner_names": [
+                "Kimberly Duncan",
+                "Natalie Farley"
+              ],
+              "loser_names": [
+                "Peony Keve",
+                "Angela Vrebalovich"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -6616,11 +6723,20 @@
               "players_away": "Elise Welling / Danielle Lonardo",
               "score": "3-6 6-4 1-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Park City Flying Squirrels",
+              "winner_names": [
+                "Elise Welling",
+                "Danielle Lonardo"
+              ],
+              "loser_names": [
+                "Megan Johnstone",
+                "Kim Li",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ]
             }
           ]
         },
@@ -6946,11 +7062,15 @@
               "players_away": "Jenni Guynn - (DQ)*",
               "score": "7-5 6-2",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Liberty Park Volleydolls",
+              "winner_names": [
+                "Jenni Guynn - (DQ)*"
+              ],
+              "loser_names": [
+                "Kelley Allred"
+              ]
             },
             {
               "line": "2# Singles",
@@ -6958,11 +7078,15 @@
               "players_away": "Marci Mortensen",
               "score": "6-2 5-7 1-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Liberty Park Volleydolls",
+              "winner_names": [
+                "Marci Mortensen"
+              ],
+              "loser_names": [
+                "Stacy Higbee"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -6970,11 +7094,17 @@
               "players_away": "Aly King / Kiely Hanks",
               "score": "6-1 6-1",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Liberty Park Volleydolls",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Rebecca Anderson",
+                "Liz Baucom"
+              ],
+              "loser_names": [
+                "Aly King",
+                "Kiely Hanks"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -6982,11 +7112,17 @@
               "players_away": "Elise Welling / Brielle Barton",
               "score": "6-3 6-1",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Liberty Park Volleydolls",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Anna Pearce",
+                "Megan Berceau"
+              ],
+              "loser_names": [
+                "Elise Welling",
+                "Brielle Barton"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -6994,11 +7130,20 @@
               "players_away": "Summer Adamson / Megan Ord / Note - / (DQ) - This player has been disqualified on this team / (DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing / * - Match awarded to opposing team by default in current standing",
               "score": "6-0 6-2",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Liberty Park Volleydolls",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Liz Bell",
+                "Marie Gardner"
+              ],
+              "loser_names": [
+                "Summer Adamson",
+                "Megan Ord",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ]
             }
           ]
         },
@@ -7114,11 +7259,15 @@
               "players_away": "Aly King",
               "score": "6-0 6-2",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Aly King"
+              ],
+              "loser_names": [
+                "Stephanie Betteridge"
+              ]
             },
             {
               "line": "2# Singles",
@@ -7126,11 +7275,15 @@
               "players_away": "Brielle Barton",
               "score": "6-0 6-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Brielle Barton"
+              ],
+              "loser_names": [
+                "Jena Rowley"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -7138,11 +7291,17 @@
               "players_away": "Jenni Guynn - (DQ)* / Danielle Lonardo",
               "score": "6-0 6-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Shellie Black",
+                "Gayle Waldron"
+              ],
+              "loser_names": [
+                "Jenni Guynn - (DQ)*",
+                "Danielle Lonardo"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -7150,11 +7309,17 @@
               "players_away": "Marci Mortensen / Sierra Richardson",
               "score": "6-7 6-2 1-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Mary Scoresby",
+                "Ruth Russell"
+              ],
+              "loser_names": [
+                "Marci Mortensen",
+                "Sierra Richardson"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -7162,11 +7327,17 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Ivory Ridge-Supreme Court",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [
+                "Jill Broadbent",
+                "Gaylynn Gale",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ]
             }
           ]
         },
@@ -7391,11 +7562,15 @@
               "players_away": "Kelli Cannon",
               "score": "6-0 6-2",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Megan Bean"
+              ],
+              "loser_names": [
+                "Kelli Cannon"
+              ]
             },
             {
               "line": "2# Singles",
@@ -7403,11 +7578,15 @@
               "players_away": "Aly King",
               "score": "6-4 6-3",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Aly King"
+              ],
+              "loser_names": [
+                "Stephanie Betteridge"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -7415,11 +7594,17 @@
               "players_away": "Jenni Guynn - (DQ)* / Sierra Richardson",
               "score": "6-3 6-2",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Jenni Guynn - (DQ)*",
+                "Sierra Richardson"
+              ],
+              "loser_names": [
+                "Becky Nelson",
+                "Megan Mullins"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -7427,11 +7612,17 @@
               "players_away": "Elise Welling / Brielle Barton",
               "score": "6-0 6-1",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Allyson Smith",
+                "Shellie Black"
+              ],
+              "loser_names": [
+                "Elise Welling",
+                "Brielle Barton"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -7439,11 +7630,20 @@
               "players_away": "Megan Ord / Summer Adamson / Note - / (DQ) - This player has been disqualified on this team / (DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing / * - Match awarded to opposing team by default in current standing",
               "score": "6-0 6-1",
               "result": "",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Ruth Russell",
+                "Celeste Harris"
+              ],
+              "loser_names": [
+                "Megan Ord",
+                "Summer Adamson",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ]
             }
           ]
         },

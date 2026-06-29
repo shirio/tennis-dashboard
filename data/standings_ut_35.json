@@ -229,11 +229,15 @@
               "players_away": "Catherine van Uitert",
               "score": "7-5 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "Cottonwood Club-Annunziata",
+              "winner_names": [
+                "Catherine van Uitert"
+              ],
+              "loser_names": [
+                "Mary Diaz Gordon"
+              ]
             },
             {
               "line": "2# Singles",
@@ -241,11 +245,15 @@
               "players_away": "Heather George",
               "score": "6-0 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Cottonwood Club-Annunziata",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Jenna Nicholson"
+              ],
+              "loser_names": [
+                "Heather George"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -253,11 +261,17 @@
               "players_away": "Sarah Nelson / Lindsay Duckworth",
               "score": "7-6 6-2",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "Cottonwood Club-Annunziata",
+              "winner_names": [
+                "Sarah Nelson",
+                "Lindsay Duckworth"
+              ],
+              "loser_names": [
+                "Megan Reardon",
+                "Jennie Bethers"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -265,11 +279,17 @@
               "players_away": "Jennifer Evans / Naomi Stroud-Peterson",
               "score": "6-1 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Cottonwood Club-Annunziata",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Michelle Cutler",
+                "Janice Stokes-Burns"
+              ],
+              "loser_names": [
+                "Jennifer Evans",
+                "Naomi Stroud-Peterson"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -277,11 +297,17 @@
               "players_away": "Rachel Stohlton / Melanie Olsen",
               "score": "6-1 7-5",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Cottonwood Club-Annunziata",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Melissa Child",
+                "Liesl Lambert"
+              ],
+              "loser_names": [
+                "Rachel Stohlton",
+                "Melanie Olsen"
+              ]
             }
           ]
         },
@@ -806,11 +832,15 @@
               "players_away": "Catherine van Uitert",
               "score": "6-2 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch High School-Jonston/Jones",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Elizabeth Heywood"
+              ],
+              "loser_names": [
+                "Catherine van Uitert"
+              ]
             },
             {
               "line": "2# Singles",
@@ -818,11 +848,15 @@
               "players_away": "Melanie Olsen",
               "score": "6-1 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch High School-Jonston/Jones",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Stefanie Maddox"
+              ],
+              "loser_names": [
+                "Melanie Olsen"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -830,11 +864,17 @@
               "players_away": "Lindsay Lafeen / Sarah Nelson",
               "score": "1-6 7-5 1-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "Wasatch High School-Jonston/Jones",
+              "winner_names": [
+                "Lindsay Lafeen",
+                "Sarah Nelson"
+              ],
+              "loser_names": [
+                "Carly Johnston",
+                "Catherine Dunn"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -842,11 +882,17 @@
               "players_away": "Naomi Stroud-Peterson / Jennifer Evans",
               "score": "6-0 7-6",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch High School-Jonston/Jones",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Shana Wood",
+                "Chelsea Watts"
+              ],
+              "loser_names": [
+                "Naomi Stroud-Peterson",
+                "Jennifer Evans"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -854,11 +900,17 @@
               "players_away": "Rikke Phinney / Rachel Stohlton",
               "score": "3-6 7-6 1-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "Wasatch High School-Jonston/Jones",
+              "winner_names": [
+                "Rikke Phinney",
+                "Rachel Stohlton"
+              ],
+              "loser_names": [
+                "Britta Davis",
+                "Emily Jenkins"
+              ]
             }
           ]
         },
@@ -1184,11 +1236,15 @@
               "players_away": "Chelsea Wood",
               "score": "6-2 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "PC MARC-Krueger/Siano",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Darla Cardwell"
+              ],
+              "loser_names": [
+                "Chelsea Wood"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1196,11 +1252,15 @@
               "players_away": "Catherine van Uitert",
               "score": "6-1 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "PC MARC-Krueger/Siano",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Hillary Jeppsen"
+              ],
+              "loser_names": [
+                "Catherine van Uitert"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1208,11 +1268,17 @@
               "players_away": "Lindsay Duckworth / Sarah Nelson",
               "score": "6-3 7-6",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "PC MARC-Krueger/Siano",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Dannan Siano",
+                "Conni Gull"
+              ],
+              "loser_names": [
+                "Lindsay Duckworth",
+                "Sarah Nelson"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1220,11 +1286,17 @@
               "players_away": "Lindsay Lafeen / Jennifer Evans",
               "score": "3-6 6-4 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "PC MARC-Krueger/Siano",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Katy Patterson",
+                "Romina Fabiani"
+              ],
+              "loser_names": [
+                "Lindsay Lafeen",
+                "Jennifer Evans"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1232,10 +1304,13 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
+              "court_winner": "home",
+              "winner_team": "PC MARC-Krueger/Siano",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Annie Tilton",
+                "Brittany Schuhmacher"
+              ],
               "loser_names": []
             }
           ]
@@ -1653,11 +1728,15 @@
               "players_away": "Chelsea Wood",
               "score": "6-2 6-4",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "SLT-Sweet/Smathers",
+              "winner_names": [
+                "Chelsea Wood"
+              ],
+              "loser_names": [
+                "Meghan Kellner"
+              ]
             },
             {
               "line": "2# Singles",
@@ -1665,11 +1744,15 @@
               "players_away": "Jennifer Evans",
               "score": "4-6 6-0 1-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "SLT-Sweet/Smathers",
+              "winner_names": [
+                "Jennifer Evans"
+              ],
+              "loser_names": [
+                "Holly Goulding"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -1677,11 +1760,17 @@
               "players_away": "Lindsay Lafeen / Catherine van Uitert",
               "score": "6-2 6-2",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "SLT-Sweet/Smathers",
+              "winner_names": [
+                "Lindsay Lafeen",
+                "Catherine van Uitert"
+              ],
+              "loser_names": [
+                "Paige Smathers",
+                "Candace Haroldsen"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -1689,11 +1778,17 @@
               "players_away": "Rachel Stohlton / Lindsey Pizza",
               "score": "7-5 6-3",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "SLT-Sweet/Smathers",
+              "winner_names": [
+                "Rachel Stohlton",
+                "Lindsey Pizza"
+              ],
+              "loser_names": [
+                "Nicole Leatham",
+                "Gabriella Romney"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -1701,11 +1796,17 @@
               "players_away": "Lisa Packer / Heather George",
               "score": "6-1 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "SLT-Sweet/Smathers",
+              "winner_names": [
+                "Lisa Packer",
+                "Heather George"
+              ],
+              "loser_names": [
+                "Lauren Murphy",
+                "Brittany Pope"
+              ]
             }
           ]
         },
@@ -2332,11 +2433,15 @@
               "players_away": "Chelsea Wood",
               "score": "6-1 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ace-Harman/Swalberg",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Ashley Harper"
+              ],
+              "loser_names": [
+                "Chelsea Wood"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2344,11 +2449,15 @@
               "players_away": "Catherine van Uitert",
               "score": "6-0 6-2",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "Ace-Harman/Swalberg",
+              "winner_names": [
+                "Catherine van Uitert"
+              ],
+              "loser_names": [
+                "Jennifer Madison"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2356,11 +2465,17 @@
               "players_away": "Heather George / Lisa Packer",
               "score": "7-6 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ace-Harman/Swalberg",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Rebecca Harman",
+                "Camillia Groberg"
+              ],
+              "loser_names": [
+                "Heather George",
+                "Lisa Packer"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2368,11 +2483,17 @@
               "players_away": "Jennifer Evans / Rachel Stohlton",
               "score": "4-6 6-0 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ace-Harman/Swalberg",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Jessica Whittaker",
+                "KayeLynn BASTIAN"
+              ],
+              "loser_names": [
+                "Jennifer Evans",
+                "Rachel Stohlton"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2380,10 +2501,13 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
+              "court_winner": "home",
+              "winner_team": "Ace-Harman/Swalberg",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Maria Pettit",
+                "Bonnie Whitesides"
+              ],
               "loser_names": []
             }
           ]
@@ -2508,11 +2632,15 @@
               "players_away": "Catherine van Uitert",
               "score": "6-2 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "SunPro Smashers",
+              "winner_names": [
+                "Catherine van Uitert"
+              ],
+              "loser_names": [
+                "Ellie Logan"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2520,11 +2648,15 @@
               "players_away": "Chelsea Wood",
               "score": "6-2 2-6 1-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "SunPro Smashers",
+              "winner_names": [
+                "Chelsea Wood"
+              ],
+              "loser_names": [
+                "Sarah Cartwright"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2532,11 +2664,17 @@
               "players_away": "Lindsay Lafeen / Jennifer Evans",
               "score": "7-6 3-6 1-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "SunPro Smashers",
+              "winner_names": [
+                "Lindsay Lafeen",
+                "Jennifer Evans"
+              ],
+              "loser_names": [
+                "Katrina Harlan",
+                "Diane Heaps"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2544,10 +2682,13 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
+              "court_winner": "home",
+              "winner_team": "SunPro Smashers",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Kaylene Andrew",
+                "Kelly Mortensen"
+              ],
               "loser_names": []
             },
             {
@@ -2556,10 +2697,13 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
+              "court_winner": "home",
+              "winner_team": "SunPro Smashers",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Sherston Faux",
+                "Shannon Fredericks"
+              ],
               "loser_names": []
             }
           ]
@@ -2880,11 +3024,15 @@
               "players_away": "Chelsea Wood",
               "score": "6-4 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "Ivory Ridge-Hardin/Elison",
+              "winner_names": [
+                "Chelsea Wood"
+              ],
+              "loser_names": [
+                "Ashley Taylor"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2892,11 +3040,15 @@
               "players_away": "Rachel Stohlton",
               "score": "7-5 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "Ivory Ridge-Hardin/Elison",
+              "winner_names": [
+                "Rachel Stohlton"
+              ],
+              "loser_names": [
+                "Kristin Kamerath"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2904,11 +3056,17 @@
               "players_away": "Catherine van Uitert / Lindsay Duckworth",
               "score": "1-6 6-2 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Hardin/Elison",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Jennifer Elison",
+                "Rebekah Aubrey"
+              ],
+              "loser_names": [
+                "Catherine van Uitert",
+                "Lindsay Duckworth"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2916,11 +3074,17 @@
               "players_away": "Lindsay Lafeen / Jennifer Evans",
               "score": "6-4 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Hardin/Elison",
+              "loser_team": "Sports Mall-Wood",
+              "winner_names": [
+                "Stephanie Sobotka",
+                "Allyson Smith"
+              ],
+              "loser_names": [
+                "Lindsay Lafeen",
+                "Jennifer Evans"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2928,11 +3092,17 @@
               "players_away": "Marni Larsen / Melanie Olsen",
               "score": "7-6 6-3",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Wood",
+              "loser_team": "Ivory Ridge-Hardin/Elison",
+              "winner_names": [
+                "Marni Larsen",
+                "Melanie Olsen"
+              ],
+              "loser_names": [
+                "Paula Neill",
+                "Chris Peterson"
+              ]
             }
           ]
         },
@@ -6831,11 +7001,15 @@
               "players_away": "Ellie Jacobs",
               "score": "7-6 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Causing a Racquet",
+              "winner_names": [
+                "Ellie Jacobs"
+              ],
+              "loser_names": [
+                "Van Vo"
+              ]
             },
             {
               "line": "2# Singles",
@@ -6843,11 +7017,15 @@
               "players_away": "Jennifer Lin-Liu",
               "score": "6-4 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Causing a Racquet",
+              "winner_names": [
+                "Jennifer Lin-Liu"
+              ],
+              "loser_names": [
+                "Hannah Galbreath"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -6855,11 +7033,17 @@
               "players_away": "Elle Laulu / Steffany Beddes",
               "score": "6-2 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Causing a Racquet",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Jennifer Wecker",
+                "Maryam Klock"
+              ],
+              "loser_names": [
+                "Elle Laulu",
+                "Steffany Beddes"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -6867,11 +7051,17 @@
               "players_away": "Delia Bayna / Sachiko Osterloh",
               "score": "4-6 6-0 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Causing a Racquet",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Hannah Lee",
+                "Jennifer Kawakami"
+              ],
+              "loser_names": [
+                "Delia Bayna",
+                "Sachiko Osterloh"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -6879,11 +7069,17 @@
               "players_away": "Mari Bickmore / Katrina Mills",
               "score": "6-2 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Causing a Racquet",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Linda Lasater",
+                "Mary Sorensen"
+              ],
+              "loser_names": [
+                "Mari Bickmore",
+                "Katrina Mills"
+              ]
             }
           ]
         },
@@ -7209,10 +7405,12 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
+              "court_winner": "home",
+              "winner_team": "Utah Valley-Orozco",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Jaimie Ribera"
+              ],
               "loser_names": []
             },
             {
@@ -7221,11 +7419,15 @@
               "players_away": "Sachiko Osterloh",
               "score": "6-2 6-3",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Utah Valley-Orozco",
+              "winner_names": [
+                "Sachiko Osterloh"
+              ],
+              "loser_names": [
+                "Grace Neff"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -7233,11 +7435,17 @@
               "players_away": "Kalaiselvi Seetharaman / Katrina Mills",
               "score": "6-3 6-3",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Utah Valley-Orozco",
+              "winner_names": [
+                "Kalaiselvi Seetharaman",
+                "Katrina Mills"
+              ],
+              "loser_names": [
+                "Brianna Minnick",
+                "Lynzee Jackson"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -7245,11 +7453,17 @@
               "players_away": "Jennifer Lin-Liu / Mari Bickmore",
               "score": "6-1 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah Valley-Orozco",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Chrissy Oliveros",
+                "Megumi Matsuzawa"
+              ],
+              "loser_names": [
+                "Jennifer Lin-Liu",
+                "Mari Bickmore"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -7257,11 +7471,17 @@
               "players_away": "Elle Laulu / Steffany Beddes",
               "score": "6-2 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah Valley-Orozco",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Liz Donaldson",
+                "Cari Cardall"
+              ],
+              "loser_names": [
+                "Elle Laulu",
+                "Steffany Beddes"
+              ]
             }
           ]
         },
@@ -7957,11 +8177,15 @@
               "players_away": "Ellie Jacobs",
               "score": "6-0 6-2",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Cottonwood Club-Haverkost",
+              "winner_names": [
+                "Ellie Jacobs"
+              ],
+              "loser_names": [
+                "Jamuna Nielsen"
+              ]
             },
             {
               "line": "2# Singles",
@@ -7969,11 +8193,15 @@
               "players_away": "Sachiko Osterloh",
               "score": "1-6 6-1 1-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Cottonwood Club-Haverkost",
+              "winner_names": [
+                "Sachiko Osterloh"
+              ],
+              "loser_names": [
+                "Ally Lyle"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -7981,11 +8209,17 @@
               "players_away": "Katrina Mills / Kalaiselvi Seetharaman",
               "score": "6-4 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Cottonwood Club-Haverkost",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Lora Lyon",
+                "Lori Carter"
+              ],
+              "loser_names": [
+                "Katrina Mills",
+                "Kalaiselvi Seetharaman"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -7993,11 +8227,17 @@
               "players_away": "Steffany Beddes / Elle Laulu",
               "score": "6-2 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Cottonwood Club-Haverkost",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Dawn Farrell",
+                "Kumru Uruk"
+              ],
+              "loser_names": [
+                "Steffany Beddes",
+                "Elle Laulu"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -8005,11 +8245,17 @@
               "players_away": "Joyce Krawiecki / Jennifer Lin-Liu",
               "score": "6-4 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Cottonwood Club-Haverkost",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Melissa Child",
+                "Amanda Krejci"
+              ],
+              "loser_names": [
+                "Joyce Krawiecki",
+                "Jennifer Lin-Liu"
+              ]
             }
           ]
         },
@@ -8133,11 +8379,13 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Liberty Park-Spencer/Bryce",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [
+                "Ashley Wright"
+              ]
             },
             {
               "line": "2# Singles",
@@ -8145,11 +8393,13 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Liberty Park-Spencer/Bryce",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [
+                "Mary Vander Straten"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -8157,11 +8407,17 @@
               "players_away": "Sachiko Osterloh / Isabella Morris",
               "score": "6-3 6-7 1-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Liberty Park-Spencer/Bryce",
+              "winner_names": [
+                "Sachiko Osterloh",
+                "Isabella Morris"
+              ],
+              "loser_names": [
+                "Madelyn Totland",
+                "Jessica Spencer"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -8169,11 +8425,17 @@
               "players_away": "Katrina Mills / Kalaiselvi Seetharaman",
               "score": "6-2 6-3",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Liberty Park-Spencer/Bryce",
+              "winner_names": [
+                "Katrina Mills",
+                "Kalaiselvi Seetharaman"
+              ],
+              "loser_names": [
+                "Meghan Kellner",
+                "Amanda Moore"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -8181,11 +8443,17 @@
               "players_away": "Elle Laulu / Steffany Beddes",
               "score": "6-2 6-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Liberty Park-Spencer/Bryce",
+              "winner_names": [
+                "Elle Laulu",
+                "Steffany Beddes"
+              ],
+              "loser_names": [
+                "Ashley Miller",
+                "Nicole Chase"
+              ]
             }
           ]
         },
@@ -8708,11 +8976,15 @@
               "players_away": "Joyce Krawiecki",
               "score": "6-1 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Torres/18&Over/3.5W",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Catherine van Uitert"
+              ],
+              "loser_names": [
+                "Joyce Krawiecki"
+              ]
             },
             {
               "line": "2# Singles",
@@ -8720,11 +8992,15 @@
               "players_away": "Katrina Mills",
               "score": "6-4 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Torres/18&Over/3.5W",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Haley Swan"
+              ],
+              "loser_names": [
+                "Katrina Mills"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -8732,11 +9008,17 @@
               "players_away": "Steffany Beddes / Elle Laulu",
               "score": "7-5 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Torres/18&Over/3.5W",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Kelsey Glassberg",
+                "Sam Steiner"
+              ],
+              "loser_names": [
+                "Steffany Beddes",
+                "Elle Laulu"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -8884,11 +9166,15 @@
               "players_away": "Katrina Mills",
               "score": "6-0 6-4",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Utah/Torres/18&Over/3.5W",
+              "winner_names": [
+                "Katrina Mills"
+              ],
+              "loser_names": [
+                "Catherine van Uitert"
+              ]
             },
             {
               "line": "2# Singles",
@@ -8896,11 +9182,15 @@
               "players_away": "Ellie Jacobs",
               "score": "7-6 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Torres/18&Over/3.5W",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Haley Swan"
+              ],
+              "loser_names": [
+                "Ellie Jacobs"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -8908,11 +9198,17 @@
               "players_away": "Elle Laulu / Steffany Beddes",
               "score": "6-2 6-2",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Utah/Torres/18&Over/3.5W",
+              "winner_names": [
+                "Elle Laulu",
+                "Steffany Beddes"
+              ],
+              "loser_names": [
+                "Libby MacKay",
+                "Kelsey Glassberg"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -8920,11 +9216,17 @@
               "players_away": "Sachiko Osterloh / Delia Bayna",
               "score": "4-6 6-3 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Utah/Torres/18&Over/3.5W",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "Lynette Wills",
+                "Elaine Day"
+              ],
+              "loser_names": [
+                "Sachiko Osterloh",
+                "Delia Bayna"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -8932,11 +9234,17 @@
               "players_away": "Mari Bickmore / Kalaiselvi Seetharaman",
               "score": "6-1 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Utah/Torres/18&Over/3.5W",
+              "winner_names": [
+                "Mari Bickmore",
+                "Kalaiselvi Seetharaman"
+              ],
+              "loser_names": [
+                "Collette Renstrom",
+                "Hailey Mann"
+              ]
             }
           ]
         },
@@ -9259,11 +9567,15 @@
               "players_away": "Katrina Mills",
               "score": "3-6 7-5 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Causing a Racquet",
+              "loser_team": "Bayna",
+              "winner_names": [
+                "JaNean Nelson"
+              ],
+              "loser_names": [
+                "Katrina Mills"
+              ]
             },
             {
               "line": "2# Singles",
@@ -9271,11 +9583,13 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Causing a Racquet",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [
+                "Hannah Lee"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -9283,11 +9597,17 @@
               "players_away": "Elle Laulu / Steffany Beddes",
               "score": "6-4 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Causing a Racquet",
+              "winner_names": [
+                "Elle Laulu",
+                "Steffany Beddes"
+              ],
+              "loser_names": [
+                "Shannon Knudsen",
+                "Jennifer Tooley"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -9295,11 +9615,14 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Causing a Racquet",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [
+                "Jennie Stacey",
+                "Cortney Nebeker"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -9307,11 +9630,14 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
+              "court_winner": "away",
+              "winner_team": "Bayna",
+              "loser_team": "Causing a Racquet",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [
+                "Kelley Allred",
+                "Mary Sorensen"
+              ]
             }
           ]
         }
