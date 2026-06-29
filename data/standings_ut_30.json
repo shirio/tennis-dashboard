@@ -12593,6 +12593,1553 @@
           ]
         }
       ]
+    },
+    {
+      "flight_label": "Championships Flight E",
+      "teams": [
+        {
+          "team_name": "PC MARC-Krueger/Schlachter",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "Harvey/Conrad",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "02dd9634d5120e59",
+          "date": "6/6/2026",
+          "tl_match_id": "3148031",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148031",
+          "home_team": "PC MARC-Krueger/Schlachter",
+          "away_team": "Harvey/Conrad",
+          "team_wins_home": 1,
+          "team_wins_away": 4,
+          "score": "1-4",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Shruthi Kinkead",
+              "players_away": "April Woo",
+              "score": "6-2 3-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "PC MARC-Krueger/Schlachter",
+              "winner_names": [
+                "April Woo"
+              ],
+              "loser_names": [
+                "Shruthi Kinkead"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Rachel Malueg",
+              "players_away": "Ashley Wright",
+              "score": "6-3 7-5",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "PC MARC-Krueger/Schlachter",
+              "winner_names": [
+                "Ashley Wright"
+              ],
+              "loser_names": [
+                "Rachel Malueg"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lynette Maloney / Lisa Hauser",
+              "players_away": "Michelle Simmons / Hailey Mann",
+              "score": "2-6 6-2 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "PC MARC-Krueger/Schlachter",
+              "loser_team": "Harvey/Conrad",
+              "winner_names": [
+                "Lynette Maloney",
+                "Lisa Hauser"
+              ],
+              "loser_names": [
+                "Michelle Simmons",
+                "Hailey Mann"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Lisa Graveline / Lauren Karr",
+              "players_away": "Wendy Conrad / Alison Floyd",
+              "score": "7-5 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "PC MARC-Krueger/Schlachter",
+              "winner_names": [
+                "Wendy Conrad",
+                "Alison Floyd"
+              ],
+              "loser_names": [
+                "Lisa Graveline",
+                "Lauren Karr"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Amy Watson / Sandy Phan",
+              "players_away": "Ann Monroy / Kayla Richardson",
+              "score": "4-6 7-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "PC MARC-Krueger/Schlachter",
+              "winner_names": [
+                "Ann Monroy",
+                "Kayla Richardson"
+              ],
+              "loser_names": [
+                "Amy Watson",
+                "Sandy Phan"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight A",
+      "teams": [
+        {
+          "team_name": "Wasatch Hills Ballers",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "SunPro-Simply Smashing",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "9c9ee8772b8adffc",
+          "date": "6/6/2026",
+          "tl_match_id": "3148028",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148028",
+          "home_team": "Wasatch Hills Ballers",
+          "away_team": "SunPro-Simply Smashing",
+          "team_wins_home": 4,
+          "team_wins_away": 0,
+          "score": "4-0",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jamie Sorensen",
+              "players_away": "Rachelle Lee",
+              "score": "6-3 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "SunPro-Simply Smashing",
+              "winner_names": [
+                "Jamie Sorensen"
+              ],
+              "loser_names": [
+                "Rachelle Lee"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Dbl. Default",
+              "players_away": "",
+              "score": "",
+              "result": "",
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Kari Bennett / Annie Lindsley",
+              "players_away": "Ciaran Lamb / Andrea Cook",
+              "score": "6-1 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "SunPro-Simply Smashing",
+              "winner_names": [
+                "Kari Bennett",
+                "Annie Lindsley"
+              ],
+              "loser_names": [
+                "Ciaran Lamb",
+                "Andrea Cook"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Cortney Nebeker / Kelli Hall",
+              "players_away": "Emily Lillywhite / Celeste Livingston",
+              "score": "6-4 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "SunPro-Simply Smashing",
+              "winner_names": [
+                "Cortney Nebeker",
+                "Kelli Hall"
+              ],
+              "loser_names": [
+                "Emily Lillywhite",
+                "Celeste Livingston"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Wendy Hopkins / Carina Lambert",
+              "players_away": "Kathy Berrett / Debbie Dunn",
+              "score": "7-6 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "SunPro-Simply Smashing",
+              "winner_names": [
+                "Wendy Hopkins",
+                "Carina Lambert"
+              ],
+              "loser_names": [
+                "Kathy Berrett",
+                "Debbie Dunn"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight B",
+      "teams": [
+        {
+          "team_name": "Ivory Ridge Racquettes",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "Liberty Park-Kesler",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "25359347674b109b",
+          "date": "6/6/2026",
+          "tl_match_id": "3148032",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148032",
+          "home_team": "Ivory Ridge Racquettes",
+          "away_team": "Liberty Park-Kesler",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by Liberty Park-Kesler",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Ashley Bradley",
+              "players_away": "Laura Needham",
+              "score": "3-6 6-2 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Laura Needham"
+              ],
+              "loser_names": [
+                "Ashley Bradley"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Risa Karras",
+              "players_away": "Christina Montero",
+              "score": "6-3 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge Racquettes",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Risa Karras"
+              ],
+              "loser_names": [
+                "Christina Montero"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Ashlee Rees / Paulette Santiago",
+              "players_away": "Alisa Kesler / Marieke Timmer",
+              "score": "6-1 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Alisa Kesler",
+                "Marieke Timmer"
+              ],
+              "loser_names": [
+                "Ashlee Rees",
+                "Paulette Santiago"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Diana Lacey / Christy Denney",
+              "players_away": "Kyoko Jensen / Emily Hepworth",
+              "score": "6-1 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Kyoko Jensen",
+                "Emily Hepworth"
+              ],
+              "loser_names": [
+                "Diana Lacey",
+                "Christy Denney"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Shannon Child / Shannon Taylor",
+              "players_away": "Ali Love / Sandy Weeks",
+              "score": "6-3 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge Racquettes",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Shannon Child",
+                "Shannon Taylor"
+              ],
+              "loser_names": [
+                "Ali Love",
+                "Sandy Weeks"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight D",
+      "teams": [
+        {
+          "team_name": "Red Ledges-Archibald",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "Ivory Ridge-Supreme Court",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "8624ed7067716a28",
+          "date": "6/6/2026",
+          "tl_match_id": "3148030",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148030",
+          "home_team": "Red Ledges-Archibald",
+          "away_team": "Ivory Ridge-Supreme Court",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Sharilee Hill",
+              "players_away": "Jena Rowley",
+              "score": "6-3 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Red Ledges-Archibald",
+              "winner_names": [
+                "Jena Rowley"
+              ],
+              "loser_names": [
+                "Sharilee Hill"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Marian Christensen",
+              "players_away": "Stephanie Betteridge",
+              "score": "7-6 3-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Red Ledges-Archibald",
+              "winner_names": [
+                "Stephanie Betteridge"
+              ],
+              "loser_names": [
+                "Marian Christensen"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Morgan Adams / Courtney Archibald",
+              "players_away": "Allyson Smith / Jill Broadbent",
+              "score": "6-4 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Red Ledges-Archibald",
+              "winner_names": [
+                "Allyson Smith",
+                "Jill Broadbent"
+              ],
+              "loser_names": [
+                "Morgan Adams",
+                "Courtney Archibald"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Clarissa McLeod / Julianne Thibodeaux",
+              "players_away": "Gayle Waldron / Mary Scoresby",
+              "score": "6-4 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Red Ledges-Archibald",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Clarissa McLeod",
+                "Julianne Thibodeaux"
+              ],
+              "loser_names": [
+                "Gayle Waldron",
+                "Mary Scoresby"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Britta Davis / Elaine Coady",
+              "players_away": "Gaylynn Gale / Ruth Russell",
+              "score": "7-5 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Red Ledges-Archibald",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Britta Davis",
+                "Elaine Coady"
+              ],
+              "loser_names": [
+                "Gaylynn Gale",
+                "Ruth Russell"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships 3.0W",
+      "teams": [
+        {
+          "team_name": "Wasatch Hills Ballers",
+          "team_wins": 4,
+          "matches_played": 4,
+          "team_losses": 0,
+          "indiv_wins": 16,
+          "indiv_losses": 4,
+          "sets_won": 34,
+          "sets_lost": 8,
+          "games_won": 107,
+          "games_lost": 34,
+          "games_won_pct": "8"
+        },
+        {
+          "team_name": "Harvey/Conrad",
+          "team_wins": 2,
+          "matches_played": 4,
+          "team_losses": 2,
+          "indiv_wins": 12,
+          "indiv_losses": 8,
+          "sets_won": 24,
+          "sets_lost": 20,
+          "games_won": 169,
+          "games_lost": 24,
+          "games_won_pct": "20"
+        },
+        {
+          "team_name": "Sports Mall-Stroud-Peterson/Eckert",
+          "team_wins": 2,
+          "matches_played": 4,
+          "team_losses": 2,
+          "indiv_wins": 10,
+          "indiv_losses": 10,
+          "sets_won": 20,
+          "sets_lost": 22,
+          "games_won": 184,
+          "games_lost": 20,
+          "games_won_pct": "22"
+        },
+        {
+          "team_name": "Liberty Park-Kesler",
+          "team_wins": 2,
+          "matches_played": 4,
+          "team_losses": 2,
+          "indiv_wins": 9,
+          "indiv_losses": 11,
+          "sets_won": 22,
+          "sets_lost": 23,
+          "games_won": 184,
+          "games_lost": 22,
+          "games_won_pct": "23"
+        },
+        {
+          "team_name": "Ivory Ridge-Supreme Court",
+          "team_wins": 0,
+          "matches_played": 4,
+          "team_losses": 4,
+          "indiv_wins": 3,
+          "indiv_losses": 17,
+          "sets_won": 7,
+          "sets_lost": 34,
+          "games_won": 223,
+          "games_lost": 7,
+          "games_won_pct": "34"
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "8af9db8d8d9d347c",
+          "date": "6/19/2026",
+          "tl_match_id": "3149888",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3149888",
+          "home_team": "Wasatch Hills Ballers",
+          "away_team": "Sports Mall-Stroud-Peterson/Eckert",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Confirmed by Sports Mall-Stroud-Peterson/Eckert",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Kari Bennett",
+              "players_away": "Rebecca Rynders",
+              "score": "6-0 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "winner_names": [
+                "Kari Bennett"
+              ],
+              "loser_names": [
+                "Rebecca Rynders"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jamie Sorensen",
+              "players_away": "Carrie Larsen",
+              "score": "6-1 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "winner_names": [
+                "Jamie Sorensen"
+              ],
+              "loser_names": [
+                "Carrie Larsen"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Laura Espinosa / Carina Lambert",
+              "players_away": "Annie Mortensen / Jessica Eckert",
+              "score": "6-4 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "loser_team": "Wasatch Hills Ballers",
+              "winner_names": [
+                "Annie Mortensen",
+                "Jessica Eckert"
+              ],
+              "loser_names": [
+                "Laura Espinosa",
+                "Carina Lambert"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Annie Lindsley / Wendy Hopkins",
+              "players_away": "Jennifer Sweat / Naomi Stroud-Peterson",
+              "score": "6-4 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "winner_names": [
+                "Annie Lindsley",
+                "Wendy Hopkins"
+              ],
+              "loser_names": [
+                "Jennifer Sweat",
+                "Naomi Stroud-Peterson"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Cortney Nebeker / Kelli Hall",
+              "players_away": "Karla Block / Jamie Harris",
+              "score": "6-3 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "winner_names": [
+                "Cortney Nebeker",
+                "Kelli Hall"
+              ],
+              "loser_names": [
+                "Karla Block",
+                "Jamie Harris"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "f3b043d8da994298",
+          "date": "6/19/2026",
+          "tl_match_id": "3149889",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3149889",
+          "home_team": "Ivory Ridge-Supreme Court",
+          "away_team": "Liberty Park-Kesler",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Megan Bean",
+              "players_away": "Laura Needham",
+              "score": "6-0 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Laura Needham"
+              ],
+              "loser_names": [
+                "Megan Bean"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Stephanie Betteridge",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Stephanie Betteridge"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Gayle Waldron / Becky Nelson",
+              "players_away": "Emily Hepworth / Marieke Timmer",
+              "score": "6-1 7-6",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Emily Hepworth",
+                "Marieke Timmer"
+              ],
+              "loser_names": [
+                "Gayle Waldron",
+                "Becky Nelson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jill Broadbent / Shellie Black",
+              "players_away": "Sandy Weeks / Annaliese Gardner",
+              "score": "6-2 7-5",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Sandy Weeks",
+                "Annaliese Gardner"
+              ],
+              "loser_names": [
+                "Jill Broadbent",
+                "Shellie Black"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Gaylynn Gale / Ruth Russell",
+              "players_away": "Kyoko Jensen / Ali Love",
+              "score": "6-4 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Gaylynn Gale",
+                "Ruth Russell"
+              ],
+              "loser_names": [
+                "Kyoko Jensen",
+                "Ali Love"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "57ffd2783feb26bc",
+          "date": "6/19/2026",
+          "tl_match_id": "3149890",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3149890",
+          "home_team": "Wasatch Hills Ballers",
+          "away_team": "Harvey/Conrad",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Kari Bennett",
+              "players_away": "April Woo",
+              "score": "6-4 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Harvey/Conrad",
+              "winner_names": [
+                "Kari Bennett"
+              ],
+              "loser_names": [
+                "April Woo"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jamie Sorensen",
+              "players_away": "Ashley Wright",
+              "score": "6-0 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Harvey/Conrad",
+              "winner_names": [
+                "Jamie Sorensen"
+              ],
+              "loser_names": [
+                "Ashley Wright"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Laura Espinosa / Brooke Iverson",
+              "players_away": "Michelle Simmons / Kelti Palmer",
+              "score": "6-4 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Wasatch Hills Ballers",
+              "winner_names": [
+                "Michelle Simmons",
+                "Kelti Palmer"
+              ],
+              "loser_names": [
+                "Laura Espinosa",
+                "Brooke Iverson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Cortney Nebeker / Kelli Hall",
+              "players_away": "Wendy Conrad / Tricia Buss",
+              "score": "6-3 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Harvey/Conrad",
+              "winner_names": [
+                "Cortney Nebeker",
+                "Kelli Hall"
+              ],
+              "loser_names": [
+                "Wendy Conrad",
+                "Tricia Buss"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Annie Lindsley / Carina Lambert",
+              "players_away": "Kayla Richardson / Ann Monroy",
+              "score": "6-1 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Harvey/Conrad",
+              "winner_names": [
+                "Annie Lindsley",
+                "Carina Lambert"
+              ],
+              "loser_names": [
+                "Kayla Richardson",
+                "Ann Monroy"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "d67015a99e4d1c44",
+          "date": "6/19/2026",
+          "tl_match_id": "3149891",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3149891",
+          "home_team": "Sports Mall-Stroud-Peterson/Eckert",
+          "away_team": "Ivory Ridge-Supreme Court",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Confirmed by Sports Mall-Stroud-Peterson/Eckert",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Karen Rozsa",
+              "players_away": "Megan Bean",
+              "score": "6-4 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "winner_names": [
+                "Megan Bean"
+              ],
+              "loser_names": [
+                "Karen Rozsa"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Rebecca Rynders",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Rebecca Rynders"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jamie Harris / Jennifer Sweat",
+              "players_away": "Becky Nelson / Gayle Waldron",
+              "score": "4-6 6-3 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Jamie Harris",
+                "Jennifer Sweat"
+              ],
+              "loser_names": [
+                "Becky Nelson",
+                "Gayle Waldron"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Naomi Stroud-Peterson / Annie Mortensen",
+              "players_away": "Jill Broadbent / Shellie Black",
+              "score": "6-2 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Naomi Stroud-Peterson",
+                "Annie Mortensen"
+              ],
+              "loser_names": [
+                "Jill Broadbent",
+                "Shellie Black"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jessica Eckert / Shawna Smart",
+              "players_away": "Ruth Russell / Gaylynn Gale",
+              "score": "7-5 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Jessica Eckert",
+                "Shawna Smart"
+              ],
+              "loser_names": [
+                "Ruth Russell",
+                "Gaylynn Gale"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "3008826421845e93",
+          "date": "6/19/2026",
+          "tl_match_id": "3149892",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3149892",
+          "home_team": "Liberty Park-Kesler",
+          "away_team": "Harvey/Conrad",
+          "team_wins_home": 1,
+          "team_wins_away": 4,
+          "score": "1-4",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Emily Hepworth",
+              "players_away": "April Woo",
+              "score": "6-7 6-3 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "April Woo"
+              ],
+              "loser_names": [
+                "Emily Hepworth"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Annaliese Gardner",
+              "players_away": "Ashley Wright",
+              "score": "6-2 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Harvey/Conrad",
+              "winner_names": [
+                "Annaliese Gardner"
+              ],
+              "loser_names": [
+                "Ashley Wright"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Laura Needham / Marieke Timmer",
+              "players_away": "Hailey Mann / Kelti Palmer",
+              "score": "6-4 6-7 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Hailey Mann",
+                "Kelti Palmer"
+              ],
+              "loser_names": [
+                "Laura Needham",
+                "Marieke Timmer"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sandy Weeks / Kyoko Jensen",
+              "players_away": "Wendy Conrad / Michelle Simmons",
+              "score": "6-3 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Wendy Conrad",
+                "Michelle Simmons"
+              ],
+              "loser_names": [
+                "Sandy Weeks",
+                "Kyoko Jensen"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Susan Heap / Ali Love",
+              "players_away": "Kayla Richardson / Jean Whitlock",
+              "score": "6-1 6-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Kayla Richardson",
+                "Jean Whitlock"
+              ],
+              "loser_names": [
+                "Susan Heap",
+                "Ali Love"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "633002283d0b8140",
+          "date": "6/20/2026",
+          "tl_match_id": "3149893",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3149893",
+          "home_team": "Harvey/Conrad",
+          "away_team": "Sports Mall-Stroud-Peterson/Eckert",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "April Woo",
+              "players_away": "Naomi Stroud-Peterson",
+              "score": "6-4 7-6",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "winner_names": [
+                "April Woo"
+              ],
+              "loser_names": [
+                "Naomi Stroud-Peterson"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Ashley Wright",
+              "players_away": "Karen Rozsa",
+              "score": "6-1 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "loser_team": "Harvey/Conrad",
+              "winner_names": [
+                "Karen Rozsa"
+              ],
+              "loser_names": [
+                "Ashley Wright"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Wendy Conrad / Hailey Mann",
+              "players_away": "Jessica Eckert / Annie Mortensen",
+              "score": "6-3 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "winner_names": [
+                "Wendy Conrad",
+                "Hailey Mann"
+              ],
+              "loser_names": [
+                "Jessica Eckert",
+                "Annie Mortensen"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jean Whitlock / Kayla Richardson",
+              "players_away": "Carrie Larsen / Jennifer Sweat",
+              "score": "6-1 7-6",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "loser_team": "Harvey/Conrad",
+              "winner_names": [
+                "Carrie Larsen",
+                "Jennifer Sweat"
+              ],
+              "loser_names": [
+                "Jean Whitlock",
+                "Kayla Richardson"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jamison Harvey / Ann Monroy",
+              "players_away": "Rebecca Rynders / Jamie Harris",
+              "score": "6-4 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "loser_team": "Harvey/Conrad",
+              "winner_names": [
+                "Rebecca Rynders",
+                "Jamie Harris"
+              ],
+              "loser_names": [
+                "Jamison Harvey",
+                "Ann Monroy"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "ad007b58c854430e",
+          "date": "6/20/2026",
+          "tl_match_id": "3149894",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3149894",
+          "home_team": "Ivory Ridge-Supreme Court",
+          "away_team": "Wasatch Hills Ballers",
+          "team_wins_home": 0,
+          "team_wins_away": 5,
+          "score": "0-5",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "",
+              "players_away": "Kari Bennett",
+              "score": "6-0 6-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Kari Bennett"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "",
+              "players_away": "Jamie Sorensen",
+              "score": "6-0 6-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Jamie Sorensen"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Shellie Black / Megan Bean",
+              "players_away": "Carina Lambert / Annie Lindsley",
+              "score": "6-2 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Carina Lambert",
+                "Annie Lindsley"
+              ],
+              "loser_names": [
+                "Shellie Black",
+                "Megan Bean"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Ruth Russell / Gaylynn Gale",
+              "players_away": "Cortney Nebeker / Kelli Hall",
+              "score": "6-3 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Cortney Nebeker",
+                "Kelli Hall"
+              ],
+              "loser_names": [
+                "Ruth Russell",
+                "Gaylynn Gale"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Gayle Waldron / Becky Nelson",
+              "players_away": "Brooke Iverson / Laura Espinosa",
+              "score": "6-3 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Brooke Iverson",
+                "Laura Espinosa"
+              ],
+              "loser_names": [
+                "Gayle Waldron",
+                "Becky Nelson"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "d602a8b418fb282a",
+          "date": "6/20/2026",
+          "tl_match_id": "3149895",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3149895",
+          "home_team": "Sports Mall-Stroud-Peterson/Eckert",
+          "away_team": "Liberty Park-Kesler",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by Liberty Park-Kesler",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Carrie Larsen",
+              "players_away": "Annaliese Gardner",
+              "score": "5-7 6-2 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Carrie Larsen"
+              ],
+              "loser_names": [
+                "Annaliese Gardner"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Annie Mortensen",
+              "players_away": "Susan Heap",
+              "score": "6-2 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Annie Mortensen"
+              ],
+              "loser_names": [
+                "Susan Heap"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Sweat / Rebecca Rynders",
+              "players_away": "Laura Needham / Marieke Timmer",
+              "score": "6-3 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "winner_names": [
+                "Laura Needham",
+                "Marieke Timmer"
+              ],
+              "loser_names": [
+                "Jennifer Sweat",
+                "Rebecca Rynders"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jamie Harris / Naomi Stroud-Peterson",
+              "players_away": "Becky Fajardo / Kyoko Jensen",
+              "score": "6-2 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "winner_names": [
+                "Becky Fajardo",
+                "Kyoko Jensen"
+              ],
+              "loser_names": [
+                "Jamie Harris",
+                "Naomi Stroud-Peterson"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Shawna Smart / Karla Block",
+              "players_away": "Ali Love / Sandy Weeks",
+              "score": "6-2 7-6",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Sports Mall-Stroud-Peterson/Eckert",
+              "winner_names": [
+                "Ali Love",
+                "Sandy Weeks"
+              ],
+              "loser_names": [
+                "Shawna Smart",
+                "Karla Block"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "5d8013cccb9e9566",
+          "date": "6/20/2026",
+          "tl_match_id": "3149896",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3149896",
+          "home_team": "Harvey/Conrad",
+          "away_team": "Ivory Ridge-Supreme Court",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Alison Floyd",
+              "players_away": "Stephanie Betteridge",
+              "score": "7-5 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Alison Floyd"
+              ],
+              "loser_names": [
+                "Stephanie Betteridge"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Ann Monroy",
+              "players_away": "Gaylynn Gale",
+              "score": "6-2 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Ann Monroy"
+              ],
+              "loser_names": [
+                "Gaylynn Gale"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Hailey Mann / Kelti Palmer",
+              "players_away": "Mary Scoresby / Jill Broadbent",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Hailey Mann",
+                "Kelti Palmer"
+              ],
+              "loser_names": [
+                "Mary Scoresby",
+                "Jill Broadbent"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Wendy Conrad / Michelle Simmons",
+              "players_away": "Ruth Russell / Gayle Waldron",
+              "score": "6-1 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Wendy Conrad",
+                "Michelle Simmons"
+              ],
+              "loser_names": [
+                "Ruth Russell",
+                "Gayle Waldron"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "April Woo / Ashley Wright",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Harvey/Conrad",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "April Woo",
+                "Ashley Wright"
+              ],
+              "loser_names": []
+            }
+          ]
+        },
+        {
+          "match_id": "297d2c2d9712acea",
+          "date": "6/20/2026",
+          "tl_match_id": "3149897",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3149897",
+          "home_team": "Liberty Park-Kesler",
+          "away_team": "Wasatch Hills Ballers",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Disputed by - Laura Needham",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Laura Needham",
+              "players_away": "Kari Bennett",
+              "score": "6-4 7-5",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Kari Bennett"
+              ],
+              "loser_names": [
+                "Laura Needham"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Annaliese Gardner",
+              "players_away": "Jamie Sorensen",
+              "score": "6-4 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Jamie Sorensen"
+              ],
+              "loser_names": [
+                "Annaliese Gardner"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Emily Hepworth / Marieke Timmer",
+              "players_away": "Annie Lindsley / Carina Lambert",
+              "score": "6-3 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Wasatch Hills Ballers",
+              "winner_names": [
+                "Emily Hepworth",
+                "Marieke Timmer"
+              ],
+              "loser_names": [
+                "Annie Lindsley",
+                "Carina Lambert"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Becky Fajardo / Sandy Weeks",
+              "players_away": "Kelli Hall / Cortney Nebeker",
+              "score": "2-6 6-3 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Kesler",
+              "loser_team": "Wasatch Hills Ballers",
+              "winner_names": [
+                "Becky Fajardo",
+                "Sandy Weeks"
+              ],
+              "loser_names": [
+                "Kelli Hall",
+                "Cortney Nebeker"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kyoko Jensen / Susan Heap",
+              "players_away": "Katie Murphy / Wendy Hopkins",
+              "score": "6-3 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Liberty Park-Kesler",
+              "winner_names": [
+                "Katie Murphy",
+                "Wendy Hopkins"
+              ],
+              "loser_names": [
+                "Kyoko Jensen",
+                "Susan Heap"
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

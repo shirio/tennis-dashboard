@@ -156649,8 +156649,8 @@
     "team": "PC MARC-Krueger/Schlachter",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7367,
-    "current_division_rating": 2.9351,
-    "global_rating": 2.9351,
+    "current_division_rating": 2.8968,
+    "global_rating": 2.8968,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -156659,20 +156659,21 @@
     "state": "UT",
     "lines_played_30": [
       "D1x4",
-      "D3x2",
+      "D3x3",
       "S1"
     ],
-    "wl_record_30": "5-2",
-    "team_30": "PARK CITY MID COURT CRISES",
-    "rating_30": 2.9351,
-    "rating_35": 2.9351,
+    "wl_record_30": "5-3",
+    "team_30": "PC MARC-KRUEGER/SCHLACHTER",
+    "rating_30": 2.8968,
+    "rating_35": 2.8968,
     "rating_timeline_30": {
       "4/11/2026": 2.7367,
       "4/20/2026": 2.6793,
       "4/27/2026": 2.7657,
       "5/4/2026": 2.8314,
       "5/11/2026": 2.8684,
-      "5/27/2026": 2.9193
+      "5/27/2026": 2.9193,
+      "6/6/2026": 2.9351
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -156681,7 +156682,8 @@
       "4/27/2026": 2.8314,
       "5/4/2026": 2.8684,
       "5/11/2026": 2.9193,
-      "5/27/2026": 2.9351
+      "5/27/2026": 2.9351,
+      "6/6/2026": 2.8968
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -156805,8 +156807,8 @@
     "team": "PC MARC-Krueger/Schlachter",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.6903,
-    "current_division_rating": 2.7767,
-    "global_rating": 2.7767,
+    "current_division_rating": 2.7384,
+    "global_rating": 2.7384,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -156815,22 +156817,24 @@
     "state": "UT",
     "lines_played_30": [
       "D2",
-      "D3x2"
+      "D3x3"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "3-1",
     "team_30": "PC MARC-KRUEGER/SCHLACHTER",
-    "rating_30": 2.7767,
-    "rating_35": 2.7767,
+    "rating_30": 2.7384,
+    "rating_35": 2.7384,
     "rating_timeline_30": {
       "4/22/2026": 2.6903,
       "5/13/2026": 2.7417,
-      "5/20/2026": 2.7555
+      "5/20/2026": 2.7555,
+      "6/6/2026": 2.7767
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/22/2026": 2.7417,
       "5/13/2026": 2.7555,
-      "5/20/2026": 2.7767
+      "5/20/2026": 2.7767,
+      "6/6/2026": 2.7384
     },
     "rating_post_timeline_35": {}
   },
@@ -156886,9 +156890,9 @@
     "state": "UT",
     "lines_played_30": [
       "D1x3",
-      "D2x3"
+      "D2x4"
     ],
-    "wl_record_30": "2-4",
+    "wl_record_30": "2-5",
     "team_30": "PC MARC-KRUEGER/SCHLACHTER",
     "rating_30": 2.7713,
     "rating_35": 2.7713,
@@ -156897,7 +156901,8 @@
       "4/15/2026": 2.9362,
       "4/29/2026": 2.8915,
       "5/6/2026": 2.8351,
-      "5/27/2026": 2.8192
+      "5/27/2026": 2.8192,
+      "6/6/2026": 2.7713
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -156905,7 +156910,8 @@
       "4/15/2026": 2.8915,
       "4/29/2026": 2.8351,
       "5/6/2026": 2.8192,
-      "5/27/2026": 2.7713
+      "5/27/2026": 2.7713,
+      "6/6/2026": 2.7713
     },
     "rating_post_timeline_35": {}
   },
@@ -156927,11 +156933,11 @@
     "state": "UT",
     "lines_played_30": [
       "D3",
-      "S1x2",
+      "S1x3",
       "S2x7"
     ],
-    "wl_record_30": "4-6",
-    "team_30": "PARK CITY MID COURT CRISES",
+    "wl_record_30": "4-7",
+    "team_30": "PC MARC-KRUEGER/SCHLACHTER",
     "rating_30": 2.826,
     "rating_35": 2.826,
     "rating_timeline_30": {
@@ -156943,7 +156949,8 @@
       "4/29/2026": 2.7613,
       "5/6/2026": 2.7216,
       "5/9/2026": 2.7459,
-      "5/20/2026": 2.7459
+      "5/20/2026": 2.7459,
+      "6/6/2026": 2.826
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -156955,7 +156962,8 @@
       "4/29/2026": 2.7216,
       "5/6/2026": 2.7459,
       "5/9/2026": 2.7459,
-      "5/20/2026": 2.826
+      "5/20/2026": 2.826,
+      "6/6/2026": 2.826
     },
     "rating_post_timeline_35": {}
   },
@@ -157020,9 +157028,9 @@
     "state": "UT",
     "lines_played_30": [
       "D1x5",
-      "D2x3"
+      "D2x4"
     ],
-    "wl_record_30": "4-4",
+    "wl_record_30": "4-5",
     "team_30": "PC MARC-KRUEGER/SCHLACHTER",
     "lines_played_35": [
       "D3x2"
@@ -157038,7 +157046,8 @@
       "4/29/2026": 2.9536,
       "5/13/2026": 2.8972,
       "5/20/2026": 2.8356,
-      "5/27/2026": 2.848
+      "5/27/2026": 2.848,
+      "6/6/2026": 2.8725
     },
     "rating_timeline_35": {
       "4/7/2026": 2.8782,
@@ -157051,7 +157060,8 @@
       "4/29/2026": 2.8972,
       "5/13/2026": 2.8356,
       "5/20/2026": 2.848,
-      "5/27/2026": 2.8725
+      "5/27/2026": 2.8725,
+      "6/6/2026": 2.8725
     },
     "rating_post_timeline_35": {
       "4/7/2026": 2.9266,
@@ -157112,8 +157122,8 @@
     "team": "PC MARC-Krueger/Schlachter",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.9922,
-    "current_division_rating": 3.1285,
-    "global_rating": 3.1285,
+    "current_division_rating": 3.1977,
+    "global_rating": 3.1977,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -157121,20 +157131,21 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x5",
+      "D1x6",
       "D2x2"
     ],
-    "wl_record_30": "4-3",
-    "team_30": "PARK CITY MID COURT CRISES",
-    "rating_30": 3.1285,
-    "rating_35": 3.1285,
+    "wl_record_30": "5-3",
+    "team_30": "PC MARC-KRUEGER/SCHLACHTER",
+    "rating_30": 3.1977,
+    "rating_35": 3.1977,
     "rating_timeline_30": {
       "4/29/2026": 2.9922,
       "5/6/2026": 3.0168,
       "5/9/2026": 3.0303,
       "5/11/2026": 3.0303,
       "5/20/2026": 3.0812,
-      "6/1/2026": 3.127
+      "6/1/2026": 3.127,
+      "6/6/2026": 3.0885
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -157143,7 +157154,8 @@
       "5/9/2026": 3.0303,
       "5/11/2026": 3.0812,
       "5/20/2026": 3.127,
-      "6/1/2026": 3.0885
+      "6/1/2026": 3.0885,
+      "6/6/2026": 3.1577
     },
     "rating_post_timeline_35": {}
   },
@@ -157324,8 +157336,8 @@
     "team": "PC MARC-Krueger/Schlachter",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.0186,
-    "current_division_rating": 3.0913,
-    "global_rating": 3.0913,
+    "current_division_rating": 3.1605,
+    "global_rating": 3.1605,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -157333,10 +157345,10 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1",
+      "D1x2",
       "D2x2"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "3-1",
     "team_30": "PC MARC-KRUEGER/SCHLACHTER",
     "lines_played_35": [
       "D2x3"
@@ -157344,11 +157356,12 @@
     "wl_record_35": "1-2",
     "default_wins_35": 1,
     "team_35": "PC MARC-KRUEGER/SIANO",
-    "rating_30": 3.0913,
-    "rating_35": 3.0913,
+    "rating_30": 3.1605,
+    "rating_35": 3.1605,
     "rating_timeline_30": {
       "4/29/2026": 3.0186,
-      "5/6/2026": 3.0432
+      "5/6/2026": 3.0432,
+      "6/6/2026": 3.0913
     },
     "rating_timeline_35": {
       "5/12/2026": 3.0567,
@@ -157356,7 +157369,8 @@
     },
     "rating_post_timeline_30": {
       "4/29/2026": 3.0432,
-      "5/6/2026": 3.0567
+      "5/6/2026": 3.0567,
+      "6/6/2026": 3.1605
     },
     "rating_post_timeline_35": {
       "5/12/2026": 3.0662,
@@ -157381,22 +157395,25 @@
     "state": "UT",
     "lines_played_30": [
       "D2",
-      "D3x2"
+      "D3x2",
+      "S2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "3-1",
     "team_30": "PC MARC-KRUEGER/SCHLACHTER",
     "rating_30": 2.6492,
     "rating_35": 2.6492,
     "rating_timeline_30": {
       "4/8/2026": 2.5945,
       "4/15/2026": 2.6089,
-      "5/20/2026": 2.628
+      "5/20/2026": 2.628,
+      "6/6/2026": 2.6492
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/8/2026": 2.6089,
       "4/15/2026": 2.628,
-      "5/20/2026": 2.6492
+      "5/20/2026": 2.6492,
+      "6/6/2026": 2.6492
     },
     "rating_post_timeline_35": {}
   },
@@ -157442,8 +157459,8 @@
     "team": "Red Ledges-Archibald",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8513,
-    "current_division_rating": 3.1299,
-    "global_rating": 3.1299,
+    "current_division_rating": 3.0697,
+    "global_rating": 3.0697,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -157451,10 +157468,10 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x4",
+      "D1x5",
       "D2x6"
     ],
-    "wl_record_30": "7-3",
+    "wl_record_30": "7-4",
     "team_30": "RED LEDGES-ARCHIBALD",
     "lines_played_35": [
       "D3",
@@ -157463,8 +157480,8 @@
     ],
     "wl_record_35": "1-2",
     "team_35": "SM-HARRIS & THE SERVE-IVORS",
-    "rating_30": 3.1299,
-    "rating_35": 3.1299,
+    "rating_30": 3.0697,
+    "rating_35": 3.0697,
     "rating_timeline_30": {
       "4/8/2026": 2.8513,
       "4/22/2026": 2.9372,
@@ -157472,7 +157489,8 @@
       "5/6/2026": 2.9811,
       "5/13/2026": 3.0162,
       "5/20/2026": 3.0162,
-      "6/3/2026": 3.0888
+      "6/3/2026": 3.0888,
+      "6/6/2026": 3.1299
     },
     "rating_timeline_35": {
       "4/8/2026": 2.8571,
@@ -157485,7 +157503,8 @@
       "5/6/2026": 3.0162,
       "5/13/2026": 3.0162,
       "5/20/2026": 3.0888,
-      "6/3/2026": 3.1299
+      "6/3/2026": 3.1299,
+      "6/6/2026": 3.0697
     },
     "rating_post_timeline_35": {
       "4/8/2026": 2.9372,
@@ -157539,33 +157558,35 @@
     "team": "Red Ledges-Archibald",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7121,
-    "current_division_rating": 2.714,
-    "global_rating": 2.714,
+    "current_division_rating": 2.7255,
+    "global_rating": 2.7255,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
     "lines_html": null,
     "notes": null,
     "state": "UT",
-    "rating_30": 2.714,
-    "rating_35": 2.714,
+    "rating_30": 2.7255,
+    "rating_35": 2.7255,
     "rating_timeline_30": {
       "4/22/2026": 2.7121,
       "4/29/2026": 2.6894,
-      "5/6/2026": 2.6894
+      "5/6/2026": 2.6894,
+      "6/6/2026": 2.714
     },
     "rating_timeline_35": {},
     "lines_played_30": [
-      "D2",
+      "D2x2",
       "D3",
       "S2x2"
     ],
-    "wl_record_30": "3-1",
+    "wl_record_30": "4-1",
     "team_30": "RED LEDGES-ARCHIBALD",
     "rating_post_timeline_30": {
       "4/22/2026": 2.6894,
       "4/29/2026": 2.6894,
-      "5/6/2026": 2.714
+      "5/6/2026": 2.714,
+      "6/6/2026": 2.7255
     },
     "rating_post_timeline_35": {}
   },
@@ -157616,8 +157637,8 @@
     "team": "Red Ledges-Archibald",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8928,
-    "current_division_rating": 2.9914,
-    "global_rating": 2.9914,
+    "current_division_rating": 3.0028,
+    "global_rating": 3.0028,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -157626,9 +157647,10 @@
     "state": "UT",
     "lines_played_30": [
       "D1x8",
+      "D3",
       "S1"
     ],
-    "wl_record_30": "4-5",
+    "wl_record_30": "5-5",
     "team_30": "RED LEDGES-ARCHIBALD",
     "lines_played_35": [
       "D2",
@@ -157637,15 +157659,16 @@
     ],
     "wl_record_35": "0-4",
     "team_35": "WASATCH HIGH SCHOOL-JONSTON/JONES",
-    "rating_30": 2.9914,
-    "rating_35": 2.9914,
+    "rating_30": 3.0028,
+    "rating_35": 3.0028,
     "rating_timeline_30": {
       "4/8/2026": 2.8928,
       "4/15/2026": 2.8369,
       "4/22/2026": 2.8736,
       "4/29/2026": 2.8736,
       "5/13/2026": 2.93,
-      "5/20/2026": 2.93
+      "5/20/2026": 2.93,
+      "6/6/2026": 2.9514
     },
     "rating_timeline_35": {
       "4/7/2026": 2.8928,
@@ -157658,7 +157681,8 @@
       "4/22/2026": 2.8736,
       "4/29/2026": 2.93,
       "5/13/2026": 2.93,
-      "5/20/2026": 2.9514
+      "5/20/2026": 2.9514,
+      "6/6/2026": 2.9628
     },
     "rating_post_timeline_35": {
       "4/7/2026": 2.8928,
@@ -157674,8 +157698,8 @@
     "team": "Red Ledges-Archibald",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.9444,
-    "current_division_rating": 3.0769,
-    "global_rating": 3.0769,
+    "current_division_rating": 2.9903,
+    "global_rating": 2.9903,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -157686,19 +157710,21 @@
       "D1x2",
       "D2",
       "D3x5",
-      "S1x2"
+      "S1x2",
+      "S2"
     ],
-    "wl_record_30": "5-5",
+    "wl_record_30": "5-6",
     "team_30": "RED LEDGES-ARCHIBALD",
-    "rating_30": 3.0769,
-    "rating_35": 3.0769,
+    "rating_30": 2.9903,
+    "rating_35": 2.9903,
     "rating_timeline_30": {
       "4/8/2026": 2.9444,
       "4/15/2026": 2.9444,
       "4/29/2026": 2.9615,
       "5/6/2026": 2.9615,
       "5/13/2026": 2.9913,
-      "6/3/2026": 2.9601
+      "6/3/2026": 2.9601,
+      "6/6/2026": 3.0769
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -157707,7 +157733,8 @@
       "4/29/2026": 2.9615,
       "5/6/2026": 2.9913,
       "5/13/2026": 2.9601,
-      "6/3/2026": 3.0769
+      "6/3/2026": 3.0769,
+      "6/6/2026": 2.9903
     },
     "rating_post_timeline_35": {}
   },
@@ -157719,8 +157746,8 @@
     "team": "Red Ledges-Archibald",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7935,
-    "current_division_rating": 2.9587,
-    "global_rating": 2.9587,
+    "current_division_rating": 2.9701,
+    "global_rating": 2.9701,
     "ntrp_rating": "3.0 A",
     "wl_record": null,
     "lines_played": null,
@@ -157729,18 +157756,20 @@
     "state": "UT",
     "lines_played_30": [
       "D1x3",
-      "D2x3"
+      "D2x3",
+      "D3"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "6-1",
     "team_30": "RED LEDGES-ARCHIBALD",
-    "rating_30": 2.9587,
-    "rating_35": 2.9587,
+    "rating_30": 2.9701,
+    "rating_35": 2.9701,
     "rating_timeline_30": {
       "4/8/2026": 2.7935,
       "4/22/2026": 2.7993,
       "5/6/2026": 2.8432,
       "5/13/2026": 2.8783,
-      "5/20/2026": 2.9373
+      "5/20/2026": 2.9373,
+      "6/6/2026": 2.9587
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -157748,7 +157777,8 @@
       "4/22/2026": 2.8432,
       "5/6/2026": 2.8783,
       "5/13/2026": 2.9373,
-      "5/20/2026": 2.9587
+      "5/20/2026": 2.9587,
+      "6/6/2026": 2.9701
     },
     "rating_post_timeline_35": {}
   },
@@ -157760,8 +157790,8 @@
     "team": "Red Ledges-Archibald",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8169,
-    "current_division_rating": 2.9472,
-    "global_rating": 2.9472,
+    "current_division_rating": 2.887,
+    "global_rating": 2.887,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -157769,23 +157799,24 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x4",
+      "D1x5",
       "D2x2",
       "D3",
       "S1",
       "S2"
     ],
-    "wl_record_30": "8-1",
+    "wl_record_30": "8-2",
     "team_30": "RED LEDGES-ARCHIBALD",
-    "rating_30": 2.9472,
-    "rating_35": 2.9472,
+    "rating_30": 2.887,
+    "rating_35": 2.887,
     "rating_timeline_30": {
       "4/15/2026": 2.8169,
       "4/22/2026": 2.8536,
       "4/29/2026": 2.8309,
       "5/6/2026": 2.8873,
       "5/20/2026": 2.9005,
-      "6/3/2026": 2.9061
+      "6/3/2026": 2.9061,
+      "6/6/2026": 2.9472
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -157794,7 +157825,8 @@
       "4/29/2026": 2.8873,
       "5/6/2026": 2.9005,
       "5/20/2026": 2.9061,
-      "6/3/2026": 2.9472
+      "6/3/2026": 2.9472,
+      "6/6/2026": 2.887
     },
     "rating_post_timeline_35": {}
   },
@@ -157851,10 +157883,10 @@
     "lines_played_30": [
       "D1",
       "D2x4",
-      "S1",
+      "S1x2",
       "S2x4"
     ],
-    "wl_record_30": "5-5",
+    "wl_record_30": "5-6",
     "default_wins_30": 2,
     "team_30": "RED LEDGES-ARCHIBALD",
     "lines_played_35": [
@@ -157870,7 +157902,8 @@
       "4/22/2026": 2.8109,
       "5/13/2026": 2.8109,
       "5/20/2026": 2.8699,
-      "6/3/2026": 2.9025
+      "6/3/2026": 2.9025,
+      "6/6/2026": 2.9025
     },
     "rating_timeline_35": {
       "4/18/2026": 2.8087,
@@ -157882,7 +157915,8 @@
       "4/22/2026": 2.8109,
       "5/13/2026": 2.8699,
       "5/20/2026": 2.8777,
-      "6/3/2026": 2.9025
+      "6/3/2026": 2.9025,
+      "6/6/2026": 2.9025
     },
     "rating_post_timeline_35": {
       "4/18/2026": 2.8109,
@@ -158042,8 +158076,8 @@
     "team": "Red Ledges-Archibald",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.0585,
-    "current_division_rating": 3.1834,
-    "global_rating": 3.1834,
+    "current_division_rating": 3.2078,
+    "global_rating": 3.2078,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -158052,20 +158086,23 @@
     "state": "UT",
     "lines_played_30": [
       "D1x2",
+      "D2",
       "D3"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-0",
     "team_30": "RED LEDGES-ARCHIBALD",
-    "rating_30": 3.1834,
-    "rating_35": 3.1834,
+    "rating_30": 3.2078,
+    "rating_35": 3.2078,
     "rating_timeline_30": {
       "5/20/2026": 3.0585,
-      "6/3/2026": 3.0666
+      "6/3/2026": 3.0666,
+      "6/6/2026": 3.1834
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "5/20/2026": 3.0666,
-      "6/3/2026": 3.1834
+      "6/3/2026": 3.1834,
+      "6/6/2026": 3.2078
     },
     "rating_post_timeline_35": {}
   },
@@ -158086,25 +158123,27 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x2",
+      "D1x3",
       "D2x3",
       "D3"
     ],
-    "wl_record_30": "4-2",
+    "wl_record_30": "4-3",
     "default_wins_30": 1,
-    "team_30": "SPORTS MALL-SHIPP/CALLISTER",
+    "team_30": "SUNPRO-SIMPLY SMASHING",
     "rating_30": 2.9134,
     "rating_35": 2.9134,
     "rating_timeline_30": {
       "5/6/2026": 2.7676,
       "5/13/2026": 2.8855,
-      "6/3/2026": 2.9134
+      "6/3/2026": 2.9134,
+      "6/6/2026": 2.9134
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "5/6/2026": 2.8855,
       "5/13/2026": 2.9134,
-      "6/3/2026": 2.9134
+      "6/3/2026": 2.9134,
+      "6/6/2026": 2.9134
     },
     "rating_post_timeline_35": {}
   },
@@ -158275,24 +158314,26 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D2x2",
+      "D2x3",
       "D3x2",
       "S2"
     ],
-    "wl_record_30": "1-4",
-    "team_30": "SPORTS MALL-SHIPP/CALLISTER",
+    "wl_record_30": "1-5",
+    "team_30": "SUNPRO-SIMPLY SMASHING",
     "rating_30": 2.5256,
     "rating_35": 2.5256,
     "rating_timeline_30": {
       "4/8/2026": 2.5952,
       "4/22/2026": 2.4894,
-      "5/6/2026": 2.5256
+      "5/6/2026": 2.5256,
+      "6/6/2026": 2.5256
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/8/2026": 2.4894,
       "4/22/2026": 2.5256,
-      "5/6/2026": 2.5256
+      "5/6/2026": 2.5256,
+      "6/6/2026": 2.5256
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -158419,10 +158460,10 @@
     "state": "UT",
     "lines_played_30": [
       "D2x2",
-      "D3x5"
+      "D3x6"
     ],
-    "wl_record_30": "1-6",
-    "team_30": "SPORTS MALL-SHIPP/CALLISTER",
+    "wl_record_30": "1-7",
+    "team_30": "SUNPRO-SIMPLY SMASHING",
     "rating_30": 2.4465,
     "rating_35": 2.4465,
     "rating_timeline_30": {
@@ -158430,7 +158471,8 @@
       "5/6/2026": 2.4317,
       "5/13/2026": 2.4317,
       "5/20/2026": 2.4465,
-      "6/3/2026": 2.4465
+      "6/3/2026": 2.4465,
+      "6/6/2026": 2.4465
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -158438,7 +158480,8 @@
       "5/6/2026": 2.4317,
       "5/13/2026": 2.4465,
       "5/20/2026": 2.4465,
-      "6/3/2026": 2.4465
+      "6/3/2026": 2.4465,
+      "6/6/2026": 2.4465
     },
     "rating_post_timeline_35": {}
   },
@@ -158510,10 +158553,10 @@
     "lines_played_30": [
       "D1x7",
       "D2x2",
-      "S1"
+      "S1x2"
     ],
-    "wl_record_30": "6-4",
-    "team_30": "SPORTS MALL-SHIPP/CALLISTER",
+    "wl_record_30": "6-5",
+    "team_30": "SUNPRO-SIMPLY SMASHING",
     "lines_played_35": [
       "D3",
       "S1x2"
@@ -158530,7 +158573,8 @@
       "5/6/2026": 3.0308,
       "5/13/2026": 3.1723,
       "5/20/2026": 3.1786,
-      "6/3/2026": 3.1926
+      "6/3/2026": 3.1926,
+      "6/6/2026": 3.0758
     },
     "rating_timeline_35": {
       "4/29/2026": 2.9903,
@@ -158545,7 +158589,8 @@
       "5/6/2026": 3.1723,
       "5/13/2026": 3.1786,
       "5/20/2026": 3.137,
-      "6/3/2026": 3.0758
+      "6/3/2026": 3.0758,
+      "6/6/2026": 3.0758
     },
     "rating_post_timeline_35": {
       "4/29/2026": 3.0308,
@@ -158596,8 +158641,8 @@
     "team": "SunPro-Simply Smashing",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.7508,
-    "current_division_rating": 2.6952,
-    "global_rating": 2.6952,
+    "current_division_rating": 2.7096,
+    "global_rating": 2.7096,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -158606,20 +158651,22 @@
     "state": "UT",
     "lines_played_30": [
       "D2",
-      "D3x2"
+      "D3x3"
     ],
-    "wl_record_30": "2-1",
-    "team_30": "SPORTS MALL-SHIPP/CALLISTER",
-    "rating_30": 2.6952,
-    "rating_35": 2.6952,
+    "wl_record_30": "2-2",
+    "team_30": "SUNPRO-SIMPLY SMASHING",
+    "rating_30": 2.7096,
+    "rating_35": 2.7096,
     "rating_timeline_30": {
       "5/6/2026": 2.7508,
-      "5/20/2026": 2.6952
+      "5/20/2026": 2.6952,
+      "6/6/2026": 2.6952
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "5/6/2026": 2.6952,
-      "5/20/2026": 2.6952
+      "5/20/2026": 2.6952,
+      "6/6/2026": 2.7096
     },
     "rating_post_timeline_35": {}
   },
@@ -158641,9 +158688,9 @@
     "state": "UT",
     "lines_played_30": [
       "D1",
-      "D2"
+      "D2x2"
     ],
-    "wl_record_30": "2-0",
+    "wl_record_30": "2-1",
     "team_30": "SUNPRO-SIMPLY SMASHING",
     "lines_played_35": [
       "D3x3"
@@ -158654,7 +158701,8 @@
     "rating_35": 2.7414,
     "rating_timeline_30": {
       "4/29/2026": 2.7076,
-      "5/13/2026": 2.7197
+      "5/13/2026": 2.7197,
+      "6/6/2026": 2.7414
     },
     "rating_timeline_35": {
       "4/14/2026": 2.7076,
@@ -158663,7 +158711,8 @@
     },
     "rating_post_timeline_30": {
       "4/29/2026": 2.7197,
-      "5/13/2026": 2.7414
+      "5/13/2026": 2.7414,
+      "6/6/2026": 2.7414
     },
     "rating_post_timeline_35": {
       "4/14/2026": 2.7076,
@@ -158688,10 +158737,11 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
+      "D1",
       "D2x2",
       "S2x2"
     ],
-    "wl_record_30": "3-1",
+    "wl_record_30": "3-2",
     "team_30": "SUNPRO-SIMPLY SMASHING",
     "rating_30": 2.8505,
     "rating_35": 2.8505,
@@ -158699,14 +158749,16 @@
       "4/8/2026": 2.7954,
       "4/15/2026": 2.8038,
       "4/22/2026": 2.8485,
-      "4/29/2026": 2.8022
+      "4/29/2026": 2.8022,
+      "6/6/2026": 2.8505
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/8/2026": 2.8038,
       "4/15/2026": 2.8485,
       "4/22/2026": 2.8022,
-      "4/29/2026": 2.8505
+      "4/29/2026": 2.8505,
+      "6/6/2026": 2.8505
     },
     "rating_post_timeline_35": {}
   },
@@ -160744,8 +160796,8 @@
     "team": "Utah/Nebeker/18&Over/3.0W",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8989,
-    "current_division_rating": 2.9045,
-    "global_rating": 2.9045,
+    "current_division_rating": 3.0114,
+    "global_rating": 3.0114,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -160753,11 +160805,13 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D2",
+      "D1x3",
+      "D2x2",
+      "D3",
       "S2x2"
     ],
-    "wl_record_30": "3-0",
-    "team_30": "UTAH/NEBEKER/18&OVER/3.0W",
+    "wl_record_30": "7-1",
+    "team_30": "WASATCH HILLS BALLERS",
     "lines_played_35": [
       "D2",
       "D3",
@@ -160766,14 +160820,20 @@
     ],
     "wl_record_35": "2-2",
     "team_35": "WASATCH HILLS FOR THE GLORY",
-    "rating_30": 2.9045,
-    "rating_35": 2.9045,
+    "rating_30": 3.0114,
+    "rating_35": 3.0114,
     "rating_timeline_30": {
-      "5/13/2026": 2.8989
+      "5/13/2026": 2.8989,
+      "6/6/2026": 2.9045,
+      "6/19/2026": 2.9214,
+      "6/20/2026": 2.9776
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
-      "5/13/2026": 2.9045
+      "5/13/2026": 2.9045,
+      "6/6/2026": 2.9214,
+      "6/19/2026": 2.9776,
+      "6/20/2026": 3.0114
     },
     "rating_post_timeline_35": {}
   },
@@ -160919,8 +160979,8 @@
     "team": "Utah/Nebeker/18&Over/3.0W",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9777,
-    "current_division_rating": 2.9316,
-    "global_rating": 2.9316,
+    "current_division_rating": 2.96,
+    "global_rating": 2.96,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -160928,15 +160988,15 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x7",
+      "D1x9",
       "D2",
-      "D3"
+      "D3x2"
     ],
-    "wl_record_30": "6-3",
+    "wl_record_30": "7-5",
     "default_wins_30": 1,
-    "team_30": "WASATCH HILLS VOLLEY LLAMAS",
-    "rating_30": 2.9316,
-    "rating_35": 2.9316,
+    "team_30": "WASATCH HILLS BALLERS",
+    "rating_30": 2.96,
+    "rating_35": 2.96,
     "rating_timeline_30": {
       "4/6/2026": 2.9777,
       "4/13/2026": 2.9777,
@@ -160944,7 +161004,9 @@
       "5/4/2026": 2.9235,
       "5/13/2026": 2.8565,
       "5/20/2026": 2.8683,
-      "6/1/2026": 2.8821
+      "6/1/2026": 2.8821,
+      "6/19/2026": 2.8916,
+      "6/20/2026": 2.8975
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -160954,7 +161016,9 @@
       "5/4/2026": 2.8565,
       "5/13/2026": 2.8683,
       "5/20/2026": 2.8821,
-      "6/1/2026": 2.8916
+      "6/1/2026": 2.8916,
+      "6/19/2026": 2.8975,
+      "6/20/2026": 2.92
     },
     "rating_post_timeline_35": {}
   },
@@ -160966,8 +161030,8 @@
     "team": "Utah/Nebeker/18&Over/3.0W",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8042,
-    "current_division_rating": 2.8471,
-    "global_rating": 2.8471,
+    "current_division_rating": 2.8755,
+    "global_rating": 2.8755,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -160975,23 +161039,27 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1",
+      "D1x2",
       "D2",
-      "D3",
+      "D3x2",
       "S2"
     ],
-    "wl_record_30": "4-0",
-    "team_30": "UTAH/NEBEKER/18&OVER/3.0W",
-    "rating_30": 2.8471,
-    "rating_35": 2.8471,
+    "wl_record_30": "5-1",
+    "team_30": "WASATCH HILLS BALLERS",
+    "rating_30": 2.8755,
+    "rating_35": 2.8755,
     "rating_timeline_30": {
       "4/29/2026": 2.8042,
-      "5/6/2026": 2.8402
+      "5/6/2026": 2.8402,
+      "6/19/2026": 2.8471,
+      "6/20/2026": 2.853
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/29/2026": 2.8402,
-      "5/6/2026": 2.8471
+      "5/6/2026": 2.8471,
+      "6/19/2026": 2.853,
+      "6/20/2026": 2.8755
     },
     "rating_post_timeline_35": {}
   },
@@ -161003,8 +161071,8 @@
     "team": "Utah/Nebeker/18&Over/3.0W",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.4975,
-    "current_division_rating": 2.5872,
-    "global_rating": 2.5872,
+    "current_division_rating": 2.5514,
+    "global_rating": 2.5514,
     "ntrp_rating": "3.0 S",
     "wl_record": null,
     "lines_played": null,
@@ -161012,22 +161080,30 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x4"
+      "D1x4",
+      "D2x4",
+      "D3"
     ],
-    "wl_record_30": "4-0",
-    "team_30": "UTAH/NEBEKER/18&OVER/3.0W",
-    "rating_30": 2.5872,
-    "rating_35": 2.5872,
+    "wl_record_30": "8-1",
+    "team_30": "WASATCH HILLS BALLERS",
+    "rating_30": 2.5514,
+    "rating_35": 2.5514,
     "rating_timeline_30": {
       "4/29/2026": 2.4975,
       "5/6/2026": 2.5173,
-      "5/13/2026": 2.5326
+      "5/13/2026": 2.5326,
+      "6/6/2026": 2.5472,
+      "6/19/2026": 2.5673,
+      "6/20/2026": 2.5952
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/29/2026": 2.5173,
       "5/6/2026": 2.5326,
-      "5/13/2026": 2.5472
+      "5/13/2026": 2.5472,
+      "6/6/2026": 2.5673,
+      "6/19/2026": 2.5952,
+      "6/20/2026": 2.5514
     },
     "rating_post_timeline_35": {}
   },
@@ -161039,8 +161115,8 @@
     "team": "Utah/Nebeker/18&Over/3.0W",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0995,
-    "current_division_rating": 3.1099,
-    "global_rating": 3.1099,
+    "current_division_rating": 3.1565,
+    "global_rating": 3.1565,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -161048,11 +161124,12 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1",
-      "D2"
+      "D1x4",
+      "D2",
+      "D3x2"
     ],
-    "wl_record_30": "2-0",
-    "team_30": "UTAH/NEBEKER/18&OVER/3.0W",
+    "wl_record_30": "5-2",
+    "team_30": "WASATCH HILLS BALLERS",
     "lines_played_35": [
       "D1",
       "D2x3",
@@ -161060,14 +161137,20 @@
     ],
     "wl_record_35": "2-3",
     "team_35": "WASATCH HILLS FOR THE GLORY",
-    "rating_30": 3.1099,
-    "rating_35": 3.1099,
+    "rating_30": 3.1565,
+    "rating_35": 3.1565,
     "rating_timeline_30": {
-      "5/13/2026": 3.0995
+      "5/13/2026": 3.0995,
+      "6/6/2026": 3.1099,
+      "6/19/2026": 3.1133,
+      "6/20/2026": 3.1227
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
-      "5/13/2026": 3.1099
+      "5/13/2026": 3.1099,
+      "6/6/2026": 3.1133,
+      "6/19/2026": 3.1227,
+      "6/20/2026": 3.1565
     },
     "rating_post_timeline_35": {}
   },
@@ -161079,8 +161162,8 @@
     "team": "Utah/Nebeker/18&Over/3.0W",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.069,
-    "current_division_rating": 3.1192,
-    "global_rating": 3.1192,
+    "current_division_rating": 3.1882,
+    "global_rating": 3.1882,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -161089,24 +161172,30 @@
     "state": "UT",
     "lines_played_30": [
       "D1",
-      "D2x3",
-      "D3x2"
+      "D2x4",
+      "D3x4"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "8-1",
     "default_wins_30": 1,
-    "team_30": "WASATCH HILLS VOLLEY LLAMAS",
-    "rating_30": 3.1192,
-    "rating_35": 3.1192,
+    "team_30": "WASATCH HILLS BALLERS",
+    "rating_30": 3.1882,
+    "rating_35": 3.1882,
     "rating_timeline_30": {
       "4/13/2026": 3.069,
       "4/20/2026": 3.069,
-      "6/1/2026": 3.0999
+      "6/1/2026": 3.0999,
+      "6/6/2026": 3.1192,
+      "6/19/2026": 3.1226,
+      "6/20/2026": 3.1695
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 3.069,
       "4/20/2026": 3.0999,
-      "6/1/2026": 3.1192
+      "6/1/2026": 3.1192,
+      "6/6/2026": 3.1226,
+      "6/19/2026": 3.1695,
+      "6/20/2026": 3.1882
     },
     "rating_post_timeline_35": {}
   },
@@ -161118,8 +161207,8 @@
     "team": "Utah/Nebeker/18&Over/3.0W",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8148,
-    "current_division_rating": 2.8581,
-    "global_rating": 2.8581,
+    "current_division_rating": 2.8719,
+    "global_rating": 2.8719,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -161129,25 +161218,27 @@
     "lines_played_30": [
       "D1x2",
       "D2x3",
-      "D3x3"
+      "D3x4"
     ],
-    "wl_record_30": "6-2",
+    "wl_record_30": "7-2",
     "default_wins_30": 2,
-    "team_30": "WASATCH HILLS VOLLEY LLAMAS",
-    "rating_30": 2.8581,
-    "rating_35": 2.8581,
+    "team_30": "WASATCH HILLS BALLERS",
+    "rating_30": 2.8719,
+    "rating_35": 2.8719,
     "rating_timeline_30": {
       "4/13/2026": 2.8148,
       "4/20/2026": 2.8148,
       "5/11/2026": 2.8416,
-      "6/1/2026": 2.8416
+      "6/1/2026": 2.8416,
+      "6/20/2026": 2.8581
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/13/2026": 2.8148,
       "4/20/2026": 2.8416,
       "5/11/2026": 2.8416,
-      "6/1/2026": 2.8581
+      "6/1/2026": 2.8581,
+      "6/20/2026": 2.8719
     },
     "rating_post_timeline_35": {}
   },
@@ -161159,8 +161250,8 @@
     "team": "Utah/Nebeker/18&Over/3.0W",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.1705,
-    "current_division_rating": 3.2032,
-    "global_rating": 3.2032,
+    "current_division_rating": 3.3411,
+    "global_rating": 3.3411,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -161168,12 +161259,12 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1",
-      "S1x3",
+      "D1x2",
+      "S1x7",
       "S2"
     ],
-    "wl_record_30": "5-0",
-    "team_30": "UTAH/NEBEKER/18&OVER/3.0W",
+    "wl_record_30": "10-0",
+    "team_30": "WASATCH HILLS BALLERS",
     "lines_played_35": [
       "D3",
       "S1x3",
@@ -161181,20 +161272,27 @@
     ],
     "wl_record_35": "2-3",
     "team_35": "WASATCH HILLS FOR THE GLORY",
-    "rating_30": 3.2032,
-    "rating_35": 3.2032,
+    "rating_30": 3.3411,
+    "rating_35": 3.3411,
     "rating_timeline_30": {
       "4/29/2026": 3.1705,
       "5/6/2026": 3.1821,
-      "5/27/2026": 3.1884
+      "5/27/2026": 3.1884,
+      "6/6/2026": 3.2032,
+      "6/19/2026": 3.2252,
+      "6/20/2026": 3.2421
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/29/2026": 3.1821,
       "5/6/2026": 3.1884,
-      "5/27/2026": 3.2032
+      "5/27/2026": 3.2032,
+      "6/6/2026": 3.2252,
+      "6/19/2026": 3.2421,
+      "6/20/2026": 3.3011
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "default_wins_30": 1
   },
   {
     "id": "jamie-sorensen",
@@ -161204,8 +161302,8 @@
     "team": "Utah/Nebeker/18&Over/3.0W",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0915,
-    "current_division_rating": 3.1441,
-    "global_rating": 3.1441,
+    "current_division_rating": 3.2213,
+    "global_rating": 3.2213,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -161213,10 +161311,11 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "S1x4"
+      "S1x5",
+      "S2x4"
     ],
-    "wl_record_30": "3-1",
-    "team_30": "UTAH/NEBEKER/18&OVER/3.0W",
+    "wl_record_30": "8-1",
+    "team_30": "WASATCH HILLS BALLERS",
     "lines_played_35": [
       "D3x2",
       "S1x2",
@@ -161224,20 +161323,27 @@
     ],
     "wl_record_35": "1-4",
     "team_35": "WASATCH HILLS FOR THE GLORY",
-    "rating_30": 3.1441,
-    "rating_35": 3.1441,
+    "rating_30": 3.2213,
+    "rating_35": 3.2213,
     "rating_timeline_30": {
       "4/29/2026": 3.0915,
       "5/13/2026": 3.0915,
-      "5/20/2026": 3.0978
+      "5/20/2026": 3.0978,
+      "6/6/2026": 3.1041,
+      "6/19/2026": 3.1485,
+      "6/20/2026": 3.1875
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/29/2026": 3.0915,
       "5/13/2026": 3.0978,
-      "5/20/2026": 3.1041
+      "5/20/2026": 3.1041,
+      "6/6/2026": 3.1485,
+      "6/19/2026": 3.1875,
+      "6/20/2026": 3.2213
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "default_wins_30": 1
   },
   {
     "id": "katie-wood",
@@ -161281,8 +161387,8 @@
     "team": "Utah/Nebeker/18&Over/3.0W",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.2829,
-    "current_division_rating": 3.4388,
-    "global_rating": 3.4388,
+    "current_division_rating": 3.4778,
+    "global_rating": 3.4778,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -161291,27 +161397,34 @@
     "state": "UT",
     "lines_played_30": [
       "D1x4",
-      "D2"
+      "D2x5",
+      "D3"
     ],
-    "wl_record_30": "5-0",
-    "team_30": "UTAH/NEBEKER/18&OVER/3.0W",
+    "wl_record_30": "9-1",
+    "team_30": "WASATCH HILLS BALLERS",
     "lines_played_35": [
       "D2"
     ],
     "wl_record_35": "0-1",
     "team_35": "CAUSING A RACQUET",
-    "rating_30": 3.4388,
-    "rating_35": 3.4388,
+    "rating_30": 3.4778,
+    "rating_35": 3.4778,
     "rating_timeline_30": {
       "4/29/2026": 3.2829,
       "5/6/2026": 3.3291,
-      "5/13/2026": 3.3648
+      "5/13/2026": 3.3648,
+      "6/6/2026": 3.3988,
+      "6/19/2026": 3.4222,
+      "6/20/2026": 3.4873
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/29/2026": 3.3291,
       "5/6/2026": 3.3648,
-      "5/13/2026": 3.3988
+      "5/13/2026": 3.3988,
+      "6/6/2026": 3.4222,
+      "6/19/2026": 3.4873,
+      "6/20/2026": 3.4778
     },
     "rating_post_timeline_35": {}
   },
@@ -161926,8 +162039,8 @@
     "team": "Ivory Ridge Racquettes",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6699,
-    "current_division_rating": 2.6818,
-    "global_rating": 2.6818,
+    "current_division_rating": 2.7061,
+    "global_rating": 2.7061,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -161937,25 +162050,27 @@
     "lines_played_30": [
       "D1",
       "D2",
-      "D3",
+      "D3x2",
       "S2x2"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "3-3",
     "team_30": "IVORY RIDGE RACQUETTES",
-    "rating_30": 2.6818,
-    "rating_35": 2.6818,
+    "rating_30": 2.7061,
+    "rating_35": 2.7061,
     "rating_timeline_30": {
       "4/8/2026": 2.6699,
       "4/15/2026": 2.6699,
       "5/6/2026": 2.6699,
-      "5/20/2026": 2.6757
+      "5/20/2026": 2.6757,
+      "6/6/2026": 2.6818
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/8/2026": 2.6699,
       "4/15/2026": 2.6699,
       "5/6/2026": 2.6757,
-      "5/20/2026": 2.6818
+      "5/20/2026": 2.6818,
+      "6/6/2026": 2.7061
     },
     "rating_post_timeline_35": {}
   },
@@ -162049,8 +162164,8 @@
     "team": "Ivory Ridge Racquettes",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6682,
-    "current_division_rating": 2.6402,
-    "global_rating": 2.6402,
+    "current_division_rating": 2.6645,
+    "global_rating": 2.6645,
     "ntrp_rating": "3.0 A",
     "wl_record": null,
     "lines_played": null,
@@ -162059,24 +162174,26 @@
     "state": "UT",
     "lines_played_30": [
       "D1x2",
-      "D3x2",
+      "D3x3",
       "S2x2"
     ],
-    "wl_record_30": "2-4",
+    "wl_record_30": "3-4",
     "default_wins_30": 2,
     "team_30": "IVORY RIDGE RACQUETTES",
-    "rating_30": 2.6402,
-    "rating_35": 2.6402,
+    "rating_30": 2.6645,
+    "rating_35": 2.6645,
     "rating_timeline_30": {
       "5/6/2026": 2.6682,
       "5/20/2026": 2.6211,
-      "5/27/2026": 2.6211
+      "5/27/2026": 2.6211,
+      "6/6/2026": 2.6402
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "5/6/2026": 2.6211,
       "5/20/2026": 2.6211,
-      "5/27/2026": 2.6402
+      "5/27/2026": 2.6402,
+      "6/6/2026": 2.6645
     },
     "rating_post_timeline_35": {}
   },
@@ -162098,10 +162215,11 @@
     "state": "UT",
     "lines_played_30": [
       "D1",
+      "D2",
       "D3x3",
       "S2"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "2-4",
     "team_30": "IVORY RIDGE RACQUETTES",
     "rating_30": 2.6399,
     "rating_35": 2.6399,
@@ -162109,14 +162227,16 @@
       "4/8/2026": 2.5913,
       "4/15/2026": 2.5829,
       "5/6/2026": 2.5829,
-      "5/27/2026": 2.5968
+      "5/27/2026": 2.5968,
+      "6/6/2026": 2.6399
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/8/2026": 2.5829,
       "4/15/2026": 2.5829,
       "5/6/2026": 2.5968,
-      "5/27/2026": 2.6399
+      "5/27/2026": 2.6399,
+      "6/6/2026": 2.6399
     },
     "rating_post_timeline_35": {}
   },
@@ -162161,8 +162281,8 @@
     "team": "Ivory Ridge Racquettes",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7669,
-    "current_division_rating": 2.7473,
-    "global_rating": 2.7473,
+    "current_division_rating": 2.7073,
+    "global_rating": 2.7073,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -162171,24 +162291,27 @@
     "state": "UT",
     "lines_played_30": [
       "D1x3",
+      "D2",
       "D3"
     ],
-    "wl_record_30": "0-4",
+    "wl_record_30": "0-5",
     "team_30": "IVORY RIDGE RACQUETTES",
-    "rating_30": 2.7473,
-    "rating_35": 2.7473,
+    "rating_30": 2.7073,
+    "rating_35": 2.7073,
     "rating_timeline_30": {
       "4/8/2026": 2.7669,
       "4/15/2026": 2.7669,
       "4/29/2026": 2.7669,
-      "5/20/2026": 2.7073
+      "5/20/2026": 2.7073,
+      "6/6/2026": 2.7073
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/8/2026": 2.7669,
       "4/15/2026": 2.7669,
       "4/29/2026": 2.7073,
-      "5/20/2026": 2.7073
+      "5/20/2026": 2.7073,
+      "6/6/2026": 2.7073
     },
     "rating_post_timeline_35": {}
   },
@@ -162200,8 +162323,8 @@
     "team": "Ivory Ridge Racquettes",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.7748,
-    "current_division_rating": 2.8078,
-    "global_rating": 2.8078,
+    "current_division_rating": 2.9794,
+    "global_rating": 2.9794,
     "ntrp_rating": "3.0 S",
     "wl_record": null,
     "lines_played": null,
@@ -162210,22 +162333,24 @@
     "state": "UT",
     "lines_played_30": [
       "D2x2",
-      "S1x2"
+      "S1x3"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "2-3",
     "team_30": "IVORY RIDGE RACQUETTES",
-    "rating_30": 2.8078,
-    "rating_35": 2.8078,
+    "rating_30": 2.9794,
+    "rating_35": 2.9794,
     "rating_timeline_30": {
       "5/6/2026": 2.7748,
       "5/13/2026": 2.7806,
-      "5/27/2026": 2.7806
+      "5/27/2026": 2.7806,
+      "6/6/2026": 2.8078
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "5/6/2026": 2.7806,
       "5/13/2026": 2.7806,
-      "5/27/2026": 2.8078
+      "5/27/2026": 2.8078,
+      "6/6/2026": 2.9794
     },
     "rating_post_timeline_35": {}
   },
@@ -162246,22 +162371,24 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1",
+      "D1x2",
       "D2x2"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "2-2",
     "default_wins_30": 1,
     "team_30": "IVORY RIDGE RACQUETTES",
     "rating_30": 3.0319,
     "rating_35": 3.0319,
     "rating_timeline_30": {
       "4/15/2026": 3.0556,
-      "4/29/2026": 3.0794
+      "4/29/2026": 3.0794,
+      "6/6/2026": 3.0319
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/15/2026": 3.0794,
-      "4/29/2026": 3.0319
+      "4/29/2026": 3.0319,
+      "6/6/2026": 3.0319
     },
     "rating_post_timeline_35": {}
   },
@@ -162273,8 +162400,8 @@
     "team": "Ivory Ridge Racquettes",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8306,
-    "current_division_rating": 2.8721,
-    "global_rating": 2.8721,
+    "current_division_rating": 2.9054,
+    "global_rating": 2.9054,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -162284,9 +162411,9 @@
     "lines_played_30": [
       "D2x2",
       "S1",
-      "S2"
+      "S2x2"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "3-2",
     "team_30": "IVORY RIDGE RACQUETTES",
     "lines_played_35": [
       "D2x2",
@@ -162294,12 +162421,13 @@
     ],
     "wl_record_35": "0-4",
     "team_35": "UTAH VALLEY-OROZCO",
-    "rating_30": 2.8721,
-    "rating_35": 2.8721,
+    "rating_30": 2.9054,
+    "rating_35": 2.9054,
     "rating_timeline_30": {
       "4/8/2026": 2.8306,
       "5/13/2026": 2.7681,
-      "5/27/2026": 2.8665
+      "5/27/2026": 2.8665,
+      "6/6/2026": 2.8721
     },
     "rating_timeline_35": {
       "5/13/2026": 2.8306,
@@ -162310,7 +162438,8 @@
     "rating_post_timeline_30": {
       "4/8/2026": 2.7681,
       "5/13/2026": 2.7913,
-      "5/27/2026": 2.8721
+      "5/27/2026": 2.8721,
+      "6/6/2026": 2.9054
     },
     "rating_post_timeline_35": {
       "5/13/2026": 2.7913,
@@ -162392,8 +162521,8 @@
     "team": "Ivory Ridge Racquettes",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6833,
-    "current_division_rating": 2.6528,
-    "global_rating": 2.6528,
+    "current_division_rating": 2.6928,
+    "global_rating": 2.6928,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -162401,25 +162530,27 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1",
+      "D1x2",
       "D2x3",
       "S1"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "2-4",
     "default_wins_30": 1,
     "team_30": "IVORY RIDGE RACQUETTES",
-    "rating_30": 2.6528,
-    "rating_35": 2.6528,
+    "rating_30": 2.6928,
+    "rating_35": 2.6928,
     "rating_timeline_30": {
       "4/29/2026": 2.6833,
       "5/6/2026": 2.6999,
-      "5/20/2026": 2.6528
+      "5/20/2026": 2.6528,
+      "6/6/2026": 2.6528
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/29/2026": 2.6999,
       "5/6/2026": 2.6528,
-      "5/20/2026": 2.6528
+      "5/20/2026": 2.6528,
+      "6/6/2026": 2.6528
     },
     "rating_post_timeline_35": {}
   },
@@ -162653,8 +162784,8 @@
     "team": "Ogden-Cox/Harvey",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.84,
-    "current_division_rating": 3.0279,
-    "global_rating": 3.0279,
+    "current_division_rating": 2.9879,
+    "global_rating": 2.9879,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -162664,19 +162795,20 @@
     "lines_played_30": [
       "D1x5",
       "D2",
-      "D3"
+      "D3x2"
     ],
-    "wl_record_30": "7-0",
+    "wl_record_30": "7-1",
     "team_30": "HARVEY/CONRAD",
-    "rating_30": 3.0279,
-    "rating_35": 3.0279,
+    "rating_30": 2.9879,
+    "rating_35": 2.9879,
     "rating_timeline_30": {
       "4/8/2026": 2.84,
       "4/15/2026": 2.8517,
       "4/27/2026": 2.8761,
       "4/29/2026": 2.8916,
       "5/6/2026": 2.9451,
-      "5/9/2026": 2.9668
+      "5/9/2026": 2.9668,
+      "6/20/2026": 2.9879
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -162685,7 +162817,8 @@
       "4/27/2026": 2.8916,
       "4/29/2026": 2.9451,
       "5/6/2026": 2.9668,
-      "5/9/2026": 2.9879
+      "5/9/2026": 2.9879,
+      "6/20/2026": 2.9879
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -162815,8 +162948,8 @@
     "team": "Ogden-Cox/Harvey",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9644,
-    "current_division_rating": 3.0907,
-    "global_rating": 3.0907,
+    "current_division_rating": 3.1353,
+    "global_rating": 3.1353,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -162824,19 +162957,19 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x6",
+      "D1x9",
       "D2x2",
       "D3"
     ],
-    "wl_record_30": "9-0",
+    "wl_record_30": "12-0",
     "team_30": "HARVEY/CONRAD",
     "lines_played_35": [
       "D3x2"
     ],
     "wl_record_35": "1-1",
     "team_35": "OGDEN-ANDERSEN",
-    "rating_30": 3.0907,
-    "rating_35": 3.0907,
+    "rating_30": 3.1353,
+    "rating_35": 3.1353,
     "rating_timeline_30": {
       "4/8/2026": 2.9644,
       "4/13/2026": 2.9761,
@@ -162845,7 +162978,9 @@
       "4/29/2026": 2.9332,
       "5/4/2026": 2.9867,
       "5/6/2026": 3.0169,
-      "5/9/2026": 3.0386
+      "5/9/2026": 3.0386,
+      "6/19/2026": 3.0507,
+      "6/20/2026": 3.0903
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -162856,7 +162991,9 @@
       "4/29/2026": 2.9867,
       "5/4/2026": 3.0169,
       "5/6/2026": 3.0386,
-      "5/9/2026": 3.0507
+      "5/9/2026": 3.0507,
+      "6/19/2026": 3.0903,
+      "6/20/2026": 3.0953
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -163030,10 +163167,10 @@
     "state": "UT",
     "lines_played_30": [
       "D1",
-      "D2x4",
+      "D2x5",
       "D3x4"
     ],
-    "wl_record_30": "7-2",
+    "wl_record_30": "7-3",
     "team_30": "HARVEY/CONRAD",
     "rating_30": 2.7741,
     "rating_35": 2.7741,
@@ -163046,7 +163183,8 @@
       "5/4/2026": 2.7932,
       "5/6/2026": 2.8191,
       "5/13/2026": 2.7984,
-      "5/27/2026": 2.7984
+      "5/27/2026": 2.7984,
+      "6/19/2026": 2.7741
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -163058,7 +163196,8 @@
       "5/4/2026": 2.8191,
       "5/6/2026": 2.7984,
       "5/13/2026": 2.7984,
-      "5/27/2026": 2.7741
+      "5/27/2026": 2.7741,
+      "6/19/2026": 2.7741
     },
     "rating_post_timeline_35": {}
   },
@@ -165651,8 +165790,8 @@
     "team": "Sports Mall-Stroud-Peterson/Eckert",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8469,
-    "current_division_rating": 2.9629,
-    "global_rating": 2.9629,
+    "current_division_rating": 2.9187,
+    "global_rating": 2.9187,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -165661,11 +165800,12 @@
     "state": "UT",
     "lines_played_30": [
       "D1x3",
-      "D2x2",
+      "D2x5",
       "D3",
+      "S1",
       "S2x2"
     ],
-    "wl_record_30": "6-2",
+    "wl_record_30": "7-5",
     "team_30": "SPORTS MALL-STROUD-PETERSON/ECKERT",
     "lines_played_35": [
       "D1",
@@ -165675,8 +165815,8 @@
     ],
     "wl_record_35": "4-6",
     "team_35": "SPORTSMOMS",
-    "rating_30": 2.9629,
-    "rating_35": 2.9629,
+    "rating_30": 2.9187,
+    "rating_35": 2.9187,
     "rating_timeline_30": {
       "4/15/2026": 2.9644,
       "4/22/2026": 2.9654,
@@ -165684,7 +165824,9 @@
       "5/6/2026": 2.903,
       "5/13/2026": 2.895,
       "5/20/2026": 2.9427,
-      "5/27/2026": 2.9707
+      "5/27/2026": 2.9707,
+      "6/19/2026": 2.9629,
+      "6/20/2026": 2.9187
     },
     "rating_timeline_35": {
       "4/7/2026": 2.8469,
@@ -165703,7 +165845,9 @@
       "5/6/2026": 2.8896,
       "5/13/2026": 2.895,
       "5/20/2026": 2.957,
-      "5/27/2026": 2.9629
+      "5/27/2026": 2.9629,
+      "6/19/2026": 2.9187,
+      "6/20/2026": 2.9187
     },
     "rating_post_timeline_35": {
       "4/7/2026": 2.927,
@@ -165725,8 +165869,8 @@
     "team": "Sports Mall-Stroud-Peterson/Eckert",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0456,
-    "current_division_rating": 3.2143,
-    "global_rating": 3.2143,
+    "current_division_rating": 3.1196,
+    "global_rating": 3.1196,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -165734,12 +165878,12 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x7",
-      "D2x2",
+      "D1x9",
+      "D2x4",
       "D3"
     ],
-    "wl_record_30": "9-1",
-    "team_30": "LIBERTY PARK-KESLER",
+    "wl_record_30": "11-3",
+    "team_30": "SPORTS MALL-STROUD-PETERSON/ECKERT",
     "lines_played_35": [
       "D1",
       "D2x2",
@@ -165747,8 +165891,8 @@
     ],
     "wl_record_35": "1-3",
     "team_35": "SM-HARRIS & THE SERVE-IVORS",
-    "rating_30": 3.2143,
-    "rating_35": 3.2143,
+    "rating_30": 3.1196,
+    "rating_35": 3.1196,
     "rating_timeline_30": {
       "4/13/2026": 3.0456,
       "4/20/2026": 3.0998,
@@ -165759,7 +165903,9 @@
       "5/18/2026": 3.2546,
       "5/20/2026": 3.2057,
       "5/27/2026": 3.2226,
-      "6/1/2026": 3.2036
+      "6/1/2026": 3.2036,
+      "6/19/2026": 3.2143,
+      "6/20/2026": 3.1217
     },
     "rating_timeline_35": {
       "4/22/2026": 3.1413,
@@ -165776,7 +165922,9 @@
       "5/18/2026": 3.2057,
       "5/20/2026": 3.2226,
       "5/27/2026": 3.2136,
-      "6/1/2026": 3.2143
+      "6/1/2026": 3.2143,
+      "6/19/2026": 3.1217,
+      "6/20/2026": 3.1196
     },
     "rating_post_timeline_35": {
       "4/22/2026": 3.2893,
@@ -165792,8 +165940,8 @@
     "team": "Sports Mall-Stroud-Peterson/Eckert",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.759,
-    "current_division_rating": 2.769,
-    "global_rating": 2.769,
+    "current_division_rating": 2.7778,
+    "global_rating": 2.7778,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -165802,18 +165950,18 @@
     "state": "UT",
     "lines_played_30": [
       "D2x5",
-      "D3",
+      "D3x3",
       "S1"
     ],
-    "wl_record_30": "4-3",
-    "team_30": "SPORTS MALL-MORTENSEN/RAEMISCH",
+    "wl_record_30": "5-4",
+    "team_30": "SPORTS MALL-STROUD-PETERSON/ECKERT",
     "lines_played_35": [
       "D2"
     ],
     "wl_record_35": "0-1",
     "team_35": "SM-HARRIS & THE SERVE-IVORS",
-    "rating_30": 2.769,
-    "rating_35": 2.769,
+    "rating_30": 2.7778,
+    "rating_35": 2.7778,
     "rating_timeline_30": {
       "4/6/2026": 2.759,
       "4/8/2026": 2.7693,
@@ -165821,7 +165969,9 @@
       "4/15/2026": 2.8223,
       "4/22/2026": 2.8223,
       "4/25/2026": 2.833,
-      "4/29/2026": 2.833
+      "4/29/2026": 2.833,
+      "6/19/2026": 2.769,
+      "6/20/2026": 2.7778
     },
     "rating_timeline_35": {
       "4/8/2026": 2.795
@@ -165833,7 +165983,9 @@
       "4/15/2026": 2.8223,
       "4/22/2026": 2.833,
       "4/25/2026": 2.833,
-      "4/29/2026": 2.769
+      "4/29/2026": 2.769,
+      "6/19/2026": 2.7778,
+      "6/20/2026": 2.7778
     },
     "rating_post_timeline_35": {
       "4/8/2026": 2.795
@@ -165847,8 +165999,8 @@
     "team": "Sports Mall-Stroud-Peterson/Eckert",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0758,
-    "current_division_rating": 3.1495,
-    "global_rating": 3.1495,
+    "current_division_rating": 3.1794,
+    "global_rating": 3.1794,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -165856,20 +166008,20 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x3",
+      "D1x5",
       "D2x3",
-      "D3",
+      "D3x2",
       "S1"
     ],
-    "wl_record_30": "7-1",
-    "team_30": "SPORTS MALL-MORTENSEN/RAEMISCH",
+    "wl_record_30": "9-2",
+    "team_30": "SPORTS MALL-STROUD-PETERSON/ECKERT",
     "lines_played_35": [
       "D2"
     ],
     "wl_record_35": "1-0",
     "team_35": "SPORTSMOMS",
-    "rating_30": 3.1495,
-    "rating_35": 3.1495,
+    "rating_30": 3.1794,
+    "rating_35": 3.1794,
     "rating_timeline_30": {
       "4/6/2026": 3.0758,
       "4/13/2026": 3.0899,
@@ -165877,7 +166029,9 @@
       "5/4/2026": 3.1248,
       "5/11/2026": 3.1359,
       "5/13/2026": 3.1448,
-      "5/20/2026": 3.1448
+      "5/20/2026": 3.1448,
+      "6/19/2026": 3.1495,
+      "6/20/2026": 3.1794
     },
     "rating_timeline_35": {
       "5/6/2026": 3.1308
@@ -165889,7 +166043,9 @@
       "5/4/2026": 3.1308,
       "5/11/2026": 3.1448,
       "5/13/2026": 3.1448,
-      "5/20/2026": 3.1495
+      "5/20/2026": 3.1495,
+      "6/19/2026": 3.1794,
+      "6/20/2026": 3.1794
     },
     "rating_post_timeline_35": {
       "5/6/2026": 3.1359
@@ -165904,8 +166060,8 @@
     "team": "Sports Mall-Stroud-Peterson/Eckert",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.017,
-    "current_division_rating": 3.1668,
-    "global_rating": 3.1668,
+    "current_division_rating": 3.2216,
+    "global_rating": 3.2216,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -165913,10 +166069,11 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "S1x5",
-      "S2"
+      "D2",
+      "S1x6",
+      "S2x2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "8-1",
     "team_30": "SPORTS MALL-STROUD-PETERSON/ECKERT",
     "lines_played_35": [
       "S1x4",
@@ -165925,24 +166082,28 @@
     "wl_record_35": "4-1",
     "default_wins_35": 1,
     "team_35": "LIBERTY PARK-LOMBARDI/WEBSTER",
-    "rating_30": 3.1668,
-    "rating_35": 3.1668,
+    "rating_30": 3.2216,
+    "rating_35": 3.2216,
     "rating_timeline_30": {
-      "4/8/2026": 3.017,
-      "4/22/2026": 3.1652,
-      "5/6/2026": 3.1353,
-      "5/13/2026": 3.1431,
-      "5/20/2026": 3.0956,
-      "5/27/2026": 3.119
+      "4/8/2026": 3.0574,
+      "4/22/2026": 3.2056,
+      "5/6/2026": 3.1757,
+      "5/13/2026": 3.1835,
+      "5/20/2026": 3.136,
+      "5/27/2026": 3.1594,
+      "6/19/2026": 3.1672,
+      "6/20/2026": 3.1672
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
-      "4/8/2026": 3.1652,
-      "4/22/2026": 3.1353,
-      "5/6/2026": 3.1431,
-      "5/13/2026": 3.0956,
-      "5/20/2026": 3.119,
-      "5/27/2026": 3.1268
+      "4/8/2026": 3.2056,
+      "4/22/2026": 3.1757,
+      "5/6/2026": 3.1835,
+      "5/13/2026": 3.136,
+      "5/20/2026": 3.1594,
+      "5/27/2026": 3.1672,
+      "6/19/2026": 3.1672,
+      "6/20/2026": 3.2216
     },
     "rating_post_timeline_35": {}
   },
@@ -165954,8 +166115,8 @@
     "team": "Sports Mall-Stroud-Peterson/Eckert",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8279,
-    "current_division_rating": 2.8922,
-    "global_rating": 2.8922,
+    "current_division_rating": 2.9253,
+    "global_rating": 2.9253,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -165964,20 +166125,25 @@
     "state": "UT",
     "lines_played_30": [
       "D3",
-      "S1"
+      "S1x2",
+      "S2"
     ],
-    "wl_record_30": "1-1",
+    "wl_record_30": "2-2",
     "team_30": "SPORTS MALL-STROUD-PETERSON/ECKERT",
-    "rating_30": 2.8922,
-    "rating_35": 2.8922,
+    "rating_30": 2.9253,
+    "rating_35": 2.9253,
     "rating_timeline_30": {
       "4/29/2026": 2.8279,
-      "5/27/2026": 2.8499
+      "5/27/2026": 2.8499,
+      "6/19/2026": 2.8922,
+      "6/20/2026": 2.8922
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/29/2026": 2.8499,
-      "5/27/2026": 2.8922
+      "5/27/2026": 2.8922,
+      "6/19/2026": 2.8922,
+      "6/20/2026": 2.9253
     },
     "rating_post_timeline_35": {}
   },
@@ -166115,8 +166281,8 @@
     "team": "Sports Mall-Stroud-Peterson/Eckert",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.1366,
-    "current_division_rating": 3.3918,
-    "global_rating": 3.3918,
+    "current_division_rating": 3.4064,
+    "global_rating": 3.4064,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -166124,12 +166290,13 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x6",
-      "D2x5",
-      "S1x2"
+      "D1x8",
+      "D2x6",
+      "S1x2",
+      "S2"
     ],
-    "wl_record_30": "12-1",
-    "team_30": "SPORTS MALL-MORTENSEN/RAEMISCH",
+    "wl_record_30": "15-2",
+    "team_30": "SPORTS MALL-STROUD-PETERSON/ECKERT",
     "lines_played_35": [
       "D1",
       "D2",
@@ -166137,8 +166304,8 @@
     ],
     "wl_record_35": "4-2",
     "team_35": "SPORTSMOMS",
-    "rating_30": 3.3918,
-    "rating_35": 3.3918,
+    "rating_30": 3.4064,
+    "rating_35": 3.4064,
     "rating_timeline_30": {
       "4/6/2026": 3.1366,
       "4/8/2026": 3.0787,
@@ -166152,7 +166319,9 @@
       "5/11/2026": 3.3828,
       "5/18/2026": 3.3929,
       "5/20/2026": 3.3721,
-      "5/27/2026": 3.3771
+      "5/27/2026": 3.3771,
+      "6/19/2026": 3.3918,
+      "6/20/2026": 3.4202
     },
     "rating_timeline_35": {
       "4/8/2026": 3.1366,
@@ -166175,7 +166344,9 @@
       "5/11/2026": 3.3929,
       "5/18/2026": 3.3721,
       "5/20/2026": 3.3771,
-      "5/27/2026": 3.3918
+      "5/27/2026": 3.3918,
+      "6/19/2026": 3.4202,
+      "6/20/2026": 3.4064
     },
     "rating_post_timeline_35": {
       "4/8/2026": 3.1506,
@@ -166203,22 +166374,26 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D3x3"
+      "D3x5"
     ],
-    "wl_record_30": "2-1",
-    "team_30": "SALT LAKE TENNIS-VOGEL/HAROLDSEN",
+    "wl_record_30": "2-3",
+    "team_30": "SPORTS MALL-STROUD-PETERSON/ECKERT",
     "rating_30": 2.3967,
     "rating_35": 2.3967,
     "rating_timeline_30": {
       "5/11/2026": 2.4208,
       "5/13/2026": 2.4208,
-      "5/27/2026": 2.377
+      "5/27/2026": 2.377,
+      "6/19/2026": 2.3967,
+      "6/20/2026": 2.3967
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "5/11/2026": 2.4208,
       "5/13/2026": 2.377,
-      "5/27/2026": 2.3967
+      "5/27/2026": 2.3967,
+      "6/19/2026": 2.3967,
+      "6/20/2026": 2.3967
     },
     "rating_post_timeline_35": {}
   },
@@ -166239,12 +166414,12 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x3",
-      "D2x4",
-      "D3x2"
+      "D1x4",
+      "D2x5",
+      "D3x4"
     ],
-    "wl_record_30": "7-2",
-    "team_30": "LIBERTY PARK-KESLER",
+    "wl_record_30": "9-4",
+    "team_30": "SPORTS MALL-STROUD-PETERSON/ECKERT",
     "lines_played_35": [
       "D1x2",
       "D2",
@@ -166256,38 +166431,42 @@
     "rating_30": 3.1359,
     "rating_35": 3.1359,
     "rating_timeline_30": {
-      "4/6/2026": 3.0145,
-      "4/13/2026": 3.0452,
-      "4/15/2026": 3.0763,
-      "4/20/2026": 3.0804,
-      "4/22/2026": 3.0901,
-      "4/25/2026": 3.2699,
-      "4/27/2026": 3.2931,
-      "4/29/2026": 3.2931,
-      "5/20/2026": 3.1645
+      "4/6/2026": 3.0376,
+      "4/13/2026": 3.0683,
+      "4/15/2026": 3.0994,
+      "4/20/2026": 3.1035,
+      "4/22/2026": 3.1132,
+      "4/25/2026": 3.293,
+      "4/27/2026": 3.3162,
+      "4/29/2026": 3.3162,
+      "5/20/2026": 3.1876,
+      "6/19/2026": 3.159,
+      "6/20/2026": 3.1109
     },
     "rating_timeline_35": {
-      "4/8/2026": 3.037,
-      "4/10/2026": 3.037,
-      "4/22/2026": 3.1219,
-      "5/6/2026": 3.2057
+      "4/8/2026": 3.0601,
+      "4/10/2026": 3.0601,
+      "4/22/2026": 3.145,
+      "5/6/2026": 3.2288
     },
     "rating_post_timeline_30": {
-      "4/6/2026": 3.037,
-      "4/13/2026": 3.0763,
-      "4/15/2026": 3.0804,
-      "4/20/2026": 3.0901,
-      "4/22/2026": 3.1219,
-      "4/25/2026": 3.2931,
-      "4/27/2026": 3.2931,
-      "4/29/2026": 3.2057,
-      "5/20/2026": 3.1359
+      "4/6/2026": 3.0601,
+      "4/13/2026": 3.0994,
+      "4/15/2026": 3.1035,
+      "4/20/2026": 3.1132,
+      "4/22/2026": 3.145,
+      "4/25/2026": 3.3162,
+      "4/27/2026": 3.3162,
+      "4/29/2026": 3.2288,
+      "5/20/2026": 3.159,
+      "6/19/2026": 3.1109,
+      "6/20/2026": 3.1359
     },
     "rating_post_timeline_35": {
-      "4/8/2026": 3.037,
-      "4/10/2026": 3.0452,
-      "4/22/2026": 3.2699,
-      "5/6/2026": 3.1645
+      "4/8/2026": 3.0601,
+      "4/10/2026": 3.0683,
+      "4/22/2026": 3.293,
+      "5/6/2026": 3.1876
     }
   },
   {
@@ -166351,8 +166530,8 @@
     "team": "Sports Mall-Stroud-Peterson/Eckert",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6536,
-    "current_division_rating": 2.8093,
-    "global_rating": 2.8093,
+    "current_division_rating": 2.8299,
+    "global_rating": 2.8299,
     "ntrp_rating": "2.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -166360,15 +166539,16 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
+      "D1",
       "D2x5",
-      "D3x2",
-      "S1",
-      "S2x4"
+      "D3x3",
+      "S1x2",
+      "S2x5"
     ],
-    "wl_record_30": "8-4",
-    "team_30": "SPORTS MALL TENNISAURUS",
-    "rating_30": 2.8093,
-    "rating_35": 2.8093,
+    "wl_record_30": "10-6",
+    "team_30": "SPORTS MALL-STROUD-PETERSON/ECKERT",
+    "rating_30": 2.8299,
+    "rating_35": 2.8299,
     "rating_timeline_30": {
       "4/13/2026": 2.6536,
       "4/15/2026": 2.7267,
@@ -166380,7 +166560,9 @@
       "5/18/2026": 2.7899,
       "5/20/2026": 2.7899,
       "5/27/2026": 2.803,
-      "6/1/2026": 2.8093
+      "6/1/2026": 2.8093,
+      "6/19/2026": 2.8093,
+      "6/20/2026": 2.8093
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -166394,10 +166576,12 @@
       "5/18/2026": 2.7899,
       "5/20/2026": 2.803,
       "5/27/2026": 2.8093,
-      "6/1/2026": 2.8093
+      "6/1/2026": 2.8093,
+      "6/19/2026": 2.8093,
+      "6/20/2026": 2.8299
     },
     "rating_post_timeline_35": {},
-    "default_wins_30": 1
+    "default_wins_30": 2
   },
   {
     "id": "caitlin-brewer",
@@ -166459,8 +166643,8 @@
     "team": "Ivory Ridge-Supreme Court",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.684,
-    "current_division_rating": 2.8364,
-    "global_rating": 2.8364,
+    "current_division_rating": 2.8675,
+    "global_rating": 2.8675,
     "ntrp_rating": "3.0 A",
     "wl_record": null,
     "lines_played": null,
@@ -166469,25 +166653,30 @@
     "state": "UT",
     "lines_played_30": [
       "D1",
-      "S1",
-      "S2x3"
+      "S1x2",
+      "S2x5"
     ],
-    "wl_record_30": "4-1",
+    "wl_record_30": "6-2",
     "team_30": "IVORY RIDGE-SUPREME COURT",
-    "rating_30": 2.8364,
-    "rating_35": 2.8364,
+    "rating_30": 2.8675,
+    "rating_35": 2.8675,
     "rating_timeline_30": {
       "4/15/2026": 2.684,
-      "4/22/2026": 2.8056,
-      "5/27/2026": 2.8364
+      "4/22/2026": 2.7684,
+      "5/27/2026": 2.7992,
+      "6/6/2026": 2.7992,
+      "6/20/2026": 2.9214
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
-      "4/15/2026": 2.8056,
-      "4/22/2026": 2.8364,
-      "5/27/2026": 2.8364
+      "4/15/2026": 2.7684,
+      "4/22/2026": 2.7992,
+      "5/27/2026": 2.7992,
+      "6/6/2026": 2.9214,
+      "6/20/2026": 2.8675
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "default_wins_30": 1
   },
   {
     "id": "gaylynn-gale",
@@ -166497,8 +166686,8 @@
     "team": "Ivory Ridge-Supreme Court",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8228,
-    "current_division_rating": 2.846,
-    "global_rating": 2.846,
+    "current_division_rating": 2.8451,
+    "global_rating": 2.8451,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -166507,25 +166696,32 @@
     "state": "UT",
     "lines_played_30": [
       "D1",
-      "D2",
-      "D3x3"
+      "D2x2",
+      "D3x6",
+      "S2"
     ],
-    "wl_record_30": "3-2",
+    "wl_record_30": "4-6",
     "team_30": "IVORY RIDGE-SUPREME COURT",
-    "rating_30": 2.846,
-    "rating_35": 2.846,
+    "rating_30": 2.8451,
+    "rating_35": 2.8451,
     "rating_timeline_30": {
       "4/15/2026": 2.8228,
       "4/29/2026": 2.8405,
       "5/20/2026": 2.795,
-      "5/27/2026": 2.846
+      "5/27/2026": 2.846,
+      "6/6/2026": 2.846,
+      "6/19/2026": 2.846,
+      "6/20/2026": 2.8921
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/15/2026": 2.8405,
       "4/29/2026": 2.795,
       "5/20/2026": 2.846,
-      "5/27/2026": 2.846
+      "5/27/2026": 2.846,
+      "6/6/2026": 2.846,
+      "6/19/2026": 2.8921,
+      "6/20/2026": 2.8451
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -166538,8 +166734,8 @@
     "team": "Ivory Ridge-Supreme Court",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0623,
-    "current_division_rating": 3.2085,
-    "global_rating": 3.2085,
+    "current_division_rating": 3.2746,
+    "global_rating": 3.2746,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -166548,10 +166744,10 @@
     "state": "UT",
     "lines_played_30": [
       "D1x4",
-      "D2",
+      "D2x3",
       "D3"
     ],
-    "wl_record_30": "4-2",
+    "wl_record_30": "6-2",
     "default_wins_30": 1,
     "team_30": "LIBERTY PARK-KESLER",
     "lines_played_35": [
@@ -166559,14 +166755,15 @@
     ],
     "wl_record_35": "0-2",
     "team_35": "IVORY RIDGE-HARDIN/ELISON",
-    "rating_30": 3.2085,
-    "rating_35": 3.2085,
+    "rating_30": 3.2746,
+    "rating_35": 3.2746,
     "rating_timeline_30": {
       "4/22/2026": 3.0623,
       "4/25/2026": 3.0623,
       "4/29/2026": 3.0126,
       "5/11/2026": 3.0404,
-      "5/20/2026": 3.1398
+      "5/20/2026": 3.1398,
+      "6/20/2026": 3.1685
     },
     "rating_timeline_35": {
       "5/12/2026": 3.0803,
@@ -166577,7 +166774,8 @@
       "4/25/2026": 3.0126,
       "4/29/2026": 3.0404,
       "5/11/2026": 3.0803,
-      "5/20/2026": 3.1685
+      "5/20/2026": 3.1685,
+      "6/20/2026": 3.2746
     },
     "rating_post_timeline_35": {
       "5/12/2026": 3.0803,
@@ -166592,8 +166790,8 @@
     "team": "Ivory Ridge-Supreme Court",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.5725,
-    "current_division_rating": 2.5578,
-    "global_rating": 2.5578,
+    "current_division_rating": 2.5958,
+    "global_rating": 2.5958,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -166601,25 +166799,32 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D2x2",
+      "D1x2",
+      "D2x4",
       "D3x3"
     ],
-    "wl_record_30": "3-2",
+    "wl_record_30": "4-5",
     "team_30": "IVORY RIDGE-SUPREME COURT",
-    "rating_30": 2.5578,
-    "rating_35": 2.5578,
+    "rating_30": 2.5958,
+    "rating_35": 2.5958,
     "rating_timeline_30": {
       "4/15/2026": 2.5725,
       "4/29/2026": 2.6063,
       "5/6/2026": 2.5672,
-      "5/27/2026": 2.5876
+      "5/27/2026": 2.5876,
+      "6/6/2026": 2.5578,
+      "6/19/2026": 2.5958,
+      "6/20/2026": 2.5958
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/15/2026": 2.6063,
       "4/29/2026": 2.5672,
       "5/6/2026": 2.5876,
-      "5/27/2026": 2.5578
+      "5/27/2026": 2.5578,
+      "6/6/2026": 2.5958,
+      "6/19/2026": 2.5958,
+      "6/20/2026": 2.5958
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -166632,8 +166837,8 @@
     "team": "Ivory Ridge-Supreme Court",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.5143,
-    "current_division_rating": 2.5395,
-    "global_rating": 2.5395,
+    "current_division_rating": 2.5741,
+    "global_rating": 2.5741,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -166641,21 +166846,27 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D2x2",
-      "D3x2"
+      "D2x4",
+      "D3x5"
     ],
-    "wl_record_30": "3-1",
+    "wl_record_30": "4-5",
     "team_30": "IVORY RIDGE-SUPREME COURT",
-    "rating_30": 2.5395,
-    "rating_35": 2.5395,
+    "rating_30": 2.5741,
+    "rating_35": 2.5741,
     "rating_timeline_30": {
       "5/20/2026": 2.5143,
-      "5/27/2026": 2.5395
+      "5/27/2026": 2.5395,
+      "6/6/2026": 2.5395,
+      "6/19/2026": 2.5395,
+      "6/20/2026": 2.5741
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "5/20/2026": 2.5395,
-      "5/27/2026": 2.5395
+      "5/27/2026": 2.5395,
+      "6/6/2026": 2.5395,
+      "6/19/2026": 2.5741,
+      "6/20/2026": 2.5741
     },
     "rating_post_timeline_35": {}
   },
@@ -166676,24 +166887,28 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1",
-      "D2x2",
+      "D1x2",
+      "D2x4",
       "D3x2"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "2-6",
     "team_30": "IVORY RIDGE-SUPREME COURT",
     "rating_30": 2.7776,
     "rating_35": 2.7776,
     "rating_timeline_30": {
       "4/22/2026": 2.7368,
       "4/29/2026": 2.8231,
-      "5/27/2026": 2.7776
+      "5/27/2026": 2.7776,
+      "6/19/2026": 2.7776,
+      "6/20/2026": 2.7776
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/22/2026": 2.8231,
       "4/29/2026": 2.7776,
-      "5/27/2026": 2.7776
+      "5/27/2026": 2.7776,
+      "6/19/2026": 2.7776,
+      "6/20/2026": 2.7776
     },
     "rating_post_timeline_35": {}
   },
@@ -166705,8 +166920,8 @@
     "team": "Ivory Ridge-Supreme Court",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0854,
-    "current_division_rating": 3.2352,
-    "global_rating": 3.2352,
+    "current_division_rating": 3.2853,
+    "global_rating": 3.2853,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -166715,9 +166930,10 @@
     "state": "UT",
     "lines_played_30": [
       "D1x2",
+      "S1",
       "S2"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "4-0",
     "team_30": "IVORY RIDGE-SUPREME COURT",
     "lines_played_35": [
       "S1",
@@ -166725,11 +166941,12 @@
     ],
     "wl_record_35": "2-2",
     "team_35": "IVORY RIDGE-HARDIN/ELISON",
-    "rating_30": 3.2352,
-    "rating_35": 3.2352,
+    "rating_30": 3.2853,
+    "rating_35": 3.2853,
     "rating_timeline_30": {
       "4/29/2026": 3.141,
-      "5/6/2026": 3.1688
+      "5/6/2026": 3.1688,
+      "6/6/2026": 3.2352
     },
     "rating_timeline_35": {
       "4/14/2026": 3.0854,
@@ -166739,7 +166956,8 @@
     },
     "rating_post_timeline_30": {
       "4/29/2026": 3.1688,
-      "5/6/2026": 3.1886
+      "5/6/2026": 3.1886,
+      "6/6/2026": 3.2453
     },
     "rating_post_timeline_35": {
       "4/14/2026": 3.0177,
@@ -166765,23 +166983,30 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1",
-      "D2x3"
+      "D1x3",
+      "D2x5",
+      "D3"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "2-7",
     "team_30": "IVORY RIDGE-SUPREME COURT",
     "rating_30": 2.8531,
     "rating_35": 2.8531,
     "rating_timeline_30": {
       "4/22/2026": 2.8424,
       "4/29/2026": 2.8424,
-      "5/6/2026": 2.806
+      "5/6/2026": 2.806,
+      "6/6/2026": 2.8531,
+      "6/19/2026": 2.8531,
+      "6/20/2026": 2.8531
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/22/2026": 2.8424,
       "4/29/2026": 2.806,
-      "5/6/2026": 2.8531
+      "5/6/2026": 2.8531,
+      "6/6/2026": 2.8531,
+      "6/19/2026": 2.8531,
+      "6/20/2026": 2.8531
     },
     "rating_post_timeline_35": {}
   },
@@ -166826,8 +167051,8 @@
     "team": "Ivory Ridge-Supreme Court",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.024,
-    "current_division_rating": 3.1244,
-    "global_rating": 3.1244,
+    "current_division_rating": 3.1454,
+    "global_rating": 3.1454,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -166835,23 +167060,26 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "S1x4",
+      "D1",
+      "S1x6",
       "S2"
     ],
-    "wl_record_30": "4-1",
+    "wl_record_30": "5-3",
     "team_30": "IVORY RIDGE-SUPREME COURT",
     "lines_played_35": [
       "D3x3"
     ],
     "wl_record_35": "2-1",
     "team_35": "IVORY RIDGE-ADAMS/RILEY",
-    "rating_30": 3.1244,
-    "rating_35": 3.1244,
+    "rating_30": 3.1454,
+    "rating_35": 3.1454,
     "rating_timeline_30": {
       "4/15/2026": 3.0648,
       "4/29/2026": 2.9614,
       "5/6/2026": 3.0007,
-      "5/20/2026": 3.0388
+      "5/20/2026": 3.0388,
+      "6/19/2026": 3.0844,
+      "6/20/2026": 3.1054
     },
     "rating_timeline_35": {
       "4/7/2026": 3.024,
@@ -166862,7 +167090,9 @@
       "4/15/2026": 2.9614,
       "4/29/2026": 2.9901,
       "5/6/2026": 3.0388,
-      "5/20/2026": 3.0844
+      "5/20/2026": 3.0844,
+      "6/19/2026": 3.1054,
+      "6/20/2026": 3.1054
     },
     "rating_post_timeline_35": {
       "4/7/2026": 3.0648,
@@ -166915,8 +167145,8 @@
     "team": "Ivory Ridge-Supreme Court",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9833,
-    "current_division_rating": 3.1564,
-    "global_rating": 3.1564,
+    "current_division_rating": 3.2451,
+    "global_rating": 3.2451,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -166924,11 +167154,11 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x2",
+      "D1x3",
       "D2",
       "S1"
     ],
-    "wl_record_30": "3-1",
+    "wl_record_30": "4-1",
     "team_30": "IVORY RIDGE-SUPREME COURT",
     "lines_played_35": [
       "D2",
@@ -166938,12 +167168,13 @@
     ],
     "wl_record_35": "3-1",
     "team_35": "IVORY RIDGE-HARDIN/ELISON",
-    "rating_30": 3.1564,
-    "rating_35": 3.1564,
+    "rating_30": 3.2451,
+    "rating_35": 3.2451,
     "rating_timeline_30": {
       "4/15/2026": 2.9939,
       "4/22/2026": 3.0319,
-      "5/6/2026": 3.0717
+      "5/6/2026": 3.0717,
+      "6/6/2026": 3.1164
     },
     "rating_timeline_35": {
       "4/14/2026": 2.9833,
@@ -166953,7 +167184,8 @@
     "rating_post_timeline_30": {
       "4/15/2026": 3.0319,
       "4/22/2026": 3.0717,
-      "5/6/2026": 3.0915
+      "5/6/2026": 3.0915,
+      "6/6/2026": 3.2051
     },
     "rating_post_timeline_35": {
       "4/14/2026": 2.9939,
@@ -166969,8 +167201,8 @@
     "team": "Ivory Ridge-Supreme Court",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6,
-    "current_division_rating": 2.659,
-    "global_rating": 2.659,
+    "current_division_rating": 2.8023,
+    "global_rating": 2.8023,
     "ntrp_rating": "3",
     "wl_record": null,
     "lines_played": null,
@@ -166979,23 +167211,28 @@
     "state": "UT",
     "pending_tennisrecord_lookup": true,
     "lines_played_30": [
-      "D1x2",
-      "D2x2"
+      "D1x4",
+      "D2x2",
+      "D3"
     ],
-    "wl_record_30": "3-1",
+    "wl_record_30": "3-4",
     "team_30": "IVORY RIDGE-SUPREME COURT",
-    "rating_30": 2.659,
-    "rating_35": 2.659,
+    "rating_30": 2.8023,
+    "rating_35": 2.8023,
     "rating_timeline_30": {
       "4/22/2026": 2.6,
       "5/6/2026": 2.6,
-      "5/20/2026": 2.6464
+      "5/20/2026": 2.6464,
+      "6/19/2026": 2.659,
+      "6/20/2026": 2.8023
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/22/2026": 2.6,
       "5/6/2026": 2.6464,
-      "5/20/2026": 2.659
+      "5/20/2026": 2.659,
+      "6/19/2026": 2.8023,
+      "6/20/2026": 2.8023
     },
     "rating_post_timeline_35": {}
   },
@@ -167016,10 +167253,11 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D2",
+      "D1",
+      "D2x2",
       "D3x5"
     ],
-    "wl_record_30": "4-2",
+    "wl_record_30": "4-4",
     "team_30": "IVORY RIDGE-SUPREME COURT",
     "rating_30": 2.7761,
     "rating_35": 2.7761,
@@ -167028,7 +167266,9 @@
       "4/22/2026": 2.6685,
       "5/6/2026": 2.7548,
       "5/20/2026": 2.7752,
-      "5/27/2026": 2.8049
+      "5/27/2026": 2.8049,
+      "6/6/2026": 2.7761,
+      "6/20/2026": 2.7761
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -167036,7 +167276,9 @@
       "4/22/2026": 2.7548,
       "5/6/2026": 2.7752,
       "5/20/2026": 2.8049,
-      "5/27/2026": 2.7761
+      "5/27/2026": 2.7761,
+      "6/6/2026": 2.7761,
+      "6/20/2026": 2.7761
     },
     "rating_post_timeline_35": {}
   },
@@ -167898,8 +168140,8 @@
     "team": "ACE-Swalberg/Harman",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.04,
-    "current_division_rating": 3.2099,
-    "global_rating": 3.2099,
+    "current_division_rating": 3.1954,
+    "global_rating": 3.1954,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -167907,11 +168149,11 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x7",
-      "D2x3",
+      "D1x8",
+      "D2x7",
       "S1x2"
     ],
-    "wl_record_30": "4-8",
+    "wl_record_30": "8-9",
     "team_30": "HARVEY/CONRAD",
     "lines_played_35": [
       "D2",
@@ -167921,8 +168163,8 @@
     ],
     "wl_record_35": "3-3",
     "team_35": "LIBERTY PARK-PRINCE HAGOOD/KESLER",
-    "rating_30": 3.2099,
-    "rating_35": 3.2099,
+    "rating_30": 3.1954,
+    "rating_35": 3.1954,
     "rating_timeline_30": {
       "4/6/2026": 3.04,
       "4/13/2026": 3.038,
@@ -167935,7 +168177,10 @@
       "5/13/2026": 3.1331,
       "5/18/2026": 3.0661,
       "5/20/2026": 3.0186,
-      "5/27/2026": 3.1543
+      "5/27/2026": 3.1543,
+      "6/6/2026": 3.1699,
+      "6/19/2026": 3.1844,
+      "6/20/2026": 3.1389
     },
     "rating_timeline_35": {
       "4/8/2026": 3.0754,
@@ -167957,7 +168202,10 @@
       "5/13/2026": 3.0661,
       "5/18/2026": 3.0186,
       "5/20/2026": 3.0186,
-      "5/27/2026": 3.1543
+      "5/27/2026": 3.1543,
+      "6/6/2026": 3.1844,
+      "6/19/2026": 3.1389,
+      "6/20/2026": 3.1954
     },
     "rating_post_timeline_35": {
       "4/8/2026": 3.038,
@@ -169579,8 +169827,8 @@
     "team": "Harvey/Conrad",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.92,
-    "current_division_rating": 2.9139,
-    "global_rating": 2.9139,
+    "current_division_rating": 2.9803,
+    "global_rating": 2.9803,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -169588,27 +169836,31 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D2",
+      "D2x2",
       "D3",
-      "S1",
+      "S1x2",
       "S2"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "4-2",
     "team_30": "HARVEY/CONRAD",
-    "rating_30": 2.9139,
-    "rating_35": 2.9139,
+    "rating_30": 2.9803,
+    "rating_35": 2.9803,
     "rating_timeline_30": {
       "5/2/2026": 2.92,
       "5/4/2026": 2.9196,
       "5/11/2026": 2.8826,
-      "5/18/2026": 2.8826
+      "5/18/2026": 2.8826,
+      "6/6/2026": 2.9139,
+      "6/20/2026": 2.9264
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "5/2/2026": 2.9196,
       "5/4/2026": 2.8826,
       "5/11/2026": 2.8826,
-      "5/18/2026": 2.9139
+      "5/18/2026": 2.9139,
+      "6/6/2026": 2.9264,
+      "6/20/2026": 2.9803
     },
     "rating_post_timeline_35": {}
   },
@@ -169620,8 +169872,8 @@
     "team": "Harvey/Conrad",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.58,
-    "current_division_rating": 2.7071,
-    "global_rating": 2.7071,
+    "current_division_rating": 2.7789,
+    "global_rating": 2.7789,
     "ntrp_rating": "2.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -169630,20 +169882,24 @@
     "state": "UT",
     "lines_played_30": [
       "D1",
-      "D3x3",
+      "D2",
+      "D3x6",
       "S2x2"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "7-3",
     "team_30": "HARVEY/CONRAD",
-    "rating_30": 2.7071,
-    "rating_35": 2.7071,
+    "rating_30": 2.7789,
+    "rating_35": 2.7789,
     "rating_timeline_30": {
       "4/13/2026": 2.58,
       "4/27/2026": 2.5733,
       "5/2/2026": 2.5733,
       "5/4/2026": 2.6558,
       "5/11/2026": 2.6926,
-      "5/18/2026": 2.698
+      "5/18/2026": 2.698,
+      "6/6/2026": 2.7071,
+      "6/19/2026": 2.7454,
+      "6/20/2026": 2.761
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -169652,7 +169908,10 @@
       "5/2/2026": 2.6558,
       "5/4/2026": 2.6926,
       "5/11/2026": 2.698,
-      "5/18/2026": 2.7071
+      "5/18/2026": 2.7071,
+      "6/6/2026": 2.7454,
+      "6/19/2026": 2.761,
+      "6/20/2026": 2.7789
     },
     "rating_post_timeline_35": {},
     "tennisrecord_id": "2"
@@ -169665,8 +169924,8 @@
     "team": "Harvey/Conrad",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.67,
-    "current_division_rating": 2.647,
-    "global_rating": 2.647,
+    "current_division_rating": 2.6805,
+    "global_rating": 2.6805,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -169675,21 +169934,23 @@
     "state": "UT",
     "lines_played_30": [
       "D1",
-      "D2x3",
-      "D3",
+      "D2x4",
+      "D3x2",
       "S2"
     ],
-    "wl_record_30": "3-3",
+    "wl_record_30": "4-4",
     "team_30": "HARVEY/CONRAD",
-    "rating_30": 2.647,
-    "rating_35": 2.647,
+    "rating_30": 2.6805,
+    "rating_35": 2.6805,
     "rating_timeline_30": {
       "4/6/2026": 2.67,
       "4/13/2026": 2.7018,
       "5/4/2026": 2.6029,
       "5/9/2026": 2.6288,
       "5/11/2026": 2.647,
-      "5/18/2026": 2.647
+      "5/18/2026": 2.647,
+      "6/19/2026": 2.647,
+      "6/20/2026": 2.6626
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -169698,7 +169959,9 @@
       "5/4/2026": 2.6288,
       "5/9/2026": 2.647,
       "5/11/2026": 2.647,
-      "5/18/2026": 2.647
+      "5/18/2026": 2.647,
+      "6/19/2026": 2.6626,
+      "6/20/2026": 2.6805
     },
     "rating_post_timeline_35": {}
   },
@@ -169710,8 +169973,8 @@
     "team": "Harvey/Conrad",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.63,
-    "current_division_rating": 2.8968,
-    "global_rating": 2.8968,
+    "current_division_rating": 3.0305,
+    "global_rating": 3.0305,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -169720,33 +169983,40 @@
     "state": "UT",
     "lines_played_30": [
       "D1x2",
-      "D3x2",
-      "S1x3"
+      "D3x3",
+      "S1x7"
     ],
-    "wl_record_30": "5-2",
+    "wl_record_30": "9-3",
     "team_30": "HARVEY/CONRAD",
-    "rating_30": 2.8968,
-    "rating_35": 2.8968,
+    "rating_30": 3.0305,
+    "rating_35": 3.0305,
     "rating_timeline_30": {
-      "4/13/2026": 2.6616,
-      "4/27/2026": 2.8168,
-      "5/2/2026": 2.8423,
-      "5/4/2026": 2.9334,
-      "5/9/2026": 2.8964,
-      "5/11/2026": 2.9278,
-      "5/18/2026": 2.868
+      "4/13/2026": 2.63,
+      "4/27/2026": 2.7648,
+      "5/2/2026": 2.7903,
+      "5/4/2026": 2.8814,
+      "5/9/2026": 2.8444,
+      "5/11/2026": 2.8758,
+      "5/18/2026": 2.816,
+      "6/6/2026": 2.8448,
+      "6/19/2026": 2.8876,
+      "6/20/2026": 2.9494
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
-      "4/13/2026": 2.8168,
-      "4/27/2026": 2.8423,
-      "5/2/2026": 2.9334,
-      "5/4/2026": 2.8964,
-      "5/9/2026": 2.9278,
-      "5/11/2026": 2.868,
-      "5/18/2026": 2.8968
+      "4/13/2026": 2.7648,
+      "4/27/2026": 2.7903,
+      "5/2/2026": 2.8814,
+      "5/4/2026": 2.8444,
+      "5/9/2026": 2.8758,
+      "5/11/2026": 2.816,
+      "5/18/2026": 2.8448,
+      "6/6/2026": 2.8876,
+      "6/19/2026": 2.9494,
+      "6/20/2026": 2.9905
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "default_wins_30": 1
   },
   {
     "id": "hailey-mann",
@@ -169756,8 +170026,8 @@
     "team": "Harvey/Conrad",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 3.2778,
-    "current_division_rating": 3.4309,
-    "global_rating": 3.4309,
+    "current_division_rating": 3.546,
+    "global_rating": 3.546,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -169765,11 +170035,11 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x3",
+      "D1x7",
       "D2",
       "D3"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "8-1",
     "team_30": "HARVEY/CONRAD",
     "lines_played_35": [
       "D1",
@@ -169778,14 +170048,17 @@
     ],
     "wl_record_35": "3-1",
     "team_35": "UTAH/TORRES/18&OVER/3.5W",
-    "rating_30": 3.4309,
-    "rating_35": 3.4309,
+    "rating_30": 3.546,
+    "rating_35": 3.546,
     "rating_timeline_30": {
       "4/13/2026": 3.2841,
       "4/27/2026": 3.2994,
       "5/2/2026": 3.3707,
       "5/9/2026": 3.3699,
-      "5/11/2026": 3.3871
+      "5/11/2026": 3.3871,
+      "6/6/2026": 3.4309,
+      "6/19/2026": 3.3824,
+      "6/20/2026": 3.4464
     },
     "rating_timeline_35": {
       "4/8/2026": 3.2778,
@@ -169797,7 +170070,10 @@
       "4/27/2026": 3.3281,
       "5/2/2026": 3.3699,
       "5/9/2026": 3.3871,
-      "5/11/2026": 3.3997
+      "5/11/2026": 3.3997,
+      "6/6/2026": 3.3824,
+      "6/19/2026": 3.4464,
+      "6/20/2026": 3.506
     },
     "rating_post_timeline_35": {
       "4/8/2026": 3.2841,
@@ -169813,8 +170089,8 @@
     "team": "Harvey/Conrad",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.57,
-    "current_division_rating": 2.7879,
-    "global_rating": 2.7879,
+    "current_division_rating": 2.8817,
+    "global_rating": 2.8817,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -169822,22 +170098,29 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "S2x3"
+      "D3x3",
+      "S2x4"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "4-3",
     "team_30": "HARVEY/CONRAD",
-    "rating_30": 2.7879,
-    "rating_35": 2.7879,
+    "rating_30": 2.8817,
+    "rating_35": 2.8817,
     "rating_timeline_30": {
       "4/6/2026": 2.57,
-      "5/2/2026": 2.7218,
-      "5/9/2026": 2.7466
+      "5/2/2026": 2.692,
+      "5/9/2026": 2.7168,
+      "6/6/2026": 2.7581,
+      "6/19/2026": 2.8347,
+      "6/20/2026": 2.8347
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
-      "4/6/2026": 2.7218,
-      "5/2/2026": 2.7466,
-      "5/9/2026": 2.7879
+      "4/6/2026": 2.692,
+      "5/2/2026": 2.7168,
+      "5/9/2026": 2.7581,
+      "6/6/2026": 2.8347,
+      "6/19/2026": 2.8347,
+      "6/20/2026": 2.8817
     },
     "rating_post_timeline_35": {}
   },
@@ -169849,8 +170132,8 @@
     "team": "Harvey/Conrad",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.8,
-    "current_division_rating": 2.8969,
-    "global_rating": 2.8969,
+    "current_division_rating": 2.7856,
+    "global_rating": 2.7856,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -169858,20 +170141,23 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x4",
-      "D2x2"
+      "D1x6",
+      "D2x4"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "8-2",
     "team_30": "HARVEY/CONRAD",
-    "rating_30": 2.8969,
-    "rating_35": 2.8969,
+    "rating_30": 2.7856,
+    "rating_35": 2.7856,
     "rating_timeline_30": {
       "4/6/2026": 2.8,
       "4/13/2026": 2.8318,
       "4/27/2026": 2.8394,
       "5/4/2026": 2.8456,
       "5/9/2026": 2.8758,
-      "5/18/2026": 2.8969
+      "5/18/2026": 2.8969,
+      "6/6/2026": 2.8969,
+      "6/19/2026": 2.8069,
+      "6/20/2026": 2.775
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -169880,7 +170166,10 @@
       "4/27/2026": 2.8456,
       "5/4/2026": 2.8758,
       "5/9/2026": 2.8969,
-      "5/18/2026": 2.8969
+      "5/18/2026": 2.8969,
+      "6/6/2026": 2.8069,
+      "6/19/2026": 2.775,
+      "6/20/2026": 2.7856
     },
     "rating_post_timeline_35": {},
     "tennisrecord_id": "4"
@@ -169930,8 +170219,8 @@
     "team": "Harvey/Conrad",
     "division": "3.0 Women A",
     "dynamic_rating_baseline": 2.66,
-    "current_division_rating": 2.8691,
-    "global_rating": 2.8691,
+    "current_division_rating": 2.7988,
+    "global_rating": 2.7988,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -169940,11 +170229,11 @@
     "state": "UT",
     "lines_played_30": [
       "D2",
-      "D3",
+      "D3x2",
       "S1x4",
-      "S2"
+      "S2x5"
     ],
-    "wl_record_30": "3-4",
+    "wl_record_30": "5-7",
     "team_30": "HARVEY/CONRAD",
     "lines_played_35": [
       "S1",
@@ -169952,35 +170241,42 @@
     ],
     "wl_record_35": "0-3",
     "team_35": "LIBERTY PARK-SPENCER/BRYCE",
-    "rating_30": 2.8691,
-    "rating_35": 2.8691,
+    "rating_30": 2.7988,
+    "rating_35": 2.7988,
     "rating_timeline_30": {
-      "4/6/2026": 2.7392,
-      "4/27/2026": 2.7392,
-      "5/2/2026": 2.7392,
-      "5/4/2026": 2.8317,
-      "5/9/2026": 2.8861,
-      "5/11/2026": 2.9043,
-      "5/18/2026": 2.8552
+      "4/6/2026": 2.66,
+      "4/27/2026": 2.6441,
+      "5/2/2026": 2.6441,
+      "5/4/2026": 2.7366,
+      "5/9/2026": 2.791,
+      "5/11/2026": 2.8092,
+      "5/18/2026": 2.7601,
+      "6/6/2026": 2.774,
+      "6/19/2026": 2.7988,
+      "6/20/2026": 2.7988
     },
     "rating_timeline_35": {
-      "4/8/2026": 2.7392,
-      "6/3/2026": 2.7983
+      "4/8/2026": 2.66,
+      "6/3/2026": 2.7032
     },
     "rating_post_timeline_30": {
-      "4/6/2026": 2.7392,
-      "4/27/2026": 2.7392,
-      "5/2/2026": 2.8317,
-      "5/4/2026": 2.8861,
-      "5/9/2026": 2.9043,
-      "5/11/2026": 2.8552,
-      "5/18/2026": 2.7983
+      "4/6/2026": 2.6441,
+      "4/27/2026": 2.6441,
+      "5/2/2026": 2.7366,
+      "5/4/2026": 2.791,
+      "5/9/2026": 2.8092,
+      "5/11/2026": 2.7601,
+      "5/18/2026": 2.7032,
+      "6/6/2026": 2.7988,
+      "6/19/2026": 2.7988,
+      "6/20/2026": 2.7988
     },
     "rating_post_timeline_35": {
-      "4/8/2026": 2.7392,
-      "6/3/2026": 2.8691
+      "4/8/2026": 2.6441,
+      "6/3/2026": 2.774
     },
-    "tennisrecord_id": "3"
+    "tennisrecord_id": "3",
+    "default_wins_30": 1
   },
   {
     "id": "kelly-singer",
@@ -171486,8 +171782,8 @@
     "team": "Liberty Park-Kesler",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.062,
-    "current_division_rating": 3.2461,
-    "global_rating": 3.2461,
+    "current_division_rating": 3.2593,
+    "global_rating": 3.2593,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -171495,10 +171791,10 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x3",
+      "D1x4",
       "D3"
     ],
-    "wl_record_30": "4-0",
+    "wl_record_30": "5-0",
     "team_30": "LIBERTY PARK-KESLER",
     "lines_played_35": [
       "D2x3",
@@ -171506,12 +171802,13 @@
     ],
     "wl_record_35": "4-2",
     "team_35": "LIBERTY PARK-PRINCE HAGOOD/KESLER",
-    "rating_30": 3.2461,
-    "rating_35": 3.2461,
+    "rating_30": 3.2593,
+    "rating_35": 3.2593,
     "rating_timeline_30": {
       "5/11/2026": 3.186,
       "5/18/2026": 3.1918,
-      "6/1/2026": 3.1704
+      "6/1/2026": 3.1704,
+      "6/6/2026": 3.2061
     },
     "rating_timeline_35": {
       "4/8/2026": 3.062,
@@ -171524,7 +171821,8 @@
     "rating_post_timeline_30": {
       "5/11/2026": 3.1918,
       "5/18/2026": 3.1979,
-      "6/1/2026": 3.1773
+      "6/1/2026": 3.1773,
+      "6/6/2026": 3.2193
     },
     "rating_post_timeline_35": {
       "4/8/2026": 3.1155,
@@ -171544,8 +171842,8 @@
     "team": "Liberty Park-Kesler",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.6467,
-    "current_division_rating": 2.6056,
-    "global_rating": 2.6056,
+    "current_division_rating": 2.7455,
+    "global_rating": 2.7455,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -171553,19 +171851,22 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D2x5",
-      "D3"
+      "D2x8",
+      "D3x3"
     ],
-    "wl_record_30": "4-2",
+    "wl_record_30": "7-4",
     "team_30": "LIBERTY PARK-KESLER",
-    "rating_30": 2.6056,
-    "rating_35": 2.6056,
+    "rating_30": 2.7455,
+    "rating_35": 2.7455,
     "rating_timeline_30": {
       "4/6/2026": 2.6467,
       "4/13/2026": 2.6612,
       "4/25/2026": 2.6612,
       "5/11/2026": 2.6712,
-      "5/18/2026": 2.6964
+      "5/18/2026": 2.6964,
+      "6/6/2026": 2.6056,
+      "6/19/2026": 2.6056,
+      "6/20/2026": 2.6862
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -171573,7 +171874,10 @@
       "4/13/2026": 2.6612,
       "4/25/2026": 2.6712,
       "5/11/2026": 2.6964,
-      "5/18/2026": 2.6056
+      "5/18/2026": 2.6056,
+      "6/6/2026": 2.6056,
+      "6/19/2026": 2.6862,
+      "6/20/2026": 2.7455
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -171596,9 +171900,9 @@
     "state": "UT",
     "lines_played_30": [
       "D3x2",
-      "S2x4"
+      "S2x5"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "5-2",
     "team_30": "LIBERTY PARK-KESLER",
     "rating_30": 2.7967,
     "rating_35": 2.7967,
@@ -171607,7 +171911,8 @@
       "4/20/2026": 2.7474,
       "5/11/2026": 2.7671,
       "5/18/2026": 2.7756,
-      "6/1/2026": 2.7756
+      "6/1/2026": 2.7756,
+      "6/6/2026": 2.7967
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -171615,7 +171920,8 @@
       "4/20/2026": 2.7671,
       "5/11/2026": 2.7756,
       "5/18/2026": 2.7756,
-      "6/1/2026": 2.7967
+      "6/1/2026": 2.7967,
+      "6/6/2026": 2.7967
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -171637,9 +171943,10 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D3x4"
+      "D3x6",
+      "S2"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "2-5",
     "default_wins_30": 1,
     "team_30": "LIBERTY PARK-KESLER",
     "rating_30": 2.4947,
@@ -171647,13 +171954,17 @@
     "rating_timeline_30": {
       "4/6/2026": 2.4022,
       "4/13/2026": 2.4851,
-      "5/18/2026": 2.4851
+      "5/18/2026": 2.4851,
+      "6/19/2026": 2.4947,
+      "6/20/2026": 2.4947
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/6/2026": 2.4851,
       "4/13/2026": 2.4851,
-      "5/18/2026": 2.4947
+      "5/18/2026": 2.4947,
+      "6/19/2026": 2.4947,
+      "6/20/2026": 2.4947
     },
     "rating_post_timeline_35": {}
   },
@@ -171665,8 +171976,8 @@
     "team": "Liberty Park-Kesler",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.2018,
-    "current_division_rating": 3.2952,
-    "global_rating": 3.2952,
+    "current_division_rating": 3.3307,
+    "global_rating": 3.3307,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -171674,9 +171985,9 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1x3"
+      "D1x8"
     ],
-    "wl_record_30": "3-0",
+    "wl_record_30": "7-1",
     "team_30": "LIBERTY PARK-KESLER",
     "lines_played_35": [
       "D2x3",
@@ -171684,12 +171995,15 @@
     ],
     "wl_record_35": "3-1",
     "team_35": "LIBERTY PARK-PRINCE HAGOOD/KESLER",
-    "rating_30": 3.2952,
-    "rating_35": 3.2952,
+    "rating_30": 3.3307,
+    "rating_35": 3.3307,
     "rating_timeline_30": {
       "5/11/2026": 3.2018,
       "5/18/2026": 3.2326,
-      "6/1/2026": 3.2195
+      "6/1/2026": 3.2195,
+      "6/6/2026": 3.2552,
+      "6/19/2026": 3.2684,
+      "6/20/2026": 3.2259
     },
     "rating_timeline_35": {
       "5/13/2026": 3.2076,
@@ -171700,7 +172014,10 @@
     "rating_post_timeline_30": {
       "5/11/2026": 3.2076,
       "5/18/2026": 3.2387,
-      "6/1/2026": 3.2264
+      "6/1/2026": 3.2264,
+      "6/6/2026": 3.2684,
+      "6/19/2026": 3.2259,
+      "6/20/2026": 3.2907
     },
     "rating_post_timeline_35": {
       "5/13/2026": 3.2326,
@@ -171717,8 +172034,8 @@
     "team": "Liberty Park-Kesler",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.8841,
-    "current_division_rating": 2.9684,
-    "global_rating": 2.9684,
+    "current_division_rating": 2.9598,
+    "global_rating": 2.9598,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -171726,28 +172043,34 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D1",
-      "D2x2",
+      "D1x3",
+      "D2x3",
       "D3x2",
-      "S1"
+      "S1x2"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "9-1",
     "default_wins_30": 2,
     "team_30": "LIBERTY PARK-KESLER",
-    "rating_30": 2.9684,
-    "rating_35": 2.9684,
+    "rating_30": 2.9598,
+    "rating_35": 2.9598,
     "rating_timeline_30": {
       "4/6/2026": 2.8841,
       "4/27/2026": 2.8956,
       "5/18/2026": 2.9394,
-      "6/1/2026": 2.9589
+      "6/1/2026": 2.9589,
+      "6/6/2026": 2.9684,
+      "6/19/2026": 2.9777,
+      "6/20/2026": 2.925
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/6/2026": 2.8956,
       "4/27/2026": 2.9394,
       "5/18/2026": 2.9589,
-      "6/1/2026": 2.9684
+      "6/1/2026": 2.9684,
+      "6/6/2026": 2.9777,
+      "6/19/2026": 2.925,
+      "6/20/2026": 2.9598
     },
     "rating_post_timeline_35": {}
   },
@@ -171759,8 +172082,8 @@
     "team": "Liberty Park-Kesler",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9733,
-    "current_division_rating": 3.039,
-    "global_rating": 3.039,
+    "current_division_rating": 3.0496,
+    "global_rating": 3.0496,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -171769,10 +172092,10 @@
     "state": "UT",
     "lines_played_30": [
       "D1x4",
-      "D2",
-      "D3x2"
+      "D2x4",
+      "D3x4"
     ],
-    "wl_record_30": "5-2",
+    "wl_record_30": "7-5",
     "team_30": "LIBERTY PARK-KESLER",
     "lines_played_35": [
       "D2x3",
@@ -171780,37 +172103,43 @@
     ],
     "wl_record_35": "1-5",
     "team_35": "SM-HARRIS & THE SERVE-IVORS",
-    "rating_30": 3.039,
-    "rating_35": 3.039,
+    "rating_30": 3.0496,
+    "rating_35": 3.0496,
     "rating_timeline_30": {
-      "4/6/2026": 3.0188,
-      "4/13/2026": 3.0303,
-      "4/25/2026": 3.0845,
-      "4/27/2026": 3.0348,
-      "5/11/2026": 3.0036,
-      "6/1/2026": 3.0179
+      "4/6/2026": 2.9733,
+      "4/13/2026": 2.9848,
+      "4/25/2026": 3.039,
+      "4/27/2026": 2.9893,
+      "5/11/2026": 2.9581,
+      "6/1/2026": 2.9724,
+      "6/6/2026": 2.9935,
+      "6/19/2026": 3.0028,
+      "6/20/2026": 3.0212
     },
     "rating_timeline_35": {
-      "4/8/2026": 3.0303,
-      "4/18/2026": 3.0845,
-      "5/6/2026": 3.0348,
-      "5/13/2026": 3.0072,
-      "5/27/2026": 3.0179
+      "4/8/2026": 2.9848,
+      "4/18/2026": 3.039,
+      "5/6/2026": 2.9893,
+      "5/13/2026": 2.9617,
+      "5/27/2026": 2.9724
     },
     "rating_post_timeline_30": {
-      "4/6/2026": 3.0303,
-      "4/13/2026": 3.0845,
-      "4/25/2026": 3.0348,
-      "4/27/2026": 3.0348,
-      "5/11/2026": 3.0072,
-      "6/1/2026": 3.039
+      "4/6/2026": 2.9848,
+      "4/13/2026": 3.039,
+      "4/25/2026": 2.9893,
+      "4/27/2026": 2.9893,
+      "5/11/2026": 2.9617,
+      "6/1/2026": 2.9935,
+      "6/6/2026": 3.0028,
+      "6/19/2026": 3.0212,
+      "6/20/2026": 3.0496
     },
     "rating_post_timeline_35": {
-      "4/8/2026": 3.0303,
-      "4/18/2026": 3.0845,
-      "5/6/2026": 3.0036,
-      "5/13/2026": 3.0179,
-      "5/27/2026": 3.0179
+      "4/8/2026": 2.9848,
+      "4/18/2026": 3.039,
+      "5/6/2026": 2.9581,
+      "5/13/2026": 2.9724,
+      "5/27/2026": 2.9724
     },
     "default_wins_30": 1
   },
@@ -171822,8 +172151,8 @@
     "team": "Liberty Park-Kesler",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.4598,
-    "current_division_rating": 2.6643,
-    "global_rating": 2.6643,
+    "current_division_rating": 2.6451,
+    "global_rating": 2.6451,
     "ntrp_rating": "2.5 C",
     "wl_record": null,
     "lines_played": null,
@@ -171831,21 +172160,27 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D3x2",
+      "D3x6",
       "S2"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "3-4",
     "team_30": "LIBERTY PARK-KESLER",
-    "rating_30": 2.6643,
-    "rating_35": 2.6643,
+    "rating_30": 2.6451,
+    "rating_35": 2.6451,
     "rating_timeline_30": {
       "4/6/2026": 2.4598,
-      "4/27/2026": 2.5427
+      "4/27/2026": 2.5427,
+      "6/6/2026": 2.6643,
+      "6/19/2026": 2.6643,
+      "6/20/2026": 2.6206
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
       "4/6/2026": 2.5427,
-      "4/27/2026": 2.6643
+      "4/27/2026": 2.6643,
+      "6/6/2026": 2.6643,
+      "6/19/2026": 2.6206,
+      "6/20/2026": 2.6451
     },
     "rating_post_timeline_35": {},
     "default_wins_30": 1
@@ -171858,8 +172193,8 @@
     "team": "Liberty Park-Kesler",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 2.9918,
-    "current_division_rating": 3.1405,
-    "global_rating": 3.1405,
+    "current_division_rating": 3.1162,
+    "global_rating": 3.1162,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -171867,21 +172202,23 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "D2x2",
-      "S1x3",
-      "S2"
+      "D2x3",
+      "S1x4",
+      "S2x3"
     ],
-    "wl_record_30": "6-0",
+    "wl_record_30": "8-2",
     "team_30": "LIBERTY PARK-KESLER",
-    "rating_30": 3.1405,
-    "rating_35": 3.1405,
+    "rating_30": 3.1162,
+    "rating_35": 3.1162,
     "rating_timeline_30": {
       "4/6/2026": 2.9918,
       "4/13/2026": 3.0065,
       "4/20/2026": 3.0376,
       "4/25/2026": 3.0628,
       "4/27/2026": 3.078,
-      "6/1/2026": 3.1218
+      "6/1/2026": 3.1218,
+      "6/19/2026": 3.1405,
+      "6/20/2026": 3.1727
     },
     "rating_timeline_35": {},
     "rating_post_timeline_30": {
@@ -171890,7 +172227,9 @@
       "4/20/2026": 3.0628,
       "4/25/2026": 3.078,
       "4/27/2026": 3.1218,
-      "6/1/2026": 3.1405
+      "6/1/2026": 3.1405,
+      "6/19/2026": 3.1727,
+      "6/20/2026": 3.1162
     },
     "rating_post_timeline_35": {}
   },
@@ -171902,8 +172241,8 @@
     "team": "Liberty Park-Kesler",
     "division": "3.0 Women B",
     "dynamic_rating_baseline": 3.0785,
-    "current_division_rating": 3.4,
-    "global_rating": 3.4,
+    "current_division_rating": 3.2854,
+    "global_rating": 3.2854,
     "ntrp_rating": "3.0 C",
     "wl_record": null,
     "lines_played": null,
@@ -171911,10 +172250,11 @@
     "notes": null,
     "state": "UT",
     "lines_played_30": [
-      "S1x4",
+      "D1x2",
+      "S1x7",
       "S2"
     ],
-    "wl_record_30": "5-0",
+    "wl_record_30": "8-2",
     "team_30": "LIBERTY PARK-KESLER",
     "lines_played_35": [
       "D1",
@@ -171924,14 +172264,17 @@
     ],
     "wl_record_35": "4-2",
     "team_35": "LIBERTY PARK-PRINCE HAGOOD/KESLER",
-    "rating_30": 3.4,
-    "rating_35": 3.4,
+    "rating_30": 3.2854,
+    "rating_35": 3.2854,
     "rating_timeline_30": {
       "4/13/2026": 3.0785,
       "4/25/2026": 3.1718,
       "4/27/2026": 3.1774,
       "5/18/2026": 3.252,
-      "6/1/2026": 3.2872
+      "6/1/2026": 3.2872,
+      "6/6/2026": 3.36,
+      "6/19/2026": 3.3249,
+      "6/20/2026": 3.2874
     },
     "rating_timeline_35": {
       "4/16/2026": 3.1013,
@@ -171946,7 +172289,10 @@
       "4/25/2026": 3.1774,
       "4/27/2026": 3.1997,
       "5/18/2026": 3.2872,
-      "6/1/2026": 3.2935
+      "6/1/2026": 3.2935,
+      "6/6/2026": 3.3249,
+      "6/19/2026": 3.2874,
+      "6/20/2026": 3.2454
     },
     "rating_post_timeline_35": {
       "4/16/2026": 3.1459,
