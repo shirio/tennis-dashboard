@@ -620,7 +620,7 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
     def _scale(x: float) -> float:
         return x * line_mult * partner_mult
 
-    if record.won and adj > 0:
+    if record.won:
         expected = _cross_pair_expected(
             current_rating, record.partner_rating, record.opponent_ratings
         )
@@ -630,36 +630,28 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
             expected_signal = 2.0 * expected - 1.0
             surplus = raw_signal - expected_signal
             if surplus < _MIN_WIN_SURPRISE:
-                # Below gate: win landed within or barely above expected range.
-                # A slight negative — "you won, but performed at the opponents'
-                # level rather than your own" — proportional to the shortfall.
-                penalty = (_MIN_WIN_SURPRISE - surplus) * _BELOW_GATE_SCALE
+                # Below gate: win landed below expected quality.
+                # Penalty is proportional to the shortfall but capped at
+                # _MIN_WIN_SURPRISE * _BELOW_GATE_SCALE — a winner never drops
+                # more than a small nudge regardless of how badly they won.
+                # Without this cap, a heavy favorite who barely survives a
+                # tiebreak (raw_signal << expected_signal) produces a deeply
+                # negative adj, causing the winner to end up below the loser.
+                capped_shortfall = min(_MIN_WIN_SURPRISE - surplus, _MIN_WIN_SURPRISE)
+                penalty = capped_shortfall * _BELOW_GATE_SCALE
                 return _scale(-penalty)
-        # Cleared the gate: scale win cap by how unexpected the win was.
+        # Cleared the gate (or no score data): scale win cap by how unexpected
+        # the win was.
         #
         # Heavy underdogs (expected < 0.30 — win prob ≤ 25%): linear
         #   win_cap = SEQ_CAP × (1 − expected)
-        #   The squared formula was designed to suppress favourite inflation;
-        #   it shouldn't also penalise clearly mis-ranked players.  At 18%
-        #   expected, linear gives 0.123 vs 0.101 from squared — enough to
-        #   surface genuine mis-rankings in a short season.
-        #
-        # Everyone else (expected ≥ 0.30): original squared formula
+        # Everyone else (expected ≥ 0.30): squared formula
         #   win_cap = SEQ_CAP × (1 − expected)²
-        #   Even matches (0.50) stay at ≈ 0.038 — a moderate, fair reward.
-        #   Favourites remain tightly capped (0.005 at 82%).
-        #
-        #   expected=0.12 (extreme underdog)→ win_cap ≈ 0.132  (was 0.116)
-        #   expected=0.18 (heavy underdog)  → win_cap ≈ 0.123  (was 0.101)
-        #   expected=0.25 (heavy underdog)  → win_cap ≈ 0.113  (was 0.084)
-        #   expected=0.32 (clear underdog)  → win_cap ≈ 0.069  (unchanged)
-        #   expected=0.50 (even)            → win_cap ≈ 0.038  (unchanged)
-        #   expected=0.82 (heavy fav)       → win_cap ≈ 0.005  (unchanged)
         if expected < 0.30:
             win_cap = _SEQ_CAP * (1.0 - expected)
         else:
             win_cap = _SEQ_CAP * (1.0 - expected) ** 2
-        return _scale(min(win_cap, adj))
+        return _scale(min(win_cap, max(adj, 0.0)))
 
     # Loss path.
     if not record.won:
@@ -680,7 +672,6 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
         loss_cap = _SEQ_CAP * expected ** 2
         return _scale(max(-loss_cap, adj))
 
-    # Win with negative adj (underperformed but won): flat clip — rare, keep small.
     return _scale(max(-_SEQ_CAP, min(_SEQ_CAP, adj)))
 
 
