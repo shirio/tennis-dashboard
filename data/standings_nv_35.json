@@ -3112,8 +3112,8 @@
       "teams": [
         {
           "team_name": "DRAGONRIDGE CC",
-          "team_wins": 8,
-          "team_losses": 2,
+          "team_wins": 7,
+          "team_losses": 3,
           "matches_played": 10,
           "indiv_wins": 37,
           "indiv_losses": 13,
@@ -3126,8 +3126,8 @@
         },
         {
           "team_name": "DTC #1",
-          "team_wins": 8,
-          "team_losses": 2,
+          "team_wins": 7,
+          "team_losses": 3,
           "matches_played": 10,
           "indiv_wins": 31,
           "indiv_losses": 19,
@@ -3140,8 +3140,8 @@
         },
         {
           "team_name": "DESERT PALM",
-          "team_wins": 6,
-          "team_losses": 4,
+          "team_wins": 5,
+          "team_losses": 5,
           "matches_played": 10,
           "indiv_wins": 26,
           "indiv_losses": 24,
@@ -3154,8 +3154,8 @@
         },
         {
           "team_name": "RED ROCK CC #2",
-          "team_wins": 5,
-          "team_losses": 5,
+          "team_wins": 10,
+          "team_losses": 0,
           "matches_played": 10,
           "indiv_wins": 26,
           "indiv_losses": 24,
@@ -3182,8 +3182,8 @@
         },
         {
           "team_name": "SPANISH TRAIL #1",
-          "team_wins": 2,
-          "team_losses": 8,
+          "team_wins": 1,
+          "team_losses": 9,
           "matches_played": 10,
           "indiv_wins": 18,
           "indiv_losses": 32,
@@ -3196,8 +3196,8 @@
         },
         {
           "team_name": "DTC #3",
-          "team_wins": 1,
-          "team_losses": 9,
+          "team_wins": 0,
+          "team_losses": 10,
           "matches_played": 10,
           "indiv_wins": 15,
           "indiv_losses": 35,
