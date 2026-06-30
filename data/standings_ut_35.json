@@ -229,15 +229,11 @@
               "players_away": "Catherine van Uitert",
               "score": "7-5 6-1",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "Cottonwood Club-Annunziata",
-              "winner_names": [
-                "Catherine van Uitert"
-              ],
-              "loser_names": [
-                "Mary Diaz Gordon"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -245,15 +241,11 @@
               "players_away": "Heather George",
               "score": "6-0 6-2",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Cottonwood Club-Annunziata",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Jenna Nicholson"
-              ],
-              "loser_names": [
-                "Heather George"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -261,17 +253,11 @@
               "players_away": "Sarah Nelson / Lindsay Duckworth",
               "score": "7-6 6-2",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "Cottonwood Club-Annunziata",
-              "winner_names": [
-                "Sarah Nelson",
-                "Lindsay Duckworth"
-              ],
-              "loser_names": [
-                "Megan Reardon",
-                "Jennie Bethers"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -279,17 +265,11 @@
               "players_away": "Jennifer Evans / Naomi Stroud-Peterson",
               "score": "6-1 6-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Cottonwood Club-Annunziata",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Michelle Cutler",
-                "Janice Stokes-Burns"
-              ],
-              "loser_names": [
-                "Jennifer Evans",
-                "Naomi Stroud-Peterson"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -297,17 +277,11 @@
               "players_away": "Rachel Stohlton / Melanie Olsen",
               "score": "6-1 7-5",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Cottonwood Club-Annunziata",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Melissa Child",
-                "Liesl Lambert"
-              ],
-              "loser_names": [
-                "Rachel Stohlton",
-                "Melanie Olsen"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             }
           ]
         },
@@ -832,15 +806,11 @@
               "players_away": "Catherine van Uitert",
               "score": "6-2 6-4",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Wasatch High School-Jonston/Jones",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Elizabeth Heywood"
-              ],
-              "loser_names": [
-                "Catherine van Uitert"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -848,15 +818,11 @@
               "players_away": "Melanie Olsen",
               "score": "6-1 6-3",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Wasatch High School-Jonston/Jones",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Stefanie Maddox"
-              ],
-              "loser_names": [
-                "Melanie Olsen"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -864,17 +830,11 @@
               "players_away": "Lindsay Lafeen / Sarah Nelson",
               "score": "1-6 7-5 1-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "Wasatch High School-Jonston/Jones",
-              "winner_names": [
-                "Lindsay Lafeen",
-                "Sarah Nelson"
-              ],
-              "loser_names": [
-                "Carly Johnston",
-                "Catherine Dunn"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -882,17 +842,11 @@
               "players_away": "Naomi Stroud-Peterson / Jennifer Evans",
               "score": "6-0 7-6",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Wasatch High School-Jonston/Jones",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Shana Wood",
-                "Chelsea Watts"
-              ],
-              "loser_names": [
-                "Naomi Stroud-Peterson",
-                "Jennifer Evans"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -900,17 +854,11 @@
               "players_away": "Rikke Phinney / Rachel Stohlton",
               "score": "3-6 7-6 1-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "Wasatch High School-Jonston/Jones",
-              "winner_names": [
-                "Rikke Phinney",
-                "Rachel Stohlton"
-              ],
-              "loser_names": [
-                "Britta Davis",
-                "Emily Jenkins"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             }
           ]
         },
@@ -1236,15 +1184,11 @@
               "players_away": "Chelsea Wood",
               "score": "6-2 6-4",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "PC MARC-Krueger/Siano",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Darla Cardwell"
-              ],
-              "loser_names": [
-                "Chelsea Wood"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -1252,15 +1196,11 @@
               "players_away": "Catherine van Uitert",
               "score": "6-1 6-4",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "PC MARC-Krueger/Siano",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Hillary Jeppsen"
-              ],
-              "loser_names": [
-                "Catherine van Uitert"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -1268,17 +1208,11 @@
               "players_away": "Lindsay Duckworth / Sarah Nelson",
               "score": "6-3 7-6",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "PC MARC-Krueger/Siano",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Dannan Siano",
-                "Conni Gull"
-              ],
-              "loser_names": [
-                "Lindsay Duckworth",
-                "Sarah Nelson"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -1286,17 +1220,11 @@
               "players_away": "Lindsay Lafeen / Jennifer Evans",
               "score": "3-6 6-4 1-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "PC MARC-Krueger/Siano",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Katy Patterson",
-                "Romina Fabiani"
-              ],
-              "loser_names": [
-                "Lindsay Lafeen",
-                "Jennifer Evans"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -1304,13 +1232,10 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "PC MARC-Krueger/Siano",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Annie Tilton",
-                "Brittany Schuhmacher"
-              ],
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
               "loser_names": []
             }
           ]
@@ -1728,15 +1653,11 @@
               "players_away": "Chelsea Wood",
               "score": "6-2 6-4",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "SLT-Sweet/Smathers",
-              "winner_names": [
-                "Chelsea Wood"
-              ],
-              "loser_names": [
-                "Meghan Kellner"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -1744,15 +1665,11 @@
               "players_away": "Jennifer Evans",
               "score": "4-6 6-0 1-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "SLT-Sweet/Smathers",
-              "winner_names": [
-                "Jennifer Evans"
-              ],
-              "loser_names": [
-                "Holly Goulding"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -1760,17 +1677,11 @@
               "players_away": "Lindsay Lafeen / Catherine van Uitert",
               "score": "6-2 6-2",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "SLT-Sweet/Smathers",
-              "winner_names": [
-                "Lindsay Lafeen",
-                "Catherine van Uitert"
-              ],
-              "loser_names": [
-                "Paige Smathers",
-                "Candace Haroldsen"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -1778,17 +1689,11 @@
               "players_away": "Rachel Stohlton / Lindsey Pizza",
               "score": "7-5 6-3",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "SLT-Sweet/Smathers",
-              "winner_names": [
-                "Rachel Stohlton",
-                "Lindsey Pizza"
-              ],
-              "loser_names": [
-                "Nicole Leatham",
-                "Gabriella Romney"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -1796,17 +1701,11 @@
               "players_away": "Lisa Packer / Heather George",
               "score": "6-1 6-1",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "SLT-Sweet/Smathers",
-              "winner_names": [
-                "Lisa Packer",
-                "Heather George"
-              ],
-              "loser_names": [
-                "Lauren Murphy",
-                "Brittany Pope"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             }
           ]
         },
@@ -2433,15 +2332,11 @@
               "players_away": "Chelsea Wood",
               "score": "6-1 6-3",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Ace-Harman/Swalberg",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Ashley Harper"
-              ],
-              "loser_names": [
-                "Chelsea Wood"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -2449,15 +2344,11 @@
               "players_away": "Catherine van Uitert",
               "score": "6-0 6-2",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "Ace-Harman/Swalberg",
-              "winner_names": [
-                "Catherine van Uitert"
-              ],
-              "loser_names": [
-                "Jennifer Madison"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -2465,17 +2356,11 @@
               "players_away": "Heather George / Lisa Packer",
               "score": "7-6 6-4",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Ace-Harman/Swalberg",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Rebecca Harman",
-                "Camillia Groberg"
-              ],
-              "loser_names": [
-                "Heather George",
-                "Lisa Packer"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -2483,17 +2368,11 @@
               "players_away": "Jennifer Evans / Rachel Stohlton",
               "score": "4-6 6-0 1-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Ace-Harman/Swalberg",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Jessica Whittaker",
-                "KayeLynn BASTIAN"
-              ],
-              "loser_names": [
-                "Jennifer Evans",
-                "Rachel Stohlton"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -2501,13 +2380,10 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Ace-Harman/Swalberg",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Maria Pettit",
-                "Bonnie Whitesides"
-              ],
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
               "loser_names": []
             }
           ]
@@ -2632,15 +2508,11 @@
               "players_away": "Catherine van Uitert",
               "score": "6-2 6-1",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "SunPro Smashers",
-              "winner_names": [
-                "Catherine van Uitert"
-              ],
-              "loser_names": [
-                "Ellie Logan"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -2648,15 +2520,11 @@
               "players_away": "Chelsea Wood",
               "score": "6-2 2-6 1-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "SunPro Smashers",
-              "winner_names": [
-                "Chelsea Wood"
-              ],
-              "loser_names": [
-                "Sarah Cartwright"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -2664,17 +2532,11 @@
               "players_away": "Lindsay Lafeen / Jennifer Evans",
               "score": "7-6 3-6 1-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "SunPro Smashers",
-              "winner_names": [
-                "Lindsay Lafeen",
-                "Jennifer Evans"
-              ],
-              "loser_names": [
-                "Katrina Harlan",
-                "Diane Heaps"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -2682,13 +2544,10 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "SunPro Smashers",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Kaylene Andrew",
-                "Kelly Mortensen"
-              ],
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
               "loser_names": []
             },
             {
@@ -2697,13 +2556,10 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "SunPro Smashers",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Sherston Faux",
-                "Shannon Fredericks"
-              ],
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
               "loser_names": []
             }
           ]
@@ -3024,15 +2880,11 @@
               "players_away": "Chelsea Wood",
               "score": "6-4 6-1",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "Ivory Ridge-Hardin/Elison",
-              "winner_names": [
-                "Chelsea Wood"
-              ],
-              "loser_names": [
-                "Ashley Taylor"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -3040,15 +2892,11 @@
               "players_away": "Rachel Stohlton",
               "score": "7-5 6-1",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "Ivory Ridge-Hardin/Elison",
-              "winner_names": [
-                "Rachel Stohlton"
-              ],
-              "loser_names": [
-                "Kristin Kamerath"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -3056,17 +2904,11 @@
               "players_away": "Catherine van Uitert / Lindsay Duckworth",
               "score": "1-6 6-2 1-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Ivory Ridge-Hardin/Elison",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Jennifer Elison",
-                "Rebekah Aubrey"
-              ],
-              "loser_names": [
-                "Catherine van Uitert",
-                "Lindsay Duckworth"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -3074,17 +2916,11 @@
               "players_away": "Lindsay Lafeen / Jennifer Evans",
               "score": "6-4 6-2",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Ivory Ridge-Hardin/Elison",
-              "loser_team": "Sports Mall-Wood",
-              "winner_names": [
-                "Stephanie Sobotka",
-                "Allyson Smith"
-              ],
-              "loser_names": [
-                "Lindsay Lafeen",
-                "Jennifer Evans"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -3092,17 +2928,11 @@
               "players_away": "Marni Larsen / Melanie Olsen",
               "score": "7-6 6-3",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Sports Mall-Wood",
-              "loser_team": "Ivory Ridge-Hardin/Elison",
-              "winner_names": [
-                "Marni Larsen",
-                "Melanie Olsen"
-              ],
-              "loser_names": [
-                "Paula Neill",
-                "Chris Peterson"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             }
           ]
         },
@@ -3418,8 +3248,8 @@
         {
           "match_id": "07eaa963b8485741",
           "date": "4/10/2026",
-          "tl_match_id": null,
-          "scorecard_url": null,
+          "tl_match_id": "1011824143",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824143",
           "home_team": "Sports Mall Baseline Babes",
           "away_team": "SLTHC Spring Chicks",
           "team_wins_home": 2,
@@ -3519,8 +3349,8 @@
         {
           "match_id": "d2cb75451216cdfa",
           "date": "4/14/2026",
-          "tl_match_id": null,
-          "scorecard_url": null,
+          "tl_match_id": "1011824146",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824146",
           "home_team": "Sports Mall Baseline Babes",
           "away_team": "Orange Crush",
           "team_wins_home": 3,
@@ -3618,10 +3448,616 @@
           ]
         },
         {
-          "match_id": "a4a37938592f089e",
-          "date": "4/28/2026",
+          "match_id": "05115104008c11ca",
+          "date": "4/14/2026",
           "tl_match_id": null,
           "scorecard_url": null,
+          "home_team": "Liberty Park-Lombardi/Webster",
+          "away_team": "SLTHC Spring Chicks",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Caitlin Brewer",
+              "players_away": "Mary Vander Straten",
+              "score": "6-3 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Caitlin Brewer"
+              ],
+              "loser_names": [
+                "Mary Vander Straten"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Kelly Webster",
+              "players_away": "Maureen Russo",
+              "score": "6-1 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Kelly Webster"
+              ],
+              "loser_names": [
+                "Maureen Russo"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Bessy Nielson / Maria Lombardi",
+              "players_away": "Alejandra Gonzalez / Angela Rasmussen",
+              "score": "6-2 5-7 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Bessy Nielson",
+                "Maria Lombardi"
+              ],
+              "loser_names": [
+                "Alejandra Gonzalez",
+                "Angela Rasmussen"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Heidi Chytraus / Jeanette Shepard",
+              "players_away": "Marilee Cracroft / Elizabeth Harris-Johnson",
+              "score": "6-1 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Heidi Chytraus",
+                "Jeanette Shepard"
+              ],
+              "loser_names": [
+                "Marilee Cracroft",
+                "Elizabeth Harris-Johnson"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Annie Mortensen / Chelsea Spencer",
+              "players_away": "Julie Carlston / Megan Pierce",
+              "score": "6-3 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Annie Mortensen",
+                "Chelsea Spencer"
+              ],
+              "loser_names": [
+                "Julie Carlston",
+                "Megan Pierce"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "488ab7434b98d73f",
+          "date": "4/14/2026",
+          "tl_match_id": "1011824149",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824149",
+          "home_team": "Heber Hotties",
+          "away_team": "Ogden-Andersen",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jessica Menlove",
+              "players_away": "Megan Schey",
+              "score": "6-4 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Jessica Menlove"
+              ],
+              "loser_names": [
+                "Megan Schey"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Lisa Olson",
+              "players_away": "Lindsay Andersen",
+              "score": "4-6 6-3 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Lisa Olson"
+              ],
+              "loser_names": [
+                "Lindsay Andersen"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jocelyn Bennion / Jennifer Davies",
+              "players_away": "Mary Snow / Sally Anderson",
+              "score": "6-1 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Jocelyn Bennion",
+                "Jennifer Davies"
+              ],
+              "loser_names": [
+                "Mary Snow",
+                "Sally Anderson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jennifer Stone / Stephanie Benton",
+              "players_away": "Joy Peterson / Jamie Tate",
+              "score": "6-2 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Jennifer Stone",
+                "Stephanie Benton"
+              ],
+              "loser_names": [
+                "Joy Peterson",
+                "Jamie Tate"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jennifer Mcbride / Katie Studdert",
+              "players_away": "Lori Wilson / JaNean Nelson",
+              "score": "6-2 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Jennifer Mcbride",
+                "Katie Studdert"
+              ],
+              "loser_names": [
+                "Lori Wilson",
+                "JaNean Nelson"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "a2fb2474141dec3d",
+          "date": "4/14/2026",
+          "tl_match_id": null,
+          "scorecard_url": null,
+          "home_team": "Wasatch Hills For The Glory",
+          "away_team": "SunPro-Parker/Stringham",
+          "team_wins_home": 1,
+          "team_wins_away": 4,
+          "score": "1-4",
+          "status": "Lost 1-4 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Nancy Orme",
+              "players_away": "Sarah Alton",
+              "score": "4-6 7-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Sarah Alton"
+              ],
+              "loser_names": [
+                "Nancy Orme"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Erin Olson",
+              "players_away": "Elisa Ludwig",
+              "score": "7-5 7-5",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Elisa Ludwig"
+              ],
+              "loser_names": [
+                "Erin Olson"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Caitlin Lutsch / Jennifer Carter",
+              "players_away": "Tamara Miller / Jennifer Stringham",
+              "score": "7-5 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Tamara Miller",
+                "Jennifer Stringham"
+              ],
+              "loser_names": [
+                "Caitlin Lutsch",
+                "Jennifer Carter"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sarah Collins / Carina Lambert",
+              "players_away": "Lindsey Ramage / AnnMarie Chadwick",
+              "score": "6-3 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Lindsey Ramage",
+                "AnnMarie Chadwick"
+              ],
+              "loser_names": [
+                "Sarah Collins",
+                "Carina Lambert"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Annie Lindsley / Cortney Nebeker",
+              "players_away": "TRACY PADGETT / Alana Steinarsdottir",
+              "score": "6-1 4-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Annie Lindsley",
+                "Cortney Nebeker"
+              ],
+              "loser_names": [
+                "TRACY PADGETT",
+                "Alana Steinarsdottir"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "fcdcc12f93890f02",
+          "date": "4/21/2026",
+          "tl_match_id": null,
+          "scorecard_url": null,
+          "home_team": "Orange Crush",
+          "away_team": "SunPro-Parker/Stringham",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Megan Leonard",
+              "players_away": "Sarah Alton",
+              "score": "6-1 5-7 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Megan Leonard"
+              ],
+              "loser_names": [
+                "Sarah Alton"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Lesley Scruggs",
+              "players_away": "Kennadee Gillette",
+              "score": "6-4 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Kennadee Gillette"
+              ],
+              "loser_names": [
+                "Lesley Scruggs"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lisa Ewing / Jamie DeLong",
+              "players_away": "Ashley Bailey / Jennifer Stringham",
+              "score": "5-7 6-0 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Lisa Ewing",
+                "Jamie DeLong"
+              ],
+              "loser_names": [
+                "Ashley Bailey",
+                "Jennifer Stringham"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Hannah Lee / Kathi Poggi",
+              "players_away": "Kristi Parker / Michelle Hansen",
+              "score": "6-1 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Kristi Parker",
+                "Michelle Hansen"
+              ],
+              "loser_names": [
+                "Hannah Lee",
+                "Kathi Poggi"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jennifer Tooley / Ann Trentman",
+              "players_away": "AnnMarie Chadwick / Cheryl Harker",
+              "score": "6-4 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Jennifer Tooley",
+                "Ann Trentman"
+              ],
+              "loser_names": [
+                "AnnMarie Chadwick",
+                "Cheryl Harker"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "32eee29cffced69f",
+          "date": "4/21/2026",
+          "tl_match_id": "1011824153",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824153",
+          "home_team": "Heber Hotties",
+          "away_team": "SLTHC Spring Chicks",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Veronica Miller",
+              "players_away": "Alejandra Gonzalez",
+              "score": "6-2 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLTHC Spring Chicks",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Alejandra Gonzalez"
+              ],
+              "loser_names": [
+                "Veronica Miller"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Katie Studdert",
+              "players_away": "Julie Carlston",
+              "score": "7-6 1-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Katie Studdert"
+              ],
+              "loser_names": [
+                "Julie Carlston"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jessica Studdert / Jessica Larson",
+              "players_away": "Carla Stoddard / Stephanie Cheng",
+              "score": "6-2 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Jessica Studdert",
+                "Jessica Larson"
+              ],
+              "loser_names": [
+                "Carla Stoddard",
+                "Stephanie Cheng"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Lisa Wade / Stephanie Benton",
+              "players_away": "Nancy Sparrer / Elizabeth Harris-Johnson",
+              "score": "6-1 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Lisa Wade",
+                "Stephanie Benton"
+              ],
+              "loser_names": [
+                "Nancy Sparrer",
+                "Elizabeth Harris-Johnson"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Angela Ritchie / Wendy Heywood",
+              "players_away": "Courtney Fredrickson / Shelby Rose",
+              "score": "4-6 6-2 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLTHC Spring Chicks",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Courtney Fredrickson",
+                "Shelby Rose"
+              ],
+              "loser_names": [
+                "Angela Ritchie",
+                "Wendy Heywood"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "20e30e0a640bc131",
+          "date": "4/21/2026",
+          "tl_match_id": "1011824152",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824152",
+          "home_team": "Wasatch Hills For The Glory",
+          "away_team": "Ogden-Andersen",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Annie Lindsley",
+              "players_away": "Brooke Curtis",
+              "score": "6-2 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Brooke Curtis"
+              ],
+              "loser_names": [
+                "Annie Lindsley"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Kari Bennett",
+              "players_away": "Megan Schey",
+              "score": "7-5 3-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Kari Bennett"
+              ],
+              "loser_names": [
+                "Megan Schey"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lynne Kraus / Jennifer Carter",
+              "players_away": "Lindsay Andersen / Michelle Weddington",
+              "score": "6-2 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Lindsay Andersen",
+                "Michelle Weddington"
+              ],
+              "loser_names": [
+                "Lynne Kraus",
+                "Jennifer Carter"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Nancy Orme / Cortney Nebeker",
+              "players_away": "Joy Peterson / Betty Yamashita",
+              "score": "6-4 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Nancy Orme",
+                "Cortney Nebeker"
+              ],
+              "loser_names": [
+                "Joy Peterson",
+                "Betty Yamashita"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Caitlin Lutsch / Sarah Collins",
+              "players_away": "Isabel Cristina Lau / JaNean Nelson",
+              "score": "6-3 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Caitlin Lutsch",
+                "Sarah Collins"
+              ],
+              "loser_names": [
+                "Isabel Cristina Lau",
+                "JaNean Nelson"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "a4a37938592f089e",
+          "date": "4/28/2026",
+          "tl_match_id": "1011824156",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824156",
           "home_team": "Sports Mall Baseline Babes",
           "away_team": "Heber Hotties",
           "team_wins_home": 3,
@@ -3629,7 +4065,692 @@
           "score": "3-2",
           "status": "Won 3-2 Confirmed",
           "pending": false,
-          "lines": []
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Kate Stalsberg",
+              "players_away": "Jessica Menlove",
+              "score": "6-0 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Sports Mall Baseline Babes",
+              "winner_names": [
+                "Jessica Menlove"
+              ],
+              "loser_names": [
+                "Kate Stalsberg"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Kristy Olsen",
+              "players_away": "Lisa Olson",
+              "score": "3-6 6-3 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Sports Mall Baseline Babes",
+              "winner_names": [
+                "Lisa Olson"
+              ],
+              "loser_names": [
+                "Kristy Olsen"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Bethany Bodily / Emily Kelly",
+              "players_away": "Jennifer Stone / Jocelyn Bennion",
+              "score": "6-2 7-6",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Bethany Bodily",
+                "Emily Kelly"
+              ],
+              "loser_names": [
+                "Jennifer Stone",
+                "Jocelyn Bennion"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Brenda Green / Lexi Farr",
+              "players_away": "Jessica Studdert / Lisa Wade",
+              "score": "6-4 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Brenda Green",
+                "Lexi Farr"
+              ],
+              "loser_names": [
+                "Jessica Studdert",
+                "Lisa Wade"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Michelle Edwards / Nicole Reese",
+              "players_away": "Jen Dagley / Jennifer Mcbride",
+              "score": "6-3 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Michelle Edwards",
+                "Nicole Reese"
+              ],
+              "loser_names": [
+                "Jen Dagley",
+                "Jennifer Mcbride"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "147d0895a4a06458",
+          "date": "4/28/2026",
+          "tl_match_id": null,
+          "scorecard_url": null,
+          "home_team": "Orange Crush",
+          "away_team": "Liberty Park-Lombardi/Webster",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Hannah Lee",
+              "players_away": "Carrie Larsen",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Hannah Lee"
+              ],
+              "loser_names": [
+                "Carrie Larsen"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jamie DeLong",
+              "players_away": "Caitlin Brewer",
+              "score": "6-2 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Jamie DeLong"
+              ],
+              "loser_names": [
+                "Caitlin Brewer"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Tooley / Linda Byington",
+              "players_away": "Robin Simmons / Kelly Webster",
+              "score": "6-0 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Robin Simmons",
+                "Kelly Webster"
+              ],
+              "loser_names": [
+                "Jennifer Tooley",
+                "Linda Byington"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Ann Trentman / Lisa Ewing",
+              "players_away": "Jenni Guynn / Jennifer Sweat",
+              "score": "6-3 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Ann Trentman",
+                "Lisa Ewing"
+              ],
+              "loser_names": [
+                "Jenni Guynn",
+                "Jennifer Sweat"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Terri Brunner / Shelly Kemp",
+              "players_away": "Jessica Eckert / Annie Mortensen",
+              "score": "7-6 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Terri Brunner",
+                "Shelly Kemp"
+              ],
+              "loser_names": [
+                "Jessica Eckert",
+                "Annie Mortensen"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "3352f4224526fe20",
+          "date": "4/28/2026",
+          "tl_match_id": "1011824157",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824157",
+          "home_team": "Wasatch Hills For The Glory",
+          "away_team": "SLTHC Spring Chicks",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jamie Sorensen",
+              "players_away": "Alejandra Gonzalez",
+              "score": "6-1 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLTHC Spring Chicks",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Alejandra Gonzalez"
+              ],
+              "loser_names": [
+                "Jamie Sorensen"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Erin Olson",
+              "players_away": "Julie Carlston",
+              "score": "6-1 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLTHC Spring Chicks",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Julie Carlston"
+              ],
+              "loser_names": [
+                "Erin Olson"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Nancy Orme / Cortney Nebeker",
+              "players_away": "Nancy Sparrer / Kathleen Sorenson",
+              "score": "6-0 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Nancy Orme",
+                "Cortney Nebeker"
+              ],
+              "loser_names": [
+                "Nancy Sparrer",
+                "Kathleen Sorenson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sarah Collins / Caitlin Lutsch",
+              "players_away": "Courtney Fredrickson / Megan Pierce",
+              "score": "7-5 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLTHC Spring Chicks",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Courtney Fredrickson",
+                "Megan Pierce"
+              ],
+              "loser_names": [
+                "Sarah Collins",
+                "Caitlin Lutsch"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Carina Lambert / Kari Bennett",
+              "players_away": "Heather Callister / Gwyn Mcneal",
+              "score": "6-4 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Carina Lambert",
+                "Kari Bennett"
+              ],
+              "loser_names": [
+                "Heather Callister",
+                "Gwyn Mcneal"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "8406107a06bbef09",
+          "date": "4/28/2026",
+          "tl_match_id": null,
+          "scorecard_url": null,
+          "home_team": "Ogden-Andersen",
+          "away_team": "SunPro-Parker/Stringham",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Lindsay Andersen",
+              "players_away": "Kennadee Gillette",
+              "score": "6-2 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Kennadee Gillette"
+              ],
+              "loser_names": [
+                "Lindsay Andersen"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Natalie Stobbe",
+              "players_away": "Elisa Ludwig",
+              "score": "6-2 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Natalie Stobbe"
+              ],
+              "loser_names": [
+                "Elisa Ludwig"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Brooke Curtis / Megan Schey",
+              "players_away": "Michelle Hansen / Lindsey Ramage",
+              "score": "2-6 7-5 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Brooke Curtis",
+                "Megan Schey"
+              ],
+              "loser_names": [
+                "Michelle Hansen",
+                "Lindsey Ramage"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Joy Peterson / Jamie Tate",
+              "players_away": "Tamara Miller / Katri Koehle",
+              "score": "6-3 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Tamara Miller",
+                "Katri Koehle"
+              ],
+              "loser_names": [
+                "Joy Peterson",
+                "Jamie Tate"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Lori Wilson / Kelti Palmer",
+              "players_away": "Carolyn Andrus / Liz Rowley",
+              "score": "3-6 6-4 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Lori Wilson",
+                "Kelti Palmer"
+              ],
+              "loser_names": [
+                "Carolyn Andrus",
+                "Liz Rowley"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "6a5a60e08570f8af",
+          "date": "4/7/2026",
+          "tl_match_id": "1011824142",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824142",
+          "home_team": "Orange Crush",
+          "away_team": "Wasatch Hills For The Glory",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Megan Leonard",
+              "players_away": "Jamie Sorensen",
+              "score": "3-6 6-3 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Megan Leonard"
+              ],
+              "loser_names": [
+                "Jamie Sorensen"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jamie DeLong",
+              "players_away": "Nancy Orme",
+              "score": "7-6 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Nancy Orme"
+              ],
+              "loser_names": [
+                "Jamie DeLong"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Ann Trentman / Allison Leishman",
+              "players_away": "Lynne Kraus / Caitlin Lutsch",
+              "score": "4-6 6-2 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Lynne Kraus",
+                "Caitlin Lutsch"
+              ],
+              "loser_names": [
+                "Ann Trentman",
+                "Allison Leishman"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Linda Byington / Jennifer Tooley",
+              "players_away": "Allison Dayton / Jennifer Carter",
+              "score": "6-2 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Linda Byington",
+                "Jennifer Tooley"
+              ],
+              "loser_names": [
+                "Allison Dayton",
+                "Jennifer Carter"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kathi Poggi / Shelly Kemp",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Kathi Poggi",
+                "Shelly Kemp"
+              ],
+              "loser_names": []
+            }
+          ]
+        },
+        {
+          "match_id": "d67e9d9834bc5b13",
+          "date": "4/7/2026",
+          "tl_match_id": null,
+          "scorecard_url": null,
+          "home_team": "Liberty Park-Lombardi/Webster",
+          "away_team": "Ogden-Andersen",
+          "team_wins_home": 1,
+          "team_wins_away": 4,
+          "score": "1-4",
+          "status": "Lost 1-4 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Carrie Larsen",
+              "players_away": "Sally Anderson",
+              "score": "3-6 6-2 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Carrie Larsen"
+              ],
+              "loser_names": [
+                "Sally Anderson"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "",
+              "players_away": "Michelle Weddington",
+              "score": "6-0 6-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Michelle Weddington"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Bessy Nielson / Robin Simmons",
+              "players_away": "Lindsay Andersen / Brooke Curtis",
+              "score": "5-7 6-4 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Lindsay Andersen",
+                "Brooke Curtis"
+              ],
+              "loser_names": [
+                "Bessy Nielson",
+                "Robin Simmons"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jeanette Shepard / Maria Lombardi",
+              "players_away": "Megan Schey / Mary Snow",
+              "score": "6-4 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Megan Schey",
+                "Mary Snow"
+              ],
+              "loser_names": [
+                "Jeanette Shepard",
+                "Maria Lombardi"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "",
+              "players_away": "Joy Peterson / Betty Yamashita",
+              "score": "6-0 6-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Joy Peterson",
+                "Betty Yamashita"
+              ],
+              "loser_names": []
+            }
+          ]
+        },
+        {
+          "match_id": "b12a49f4f8facd44",
+          "date": "4/7/2026",
+          "tl_match_id": null,
+          "scorecard_url": null,
+          "home_team": "Heber Hotties",
+          "away_team": "SunPro-Parker/Stringham",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Katie Studdert",
+              "players_away": "Alana Steinarsdottir",
+              "score": "1-6 6-4 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Alana Steinarsdottir"
+              ],
+              "loser_names": [
+                "Katie Studdert"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Wendy Heywood",
+              "players_away": "Liz Rowley",
+              "score": "6-3 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Liz Rowley"
+              ],
+              "loser_names": [
+                "Wendy Heywood"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Davies / Jessica Studdert",
+              "players_away": "Katri Koehle / Lindsey Ramage",
+              "score": "6-3 4-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Jennifer Davies",
+                "Jessica Studdert"
+              ],
+              "loser_names": [
+                "Katri Koehle",
+                "Lindsey Ramage"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jennifer Stone / Jocelyn Bennion",
+              "players_away": "Ashley Bailey / Kristi Parker",
+              "score": "6-3 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Jennifer Stone",
+                "Jocelyn Bennion"
+              ],
+              "loser_names": [
+                "Ashley Bailey",
+                "Kristi Parker"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Stephanie Benton / Angela Ritchie",
+              "players_away": "AnnMarie Chadwick / Tema Laussen",
+              "score": "6-2 6-7 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "AnnMarie Chadwick",
+                "Tema Laussen"
+              ],
+              "loser_names": [
+                "Stephanie Benton",
+                "Angela Ritchie"
+              ]
+            }
+          ]
         },
         {
           "match_id": "f7d454fef013e831",
@@ -3730,10 +4851,311 @@
           ]
         },
         {
-          "match_id": "770930a2036acde1",
-          "date": "5/19/2026",
+          "match_id": "40be5bc18ab3d577",
+          "date": "5/12/2026",
+          "tl_match_id": "1011824162",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824162",
+          "home_team": "Orange Crush",
+          "away_team": "Heber Hotties",
+          "team_wins_home": 1,
+          "team_wins_away": 4,
+          "score": "1-4",
+          "status": "Lost 1-4 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "",
+              "players_away": "Jessica Menlove",
+              "score": "6-0 6-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Jessica Menlove"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jennifer Tooley",
+              "players_away": "Jessica Larson",
+              "score": "6-4 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Jessica Larson"
+              ],
+              "loser_names": [
+                "Jennifer Tooley"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Shelly Kemp / Terri Brunner",
+              "players_away": "Jocelyn Bennion / Jennifer Davies",
+              "score": "6-2 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Jocelyn Bennion",
+                "Jennifer Davies"
+              ],
+              "loser_names": [
+                "Shelly Kemp",
+                "Terri Brunner"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jenna DeLong / Jamie DeLong",
+              "players_away": "Jennifer Stone / Jessica Studdert",
+              "score": "7-6 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Jennifer Stone",
+                "Jessica Studdert"
+              ],
+              "loser_names": [
+                "Jenna DeLong",
+                "Jamie DeLong"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Allison Leishman / Ann Trentman",
+              "players_away": "Lisa Wade / Stephanie Benton",
+              "score": "3-6 7-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Allison Leishman",
+                "Ann Trentman"
+              ],
+              "loser_names": [
+                "Lisa Wade",
+                "Stephanie Benton"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "7daebe2caa38c356",
+          "date": "5/12/2026",
           "tl_match_id": null,
           "scorecard_url": null,
+          "home_team": "Liberty Park-Lombardi/Webster",
+          "away_team": "Wasatch Hills For The Glory",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Carrie Larsen",
+              "players_away": "Kari Bennett",
+              "score": "6-1 6-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Kari Bennett"
+              ],
+              "loser_names": [
+                "Carrie Larsen"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Kelly Webster",
+              "players_away": "Jamie Sorensen",
+              "score": "1-6 6-2 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Jamie Sorensen"
+              ],
+              "loser_names": [
+                "Kelly Webster"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Ann Weaver / Jeanette Shepard",
+              "players_away": "Nancy Orme / Caitlin Lutsch",
+              "score": "3-6 6-2 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Nancy Orme",
+                "Caitlin Lutsch"
+              ],
+              "loser_names": [
+                "Ann Weaver",
+                "Jeanette Shepard"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Robin Simmons / Bessy Nielson",
+              "players_away": "Cortney Nebeker / Annie Lindsley",
+              "score": "2-6 6-1 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Robin Simmons",
+                "Bessy Nielson"
+              ],
+              "loser_names": [
+                "Cortney Nebeker",
+                "Annie Lindsley"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Caitlin Brewer / Jenni Guynn",
+              "players_away": "Sarah Collins / Lynne Kraus",
+              "score": "6-4 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Caitlin Brewer",
+                "Jenni Guynn"
+              ],
+              "loser_names": [
+                "Sarah Collins",
+                "Lynne Kraus"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "dd83e6f1a34b2604",
+          "date": "5/12/2026",
+          "tl_match_id": "1011824163",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824163",
+          "home_team": "Ogden-Andersen",
+          "away_team": "SLTHC Spring Chicks",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Megan Schey",
+              "players_away": "Julie Carlston",
+              "score": "5-7 6-3 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLTHC Spring Chicks",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Julie Carlston"
+              ],
+              "loser_names": [
+                "Megan Schey"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Natalie Stobbe",
+              "players_away": "Mary Vander Straten",
+              "score": "6-2 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Natalie Stobbe"
+              ],
+              "loser_names": [
+                "Mary Vander Straten"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Brooke Curtis / Joy Peterson",
+              "players_away": "Nancy Sparrer / Elizabeth Harris-Johnson",
+              "score": "6-1 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Brooke Curtis",
+                "Joy Peterson"
+              ],
+              "loser_names": [
+                "Nancy Sparrer",
+                "Elizabeth Harris-Johnson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Lori Wilson / JaNean Nelson",
+              "players_away": "Heather Callister / Stephanie Cheng",
+              "score": "5-7 7-5 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Lori Wilson",
+                "JaNean Nelson"
+              ],
+              "loser_names": [
+                "Heather Callister",
+                "Stephanie Cheng"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Sally Anderson / Isabel Cristina Lau",
+              "players_away": "Shelby Rose / Courtney Fredrickson",
+              "score": "6-0 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLTHC Spring Chicks",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Shelby Rose",
+                "Courtney Fredrickson"
+              ],
+              "loser_names": [
+                "Sally Anderson",
+                "Isabel Cristina Lau"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "770930a2036acde1",
+          "date": "5/19/2026",
+          "tl_match_id": "1011824168",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824168",
           "home_team": "Sports Mall Baseline Babes",
           "away_team": "Ogden-Andersen",
           "team_wins_home": 4,
@@ -3828,10 +5250,311 @@
           ]
         },
         {
-          "match_id": "8c13181e69a82194",
-          "date": "5/26/2026",
+          "match_id": "3e4ffac3c5afe2c3",
+          "date": "5/19/2026",
+          "tl_match_id": "1011824166",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824166",
+          "home_team": "Orange Crush",
+          "away_team": "SLTHC Spring Chicks",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Megan Leonard",
+              "players_away": "Julie Carlston",
+              "score": "6-0 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Megan Leonard"
+              ],
+              "loser_names": [
+                "Julie Carlston"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Lesley Scruggs",
+              "players_away": "Heather Callister",
+              "score": "6-0 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Lesley Scruggs"
+              ],
+              "loser_names": [
+                "Heather Callister"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Maryam Klock / Jennifer Tooley",
+              "players_away": "Angela Rasmussen / Kathleen Sorenson",
+              "score": "6-4 3-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Maryam Klock",
+                "Jennifer Tooley"
+              ],
+              "loser_names": [
+                "Angela Rasmussen",
+                "Kathleen Sorenson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Lisa Ewing / Allison Leishman",
+              "players_away": "Courtney Fredrickson / Shelby Rose",
+              "score": "6-4 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Lisa Ewing",
+                "Allison Leishman"
+              ],
+              "loser_names": [
+                "Courtney Fredrickson",
+                "Shelby Rose"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kadee Wolfgram / Ann Trentman",
+              "players_away": "Gwyn Mcneal / Stephanie Cheng",
+              "score": "2-6 6-2 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Kadee Wolfgram",
+                "Ann Trentman"
+              ],
+              "loser_names": [
+                "Gwyn Mcneal",
+                "Stephanie Cheng"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "b9b17d09e41eabd9",
+          "date": "5/19/2026",
           "tl_match_id": null,
           "scorecard_url": null,
+          "home_team": "Liberty Park-Lombardi/Webster",
+          "away_team": "SunPro-Parker/Stringham",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Carrie Larsen",
+              "players_away": "Sarah Alton",
+              "score": "6-1 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Sarah Alton"
+              ],
+              "loser_names": [
+                "Carrie Larsen"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jessica Eckert",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Jessica Eckert"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jeanette Shepard / Robin Simmons",
+              "players_away": "Tamara Miller / Katri Koehle",
+              "score": "6-3 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Jeanette Shepard",
+                "Robin Simmons"
+              ],
+              "loser_names": [
+                "Tamara Miller",
+                "Katri Koehle"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Bessy Nielson / Ann Weaver",
+              "players_away": "AnnMarie Chadwick / Kristi Parker",
+              "score": "7-5 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Bessy Nielson",
+                "Ann Weaver"
+              ],
+              "loser_names": [
+                "AnnMarie Chadwick",
+                "Kristi Parker"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Caitlin Brewer / Jenni Guynn",
+              "players_away": "TRACY PADGETT / Cheryl Harker",
+              "score": "6-3 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Caitlin Brewer",
+                "Jenni Guynn"
+              ],
+              "loser_names": [
+                "TRACY PADGETT",
+                "Cheryl Harker"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "19653a7fdc876b0d",
+          "date": "5/19/2026",
+          "tl_match_id": "1011824167",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824167",
+          "home_team": "Heber Hotties",
+          "away_team": "Wasatch Hills For The Glory",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jessica Menlove",
+              "players_away": "Kari Bennett",
+              "score": "6-4 7-6",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Jessica Menlove"
+              ],
+              "loser_names": [
+                "Kari Bennett"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Katie Studdert",
+              "players_away": "Annie Lindsley",
+              "score": "6-4 7-6",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Annie Lindsley"
+              ],
+              "loser_names": [
+                "Katie Studdert"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lisa Wade / Jennifer Stone",
+              "players_away": "Caitlin Lutsch / Lynne Kraus",
+              "score": "7-6 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Caitlin Lutsch",
+                "Lynne Kraus"
+              ],
+              "loser_names": [
+                "Lisa Wade",
+                "Jennifer Stone"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jen Dagley / Jessica Studdert",
+              "players_away": "Judianne Peterson / Carina Lambert",
+              "score": "6-3 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Jen Dagley",
+                "Jessica Studdert"
+              ],
+              "loser_names": [
+                "Judianne Peterson",
+                "Carina Lambert"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Wendy Heywood / Angela Ritchie",
+              "players_away": "Sarah Collins / Nancy Orme",
+              "score": "6-1 7-6",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Sarah Collins",
+                "Nancy Orme"
+              ],
+              "loser_names": [
+                "Wendy Heywood",
+                "Angela Ritchie"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "8c13181e69a82194",
+          "date": "5/26/2026",
+          "tl_match_id": "1011824171",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824171",
           "home_team": "Sports Mall Baseline Babes",
           "away_team": "SLTHC Spring Chicks",
           "team_wins_home": 4,
@@ -3839,13 +5562,401 @@
           "score": "4-1",
           "status": "Won 4-1 Confirmed",
           "pending": false,
-          "lines": []
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Bethany Bodily",
+              "players_away": "Alejandra Gonzalez",
+              "score": "6-4 4-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Bethany Bodily"
+              ],
+              "loser_names": [
+                "Alejandra Gonzalez"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Alycia Anthony",
+              "players_away": "Julie Carlston",
+              "score": "6-2 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLTHC Spring Chicks",
+              "loser_team": "Sports Mall Baseline Babes",
+              "winner_names": [
+                "Julie Carlston"
+              ],
+              "loser_names": [
+                "Alycia Anthony"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Julie Labrum / Julie Black",
+              "players_away": "Courtney Fredrickson / Shelby Rose",
+              "score": "6-4 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Julie Labrum",
+                "Julie Black"
+              ],
+              "loser_names": [
+                "Courtney Fredrickson",
+                "Shelby Rose"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Lexi Farr / Tori Locke",
+              "players_away": "Nancy Sparrer / Elizabeth Harris-Johnson",
+              "score": "6-1 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Lexi Farr",
+                "Tori Locke"
+              ],
+              "loser_names": [
+                "Nancy Sparrer",
+                "Elizabeth Harris-Johnson"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kelly Wilcox / Tiffany Renfro",
+              "players_away": "Mary Vander Straten / Stephanie Cheng",
+              "score": "6-1 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Kelly Wilcox",
+                "Tiffany Renfro"
+              ],
+              "loser_names": [
+                "Mary Vander Straten",
+                "Stephanie Cheng"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "43df9dec87d90085",
+          "date": "5/26/2026",
+          "tl_match_id": "1011824170",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824170",
+          "home_team": "Orange Crush",
+          "away_team": "Wasatch Hills For The Glory",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Megan Leonard",
+              "players_away": "Kari Bennett",
+              "score": "6-3 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Megan Leonard"
+              ],
+              "loser_names": [
+                "Kari Bennett"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Lesley Scruggs",
+              "players_away": "Erin Olson",
+              "score": "6-4 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Lesley Scruggs"
+              ],
+              "loser_names": [
+                "Erin Olson"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jamie DeLong / Allison Leishman",
+              "players_away": "Nancy Orme / Cortney Nebeker",
+              "score": "6-7 6-2 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Nancy Orme",
+                "Cortney Nebeker"
+              ],
+              "loser_names": [
+                "Jamie DeLong",
+                "Allison Leishman"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jennifer Tooley / Maryam Klock",
+              "players_away": "Carina Lambert / Caitlin Lutsch",
+              "score": "6-3 4-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Jennifer Tooley",
+                "Maryam Klock"
+              ],
+              "loser_names": [
+                "Carina Lambert",
+                "Caitlin Lutsch"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kadee Wolfgram / Lisa Ewing",
+              "players_away": "Sarah Collins / Jamie Sorensen",
+              "score": "7-5 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Sarah Collins",
+                "Jamie Sorensen"
+              ],
+              "loser_names": [
+                "Kadee Wolfgram",
+                "Lisa Ewing"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "73a5c2a7a44d095b",
+          "date": "5/26/2026",
+          "tl_match_id": null,
+          "scorecard_url": null,
+          "home_team": "Liberty Park-Lombardi/Webster",
+          "away_team": "Ogden-Andersen",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jenni Guynn",
+              "players_away": "Lori Wilson",
+              "score": "6-1 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Jenni Guynn"
+              ],
+              "loser_names": [
+                "Lori Wilson"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Carrie Larsen",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Carrie Larsen"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Robin Simmons / Ann Weaver",
+              "players_away": "Brooke Curtis / Joy Peterson",
+              "score": "6-4 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Brooke Curtis",
+                "Joy Peterson"
+              ],
+              "loser_names": [
+                "Robin Simmons",
+                "Ann Weaver"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kelly Webster / Bessy Nielson",
+              "players_away": "Lindsay Andersen / Sally Anderson",
+              "score": "6-7 6-4 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Lindsay Andersen",
+                "Sally Anderson"
+              ],
+              "loser_names": [
+                "Kelly Webster",
+                "Bessy Nielson"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jennifer Sweat / Annie Mortensen",
+              "players_away": "JaNean Nelson / Jamie Tate",
+              "score": "6-4 5-7 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Jennifer Sweat",
+                "Annie Mortensen"
+              ],
+              "loser_names": [
+                "JaNean Nelson",
+                "Jamie Tate"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "c851a313baff2bc6",
+          "date": "5/26/2026",
+          "tl_match_id": null,
+          "scorecard_url": null,
+          "home_team": "Heber Hotties",
+          "away_team": "SunPro-Parker/Stringham",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Lisa Olson",
+              "players_away": "Kennadee Gillette",
+              "score": "6-2 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Kennadee Gillette"
+              ],
+              "loser_names": [
+                "Lisa Olson"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jessica Larson",
+              "players_away": "Elisa Ludwig",
+              "score": "6-3 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Jessica Larson"
+              ],
+              "loser_names": [
+                "Elisa Ludwig"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Davies / Jessica Studdert",
+              "players_away": "Lindsey Ramage / Alana Steinarsdottir",
+              "score": "7-5 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Jennifer Davies",
+                "Jessica Studdert"
+              ],
+              "loser_names": [
+                "Lindsey Ramage",
+                "Alana Steinarsdottir"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jennifer Stone / Stephanie Benton",
+              "players_away": "Jennifer Stringham / Kristi Parker",
+              "score": "6-2 3-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Jennifer Stone",
+                "Stephanie Benton"
+              ],
+              "loser_names": [
+                "Jennifer Stringham",
+                "Kristi Parker"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jocelyn Bennion / Jennifer Mcbride",
+              "players_away": "Ashley Bailey / Sarah Alton",
+              "score": "7-5 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Heber Hotties",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Jocelyn Bennion",
+                "Jennifer Mcbride"
+              ],
+              "loser_names": [
+                "Ashley Bailey",
+                "Sarah Alton"
+              ]
+            }
+          ]
         },
         {
           "match_id": "77f6436a9b610989",
           "date": "5/5/2026",
-          "tl_match_id": null,
-          "scorecard_url": null,
+          "tl_match_id": "1011824161",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824161",
           "home_team": "Sports Mall Baseline Babes",
           "away_team": "Wasatch Hills For The Glory",
           "team_wins_home": 3,
@@ -3853,7 +5964,395 @@
           "score": "3-2",
           "status": "Won 3-2 Confirmed",
           "pending": false,
-          "lines": []
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Tatum Smith",
+              "players_away": "Caitlin Lutsch",
+              "score": "6-2 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Tatum Smith"
+              ],
+              "loser_names": [
+                "Caitlin Lutsch"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Bethany Bodily",
+              "players_away": "Jinqiu Zhang",
+              "score": "6-1 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Bethany Bodily"
+              ],
+              "loser_names": [
+                "Jinqiu Zhang"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Kristy Olsen / Tiffany Renfro",
+              "players_away": "Carina Lambert / Nancy Orme",
+              "score": "7-6 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Sports Mall Baseline Babes",
+              "winner_names": [
+                "Carina Lambert",
+                "Nancy Orme"
+              ],
+              "loser_names": [
+                "Kristy Olsen",
+                "Tiffany Renfro"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Brenda Green / Kate Stalsberg",
+              "players_away": "Judianne Peterson / Jennifer Carter",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "Wasatch Hills For The Glory",
+              "winner_names": [
+                "Brenda Green",
+                "Kate Stalsberg"
+              ],
+              "loser_names": [
+                "Judianne Peterson",
+                "Jennifer Carter"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Julie Labrum / Tori Locke",
+              "players_away": "Jamie Sorensen / Sarah Collins",
+              "score": "6-4 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wasatch Hills For The Glory",
+              "loser_team": "Sports Mall Baseline Babes",
+              "winner_names": [
+                "Jamie Sorensen",
+                "Sarah Collins"
+              ],
+              "loser_names": [
+                "Julie Labrum",
+                "Tori Locke"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "83fa5f8d25474422",
+          "date": "5/5/2026",
+          "tl_match_id": "1011824158",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011824158",
+          "home_team": "Orange Crush",
+          "away_team": "Ogden-Andersen",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Megan Leonard",
+              "players_away": "Sally Anderson",
+              "score": "6-3 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Megan Leonard"
+              ],
+              "loser_names": [
+                "Sally Anderson"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Allison Leishman",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Allison Leishman"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Kathi Poggi / Shelly Kemp",
+              "players_away": "Lindsay Andersen / Megan Schey",
+              "score": "6-3 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Lindsay Andersen",
+                "Megan Schey"
+              ],
+              "loser_names": [
+                "Kathi Poggi",
+                "Shelly Kemp"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Ann Trentman / Jennifer Tooley",
+              "players_away": "Betty Yamashita / Mary Snow",
+              "score": "6-4 2-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Ogden-Andersen",
+              "loser_team": "Orange Crush",
+              "winner_names": [
+                "Betty Yamashita",
+                "Mary Snow"
+              ],
+              "loser_names": [
+                "Ann Trentman",
+                "Jennifer Tooley"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Maryam Klock / Jenna DeLong",
+              "players_away": "Jamie Tate / Kelti Palmer",
+              "score": "4-6 6-1 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Orange Crush",
+              "loser_team": "Ogden-Andersen",
+              "winner_names": [
+                "Maryam Klock",
+                "Jenna DeLong"
+              ],
+              "loser_names": [
+                "Jamie Tate",
+                "Kelti Palmer"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "d7e80bfe00ccc511",
+          "date": "5/5/2026",
+          "tl_match_id": null,
+          "scorecard_url": null,
+          "home_team": "Liberty Park-Lombardi/Webster",
+          "away_team": "Heber Hotties",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Chelsea Spencer",
+              "players_away": "Jessica Menlove",
+              "score": "6-0 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Jessica Menlove"
+              ],
+              "loser_names": [
+                "Chelsea Spencer"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Kelly Webster",
+              "players_away": "Katie Studdert",
+              "score": "6-3 4-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Kelly Webster"
+              ],
+              "loser_names": [
+                "Katie Studdert"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Sweat / Heidi Chytraus",
+              "players_away": "Jessica Larson / Jennifer Davies",
+              "score": "7-6 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Heber Hotties",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Jessica Larson",
+                "Jennifer Davies"
+              ],
+              "loser_names": [
+                "Jennifer Sweat",
+                "Heidi Chytraus"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Robin Simmons / Jeanette Shepard",
+              "players_away": "Stephanie Benton / Jen Dagley",
+              "score": "6-1 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Robin Simmons",
+                "Jeanette Shepard"
+              ],
+              "loser_names": [
+                "Stephanie Benton",
+                "Jen Dagley"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jenni Guynn / Caitlin Brewer",
+              "players_away": "Wendy Heywood / Angela Ritchie",
+              "score": "6-1 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Heber Hotties",
+              "winner_names": [
+                "Jenni Guynn",
+                "Caitlin Brewer"
+              ],
+              "loser_names": [
+                "Wendy Heywood",
+                "Angela Ritchie"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "dc28c3b33a223966",
+          "date": "5/5/2026",
+          "tl_match_id": null,
+          "scorecard_url": null,
+          "home_team": "SunPro-Parker/Stringham",
+          "away_team": "SLTHC Spring Chicks",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Lindsey Ramage",
+              "players_away": "Alejandra Gonzalez",
+              "score": "6-7 6-1 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLTHC Spring Chicks",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Alejandra Gonzalez"
+              ],
+              "loser_names": [
+                "Lindsey Ramage"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Alana Steinarsdottir",
+              "players_away": "Heather Callister",
+              "score": "6-3 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Alana Steinarsdottir"
+              ],
+              "loser_names": [
+                "Heather Callister"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Stringham / Kristi Parker",
+              "players_away": "Marilee Cracroft / Julie Carlston",
+              "score": "6-3 2-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "SLTHC Spring Chicks",
+              "loser_team": "SunPro-Parker/Stringham",
+              "winner_names": [
+                "Marilee Cracroft",
+                "Julie Carlston"
+              ],
+              "loser_names": [
+                "Jennifer Stringham",
+                "Kristi Parker"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Tamara Miller / AnnMarie Chadwick",
+              "players_away": "Angela Rasmussen / Kathleen Sorenson",
+              "score": "6-0 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Tamara Miller",
+                "AnnMarie Chadwick"
+              ],
+              "loser_names": [
+                "Angela Rasmussen",
+                "Kathleen Sorenson"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Sarah Alton / TRACY PADGETT",
+              "players_away": "Maureen Russo / Mary Vander Straten",
+              "score": "6-2 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "SunPro-Parker/Stringham",
+              "loser_team": "SLTHC Spring Chicks",
+              "winner_names": [
+                "Sarah Alton",
+                "TRACY PADGETT"
+              ],
+              "loser_names": [
+                "Maureen Russo",
+                "Mary Vander Straten"
+              ]
+            }
+          ]
         },
         {
           "match_id": "2af119bfe8c99b16",
@@ -3867,7 +6366,94 @@
           "score": "2-3",
           "status": "Lost 2-3 Disputed",
           "pending": false,
-          "lines": []
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Tatum Smith",
+              "players_away": "Annie Mortensen",
+              "score": "6-3 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Tatum Smith"
+              ],
+              "loser_names": [
+                "Annie Mortensen"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Julie Black",
+              "players_away": "Caitlin Brewer",
+              "score": "7-5 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Sports Mall Baseline Babes",
+              "winner_names": [
+                "Caitlin Brewer"
+              ],
+              "loser_names": [
+                "Julie Black"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Bethany Bodily / Emily Kelly",
+              "players_away": "Jeanette Shepard / Bessy Nielson",
+              "score": "3-6 6-3 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Sports Mall Baseline Babes",
+              "winner_names": [
+                "Jeanette Shepard",
+                "Bessy Nielson"
+              ],
+              "loser_names": [
+                "Bethany Bodily",
+                "Emily Kelly"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Brenda Green / Kate Stalsberg",
+              "players_away": "Kelly Webster / Ann Weaver",
+              "score": "6-3 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Sports Mall Baseline Babes",
+              "loser_team": "Liberty Park-Lombardi/Webster",
+              "winner_names": [
+                "Brenda Green",
+                "Kate Stalsberg"
+              ],
+              "loser_names": [
+                "Kelly Webster",
+                "Ann Weaver"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Nicole Reese / Karen Wilson",
+              "players_away": "Jennifer Sweat / Heidi Chytraus",
+              "score": "6-4 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Liberty Park-Lombardi/Webster",
+              "loser_team": "Sports Mall Baseline Babes",
+              "winner_names": [
+                "Jennifer Sweat",
+                "Heidi Chytraus"
+              ],
+              "loser_names": [
+                "Nicole Reese",
+                "Karen Wilson"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -7001,15 +9587,11 @@
               "players_away": "Ellie Jacobs",
               "score": "7-6 6-1",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Causing a Racquet",
-              "winner_names": [
-                "Ellie Jacobs"
-              ],
-              "loser_names": [
-                "Van Vo"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -7017,15 +9599,11 @@
               "players_away": "Jennifer Lin-Liu",
               "score": "6-4 6-1",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Causing a Racquet",
-              "winner_names": [
-                "Jennifer Lin-Liu"
-              ],
-              "loser_names": [
-                "Hannah Galbreath"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -7033,17 +9611,11 @@
               "players_away": "Elle Laulu / Steffany Beddes",
               "score": "6-2 6-1",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Causing a Racquet",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Jennifer Wecker",
-                "Maryam Klock"
-              ],
-              "loser_names": [
-                "Elle Laulu",
-                "Steffany Beddes"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -7051,17 +9623,11 @@
               "players_away": "Delia Bayna / Sachiko Osterloh",
               "score": "4-6 6-0 1-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Causing a Racquet",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Hannah Lee",
-                "Jennifer Kawakami"
-              ],
-              "loser_names": [
-                "Delia Bayna",
-                "Sachiko Osterloh"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -7069,17 +9635,11 @@
               "players_away": "Mari Bickmore / Katrina Mills",
               "score": "6-2 6-3",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Causing a Racquet",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Linda Lasater",
-                "Mary Sorensen"
-              ],
-              "loser_names": [
-                "Mari Bickmore",
-                "Katrina Mills"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             }
           ]
         },
@@ -7405,12 +9965,10 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Utah Valley-Orozco",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Jaimie Ribera"
-              ],
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
               "loser_names": []
             },
             {
@@ -7419,15 +9977,11 @@
               "players_away": "Sachiko Osterloh",
               "score": "6-2 6-3",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Utah Valley-Orozco",
-              "winner_names": [
-                "Sachiko Osterloh"
-              ],
-              "loser_names": [
-                "Grace Neff"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -7435,17 +9989,11 @@
               "players_away": "Kalaiselvi Seetharaman / Katrina Mills",
               "score": "6-3 6-3",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Utah Valley-Orozco",
-              "winner_names": [
-                "Kalaiselvi Seetharaman",
-                "Katrina Mills"
-              ],
-              "loser_names": [
-                "Brianna Minnick",
-                "Lynzee Jackson"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -7453,17 +10001,11 @@
               "players_away": "Jennifer Lin-Liu / Mari Bickmore",
               "score": "6-1 6-1",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Utah Valley-Orozco",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Chrissy Oliveros",
-                "Megumi Matsuzawa"
-              ],
-              "loser_names": [
-                "Jennifer Lin-Liu",
-                "Mari Bickmore"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -7471,17 +10013,11 @@
               "players_away": "Elle Laulu / Steffany Beddes",
               "score": "6-2 6-2",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Utah Valley-Orozco",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Liz Donaldson",
-                "Cari Cardall"
-              ],
-              "loser_names": [
-                "Elle Laulu",
-                "Steffany Beddes"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             }
           ]
         },
@@ -8177,15 +10713,11 @@
               "players_away": "Ellie Jacobs",
               "score": "6-0 6-2",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Cottonwood Club-Haverkost",
-              "winner_names": [
-                "Ellie Jacobs"
-              ],
-              "loser_names": [
-                "Jamuna Nielsen"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -8193,15 +10725,11 @@
               "players_away": "Sachiko Osterloh",
               "score": "1-6 6-1 1-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Cottonwood Club-Haverkost",
-              "winner_names": [
-                "Sachiko Osterloh"
-              ],
-              "loser_names": [
-                "Ally Lyle"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -8209,17 +10737,11 @@
               "players_away": "Katrina Mills / Kalaiselvi Seetharaman",
               "score": "6-4 6-3",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Cottonwood Club-Haverkost",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Lora Lyon",
-                "Lori Carter"
-              ],
-              "loser_names": [
-                "Katrina Mills",
-                "Kalaiselvi Seetharaman"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -8227,17 +10749,11 @@
               "players_away": "Steffany Beddes / Elle Laulu",
               "score": "6-2 6-1",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Cottonwood Club-Haverkost",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Dawn Farrell",
-                "Kumru Uruk"
-              ],
-              "loser_names": [
-                "Steffany Beddes",
-                "Elle Laulu"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -8245,17 +10761,11 @@
               "players_away": "Joyce Krawiecki / Jennifer Lin-Liu",
               "score": "6-4 6-3",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Cottonwood Club-Haverkost",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Melissa Child",
-                "Amanda Krejci"
-              ],
-              "loser_names": [
-                "Joyce Krawiecki",
-                "Jennifer Lin-Liu"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             }
           ]
         },
@@ -8379,13 +10889,11 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Liberty Park-Spencer/Bryce",
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
               "winner_names": [],
-              "loser_names": [
-                "Ashley Wright"
-              ]
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -8393,13 +10901,11 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Liberty Park-Spencer/Bryce",
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
               "winner_names": [],
-              "loser_names": [
-                "Mary Vander Straten"
-              ]
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -8407,17 +10913,11 @@
               "players_away": "Sachiko Osterloh / Isabella Morris",
               "score": "6-3 6-7 1-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Liberty Park-Spencer/Bryce",
-              "winner_names": [
-                "Sachiko Osterloh",
-                "Isabella Morris"
-              ],
-              "loser_names": [
-                "Madelyn Totland",
-                "Jessica Spencer"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -8425,17 +10925,11 @@
               "players_away": "Katrina Mills / Kalaiselvi Seetharaman",
               "score": "6-2 6-3",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Liberty Park-Spencer/Bryce",
-              "winner_names": [
-                "Katrina Mills",
-                "Kalaiselvi Seetharaman"
-              ],
-              "loser_names": [
-                "Meghan Kellner",
-                "Amanda Moore"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -8443,17 +10937,11 @@
               "players_away": "Elle Laulu / Steffany Beddes",
               "score": "6-2 6-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Liberty Park-Spencer/Bryce",
-              "winner_names": [
-                "Elle Laulu",
-                "Steffany Beddes"
-              ],
-              "loser_names": [
-                "Ashley Miller",
-                "Nicole Chase"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             }
           ]
         },
@@ -8976,15 +11464,11 @@
               "players_away": "Joyce Krawiecki",
               "score": "6-1 6-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Utah/Torres/18&Over/3.5W",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Catherine van Uitert"
-              ],
-              "loser_names": [
-                "Joyce Krawiecki"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -8992,15 +11476,11 @@
               "players_away": "Katrina Mills",
               "score": "6-4 6-3",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Utah/Torres/18&Over/3.5W",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Haley Swan"
-              ],
-              "loser_names": [
-                "Katrina Mills"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -9008,17 +11488,11 @@
               "players_away": "Steffany Beddes / Elle Laulu",
               "score": "7-5 6-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Utah/Torres/18&Over/3.5W",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Kelsey Glassberg",
-                "Sam Steiner"
-              ],
-              "loser_names": [
-                "Steffany Beddes",
-                "Elle Laulu"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -9166,15 +11640,11 @@
               "players_away": "Katrina Mills",
               "score": "6-0 6-4",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Utah/Torres/18&Over/3.5W",
-              "winner_names": [
-                "Katrina Mills"
-              ],
-              "loser_names": [
-                "Catherine van Uitert"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -9182,15 +11652,11 @@
               "players_away": "Ellie Jacobs",
               "score": "7-6 6-3",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Utah/Torres/18&Over/3.5W",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Haley Swan"
-              ],
-              "loser_names": [
-                "Ellie Jacobs"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -9198,17 +11664,11 @@
               "players_away": "Elle Laulu / Steffany Beddes",
               "score": "6-2 6-2",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Utah/Torres/18&Over/3.5W",
-              "winner_names": [
-                "Elle Laulu",
-                "Steffany Beddes"
-              ],
-              "loser_names": [
-                "Libby MacKay",
-                "Kelsey Glassberg"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -9216,17 +11676,11 @@
               "players_away": "Sachiko Osterloh / Delia Bayna",
               "score": "4-6 6-3 1-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Utah/Torres/18&Over/3.5W",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "Lynette Wills",
-                "Elaine Day"
-              ],
-              "loser_names": [
-                "Sachiko Osterloh",
-                "Delia Bayna"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -9234,17 +11688,11 @@
               "players_away": "Mari Bickmore / Kalaiselvi Seetharaman",
               "score": "6-1 6-1",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Utah/Torres/18&Over/3.5W",
-              "winner_names": [
-                "Mari Bickmore",
-                "Kalaiselvi Seetharaman"
-              ],
-              "loser_names": [
-                "Collette Renstrom",
-                "Hailey Mann"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             }
           ]
         },
@@ -9567,15 +12015,11 @@
               "players_away": "Katrina Mills",
               "score": "3-6 7-5 1-0",
               "result": "home",
-              "court_winner": "home",
-              "winner_team": "Causing a Racquet",
-              "loser_team": "Bayna",
-              "winner_names": [
-                "JaNean Nelson"
-              ],
-              "loser_names": [
-                "Katrina Mills"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Singles",
@@ -9583,13 +12027,11 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Causing a Racquet",
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
               "winner_names": [],
-              "loser_names": [
-                "Hannah Lee"
-              ]
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
@@ -9597,17 +12039,11 @@
               "players_away": "Elle Laulu / Steffany Beddes",
               "score": "6-4 6-1",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Causing a Racquet",
-              "winner_names": [
-                "Elle Laulu",
-                "Steffany Beddes"
-              ],
-              "loser_names": [
-                "Shannon Knudsen",
-                "Jennifer Tooley"
-              ]
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -9615,14 +12051,11 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Causing a Racquet",
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
               "winner_names": [],
-              "loser_names": [
-                "Jennie Stacey",
-                "Cortney Nebeker"
-              ]
+              "loser_names": []
             },
             {
               "line": "3# Doubles",
@@ -9630,14 +12063,11 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": "away",
-              "winner_team": "Bayna",
-              "loser_team": "Causing a Racquet",
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
               "winner_names": [],
-              "loser_names": [
-                "Kelley Allred",
-                "Mary Sorensen"
-              ]
+              "loser_names": []
             }
           ]
         }

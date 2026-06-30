@@ -3662,7 +3662,14 @@
               "score": "6-7 6-2 1-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SOUTHERN HIGHLANDS"
+              "loser_team": "SOUTHERN HIGHLANDS",
+              "court_winner": "home",
+              "winner_names": [
+                "Elsy Flores Rojas"
+              ],
+              "loser_names": [
+                "Christie Sanders"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3671,7 +3678,14 @@
               "score": "6-2 6-1",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SOUTHERN HIGHLANDS"
+              "loser_team": "SOUTHERN HIGHLANDS",
+              "court_winner": "home",
+              "winner_names": [
+                "NANCIE WEBSTER"
+              ],
+              "loser_names": [
+                "Danielle Britten"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3680,7 +3694,13 @@
               "score": "6-0 6-0",
               "result": "home",
               "winner_team": "DTC #2",
-              "loser_team": "SOUTHERN HIGHLANDS"
+              "loser_team": "SOUTHERN HIGHLANDS",
+              "court_winner": "home",
+              "winner_names": [
+                "Kathryn Wilson",
+                "Stephanie Stern"
+              ],
+              "loser_names": []
             },
             {
               "line": "2# Doubles",
@@ -3689,7 +3709,16 @@
               "score": "6-4 6-2",
               "result": "away",
               "winner_team": "SOUTHERN HIGHLANDS",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Amy Badain",
+                "Gretchen Wills"
+              ],
+              "loser_names": [
+                "Charlotte Durisseau",
+                "Maureen Kelly"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3698,7 +3727,16 @@
               "score": "6-4 6-1",
               "result": "away",
               "winner_team": "SOUTHERN HIGHLANDS",
-              "loser_team": "DTC #2"
+              "loser_team": "DTC #2",
+              "court_winner": "away",
+              "winner_names": [
+                "Lindsey Jacobs",
+                "Ashley Richas"
+              ],
+              "loser_names": [
+                "Monica Taylor",
+                "Elizabeth Abatangelo"
+              ]
             }
           ]
         },
