@@ -1573,21 +1573,19 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                 wlabel = _week_label.get(m.get("date", ""), "")
                 lines = m.get("lines", [])
 
-                # For tied matches (e.g. 2-2), replace the "line results" label with a
-                # header row in the same 3-column grid showing game totals on each side.
-                # Our team is always on the left; winner side gets the .w (green) class.
+                # For tied matches (e.g. 2-2), put the game count in the score column
+                # on the same line as "LINE RESULTS". Our team's games are always first
+                # (left) since the results tab always puts our team on the left.
                 # Uses winner_team/loser_team — no orientation dependency.
                 tie_html = ""
                 if m.get("is_tie") and lines:
                     ga, gb = _tie_game_totals(lines, tname, m["opponent"])
                     if ga or gb:
-                        lh_cls = "lh w" if ga > gb else "lh"
-                        la_cls = "la w" if gb > ga else "la"
                         tie_html = (
                             f'<div class="line-row lbl-row">'
-                            f'<span class="{lh_cls}">{ga}</span>'
-                            f'<span class="ls">games</span>'
-                            f'<span class="{la_cls}">{gb}</span>'
+                            f'<span class="lbl-left">LINE RESULTS</span>'
+                            f'<span class="ls lbl-score">Games:&nbsp;{ga}–{gb}</span>'
+                            f'<span></span>'
                             f'</div>'
                         )
 
@@ -1861,12 +1859,10 @@ tr:last-child td { border-bottom: none; }
              letter-spacing: .04em; text-align: left; flex: 1;
              padding: 0 8px 0 0; }
 .mdate { font-size: 11px; color: #888; margin-bottom: 6px; }
-.lbl-row { margin-top: 8px; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px; margin-bottom: 4px; }
-.lbl-row .lh, .lbl-row .la { font-size: 13px; font-weight: 600; }
-.lbl-row .lh { color: #bbb; } .lbl-row .lh.w { color: #27500A; }
-.lbl-row .la { color: #bbb; text-align: right; } .lbl-row .la.w { color: #27500A; }
-.lbl-row .ls { font-size: 10px; font-weight: 600; color: #bbb;
-               text-transform: uppercase; letter-spacing: .05em; }
+.lbl-row { margin: 8px 0 3px; }
+.lbl-left { font-size: 10px; font-weight: 600; color: #aaa;
+            text-transform: uppercase; letter-spacing: .05em; }
+.lbl-score { color: #555 !important; font-size: 11px; }
 .line-lbl { font-size: 10px; font-weight: 600; color: #aaa;
             text-transform: uppercase; letter-spacing: .05em; margin: 8px 0 3px; }
 .line-row { display: grid; grid-template-columns: 1fr auto 1fr;
