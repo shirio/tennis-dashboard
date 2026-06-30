@@ -364,15 +364,6 @@ def _validate(subflights: list[dict]) -> list[str]:
 # Per-court winner detection helpers
 # ---------------------------------------------------------------------------
 
-def _court_winner_team(line: dict) -> str | None:
-    """Return team name that won this court, or None if unknown.
-
-    Reads the canonical `winner_team` field set by engine/normalize.py.
-    No heuristics — if the field isn't set, we don't know.
-    """
-    return (line.get("winner_team") or "").strip() or None
-
-
 def _match_winner_team(match: dict) -> str | None:
     """Return the team name that won the overall match, or None if unknown."""
     tw = match.get("team_wins_home")
@@ -870,7 +861,6 @@ def _traverse_match_histories(
                     away_raw = line.get("players_away", "") or ""
                     wt = (line.get("winner_team") or "").strip()
                     lt = (line.get("loser_team") or "").strip()
-                    cw = line.get("court_winner")
                     score = line.get("score", "") or ""
                     line_label = line.get("line", "") or ""
 
@@ -889,7 +879,7 @@ def _traverse_match_histories(
                     is_walkover = not winner_names or not loser_names
 
                     all_players: list[tuple[str, bool | None]] = []
-                    if cw is not None:
+                    if wt:
                         for nm in winner_names:
                             all_players.append((nm, True))
                         for nm in loser_names:
@@ -1583,19 +1573,21 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                 wlabel = _week_label.get(m.get("date", ""), "")
                 lines = m.get("lines", [])
 
-                # For tied matches (e.g. 2-2), show total game counts so the tiebreaker
-                # is visible. Uses winner_team/loser_team (orientation-independent).
+                # For tied matches (e.g. 2-2), replace the "line results" label with a
+                # header row in the same 3-column grid showing game totals on each side.
+                # Our team is always on the left; winner side gets the .w (green) class.
+                # Uses winner_team/loser_team — no orientation dependency.
                 tie_html = ""
                 if m.get("is_tie") and lines:
                     ga, gb = _tie_game_totals(lines, tname, m["opponent"])
                     if ga or gb:
-                        our_cls = "tg-win" if ga > gb else ("tg-lose" if ga < gb else "")
-                        opp_cls = "tg-win" if gb > ga else ("tg-lose" if gb < ga else "")
+                        lh_cls = "lh w" if ga > gb else "lh"
+                        la_cls = "la w" if gb > ga else "la"
                         tie_html = (
-                            f'<div class="tie-games">'
-                            f'Games:&nbsp;<span class="{our_cls}">{ga}</span>'
-                            f'&nbsp;–&nbsp;'
-                            f'<span class="{opp_cls}">{gb}</span>'
+                            f'<div class="line-row lbl-row">'
+                            f'<span class="{lh_cls}">{ga}</span>'
+                            f'<span class="ls">games</span>'
+                            f'<span class="{la_cls}">{gb}</span>'
                             f'</div>'
                         )
 
@@ -1609,7 +1601,10 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                     f'{tie_html}'
                 )
                 if lines:
-                    blocks += '<div class="line-lbl">line results</div>'
+                    if m.get("is_tie") and tie_html:
+                        blocks += tie_html
+                    else:
+                        blocks += '<div class="line-lbl">line results</div>'
                     _m_ht = m.get("home_team", "")
                     _m_at = m.get("away_team", "")
                     for ln in lines:
@@ -1625,7 +1620,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                                 return '<em class="default-marker">default</em>'
                             return _render_players(raw, _mdate)
 
-                        _cwt = _court_winner_team(ln)
+                        _cwt = (ln.get("winner_team") or "").strip() or None
                         if _cwt:
                             _our_team_won = _cwt.upper() == tname.upper()
                         else:
@@ -1865,10 +1860,13 @@ tr:last-child td { border-bottom: none; }
 .mweek-lbl { font-size: 11px; font-weight: 700; color: #888;
              letter-spacing: .04em; text-align: left; flex: 1;
              padding: 0 8px 0 0; }
-.mdate { font-size: 11px; color: #888; margin-bottom: 4px; }
-.tie-games { font-size: 11px; color: #555; margin-bottom: 6px; }
-.tie-games .tg-win { font-weight: 700; color: #2a8a2a; }
-.tie-games .tg-lose { color: #999; }
+.mdate { font-size: 11px; color: #888; margin-bottom: 6px; }
+.lbl-row { margin-top: 8px; border-bottom: 1px solid #f0f0f0; padding-bottom: 5px; margin-bottom: 4px; }
+.lbl-row .lh, .lbl-row .la { font-size: 13px; font-weight: 600; }
+.lbl-row .lh { color: #bbb; } .lbl-row .lh.w { color: #27500A; }
+.lbl-row .la { color: #bbb; text-align: right; } .lbl-row .la.w { color: #27500A; }
+.lbl-row .ls { font-size: 10px; font-weight: 600; color: #bbb;
+               text-transform: uppercase; letter-spacing: .05em; }
 .line-lbl { font-size: 10px; font-weight: 600; color: #aaa;
             text-transform: uppercase; letter-spacing: .05em; margin: 8px 0 3px; }
 .line-row { display: grid; grid-template-columns: 1fr auto 1fr;
