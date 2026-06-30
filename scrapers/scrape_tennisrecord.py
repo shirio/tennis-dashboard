@@ -496,10 +496,19 @@ def search_and_update_baselines(state_code: str | None = None,
         date_str, baseline, err = get_baseline(name, s_id)
 
         if baseline is not None:
-            p["dynamic_rating_baseline"] = baseline
-            p["baseline_source"] = "oldest_fallback" if err == "oldest_fallback" else "history"
-            p.pop("pending_tennisrecord_lookup", None)
-            updated += 1
+            is_fallback = (err == "oldest_fallback")
+            existing = p.get("dynamic_rating_baseline")
+            # Never overwrite a good current-season baseline with an oldest_fallback.
+            # oldest_fallback can come from a completely different NTRP level (e.g.
+            # a 4.0-era rating for someone now playing 3.5) and will corrupt ratings.
+            if is_fallback and existing and p.get("baseline_source") != "oldest_fallback":
+                p.pop("pending_tennisrecord_lookup", None)
+                no_baseline += 1  # treat as no useful baseline found
+            else:
+                p["dynamic_rating_baseline"] = baseline
+                p["baseline_source"] = "oldest_fallback" if is_fallback else "history"
+                p.pop("pending_tennisrecord_lookup", None)
+                updated += 1
         else:
             no_baseline += 1
             p.pop("pending_tennisrecord_lookup", None)
