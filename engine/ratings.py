@@ -1518,6 +1518,32 @@ def _compute_global_sequential(
         player_bl = baselines.get(pk, 0)
         return avg_opp >= player_bl + _UNDERRATED_OPP_GAP
 
+    # Cross-division guard for Lever 4 (global sequential only).
+    # wl_by_div is populated below as matches are processed; _is_underrated() reads
+    # it so cross-division players are excluded BEFORE the first cross-div match is
+    # processed — safe because `len(wl_by_div.get(pk, {})) > 1` is False until the
+    # second division's first event fires.
+    wl_by_div_for_l4: dict[str, set] = {}  # pk -> set of divisions seen
+
+    def _is_underrated(pk: str) -> bool:
+        s = underrated_stats.get(pk)
+        if not s or s["total"] < _UNDERRATED_MIN_MATCHES:
+            return False
+        if s["wins"] / s["total"] < _UNDERRATED_WIN_RATE:
+            return False
+        if s["opp_n"] == 0:
+            return False
+        # Cross-division players (3.0 + 3.5) are never misclassified in this sense:
+        # their 3.5 opponents always have higher baselines by design, which inflates
+        # the avg-opp check and triggers false positives (e.g. a 3.0/3.5 player
+        # whose 3.5 wins push avg_opp above threshold even though she's correctly
+        # rated in 3.0). Lever 4 is only for single-division players.
+        if len(wl_by_div_for_l4.get(pk, set())) > 1:
+            return False
+        avg_opp = s["opp_sum"] / s["opp_n"]
+        player_bl = baselines.get(pk, 0)
+        return avg_opp >= player_bl + _UNDERRATED_OPP_GAP
+
     # Lever 5 — chronic-loser tracker (global scope across all matches)
     _CHRONIC_MIN_MATCHES = 3
     _CHRONIC_WIN_RATE_CEILING = 0.30
@@ -1598,6 +1624,7 @@ def _compute_global_sequential(
             _div_dep = line_deployment.setdefault(pk, {}).setdefault(ev.division, {})
             _div_dep[ev.line_label] = _div_dep.get(ev.line_label, 0) + 1
             wl_by_div.setdefault(pk, {}).setdefault(ev.division, [0, 0])[0] += 1
+            wl_by_div_for_l4.setdefault(pk, set()).add(ev.division)
 
         # --- Losers ---
         for pk in ev.loser_keys:
@@ -1625,6 +1652,7 @@ def _compute_global_sequential(
             _div_dep = line_deployment.setdefault(pk, {}).setdefault(ev.division, {})
             _div_dep[ev.line_label] = _div_dep.get(ev.line_label, 0) + 1
             wl_by_div.setdefault(pk, {}).setdefault(ev.division, [0, 0])[1] += 1
+            wl_by_div_for_l4.setdefault(pk, set()).add(ev.division)
 
         global_r.update(updates)
 
