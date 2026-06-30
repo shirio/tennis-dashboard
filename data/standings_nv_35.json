@@ -5326,8 +5326,8 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011779873",
           "home_team": "RED ROCK CC #2",
           "away_team": "DTC #3",
-          "team_wins_home": 0,
-          "team_wins_away": 5,
+          "team_wins_home": 5,
+          "team_wins_away": 0,
           "score": "",
           "status": "Not Played",
           "pending": false,
@@ -5337,15 +5337,15 @@
               "players_home": "Karina McAffee",
               "players_away": "Mai Le",
               "score": "6-2 6-3",
-              "result": "away",
-              "winner_team": "DTC #3",
-              "loser_team": "RED ROCK CC #2",
-              "court_winner": "away",
+              "result": "home",
+              "winner_team": "RED ROCK CC #2",
+              "loser_team": "DTC #3",
+              "court_winner": "home",
               "winner_names": [
-                "Mai Le"
+                "Karina McAffee"
               ],
               "loser_names": [
-                "Karina McAffee"
+                "Mai Le"
               ]
             },
             {
@@ -5353,7 +5353,7 @@
               "players_home": "Maria Truman",
               "players_away": "Kara Gaston",
               "score": "6-1 6-2",
-              "result": "away",
+              "result": "home",
               "winner_team": "RED ROCK CC #2",
               "loser_team": "DTC #3",
               "court_winner": "home",
@@ -5369,17 +5369,17 @@
               "players_home": "Karen Watts / Julie MacDonald",
               "players_away": "LaCheyva Edmonis / Donna Lefever",
               "score": "6-2 6-1",
-              "result": "away",
-              "winner_team": "DTC #3",
-              "loser_team": "RED ROCK CC #2",
-              "court_winner": "away",
+              "result": "home",
+              "winner_team": "RED ROCK CC #2",
+              "loser_team": "DTC #3",
+              "court_winner": "home",
               "winner_names": [
-                "LaCheyva Edmonis",
-                "Donna Lefever"
-              ],
-              "loser_names": [
                 "Karen Watts",
                 "Julie MacDonald"
+              ],
+              "loser_names": [
+                "LaCheyva Edmonis",
+                "Donna Lefever"
               ]
             },
             {
@@ -5387,17 +5387,17 @@
               "players_home": "Deborah Protell / Anne Kellogg",
               "players_away": "Tayoni Coleman / Melissa Hicks",
               "score": "6-1 6-2",
-              "result": "away",
-              "winner_team": "DTC #3",
-              "loser_team": "RED ROCK CC #2",
-              "court_winner": "away",
+              "result": "home",
+              "winner_team": "RED ROCK CC #2",
+              "loser_team": "DTC #3",
+              "court_winner": "home",
               "winner_names": [
-                "Tayoni Coleman",
-                "Melissa Hicks"
-              ],
-              "loser_names": [
                 "Deborah Protell",
                 "Anne Kellogg"
+              ],
+              "loser_names": [
+                "Tayoni Coleman",
+                "Melissa Hicks"
               ]
             },
             {
@@ -5405,17 +5405,17 @@
               "players_home": "Tanya Hale / Travis Azous",
               "players_away": "Lisa Schnitz / Alexandria Chang",
               "score": "6-0 7-5",
-              "result": "away",
-              "winner_team": "DTC #3",
-              "loser_team": "RED ROCK CC #2",
-              "court_winner": "away",
+              "result": "home",
+              "winner_team": "RED ROCK CC #2",
+              "loser_team": "DTC #3",
+              "court_winner": "home",
               "winner_names": [
-                "Lisa Schnitz",
-                "Alexandria Chang"
-              ],
-              "loser_names": [
                 "Tanya Hale",
                 "Travis Azous"
+              ],
+              "loser_names": [
+                "Lisa Schnitz",
+                "Alexandria Chang"
               ]
             }
           ]
@@ -6127,8 +6127,8 @@
           "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011782341",
           "home_team": "RED ROCK CC #2",
           "away_team": "DTC #1",
-          "team_wins_home": 2,
-          "team_wins_away": 3,
+          "team_wins_home": 3,
+          "team_wins_away": 2,
           "score": "",
           "status": "Not Played",
           "pending": false,
@@ -6138,7 +6138,7 @@
               "players_home": "Anne Kellogg",
               "players_away": "Shi L Oskooi",
               "score": "6-3 6-2",
-              "result": "away",
+              "result": "home",
               "winner_team": "RED ROCK CC #2",
               "loser_team": "DTC #1",
               "court_winner": "home",
@@ -6154,7 +6154,7 @@
               "players_home": "N/A",
               "players_away": "Shawanna Johnson",
               "score": "6-0 6-0",
-              "result": "home",
+              "result": "away",
               "winner_team": "DTC #1",
               "loser_team": "RED ROCK CC #2",
               "court_winner": "away",
@@ -6168,17 +6168,17 @@
               "players_home": "Tyree Judd / Mary Lind",
               "players_away": "Christina Drees / Karen Kiyono",
               "score": "5-7 7-5 1-0",
-              "result": "home",
-              "winner_team": "RED ROCK CC #2",
-              "loser_team": "DTC #1",
-              "court_winner": "home",
+              "result": "away",
+              "winner_team": "DTC #1",
+              "loser_team": "RED ROCK CC #2",
+              "court_winner": "away",
               "winner_names": [
-                "Tyree Judd",
-                "Mary Lind"
-              ],
-              "loser_names": [
                 "Christina Drees",
                 "Karen Kiyono"
+              ],
+              "loser_names": [
+                "Tyree Judd",
+                "Mary Lind"
               ]
             },
             {
@@ -6186,17 +6186,17 @@
               "players_home": "Tanya Hale / Deborah Protell",
               "players_away": "Sabine Curtis / Amy Waters",
               "score": "1-6 6-3 1-0",
-              "result": "away",
-              "winner_team": "DTC #1",
-              "loser_team": "RED ROCK CC #2",
-              "court_winner": "away",
+              "result": "home",
+              "winner_team": "RED ROCK CC #2",
+              "loser_team": "DTC #1",
+              "court_winner": "home",
               "winner_names": [
-                "Sabine Curtis",
-                "Amy Waters"
-              ],
-              "loser_names": [
                 "Tanya Hale",
                 "Deborah Protell"
+              ],
+              "loser_names": [
+                "Sabine Curtis",
+                "Amy Waters"
               ]
             },
             {
@@ -6204,17 +6204,17 @@
               "players_home": "Travis Azous / Kathleen Chamberlain",
               "players_away": "Kelly McPherson / Michelle Jarvis",
               "score": "6-1 6-1",
-              "result": "away",
-              "winner_team": "DTC #1",
-              "loser_team": "RED ROCK CC #2",
-              "court_winner": "away",
+              "result": "home",
+              "winner_team": "RED ROCK CC #2",
+              "loser_team": "DTC #1",
+              "court_winner": "home",
               "winner_names": [
-                "Kelly McPherson",
-                "Michelle Jarvis"
-              ],
-              "loser_names": [
                 "Travis Azous",
                 "Kathleen Chamberlain"
+              ],
+              "loser_names": [
+                "Kelly McPherson",
+                "Michelle Jarvis"
               ]
             }
           ]
