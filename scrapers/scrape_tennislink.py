@@ -509,7 +509,7 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
             court_winners.append("")
         i += 2
 
-    # Fallback: green checkmark images (mark.gif) on UT/CO/ID scorecards
+    # Fallback: green checkmark images (mark.gif) on UT/CO/ID/NV scorecards
     if not any(court_winners):
         try:
             mark_data = page.evaluate("""() => {
@@ -522,11 +522,15 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
         except Exception:
             mark_data = []
         if mark_data:
-            num_courts = max(
+            court_indices = [
                 int(re.search(r'rptScoreCard_ctl(\d+)', m["id"]).group(1))
                 for m in mark_data
                 if re.search(r'rptScoreCard_ctl(\d+)', m["id"])
-            ) + 1
+            ]
+            if not court_indices:
+                mark_data = []
+        if mark_data:
+            num_courts = max(court_indices) + 1
             court_winners = [""] * num_courts
             for m in mark_data:
                 idx_m = re.search(r'rptScoreCard_ctl(\d+)', m["id"])
@@ -539,6 +543,40 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
                     court_winners[court_idx] = "home"
                 elif "imgVisitorPlayer" in m["id"] or "imgVisitPlayer" in m["id"]:
                     court_winners[court_idx] = "away"
+
+    # Fallback: Championship scorecard format — mark.gif in table column
+    # position (col 2 = home indicator, col 5 = visitor indicator).
+    # Used by NV/UT/CO/ID Championship pages where IDs lack rptScoreCard prefix.
+    if not any(court_winners):
+        try:
+            champ_marks = page.evaluate("""() => {
+                const panel = document.getElementById('ctl00_mainContent_Panel1')
+                    || document.getElementById('ctl00_mainContent_pnlCPScorecard');
+                if (!panel) return [];
+                const courts = [];
+                for (const tr of panel.querySelectorAll('tr')) {
+                    const tds = Array.from(tr.querySelectorAll('td'));
+                    if (tds.length < 7) continue;
+                    const label = tds[0].innerText.trim();
+                    if (!/#\\d+ (Singles|Doubles)/.test(label)) continue;
+                    let winner = '';
+                    tds.forEach((td, i) => {
+                        const imgs = td.querySelectorAll('img');
+                        for (const img of imgs) {
+                            if (img.src && img.src.includes('mark.gif')) {
+                                if (i <= 2) winner = 'home';
+                                else if (i >= 4) winner = 'away';
+                            }
+                        }
+                    });
+                    courts.push(winner);
+                }
+                return courts;
+            }""")
+        except Exception:
+            champ_marks = []
+        if champ_marks and any(champ_marks):
+            court_winners = champ_marks
 
     # --- Home/away team names ---
     home_team = ""
@@ -2620,23 +2658,13 @@ def _parse_scorecard_text(text: str) -> list[dict]:
         if len(name_lines) >= 2:
             entry["players_away"] = name_lines[1]
 
-        # Winner
+        # Winner — only trust explicit "Winner: Home/Away" text.
+        # Do NOT infer from score: TennisLink displays scores winner-first
+        # (larger number always first), so score-based inference always
+        # yields "home" regardless of who actually won.
         winner_m = re.search(r'Winner[:\s]+(Home|Away)', section, re.I)
         if winner_m:
             entry["result"] = winner_m.group(1).lower()
-        else:
-            # Infer from score: whoever wins more sets
-            sets_home = sets_away = 0
-            for sm in re.finditer(r'(\d)-(\d)', entry["score"]):
-                h, a = int(sm.group(1)), int(sm.group(2))
-                if h > a:
-                    sets_home += 1
-                elif a > h:
-                    sets_away += 1
-            if sets_home > sets_away:
-                entry["result"] = "home"
-            elif sets_away > sets_home:
-                entry["result"] = "away"
 
         if entry["players_home"]:
             lines_out.append(entry)
@@ -2907,7 +2935,10 @@ def _update_players_from_rosters(rosters_a: dict, rosters_b: dict, ntrp: str,
                         p["ntrp_rating"] = ntrp_val
                     if not p.get("team"):
                         p["team"] = team_name
-                    if not p.get("state"):
+                        p["state"] = state_code
+                    elif p.get("team") == team_name:
+                        p["state"] = state_code
+                    elif not p.get("state"):
                         p["state"] = state_code
                 else:
                     try:

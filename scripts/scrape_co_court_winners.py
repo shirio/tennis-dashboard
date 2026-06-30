@@ -24,6 +24,8 @@ from scrapers.scrape_tennislink import (
     login, _wait_for_network, _navigate_via_league_search,
     _go_to_flight_page, _parse_match_detail_page,
     _extract_team_matches, _get_state_config,
+    _scrape_championship_page,
+    STANDINGS_SEARCH_URL, abs_url,
     DELAY,
 )
 
@@ -95,6 +97,81 @@ def _navigate_to_team_in_area(page: Page, area: str, ntrp: str, team_name: str) 
             pass
 
     return _click_team_link(page, team_name)
+
+
+def _navigate_to_team_direct_search(page: Page, ntrp: str, team_name: str) -> bool:
+    """
+    Search TennisLink directly by team name (bypasses flight/subflight hierarchy).
+    Used as a last-resort fallback when subflight navigation fails.
+    """
+    page.goto(STANDINGS_SEARCH_URL, wait_until="domcontentloaded", timeout=30_000)
+    sleep(1)
+
+    def _js_set_by_text(short_id: str, match_text: str, postback: bool = False):
+        full = f"ctl00_mainContent_{short_id}"
+        page.evaluate(f"""(() => {{
+            const el = document.getElementById('{full}');
+            if (!el) return;
+            const target = {json.dumps(match_text.lower())};
+            for (const opt of el.options) {{
+                if (opt.text.toLowerCase().includes(target)) {{ el.value = opt.value; break; }}
+            }}
+        }})()""")
+        if postback:
+            name = f"ctl00$mainContent${short_id}"
+            page.evaluate(f"__doPostBack('{name}', '')")
+            _wait_for_network(page, 8_000)
+            sleep(1)
+
+    _js_set_by_text("ddlDivisionForTeams", "adult 18", postback=True)
+    _js_set_by_text("ddlSection", "intermountain", postback=True)
+    _js_set_by_text("ddlDivisionForTeams", "adult 18")
+    page.evaluate("""(() => {
+        const el = document.getElementById('ctl00_mainContent_ddlChampYear');
+        if (!el) return;
+        for (const opt of el.options) { if (opt.text.includes('2026')) { el.value = opt.value; break; } }
+    })()""")
+    _js_set_by_text("ddlNTRPLevel", ntrp)
+    _js_set_by_text("ddlGender", "female")
+    for maybe_id in ["ddlDistrict", "ddlDistrictForTeams"]:
+        exists = page.evaluate(f"!!document.getElementById('ctl00_mainContent_{maybe_id}')")
+        if exists:
+            _js_set_by_text(maybe_id, "colorado")
+            break
+
+    page.evaluate("__doPostBack('ctl00$mainContent$btnSearchTeamByName', '')")
+    _wait_for_network(page, 15_000)
+    sleep(3)
+
+    rows = page.evaluate("""(() => {
+        const results = [];
+        document.querySelectorAll('table tr').forEach(tr => {
+            const tds = Array.from(tr.querySelectorAll('td'));
+            if (tds.length >= 4) {
+                const link = tds[0].querySelector('a');
+                if (link && link.innerText.trim().length > 2)
+                    results.push({team: link.innerText.trim(), href: link.getAttribute('href') || ''});
+            }
+        });
+        return results;
+    })()""")
+
+    team_lower = team_name.lower()
+    for r in rows:
+        r_lower = r["team"].lower()
+        if r_lower == team_lower or team_lower in r_lower or r_lower in team_lower:
+            href = r["href"]
+            if href.startswith("javascript:"):
+                page.evaluate(href)
+            else:
+                page.goto(abs_url(href), wait_until="domcontentloaded", timeout=30_000)
+            _wait_for_network(page, 12_000)
+            sleep(2)
+            print(f"    [direct-search] found and navigated to {r['team']!r}")
+            return True
+
+    print(f"    [direct-search] {team_name!r} not found in search results ({len(rows)} rows)")
+    return False
 
 
 def _navigate_to_subflight_team(page: Page, area: str, ntrp: str,
@@ -174,6 +251,111 @@ def _click_team_link(page: Page, team_name: str) -> bool:
     return False
 
 
+def _is_championship_sf(sf_label: str) -> bool:
+    return "championship" in sf_label.lower()
+
+
+def _get_advancement_links(page: Page) -> list[dict]:
+    """Return rptChampAdvancementForTeamSummary postback links from the current page."""
+    return page.evaluate("""() => {
+        const results = [];
+        for (const a of document.querySelectorAll('a')) {
+            const href = a.getAttribute('href') || '';
+            if (href.includes('rptChampAdvancementForTeamSummary') && href.includes('doPostBack')) {
+                results.push({text: a.innerText.trim(), href});
+            }
+        }
+        return results;
+    }""")
+
+
+def _find_regular_season_sf(data: dict, team: str) -> dict | None:
+    """Return the first non-championship subflight that contains this team."""
+    for sf in data.get("subflights", []):
+        if _is_championship_sf(sf["flight_label"]):
+            continue
+        for m in sf.get("matches", []):
+            if team in (m.get("home_team", ""), m.get("away_team", "")):
+                return sf
+    return None
+
+
+def _get_champ_courts_for_team(
+    page: Page, team: str, ntrp: str,
+    reg_area: str, reg_sf_display: str,
+    all_champ_matches: list[dict],
+) -> int:
+    """
+    Navigate to team's regular-season page, find championship advancement links,
+    follow each to the team's championship schedule, and scrape court winners.
+    Returns total courts filled.
+    """
+    # First pass: collect all advancement links from the regular-season page
+    if not _navigate_to_subflight_team(page, reg_area, ntrp, reg_sf_display, team):
+        if not _navigate_to_team_in_area(page, reg_area, ntrp, team):
+            if not _navigate_to_team_direct_search(page, ntrp, team):
+                return 0
+    adv_links = _get_advancement_links(page)
+    if not adv_links:
+        print(f"      no championship advancement links found")
+        return 0
+
+    print(f"      {len(adv_links)} advancement link(s): {[a['text'] for a in adv_links]}")
+    total = 0
+
+    for adv in adv_links:
+        # Re-navigate to the regular-season page for each link (reliable base)
+        if not _navigate_to_subflight_team(page, reg_area, ntrp, reg_sf_display, team):
+            if not _navigate_to_team_in_area(page, reg_area, ntrp, team):
+                if not _navigate_to_team_direct_search(page, ntrp, team):
+                    continue
+
+        # Click advancement link → championship standings page for this level
+        _click_postback(page, adv["href"])
+
+        # Scrape the championship page (handles View Score clicks internally)
+        result = _scrape_championship_page(page)
+        if result is None:
+            print(f"      [{adv['text']}] _scrape_championship_page returned None")
+            continue
+
+        _, champ_matches = result
+        print(f"      [{adv['text']}] {len(champ_matches)} matches on championship page")
+
+        team_lower = team.lower()
+        for cm in champ_matches:
+            cm_home = cm.get("home_team", "")
+            cm_away = cm.get("away_team", "")
+            # Only process matches involving our team
+            if (team_lower not in cm_home.lower() and cm_home.lower() not in team_lower and
+                    team_lower not in cm_away.lower() and cm_away.lower() not in team_lower):
+                continue
+
+            cm_lines = cm.get("lines", [])
+            if not cm_lines:
+                continue
+
+            cm_date = _normalize_date(cm.get("date", ""))
+
+            # Find matching entry in all_champ_matches
+            for m in all_champ_matches:
+                if not any(ln.get("court_winner") is None for ln in m.get("lines", [])):
+                    continue
+                m_date = _normalize_date(m.get("date", ""))
+                if m_date != cm_date:
+                    continue
+                mh = m.get("home_team", "")
+                ma = m.get("away_team", "")
+                if (cm_home.lower() in mh.lower() or mh.lower() in cm_home.lower() or
+                        cm_away.lower() in ma.lower() or ma.lower() in cm_away.lower() or
+                        cm_home.lower() in ma.lower() or cm_away.lower() in mh.lower()):
+                    applied = _merge_court_winners(m.get("lines", []), cm_lines)
+                    total += applied
+                    break
+
+    return total
+
+
 def _merge_court_winners(existing_lines: list[dict], scraped_lines: list[dict]) -> int:
     applied = 0
     for el in existing_lines:
@@ -219,7 +401,10 @@ def main():
         ntrp = f"{div[0]}.{div[1]}"
 
         team_work = []
+        champ_teams_seen: set[str] = set()
+
         for sf in data.get("subflights", []):
+            is_champ = _is_championship_sf(sf["flight_label"])
             teams_matches: dict[str, list[dict]] = {}
             for m in sf.get("matches", []):
                 if not any(ln.get("court_winner") is None for ln in m.get("lines", [])):
@@ -230,14 +415,49 @@ def main():
                         teams_matches.setdefault(t, []).append(m)
 
             for team, matches in teams_matches.items():
-                # Only include if this team hasn't been added yet (avoid dups)
-                team_work.append({
-                    "sf_label": sf["flight_label"],
-                    "team": team,
-                    "matches": matches,
-                    "area": _area_for_subflight(sf["flight_label"]),
-                    "sf_display": _subflight_display_name(sf["flight_label"]),
-                })
+                if is_champ:
+                    # Collect ALL championship matches for this team in one entry
+                    # so we handle every advancement link in one navigation session.
+                    if team in champ_teams_seen:
+                        continue
+                    champ_teams_seen.add(team)
+
+                    # Gather every championship match needing winners for this team
+                    all_champ = []
+                    for sf2 in data.get("subflights", []):
+                        if not _is_championship_sf(sf2["flight_label"]):
+                            continue
+                        for m2 in sf2.get("matches", []):
+                            if not any(ln.get("court_winner") is None
+                                       for ln in m2.get("lines", [])):
+                                continue
+                            if team in (m2.get("home_team", ""), m2.get("away_team", "")):
+                                all_champ.append(m2)
+
+                    reg_sf = _find_regular_season_sf(data, team)
+                    if not reg_sf:
+                        print(f"  [warn] {team}: championship team with no regular season sf")
+                        continue
+
+                    team_work.append({
+                        "sf_label": "Championships",
+                        "team": team,
+                        "matches": all_champ,
+                        "area": None,
+                        "sf_display": None,
+                        "is_championship": True,
+                        "reg_sf_area": _area_for_subflight(reg_sf["flight_label"]),
+                        "reg_sf_display": _subflight_display_name(reg_sf["flight_label"]),
+                    })
+                else:
+                    team_work.append({
+                        "sf_label": sf["flight_label"],
+                        "team": team,
+                        "matches": matches,
+                        "area": _area_for_subflight(sf["flight_label"]),
+                        "sf_display": _subflight_display_name(sf["flight_label"]),
+                        "is_championship": False,
+                    })
 
         if team_work:
             all_work.append((path, data, ntrp, team_work))
@@ -271,6 +491,7 @@ def main():
                 for tw in team_work:
                     team = tw["team"]
                     sf_label = tw["sf_label"]
+                    is_champ = tw.get("is_championship", False)
 
                     team_key = f"{sf_label}|{team}"
                     if team_key in seen_teams:
@@ -278,11 +499,33 @@ def main():
                     seen_teams.add(team_key)
 
                     teams_visited += 1
+
+                    if is_champ:
+                        # Championship: navigate via regular-season page → advancement links
+                        print(f"  [{teams_visited}] {team} [champ]:")
+                        team_applied = _get_champ_courts_for_team(
+                            page, team, ntrp,
+                            tw["reg_sf_area"], tw["reg_sf_display"],
+                            tw["matches"],
+                        )
+                        file_applied += team_applied
+                        grand_total += team_applied
+                        if team_applied or teams_visited % 10 == 0:
+                            print(f"    +{team_applied} courts (total: {grand_total})")
+                        # Periodic save after championship teams too
+                        if teams_visited % args.save_every == 0:
+                            path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+                        continue
+
                     area = tw["area"]
                     sf_display = tw["sf_display"]
 
-                    # Navigate to team
+                    # Navigate to team (with fallbacks if subflight not found)
                     ok = _navigate_to_subflight_team(page, area, ntrp, sf_display, team)
+                    if not ok:
+                        ok = _navigate_to_team_in_area(page, area, ntrp, team)
+                    if not ok:
+                        ok = _navigate_to_team_direct_search(page, ntrp, team)
                     if not ok:
                         print(f"  [{teams_visited}] {team} in {sf_label}: FAILED to navigate")
                         continue
