@@ -2805,7 +2805,15 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple]):
 
     def _split_players(field: str) -> list[str]:
         cleaned = re.sub(r",?\s*\d+-\d+.*$", "", field).strip()
-        return [n.strip() for n in re.split(r"\s*/\s*", cleaned) if n.strip()]
+        names = [n.strip() for n in re.split(r"\s*/\s*", cleaned) if n.strip()]
+        # Strip TennisLink DQ annotations e.g. "Name - (DQ)*" or "(DQ)* - note text"
+        stripped = []
+        for n in names:
+            n = re.sub(r"\s*-\s*\(DQ\)\*?.*$", "", n, flags=re.IGNORECASE).strip()
+            n = re.sub(r"^\(DQ\)\*?\s*-\s*.*$", "", n, flags=re.IGNORECASE).strip()
+            if n:
+                stripped.append(n)
+        return stripped
 
     def _team_norm(t: str) -> str:
         return (t or "").upper().strip()

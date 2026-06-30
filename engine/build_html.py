@@ -762,12 +762,15 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
 
 
 def _nkey(n: str) -> str:
-    return re.sub(r"\s+", " ", n.strip().lower())
+    # Strip TennisLink DQ/note annotations: "Name - (DQ)*" or "(DQ)* - This player..."
+    s = re.sub(r"\s*-\s*\(DQ\)\*?.*$", "", n.strip(), flags=re.IGNORECASE)
+    s = re.sub(r"^\(DQ\)\*?\s*-\s*", "", s, flags=re.IGNORECASE)
+    return re.sub(r"\s+", " ", s.strip().lower())
 
 
 _NOISE_NAMES = frozenset({
     "12:00 midnight", "12:00 noon", "dbl. default", "default",
-    "n/a", "na", "n", "a", "(dq)", "note -",
+    "n/a", "na", "n", "a", "(dq)", "(dq)*", "note -",
 })
 
 
@@ -1305,7 +1308,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
 
         p_state = p.get("state", "") or ""
         col3_val = p_state if is_sectionals else sf
-        col3_html = (f"<td><span class='sf-pill'>{_esc(col3_val)}</span></td>"
+        col3_html = (f"<td data-sort='{_esc(sf_raw or sf)}'><span class='sf-pill'>{_esc(col3_val)}</span></td>"
                      if not is_sectionals
                      else f"<td class='sortable-cell'>{_esc(col3_val)}</td>")
         rows += (
@@ -1315,9 +1318,9 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                f" data-combined='{_esc(combined_str)}'" if has_history else "")
             + f" onclick=\"toggleHistory(this)\">"
             f"<td class='pname'>{_esc(p.get('name',''))}</td>"
-            f"<td>{_esc(_abbrev_team((_sfx and p.get(f'team_{_sfx}')) or p.get('team','') or ''))}</td>"
+            f"<td>{_esc(_abbrev_team((_sfx and p.get(f'team_{_sfx}')) or (_primary_team if team_to_sf.get(_primary_team.upper()) else '') or ''))}</td>"
             f"{col3_html}"
-            f"<td>{_esc(ntrp_r)}</td>"
+            f"<td data-sort='{_esc(ntrp_r)}'>{_esc(ntrp_r)}</td>"
             f"<td>{_esc(_fmt_rating(baseline))}</td>"
             f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
             f"<td data-sort='{_diff_sort}'>{_diff_html}</td>"
@@ -1362,7 +1365,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         sf_section = f'<div class="sf-filter-btns" id="sf-filter-btns">{sf_btns}</div>'
 
     col3_hdr = ('<th class="sortable" onclick="sortAP(2)">State ↕</th>'
-                if is_sectionals else '<th>SF</th>')
+                if is_sectionals else '<th class="sortable" onclick="sortAP(2)">SF ↕</th>')
 
     return f"""
 <div class="ap-controls">
@@ -1376,7 +1379,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
     <th class="sortable" onclick="sortAP(0)">Player ↕</th>
     <th class="sortable" onclick="sortAP(1)">Team ↕</th>
     {col3_hdr}
-    <th>NTRP</th>
+    <th class="sortable" onclick="sortAP(3)">NTRP ↕</th>
     <th class="sortable" onclick="sortAP(4)">Base ↕</th>
     <th class="sortable" onclick="sortAP(5)">New ↕</th>
     <th class="sortable" onclick="sortAP(6)">Diff ↕</th>
