@@ -1708,8 +1708,8 @@ def _summary_cards(ntrp: str, year: int, subflights: list[dict],
     return f"""<div class="cards-row">
   <div class="mcard">
     <div class="mcard-label">division</div>
-    <div class="mcard-val">{_esc(ntrp)} Women</div>
-    <div class="mcard-sub">{_esc(region_label)} · {year}</div>
+    <div class="mcard-val">{_esc(region_label)} {_esc(ntrp)}</div>
+    <div class="mcard-sub">Women · {year}</div>
   </div>
   <div class="mcard">
     <div class="mcard-label">teams</div>
@@ -2435,7 +2435,7 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>USTA {_esc(ntrp)} Women {year} – {_esc(region_label)}</title>
+<title>{_esc(region_label)} {_esc(ntrp)} Women {year}</title>
 <style>{_CSS}</style>
 </head>
 <body>
