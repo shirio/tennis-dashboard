@@ -1581,11 +1581,12 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                 if m.get("is_tie") and lines:
                     ga, gb = _tie_game_totals(lines, tname, m["opponent"])
                     if ga or gb:
-                        score_cls = "lbl-score-win" if ga > gb else ("lbl-score-lose" if ga < gb else "lbl-score")
+                        our_cls = "score-win" if ga > gb else ("score-lose" if ga < gb else "")
+                        our_num = f'<span class="{our_cls}">{ga}</span>' if our_cls else str(ga)
                         tie_html = (
                             f'<div class="line-row lbl-row">'
                             f'<span class="lbl-left">LINE RESULTS</span>'
-                            f'<span class="ls {score_cls}">Games:&nbsp;{ga}–{gb}</span>'
+                            f'<span class="ls">Games:&nbsp;{our_num}–{gb}</span>'
                             f'<span></span>'
                             f'</div>'
                         )
@@ -1862,9 +1863,8 @@ tr:last-child td { border-bottom: none; }
 .lbl-row { margin: 8px 0 3px; }
 .lbl-left { font-size: 10px; font-weight: 600; color: #aaa;
             text-transform: uppercase; letter-spacing: .05em; }
-.lbl-score { color: #555; font-size: 11px; }
-.ls.lbl-score-win { color: #27500A; font-weight: 700; }
-.ls.lbl-score-lose { color: #c0392b; font-weight: 700; }
+.score-win { color: #27500A; font-weight: 700; }
+.score-lose { color: #c0392b; font-weight: 700; }
 .line-lbl { font-size: 10px; font-weight: 600; color: #aaa;
             text-transform: uppercase; letter-spacing: .05em; margin: 8px 0 3px; }
 .line-row { display: grid; grid-template-columns: 1fr auto 1fr;
