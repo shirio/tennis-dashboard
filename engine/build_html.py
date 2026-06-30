@@ -787,9 +787,37 @@ def _traverse_match_histories(
     ntrp: str,
     subflights: list[dict] | None,
     other_subflights: list[dict] | None,
+    state_code: str = "",
 ) -> tuple[dict[str, list[dict]], dict[str, dict]]:
     other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
-    by_name = {_nkey(p.get("name", "")): p for p in player_pool if p.get("name")}
+
+    # Detect same-name players across states; key them as "{state}::{nk}"
+    _name_counts: dict[str, int] = {}
+    for p in player_pool:
+        nk = _nkey(p.get("name", ""))
+        if nk:
+            _name_counts[nk] = _name_counts.get(nk, 0) + 1
+    _ambiguous = {k for k, c in _name_counts.items() if c > 1}
+
+    by_name: dict[str, dict] = {}
+    for p in player_pool:
+        nk = _nkey(p.get("name", ""))
+        if not nk:
+            continue
+        if nk in _ambiguous:
+            st = (p.get("state") or "").lower()
+            by_name[f"{st}::{nk}"] = p
+        else:
+            by_name[nk] = p
+
+    def _bname_key(name: str) -> str:
+        """Return by_name key for name, preferring state-qualified variant."""
+        nk = _nkey(name)
+        if nk in _ambiguous and state_code:
+            qk = f"{state_code.lower()}::{nk}"
+            if qk in by_name:
+                return qk
+        return nk
 
     def _pit_r(nk: str, match_date: str, div: str) -> str:
         """Point-in-time rating for a player at match_date in given division."""
@@ -872,7 +900,7 @@ def _traverse_match_histories(
                                 all_players.append((nm, None))
 
                     for nm, court_won in all_players:
-                        nk = _nkey(nm)
+                        nk = _bname_key(nm)
                         pdata = by_name.get(nk)
                         if not pdata:
                             continue
@@ -903,25 +931,25 @@ def _traverse_match_histories(
 
                         if winner_names or loser_names:
                             if won:
-                                partners = [n for n in winner_names if _nkey(n) != nk]
+                                partners = [n for n in winner_names if _bname_key(n) != nk]
                                 opps = loser_names if not is_walkover else []
                             else:
-                                partners = [n for n in loser_names if _nkey(n) != nk]
+                                partners = [n for n in loser_names if _bname_key(n) != nk]
                                 opps = winner_names if not is_walkover else []
                         else:
                             h_names = [n.strip() for n in home_raw.split("/")
                                        if n.strip() and not _is_noise_name(n)]
                             a_names = [n.strip() for n in away_raw.split("/")
                                        if n.strip() and not _is_noise_name(n)]
-                            player_is_home = nk in [_nkey(n) for n in h_names]
+                            player_is_home = nk in [_bname_key(n) for n in h_names]
                             my_side = h_names if player_is_home else a_names
                             opp_side = a_names if player_is_home else h_names
-                            partners = [n for n in my_side if _nkey(n) != nk]
+                            partners = [n for n in my_side if _bname_key(n) != nk]
                             opps = opp_side if not is_walkover else []
 
-                        opp_r_list = [_pit_r(_nkey(o), date, div) for o in opps]
+                        opp_r_list = [_pit_r(_bname_key(o), date, div) for o in opps]
 
-                        partner_r_list = [_pit_r(_nkey(pt), date, div) for pt in partners]
+                        partner_r_list = [_pit_r(_bname_key(pt), date, div) for pt in partners]
 
                         opp_team = (lt if won else wt) or (
                             m_away_team if player_team.lower() in m_home_team.lower()
@@ -979,7 +1007,8 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                  other_subflights: list[dict] = None,
                  is_sectionals: bool = False,
                  all_players_pool: list[dict] = None,
-                 sf_display: dict | None = None) -> str:
+                 sf_display: dict | None = None,
+                 state_code: str = "") -> str:
     _sfx = ntrp.replace(".", "") if ntrp else ""
     other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
     _other_sfx = other_ntrp.replace(".", "")
@@ -1014,8 +1043,23 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
 
     # ── Build per-player match histories from both divisions ──────────────────
     _pool = all_players_pool if all_players_pool else players
+    # Detect ambiguous names in pool for state-qualified key lookups
+    _name_counts_pool: dict[str, int] = {}
+    for _pp in _pool:
+        _nk = _nkey(_pp.get("name", ""))
+        if _nk:
+            _name_counts_pool[_nk] = _name_counts_pool.get(_nk, 0) + 1
+    _ambiguous_pool = {k for k, c in _name_counts_pool.items() if c > 1}
+
+    def _player_history_key(p: dict) -> str:
+        """Key used to look up this player's history/stats (state-qualified if ambiguous)."""
+        nk = _nkey(p.get("name", ""))
+        if nk in _ambiguous_pool:
+            st = (p.get("state") or "").lower()
+            return f"{st}::{nk}" if st else nk
+        return nk
     player_histories, player_stats = _traverse_match_histories(
-        _pool, ntrp, subflights, other_subflights)
+        _pool, ntrp, subflights, other_subflights, state_code=state_code)
 
     # ── Rating timeline lookups (for point-in-time rating in match history) ──
     # Keyed nkey -> sfx -> {date: rating} (NOT flat-merged — see _ap_pit_rating)
@@ -1151,8 +1195,9 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         curr     = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
         division = p.get("division", "")
         nk = _nkey(p.get("name", ""))
+        _hk = _player_history_key(p)  # key for player_histories / player_stats lookups
 
-        pst = player_stats.get(nk, {})
+        pst = player_stats.get(_hk, {})
         _w_computed = pst.get("w", 0)
         _l_computed = pst.get("l", 0)
         _wko = pst.get("wko", 0)
@@ -1189,7 +1234,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
 
         _diff_html, _diff_sort = _baseline_diff_span(curr, baseline)
 
-        st = player_stats.get(nk, {})
+        st = player_stats.get(_hk, {})
         sw = st.get(f"sw{_sfx}", 0); sl = st.get(f"sl{_sfx}", 0)
         gw = st.get(f"gw{_sfx}", 0); gl = st.get(f"gl{_sfx}", 0)
         sets_str  = f"{sw}–{sl}" if (sw + sl) else "–"
@@ -1202,7 +1247,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         avg_opp_str  = f"{avg_opp_val:.2f}" if avg_opp_val else "–"
         avg_opp_sort = f"{avg_opp_val:.4f}" if avg_opp_val else "0"
 
-        hist = player_histories.get(nk, [])
+        hist = player_histories.get(_hk, [])
         has_history = bool(hist)
         expand_cls = " expandable" if has_history else ""
 
@@ -2336,7 +2381,8 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
     rosters_html = _rosters_tab(subflights, state_players, ntrp, sf_display=sf_display)
     other_subflights = (other_standings or {}).get("subflights", [])
     players_html = _players_tab(state_players, ntrp, subflights, other_subflights,
-                                all_players_pool=all_players_pool, sf_display=sf_display)
+                                all_players_pool=all_players_pool, sf_display=sf_display,
+                                state_code=state_code)
     results_html = _results_tab(subflights, state_players, sfx=ntrp.replace(".", ""),
                                 sf_display=sf_display)
 

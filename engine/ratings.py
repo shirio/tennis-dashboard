@@ -318,6 +318,42 @@ def _name_key(name: str) -> str:
     return re.sub(r"\s+", " ", name.lower().strip())
 
 
+def _build_players_by_name(players: list[dict]) -> dict[str, dict]:
+    """Build name→player dict.
+
+    Same-name players in different states (e.g. two 'Tina Taylor') get
+    keyed as '{state}::{name_key}' so they never overwrite each other.
+    Non-ambiguous players keep their plain name_key.
+    """
+    from collections import Counter
+    counts: Counter = Counter(
+        _name_key(p.get("name", "")) for p in players if _name_key(p.get("name", ""))
+    )
+    ambiguous = {k for k, c in counts.items() if c > 1}
+    result: dict[str, dict] = {}
+    for p in players:
+        k = _name_key(p.get("name", ""))
+        if not k:
+            continue
+        if k in ambiguous:
+            st = (p.get("state") or "??").lower()
+            result[f"{st}::{k}"] = p
+        else:
+            result[k] = p
+    return result
+
+
+def _resolve_key(name: str, file_state: str, players_by_name: dict[str, dict]) -> str:
+    """Return the correct players_by_name key for *name*, preferring the
+    state-qualified variant when it exists (disambiguates same-name players)."""
+    nk = _name_key(name)
+    if file_state:
+        qk = f"{file_state}::{nk}"
+        if qk in players_by_name:
+            return qk
+    return nk
+
+
 def _parse_player_names(field_val: str) -> list[str]:
     """
     Extract individual player names from a line's player field.
@@ -985,6 +1021,10 @@ def _collect_match_records(
         team_lookup[k] = p.get("team", "")
 
     for path, div_suffix in standings_files:
+        # Derive state from filename for same-name disambiguation
+        _st_m = re.match(r"(?:standings|districts)_([a-z]+)_", path.name)
+        _file_state = _st_m.group(1) if _st_m else ""
+
         data = _load(path, {})
         ntrp = data.get("ntrp", f"{div_suffix[0]}.{div_suffix[1]}")   # "3.0" or "3.5"
         default_opp = DEFAULT_OPP_RATING_30 if "30" in div_suffix else DEFAULT_OPP_RATING_35
@@ -992,8 +1032,8 @@ def _collect_match_records(
         # Determine which field to use for opponent ratings in this division
         live_field = (opponent_rating_fields or {}).get(ntrp)   # None → use baseline
 
-        def _rating_or_default(name: str, _live=live_field, _def=default_opp) -> float:
-            p = players_by_name.get(_name_key(name))
+        def _rating_or_default(name: str, _live=live_field, _def=default_opp, _fs=_file_state) -> float:
+            p = players_by_name.get(_resolve_key(name, _fs, players_by_name))
             if p:
                 # Prefer the live iterative field if provided and populated
                 if _live is not None:
@@ -1037,10 +1077,10 @@ def _collect_match_records(
 
                     # Create records for winners
                     for pname in winner_names:
-                        pk = _name_key(pname)
+                        pk = _resolve_key(pname, _file_state, players_by_name)
                         if pk not in players_by_name:
                             continue
-                        partners = [n for n in winner_names if _name_key(n) != pk]
+                        partners = [n for n in winner_names if _resolve_key(n, _file_state, players_by_name) != pk]
                         partner_r = _rating_or_default(partners[0]) if partners else None
                         opp_ratings = [_rating_or_default(n) for n in loser_names]
                         if not opp_ratings:
@@ -1053,10 +1093,10 @@ def _collect_match_records(
 
                     # Create records for losers
                     for pname in loser_names:
-                        pk = _name_key(pname)
+                        pk = _resolve_key(pname, _file_state, players_by_name)
                         if pk not in players_by_name:
                             continue
-                        partners = [n for n in loser_names if _name_key(n) != pk]
+                        partners = [n for n in loser_names if _resolve_key(n, _file_state, players_by_name) != pk]
                         partner_r = _rating_or_default(partners[0]) if partners else None
                         opp_ratings = [_rating_or_default(n) for n in winner_names]
                         if not opp_ratings:
@@ -1083,8 +1123,14 @@ def _collect_court_events(
     team_lookup: dict[str, str] = {k: p.get("team", "") for k, p in players_by_name.items()}
 
     for path, div_suffix in standings_files:
+        _st_m = re.match(r"(?:standings|districts)_([a-z]+)_", path.name)
+        _file_state = _st_m.group(1) if _st_m else ""
+
         data = _load(path, {})
         ntrp = data.get("ntrp", f"{div_suffix[0]}.{div_suffix[1]}")
+
+        def _rk(name: str, _fs: str = _file_state) -> str:
+            return _resolve_key(name, _fs, players_by_name)
 
         for sf in data.get("subflights", []):
             for match in sf.get("matches", []):
@@ -1112,12 +1158,12 @@ def _collect_court_events(
                     l_raw = " / ".join(l_names)
 
                     winner_keys = [
-                        _name_key(n) for n in _parse_player_names(w_raw)
-                        if _name_key(n) in players_by_name
+                        _rk(n) for n in _parse_player_names(w_raw)
+                        if _rk(n) in players_by_name
                     ]
                     loser_keys = [
-                        _name_key(n) for n in _parse_player_names(l_raw)
-                        if _name_key(n) in players_by_name
+                        _rk(n) for n in _parse_player_names(l_raw)
+                        if _rk(n) in players_by_name
                     ]
                     if not winner_keys and not loser_keys:
                         continue
@@ -1695,12 +1741,8 @@ def run_ratings() -> RatingsSummary:
         if p.get("dynamic_rating_baseline") is None and p.get("division"):
             p["dynamic_rating_baseline"] = ntrp_default(p["division"])
 
-    # Build name → player lookup
-    players_by_name: dict[str, dict] = {}
-    for p in players:
-        k = _name_key(p.get("name", ""))
-        if k:
-            players_by_name[k] = p
+    # Build name → player lookup (state-qualified for same-name players in different states)
+    players_by_name = _build_players_by_name(players)
 
     # Collect per-player match records from all states and divisions
     standings_files = _discover_standings_files()
@@ -1924,6 +1966,10 @@ def run_ratings() -> RatingsSummary:
 
     for player in players:
         k = _name_key(player.get("name", ""))
+        # Prefer state-qualified key for same-name players in different states
+        st = (player.get("state") or "").lower()
+        if f"{st}::{k}" in all_records:
+            k = f"{st}::{k}"
         matches = all_records.get(k, [])
 
         baseline = player.get("dynamic_rating_baseline")
@@ -2019,11 +2065,7 @@ def run_ratings_iterative(
     if not players:
         return
 
-    players_by_name: dict[str, dict] = {}
-    for p in players:
-        k = _name_key(p.get("name", ""))
-        if k:
-            players_by_name[k] = p
+    players_by_name = _build_players_by_name(players)
 
     standings_files = _discover_standings_files()
 

@@ -2739,7 +2739,7 @@ def _score_winner(score: str) -> str:
     return ""
 
 
-def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, list]]):
+def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple]):
     """
     Walk all match lines across all subflights, compute per-player per-division:
       - lines_played_30 / lines_played_35  (list of court labels with counts, e.g. ["D1x2","D2","S2"])
@@ -2752,7 +2752,43 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
     """
     from collections import defaultdict, Counter
     players = load_json(PLAYERS_JSON, [])
-    by_name: dict[str, dict] = {p["name"].lower().strip(): p for p in players}
+
+    # Build name → player(s) lookup. For same-name players in different states,
+    # we keep a list so team-based disambiguation can pick the right one.
+    # Clear all per-division stats fields before recomputing from scratch.
+    # This prevents stale values from persisting when disambiguation logic changes.
+    _div_fields = ("lines_played_30", "wl_record_30", "team_30", "default_wins_30",
+                   "lines_played_35", "wl_record_35", "team_35", "default_wins_35")
+    for p in players:
+        for f in _div_fields:
+            p.pop(f, None)
+
+    _by_name_list: dict[str, list] = {}
+    for p in players:
+        k = p["name"].lower().strip()
+        _by_name_list.setdefault(k, []).append(p)
+    _ambiguous_names = {k for k, ps in _by_name_list.items() if len(ps) > 1}
+
+    def _pick_player(name_key: str, match_teams_norm: set) -> dict | None:
+        """Return the player dict for name_key, using team to disambiguate if needed."""
+        candidates = _by_name_list.get(name_key, [])
+        if not candidates:
+            return None
+        if len(candidates) == 1:
+            return candidates[0]
+        # Multiple same-name players: pick by team match
+        for p in candidates:
+            t = (p.get("team") or "").upper().strip()
+            if t and t in match_teams_norm:
+                return p
+        return candidates[0]  # fallback
+
+    # For backward compat (swap detection uses player_team by name key, single-value)
+    # For ambiguous names we just use the first candidate's team — swap detection
+    # operates over all lines so individual errors here are minor.
+    by_name: dict[str, dict] = {}
+    for k, ps in _by_name_list.items():
+        by_name[k] = ps[0]
 
     # Build player-name → registered team lookup (normalized to uppercase for comparison)
     player_team: dict[str, str] = {
@@ -2774,7 +2810,14 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
     def _team_norm(t: str) -> str:
         return (t or "").upper().strip()
 
-    for ntrp, subflights in all_ntrp_standings:
+    for entry in all_ntrp_standings:
+        # Support both old (ntrp, subflights) and new (ntrp, state_code, subflights) tuples
+        if len(entry) == 3:
+            ntrp, _entry_state, subflights = entry
+        else:
+            ntrp, subflights = entry
+            _entry_state = ""
+        _entry_state = (_entry_state or "").lower()
         for sf in subflights:
             for m in sf.get("matches", []):
                 if m.get("pending") or not m.get("lines"):
@@ -2829,8 +2872,6 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
                         key = pname.lower().strip()
                         if not key:
                             return
-                        if court_label:
-                            lines_count[ntrp][key][court_label] += 1
 
                         # Determine which side this player is actually on.
                         # Trust scorecard position + swap detection exclusively.
@@ -2845,9 +2886,17 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
                         # robust enough without the per-player override.
                         actual_home = (not parsed_is_home) if is_swapped else parsed_is_home
 
+                        # For same-name players in different states, qualify the
+                        # accumulator key with state to keep their stats separate.
+                        player_team_here = (match_home if actual_home else match_away) if (match_home and match_away) else ""
+                        acc_key = f"{_entry_state}::{key}" if (key in _ambiguous_names and _entry_state) else key
+
+                        if court_label:
+                            lines_count[ntrp][acc_key][court_label] += 1
+
                         # Record which team they played for in this division
                         if match_home and match_away:
-                            match_teams[ntrp][key] = match_home if actual_home else match_away
+                            match_teams[ntrp][acc_key] = player_team_here
 
                         # Determine W/L using per-court result if available,
                         # otherwise fall back to match-level result
@@ -2859,11 +2908,11 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
                             return  # no result available; skip
 
                         if won:
-                            wins[ntrp][key] += 1
+                            wins[ntrp][acc_key] += 1
                             if _line_is_default:
-                                defaults_w[ntrp][key] += 1
+                                defaults_w[ntrp][acc_key] += 1
                         else:
-                            losses[ntrp][key] += 1
+                            losses[ntrp][acc_key] += 1
 
                     for pname in _split_players(ln.get("players_home", "")):
                         _process(pname, parsed_is_home=True)
@@ -2884,8 +2933,18 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple[str, li
     updated = 0
     for ntrp_key, player_keys in all_keys.items():
         sfx = _suffix(ntrp_key)
-        for key in player_keys:
-            p = by_name.get(key)
+        for acc_key in player_keys:
+            # Decode state-qualified key for same-name players (e.g. "ut::tina taylor")
+            if "::" in acc_key:
+                state_part, name_part = acc_key.split("::", 1)
+                candidates = _by_name_list.get(name_part, [])
+                p = next((c for c in candidates if (c.get("state") or "").lower() == state_part), None)
+                if not p:
+                    p = candidates[0] if candidates else None
+            else:
+                seen_team = match_teams[ntrp_key].get(acc_key, "")
+                p = _pick_player(acc_key, {seen_team} if seen_team else set())
+            key = acc_key  # keep for accumulator lookups below
             if not p:
                 continue
             # Build sorted court list with multiplicity: ["D1x2", "D2", "S2"]

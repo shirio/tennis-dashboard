@@ -51,13 +51,13 @@ def main():
             path = DATA_DIR / f"standings_{st_lower}_{suffix}.json"
             if path.exists():
                 data = json.loads(path.read_text())
-                all_ntrp.append((ntrp_label, data.get("subflights", [])))
+                all_ntrp.append((ntrp_label, st, data.get("subflights", [])))
             # Also include districts matches
             d_path = DATA_DIR / f"districts_{st_lower}_{suffix}.json"
             if d_path.exists():
                 d_data = json.loads(d_path.read_text())
                 if d_data.get("matches"):
-                    all_ntrp.append((ntrp_label, [{"flight_label": "Districts",
+                    all_ntrp.append((ntrp_label, st, [{"flight_label": "Districts",
                                                     "teams": d_data.get("teams", []),
                                                     "matches": d_data.get("matches", [])}]))
 
