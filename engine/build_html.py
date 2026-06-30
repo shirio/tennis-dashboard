@@ -350,14 +350,7 @@ def _validate(subflights: list[dict]) -> list[str]:
             rw, rl = wins.get(name, 0), losses.get(name, 0)
             if sw == 0 and sl == 0 and (rw > 0 or rl > 0):
                 continue
-            # Skip if our counted match total doesn't match TL's matches_played —
-            # indicates missing or duplicate match data, not a correctness issue.
-            mp = t.get("matches_played") or (sw + sl)
-            if mp and abs((rw + rl) - mp) > 1:
-                continue
-            # Suppress single-match discrepancies (tiebreaker artifacts, minor scraping gaps).
-            # Only warn when 2+ matches differ, which indicates a systematic orientation error.
-            if abs(rw - sw) + abs(rl - sl) < 2:
+            if sw == 0 and sl == 0 and (rw > 0 or rl > 0):
                 continue
             if rw != sw or rl != sl:
                 warnings.append(
@@ -895,9 +888,8 @@ def _traverse_match_histories(
                                 player_team = _tv
                                 break
                         if not player_team:
-                            player_team = (pdata.get(f"team_{div_sfx}") or
-                                           pdata.get("team") or "").strip()
-                        if not player_team:
+                            # Player's registered team is not in this match — skip.
+                            # Prevents cross-team name collisions (same name, different teams).
                             continue
                         if court_won is not None:
                             won = court_won
