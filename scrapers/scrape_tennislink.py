@@ -2801,7 +2801,11 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple]):
     losses:       dict[str, dict] = defaultdict(lambda: defaultdict(int))
     defaults_w:   dict[str, dict] = defaultdict(lambda: defaultdict(int))  # default wins
     lines_count:  dict[str, dict] = defaultdict(lambda: defaultdict(Counter))  # court label counts
-    match_teams:  dict[str, dict] = defaultdict(dict)  # which team player played for per division
+    # Team votes per (ntrp, player): Counter of team_name -> match count. Using a
+    # majority vote (not last-write-wins) avoids misattributing a player to a team
+    # they played for in just one match (e.g. a single mislabeled scorecard, or a
+    # later-processed subflight overwriting an earlier one with far more matches).
+    match_teams:  dict[str, dict] = defaultdict(lambda: defaultdict(Counter))
 
     def _split_players(field: str) -> list[str]:
         cleaned = re.sub(r",?\s*\d+-\d+.*$", "", field).strip()
@@ -2902,9 +2906,10 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple]):
                         if court_label:
                             lines_count[ntrp][acc_key][court_label] += 1
 
-                        # Record which team they played for in this division
+                        # Record which team they played for in this division (one
+                        # vote per match they appear in; majority wins at the end)
                         if match_home and match_away:
-                            match_teams[ntrp][acc_key] = player_team_here
+                            match_teams[ntrp][acc_key][player_team_here] += 1
 
                         # Determine W/L using per-court result if available,
                         # otherwise fall back to match-level result
@@ -2950,8 +2955,8 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple]):
                 if not p:
                     p = candidates[0] if candidates else None
             else:
-                seen_team = match_teams[ntrp_key].get(acc_key, "")
-                p = _pick_player(acc_key, {seen_team} if seen_team else set())
+                seen_teams = set(match_teams[ntrp_key].get(acc_key, Counter()).keys())
+                p = _pick_player(acc_key, seen_teams)
             key = acc_key  # keep for accumulator lookups below
             if not p:
                 continue
@@ -2972,10 +2977,15 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple]):
                 p[f"default_wins_{sfx}"] = dw
             elif f"default_wins_{sfx}" in p:
                 del p[f"default_wins_{sfx}"]
-            # Store the team they played for in this division (used for roster placement)
-            team = match_teams[ntrp_key].get(key, "")
-            if team:
-                p[f"team_{sfx}"] = team
+            # Store the team they played for in this division (used for roster
+            # placement). Majority vote across all matches — not the last team
+            # processed — so a single mislabeled/cross-rostered match doesn't
+            # override the team a player actually plays for most of the time.
+            team_votes = match_teams[ntrp_key].get(key, Counter())
+            if team_votes:
+                team = team_votes.most_common(1)[0][0]
+                if team:
+                    p[f"team_{sfx}"] = team
             updated += 1
 
     save_json(PLAYERS_JSON, players)

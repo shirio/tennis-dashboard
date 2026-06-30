@@ -93,11 +93,24 @@ def _print_summary(path: Path):
               f"{with_ids} IDs, {with_lines} w/lines{tag}")
 
 
+def _regular_season_subflight_count(path: Path) -> int:
+    """Count non-championship subflights — used to detect a silently-skipped ntrp."""
+    if not path.exists():
+        return 0
+    data = json.loads(path.read_text())
+    return sum(
+        1 for sf in data.get("subflights", [])
+        if "champ" not in sf.get("flight_label", "").lower()
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Re-scrape UT regular season data")
     parser.add_argument("--dry-run", action="store_true",
                         help="Scrape and print summary but don't rebuild dashboards")
     parser.add_argument("--headless", action="store_true")
+    parser.add_argument("--skip-id-backfill", action="store_true",
+                        help="Skip the fill_ut_match_ids.py step after scraping")
     args = parser.parse_args()
 
     username = os.getenv("TENNISLINK_USER", "")
@@ -112,6 +125,12 @@ def main():
     champ_35 = _load_championship_subflights(UT35_PATH)
     print(f"  3.0: {len(champ_30)} championship subflight(s)")
     print(f"  3.5: {len(champ_35)} championship subflight(s)")
+
+    # Record regular-season subflight counts BEFORE the scrape, to detect a
+    # division that run_mode1 silently skips (it `continue`s past a failed
+    # ntrp without raising, leaving the old file untouched).
+    before_30 = _regular_season_subflight_count(UT30_PATH)
+    before_35 = _regular_season_subflight_count(UT35_PATH)
 
     # 2. Back up current files
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -151,11 +170,45 @@ def main():
     _print_summary(UT30_PATH)
     _print_summary(UT35_PATH)
 
+    # 5b. Verify BOTH divisions actually got re-scraped — run_mode1 silently
+    # `continue`s past a division it can't navigate to, leaving the old file
+    # in place. Compare regular-season subflight counts to catch this.
+    after_30 = _regular_season_subflight_count(UT30_PATH)
+    after_35 = _regular_season_subflight_count(UT35_PATH)
+    failures = []
+    if after_30 < before_30:
+        failures.append(f"3.0: {before_30} subflights before → {after_30} after (lost subflights)")
+    if after_35 < before_35:
+        failures.append(f"3.5: {before_35} subflights before → {after_35} after (lost subflights)")
+    if after_30 == 0:
+        failures.append("3.0: 0 regular-season subflights after scrape — division likely failed entirely")
+    if after_35 == 0:
+        failures.append("3.5: 0 regular-season subflights after scrape — division likely failed entirely")
+
+    if failures:
+        print("\n[FAILED] One or more divisions did not scrape successfully:")
+        for f in failures:
+            print(f"  - {f}")
+        print("\nNOT rebuilding or committing. Backups are in data/*.bak.json.")
+        print("Investigate the scrape output above, fix navigation, and re-run.")
+        sys.exit(1)
+
     if args.dry_run:
-        print("\n[dry-run] Skipping rebuild. Review data files before rebuilding.")
+        print("\n[dry-run] Skipping ID backfill, rebuild, and commit.")
         return
 
-    # 6. Rebuild + push
+    # 6. Backfill missing TL match IDs + court winners (run_mode1/_scrape_subflight
+    # only captures IDs the team-schedule page exposes directly; most matches
+    # need the dedicated schedule-page ViewScore lookup in fill_ut_match_ids.py).
+    if not args.skip_id_backfill:
+        print("\nBackfilling missing TL match IDs + court winners...")
+        result = subprocess.run([sys.executable, "scripts/fill_ut_match_ids.py"],
+                                cwd=str(Path.cwd()))
+        if result.returncode != 0:
+            print("[warn] fill_ut_match_ids.py exited non-zero — review output before pushing")
+            return
+
+    # 7. Rebuild + push
     print("\nRebuilding dashboards...")
     result = subprocess.run([sys.executable, "rebuild.py", "--state", "UT"],
                             cwd=str(Path.cwd()))

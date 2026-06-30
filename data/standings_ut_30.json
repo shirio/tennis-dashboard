@@ -2508,7 +2508,7 @@
         {
           "match_id": "ac09ee6081ac584b",
           "date": "4/15/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823899",
           "scorecard_url": null,
           "home_team": "Wasatch Hills Ballers",
           "away_team": "Wasatch High School-Davis/Watts",
@@ -2524,11 +2524,15 @@
               "players_away": "Chelsie Otteson",
               "score": "7-5 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Wasatch High School-Davis/Watts",
+              "winner_names": [
+                "Linda Lasater"
+              ],
+              "loser_names": [
+                "Chelsie Otteson"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2540,7 +2544,8 @@
               "winner_team": "",
               "loser_team": "",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [],
+              "dq_default": "away"
             },
             {
               "line": "1# Doubles",
@@ -2548,11 +2553,17 @@
               "players_away": "Sabina Boies / Kristin Finlayson",
               "score": "6-2 6-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Wasatch High School-Davis/Watts",
+              "winner_names": [
+                "Carina Lambert",
+                "Kari Bennett"
+              ],
+              "loser_names": [
+                "Sabina Boies",
+                "Kristin Finlayson"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2560,11 +2571,17 @@
               "players_away": "Nike Hawkes / Crystal Nielsen",
               "score": "7-5 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Wasatch High School-Davis/Watts",
+              "winner_names": [
+                "Cortney Nebeker",
+                "Annie Lindsley"
+              ],
+              "loser_names": [
+                "Nike Hawkes",
+                "Crystal Nielsen"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -2572,11 +2589,20 @@
               "players_away": "Kathey Maxfield / Alyson Kelly",
               "score": "6-1 6-1",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Wasatch High School-Davis/Watts",
+              "winner_names": [
+                "Brooke Iverson",
+                "Tiffany VandenAkker",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ],
+              "loser_names": [
+                "Kathey Maxfield",
+                "Alyson Kelly"
+              ]
             }
           ]
         },
@@ -2684,7 +2710,7 @@
         {
           "match_id": "1dd3c11f9be7eb64",
           "date": "4/15/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823898",
           "scorecard_url": null,
           "home_team": "Ogden-Cox/Harvey",
           "away_team": "SunPro-Lucky Shots",
@@ -2886,7 +2912,7 @@
         {
           "match_id": "e8790d36e528663b",
           "date": "4/22/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823902",
           "scorecard_url": null,
           "home_team": "Wasatch Hills Ballers",
           "away_team": "Ivory Ridge Racquettes",
@@ -2902,11 +2928,15 @@
               "players_away": "Ashley Bradley",
               "score": "6-2 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Kari Bennett"
+              ],
+              "loser_names": [
+                "Ashley Bradley"
+              ]
             },
             {
               "line": "2# Singles",
@@ -2914,11 +2944,15 @@
               "players_away": "Shannon Taylor",
               "score": "6-3 6-3",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Annie Lindsley"
+              ],
+              "loser_names": [
+                "Shannon Taylor"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -2926,11 +2960,17 @@
               "players_away": "Babetta Kelly / Shannon Child",
               "score": "6-1 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Kelli Hall",
+                "Cortney Nebeker"
+              ],
+              "loser_names": [
+                "Babetta Kelly",
+                "Shannon Child"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -2942,7 +2982,8 @@
               "winner_team": "",
               "loser_team": "",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [],
+              "dq_default": "away"
             },
             {
               "line": "3# Doubles",
@@ -2950,18 +2991,27 @@
               "players_away": "Mysha Bolen / Christy Denney / Note - / (DQ) - This player has been disqualified on this team / (DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing / * - Match awarded to opposing team by default in current standing",
               "score": "6-1 6-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "Ivory Ridge Racquettes",
+              "winner_names": [
+                "Katie Murphy",
+                "Wendy Hopkins"
+              ],
+              "loser_names": [
+                "Mysha Bolen",
+                "Christy Denney",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ]
             }
           ]
         },
         {
           "match_id": "dd3fbc8e302adbce",
           "date": "4/22/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823903",
           "scorecard_url": null,
           "home_team": "Wasatch High School-Davis/Watts",
           "away_team": "Ogden-Cox/Harvey",
@@ -3252,7 +3302,7 @@
         {
           "match_id": "7dec9a16bf5c75c7",
           "date": "4/29/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823905",
           "scorecard_url": null,
           "home_team": "Wasatch Hills Ballers",
           "away_team": "Cottonwood Club-Ricker",
@@ -3353,7 +3403,7 @@
         {
           "match_id": "56038c4eaebf54e4",
           "date": "4/29/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823906",
           "scorecard_url": null,
           "home_team": "Wasatch High School-Davis/Watts",
           "away_team": "ACE-Coleman",
@@ -3454,7 +3504,7 @@
         {
           "match_id": "daf990d0e292702d",
           "date": "4/29/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823907",
           "scorecard_url": null,
           "home_team": "Ivory Ridge Racquettes",
           "away_team": "Ogden-Cox/Harvey",
@@ -3649,7 +3699,7 @@
         {
           "match_id": "05045281ffd814a9",
           "date": "4/8/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823895",
           "scorecard_url": null,
           "home_team": "Wasatch Hills Ballers",
           "away_team": "SunPro-Lucky Shots",
@@ -3665,11 +3715,15 @@
               "players_away": "Lisa King",
               "score": "6-4 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "SunPro-Lucky Shots",
+              "winner_names": [
+                "Jamie Sorensen"
+              ],
+              "loser_names": [
+                "Lisa King"
+              ]
             },
             {
               "line": "2# Singles",
@@ -3677,11 +3731,15 @@
               "players_away": "Natali King",
               "score": "3-6 6-4 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "SunPro-Lucky Shots",
+              "winner_names": [
+                "Linda Lasater"
+              ],
+              "loser_names": [
+                "Natali King"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -3689,11 +3747,17 @@
               "players_away": "Shirley Johnson / Christina Marshall",
               "score": "6-3 6-4",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "SunPro-Lucky Shots",
+              "winner_names": [
+                "Laura Espinosa",
+                "Brooke Iverson"
+              ],
+              "loser_names": [
+                "Shirley Johnson",
+                "Christina Marshall"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -3701,11 +3765,17 @@
               "players_away": "Suzette Greer / Cynthia Bedford",
               "score": "1-6 6-4 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Wasatch Hills Ballers",
+              "loser_team": "SunPro-Lucky Shots",
+              "winner_names": [
+                "Katie Murphy",
+                "Wendy Hopkins"
+              ],
+              "loser_names": [
+                "Suzette Greer",
+                "Cynthia Bedford"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -3717,14 +3787,15 @@
               "winner_team": "",
               "loser_team": "",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [],
+              "dq_default": "away"
             }
           ]
         },
         {
           "match_id": "c6d16db1d63ef2d6",
           "date": "4/8/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823894",
           "scorecard_url": null,
           "home_team": "Wasatch High School-Davis/Watts",
           "away_team": "Cottonwood Club-Ricker",
@@ -3918,7 +3989,7 @@
         {
           "match_id": "3f627107ad8cbf79",
           "date": "4/8/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823893",
           "scorecard_url": null,
           "home_team": "Ogden-Cox/Harvey",
           "away_team": "ACE-Coleman",
@@ -4019,7 +4090,7 @@
         {
           "match_id": "b7714e74213e7ccb",
           "date": "5/13/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823913",
           "scorecard_url": null,
           "home_team": "Wasatch Hills Ballers",
           "away_team": "Ogden-Cox/Harvey",
@@ -4120,7 +4191,7 @@
         {
           "match_id": "ec79f4b74ee78b03",
           "date": "5/13/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823912",
           "scorecard_url": null,
           "home_team": "Wasatch High School-Davis/Watts",
           "away_team": "Eagleridge-Dato",
@@ -4421,7 +4492,7 @@
         {
           "match_id": "4184e6e907913a35",
           "date": "5/20/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823918",
           "scorecard_url": null,
           "home_team": "Wasatch Hills Ballers",
           "away_team": "ACE-Coleman",
@@ -4522,7 +4593,7 @@
         {
           "match_id": "0f03e9fd3d693283",
           "date": "5/20/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823922",
           "scorecard_url": null,
           "home_team": "Wasatch High School-Davis/Watts",
           "away_team": "Ivory Ridge Racquettes",
@@ -4623,7 +4694,7 @@
         {
           "match_id": "45c418639d58ba48",
           "date": "5/20/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823916",
           "scorecard_url": null,
           "home_team": "Ogden-Cox/Harvey",
           "away_team": "Eagleridge-Dato",
@@ -4808,7 +4879,7 @@
         {
           "match_id": "57073e1bd49d21c9",
           "date": "5/27/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823923",
           "scorecard_url": null,
           "home_team": "Wasatch Hills Ballers",
           "away_team": "SunPro-Lucky Shots",
@@ -4906,7 +4977,7 @@
         {
           "match_id": "cbd3675290d5b95e",
           "date": "5/27/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823917",
           "scorecard_url": null,
           "home_team": "Wasatch High School-Davis/Watts",
           "away_team": "Cottonwood Club-Ricker",
@@ -5105,7 +5176,7 @@
         {
           "match_id": "1e0b2df19fd591e6",
           "date": "5/27/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823921",
           "scorecard_url": null,
           "home_team": "Ogden-Cox/Harvey",
           "away_team": "ACE-Coleman",
@@ -5201,7 +5272,7 @@
         {
           "match_id": "c3dc2669e9faa1bd",
           "date": "5/6/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823908",
           "scorecard_url": null,
           "home_team": "Wasatch Hills Ballers",
           "away_team": "Eagleridge-Dato",
@@ -5296,7 +5367,7 @@
         {
           "match_id": "8f78a2d7fa4c44df",
           "date": "5/6/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823909",
           "scorecard_url": null,
           "home_team": "Wasatch High School-Davis/Watts",
           "away_team": "SunPro-Lucky Shots",
@@ -5498,7 +5569,7 @@
         {
           "match_id": "36494003393d3b49",
           "date": "5/6/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823910",
           "scorecard_url": null,
           "home_team": "Ogden-Cox/Harvey",
           "away_team": "Cottonwood Club-Ricker",
@@ -5682,7 +5753,7 @@
         {
           "match_id": "cd3122ea7101c120",
           "date": "4/15/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823867",
           "scorecard_url": null,
           "home_team": "Sports Mall-Stroud-Peterson/Eckert",
           "away_team": "Sports Mall Tenistas",
@@ -5783,7 +5854,7 @@
         {
           "match_id": "8d329acdb0e5350a",
           "date": "4/15/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823865",
           "scorecard_url": null,
           "home_team": "Ivory Ridge-Supreme Court",
           "away_team": "ACE-Swalberg/Harman",
@@ -5982,7 +6053,7 @@
         {
           "match_id": "9ddde87e3bab796d",
           "date": "4/22/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823869",
           "scorecard_url": null,
           "home_team": "Sports Mall-Stroud-Peterson/Eckert",
           "away_team": "Ivory Ridge-Supreme Court",
@@ -6099,11 +6170,15 @@
               "players_away": "Sierra Richardson",
               "score": "6-4 6-2",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Park City Flying Squirrels",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Kelley Schorn"
+              ],
+              "loser_names": [
+                "Sierra Richardson"
+              ]
             },
             {
               "line": "2# Singles",
@@ -6111,11 +6186,15 @@
               "players_away": "Marci Mortensen",
               "score": "6-3 6-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Park City Flying Squirrels",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Jaron Santelli"
+              ],
+              "loser_names": [
+                "Marci Mortensen"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -6127,7 +6206,8 @@
               "winner_team": "",
               "loser_team": "",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [],
+              "dq_default": "home"
             },
             {
               "line": "2# Doubles",
@@ -6135,11 +6215,17 @@
               "players_away": "Kimberly Duncan / Natalie Farley",
               "score": "6-2 7-5",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Park City Flying Squirrels",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Peony Keve",
+                "Angela Vrebalovich"
+              ],
+              "loser_names": [
+                "Kimberly Duncan",
+                "Natalie Farley"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -6147,18 +6233,27 @@
               "players_away": "Elise Welling / Danielle Lonardo",
               "score": "3-6 6-4 1-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Park City Flying Squirrels",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Megan Johnstone",
+                "Kim Li",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ],
+              "loser_names": [
+                "Elise Welling",
+                "Danielle Lonardo"
+              ]
             }
           ]
         },
         {
           "match_id": "7f5f2206d7b4ef44",
           "date": "4/22/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823868",
           "scorecard_url": null,
           "home_team": "ACE-Swalberg/Harman",
           "away_team": "Liberty Park Volleydolls",
@@ -6259,7 +6354,7 @@
         {
           "match_id": "33570b36cefaaabb",
           "date": "4/29/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823871",
           "scorecard_url": null,
           "home_team": "Sports Mall-Stroud-Peterson/Eckert",
           "away_team": "ACE-Swalberg/Harman",
@@ -6360,7 +6455,7 @@
         {
           "match_id": "77af1ba9426f8e36",
           "date": "4/29/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823873",
           "scorecard_url": null,
           "home_team": "Ivory Ridge-Supreme Court",
           "away_team": "Park City Flying Squirrels",
@@ -6481,7 +6576,8 @@
               "winner_team": "",
               "loser_team": "",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [],
+              "dq_default": "home"
             },
             {
               "line": "2# Singles",
@@ -6489,11 +6585,15 @@
               "players_away": "Marci Mortensen",
               "score": "6-2 5-7 1-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Liberty Park Volleydolls",
+              "winner_names": [
+                "Marci Mortensen"
+              ],
+              "loser_names": [
+                "Stacy Higbee"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -6501,11 +6601,17 @@
               "players_away": "Aly King / Kiely Hanks",
               "score": "6-1 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Liberty Park Volleydolls",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Rebecca Anderson",
+                "Liz Baucom"
+              ],
+              "loser_names": [
+                "Aly King",
+                "Kiely Hanks"
+              ]
             },
             {
               "line": "2# Doubles",
@@ -6513,11 +6619,17 @@
               "players_away": "Elise Welling / Brielle Barton",
               "score": "6-3 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Liberty Park Volleydolls",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Anna Pearce",
+                "Megan Berceau"
+              ],
+              "loser_names": [
+                "Elise Welling",
+                "Brielle Barton"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -6525,18 +6637,27 @@
               "players_away": "Summer Adamson / Megan Ord / Note - / (DQ) - This player has been disqualified on this team / (DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing / * - Match awarded to opposing team by default in current standing",
               "score": "6-0 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Liberty Park Volleydolls",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Liz Bell",
+                "Marie Gardner"
+              ],
+              "loser_names": [
+                "Summer Adamson",
+                "Megan Ord",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ]
             }
           ]
         },
         {
           "match_id": "fdb23c958d86d484",
           "date": "4/8/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823864",
           "scorecard_url": null,
           "home_team": "Sports Mall-Stroud-Peterson/Eckert",
           "away_team": "Liberty Park Volleydolls",
@@ -6629,7 +6750,7 @@
         {
           "match_id": "370ba9cf2927dfa9",
           "date": "4/8/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823863",
           "scorecard_url": null,
           "home_team": "Ivory Ridge-Supreme Court",
           "away_team": "Sports Mall Tenistas",
@@ -6645,11 +6766,15 @@
               "players_away": "Aly King",
               "score": "6-0 6-2",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Stephanie Betteridge"
+              ],
+              "loser_names": [
+                "Aly King"
+              ]
             },
             {
               "line": "2# Singles",
@@ -6657,11 +6782,15 @@
               "players_away": "Brielle Barton",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Jena Rowley"
+              ],
+              "loser_names": [
+                "Brielle Barton"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -6673,7 +6802,8 @@
               "winner_team": "",
               "loser_team": "",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [],
+              "dq_default": "home"
             },
             {
               "line": "2# Doubles",
@@ -6681,11 +6811,17 @@
               "players_away": "Marci Mortensen / Sierra Richardson",
               "score": "6-7 6-2 1-0",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Marci Mortensen",
+                "Sierra Richardson"
+              ],
+              "loser_names": [
+                "Mary Scoresby",
+                "Ruth Russell"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -6693,10 +6829,16 @@
               "players_away": "",
               "score": "6-0 6-0",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Jill Broadbent",
+                "Gaylynn Gale",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ],
               "loser_names": []
             }
           ]
@@ -6704,7 +6846,7 @@
         {
           "match_id": "ad5e5d8b0b7bf162",
           "date": "4/8/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823862",
           "scorecard_url": null,
           "home_team": "Park City Flying Squirrels",
           "away_team": "ACE-Swalberg/Harman",
@@ -6805,7 +6947,7 @@
         {
           "match_id": "7dc7134454a399cb",
           "date": "5/13/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823879",
           "scorecard_url": null,
           "home_team": "Sports Mall-Stroud-Peterson/Eckert",
           "away_team": "Liberty Park Volleydolls",
@@ -6906,7 +7048,7 @@
         {
           "match_id": "51cd1c87cfd942b6",
           "date": "5/13/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823878",
           "scorecard_url": null,
           "home_team": "Ivory Ridge-Supreme Court",
           "away_team": "Sports Mall Tenistas",
@@ -6922,11 +7064,15 @@
               "players_away": "Kelli Cannon",
               "score": "6-0 6-2",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Megan Bean"
+              ],
+              "loser_names": [
+                "Kelli Cannon"
+              ]
             },
             {
               "line": "2# Singles",
@@ -6934,11 +7080,15 @@
               "players_away": "Aly King",
               "score": "6-4 6-3",
               "result": "away",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "away",
+              "winner_team": "Sports Mall Tenistas",
+              "loser_team": "Ivory Ridge-Supreme Court",
+              "winner_names": [
+                "Aly King"
+              ],
+              "loser_names": [
+                "Stephanie Betteridge"
+              ]
             },
             {
               "line": "1# Doubles",
@@ -6950,7 +7100,8 @@
               "winner_team": "",
               "loser_team": "",
               "winner_names": [],
-              "loser_names": []
+              "loser_names": [],
+              "dq_default": "home"
             },
             {
               "line": "2# Doubles",
@@ -6958,11 +7109,17 @@
               "players_away": "Elise Welling / Brielle Barton",
               "score": "6-0 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Allyson Smith",
+                "Shellie Black"
+              ],
+              "loser_names": [
+                "Elise Welling",
+                "Brielle Barton"
+              ]
             },
             {
               "line": "3# Doubles",
@@ -6970,18 +7127,27 @@
               "players_away": "Megan Ord / Summer Adamson / Note - / (DQ) - This player has been disqualified on this team / (DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing / * - Match awarded to opposing team by default in current standing",
               "score": "6-0 6-1",
               "result": "home",
-              "court_winner": null,
-              "winner_team": "",
-              "loser_team": "",
-              "winner_names": [],
-              "loser_names": []
+              "court_winner": "home",
+              "winner_team": "Ivory Ridge-Supreme Court",
+              "loser_team": "Sports Mall Tenistas",
+              "winner_names": [
+                "Ruth Russell",
+                "Celeste Harris"
+              ],
+              "loser_names": [
+                "Megan Ord",
+                "Summer Adamson",
+                "(DQ) - This player has been disqualified on this team",
+                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
+                "* - Match awarded to opposing team by default in current standing"
+              ]
             }
           ]
         },
         {
           "match_id": "fe214b9433d82edd",
           "date": "5/13/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823877",
           "scorecard_url": null,
           "home_team": "Park City Flying Squirrels",
           "away_team": "ACE-Swalberg/Harman",
@@ -7082,7 +7248,7 @@
         {
           "match_id": "6a2d11ff918c7745",
           "date": "5/20/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823882",
           "scorecard_url": null,
           "home_team": "Sports Mall-Stroud-Peterson/Eckert",
           "away_team": "Sports Mall Tenistas",
@@ -7183,7 +7349,7 @@
         {
           "match_id": "7a2a9868cae0a707",
           "date": "5/20/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823880",
           "scorecard_url": null,
           "home_team": "Ivory Ridge-Supreme Court",
           "away_team": "ACE-Swalberg/Harman",
@@ -7385,7 +7551,7 @@
         {
           "match_id": "fe9a1ad3b7fa8d78",
           "date": "5/27/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823884",
           "scorecard_url": null,
           "home_team": "Sports Mall-Stroud-Peterson/Eckert",
           "away_team": "Ivory Ridge-Supreme Court",
@@ -7583,7 +7749,7 @@
         {
           "match_id": "72ec994a0a4fa3a6",
           "date": "5/27/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823883",
           "scorecard_url": null,
           "home_team": "ACE-Swalberg/Harman",
           "away_team": "Liberty Park Volleydolls",
@@ -7684,7 +7850,7 @@
         {
           "match_id": "473cacbeb584d81d",
           "date": "5/6/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823875",
           "scorecard_url": null,
           "home_team": "Sports Mall-Stroud-Peterson/Eckert",
           "away_team": "Park City Flying Squirrels",
@@ -7785,7 +7951,7 @@
         {
           "match_id": "0d7bdaf7a648ce7f",
           "date": "5/6/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823876",
           "scorecard_url": null,
           "home_team": "Ivory Ridge-Supreme Court",
           "away_team": "Liberty Park Volleydolls",
@@ -7886,7 +8052,7 @@
         {
           "match_id": "c847a17578c5f76f",
           "date": "5/6/2026",
-          "tl_match_id": null,
+          "tl_match_id": "1011823874",
           "scorecard_url": null,
           "home_team": "ACE-Swalberg/Harman",
           "away_team": "Sports Mall Tenistas",
