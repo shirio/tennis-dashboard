@@ -5429,8 +5429,8 @@
         {
           "match_id": "74650e3884977847",
           "date": "5/4/2026",
-          "tl_match_id": "1011856189",
-          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011856189",
+          "tl_match_id": null,
+          "scorecard_url": null,
           "home_team": "DTC BLUE",
           "away_team": "WP BLUE",
           "team_wins_home": 4,
@@ -5445,14 +5445,14 @@
               "players_away": "Jessica Thomas",
               "score": "6-3 6-2",
               "result": "",
-              "court_winner": "away",
-              "winner_team": "WP BLUE",
-              "loser_team": "DTC BLUE",
+              "court_winner": "home",
+              "winner_team": "DTC BLUE",
+              "loser_team": "WP BLUE",
               "winner_names": [
-                "Jessica Thomas"
+                "Julie McClung"
               ],
               "loser_names": [
-                "Julie McClung"
+                "Jessica Thomas"
               ]
             },
             {
@@ -5473,16 +5473,16 @@
               "players_away": "Shannon Brooks / Renee Morris",
               "score": "6-4 2-6 1-0",
               "result": "",
-              "court_winner": "away",
-              "winner_team": "WP BLUE",
-              "loser_team": "DTC BLUE",
+              "court_winner": "home",
+              "winner_team": "DTC BLUE",
+              "loser_team": "WP BLUE",
               "winner_names": [
-                "Shannon Brooks",
-                "Renee Morris"
-              ],
-              "loser_names": [
                 "Kaley Rickert",
                 "Blair OConnor"
+              ],
+              "loser_names": [
+                "Shannon Brooks",
+                "Renee Morris"
               ]
             },
             {
@@ -5491,16 +5491,16 @@
               "players_away": "Gabriela Maldonado Bell / Julie Pellet",
               "score": "6-1 3-6 1-0",
               "result": "",
-              "court_winner": "away",
-              "winner_team": "WP BLUE",
-              "loser_team": "DTC BLUE",
+              "court_winner": "home",
+              "winner_team": "DTC BLUE",
+              "loser_team": "WP BLUE",
               "winner_names": [
-                "Gabriela Maldonado Bell",
-                "Julie Pellet"
-              ],
-              "loser_names": [
                 "Suzanne Booth",
                 "Nancy Botiller"
+              ],
+              "loser_names": [
+                "Gabriela Maldonado Bell",
+                "Julie Pellet"
               ]
             },
             {
@@ -5509,16 +5509,16 @@
               "players_away": "Kristin Baird / Heather Colliander",
               "score": "7-5 6-3",
               "result": "",
-              "court_winner": "away",
-              "winner_team": "WP BLUE",
-              "loser_team": "DTC BLUE",
+              "court_winner": "home",
+              "winner_team": "DTC BLUE",
+              "loser_team": "WP BLUE",
               "winner_names": [
-                "Kristin Baird",
-                "Heather Colliander"
-              ],
-              "loser_names": [
                 "Victoria Anderson",
                 "Sheryl Chandler"
+              ],
+              "loser_names": [
+                "Kristin Baird",
+                "Heather Colliander"
               ]
             }
           ]
