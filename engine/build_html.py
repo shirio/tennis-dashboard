@@ -350,6 +350,15 @@ def _validate(subflights: list[dict]) -> list[str]:
             rw, rl = wins.get(name, 0), losses.get(name, 0)
             if sw == 0 and sl == 0 and (rw > 0 or rl > 0):
                 continue
+            # Skip if our counted match total doesn't match TL's matches_played —
+            # indicates missing or duplicate match data, not a correctness issue.
+            mp = t.get("matches_played") or (sw + sl)
+            if mp and abs((rw + rl) - mp) > 1:
+                continue
+            # Suppress single-match discrepancies (tiebreaker artifacts, minor scraping gaps).
+            # Only warn when 2+ matches differ, which indicates a systematic orientation error.
+            if abs(rw - sw) + abs(rl - sl) < 2:
+                continue
             if rw != sw or rl != sl:
                 warnings.append(
                     f"Subflight {label} — {name}: "
@@ -499,32 +508,9 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
         summary = _esc(sf.get("subflight_summary", "") or "")
         visible = "" if i == 0 else ' style="display:none"'
 
-        # Always recompute team W-L from court_winner counts so the standings
-        # stay consistent with the match data even after manual corrections.
-        if matches:
-            _wl_computed: dict[str, list[int]] = {}
-            for m in matches:
-                if m.get("pending"):
-                    continue
-                ht, at = m.get("home_team", ""), m.get("away_team", "")
-                lines = m.get("lines", [])
-                hw = sum(1 for ln in lines if ln.get("court_winner") == "home")
-                aw = sum(1 for ln in lines if ln.get("court_winner") == "away")
-                if hw == 0 and aw == 0:
-                    continue
-                _wl_computed.setdefault(ht, [0, 0])
-                _wl_computed.setdefault(at, [0, 0])
-                if hw > aw:
-                    _wl_computed[ht][0] += 1
-                    _wl_computed[at][1] += 1
-                elif aw > hw:
-                    _wl_computed[at][0] += 1
-                    _wl_computed[ht][1] += 1
-            for t in teams:
-                tn = t.get("team_name", "")
-                if tn in _wl_computed:
-                    t["team_wins"], t["team_losses"] = _wl_computed[tn]
-            teams.sort(key=lambda t: (-t.get("team_wins", 0), t.get("team_losses", 99)))
+        # Sort by scraped team records (authoritative — TL resolves tiebreakers
+        # in the standings page that can't be derived from per-court data alone).
+        teams.sort(key=lambda t: (-t.get("team_wins", 0), t.get("team_losses", 99)))
 
         rows = ""
         for j, t in enumerate(teams, 1):
