@@ -110,7 +110,7 @@ def fetch_ratings_table(url: str | None = None) -> list[dict]:
     print(f"  Fetching ratings table from {url} …")
     for attempt in range(3):
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=60)
+            resp = requests.get(url, headers=HEADERS, timeout=(10, 300))
             resp.raise_for_status()
             break
         except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError) as e:

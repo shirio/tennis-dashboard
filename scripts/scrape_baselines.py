@@ -6,10 +6,11 @@ Finds the last black (non-red) Post-rating before 2026.
 
 import json
 import time
-import urllib.request
 import urllib.parse
 from html.parser import HTMLParser
 from datetime import datetime
+
+import requests as _requests
 
 
 class RatingHistoryParser(HTMLParser):
@@ -112,14 +113,14 @@ def get_baseline(name, s_param):
         "Accept-Language": "en-US,en;q=0.5",
     }
 
-    req = urllib.request.Request(url, headers=headers)
-
     html = None
     last_err = None
     for attempt in range(3):
         try:
-            with urllib.request.urlopen(req, timeout=20) as response:
-                html = response.read().decode("utf-8", errors="replace")
+            # (connect_timeout, read_timeout) — hard cap per attempt, not per chunk
+            resp = _requests.get(url, headers=headers, timeout=(5, 10))
+            resp.raise_for_status()
+            html = resp.text
             break
         except Exception as e:
             last_err = str(e)
