@@ -985,7 +985,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
     _other_sfx = other_ntrp.replace(".", "")
     sf_display = sf_display or {}
 
-    # Build team → subflight column label lookup
+    # Build team → subflight column label lookup (keyed uppercase for case-insensitive match)
     # Don't let "Championships" override a team's regular-season subflight
     team_to_sf: dict[str, str] = {}
     team_to_sf_raw: dict[str, str] = {}
@@ -993,7 +993,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         raw_lbl = sf_obj.get("flight_label", "")
         _, col_lbl, _ = sf_display.get(raw_lbl, (raw_lbl, raw_lbl, ""))
         for t in sf_obj.get("teams", []):
-            tn = t.get("team_name", "")
+            tn = t.get("team_name", "").upper()
             if tn not in team_to_sf or not raw_lbl.lower().startswith("championships"):
                 team_to_sf[tn] = col_lbl
                 team_to_sf_raw[tn] = raw_lbl
@@ -1165,8 +1165,8 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
 
         div_team = (p.get(f"team_{_sfx}", "") or "") if _sfx else ""
         _primary_team = p.get("team", "") or ""
-        sf = team_to_sf.get(div_team, "") or team_to_sf.get(_primary_team, "")
-        sf_raw = team_to_sf_raw.get(div_team, "") or team_to_sf_raw.get(_primary_team, "")
+        sf = team_to_sf.get(div_team.upper(), "") or team_to_sf.get(_primary_team.upper(), "")
+        sf_raw = team_to_sf_raw.get(div_team.upper(), "") or team_to_sf_raw.get(_primary_team.upper(), "")
         if not sf and division.startswith(ntrp) and division:
             _fallback = division.split()[-1]
             # Only use letter fallback when the SF display labels are actually letter-based
