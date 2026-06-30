@@ -13,6 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from playwright.sync_api import sync_playwright, Page
+from engine.normalize import normalize_standings_file
 from scrapers.scrape_tennislink import (
     login, _wait_for_network, _navigate_via_league_search,
     _go_to_flight_page, _parse_match_detail_page,
@@ -249,6 +250,7 @@ def main():
                     print(f"  [{teams_visited}] {team}: +{team_applied} courts (total: {grand_total})")
 
                 path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+                normalize_standings_file(path)
                 remaining = sum(
                     1 for sf in data.get("subflights", [])
                     for m in sf.get("matches", [])

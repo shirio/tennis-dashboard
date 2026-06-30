@@ -440,6 +440,7 @@ def _team_result_for(matches: list[dict], team: str) -> list[dict]:
             # Official home/away team names so we can detect swapped scorecards.
             "home_team": m.get("home_team", ""),
             "away_team": m.get("away_team", ""),
+            "is_tie": (hw == aw and hw is not None and not pending),
         })
     return out
 
@@ -450,6 +451,37 @@ def _result_badge(won, score, pending) -> str:
     if won:
         return f'<span class="badge bw">W&nbsp;{_esc(score)}</span>'
     return f'<span class="badge bl">L&nbsp;{_esc(score)}</span>'
+
+
+def _tie_game_totals(lines: list[dict], team_a: str, team_b: str) -> tuple[int, int]:
+    """Sum total games won by team_a and team_b across all courts for a 2-2 tie.
+
+    Scores are stored winner-first (e.g. '6-4 6-3' means winner took 12, loser 7).
+    Uses winner_team/loser_team fields — no orientation dependency.
+    Returns (team_a_total, team_b_total); returns (0, 0) if data is insufficient.
+    """
+    ta = team_a.upper()
+    tb = team_b.upper()
+    ga = gb = 0
+    for ln in lines:
+        score = (ln.get("score") or "").strip()
+        wt = (ln.get("winner_team") or "").upper()
+        lt = (ln.get("loser_team") or "").upper()
+        if not score or not wt:
+            continue
+        w_games = l_games = 0
+        for part in score.split():
+            m = re.match(r"^(\d+)-(\d+)$", part)
+            if m:
+                w_games += int(m.group(1))
+                l_games += int(m.group(2))
+        if wt == ta:
+            ga += w_games
+            gb += l_games
+        elif wt == tb:
+            gb += w_games
+            ga += l_games
+    return ga, gb
 
 
 # ---------------------------------------------------------------------------
@@ -1549,6 +1581,24 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
             for m in team_matches:
                 badge = _result_badge(m["won"], m["score"], m["pending"])
                 wlabel = _week_label.get(m.get("date", ""), "")
+                lines = m.get("lines", [])
+
+                # For tied matches (e.g. 2-2), show total game counts so the tiebreaker
+                # is visible. Uses winner_team/loser_team (orientation-independent).
+                tie_html = ""
+                if m.get("is_tie") and lines:
+                    ga, gb = _tie_game_totals(lines, tname, m["opponent"])
+                    if ga or gb:
+                        our_cls = "tg-win" if ga > gb else ("tg-lose" if ga < gb else "")
+                        opp_cls = "tg-win" if gb > ga else ("tg-lose" if gb < ga else "")
+                        tie_html = (
+                            f'<div class="tie-games">'
+                            f'Games:&nbsp;<span class="{our_cls}">{ga}</span>'
+                            f'&nbsp;–&nbsp;'
+                            f'<span class="{opp_cls}">{gb}</span>'
+                            f'</div>'
+                        )
+
                 blocks += (
                     f'<div class="mblock">'
                     f'<div class="mhdr">'
@@ -1556,8 +1606,8 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                     f'<span class="mtitle">vs {_esc(m["opponent"])}</span>'
                     f'</div>'
                     f'<div class="mdate">{_esc(m["date"])}</div>'
+                    f'{tie_html}'
                 )
-                lines = m.get("lines", [])
                 if lines:
                     blocks += '<div class="line-lbl">line results</div>'
                     _m_ht = m.get("home_team", "")
@@ -1815,7 +1865,10 @@ tr:last-child td { border-bottom: none; }
 .mweek-lbl { font-size: 11px; font-weight: 700; color: #888;
              letter-spacing: .04em; text-align: left; flex: 1;
              padding: 0 8px 0 0; }
-.mdate { font-size: 11px; color: #888; margin-bottom: 6px; }
+.mdate { font-size: 11px; color: #888; margin-bottom: 4px; }
+.tie-games { font-size: 11px; color: #555; margin-bottom: 6px; }
+.tie-games .tg-win { font-weight: 700; color: #2a8a2a; }
+.tie-games .tg-lose { color: #999; }
 .line-lbl { font-size: 10px; font-weight: 600; color: #aaa;
             text-transform: uppercase; letter-spacing: .05em; margin: 8px 0 3px; }
 .line-row { display: grid; grid-template-columns: 1fr auto 1fr;
