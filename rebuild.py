@@ -43,9 +43,14 @@ def main():
     all_states = list(regions.get("states", {}).keys()) or ["NV"]
     states = [args.state.upper()] if args.state else all_states
 
-    # Recompute per-player lines/W-L/team from scorecards for all states
+    # Recompute per-player lines/W-L/team from scorecards for ALL states, even
+    # when --state scopes the dashboard rebuild to one state. Otherwise
+    # _compute_player_stats_from_scorecards (which clears every player's
+    # per-division fields up front before recomputing only from what it's
+    # given) would wipe team_30/35, wl_record_30/35, etc. for every OTHER
+    # state's players — breaking cross-state pages like sectionals_30.html.
     all_ntrp = []
-    for st in states:
+    for st in all_states:
         st_lower = st.lower()
         for ntrp_label, suffix in [("3.0", "30"), ("3.5", "35")]:
             path = DATA_DIR / f"standings_{st_lower}_{suffix}.json"
