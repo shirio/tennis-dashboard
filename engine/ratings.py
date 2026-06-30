@@ -686,14 +686,34 @@ def _sequential_match_adj(current_rating: float, record: MatchRecord) -> float:
         # Cleared the gate (or no score data): scale win cap by how unexpected
         # the win was.
         #
-        # Heavy underdogs (expected < 0.30 — win prob ≤ 25%): linear
-        #   win_cap = SEQ_CAP × (1 − expected)
-        # Everyone else (expected ≥ 0.30): squared formula
-        #   win_cap = SEQ_CAP × (1 − expected)²
-        if expected < 0.30:
-            win_cap = _SEQ_CAP * (1.0 - expected)
+        # For the win cap, use the focal player's INDIVIDUAL expected win
+        # probability (average win_prob vs each opponent) when they are the
+        # STRONGER partner in doubles. The cross-pair team expected is dragged
+        # down by a weak partner, producing an inflated cap and then a 1.40×
+        # partner_mult boost on top — a double effect that over-rewards the
+        # strong player for every win regardless of opponent quality.
+        # Individual expected correctly captures "how dominant was this player
+        # vs those specific opponents" independent of who they were paired with.
+        # Weak partners (cap_expected == expected): no change — they already
+        # get the team-level expected and a 0.60× damp via partner_mult.
+        cap_expected = expected
+        if (record.partner_rating is not None
+                and len(record.opponent_ratings) >= 2
+                and current_rating > record.partner_rating):
+            n = len(record.opponent_ratings)
+            cap_expected = sum(
+                _win_probability(current_rating - opp_r)
+                for opp_r in record.opponent_ratings
+            ) / n
+
+        # Heavy underdogs (cap_expected < 0.30 — win prob ≤ 25%): linear
+        #   win_cap = SEQ_CAP × (1 − cap_expected)
+        # Everyone else (cap_expected ≥ 0.30): squared formula
+        #   win_cap = SEQ_CAP × (1 − cap_expected)²
+        if cap_expected < 0.30:
+            win_cap = _SEQ_CAP * (1.0 - cap_expected)
         else:
-            win_cap = _SEQ_CAP * (1.0 - expected) ** 2
+            win_cap = _SEQ_CAP * (1.0 - cap_expected) ** 2
         return _scale(min(win_cap, max(adj, 0.0)))
 
     # Loss path.
