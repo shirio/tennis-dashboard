@@ -499,24 +499,18 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
         summary = _esc(sf.get("subflight_summary", "") or "")
         visible = "" if i == 0 else ' style="display:none"'
 
-        _all_zero = all(t.get("team_wins", 0) == 0 and t.get("team_losses", 0) == 0 for t in teams)
-        if _all_zero and matches:
+        # Always recompute team W-L from court_winner counts so the standings
+        # stay consistent with the match data even after manual corrections.
+        if matches:
             _wl_computed: dict[str, list[int]] = {}
             for m in matches:
+                if m.get("pending"):
+                    continue
                 ht, at = m.get("home_team", ""), m.get("away_team", "")
-                hw = m.get("team_wins_home")
-                aw = m.get("team_wins_away")
-                if hw is None or aw is None:
-                    sc = m.get("score", "")
-                    parts = re.split(r"[–\-]", sc) if sc else []
-                    if len(parts) == 2:
-                        try:
-                            hw, aw = int(parts[0].strip()), int(parts[1].strip())
-                        except ValueError:
-                            continue
-                    else:
-                        continue
-                if hw is None or aw is None:
+                lines = m.get("lines", [])
+                hw = sum(1 for ln in lines if ln.get("court_winner") == "home")
+                aw = sum(1 for ln in lines if ln.get("court_winner") == "away")
+                if hw == 0 and aw == 0:
                     continue
                 _wl_computed.setdefault(ht, [0, 0])
                 _wl_computed.setdefault(at, [0, 0])
