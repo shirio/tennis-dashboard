@@ -5354,14 +5354,14 @@
               "players_away": "Kara Gaston",
               "score": "6-1 6-2",
               "result": "away",
-              "winner_team": "DTC #3",
-              "loser_team": "RED ROCK CC #2",
-              "court_winner": "away",
+              "winner_team": "RED ROCK CC #2",
+              "loser_team": "DTC #3",
+              "court_winner": "home",
               "winner_names": [
-                "Kara Gaston"
+                "Maria Truman"
               ],
               "loser_names": [
-                "Maria Truman"
+                "Kara Gaston"
               ]
             },
             {
@@ -6139,14 +6139,14 @@
               "players_away": "Shi L Oskooi",
               "score": "6-3 6-2",
               "result": "away",
-              "winner_team": "DTC #1",
-              "loser_team": "RED ROCK CC #2",
-              "court_winner": "away",
+              "winner_team": "RED ROCK CC #2",
+              "loser_team": "DTC #1",
+              "court_winner": "home",
               "winner_names": [
-                "Shi L Oskooi"
+                "Anne Kellogg"
               ],
               "loser_names": [
-                "Anne Kellogg"
+                "Shi L Oskooi"
               ]
             },
             {
