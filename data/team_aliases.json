@@ -1,0 +1,4 @@
+{
+  "_comment": "Maps TennisLink internal team names to canonical display names. Keys are lowercased for matching. Applied during normalize_all() at every build.",
+  "utah/nebeker/18&over/3.0w": "Wasatch Hills Ballers"
+}

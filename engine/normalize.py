@@ -180,6 +180,51 @@ def _determine_court_winner(ln: dict, result_reliable: bool) -> str | None:
     return None
 
 
+def _load_team_aliases() -> dict[str, str]:
+    """Load team name aliases from data/team_aliases.json. Keys are lowercased."""
+    path = DATA_DIR / "team_aliases.json"
+    if not path.exists():
+        return {}
+    try:
+        raw = json.loads(path.read_text())
+        return {k.lower(): v for k, v in raw.items() if not k.startswith("_")}
+    except Exception:
+        return {}
+
+
+def _canon(name: str, aliases: dict[str, str]) -> str:
+    """Return canonical team name, replacing alias if known."""
+    return aliases.get(name.strip().lower(), name)
+
+
+def _apply_team_aliases(data: dict, aliases: dict[str, str]) -> int:
+    """Replace alias team names with canonical names in all match + team fields.
+    Returns number of substitutions made."""
+    if not aliases:
+        return 0
+    changes = 0
+    for sf in data.get("subflights", []):
+        for t in sf.get("teams", []):
+            canon = _canon(t.get("team_name", ""), aliases)
+            if canon != t.get("team_name", ""):
+                t["team_name"] = canon
+                changes += 1
+        for m in sf.get("matches", []):
+            for fld in ("home_team", "away_team"):
+                canon = _canon(m.get(fld, ""), aliases)
+                if canon != m.get(fld, ""):
+                    m[fld] = canon
+                    changes += 1
+            for ln in m.get("lines", []):
+                for fld in ("winner_team", "loser_team"):
+                    v = ln.get(fld, "")
+                    canon = _canon(v, aliases)
+                    if canon != v:
+                        ln[fld] = canon
+                        changes += 1
+    return changes
+
+
 def _load_player_teams() -> dict[str, set[str]]:
     """Load player→team mapping from players.json for alignment detection."""
     player_teams: dict[str, set[str]] = {}
@@ -201,9 +246,12 @@ def _load_player_teams() -> dict[str, set[str]]:
     return player_teams
 
 
-def normalize_standings_file(path: Path, player_teams: dict[str, set[str]] | None = None) -> int:
+def normalize_standings_file(path: Path, player_teams: dict[str, set[str]] | None = None,
+                             aliases: dict[str, str] | None = None) -> int:
     """Normalize all matches in a standings JSON file. Returns count of lines processed."""
     data = json.loads(path.read_text())
+    if aliases:
+        _apply_team_aliases(data, aliases)
     count = 0
     for sf in data.get("subflights", []):
         for m in sf.get("matches", []):
@@ -229,11 +277,14 @@ def normalize_all() -> None:
     player_teams = _load_player_teams()
     if player_teams:
         print(f"  [normalize] Loaded {len(player_teams)} player→team mappings")
+    aliases = _load_team_aliases()
+    if aliases:
+        print(f"  [normalize] Loaded {len(aliases)} team alias(es)")
 
     total = 0
     unknown = 0
     for path in sorted(DATA_DIR.glob("standings_*_*.json")):
-        n = normalize_standings_file(path, player_teams)
+        n = normalize_standings_file(path, player_teams, aliases)
         data = json.loads(path.read_text())
         unk = sum(
             1 for sf in data.get("subflights", [])
