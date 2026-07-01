@@ -7,3 +7,4 @@ __pycache__/
 /data/players_35.json
 *.output
 /tmp/
+/data/.cache/
