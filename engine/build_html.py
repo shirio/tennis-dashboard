@@ -1387,8 +1387,20 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
 <p class="wl-footnote">* W–L excludes defaults/walkovers (opponent absent)</p>"""
 
 
+def _champ_sort_key(raw_label: str) -> tuple:
+    """Sort key for championship/districts subflight labels so 'Flight A',
+    'Flight B', 'Flight C', ... sort in letter order, with any non-lettered
+    flight (e.g. 'Final Rounds', '3.0W', generic 'Districts') sorted last.
+    """
+    m = re.search(r'\bFlight\s+([A-Za-z])\s*$', raw_label.strip(), re.IGNORECASE)
+    if m:
+        return (0, m.group(1).upper())
+    return (1, raw_label)
+
+
 def _results_tab(subflights: list[dict], players: list[dict] | None = None,
-                 sfx: str = "", sf_display: dict | None = None) -> str:
+                 sfx: str = "", sf_display: dict | None = None,
+                 id_prefix: str = "re") -> str:
     # Build name → baseline and name → new (division) rating lookups
     _baseline_by_name: dict[str, str] = {}
     _new_by_name: dict[str, str] = {}
@@ -1548,7 +1560,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         sf_btns += (
             f'<button class="rtab sf-switcher{active}" '
             f'data-sf="{_esc(lbl)}" '
-            f'onclick="filterSF(\'{_esc(lbl)}\',this,\'re-sf-tabs\',\'re-tabs\',\'re\')">'
+            f'onclick="filterSF(\'{_esc(lbl)}\',this,\'{id_prefix}-sf-tabs\',\'{id_prefix}-tabs\',\'{id_prefix}\')">'
             f'{_esc(tab_lbl)}</button>\n'
         )
 
@@ -1561,7 +1573,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
             tname = t.get("team_name", "")
             if not tname:
                 continue
-            tid = f"re-{_slug(sf_lbl)}-{_slug(tname)}"
+            tid = f"{id_prefix}-{_slug(sf_lbl)}-{_slug(tname)}"
             active = " on" if first_seen else ""
             visible = "" if sf_lbl == first_sf else ' style="display:none"'
             first_seen = False
@@ -1665,7 +1677,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
 
             team_tabs += (
                 f'<button class="rtab{active}" data-sf="{_esc(sf_lbl)}"{visible} '
-                f'onclick="sr(\'{tid}\',this,\'re-tabs\')">'
+                f'onclick="sr(\'{tid}\',this,\'{id_prefix}-tabs\')">'
                 f'{_esc(_abbrev_team(tname))}'
                 f'</button>\n'
             )
@@ -1683,8 +1695,8 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
     )
     return (
         rating_toggle
-        + f'<div class="rtabs" id="re-sf-tabs">{sf_btns}</div>'
-        + f'<div class="rtabs scrollable" id="re-tabs">{team_tabs}</div>'
+        + f'<div class="rtabs" id="{id_prefix}-sf-tabs">{sf_btns}</div>'
+        + f'<div class="rtabs scrollable" id="{id_prefix}-tabs">{team_tabs}</div>'
         + rpanes
     )
 
@@ -1938,12 +1950,27 @@ tr:last-child td { border-bottom: none; }
 .itag.you { background: #EAF3DE; color: #27500A; }
 .itag.warn { background: #FAEEDA; color: #633806; }
 .itag.opp { background: #EEEDFE; color: #3C3489; }
+/* Sectionals match-results: State -> district-subflight -> team hierarchy */
+.state-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+.state-tab { font-size: 14px; font-weight: 700; padding: 8px 18px;
+             border: 1px solid #d5d5d5; border-radius: 8px; background: #fff;
+             color: #444; cursor: pointer; }
+.state-tab.on { background: #1a5fb4; color: #fff; border-color: #1a5fb4; }
+.state-pane { display: none; }
+.state-pane.on { display: block; }
 """
 
 _JS = """
 function sw(id, btn) {
   document.querySelectorAll('.pane').forEach(p => p.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+function swState(id, btn) {
+  var grp = btn.closest('.state-tabs');
+  if (grp) grp.querySelectorAll('.state-tab').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.state-pane').forEach(p => p.classList.remove('on'));
   document.getElementById(id).classList.add('on');
   btn.classList.add('on');
 }
@@ -2388,10 +2415,15 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
 
     sf_display = _simplify_subflight_labels(subflights, ntrp)
 
-    # Sort subflights: regular A→Z first, then championships last
+    # Sort subflights: regular A→Z first, then championships/districts —
+    # Flight A, Flight B, Flight C, ... in letter order, with any non-lettered
+    # championship flight (Final Rounds, 3.0W, generic Districts) sorted last.
     def _sf_sort_key(sf):
-        _, col, group = sf_display.get(sf.get("flight_label", ""), ("zzz", "zzz", ""))
+        lbl = sf.get("flight_label", "")
+        _, col, group = sf_display.get(lbl, ("zzz", "zzz", ""))
         is_champ = 1 if group.lower() == "districts" else 0
+        if is_champ:
+            return (is_champ, *_champ_sort_key(lbl))
         return (is_champ, col)
     subflights = sorted(subflights, key=_sf_sort_key)
 
@@ -3548,31 +3580,56 @@ def build_sectionals_page() -> str | None:
         player_stats=sect_player_stats,
     )
 
-    # Build match results tab — only Districts subflights, one per state
-    districts_subflights = []
-    for st in sorted(qualified_teams_by_state):
+    # Build match results tab — one State tab per qualified state, each
+    # showing that state's districts/championship subflights (sorted
+    # Flight A, B, C, ..., then any non-lettered final flight) with the
+    # existing subflight -> team drill-down nested inside.
+    state_btns, state_panes = "", ""
+    for i, st in enumerate(sorted(qualified_teams_by_state)):
         st_lower = st.lower()
+        st_subflights = []
         d30 = _load(DATA_DIR / f"districts_{st_lower}_30.json", {})
         if d30.get("matches"):
-            districts_subflights.append({
-                "flight_label": f"{st} Districts",
+            st_subflights.append({
+                "flight_label": "Districts",
                 "teams": d30.get("teams", []),
                 "matches": d30.get("matches", []),
             })
         s30 = _load(DATA_DIR / f"standings_{st_lower}_30.json", {})
+        champ_sfs = []
         for sf in s30.get("subflights", []):
             fl = sf.get("flight_label", "")
             if fl.startswith("Championships"):
                 suffix = fl[len("Championships"):].strip()
-                lbl = f"{st} {suffix}" if suffix else f"{st} Championships"
-                districts_subflights.append({
+                lbl = suffix if suffix else "Championships"
+                champ_sfs.append({
                     "flight_label": lbl,
                     "teams": sf.get("teams", []),
                     "matches": sf.get("matches", []),
                 })
-    results_html = _results_tab(
-        districts_subflights if districts_subflights else all_subflights_30,
-        players, sfx=_sfx)
+        champ_sfs.sort(key=lambda sf: _champ_sort_key(sf["flight_label"]))
+        st_subflights.extend(champ_sfs)
+
+        if not st_subflights:
+            continue
+
+        id_prefix = f"re{st_lower}"
+        st_results_html = _results_tab(st_subflights, players, sfx=_sfx,
+                                       id_prefix=id_prefix)
+        active = " on" if i == 0 else ""
+        state_btns += (
+            f'<button class="state-tab{active}" '
+            f'onclick="swState(\'state-{st_lower}\',this)">{_esc(st)}</button>\n'
+        )
+        state_panes += (
+            f'<div id="state-{st_lower}" class="state-pane{active}">'
+            f'{st_results_html}</div>\n'
+        )
+
+    results_html = (
+        f'<div class="tabs state-tabs">{state_btns}</div>{state_panes}'
+        if state_btns else _results_tab(all_subflights_30, players, sfx=_sfx)
+    )
 
     tab_defs = [
         ("rosters", "team rosters", rosters_html),
