@@ -547,6 +547,7 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
     # Build subflight tabs with group separators
     sf_btns = ""
     prev_group = None
+    prev_tier = None
     for i, sf in enumerate(subflights):
         lbl = sf.get("flight_label", str(i))
         tab_lbl, _, group = sf_display.get(lbl, (lbl, lbl, ""))
@@ -554,8 +555,15 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
         if group and group != prev_group:
             sf_btns += (f'<div class="sf-break"></div>' if group.lower() == "districts" else '') + f'<span class="sf-group-label{"" if group.lower() != "districts" else " sf-group-inline"}">{_esc(group)}</span>\n'
             prev_group = group
+            prev_tier = None
         elif not group and prev_group:
             prev_group = None
+            prev_tier = None
+        if _is_champ_tab_label(tab_lbl):
+            tier = _champ_sort_key(tab_lbl)[0]
+            if prev_tier is not None and tier != prev_tier:
+                sf_btns += '<div class="sf-break"></div>'
+            prev_tier = tier
         sf_btns += (
             f'<button class="rtab sf-switcher{active}" '
             f'data-sf="{_esc(lbl)}" '
@@ -723,14 +731,22 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
 
     sf_btns = ""
     prev_group = None
+    prev_tier = None
     for i, lbl in enumerate(sf_labels):
         tab_lbl, _, group = sf_display.get(lbl, (lbl, lbl, ""))
         active = " on" if i == 0 else ""
         if group and group != prev_group:
             sf_btns += (f'<div class="sf-break"></div>' if group.lower() == "districts" else '') + f'<span class="sf-group-label{"" if group.lower() != "districts" else " sf-group-inline"}">{_esc(group)}</span>\n'
             prev_group = group
+            prev_tier = None
         elif not group and prev_group:
             prev_group = None
+            prev_tier = None
+        if _is_champ_tab_label(tab_lbl):
+            tier = _champ_sort_key(tab_lbl)[0]
+            if prev_tier is not None and tier != prev_tier:
+                sf_btns += '<div class="sf-break"></div>'
+            prev_tier = tier
         sf_btns += (
             f'<button class="rtab sf-switcher{active}" '
             f'data-sf="{_esc(lbl)}" '
@@ -1422,13 +1438,21 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
     if not is_sectionals:
         sf_btns = '<button class="rtab on" onclick="filterPlayerSF(\'all\',this)">All</button>'
         prev_group = None
+        prev_tier = None
         for raw_lbl in sf_raw_labels:
             tab_lbl, _, group = sf_display.get(raw_lbl, (raw_lbl, raw_lbl, ""))
             if group and group != prev_group:
                 sf_btns += (f'<div class="sf-break"></div>' if group.lower() == "districts" else '') + f'<span class="sf-group-label{"" if group.lower() != "districts" else " sf-group-inline"}">{_esc(group)}</span>'
                 prev_group = group
+                prev_tier = None
             elif not group and prev_group:
                 prev_group = None
+                prev_tier = None
+            if _is_champ_tab_label(tab_lbl):
+                tier = _champ_sort_key(tab_lbl)[0]
+                if prev_tier is not None and tier != prev_tier:
+                    sf_btns += '<div class="sf-break"></div>'
+                prev_tier = tier
             sf_btns += (f'<button class="rtab" onclick="filterPlayerSF(\'{_esc(raw_lbl)}\',this)">'
                         f'{_esc(tab_lbl)}</button>')
         sf_section = f'<div class="sf-filter-btns" id="sf-filter-btns">{sf_btns}</div>'
@@ -1477,6 +1501,20 @@ def _champ_sort_key(raw_label: str) -> tuple:
     if m:
         return (1, m.group(1).upper())
     return (2, raw_label)
+
+
+def _is_champ_tab_label(lbl: str) -> bool:
+    """True for championship/districts subflight tab labels specifically —
+    used to decide whether to break the tab row onto a new line between
+    tiers (area-playoff round / Flight A-C / final round), independent of
+    whether a group header ("Districts") happens to be rendered nearby."""
+    l = lbl.strip()
+    if re.match(r'^(DEN|SOCO)\s*\d+$', l, re.IGNORECASE):
+        return True
+    if re.match(r'^Flight\s+[A-Za-z]$', l, re.IGNORECASE):
+        return True
+    ll = l.lower()
+    return ll in ("final rounds", "final round", "districts") or ll.startswith("championships")
 
 
 def _results_tab(subflights: list[dict], players: list[dict] | None = None,
@@ -1635,14 +1673,22 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
 
     sf_btns = ""
     prev_group = None
+    prev_tier = None
     for i, lbl in enumerate(sf_labels):
         tab_lbl, _, group = sf_display.get(lbl, (lbl, lbl, ""))
         active = " on" if i == 0 else ""
         if group and group != prev_group:
             sf_btns += (f'<div class="sf-break"></div>' if group.lower() == "districts" else '') + f'<span class="sf-group-label{"" if group.lower() != "districts" else " sf-group-inline"}">{_esc(group)}</span>\n'
             prev_group = group
+            prev_tier = None
         elif not group and prev_group:
             prev_group = None
+            prev_tier = None
+        if _is_champ_tab_label(tab_lbl):
+            tier = _champ_sort_key(tab_lbl)[0]
+            if prev_tier is not None and tier != prev_tier:
+                sf_btns += '<div class="sf-break"></div>'
+            prev_tier = tier
         sf_btns += (
             f'<button class="rtab sf-switcher{active}" '
             f'data-sf="{_esc(lbl)}" '
@@ -3798,9 +3844,9 @@ def build_sectionals_page() -> str | None:
     )
 
     tab_defs = [
-        ("standings", "standings", standings_html),
         ("rosters", "team rosters", rosters_html),
         ("allplayers", "all players", players_html),
+        ("standings", "standings", standings_html),
         ("allresults", "match results", results_html),
     ]
 

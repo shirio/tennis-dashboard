@@ -53,13 +53,19 @@ def main():
     args = parser.parse_args()
 
     players = json.loads(PLAYERS_JSON.read_text())
-    linked = [p for p in players if p.get("profile_url")]
+    with_url = [p for p in players if p.get("profile_url")]
+    id_only = [p for p in players if p.get("tennisrecord_id") and not p.get("profile_url")]
+    for p in id_only:
+        p["profile_url"] = (f"/adult/profile.aspx?playername={p['name']}"
+                             f"&s={p['tennisrecord_id']}")
+    linked = with_url + id_only
     if args.state:
         linked = [p for p in linked if p.get("state") == args.state.upper()]
     if args.limit:
         linked = linked[:args.limit]
 
-    print(f"Auditing {len(linked)} players with a tennisrecord profile_url")
+    print(f"Auditing {len(linked)} players with a tennisrecord profile "
+          f"({len(with_url)} via profile_url, {len(id_only)} via tennisrecord_id)")
 
     session = requests.Session()
     session.headers.update({
