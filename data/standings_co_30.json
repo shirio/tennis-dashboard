@@ -60217,7 +60217,7 @@
               "players_home": "Caroline Shutley",
               "players_away": "Jill Stein",
               "score": "6-3 2-6 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "DTC BLUE",
               "loser_team": "WP RED",
@@ -60233,7 +60233,7 @@
               "players_home": "",
               "players_away": "Kerry Lyden",
               "score": "6-0 6-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "DTC BLUE",
               "loser_team": "WP RED",
@@ -60247,7 +60247,7 @@
               "players_home": "Madeline Sapyta / Emma Klebe",
               "players_away": "Tracy McIlroy / Willa FAWER",
               "score": "6-2 6-3",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "WP RED",
               "loser_team": "DTC BLUE",
@@ -60265,7 +60265,7 @@
               "players_home": "Jessica Gutschenritter / Katie Ezell",
               "players_away": "Sara Recht / Becky Gilligan",
               "score": "6-1 6-3",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "WP RED",
               "loser_team": "DTC BLUE",
@@ -60283,7 +60283,7 @@
               "players_home": "Sara Riso / Karleigh Page",
               "players_away": "Jynx Messacar / Tiffany Smink",
               "score": "6-0 6-2",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "WP RED",
               "loser_team": "DTC BLUE",
@@ -60316,7 +60316,7 @@
               "players_home": "Jennifer Cooper",
               "players_away": "Shonee Lesh",
               "score": "6-3 6-2",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "BRMST RED",
               "loser_team": "TTA PINK",
@@ -60332,7 +60332,7 @@
               "players_home": "Rumi Arakawa",
               "players_away": "Jenna McCormick",
               "score": "7-5 6-2",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "BRMST RED",
               "loser_team": "TTA PINK",
@@ -60348,7 +60348,7 @@
               "players_home": "Jody Knaley / Suzanna Black",
               "players_away": "Stacy Hudson / Sarah White",
               "score": "6-2 2-6 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "TTA PINK",
               "loser_team": "BRMST RED",
@@ -60366,7 +60366,7 @@
               "players_home": "Janine Huber / Tracy Klein",
               "players_away": "Carey Price / Maggie Mastay",
               "score": "6-3 6-1",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "BRMST RED",
               "loser_team": "TTA PINK",
@@ -60384,7 +60384,7 @@
               "players_home": "Karen Gallo / Sarah Monzyk",
               "players_away": "Melissa Dini / Jennifer Arbuckle",
               "score": "6-2 6-7 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "TTA PINK",
               "loser_team": "BRMST RED",
@@ -60417,7 +60417,7 @@
               "players_home": "Shonee Lesh",
               "players_away": "",
               "score": "6-0 6-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "TTA PINK",
               "loser_team": "WP RED",
@@ -60431,7 +60431,7 @@
               "players_home": "Jenna McCormick",
               "players_away": "",
               "score": "6-0 6-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "TTA PINK",
               "loser_team": "WP RED",
@@ -60445,7 +60445,7 @@
               "players_home": "Melissa Dini / Jennifer Arbuckle",
               "players_away": "Caroline Shutley / Emma Klebe",
               "score": "6-1 6-3",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "WP RED",
               "loser_team": "TTA PINK",
@@ -60463,7 +60463,7 @@
               "players_home": "Sarah White / Stacy Hudson",
               "players_away": "Katie Ezell / Jessica Gutschenritter",
               "score": "7-5 6-3",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "TTA PINK",
               "loser_team": "WP RED",
@@ -60481,7 +60481,7 @@
               "players_home": "Julie Aragon / Maggie Mastay",
               "players_away": "Sara Riso / Karleigh Page",
               "score": "3-6 7-6 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "WP RED",
               "loser_team": "TTA PINK",
@@ -60514,7 +60514,7 @@
               "players_home": "Mary Dryden",
               "players_away": "Jennifer Cooper",
               "score": "6-2 6-4",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "BRMST RED",
               "loser_team": "DTC BLUE",
@@ -60530,7 +60530,7 @@
               "players_home": "",
               "players_away": "Sarah Monzyk",
               "score": "6-0 6-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "BRMST RED",
               "loser_team": "DTC BLUE",
@@ -60544,7 +60544,7 @@
               "players_home": "Tracy McIlroy / Willa FAWER",
               "players_away": "Rumi Arakawa / Tracy Klein",
               "score": "6-2 6-4",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "BRMST RED",
               "loser_team": "DTC BLUE",
@@ -60562,7 +60562,7 @@
               "players_home": "Sara Recht / Tiffany Smink",
               "players_away": "Suzanna Black / Jody Knaley",
               "score": "7-5 6-3",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "BRMST RED",
               "loser_team": "DTC BLUE",
@@ -60580,7 +60580,7 @@
               "players_home": "Becky Gilligan / Kerry Lyden",
               "players_away": "Lisa Shaver / Micheline Gardner",
               "score": "6-3 6-1",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "BRMST RED",
               "loser_team": "DTC BLUE",
@@ -60613,7 +60613,7 @@
               "players_home": "Caroline Shutley",
               "players_away": "Rumi Arakawa",
               "score": "6-4 7-6",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "BRMST RED",
               "loser_team": "WP RED",
@@ -60629,7 +60629,7 @@
               "players_home": "",
               "players_away": "Micheline Gardner",
               "score": "6-0 6-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "BRMST RED",
               "loser_team": "WP RED",
@@ -60643,7 +60643,7 @@
               "players_home": "Madeline Sapyta / Emma Klebe",
               "players_away": "Suzanna Black / Jennifer Cooper",
               "score": "6-3 7-5",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "WP RED",
               "loser_team": "BRMST RED",
@@ -60661,7 +60661,7 @@
               "players_home": "Katie Ezell / Jessica Gutschenritter",
               "players_away": "Janine Huber / Tracy Klein",
               "score": "6-2 6-3",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "WP RED",
               "loser_team": "BRMST RED",
@@ -60679,7 +60679,7 @@
               "players_home": "Sara Riso / Karleigh Page",
               "players_away": "Sarah Monzyk / Jody Knaley",
               "score": "3-6 6-4 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "WP RED",
               "loser_team": "BRMST RED",
@@ -60712,7 +60712,7 @@
               "players_home": "Shonee Lesh",
               "players_away": "Jill Stein",
               "score": "2-6 6-4 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "TTA PINK",
               "loser_team": "DTC BLUE",
@@ -60728,7 +60728,7 @@
               "players_home": "Jenna McCormick",
               "players_away": "",
               "score": "6-0 6-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "TTA PINK",
               "loser_team": "DTC BLUE",
@@ -60742,7 +60742,7 @@
               "players_home": "Jennifer Arbuckle / Melissa Dini",
               "players_away": "Tracy McIlroy / Willa FAWER",
               "score": "6-2 6-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "TTA PINK",
               "loser_team": "DTC BLUE",
@@ -60760,7 +60760,7 @@
               "players_home": "Carey Price / Maggie Mastay",
               "players_away": "Sara Recht / Mary Dryden",
               "score": "6-3 7-6",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "DTC BLUE",
               "loser_team": "TTA PINK",
@@ -60778,7 +60778,7 @@
               "players_home": "Sarah White / Stacy Hudson",
               "players_away": "Kerry Lyden / Tiffany Smink",
               "score": "6-1 6-1",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "TTA PINK",
               "loser_team": "DTC BLUE",
@@ -60789,6 +60789,123 @@
               "loser_names": [
                 "Kerry Lyden",
                 "Tiffany Smink"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight Playoff DEN 2",
+      "teams": [
+        {
+          "team_name": "WP-G NAVY",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "DTC BLUE",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "d42366220a442c80",
+          "date": "6/13/2026",
+          "tl_match_id": "3148603",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148603",
+          "home_team": "WP-G NAVY",
+          "away_team": "DTC BLUE",
+          "team_wins_home": 0,
+          "team_wins_away": 5,
+          "score": "0-5",
+          "status": "Confirmed by DTC BLUE",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Gena Fusco",
+              "players_away": "Rebecca Shay",
+              "score": "4-6 6-1 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "DTC BLUE",
+              "loser_team": "WP-G NAVY",
+              "winner_names": [
+                "Rebecca Shay"
+              ],
+              "loser_names": [
+                "Gena Fusco"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Tae Rice-Schlesinger",
+              "players_away": "Jill Stein",
+              "score": "6-4 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "DTC BLUE",
+              "loser_team": "WP-G NAVY",
+              "winner_names": [
+                "Jill Stein"
+              ],
+              "loser_names": [
+                "Tae Rice-Schlesinger"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "",
+              "players_away": "Willa FAWER / Kerry Lyden",
+              "score": "6-0 6-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "DTC BLUE",
+              "loser_team": "WP-G NAVY",
+              "winner_names": [
+                "Willa FAWER",
+                "Kerry Lyden"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kelly Harvey / Kalle Heckendorf",
+              "players_away": "Becky Gilligan / Mary Dryden",
+              "score": "6-2 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "DTC BLUE",
+              "loser_team": "WP-G NAVY",
+              "winner_names": [
+                "Becky Gilligan",
+                "Mary Dryden"
+              ],
+              "loser_names": [
+                "Kelly Harvey",
+                "Kalle Heckendorf"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Jane Reimer / Kate Harvey",
+              "players_away": "Tracy McIlroy / Tiffany Smink",
+              "score": "6-2 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "DTC BLUE",
+              "loser_team": "WP-G NAVY",
+              "winner_names": [
+                "Tracy McIlroy",
+                "Tiffany Smink"
+              ],
+              "loser_names": [
+                "Jane Reimer",
+                "Kate Harvey"
               ]
             }
           ]
@@ -60842,7 +60959,7 @@
               "players_home": "Shelby Mcguire",
               "players_away": "Victoria Greene",
               "score": "6-4 4-6 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "LTFC BLUE",
@@ -60858,7 +60975,7 @@
               "players_home": "Jennifer DeLurgio",
               "players_away": "Naomi Arellano",
               "score": "7-6 6-1",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFC BLUE",
               "loser_team": "SS-LGT ORANGE",
@@ -60874,7 +60991,7 @@
               "players_home": "Debbie Murphy / Elizabeth A Shields",
               "players_away": "Jailyn Volok / Molly Stephens",
               "score": "6-2 6-3",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFC BLUE",
               "loser_team": "SS-LGT ORANGE",
@@ -60892,7 +61009,7 @@
               "players_home": "Jennifer Delaney / Caren Swan",
               "players_away": "Jennifer Moeller / Sara Knudsen",
               "score": "6-4 6-4",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "LTFC BLUE",
@@ -60910,7 +61027,7 @@
               "players_home": "Halle Holmes / Sarah Hunter",
               "players_away": "Taylor Surroz / Jessica Asherin",
               "score": "6-2 3-6 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFC BLUE",
               "loser_team": "SS-LGT ORANGE",
@@ -60943,7 +61060,7 @@
               "players_home": "Jennifer Cooper",
               "players_away": "Shonee Lesh",
               "score": "6-0 6-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "BRMST RED",
               "loser_team": "TTA PINK",
@@ -60959,7 +61076,7 @@
               "players_home": "Rumi Arakawa",
               "players_away": "Allison Ivy",
               "score": "4-6 6-0 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "BRMST RED",
               "loser_team": "TTA PINK",
@@ -60975,7 +61092,7 @@
               "players_home": "Suzanna Black / Sarah Monzyk",
               "players_away": "Melissa Dini / Jennifer Arbuckle",
               "score": "6-0 6-3",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "TTA PINK",
               "loser_team": "BRMST RED",
@@ -60993,7 +61110,7 @@
               "players_home": "Janine Huber / Tracy Klein",
               "players_away": "Stacy Hudson / Sarah White",
               "score": "6-3 6-2",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "BRMST RED",
               "loser_team": "TTA PINK",
@@ -61011,7 +61128,7 @@
               "players_home": "Micheline Gardner / Lisa Shaver",
               "players_away": "Jenna McCormick / Julie Aragon",
               "score": "6-3 3-6 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "TTA PINK",
               "loser_team": "BRMST RED",
@@ -61044,7 +61161,7 @@
               "players_home": "Shelby Mcguire",
               "players_away": "Jennifer Cooper",
               "score": "4-6 6-3 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFC BLUE",
               "loser_team": "BRMST RED",
@@ -61060,7 +61177,7 @@
               "players_home": "Jennifer DeLurgio",
               "players_away": "Rumi Arakawa",
               "score": "5-7 7-6 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "BRMST RED",
               "loser_team": "LTFC BLUE",
@@ -61076,7 +61193,7 @@
               "players_home": "Jennifer Delaney / Caren Swan",
               "players_away": "Suzanna Black / Jody Knaley",
               "score": "6-4 6-3",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "BRMST RED",
               "loser_team": "LTFC BLUE",
@@ -61094,7 +61211,7 @@
               "players_home": "Elizabeth A Shields / Debbie Murphy",
               "players_away": "Janine Huber / Tracy Klein",
               "score": "6-4 6-3",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "BRMST RED",
               "loser_team": "LTFC BLUE",
@@ -61112,7 +61229,7 @@
               "players_home": "Halle Holmes / Sarah Hunter",
               "players_away": "Lisa Shaver / Micheline Gardner",
               "score": "6-4 6-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFC BLUE",
               "loser_team": "BRMST RED",
@@ -61123,6 +61240,126 @@
               "loser_names": [
                 "Lisa Shaver",
                 "Micheline Gardner"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight Playoff DEN 3",
+      "teams": [
+        {
+          "team_name": "CVTA BLACK",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "TTA PINK",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "59bab8273e84ec59",
+          "date": "6/13/2026",
+          "tl_match_id": "3148074",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148074",
+          "home_team": "CVTA BLACK",
+          "away_team": "TTA PINK",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by CVTA BLACK",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Melanie Banders",
+              "players_away": "Jenna McCormick",
+              "score": "7-5 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "CVTA BLACK",
+              "loser_team": "TTA PINK",
+              "winner_names": [
+                "Melanie Banders"
+              ],
+              "loser_names": [
+                "Jenna McCormick"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Amabel Akwa-Asare",
+              "players_away": "Shonee Lesh",
+              "score": "6-2 1-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TTA PINK",
+              "loser_team": "CVTA BLACK",
+              "winner_names": [
+                "Shonee Lesh"
+              ],
+              "loser_names": [
+                "Amabel Akwa-Asare"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Brooke Staton / Ann Hensley",
+              "players_away": "Jennifer Arbuckle / Melissa Dini",
+              "score": "6-4 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TTA PINK",
+              "loser_team": "CVTA BLACK",
+              "winner_names": [
+                "Jennifer Arbuckle",
+                "Melissa Dini"
+              ],
+              "loser_names": [
+                "Brooke Staton",
+                "Ann Hensley"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Justine Allison / Samantha Ashley",
+              "players_away": "Sarah White / Stacy Hudson",
+              "score": "6-4 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TTA PINK",
+              "loser_team": "CVTA BLACK",
+              "winner_names": [
+                "Sarah White",
+                "Stacy Hudson"
+              ],
+              "loser_names": [
+                "Justine Allison",
+                "Samantha Ashley"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Tamny Costello / Kelly Bassin",
+              "players_away": "Carey Price / Summer Smith",
+              "score": "6-3 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "CVTA BLACK",
+              "loser_team": "TTA PINK",
+              "winner_names": [
+                "Tamny Costello",
+                "Kelly Bassin"
+              ],
+              "loser_names": [
+                "Carey Price",
+                "Summer Smith"
               ]
             }
           ]
@@ -61204,7 +61441,7 @@
               "players_home": "Brooke Staton",
               "players_away": "Jennifer DeLurgio",
               "score": "7-5 6-2",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LTFC BLUE",
               "loser_team": "CVTA BLACK",
@@ -61220,7 +61457,7 @@
               "players_home": "Melanie Banders",
               "players_away": "Jessie Lupo",
               "score": "6-4 6-1",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "CVTA BLACK",
               "loser_team": "LTFC BLUE",
@@ -61236,7 +61473,7 @@
               "players_home": "Amabel Akwa-Asare / Justine Allison",
               "players_away": "Kathryn Cullen / Shelby Mcguire",
               "score": "6-3 6-2",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LTFC BLUE",
               "loser_team": "CVTA BLACK",
@@ -61254,7 +61491,7 @@
               "players_home": "Carol Hoeffler / Robin Noble",
               "players_away": "Halle Holmes / Sarah Hunter",
               "score": "6-1 6-2",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LTFC BLUE",
               "loser_team": "CVTA BLACK",
@@ -61272,7 +61509,7 @@
               "players_home": "Tamny Costello / Ann Hensley",
               "players_away": "Caren Swan / Debbie Murphy",
               "score": "2-6 6-4 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "CVTA BLACK",
               "loser_team": "LTFC BLUE",
@@ -61305,7 +61542,7 @@
               "players_home": "Lisa Ostly",
               "players_away": "Margo Ellis",
               "score": "6-4 4-6 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFCS OSTLY",
               "loser_team": "HV SILVER",
@@ -61321,7 +61558,7 @@
               "players_home": "Amy Sauerland",
               "players_away": "Danielle Kennedy",
               "score": "6-4 6-4",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "HV SILVER",
               "loser_team": "LTFCS OSTLY",
@@ -61337,7 +61574,7 @@
               "players_home": "Kim Weston / Chana Kolman",
               "players_away": "Jean Mortellaro / Monica Reidelbach",
               "score": "7-6 6-4",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFCS OSTLY",
               "loser_team": "HV SILVER",
@@ -61355,7 +61592,7 @@
               "players_home": "Susan Shaink / Jane Glimco",
               "players_away": "Leslie Moody / Anna Larsen",
               "score": "5-7 7-6 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "HV SILVER",
               "loser_team": "LTFCS OSTLY",
@@ -61373,7 +61610,7 @@
               "players_home": "Dana Kennedy / Jenn Hull",
               "players_away": "Rhonda Williamson / Robyn Jones",
               "score": "6-3 7-5",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFCS OSTLY",
               "loser_team": "HV SILVER",
@@ -61406,7 +61643,7 @@
               "players_home": "Monica Reidelbach",
               "players_away": "Melanie Banders",
               "score": "6-3 6-2",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "CVTA BLACK",
               "loser_team": "HV SILVER",
@@ -61422,21 +61659,21 @@
               "players_home": "",
               "players_away": "Brooke Staton",
               "score": "6-0 6-0",
-              "result": "",
-              "court_winner": "home",
-              "winner_team": "HV SILVER",
-              "loser_team": "CVTA BLACK",
-              "winner_names": [],
-              "loser_names": [
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "CVTA BLACK",
+              "loser_team": "HV SILVER",
+              "winner_names": [
                 "Brooke Staton"
-              ]
+              ],
+              "loser_names": []
             },
             {
               "line": "1# Doubles",
               "players_home": "Danielle Kennedy / Leslie Moody",
               "players_away": "Carol Hoeffler / Robin Noble",
               "score": "6-4 3-6 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "CVTA BLACK",
               "loser_team": "HV SILVER",
@@ -61454,17 +61691,17 @@
               "players_home": "Anna Larsen / Jean Mortellaro",
               "players_away": "Tamny Costello / Ann Hensley",
               "score": "4-6 6-3 1-0",
-              "result": "",
-              "court_winner": "away",
-              "winner_team": "CVTA BLACK",
-              "loser_team": "HV SILVER",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "HV SILVER",
+              "loser_team": "CVTA BLACK",
               "winner_names": [
-                "Tamny Costello",
-                "Ann Hensley"
-              ],
-              "loser_names": [
                 "Anna Larsen",
                 "Jean Mortellaro"
+              ],
+              "loser_names": [
+                "Tamny Costello",
+                "Ann Hensley"
               ]
             },
             {
@@ -61472,7 +61709,7 @@
               "players_home": "Rhonda Williamson / Robyn Jones",
               "players_away": "Justine Allison / Zoe Vandeveer",
               "score": "6-4 2-6 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "HV SILVER",
               "loser_team": "CVTA BLACK",
@@ -61505,7 +61742,7 @@
               "players_home": "Shelby Mcguire",
               "players_away": "Jenn Hull",
               "score": "6-2 6-4",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFC BLUE",
               "loser_team": "LTFCS OSTLY",
@@ -61521,7 +61758,7 @@
               "players_home": "Jennifer DeLurgio",
               "players_away": "Hannah Geiger",
               "score": "7-5 6-1",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFC BLUE",
               "loser_team": "LTFCS OSTLY",
@@ -61537,7 +61774,7 @@
               "players_home": "Sarah Hunter / Halle Holmes",
               "players_away": "Lisa Ostly / Kim Weston",
               "score": "6-4 6-2",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFC BLUE",
               "loser_team": "LTFCS OSTLY",
@@ -61555,7 +61792,7 @@
               "players_home": "Jennifer Delaney / Kathryn Cullen",
               "players_away": "Amy Sauerland / Dana Kennedy",
               "score": "6-3 6-1",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LTFC BLUE",
               "loser_team": "LTFCS OSTLY",
@@ -61573,7 +61810,7 @@
               "players_home": "Caren Swan / Jessie Lupo",
               "players_away": "Jane Glimco / Judi Ashmen",
               "score": "6-4 7-5",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LTFCS OSTLY",
               "loser_team": "LTFC BLUE",
@@ -61606,7 +61843,7 @@
               "players_home": "Melanie Banders",
               "players_away": "Jenn Hull",
               "score": "6-1 6-4",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LTFCS OSTLY",
               "loser_team": "CVTA BLACK",
@@ -61622,7 +61859,7 @@
               "players_home": "Brooke Staton",
               "players_away": "Hannah Geiger",
               "score": "6-4 6-2",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "CVTA BLACK",
               "loser_team": "LTFCS OSTLY",
@@ -61638,7 +61875,7 @@
               "players_home": "Zoe Vandeveer / Justine Allison",
               "players_away": "Melissa Herforth / Chana Kolman",
               "score": "4-6 6-2 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "CVTA BLACK",
               "loser_team": "LTFCS OSTLY",
@@ -61656,7 +61893,7 @@
               "players_home": "Carol Hoeffler / Robin Noble",
               "players_away": "Jane Glimco / Susan Shaink",
               "score": "6-1 6-1",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LTFCS OSTLY",
               "loser_team": "CVTA BLACK",
@@ -61674,7 +61911,7 @@
               "players_home": "Tamny Costello / Ann Hensley",
               "players_away": "Ann Skarban / Judi Ashmen",
               "score": "6-2 6-1",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "CVTA BLACK",
               "loser_team": "LTFCS OSTLY",
@@ -61707,7 +61944,7 @@
               "players_home": "",
               "players_away": "Jennifer DeLurgio",
               "score": "6-0 6-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LTFC BLUE",
               "loser_team": "HV SILVER",
@@ -61721,7 +61958,7 @@
               "players_home": "",
               "players_away": "Jessie Lupo",
               "score": "6-0 6-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LTFC BLUE",
               "loser_team": "HV SILVER",
@@ -61735,7 +61972,7 @@
               "players_home": "Margo Ellis / Monica Reidelbach",
               "players_away": "Jennifer Delaney / Shelby Mcguire",
               "score": "6-3 2-6 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "HV SILVER",
               "loser_team": "LTFC BLUE",
@@ -61753,7 +61990,7 @@
               "players_home": "Leslie Moody / Rhonda Williamson",
               "players_away": "Halle Holmes / Caren Swan",
               "score": "7-6 6-3",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LTFC BLUE",
               "loser_team": "HV SILVER",
@@ -61771,7 +62008,7 @@
               "players_home": "Robyn Jones / Carol Bryant",
               "players_away": "Elizabeth A Shields / Debbie Murphy",
               "score": "6-1 6-2",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LTFC BLUE",
               "loser_team": "HV SILVER",
@@ -61863,7 +62100,7 @@
               "players_home": "Victoria Greene",
               "players_away": "Stacie Rudy",
               "score": "6-1 6-4",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "PH GREEN",
@@ -61879,7 +62116,7 @@
               "players_home": "Naomi Arellano",
               "players_away": "Nikki Jones",
               "score": "1-6 6-1 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "PH GREEN",
               "loser_team": "SS-LGT ORANGE",
@@ -61895,7 +62132,7 @@
               "players_home": "Jennifer Moeller / Sara Knudsen",
               "players_away": "Abigail Smith / Marla Schroeder",
               "score": "6-3 6-2",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "PH GREEN",
@@ -61913,7 +62150,7 @@
               "players_home": "Jessica Asherin / Jailyn Volok",
               "players_away": "Brooke Fox / Kathy Aarnio",
               "score": "6-1 6-3",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "PH GREEN",
               "loser_team": "SS-LGT ORANGE",
@@ -61931,7 +62168,7 @@
               "players_home": "Becky Newquist / Elizabeth Mccullough",
               "players_away": "Sarah Wadsworth / Teri Markle",
               "score": "6-0 6-4",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "PH GREEN",
               "loser_team": "SS-LGT ORANGE",
@@ -61964,7 +62201,7 @@
               "players_home": "Chanel Elliott",
               "players_away": "Kelly Callister",
               "score": "6-3 5-7 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LEBTC GOLD",
               "loser_team": "FCCC WHITE",
@@ -61980,7 +62217,7 @@
               "players_home": "Carsen Bahn",
               "players_away": "Stephanie Price",
               "score": "6-0 6-1",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "FCCC WHITE",
               "loser_team": "LEBTC GOLD",
@@ -61996,7 +62233,7 @@
               "players_home": "Tara Delaney / Hannah Burns",
               "players_away": "Andrea Reinig / Gretchen Sutton",
               "score": "6-3 6-2",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "FCCC WHITE",
               "loser_team": "LEBTC GOLD",
@@ -62014,7 +62251,7 @@
               "players_home": "Megan Kushner / Deanna Verchick",
               "players_away": "Natalie Lucero / Casey Clarke",
               "score": "6-3 6-2",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LEBTC GOLD",
               "loser_team": "FCCC WHITE",
@@ -62032,7 +62269,7 @@
               "players_home": "Jane Roberti / Victoria Archer",
               "players_away": "Meghan Page / Mary Bakken",
               "score": "3-6 6-3 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "LEBTC GOLD",
               "loser_team": "FCCC WHITE",
@@ -62065,7 +62302,7 @@
               "players_home": "Natalie Lucero",
               "players_away": "Diana Treinen",
               "score": "6-1 6-1",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "LEBTC GOLD",
@@ -62081,7 +62318,7 @@
               "players_home": "Madyson Wilder",
               "players_away": "Molly Stephens",
               "score": "6-3 5-7 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "LEBTC GOLD",
@@ -62097,7 +62334,7 @@
               "players_home": "Andrea Reinig / Gretchen Sutton",
               "players_away": "Jennifer Moeller / Sara Knudsen",
               "score": "6-2 3-6 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "LEBTC GOLD",
@@ -62115,7 +62352,7 @@
               "players_home": "Mary Bakken / Stephanie Price",
               "players_away": "Victoria Greene / Jailyn Volok",
               "score": "6-3 3-6 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LEBTC GOLD",
               "loser_team": "SS-LGT ORANGE",
@@ -62133,7 +62370,7 @@
               "players_home": "Casey Clarke / Amber Coe",
               "players_away": "Naomi Arellano / Taylor Surroz",
               "score": "6-3 2-6 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LEBTC GOLD",
               "loser_team": "SS-LGT ORANGE",
@@ -62166,7 +62403,7 @@
               "players_home": "Abigail Smith",
               "players_away": "Hannah Burns",
               "score": "7-5 6-3",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "FCCC WHITE",
               "loser_team": "PH GREEN",
@@ -62182,7 +62419,7 @@
               "players_home": "Nikki Jones",
               "players_away": "Carsen Bahn",
               "score": "6-4 6-3",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "PH GREEN",
               "loser_team": "FCCC WHITE",
@@ -62198,7 +62435,7 @@
               "players_home": "Marla Schroeder / Wendy Hynes",
               "players_away": "Erin Rasmussen / Victoria Archer",
               "score": "7-5 6-2",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "FCCC WHITE",
               "loser_team": "PH GREEN",
@@ -62216,7 +62453,7 @@
               "players_home": "Brooke Fox / Kathy Aarnio",
               "players_away": "Tara Delaney / Rachel Yendra",
               "score": "4-6 6-1 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "PH GREEN",
               "loser_team": "FCCC WHITE",
@@ -62234,7 +62471,7 @@
               "players_home": "Amy Attwood / Teri Markle",
               "players_away": "Deanna Verchick / Jessica Allman",
               "score": "3-3",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "FCCC WHITE",
               "loser_team": "PH GREEN",
@@ -62267,7 +62504,7 @@
               "players_home": "Jessica Asherin",
               "players_away": "Chanel Elliott",
               "score": "6-1 6-2",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "FCCC WHITE",
               "loser_team": "SS-LGT ORANGE",
@@ -62283,7 +62520,7 @@
               "players_home": "Diana Treinen",
               "players_away": "Jessica Allman",
               "score": "7-6 6-3",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "FCCC WHITE",
@@ -62299,7 +62536,7 @@
               "players_home": "Molly Stephens / Jailyn Volok",
               "players_away": "Jennifer Sbicca / Rachel Yendra",
               "score": "6-3 6-7 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "FCCC WHITE",
@@ -62317,7 +62554,7 @@
               "players_home": "Jennifer Moeller / Sara Knudsen",
               "players_away": "Victoria Archer / Erin Rasmussen",
               "score": "7-6 6-1",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "FCCC WHITE",
@@ -62335,7 +62572,7 @@
               "players_home": "Taylor Surroz / Victoria Greene",
               "players_away": "Hannah Burns / Carsen Bahn",
               "score": "6-3 6-3",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "SS-LGT ORANGE",
               "loser_team": "FCCC WHITE",
@@ -62368,7 +62605,7 @@
               "players_home": "Andrea Reinig",
               "players_away": "Nikki Jones",
               "score": "6-3 3-6 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LEBTC GOLD",
               "loser_team": "PH GREEN",
@@ -62384,7 +62621,7 @@
               "players_home": "Kelly Callister",
               "players_away": "Abigail Smith",
               "score": "6-4 7-6",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LEBTC GOLD",
               "loser_team": "PH GREEN",
@@ -62400,7 +62637,7 @@
               "players_home": "Natalie Lucero / Casey Clarke",
               "players_away": "Marla Schroeder / Wendy Hynes",
               "score": "6-4 6-2",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LEBTC GOLD",
               "loser_team": "PH GREEN",
@@ -62418,7 +62655,7 @@
               "players_home": "Meghan Page / Gretchen Sutton",
               "players_away": "Brooke Fox / Kathy Aarnio",
               "score": "7-5 1-6 1-0",
-              "result": "",
+              "result": "home",
               "court_winner": "home",
               "winner_team": "LEBTC GOLD",
               "loser_team": "PH GREEN",
@@ -62436,7 +62673,7 @@
               "players_home": "Amber Coe / Madyson Wilder",
               "players_away": "Amy Attwood / Sarah Wadsworth",
               "score": "3-6 7-6 1-0",
-              "result": "",
+              "result": "away",
               "court_winner": "away",
               "winner_team": "PH GREEN",
               "loser_team": "LEBTC GOLD",
@@ -62447,6 +62684,959 @@
               "loser_names": [
                 "Amber Coe",
                 "Madyson Wilder"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight Playoff DEN 8",
+      "teams": [
+        {
+          "team_name": "PH GREEN",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "SS-LT NAVY",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "5baea4bd0397b948",
+          "date": "6/13/2026",
+          "tl_match_id": "3148079",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148079",
+          "home_team": "PH GREEN",
+          "away_team": "SS-LT NAVY",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Molly Blake",
+              "players_away": "Christine Gish",
+              "score": "6-3 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "PH GREEN",
+              "loser_team": "SS-LT NAVY",
+              "winner_names": [
+                "Molly Blake"
+              ],
+              "loser_names": [
+                "Christine Gish"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Nikki Jones",
+              "players_away": "Charla Beram",
+              "score": "6-1 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "PH GREEN",
+              "loser_team": "SS-LT NAVY",
+              "winner_names": [
+                "Nikki Jones"
+              ],
+              "loser_names": [
+                "Charla Beram"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Abigail Smith / Marla Schroeder",
+              "players_away": "Katherine Barnes / Stevie Vencil",
+              "score": "7-5 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "PH GREEN",
+              "loser_team": "SS-LT NAVY",
+              "winner_names": [
+                "Abigail Smith",
+                "Marla Schroeder"
+              ],
+              "loser_names": [
+                "Katherine Barnes",
+                "Stevie Vencil"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Teri Markle / Wendy Hynes",
+              "players_away": "Chris Patterson / Stacey Feltman",
+              "score": "6-0 5-7 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "PH GREEN",
+              "loser_team": "SS-LT NAVY",
+              "winner_names": [
+                "Teri Markle",
+                "Wendy Hynes"
+              ],
+              "loser_names": [
+                "Chris Patterson",
+                "Stacey Feltman"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Brooke Fox / Kathy Aarnio",
+              "players_away": "Jennifer Renard / Emma Renard",
+              "score": "6-3 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "PH GREEN",
+              "loser_team": "SS-LT NAVY",
+              "winner_names": [
+                "Brooke Fox",
+                "Kathy Aarnio"
+              ],
+              "loser_names": [
+                "Jennifer Renard",
+                "Emma Renard"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight Playoff DEN 4",
+      "teams": [
+        {
+          "team_name": "BRMST RED",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "NJ BLUE",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "5621d78244bc6f5c",
+          "date": "6/13/2026",
+          "tl_match_id": "3148094",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148094",
+          "home_team": "BRMST RED",
+          "away_team": "NJ BLUE",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Confirmed by League Coordinator",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jennifer Cooper",
+              "players_away": "Courtney Eccles",
+              "score": "6-4 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "BRMST RED",
+              "loser_team": "NJ BLUE",
+              "winner_names": [
+                "Jennifer Cooper"
+              ],
+              "loser_names": [
+                "Courtney Eccles"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Rumi Arakawa",
+              "players_away": "Karen Stanley",
+              "score": "6-0 7-6",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "BRMST RED",
+              "loser_team": "NJ BLUE",
+              "winner_names": [
+                "Rumi Arakawa"
+              ],
+              "loser_names": [
+                "Karen Stanley"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jody Knaley / Suzanna Black",
+              "players_away": "Laura Yonamine / Norma Crockett",
+              "score": "7-5 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "BRMST RED",
+              "loser_team": "NJ BLUE",
+              "winner_names": [
+                "Jody Knaley",
+                "Suzanna Black"
+              ],
+              "loser_names": [
+                "Laura Yonamine",
+                "Norma Crockett"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Janine Huber / Micheline Gardner",
+              "players_away": "Barb Redford / Jordan Wessell",
+              "score": "6-1 6-7 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "NJ BLUE",
+              "loser_team": "BRMST RED",
+              "winner_names": [
+                "Barb Redford",
+                "Jordan Wessell"
+              ],
+              "loser_names": [
+                "Janine Huber",
+                "Micheline Gardner"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Karen Gallo / Sarah Monzyk",
+              "players_away": "Michelle Hill / Melanie Abel",
+              "score": "7-5 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "BRMST RED",
+              "loser_team": "NJ BLUE",
+              "winner_names": [
+                "Karen Gallo",
+                "Sarah Monzyk"
+              ],
+              "loser_names": [
+                "Michelle Hill",
+                "Melanie Abel"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight Playoff DEN 6",
+      "teams": [
+        {
+          "team_name": "HV SILVER",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "LTFC ORANGE",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "33385f952019acbd",
+          "date": "6/13/2026",
+          "tl_match_id": "3148077",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148077",
+          "home_team": "HV SILVER",
+          "away_team": "LTFC ORANGE",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Rachel Gallen",
+              "players_away": "Tracy Klein",
+              "score": "6-2 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "HV SILVER",
+              "loser_team": "LTFC ORANGE",
+              "winner_names": [
+                "Rachel Gallen"
+              ],
+              "loser_names": [
+                "Tracy Klein"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jean Mortellaro",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "HV SILVER",
+              "loser_team": "LTFC ORANGE",
+              "winner_names": [
+                "Jean Mortellaro"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Margo Ellis / Monica Reidelbach",
+              "players_away": "Betsy Berman / Christina Jordan",
+              "score": "6-4 3-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "HV SILVER",
+              "loser_team": "LTFC ORANGE",
+              "winner_names": [
+                "Margo Ellis",
+                "Monica Reidelbach"
+              ],
+              "loser_names": [
+                "Betsy Berman",
+                "Christina Jordan"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Danielle Kennedy / Rhonda Williamson",
+              "players_away": "Shelley Maloney / Ellen Leher",
+              "score": "6-1 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "LTFC ORANGE",
+              "loser_team": "HV SILVER",
+              "winner_names": [
+                "Shelley Maloney",
+                "Ellen Leher"
+              ],
+              "loser_names": [
+                "Danielle Kennedy",
+                "Rhonda Williamson"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Leslie Moody / Linda Sjoberg",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "HV SILVER",
+              "loser_team": "LTFC ORANGE",
+              "winner_names": [
+                "Leslie Moody",
+                "Linda Sjoberg"
+              ],
+              "loser_names": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight Playoff DEN 7",
+      "teams": [
+        {
+          "team_name": "SS-LGT ORANGE",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "RRTC BLUE",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "20efa0e2d1896ee8",
+          "date": "6/13/2026",
+          "tl_match_id": "3148078",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148078",
+          "home_team": "SS-LGT ORANGE",
+          "away_team": "RRTC BLUE",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jennifer Moeller",
+              "players_away": "Becky Adams",
+              "score": "6-1 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "SS-LGT ORANGE",
+              "loser_team": "RRTC BLUE",
+              "winner_names": [
+                "Jennifer Moeller"
+              ],
+              "loser_names": [
+                "Becky Adams"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Naomi Arellano",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "SS-LGT ORANGE",
+              "loser_team": "RRTC BLUE",
+              "winner_names": [
+                "Naomi Arellano"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Sara Knudsen / Whitney Yoost",
+              "players_away": "Shannon Elam / Yujeong Choi",
+              "score": "6-3 4-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "SS-LGT ORANGE",
+              "loser_team": "RRTC BLUE",
+              "winner_names": [
+                "Sara Knudsen",
+                "Whitney Yoost"
+              ],
+              "loser_names": [
+                "Shannon Elam",
+                "Yujeong Choi"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jailyn Volok / Victoria Greene",
+              "players_away": "Rita Fitzpatrick / Miranda Ku",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "SS-LGT ORANGE",
+              "loser_team": "RRTC BLUE",
+              "winner_names": [
+                "Jailyn Volok",
+                "Victoria Greene"
+              ],
+              "loser_names": [
+                "Rita Fitzpatrick",
+                "Miranda Ku"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Becky Newquist / Taylor Surroz",
+              "players_away": "Michelle McDonald / Kristina Moore",
+              "score": "6-2 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "SS-LGT ORANGE",
+              "loser_team": "RRTC BLUE",
+              "winner_names": [
+                "Becky Newquist",
+                "Taylor Surroz"
+              ],
+              "loser_names": [
+                "Michelle McDonald",
+                "Kristina Moore"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight Playoff DEN 1",
+      "teams": [
+        {
+          "team_name": "WP RED",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "DTC PURPLE",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "badbc6d7d0fd0bb9",
+          "date": "6/13/2026",
+          "tl_match_id": "3148072",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148072",
+          "home_team": "WP RED",
+          "away_team": "DTC PURPLE",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Confirmed by DTC PURPLE",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Danielle Stave",
+              "players_away": "Keri Shimek",
+              "score": "2-6 6-2 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "DTC PURPLE",
+              "loser_team": "WP RED",
+              "winner_names": [
+                "Keri Shimek"
+              ],
+              "loser_names": [
+                "Danielle Stave"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Katie Ezell",
+              "players_away": "Jordan Fellows",
+              "score": "7-5 0-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "WP RED",
+              "loser_team": "DTC PURPLE",
+              "winner_names": [
+                "Katie Ezell"
+              ],
+              "loser_names": [
+                "Jordan Fellows"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Emma Klebe / Madeline Sapyta",
+              "players_away": "Evelyn Price / Kelli Barton",
+              "score": "3-6 6-4 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "WP RED",
+              "loser_team": "DTC PURPLE",
+              "winner_names": [
+                "Emma Klebe",
+                "Madeline Sapyta"
+              ],
+              "loser_names": [
+                "Evelyn Price",
+                "Kelli Barton"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Caroline Shutley / Jessica Gutschenritter",
+              "players_away": "Melissa Saslow / Katie Keating",
+              "score": "7-5 4-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "WP RED",
+              "loser_team": "DTC PURPLE",
+              "winner_names": [
+                "Caroline Shutley",
+                "Jessica Gutschenritter"
+              ],
+              "loser_names": [
+                "Melissa Saslow",
+                "Katie Keating"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Charlotte Infinger / Karleigh Page",
+              "players_away": "Alexis Sutton / Alex Eberly",
+              "score": "6-0 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "DTC PURPLE",
+              "loser_team": "WP RED",
+              "winner_names": [
+                "Alexis Sutton",
+                "Alex Eberly"
+              ],
+              "loser_names": [
+                "Charlotte Infinger",
+                "Karleigh Page"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight Playoff DEN 5",
+      "teams": [
+        {
+          "team_name": "LTFC BLUE",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "PRC BLUE",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "1b87071fcb790ea7",
+          "date": "6/13/2026",
+          "tl_match_id": "3148076",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148076",
+          "home_team": "LTFC BLUE",
+          "away_team": "PRC BLUE",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Shelby Mcguire",
+              "players_away": "Celeste Gardner",
+              "score": "6-2 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "LTFC BLUE",
+              "loser_team": "PRC BLUE",
+              "winner_names": [
+                "Shelby Mcguire"
+              ],
+              "loser_names": [
+                "Celeste Gardner"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jessie Lupo",
+              "players_away": "Kelli Swan",
+              "score": "6-0 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "PRC BLUE",
+              "loser_team": "LTFC BLUE",
+              "winner_names": [
+                "Kelli Swan"
+              ],
+              "loser_names": [
+                "Jessie Lupo"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jennifer Delaney / Kathryn Cullen",
+              "players_away": "Stephanie Enright / Erika Pope",
+              "score": "6-4 6-7 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "LTFC BLUE",
+              "loser_team": "PRC BLUE",
+              "winner_names": [
+                "Jennifer Delaney",
+                "Kathryn Cullen"
+              ],
+              "loser_names": [
+                "Stephanie Enright",
+                "Erika Pope"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sarah Hunter / Halle Holmes",
+              "players_away": "Amber Harris / Sarah Hughes",
+              "score": "7-5 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "LTFC BLUE",
+              "loser_team": "PRC BLUE",
+              "winner_names": [
+                "Sarah Hunter",
+                "Halle Holmes"
+              ],
+              "loser_names": [
+                "Amber Harris",
+                "Sarah Hughes"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Sarah White / Caren Swan",
+              "players_away": "Sharon Kisch / Kari Graham",
+              "score": "6-2 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "LTFC BLUE",
+              "loser_team": "PRC BLUE",
+              "winner_names": [
+                "Sarah White",
+                "Caren Swan"
+              ],
+              "loser_names": [
+                "Sharon Kisch",
+                "Kari Graham"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight Playoff DEN 9",
+      "teams": [
+        {
+          "team_name": "LTC-M ORANGE",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "LEBTC GOLD",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "c96a7f3b2d132ab9",
+          "date": "6/13/2026",
+          "tl_match_id": "3148096",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148096",
+          "home_team": "LTC-M ORANGE",
+          "away_team": "LEBTC GOLD",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by LEBTC GOLD",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Christine Stirling",
+              "players_away": "Casey Clarke",
+              "score": "6-0 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "LTC-M ORANGE",
+              "loser_team": "LEBTC GOLD",
+              "winner_names": [
+                "Christine Stirling"
+              ],
+              "loser_names": [
+                "Casey Clarke"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Leigh Goerke",
+              "players_away": "Natalie Lucero",
+              "score": "6-1 3-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "LEBTC GOLD",
+              "loser_team": "LTC-M ORANGE",
+              "winner_names": [
+                "Natalie Lucero"
+              ],
+              "loser_names": [
+                "Leigh Goerke"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Tina Atchley / Christina Santino",
+              "players_away": "Andrea Reinig / Gretchen Sutton",
+              "score": "6-4 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "LEBTC GOLD",
+              "loser_team": "LTC-M ORANGE",
+              "winner_names": [
+                "Andrea Reinig",
+                "Gretchen Sutton"
+              ],
+              "loser_names": [
+                "Tina Atchley",
+                "Christina Santino"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Michelle Dolin / Kelly Wilson",
+              "players_away": "Michelle Messner / Meghan Page",
+              "score": "6-3 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "LTC-M ORANGE",
+              "loser_team": "LEBTC GOLD",
+              "winner_names": [
+                "Michelle Dolin",
+                "Kelly Wilson"
+              ],
+              "loser_names": [
+                "Michelle Messner",
+                "Meghan Page"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Casey Tatum / Jennifer Withington",
+              "players_away": "Mary Bakken / Stephanie Price",
+              "score": "6-4 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "LEBTC GOLD",
+              "loser_team": "LTC-M ORANGE",
+              "winner_names": [
+                "Mary Bakken",
+                "Stephanie Price"
+              ],
+              "loser_names": [
+                "Casey Tatum",
+                "Jennifer Withington"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Championships Flight Playoff SOCO 1",
+      "teams": [
+        {
+          "team_name": "LTFCS OSTLY",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        },
+        {
+          "team_name": "CCOC MCBRIDE",
+          "team_wins": 0,
+          "team_losses": 0,
+          "matches_played": 0
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "99abaf930c844106",
+          "date": "6/13/2026",
+          "tl_match_id": "3148623",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3148623",
+          "home_team": "LTFCS OSTLY",
+          "away_team": "CCOC MCBRIDE",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jenn Hull",
+              "players_away": "Michelle Erlander",
+              "score": "5-7 6-1 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "LTFCS OSTLY",
+              "loser_team": "CCOC MCBRIDE",
+              "winner_names": [
+                "Jenn Hull"
+              ],
+              "loser_names": [
+                "Michelle Erlander"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Hannah Geiger",
+              "players_away": "Christie Lee",
+              "score": "7-5 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "LTFCS OSTLY",
+              "loser_team": "CCOC MCBRIDE",
+              "winner_names": [
+                "Hannah Geiger"
+              ],
+              "loser_names": [
+                "Christie Lee"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Chana Kolman / Kim Weston",
+              "players_away": "Lindsay Bagby / Irene Larimer",
+              "score": "4-6 6-2 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "CCOC MCBRIDE",
+              "loser_team": "LTFCS OSTLY",
+              "winner_names": [
+                "Lindsay Bagby",
+                "Irene Larimer"
+              ],
+              "loser_names": [
+                "Chana Kolman",
+                "Kim Weston"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jane Glimco / Susan Shaink",
+              "players_away": "Kendall Orr / Lydia Zach",
+              "score": "6-0 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "LTFCS OSTLY",
+              "loser_team": "CCOC MCBRIDE",
+              "winner_names": [
+                "Jane Glimco",
+                "Susan Shaink"
+              ],
+              "loser_names": [
+                "Kendall Orr",
+                "Lydia Zach"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Lisa Ostly / Amy Sauerland",
+              "players_away": "Missy Ross / Sarah Jones Martinez",
+              "score": "6-1 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "LTFCS OSTLY",
+              "loser_team": "CCOC MCBRIDE",
+              "winner_names": [
+                "Lisa Ostly",
+                "Amy Sauerland"
+              ],
+              "loser_names": [
+                "Missy Ross",
+                "Sarah Jones Martinez"
               ]
             }
           ]

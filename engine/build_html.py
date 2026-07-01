@@ -1408,14 +1408,18 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
 
 
 def _champ_sort_key(raw_label: str) -> tuple:
-    """Sort key for championship/districts subflight labels so 'Flight A',
-    'Flight B', 'Flight C', ... sort in letter order, with any non-lettered
-    flight (e.g. 'Final Rounds', '3.0W', generic 'Districts') sorted last.
+    """Sort key for championship/districts subflight labels reflecting actual
+    bracket chronology: Flight Playoff (per sub-area, e.g. DEN 1-9) happens
+    first, then Flight A/B/C/..., then any final round last (Final Rounds,
+    '3.0W', generic 'Districts').
     """
+    m = re.search(r'flight\s+playoff.*?(\d+)\s*$', raw_label.strip(), re.IGNORECASE)
+    if m:
+        return (0, int(m.group(1)))
     m = re.search(r'\bFlight\s+([A-Za-z])\s*$', raw_label.strip(), re.IGNORECASE)
     if m:
-        return (0, m.group(1).upper())
-    return (1, raw_label)
+        return (1, m.group(1).upper())
+    return (2, raw_label)
 
 
 def _results_tab(subflights: list[dict], players: list[dict] | None = None,
