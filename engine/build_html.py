@@ -315,6 +315,54 @@ def _baseline_diff_span(curr, baseline) -> tuple[str, str]:
 # Validation
 # ---------------------------------------------------------------------------
 
+def _ntrp_division_compatible(division: str, ntrp_rating: str) -> bool:
+    """Check if a player's tennisrecord/roster NTRP rating is plausible for
+    the division they're actually competing in. Mirrors
+    scrapers/scrape_tennisrecord.py's _ntrp_compatible — kept as a separate
+    copy here since that check gates what tennisrecord data gets ACCEPTED
+    into players.json, while this one VALIDATES data that already made it
+    in (e.g. via the TennisLink roster path, which has no such gate) so a
+    genuine rating/division mismatch (sandbagging signal, or a rating a
+    full level above/below what's normal) surfaces as a warning instead of
+    silently passing through unflagged.
+    """
+    if not division or not ntrp_rating:
+        return True
+    parts = ntrp_rating.split()
+    try:
+        ntrp_num = float(parts[0])
+    except (ValueError, IndexError):
+        return True
+    letter = parts[1].upper() if len(parts) > 1 else ""
+    try:
+        div_num = float(division[:3])
+    except (ValueError, IndexError):
+        return True
+    if letter == "D":
+        effective = ntrp_num - 0.5
+        return effective <= div_num and effective >= div_num - 0.5
+    return ntrp_num >= div_num - 0.5 and ntrp_num <= div_num
+
+
+def _validate_ntrp(players: list[dict]) -> list[str]:
+    """Flag players whose ntrp_rating doesn't plausibly match the division
+    they're competing in — either a full level below (possible sandbagging)
+    or more than 0.5 above (unusual jump). Catches cases the tennisrecord.com
+    ingestion gate (_ntrp_compatible) never sees, e.g. ntrp_rating set
+    directly from a TennisLink roster page with no validation at all.
+    """
+    warnings = []
+    for p in players:
+        div = p.get("division", "")
+        ntrp = p.get("ntrp_rating", "")
+        if not _ntrp_division_compatible(div, ntrp):
+            warnings.append(
+                f"{p.get('name','?')} ({p.get('state','?')}, {p.get('team','?')}): "
+                f"ntrp_rating {ntrp!r} is not plausible for division {div!r}"
+            )
+    return warnings
+
+
 def _validate(subflights: list[dict]) -> list[str]:
     """
     Cross-check each team's W/L in the standings table against what the
@@ -2463,6 +2511,13 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
     if warnings:
         for w in warnings:
             print(f"  [VALIDATION] {w}")
+
+    # Scope to this exact state+division so each mismatched player is
+    # flagged once, on the page where they'd actually appear.
+    _ntrp_scope = [p for p in players
+                   if p.get("state") == state_code and p.get("division", "").startswith(ntrp)]
+    for w in _validate_ntrp(_ntrp_scope):
+        print(f"  [VALIDATION] {w}")
 
     sf_display = _simplify_subflight_labels(subflights, ntrp)
 
