@@ -1909,9 +1909,24 @@ tr:last-child td { border-bottom: none; }
 .sf-pill { display: inline-block; padding: 0 5px; border-radius: 8px;
            font-size: 10px; font-weight: 600; background: #e8edf5;
            color: #3a5a8c; vertical-align: middle; }
-/* All-players table column constraints */
-#ap-table th { white-space: nowrap; }
-#ap-table td:nth-child(3), #ap-table th:nth-child(3) { width: 26px; text-align: center; }
+/* All-players table column constraints — fixed layout so expanding a row's
+   match history (which inserts a new <tr>) never reflows/rewraps the
+   columns of rows already on screen. Widths set on <th> (first row),
+   which table-layout:fixed uses to size every column for the whole table. */
+#ap-table { table-layout: fixed; width: 100%; }
+#ap-table th { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#ap-table th:nth-child(1) { width: 22%; }
+#ap-table th:nth-child(2) { width: 14%; }
+#ap-table th:nth-child(3) { width: 7%; text-align: center; }
+#ap-table th:nth-child(4) { width: 7%; }
+#ap-table th:nth-child(5) { width: 7%; }
+#ap-table th:nth-child(6) { width: 7%; }
+#ap-table th:nth-child(7) { width: 7%; }
+#ap-table th:nth-child(8) { width: 7%; }
+#ap-table th:nth-child(9) { width: 7%; }
+#ap-table th:nth-child(10) { width: 7%; }
+#ap-table th:nth-child(11) { width: 8%; }
+#ap-table td:nth-child(3) { text-align: center; }
 /* All-players history expansion */
 .player-row.expandable { cursor: pointer; }
 .player-row.expandable:hover { background: #f5f7fa; }
