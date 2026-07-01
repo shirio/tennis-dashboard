@@ -288,6 +288,110 @@ def _apply_team_aliases(data: dict, aliases: dict[str, str]) -> int:
     return changes
 
 
+def _parse_line_score_winner_first(score: str) -> tuple[int, int, int, int]:
+    """Parse a winner-first score string (e.g. '6-3 4-6 1-0') into
+    (winner_sets, loser_sets, winner_games, loser_games). Each pair's first
+    number is always the eventual line-winner's games for that set, even if
+    they lost that particular set — the recording convention used across
+    this codebase (see _tie_game_totals)."""
+    sw = sl = gw = gl = 0
+    for part in (score or "").split():
+        m = re.match(r"^(\d+)-(\d+)$", part)
+        if not m:
+            continue
+        a, b = int(m.group(1)), int(m.group(2))
+        gw += a
+        gl += b
+        if a > b:
+            sw += 1
+        elif b > a:
+            sl += 1
+    return sw, sl, gw, gl
+
+
+def compute_missing_team_stats(sf: dict) -> bool:
+    """Compute team_wins/losses/sets/games directly from match+line data
+    when a subflight's scraped team-summary is entirely zero but matches
+    exist. TennisLink's playoff/bracket pages (e.g. 'Flight Playoff DEN 1',
+    'Final Rounds') don't always expose a team-standings table the way
+    regular-season flight pages do, so the scraper has nothing to read —
+    but the match results themselves are already fully scraped and
+    normalized (winner_team/loser_team on every line), so we can derive
+    the same numbers a standings table would show.
+
+    Only fires when EVERY team's summary is exactly zero — a genuinely
+    scoreless 0-0 team (bye week, forfeit-only) is vanishingly rare and
+    this avoids ever overwriting real (if legitimately low) scraped data.
+    Returns True if stats were computed/filled in.
+    """
+    teams = sf.get("teams", [])
+    matches = sf.get("matches", [])
+    if not teams or not matches:
+        return False
+    all_zero = all(
+        (t.get("team_wins") or 0) == 0 and (t.get("team_losses") or 0) == 0
+        and (t.get("matches_played") or 0) == 0
+        for t in teams
+    )
+    if not all_zero:
+        return False
+
+    stats = {
+        t.get("team_name", ""): {
+            "team_wins": 0, "team_losses": 0, "matches_played": 0,
+            "indiv_wins": 0, "indiv_losses": 0,
+            "sets_won": 0, "sets_lost": 0, "games_won": 0, "games_lost": 0,
+        }
+        for t in teams
+    }
+
+    for m in matches:
+        if m.get("pending"):
+            continue
+        ht, at = (m.get("home_team") or "").strip(), (m.get("away_team") or "").strip()
+        hw, aw = m.get("team_wins_home") or 0, m.get("team_wins_away") or 0
+        status = (m.get("status") or "").lower()
+        if ht in stats:
+            stats[ht]["matches_played"] += 1
+        if at in stats:
+            stats[at]["matches_played"] += 1
+        if hw > aw or (hw == aw and "won" in status):
+            winner, loser = ht, at
+        elif aw > hw or (hw == aw and "lost" in status):
+            winner, loser = at, ht
+        else:
+            winner = loser = None
+        if winner in stats:
+            stats[winner]["team_wins"] += 1
+        if loser in stats:
+            stats[loser]["team_losses"] += 1
+
+        for ln in m.get("lines", []):
+            wt = (ln.get("winner_team") or "").strip()
+            lt = (ln.get("loser_team") or "").strip()
+            if not wt or not lt:
+                continue
+            sw, sl, gw, gl = _parse_line_score_winner_first(ln.get("score", ""))
+            if wt in stats:
+                stats[wt]["indiv_wins"] += 1
+                stats[wt]["sets_won"] += sw
+                stats[wt]["sets_lost"] += sl
+                stats[wt]["games_won"] += gw
+                stats[wt]["games_lost"] += gl
+            if lt in stats:
+                stats[lt]["indiv_losses"] += 1
+                stats[lt]["sets_won"] += sl
+                stats[lt]["sets_lost"] += sw
+                stats[lt]["games_won"] += gl
+                stats[lt]["games_lost"] += gw
+
+    for t in teams:
+        s = stats.get(t.get("team_name", ""))
+        if s:
+            t.update(s)
+    return True
+
+
 def _load_player_teams() -> dict[str, set[str]]:
     """Load player→team mapping from players.json for alignment detection."""
     player_teams: dict[str, set[str]] = {}
@@ -320,6 +424,8 @@ def normalize_standings_file(path: Path, player_teams: dict[str, set[str]] | Non
         for m in sf.get("matches", []):
             normalize_match(m, player_teams)
             count += len(m.get("lines", []))
+        # Must run AFTER normalize_match (needs winner_team/loser_team on lines)
+        compute_missing_team_stats(sf)
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
     return count
 
@@ -331,6 +437,7 @@ def normalize_districts_file(path: Path, player_teams: dict[str, set[str]] | Non
     for m in data.get("matches", []):
         normalize_match(m, player_teams)
         count += len(m.get("lines", []))
+    compute_missing_team_stats(data)
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False))
     return count
 

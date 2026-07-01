@@ -60801,14 +60801,26 @@
         {
           "team_name": "WP-G NAVY",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 0,
+          "indiv_losses": 5,
+          "sets_won": 1,
+          "sets_lost": 10,
+          "games_won": 21,
+          "games_lost": 59
         },
         {
           "team_name": "DTC BLUE",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 5,
+          "indiv_losses": 0,
+          "sets_won": 10,
+          "sets_lost": 1,
+          "games_won": 59,
+          "games_lost": 21
         }
       ],
       "matches": [
@@ -60917,27 +60929,51 @@
       "teams": [
         {
           "team_name": "LTFC BLUE",
-          "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_wins": 1,
+          "team_losses": 1,
+          "matches_played": 2,
+          "indiv_wins": 5,
+          "indiv_losses": 5,
+          "sets_won": 12,
+          "sets_lost": 12,
+          "games_won": 103,
+          "games_lost": 93
         },
         {
           "team_name": "SS-LGT ORANGE",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 2,
+          "indiv_losses": 3,
+          "sets_won": 5,
+          "sets_lost": 7,
+          "games_won": 43,
+          "games_lost": 53
         },
         {
           "team_name": "BRMST RED",
-          "team_wins": 0,
+          "team_wins": 2,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 2,
+          "indiv_wins": 6,
+          "indiv_losses": 4,
+          "sets_won": 14,
+          "sets_lost": 10,
+          "games_won": 97,
+          "games_lost": 83
         },
         {
           "team_name": "TTA PINK",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 2,
+          "indiv_losses": 3,
+          "sets_won": 5,
+          "sets_lost": 7,
+          "games_won": 33,
+          "games_lost": 47
         }
       ],
       "matches": [
@@ -61252,14 +61288,26 @@
         {
           "team_name": "CVTA BLACK",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 2,
+          "indiv_losses": 3,
+          "sets_won": 5,
+          "sets_lost": 6,
+          "games_won": 46,
+          "games_lost": 46
         },
         {
           "team_name": "TTA PINK",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 3,
+          "indiv_losses": 2,
+          "sets_won": 6,
+          "sets_lost": 5,
+          "games_won": 46,
+          "games_lost": 46
         }
       ],
       "matches": [
@@ -62695,15 +62743,27 @@
       "teams": [
         {
           "team_name": "PH GREEN",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 5,
+          "indiv_losses": 0,
+          "sets_won": 10,
+          "sets_lost": 1,
+          "games_won": 61,
+          "games_lost": 29
         },
         {
           "team_name": "SS-LT NAVY",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 0,
+          "indiv_losses": 5,
+          "sets_won": 1,
+          "sets_lost": 10,
+          "games_won": 29,
+          "games_lost": 61
         }
       ],
       "matches": [
@@ -62815,15 +62875,27 @@
       "teams": [
         {
           "team_name": "BRMST RED",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 4,
+          "indiv_losses": 1,
+          "sets_won": 9,
+          "sets_lost": 2,
+          "games_won": 59,
+          "games_lost": 41
         },
         {
           "team_name": "NJ BLUE",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 1,
+          "indiv_losses": 4,
+          "sets_won": 2,
+          "sets_lost": 9,
+          "games_won": 41,
+          "games_lost": 59
         }
       ],
       "matches": [
@@ -62935,15 +63007,27 @@
       "teams": [
         {
           "team_name": "HV SILVER",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 4,
+          "indiv_losses": 1,
+          "sets_won": 8,
+          "sets_lost": 3,
+          "games_won": 50,
+          "games_lost": 27
         },
         {
           "team_name": "LTFC ORANGE",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 1,
+          "indiv_losses": 4,
+          "sets_won": 3,
+          "sets_lost": 8,
+          "games_won": 27,
+          "games_lost": 50
         }
       ],
       "matches": [
@@ -63050,15 +63134,27 @@
       "teams": [
         {
           "team_name": "SS-LGT ORANGE",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 5,
+          "indiv_losses": 0,
+          "sets_won": 10,
+          "sets_lost": 1,
+          "games_won": 60,
+          "games_lost": 22
         },
         {
           "team_name": "RRTC BLUE",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 0,
+          "indiv_losses": 5,
+          "sets_won": 1,
+          "sets_lost": 10,
+          "games_won": 22,
+          "games_lost": 60
         }
       ],
       "matches": [
@@ -63168,15 +63264,27 @@
       "teams": [
         {
           "team_name": "WP RED",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 3,
+          "indiv_losses": 2,
+          "sets_won": 7,
+          "sets_lost": 7,
+          "games_won": 39,
+          "games_lost": 53
         },
         {
           "team_name": "DTC PURPLE",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 2,
+          "indiv_losses": 3,
+          "sets_won": 7,
+          "sets_lost": 7,
+          "games_won": 53,
+          "games_lost": 39
         }
       ],
       "matches": [
@@ -63288,15 +63396,27 @@
       "teams": [
         {
           "team_name": "LTFC BLUE",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 4,
+          "indiv_losses": 1,
+          "sets_won": 8,
+          "sets_lost": 3,
+          "games_won": 53,
+          "games_lost": 40
         },
         {
           "team_name": "PRC BLUE",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 1,
+          "indiv_losses": 4,
+          "sets_won": 3,
+          "sets_lost": 8,
+          "games_won": 40,
+          "games_lost": 53
         }
       ],
       "matches": [
@@ -63409,14 +63529,26 @@
         {
           "team_name": "LTC-M ORANGE",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 2,
+          "indiv_losses": 3,
+          "sets_won": 6,
+          "sets_lost": 6,
+          "games_won": 48,
+          "games_lost": 40
         },
         {
           "team_name": "LEBTC GOLD",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 3,
+          "indiv_losses": 2,
+          "sets_won": 6,
+          "sets_lost": 6,
+          "games_won": 40,
+          "games_lost": 48
         }
       ],
       "matches": [
@@ -63528,15 +63660,27 @@
       "teams": [
         {
           "team_name": "LTFCS OSTLY",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 4,
+          "indiv_losses": 1,
+          "sets_won": 9,
+          "sets_lost": 3,
+          "games_won": 57,
+          "games_lost": 34
         },
         {
           "team_name": "CCOC MCBRIDE",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 1,
+          "indiv_losses": 4,
+          "sets_won": 3,
+          "sets_lost": 9,
+          "games_won": 34,
+          "games_lost": 57
         }
       ],
       "matches": [

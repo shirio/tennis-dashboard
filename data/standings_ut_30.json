@@ -12300,14 +12300,26 @@
         {
           "team_name": "PC MARC-Krueger/Schlachter",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 1,
+          "indiv_losses": 4,
+          "sets_won": 4,
+          "sets_lost": 9,
+          "games_won": 45,
+          "games_lost": 56
         },
         {
           "team_name": "Harvey/Conrad",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 4,
+          "indiv_losses": 1,
+          "sets_won": 9,
+          "sets_lost": 4,
+          "games_won": 56,
+          "games_lost": 45
         }
       ],
       "matches": [
@@ -12419,15 +12431,27 @@
       "teams": [
         {
           "team_name": "Wasatch Hills Ballers",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 4,
+          "indiv_losses": 0,
+          "sets_won": 8,
+          "sets_lost": 0,
+          "games_won": 49,
+          "games_lost": 24
         },
         {
           "team_name": "SunPro-Simply Smashing",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 0,
+          "indiv_losses": 4,
+          "sets_won": 0,
+          "sets_lost": 8,
+          "games_won": 24,
+          "games_lost": 49
         }
       ],
       "matches": [
@@ -12536,14 +12560,26 @@
         {
           "team_name": "Ivory Ridge Racquettes",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 2,
+          "indiv_losses": 3,
+          "sets_won": 5,
+          "sets_lost": 6,
+          "games_won": 39,
+          "games_lost": 46
         },
         {
           "team_name": "Liberty Park-Kesler",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 3,
+          "indiv_losses": 2,
+          "sets_won": 6,
+          "sets_lost": 5,
+          "games_won": 46,
+          "games_lost": 39
         }
       ],
       "matches": [
@@ -12656,14 +12692,26 @@
         {
           "team_name": "Red Ledges-Archibald",
           "team_wins": 0,
-          "team_losses": 0,
-          "matches_played": 0
+          "team_losses": 1,
+          "matches_played": 1,
+          "indiv_wins": 2,
+          "indiv_losses": 3,
+          "sets_won": 6,
+          "sets_lost": 6,
+          "games_won": 51,
+          "games_lost": 46
         },
         {
           "team_name": "Ivory Ridge-Supreme Court",
-          "team_wins": 0,
+          "team_wins": 1,
           "team_losses": 0,
-          "matches_played": 0
+          "matches_played": 1,
+          "indiv_wins": 3,
+          "indiv_losses": 2,
+          "sets_won": 6,
+          "sets_lost": 6,
+          "games_won": 46,
+          "games_lost": 51
         }
       ],
       "matches": [

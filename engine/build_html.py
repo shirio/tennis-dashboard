@@ -536,7 +536,7 @@ def _wl_cell(w, l) -> str:
 
 def _standings_tab(subflights: list[dict], warnings: list[str],
                    sf_display: dict | None = None, id_prefix: str = "st",
-                   show_nav_links: bool = True) -> str:
+                   show_nav_links: bool = True, show_notes: bool = True) -> str:
     warn_html = ""
     if warnings:
         items = "".join(f"<li>{_esc(w)}</li>" for w in warnings)
@@ -601,6 +601,7 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
                 f"onclick=\"goToResult('{slug}','{sf_esc}'); return false;\">"
                 f"{_badge_record(w, l)}</a>"
             ) if show_nav_links else _badge_record(w, l)
+            notes_cell = f"<td class='notes-cell'>{notes}</td>" if show_notes else ""
             rows += (
                 f"<tr>"
                 f"<td class='rank'>{j}</td>"
@@ -609,20 +610,21 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
                 f"<td class='st-w'>{iw}</td><td class='st-l'>{il}</td>"
                 f"<td class='st-w'>{sw}</td><td class='st-l'>{sl}</td>"
                 f"<td class='st-w'>{gw}</td><td class='st-l'>{gl}</td>"
-                f"<td class='notes-cell'>{notes}</td>"
+                f"{notes_cell}"
                 f"</tr>\n"
             )
 
         summary_html = (
             f'<p class="sf-summary">{summary}</p>' if summary else ""
         )
+        notes_th = "<th>Notes</th>" if show_notes else ""
         panes += (
             f'<div class="st-pane" data-sf="{_esc(sf_raw)}" data-prefix="{id_prefix}"{visible}>'
             f'<p class="sf-header">Subflight {lbl}</p>'
             f'{summary_html}'
             f'<table class="st-table"><thead><tr>'
             f'<th style="width:2rem">#</th><th>Team</th>'
-            f'<th>Record</th><th colspan="2">Courts</th><th colspan="2">Sets</th><th colspan="2">Games</th><th>Notes</th>'
+            f'<th>Record</th><th colspan="2">Courts</th><th colspan="2">Sets</th><th colspan="2">Games</th>{notes_th}'
             f'</tr></thead><tbody>{rows}</tbody></table>'
             f'</div>\n'
         )
@@ -3764,7 +3766,7 @@ def build_sectionals_page() -> str | None:
 
         st_id_prefix = f"st{st_lower}"
         st_standings_html = _standings_tab(st_subflights, [], id_prefix=st_id_prefix,
-                                           show_nav_links=False)
+                                           show_nav_links=False, show_notes=False)
         standings_state_btns += (
             f'<button class="state-tab{active}" '
             f'onclick="swState(\'stand-state-{st_lower}\',this,\'standings\')">{_esc(st)}</button>\n'
@@ -3792,7 +3794,7 @@ def build_sectionals_page() -> str | None:
     )
     standings_html = (
         f'<div class="tabs state-tabs">{standings_state_btns}</div>{standings_state_panes}'
-        if standings_state_btns else _standings_tab(all_subflights_30, [])
+        if standings_state_btns else _standings_tab(all_subflights_30, [], show_notes=False)
     )
 
     tab_defs = [
