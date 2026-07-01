@@ -1927,10 +1927,14 @@ function sw(id, btn) {
   document.getElementById(id).classList.add('on');
   btn.classList.add('on');
 }
-function swState(id, btn) {
+function swState(id, btn, group) {
+  group = group || 'results';
   var grp = btn.closest('.state-tabs');
   if (grp) grp.querySelectorAll('.state-tab').forEach(b => b.classList.remove('on'));
-  document.querySelectorAll('.state-pane').forEach(p => p.classList.remove('on'));
+  // Scoped to this group's panes only — a second state-tab group elsewhere
+  // on the page (e.g. a "standings" tab alongside "match results") must not
+  // hide/show each other's panes when switching states independently.
+  document.querySelectorAll('.state-pane[data-group="' + group + '"]').forEach(p => p.classList.remove('on'));
   document.getElementById(id).classList.add('on');
   btn.classList.add('on');
 }
@@ -1949,14 +1953,15 @@ function sr(id, btn, groupId) {
 
 // Switch A/B subflight in rosters or results tab
 // Simple subflight switcher for the standings tab (no team sub-tabs)
-function filterStandingsSF(sf) {
-  var tabs = document.getElementById('st-sf-tabs');
+function filterStandingsSF(sf, prefix) {
+  prefix = prefix || 'st';
+  var tabs = document.getElementById(prefix + '-sf-tabs');
   if (tabs) {
     tabs.querySelectorAll('.rtab').forEach(function(b) {
       b.classList.toggle('on', b.dataset.sf === sf);
     });
   }
-  document.querySelectorAll('.st-pane').forEach(function(p) {
+  document.querySelectorAll('.st-pane[data-prefix="' + prefix + '"]').forEach(function(p) {
     p.style.display = (p.dataset.sf === sf) ? '' : 'none';
   });
 }

@@ -265,8 +265,8 @@ tr:last-child td { border-bottom: none; }
 <button class="tab" onclick="sw('allresults',this)">all results</button>
 </div>
 
-<div id="standings" class="pane on"><div class="rtabs" id="st-sf-tabs"><button class="rtab sf-switcher on" data-sf="A" onclick="filterStandingsSF('A')">A</button>
-</div><div class="st-pane" data-sf="A"><p class="sf-header">Subflight A</p><table class="st-table"><thead><tr><th style="width:2rem">#</th><th>Team</th><th>Record</th><th colspan="2">Courts</th><th colspan="2">Sets</th><th colspan="2">Games</th><th>Notes</th></tr></thead><tbody><tr><td class='rank'>1</td><td class='tname'><a class='team-link' href='#' onclick="goToRoster('hailey-ball','A'); return false;">Hailey Ball</a></td><td><a class='team-link' href='#' onclick="goToResult('hailey-ball','A'); return false;"><span class="badge bw">8–1</span></a></td><td class='st-w'>34</td><td class='st-l'>11</td><td class='st-w'>70</td><td class='st-l'>30</td><td class='st-w'>471</td><td class='st-l'>336</td><td class='notes-cell'></td></tr>
+<div id="standings" class="pane on"><div class="rtabs" id="st-sf-tabs"><button class="rtab sf-switcher on" data-sf="A" onclick="filterStandingsSF('A','st')">A</button>
+</div><div class="st-pane" data-sf="A" data-prefix="st"><p class="sf-header">Subflight A</p><table class="st-table"><thead><tr><th style="width:2rem">#</th><th>Team</th><th>Record</th><th colspan="2">Courts</th><th colspan="2">Sets</th><th colspan="2">Games</th><th>Notes</th></tr></thead><tbody><tr><td class='rank'>1</td><td class='tname'><a class='team-link' href='#' onclick="goToRoster('hailey-ball','A'); return false;">Hailey Ball</a></td><td><a class='team-link' href='#' onclick="goToResult('hailey-ball','A'); return false;"><span class="badge bw">8–1</span></a></td><td class='st-w'>34</td><td class='st-l'>11</td><td class='st-w'>70</td><td class='st-l'>30</td><td class='st-w'>471</td><td class='st-l'>336</td><td class='notes-cell'></td></tr>
 <tr><td class='rank'>2</td><td class='tname'><a class='team-link' href='#' onclick="goToRoster('the-real-housewives-of-the-hard-court','A'); return false;">The Real Housewives of the Hard Court</a></td><td><a class='team-link' href='#' onclick="goToResult('the-real-housewives-of-the-hard-court','A'); return false;"><span class="badge bw">5–4</span></a></td><td class='st-w'>27</td><td class='st-l'>18</td><td class='st-w'>61</td><td class='st-l'>39</td><td class='st-w'>460</td><td class='st-l'>357</td><td class='notes-cell'></td></tr>
 <tr><td class='rank'>3</td><td class='tname'><a class='team-link' href='#' onclick="goToRoster('lucky-strings','A'); return false;">Lucky Strings</a></td><td><a class='team-link' href='#' onclick="goToResult('lucky-strings','A'); return false;"><span class="badge bl">2–6</span></a></td><td class='st-w'>12</td><td class='st-l'>28</td><td class='st-w'>30</td><td class='st-l'>57</td><td class='st-w'>308</td><td class='st-l'>400</td><td class='notes-cell'></td></tr>
 <tr><td class='rank'>4</td><td class='tname'><a class='team-link' href='#' onclick="goToRoster('idaho-falls','A'); return false;">Idaho Falls</a></td><td><a class='team-link' href='#' onclick="goToResult('idaho-falls','A'); return false;"><span class="badge bl">2–6</span></a></td><td class='st-w'>12</td><td class='st-l'>28</td><td class='st-w'>25</td><td class='st-l'>60</td><td class='st-w'>266</td><td class='st-l'>412</td><td class='notes-cell'></td></tr>
@@ -467,10 +467,14 @@ function sw(id, btn) {
   document.getElementById(id).classList.add('on');
   btn.classList.add('on');
 }
-function swState(id, btn) {
+function swState(id, btn, group) {
+  group = group || 'results';
   var grp = btn.closest('.state-tabs');
   if (grp) grp.querySelectorAll('.state-tab').forEach(b => b.classList.remove('on'));
-  document.querySelectorAll('.state-pane').forEach(p => p.classList.remove('on'));
+  // Scoped to this group's panes only — a second state-tab group elsewhere
+  // on the page (e.g. a "standings" tab alongside "match results") must not
+  // hide/show each other's panes when switching states independently.
+  document.querySelectorAll('.state-pane[data-group="' + group + '"]').forEach(p => p.classList.remove('on'));
   document.getElementById(id).classList.add('on');
   btn.classList.add('on');
 }
@@ -489,14 +493,15 @@ function sr(id, btn, groupId) {
 
 // Switch A/B subflight in rosters or results tab
 // Simple subflight switcher for the standings tab (no team sub-tabs)
-function filterStandingsSF(sf) {
-  var tabs = document.getElementById('st-sf-tabs');
+function filterStandingsSF(sf, prefix) {
+  prefix = prefix || 'st';
+  var tabs = document.getElementById(prefix + '-sf-tabs');
   if (tabs) {
     tabs.querySelectorAll('.rtab').forEach(function(b) {
       b.classList.toggle('on', b.dataset.sf === sf);
     });
   }
-  document.querySelectorAll('.st-pane').forEach(function(p) {
+  document.querySelectorAll('.st-pane[data-prefix="' + prefix + '"]').forEach(function(p) {
     p.style.display = (p.dataset.sf === sf) ? '' : 'none';
   });
 }

@@ -535,7 +535,8 @@ def _wl_cell(w, l) -> str:
 
 
 def _standings_tab(subflights: list[dict], warnings: list[str],
-                   sf_display: dict | None = None) -> str:
+                   sf_display: dict | None = None, id_prefix: str = "st",
+                   show_nav_links: bool = True) -> str:
     warn_html = ""
     if warnings:
         items = "".join(f"<li>{_esc(w)}</li>" for w in warnings)
@@ -558,7 +559,7 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
         sf_btns += (
             f'<button class="rtab sf-switcher{active}" '
             f'data-sf="{_esc(lbl)}" '
-            f'onclick="filterStandingsSF(\'{_esc(lbl)}\')">'
+            f'onclick="filterStandingsSF(\'{_esc(lbl)}\',\'{id_prefix}\')">'
             f'{_esc(tab_lbl)}</button>\n'
         )
 
@@ -590,17 +591,21 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
             slug   = _slug(name)
             sf_esc = _esc(sf_raw).replace("'", "\\'")
             notes = _esc(t.get("notes", "") or "")
+            name_cell = (
+                f"<a class='team-link' href='#' "
+                f"onclick=\"goToRoster('{slug}','{sf_esc}'); return false;\">"
+                f"{_esc(name)}</a>"
+            ) if show_nav_links else _esc(name)
+            record_cell = (
+                f"<a class='team-link' href='#' "
+                f"onclick=\"goToResult('{slug}','{sf_esc}'); return false;\">"
+                f"{_badge_record(w, l)}</a>"
+            ) if show_nav_links else _badge_record(w, l)
             rows += (
                 f"<tr>"
                 f"<td class='rank'>{j}</td>"
-                f"<td class='tname'>"
-                f"<a class='team-link' href='#' "
-                f"onclick=\"goToRoster('{slug}','{sf_esc}'); return false;\">"
-                f"{_esc(name)}</a></td>"
-                f"<td>"
-                f"<a class='team-link' href='#' "
-                f"onclick=\"goToResult('{slug}','{sf_esc}'); return false;\">"
-                f"{_badge_record(w, l)}</a></td>"
+                f"<td class='tname'>{name_cell}</td>"
+                f"<td>{record_cell}</td>"
                 f"<td class='st-w'>{iw}</td><td class='st-l'>{il}</td>"
                 f"<td class='st-w'>{sw}</td><td class='st-l'>{sl}</td>"
                 f"<td class='st-w'>{gw}</td><td class='st-l'>{gl}</td>"
@@ -612,7 +617,7 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
             f'<p class="sf-summary">{summary}</p>' if summary else ""
         )
         panes += (
-            f'<div class="st-pane" data-sf="{_esc(sf_raw)}"{visible}>'
+            f'<div class="st-pane" data-sf="{_esc(sf_raw)}" data-prefix="{id_prefix}"{visible}>'
             f'<p class="sf-header">Subflight {lbl}</p>'
             f'{summary_html}'
             f'<table class="st-table"><thead><tr>'
@@ -624,7 +629,7 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
 
     return (
         warn_html
-        + f'<div class="rtabs" id="st-sf-tabs">{sf_btns}</div>'
+        + f'<div class="rtabs" id="{id_prefix}-sf-tabs">{sf_btns}</div>'
         + panes
     )
 
@@ -2078,10 +2083,14 @@ function sw(id, btn) {
   document.getElementById(id).classList.add('on');
   btn.classList.add('on');
 }
-function swState(id, btn) {
+function swState(id, btn, group) {
+  group = group || 'results';
   var grp = btn.closest('.state-tabs');
   if (grp) grp.querySelectorAll('.state-tab').forEach(b => b.classList.remove('on'));
-  document.querySelectorAll('.state-pane').forEach(p => p.classList.remove('on'));
+  // Scoped to this group's panes only — a second state-tab group elsewhere
+  // on the page (e.g. a "standings" tab alongside "match results") must not
+  // hide/show each other's panes when switching states independently.
+  document.querySelectorAll('.state-pane[data-group="' + group + '"]').forEach(p => p.classList.remove('on'));
   document.getElementById(id).classList.add('on');
   btn.classList.add('on');
 }
@@ -2100,14 +2109,15 @@ function sr(id, btn, groupId) {
 
 // Switch A/B subflight in rosters or results tab
 // Simple subflight switcher for the standings tab (no team sub-tabs)
-function filterStandingsSF(sf) {
-  var tabs = document.getElementById('st-sf-tabs');
+function filterStandingsSF(sf, prefix) {
+  prefix = prefix || 'st';
+  var tabs = document.getElementById(prefix + '-sf-tabs');
   if (tabs) {
     tabs.querySelectorAll('.rtab').forEach(function(b) {
       b.classList.toggle('on', b.dataset.sf === sf);
     });
   }
-  document.querySelectorAll('.st-pane').forEach(function(p) {
+  document.querySelectorAll('.st-pane[data-prefix="' + prefix + '"]').forEach(function(p) {
     p.style.display = (p.dataset.sf === sf) ? '' : 'none';
   });
 }
@@ -3703,11 +3713,13 @@ def build_sectionals_page() -> str | None:
         player_stats=sect_player_stats,
     )
 
-    # Build match results tab — one State tab per qualified state, each
-    # showing that state's districts/championship subflights (sorted
-    # Flight A, B, C, ..., then any non-lettered final flight) with the
-    # existing subflight -> team drill-down nested inside.
-    state_btns, state_panes = "", ""
+    # Build the standings AND match-results tabs together — one State tab
+    # per qualified state, each showing that state's districts/championship
+    # subflights (sorted Flight A, B, C, ..., then any non-lettered final
+    # flight), with the existing subflight -> team drill-down nested inside
+    # results, and a subflight -> standings table drill-down for standings.
+    results_state_btns, results_state_panes = "", ""
+    standings_state_btns, standings_state_panes = "", ""
     for i, st in enumerate(sorted(qualified_teams_by_state)):
         st_lower = st.lower()
         st_subflights = []
@@ -3736,17 +3748,30 @@ def build_sectionals_page() -> str | None:
         if not st_subflights:
             continue
 
-        id_prefix = f"re{st_lower}"
-        st_results_html = _results_tab(st_subflights, players, sfx=_sfx,
-                                       id_prefix=id_prefix, include_rating_toggle=False)
         active = " on" if i == 0 else ""
-        state_btns += (
+
+        re_id_prefix = f"re{st_lower}"
+        st_results_html = _results_tab(st_subflights, players, sfx=_sfx,
+                                       id_prefix=re_id_prefix, include_rating_toggle=False)
+        results_state_btns += (
             f'<button class="state-tab{active}" '
-            f'onclick="swState(\'state-{st_lower}\',this)">{_esc(st)}</button>\n'
+            f'onclick="swState(\'state-{st_lower}\',this,\'results\')">{_esc(st)}</button>\n'
         )
-        state_panes += (
-            f'<div id="state-{st_lower}" class="state-pane{active}">'
+        results_state_panes += (
+            f'<div id="state-{st_lower}" class="state-pane{active}" data-group="results">'
             f'{st_results_html}</div>\n'
+        )
+
+        st_id_prefix = f"st{st_lower}"
+        st_standings_html = _standings_tab(st_subflights, [], id_prefix=st_id_prefix,
+                                           show_nav_links=False)
+        standings_state_btns += (
+            f'<button class="state-tab{active}" '
+            f'onclick="swState(\'stand-state-{st_lower}\',this,\'standings\')">{_esc(st)}</button>\n'
+        )
+        standings_state_panes += (
+            f'<div id="stand-state-{st_lower}" class="state-pane{active}" data-group="standings">'
+            f'{st_standings_html}</div>\n'
         )
 
     # One shared rating toggle above the state tabs — setResultRatingMode()
@@ -3762,11 +3787,16 @@ def build_sectionals_page() -> str | None:
         '</div>'
     )
     results_html = (
-        f'{shared_rating_toggle}<div class="tabs state-tabs">{state_btns}</div>{state_panes}'
-        if state_btns else _results_tab(all_subflights_30, players, sfx=_sfx)
+        f'{shared_rating_toggle}<div class="tabs state-tabs">{results_state_btns}</div>{results_state_panes}'
+        if results_state_btns else _results_tab(all_subflights_30, players, sfx=_sfx)
+    )
+    standings_html = (
+        f'<div class="tabs state-tabs">{standings_state_btns}</div>{standings_state_panes}'
+        if standings_state_btns else _standings_tab(all_subflights_30, [])
     )
 
     tab_defs = [
+        ("standings", "standings", standings_html),
         ("rosters", "team rosters", rosters_html),
         ("allplayers", "all players", players_html),
         ("allresults", "match results", results_html),
