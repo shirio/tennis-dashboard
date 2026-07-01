@@ -1915,8 +1915,8 @@ tr:last-child td { border-bottom: none; }
    which table-layout:fixed uses to size every column for the whole table. */
 #ap-table { table-layout: fixed; width: 100%; }
 #ap-table th { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-#ap-table th:nth-child(1) { width: 22%; }
-#ap-table th:nth-child(2) { width: 14%; }
+#ap-table th:nth-child(1) { width: 15%; }
+#ap-table th:nth-child(2) { width: 21%; }
 #ap-table th:nth-child(3) { width: 7%; text-align: center; }
 #ap-table th:nth-child(4) { width: 7%; }
 #ap-table th:nth-child(5) { width: 7%; }
