@@ -1842,7 +1842,8 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
 
 def _summary_cards(ntrp: str, year: int, subflights: list[dict],
                    region_label: str = "NV Area F", state_code: str = "NV",
-                   n_players: int = 0) -> str:
+                   n_players: int = 0, n_state_total: int = 0,
+                   n_both_div: int = 0) -> str:
     total_teams = sum(len(sf.get("teams", [])) for sf in subflights)
     total_matches = sum(len(sf.get("matches", [])) for sf in subflights)
     played = sum(
@@ -1874,7 +1875,7 @@ def _summary_cards(ntrp: str, year: int, subflights: list[dict],
   <div class="mcard">
     <div class="mcard-label">players</div>
     <div class="mcard-val">{n_players}</div>
-    <div class="mcard-sub">rostered in {_esc(ntrp)} Women</div>
+    <div class="mcard-sub">of {n_state_total} in {_esc(state_code)} · {n_both_div} play both</div>
   </div>
   <div class="mcard">
     <div class="mcard-label">leader</div>
@@ -2605,8 +2606,15 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
     # But keep ALL players available for match history cross-references
     all_players_pool = players
 
+    _state_30_35 = [p for p in state_players
+                    if p.get("wl_record_30") or p.get("wl_record_35")]
+    _n_both_div = sum(
+        1 for p in _state_30_35
+        if p.get("wl_record_30") and p.get("wl_record_35")
+    )
     cards_html = _summary_cards(ntrp, year, subflights, region_label,
-                                state_code=state_code, n_players=len(_ntrp_scope))
+                                state_code=state_code, n_players=len(_ntrp_scope),
+                                n_state_total=len(_state_30_35), n_both_div=_n_both_div)
     standings_html = _standings_tab(subflights, warnings, sf_display=sf_display)
     rosters_html = _rosters_tab(subflights, state_players, ntrp, sf_display=sf_display)
     other_subflights = (other_standings or {}).get("subflights", [])
