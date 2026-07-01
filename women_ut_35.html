@@ -134,12 +134,10 @@ tr:last-child td { border-bottom: none; }
 .line-row-dq .lh, .line-row-dq .la { opacity: 0.85; }
 .dq-badge { font-size: 10px; font-weight: 700; color: #b02a2a;
             font-style: normal; letter-spacing: .02em; }
-/* All Players match history — trying a much lighter grey than the results
-   tab's 0.85 opacity, per request, before deciding vs. a red-bg treatment. */
-.hist-row-dq { font-style: italic; }
-.hist-row-dq td { color: #ccc; }
-.hist-row-dq .hr { color: #ddd; }
-.hist-row-dq .dq-badge { color: #b02a2a; }
+/* All Players match history — whole-row opacity so every element (div/W-L
+   badges, pills, text) dims together proportionally, rather than fixed
+   text-color leaving bright badges untouched. */
+.hist-row-dq { font-style: italic; opacity: 0.5; }
 /* Player disqualified in this division — mark the whole roster/all-players row */
 .player-row-dq { background: #fdf1f1; }
 .player-row-dq:hover { background: #fbe4e4; }
