@@ -146,12 +146,15 @@ def _raw_label_to_flight_label(raw_text: str) -> str:
     Handles 'Flight A', 'Flight Playoff / W 3.0 - DEN 3', 'Final Rounds', etc.
     """
     t = raw_text.strip()
-    # "Flight Playoff / W 3.0 - DEN 3" -> "Flight Playoff DEN 3"
-    # "Flight Playoff / W 3.0 - SOCO 1" -> "Flight Playoff SOCO 1"
+    # "Flight Playoff / W 3.0 - DEN 3" -> "DEN 3"
+    # "Flight Playoff / W 3.0 - SOCO 1" -> "SOCO 1"
     # Generalized over any area code (DEN, SOCO, NOCO, WS, MOUNTAINS, ...).
+    # "Flight Playoff" itself is dropped from the display label per request —
+    # _champ_sort_key identifies this tier by the area-code+number pattern,
+    # not by that literal text.
     m = re.search(r'flight\s+playoff.*?-\s*([A-Za-z]+\s*\d+)\s*$', t, re.IGNORECASE)
     if m:
-        return f"Championships Flight Playoff {m.group(1).upper()}"
+        return f"Championships {m.group(1).upper()}"
     m = re.search(r'\bflight\s+([A-Za-z])\b', t, re.IGNORECASE)
     if m:
         return f"Championships Flight {m.group(1).upper()}"
