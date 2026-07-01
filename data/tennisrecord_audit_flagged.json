@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Jaqueline Schultz",
+    "state": "NV",
+    "team": "DTC #1",
+    "division": "3.0 Women B",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Jaqueline Schultz",
+    "profile_location": "Las Vegas, VA"
+  },
+  {
+    "name": "Jennifer Wang",
+    "state": "NV",
+    "team": "TPC",
+    "division": "3.0 Women A",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Jennifer Wang&s=8",
+    "profile_location": "Irvine, CA"
+  },
+  {
+    "name": "Lisa Williams",
+    "state": "NV",
+    "team": "LIFE TIME FITNESS/GV",
+    "division": "3.0 Women A",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Lisa Williams&s=5",
+    "profile_location": "Bainbridge Island, WA"
+  },
+  {
+    "name": "Chandra VanPaepeghem",
+    "state": "NV",
+    "team": "SPANISH TRAIL #1",
+    "division": "3.5 Women B",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Chandra VanPaepeghem",
+    "profile_location": "Olympia, WA"
+  },
+  {
+    "name": "Jane Doe",
+    "state": "NV",
+    "team": "LIFE TIME FITNESS/GV",
+    "division": "3.5 Women A",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Jane Doe&s=47",
+    "profile_location": "Tucson, AZ"
+  },
+  {
+    "name": "Ames Blas",
+    "state": "NV",
+    "team": "DTC #1",
+    "division": "4.0 Women A",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Ames Blas",
+    "profile_location": "Laguna Niguel, CA"
+  },
+  {
+    "name": "Nora Taylor",
+    "state": "NV",
+    "team": "ANTHEM CC",
+    "division": "4.0 Women B",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Nora Taylor&s=2",
+    "profile_location": "Brownsville, TX"
+  },
+  {
+    "name": "Regina Esperanza",
+    "state": "NV",
+    "team": "SOUTHERN HIGHLANDS",
+    "division": "4.5 Women",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Regina Esperanza",
+    "profile_location": "TORRANCE, CA"
+  },
+  {
+    "name": "Amy Thompson",
+    "state": "NV",
+    "team": "SOUTHERN HIGHLANDS",
+    "division": "4.5 Women",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Amy Thompson&s=7",
+    "profile_location": "Redondo Beach, CA"
+  },
+  {
+    "name": "Pamela Smith",
+    "state": "CO",
+    "team": "PRKR GREEN",
+    "division": "3.0 Women B",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Pamela Smith&s=14",
+    "profile_location": "Scottsdale, AZ"
+  },
+  {
+    "name": "Ashley Miller",
+    "state": "UT",
+    "team": "LIBERTY PARK-SPENCER/BRYCE",
+    "division": "3.5 Women",
+    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Ashley Miller&s=16",
+    "profile_location": "Southlake, TX"
+  }
+]
