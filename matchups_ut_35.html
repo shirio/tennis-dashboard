@@ -127,6 +127,18 @@ tr:last-child td { border-bottom: none; }
 .lh { color: #aaa; } .lh.w { color: #27500A; font-weight: 600; }
 .la { color: #aaa; text-align: right; } .la.w { color: #27500A; font-weight: 600; }
 .ls { text-align: center; font-weight: 600; font-size: 11px; color: #aaa; }
+/* A court where a player was disqualified — the result is on record but not
+   a valid competitive match. Italicize the whole line as a visual flag;
+   the (DQ) badge marks exactly who. */
+.line-row-dq { font-style: italic; cursor: help; }
+.line-row-dq .lh, .line-row-dq .la { opacity: 0.85; }
+.dq-badge { font-size: 10px; font-weight: 700; color: #b02a2a;
+            font-style: normal; letter-spacing: .02em; }
+.hist-row-dq { font-style: italic; }
+.hist-row-dq td { opacity: 0.85; }
+/* Player disqualified in this division — mark the whole roster/all-players row */
+.player-row-dq { background: #fdf1f1; }
+.player-row-dq:hover { background: #fbe4e4; }
 /* Clickable player names in results tab */
 .pname { cursor: pointer; border-radius: 3px; padding: 0 2px; transition: background .1s; }
 .pname:hover { background: #f0f4ff; }
@@ -1989,17 +2001,22 @@ function toggleHistory(tr) {
       var wko = r.wk;
       var resCls = r.w ? 'hw' : (wko ? '' : 'hl');
       var resTxt = wko ? (r.w ? 'W*' : 'L*') : (r.w ? 'W' : 'L');
+      var dqArr = r.dq || [];
+      var dqBadge = function(name) {
+        return dqArr.indexOf(name) !== -1 ? ' <span class="dq-badge">(DQ)</span>' : '';
+      };
       var opArr = r.op || [], orArr = r.or || [];
       var opHtml = opArr.length
-        ? opArr.map(function(o,i){ return o + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
+        ? opArr.map(function(o,i){ return o + dqBadge(o) + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
         : '<em class="hr">default</em>';
       var ptArr = r.pt || [], ptrArr = r.ptr || [];
       var ptHtml = ptArr.length
-        ? ptArr.map(function(p,i){ return p + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : ''); }).join(', ')
+        ? ptArr.map(function(p,i){ return p + dqBadge(p) + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : ''); }).join(', ')
         : '—';
       var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
       var prHtml = r.pr ? '<em class="prating">(' + r.pr + ')</em>' : '';
-      html += '<tr>'
+      var rowCls = dqArr.length ? ' class="hist-row-dq" title="Invalid match — ' + dqArr.join(', ') + ' disqualified"' : '';
+      html += '<tr' + rowCls + '>'
         + '<td style="white-space:nowrap">' + (r.dt||'') + '</td>'
         + '<td>' + divPill + '</td>'
         + '<td>' + (r.ln||'') + '</td>'

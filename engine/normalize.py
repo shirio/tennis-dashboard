@@ -26,6 +26,18 @@ _NOISE = frozenset({
     "n/a", "na", "n", "a", "(dq)", "note -",
 })
 
+# TennisLink prints a page-level legend explaining the (DQ)/(DQ)*/* markers
+# once per match. Our scraper sometimes glues that legend onto whichever
+# court happened to be parsed last — even when nobody in that specific court
+# is disqualified. It must never be treated as a player name.
+_DQ_LEGEND_RE = re.compile(
+    r"disqualified|match awarded to opposing team", re.IGNORECASE
+)
+
+# "PlayerName - (DQ)*" or "PlayerName - (DQ)" — the real, correctly-placed
+# per-player marker (always attached to the actual DQ'd player's own name).
+_DQ_MARKER_RE = re.compile(r"\s*-\s*\(DQ\)\*?\s*$", re.IGNORECASE)
+
 
 def _nkey(n: str) -> str:
     return re.sub(r"\s+", " ", n.strip().lower())
@@ -37,13 +49,39 @@ def _is_noise(name: str) -> bool:
         return True
     if re.match(r"^\d+:\d+\s*(am|pm|midnight|noon)$", s, re.I):
         return True
+    if _DQ_LEGEND_RE.search(name):
+        return True
     return False
+
+
+def _extract_dq_players(raw: str) -> list[str]:
+    """Return names in `raw` that carry the real 'Name - (DQ)*' marker."""
+    out = []
+    for tok in raw.split("/"):
+        tok = tok.strip()
+        if tok and _DQ_MARKER_RE.search(tok):
+            out.append(_DQ_MARKER_RE.sub("", tok).strip())
+    return out
+
+
+def _strip_dq_marker(raw: str) -> str:
+    """Remove '- (DQ)*' suffixes from names, leaving the plain name."""
+    parts = [p.strip() for p in raw.split("/")]
+    return " / ".join(_DQ_MARKER_RE.sub("", p).strip() for p in parts if p.strip())
 
 
 def _clean_names(raw: str) -> list[str]:
     if not raw or raw.strip().upper() in ("N/A", "NA", ""):
         return []
-    return [n.strip() for n in raw.split("/") if n.strip() and not _is_noise(n)]
+    cleaned = []
+    for n in raw.split("/"):
+        n = n.strip()
+        if not n or _is_noise(n):
+            continue
+        n = _DQ_MARKER_RE.sub("", n).strip()
+        if n:
+            cleaned.append(n)
+    return cleaned
 
 
 def _match_result_reliable(match: dict) -> bool:
@@ -127,8 +165,33 @@ def normalize_match(match: dict, player_teams: dict[str, set[str]] | None = None
     reliable = _match_result_reliable(match)
 
     for ln in match.get("lines", []):
-        ph = _clean_names(ln.get("players_home", ""))
-        pa = _clean_names(ln.get("players_away", ""))
+        raw_home = ln.get("players_home", "") or ""
+        raw_away = ln.get("players_away", "") or ""
+
+        # Capture the real "Name - (DQ)*" markers, then rewrite players_home/
+        # players_away as plain, clean names — stripping both the DQ marker
+        # suffix and any page-level legend text that got glued on by mistake
+        # (see _DQ_LEGEND_RE). dq_players is the single source of truth for
+        # rendering the "(DQ)" badge and the whole-line "invalid match" styling.
+        dq_players = _extract_dq_players(raw_home) + _extract_dq_players(raw_away)
+        if dq_players:
+            ln["dq_players"] = dq_players
+        ln["players_home"] = _strip_dq_marker(raw_home) if "(DQ)" in raw_home else raw_home
+        ln["players_away"] = _strip_dq_marker(raw_away) if "(DQ)" in raw_away else raw_away
+        # Legend noise (and the standalone "Note -" that precedes it) never
+        # carries a real name — drop it entirely rather than leaving an
+        # orphaned fragment behind.
+        if "(DQ)" in raw_home or "note -" in raw_home.lower():
+            ln["players_home"] = " / ".join(
+                p for p in ln["players_home"].split(" / ") if not _is_noise(p)
+            )
+        if "(DQ)" in raw_away or "note -" in raw_away.lower():
+            ln["players_away"] = " / ".join(
+                p for p in ln["players_away"].split(" / ") if not _is_noise(p)
+            )
+
+        ph = _clean_names(ln["players_home"])
+        pa = _clean_names(ln["players_away"])
 
         cw = _determine_court_winner(ln, reliable)
         ln["court_winner"] = cw

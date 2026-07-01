@@ -958,6 +958,7 @@ def _traverse_match_histories(
                         else:
                             sw, sl, gw, gl = (sw_h, sl_h, gw_h, gl_h) if sl_h >= sw_h else (sw_a, sl_a, gw_a, gl_a)
 
+                        dq_players_ln = line.get("dq_players") or []
                         rec = {
                             "date": date, "div": div, "line": line_label,
                             "won": won, "score": score, "wko": is_walkover,
@@ -965,6 +966,13 @@ def _traverse_match_histories(
                             "opps": opps, "opp_r": opp_r_list,
                             "opp_team": opp_team,
                             "sw": sw, "sl": sl, "gw": gw, "gl": gl,
+                            # Court had a disqualified player — not a valid competitive
+                            # match. "dq" lists who; "self_dq" flags whether THIS player
+                            # (nk) is the one disqualified (drives whole-row styling in
+                            # the division she was DQ'd in, vs. just the line in others'
+                            # histories where she's merely the opponent/partner).
+                            "dq": dq_players_ln,
+                            "self_dq": _bname_key(nm) in {_bname_key(d) for d in dq_players_ln},
                         }
                         player_histories.setdefault(nk, []).append(rec)
                         st = player_stats.setdefault(
@@ -1247,6 +1255,12 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         hist = player_histories.get(_hk, [])
         has_history = bool(hist)
         expand_cls = " expandable" if has_history else ""
+        # Was THIS player disqualified in the division this page is for?
+        # Scoped to `ntrp` only — her 3.5 row/matches must stay unmarked
+        # even if she was DQ'd in 3.0, and vice versa.
+        self_dq_this_div = any(
+            rec.get("self_dq") and rec.get("div") == ntrp for rec in hist
+        )
 
         # Build compact combined-record string for the history header.
         # Only show "X overall (A in 3.0, B in 3.5)" when player has matches
@@ -1295,6 +1309,8 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                     "or": [r for r in rec["opp_r"] if r] or None,
                     "ot": _abbrev_team(rec.get("opp_team", "")) or None,
                     "pr": _ap_pit_rating(nk, rec["date"], rec["div"].replace(".", "")) or None,
+                    "dq": rec.get("dq") or None,
+                    "sdq": rec.get("self_dq") or None,
                 }.items() if v is not None}
                 for rec in hist
             ]
@@ -1305,13 +1321,17 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         col3_html = (f"<td data-sort='{_esc(sf_raw or sf)}'><span class='sf-pill'>{_esc(col3_val)}</span></td>"
                      if not is_sectionals
                      else f"<td class='sortable-cell'>{_esc(col3_val)}</td>")
+        _dq_row_cls = " player-row-dq" if self_dq_this_div else ""
+        _dq_title = (f' title="Disqualified in {_esc(ntrp)} — see match history"'
+                    if self_dq_this_div else "")
+        _dq_name_badge = ' <span class="dq-badge">(DQ)</span>' if self_dq_this_div else ""
         rows += (
             f"<tr data-sf='{_esc(sf_raw or sf)}' data-pkey='{_esc(nk)}' data-state='{_esc(p_state)}'"
-            f" class='player-row{expand_cls}'"
+            f" class='player-row{expand_cls}{_dq_row_cls}'{_dq_title}"
             + (f" data-history='{hist_json.replace(chr(39), '&apos;')}'"
                f" data-combined='{_esc(combined_str)}'" if has_history else "")
             + f" onclick=\"toggleHistory(this)\">"
-            f"<td class='pname'>{_esc(p.get('name',''))}</td>"
+            f"<td class='pname'>{_esc(p.get('name',''))}{_dq_name_badge}</td>"
             f"<td>{_esc(_abbrev_team((_sfx and p.get(f'team_{_sfx}')) or (_primary_team if team_to_sf.get(_primary_team.upper()) else '') or ''))}</td>"
             f"{col3_html}"
             f"<td data-sort='{_esc(ntrp_r)}'>{_esc(ntrp_r)}</td>"
@@ -1491,13 +1511,17 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         base = _baseline_by_name.get(nkey, "")
         return base if base else _new_by_name.get(nkey, "")
 
-    def _render_players(raw: str, match_date: str = "") -> str:
+    def _render_players(raw: str, match_date: str = "", dq_players: list | None = None) -> str:
         """Wrap each player name in a clickable span with rating badge (base + new).
 
         When match_date is provided and the player has a sequential rating timeline,
         data-new shows the player's rating going *into* that match (based on all
         prior matches in the division), not their final end-of-season rating.
+
+        dq_players: names disqualified for this specific line — rendered with a
+        concise "(DQ)" badge next to that player only, never their partner.
         """
+        dq_keys = {re.sub(r"\s+", " ", n.lower()) for n in (dq_players or [])}
         parts = [p.strip() for p in raw.split("/")
                  if p.strip() and not _is_noise_name(p)]
         rendered = []
@@ -1521,10 +1545,11 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                 )
             else:
                 rating_html = ""
+            dq_badge = ' <span class="dq-badge">(DQ)</span>' if nkey in dq_keys else ""
             key = _pname_key(name)
             rendered.append(
                 f'<span class="pname" data-pkey="{key}" '
-                f'onclick="highlightPlayer(this)">{_esc(name)}{rating_html}</span>'
+                f'onclick="highlightPlayer(this)">{_esc(name)}{rating_html}</span>{dq_badge}'
             )
         if not rendered:
             if _is_noise_name(raw):
@@ -1621,7 +1646,8 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                     for ln in lines:
                         ph_raw = ln.get("players_home", "")
                         pa_raw = ln.get("players_away", "")
-                        def _default_or_render(raw, _mdate=m["date"]):
+                        _ln_dq = ln.get("dq_players") or []
+                        def _default_or_render(raw, _mdate=m["date"], _dq=_ln_dq):
                             s = raw.strip()
                             if not s or s.upper() == "N/A":
                                 return '<em class="default-marker">default</em>'
@@ -1629,7 +1655,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                                        if n.strip() and not _is_noise_name(n)]
                             if not cleaned:
                                 return '<em class="default-marker">default</em>'
-                            return _render_players(raw, _mdate)
+                            return _render_players(raw, _mdate, _dq)
 
                         _cwt = (ln.get("winner_team") or "").strip() or None
                         if _cwt:
@@ -1663,8 +1689,10 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                             lw = "w"
                         elif _our_team_won is False:
                             rw = "w"
+                        _dq_cls = " line-row-dq" if _ln_dq else ""
+                        _dq_title = f' title="Invalid match — {_esc(", ".join(_ln_dq))} disqualified"' if _ln_dq else ""
                         blocks += (
-                            f'<div class="line-row">'
+                            f'<div class="line-row{_dq_cls}"{_dq_title}>'
                             f'<span class="lh {lw}"><span class="lr-lbl">{_esc(lnum)}</span> {left_html}</span>'
                             f'<span class="ls">{sc}</span>'
                             f'<span class="la {rw}">{right_html}</span>'
@@ -1884,6 +1912,18 @@ tr:last-child td { border-bottom: none; }
 .lh { color: #aaa; } .lh.w { color: #27500A; font-weight: 600; }
 .la { color: #aaa; text-align: right; } .la.w { color: #27500A; font-weight: 600; }
 .ls { text-align: center; font-weight: 600; font-size: 11px; color: #aaa; }
+/* A court where a player was disqualified — the result is on record but not
+   a valid competitive match. Italicize the whole line as a visual flag;
+   the (DQ) badge marks exactly who. */
+.line-row-dq { font-style: italic; cursor: help; }
+.line-row-dq .lh, .line-row-dq .la { opacity: 0.85; }
+.dq-badge { font-size: 10px; font-weight: 700; color: #b02a2a;
+            font-style: normal; letter-spacing: .02em; }
+.hist-row-dq { font-style: italic; }
+.hist-row-dq td { opacity: 0.85; }
+/* Player disqualified in this division — mark the whole roster/all-players row */
+.player-row-dq { background: #fdf1f1; }
+.player-row-dq:hover { background: #fbe4e4; }
 /* Clickable player names in results tab */
 .pname { cursor: pointer; border-radius: 3px; padding: 0 2px; transition: background .1s; }
 .pname:hover { background: #f0f4ff; }
@@ -2103,17 +2143,22 @@ function toggleHistory(tr) {
       var wko = r.wk;
       var resCls = r.w ? 'hw' : (wko ? '' : 'hl');
       var resTxt = wko ? (r.w ? 'W*' : 'L*') : (r.w ? 'W' : 'L');
+      var dqArr = r.dq || [];
+      var dqBadge = function(name) {
+        return dqArr.indexOf(name) !== -1 ? ' <span class="dq-badge">(DQ)</span>' : '';
+      };
       var opArr = r.op || [], orArr = r.or || [];
       var opHtml = opArr.length
-        ? opArr.map(function(o,i){ return o + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
+        ? opArr.map(function(o,i){ return o + dqBadge(o) + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
         : '<em class="hr">default</em>';
       var ptArr = r.pt || [], ptrArr = r.ptr || [];
       var ptHtml = ptArr.length
-        ? ptArr.map(function(p,i){ return p + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : ''); }).join(', ')
+        ? ptArr.map(function(p,i){ return p + dqBadge(p) + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : ''); }).join(', ')
         : '—';
       var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
       var prHtml = r.pr ? '<em class="prating">(' + r.pr + ')</em>' : '';
-      html += '<tr>'
+      var rowCls = dqArr.length ? ' class="hist-row-dq" title="Invalid match — ' + dqArr.join(', ') + ' disqualified"' : '';
+      html += '<tr' + rowCls + '>'
         + '<td style="white-space:nowrap">' + (r.dt||'') + '</td>'
         + '<td>' + divPill + '</td>'
         + '<td>' + (r.ln||'') + '</td>'

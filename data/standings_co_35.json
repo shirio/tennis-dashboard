@@ -12082,7 +12082,7 @@
             },
             {
               "line": "3# Doubles",
-              "players_home": "Amanda Abascal / Erica Giesen / Note - / (DQ) - This player has been disqualified on this team / (DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing / * - Match awarded to opposing team by default in current standing",
+              "players_home": "Amanda Abascal / Erica Giesen",
               "players_away": "Jamie Gagne / Dana Sandberg - *",
               "score": "4-6 6-3 1-0",
               "result": "home",
@@ -12095,10 +12095,7 @@
               ],
               "loser_names": [
                 "Amanda Abascal",
-                "Erica Giesen",
-                "(DQ) - This player has been disqualified on this team",
-                "(DQ)* - This player has been disqualified and the match awarded to opposing team by default in current standing",
-                "* - Match awarded to opposing team by default in current standing"
+                "Erica Giesen"
               ]
             }
           ]

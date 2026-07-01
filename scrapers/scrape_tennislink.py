@@ -2864,8 +2864,14 @@ def _compute_player_stats_from_scorecards(all_ntrp_standings: list[tuple]):
 
                 for ln in m["lines"]:
                     court_label = _line_label_short(ln.get("line", ""))
-                    # Per-court winner from radio buttons (set during scraping)
-                    court_result = (ln.get("result") or "").lower()  # "home", "away", or ""
+                    # Authoritative per-court winner: court_winner (set by
+                    # engine/normalize.py, matches what ratings.py trusts) —
+                    # NOT the raw scraped "result" field, which can go stale
+                    # after a rescrape corrects court_winner without touching
+                    # the original result value, silently corrupting displayed
+                    # W-L records (e.g. Carina Lambert showed 4-3 instead of
+                    # the correct 5-2 for exactly this reason).
+                    court_result = (ln.get("court_winner") or "").lower()  # "home", "away", or ""
 
                     # Detect default/walkover lines — one side has no players listed
                     # (empty string or literal "N/A" / "N/A / N/A").
