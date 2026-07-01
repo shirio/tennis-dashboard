@@ -1841,7 +1841,8 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
 # ---------------------------------------------------------------------------
 
 def _summary_cards(ntrp: str, year: int, subflights: list[dict],
-                   region_label: str = "NV Area F") -> str:
+                   region_label: str = "NV Area F", state_code: str = "NV",
+                   n_players: int = 0) -> str:
     total_teams = sum(len(sf.get("teams", [])) for sf in subflights)
     total_matches = sum(len(sf.get("matches", [])) for sf in subflights)
     played = sum(
@@ -1859,19 +1860,10 @@ def _summary_cards(ntrp: str, year: int, subflights: list[dict],
                 best_w, best_l = w, (t.get("team_losses") or 0)
                 best_team = t.get("team_name", "–")
 
-    # Latest completed match date
-    dates = [
-        m.get("date", "")
-        for sf in subflights
-        for m in sf.get("matches", [])
-        if not m.get("pending") and m.get("date")
-    ]
-    latest = sorted(dates)[-1] if dates else "–"
-
     return f"""<div class="cards-row">
   <div class="mcard">
     <div class="mcard-label">division</div>
-    <div class="mcard-val">{_esc(region_label)} {_esc(ntrp)}</div>
+    <div class="mcard-val">{_esc(state_code)} {_esc(ntrp)}</div>
     <div class="mcard-sub">Women · {year}</div>
   </div>
   <div class="mcard">
@@ -1880,14 +1872,14 @@ def _summary_cards(ntrp: str, year: int, subflights: list[dict],
     <div class="mcard-sub">{played} of {total_matches} matches played</div>
   </div>
   <div class="mcard">
+    <div class="mcard-label">players</div>
+    <div class="mcard-val">{n_players}</div>
+    <div class="mcard-sub">rostered in {_esc(ntrp)} Women</div>
+  </div>
+  <div class="mcard">
     <div class="mcard-label">leader</div>
     <div class="mcard-val">{_esc(best_team)}</div>
     <div class="mcard-sub">{best_w}–{best_l} record</div>
-  </div>
-  <div class="mcard">
-    <div class="mcard-label">last played</div>
-    <div class="mcard-val">{_esc(latest)}</div>
-    <div class="mcard-sub">through week of {_esc(latest)}</div>
   </div>
 </div>"""
 
@@ -2613,7 +2605,8 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
     # But keep ALL players available for match history cross-references
     all_players_pool = players
 
-    cards_html = _summary_cards(ntrp, year, subflights, region_label)
+    cards_html = _summary_cards(ntrp, year, subflights, region_label,
+                                state_code=state_code, n_players=len(_ntrp_scope))
     standings_html = _standings_tab(subflights, warnings, sf_display=sf_display)
     rosters_html = _rosters_tab(subflights, state_players, ntrp, sf_display=sf_display)
     other_subflights = (other_standings or {}).get("subflights", [])
