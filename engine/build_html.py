@@ -1400,7 +1400,7 @@ def _champ_sort_key(raw_label: str) -> tuple:
 
 def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                  sfx: str = "", sf_display: dict | None = None,
-                 id_prefix: str = "re") -> str:
+                 id_prefix: str = "re", include_rating_toggle: bool = True) -> str:
     # Build name → baseline and name → new (division) rating lookups
     _baseline_by_name: dict[str, str] = {}
     _new_by_name: dict[str, str] = {}
@@ -1692,7 +1692,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
         '<button class="rtab" onclick="setResultRatingMode(\'base\',this)">Base</button>'
         '<button class="rtab on" onclick="setResultRatingMode(\'new\',this)">New</button>'
         '</div>'
-    )
+    ) if include_rating_toggle else ""
     return (
         rating_toggle
         + f'<div class="rtabs" id="{id_prefix}-sf-tabs">{sf_btns}</div>'
@@ -3615,7 +3615,7 @@ def build_sectionals_page() -> str | None:
 
         id_prefix = f"re{st_lower}"
         st_results_html = _results_tab(st_subflights, players, sfx=_sfx,
-                                       id_prefix=id_prefix)
+                                       id_prefix=id_prefix, include_rating_toggle=False)
         active = " on" if i == 0 else ""
         state_btns += (
             f'<button class="state-tab{active}" '
@@ -3626,8 +3626,20 @@ def build_sectionals_page() -> str | None:
             f'{st_results_html}</div>\n'
         )
 
+    # One shared rating toggle above the state tabs — setResultRatingMode()
+    # already operates globally (all .rpane .prating badges), so a single
+    # toggle controls every state's display at once, matching the per-state
+    # dashboards where the toggle sits above the subflight tabs.
+    shared_rating_toggle = (
+        '<div class="re-rating-toggle">'
+        '<span class="re-rtog-label">Ratings:</span>'
+        '<button class="rtab" onclick="setResultRatingMode(\'none\',this)">None</button>'
+        '<button class="rtab" onclick="setResultRatingMode(\'base\',this)">Base</button>'
+        '<button class="rtab on" onclick="setResultRatingMode(\'new\',this)">New</button>'
+        '</div>'
+    )
     results_html = (
-        f'<div class="tabs state-tabs">{state_btns}</div>{state_panes}'
+        f'{shared_rating_toggle}<div class="tabs state-tabs">{state_btns}</div>{state_panes}'
         if state_btns else _results_tab(all_subflights_30, players, sfx=_sfx)
     )
 
