@@ -1929,6 +1929,13 @@ def run_ratings() -> RatingsSummary:
     _STRUGGLE_MIN_5B   = 4
     _STRUGGLE_RATE_5B  = 0.30
     _STRUGGLE_CAP_5B   = 0.15    # delta above baseline (matches internal cap)
+    # The floor only makes sense if the player has actually PROVEN themselves
+    # in the lower division — otherwise a player who's also bad there (e.g.
+    # 1-4 in 3.0, 20% win rate) gets floored at whatever their best single
+    # early-season week happened to be, masking a real decline in both
+    # divisions. Melissa Hicks (6-1, 86% in 3.0) should qualify; a player
+    # who's simply bad everywhere should not.
+    _LOWER_DIV_MIN_WIN_RATE_5B = 0.50
 
     _wl_by_div_5b: dict[str, dict[str, list[int]]] = {}
     for ev in court_events:
@@ -1950,6 +1957,12 @@ def run_ratings() -> RatingsSummary:
         if n < _STRUGGLE_MIN_5B:
             continue
         if w / n >= _STRUGGLE_RATE_5B:
+            continue
+        # Require genuine competence in the lower division before granting
+        # the floor — a player struggling in BOTH divisions gets no protection.
+        lw, ll = divs.get(lower_div, [0, 0])
+        ln = lw + ll
+        if ln == 0 or lw / ln < _LOWER_DIV_MIN_WIN_RATE_5B:
             continue
         # Player struggles in higher div — floor their global at the peak
         # pre-match rating from the lower-division timeline. Using the peak
