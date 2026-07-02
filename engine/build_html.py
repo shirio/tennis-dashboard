@@ -2024,17 +2024,21 @@ tr:last-child td { border-bottom: none; }
    which table-layout:fixed uses to size every column for the whole table. */
 #ap-table { table-layout: fixed; width: 100%; }
 #ap-table th { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-#ap-table th:nth-child(1) { width: 15%; }
-#ap-table th:nth-child(2) { width: 21%; }
-#ap-table th:nth-child(3) { width: 7%; text-align: center; }
-#ap-table th:nth-child(4) { width: 7%; }
-#ap-table th:nth-child(5) { width: 7%; }
-#ap-table th:nth-child(6) { width: 7%; }
-#ap-table th:nth-child(7) { width: 7%; }
-#ap-table th:nth-child(8) { width: 7%; }
-#ap-table th:nth-child(9) { width: 7%; }
-#ap-table th:nth-child(10) { width: 7%; }
-#ap-table th:nth-child(11) { width: 8%; }
+/* Direct-child combinator (>) so these widths don't leak into the nested
+   .history-table rendered inside a colspan'd detail row — a bare descendant
+   selector here would match ITS <th>s too, since they're still inside
+   #ap-table's DOM subtree. */
+#ap-table > thead > tr > th:nth-child(1) { width: 15%; }
+#ap-table > thead > tr > th:nth-child(2) { width: 21%; }
+#ap-table > thead > tr > th:nth-child(3) { width: 7%; text-align: center; }
+#ap-table > thead > tr > th:nth-child(4) { width: 7%; }
+#ap-table > thead > tr > th:nth-child(5) { width: 7%; }
+#ap-table > thead > tr > th:nth-child(6) { width: 7%; }
+#ap-table > thead > tr > th:nth-child(7) { width: 7%; }
+#ap-table > thead > tr > th:nth-child(8) { width: 7%; }
+#ap-table > thead > tr > th:nth-child(9) { width: 7%; }
+#ap-table > thead > tr > th:nth-child(10) { width: 7%; }
+#ap-table > thead > tr > th:nth-child(11) { width: 8%; }
 #ap-table td:nth-child(3) { text-align: center; }
 /* All-players history expansion */
 .player-row.expandable { cursor: pointer; }
@@ -2048,10 +2052,21 @@ tr:last-child td { border-bottom: none; }
 .history-wrap { padding: 8px 12px 12px 24px; }
 .history-summary { font-size: 11px !important; font-weight: 600; color: #555; margin-bottom: 6px;
                    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-.history-table { font-size: 11px; width: auto; min-width: 60%; }
+.history-table { font-size: 11px; width: 100%; table-layout: fixed; }
 .history-table th { font-size: 10px; padding: 3px 8px; }
 .history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
 .history-table tr:last-child td { border-bottom: none; }
+/* Give opponent/partner names the room to avoid wrapping; Div/Line/Rating/
+   Result are short fixed-format values that don't need much width. */
+.history-table th:nth-child(1),  .history-table td:nth-child(1)  { width: 9%; }
+.history-table th:nth-child(2),  .history-table td:nth-child(2)  { width: 5%; }
+.history-table th:nth-child(3),  .history-table td:nth-child(3)  { width: 5%; }
+.history-table th:nth-child(4),  .history-table td:nth-child(4)  { width: 6%; }
+.history-table th:nth-child(5),  .history-table td:nth-child(5)  { width: 6%; }
+.history-table th:nth-child(6),  .history-table td:nth-child(6)  { width: 10%; }
+.history-table th:nth-child(7),  .history-table td:nth-child(7)  { width: 20%; }
+.history-table th:nth-child(8),  .history-table td:nth-child(8)  { width: 24%; }
+.history-table th:nth-child(9),  .history-table td:nth-child(9)  { width: 15%; }
 /* Division pills in history */
 .dp { display: inline-block; padding: 1px 6px; border-radius: 8px;
       font-size: 10px; font-weight: 700; white-space: nowrap; }
