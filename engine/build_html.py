@@ -103,9 +103,52 @@ _TEAM_ABBREV = {
 }
 
 
-def _abbrev_team(name: str) -> str:
-    """Return abbreviated team name if one is defined, else original."""
-    return _TEAM_ABBREV.get((name or "").lower().strip(), name)
+def _titlecase_co_team(name: str) -> str:
+    """CO raw team names are "ACRONYM REST" both in all-caps (e.g. "TTA RED",
+    "GJTC MHUDSON"). Keep the leading club acronym as-is, title-case the rest."""
+    if not name:
+        return name
+    parts = name.split(" ", 1)
+    if len(parts) == 2:
+        return f"{parts[0]} {parts[1].title()}"
+    return name.title()
+
+
+def _build_team_case_map(state_code: str, *subflight_lists) -> dict[str, str] | None:
+    """Map UPPER(raw team name) -> proper display name, for states whose
+    scraped casing needs fixing. CO's team_name is all-caps everywhere, so it
+    gets the acronym-preserving title-case transform. UT's own subflight data
+    is already correctly cased — but player.team_X fields are uppercased
+    separately elsewhere, so this map re-cases those back to the canonical
+    form. NV/ID keep their existing as-scraped display and aren't touched."""
+    if state_code not in ("CO", "UT"):
+        return None
+    m: dict[str, str] = {}
+    for sfl in subflight_lists:
+        for sf in (sfl or []):
+            for t in sf.get("teams", []):
+                raw = t.get("team_name", "")
+                if not raw or raw.upper() in m:
+                    continue
+                m[raw.upper()] = _titlecase_co_team(raw) if state_code == "CO" else raw
+    return m
+
+
+def _display_team_name(name: str, case_map: dict[str, str] | None) -> str:
+    """Resolve a team name to its properly-cased display form via case_map."""
+    if not name or not case_map:
+        return name
+    return case_map.get(name.upper(), name)
+
+
+def _abbrev_team(name: str, case_map: dict[str, str] | None = None) -> str:
+    """Return abbreviated team name if one is defined, else the display-cased name."""
+    if not name:
+        return name
+    key = name.lower().strip()
+    if key in _TEAM_ABBREV:
+        return _TEAM_ABBREV[key]
+    return _display_team_name(name, case_map)
 
 
 def _simplify_subflight_labels(subflights: list[dict], ntrp: str = "") -> dict[str, tuple[str, str, str]]:
@@ -547,7 +590,8 @@ def _wl_cell(w, l) -> str:
 
 def _standings_tab(subflights: list[dict], warnings: list[str],
                    sf_display: dict | None = None, id_prefix: str = "st",
-                   show_nav_links: bool = True, show_notes: bool = True) -> str:
+                   show_nav_links: bool = True, show_notes: bool = True,
+                   case_map: dict | None = None) -> str:
     warn_html = ""
     if warnings:
         items = "".join(f"<li>{_esc(w)}</li>" for w in warnings)
@@ -598,7 +642,7 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
 
         rows = ""
         for j, t in enumerate(teams, 1):
-            name = t.get("team_name", "")
+            name = _display_team_name(t.get("team_name", ""), case_map)
             w = t.get("team_wins")
             l = t.get("team_losses")
             iw = t.get("indiv_wins")  if t.get("indiv_wins")  is not None else "–"
@@ -690,7 +734,7 @@ def _abbrev_line(line_label: str) -> str:
 
 
 def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
-                 sf_display: dict | None = None) -> str:
+                 sf_display: dict | None = None, case_map: dict | None = None) -> str:
     # Field suffix for per-division stats ("3.0" -> "30", "3.5" -> "35")
     _sfx = ntrp.replace(".", "") if ntrp else ""
 
@@ -817,12 +861,12 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
             team_tabs += (
                 f'<button class="rtab{active}" data-sf="{_esc(sf_lbl)}"{visible} '
                 f'onclick="sr(\'{tid}\',this,\'ro-tabs\')">'
-                f'{_esc(_abbrev_team(tname))}'
+                f'{_esc(_abbrev_team(tname, case_map))}'
                 f'</button>\n'
             )
             rpanes += (
                 f'<div id="{tid}" class="rpane{active}">'
-                f'<p class="sec-title">{_esc(tname)} &mdash; Subflight {_esc(sf_lbl)}</p>'
+                f'<p class="sec-title">{_esc(_display_team_name(tname, case_map))} &mdash; Subflight {_esc(sf_lbl)}</p>'
                 f'<table><thead><tr>'
                 f'<th class="sortable" onclick="sortRoster(0)">Player ↕</th>'
                 f'<th class="sortable" onclick="sortRoster(1)">NTRP ↕</th>'
@@ -1095,7 +1139,8 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                  is_sectionals: bool = False,
                  all_players_pool: list[dict] = None,
                  sf_display: dict | None = None,
-                 state_code: str = "") -> str:
+                 state_code: str = "",
+                 case_map: dict | None = None) -> str:
     _sfx = ntrp.replace(".", "") if ntrp else ""
     other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
     _other_sfx = other_ntrp.replace(".", "")
@@ -1385,7 +1430,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                     "ptr": [r for r in rec["partner_r"] if r] or None,
                     "op": rec["opps"] or None,
                     "or": [r for r in rec["opp_r"] if r] or None,
-                    "ot": _abbrev_team(rec.get("opp_team", "")) or None,
+                    "ot": _abbrev_team(rec.get("opp_team", ""), case_map) or None,
                     "pr": _ap_pit_rating(nk, rec["date"], rec["div"].replace(".", "")) or None,
                     "dq": rec.get("dq") or None,
                     "sdq": rec.get("self_dq") or None,
@@ -1410,7 +1455,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                f" data-combined='{_esc(combined_str)}'" if has_history else "")
             + f" onclick=\"toggleHistory(this)\">"
             f"<td class='pname'>{_esc(p.get('name',''))}{_dq_name_badge}</td>"
-            f"<td>{_esc(_abbrev_team((_sfx and p.get(f'team_{_sfx}')) or (_primary_team if team_to_sf.get(_primary_team.upper()) else '') or ''))}</td>"
+            f"<td>{_esc(_abbrev_team((_sfx and p.get(f'team_{_sfx}')) or (_primary_team if team_to_sf.get(_primary_team.upper()) else '') or '', case_map))}</td>"
             f"{col3_html}"
             f"<td data-sort='{_esc(ntrp_r)}'>{_esc(ntrp_r)}</td>"
             f"<td>{_esc(_fmt_rating(baseline))}</td>"
@@ -1526,7 +1571,8 @@ def _is_champ_tab_label(lbl: str) -> bool:
 
 def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                  sfx: str = "", sf_display: dict | None = None,
-                 id_prefix: str = "re", include_rating_toggle: bool = True) -> str:
+                 id_prefix: str = "re", include_rating_toggle: bool = True,
+                 case_map: dict | None = None) -> str:
     # Build name → baseline and name → new (division) rating lookups
     _baseline_by_name: dict[str, str] = {}
     _new_by_name: dict[str, str] = {}
@@ -1746,7 +1792,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                     f'<div class="mblock">'
                     f'<div class="mhdr">'
                     f'<span class="mweek-lbl">{_esc(wlabel)} {badge}</span>'
-                    f'<span class="mtitle">vs {_esc(m["opponent"])}</span>'
+                    f'<span class="mtitle">vs {_esc(_display_team_name(m["opponent"], case_map))}</span>'
                     f'</div>'
                     f'<div class="mdate">{_esc(m["date"])}</div>'
                 )
@@ -1820,7 +1866,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
             team_tabs += (
                 f'<button class="rtab{active}" data-sf="{_esc(sf_lbl)}"{visible} '
                 f'onclick="sr(\'{tid}\',this,\'{id_prefix}-tabs\')">'
-                f'{_esc(_abbrev_team(tname))}'
+                f'{_esc(_abbrev_team(tname, case_map))}'
                 f'</button>\n'
             )
             rpanes += (
@@ -1860,13 +1906,14 @@ def _summary_cards(ntrp: str, year: int, subflights: list[dict],
     )
 
     # Leader = team with most wins across all subflights
+    case_map = _build_team_case_map(state_code, subflights)
     best_team, best_w, best_l = "–", 0, 0
     for sf in subflights:
         for t in sf.get("teams", []):
             w = t.get("team_wins") or 0
             if w > best_w:
                 best_w, best_l = w, (t.get("team_losses") or 0)
-                best_team = t.get("team_name", "–")
+                best_team = _display_team_name(t.get("team_name", "–"), case_map)
 
     return f"""<div class="cards-row">
   <div class="mcard">
@@ -2613,6 +2660,9 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
     # But keep ALL players available for match history cross-references
     all_players_pool = players
 
+    other_subflights = (other_standings or {}).get("subflights", [])
+    case_map = _build_team_case_map(state_code, subflights, other_subflights)
+
     _in_30 = [p for p in state_players if _player_in_division(p, "3.0")]
     _in_35 = [p for p in state_players if _player_in_division(p, "3.5")]
     _in_this_div = _in_30 if ntrp == "3.0" else _in_35
@@ -2621,14 +2671,13 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
     cards_html = _summary_cards(ntrp, year, subflights, region_label,
                                 state_code=state_code, n_players=len(_in_this_div),
                                 n_state_total=len(_state_30_35_ids), n_both_div=len(_both_ids))
-    standings_html = _standings_tab(subflights, warnings, sf_display=sf_display)
-    rosters_html = _rosters_tab(subflights, state_players, ntrp, sf_display=sf_display)
-    other_subflights = (other_standings or {}).get("subflights", [])
+    standings_html = _standings_tab(subflights, warnings, sf_display=sf_display, case_map=case_map)
+    rosters_html = _rosters_tab(subflights, state_players, ntrp, sf_display=sf_display, case_map=case_map)
     players_html = _players_tab(state_players, ntrp, subflights, other_subflights,
                                 all_players_pool=all_players_pool, sf_display=sf_display,
-                                state_code=state_code)
+                                state_code=state_code, case_map=case_map)
     results_html = _results_tab(subflights, state_players, sfx=ntrp.replace(".", ""),
-                                sf_display=sf_display)
+                                sf_display=sf_display, case_map=case_map)
 
     tab_defs = [
         ("standings",  "standings",    standings_html),
@@ -2946,11 +2995,13 @@ function setMinMatches(n, btn, section) {
 """
 
 
-def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
+def _build_matchup_page(ntrp: str, standings: dict, players: list[dict],
+                        state_code: str = "NV") -> str:
     """Generate matchups_{sfx}.html — singles + doubles explorer."""
     sfx = ntrp.replace(".", "")
     year = standings.get("year", "")
     subflights = standings.get("subflights", [])
+    case_map = _build_team_case_map(state_code, subflights)
 
     # ── lookup tables from players ──────────────────────────────────────────
     _baseline_by_name: dict[str, float] = {}
@@ -3229,7 +3280,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
 
             opp_keys_set = " ".join(
                 mx["opp_key"] for mx in matches if mx.get("opp_key"))
-            abbrev_team = _abbrev_team(p["team"])
+            abbrev_team = _abbrev_team(p["team"], case_map)
             search_text = (
                 p["name"] + " " + p["team"] + " " + abbrev_team
             ).lower()
@@ -3281,7 +3332,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                 line_cls = _LINE_PILL_COLORS.get(mx["line"], "pill-d1")
                 opp_r_str = (f"{mx['opp_rating']:.2f}" if mx["opp_rating"] is not None
                              else "")
-                opp_info = f'({opp_r_str}, {_abbrev_team(mx["opp_team"])})' if opp_r_str else ""
+                opp_info = f'({opp_r_str}, {_abbrev_team(mx["opp_team"], case_map)})' if opp_r_str else ""
                 odds_h = _odds_html(mx.get("exp_prob"), mx["won"])
                 opp_key = mx.get("opp_key", "")
                 match_rows += (
@@ -3328,7 +3379,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
 
             opp_keys_set = " ".join(
                 mx["opp_key"] for mx in matches if mx.get("opp_key"))
-            abbrev_team_d = _abbrev_team(p["team"])
+            abbrev_team_d = _abbrev_team(p["team"], case_map)
             search_text = (
                 p["p1"] + " " + p["p2"] + " " + p["team"] + " " + abbrev_team_d
             ).lower()
@@ -3390,7 +3441,7 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict]) -> str:
                 line_cls = _LINE_PILL_COLORS.get(mx["line"], "pill-d1")
                 opp_avg = mx.get("opp_avg_rating")
                 opp_r_str = f"{opp_avg:.2f}" if opp_avg is not None else ""
-                opp_info = f'({opp_r_str} avg, {_abbrev_team(mx["opp_team"])})' if opp_r_str else ""
+                opp_info = f'({opp_r_str} avg, {_abbrev_team(mx["opp_team"], case_map)})' if opp_r_str else ""
                 opp_key = mx.get("opp_key", "")
                 match_rows += (
                     f'<div class="mx-match-row" data-opp-key="{_esc(opp_key)}">'
@@ -3563,7 +3614,7 @@ def build_dashboards(states: list[str] | None = None) -> dict:
             html = _generate_html(ntrp, standings, players, other_standings,
                                   state_code=state_code, region_label=region_label)
             out_path.write_text(html, encoding="utf-8")
-            mx_html = _build_matchup_page(ntrp, standings, players)
+            mx_html = _build_matchup_page(ntrp, standings, players, state_code=state_code)
             mx_path.write_text(mx_html, encoding="utf-8")
             state_p = [p for p in players if p.get("state") == state_code]
             n = len([p for p in state_p if p.get("division", "").startswith(ntrp)])
@@ -3610,6 +3661,7 @@ def _build_sectionals_rosters(
     all_subflights_30: list[dict],
     ntrp: str,
     player_stats: dict[str, dict] | None = None,
+    case_map: dict | None = None,
 ) -> str:
     _sfx = ntrp.replace(".", "") if ntrp else ""
 
@@ -3629,7 +3681,7 @@ def _build_sectionals_rosters(
     for st in sorted(by_state.keys()):
         active = " on" if first else ""
         tid = f"sect-ro-{_slug(st)}"
-        tname = state_team_name.get(st, st)
+        tname = _display_team_name(state_team_name.get(st, st), case_map)
         state_btns += (
             f'<button class="rtab{active}" '
             f'onclick="sr(\'{tid}\',this,\'sect-state-tabs\')">'
@@ -3713,6 +3765,7 @@ def build_sectionals_page() -> str | None:
     # Collect all standings across all states (for match history)
     all_subflights_30: list[dict] = []
     all_subflights_35: list[dict] = []
+    combined_case_map: dict[str, str] = {}
     for st in qualified_teams_by_state:
         st_lower = st.lower()
         s30 = _load(DATA_DIR / f"standings_{st_lower}_30.json", {})
@@ -3727,6 +3780,11 @@ def build_sectionals_page() -> str | None:
         s35 = _load(DATA_DIR / f"standings_{st_lower}_35.json", {})
         for sf in s35.get("subflights", []):
             all_subflights_35.append(sf)
+        st_map = _build_team_case_map(
+            st, s30.get("subflights", []), s35.get("subflights", []),
+            [{"teams": d30.get("teams", [])}] if d30.get("matches") else [])
+        if st_map:
+            combined_case_map.update(st_map)
 
     # Filter players to those on qualified teams in the 3.0 division
     # (team names like "DTC #3" exist across multiple NTRP levels)
@@ -3760,12 +3818,12 @@ def build_sectionals_page() -> str | None:
 
     players_html = _players_tab(qualified_players, ntrp, all_subflights_30,
                                 all_subflights_35, is_sectionals=True,
-                                all_players_pool=players)
+                                all_players_pool=players, case_map=combined_case_map)
 
     # Build team rosters tab grouped by state
     rosters_html = _build_sectionals_rosters(
         qualified_players, teams, all_subflights_30, ntrp,
-        player_stats=sect_player_stats,
+        player_stats=sect_player_stats, case_map=combined_case_map,
     )
 
     # Build the standings AND match-results tabs together — one State tab
@@ -3804,10 +3862,12 @@ def build_sectionals_page() -> str | None:
             continue
 
         active = " on" if i == 0 else ""
+        st_case_map = _build_team_case_map(st, st_subflights)
 
         re_id_prefix = f"re{st_lower}"
         st_results_html = _results_tab(st_subflights, players, sfx=_sfx,
-                                       id_prefix=re_id_prefix, include_rating_toggle=False)
+                                       id_prefix=re_id_prefix, include_rating_toggle=False,
+                                       case_map=st_case_map)
         results_state_btns += (
             f'<button class="state-tab{active}" '
             f'onclick="swState(\'state-{st_lower}\',this,\'results\')">{_esc(st)}</button>\n'
@@ -3819,7 +3879,8 @@ def build_sectionals_page() -> str | None:
 
         st_id_prefix = f"st{st_lower}"
         st_standings_html = _standings_tab(st_subflights, [], id_prefix=st_id_prefix,
-                                           show_nav_links=False, show_notes=False)
+                                           show_nav_links=False, show_notes=False,
+                                           case_map=st_case_map)
         standings_state_btns += (
             f'<button class="state-tab{active}" '
             f'onclick="swState(\'stand-state-{st_lower}\',this,\'standings\')">{_esc(st)}</button>\n'
