@@ -311,6 +311,17 @@ def _baseline_diff_span(curr, baseline) -> tuple[str, str]:
         return "–", "-999"
 
 
+def _player_in_division(p: dict, ntrp: str) -> bool:
+    """True if a player counts as active in this NTRP division — either
+    rostered there (division field) or has actually played matches there
+    (lines_played_X/wl_record_X), since the two can disagree (e.g. a player
+    rostered in one division who also picked up matches in the other)."""
+    if p.get("division", "").startswith(ntrp):
+        return True
+    sfx = ntrp.replace(".", "")
+    return bool(p.get(f"lines_played_{sfx}") or p.get(f"wl_record_{sfx}"))
+
+
 # ---------------------------------------------------------------------------
 # Validation
 # ---------------------------------------------------------------------------
@@ -1104,11 +1115,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                 team_to_sf_raw[tn] = raw_lbl
 
     def _in_ntrp(p):
-        if p.get("division", "").startswith(ntrp):
-            return True
-        if _sfx and (p.get(f"lines_played_{_sfx}") or p.get(f"wl_record_{_sfx}")):
-            return True
-        return False
+        return _player_in_division(p, ntrp)
 
     div_players = [p for p in players if _in_ntrp(p)]
     div_players.sort(
@@ -2606,15 +2613,14 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
     # But keep ALL players available for match history cross-references
     all_players_pool = players
 
-    _state_30_35 = [p for p in state_players
-                    if p.get("wl_record_30") or p.get("wl_record_35")]
-    _n_both_div = sum(
-        1 for p in _state_30_35
-        if p.get("wl_record_30") and p.get("wl_record_35")
-    )
+    _in_30 = [p for p in state_players if _player_in_division(p, "3.0")]
+    _in_35 = [p for p in state_players if _player_in_division(p, "3.5")]
+    _in_this_div = _in_30 if ntrp == "3.0" else _in_35
+    _both_ids = {id(p) for p in _in_30} & {id(p) for p in _in_35}
+    _state_30_35_ids = {id(p) for p in _in_30} | {id(p) for p in _in_35}
     cards_html = _summary_cards(ntrp, year, subflights, region_label,
-                                state_code=state_code, n_players=len(_ntrp_scope),
-                                n_state_total=len(_state_30_35), n_both_div=_n_both_div)
+                                state_code=state_code, n_players=len(_in_this_div),
+                                n_state_total=len(_state_30_35_ids), n_both_div=len(_both_ids))
     standings_html = _standings_tab(subflights, warnings, sf_display=sf_display)
     rosters_html = _rosters_tab(subflights, state_players, ntrp, sf_display=sf_display)
     other_subflights = (other_standings or {}).get("subflights", [])
