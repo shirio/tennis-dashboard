@@ -1378,6 +1378,11 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         hist = player_histories.get(_hk, [])
         has_history = bool(hist)
         expand_cls = " expandable" if has_history else ""
+        # On the 3.0 page, flag players who also played 3.5 matches — the
+        # only cross-up case that isn't otherwise visible without expanding
+        # (a 3.5 page player's 3.0 NTRP rating is already shown in-line).
+        _plays_up = ntrp == "3.0" and bool(st.get("w35", 0) or st.get("l35", 0))
+        _plays_up_cls = " plays-up" if _plays_up else ""
         # Was THIS player disqualified in the division this page is for?
         # Scoped to `ntrp` only — her 3.5 row/matches must stay unmarked
         # even if she was DQ'd in 3.0, and vice versa.
@@ -1445,12 +1450,16 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                      if not is_sectionals
                      else f"<td class='sortable-cell'>{_esc(col3_val)}</td>")
         _dq_row_cls = " player-row-dq" if self_dq_this_div else ""
-        _dq_title = (f' title="Disqualified in {_esc(ntrp)} — see match history"'
-                    if self_dq_this_div else "")
         _dq_name_badge = ' <span class="dq-badge">(DQ)</span>' if self_dq_this_div else ""
+        _row_title_parts = []
+        if self_dq_this_div:
+            _row_title_parts.append(f"Disqualified in {ntrp} — see match history")
+        if _plays_up:
+            _row_title_parts.append("Also plays 3.5 — see match history")
+        _row_title = f' title="{_esc("; ".join(_row_title_parts))}"' if _row_title_parts else ""
         rows += (
             f"<tr data-sf='{_esc(sf_raw or sf)}' data-pkey='{_esc(nk)}' data-state='{_esc(p_state)}'"
-            f" class='player-row{expand_cls}{_dq_row_cls}'{_dq_title}"
+            f" class='player-row{expand_cls}{_dq_row_cls}{_plays_up_cls}'{_row_title}"
             + (f" data-history='{hist_json.replace(chr(39), '&apos;')}'"
                f" data-combined='{_esc(combined_str)}'" if has_history else "")
             + f" onclick=\"toggleHistory(this)\">"
@@ -2033,6 +2042,8 @@ tr:last-child td { border-bottom: none; }
 .player-row.expanded > td:first-child::before { content: "▾ "; color: #888; font-size: 10px; }
 .player-row:not(.expanded) > td:first-child::before { content: "▸ "; color: #ccc; font-size: 10px; }
 .player-row:not(.expandable) > td:first-child::before { content: ""; }
+.player-row.plays-up.expanded > td:first-child::before { color: #2b7fd1; }
+.player-row.plays-up:not(.expanded) > td:first-child::before { color: #2b7fd1; }
 .history-row td { background: #fafbfd; padding: 0; }
 .history-wrap { padding: 8px 12px 12px 24px; }
 .history-summary { font-size: 11px !important; font-weight: 600; color: #555; margin-bottom: 6px;

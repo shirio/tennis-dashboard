@@ -94,6 +94,8 @@ tr:last-child td { border-bottom: none; }
 .player-row.expanded > td:first-child::before { content: "▾ "; color: #888; font-size: 10px; }
 .player-row:not(.expanded) > td:first-child::before { content: "▸ "; color: #ccc; font-size: 10px; }
 .player-row:not(.expandable) > td:first-child::before { content: ""; }
+.player-row.plays-up.expanded > td:first-child::before { color: #2b7fd1; }
+.player-row.plays-up:not(.expanded) > td:first-child::before { color: #2b7fd1; }
 .history-row td { background: #fafbfd; padding: 0; }
 .history-wrap { padding: 8px 12px 12px 24px; }
 .history-summary { font-size: 11px !important; font-weight: 600; color: #555; margin-bottom: 6px;
