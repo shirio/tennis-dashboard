@@ -247,6 +247,12 @@ tr:last-child td { border-bottom: none; }
 .state-tab.on { background: #1a5fb4; color: #fff; border-color: #1a5fb4; }
 .state-pane { display: none; }
 .state-pane.on { display: block; }
+/* Mobile: reduce body padding so tabs/cards use full viewport width */
+@media (max-width: 480px) {
+  body { padding: 0.5rem; }
+  .tabs { gap: 4px; }
+  .tab { padding: 5px 8px; font-size: 12px; }
+}
 </style>
 </head>
 <body>
