@@ -121,7 +121,7 @@ def _build_team_case_map(state_code: str, *subflight_lists) -> dict[str, str] | 
     is already correctly cased — but player.team_X fields are uppercased
     separately elsewhere, so this map re-cases those back to the canonical
     form. NV/ID keep their existing as-scraped display and aren't touched."""
-    if state_code not in ("CO", "UT"):
+    if state_code not in ("CO", "UT", "ID"):
         return None
     m: dict[str, str] = {}
     for sfl in subflight_lists:
@@ -2022,29 +2022,30 @@ tr:last-child td { border-bottom: none; }
            color: #3a5a8c; vertical-align: middle; }
 /* All-players table column constraints — fixed layout so expanding a row's
    match history (which inserts a new <tr>) never reflows/rewraps the
-   columns of rows already on screen. Widths set on <th> (first row),
-   which table-layout:fixed uses to size every column for the whole table.
-   min-width keeps columns readable on mobile; .ap-wrap provides horizontal
-   scroll so the table is never squeezed below that minimum. */
+   columns of rows already on screen. Switched to table-layout:auto so
+   the Team column can auto-size to content; other columns get explicit
+   pixel widths as hints. .ap-wrap scrolls horizontally on mobile. */
 .ap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-#ap-table { table-layout: fixed; width: 100%; min-width: 700px; }
+#ap-table { table-layout: auto; width: 100%; min-width: 700px; }
 #ap-table th { white-space: nowrap; }
-#ap-table td { overflow: hidden; text-overflow: ellipsis; }
+#ap-table td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Team column: auto-sizes to content, wraps (not clips) at max-width cap */
+#ap-table > thead > tr > th:nth-child(2) { max-width: 160px; }
+#ap-table > tbody > tr > td:nth-child(2) { white-space: normal; overflow: visible; max-width: 160px; }
 /* Direct-child combinator (>) so these widths don't leak into the nested
    .history-table rendered inside a colspan'd detail row — a bare descendant
    selector here would match ITS <th>s too, since they're still inside
    #ap-table's DOM subtree. */
-#ap-table > thead > tr > th:nth-child(1) { width: 15%; }
-#ap-table > thead > tr > th:nth-child(2) { width: 21%; }
-#ap-table > thead > tr > th:nth-child(3) { width: 7%; text-align: center; }
-#ap-table > thead > tr > th:nth-child(4) { width: 7%; }
-#ap-table > thead > tr > th:nth-child(5) { width: 7%; }
-#ap-table > thead > tr > th:nth-child(6) { width: 7%; }
-#ap-table > thead > tr > th:nth-child(7) { width: 7%; }
-#ap-table > thead > tr > th:nth-child(8) { width: 7%; }
-#ap-table > thead > tr > th:nth-child(9) { width: 7%; }
-#ap-table > thead > tr > th:nth-child(10) { width: 7%; }
-#ap-table > thead > tr > th:nth-child(11) { width: 8%; }
+#ap-table > thead > tr > th:nth-child(1) { width: 13%; }
+#ap-table > thead > tr > th:nth-child(3) { width: 40px; text-align: center; }
+#ap-table > thead > tr > th:nth-child(4) { width: 52px; }
+#ap-table > thead > tr > th:nth-child(5) { width: 52px; }
+#ap-table > thead > tr > th:nth-child(6) { width: 46px; }
+#ap-table > thead > tr > th:nth-child(7) { width: 46px; }
+#ap-table > thead > tr > th:nth-child(8) { width: 46px; }
+#ap-table > thead > tr > th:nth-child(9) { width: 46px; }
+#ap-table > thead > tr > th:nth-child(10) { width: 54px; }
+#ap-table > thead > tr > th:nth-child(11) { width: 46px; }
 #ap-table td:nth-child(3) { text-align: center; }
 /* All-players history expansion */
 .player-row.expandable { cursor: pointer; }
@@ -2754,11 +2755,11 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
         f'<a href="index.html" class="cross-link">← All States</a>'
         f' &nbsp;|&nbsp; '
         f'<a href="{other_file}" class="cross-link">'
-        f'Switch to {_esc(other_ntrp)} Women →</a>'
+        f'{_esc(other_ntrp)} Women</a>'
         f' &nbsp;|&nbsp; '
-        f'<a href="{mx_file}" class="cross-link">Singles &amp; Doubles Explorer →</a>'
+        f'<a href="{mx_file}" class="cross-link">Singles &amp; Doubles Explorer</a>'
         f' &nbsp;|&nbsp; '
-        f'<a href="sectionals_30.html" class="cross-link">Sectionals →</a>'
+        f'<a href="sectionals_30.html" class="cross-link">Sectionals</a>'
     )
 
     n_matches = sum(len(sf.get("matches", [])) for sf in subflights)
