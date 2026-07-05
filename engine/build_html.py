@@ -507,6 +507,7 @@ def _team_result_for(matches: list[dict], team: str) -> list[dict]:
         aw = m.get("team_wins_away")
         pending = m.get("pending", False)
         status = (m.get("status") or "").lower()
+        is_double_default = not pending and "double default" in status
         if m.get("home_team") == team:
             opp = m.get("away_team", "")
             if not pending and hw is not None and aw is not None:
@@ -529,6 +530,7 @@ def _team_result_for(matches: list[dict], team: str) -> list[dict]:
             "won": won,
             "score": score,
             "pending": pending,
+            "is_double_default": is_double_default,
             "lines": m.get("lines", []),
             # Whether per-court results have been verified via TL match page.
             # Without tl_match_id the court result field is unreliable (defaults
@@ -542,7 +544,9 @@ def _team_result_for(matches: list[dict], team: str) -> list[dict]:
     return out
 
 
-def _result_badge(won, score, pending) -> str:
+def _result_badge(won, score, pending, is_double_default=False) -> str:
+    if is_double_default:
+        return '<span class="badge bn">Default</span>'
     if pending or won is None:
         return '<span class="badge bn">Pending</span>'
     if won:
@@ -1795,7 +1799,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
             team_matches = _team_result_for(matches, tname)
             blocks = ""
             for m in team_matches:
-                badge = _result_badge(m["won"], m["score"], m["pending"])
+                badge = _result_badge(m["won"], m["score"], m["pending"], m.get("is_double_default", False))
                 wlabel = _week_label.get(m.get("date", ""), "")
                 lines = m.get("lines", [])
 
