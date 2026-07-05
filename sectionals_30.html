@@ -54,6 +54,7 @@ tr:last-child td { border-bottom: none; }
 .st-l { text-align: right; padding-left: 2px; padding-right: 10px; white-space: nowrap; font-size: 11px; color: #aaa; width: 1.6rem; }
 .st-table thead th[colspan] { text-align: center; }
 .rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
+.rpane table th:nth-child(1), .rpane table td:nth-child(1) { min-width: 150px; }
 .muted { color: #aaa; font-size: 11px; }
 .wl-footnote { color: #999; font-size: 11px; margin-top: 0.4rem; padding-left: 0.3rem; }
 /* Badges */
@@ -280,7 +281,7 @@ tr:last-child td { border-bottom: none; }
 <div id="rosters" class="pane on"><div class="rtabs" id="sect-state-tabs"><button class="rtab on" onclick="sr('sect-ro-co',this,'sect-state-tabs')">CO</button>
 <button class="rtab" onclick="sr('sect-ro-nv',this,'sect-state-tabs')">NV</button>
 <button class="rtab" onclick="sr('sect-ro-ut',this,'sect-state-tabs')">UT</button>
-</div><div id="sect-ro-co" class="rpane on"><p class="sec-title">BRMST Red &mdash; CO</p><table><thead><tr><th class="sortable" onclick="sortRoster(0)">Player ↕</th><th class="sortable" onclick="sortRoster(1)">NTRP ↕</th><th class="sortable" onclick="sortRoster(2)">Base ↕</th><th class="sortable" onclick="sortRoster(3)">New ↕</th><th class="sortable" onclick="sortRoster(4)">W–L ↕</th><th>Lines</th></tr></thead><tbody><tr><td>Rumi Arakawa</td><td>3.0 C</td><td>2.99</td><td><span class="ru">3.08</span></td><td style='white-space:nowrap'>11-2</td><td><span class="line-pill pill-d1">D1x3</span><span class="line-pill pill-d2">D2</span><span class="line-pill pill-s1">S1x3</span><span class="line-pill pill-s2">S2x6</span></td></tr>
+</div><div id="sect-ro-co" class="rpane on"><p class="sec-title">BRMST Red &mdash; CO</p><table><thead><tr><th class="sortable" onclick="sortRoster(0)" data-label="Player">Player</th><th class="sortable" onclick="sortRoster(1)" data-label="NTRP">NTRP</th><th class="sortable" onclick="sortRoster(2)" data-label="Base">Base</th><th class="sortable" onclick="sortRoster(3)" data-label="New">New</th><th class="sortable" onclick="sortRoster(4)" data-label="W–L">W–L</th><th>Lines</th></tr></thead><tbody><tr><td>Rumi Arakawa</td><td>3.0 C</td><td>2.99</td><td><span class="ru">3.08</span></td><td style='white-space:nowrap'>11-2</td><td><span class="line-pill pill-d1">D1x3</span><span class="line-pill pill-d2">D2</span><span class="line-pill pill-s1">S1x3</span><span class="line-pill pill-s2">S2x6</span></td></tr>
 <tr><td>Jennifer Cooper</td><td>3.0 C</td><td>3.01</td><td><span class="ru">3.05</span></td><td style='white-space:nowrap'>9-2</td><td><span class="line-pill pill-d1">D1x2</span><span class="line-pill pill-s1">S1x9</span></td></tr>
 <tr><td>Tracy Klein</td><td>3.0 C</td><td>2.88</td><td><span class="ru">2.96</span></td><td style='white-space:nowrap'>8-3*</td><td><span class="line-pill pill-d1">D1x7</span><span class="line-pill pill-d2">D2x4</span><span class="line-pill pill-d3">D3x2</span><span class="line-pill pill-s1">S1x2</span><span class="line-pill pill-s2">S2x5</span></td></tr>
 <tr><td>Jody Knaley</td><td>3.0 C</td><td>3.01</td><td><span class="rd">2.94</span></td><td style='white-space:nowrap'>9-3</td><td><span class="line-pill pill-d1">D1x5</span><span class="line-pill pill-d2">D2x4</span><span class="line-pill pill-d3">D3x3</span></td></tr>
@@ -292,7 +293,7 @@ tr:last-child td { border-bottom: none; }
 <tr><td>Lisa Shaver</td><td>3.0 C</td><td>2.86</td><td><span class="rd">2.76</span></td><td style='white-space:nowrap'>3-4</td><td><span class="line-pill pill-d2">D2x2</span><span class="line-pill pill-d3">D3x5</span></td></tr>
 <tr><td>Lori Claussen</td><td>3.0 C</td><td>2.67</td><td><span class="rd">2.61</span></td><td style='white-space:nowrap'>1-1</td><td><span class="line-pill pill-d3">D3x2</span></td></tr>
 </tbody></table></div>
-<div id="sect-ro-nv" class="rpane"><p class="sec-title">DTC #3 &mdash; NV</p><table><thead><tr><th class="sortable" onclick="sortRoster(0)">Player ↕</th><th class="sortable" onclick="sortRoster(1)">NTRP ↕</th><th class="sortable" onclick="sortRoster(2)">Base ↕</th><th class="sortable" onclick="sortRoster(3)">New ↕</th><th class="sortable" onclick="sortRoster(4)">W–L ↕</th><th>Lines</th></tr></thead><tbody><tr><td>Prexy Tamayo</td><td>3.0 C</td><td>2.99</td><td><span class="ru">3.23</span></td><td style='white-space:nowrap'>5-2</td><td><span class="line-pill pill-d1">D1</span><span class="line-pill pill-d2">D2</span><span class="line-pill pill-s2">S2x5</span></td></tr>
+<div id="sect-ro-nv" class="rpane"><p class="sec-title">DTC #3 &mdash; NV</p><table><thead><tr><th class="sortable" onclick="sortRoster(0)" data-label="Player">Player</th><th class="sortable" onclick="sortRoster(1)" data-label="NTRP">NTRP</th><th class="sortable" onclick="sortRoster(2)" data-label="Base">Base</th><th class="sortable" onclick="sortRoster(3)" data-label="New">New</th><th class="sortable" onclick="sortRoster(4)" data-label="W–L">W–L</th><th>Lines</th></tr></thead><tbody><tr><td>Prexy Tamayo</td><td>3.0 C</td><td>2.99</td><td><span class="ru">3.23</span></td><td style='white-space:nowrap'>5-2</td><td><span class="line-pill pill-d1">D1</span><span class="line-pill pill-d2">D2</span><span class="line-pill pill-s2">S2x5</span></td></tr>
 <tr><td>Shi L Oskooi</td><td>3.0 C</td><td>2.74</td><td><span class="ru">3.10</span></td><td style='white-space:nowrap'>9-1*</td><td><span class="line-pill pill-d1">D1x6</span><span class="line-pill pill-d2">D2x2</span><span class="line-pill pill-s1">S1</span><span class="line-pill pill-s2">S2x2</span></td></tr>
 <tr><td>Christine LaBarre</td><td>3.0 C</td><td>3.03</td><td><span class="ru">3.10</span></td><td style='white-space:nowrap'>7-0*</td><td><span class="line-pill pill-d1">D1</span><span class="line-pill pill-d3">D3x7</span></td></tr>
 <tr><td>Anna Clark</td><td>3.0 C</td><td>3.12</td><td><span class="rd">3.09</span></td><td style='white-space:nowrap'>5-1</td><td><span class="line-pill pill-d3">D3</span><span class="line-pill pill-s1">S1</span><span class="line-pill pill-s2">S2x4</span></td></tr>
@@ -310,7 +311,7 @@ tr:last-child td { border-bottom: none; }
 <tr><td>Rebecca Dunne</td><td>2.5 C</td><td>2.49</td><td><span class="rd">2.45</span></td><td style='white-space:nowrap'>0-1</td><td><span class="line-pill pill-d3">D3</span></td></tr>
 <tr><td>Michelle Mortensen</td><td>2.5 C</td><td>2.16</td><td><span class="ru">2.21</span></td><td style='white-space:nowrap'>0-2</td><td><span class="line-pill pill-d2">D2</span><span class="line-pill pill-d3">D3</span></td></tr>
 </tbody></table></div>
-<div id="sect-ro-ut" class="rpane"><p class="sec-title">Wasatch Hills Ballers &mdash; UT</p><table><thead><tr><th class="sortable" onclick="sortRoster(0)">Player ↕</th><th class="sortable" onclick="sortRoster(1)">NTRP ↕</th><th class="sortable" onclick="sortRoster(2)">Base ↕</th><th class="sortable" onclick="sortRoster(3)">New ↕</th><th class="sortable" onclick="sortRoster(4)">W–L ↕</th><th>Lines</th></tr></thead><tbody><tr><td>Caitlin Lutsch</td><td>3.5 D</td><td>3.20</td><td><span class="ru">3.33</span></td><td style='white-space:nowrap'>3-0</td><td><span class="line-pill pill-d2">D2</span><span class="line-pill pill-d3">D3</span><span class="line-pill pill-s2">S2</span></td></tr>
+<div id="sect-ro-ut" class="rpane"><p class="sec-title">Wasatch Hills Ballers &mdash; UT</p><table><thead><tr><th class="sortable" onclick="sortRoster(0)" data-label="Player">Player</th><th class="sortable" onclick="sortRoster(1)" data-label="NTRP">NTRP</th><th class="sortable" onclick="sortRoster(2)" data-label="Base">Base</th><th class="sortable" onclick="sortRoster(3)" data-label="New">New</th><th class="sortable" onclick="sortRoster(4)" data-label="W–L">W–L</th><th>Lines</th></tr></thead><tbody><tr class="player-row-dq"><td>Caitlin Lutsch <span class="dq-badge">(DQ)</span></td><td>3.5 D</td><td>3.20</td><td><span class="ru">3.33</span></td><td style='white-space:nowrap'>3-0</td><td><span class="line-pill pill-d2">D2</span><span class="line-pill pill-d3">D3</span><span class="line-pill pill-s2">S2</span></td></tr>
 <tr><td>Kari Bennett</td><td>3.0 C</td><td>2.55</td><td><span class="ru">3.32</span></td><td style='white-space:nowrap'>9-0*</td><td><span class="line-pill pill-d1">D1x2</span><span class="line-pill pill-s1">S1x7</span><span class="line-pill pill-s2">S2</span></td></tr>
 <tr><td>Cortney Nebeker</td><td>3.0 C</td><td>2.94</td><td><span class="ru">3.26</span></td><td style='white-space:nowrap'>9-1</td><td><span class="line-pill pill-d1">D1x4</span><span class="line-pill pill-d2">D2x5</span><span class="line-pill pill-d3">D3</span></td></tr>
 <tr><td>Jamie Sorensen</td><td>3.0 C</td><td>2.92</td><td><span class="ru">3.20</span></td><td style='white-space:nowrap'>7-1*</td><td><span class="line-pill pill-s1">S1x5</span><span class="line-pill pill-s2">S2x4</span></td></tr>
@@ -891,11 +892,11 @@ function toggleHistory(tr) {
       };
       var opArr = r.op || [], orArr = r.or || [];
       var opHtml = opArr.length
-        ? opArr.map(function(o,i){ return o + dqBadge(o) + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
+        ? opArr.map(function(o,i){ return '<span style="white-space:nowrap">' + o + dqBadge(o) + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : '') + '</span>'; }).join(' / ')
         : '<em class="hr">default</em>';
       var ptArr = r.pt || [], ptrArr = r.ptr || [];
       var ptHtml = ptArr.length
-        ? ptArr.map(function(p,i){ return p + dqBadge(p) + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : ''); }).join(', ')
+        ? ptArr.map(function(p,i){ return '<span style="white-space:nowrap">' + p + dqBadge(p) + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : '') + '</span>'; }).join(', ')
         : '—';
       var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
       var prHtml = r.pr ? '<em class="prating">' + r.pr + '</em>' : '';
@@ -971,6 +972,7 @@ function _sortTable(tbodyOrSelector, col, dirKey) {
     return dir ? av.localeCompare(bv) : bv.localeCompare(av);
   });
   rows.forEach(r => tbody.appendChild(r));
+  return dir;
 }
 function sortAP(col) {
   var tbody = document.querySelector('#ap-table tbody');
@@ -1011,11 +1013,14 @@ function sortAP(col) {
   });
 }
 function sortRoster(col) {
-  // Sort the currently visible roster pane's table
   var pane = document.querySelector('.rpane.on[id^="ro-"]') || document.querySelector('.rpane.on[id^="sect-ro-"]');
   if (!pane) return;
   var tbody = pane.querySelector('tbody');
-  _sortTable(tbody, col, 'ro-' + col + '-' + (pane ? pane.id : ''));
+  var dir = _sortTable(tbody, col, 'ro-' + col + '-' + pane.id);
+  pane.querySelectorAll('thead th').forEach(function(th, i) {
+    if (!th.dataset.label) th.dataset.label = th.textContent.trim().replace(/\s*[↕↑↓]$/, '');
+    th.textContent = i === col ? th.dataset.label + ' ' + (dir ? '↑' : '↓') : th.dataset.label;
+  });
 }
 
 // Navigate from standings → team rosters tab for a specific team

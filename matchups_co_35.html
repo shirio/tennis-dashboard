@@ -54,6 +54,7 @@ tr:last-child td { border-bottom: none; }
 .st-l { text-align: right; padding-left: 2px; padding-right: 10px; white-space: nowrap; font-size: 11px; color: #aaa; width: 1.6rem; }
 .st-table thead th[colspan] { text-align: center; }
 .rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
+.rpane table th:nth-child(1), .rpane table td:nth-child(1) { min-width: 150px; }
 .muted { color: #aaa; font-size: 11px; }
 .wl-footnote { color: #999; font-size: 11px; margin-top: 0.4rem; padding-left: 0.3rem; }
 /* Badges */
@@ -6051,11 +6052,11 @@ function toggleHistory(tr) {
       };
       var opArr = r.op || [], orArr = r.or || [];
       var opHtml = opArr.length
-        ? opArr.map(function(o,i){ return o + dqBadge(o) + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
+        ? opArr.map(function(o,i){ return '<span style="white-space:nowrap">' + o + dqBadge(o) + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : '') + '</span>'; }).join(' / ')
         : '<em class="hr">default</em>';
       var ptArr = r.pt || [], ptrArr = r.ptr || [];
       var ptHtml = ptArr.length
-        ? ptArr.map(function(p,i){ return p + dqBadge(p) + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : ''); }).join(', ')
+        ? ptArr.map(function(p,i){ return '<span style="white-space:nowrap">' + p + dqBadge(p) + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : '') + '</span>'; }).join(', ')
         : '—';
       var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
       var prHtml = r.pr ? '<em class="prating">' + r.pr + '</em>' : '';
@@ -6131,6 +6132,7 @@ function _sortTable(tbodyOrSelector, col, dirKey) {
     return dir ? av.localeCompare(bv) : bv.localeCompare(av);
   });
   rows.forEach(r => tbody.appendChild(r));
+  return dir;
 }
 function sortAP(col) {
   var tbody = document.querySelector('#ap-table tbody');
@@ -6171,11 +6173,14 @@ function sortAP(col) {
   });
 }
 function sortRoster(col) {
-  // Sort the currently visible roster pane's table
   var pane = document.querySelector('.rpane.on[id^="ro-"]') || document.querySelector('.rpane.on[id^="sect-ro-"]');
   if (!pane) return;
   var tbody = pane.querySelector('tbody');
-  _sortTable(tbody, col, 'ro-' + col + '-' + (pane ? pane.id : ''));
+  var dir = _sortTable(tbody, col, 'ro-' + col + '-' + pane.id);
+  pane.querySelectorAll('thead th').forEach(function(th, i) {
+    if (!th.dataset.label) th.dataset.label = th.textContent.trim().replace(/\s*[↕↑↓]$/, '');
+    th.textContent = i === col ? th.dataset.label + ' ' + (dir ? '↑' : '↓') : th.dataset.label;
+  });
 }
 
 // Navigate from standings → team rosters tab for a specific team

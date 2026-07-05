@@ -870,11 +870,11 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
                 f'<div id="{tid}" class="rpane{active}">'
                 f'<p class="sec-title">{_esc(_display_team_name(tname, case_map))} &mdash; Subflight {_esc(sf_lbl)}</p>'
                 f'<table><thead><tr>'
-                f'<th class="sortable" onclick="sortRoster(0)">Player ↕</th>'
-                f'<th class="sortable" onclick="sortRoster(1)">NTRP ↕</th>'
-                f'<th class="sortable" onclick="sortRoster(2)">Base ↕</th>'
-                f'<th class="sortable" onclick="sortRoster(3)">New ↕</th>'
-                f'<th class="sortable" onclick="sortRoster(4)">W–L ↕</th><th>Lines</th>'
+                f'<th class="sortable" onclick="sortRoster(0)" data-label="Player">Player</th>'
+                f'<th class="sortable" onclick="sortRoster(1)" data-label="NTRP">NTRP</th>'
+                f'<th class="sortable" onclick="sortRoster(2)" data-label="Base">Base</th>'
+                f'<th class="sortable" onclick="sortRoster(3)" data-label="New">New</th>'
+                f'<th class="sortable" onclick="sortRoster(4)" data-label="W–L">W–L</th><th>Lines</th>'
                 + ('<th>Notes</th>' if show_notes else '')
                 + f'</tr></thead><tbody>{rows}</tbody></table></div>\n'
             )
@@ -2007,6 +2007,7 @@ tr:last-child td { border-bottom: none; }
 .st-l { text-align: right; padding-left: 2px; padding-right: 10px; white-space: nowrap; font-size: 11px; color: #aaa; width: 1.6rem; }
 .st-table thead th[colspan] { text-align: center; }
 .rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
+.rpane table th:nth-child(1), .rpane table td:nth-child(1) { min-width: 150px; }
 .muted { color: #aaa; font-size: 11px; }
 .wl-footnote { color: #999; font-size: 11px; margin-top: 0.4rem; padding-left: 0.3rem; }
 /* Badges */
@@ -2356,11 +2357,11 @@ function toggleHistory(tr) {
       };
       var opArr = r.op || [], orArr = r.or || [];
       var opHtml = opArr.length
-        ? opArr.map(function(o,i){ return o + dqBadge(o) + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : ''); }).join(' / ')
+        ? opArr.map(function(o,i){ return '<span style="white-space:nowrap">' + o + dqBadge(o) + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : '') + '</span>'; }).join(' / ')
         : '<em class="hr">default</em>';
       var ptArr = r.pt || [], ptrArr = r.ptr || [];
       var ptHtml = ptArr.length
-        ? ptArr.map(function(p,i){ return p + dqBadge(p) + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : ''); }).join(', ')
+        ? ptArr.map(function(p,i){ return '<span style="white-space:nowrap">' + p + dqBadge(p) + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : '') + '</span>'; }).join(', ')
         : '—';
       var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
       var prHtml = r.pr ? '<em class="prating">' + r.pr + '</em>' : '';
@@ -2436,6 +2437,7 @@ function _sortTable(tbodyOrSelector, col, dirKey) {
     return dir ? av.localeCompare(bv) : bv.localeCompare(av);
   });
   rows.forEach(r => tbody.appendChild(r));
+  return dir;
 }
 function sortAP(col) {
   var tbody = document.querySelector('#ap-table tbody');
@@ -2476,11 +2478,14 @@ function sortAP(col) {
   });
 }
 function sortRoster(col) {
-  // Sort the currently visible roster pane's table
   var pane = document.querySelector('.rpane.on[id^="ro-"]') || document.querySelector('.rpane.on[id^="sect-ro-"]');
   if (!pane) return;
   var tbody = pane.querySelector('tbody');
-  _sortTable(tbody, col, 'ro-' + col + '-' + (pane ? pane.id : ''));
+  var dir = _sortTable(tbody, col, 'ro-' + col + '-' + pane.id);
+  pane.querySelectorAll('thead th').forEach(function(th, i) {
+    if (!th.dataset.label) th.dataset.label = th.textContent.trim().replace(/\s*[↕↑↓]$/, '');
+    th.textContent = i === col ? th.dataset.label + ' ' + (dir ? '↑' : '↓') : th.dataset.label;
+  });
 }
 
 // Navigate from standings → team rosters tab for a specific team
@@ -3747,9 +3752,12 @@ def _build_sectionals_rosters(
             else:
                 wl = p.get(f"wl_record_{_sfx}") or "–"
             lines = p.get(f"lines_played_{_sfx}") or "–"
+            is_dq = bool(ntrp_r) and not _ntrp_division_compatible(ntrp, ntrp_r)
+            _row_cls = ' class="player-row-dq"' if is_dq else ''
+            _dq_badge = ' <span class="dq-badge">(DQ)</span>' if is_dq else ''
             rows += (
-                f"<tr>"
-                f"<td>{_esc(p.get('name',''))}</td>"
+                f"<tr{_row_cls}>"
+                f"<td>{_esc(p.get('name',''))}{_dq_badge}</td>"
                 f"<td>{_esc(ntrp_r)}</td>"
                 f"<td>{_esc(_fmt_rating(baseline))}</td>"
                 f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
@@ -3764,11 +3772,11 @@ def _build_sectionals_rosters(
             f'<div id="{tid}" class="rpane{active}">'
             f'<p class="sec-title">{_esc(tname)} &mdash; {_esc(st)}</p>'
             f'<table><thead><tr>'
-            f'<th class="sortable" onclick="sortRoster(0)">Player ↕</th>'
-            f'<th class="sortable" onclick="sortRoster(1)">NTRP ↕</th>'
-            f'<th class="sortable" onclick="sortRoster(2)">Base ↕</th>'
-            f'<th class="sortable" onclick="sortRoster(3)">New ↕</th>'
-            f'<th class="sortable" onclick="sortRoster(4)">W–L ↕</th><th>Lines</th>'
+            f'<th class="sortable" onclick="sortRoster(0)" data-label="Player">Player</th>'
+            f'<th class="sortable" onclick="sortRoster(1)" data-label="NTRP">NTRP</th>'
+            f'<th class="sortable" onclick="sortRoster(2)" data-label="Base">Base</th>'
+            f'<th class="sortable" onclick="sortRoster(3)" data-label="New">New</th>'
+            f'<th class="sortable" onclick="sortRoster(4)" data-label="W–L">W–L</th><th>Lines</th>'
             f'</tr></thead><tbody>{rows}</tbody></table></div>\n'
         )
         first = False
