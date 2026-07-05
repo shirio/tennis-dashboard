@@ -866,7 +866,7 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
                 _dq_badge = ' <span class="dq-badge">(DQ)</span>' if is_dq else ''
                 rows += (
                     f"<tr{_row_cls}>"
-                    f"<td>{_esc(p.get('name',''))}{_dq_badge}</td>"
+                    f"<td><div class='pname-cell'>{_esc(p.get('name',''))}{_dq_badge}</div></td>"
                     f"<td>{_esc(ntrp_r)}</td>"
                     f"<td>{_esc(_fmt_rating(baseline))}</td>"
                     f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
@@ -2042,7 +2042,7 @@ tr:last-child td { border-bottom: none; }
 .st-table thead th[colspan] { text-align: center; }
 .rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
 .rpane table th:nth-child(1) { white-space: nowrap; }
-.rpane table td:nth-child(1) { max-width: 140px; word-break: break-word; }
+.pname-cell { min-width: 120px; max-width: 140px; overflow-wrap: break-word; }
 .muted { color: #aaa; font-size: 11px; }
 .wl-footnote { color: #999; font-size: 11px; margin-top: 0.4rem; padding-left: 0.3rem; }
 /* Badges */
@@ -3792,7 +3792,7 @@ def _build_sectionals_rosters(
             _dq_badge = ' <span class="dq-badge">(DQ)</span>' if is_dq else ''
             rows += (
                 f"<tr{_row_cls}>"
-                f"<td>{_esc(p.get('name',''))}{_dq_badge}</td>"
+                f"<td><div class='pname-cell'>{_esc(p.get('name',''))}{_dq_badge}</div></td>"
                 f"<td>{_esc(ntrp_r)}</td>"
                 f"<td>{_esc(_fmt_rating(baseline))}</td>"
                 f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
