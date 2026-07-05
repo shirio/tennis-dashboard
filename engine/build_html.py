@@ -2703,7 +2703,8 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
     cards_html = _summary_cards(ntrp, year, subflights, region_label,
                                 state_code=state_code, n_players=len(_in_this_div),
                                 n_state_total=len(_state_30_35_ids), n_both_div=len(_both_ids))
-    standings_html = _standings_tab(subflights, warnings, sf_display=sf_display, case_map=case_map)
+    standings_html = _standings_tab(subflights, warnings, sf_display=sf_display, case_map=case_map,
+                                   show_notes=(state_code == "NV"))
     rosters_html = _rosters_tab(subflights, state_players, ntrp, sf_display=sf_display, case_map=case_map)
     players_html = _players_tab(state_players, ntrp, subflights, other_subflights,
                                 all_players_pool=all_players_pool, sf_display=sf_display,
