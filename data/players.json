@@ -10973,7 +10973,7 @@
     "name": "Lisa Williams",
     "team": "LIFE TIME FITNESS/GV",
     "division": "3.0 Women A",
-    "dynamic_rating_baseline": 2.6,
+    "dynamic_rating_baseline": 2.6828,
     "current_division_rating": 2.3702,
     "global_rating": 2.3702,
     "ntrp_rating": "3.0 C",
@@ -10981,7 +10981,7 @@
     "lines_played": 1,
     "lines_html": null,
     "notes": "One D3 match, lost. Dynamic of 2.72 with -0.18 delta — biggest drop on LTF. The D3 loss suggests even that line is too high.",
-    "profile_url": "https://www.tennisrecord.com/adult/profile.aspx?playername=Lisa Williams&s=18",
+    "profile_url": "/adult/profile.aspx?playername=Lisa Williams&s=5",
     "notes_30": "Surprising loss: W7 D3 alongside Hee Park to Maureen Kelly (2.47) + Charlotte Durisseau (2.25) decisively (as 78% favourite). Outmatched at D1 by Therese Laudenslager (2.99) + Carrie Maddux (2.74) in W8.",
     "notes_35": "No 3.5 matches played yet. 1-5 in 3.0. In 3.0: D2 beat Maria Dellett (2.66) + Golssa Moridi (2.77) comfortably.",
     "rating_30": 2.3702,
@@ -11016,7 +11016,8 @@
       "D3x2"
     ],
     "wl_record_30": "1-5",
-    "team_30": "LIFE TIME FITNESS/GV"
+    "team_30": "LIFE TIME FITNESS/GV",
+    "tennisrecord_id": "5"
   },
   {
     "id": "kristen-radlosky",
