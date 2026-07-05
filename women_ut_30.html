@@ -76,17 +76,20 @@ tr:last-child td { border-bottom: none; }
    the Team column can auto-size to content; other columns get explicit
    pixel widths as hints. .ap-wrap scrolls horizontally on mobile. */
 .ap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-#ap-table { table-layout: auto; width: 100%; min-width: 700px; }
+#ap-table { width: 100%; min-width: 700px; }
 #ap-table th { white-space: nowrap; }
 #ap-table td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-/* Team column: auto-sizes to content, wraps (not clips) at max-width cap */
+/* Player and Team columns: width:1%+nowrap shrinks each to its longest
+   content value, leaving numeric columns the remaining space. */
+#ap-table > thead > tr > th:nth-child(1),
+#ap-table > tbody > tr > td:nth-child(1) { width: 1%; white-space: nowrap; }
+#ap-table > thead > tr > th:nth-child(2),
+#ap-table > tbody > tr > td:nth-child(2) { width: 1%; white-space: nowrap; }
+/* Team column: allow wrapping at max-width for long Idaho names */
 #ap-table > thead > tr > th:nth-child(2) { max-width: 160px; }
-#ap-table > tbody > tr > td:nth-child(2) { white-space: normal; overflow: visible; max-width: 160px; }
+#ap-table > tbody > tr > td:nth-child(2) { max-width: 160px; white-space: normal; overflow: visible; word-break: break-word; }
 /* Direct-child combinator (>) so these widths don't leak into the nested
-   .history-table rendered inside a colspan'd detail row — a bare descendant
-   selector here would match ITS <th>s too, since they're still inside
-   #ap-table's DOM subtree. */
-#ap-table > thead > tr > th:nth-child(1) { width: 13%; }
+   .history-table rendered inside a colspan'd detail row */
 #ap-table > thead > tr > th:nth-child(3) { width: 40px; text-align: center; }
 #ap-table > thead > tr > th:nth-child(4) { width: 52px; }
 #ap-table > thead > tr > th:nth-child(5) { width: 52px; }
@@ -109,21 +112,11 @@ tr:last-child td { border-bottom: none; }
 .history-wrap { padding: 8px 12px 12px 24px; }
 .history-summary { font-size: 11px !important; font-weight: 600; color: #555; margin-bottom: 6px;
                    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-.history-table { font-size: 11px; width: 100%; table-layout: fixed; }
+.history-table { font-size: 11px; width: 100%; table-layout: auto; }
 .history-table th { font-size: 10px; padding: 3px 8px; }
-.history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+/* Override #ap-table td's overflow:hidden — history cells must never clip */
+.history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; overflow: visible; white-space: normal; }
 .history-table tr:last-child td { border-bottom: none; }
-/* Give opponent/partner names the room to avoid wrapping; Div/Line/Rating/
-   Result are short fixed-format values that don't need much width. */
-.history-table th:nth-child(1),  .history-table td:nth-child(1)  { width: 9%; }
-.history-table th:nth-child(2),  .history-table td:nth-child(2)  { width: 5%; }
-.history-table th:nth-child(3),  .history-table td:nth-child(3)  { width: 5%; }
-.history-table th:nth-child(4),  .history-table td:nth-child(4)  { width: 6%; }
-.history-table th:nth-child(5),  .history-table td:nth-child(5)  { width: 6%; }
-.history-table th:nth-child(6),  .history-table td:nth-child(6)  { width: 10%; }
-.history-table th:nth-child(7),  .history-table td:nth-child(7)  { width: 20%; }
-.history-table th:nth-child(8),  .history-table td:nth-child(8)  { width: 24%; }
-.history-table th:nth-child(9),  .history-table td:nth-child(9)  { width: 15%; }
 /* Division pills in history */
 .dp { display: inline-block; padding: 1px 6px; border-radius: 8px;
       font-size: 10px; font-weight: 700; white-space: nowrap; }
@@ -1966,10 +1959,10 @@ function toggleHistory(tr) {
         ? ptArr.map(function(p,i){ return p + dqBadge(p) + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : ''); }).join(', ')
         : '—';
       var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
-      var prHtml = r.pr ? '<em class="prating">(' + r.pr + ')</em>' : '';
+      var prHtml = r.pr ? '<em class="prating">' + r.pr + '</em>' : '';
       var rowCls = dqArr.length ? ' class="hist-row-dq" title="Invalid match — ' + dqArr.join(', ') + ' disqualified"' : '';
       html += '<tr' + rowCls + '>'
-        + '<td style="white-space:nowrap">' + (r.dt||'') + '</td>'
+        + '<td style="white-space:nowrap">' + (r.dt||'').replace(/\/\d{4}$/, '') + '</td>'
         + '<td>' + divPill + '</td>'
         + '<td>' + (r.ln||'') + '</td>'
         + '<td>' + prHtml + '</td>'
