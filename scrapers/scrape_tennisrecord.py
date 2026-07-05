@@ -28,6 +28,14 @@ from bs4 import BeautifulSoup
 BASE_URL = "https://www.tennisrecord.com"
 DATA_DIR = Path("data")
 PLAYERS_JSON = DATA_DIR / "players.json"
+
+# Full state names for unambiguous location matching (avoids "ut" matching "south", etc.)
+_STATE_NAMES = {
+    "NV": "nevada", "CO": "colorado", "UT": "utah", "ID": "idaho",
+    "AZ": "arizona", "MT": "montana", "WY": "wyoming", "WA": "washington",
+    "OR": "oregon", "CA": "california", "TX": "texas", "FL": "florida",
+    "NY": "new york", "GA": "georgia",
+}
 REGIONS_JSON = DATA_DIR / "regions.json"
 
 # Legacy default (NV)
@@ -239,9 +247,10 @@ def search_player(name: str, state_hint: str = "") -> dict | None:
 
     if state_hint and len(candidates) > 1:
         st = state_hint.upper()
+        full_state = _STATE_NAMES.get(st, "")
         state_matches = [c for c in candidates
                          if f", {st}" in c.get("location", "").upper()
-                         or state_hint.lower() in c.get("location", "").lower()]
+                         or (full_state and full_state in c.get("location", "").lower())]
         if state_matches:
             return state_matches[0]
 

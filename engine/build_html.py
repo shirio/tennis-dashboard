@@ -731,7 +731,8 @@ def _abbrev_line(line_label: str) -> str:
 
 
 def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
-                 sf_display: dict | None = None, case_map: dict | None = None) -> str:
+                 sf_display: dict | None = None, case_map: dict | None = None,
+                 show_notes: bool = True) -> str:
     # Field suffix for per-division stats ("3.0" -> "30", "3.5" -> "35")
     _sfx = ntrp.replace(".", "") if ntrp else ""
 
@@ -852,11 +853,12 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
                     f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
                     f"<td style='white-space:nowrap'>{_esc(str(wl))}</td>"
                     f"<td>{_lines_pills_html(lines)}</td>"
-                    f"<td class='notes-cell'>{pnotes}</td>"
-                    f"</tr>\n"
+                    + (f"<td class='notes-cell'>{pnotes}</td>" if show_notes else "")
+                    + f"</tr>\n"
                 )
             if not rows:
-                rows = "<tr><td colspan='7' class='muted'>No players yet.</td></tr>"
+                _ncols = 7 if show_notes else 6
+                rows = f"<tr><td colspan='{_ncols}' class='muted'>No players yet.</td></tr>"
 
             team_tabs += (
                 f'<button class="rtab{active}" data-sf="{_esc(sf_lbl)}"{visible} '
@@ -872,8 +874,9 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
                 f'<th class="sortable" onclick="sortRoster(1)">NTRP ↕</th>'
                 f'<th class="sortable" onclick="sortRoster(2)">Base ↕</th>'
                 f'<th class="sortable" onclick="sortRoster(3)">New ↕</th>'
-                f'<th class="sortable" onclick="sortRoster(4)">W–L ↕</th><th>Lines</th><th>Notes</th>'
-                f'</tr></thead><tbody>{rows}</tbody></table></div>\n'
+                f'<th class="sortable" onclick="sortRoster(4)">W–L ↕</th><th>Lines</th>'
+                + ('<th>Notes</th>' if show_notes else '')
+                + f'</tr></thead><tbody>{rows}</tbody></table></div>\n'
             )
 
     return (
@@ -2706,7 +2709,8 @@ def _generate_html(ntrp: str, standings: dict, players: list[dict],
                                 n_state_total=len(_state_30_35_ids), n_both_div=len(_both_ids))
     standings_html = _standings_tab(subflights, warnings, sf_display=sf_display, case_map=case_map,
                                    show_notes=(state_code == "NV"))
-    rosters_html = _rosters_tab(subflights, state_players, ntrp, sf_display=sf_display, case_map=case_map)
+    rosters_html = _rosters_tab(subflights, state_players, ntrp, sf_display=sf_display, case_map=case_map,
+                                show_notes=(state_code == "NV"))
     players_html = _players_tab(state_players, ntrp, subflights, other_subflights,
                                 all_players_pool=all_players_pool, sf_display=sf_display,
                                 state_code=state_code, case_map=case_map)
