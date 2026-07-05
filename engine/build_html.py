@@ -585,6 +585,14 @@ def _wl_cell(w, l) -> str:
     return f"{int(w or 0)}–{int(l or 0)}"
 
 
+def _team_sort_key(t: dict) -> tuple:
+    """Sort key: win% desc, total wins desc (tiebreaker)."""
+    w = t.get("team_wins") or 0
+    l = t.get("team_losses") or 0
+    pct = w / (w + l) if (w + l) else 0.0
+    return (-pct, -w)
+
+
 def _standings_tab(subflights: list[dict], warnings: list[str],
                    sf_display: dict | None = None, id_prefix: str = "st",
                    show_nav_links: bool = True, show_notes: bool = True,
@@ -635,7 +643,7 @@ def _standings_tab(subflights: list[dict], warnings: list[str],
 
         # Sort by scraped team records (authoritative — TL resolves tiebreakers
         # in the standings page that can't be derived from per-court data alone).
-        teams.sort(key=lambda t: (-t.get("team_wins", 0), t.get("team_losses", 99)))
+        teams.sort(key=_team_sort_key)
 
         rows = ""
         for j, t in enumerate(teams, 1):
@@ -811,7 +819,7 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
     first_seen = True
     for sf in subflights:
         sf_lbl = sf.get("flight_label", "")
-        for t in sf.get("teams", []):
+        for t in sorted(sf.get("teams", []), key=_team_sort_key):
             tname = t.get("team_name", "")
             if not tname:
                 continue
@@ -1768,7 +1776,7 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
     for sf in subflights:
         sf_lbl = sf.get("flight_label", "")
         matches = sf.get("matches", [])
-        for t in sf.get("teams", []):
+        for t in sorted(sf.get("teams", []), key=_team_sort_key):
             tname = t.get("team_name", "")
             if not tname:
                 continue
@@ -1835,16 +1843,31 @@ def _results_tab(subflights: list[dict], players: list[dict] | None = None,
                         if _cwt:
                             _our_team_won = _cwt.upper() == tname.upper()
                         else:
-                            _our_team_won = None
+                            # Infer winner for defaults: whichever side has players won.
+                            _ph_names = [x.strip() for x in ph_raw.split("/")
+                                         if x.strip() and not _is_noise_name(x)]
+                            _pa_names = [x.strip() for x in pa_raw.split("/")
+                                         if x.strip() and not _is_noise_name(x)]
+                            if not _ph_names and _pa_names:
+                                _our_team_won = bool(_m_at) and _m_at.upper() == tname.upper()
+                            elif not _pa_names and _ph_names:
+                                _our_team_won = bool(_m_ht) and _m_ht.upper() == tname.upper()
+                            else:
+                                _our_team_won = None
 
                         # Always show selected team on left, opponent on right.
-                        _ph_is_our_team = False
-                        for _pn in [x.strip() for x in ph_raw.split("/")
-                                    if x.strip() and not _is_noise_name(x)]:
-                            _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
-                            if _pt and _pt.upper() == tname.upper():
-                                _ph_is_our_team = True
-                                break
+                        # Use match-level home/away team as the primary indicator —
+                        # player lookup fails when our side forfeited (ph_raw empty).
+                        if _m_ht or _m_at:
+                            _ph_is_our_team = _m_ht.upper() == tname.upper()
+                        else:
+                            _ph_is_our_team = False
+                            for _pn in [x.strip() for x in ph_raw.split("/")
+                                        if x.strip() and not _is_noise_name(x)]:
+                                _pt = _team_by_name.get(re.sub(r"\s+", " ", _pn.lower().strip()), "")
+                                if _pt and _pt.upper() == tname.upper():
+                                    _ph_is_our_team = True
+                                    break
 
                         # Don't fall back to match-level win — that would
                         # highlight all courts the same color on a 3-2 match.
@@ -2007,7 +2030,7 @@ tr:last-child td { border-bottom: none; }
 .st-l { text-align: right; padding-left: 2px; padding-right: 10px; white-space: nowrap; font-size: 11px; color: #aaa; width: 1.6rem; }
 .st-table thead th[colspan] { text-align: center; }
 .rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
-.rpane table th:nth-child(1), .rpane table td:nth-child(1) { min-width: 150px; }
+.rpane table th:nth-child(1), .rpane table td:nth-child(1) { width: 1%; white-space: nowrap; }
 .muted { color: #aaa; font-size: 11px; }
 .wl-footnote { color: #999; font-size: 11px; margin-top: 0.4rem; padding-left: 0.3rem; }
 /* Badges */
