@@ -1518,8 +1518,8 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                         f'{_esc(tab_lbl)}</button>')
         sf_section = f'<div class="sf-filter-btns" id="sf-filter-btns">{sf_btns}</div>'
 
-    col3_hdr = ('<th class="sortable" onclick="sortAP(2)">State ↕</th>'
-                if is_sectionals else '<th class="sortable" onclick="sortAP(2)">SF ↕</th>')
+    col3_hdr = ('<th class="sortable" onclick="sortAP(2)">State</th>'
+                if is_sectionals else '<th class="sortable" onclick="sortAP(2)">SF</th>')
 
     return f"""
 <div class="ap-controls">
@@ -1531,17 +1531,17 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
 <div class="ap-wrap">
 <table id="ap-table">
   <thead><tr>
-    <th class="sortable" onclick="sortAP(0)">Player ↕</th>
-    <th class="sortable" onclick="sortAP(1)">Team ↕</th>
+    <th class="sortable" onclick="sortAP(0)">Player</th>
+    <th class="sortable" onclick="sortAP(1)">Team</th>
     {col3_hdr}
-    <th class="sortable" onclick="sortAP(3)">NTRP ↕</th>
-    <th class="sortable" onclick="sortAP(4)">Base ↕</th>
-    <th class="sortable" onclick="sortAP(5)">New ↕</th>
-    <th class="sortable" onclick="sortAP(6)">Diff ↕</th>
-    <th class="sortable" onclick="sortAP(7)">W–L ↕</th>
-    <th class="sortable" onclick="sortAP(8)">Sets ↕</th>
-    <th class="sortable" onclick="sortAP(9)">Games ↕</th>
-    <th class="sortable" onclick="sortAP(10)">Opp ↕</th>
+    <th class="sortable" onclick="sortAP(3)">NTRP</th>
+    <th class="sortable" onclick="sortAP(4)">Base</th>
+    <th class="sortable" onclick="sortAP(5)">New</th>
+    <th class="sortable" onclick="sortAP(6)">Diff</th>
+    <th class="sortable" onclick="sortAP(7)">W–L</th>
+    <th class="sortable" onclick="sortAP(8)">Sets</th>
+    <th class="sortable" onclick="sortAP(9)">Games</th>
+    <th class="sortable" onclick="sortAP(10)">Opp</th>
   </tr></thead>
   <tbody>{rows}</tbody>
 </table>
@@ -2475,6 +2475,11 @@ function sortAP(col) {
   pairs.forEach(function(pair) {
     tbody.appendChild(pair[0]);
     if (pair[1]) tbody.appendChild(pair[1]);
+  });
+  // Update sort arrow on headers: active column gets ↑/↓, all others cleared
+  document.querySelectorAll('#ap-table > thead > tr > th').forEach(function(th, i) {
+    if (!th.dataset.label) th.dataset.label = th.textContent.trim();
+    th.textContent = i === col ? th.dataset.label + ' ' + (dir ? '↑' : '↓') : th.dataset.label;
   });
 }
 function sortRoster(col) {

@@ -1776,6 +1776,11 @@ function sortAP(col) {
     tbody.appendChild(pair[0]);
     if (pair[1]) tbody.appendChild(pair[1]);
   });
+  // Update sort arrow on headers: active column gets ↑/↓, all others cleared
+  document.querySelectorAll('#ap-table > thead > tr > th').forEach(function(th, i) {
+    if (!th.dataset.label) th.dataset.label = th.textContent.trim();
+    th.textContent = i === col ? th.dataset.label + ' ' + (dir ? '↑' : '↓') : th.dataset.label;
+  });
 }
 function sortRoster(col) {
   // Sort the currently visible roster pane's table
