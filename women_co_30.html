@@ -106,14 +106,14 @@ tr:last-child td { border-bottom: none; }
 .player-row.plays-up.expanded > td:first-child::before { color: #2b7fd1; }
 .player-row.plays-up:not(.expanded) > td:first-child::before { color: #2b7fd1; }
 .history-row td { background: #fafbfd; padding: 0; }
-.history-wrap { padding: 8px 12px 12px 24px; }
+.history-wrap { padding: 8px 0 12px 0; }
 .history-summary { font-size: 11px !important; font-weight: 600; color: #555; margin-bottom: 6px;
                    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .history-table { font-size: 11px; width: 100%; table-layout: auto; }
-.history-table th { font-size: 10px; padding: 3px 8px; }
+.history-table th { font-size: 10px; padding: 3px 4px; }
 /* Override #ap-table td's overflow:hidden — history cells must never clip.
    Use #ap-table prefix (specificity 1,1,1) to beat #ap-table td (1,0,1). */
-#ap-table .history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; overflow: visible; white-space: normal; }
+#ap-table .history-table td { padding: 3px 4px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; overflow: visible; white-space: normal; }
 .history-table tr:last-child td { border-bottom: none; }
 /* Division pills in history */
 .dp { display: inline-block; padding: 1px 6px; border-radius: 8px;
@@ -7361,7 +7361,7 @@ function toggleHistory(tr) {
     var combined = tr.dataset.combined || '';
     var html = '<div class="history-wrap"><div class="history-summary">' + combined + '</div>'
       + '<table class="history-table"><thead><tr>'
-      + '<th>Date</th><th>Div</th><th>Line</th><th>Rating</th><th>Result</th>'
+      + '<th>Date</th><th>Div</th><th>Line</th><th>Rating</th><th style="white-space:nowrap;width:1px">R</th>'
       + '<th>Score</th><th>Partner(s)</th><th>Opponent(s)</th><th>Opp Team</th>'
       + '</tr></thead><tbody>';
     data.forEach(function(r) {
