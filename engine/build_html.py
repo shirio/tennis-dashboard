@@ -392,9 +392,6 @@ def _ntrp_division_compatible(division: str, ntrp_rating: str) -> bool:
         div_num = float(division[:3])
     except (ValueError, IndexError):
         return True
-    if letter == "D":
-        effective = ntrp_num - 0.5
-        return effective <= div_num and effective >= div_num - 0.5
     return ntrp_num >= div_num - 0.5 and ntrp_num <= div_num
 
 
@@ -1329,8 +1326,8 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         _hk = _player_history_key(p)  # key for player_histories / player_stats lookups
 
         pst = player_stats.get(_hk, {})
-        _w_computed = pst.get(f"w{_sfx}", 0)
-        _l_computed = pst.get(f"l{_sfx}", 0)
+        _w_computed = pst.get("w", 0)
+        _l_computed = pst.get("l", 0)
         _wko = pst.get("wko", 0)
         if _w_computed + _l_computed > 0:
             wl = f"{_w_computed}-{_l_computed}"
@@ -2062,8 +2059,9 @@ tr:last-child td { border-bottom: none; }
                    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .history-table { font-size: 11px; width: 100%; table-layout: auto; }
 .history-table th { font-size: 10px; padding: 3px 8px; }
-/* Override #ap-table td's overflow:hidden — history cells must never clip */
-.history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; overflow: visible; white-space: normal; }
+/* Override #ap-table td's overflow:hidden — history cells must never clip.
+   Use #ap-table prefix (specificity 1,1,1) to beat #ap-table td (1,0,1). */
+#ap-table .history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; overflow: visible; white-space: normal; }
 .history-table tr:last-child td { border-bottom: none; }
 /* Division pills in history */
 .dp { display: inline-block; padding: 1px 6px; border-radius: 8px;

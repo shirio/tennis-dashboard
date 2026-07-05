@@ -109,8 +109,9 @@ tr:last-child td { border-bottom: none; }
                    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .history-table { font-size: 11px; width: 100%; table-layout: auto; }
 .history-table th { font-size: 10px; padding: 3px 8px; }
-/* Override #ap-table td's overflow:hidden — history cells must never clip */
-.history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; overflow: visible; white-space: normal; }
+/* Override #ap-table td's overflow:hidden — history cells must never clip.
+   Use #ap-table prefix (specificity 1,1,1) to beat #ap-table td (1,0,1). */
+#ap-table .history-table td { padding: 3px 8px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; overflow: visible; white-space: normal; }
 .history-table tr:last-child td { border-bottom: none; }
 /* Division pills in history */
 .dp { display: inline-block; padding: 1px 6px; border-radius: 8px;
