@@ -844,9 +844,12 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
                     dw_note = (f'<span class="default-win-badge">'
                                f'incl. {dw} walkover{"s" if dw > 1 else ""}</span>')
                     pnotes = (pnotes + " " if pnotes else "") + dw_note
+                is_dq = bool(ntrp_r) and not _ntrp_division_compatible(ntrp, ntrp_r)
+                _row_cls = ' class="player-row-dq"' if is_dq else ''
+                _dq_badge = ' <span class="dq-badge">(DQ)</span>' if is_dq else ''
                 rows += (
-                    f"<tr>"
-                    f"<td>{_esc(p.get('name',''))}</td>"
+                    f"<tr{_row_cls}>"
+                    f"<td>{_esc(p.get('name',''))}{_dq_badge}</td>"
                     f"<td>{_esc(ntrp_r)}</td>"
                     f"<td>{_esc(_fmt_rating(baseline))}</td>"
                     f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
@@ -1326,8 +1329,8 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
         _hk = _player_history_key(p)  # key for player_histories / player_stats lookups
 
         pst = player_stats.get(_hk, {})
-        _w_computed = pst.get("w", 0)
-        _l_computed = pst.get("l", 0)
+        _w_computed = pst.get(f"w{_sfx}", 0)
+        _l_computed = pst.get(f"l{_sfx}", 0)
         _wko = pst.get("wko", 0)
         if _w_computed + _l_computed > 0:
             wl = f"{_w_computed}-{_l_computed}"
@@ -2020,24 +2023,19 @@ tr:last-child td { border-bottom: none; }
 .sf-pill { display: inline-block; padding: 0 5px; border-radius: 8px;
            font-size: 10px; font-weight: 600; background: #e8edf5;
            color: #3a5a8c; vertical-align: middle; }
-/* All-players table column constraints — fixed layout so expanding a row's
-   match history (which inserts a new <tr>) never reflows/rewraps the
-   columns of rows already on screen. Switched to table-layout:auto so
-   the Team column can auto-size to content; other columns get explicit
-   pixel widths as hints. .ap-wrap scrolls horizontally on mobile. */
+/* All-players table — .ap-wrap scrolls horizontally on mobile. */
 .ap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 #ap-table { width: 100%; min-width: 700px; }
 #ap-table th { white-space: nowrap; }
 #ap-table td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Player and Team columns: width:1%+nowrap shrinks each to its longest
-   content value, leaving numeric columns the remaining space. */
+   content value, leaving numeric columns the remaining space.
+   white-space:nowrap is essential — without it, width:1% is taken literally
+   (~7px) and the browser word-wraps every team name. */
 #ap-table > thead > tr > th:nth-child(1),
 #ap-table > tbody > tr > td:nth-child(1) { width: 1%; white-space: nowrap; }
 #ap-table > thead > tr > th:nth-child(2),
-#ap-table > tbody > tr > td:nth-child(2) { width: 1%; white-space: nowrap; }
-/* Team column: allow wrapping at max-width for long Idaho names */
-#ap-table > thead > tr > th:nth-child(2) { max-width: 160px; }
-#ap-table > tbody > tr > td:nth-child(2) { max-width: 160px; white-space: normal; overflow: visible; word-break: break-word; }
+#ap-table > tbody > tr > td:nth-child(2) { width: 1%; white-space: nowrap; max-width: 160px; }
 /* Direct-child combinator (>) so these widths don't leak into the nested
    .history-table rendered inside a colspan'd detail row */
 #ap-table > thead > tr > th:nth-child(3) { width: 40px; text-align: center; }
@@ -3739,8 +3737,8 @@ def _build_sectionals_rosters(
             curr = p.get(f"rating_{_sfx}") or p.get("current_division_rating")
             nk = _nkey(p.get("name", ""))
             pst = (player_stats or {}).get(nk, {})
-            _w = pst.get("w", 0)
-            _l = pst.get("l", 0)
+            _w = pst.get(f"w{_sfx}", 0)
+            _l = pst.get(f"l{_sfx}", 0)
             _wko = pst.get("wko", 0)
             if _w + _l > 0:
                 wl = f"{_w}-{_l}" + ("*" if _wko else "")

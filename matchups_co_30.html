@@ -70,24 +70,19 @@ tr:last-child td { border-bottom: none; }
 .sf-pill { display: inline-block; padding: 0 5px; border-radius: 8px;
            font-size: 10px; font-weight: 600; background: #e8edf5;
            color: #3a5a8c; vertical-align: middle; }
-/* All-players table column constraints — fixed layout so expanding a row's
-   match history (which inserts a new <tr>) never reflows/rewraps the
-   columns of rows already on screen. Switched to table-layout:auto so
-   the Team column can auto-size to content; other columns get explicit
-   pixel widths as hints. .ap-wrap scrolls horizontally on mobile. */
+/* All-players table — .ap-wrap scrolls horizontally on mobile. */
 .ap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 #ap-table { width: 100%; min-width: 700px; }
 #ap-table th { white-space: nowrap; }
 #ap-table td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Player and Team columns: width:1%+nowrap shrinks each to its longest
-   content value, leaving numeric columns the remaining space. */
+   content value, leaving numeric columns the remaining space.
+   white-space:nowrap is essential — without it, width:1% is taken literally
+   (~7px) and the browser word-wraps every team name. */
 #ap-table > thead > tr > th:nth-child(1),
 #ap-table > tbody > tr > td:nth-child(1) { width: 1%; white-space: nowrap; }
 #ap-table > thead > tr > th:nth-child(2),
-#ap-table > tbody > tr > td:nth-child(2) { width: 1%; white-space: nowrap; }
-/* Team column: allow wrapping at max-width for long Idaho names */
-#ap-table > thead > tr > th:nth-child(2) { max-width: 160px; }
-#ap-table > tbody > tr > td:nth-child(2) { max-width: 160px; white-space: normal; overflow: visible; word-break: break-word; }
+#ap-table > tbody > tr > td:nth-child(2) { width: 1%; white-space: nowrap; max-width: 160px; }
 /* Direct-child combinator (>) so these widths don't leak into the nested
    .history-table rendered inside a colspan'd detail row */
 #ap-table > thead > tr > th:nth-child(3) { width: 40px; text-align: center; }
