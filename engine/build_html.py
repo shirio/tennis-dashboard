@@ -1454,9 +1454,9 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
                     "sc": rec["score"],
                     "wk": rec.get("wko", False) or None,
                     "pt": rec["partners"] or None,
-                    "ptr": [r for r in rec["partner_r"] if r] or None,
+                    "ptr": ([r or None for r in rec["partner_r"]] if any(rec["partner_r"]) else None),
                     "op": rec["opps"] or None,
-                    "or": [r for r in rec["opp_r"] if r] or None,
+                    "or": ([r or None for r in rec["opp_r"]] if any(rec["opp_r"]) else None),
                     "ot": _abbrev_team(rec.get("opp_team", ""), case_map) or None,
                     "pr": _ap_pit_rating(nk, rec["date"], rec["div"].replace(".", "")) or None,
                     "dq": rec.get("dq") or None,
@@ -2392,7 +2392,7 @@ function toggleHistory(tr) {
       };
       var opArr = r.op || [], orArr = r.or || [];
       var opHtml = opArr.length
-        ? opArr.map(function(o,i){ return '<span style="white-space:nowrap">' + o + dqBadge(o) + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : '') + '</span>'; }).join(' / ')
+        ? opArr.map(function(o,i){ return '<span style="white-space:nowrap">' + o + dqBadge(o) + (orArr[i] != null ? '<em class="hr"> ('+(orArr[i]||'NR')+')</em>' : '') + '</span>'; }).join(' / ')
         : '<em class="hr">default</em>';
       var ptArr = r.pt || [], ptrArr = r.ptr || [];
       var ptHtml = ptArr.length

@@ -55,7 +55,7 @@ tr:last-child td { border-bottom: none; }
 .st-table thead th[colspan] { text-align: center; }
 .rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
 .rpane table th:nth-child(1) { white-space: nowrap; }
-.rpane table td:nth-child(1) { max-width: 140px; word-break: break-word; }
+.pname-cell { min-width: 120px; max-width: 140px; overflow-wrap: break-word; }
 .muted { color: #aaa; font-size: 11px; }
 .wl-footnote { color: #999; font-size: 11px; margin-top: 0.4rem; padding-left: 0.3rem; }
 /* Badges */
@@ -1099,7 +1099,7 @@ function toggleHistory(tr) {
       };
       var opArr = r.op || [], orArr = r.or || [];
       var opHtml = opArr.length
-        ? opArr.map(function(o,i){ return '<span style="white-space:nowrap">' + o + dqBadge(o) + (orArr[i] ? '<em class="hr"> ('+orArr[i]+')</em>' : '') + '</span>'; }).join(' / ')
+        ? opArr.map(function(o,i){ return '<span style="white-space:nowrap">' + o + dqBadge(o) + (orArr[i] != null ? '<em class="hr"> ('+(orArr[i]||'NR')+')</em>' : '') + '</span>'; }).join(' / ')
         : '<em class="hr">default</em>';
       var ptArr = r.pt || [], ptrArr = r.ptr || [];
       var ptHtml = ptArr.length
