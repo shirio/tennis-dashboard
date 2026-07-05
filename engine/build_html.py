@@ -220,12 +220,19 @@ def _simplify_subflight_labels(subflights: list[dict], ntrp: str = "") -> dict[s
     dominant = sorted([l for l in regular if cleaned[l].startswith(best_prefix + " ")]) if best_prefix else []
     others = sorted([l for l in regular if l not in dominant])
 
+    def _abbrev_sf_suffix(s: str) -> str:
+        s = re.sub(r'\bSOUTHERN\s+COLORADO\b', 'SOCO', s, flags=re.IGNORECASE)
+        s = re.sub(r'\bNORTHERN\s+COLORADO\b', 'NOCO', s, flags=re.IGNORECASE)
+        s = re.sub(r'\bFLIGHT\b\s*', '', s, flags=re.IGNORECASE)
+        return s.strip()
+
     letter_idx = 0
     for lbl in dominant + others:
         letter = chr(ord('A') + letter_idx)
         letter_idx += 1
         clean = cleaned[lbl]
         suffix = clean[len(best_prefix):].strip() if lbl in dominant else clean
+        suffix = _abbrev_sf_suffix(suffix)
         # Determine group name
         if lbl in dominant:
             group_name = best_prefix.title()
@@ -1534,10 +1541,10 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
 
     return f"""
 <div class="ap-controls">
-  <input type="text" id="player-search" placeholder="Filter by name or team…"
-         oninput="filterPlayers()">
   {state_btns}
   {sf_section}
+  <input type="text" id="player-search" placeholder="Filter by name or team…"
+         oninput="filterPlayers()">
 </div>
 <div class="ap-wrap">
 <table id="ap-table">
