@@ -78,7 +78,8 @@ tr:last-child td { border-bottom: none; }
    scroll so the table is never squeezed below that minimum. */
 .ap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 #ap-table { table-layout: fixed; width: 100%; min-width: 700px; }
-#ap-table th { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#ap-table th { white-space: nowrap; }
+#ap-table td { overflow: hidden; text-overflow: ellipsis; }
 /* Direct-child combinator (>) so these widths don't leak into the nested
    .history-table rendered inside a colspan'd detail row — a bare descendant
    selector here would match ITS <th>s too, since they're still inside
