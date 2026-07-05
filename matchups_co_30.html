@@ -73,8 +73,11 @@ tr:last-child td { border-bottom: none; }
 /* All-players table column constraints — fixed layout so expanding a row's
    match history (which inserts a new <tr>) never reflows/rewraps the
    columns of rows already on screen. Widths set on <th> (first row),
-   which table-layout:fixed uses to size every column for the whole table. */
-#ap-table { table-layout: fixed; width: 100%; }
+   which table-layout:fixed uses to size every column for the whole table.
+   min-width keeps columns readable on mobile; .ap-wrap provides horizontal
+   scroll so the table is never squeezed below that minimum. */
+.ap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+#ap-table { table-layout: fixed; width: 100%; min-width: 700px; }
 #ap-table th { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Direct-child combinator (>) so these widths don't leak into the nested
    .history-table rendered inside a colspan'd detail row — a bare descendant

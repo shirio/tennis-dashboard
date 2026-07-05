@@ -73,8 +73,11 @@ tr:last-child td { border-bottom: none; }
 /* All-players table column constraints — fixed layout so expanding a row's
    match history (which inserts a new <tr>) never reflows/rewraps the
    columns of rows already on screen. Widths set on <th> (first row),
-   which table-layout:fixed uses to size every column for the whole table. */
-#ap-table { table-layout: fixed; width: 100%; }
+   which table-layout:fixed uses to size every column for the whole table.
+   min-width keeps columns readable on mobile; .ap-wrap provides horizontal
+   scroll so the table is never squeezed below that minimum. */
+.ap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+#ap-table { table-layout: fixed; width: 100%; min-width: 700px; }
 #ap-table th { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Direct-child combinator (>) so these widths don't leak into the nested
    .history-table rendered inside a colspan'd detail row — a bare descendant
@@ -365,6 +368,7 @@ tr:last-child td { border-bottom: none; }
   
   <div class="sf-filter-btns" id="sf-filter-btns"><button class="rtab on" onclick="filterPlayerSF('all',this)">All</button><button class="rtab" onclick="filterPlayerSF('A',this)">A</button></div>
 </div>
+<div class="ap-wrap">
 <table id="ap-table">
   <thead><tr>
     <th class="sortable" onclick="sortAP(0)">Player ↕</th>
@@ -377,7 +381,7 @@ tr:last-child td { border-bottom: none; }
     <th class="sortable" onclick="sortAP(7)">W–L ↕</th>
     <th class="sortable" onclick="sortAP(8)">Sets ↕</th>
     <th class="sortable" onclick="sortAP(9)">Games ↕</th>
-    <th class="sortable" onclick="sortAP(10)">Avg Opp ↕</th>
+    <th class="sortable" onclick="sortAP(10)">Opp ↕</th>
   </tr></thead>
   <tbody><tr data-sf='A' data-pkey='jennifer jennings' data-state='ID' class='player-row expandable' data-history='[{"dt":"5/14/2026","dv":"30","ln":"D2","w":true,"sc":"2-6 6-2 1-0","pt":["Camille Aguinaga"],"ptr":["2.60"],"op":["Lisa Packer","Karen Walker"],"or":["2.74","2.56"],"ot":"The Real Housewives of the Hard Court","pr":"3.04"},{"dt":"5/21/2026","dv":"30","ln":"S2","w":true,"sc":"6-2 6-1","op":["Tina Taylor"],"or":["2.76"],"ot":"Hailey Ball","pr":"2.98"},{"dt":"5/28/2026","dv":"30","ln":"D1","w":true,"sc":"6-2 6-3","pt":["Camille Aguinaga"],"ptr":["2.57"],"op":["Cherie Ball","Nichole Ball"],"or":["2.64","2.52"],"ot":"Lucky Strings","pr":"3.00"},{"dt":"6/4/2026","dv":"30","ln":"D1","w":true,"sc":"6-3 6-1","pt":["Ashley Benson"],"ptr":["2.64"],"op":["Lisa Packer","Jennifer Sewell"],"or":["2.81","2.56"],"ot":"The Real Housewives of the Hard Court","pr":"3.01"},{"dt":"6/23/2026","dv":"30","ln":"D3","w":true,"sc":"6-1 6-2","pt":["Ashley Benson"],"ptr":["2.72"],"op":["Christi Ball","Natalie Buttars"],"or":["2.53","2.82"],"ot":"Hailey Ball","pr":"3.02"}]' data-combined='5–0 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Jennifer Jennings</td><td>IDAHO FALLS</td><td data-sort='A'><span class='sf-pill'>A</span></td><td data-sort='3.0 C'>3.0 C</td><td>3.04</td><td><span class="rd">3.03</span></td><td data-sort='-0.0133'><span class="gdiff-dn">-0.01</span></td><td data-sort='500' style='white-space:nowrap'>5-0</td><td data-sort='999' style='white-space:nowrap'>10–1</td><td data-sort='5677' style='white-space:nowrap'>57–23</td><td data-sort='2.6600'>2.66</td></tr>
 <tr data-sf='A' data-pkey='emily mccormick' data-state='ID' class='player-row expandable' data-history='[{"dt":"5/14/2026","dv":"30","ln":"S2","w":true,"sc":"6-3 6-3","op":["Nicole Baldwin"],"or":["2.89"],"ot":"Idaho Falls","pr":"3.00"},{"dt":"5/21/2026","dv":"30","ln":"S2","w":true,"sc":"6-3 6-1","op":["Sonja Facer"],"or":["2.57"],"ot":"Lucky Strings","pr":"3.03"},{"dt":"5/28/2026","dv":"30","ln":"S1","w":true,"sc":"6-3 6-0","op":["Kodi Howell"],"or":["2.73"],"ot":"Hailey Ball","pr":"3.04"},{"dt":"6/11/2026","dv":"30","ln":"D1","w":true,"sc":"6-4 6-3","pt":["Joanna Bennett"],"ptr":["2.74"],"op":["Nichole Ball","Cori Cannon"],"or":["2.58","2.78"],"ot":"Lucky Strings","pr":"3.05"},{"dt":"6/23/2026","dv":"30","ln":"S1","w":true,"sc":"4-6 6-3 1-0","op":["Betsy Hunsicker"],"or":["2.79"],"ot":"Lucky Strings","pr":"3.06"}]' data-combined='5–0 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Emily McCormick</td><td>THE REAL HOUSEWIVES OF THE HARD COURT</td><td data-sort='A'><span class='sf-pill'>A</span></td><td data-sort='3.0 C'>3.0 C</td><td>3.00</td><td><span class="rn">3.00</span></td><td data-sort='-0.0006'><span class='gdiff-zero'>0</span></td><td data-sort='500' style='white-space:nowrap'>5-0</td><td data-sort='999' style='white-space:nowrap'>10–1</td><td data-sort='5871' style='white-space:nowrap'>59–29</td><td data-sort='2.7233'>2.72</td></tr>
@@ -434,6 +438,7 @@ tr:last-child td { border-bottom: none; }
 <tr data-sf='A' data-pkey='sharon oliver' data-state='ID' class='player-row expandable' data-history='[{"dt":"5/14/2026","dv":"30","ln":"D3","w":false,"sc":"6-0 6-1","pt":["Ashley Benson"],"ptr":["2.64"],"op":["Monica Kuhn","Michelle Marlowe"],"or":["2.91","2.66"],"ot":"The Real Housewives of the Hard Court","pr":"2.03"},{"dt":"5/21/2026","dv":"30","ln":"D2","w":false,"sc":"6-3 7-6","pt":["Nicole Baldwin"],"ptr":["2.89"],"op":["Cari Boyle","Christi Ball"],"or":["2.71","2.51"],"ot":"Hailey Ball","pr":"2.03"},{"dt":"5/28/2026","dv":"30","ln":"D2","w":false,"sc":"6-2 6-4","pt":["Coleen Niemann"],"ptr":["2.63"],"op":["Brooke Bedke","Sonja Facer"],"or":["2.78","2.59"],"ot":"Lucky Strings","pr":"1.98"},{"dt":"6/4/2026","dv":"30","ln":"D3","w":false,"sc":"7-6 6-2","pt":["Heidi Southwick"],"ptr":["2.35"],"op":["Larcen Petersen","Heather Redd"],"or":["2.70","2.56"],"ot":"The Real Housewives of the Hard Court","pr":"1.98"},{"dt":"6/11/2026","dv":"30","ln":"D2","w":false,"sc":"6-2 6-2","pt":["Crista Rostrom"],"ptr":["2.63"],"op":["JESSICA SKIDMORE","Lexie Kerby"],"or":["2.79","2.95"],"ot":"Hailey Ball","pr":"1.98"},{"dt":"6/16/2026","dv":"30","ln":"D2","w":false,"sc":"6-1 6-1","pt":["Heidi Southwick"],"ptr":["2.43"],"op":["Aleesa Wilcox","Cherie Ball"],"or":["2.77","2.64"],"ot":"Lucky Strings","pr":"1.98"},{"dt":"6/19/2026","dv":"30","ln":"D2","w":false,"sc":"7-5 6-1","pt":["Coleen Niemann"],"ptr":["2.66"],"op":["Monica Kuhn","Melissa Marshall"],"or":["2.93","2.66"],"ot":"The Real Housewives of the Hard Court","pr":"1.98"}]' data-combined='0–7 in 3.0' onclick="toggleHistory(this)"><td class='pname'>Sharon Oliver</td><td>IDAHO FALLS</td><td data-sort='A'><span class='sf-pill'>A</span></td><td data-sort='2.5 C'>2.5 C</td><td>2.03</td><td><span class="rd">1.98</span></td><td data-sort='-0.0506'><span class="gdiff-dn">-0.05</span></td><td data-sort='-7' style='white-space:nowrap'>0-7</td><td data-sort='-14' style='white-space:nowrap'>0–14</td><td data-sort='3513' style='white-space:nowrap'>36–87</td><td data-sort='2.7257'>2.73</td></tr>
 </tbody>
 </table>
+</div>
 <p class="wl-footnote">* W–L excludes defaults/walkovers (opponent absent)</p></div>
 <div id="allresults" class="pane"><div class="re-rating-toggle"><span class="re-rtog-label">Ratings:</span><button class="rtab" onclick="setResultRatingMode('none',this)">None</button><button class="rtab" onclick="setResultRatingMode('base',this)">Base</button><button class="rtab on" onclick="setResultRatingMode('new',this)">New</button></div><div class="rtabs" id="re-sf-tabs"><button class="rtab sf-switcher on" data-sf="A" onclick="filterSF('A',this,'re-sf-tabs','re-tabs','re')">A</button>
 </div><div class="rtabs scrollable" id="re-tabs"><button class="rtab on" data-sf="A" onclick="sr('re-a-hailey-ball',this,'re-tabs')">Hailey Ball</button>

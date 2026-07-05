@@ -73,8 +73,11 @@ tr:last-child td { border-bottom: none; }
 /* All-players table column constraints — fixed layout so expanding a row's
    match history (which inserts a new <tr>) never reflows/rewraps the
    columns of rows already on screen. Widths set on <th> (first row),
-   which table-layout:fixed uses to size every column for the whole table. */
-#ap-table { table-layout: fixed; width: 100%; }
+   which table-layout:fixed uses to size every column for the whole table.
+   min-width keeps columns readable on mobile; .ap-wrap provides horizontal
+   scroll so the table is never squeezed below that minimum. */
+.ap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+#ap-table { table-layout: fixed; width: 100%; min-width: 700px; }
 #ap-table th { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Direct-child combinator (>) so these widths don't leak into the nested
    .history-table rendered inside a colspan'd detail row — a bare descendant
@@ -560,6 +563,7 @@ tr:last-child td { border-bottom: none; }
   
   <div class="sf-filter-btns" id="sf-filter-btns"><button class="rtab on" onclick="filterPlayerSF('all',this)">All</button><button class="rtab" onclick="filterPlayerSF('A',this)">A</button><button class="rtab" onclick="filterPlayerSF('B',this)">B</button></div>
 </div>
+<div class="ap-wrap">
 <table id="ap-table">
   <thead><tr>
     <th class="sortable" onclick="sortAP(0)">Player ↕</th>
@@ -572,7 +576,7 @@ tr:last-child td { border-bottom: none; }
     <th class="sortable" onclick="sortAP(7)">W–L ↕</th>
     <th class="sortable" onclick="sortAP(8)">Sets ↕</th>
     <th class="sortable" onclick="sortAP(9)">Games ↕</th>
-    <th class="sortable" onclick="sortAP(10)">Avg Opp ↕</th>
+    <th class="sortable" onclick="sortAP(10)">Opp ↕</th>
   </tr></thead>
   <tbody><tr data-sf='' data-pkey='heather george' data-state='NV' class='player-row' onclick="toggleHistory(this)"><td class='pname'>Heather George</td><td>SPORTS MALL-WOOD</td><td data-sort=''><span class='sf-pill'></span></td><td data-sort='4.0 C'>4.0 C</td><td>3.92</td><td><span class="rd">3.73</span></td><td data-sort='-0.1921'><span class="gdiff-dn">-0.19</span></td><td data-sort='-3' style='white-space:nowrap'>0-3</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0' style='white-space:nowrap'>–</td><td data-sort='0'>–</td></tr>
 <tr data-sf='B' data-pkey='kathleen chamberlain' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"35","ln":"D1","w":true,"sc":"6-3 4-6 1-0","pt":["Mary Lind"],"ptr":["3.37"],"op":["Anne Gumm","Chelsea Gray"],"or":["3.52","3.53"],"ot":"Dragonridge","pr":"3.56"},{"dt":"4/25/2026","dv":"35","ln":"D1","w":true,"sc":"6-0 6-0","pt":["Megan Galli"],"ptr":["3.39"],"op":["Susan Grady","Kathryn Marmor"],"or":["3.05","3.03"],"ot":"TPC","pr":"3.60"},{"dt":"5/9/2026","dv":"35","ln":"D3","w":true,"sc":"6-1 6-1","pt":["Travis Azous"],"ptr":["3.43"],"op":["Kelly McPherson","Michelle Jarvis"],"or":["3.35","3.06"],"ot":"DTC #1","pr":"3.61"},{"dt":"5/23/2026","dv":"35","ln":"D1","w":true,"sc":"3-6 6-2 1-0","pt":["Travis Azous"],"ptr":["3.45"],"op":["Sara Sager","My Vuong"],"or":["3.61","3.36"],"ot":"S. Trail #1","pr":"3.61"},{"dt":"6/6/2026","dv":"35","ln":"D1","w":true,"sc":"6-0 6-0","pt":["Travis Azous"],"ptr":["3.49"],"op":["Kelly Nguyen","Donna Lefever"],"or":["3.24","3.40"],"ot":"DTC #3","pr":"3.64"}]' data-combined='5–0 in 3.5' onclick="toggleHistory(this)"><td class='pname'>Kathleen Chamberlain</td><td>Red Rock #2</td><td data-sort='B'><span class='sf-pill'>B</span></td><td data-sort='3.5 C'>3.5 C</td><td>3.56</td><td><span class="ru">3.69</span></td><td data-sort='0.1294'><span class="gdiff-up">+0.13</span></td><td data-sort='500' style='white-space:nowrap'>5-0</td><td data-sort='998' style='white-space:nowrap'>10–2</td><td data-sort='5681' style='white-space:nowrap'>57–19</td><td data-sort='3.3150'>3.31</td></tr>
@@ -796,6 +800,7 @@ tr:last-child td { border-bottom: none; }
 <tr data-sf='A' data-pkey='ann marie weaver' data-state='NV' class='player-row expandable' data-history='[{"dt":"3/14/2026","dv":"30","ln":"D3","w":true,"sc":"6-0 6-1","pt":["Casey Primmer"],"ptr":["3.09"],"op":["Scarlett Cavalli","Yusria Malik"],"or":["2.03","2.47"],"ot":"LTF","pr":"2.84"},{"dt":"3/21/2026","dv":"35","ln":"D3","w":false,"sc":"6-1 6-0","pt":["Casey Primmer"],"ptr":["3.09"],"op":["Megan Bell","Shellene Goudge"],"or":["3.42","3.41"],"ot":"DTC #2","pr":"2.84"},{"dt":"4/11/2026","dv":"30","ln":"D2","w":false,"sc":"6-3 6-4","pt":["Sandra Shearer"],"ptr":["2.94"],"op":["Ani Zargaryan","Jocelyn Herman"],"or":["2.78","2.51"],"ot":"Summerlin","pr":"2.84"},{"dt":"4/25/2026","dv":"30","ln":"D1","w":false,"sc":"7-5 4-6 1-0","pt":["Gina Rivera"],"ptr":["2.97"],"op":["Margaret Bruno","Shaza Nayef"],"or":["2.86","2.70"],"ot":"SoHi","pr":"2.77"},{"dt":"5/16/2026","dv":"30","ln":"D2","w":false,"sc":"6-1 2-6 1-0","pt":["Chelsi Grady"],"ptr":["2.98"],"op":["Consuelo Kinahan","Meekyoung Lee"],"or":["2.92","2.69"],"ot":"DTC #2","pr":"2.71"},{"dt":"5/30/2026","dv":"30","ln":"D1","w":true,"sc":"6-2 6-3","pt":["Casey Primmer"],"ptr":["3.08"],"op":["Jeralyn Marchesi","Candace Sartini"],"or":["3.27","2.42"],"ot":"TPC","pr":"2.67"},{"dt":"6/6/2026","dv":"30","ln":"D2","w":false,"sc":"3-6 6-4 1-0","pt":["Gina Rivera"],"ptr":["2.96"],"op":["Brittany Carlson","Renee Johnson"],"or":["2.72","2.69"],"ot":"Summerlin","pr":"2.71"}]' data-combined='2–5 overall  (2–4 in 3.0, 0–1 in 3.5)  ·  7–10 sets  60–61 games' onclick="toggleHistory(this)"><td class='pname'>ANN MARIE WEAVER</td><td>Anthem</td><td data-sort='A'><span class='sf-pill'>A</span></td><td data-sort='3.0 C'>3.0 C</td><td>2.84</td><td><span class="rd">2.65</span></td><td data-sort='-0.1948'><span class="gdiff-dn">-0.19</span></td><td data-sort='195' style='white-space:nowrap'>2-5</td><td data-sort='-2' style='white-space:nowrap'>0–2</td><td data-sort='88' style='white-space:nowrap'>1–12</td><td data-sort='3.4150'>3.42</td></tr>
 </tbody>
 </table>
+</div>
 <p class="wl-footnote">* W–L excludes defaults/walkovers (opponent absent)</p></div>
 <div id="allresults" class="pane"><div class="re-rating-toggle"><span class="re-rtog-label">Ratings:</span><button class="rtab" onclick="setResultRatingMode('none',this)">None</button><button class="rtab" onclick="setResultRatingMode('base',this)">Base</button><button class="rtab on" onclick="setResultRatingMode('new',this)">New</button></div><div class="rtabs" id="re-sf-tabs"><button class="rtab sf-switcher on" data-sf="A" onclick="filterSF('A',this,'re-sf-tabs','re-tabs','re')">A</button>
 <button class="rtab sf-switcher" data-sf="B" onclick="filterSF('B',this,'re-sf-tabs','re-tabs','re')">B</button>

@@ -1528,6 +1528,7 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
   {state_btns}
   {sf_section}
 </div>
+<div class="ap-wrap">
 <table id="ap-table">
   <thead><tr>
     <th class="sortable" onclick="sortAP(0)">Player ↕</th>
@@ -1540,10 +1541,11 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
     <th class="sortable" onclick="sortAP(7)">W–L ↕</th>
     <th class="sortable" onclick="sortAP(8)">Sets ↕</th>
     <th class="sortable" onclick="sortAP(9)">Games ↕</th>
-    <th class="sortable" onclick="sortAP(10)">Avg Opp ↕</th>
+    <th class="sortable" onclick="sortAP(10)">Opp ↕</th>
   </tr></thead>
   <tbody>{rows}</tbody>
 </table>
+</div>
 <p class="wl-footnote">* W–L excludes defaults/walkovers (opponent absent)</p>"""
 
 
@@ -2021,8 +2023,11 @@ tr:last-child td { border-bottom: none; }
 /* All-players table column constraints — fixed layout so expanding a row's
    match history (which inserts a new <tr>) never reflows/rewraps the
    columns of rows already on screen. Widths set on <th> (first row),
-   which table-layout:fixed uses to size every column for the whole table. */
-#ap-table { table-layout: fixed; width: 100%; }
+   which table-layout:fixed uses to size every column for the whole table.
+   min-width keeps columns readable on mobile; .ap-wrap provides horizontal
+   scroll so the table is never squeezed below that minimum. */
+.ap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+#ap-table { table-layout: fixed; width: 100%; min-width: 700px; }
 #ap-table th { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Direct-child combinator (>) so these widths don't leak into the nested
    .history-table rendered inside a colspan'd detail row — a bare descendant
