@@ -93,6 +93,9 @@ tr:last-child td { border-bottom: none; }
 /* Numeric columns (SF through Opp): tight padding; no explicit th widths — content drives size. */
 #ap-table > thead > tr > th:nth-child(n+3),
 #ap-table > tbody > tr > td:nth-child(n+3) { padding: 1px 2px; }
+/* NTRP / Base / New / Diff (cols 4-7): extra horizontal breathing room. */
+#ap-table > thead > tr > th:nth-child(n+4):nth-child(-n+7),
+#ap-table > tbody > tr > td:nth-child(n+4):nth-child(-n+7) { padding-left: 4px; padding-right: 4px; }
 /* All-players history expansion */
 .player-row.expandable { cursor: pointer; }
 .player-row.expandable:hover { background: #f5f7fa; }

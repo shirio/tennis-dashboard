@@ -1388,9 +1388,9 @@ def _compute_division_sequential(
                 # Lever 5 — chronic loser: block positive contributions from
                 # *losses* (games-stolen narrow-loss signals). Real wins still
                 # count above; only positive adj from losses is suppressed.
-                if adj > 0 and _is_chronic_loser(pk):
-                    _w, _l = wl_counts.get(pk, [0, 0])
-                    print(f"[L5-DIV] {pk} | {_w}-{_l} | zeroed adj={adj:.4f} | date={ev.date} | match={ev.match_id[:8]}")
+                # Singles excluded — close single losses carry a legitimate
+                # individual signal; partner-inflation is a doubles-only concern.
+                if adj > 0 and _is_chronic_loser(pk) and "Singles" not in ev.line_label:
                     adj = 0.0
                 updates[pk] = round(prev + adj, 4)
                 # Lever 5 W-L bookkeeping
@@ -1662,10 +1662,9 @@ def _compute_global_sequential(
                 match_id=ev.match_id, line_label=ev.line_label, score=ev.score,
             )
             adj = _sequential_match_adj(cur[pk], rec)
-            # Lever 5: chronic loser → block positive bumps from losses
-            if adj > 0 and _is_chronic_loser(pk):
-                _w, _l = wl_counts.get(pk, [0, 0])
-                print(f"[L5-GLOBAL] {pk} | {_w}-{_l} | zeroed adj={adj:.4f} | date={ev.date} | match={ev.match_id[:8]}")
+            # Lever 5: chronic loser → block positive bumps from losses.
+            # Singles excluded — only applies to doubles (partner-inflation concern).
+            if adj > 0 and _is_chronic_loser(pk) and "Singles" not in ev.line_label:
                 adj = 0.0
             updates[pk] = round(cur[pk] + adj, 4)
             # Bookkeeping
