@@ -2042,7 +2042,7 @@ tr:last-child td { border-bottom: none; }
 .st-table thead th[colspan] { text-align: center; }
 .rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
 .rpane table th:nth-child(1) { white-space: nowrap; }
-.pname-cell { min-width: 120px; max-width: 140px; overflow-wrap: break-word; }
+.pname-cell { white-space: nowrap; }
 .muted { color: #aaa; font-size: 11px; }
 .wl-footnote { color: #999; font-size: 11px; margin-top: 0.4rem; padding-left: 0.3rem; }
 /* Badges */
@@ -2084,6 +2084,9 @@ tr:last-child td { border-bottom: none; }
 #ap-table > thead > tr > th:nth-child(10) { width: 54px; }
 #ap-table > thead > tr > th:nth-child(11) { width: 46px; }
 #ap-table td:nth-child(3) { text-align: center; }
+/* Halve horizontal padding on numeric columns (state through games) */
+#ap-table > thead > tr > th:nth-child(n+3),
+#ap-table > tbody > tr > td:nth-child(n+3) { padding-left: 3px; padding-right: 3px; }
 /* All-players history expansion */
 .player-row.expandable { cursor: pointer; }
 .player-row.expandable:hover { background: #f5f7fa; }
