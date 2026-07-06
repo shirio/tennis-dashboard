@@ -109,7 +109,7 @@ tr:last-child td { border-bottom: none; }
 .history-wrap { padding: 8px 0 12px 0; }
 .history-summary { font-size: 11px !important; font-weight: 600; color: #555; margin-bottom: 6px;
                    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-.history-table { font-size: 11px; width: 100%; table-layout: auto; }
+.history-table { font-size: 11px; width: auto; table-layout: auto; }
 .history-table th { font-size: 10px; padding: 3px 4px; }
 /* Override #ap-table td's overflow:hidden — history cells must never clip.
    Use #ap-table prefix (specificity 1,1,1) to beat #ap-table td (1,0,1). */
@@ -1641,7 +1641,7 @@ function toggleHistory(tr) {
     var html = '<div class="history-wrap"><div class="history-summary">' + combined + '</div>'
       + '<table class="history-table"><thead><tr>'
       + '<th style="white-space:nowrap;width:1px">Date</th><th style="white-space:nowrap;width:1px;text-align:center">Div</th><th style="white-space:nowrap;width:1px">Line</th><th style="white-space:nowrap;width:1px;text-align:center">PIT</th><th style="white-space:nowrap;width:1px">R</th>'
-      + '<th>Score</th><th>Partner(s)</th><th>Opponent(s)</th><th>Opp Team</th>'
+      + '<th style="white-space:nowrap;width:1px">Score</th><th style="white-space:nowrap;width:1px">Partner(s)</th><th style="white-space:nowrap;width:1px">Opponent(s)</th><th style="white-space:nowrap;width:1px">Opp Team</th>'
       + '</tr></thead><tbody>';
     data.forEach(function(r) {
       var dv = r.dv || '';
@@ -1670,10 +1670,10 @@ function toggleHistory(tr) {
         + '<td style="white-space:nowrap;width:1px">' + (r.ln||'') + '</td>'
         + '<td style="white-space:nowrap;width:1px;text-align:center">' + prHtml + '</td>'
         + '<td style="white-space:nowrap;width:1px"><span class="' + resCls + '">' + resTxt + '</span></td>'
-        + '<td style="white-space:nowrap">' + sc + '</td>'
-        + '<td>' + ptHtml + '</td>'
-        + '<td>' + opHtml + '</td>'
-        + '<td>' + (r.ot||'') + '</td>'
+        + '<td style="white-space:nowrap;width:1px">' + sc + '</td>'
+        + '<td style="white-space:nowrap;width:1px">' + ptHtml + '</td>'
+        + '<td style="white-space:nowrap;width:1px">' + opHtml + '</td>'
+        + '<td style="white-space:nowrap;width:1px">' + (r.ot||'') + '</td>'
         + '</tr>';
     });
     html += '</tbody></table></div>';
