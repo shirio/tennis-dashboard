@@ -639,7 +639,7 @@ function toggleHistory(tr) {
         : '<em class="hr">default</em>';
       var ptArr = r.pt || [], ptrArr = r.ptr || [];
       var ptHtml = ptArr.length
-        ? ptArr.map(function(p,i){ return '<span style="white-space:nowrap">' + p + dqBadge(p) + (ptrArr[i] ? '<em class="hr"> ('+ptrArr[i]+')</em>' : '') + '</span>'; }).join(', ')
+        ? ptArr.map(function(p,i){ return p + dqBadge(p) + (ptrArr[i] ? '<br><em class="hr">('+ptrArr[i]+')</em>' : ''); }).join(', ')
         : '—';
       var sc = wko ? '<em class="hr">default</em>' : (r.sc || '');
       var prHtml = r.pr ? '<em class="prating">' + r.pr + '</em>' : '';
