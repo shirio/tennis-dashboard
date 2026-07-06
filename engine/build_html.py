@@ -2068,18 +2068,18 @@ tr:last-child td { border-bottom: none; }
    content value, leaving numeric columns the remaining space.
    white-space:nowrap is essential — without it, width:1% is taken literally
    (~7px) and the browser word-wraps every team name. */
-#ap-table > thead > tr > th:nth-child(1),
-#ap-table > tbody > tr > td:nth-child(1) { width: 1%; white-space: nowrap; }
+#ap-table > thead > tr > th:nth-child(1) { width: 1%; white-space: nowrap; }
+#ap-table > tbody > tr > td:nth-child(1) { width: 1%; white-space: normal; max-width: 100px;
+  overflow: visible; text-overflow: clip; }
 #ap-table > thead > tr > th:nth-child(2),
 #ap-table > tbody > tr > td:nth-child(2) { width: 1%; white-space: nowrap; max-width: 110px; }
 /* SF column: center-aligned; no explicit width — content drives it.
    Direct-child combinator (>) so rules don't leak into nested .history-table. */
 #ap-table > thead > tr > th:nth-child(3) { text-align: center; }
 #ap-table td:nth-child(3) { text-align: center; }
-/* Numeric columns (SF through Opp): 10px font + tight padding so all 9
-   fit ~250px on mobile. No explicit th widths — content drives column size. */
+/* Numeric columns (SF through Opp): tight padding; no explicit th widths — content drives size. */
 #ap-table > thead > tr > th:nth-child(n+3),
-#ap-table > tbody > tr > td:nth-child(n+3) { padding: 1px 2px; font-size: 10px; }
+#ap-table > tbody > tr > td:nth-child(n+3) { padding: 1px 2px; }
 /* All-players history expansion */
 .player-row.expandable { cursor: pointer; }
 .player-row.expandable:hover { background: #f5f7fa; }
