@@ -1390,7 +1390,11 @@ def _compute_division_sequential(
                 # count above; only positive adj from losses is suppressed.
                 # Singles excluded — close single losses carry a legitimate
                 # individual signal; partner-inflation is a doubles-only concern.
-                if adj > 0 and _is_chronic_loser(pk) and "Singles" not in ev.line_label:
+                # Supertiebreak losses excluded — winning a full set and taking
+                # the match to a STB is competitive play, not chronic losing.
+                _sets5 = _parse_sets(ev.score)
+                _is_stb5 = len(_sets5) == 3 and (_sets5[2][0] + _sets5[2][1]) == 1
+                if adj > 0 and _is_chronic_loser(pk) and "Singles" not in ev.line_label and not _is_stb5:
                     adj = 0.0
                 updates[pk] = round(prev + adj, 4)
                 # Lever 5 W-L bookkeeping
@@ -1664,7 +1668,11 @@ def _compute_global_sequential(
             adj = _sequential_match_adj(cur[pk], rec)
             # Lever 5: chronic loser → block positive bumps from losses.
             # Singles excluded — only applies to doubles (partner-inflation concern).
-            if adj > 0 and _is_chronic_loser(pk) and "Singles" not in ev.line_label:
+            # Supertiebreak losses excluded — winning a set and pushing to STB
+            # is competitive play, not the chronic-loser inflation pattern.
+            _sets5g = _parse_sets(ev.score)
+            _is_stb5g = len(_sets5g) == 3 and (_sets5g[2][0] + _sets5g[2][1]) == 1
+            if adj > 0 and _is_chronic_loser(pk) and "Singles" not in ev.line_label and not _is_stb5g:
                 adj = 0.0
             updates[pk] = round(cur[pk] + adj, 4)
             # Bookkeeping
