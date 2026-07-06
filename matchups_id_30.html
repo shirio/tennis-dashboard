@@ -737,7 +737,7 @@ function toggleHistory(tr) {
     var combined = tr.dataset.combined || '';
     var html = '<div class="history-wrap"><div class="history-summary">' + combined + '</div>'
       + '<table class="history-table"><thead><tr>'
-      + '<th>Date</th><th style="text-align:center">Div</th><th>Line</th><th style="white-space:nowrap;width:1px;text-align:center">PIT</th><th style="white-space:nowrap;width:1px">R</th>'
+      + '<th style="white-space:nowrap;width:1px">Date</th><th style="white-space:nowrap;width:1px;text-align:center">Div</th><th style="white-space:nowrap;width:1px">Line</th><th style="white-space:nowrap;width:1px;text-align:center">PIT</th><th style="white-space:nowrap;width:1px">R</th>'
       + '<th>Score</th><th>Partner(s)</th><th>Opponent(s)</th><th>Opp Team</th>'
       + '</tr></thead><tbody>';
     data.forEach(function(r) {
@@ -762,11 +762,11 @@ function toggleHistory(tr) {
       var prHtml = r.pr ? '<em class="prating">' + r.pr + '</em>' : '';
       var rowCls = dqArr.length ? ' class="hist-row-dq" title="Invalid match — ' + dqArr.join(', ') + ' disqualified"' : '';
       html += '<tr' + rowCls + '>'
-        + '<td style="white-space:nowrap">' + (r.dt||'').replace(/\/\d{4}$/, '') + '</td>'
-        + '<td style="text-align:center">' + divPill + '</td>'
-        + '<td>' + (r.ln||'') + '</td>'
-        + '<td style="text-align:center">' + prHtml + '</td>'
-        + '<td><span class="' + resCls + '">' + resTxt + '</span></td>'
+        + '<td style="white-space:nowrap;width:1px">' + (r.dt||'').replace(/\/\d{4}$/, '') + '</td>'
+        + '<td style="white-space:nowrap;width:1px;text-align:center">' + divPill + '</td>'
+        + '<td style="white-space:nowrap;width:1px">' + (r.ln||'') + '</td>'
+        + '<td style="white-space:nowrap;width:1px;text-align:center">' + prHtml + '</td>'
+        + '<td style="white-space:nowrap;width:1px"><span class="' + resCls + '">' + resTxt + '</span></td>'
         + '<td style="white-space:nowrap">' + sc + '</td>'
         + '<td>' + ptHtml + '</td>'
         + '<td>' + opHtml + '</td>'
