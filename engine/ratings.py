@@ -257,15 +257,15 @@ _SIGNAL_3SET: dict[tuple, float] = {
     (True,  False, False, False, True):  +0.10,  # Even S1 win   + Even S2 loss → won TB (even match)
     (True,  True,  False, True,  True):  +0.08,  # Rout S1 win   + Rout S2 loss → won TB
     (True,  False, False, True,  True):  +0.05,  # Even S1 win   + Rout S2 loss → won TB
-    # Lost the tiebreak — symmetric: same S1/S2 magnitude, negated
-    (False, False, True,  True,  False): -0.25,  # Even S1 loss  + Rout S2 win  → lost TB
-    (True,  True,  False, False, False): -0.20,  # Rout S1 win   + Even S2 loss → lost TB
-    (False, True,  True,  True,  False): -0.15,  # Rout S1 loss  + Rout S2 win  → lost TB
-    (False, False, True,  False, False): -0.13,  # Even S1 loss  + Even S2 win  → lost TB
-    (False, True,  True,  False, False): -0.12,  # Rout S1 loss  + Even S2 win  → lost TB
-    (True,  False, False, False, False): -0.10,  # Even S1 win   + Even S2 loss → lost TB (even match)
-    (True,  True,  False, True,  False): -0.08,  # Rout S1 win   + Rout S2 loss → lost TB
-    (True,  False, False, True,  False): -0.05,  # Even S1 win   + Rout S2 loss → lost TB
+    # Lost the tiebreak — ranked by how badly you underperformed given S1/S2 story
+    (True,  False, False, True,  False): -0.25,  # Even S1 win   + Got routed in S2 → lost TB (had lead, fell apart)
+    (True,  True,  False, True,  False): -0.20,  # Dominated S1  + Got routed in S2 → lost TB
+    (False, True,  True,  False, False): -0.18,  # Got routed S1 + Won S2 evenly    → lost TB
+    (True,  False, False, False, False): -0.15,  # Even S1 win   + Lost S2 evenly   → lost TB (even match)
+    (False, False, True,  False, False): -0.12,  # Even S1 loss  + Won S2 evenly    → lost TB
+    (True,  True,  False, False, False): -0.10,  # Dominated S1  + Lost S2 evenly   → lost TB
+    (False, True,  True,  True,  False): -0.08,  # Got routed S1 + Dominated S2     → lost TB
+    (False, False, True,  True,  False): -0.05,  # Even S1 loss  + Dominated S2     → lost TB (showed strength, coin flip)
 }
 
 _ROUT_THRESHOLD = 0.40   # strict > threshold: dom > 0.40 is a rout (6-0/6-1/6-2); 6-3 (dom=0.40) is even
