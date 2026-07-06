@@ -2061,7 +2061,7 @@ tr:last-child td { border-bottom: none; }
            color: #3a5a8c; vertical-align: middle; }
 /* All-players table — .ap-wrap scrolls horizontally on mobile. */
 .ap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-#ap-table { width: 100%; min-width: 700px; }
+#ap-table { width: 100%; }
 #ap-table th { white-space: nowrap; }
 #ap-table td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 /* Player and Team columns: width:1%+nowrap shrinks each to its longest
@@ -2071,22 +2071,15 @@ tr:last-child td { border-bottom: none; }
 #ap-table > thead > tr > th:nth-child(1),
 #ap-table > tbody > tr > td:nth-child(1) { width: 1%; white-space: nowrap; }
 #ap-table > thead > tr > th:nth-child(2),
-#ap-table > tbody > tr > td:nth-child(2) { width: 1%; white-space: nowrap; max-width: 160px; }
-/* Direct-child combinator (>) so these widths don't leak into the nested
-   .history-table rendered inside a colspan'd detail row */
-#ap-table > thead > tr > th:nth-child(3) { width: 28px; text-align: center; }
-#ap-table > thead > tr > th:nth-child(4) { width: 40px; }
-#ap-table > thead > tr > th:nth-child(5) { width: 38px; }
-#ap-table > thead > tr > th:nth-child(6) { width: 38px; }
-#ap-table > thead > tr > th:nth-child(7) { width: 40px; }
-#ap-table > thead > tr > th:nth-child(8) { width: 40px; }
-#ap-table > thead > tr > th:nth-child(9) { width: 38px; }
-#ap-table > thead > tr > th:nth-child(10) { width: 44px; }
-#ap-table > thead > tr > th:nth-child(11) { width: 38px; }
+#ap-table > tbody > tr > td:nth-child(2) { width: 1%; white-space: nowrap; max-width: 110px; }
+/* SF column: center-aligned; no explicit width — content drives it.
+   Direct-child combinator (>) so rules don't leak into nested .history-table. */
+#ap-table > thead > tr > th:nth-child(3) { text-align: center; }
 #ap-table td:nth-child(3) { text-align: center; }
-/* Halve horizontal padding on numeric columns (state through games) */
+/* Numeric columns (SF through Opp): 10px font + tight padding so all 9
+   fit ~250px on mobile. No explicit th widths — content drives column size. */
 #ap-table > thead > tr > th:nth-child(n+3),
-#ap-table > tbody > tr > td:nth-child(n+3) { padding-left: 3px; padding-right: 3px; }
+#ap-table > tbody > tr > td:nth-child(n+3) { padding: 1px 2px; font-size: 10px; }
 /* All-players history expansion */
 .player-row.expandable { cursor: pointer; }
 .player-row.expandable:hover { background: #f5f7fa; }
