@@ -270,6 +270,14 @@ _SIGNAL_3SET: dict[tuple, float] = {
 
 _ROUT_THRESHOLD = 0.40   # strict > threshold: dom > 0.40 is a rout (6-0/6-1/6-2); 6-3 (dom=0.40) is even
 
+# Conditional expected LOSS signal — flat average of the 4 possible 2-set loss
+# signals in _SIGNAL_2SET: (-0.60 + -0.75 + -0.85 + -1.00) / 4 = -0.80.
+# Used only on the loss path in _match_adjustment: a loss should be judged
+# against "what does a loss typically look like", not against the win-inclusive
+# 2*expected-1 baseline (which wrongly penalises underdogs for losing
+# competitively, since their win probability drags the baseline toward 0).
+_EXPECTED_LOSS_SIGNAL = -0.80
+
 
 @dataclass
 class RatingsSummary:
@@ -568,24 +576,20 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
     if not record.won and expected < 0.50 and len(sets) == 3:
         raw_signal = max(raw_signal, -0.15)
 
-    # Map expected [0, 1] → [-1, +1] to match the raw_signal scale.
-    # expected=0.50 → 0.0 (even match), expected=0.80 → +0.60 (favoured)
-    expected_signal = 2.0 * expected - 1.0
-
-    # Heavy underdog loss: the linear formula underestimates how bad a loss
-    # is "expected" to look. A 13.6% underdog is expected to lose in routs
-    # (Rout+Rout = −1.0), not at the −0.73 midpoint. Blend expected_signal
-    # toward −1.0 as underdog severity increases so that any set where the
-    # underdog holds their own reads as a genuine overperformance.
-    #   expected=0.30 → no shift (boundary)
-    #   expected=0.20 → expected_signal ≈ −0.73  (small shift)
-    #   expected=0.13 → expected_signal ≈ −0.88  (meaningful shift)
-    #   expected=0.00 → expected_signal = −1.00  (fully worst-case)
-    if not record.won and expected < 0.30:
-        underdog_factor = (0.30 - expected) / 0.30
-        expected_signal = (
-            expected_signal * (1.0 - underdog_factor) + (-1.0) * underdog_factor
-        )
+    if record.won:
+        # Map expected [0, 1] → [-1, +1] to match the raw_signal scale.
+        # expected=0.50 → 0.0 (even match), expected=0.80 → +0.60 (favoured)
+        expected_signal = 2.0 * expected - 1.0
+    else:
+        # Conditional expected LOSS signal: judge a loss against what a loss
+        # typically looks like, not against the win-inclusive 2*expected-1
+        # baseline. That baseline bakes in win probability, so a 35% underdog
+        # who loses Even+Even (raw_signal=-0.60) was compared to -0.30 and
+        # read as underperforming — when in fact keeping it close against a
+        # favoured opponent is an overperformance. _EXPECTED_LOSS_SIGNAL is
+        # flat because both heavy favourites and heavy underdogs lose across
+        # the full range of the scenario table (see its definition above).
+        expected_signal = _EXPECTED_LOSS_SIGNAL
 
     surprise = raw_signal - expected_signal
 
@@ -602,6 +606,15 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
     # negative adjustment from a loss.  Going to a tiebreak against stronger opponents
     # is an overperformance regardless of the set-by-set story — the scenario table
     # is calibrated for neutral players and shouldn't override this floor.
+    #
+    # NOTE (post _EXPECTED_LOSS_SIGNAL fix): the conditional loss baseline now
+    # already rewards underdogs who lose competitively (better than -0.80) with
+    # a positive adj on its own — this floor is a no-op for those cases. It
+    # still fires (and matters) when an underdog loses BADLY (worse than -0.80,
+    # e.g. Rout+Rout as a 35% underdog): the new formula would correctly assign
+    # a negative adj there, but this floor zeroes it out. Revisit whether that
+    # masking is still desired now that the conditional formula can distinguish
+    # competitive underdog losses from bad ones.
     if not record.won and expected < 0.50:
         adj = max(adj, 0.0)   # underdog who lost: never penalised
 
