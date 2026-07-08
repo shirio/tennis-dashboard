@@ -580,16 +580,21 @@ def _match_adjustment(player_rating: float, record: MatchRecord,
         # Map expected [0, 1] → [-1, +1] to match the raw_signal scale.
         # expected=0.50 → 0.0 (even match), expected=0.80 → +0.60 (favoured)
         expected_signal = 2.0 * expected - 1.0
-    else:
-        # Conditional expected LOSS signal: judge a loss against what a loss
-        # typically looks like, not against the win-inclusive 2*expected-1
-        # baseline. That baseline bakes in win probability, so a 35% underdog
-        # who loses Even+Even (raw_signal=-0.60) was compared to -0.30 and
-        # read as underperforming — when in fact keeping it close against a
-        # favoured opponent is an overperformance. _EXPECTED_LOSS_SIGNAL is
-        # flat because both heavy favourites and heavy underdogs lose across
-        # the full range of the scenario table (see its definition above).
+    elif expected < 0.50:
+        # Conditional expected LOSS signal for underdogs: judge a loss against
+        # what a loss typically looks like, not against the win-inclusive
+        # 2*expected-1 baseline. That baseline bakes in win probability, so a
+        # 35% underdog who loses Even+Even (raw_signal=-0.60) was compared to
+        # -0.30 and read as underperforming — when in fact keeping it close
+        # against a favoured opponent is an overperformance. _EXPECTED_LOSS_SIGNAL
+        # is flat because underdogs lose across the full range of the scenario
+        # table (see its definition above).
         expected_signal = _EXPECTED_LOSS_SIGNAL
+    else:
+        # Favourites who lose: keep the win-inclusive baseline. A 55% favourite
+        # losing a close 3-set tiebreak should still take a small penalty —
+        # the flat underdog baseline would wrongly zero it out.
+        expected_signal = 2.0 * expected - 1.0
 
     surprise = raw_signal - expected_signal
 

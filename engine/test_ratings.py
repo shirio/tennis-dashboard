@@ -720,17 +720,16 @@ class TestUnderdogFavorite(unittest.TestCase):
         self.assertLess(adj, 0, "Favourite losing must produce a negative adj")
 
     def test_favourite_loses_close_drops(self):
-        """3.10 loses 4-6 4-6 to 2.70 → flat, not negative.
+        """3.10 loses 4-6 4-6 to 2.70 → still negative.
 
-        Even+Even (raw_signal=-0.60) beats the conditional expected-loss
-        baseline (-0.80) regardless of how big a favourite you were — fighting
-        to a close score against a weaker opponent isn't evidence of being
-        overrated. The favourite-loss directional rule floors the resulting
-        positive surprise at 0 rather than letting it become a gain.
+        Favourites (expected >= 0.50) who lose are judged against the
+        win-inclusive 2*expected-1 baseline, not the flat underdog
+        _EXPECTED_LOSS_SIGNAL — a close loss as a favourite should still
+        produce a small penalty.
         """
         rec = self._rec(self._HEAVY_FAV, self._WEAK_OPP, won=False, score="6-4 6-4")
         adj = _sequential_match_adj(self._HEAVY_FAV, rec)
-        self.assertEqual(adj, 0.0, "Favourite losing a close/competitive match should be flat, not penalized")
+        self.assertLess(adj, 0, "Favourite losing a close match must still produce negative adj")
 
     # ------------------------------------------------------------------
     # Rule 5: Even match winner → moderate positive adj
@@ -748,16 +747,15 @@ class TestUnderdogFavorite(unittest.TestCase):
                         "Even match win stays well below full SEQ_CAP")
 
     def test_even_match_loss_drops(self):
-        """3.0 loses 4-6 3-6 to 3.0 → flat, not negative.
+        """3.0 loses 4-6 3-6 to 3.0 → negative adj.
 
-        Even+Even (raw_signal=-0.60) beats the conditional expected-loss
-        baseline (-0.80) — losing competitively in a 50/50 match is not a
-        below-average loss. The directional rule floors the resulting
-        positive surprise at 0.
+        expected == 0.50 falls on the favourite side of the hybrid split
+        (elif expected < 0.50 else ...), so the win-inclusive 2*expected-1
+        baseline (0.0) applies, not the flat underdog _EXPECTED_LOSS_SIGNAL.
         """
         rec = self._rec(3.0, 3.0, won=False, score="6-4 6-3")
         adj = _sequential_match_adj(3.0, rec)
-        self.assertEqual(adj, 0.0, "Competitive even-match loss should be flat, not penalized")
+        self.assertLess(adj, 0, "Even match loss must produce a negative adj")
 
     # ------------------------------------------------------------------
     # Loss cap: symmetric to win cap, scaled by expected²
