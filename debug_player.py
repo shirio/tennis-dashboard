@@ -20,7 +20,7 @@ from engine.ratings import (
     _name_key, _parse_player_names, _parse_sets, _set_dominance,
     _scenario_signal, _cross_pair_expected, _match_adjustment,
     _sequential_match_adj, _detect_scorecard_swap,
-    _date_str_sort_key, _ROUT_THRESHOLD,
+    _date_str_sort_key, _ROUT_THRESHOLD, _EXPECTED_LOSS_SIGNAL,
     PLAYERS_JSON, STANDINGS_30, STANDINGS_35,
     MatchRecord, CourtEvent, ntrp_default,
 )
@@ -109,26 +109,23 @@ def _explain_adj(
         return "\n".join(lines)
 
     raw_signal    = _scenario_signal(sets, rec.won)
-    expected_sig  = 2.0 * expected - 1.0
-    # Mirror the heavy-underdog-loss shift from _match_adjustment
-    shift_applied = False
-    if not rec.won and expected < 0.30:
-        underdog_factor = (0.30 - expected) / 0.30
-        expected_sig_shifted = expected_sig * (1.0 - underdog_factor) + (-1.0) * underdog_factor
-        shift_applied = True
+    # Hybrid expected_signal, mirroring _match_adjustment:
+    #   win                          → 2*expected - 1
+    #   loss, underdog (exp < 0.50)  → flat _EXPECTED_LOSS_SIGNAL (-0.80)
+    #   loss, favourite (exp ≥ 0.50) → 2*expected - 1
+    if rec.won or expected >= 0.50:
+        expected_sig = 2.0 * expected - 1.0
     else:
-        expected_sig_shifted = expected_sig
-    surprise      = raw_signal - expected_sig_shifted
+        expected_sig = _EXPECTED_LOSS_SIGNAL
+    surprise      = raw_signal - expected_sig
     desc          = _scenario_desc(sets, rec.won)
 
     lines.append(f"  Scenario:           {desc}")
     lines.append(f"  Raw signal:        {raw_signal:+.2f}  (from scenario table)")
-    if shift_applied:
-        uf = (0.30 - expected) / 0.30
-        lines.append(f"  Expected signal:   {expected_sig:+.3f}  (2 × {expected:.3f} − 1)")
-        lines.append(f"  Underdog shift:    {expected_sig_shifted:+.3f}  (blended {uf:.2f}× toward −1.0 — expected rout)")
+    if not rec.won and expected < 0.50:
+        lines.append(f"  Expected signal:   {expected_sig:+.3f}  (flat underdog-loss baseline)")
     else:
-        lines.append(f"  Expected signal:   {expected_sig_shifted:+.3f}  (2 × {expected:.3f} − 1)")
+        lines.append(f"  Expected signal:   {expected_sig:+.3f}  (2 × {expected:.3f} − 1)")
     lines.append(f"  Surprise:          {surprise:+.3f}  (raw − expected)")
 
     # Singles amplifier
