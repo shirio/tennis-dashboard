@@ -1604,6 +1604,9 @@ def _compute_global_sequential(
     # cross-listed player who dominates lower division but loses in higher one.
     # Their unified rating is currently inflated by the lower-div success.
     wl_by_div: dict[str, dict[str, list[int]]] = {}   # pk -> div -> [w, l]
+    # Tracks whether a player's most recent match in each division was a win,
+    # so the Lever 5b cap (below) can be restricted to loss-driven gains only.
+    last_won_by_div: dict[str, dict[str, bool]] = {}   # pk -> div -> won last match?
     # Lever 5b constants (also used in inline cap below and in post-pass safety net)
     _STRUGGLE_MIN_MATCHES = 4
     _STRUGGLE_WIN_RATE    = 0.30
@@ -1665,6 +1668,7 @@ def _compute_global_sequential(
             _div_dep[ev.line_label] = _div_dep.get(ev.line_label, 0) + 1
             wl_by_div.setdefault(pk, {}).setdefault(ev.division, [0, 0])[0] += 1
             wl_by_div_for_l4.setdefault(pk, set()).add(ev.division)
+            last_won_by_div.setdefault(pk, {})[ev.division] = True
 
         # --- Losers ---
         for pk in ev.loser_keys:
@@ -1698,6 +1702,7 @@ def _compute_global_sequential(
             _div_dep[ev.line_label] = _div_dep.get(ev.line_label, 0) + 1
             wl_by_div.setdefault(pk, {}).setdefault(ev.division, [0, 0])[1] += 1
             wl_by_div_for_l4.setdefault(pk, set()).add(ev.division)
+            last_won_by_div.setdefault(pk, {})[ev.division] = False
 
         global_r.update(updates)
 
@@ -1709,6 +1714,8 @@ def _compute_global_sequential(
         for pk in all_keys:
             if pk not in baselines:
                 continue
+            if pk in ev.winner_keys:
+                continue   # cap suppresses loss-driven gains only, not a win just earned
             divs_pk = wl_by_div.get(pk, {})
             if len(divs_pk) < 2:
                 continue   # not cross-listed yet
@@ -1753,6 +1760,8 @@ def _compute_global_sequential(
             continue
         if w / n >= _STRUGGLE_WIN_RATE:
             continue
+        if last_won_by_div.get(pk, {}).get(higher_div):
+            continue   # most recent match was a win — don't cap that gain
         # Player struggles in higher division — cap unified rating.
         cap = baseline + _STRUGGLE_CAP_DELTA
         if global_r.get(pk, baseline) > cap:
