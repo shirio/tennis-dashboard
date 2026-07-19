@@ -54132,7 +54132,7 @@
     "lines_played_35": [
       "D1x5"
     ],
-    "wl_record_35": "0-5",
+    "wl_record_35": "1-4",
     "team_35": "SIMPLY SMASHING"
   },
   {
@@ -201250,7 +201250,7 @@
       "D2",
       "D3"
     ],
-    "wl_record_30": "2-1",
+    "wl_record_30": "1-2",
     "team_30": "THE REAL HOUSEWIVES OF THE HARD COURT"
   },
   {
@@ -207795,7 +207795,7 @@
       "S1",
       "S2"
     ],
-    "wl_record_30": "4-5",
+    "wl_record_30": "5-4",
     "default_wins_30": 1,
     "team_30": "SUNPRO-LUCKY SHOTS",
     "lines_played_35": [
@@ -235112,18 +235112,18 @@
     "iter_global_rating": 2.6,
     "notes_30": "",
     "notes_35": "",
-    "lines_played_35": [
-      "D3x4"
-    ],
-    "wl_record_35": "0-4",
-    "team_35": "SIMPLY SMASHING",
     "rating_post_timeline_30": {},
     "rating_post_timeline_35": {
       "6/2/2026": 2.6,
       "6/16/2026": 2.6,
       "6/18/2026": 2.6,
       "6/23/2026": 2.6
-    }
+    },
+    "lines_played_35": [
+      "D3x4"
+    ],
+    "wl_record_35": "0-4",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "natalie-buttars",
@@ -235183,14 +235183,14 @@
       "D3x3",
       "S2"
     ],
-    "wl_record_30": "4-1",
+    "wl_record_30": "3-2",
     "team_30": "HAILEY BALL",
     "lines_played_35": [
       "D1",
       "D2",
       "D3x4"
     ],
-    "wl_record_35": "2-4",
+    "wl_record_35": "1-5",
     "team_35": "IDAHO FALLS"
   },
   {
@@ -235247,7 +235247,7 @@
       "D2x5",
       "D3x5"
     ],
-    "wl_record_30": "9-2",
+    "wl_record_30": "5-6",
     "team_30": "HAILEY BALL"
   },
   {
@@ -235303,7 +235303,7 @@
       "S1x5",
       "S2x2"
     ],
-    "wl_record_30": "9-2",
+    "wl_record_30": "6-5",
     "team_30": "HAILEY BALL"
   },
   {
@@ -235378,7 +235378,7 @@
       "D2x2",
       "D3x3"
     ],
-    "wl_record_35": "2-3",
+    "wl_record_35": "3-2",
     "team_35": "HOWELL"
   },
   {
@@ -235426,7 +235426,7 @@
       "D2x2",
       "D3x4"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "3-3",
     "team_30": "HAILEY BALL"
   },
   {
@@ -235496,7 +235496,7 @@
       "D3",
       "S1x2"
     ],
-    "wl_record_30": "9-1",
+    "wl_record_30": "8-2",
     "team_30": "HAILEY BALL",
     "lines_played_35": [
       "D1x2",
@@ -235618,7 +235618,7 @@
       "D3x2",
       "S2x6"
     ],
-    "wl_record_30": "8-0",
+    "wl_record_30": "7-1",
     "team_30": "HAILEY BALL",
     "lines_played_35": [
       "D2",
@@ -235682,7 +235682,7 @@
       "S1",
       "S2x2"
     ],
-    "wl_record_30": "9-2",
+    "wl_record_30": "10-1",
     "team_30": "HAILEY BALL"
   },
   {
@@ -235748,7 +235748,7 @@
       "D3x2",
       "S2"
     ],
-    "wl_record_35": "2-2",
+    "wl_record_35": "0-4",
     "team_35": "LOB STARS"
   },
   {
@@ -235812,7 +235812,7 @@
       "S1",
       "S2x2"
     ],
-    "wl_record_35": "1-3",
+    "wl_record_35": "3-1",
     "team_35": "LOB STARS"
   },
   {
@@ -235856,7 +235856,7 @@
       "D3x2",
       "S2x2"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "4-0",
     "team_30": "THE REAL HOUSEWIVES OF THE HARD COURT"
   },
   {
@@ -235911,13 +235911,13 @@
       "D2x2",
       "D3x2"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "4-1",
     "team_30": "THE REAL HOUSEWIVES OF THE HARD COURT",
     "lines_played_35": [
       "D1",
       "D3x3"
     ],
-    "wl_record_35": "1-3",
+    "wl_record_35": "2-2",
     "default_wins_35": 1,
     "team_35": "LOB STARS"
   },
@@ -235977,7 +235977,7 @@
       "D2x2",
       "D3"
     ],
-    "wl_record_35": "2-2",
+    "wl_record_35": "3-1",
     "default_wins_35": 1,
     "team_35": "LOB STARS"
   },
@@ -236025,7 +236025,7 @@
       "D2",
       "D3x2"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "1-4",
     "team_30": "THE REAL HOUSEWIVES OF THE HARD COURT"
   },
   {
@@ -236082,7 +236082,7 @@
       "S1x2",
       "S2x2"
     ],
-    "wl_record_30": "3-2",
+    "wl_record_30": "5-0",
     "team_30": "THE REAL HOUSEWIVES OF THE HARD COURT",
     "lines_played_35": [
       "S1",
@@ -236270,7 +236270,7 @@
       "D2",
       "D3x2"
     ],
-    "wl_record_35": "1-3",
+    "wl_record_35": "2-2",
     "team_35": "LOB STARS"
   },
   {
@@ -236402,7 +236402,7 @@
       "D2",
       "D3x2"
     ],
-    "wl_record_30": "2-2",
+    "wl_record_30": "3-1",
     "team_30": "THE REAL HOUSEWIVES OF THE HARD COURT"
   },
   {
@@ -236499,7 +236499,7 @@
       "S1x2",
       "S2x2"
     ],
-    "wl_record_30": "3-2",
+    "wl_record_30": "2-3",
     "team_30": "THE REAL HOUSEWIVES OF THE HARD COURT",
     "lines_played_35": [
       "S1x2",
@@ -236550,7 +236550,7 @@
       "D2x2",
       "D3"
     ],
-    "wl_record_30": "3-1",
+    "wl_record_30": "2-2",
     "team_30": "THE REAL HOUSEWIVES OF THE HARD COURT"
   },
   {
@@ -236606,7 +236606,7 @@
       "D3",
       "S1"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "1-4",
     "team_30": "LUCKY STRINGS",
     "lines_played_35": [
       "D1x2",
@@ -236662,7 +236662,7 @@
       "D3x2",
       "S1x2"
     ],
-    "wl_record_30": "3-3",
+    "wl_record_30": "2-4",
     "team_30": "LUCKY STRINGS"
   },
   {
@@ -236711,7 +236711,7 @@
       "D2x3",
       "S2x2"
     ],
-    "wl_record_30": "2-4",
+    "wl_record_30": "3-3",
     "team_30": "LUCKY STRINGS"
   },
   {
@@ -236767,7 +236767,7 @@
       "S1x2",
       "S2"
     ],
-    "wl_record_30": "1-4",
+    "wl_record_30": "3-2",
     "team_30": "LUCKY STRINGS",
     "lines_played_35": [
       "D1",
@@ -236873,7 +236873,7 @@
       "D2x2",
       "S1"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "0-5",
     "team_30": "LUCKY STRINGS"
   },
   {
@@ -236935,14 +236935,14 @@
       "S1x2",
       "S2"
     ],
-    "wl_record_30": "1-5",
+    "wl_record_30": "2-4",
     "team_30": "LUCKY STRINGS",
     "lines_played_35": [
       "D1x3",
       "D2",
       "S1"
     ],
-    "wl_record_35": "2-3",
+    "wl_record_35": "1-4",
     "team_35": "LOB STARS"
   },
   {
@@ -237006,7 +237006,7 @@
       "D3",
       "S2"
     ],
-    "wl_record_30": "2-4",
+    "wl_record_30": "1-5",
     "team_30": "LUCKY STRINGS",
     "lines_played_35": [
       "D1",
@@ -237014,7 +237014,7 @@
       "D3x2",
       "S2"
     ],
-    "wl_record_35": "3-3",
+    "wl_record_35": "0-6",
     "team_35": "HOWELL"
   },
   {
@@ -237115,7 +237115,7 @@
       "D3",
       "S2"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "4-1",
     "team_30": "LUCKY STRINGS",
     "lines_played_35": [
       "D2",
@@ -237177,7 +237177,7 @@
       "D3x4",
       "S2"
     ],
-    "wl_record_30": "3-5",
+    "wl_record_30": "1-7",
     "team_30": "LUCKY STRINGS"
   },
   {
@@ -237316,7 +237316,7 @@
       "D2",
       "D3x4"
     ],
-    "wl_record_30": "1-4",
+    "wl_record_30": "2-3",
     "team_30": "IDAHO FALLS"
   },
   {
@@ -237366,7 +237366,7 @@
       "D2x5",
       "D3x2"
     ],
-    "wl_record_30": "1-6",
+    "wl_record_30": "0-7",
     "team_30": "IDAHO FALLS"
   },
   {
@@ -237424,13 +237424,13 @@
       "D3",
       "S2"
     ],
-    "wl_record_30": "2-4",
+    "wl_record_30": "6-0",
     "team_30": "IDAHO FALLS",
     "lines_played_35": [
       "D2x2",
       "S1"
     ],
-    "wl_record_35": "2-1",
+    "wl_record_35": "3-0",
     "team_35": "WONDER WOMEN"
   },
   {
@@ -237484,7 +237484,7 @@
       "S1",
       "S2"
     ],
-    "wl_record_30": "2-6",
+    "wl_record_30": "4-4",
     "team_30": "IDAHO FALLS"
   },
   {
@@ -237538,7 +237538,7 @@
       "S1",
       "S2"
     ],
-    "wl_record_30": "2-6",
+    "wl_record_30": "1-7",
     "team_30": "IDAHO FALLS"
   },
   {
@@ -237639,7 +237639,7 @@
       "D2x3",
       "S2"
     ],
-    "wl_record_30": "1-5",
+    "wl_record_30": "3-3",
     "team_30": "IDAHO FALLS"
   },
   {
@@ -237739,7 +237739,7 @@
       "S1x4",
       "S2"
     ],
-    "wl_record_30": "2-5",
+    "wl_record_30": "1-6",
     "team_30": "IDAHO FALLS"
   },
   {
@@ -237892,7 +237892,7 @@
       "D2x2",
       "D3"
     ],
-    "wl_record_35": "8-1",
+    "wl_record_35": "7-2",
     "team_35": "ALOHA BEACHES 18+"
   },
   {
@@ -237984,7 +237984,7 @@
       "D2x2",
       "D3"
     ],
-    "wl_record_35": "4-1",
+    "wl_record_35": "3-2",
     "team_35": "ALOHA BEACHES 18+"
   },
   {
@@ -238161,7 +238161,7 @@
       "S1",
       "S2x3"
     ],
-    "wl_record_35": "4-0",
+    "wl_record_35": "3-1",
     "default_wins_35": 1,
     "team_35": "ALOHA BEACHES 18+"
   },
@@ -238261,7 +238261,7 @@
       "D3x3",
       "S2x2"
     ],
-    "wl_record_35": "7-1",
+    "wl_record_35": "6-2",
     "team_35": "ALOHA BEACHES 18+"
   },
   {
@@ -238412,7 +238412,7 @@
       "S1x3",
       "S2x3"
     ],
-    "wl_record_35": "5-2",
+    "wl_record_35": "4-3",
     "team_35": "ALOHA BEACHES 18+"
   },
   {
@@ -238456,7 +238456,7 @@
       "D2",
       "D3x3"
     ],
-    "wl_record_35": "4-0",
+    "wl_record_35": "3-1",
     "team_35": "ALOHA BEACHES 18+"
   },
   {
@@ -238650,7 +238650,7 @@
       "S1",
       "S2x3"
     ],
-    "wl_record_35": "8-2",
+    "wl_record_35": "9-1",
     "team_35": "ALOHA BEACHES 18+"
   },
   {
@@ -238696,7 +238696,7 @@
       "D2x2",
       "D3"
     ],
-    "wl_record_35": "4-0",
+    "wl_record_35": "3-1",
     "team_35": "ALOHA BEACHES 18+"
   },
   {
@@ -238748,7 +238748,7 @@
       "D2x4",
       "D3x4"
     ],
-    "wl_record_35": "5-4",
+    "wl_record_35": "2-7",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -238799,7 +238799,7 @@
       "D2x3",
       "S2x2"
     ],
-    "wl_record_35": "5-4",
+    "wl_record_35": "6-3",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -238841,7 +238841,7 @@
       "D3",
       "S1x2"
     ],
-    "wl_record_35": "3-0",
+    "wl_record_35": "2-1",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -238899,7 +238899,7 @@
       "S1x3",
       "S2x3"
     ],
-    "wl_record_35": "6-5",
+    "wl_record_35": "9-2",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -238945,7 +238945,7 @@
       "D1x2",
       "D2x3"
     ],
-    "wl_record_35": "4-1",
+    "wl_record_35": "2-3",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -238996,7 +238996,7 @@
       "S1x2",
       "S2x2"
     ],
-    "wl_record_35": "4-4",
+    "wl_record_35": "2-6",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -239050,7 +239050,7 @@
       "S1x2",
       "S2x3"
     ],
-    "wl_record_35": "5-4",
+    "wl_record_35": "4-5",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -239142,7 +239142,7 @@
       "D2x2",
       "D3x3"
     ],
-    "wl_record_35": "4-2",
+    "wl_record_35": "3-3",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -239191,7 +239191,7 @@
       "S1x2",
       "S2x3"
     ],
-    "wl_record_35": "3-3",
+    "wl_record_35": "4-2",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -239337,7 +239337,7 @@
       "D2x4",
       "D3x3"
     ],
-    "wl_record_35": "2-5",
+    "wl_record_35": "1-6",
     "team_35": "TV2 - HONEY DEUCE 18'S"
   },
   {
@@ -239380,7 +239380,7 @@
       "D2",
       "D3"
     ],
-    "wl_record_35": "3-0",
+    "wl_record_35": "2-1",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -239424,7 +239424,7 @@
       "D1x2",
       "D3x2"
     ],
-    "wl_record_35": "4-0",
+    "wl_record_35": "3-1",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -239468,7 +239468,7 @@
       "D2",
       "D3x3"
     ],
-    "wl_record_35": "3-1",
+    "wl_record_35": "2-2",
     "team_35": "HONEY DEUCE 18'S"
   },
   {
@@ -239560,7 +239560,7 @@
     "lines_played_35": [
       "S2x3"
     ],
-    "wl_record_35": "1-2",
+    "wl_record_35": "2-1",
     "team_35": "EACH HIT"
   },
   {
@@ -239610,7 +239610,7 @@
       "S1",
       "S2x4"
     ],
-    "wl_record_35": "6-0",
+    "wl_record_35": "2-4",
     "team_35": "EACH HIT"
   },
   {
@@ -239718,7 +239718,7 @@
       "D2x3",
       "D3x5"
     ],
-    "wl_record_35": "6-3",
+    "wl_record_35": "7-2",
     "team_35": "EACH HIT"
   },
   {
@@ -239760,7 +239760,7 @@
       "D1x2",
       "D3"
     ],
-    "wl_record_35": "2-1",
+    "wl_record_35": "3-0",
     "team_35": "EACH HIT"
   },
   {
@@ -239805,7 +239805,7 @@
     "lines_played_35": [
       "D1x5"
     ],
-    "wl_record_35": "3-2",
+    "wl_record_35": "1-4",
     "team_35": "EACH HIT"
   },
   {
@@ -239858,7 +239858,7 @@
       "S1x9",
       "S2"
     ],
-    "wl_record_35": "6-4",
+    "wl_record_35": "9-1",
     "team_35": "EACH HIT"
   },
   {
@@ -239908,7 +239908,7 @@
       "D2x2",
       "D3x5"
     ],
-    "wl_record_35": "4-3",
+    "wl_record_35": "5-2",
     "team_35": "EACH HIT"
   },
   {
@@ -239961,7 +239961,7 @@
       "D2x3",
       "D3x5"
     ],
-    "wl_record_35": "5-4",
+    "wl_record_35": "4-5",
     "team_35": "EACH HIT"
   },
   {
@@ -240055,7 +240055,7 @@
       "D1x5",
       "D3x2"
     ],
-    "wl_record_35": "3-4",
+    "wl_record_35": "2-5",
     "team_35": "EACH HIT"
   },
   {
@@ -240109,7 +240109,7 @@
       "D3x2",
       "S2x2"
     ],
-    "wl_record_35": "4-5",
+    "wl_record_35": "5-4",
     "team_35": "EACH HIT"
   },
   {
@@ -240156,7 +240156,7 @@
       "D3x3",
       "S1"
     ],
-    "wl_record_35": "3-2",
+    "wl_record_35": "2-3",
     "team_35": "EACH HIT"
   },
   {
@@ -240336,7 +240336,7 @@
       "D2",
       "D3x2"
     ],
-    "wl_record_35": "3-0",
+    "wl_record_35": "1-2",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -240429,7 +240429,7 @@
       "D2x2",
       "D3"
     ],
-    "wl_record_35": "2-1",
+    "wl_record_35": "1-2",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -240510,7 +240510,7 @@
       "D1",
       "S2x2"
     ],
-    "wl_record_35": "3-0",
+    "wl_record_35": "2-1",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -240577,7 +240577,7 @@
     "lines_played_35": [
       "D2x3"
     ],
-    "wl_record_35": "2-1",
+    "wl_record_35": "1-2",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -240618,7 +240618,7 @@
     "lines_played_35": [
       "D1x3"
     ],
-    "wl_record_35": "2-1",
+    "wl_record_35": "3-0",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -240775,7 +240775,7 @@
     "lines_played_35": [
       "D3x2"
     ],
-    "wl_record_35": "1-1",
+    "wl_record_35": "0-2",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -240816,7 +240816,7 @@
       "D2",
       "D3"
     ],
-    "wl_record_35": "1-1",
+    "wl_record_35": "0-2",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -240859,7 +240859,7 @@
     "lines_played_35": [
       "D2x4"
     ],
-    "wl_record_35": "2-2",
+    "wl_record_35": "0-4",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -240939,7 +240939,7 @@
       "D3",
       "S2"
     ],
-    "wl_record_35": "2-0",
+    "wl_record_35": "1-1",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -241032,7 +241032,7 @@
       "D2",
       "S2"
     ],
-    "wl_record_35": "3-1",
+    "wl_record_35": "2-2",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -241122,7 +241122,7 @@
     "lines_played_35": [
       "D3x3"
     ],
-    "wl_record_35": "2-1",
+    "wl_record_35": "0-3",
     "team_35": "PLAY IT FORWARD"
   },
   {
@@ -241170,7 +241170,7 @@
       "D2",
       "D3"
     ],
-    "wl_record_35": "3-2",
+    "wl_record_35": "5-0",
     "team_35": "NOTHING BUT LOVE YOUNGSTERS"
   },
   {
@@ -241263,7 +241263,7 @@
       "S1x3",
       "S2"
     ],
-    "wl_record_35": "4-3",
+    "wl_record_35": "7-0",
     "team_35": "NOTHING BUT LOVE YOUNGSTERS"
   },
   {
@@ -241308,7 +241308,7 @@
       "D2",
       "D3x3"
     ],
-    "wl_record_35": "5-0",
+    "wl_record_35": "4-1",
     "default_wins_35": 1,
     "team_35": "NOTHING BUT LOVE YOUNGSTERS"
   },
@@ -241354,7 +241354,7 @@
       "D3x2",
       "S2"
     ],
-    "wl_record_35": "3-1",
+    "wl_record_35": "2-2",
     "team_35": "NOTHING BUT LOVE YOUNGSTERS"
   },
   {
@@ -241404,7 +241404,7 @@
       "D1x5",
       "D2x2"
     ],
-    "wl_record_35": "5-2",
+    "wl_record_35": "4-3",
     "team_35": "NOTHING BUT LOVE YOUNGSTERS"
   },
   {
@@ -241546,7 +241546,7 @@
       "S1x4",
       "S2x2"
     ],
-    "wl_record_35": "3-3",
+    "wl_record_35": "5-1",
     "team_35": "NOTHING BUT LOVE YOUNGSTERS"
   },
   {
@@ -241727,7 +241727,7 @@
       "D2x3",
       "D3"
     ],
-    "wl_record_35": "3-2",
+    "wl_record_35": "2-3",
     "team_35": "NOTHING BUT LOVE YOUNGSTERS"
   },
   {
@@ -241959,7 +241959,7 @@
       "D1",
       "D3"
     ],
-    "wl_record_35": "0-2",
+    "wl_record_35": "1-1",
     "team_35": "NICE HITS 18+"
   },
   {
@@ -242050,7 +242050,7 @@
       "S1x3",
       "S2x2"
     ],
-    "wl_record_35": "2-4",
+    "wl_record_35": "3-3",
     "team_35": "NICE HITS 18+"
   },
   {
@@ -242094,7 +242094,7 @@
       "D2",
       "D3x3"
     ],
-    "wl_record_35": "2-2",
+    "wl_record_35": "4-0",
     "team_35": "NICE HITS 18+"
   },
   {
@@ -242141,7 +242141,7 @@
       "S1",
       "S2x2"
     ],
-    "wl_record_35": "3-2",
+    "wl_record_35": "4-1",
     "team_35": "NICE HITS 18+"
   },
   {
@@ -242232,7 +242232,7 @@
       "D2",
       "D3x2"
     ],
-    "wl_record_35": "1-2",
+    "wl_record_35": "3-0",
     "team_35": "NICE HITS 18+"
   },
   {
@@ -242373,7 +242373,7 @@
       "S1x2",
       "S2"
     ],
-    "wl_record_35": "3-7",
+    "wl_record_35": "7-3",
     "team_35": "NET POSITIVE 18+"
   },
   {
@@ -242549,7 +242549,7 @@
       "D1x3",
       "S1"
     ],
-    "wl_record_35": "2-2",
+    "wl_record_35": "3-1",
     "team_35": "NICE HITS 18+"
   },
   {
@@ -242617,7 +242617,7 @@
       "D2x2",
       "D3"
     ],
-    "wl_record_35": "1-2",
+    "wl_record_35": "0-3",
     "team_35": "NICE HITS 18+"
   },
   {
@@ -242744,7 +242744,7 @@
       "D2x2",
       "D3"
     ],
-    "wl_record_35": "1-2",
+    "wl_record_35": "0-3",
     "team_35": "NICE HITS 18+"
   },
   {
@@ -242831,7 +242831,7 @@
       "D2",
       "D3x2"
     ],
-    "wl_record_35": "2-3",
+    "wl_record_35": "1-4",
     "team_35": "SLAY!"
   },
   {
@@ -243076,7 +243076,7 @@
       "D3",
       "S2x5"
     ],
-    "wl_record_30": "5-1",
+    "wl_record_30": "3-3",
     "team_30": "SERVING UP SASS",
     "lines_played_35": [
       "D3",
@@ -243131,7 +243131,7 @@
       "D2x2",
       "D3"
     ],
-    "wl_record_35": "4-2",
+    "wl_record_35": "3-3",
     "team_35": "SLAY!"
   },
   {
@@ -243311,7 +243311,7 @@
       "S1x6",
       "S2x2"
     ],
-    "wl_record_30": "8-1",
+    "wl_record_30": "7-2",
     "team_30": "SERVING UP SASS",
     "lines_played_35": [
       "D3",
@@ -243535,12 +243535,12 @@
       "D2",
       "D3"
     ],
-    "wl_record_30": "6-1",
+    "wl_record_30": "7-0",
     "team_30": "SERVING UP SASS",
     "lines_played_35": [
       "D3x4"
     ],
-    "wl_record_35": "2-2",
+    "wl_record_35": "1-3",
     "team_35": "SLAY!"
   },
   {
@@ -243587,7 +243587,7 @@
       "D2",
       "S2x2"
     ],
-    "wl_record_35": "2-3",
+    "wl_record_35": "1-4",
     "team_35": "SLAY!"
   },
   {
@@ -243646,7 +243646,7 @@
       "D2x7",
       "D3"
     ],
-    "wl_record_30": "8-1",
+    "wl_record_30": "7-2",
     "team_30": "SERVING UP SASS",
     "lines_played_35": [
       "D3x3"
@@ -243699,7 +243699,7 @@
       "S1x5",
       "S2"
     ],
-    "wl_record_35": "3-3",
+    "wl_record_35": "4-2",
     "team_35": "SLAY!"
   },
   {
@@ -243844,7 +243844,7 @@
       "S1x2",
       "S2"
     ],
-    "wl_record_35": "2-5",
+    "wl_record_35": "5-2",
     "team_35": "YOURS!"
   },
   {
@@ -243978,7 +243978,7 @@
       "D2x2",
       "D3x2"
     ],
-    "wl_record_35": "0-4",
+    "wl_record_35": "3-1",
     "team_35": "YOURS!"
   },
   {
@@ -244039,7 +244039,7 @@
       "D2x3",
       "S1"
     ],
-    "wl_record_30": "2-5",
+    "wl_record_30": "5-2",
     "team_30": "CAUSING A RACQUET",
     "lines_played_35": [
       "D3x2",
@@ -244088,7 +244088,7 @@
       "D2x2",
       "D3"
     ],
-    "wl_record_35": "0-3",
+    "wl_record_35": "2-1",
     "team_35": "YOURS!"
   },
   {
@@ -244128,7 +244128,7 @@
       "D1",
       "D3"
     ],
-    "wl_record_35": "1-1",
+    "wl_record_35": "0-2",
     "team_35": "YOURS!"
   },
   {
@@ -244223,7 +244223,7 @@
       "D3x3",
       "S2"
     ],
-    "wl_record_30": "4-1",
+    "wl_record_30": "3-2",
     "team_30": "BALLS AND DOLLS",
     "lines_played_35": [
       "D3x2"
@@ -244358,7 +244358,7 @@
     "lines_played_35": [
       "D2x4"
     ],
-    "wl_record_35": "2-2",
+    "wl_record_35": "4-0",
     "team_35": "YOURS!"
   },
   {
@@ -244404,7 +244404,7 @@
       "D2x2",
       "D3x3"
     ],
-    "wl_record_35": "2-3",
+    "wl_record_35": "3-2",
     "team_35": "YOURS!"
   },
   {
@@ -244448,7 +244448,7 @@
       "D1",
       "D2x3"
     ],
-    "wl_record_35": "0-4",
+    "wl_record_35": "3-1",
     "team_35": "YOURS!"
   },
   {
@@ -244501,7 +244501,7 @@
       "D3",
       "S1"
     ],
-    "wl_record_35": "1-7",
+    "wl_record_35": "5-3",
     "team_35": "YOURS!"
   },
   {
@@ -244668,7 +244668,7 @@
       "D3x4",
       "S2"
     ],
-    "wl_record_30": "2-3",
+    "wl_record_30": "4-1",
     "team_30": "CAUSING A RACQUET",
     "lines_played_35": [
       "D1",
@@ -244778,7 +244778,7 @@
       "D2",
       "D3x3"
     ],
-    "wl_record_35": "1-7",
+    "wl_record_35": "5-3",
     "team_35": "NET POSITIVE 18+"
   },
   {
@@ -244986,7 +244986,7 @@
       "D3",
       "S2"
     ],
-    "wl_record_35": "1-1",
+    "wl_record_35": "0-2",
     "team_35": "NET POSITIVE 18+"
   },
   {
@@ -245197,7 +245197,7 @@
       "D1x2",
       "S1"
     ],
-    "wl_record_35": "0-3",
+    "wl_record_35": "2-1",
     "team_35": "NET POSITIVE 18+"
   },
   {
@@ -245344,7 +245344,7 @@
       "D1x3",
       "D2x2"
     ],
-    "wl_record_35": "1-4",
+    "wl_record_35": "0-5",
     "team_35": "SIMPLY SMASHING"
   },
   {
@@ -245547,7 +245547,7 @@
       "D2x3",
       "S1"
     ],
-    "wl_record_30": "2-4",
+    "wl_record_30": "3-3",
     "team_30": "MATCH MAKERS",
     "lines_played_35": [
       "D2",
@@ -245697,7 +245697,7 @@
     "lines_played_30": [
       "S1x9"
     ],
-    "wl_record_30": "7-2",
+    "wl_record_30": "6-3",
     "team_30": "NICE HITS",
     "lines_played_35": [
       "S1x4"
@@ -245941,14 +245941,15 @@
       "S1",
       "S2"
     ],
-    "wl_record_30": "3-3",
+    "wl_record_30": "4-2",
     "team_30": "MATCH MAKERS",
     "lines_played_35": [
       "D3x2",
       "S1",
       "S2"
     ],
-    "wl_record_35": "0-4",
+    "wl_record_35": "1-3",
+    "default_wins_35": 1,
     "team_35": "SIMPLY SMASHING"
   },
   {
@@ -245996,7 +245997,7 @@
       "D3",
       "S2"
     ],
-    "wl_record_35": "1-4",
+    "wl_record_35": "2-3",
     "team_35": "SIMPLY SMASHING"
   },
   {
@@ -246043,7 +246044,7 @@
       "S1x2",
       "S2x2"
     ],
-    "wl_record_35": "1-4",
+    "wl_record_35": "2-3",
     "team_35": "SIMPLY SMASHING"
   },
   {
@@ -246978,19 +246979,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x3",
-      "D3x5"
-    ],
-    "wl_record_30": "1-6",
-    "team_30": "PLAYERS",
-    "lines_played_35": [
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_35": "0-3",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 2.6101,
     "rating_35": 2.6101,
     "rating_timeline_30": {
@@ -247016,7 +247004,20 @@
       "5/14/2026": 2.5625,
       "6/9/2026": 2.5028,
       "6/23/2026": 2.5028
-    }
+    },
+    "lines_played_30": [
+      "D1",
+      "D2x3",
+      "D3x5"
+    ],
+    "wl_record_30": "2-5",
+    "team_30": "PLAYERS",
+    "lines_played_35": [
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_35": "0-3",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "anita-gibson",
@@ -247035,19 +247036,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x4",
-      "D2",
-      "S2"
-    ],
-    "wl_record_30": "1-1",
-    "team_30": "PLAYERS",
-    "lines_played_35": [
-      "D1x5",
-      "D3"
-    ],
-    "wl_record_35": "2-4",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 2.79,
     "rating_35": 2.79,
     "rating_timeline_30": {
@@ -247073,7 +247061,20 @@
       "6/4/2026": 2.75,
       "6/11/2026": 2.75,
       "6/25/2026": 2.75
-    }
+    },
+    "lines_played_30": [
+      "D1x4",
+      "D2",
+      "S2"
+    ],
+    "wl_record_30": "0-2",
+    "team_30": "PLAYERS",
+    "lines_played_35": [
+      "D1x5",
+      "D3"
+    ],
+    "wl_record_35": "1-5",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "lorie-murray",
@@ -247092,13 +247093,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_30": "1-1",
-    "team_30": "PLAYERS",
     "rating_30": 2.6026,
     "rating_35": 2.6026,
     "rating_timeline_30": {
@@ -247110,7 +247104,14 @@
       "5/20/2026": 2.5736,
       "6/3/2026": 2.6026
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_30": "1-1",
+    "team_30": "PLAYERS"
   },
   {
     "id": "colleen-hansen",
@@ -247129,12 +247130,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x2",
-      "D3x8"
-    ],
-    "wl_record_30": "1-6",
-    "team_30": "PLAYERS",
     "rating_30": 2.6193,
     "rating_35": 2.6193,
     "rating_timeline_30": {
@@ -247152,7 +247147,13 @@
       "7/17/2026": 2.6053,
       "7/18/2026": 2.6193
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x2",
+      "D3x8"
+    ],
+    "wl_record_30": "3-4",
+    "team_30": "PLAYERS"
   },
   {
     "id": "kirsten-nickisch",
@@ -247171,19 +247172,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3",
-      "S1x5",
-      "S2"
-    ],
-    "wl_record_30": "2-3",
-    "team_30": "PLAYERS",
-    "lines_played_35": [
-      "S1x2",
-      "S2x3"
-    ],
-    "wl_record_35": "0-5",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 2.79,
     "rating_35": 2.79,
     "rating_timeline_30": {
@@ -247209,7 +247197,21 @@
       "5/19/2026": 2.5969,
       "5/28/2026": 2.6526,
       "6/16/2026": 2.7333
-    }
+    },
+    "lines_played_30": [
+      "D3",
+      "S1x5",
+      "S2"
+    ],
+    "wl_record_30": "3-2",
+    "team_30": "PLAYERS",
+    "lines_played_35": [
+      "S1x2",
+      "S2x3"
+    ],
+    "wl_record_35": "1-4",
+    "default_wins_35": 1,
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "victoria-scharp",
@@ -247228,20 +247230,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2x5",
-      "D3"
-    ],
-    "wl_record_30": "1-5",
-    "team_30": "PLAYERS",
-    "lines_played_35": [
-      "D1",
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_35": "0-4",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 2.7267,
     "rating_35": 2.7267,
     "rating_timeline_30": {
@@ -247269,7 +247257,21 @@
       "5/28/2026": 2.645,
       "6/9/2026": 2.645,
       "6/18/2026": 2.75
-    }
+    },
+    "lines_played_30": [
+      "D1x3",
+      "D2x5",
+      "D3"
+    ],
+    "wl_record_30": "3-3",
+    "team_30": "PLAYERS",
+    "lines_played_35": [
+      "D1",
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_35": "0-4",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "annie-thomas",
@@ -247288,20 +247290,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x2",
-      "S1x5",
-      "S2x3"
-    ],
-    "wl_record_30": "2-6",
-    "team_30": "PLAYERS",
-    "lines_played_35": [
-      "D2",
-      "S1x5",
-      "S2x2"
-    ],
-    "wl_record_35": "4-4",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 2.75,
     "rating_35": 2.75,
     "rating_timeline_30": {
@@ -247339,7 +247327,21 @@
       "6/11/2026": 2.9973,
       "6/18/2026": 2.75,
       "6/25/2026": 2.75
-    }
+    },
+    "lines_played_30": [
+      "D2x2",
+      "S1x5",
+      "S2x3"
+    ],
+    "wl_record_30": "8-0",
+    "team_30": "PLAYERS",
+    "lines_played_35": [
+      "D2",
+      "S1x5",
+      "S2x2"
+    ],
+    "wl_record_35": "2-6",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "karen-hartman",
@@ -247358,19 +247360,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D3",
-      "S2x3"
-    ],
-    "wl_record_30": "1-1",
-    "team_30": "PLAYERS",
-    "lines_played_35": [
-      "D1x3",
-      "D3x2"
-    ],
-    "wl_record_35": "3-2",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 2.6433,
     "rating_35": 2.6433,
     "rating_timeline_30": {
@@ -247394,7 +247383,20 @@
       "6/11/2026": 2.7494,
       "6/18/2026": 2.6433,
       "6/25/2026": 2.6433
-    }
+    },
+    "lines_played_30": [
+      "D1",
+      "D3",
+      "S2x3"
+    ],
+    "wl_record_30": "0-2",
+    "team_30": "PLAYERS",
+    "lines_played_35": [
+      "D1x3",
+      "D3x2"
+    ],
+    "wl_record_35": "3-2",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "erin-hobbs",
@@ -247413,13 +247415,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "S1x2",
-      "S2x4"
-    ],
-    "wl_record_30": "1-4",
-    "team_30": "PLAYERS",
     "rating_30": 2.6,
     "rating_35": 2.6,
     "rating_timeline_30": {
@@ -247435,7 +247430,14 @@
       "7/17/2026": 2.6,
       "7/18/2026": 2.6
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "S1x2",
+      "S2x4"
+    ],
+    "wl_record_30": "0-5",
+    "team_30": "PLAYERS"
   },
   {
     "id": "amy-lapp",
@@ -247454,13 +247456,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x5",
-      "D3x4"
-    ],
-    "wl_record_30": "2-5",
-    "team_30": "PLAYERS",
     "rating_30": 2.7627,
     "rating_35": 2.7627,
     "rating_timeline_30": {
@@ -247478,7 +247473,14 @@
       "7/17/2026": 2.6574,
       "7/18/2026": 2.7627
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x5",
+      "D3x4"
+    ],
+    "wl_record_30": "2-5",
+    "team_30": "PLAYERS"
   },
   {
     "id": "venita-petti",
@@ -247497,19 +247499,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x7",
-      "D2",
-      "D3"
-    ],
-    "wl_record_30": "1-5",
-    "team_30": "PLAYERS",
-    "lines_played_35": [
-      "D2",
-      "D3"
-    ],
-    "wl_record_35": "0-2",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 2.8328,
     "rating_35": 2.8328,
     "rating_timeline_30": {
@@ -247531,7 +247520,20 @@
     "rating_post_timeline_35": {
       "5/14/2026": 2.5811,
       "5/28/2026": 2.6271
-    }
+    },
+    "lines_played_30": [
+      "D1x7",
+      "D2",
+      "D3"
+    ],
+    "wl_record_30": "2-4",
+    "team_30": "PLAYERS",
+    "lines_played_35": [
+      "D2",
+      "D3"
+    ],
+    "wl_record_35": "1-1",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "carrie-rose-lindley",
@@ -247550,18 +247552,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x4",
-      "D2x4",
-      "D3"
-    ],
-    "wl_record_30": "2-5",
-    "team_30": "PLAYERS",
-    "lines_played_35": [
-      "D2x4"
-    ],
-    "wl_record_35": "0-4",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 2.75,
     "rating_35": 2.75,
     "rating_timeline_30": {
@@ -247589,7 +247579,19 @@
       "6/9/2026": 2.6312,
       "6/18/2026": 2.7339,
       "6/23/2026": 2.7339
-    }
+    },
+    "lines_played_30": [
+      "D1x4",
+      "D2x4",
+      "D3"
+    ],
+    "wl_record_30": "3-4",
+    "team_30": "PLAYERS",
+    "lines_played_35": [
+      "D2x4"
+    ],
+    "wl_record_35": "0-4",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "grace-jory",
@@ -247608,21 +247610,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2",
-      "S1x2"
-    ],
-    "wl_record_30": "1-2",
-    "team_30": "CRUEL SUMMER",
-    "lines_played_35": [
-      "D1",
-      "D2",
-      "D3x2",
-      "S2x2"
-    ],
-    "wl_record_35": "2-4",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 2.9582,
     "rating_35": 2.9582,
     "rating_timeline_30": {
@@ -247650,7 +247637,22 @@
       "6/11/2026": 2.75,
       "6/18/2026": 2.7707,
       "6/25/2026": 2.9182
-    }
+    },
+    "lines_played_30": [
+      "D1x2",
+      "D2",
+      "S1x2"
+    ],
+    "wl_record_30": "3-0",
+    "team_30": "CRUEL SUMMER",
+    "lines_played_35": [
+      "D1",
+      "D2",
+      "D3x2",
+      "S2x2"
+    ],
+    "wl_record_35": "2-4",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "emily-smith",
@@ -247669,20 +247671,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "S1",
-      "S2x2"
-    ],
-    "wl_record_30": "0-2",
-    "team_30": "CRUEL SUMMER",
-    "lines_played_35": [
-      "D1x2",
-      "D2",
-      "D3"
-    ],
-    "wl_record_35": "2-2",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 2.5476,
     "rating_35": 2.5476,
     "rating_timeline_30": {
@@ -247704,7 +247692,21 @@
       "5/21/2026": 2.594,
       "5/28/2026": 2.6648,
       "6/25/2026": 2.5476
-    }
+    },
+    "lines_played_30": [
+      "D2",
+      "S1",
+      "S2x2"
+    ],
+    "wl_record_30": "0-2",
+    "team_30": "CRUEL SUMMER",
+    "lines_played_35": [
+      "D1x2",
+      "D2",
+      "D3"
+    ],
+    "wl_record_35": "1-3",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "shanea-bevins",
@@ -247723,20 +247725,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x3"
-    ],
-    "wl_record_30": "0-1",
-    "team_30": "CRUEL SUMMER",
-    "lines_played_35": [
-      "D1",
-      "D2",
-      "D3",
-      "S1x3",
-      "S2x2"
-    ],
-    "wl_record_35": "4-4",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 3.052,
     "rating_35": 3.052,
     "rating_timeline_30": {
@@ -247764,7 +247752,21 @@
       "6/11/2026": 3.0532,
       "6/18/2026": 2.9982,
       "6/25/2026": 3.052
-    }
+    },
+    "lines_played_30": [
+      "S1x3"
+    ],
+    "wl_record_30": "0-1",
+    "team_30": "CRUEL SUMMER",
+    "lines_played_35": [
+      "D1",
+      "D2",
+      "D3",
+      "S1x3",
+      "S2x2"
+    ],
+    "wl_record_35": "5-3",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "amy-spicer",
@@ -247783,19 +247785,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x3"
-    ],
-    "wl_record_30": "1-1",
-    "team_30": "CRUEL SUMMER",
-    "lines_played_35": [
-      "D1",
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_35": "2-2",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 2.703,
     "rating_35": 2.703,
     "rating_timeline_30": {
@@ -247817,7 +247806,20 @@
       "5/28/2026": 2.6809,
       "6/4/2026": 2.7009,
       "6/18/2026": 2.703
-    }
+    },
+    "lines_played_30": [
+      "D2",
+      "D3x3"
+    ],
+    "wl_record_30": "1-1",
+    "team_30": "CRUEL SUMMER",
+    "lines_played_35": [
+      "D1",
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_35": "1-3",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "claire-nelson",
@@ -247836,13 +247838,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x3",
-      "D3x2"
-    ],
-    "wl_record_30": "2-0",
-    "team_30": "CRUEL SUMMER",
     "rating_30": 2.5814,
     "rating_35": 2.5814,
     "rating_timeline_30": {
@@ -247854,7 +247849,14 @@
       "5/20/2026": 2.554,
       "6/24/2026": 2.5814
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x3",
+      "D3x2"
+    ],
+    "wl_record_30": "0-2",
+    "team_30": "CRUEL SUMMER"
   },
   {
     "id": "amber-nelson",
@@ -247873,14 +247875,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x3",
-      "D3",
-      "S2x2"
-    ],
-    "wl_record_30": "2-1",
-    "team_30": "CRUEL SUMMER",
     "rating_30": 2.6394,
     "rating_35": 2.6394,
     "rating_timeline_30": {
@@ -247894,7 +247888,15 @@
       "6/3/2026": 2.6606,
       "6/24/2026": 2.6394
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x3",
+      "D3",
+      "S2x2"
+    ],
+    "wl_record_30": "2-1",
+    "team_30": "CRUEL SUMMER"
   },
   {
     "id": "lyn-mcarthur",
@@ -247913,20 +247915,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2",
-      "D3x2",
-      "S2x2"
-    ],
-    "wl_record_30": "2-1",
-    "team_30": "CRUEL SUMMER",
-    "lines_played_35": [
-      "D2x3",
-      "D3x2"
-    ],
-    "wl_record_35": "2-3",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 2.7119,
     "rating_35": 2.7119,
     "rating_timeline_30": {
@@ -247952,7 +247940,21 @@
       "6/9/2026": 2.6979,
       "6/11/2026": 2.6979,
       "6/25/2026": 2.7119
-    }
+    },
+    "lines_played_30": [
+      "D1",
+      "D2",
+      "D3x2",
+      "S2x2"
+    ],
+    "wl_record_30": "1-2",
+    "team_30": "CRUEL SUMMER",
+    "lines_played_35": [
+      "D2x3",
+      "D3x2"
+    ],
+    "wl_record_35": "2-3",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "michele-surmelis",
@@ -247971,17 +247973,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x4"
-    ],
-    "wl_record_30": "1-2",
-    "team_30": "CRUEL SUMMER",
-    "lines_played_35": [
-      "D1x2",
-      "D2x3"
-    ],
-    "wl_record_35": "0-5",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 2.79,
     "rating_35": 2.79,
     "rating_timeline_30": {
@@ -248007,7 +247998,18 @@
       "6/9/2026": 2.6392,
       "6/18/2026": 2.7134,
       "6/23/2026": 2.7406
-    }
+    },
+    "lines_played_30": [
+      "D1x4"
+    ],
+    "wl_record_30": "3-0",
+    "team_30": "CRUEL SUMMER",
+    "lines_played_35": [
+      "D1x2",
+      "D2x3"
+    ],
+    "wl_record_35": "0-5",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "katy-green",
@@ -248026,17 +248028,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3"
-    ],
-    "wl_record_30": "1-0",
-    "team_30": "CRUEL SUMMER",
-    "lines_played_35": [
-      "D3x2"
-    ],
-    "wl_record_35": "2-0",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 2.7557,
     "rating_35": 2.7557,
     "rating_timeline_30": {
@@ -248052,7 +248043,18 @@
     "rating_post_timeline_35": {
       "5/14/2026": 2.6784,
       "5/28/2026": 2.7557
-    }
+    },
+    "lines_played_30": [
+      "D2",
+      "D3"
+    ],
+    "wl_record_30": "1-0",
+    "team_30": "CRUEL SUMMER",
+    "lines_played_35": [
+      "D3x2"
+    ],
+    "wl_record_35": "0-2",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "rachel-krammen",
@@ -248071,18 +248073,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2"
-    ],
-    "wl_record_30": "1-0",
-    "team_30": "CRUEL SUMMER",
-    "lines_played_35": [
-      "D2x5",
-      "D3x3"
-    ],
-    "wl_record_35": "4-4",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 2.7883,
     "rating_35": 2.7883,
     "rating_timeline_30": {
@@ -248110,7 +248100,19 @@
       "6/11/2026": 2.7838,
       "6/18/2026": 2.8095,
       "6/25/2026": 2.7883
-    }
+    },
+    "lines_played_30": [
+      "D1x3",
+      "D2"
+    ],
+    "wl_record_30": "1-0",
+    "team_30": "CRUEL SUMMER",
+    "lines_played_35": [
+      "D2x5",
+      "D3x3"
+    ],
+    "wl_record_35": "3-5",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "kimber-nelson",
@@ -248129,13 +248131,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_30": "2-0",
-    "team_30": "CRUEL SUMMER",
     "rating_30": 2.5814,
     "rating_35": 2.5814,
     "rating_timeline_30": {
@@ -248147,7 +248142,14 @@
       "5/20/2026": 2.554,
       "6/24/2026": 2.5814
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_30": "0-2",
+    "team_30": "CRUEL SUMMER"
   },
   {
     "id": "tasha-chambers",
@@ -248166,12 +248168,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D3x4"
-    ],
-    "wl_record_30": "0-2",
-    "team_30": "CRUEL SUMMER",
     "rating_30": 2.543,
     "rating_35": 2.543,
     "rating_timeline_30": {
@@ -248183,7 +248179,13 @@
       "6/3/2026": 2.571,
       "6/15/2026": 2.543
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D3x4"
+    ],
+    "wl_record_30": "0-2",
+    "team_30": "CRUEL SUMMER"
   },
   {
     "id": "karlee-moeai",
@@ -248202,20 +248204,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "S1x2",
-      "S2x2"
-    ],
-    "wl_record_30": "1-2",
-    "team_30": "CRUEL SUMMER",
-    "lines_played_35": [
-      "D1",
-      "D3x2",
-      "S2"
-    ],
-    "wl_record_35": "0-4",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 2.75,
     "rating_35": 2.75,
     "rating_timeline_30": {
@@ -248239,7 +248227,21 @@
       "5/28/2026": 2.5737,
       "6/2/2026": 2.5737,
       "6/16/2026": 2.75
-    }
+    },
+    "lines_played_30": [
+      "D2",
+      "S1x2",
+      "S2x2"
+    ],
+    "wl_record_30": "3-0",
+    "team_30": "CRUEL SUMMER",
+    "lines_played_35": [
+      "D1",
+      "D3x2",
+      "S2"
+    ],
+    "wl_record_35": "1-3",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "diane-poole",
@@ -248258,21 +248260,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_30": "2-2",
-    "team_30": "CRUEL SUMMER",
-    "lines_played_35": [
-      "D1x2",
-      "D2x2",
-      "D3",
-      "S2"
-    ],
-    "wl_record_35": "3-3",
-    "team_35": "DROP SHOT DIVAS",
     "rating_30": 2.8897,
     "rating_35": 2.8897,
     "rating_timeline_30": {
@@ -248302,7 +248289,22 @@
       "6/9/2026": 2.8592,
       "6/11/2026": 2.8592,
       "6/18/2026": 2.8673
-    }
+    },
+    "lines_played_30": [
+      "D1x2",
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_30": "2-2",
+    "team_30": "CRUEL SUMMER",
+    "lines_played_35": [
+      "D1x2",
+      "D2x2",
+      "D3",
+      "S2"
+    ],
+    "wl_record_35": "3-3",
+    "team_35": "DROP SHOT DIVAS"
   },
   {
     "id": "kristen-woodward",
@@ -248321,17 +248323,17 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "D1",
       "D2x3",
       "D3"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "amanda-frost",
@@ -248350,16 +248352,16 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "D2",
       "S1x2"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "kathy-gwinn",
@@ -248378,17 +248380,17 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "D1x2",
       "D2x2",
       "D3x2"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "shaylee-brake",
@@ -248407,15 +248409,15 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "D3x5"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "chealsy-colpitts",
@@ -248434,16 +248436,16 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "D1x2",
       "S2"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "mary-marshall",
@@ -248462,17 +248464,17 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "D2",
       "D3",
       "S2"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "lori-head",
@@ -248491,6 +248493,10 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "D1",
       "D3",
@@ -248498,11 +248504,7 @@
       "S2x2"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "allee-thompson",
@@ -248521,17 +248523,17 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "D2x2",
       "D3",
       "S2"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "heather-gunter",
@@ -248550,17 +248552,17 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "D1x5",
       "D2x2",
       "S2"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "carri-wullner",
@@ -248579,16 +248581,16 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "S1x4",
       "S2"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "kathy-kuhn",
@@ -248607,16 +248609,16 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
+    "rating_30": 2.6,
+    "rating_35": 2.6,
+    "rating_timeline_30": {},
+    "rating_timeline_35": {},
     "lines_played_30": [
       "D1",
       "D3x3"
     ],
     "wl_record_30": "0-0",
-    "team_30": "MAKING IT HAPPEN*",
-    "rating_30": 2.6,
-    "rating_35": 2.6,
-    "rating_timeline_30": {},
-    "rating_timeline_35": {}
+    "team_30": "MAKING IT HAPPEN*"
   },
   {
     "id": "stephanie-melink",
@@ -248635,14 +248637,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x2",
-      "S1",
-      "S2x2"
-    ],
-    "wl_record_30": "6-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.7736,
     "rating_35": 2.7736,
     "rating_timeline_30": {
@@ -248662,7 +248656,15 @@
       "6/19/2026": 2.7532,
       "6/22/2026": 2.7736
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3x2",
+      "S1",
+      "S2x2"
+    ],
+    "wl_record_30": "6-0",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "teresa-lyon",
@@ -248681,14 +248683,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x2",
-      "D3",
-      "S2"
-    ],
-    "wl_record_30": "5-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.6616,
     "rating_35": 2.6616,
     "rating_timeline_30": {
@@ -248706,7 +248700,15 @@
       "7/17/2026": 2.6616,
       "7/18/2026": 2.6616
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x2",
+      "D3",
+      "S2"
+    ],
+    "wl_record_30": "3-2",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "liz-crookston",
@@ -248725,13 +248727,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2",
-      "D3"
-    ],
-    "wl_record_30": "3-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.735,
     "rating_35": 2.735,
     "rating_timeline_30": {
@@ -248745,7 +248740,14 @@
       "6/15/2026": 2.6718,
       "6/29/2026": 2.735
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2",
+      "D3"
+    ],
+    "wl_record_30": "2-1",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "angela-little",
@@ -248764,12 +248766,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x3",
-      "D3x2"
-    ],
-    "wl_record_30": "5-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.68,
     "rating_35": 2.68,
     "rating_timeline_30": {
@@ -248787,7 +248783,13 @@
       "6/29/2026": 2.6677,
       "7/18/2026": 2.68
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x3",
+      "D3x2"
+    ],
+    "wl_record_30": "3-2",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "emily-beckmann",
@@ -248806,12 +248808,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3"
-    ],
-    "wl_record_30": "2-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.66,
     "rating_35": 2.66,
     "rating_timeline_30": {
@@ -248823,7 +248819,13 @@
       "6/15/2026": 2.6327,
       "6/29/2026": 2.66
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3"
+    ],
+    "wl_record_30": "2-0",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "nikki-reynolds",
@@ -248842,11 +248844,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x3"
-    ],
-    "wl_record_30": "3-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.6277,
     "rating_35": 2.6277,
     "rating_timeline_30": {
@@ -248860,7 +248857,12 @@
       "6/1/2026": 2.6095,
       "6/22/2026": 2.6277
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x3"
+    ],
+    "wl_record_30": "2-1",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "hannah-young",
@@ -248879,11 +248881,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3x4"
-    ],
-    "wl_record_30": "3-1",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.6685,
     "rating_35": 2.6685,
     "rating_timeline_30": {
@@ -248899,7 +248896,12 @@
       "6/19/2026": 2.6685,
       "7/17/2026": 2.6685
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3x4"
+    ],
+    "wl_record_30": "3-1",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "valencia-bilyeu",
@@ -248918,13 +248920,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x3",
-      "D3"
-    ],
-    "wl_record_30": "6-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.7096,
     "rating_35": 2.7096,
     "rating_timeline_30": {
@@ -248944,7 +248939,14 @@
       "7/17/2026": 2.7459,
       "7/18/2026": 2.7096
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x3",
+      "D3"
+    ],
+    "wl_record_30": "6-0",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "danielle-krawl",
@@ -248963,12 +248965,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D3x2"
-    ],
-    "wl_record_30": "3-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.6467,
     "rating_35": 2.6467,
     "rating_timeline_30": {
@@ -248982,7 +248978,13 @@
       "6/15/2026": 2.6467,
       "7/18/2026": 2.6467
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D3x2"
+    ],
+    "wl_record_30": "2-1",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "amy-getz",
@@ -249001,13 +249003,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_30": "4-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.7009,
     "rating_35": 2.7009,
     "rating_timeline_30": {
@@ -249023,7 +249018,14 @@
       "6/29/2026": 2.6656,
       "7/17/2026": 2.7009
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_30": "4-0",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "alison-rock",
@@ -249042,12 +249044,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x4",
-      "S2x2"
-    ],
-    "wl_record_30": "6-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.9586,
     "rating_35": 2.9586,
     "rating_timeline_30": {
@@ -249067,7 +249063,13 @@
       "7/17/2026": 2.9005,
       "7/18/2026": 2.9586
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1x4",
+      "S2x2"
+    ],
+    "wl_record_30": "4-2",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "lynn-clark",
@@ -249086,12 +249088,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x3",
-      "D3x3"
-    ],
-    "wl_record_30": "5-1",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.6876,
     "rating_35": 2.6876,
     "rating_timeline_30": {
@@ -249111,7 +249107,13 @@
       "7/17/2026": 2.6598,
       "7/18/2026": 2.6876
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x3",
+      "D3x3"
+    ],
+    "wl_record_30": "4-2",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "michelle-brack",
@@ -249130,13 +249132,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x2",
-      "S2"
-    ],
-    "wl_record_30": "4-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.6707,
     "rating_35": 2.6707,
     "rating_timeline_30": {
@@ -249152,7 +249147,14 @@
       "6/3/2026": 2.6408,
       "6/8/2026": 2.6707
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3x2",
+      "S2"
+    ],
+    "wl_record_30": "3-1",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "sheila-hennessey",
@@ -249171,11 +249173,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3x2"
-    ],
-    "wl_record_30": "2-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.6546,
     "rating_35": 2.6546,
     "rating_timeline_30": {
@@ -249187,7 +249184,12 @@
       "5/20/2026": 2.6255,
       "6/3/2026": 2.6546
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3x2"
+    ],
+    "wl_record_30": "2-0",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "kellie-shadle",
@@ -249206,14 +249208,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D3",
-      "S1x3",
-      "S2"
-    ],
-    "wl_record_30": "6-0",
-    "team_30": "SERVING UP SASS",
     "rating_30": 2.7186,
     "rating_35": 2.7186,
     "rating_timeline_30": {
@@ -249231,7 +249225,15 @@
       "6/19/2026": 2.7456,
       "7/18/2026": 2.7186
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D3",
+      "S1x3",
+      "S2"
+    ],
+    "wl_record_30": "4-2",
+    "team_30": "SERVING UP SASS"
   },
   {
     "id": "ellen-german",
@@ -249250,12 +249252,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x7",
-      "D3"
-    ],
-    "wl_record_30": "5-3",
-    "team_30": "NICE HITS",
     "rating_30": 2.9594,
     "rating_35": 2.9594,
     "rating_timeline_30": {
@@ -249275,7 +249271,13 @@
       "7/17/2026": 2.8113,
       "7/18/2026": 2.9194
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x7",
+      "D3"
+    ],
+    "wl_record_30": "4-4",
+    "team_30": "NICE HITS"
   },
   {
     "id": "adra-kipper",
@@ -249294,12 +249296,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x2",
-      "D3x3"
-    ],
-    "wl_record_30": "3-2",
-    "team_30": "NICE HITS",
     "rating_30": 2.4839,
     "rating_35": 2.4839,
     "rating_timeline_30": {
@@ -249317,7 +249313,13 @@
       "6/22/2026": 2.5187,
       "7/17/2026": 2.4839
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x2",
+      "D3x3"
+    ],
+    "wl_record_30": "2-3",
+    "team_30": "NICE HITS"
   },
   {
     "id": "wendy-doughty",
@@ -249336,16 +249338,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2",
-      "D3",
-      "S1x2",
-      "S2x5"
-    ],
-    "wl_record_30": "8-4",
-    "default_wins_30": 1,
-    "team_30": "NICE HITS",
     "rating_30": 2.9101,
     "rating_35": 2.9101,
     "rating_timeline_30": {
@@ -249371,7 +249363,17 @@
       "7/17/2026": 2.8504,
       "7/18/2026": 2.9101
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2",
+      "D3",
+      "S1x2",
+      "S2x5"
+    ],
+    "wl_record_30": "10-2",
+    "default_wins_30": 1,
+    "team_30": "NICE HITS"
   },
   {
     "id": "heather-vegas",
@@ -249390,11 +249392,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3x2"
-    ],
-    "wl_record_30": "2-0",
-    "team_30": "NICE HITS",
     "rating_30": 2.6252,
     "rating_35": 2.6252,
     "rating_timeline_30": {
@@ -249406,7 +249403,12 @@
       "5/27/2026": 2.6,
       "6/3/2026": 2.6252
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3x2"
+    ],
+    "wl_record_30": "1-1",
+    "team_30": "NICE HITS"
   },
   {
     "id": "allison-urbatchka",
@@ -249425,12 +249427,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x3",
-      "S2x4"
-    ],
-    "wl_record_30": "4-3",
-    "team_30": "NICE HITS",
     "rating_30": 2.7007,
     "rating_35": 2.7007,
     "rating_timeline_30": {
@@ -249452,7 +249448,13 @@
       "7/17/2026": 2.6777,
       "7/18/2026": 2.7007
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1x3",
+      "S2x4"
+    ],
+    "wl_record_30": "4-3",
+    "team_30": "NICE HITS"
   },
   {
     "id": "stacy-lamb",
@@ -249471,12 +249473,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_30": "3-0",
-    "team_30": "NICE HITS",
     "rating_30": 2.6348,
     "rating_35": 2.6348,
     "rating_timeline_30": {
@@ -249490,7 +249486,13 @@
       "6/1/2026": 2.6072,
       "7/18/2026": 2.6348
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_30": "2-1",
+    "team_30": "NICE HITS"
   },
   {
     "id": "nikki-whiting",
@@ -249509,12 +249511,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x5",
-      "D3x6"
-    ],
-    "wl_record_30": "8-3",
-    "team_30": "NICE HITS",
     "rating_30": 2.694,
     "rating_35": 2.694,
     "rating_timeline_30": {
@@ -249540,7 +249536,13 @@
       "7/17/2026": 2.6678,
       "7/18/2026": 2.694
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x5",
+      "D3x6"
+    ],
+    "wl_record_30": "6-5",
+    "team_30": "NICE HITS"
   },
   {
     "id": "natalie-hart",
@@ -249559,12 +249561,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3x2",
-      "S2x2"
-    ],
-    "wl_record_30": "3-1",
-    "team_30": "NICE HITS",
     "rating_30": 2.5493,
     "rating_35": 2.5493,
     "rating_timeline_30": {
@@ -249580,7 +249576,13 @@
       "6/15/2026": 2.5987,
       "6/22/2026": 2.5493
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3x2",
+      "S2x2"
+    ],
+    "wl_record_30": "1-3",
+    "team_30": "NICE HITS"
   },
   {
     "id": "carolyn-meador",
@@ -249599,13 +249601,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x7",
-      "D2",
-      "S2x2"
-    ],
-    "wl_record_30": "7-3",
-    "team_30": "NICE HITS",
     "rating_30": 2.945,
     "rating_35": 2.945,
     "rating_timeline_30": {
@@ -249631,7 +249626,14 @@
       "7/17/2026": 2.8394,
       "7/18/2026": 2.945
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x7",
+      "D2",
+      "S2x2"
+    ],
+    "wl_record_30": "4-6",
+    "team_30": "NICE HITS"
   },
   {
     "id": "tammy-austin",
@@ -249650,12 +249652,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x4",
-      "D3x4"
-    ],
-    "wl_record_30": "6-2",
-    "team_30": "NICE HITS",
     "rating_30": 2.7124,
     "rating_35": 2.7124,
     "rating_timeline_30": {
@@ -249675,7 +249671,13 @@
       "7/17/2026": 2.6862,
       "7/18/2026": 2.7124
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x4",
+      "D3x4"
+    ],
+    "wl_record_30": "4-4",
+    "team_30": "NICE HITS"
   },
   {
     "id": "elizabeth-moore",
@@ -249694,12 +249696,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x3"
-    ],
-    "wl_record_30": "3-1",
-    "team_30": "NICE HITS",
     "rating_30": 2.6733,
     "rating_35": 2.6733,
     "rating_timeline_30": {
@@ -249715,7 +249711,13 @@
       "6/22/2026": 2.6475,
       "7/18/2026": 2.6733
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3x3"
+    ],
+    "wl_record_30": "1-3",
+    "team_30": "NICE HITS"
   },
   {
     "id": "cathy-johnson",
@@ -249734,12 +249736,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x5",
-      "D2x5"
-    ],
-    "wl_record_30": "7-3",
-    "team_30": "NICE HITS",
     "rating_30": 2.7794,
     "rating_35": 2.7794,
     "rating_timeline_30": {
@@ -249765,7 +249761,13 @@
       "7/17/2026": 2.727,
       "7/18/2026": 2.7794
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x5",
+      "D2x5"
+    ],
+    "wl_record_30": "5-5",
+    "team_30": "NICE HITS"
   },
   {
     "id": "megan-chau",
@@ -249784,13 +249786,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x5",
-      "S1",
-      "S2"
-    ],
-    "wl_record_30": "5-2",
-    "team_30": "GET SMASHED",
     "rating_30": 2.7755,
     "rating_35": 2.7755,
     "rating_timeline_30": {
@@ -249812,7 +249807,14 @@
       "6/10/2026": 2.6965,
       "6/22/2026": 2.7355
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x5",
+      "S1",
+      "S2"
+    ],
+    "wl_record_30": "5-2",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "jennifer-hemly",
@@ -249831,12 +249833,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2x3"
-    ],
-    "wl_record_30": "4-2",
-    "team_30": "GET SMASHED",
     "rating_30": 2.7829,
     "rating_35": 2.7829,
     "rating_timeline_30": {
@@ -249856,7 +249852,13 @@
       "6/10/2026": 2.7829,
       "6/15/2026": 2.7829
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2x3"
+    ],
+    "wl_record_30": "4-2",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "bridget-mahoney",
@@ -249875,12 +249877,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x2"
-    ],
-    "wl_record_30": "3-1",
-    "team_30": "GET SMASHED",
     "rating_30": 2.654,
     "rating_35": 2.654,
     "rating_timeline_30": {
@@ -249896,7 +249892,13 @@
       "6/8/2026": 2.6145,
       "6/15/2026": 2.654
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x2"
+    ],
+    "wl_record_30": "2-2",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "deena-emry",
@@ -249915,12 +249917,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "S1"
-    ],
-    "wl_record_30": "3-1",
-    "team_30": "GET SMASHED",
     "rating_30": 2.7429,
     "rating_35": 2.7429,
     "rating_timeline_30": {
@@ -249936,7 +249932,13 @@
       "6/8/2026": 2.624,
       "6/17/2026": 2.7029
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "S1"
+    ],
+    "wl_record_30": "1-3",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "coree-carver",
@@ -249955,13 +249957,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x2",
-      "D3x4",
-      "S2"
-    ],
-    "wl_record_30": "5-2",
-    "team_30": "GET SMASHED",
     "rating_30": 2.7861,
     "rating_35": 2.7861,
     "rating_timeline_30": {
@@ -249983,7 +249978,14 @@
       "6/15/2026": 2.7705,
       "6/22/2026": 2.7861
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x2",
+      "D3x4",
+      "S2"
+    ],
+    "wl_record_30": "7-0",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "michelle-dorn",
@@ -250002,13 +250004,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2x3",
-      "S2"
-    ],
-    "wl_record_30": "6-1",
-    "team_30": "GET SMASHED",
     "rating_30": 2.7761,
     "rating_35": 2.7761,
     "rating_timeline_30": {
@@ -250030,7 +250025,14 @@
       "6/15/2026": 2.7419,
       "6/22/2026": 2.7761
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2x3",
+      "S2"
+    ],
+    "wl_record_30": "4-3",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "river-armstrong",
@@ -250049,14 +250051,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x2",
-      "D3",
-      "S2"
-    ],
-    "wl_record_30": "4-2",
-    "team_30": "GET SMASHED",
     "rating_30": 2.7378,
     "rating_35": 2.7378,
     "rating_timeline_30": {
@@ -250076,7 +250070,15 @@
       "6/15/2026": 2.6663,
       "6/17/2026": 2.7378
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x2",
+      "D3",
+      "S2"
+    ],
+    "wl_record_30": "4-2",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "sandi-rubio",
@@ -250095,12 +250097,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x3",
-      "D3"
-    ],
-    "wl_record_30": "2-2",
-    "team_30": "GET SMASHED",
     "rating_30": 2.8031,
     "rating_35": 2.8031,
     "rating_timeline_30": {
@@ -250116,7 +250112,13 @@
       "6/10/2026": 2.7231,
       "6/17/2026": 2.8031
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x3",
+      "D3"
+    ],
+    "wl_record_30": "3-1",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "diana-linderman",
@@ -250135,11 +250137,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3x6"
-    ],
-    "wl_record_30": "5-1",
-    "team_30": "GET SMASHED",
     "rating_30": 2.6889,
     "rating_35": 2.6889,
     "rating_timeline_30": {
@@ -250159,7 +250156,12 @@
       "6/17/2026": 2.6686,
       "6/22/2026": 2.6889
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3x6"
+    ],
+    "wl_record_30": "5-1",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "piper-connelly",
@@ -250178,13 +250180,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x3",
-      "S1x2"
-    ],
-    "wl_record_30": "4-2",
-    "team_30": "GET SMASHED",
     "rating_30": 2.8301,
     "rating_35": 2.8301,
     "rating_timeline_30": {
@@ -250204,7 +250199,14 @@
       "6/17/2026": 2.7568,
       "6/22/2026": 2.8301
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x3",
+      "S1x2"
+    ],
+    "wl_record_30": "2-4",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "cristina-daccarett",
@@ -250223,12 +250225,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x2",
-      "D3x2"
-    ],
-    "wl_record_30": "3-1",
-    "team_30": "GET SMASHED",
     "rating_30": 2.689,
     "rating_35": 2.689,
     "rating_timeline_30": {
@@ -250244,7 +250240,13 @@
       "6/15/2026": 2.6157,
       "6/22/2026": 2.689
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x2",
+      "D3x2"
+    ],
+    "wl_record_30": "2-2",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "natalie-chatfield",
@@ -250263,12 +250265,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x2",
-      "S2x4"
-    ],
-    "wl_record_30": "4-2",
-    "team_30": "GET SMASHED",
     "rating_30": 2.676,
     "rating_35": 2.676,
     "rating_timeline_30": {
@@ -250288,7 +250284,13 @@
       "6/17/2026": 2.6454,
       "6/22/2026": 2.676
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1x2",
+      "S2x4"
+    ],
+    "wl_record_30": "3-3",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "elizabeth-schneider",
@@ -250307,11 +250309,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3x5"
-    ],
-    "wl_record_30": "3-2",
-    "team_30": "GET SMASHED",
     "rating_30": 2.6223,
     "rating_35": 2.6223,
     "rating_timeline_30": {
@@ -250329,7 +250326,12 @@
       "6/3/2026": 2.6557,
       "6/17/2026": 2.6223
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3x5"
+    ],
+    "wl_record_30": "3-2",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "emily-quinn",
@@ -250348,11 +250350,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3"
-    ],
-    "wl_record_30": "1-0",
-    "team_30": "GET SMASHED",
     "rating_30": 2.6233,
     "rating_35": 2.6233,
     "rating_timeline_30": {
@@ -250362,7 +250359,12 @@
     "rating_post_timeline_30": {
       "6/10/2026": 2.6233
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3"
+    ],
+    "wl_record_30": "1-0",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "julia-reilly",
@@ -250381,13 +250383,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "S1x2",
-      "S2x2"
-    ],
-    "wl_record_30": "2-3",
-    "team_30": "GET SMASHED",
     "rating_30": 2.7171,
     "rating_35": 2.7171,
     "rating_timeline_30": {
@@ -250405,7 +250400,14 @@
       "6/17/2026": 2.7171,
       "6/22/2026": 2.7171
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "S1x2",
+      "S2x2"
+    ],
+    "wl_record_30": "2-3",
+    "team_30": "GET SMASHED"
   },
   {
     "id": "kristen-jones",
@@ -250424,13 +250426,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_30": "1-3",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.5148,
     "rating_35": 2.5148,
     "rating_timeline_30": {
@@ -250446,7 +250441,14 @@
       "6/15/2026": 2.5625,
       "6/22/2026": 2.5148
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_30": "0-4",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "tracy-speck",
@@ -250465,11 +250467,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1"
-    ],
-    "wl_record_30": "1-0",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.5523,
     "rating_35": 2.5523,
     "rating_timeline_30": {
@@ -250479,7 +250476,12 @@
     "rating_post_timeline_30": {
       "6/22/2026": 2.5523
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1"
+    ],
+    "wl_record_30": "0-1",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "susan-barnes",
@@ -250498,13 +250500,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2",
-      "D3"
-    ],
-    "wl_record_30": "3-1",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.6633,
     "rating_35": 2.6633,
     "rating_timeline_30": {
@@ -250520,7 +250515,14 @@
       "6/5/2026": 2.6138,
       "6/8/2026": 2.6633
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2",
+      "D3"
+    ],
+    "wl_record_30": "1-3",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "stephanie-ferney",
@@ -250539,12 +250541,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x3",
-      "S1x2"
-    ],
-    "wl_record_30": "1-4",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.5625,
     "rating_35": 2.5625,
     "rating_timeline_30": {
@@ -250562,7 +250558,13 @@
       "6/10/2026": 2.5625,
       "6/15/2026": 2.5625
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x3",
+      "S1x2"
+    ],
+    "wl_record_30": "0-5",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "debbie-duncan",
@@ -250581,12 +250583,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D3"
-    ],
-    "wl_record_30": "2-2",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.6051,
     "rating_35": 2.6051,
     "rating_timeline_30": {
@@ -250602,7 +250598,13 @@
       "6/17/2026": 2.5512,
       "6/22/2026": 2.5651
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D3"
+    ],
+    "wl_record_30": "2-2",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "jennifer-kovacs",
@@ -250621,13 +250623,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2",
-      "S2"
-    ],
-    "wl_record_30": "2-3",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.6409,
     "rating_35": 2.6409,
     "rating_timeline_30": {
@@ -250645,7 +250640,14 @@
       "6/10/2026": 2.6069,
       "6/22/2026": 2.6409
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2",
+      "S2"
+    ],
+    "wl_record_30": "2-3",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "rebekah-pernell",
@@ -250664,12 +250666,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x2",
-      "S2x3"
-    ],
-    "wl_record_30": "4-1",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.6062,
     "rating_35": 2.6062,
     "rating_timeline_30": {
@@ -250687,7 +250683,13 @@
       "6/17/2026": 2.6062,
       "6/22/2026": 2.6062
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1x2",
+      "S2x3"
+    ],
+    "wl_record_30": "1-4",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "leslie-wagner",
@@ -250706,12 +250708,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x4"
-    ],
-    "wl_record_30": "1-4",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.6005,
     "rating_35": 2.6005,
     "rating_timeline_30": {
@@ -250729,7 +250725,13 @@
       "6/10/2026": 2.6263,
       "6/15/2026": 2.6005
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3x4"
+    ],
+    "wl_record_30": "2-3",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "juliana-renno-bounds",
@@ -250748,12 +250750,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x2"
-    ],
-    "wl_record_30": "2-2",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.6742,
     "rating_35": 2.6742,
     "rating_timeline_30": {
@@ -250769,7 +250765,13 @@
       "6/10/2026": 2.6429,
       "6/22/2026": 2.6742
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x2"
+    ],
+    "wl_record_30": "1-3",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "yutong-luo",
@@ -250788,12 +250790,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x2",
-      "D3x2"
-    ],
-    "wl_record_30": "1-3",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.6,
     "rating_35": 2.6,
     "rating_timeline_30": {
@@ -250809,7 +250805,13 @@
       "6/1/2026": 2.6,
       "6/5/2026": 2.6
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x2",
+      "D3x2"
+    ],
+    "wl_record_30": "0-4",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "barbara-wessner",
@@ -250828,13 +250830,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x3",
-      "D3"
-    ],
-    "wl_record_30": "3-2",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.557,
     "rating_35": 2.557,
     "rating_timeline_30": {
@@ -250852,7 +250847,14 @@
       "6/8/2026": 2.6013,
       "6/17/2026": 2.557
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x3",
+      "D3"
+    ],
+    "wl_record_30": "3-2",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "nancy-wright",
@@ -250871,11 +250873,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3"
-    ],
-    "wl_record_30": "0-1",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.5742,
     "rating_35": 2.5742,
     "rating_timeline_30": {
@@ -250885,7 +250882,12 @@
     "rating_post_timeline_30": {
       "6/15/2026": 2.5742
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3"
+    ],
+    "wl_record_30": "1-0",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "tiffany-tarpo",
@@ -250904,12 +250906,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x3"
-    ],
-    "wl_record_30": "4-1",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.7371,
     "rating_35": 2.7371,
     "rating_timeline_30": {
@@ -250927,7 +250923,13 @@
       "6/8/2026": 2.7814,
       "6/17/2026": 2.7371
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x3"
+    ],
+    "wl_record_30": "4-1",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "ashley-locke",
@@ -250946,12 +250948,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3",
-      "S2x2"
-    ],
-    "wl_record_30": "1-2",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.6178,
     "rating_35": 2.6178,
     "rating_timeline_30": {
@@ -250965,7 +250961,13 @@
       "6/15/2026": 2.6771,
       "6/17/2026": 2.6178
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3",
+      "S2x2"
+    ],
+    "wl_record_30": "1-2",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "shelley-lundstedt",
@@ -250984,14 +250986,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2",
-      "S1",
-      "S2x2"
-    ],
-    "wl_record_30": "3-2",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.6156,
     "rating_35": 2.6156,
     "rating_timeline_30": {
@@ -251009,7 +251003,15 @@
       "6/8/2026": 2.5648,
       "6/17/2026": 2.6156
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2",
+      "S1",
+      "S2x2"
+    ],
+    "wl_record_30": "2-3",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "randa-hightower",
@@ -251028,13 +251030,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "S1",
-      "S2"
-    ],
-    "wl_record_30": "1-3",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.5969,
     "rating_35": 2.5969,
     "rating_timeline_30": {
@@ -251050,7 +251045,14 @@
       "6/1/2026": 2.5569,
       "6/15/2026": 2.5569
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "S1",
+      "S2"
+    ],
+    "wl_record_30": "0-4",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "judy-arnt",
@@ -251069,11 +251071,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3x3"
-    ],
-    "wl_record_30": "0-3",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.6,
     "rating_35": 2.6,
     "rating_timeline_30": {
@@ -251087,7 +251084,12 @@
       "6/1/2026": 2.6,
       "6/10/2026": 2.6
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3x3"
+    ],
+    "wl_record_30": "0-3",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "kristen-veseth",
@@ -251106,11 +251108,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x4"
-    ],
-    "wl_record_30": "3-1",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.8038,
     "rating_35": 2.8038,
     "rating_timeline_30": {
@@ -251126,7 +251123,12 @@
       "6/8/2026": 2.7283,
       "6/17/2026": 2.7638
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1x4"
+    ],
+    "wl_record_30": "4-0",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "kim-roth",
@@ -251145,13 +251147,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_30": "3-1",
-    "team_30": "BALLS AND DOLLS",
     "rating_30": 2.8206,
     "rating_35": 2.8206,
     "rating_timeline_30": {
@@ -251167,7 +251162,14 @@
       "6/10/2026": 2.8014,
       "6/22/2026": 2.8206
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_30": "3-1",
+    "team_30": "BALLS AND DOLLS"
   },
   {
     "id": "tundra-mcdougal",
@@ -251186,12 +251188,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x4",
-      "D3x4"
-    ],
-    "wl_record_30": "4-4",
-    "team_30": "MATCH MAKERS",
     "rating_30": 2.699,
     "rating_35": 2.699,
     "rating_timeline_30": {
@@ -251215,7 +251211,13 @@
       "6/17/2026": 2.6882,
       "6/22/2026": 2.699
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x4",
+      "D3x4"
+    ],
+    "wl_record_30": "4-4",
+    "team_30": "MATCH MAKERS"
   },
   {
     "id": "cynthia-melillo",
@@ -251234,14 +251236,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3",
-      "S1",
-      "S2x3"
-    ],
-    "wl_record_30": "1-5",
-    "team_30": "MATCH MAKERS",
     "rating_30": 2.6755,
     "rating_35": 2.6755,
     "rating_timeline_30": {
@@ -251261,7 +251255,15 @@
       "6/17/2026": 2.7028,
       "6/29/2026": 2.6755
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3",
+      "S1",
+      "S2x3"
+    ],
+    "wl_record_30": "4-2",
+    "team_30": "MATCH MAKERS"
   },
   {
     "id": "alissa-figone",
@@ -251280,13 +251282,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "S1x2",
-      "S2"
-    ],
-    "wl_record_30": "3-1",
-    "team_30": "MATCH MAKERS",
     "rating_30": 2.7973,
     "rating_35": 2.7973,
     "rating_timeline_30": {
@@ -251302,7 +251297,14 @@
       "6/3/2026": 2.7354,
       "6/8/2026": 2.7573
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "S1x2",
+      "S2"
+    ],
+    "wl_record_30": "3-1",
+    "team_30": "MATCH MAKERS"
   },
   {
     "id": "celita-skelton",
@@ -251321,12 +251323,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2x4"
-    ],
-    "wl_record_30": "2-5",
-    "team_30": "MATCH MAKERS",
     "rating_30": 2.567,
     "rating_35": 2.567,
     "rating_timeline_30": {
@@ -251348,7 +251344,13 @@
       "6/22/2026": 2.6034,
       "6/29/2026": 2.567
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2x4"
+    ],
+    "wl_record_30": "2-5",
+    "team_30": "MATCH MAKERS"
   },
   {
     "id": "ashley-moore",
@@ -251367,13 +251369,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x4",
-      "D2",
-      "S2x2"
-    ],
-    "wl_record_30": "3-4",
-    "team_30": "MATCH MAKERS",
     "rating_30": 2.6805,
     "rating_35": 2.6805,
     "rating_timeline_30": {
@@ -251395,7 +251390,14 @@
       "6/22/2026": 2.5371,
       "6/29/2026": 2.6805
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x4",
+      "D2",
+      "S2x2"
+    ],
+    "wl_record_30": "3-4",
+    "team_30": "MATCH MAKERS"
   },
   {
     "id": "brittany-morris",
@@ -251414,13 +251416,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D3x2",
-      "S1"
-    ],
-    "wl_record_30": "2-3",
-    "team_30": "MATCH MAKERS",
     "rating_30": 2.7803,
     "rating_35": 2.7803,
     "rating_timeline_30": {
@@ -251438,7 +251433,14 @@
       "6/17/2026": 2.6369,
       "6/29/2026": 2.7803
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D3x2",
+      "S1"
+    ],
+    "wl_record_30": "2-3",
+    "team_30": "MATCH MAKERS"
   },
   {
     "id": "lindsay-hunter",
@@ -251457,13 +251459,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "S1x2",
-      "S2x2"
-    ],
-    "wl_record_30": "1-4",
-    "team_30": "MATCH MAKERS",
     "rating_30": 2.6044,
     "rating_35": 2.6044,
     "rating_timeline_30": {
@@ -251481,7 +251476,14 @@
       "6/22/2026": 2.6044,
       "6/29/2026": 2.6044
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "S1x2",
+      "S2x2"
+    ],
+    "wl_record_30": "1-4",
+    "team_30": "MATCH MAKERS"
   },
   {
     "id": "karisa-cicchella",
@@ -251500,12 +251502,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x2",
-      "D3x5"
-    ],
-    "wl_record_30": "3-4",
-    "team_30": "MATCH MAKERS",
     "rating_30": 2.7401,
     "rating_35": 2.7401,
     "rating_timeline_30": {
@@ -251527,7 +251523,13 @@
       "6/17/2026": 2.7261,
       "6/22/2026": 2.7401
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x2",
+      "D3x5"
+    ],
+    "wl_record_30": "4-3",
+    "team_30": "MATCH MAKERS"
   },
   {
     "id": "emma-lally",
@@ -251546,13 +251548,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2x2",
-      "D3x4"
-    ],
-    "wl_record_30": "3-6",
-    "team_30": "MATCH MAKERS",
     "rating_30": 2.5243,
     "rating_35": 2.5243,
     "rating_timeline_30": {
@@ -251578,7 +251573,14 @@
       "6/22/2026": 2.5516,
       "6/29/2026": 2.5243
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2x2",
+      "D3x4"
+    ],
+    "wl_record_30": "2-7",
+    "team_30": "MATCH MAKERS"
   },
   {
     "id": "lauren-schaack",
@@ -251597,13 +251599,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x2",
-      "D3x2",
-      "S2"
-    ],
-    "wl_record_30": "3-2",
-    "team_30": "MATCH MAKERS",
     "rating_30": 2.7067,
     "rating_35": 2.7067,
     "rating_timeline_30": {
@@ -251621,7 +251616,14 @@
       "6/17/2026": 2.7067,
       "6/29/2026": 2.7067
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x2",
+      "D3x2",
+      "S2"
+    ],
+    "wl_record_30": "4-1",
+    "team_30": "MATCH MAKERS"
   },
   {
     "id": "erin-retelle",
@@ -251640,13 +251642,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2",
-      "D3x4"
-    ],
-    "wl_record_30": "1-5",
-    "team_30": "7-6",
     "rating_30": 2.8156,
     "rating_35": 2.8156,
     "rating_timeline_30": {
@@ -251664,7 +251659,14 @@
       "6/15/2026": 2.7825,
       "6/22/2026": 2.8156
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2",
+      "D3x4"
+    ],
+    "wl_record_30": "3-3",
+    "team_30": "7-6"
   },
   {
     "id": "melissa-waine-cunliffe",
@@ -251683,13 +251685,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x4",
-      "D2",
-      "D3"
-    ],
-    "wl_record_30": "3-3",
-    "team_30": "7-6",
     "rating_30": 2.9288,
     "rating_35": 2.9288,
     "rating_timeline_30": {
@@ -251705,7 +251700,14 @@
       "6/8/2026": 2.7826,
       "6/22/2026": 2.9288
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x4",
+      "D2",
+      "D3"
+    ],
+    "wl_record_30": "6-0",
+    "team_30": "7-6"
   },
   {
     "id": "shanna-endow",
@@ -251724,13 +251726,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_30": "2-4",
-    "team_30": "7-6",
     "rating_30": 2.6691,
     "rating_35": 2.6691,
     "rating_timeline_30": {
@@ -251746,7 +251741,14 @@
       "6/15/2026": 2.623,
       "6/22/2026": 2.6691
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_30": "3-3",
+    "team_30": "7-6"
   },
   {
     "id": "suzanne-hickok",
@@ -251765,13 +251767,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x3",
-      "D3x3"
-    ],
-    "wl_record_30": "4-3",
-    "team_30": "7-6",
     "rating_30": 2.6625,
     "rating_35": 2.6625,
     "rating_timeline_30": {
@@ -251787,7 +251782,14 @@
       "6/8/2026": 2.6485,
       "6/10/2026": 2.6625
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x3",
+      "D3x3"
+    ],
+    "wl_record_30": "5-2",
+    "team_30": "7-6"
   },
   {
     "id": "vita-mobley",
@@ -251806,13 +251808,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D3x3",
-      "S2"
-    ],
-    "wl_record_30": "3-2",
-    "team_30": "7-6",
     "rating_30": 2.5419,
     "rating_35": 2.5419,
     "rating_timeline_30": {
@@ -251826,7 +251821,14 @@
       "6/5/2026": 2.5179,
       "6/10/2026": 2.5419
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D3x3",
+      "S2"
+    ],
+    "wl_record_30": "2-3",
+    "team_30": "7-6"
   },
   {
     "id": "kara-anderson",
@@ -251845,12 +251847,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "S2"
-    ],
-    "wl_record_30": "1-1",
-    "team_30": "7-6",
     "rating_30": 2.5499,
     "rating_35": 2.5499,
     "rating_timeline_30": {
@@ -251860,7 +251856,13 @@
     "rating_post_timeline_30": {
       "6/15/2026": 2.5499
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "S2"
+    ],
+    "wl_record_30": "1-1",
+    "team_30": "7-6"
   },
   {
     "id": "carol-mills",
@@ -251879,13 +251881,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x4",
-      "D3"
-    ],
-    "wl_record_30": "4-2",
-    "team_30": "7-6",
     "rating_30": 2.6764,
     "rating_35": 2.6764,
     "rating_timeline_30": {
@@ -251899,7 +251894,14 @@
       "6/8/2026": 2.6764,
       "6/22/2026": 2.6764
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x4",
+      "D3"
+    ],
+    "wl_record_30": "5-1",
+    "team_30": "7-6"
   },
   {
     "id": "trevi-hardy",
@@ -251918,12 +251920,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x5"
-    ],
-    "wl_record_30": "1-5",
-    "team_30": "7-6",
     "rating_30": 2.6526,
     "rating_35": 2.6526,
     "rating_timeline_30": {
@@ -251943,7 +251939,13 @@
       "6/10/2026": 2.6333,
       "6/15/2026": 2.6526
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3x5"
+    ],
+    "wl_record_30": "3-3",
+    "team_30": "7-6"
   },
   {
     "id": "kate-raley",
@@ -251962,13 +251964,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "S1",
-      "S2x2"
-    ],
-    "wl_record_30": "0-5",
-    "team_30": "7-6",
     "rating_30": 2.6007,
     "rating_35": 2.6007,
     "rating_timeline_30": {
@@ -251986,7 +251981,14 @@
       "6/15/2026": 2.4501,
       "6/22/2026": 2.6007
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "S1",
+      "S2x2"
+    ],
+    "wl_record_30": "3-2",
+    "team_30": "7-6"
   },
   {
     "id": "teresa-thonney",
@@ -252005,13 +252007,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "S1x2",
-      "S2x2"
-    ],
-    "wl_record_30": "2-3",
-    "team_30": "7-6",
     "rating_30": 2.7685,
     "rating_35": 2.7685,
     "rating_timeline_30": {
@@ -252027,7 +252022,14 @@
       "6/5/2026": 2.6858,
       "6/22/2026": 2.7685
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "S1x2",
+      "S2x2"
+    ],
+    "wl_record_30": "2-3",
+    "team_30": "7-6"
   },
   {
     "id": "nicole-oddonetto",
@@ -252046,12 +252048,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x4",
-      "S2x3"
-    ],
-    "wl_record_30": "3-4",
-    "team_30": "7-6",
     "rating_30": 2.5969,
     "rating_35": 2.5969,
     "rating_timeline_30": {
@@ -252067,7 +252063,13 @@
       "6/15/2026": 2.5569,
       "6/22/2026": 2.5569
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1x4",
+      "S2x3"
+    ],
+    "wl_record_30": "3-4",
+    "team_30": "7-6"
   },
   {
     "id": "haley-myers",
@@ -252086,13 +252088,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x2",
-      "S1x3"
-    ],
-    "wl_record_30": "4-2",
-    "team_30": "7-6",
     "rating_30": 2.8283,
     "rating_35": 2.8283,
     "rating_timeline_30": {
@@ -252106,7 +252101,14 @@
       "6/5/2026": 2.6567,
       "6/10/2026": 2.8283
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x2",
+      "S1x3"
+    ],
+    "wl_record_30": "3-3",
+    "team_30": "7-6"
   },
   {
     "id": "jennifer-raley",
@@ -252125,12 +252127,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2x3"
-    ],
-    "wl_record_30": "1-5",
-    "team_30": "7-6",
     "rating_30": 2.8162,
     "rating_35": 2.8162,
     "rating_timeline_30": {
@@ -252148,7 +252144,13 @@
       "6/15/2026": 2.8162,
       "6/22/2026": 2.8162
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2x3"
+    ],
+    "wl_record_30": "4-2",
+    "team_30": "7-6"
   },
   {
     "id": "kelly-thiel",
@@ -252167,13 +252169,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x3",
-      "D3x2"
-    ],
-    "wl_record_30": "2-4",
-    "team_30": "7-6",
     "rating_30": 2.782,
     "rating_35": 2.782,
     "rating_timeline_30": {
@@ -252191,7 +252186,14 @@
       "6/10/2026": 2.7661,
       "6/15/2026": 2.782
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x3",
+      "D3x2"
+    ],
+    "wl_record_30": "5-1",
+    "team_30": "7-6"
   },
   {
     "id": "katie-tunca",
@@ -252210,13 +252212,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2",
-      "S2"
-    ],
-    "wl_record_30": "2-2",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.6421,
     "rating_35": 2.6421,
     "rating_timeline_30": {
@@ -252232,7 +252227,14 @@
       "6/3/2026": 2.6421,
       "6/22/2026": 2.6421
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2",
+      "S2"
+    ],
+    "wl_record_30": "0-4",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "jill-wolfe",
@@ -252251,12 +252253,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x3",
-      "S2x4"
-    ],
-    "wl_record_30": "3-4",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.7101,
     "rating_35": 2.7101,
     "rating_timeline_30": {
@@ -252278,7 +252274,13 @@
       "6/19/2026": 2.7687,
       "6/22/2026": 2.7101
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1x3",
+      "S2x4"
+    ],
+    "wl_record_30": "5-2",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "loren-cross",
@@ -252297,11 +252299,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x4"
-    ],
-    "wl_record_30": "1-3",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.64,
     "rating_35": 2.64,
     "rating_timeline_30": {
@@ -252315,7 +252312,12 @@
       "6/8/2026": 2.64,
       "6/22/2026": 2.64
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x4"
+    ],
+    "wl_record_30": "0-4",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "chelsea-hiatt",
@@ -252334,11 +252336,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3x4"
-    ],
-    "wl_record_30": "1-3",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.5877,
     "rating_35": 2.5877,
     "rating_timeline_30": {
@@ -252352,7 +252349,12 @@
       "5/20/2026": 2.5877,
       "6/15/2026": 2.5877
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3x4"
+    ],
+    "wl_record_30": "0-4",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "jaime-butler-dawson",
@@ -252371,12 +252373,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x5"
-    ],
-    "wl_record_30": "3-4",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.6606,
     "rating_35": 2.6606,
     "rating_timeline_30": {
@@ -252398,7 +252394,13 @@
       "6/19/2026": 2.6419,
       "6/22/2026": 2.6606
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x5"
+    ],
+    "wl_record_30": "6-1",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "taylor-barton",
@@ -252417,13 +252419,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x4",
-      "D2",
-      "D3"
-    ],
-    "wl_record_30": "1-5",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.6921,
     "rating_35": 2.6921,
     "rating_timeline_30": {
@@ -252441,7 +252436,14 @@
       "6/10/2026": 2.6413,
       "6/15/2026": 2.6921
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x4",
+      "D2",
+      "D3"
+    ],
+    "wl_record_30": "3-3",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "katherine-bruno",
@@ -252460,12 +252462,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D3"
-    ],
-    "wl_record_30": "0-2",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.614,
     "rating_35": 2.614,
     "rating_timeline_30": {
@@ -252477,7 +252473,13 @@
       "5/20/2026": 2.614,
       "6/19/2026": 2.614
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D3"
+    ],
+    "wl_record_30": "0-2",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "shelby-white",
@@ -252496,12 +252498,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x5",
-      "D3"
-    ],
-    "wl_record_30": "2-4",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.7154,
     "rating_35": 2.7154,
     "rating_timeline_30": {
@@ -252521,7 +252517,13 @@
       "6/10/2026": 2.6246,
       "6/15/2026": 2.6754
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x5",
+      "D3"
+    ],
+    "wl_record_30": "3-3",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "hailey-blair",
@@ -252540,12 +252542,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x3"
-    ],
-    "wl_record_30": "1-4",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.671,
     "rating_35": 2.671,
     "rating_timeline_30": {
@@ -252561,7 +252557,13 @@
       "6/10/2026": 2.671,
       "6/19/2026": 2.671
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x3"
+    ],
+    "wl_record_30": "1-4",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "lucy-streeby",
@@ -252580,13 +252582,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x3",
-      "D3x2"
-    ],
-    "wl_record_30": "0-6",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.4687,
     "rating_35": 2.4687,
     "rating_timeline_30": {
@@ -252604,7 +252599,14 @@
       "6/15/2026": 2.5078,
       "6/19/2026": 2.4687
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x3",
+      "D3x2"
+    ],
+    "wl_record_30": "0-6",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "rebekah-cramer",
@@ -252623,12 +252625,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3x6",
-      "S2x2"
-    ],
-    "wl_record_30": "3-5",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.6042,
     "rating_35": 2.6042,
     "rating_timeline_30": {
@@ -252650,7 +252646,13 @@
       "6/19/2026": 2.5548,
       "6/22/2026": 2.6042
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3x6",
+      "S2x2"
+    ],
+    "wl_record_30": "3-5",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "megan-parrish",
@@ -252669,12 +252671,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3",
-      "S1x6"
-    ],
-    "wl_record_30": "3-4",
-    "team_30": "CAUSING A RACQUET",
     "rating_30": 2.6469,
     "rating_35": 2.6469,
     "rating_timeline_30": {
@@ -252696,7 +252692,13 @@
       "6/19/2026": 2.599,
       "6/22/2026": 2.6069
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3",
+      "S1x6"
+    ],
+    "wl_record_30": "2-5",
+    "team_30": "CAUSING A RACQUET"
   },
   {
     "id": "cathy-cooper",
@@ -252715,12 +252717,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2"
-    ],
-    "wl_record_30": "0-2",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.5622,
     "rating_35": 2.5622,
     "rating_timeline_30": {
@@ -252732,7 +252728,13 @@
       "5/18/2026": 2.6,
       "6/8/2026": 2.5622
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2"
+    ],
+    "wl_record_30": "0-2",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "brenda-krempaszky",
@@ -252751,13 +252753,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x2",
-      "D3x2"
-    ],
-    "wl_record_30": "0-6",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.6274,
     "rating_35": 2.6274,
     "rating_timeline_30": {
@@ -252773,7 +252768,14 @@
       "6/15/2026": 2.6274,
       "6/22/2026": 2.6274
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x2",
+      "D3x2"
+    ],
+    "wl_record_30": "0-6",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "colleen-trese",
@@ -252792,11 +252794,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x6"
-    ],
-    "wl_record_30": "0-6",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.7684,
     "rating_35": 2.7684,
     "rating_timeline_30": {
@@ -252812,7 +252809,12 @@
       "6/10/2026": 2.6921,
       "6/22/2026": 2.7284
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1x6"
+    ],
+    "wl_record_30": "3-3",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "rebecca-auston",
@@ -252831,13 +252833,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x4",
-      "D2",
-      "D3"
-    ],
-    "wl_record_30": "0-6",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.6919,
     "rating_35": 2.6919,
     "rating_timeline_30": {
@@ -252853,7 +252848,14 @@
       "6/3/2026": 2.6359,
       "6/10/2026": 2.6919
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x4",
+      "D2",
+      "D3"
+    ],
+    "wl_record_30": "1-5",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "michele-bowden",
@@ -252872,13 +252874,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x2",
-      "D3x2"
-    ],
-    "wl_record_30": "0-5",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.6,
     "rating_35": 2.6,
     "rating_timeline_30": {
@@ -252894,7 +252889,14 @@
       "6/8/2026": 2.6,
       "6/22/2026": 2.6
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x2",
+      "D3x2"
+    ],
+    "wl_record_30": "0-5",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "bea-gogate",
@@ -252913,14 +252915,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3",
-      "S1",
-      "S2"
-    ],
-    "wl_record_30": "0-4",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.63,
     "rating_35": 2.63,
     "rating_timeline_30": {
@@ -252934,7 +252928,15 @@
       "6/3/2026": 2.61,
       "6/10/2026": 2.63
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3",
+      "S1",
+      "S2"
+    ],
+    "wl_record_30": "0-4",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "sandra-holmes",
@@ -252953,13 +252955,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x3",
-      "D3x2"
-    ],
-    "wl_record_30": "0-7",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.6307,
     "rating_35": 2.6307,
     "rating_timeline_30": {
@@ -252979,7 +252974,14 @@
       "6/15/2026": 2.5865,
       "6/22/2026": 2.6307
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x3",
+      "D3x2"
+    ],
+    "wl_record_30": "1-6",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "judy-deboer",
@@ -252998,14 +253000,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x3",
-      "D3x3",
-      "S2"
-    ],
-    "wl_record_30": "0-8",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.5239,
     "rating_35": 2.5239,
     "rating_timeline_30": {
@@ -253025,7 +253019,15 @@
       "6/15/2026": 2.5239,
       "6/22/2026": 2.5239
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x3",
+      "D3x3",
+      "S2"
+    ],
+    "wl_record_30": "0-8",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "kathryn-carberry",
@@ -253044,14 +253046,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2",
-      "S1",
-      "S2x2"
-    ],
-    "wl_record_30": "0-5",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.5507,
     "rating_35": 2.5507,
     "rating_timeline_30": {
@@ -253069,7 +253063,15 @@
       "6/8/2026": 2.5507,
       "6/22/2026": 2.5507
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2",
+      "S1",
+      "S2x2"
+    ],
+    "wl_record_30": "0-5",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "jennifer-boyd",
@@ -253088,13 +253090,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x2",
-      "D3x2"
-    ],
-    "wl_record_30": "0-6",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.5825,
     "rating_35": 2.5825,
     "rating_timeline_30": {
@@ -253114,7 +253109,14 @@
       "6/15/2026": 2.5348,
       "6/22/2026": 2.5825
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x2",
+      "D3x2"
+    ],
+    "wl_record_30": "1-5",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "alyson-brown",
@@ -253133,13 +253135,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_30": "0-6",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.5872,
     "rating_35": 2.5872,
     "rating_timeline_30": {
@@ -253155,7 +253150,14 @@
       "6/10/2026": 2.5872,
       "6/15/2026": 2.5872
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_30": "1-5",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "jackie-whitesell",
@@ -253174,12 +253176,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1",
-      "S2x4"
-    ],
-    "wl_record_30": "0-5",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.6866,
     "rating_35": 2.6866,
     "rating_timeline_30": {
@@ -253195,7 +253191,13 @@
       "6/15/2026": 2.6866,
       "6/22/2026": 2.6866
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1",
+      "S2x4"
+    ],
+    "wl_record_30": "1-4",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "beverly-takeuchi",
@@ -253214,13 +253216,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x2",
-      "D3x2"
-    ],
-    "wl_record_30": "0-5",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.5737,
     "rating_35": 2.5737,
     "rating_timeline_30": {
@@ -253236,7 +253231,14 @@
       "6/8/2026": 2.5737,
       "6/15/2026": 2.5737
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x2",
+      "D3x2"
+    ],
+    "wl_record_30": "0-5",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "laura-cobb",
@@ -253255,13 +253257,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_30": "0-4",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.5899,
     "rating_35": 2.5899,
     "rating_timeline_30": {
@@ -253275,7 +253270,14 @@
       "6/3/2026": 2.5899,
       "6/8/2026": 2.5899
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_30": "0-4",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "carrie-peterman",
@@ -253294,14 +253296,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D3",
-      "S1",
-      "S2x2"
-    ],
-    "wl_record_30": "0-5",
-    "team_30": "RACQUET SCIENTISTS",
     "rating_30": 2.5977,
     "rating_35": 2.5977,
     "rating_timeline_30": {
@@ -253319,7 +253313,15 @@
       "6/8/2026": 2.5977,
       "6/15/2026": 2.5977
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D3",
+      "S1",
+      "S2x2"
+    ],
+    "wl_record_30": "0-5",
+    "team_30": "RACQUET SCIENTISTS"
   },
   {
     "id": "judy-graf",
@@ -253338,13 +253340,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x6",
-      "D2",
-      "D3"
-    ],
-    "wl_record_30": "4-3",
-    "team_30": "WENDY DAVIS",
     "rating_30": 2.7443,
     "rating_35": 2.7443,
     "rating_timeline_30": {
@@ -253364,7 +253359,14 @@
       "7/17/2026": 2.6243,
       "7/18/2026": 2.7043
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x6",
+      "D2",
+      "D3"
+    ],
+    "wl_record_30": "4-4",
+    "team_30": "WENDY DAVIS"
   },
   {
     "id": "connie-maughan",
@@ -253383,12 +253385,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x4",
-      "D2"
-    ],
-    "wl_record_30": "3-2",
-    "team_30": "TF - WENDY DAVIS",
     "rating_30": 2.7354,
     "rating_35": 2.7354,
     "rating_timeline_30": {
@@ -253404,7 +253400,13 @@
       "7/17/2026": 2.6954,
       "7/18/2026": 2.6954
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x4",
+      "D2"
+    ],
+    "wl_record_30": "3-2",
+    "team_30": "TF - WENDY DAVIS"
   },
   {
     "id": "elizabeth-lassen",
@@ -253423,13 +253425,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2x3",
-      "S2"
-    ],
-    "wl_record_30": "3-3",
-    "team_30": "TF - WENDY DAVIS",
     "rating_30": 2.6481,
     "rating_35": 2.6481,
     "rating_timeline_30": {
@@ -253447,7 +253442,14 @@
       "7/17/2026": 2.5681,
       "7/18/2026": 2.6481
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2x3",
+      "S2"
+    ],
+    "wl_record_30": "3-4",
+    "team_30": "TF - WENDY DAVIS"
   },
   {
     "id": "wendy-davis",
@@ -253466,14 +253468,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x6",
-      "S2"
-    ],
-    "wl_record_30": "5-2",
-    "default_wins_30": 1,
-    "team_30": "WENDY DAVIS",
     "rating_30": 2.5926,
     "rating_35": 2.5926,
     "rating_timeline_30": {
@@ -253493,7 +253487,15 @@
       "7/17/2026": 2.5926,
       "7/18/2026": 2.5926
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3x6",
+      "S2"
+    ],
+    "wl_record_30": "3-5",
+    "default_wins_30": 1,
+    "team_30": "WENDY DAVIS"
   },
   {
     "id": "kelsey-skinner",
@@ -253512,12 +253514,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x7",
-      "S2x2"
-    ],
-    "wl_record_30": "6-3",
-    "team_30": "WENDY DAVIS",
     "rating_30": 3.0438,
     "rating_35": 3.0438,
     "rating_timeline_30": {
@@ -253539,7 +253535,13 @@
       "7/17/2026": 2.8138,
       "7/18/2026": 3.0038
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1x7",
+      "S2x2"
+    ],
+    "wl_record_30": "7-2",
+    "team_30": "WENDY DAVIS"
   },
   {
     "id": "anna-egbert",
@@ -253558,12 +253560,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_30": "2-0",
-    "team_30": "WENDY DAVIS",
     "rating_30": 2.6945,
     "rating_35": 2.6945,
     "rating_timeline_30": {
@@ -253577,7 +253573,13 @@
       "6/15/2026": 2.6673,
       "6/17/2026": 2.6945
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_30": "2-1",
+    "team_30": "WENDY DAVIS"
   },
   {
     "id": "ivonne-cummins",
@@ -253596,13 +253598,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x2",
-      "D3",
-      "S2"
-    ],
-    "wl_record_30": "4-0",
-    "team_30": "WENDY DAVIS",
     "rating_30": 2.7098,
     "rating_35": 2.7098,
     "rating_timeline_30": {
@@ -253618,7 +253613,14 @@
       "6/15/2026": 2.6818,
       "7/1/2026": 2.7098
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x2",
+      "D3",
+      "S2"
+    ],
+    "wl_record_30": "3-1",
+    "team_30": "WENDY DAVIS"
   },
   {
     "id": "matlin-bawden",
@@ -253637,14 +253639,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x5",
-      "S1",
-      "S2"
-    ],
-    "wl_record_30": "5-2",
-    "team_30": "WENDY DAVIS",
     "rating_30": 2.6375,
     "rating_35": 2.6375,
     "rating_timeline_30": {
@@ -253666,7 +253660,15 @@
       "7/17/2026": 2.6651,
       "7/18/2026": 2.6375
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3x5",
+      "S1",
+      "S2"
+    ],
+    "wl_record_30": "3-5",
+    "team_30": "WENDY DAVIS"
   },
   {
     "id": "janet-roe",
@@ -253685,12 +253687,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "D2x6"
-    ],
-    "wl_record_30": "5-3",
-    "team_30": "WENDY DAVIS",
     "rating_30": 2.6117,
     "rating_35": 2.6117,
     "rating_timeline_30": {
@@ -253712,7 +253708,13 @@
       "7/17/2026": 2.6563,
       "7/18/2026": 2.6117
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "D2x6"
+    ],
+    "wl_record_30": "6-3",
+    "team_30": "WENDY DAVIS"
   },
   {
     "id": "pat-struchen",
@@ -253731,14 +253733,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2x2",
-      "D3x4",
-      "S2"
-    ],
-    "wl_record_30": "3-3",
-    "default_wins_30": 1,
-    "team_30": "WENDY DAVIS",
     "rating_30": 2.5906,
     "rating_35": 2.5906,
     "rating_timeline_30": {
@@ -253756,7 +253750,15 @@
       "7/17/2026": 2.6182,
       "7/18/2026": 2.5906
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2x2",
+      "D3x4",
+      "S2"
+    ],
+    "wl_record_30": "3-4",
+    "default_wins_30": 1,
+    "team_30": "WENDY DAVIS"
   },
   {
     "id": "melany-hilarides",
@@ -253775,14 +253777,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D3",
-      "S1x2",
-      "S2"
-    ],
-    "wl_record_30": "4-0",
-    "default_wins_30": 1,
-    "team_30": "WENDY DAVIS",
     "rating_30": 2.6933,
     "rating_35": 2.6933,
     "rating_timeline_30": {
@@ -253796,7 +253790,15 @@
       "7/1/2026": 2.6933,
       "7/17/2026": 2.6933
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D3",
+      "S1x2",
+      "S2"
+    ],
+    "wl_record_30": "3-1",
+    "default_wins_30": 1,
+    "team_30": "WENDY DAVIS"
   },
   {
     "id": "evelyn-perez",
@@ -253815,13 +253817,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_30": "0-3",
-    "team_30": "CATHERINE DAILY",
     "rating_30": 2.617,
     "rating_35": 2.617,
     "rating_timeline_30": {
@@ -253837,7 +253832,14 @@
       "6/17/2026": 2.597,
       "7/1/2026": 2.617
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_30": "1-3",
+    "team_30": "CATHERINE DAILY"
   },
   {
     "id": "kristina-garrison",
@@ -253856,13 +253858,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x2",
-      "D3x2"
-    ],
-    "wl_record_30": "0-5",
-    "team_30": "CATHERINE DAILY",
     "rating_30": 2.6751,
     "rating_35": 2.6751,
     "rating_timeline_30": {
@@ -253882,7 +253877,14 @@
       "6/17/2026": 2.6484,
       "7/1/2026": 2.6751
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x2",
+      "D3x2"
+    ],
+    "wl_record_30": "2-4",
+    "team_30": "CATHERINE DAILY"
   },
   {
     "id": "dianna-wubker",
@@ -253923,14 +253925,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3",
-      "S1",
-      "S2"
-    ],
-    "wl_record_30": "0-3",
-    "team_30": "CATHERINE DAILY",
     "rating_30": 2.6031,
     "rating_35": 2.6031,
     "rating_timeline_30": {
@@ -253946,7 +253940,15 @@
       "6/17/2026": 2.6031,
       "7/1/2026": 2.6031
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3",
+      "S1",
+      "S2"
+    ],
+    "wl_record_30": "2-2",
+    "team_30": "CATHERINE DAILY"
   },
   {
     "id": "julie-mcarthur",
@@ -253987,12 +253989,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_30": "0-3",
-    "team_30": "CATHERINE DAILY",
     "rating_30": 2.6253,
     "rating_35": 2.6253,
     "rating_timeline_30": {
@@ -254006,7 +254002,13 @@
       "6/3/2026": 2.5926,
       "6/15/2026": 2.6253
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_30": "0-3",
+    "team_30": "CATHERINE DAILY"
   },
   {
     "id": "julie-taylor",
@@ -254025,12 +254027,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D2x2"
-    ],
-    "wl_record_30": "0-2",
-    "team_30": "CATHERINE DAILY",
     "rating_30": 2.6161,
     "rating_35": 2.6161,
     "rating_timeline_30": {
@@ -254044,7 +254040,13 @@
       "6/17/2026": 2.5961,
       "7/1/2026": 2.6161
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D2x2"
+    ],
+    "wl_record_30": "1-2",
+    "team_30": "CATHERINE DAILY"
   },
   {
     "id": "amy-bearden",
@@ -254063,12 +254065,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2"
-    ],
-    "wl_record_30": "0-2",
-    "team_30": "CATHERINE DAILY",
     "rating_30": 2.6618,
     "rating_35": 2.6618,
     "rating_timeline_30": {
@@ -254082,7 +254078,13 @@
       "6/15/2026": 2.624,
       "6/17/2026": 2.6618
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2"
+    ],
+    "wl_record_30": "1-2",
+    "team_30": "CATHERINE DAILY"
   },
   {
     "id": "caroline-eggerth",
@@ -254101,11 +254103,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "S1x5"
-    ],
-    "wl_record_30": "0-5",
-    "team_30": "CATHERINE DAILY",
     "rating_30": 2.642,
     "rating_35": 2.642,
     "rating_timeline_30": {
@@ -254123,7 +254120,12 @@
       "6/15/2026": 2.6522,
       "7/1/2026": 2.602
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "S1x5"
+    ],
+    "wl_record_30": "0-5",
+    "team_30": "CATHERINE DAILY"
   },
   {
     "id": "rachel-kirchmeyer",
@@ -254142,13 +254144,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x2",
-      "D2x3",
-      "D3"
-    ],
-    "wl_record_30": "0-5",
-    "team_30": "CATHERINE DAILY",
     "rating_30": 2.7006,
     "rating_35": 2.7006,
     "rating_timeline_30": {
@@ -254168,7 +254163,14 @@
       "6/17/2026": 2.7006,
       "7/1/2026": 2.7006
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x2",
+      "D2x3",
+      "D3"
+    ],
+    "wl_record_30": "2-4",
+    "team_30": "CATHERINE DAILY"
   },
   {
     "id": "april-o-berg",
@@ -254187,12 +254189,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1x3",
-      "S2"
-    ],
-    "wl_record_30": "0-3",
-    "team_30": "CATHERINE DAILY",
     "rating_30": 2.6887,
     "rating_35": 2.6887,
     "rating_timeline_30": {
@@ -254208,7 +254204,13 @@
       "6/17/2026": 2.6487,
       "7/1/2026": 2.6487
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1x3",
+      "S2"
+    ],
+    "wl_record_30": "1-3",
+    "team_30": "CATHERINE DAILY"
   },
   {
     "id": "danielle-taylor",
@@ -254227,13 +254229,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_30": [
-      "D1",
-      "D3x2",
-      "S2"
-    ],
-    "wl_record_30": "0-4",
-    "team_30": "CATHERINE DAILY",
     "rating_30": 2.6403,
     "rating_35": 2.6403,
     "rating_timeline_30": {
@@ -254249,7 +254244,14 @@
       "6/15/2026": 2.6136,
       "7/1/2026": 2.6403
     },
-    "rating_post_timeline_35": {}
+    "rating_post_timeline_35": {},
+    "lines_played_30": [
+      "D1",
+      "D3x2",
+      "S2"
+    ],
+    "wl_record_30": "0-4",
+    "team_30": "CATHERINE DAILY"
   },
   {
     "id": "karen-behrmann",
@@ -254268,13 +254270,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x2",
-      "D2x3",
-      "D3"
-    ],
-    "wl_record_35": "5-1",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.0542,
     "rating_35": 3.0542,
     "rating_timeline_30": {},
@@ -254292,7 +254287,14 @@
       "6/10/2026": 3.0398,
       "6/15/2026": 3.0696,
       "7/17/2026": 3.0542
-    }
+    },
+    "lines_played_35": [
+      "D1x2",
+      "D2x3",
+      "D3"
+    ],
+    "wl_record_35": "4-2",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "rebecca-webb",
@@ -254311,13 +254313,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2",
-      "D3x3",
-      "S1"
-    ],
-    "wl_record_35": "5-0",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.1147,
     "rating_35": 3.1147,
     "rating_timeline_30": {},
@@ -254335,7 +254330,14 @@
       "6/8/2026": 3.0658,
       "6/10/2026": 3.0978,
       "6/22/2026": 3.1147
-    }
+    },
+    "lines_played_35": [
+      "D2",
+      "D3x3",
+      "S1"
+    ],
+    "wl_record_35": "3-2",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "angie-sargent",
@@ -254354,14 +254356,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D3x2",
-      "S2"
-    ],
-    "wl_record_35": "4-0",
-    "default_wins_35": 1,
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.0967,
     "rating_35": 3.0967,
     "rating_timeline_30": {},
@@ -254375,7 +254369,15 @@
       "5/13/2026": 3.055,
       "6/3/2026": 3.0702,
       "6/15/2026": 3.0967
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D3x2",
+      "S2"
+    ],
+    "wl_record_35": "3-1",
+    "default_wins_35": 1,
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "jenny-fullmer",
@@ -254394,12 +254396,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2x2",
-      "S2"
-    ],
-    "wl_record_35": "3-0",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.1814,
     "rating_35": 3.1814,
     "rating_timeline_30": {},
@@ -254413,7 +254409,13 @@
       "5/18/2026": 3.1336,
       "6/8/2026": 3.1586,
       "6/15/2026": 3.1814
-    }
+    },
+    "lines_played_35": [
+      "D2x2",
+      "S2"
+    ],
+    "wl_record_35": "3-0",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "lori-murdoch",
@@ -254432,13 +254434,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x2",
-      "D2",
-      "D3x3"
-    ],
-    "wl_record_35": "5-1",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.0581,
     "rating_35": 3.0581,
     "rating_timeline_30": {},
@@ -254458,7 +254453,14 @@
       "6/22/2026": 3.0896,
       "7/17/2026": 3.0896,
       "7/18/2026": 3.0581
-    }
+    },
+    "lines_played_35": [
+      "D1x2",
+      "D2",
+      "D3x3"
+    ],
+    "wl_record_35": "4-2",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "ranay-thompson",
@@ -254477,13 +254479,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x3",
-      "D3x2",
-      "S2"
-    ],
-    "wl_record_35": "6-0",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.2971,
     "rating_35": 3.2971,
     "rating_timeline_30": {},
@@ -254501,7 +254496,14 @@
       "6/15/2026": 3.1748,
       "7/17/2026": 3.2241,
       "7/18/2026": 3.2971
-    }
+    },
+    "lines_played_35": [
+      "D1x3",
+      "D3x2",
+      "S2"
+    ],
+    "wl_record_35": "4-2",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "erin-wood",
@@ -254520,14 +254522,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D3x2",
-      "S1",
-      "S2"
-    ],
-    "wl_record_35": "5-0",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.0898,
     "rating_35": 3.0898,
     "rating_timeline_30": {},
@@ -254545,7 +254539,15 @@
       "6/8/2026": 3.0207,
       "7/17/2026": 3.0207,
       "7/18/2026": 3.0898
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D3x2",
+      "S1",
+      "S2"
+    ],
+    "wl_record_35": "1-4",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "heather-davies",
@@ -254564,14 +254566,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x2",
-      "D3x3",
-      "S1x2"
-    ],
-    "wl_record_35": "7-1",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.1415,
     "rating_35": 3.1415,
     "rating_timeline_30": {},
@@ -254593,7 +254587,15 @@
       "6/22/2026": 3.1127,
       "7/17/2026": 3.1415,
       "7/18/2026": 3.1415
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x2",
+      "D3x3",
+      "S1x2"
+    ],
+    "wl_record_35": "6-2",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "mckenna-dutcher",
@@ -254612,12 +254614,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2"
-    ],
-    "wl_record_35": "2-0",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.1624,
     "rating_35": 3.1624,
     "rating_timeline_30": {},
@@ -254629,7 +254625,13 @@
     "rating_post_timeline_35": {
       "5/13/2026": 3.1375,
       "5/20/2026": 3.1624
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2"
+    ],
+    "wl_record_35": "2-0",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "kelly-manwaring",
@@ -254648,13 +254650,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_35": "4-0",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.1375,
     "rating_35": 3.1375,
     "rating_timeline_30": {},
@@ -254670,7 +254665,14 @@
       "5/20/2026": 3.0926,
       "6/8/2026": 3.1463,
       "6/10/2026": 3.1375
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_35": "3-1",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "lyndsey-hall",
@@ -254689,12 +254691,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x2"
-    ],
-    "wl_record_35": "3-0",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.1239,
     "rating_35": 3.1239,
     "rating_timeline_30": {},
@@ -254708,7 +254704,13 @@
       "5/13/2026": 3.1375,
       "5/20/2026": 3.0925,
       "6/22/2026": 3.1239
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x2"
+    ],
+    "wl_record_35": "3-0",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "nikelle-price",
@@ -254727,13 +254729,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2",
-      "S1x3",
-      "S2x4"
-    ],
-    "wl_record_35": "7-1",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.1953,
     "rating_35": 3.1953,
     "rating_timeline_30": {},
@@ -254755,7 +254750,14 @@
       "6/22/2026": 3.1476,
       "7/17/2026": 3.0891,
       "7/18/2026": 3.1953
-    }
+    },
+    "lines_played_35": [
+      "D2",
+      "S1x3",
+      "S2x4"
+    ],
+    "wl_record_35": "7-1",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "lindsey-stevens",
@@ -254774,12 +254776,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x5",
-      "D3x3"
-    ],
-    "wl_record_35": "7-1",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.2035,
     "rating_35": 3.2035,
     "rating_timeline_30": {},
@@ -254799,7 +254795,13 @@
       "6/22/2026": 3.2023,
       "7/17/2026": 3.2037,
       "7/18/2026": 3.2035
-    }
+    },
+    "lines_played_35": [
+      "D1x5",
+      "D3x3"
+    ],
+    "wl_record_35": "5-3",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "melanie-daw",
@@ -254818,15 +254820,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x4",
-      "D3",
-      "S1",
-      "S2"
-    ],
-    "wl_record_35": "7-1",
-    "team_35": "IF - KAREN AND HEATHER",
     "rating_30": 3.0797,
     "rating_35": 3.0797,
     "rating_timeline_30": {},
@@ -254846,7 +254839,16 @@
       "6/18/2026": 3.0015,
       "7/17/2026": 3.0771,
       "7/18/2026": 3.0797
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x4",
+      "D3",
+      "S1",
+      "S2"
+    ],
+    "wl_record_35": "6-2",
+    "team_35": "IF - KAREN AND HEATHER"
   },
   {
     "id": "heidi-hartman",
@@ -254865,13 +254867,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x4",
-      "D3x2"
-    ],
-    "wl_record_35": "6-1",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.2076,
     "rating_35": 3.2076,
     "rating_timeline_30": {},
@@ -254891,7 +254886,14 @@
       "6/15/2026": 3.1005,
       "7/17/2026": 3.1655,
       "7/18/2026": 3.2076
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x4",
+      "D3x2"
+    ],
+    "wl_record_35": "6-1",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "ann-traynor",
@@ -254910,15 +254912,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x2",
-      "D2",
-      "S1",
-      "S2x3"
-    ],
-    "wl_record_35": "6-1",
-    "default_wins_35": 1,
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.2298,
     "rating_35": 3.2298,
     "rating_timeline_30": {},
@@ -254936,7 +254929,16 @@
       "6/10/2026": 3.1779,
       "7/17/2026": 3.1343,
       "7/18/2026": 3.2298
-    }
+    },
+    "lines_played_35": [
+      "D1x2",
+      "D2",
+      "S1",
+      "S2x3"
+    ],
+    "wl_record_35": "6-1",
+    "default_wins_35": 1,
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "ronee-ross",
@@ -254955,14 +254957,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x3",
-      "D3",
-      "S1x3",
-      "S2"
-    ],
-    "wl_record_35": "8-0",
-    "team_35": "KAREN AND HEATHER",
     "rating_30": 3.3922,
     "rating_35": 3.3922,
     "rating_timeline_30": {},
@@ -254984,7 +254978,15 @@
       "6/22/2026": 3.2279,
       "7/17/2026": 3.2638,
       "7/18/2026": 3.3522
-    }
+    },
+    "lines_played_35": [
+      "D1x3",
+      "D3",
+      "S1x3",
+      "S2"
+    ],
+    "wl_record_35": "8-0",
+    "team_35": "KAREN AND HEATHER"
   },
   {
     "id": "amie-belnap",
@@ -255003,12 +255005,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2",
-      "D3"
-    ],
-    "wl_record_35": "0-2",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.0737,
     "rating_35": 3.0737,
     "rating_timeline_30": {},
@@ -255020,7 +255016,13 @@
     "rating_post_timeline_35": {
       "5/13/2026": 3.0625,
       "6/1/2026": 3.0737
-    }
+    },
+    "lines_played_35": [
+      "D2",
+      "D3"
+    ],
+    "wl_record_35": "1-1",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "laura-kelley",
@@ -255039,15 +255041,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x3",
-      "D3x2",
-      "S1",
-      "S2"
-    ],
-    "wl_record_35": "2-6",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.1315,
     "rating_35": 3.1315,
     "rating_timeline_30": {},
@@ -255071,7 +255064,16 @@
       "6/8/2026": 3.1288,
       "6/9/2026": 3.0884,
       "6/16/2026": 3.1315
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x3",
+      "D3x2",
+      "S1",
+      "S2"
+    ],
+    "wl_record_35": "3-5",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "adrianne-shirley",
@@ -255090,12 +255092,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x4"
-    ],
-    "wl_record_35": "2-3",
-    "team_35": "WONDER WOMEN",
     "rating_30": 2.9776,
     "rating_35": 2.9776,
     "rating_timeline_30": {},
@@ -255113,7 +255109,13 @@
       "6/3/2026": 2.9563,
       "6/8/2026": 2.9563,
       "6/17/2026": 2.9776
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x4"
+    ],
+    "wl_record_35": "1-4",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "holly-gyles",
@@ -255132,12 +255134,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "S1"
-    ],
-    "wl_record_35": "2-0",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.1545,
     "rating_35": 3.1545,
     "rating_timeline_30": {},
@@ -255149,7 +255145,13 @@
     "rating_post_timeline_35": {
       "5/18/2026": 3.1324,
       "6/17/2026": 3.1545
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "S1"
+    ],
+    "wl_record_35": "2-0",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "kelsey-lindsay",
@@ -255168,12 +255170,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_35": "2-1",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.1155,
     "rating_35": 3.1155,
     "rating_timeline_30": {},
@@ -255187,7 +255183,13 @@
       "5/18/2026": 3.1263,
       "6/1/2026": 3.1451,
       "6/17/2026": 3.1155
-    }
+    },
+    "lines_played_35": [
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_35": "2-1",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "jacqualyn-nelson",
@@ -255206,12 +255208,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x2",
-      "D2"
-    ],
-    "wl_record_35": "1-2",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.0805,
     "rating_35": 3.0805,
     "rating_timeline_30": {},
@@ -255225,7 +255221,13 @@
       "6/8/2026": 3.1,
       "6/17/2026": 3.1342,
       "6/22/2026": 3.0805
-    }
+    },
+    "lines_played_35": [
+      "D1x2",
+      "D2"
+    ],
+    "wl_record_35": "1-2",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "jade-call",
@@ -255244,13 +255246,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2",
-      "S1",
-      "S2x3"
-    ],
-    "wl_record_35": "3-2",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.1192,
     "rating_35": 3.1192,
     "rating_timeline_30": {},
@@ -255268,7 +255263,14 @@
       "6/10/2026": 3.1503,
       "6/17/2026": 3.1053,
       "6/22/2026": 3.1192
-    }
+    },
+    "lines_played_35": [
+      "D2",
+      "S1",
+      "S2x3"
+    ],
+    "wl_record_35": "2-3",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "emma-shurtliff",
@@ -255287,12 +255289,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "S1x2",
-      "S2x3"
-    ],
-    "wl_record_35": "2-3",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.0493,
     "rating_35": 3.0493,
     "rating_timeline_30": {},
@@ -255310,7 +255306,13 @@
       "6/3/2026": 3.0072,
       "6/10/2026": 3.0493,
       "6/22/2026": 3.0493
-    }
+    },
+    "lines_played_35": [
+      "S1x2",
+      "S2x3"
+    ],
+    "wl_record_35": "1-4",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "shelby-hanson",
@@ -255329,13 +255331,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x2",
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_35": "3-2",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.1218,
     "rating_35": 3.1218,
     "rating_timeline_30": {},
@@ -255353,7 +255348,14 @@
       "6/8/2026": 3.1624,
       "6/17/2026": 3.1755,
       "6/22/2026": 3.1218
-    }
+    },
+    "lines_played_35": [
+      "D1x2",
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_35": "4-1",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "linda-zentner",
@@ -255372,13 +255374,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D3x2",
-      "S2"
-    ],
-    "wl_record_35": "1-3",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.1278,
     "rating_35": 3.1278,
     "rating_timeline_30": {},
@@ -255394,7 +255389,14 @@
       "6/1/2026": 3.0992,
       "6/8/2026": 3.0992,
       "6/10/2026": 3.1278
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D3x2",
+      "S2"
+    ],
+    "wl_record_35": "3-1",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "jessica-bare",
@@ -255413,13 +255415,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x3",
-      "D3x2",
-      "S1"
-    ],
-    "wl_record_35": "2-4",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.0473,
     "rating_35": 3.0473,
     "rating_timeline_30": {},
@@ -255439,7 +255434,14 @@
       "6/8/2026": 3.0724,
       "6/10/2026": 3.0899,
       "6/22/2026": 3.0473
-    }
+    },
+    "lines_played_35": [
+      "D1x3",
+      "D3x2",
+      "S1"
+    ],
+    "wl_record_35": "3-3",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "kamarie-hearne",
@@ -255458,13 +255460,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_35": "2-2",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.1099,
     "rating_35": 3.1099,
     "rating_timeline_30": {},
@@ -255480,7 +255475,14 @@
       "6/3/2026": 3.0601,
       "6/10/2026": 3.0786,
       "6/22/2026": 3.1099
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_35": "3-1",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "lisa-wheeler",
@@ -255499,12 +255501,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x3",
-      "D3"
-    ],
-    "wl_record_35": "3-1",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.2421,
     "rating_35": 3.2421,
     "rating_timeline_30": {},
@@ -255520,7 +255516,13 @@
       "6/8/2026": 3.1515,
       "6/10/2026": 3.1771,
       "6/17/2026": 3.2021
-    }
+    },
+    "lines_played_35": [
+      "D1x3",
+      "D3"
+    ],
+    "wl_record_35": "4-0",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "jill-reed",
@@ -255539,12 +255541,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x2",
-      "S1"
-    ],
-    "wl_record_35": "1-2",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.1729,
     "rating_35": 3.1729,
     "rating_timeline_30": {},
@@ -255558,7 +255554,13 @@
       "5/13/2026": 3.145,
       "6/3/2026": 3.1866,
       "6/8/2026": 3.1329
-    }
+    },
+    "lines_played_35": [
+      "D1x2",
+      "S1"
+    ],
+    "wl_record_35": "2-1",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "erin-thueson",
@@ -255577,12 +255579,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2x3",
-      "D3x3"
-    ],
-    "wl_record_35": "4-2",
-    "team_35": "WONDER WOMEN",
     "rating_30": 3.0621,
     "rating_35": 3.0621,
     "rating_timeline_30": {},
@@ -255602,7 +255598,13 @@
       "6/10/2026": 3.1343,
       "6/17/2026": 3.1047,
       "6/22/2026": 3.0621
-    }
+    },
+    "lines_played_35": [
+      "D2x3",
+      "D3x3"
+    ],
+    "wl_record_35": "2-4",
+    "team_35": "WONDER WOMEN"
   },
   {
     "id": "anna-colling",
@@ -255621,12 +255623,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_35": "0-3",
-    "team_35": "LOB STARS",
     "rating_30": 3.0186,
     "rating_35": 3.0186,
     "rating_timeline_30": {},
@@ -255640,7 +255636,13 @@
       "5/13/2026": 3.0186,
       "5/18/2026": 3.0186,
       "6/17/2026": 3.0186
-    }
+    },
+    "lines_played_35": [
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_35": "0-3",
+    "team_35": "LOB STARS"
   },
   {
     "id": "avrie-johnson",
@@ -255659,12 +255661,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2"
-    ],
-    "wl_record_35": "1-1",
-    "team_35": "LOB STARS",
     "rating_30": 3.1833,
     "rating_35": 3.1833,
     "rating_timeline_30": {},
@@ -255676,7 +255672,13 @@
     "rating_post_timeline_35": {
       "5/18/2026": 3.1375,
       "6/1/2026": 3.1833
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2"
+    ],
+    "wl_record_35": "2-0",
+    "team_35": "LOB STARS"
   },
   {
     "id": "carmen-peters",
@@ -255695,13 +255697,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x2",
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_35": "1-4",
-    "team_35": "LOB STARS",
     "rating_30": 3.1917,
     "rating_35": 3.1917,
     "rating_timeline_30": {},
@@ -255719,7 +255714,14 @@
       "6/10/2026": 3.1192,
       "6/15/2026": 3.1678,
       "6/17/2026": 3.1917
-    }
+    },
+    "lines_played_35": [
+      "D1x2",
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_35": "1-4",
+    "team_35": "LOB STARS"
   },
   {
     "id": "brinley-miller",
@@ -255738,12 +255740,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2",
-      "S1x2"
-    ],
-    "wl_record_35": "2-1",
-    "team_35": "LOB STARS",
     "rating_30": 3.1948,
     "rating_35": 3.1948,
     "rating_timeline_30": {},
@@ -255757,7 +255753,13 @@
       "5/18/2026": 3.1375,
       "6/1/2026": 3.1874,
       "6/15/2026": 3.1948
-    }
+    },
+    "lines_played_35": [
+      "D2",
+      "S1x2"
+    ],
+    "wl_record_35": "3-0",
+    "team_35": "LOB STARS"
   },
   {
     "id": "tori-thomason",
@@ -255776,12 +255778,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x3"
-    ],
-    "wl_record_35": "2-2",
-    "team_35": "LOB STARS",
     "rating_30": 3.243,
     "rating_35": 3.243,
     "rating_timeline_30": {},
@@ -255797,7 +255793,13 @@
       "6/10/2026": 3.178,
       "6/15/2026": 3.1938,
       "6/17/2026": 3.243
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x3"
+    ],
+    "wl_record_35": "2-2",
+    "team_35": "LOB STARS"
   },
   {
     "id": "karri-sloan",
@@ -255816,13 +255818,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x2",
-      "S1x2",
-      "S2"
-    ],
-    "wl_record_35": "3-2",
-    "team_35": "HOWELL",
     "rating_30": 3.128,
     "rating_35": 3.128,
     "rating_timeline_30": {},
@@ -255840,7 +255835,14 @@
       "6/8/2026": 3.0848,
       "6/15/2026": 3.0343,
       "6/22/2026": 3.088
-    }
+    },
+    "lines_played_35": [
+      "D1x2",
+      "S1x2",
+      "S2"
+    ],
+    "wl_record_35": "3-2",
+    "team_35": "HOWELL"
   },
   {
     "id": "makell-valora",
@@ -255859,12 +255861,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "S1",
-      "S2x3"
-    ],
-    "wl_record_35": "1-3",
-    "team_35": "HOWELL",
     "rating_30": 3.0838,
     "rating_35": 3.0838,
     "rating_timeline_30": {},
@@ -255880,7 +255876,13 @@
       "6/3/2026": 3.0879,
       "6/8/2026": 3.0361,
       "6/17/2026": 3.0838
-    }
+    },
+    "lines_played_35": [
+      "S1",
+      "S2x3"
+    ],
+    "wl_record_35": "3-1",
+    "team_35": "HOWELL"
   },
   {
     "id": "em-fonz",
@@ -255899,13 +255901,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x2",
-      "D3x2"
-    ],
-    "wl_record_35": "2-3",
-    "team_35": "HOWELL",
     "rating_30": 3.0572,
     "rating_35": 3.0572,
     "rating_timeline_30": {},
@@ -255923,7 +255918,14 @@
       "6/3/2026": 3.1243,
       "6/8/2026": 3.0572,
       "6/15/2026": 3.0572
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x2",
+      "D3x2"
+    ],
+    "wl_record_35": "0-5",
+    "team_35": "HOWELL"
   },
   {
     "id": "lorraine-baker",
@@ -255942,12 +255944,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x3",
-      "D3"
-    ],
-    "wl_record_35": "2-2",
-    "team_35": "HOWELL",
     "rating_30": 3.2311,
     "rating_35": 3.2311,
     "rating_timeline_30": {},
@@ -255963,7 +255959,13 @@
       "5/20/2026": 3.0835,
       "6/3/2026": 3.1446,
       "6/22/2026": 3.1911
-    }
+    },
+    "lines_played_35": [
+      "D1x3",
+      "D3"
+    ],
+    "wl_record_35": "2-2",
+    "team_35": "HOWELL"
   },
   {
     "id": "oaklee-craig",
@@ -255982,12 +255984,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D3x2",
-      "S2"
-    ],
-    "wl_record_35": "0-3",
-    "team_35": "HOWELL",
     "rating_30": 3.0804,
     "rating_35": 3.0804,
     "rating_timeline_30": {},
@@ -256001,7 +255997,13 @@
       "6/1/2026": 3.1165,
       "6/15/2026": 3.1165,
       "6/17/2026": 3.0804
-    }
+    },
+    "lines_played_35": [
+      "D3x2",
+      "S2"
+    ],
+    "wl_record_35": "1-2",
+    "team_35": "HOWELL"
   },
   {
     "id": "tawni-howell",
@@ -256020,13 +256022,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "S1x4",
-      "S2x2"
-    ],
-    "wl_record_35": "3-4",
-    "team_35": "HOWELL",
     "rating_30": 3.2022,
     "rating_35": 3.2022,
     "rating_timeline_30": {},
@@ -256046,7 +256041,15 @@
       "6/3/2026": 3.0975,
       "6/8/2026": 3.1245,
       "6/22/2026": 3.1622
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "S1x4",
+      "S2x2"
+    ],
+    "wl_record_35": "5-2",
+    "default_wins_35": 1,
+    "team_35": "HOWELL"
   },
   {
     "id": "tamara-gardner",
@@ -256065,13 +256068,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2",
-      "D3"
-    ],
-    "wl_record_35": "0-3",
-    "team_35": "HOWELL",
     "rating_30": 3.1228,
     "rating_35": 3.1228,
     "rating_timeline_30": {},
@@ -256085,7 +256081,14 @@
       "6/1/2026": 3.1493,
       "6/15/2026": 3.1228,
       "6/17/2026": 3.1228
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2",
+      "D3"
+    ],
+    "wl_record_35": "0-3",
+    "team_35": "HOWELL"
   },
   {
     "id": "lynne-blatter",
@@ -256104,12 +256107,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2x3",
-      "D3"
-    ],
-    "wl_record_35": "1-3",
-    "team_35": "HOWELL",
     "rating_30": 3.1478,
     "rating_35": 3.1478,
     "rating_timeline_30": {},
@@ -256125,7 +256122,13 @@
       "6/3/2026": 3.1076,
       "6/15/2026": 3.1076,
       "6/22/2026": 3.1478
-    }
+    },
+    "lines_played_35": [
+      "D2x3",
+      "D3"
+    ],
+    "wl_record_35": "1-3",
+    "team_35": "HOWELL"
   },
   {
     "id": "natalie-piper",
@@ -256144,14 +256147,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2",
-      "D3x3",
-      "S1"
-    ],
-    "wl_record_35": "1-5",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.0303,
     "rating_35": 3.0303,
     "rating_timeline_30": {},
@@ -256171,7 +256166,15 @@
       "6/10/2026": 2.9942,
       "6/17/2026": 3.0303,
       "6/22/2026": 3.0303
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2",
+      "D3x3",
+      "S1"
+    ],
+    "wl_record_35": "1-5",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "heidi-dillard",
@@ -256190,12 +256193,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2"
-    ],
-    "wl_record_35": "1-1",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.1763,
     "rating_35": 3.1763,
     "rating_timeline_30": {},
@@ -256207,7 +256204,13 @@
     "rating_post_timeline_35": {
       "6/17/2026": 3.1322,
       "6/22/2026": 3.1763
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2"
+    ],
+    "wl_record_35": "1-1",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "avalon-russell",
@@ -256226,13 +256229,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x3",
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_35": "2-4",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.0472,
     "rating_35": 3.0472,
     "rating_timeline_30": {},
@@ -256252,7 +256248,14 @@
       "6/15/2026": 3.0168,
       "6/17/2026": 3.0472,
       "6/22/2026": 3.0472
-    }
+    },
+    "lines_played_35": [
+      "D1x3",
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_35": "4-2",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "brianne-stuart",
@@ -256271,12 +256274,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "S1",
-      "S2x3"
-    ],
-    "wl_record_35": "1-3",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.1366,
     "rating_35": 3.1366,
     "rating_timeline_30": {},
@@ -256292,7 +256289,13 @@
       "6/1/2026": 3.1049,
       "6/15/2026": 3.0512,
       "6/22/2026": 3.1366
-    }
+    },
+    "lines_played_35": [
+      "S1",
+      "S2x3"
+    ],
+    "wl_record_35": "2-2",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "liz-curtis",
@@ -256311,12 +256314,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D3",
-      "S2x2"
-    ],
-    "wl_record_35": "0-3",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.0224,
     "rating_35": 3.0224,
     "rating_timeline_30": {},
@@ -256330,7 +256327,13 @@
       "5/20/2026": 2.9994,
       "6/3/2026": 2.9994,
       "6/10/2026": 3.0224
-    }
+    },
+    "lines_played_35": [
+      "D3",
+      "S2x2"
+    ],
+    "wl_record_35": "0-3",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "kourtney-tew",
@@ -256349,13 +256352,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2",
-      "S1"
-    ],
-    "wl_record_35": "1-2",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.0791,
     "rating_35": 3.0791,
     "rating_timeline_30": {},
@@ -256369,7 +256365,14 @@
       "5/20/2026": 2.992,
       "6/10/2026": 3.0293,
       "6/17/2026": 3.0791
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2",
+      "S1"
+    ],
+    "wl_record_35": "1-2",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "lucy-anderson",
@@ -256388,13 +256391,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x3",
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_35": "2-4",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.0472,
     "rating_35": 3.0472,
     "rating_timeline_30": {},
@@ -256414,7 +256410,14 @@
       "6/15/2026": 3.0168,
       "6/17/2026": 3.0472,
       "6/22/2026": 3.0472
-    }
+    },
+    "lines_played_35": [
+      "D1x3",
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_35": "4-2",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "valerie-day",
@@ -256433,12 +256436,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x2"
-    ],
-    "wl_record_35": "1-2",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.2037,
     "rating_35": 3.2037,
     "rating_timeline_30": {},
@@ -256452,7 +256449,13 @@
       "5/18/2026": 3.1566,
       "6/1/2026": 3.1741,
       "6/10/2026": 3.2037
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x2"
+    ],
+    "wl_record_35": "2-1",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "marion-cuthbertson",
@@ -256471,13 +256474,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x4",
-      "D2x2",
-      "S1"
-    ],
-    "wl_record_35": "2-5",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.0785,
     "rating_35": 3.0785,
     "rating_timeline_30": {},
@@ -256499,7 +256495,14 @@
       "6/15/2026": 2.992,
       "6/17/2026": 3.0344,
       "6/22/2026": 3.0785
-    }
+    },
+    "lines_played_35": [
+      "D1x4",
+      "D2x2",
+      "S1"
+    ],
+    "wl_record_35": "1-6",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "joy-taylor",
@@ -256518,12 +256521,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2",
-      "D3x2"
-    ],
-    "wl_record_35": "1-2",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.0692,
     "rating_35": 3.0692,
     "rating_timeline_30": {},
@@ -256537,7 +256534,13 @@
       "5/18/2026": 3.1,
       "5/20/2026": 3.0552,
       "6/1/2026": 3.0692
-    }
+    },
+    "lines_played_35": [
+      "D2",
+      "D3x2"
+    ],
+    "wl_record_35": "0-3",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "kate-miller",
@@ -256556,12 +256559,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2x2",
-      "D3"
-    ],
-    "wl_record_35": "1-2",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.1121,
     "rating_35": 3.1121,
     "rating_timeline_30": {},
@@ -256575,7 +256572,13 @@
       "5/20/2026": 3.0499,
       "6/1/2026": 3.0744,
       "6/22/2026": 3.1121
-    }
+    },
+    "lines_played_35": [
+      "D2x2",
+      "D3"
+    ],
+    "wl_record_35": "1-2",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "jenn-pearson",
@@ -256594,12 +256597,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "S1"
-    ],
-    "wl_record_35": "0-2",
-    "team_35": "IDAHO FALLS",
     "rating_30": 3.0246,
     "rating_35": 3.0246,
     "rating_timeline_30": {},
@@ -256611,7 +256608,13 @@
     "rating_post_timeline_35": {
       "5/20/2026": 3.0246,
       "6/10/2026": 3.0246
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "S1"
+    ],
+    "wl_record_35": "0-2",
+    "team_35": "IDAHO FALLS"
   },
   {
     "id": "quincy-sutton",
@@ -256630,13 +256633,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x2",
-      "D2x5",
-      "D3x2"
-    ],
-    "wl_record_35": "7-2",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.1733,
     "rating_35": 3.1733,
     "rating_timeline_30": {},
@@ -256658,7 +256654,14 @@
       "6/25/2026": 3.1239,
       "7/17/2026": 3.1864,
       "7/18/2026": 3.1733
-    }
+    },
+    "lines_played_35": [
+      "D1x2",
+      "D2x5",
+      "D3x2"
+    ],
+    "wl_record_35": "7-2",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "rachel-mattson",
@@ -256677,12 +256680,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x8",
-      "D3"
-    ],
-    "wl_record_35": "7-2",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.2778,
     "rating_35": 3.2778,
     "rating_timeline_30": {},
@@ -256704,7 +256701,13 @@
       "6/23/2026": 3.1903,
       "7/17/2026": 3.1842,
       "7/18/2026": 3.2378
-    }
+    },
+    "lines_played_35": [
+      "D1x8",
+      "D3"
+    ],
+    "wl_record_35": "8-1",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "teresa-henderson",
@@ -256723,13 +256726,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x4",
-      "D3"
-    ],
-    "wl_record_35": "4-2",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.1298,
     "rating_35": 3.1298,
     "rating_timeline_30": {},
@@ -256749,7 +256745,14 @@
       "6/23/2026": 3.0744,
       "7/17/2026": 3.1158,
       "7/18/2026": 3.1298
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x4",
+      "D3"
+    ],
+    "wl_record_35": "4-2",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "monica-mispireta",
@@ -256768,12 +256771,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D3x3",
-      "S2x2"
-    ],
-    "wl_record_35": "5-0",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.03,
     "rating_35": 3.03,
     "rating_timeline_30": {},
@@ -256791,7 +256788,13 @@
       "6/2/2026": 3.01,
       "6/4/2026": 3.0143,
       "6/16/2026": 3.03
-    }
+    },
+    "lines_played_35": [
+      "D3x3",
+      "S2x2"
+    ],
+    "wl_record_35": "4-1",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "melissa-suru",
@@ -256810,12 +256813,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "S1x10",
-      "S2"
-    ],
-    "wl_record_35": "9-2",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.2565,
     "rating_35": 3.2565,
     "rating_timeline_30": {},
@@ -256841,7 +256838,13 @@
       "6/25/2026": 2.9956,
       "7/17/2026": 3.0735,
       "7/18/2026": 3.2165
-    }
+    },
+    "lines_played_35": [
+      "S1x10",
+      "S2"
+    ],
+    "wl_record_35": "5-6",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "theresa-mansfield",
@@ -256860,13 +256863,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2",
-      "D3x5"
-    ],
-    "wl_record_35": "6-1",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.0856,
     "rating_35": 3.0856,
     "rating_timeline_30": {},
@@ -256888,7 +256884,14 @@
       "6/25/2026": 3.0515,
       "7/17/2026": 3.0956,
       "7/18/2026": 3.0856
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2",
+      "D3x5"
+    ],
+    "wl_record_35": "6-1",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "wendy-elison",
@@ -256907,13 +256910,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x4",
-      "D3"
-    ],
-    "wl_record_35": "5-1",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.0867,
     "rating_35": 3.0867,
     "rating_timeline_30": {},
@@ -256931,7 +256927,14 @@
       "6/16/2026": 2.992,
       "7/17/2026": 3.0297,
       "7/18/2026": 3.0867
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x4",
+      "D3"
+    ],
+    "wl_record_35": "4-2",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "cara-sonnemann",
@@ -256950,12 +256953,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D2x3",
-      "D3x5"
-    ],
-    "wl_record_35": "7-1",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.055,
     "rating_35": 3.055,
     "rating_timeline_30": {},
@@ -256977,7 +256974,13 @@
       "6/25/2026": 3.0927,
       "7/17/2026": 3.1161,
       "7/18/2026": 3.055
-    }
+    },
+    "lines_played_35": [
+      "D2x3",
+      "D3x5"
+    ],
+    "wl_record_35": "7-1",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "lyndsi-whitworth",
@@ -256996,12 +256999,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x8",
-      "D3"
-    ],
-    "wl_record_35": "7-2",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.2778,
     "rating_35": 3.2778,
     "rating_timeline_30": {},
@@ -257023,7 +257020,13 @@
       "6/23/2026": 3.1903,
       "7/17/2026": 3.1842,
       "7/18/2026": 3.2378
-    }
+    },
+    "lines_played_35": [
+      "D1x8",
+      "D3"
+    ],
+    "wl_record_35": "8-1",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "heather-farnsworth",
@@ -257042,12 +257045,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "S1x2",
-      "S2x5"
-    ],
-    "wl_record_35": "5-2",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.2637,
     "rating_35": 3.2637,
     "rating_timeline_30": {},
@@ -257067,7 +257064,13 @@
       "6/25/2026": 3.1333,
       "7/17/2026": 3.2179,
       "7/18/2026": 3.2637
-    }
+    },
+    "lines_played_35": [
+      "S1x2",
+      "S2x5"
+    ],
+    "wl_record_35": "5-2",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "christine-paulsen",
@@ -257086,12 +257089,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D3x4"
-    ],
-    "wl_record_35": "5-0",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.0364,
     "rating_35": 3.0364,
     "rating_timeline_30": {},
@@ -257109,7 +257106,13 @@
       "6/11/2026": 3.0233,
       "6/23/2026": 3.0405,
       "6/25/2026": 3.0364
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D3x4"
+    ],
+    "wl_record_35": "5-0",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "sarah-davids",
@@ -257128,12 +257131,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x3"
-    ],
-    "wl_record_35": "4-0",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.0882,
     "rating_35": 3.0882,
     "rating_timeline_30": {},
@@ -257149,7 +257146,13 @@
       "6/2/2026": 3.0599,
       "6/11/2026": 3.0809,
       "6/25/2026": 3.0882
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x3"
+    ],
+    "wl_record_35": "4-0",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "aspin-rhoades",
@@ -257168,14 +257171,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1",
-      "D2x4",
-      "D3",
-      "S2x2"
-    ],
-    "wl_record_35": "7-1",
-    "team_35": "WENDY ELLISON",
     "rating_30": 3.209,
     "rating_35": 3.209,
     "rating_timeline_30": {},
@@ -257197,7 +257192,15 @@
       "6/25/2026": 3.0595,
       "7/17/2026": 3.1413,
       "7/18/2026": 3.209
-    }
+    },
+    "lines_played_35": [
+      "D1",
+      "D2x4",
+      "D3",
+      "S2x2"
+    ],
+    "wl_record_35": "6-2",
+    "team_35": "WENDY ELLISON"
   },
   {
     "id": "heather-mcgeehan",
@@ -257238,11 +257241,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D3x5"
-    ],
-    "wl_record_35": "0-5",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 3.0559,
     "rating_35": 3.0559,
     "rating_timeline_30": {},
@@ -257260,7 +257258,12 @@
       "6/16/2026": 3.0559,
       "6/18/2026": 3.0559,
       "6/23/2026": 3.0559
-    }
+    },
+    "lines_played_35": [
+      "D3x5"
+    ],
+    "wl_record_35": "1-4",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "patricia-bolinger",
@@ -257279,11 +257282,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x3"
-    ],
-    "wl_record_35": "0-3",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 3.084,
     "rating_35": 3.084,
     "rating_timeline_30": {},
@@ -257297,7 +257295,12 @@
       "5/19/2026": 3.055,
       "5/28/2026": 2.98,
       "6/2/2026": 3.044
-    }
+    },
+    "lines_played_35": [
+      "D1x3"
+    ],
+    "wl_record_35": "1-2",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "robbie-spicer",
@@ -257316,11 +257319,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1"
-    ],
-    "wl_record_35": "0-1",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 3.0335,
     "rating_35": 3.0335,
     "rating_timeline_30": {},
@@ -257330,7 +257328,12 @@
     "rating_post_timeline_30": {},
     "rating_post_timeline_35": {
       "5/14/2026": 3.0335
-    }
+    },
+    "lines_played_35": [
+      "D1"
+    ],
+    "wl_record_35": "0-1",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "aly-burgoyne",
@@ -257349,13 +257352,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D3",
-      "S1x4",
-      "S2"
-    ],
-    "wl_record_35": "0-6",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 3.1003,
     "rating_35": 3.1003,
     "rating_timeline_30": {},
@@ -257375,7 +257371,14 @@
       "6/9/2026": 3.1007,
       "6/16/2026": 3.0488,
       "6/18/2026": 3.1003
-    }
+    },
+    "lines_played_35": [
+      "D3",
+      "S1x4",
+      "S2"
+    ],
+    "wl_record_35": "5-1",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "karen-dickerson",
@@ -257394,12 +257397,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "S1x2",
-      "S2x2"
-    ],
-    "wl_record_35": "0-4",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 3.0017,
     "rating_35": 3.0017,
     "rating_timeline_30": {},
@@ -257415,7 +257412,13 @@
       "5/28/2026": 2.9255,
       "6/18/2026": 2.8633,
       "6/23/2026": 3.0017
-    }
+    },
+    "lines_played_35": [
+      "S1x2",
+      "S2x2"
+    ],
+    "wl_record_35": "1-3",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "amy-cunningham",
@@ -257434,12 +257437,6 @@
     "notes": null,
     "state": "ID",
     "pending_tennisrecord_lookup": true,
-    "lines_played_35": [
-      "D1x2",
-      "D2x2"
-    ],
-    "wl_record_35": "0-4",
-    "team_35": "SIMPLY SMASHING",
     "rating_30": 3.0484,
     "rating_35": 3.0484,
     "rating_timeline_30": {},
@@ -257455,7 +257452,13 @@
       "6/9/2026": 3.0053,
       "6/16/2026": 3.0484,
       "6/23/2026": 3.0484
-    }
+    },
+    "lines_played_35": [
+      "D1x2",
+      "D2x2"
+    ],
+    "wl_record_35": "0-4",
+    "team_35": "SIMPLY SMASHING"
   },
   {
     "id": "rachel-sandersfeld",

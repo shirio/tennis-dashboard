@@ -3547,8 +3547,9 @@ def _build_matchup_page(ntrp: str, standings: dict, players: list[dict],
     d_rows = _doubles_rows(doubles_list)
 
     other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
-    other_mx = f"matchups_{other_ntrp.replace('.', '')}.html"
-    main_dash = f"women_{sfx}.html"
+    st_lower = state_code.lower()
+    other_mx = f"matchups_{st_lower}_{other_ntrp.replace('.', '')}.html"
+    main_dash = f"women_{st_lower}_{sfx}.html"
 
     return f"""<!DOCTYPE html>
 <html lang="en">
