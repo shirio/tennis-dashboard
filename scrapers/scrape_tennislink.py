@@ -936,7 +936,12 @@ def _navigate_via_league_search(page: Page, section: str, district: str, area: s
     for prefix in ("CO-", "UT-", "ID-", "NV-"):
         area_match = area_match.replace(prefix, "")
 
-    # Extract team rows from the results table via JS
+    # Extract team rows from the results table via JS.
+    # Columns are: [0]=Team Name, [1]=Section, [2]=District, [3]=League, [4]=Flight.
+    # "Flight" (e.g. "Women 3.0 - 18 & OVER") is generic and identical across every
+    # sub-area flight in a district — it's "League" (e.g. "2026 USTA ADULT 18 &
+    # OVER - IDAHO FALLS") that actually carries the sub-area suffix, so we need
+    # both: League for area matching, Flight for the NTRP-level check.
     rows = page.evaluate("""(() => {
         const results = [];
         document.querySelectorAll('table tr').forEach(tr => {
@@ -946,6 +951,8 @@ def _navigate_via_league_search(page: Page, section: str, district: str, area: s
                 if (link && link.innerText.trim().length > 2) {
                     results.push({
                         team: link.innerText.trim(),
+                        district: tds[2] ? tds[2].innerText.trim() : '',
+                        league: tds[3] ? tds[3].innerText.trim() : '',
                         flight: tds[4] ? tds[4].innerText.trim() : '',
                         href: link.getAttribute('href') || ''
                     });
@@ -955,18 +962,18 @@ def _navigate_via_league_search(page: Page, section: str, district: str, area: s
         return results;
     })()""")
 
-    def _flight_matches_area(flight_upper):
-        """Check if a flight string matches our target area."""
+    def _flight_matches_area(flight_upper, league_upper):
+        """Check if a flight/league string matches our target area."""
         if ntrp not in flight_upper:
             return False
         if _found_suffix_config:
             if flight_suffix:
-                return flight_suffix.upper() in flight_upper
+                return flight_suffix.upper() in league_upper or flight_suffix.upper() in flight_upper
             else:
                 # Default area (e.g. Denver Metro): match flights WITHOUT any sibling suffix
-                return not any(s in flight_upper for s in sibling_suffixes)
-        # Legacy fallback: match area name in flight text
-        return area_match in flight_upper
+                return not any(s in league_upper or s in flight_upper for s in sibling_suffixes)
+        # Legacy fallback: match area name in flight/league text
+        return area_match in flight_upper or area_match in league_upper
 
     # Also filter by district column if available
     district_upper = district.upper()
@@ -974,11 +981,12 @@ def _navigate_via_league_search(page: Page, section: str, district: str, area: s
     # First pass: team in target area with matching NTRP and district
     for r in rows:
         flight_upper = r.get("flight", "").upper()
+        league_upper = r.get("league", "").upper()
         row_district = r.get("district", "").upper()
         if row_district and district_upper not in row_district:
             continue
-        if _flight_matches_area(flight_upper):
-            print(f"    Found team in target area: {r['team']} ({r['flight']})")
+        if _flight_matches_area(flight_upper, league_upper):
+            print(f"    Found team in target area: {r['team']} ({r['league']} / {r['flight']})")
             href = r["href"]
             if href.startswith("javascript:"):
                 page.evaluate(href)
@@ -987,6 +995,13 @@ def _navigate_via_league_search(page: Page, section: str, district: str, area: s
             _wait_for_network(page, 12_000)
             sleep(2)
             return True
+
+    if _found_suffix_config and flight_suffix:
+        # We know exactly which sub-area flight we want and found no match —
+        # this area has no teams this season. Don't fall through to "any team",
+        # which would silently re-scrape an unrelated area's flight as a dup.
+        print(f"    [info] no teams found for area {area!r} (suffix {flight_suffix!r}) in {district}")
+        return False
 
     # Fallback: any team matching NTRP in district
     for r in rows:
@@ -1250,6 +1265,61 @@ def _navigate_to_championships(page: Page, state_code: str, ntrp: str,
         }""")
 
     print(f"    Found {len(sf_links_info)} subflights on flight page")
+
+    if not sf_links_info:
+        # No lettered/named subflights — this is a single flat flight (e.g. Idaho's
+        # area flights). Not every team has a Championship Advancements link (only
+        # teams that actually advanced do), so try each team in the flight in turn
+        # rather than giving up after the first one.
+        _nav_texts = {"Home", "LOGOUT", "MY TENNIS", "Team Standings", "Match Summary",
+                      "Player Roster", "USTA LEAGUE", "TOURNAMENTS"}
+        team_texts = []
+        tbl = page.query_selector("#TeamSummary")
+        if tbl:
+            for a in tbl.query_selector_all("a"):
+                try:
+                    txt = (a.inner_text() or "").strip()
+                    if txt and txt not in _nav_texts and len(txt) > 2:
+                        if txt not in team_texts:
+                            team_texts.append(txt)
+                except Exception:
+                    pass
+        if not team_texts:
+            for a in page.query_selector_all("a"):
+                try:
+                    txt = (a.inner_text() or "").strip()
+                    href = a.get_attribute("href") or ""
+                    if (txt and "doPostBack" in href and len(txt) > 2
+                            and txt not in _nav_texts
+                            and ("rptTeamStandings" in href or "rptTeamsForSubFlight" in href
+                                 or "rptTeamsForFlight" in href)):
+                        if txt not in team_texts:
+                            team_texts.append(txt)
+                except Exception:
+                    pass
+        print(f"    Trying {len(team_texts)} team(s) in flight for advancement link: {team_texts}")
+
+        for i_team, team_text in enumerate(team_texts):
+            if i_team > 0 and not _go_to_flight_page(page):
+                break
+            clicked = False
+            for a in page.query_selector_all("a"):
+                try:
+                    txt = (a.inner_text() or "").strip()
+                    href = a.get_attribute("href") or ""
+                    if txt == team_text and "doPostBack" in href:
+                        a.click()
+                        _wait_for_network(page, 12_000)
+                        sleep(2)
+                        clicked = True
+                        break
+                except Exception:
+                    pass
+            if not clicked:
+                continue
+            print(f"    Checking team {team_text!r} for advancement link...")
+            if _click_champ_advancement(page):
+                return True
 
     for sf_info in sf_links_info:
         sf_text = sf_info["text"]

@@ -4,7 +4,3342 @@
   "state": "ID",
   "subflights": [
     {
-      "flight_label": "A",
+      "flight_label": "Idaho Falls A",
+      "teams": [
+        {
+          "team_name": "Karen and Heather",
+          "team_wins": 8,
+          "matches_played": 8,
+          "team_losses": 0,
+          "indiv_wins": 33,
+          "indiv_losses": 7,
+          "sets_won": 68,
+          "sets_lost": 18,
+          "games_won": 439,
+          "games_lost": 223,
+          "games_won_pct": "65.05%"
+        },
+        {
+          "team_name": "Wonder Women",
+          "team_wins": 4,
+          "matches_played": 8,
+          "team_losses": 4,
+          "indiv_wins": 22,
+          "indiv_losses": 18,
+          "sets_won": 47,
+          "sets_lost": 39,
+          "games_won": 369,
+          "games_lost": 337,
+          "games_won_pct": "52.27%"
+        },
+        {
+          "team_name": "Lob Stars",
+          "team_wins": 3,
+          "matches_played": 8,
+          "team_losses": 5,
+          "indiv_wins": 18,
+          "indiv_losses": 22,
+          "sets_won": 40,
+          "sets_lost": 51,
+          "games_won": 347,
+          "games_lost": 377,
+          "games_won_pct": "47.05%"
+        },
+        {
+          "team_name": "Howell",
+          "team_wins": 3,
+          "matches_played": 8,
+          "team_losses": 5,
+          "indiv_wins": 17,
+          "indiv_losses": 23,
+          "sets_won": 41,
+          "sets_lost": 49,
+          "games_won": 349,
+          "games_lost": 367,
+          "games_won_pct": "47.87%"
+        },
+        {
+          "team_name": "Idaho Falls",
+          "team_wins": 2,
+          "matches_played": 8,
+          "team_losses": 6,
+          "indiv_wins": 10,
+          "indiv_losses": 30,
+          "sets_won": 25,
+          "sets_lost": 64,
+          "games_won": 236,
+          "games_lost": 436,
+          "games_won_pct": "37.82%"
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "4a2a79c7b1aa941e",
+          "date": "5/13/2026",
+          "tl_match_id": "1011970466",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970466",
+          "home_team": "Karen and Heather",
+          "away_team": "Wonder Women",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Nikelle Price",
+              "players_away": "Emma Shurtliff",
+              "score": "6-2 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Nikelle Price"
+              ],
+              "loser_names": [
+                "Emma Shurtliff"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Ranay Thompson",
+              "players_away": "Jade Call",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Ranay Thompson"
+              ],
+              "loser_names": [
+                "Jade Call"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Angie Sargent / Heidi Hartman",
+              "players_away": "Jill Reed / Jessica Bare",
+              "score": "6-4 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wonder Women",
+              "loser_team": "Karen and Heather",
+              "winner_names": [
+                "Jill Reed",
+                "Jessica Bare"
+              ],
+              "loser_names": [
+                "Angie Sargent",
+                "Heidi Hartman"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Lyndsey Hall / Mckenna Dutcher",
+              "players_away": "Adrianne Shirley / Amie Belnap",
+              "score": "6-2 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Lyndsey Hall",
+                "Mckenna Dutcher"
+              ],
+              "loser_names": [
+                "Adrianne Shirley",
+                "Amie Belnap"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Erin Wood / Lori Murdoch",
+              "players_away": "Linda Zentner / Laura Kelley",
+              "score": "7-5 3-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wonder Women",
+              "loser_team": "Karen and Heather",
+              "winner_names": [
+                "Linda Zentner",
+                "Laura Kelley"
+              ],
+              "loser_names": [
+                "Erin Wood",
+                "Lori Murdoch"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "7d0233f6ae179a02",
+          "date": "5/13/2026",
+          "tl_match_id": "1011970465",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970465",
+          "home_team": "Lob Stars",
+          "away_team": "Howell",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Holly Russell",
+              "players_away": "Tawni Howell",
+              "score": "6-2 1-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Holly Russell"
+              ],
+              "loser_names": [
+                "Tawni Howell"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Joanna Bennett",
+              "players_away": "Karri Sloan",
+              "score": "6-1 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Karri Sloan"
+              ],
+              "loser_names": [
+                "Joanna Bennett"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Ashley Brusman / Joanie Anderson",
+              "players_away": "Lorraine Baker / Tina Taylor",
+              "score": "7-6 7-6",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Lorraine Baker",
+                "Tina Taylor"
+              ],
+              "loser_names": [
+                "Ashley Brusman",
+                "Joanie Anderson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Anna Colling / Carmen Peters",
+              "players_away": "Tera Craig / Katilyn Onkes",
+              "score": "7-5 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Tera Craig",
+                "Katilyn Onkes"
+              ],
+              "loser_names": [
+                "Anna Colling",
+                "Carmen Peters"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Rebecca Hansen / Aleesa Wilcox",
+              "players_away": "Em Fonz / Megan Keller",
+              "score": "2-6 6-3 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Rebecca Hansen",
+                "Aleesa Wilcox"
+              ],
+              "loser_names": [
+                "Em Fonz",
+                "Megan Keller"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "0019e479439f66f5",
+          "date": "5/18/2026",
+          "tl_match_id": "1011970469",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970469",
+          "home_team": "Karen and Heather",
+          "away_team": "Lob Stars",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Ronee Ross",
+              "players_away": "Taralynn Sibbett",
+              "score": "6-1 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Ronee Ross"
+              ],
+              "loser_names": [
+                "Taralynn Sibbett"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jenny Fullmer",
+              "players_away": "Emily McCormick",
+              "score": "6-2 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Jenny Fullmer"
+              ],
+              "loser_names": [
+                "Emily McCormick"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lindsey Stevens / Ann Traynor",
+              "players_away": "Joanie Anderson / Lindsey Johnson",
+              "score": "6-0 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Lindsey Stevens",
+                "Ann Traynor"
+              ],
+              "loser_names": [
+                "Joanie Anderson",
+                "Lindsey Johnson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kelly Manwaring / Melanie Daw",
+              "players_away": "Avrie Johnson / Brinley Miller",
+              "score": "6-1 7-6",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Lob Stars",
+              "loser_team": "Karen and Heather",
+              "winner_names": [
+                "Avrie Johnson",
+                "Brinley Miller"
+              ],
+              "loser_names": [
+                "Kelly Manwaring",
+                "Melanie Daw"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Heather Davies / Rebecca Webb",
+              "players_away": "Anna Colling / Michelle Marlowe",
+              "score": "6-0 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Heather Davies",
+                "Rebecca Webb"
+              ],
+              "loser_names": [
+                "Anna Colling",
+                "Michelle Marlowe"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "629bce6caa575b8d",
+          "date": "5/18/2026",
+          "tl_match_id": "1011970468",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970468",
+          "home_team": "Wonder Women",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jade Call",
+              "players_away": "Natalie Piper",
+              "score": "6-2 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Jade Call"
+              ],
+              "loser_names": [
+                "Natalie Piper"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Laura Kelley",
+              "players_away": "Brianne Stuart",
+              "score": "4-6 6-3 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Laura Kelley"
+              ],
+              "loser_names": [
+                "Brianne Stuart"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Holly Gyles / Lisa Wheeler",
+              "players_away": "Natalie Buttars / Valerie Day",
+              "score": "7-6 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Holly Gyles",
+                "Lisa Wheeler"
+              ],
+              "loser_names": [
+                "Natalie Buttars",
+                "Valerie Day"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jennifer Jennings / Shelby Hanson",
+              "players_away": "Breanna Aldrich / Joy Taylor",
+              "score": "6-0 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Jennifer Jennings",
+                "Shelby Hanson"
+              ],
+              "loser_names": [
+                "Breanna Aldrich",
+                "Joy Taylor"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Erin Thueson / Kelsey Lindsay",
+              "players_away": "Avalon Russell / Lucy Anderson",
+              "score": "7-5 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Erin Thueson",
+                "Kelsey Lindsay"
+              ],
+              "loser_names": [
+                "Avalon Russell",
+                "Lucy Anderson"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "8676d5cf037a1a9a",
+          "date": "5/20/2026",
+          "tl_match_id": "1011970471",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970471",
+          "home_team": "Karen and Heather",
+          "away_team": "Howell",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Ann Traynor",
+              "players_away": "Hailey Ball",
+              "score": "6-0 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Ann Traynor"
+              ],
+              "loser_names": [
+                "Hailey Ball"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Erin Wood",
+              "players_away": "Tawni Howell",
+              "score": "7-5 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Karen and Heather",
+              "winner_names": [
+                "Tawni Howell"
+              ],
+              "loser_names": [
+                "Erin Wood"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lori Murdoch / Mckenna Dutcher",
+              "players_away": "Karri Sloan / Katilyn Onkes",
+              "score": "6-2 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Lori Murdoch",
+                "Mckenna Dutcher"
+              ],
+              "loser_names": [
+                "Karri Sloan",
+                "Katilyn Onkes"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Karen Behrmann / Lyndsey Hall",
+              "players_away": "Em Fonz / Megan Keller",
+              "score": "3-6 6-2 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Karen Behrmann",
+                "Lyndsey Hall"
+              ],
+              "loser_names": [
+                "Em Fonz",
+                "Megan Keller"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kelly Manwaring / Heidi Hartman",
+              "players_away": "Lynne Blatter / Lorraine Baker",
+              "score": "6-1 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Kelly Manwaring",
+                "Heidi Hartman"
+              ],
+              "loser_names": [
+                "Lynne Blatter",
+                "Lorraine Baker"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "35055d8fde5d5a1b",
+          "date": "5/20/2026",
+          "tl_match_id": "1011970472",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970472",
+          "home_team": "Lob Stars",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Joanie Anderson",
+              "players_away": "Jenn Pearson",
+              "score": "6-0 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Joanie Anderson"
+              ],
+              "loser_names": [
+                "Jenn Pearson"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Aleesa Wilcox",
+              "players_away": "Liz Curtis",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Aleesa Wilcox"
+              ],
+              "loser_names": [
+                "Liz Curtis"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Ashley Brusman / Heather Redd",
+              "players_away": "Marion Cuthbertson / Kourtney Tew",
+              "score": "5-7 6-3 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Ashley Brusman",
+                "Heather Redd"
+              ],
+              "loser_names": [
+                "Marion Cuthbertson",
+                "Kourtney Tew"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Rebecca Hansen / Tori Thomason",
+              "players_away": "Kate Miller / Natalie Piper",
+              "score": "6-3 4-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Rebecca Hansen",
+                "Tori Thomason"
+              ],
+              "loser_names": [
+                "Kate Miller",
+                "Natalie Piper"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Lindsey Johnson / Michelle Marlowe",
+              "players_away": "Joy Taylor / Breanna Aldrich",
+              "score": "6-2 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Lindsey Johnson",
+                "Michelle Marlowe"
+              ],
+              "loser_names": [
+                "Joy Taylor",
+                "Breanna Aldrich"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "d678820412aa443d",
+          "date": "6/1/2026",
+          "tl_match_id": "1011970474",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970474",
+          "home_team": "Wonder Women",
+          "away_team": "Lob Stars",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jessica Bare",
+              "players_away": "Brinley Miller",
+              "score": "6-3 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Lob Stars",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Brinley Miller"
+              ],
+              "loser_names": [
+                "Jessica Bare"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Emma Shurtliff",
+              "players_away": "Emily McCormick",
+              "score": "6-2 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Lob Stars",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Emily McCormick"
+              ],
+              "loser_names": [
+                "Emma Shurtliff"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Adrianne Shirley / Kamarie Hearne",
+              "players_away": "Avrie Johnson / Lindsey Johnson",
+              "score": "7-5 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Lob Stars",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Avrie Johnson",
+                "Lindsey Johnson"
+              ],
+              "loser_names": [
+                "Adrianne Shirley",
+                "Kamarie Hearne"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Erin Thueson / Kelsey Lindsay",
+              "players_away": "Joanie Anderson / Michelle Marlowe",
+              "score": "7-5 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Erin Thueson",
+                "Kelsey Lindsay"
+              ],
+              "loser_names": [
+                "Joanie Anderson",
+                "Michelle Marlowe"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Linda Zentner / Amie Belnap",
+              "players_away": "Aleesa Wilcox / Joanna Bennett",
+              "score": "6-2 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Linda Zentner",
+                "Amie Belnap"
+              ],
+              "loser_names": [
+                "Aleesa Wilcox",
+                "Joanna Bennett"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "f2a3aadf18b17528",
+          "date": "6/1/2026",
+          "tl_match_id": "1011970475",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970475",
+          "home_team": "Howell",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Tawni Howell",
+              "players_away": "Marion Cuthbertson",
+              "score": "6-0 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Howell",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Tawni Howell"
+              ],
+              "loser_names": [
+                "Marion Cuthbertson"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Makell Valora",
+              "players_away": "Brianne Stuart",
+              "score": "7-5 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Idaho Falls",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Brianne Stuart"
+              ],
+              "loser_names": [
+                "Makell Valora"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Hailey Ball / Cori Cannon",
+              "players_away": "Lucy Anderson / Avalon Russell",
+              "score": "7-5 0-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Idaho Falls",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Lucy Anderson",
+                "Avalon Russell"
+              ],
+              "loser_names": [
+                "Hailey Ball",
+                "Cori Cannon"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Tamara Gardner / Tina Taylor",
+              "players_away": "Valerie Day / Kate Miller",
+              "score": "6-4 7-6",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Idaho Falls",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Valerie Day",
+                "Kate Miller"
+              ],
+              "loser_names": [
+                "Tamara Gardner",
+                "Tina Taylor"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Tera Craig / Oaklee Craig",
+              "players_away": "Joy Taylor / Natalie Buttars",
+              "score": "6-1 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Howell",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Tera Craig",
+                "Oaklee Craig"
+              ],
+              "loser_names": [
+                "Joy Taylor",
+                "Natalie Buttars"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "6b49600b5f08324b",
+          "date": "6/10/2026",
+          "tl_match_id": "1011970484",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970484",
+          "home_team": "Karen and Heather",
+          "away_team": "Lob Stars",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Rebecca Webb",
+              "players_away": "Taralynn Sibbett",
+              "score": "7-5 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Rebecca Webb"
+              ],
+              "loser_names": [
+                "Taralynn Sibbett"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Ann Traynor",
+              "players_away": "Emily McCormick",
+              "score": "6-3 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Ann Traynor"
+              ],
+              "loser_names": [
+                "Emily McCormick"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Karen Behrmann / Heather Davies",
+              "players_away": "Holly Russell / Joanie Anderson",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Karen Behrmann",
+                "Heather Davies"
+              ],
+              "loser_names": [
+                "Holly Russell",
+                "Joanie Anderson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kelly Manwaring / Heidi Hartman",
+              "players_away": "Carmen Peters / Tori Thomason",
+              "score": "4-6 6-3 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Kelly Manwaring",
+                "Heidi Hartman"
+              ],
+              "loser_names": [
+                "Carmen Peters",
+                "Tori Thomason"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Lindsey Stevens / Melanie Daw",
+              "players_away": "Joanna Bennett / Monica Kuhn",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Lindsey Stevens",
+                "Melanie Daw"
+              ],
+              "loser_names": [
+                "Joanna Bennett",
+                "Monica Kuhn"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "874870970470e84c",
+          "date": "6/10/2026",
+          "tl_match_id": "1011970483",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970483",
+          "home_team": "Wonder Women",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jennifer Jennings",
+              "players_away": "Breanna Aldrich",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Jennifer Jennings"
+              ],
+              "loser_names": [
+                "Breanna Aldrich"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Emma Shurtliff",
+              "players_away": "Liz Curtis",
+              "score": "6-1 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Emma Shurtliff"
+              ],
+              "loser_names": [
+                "Liz Curtis"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lisa Wheeler / Linda Zentner",
+              "players_away": "Marion Cuthbertson / Jenn Pearson",
+              "score": "6-0 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Lisa Wheeler",
+                "Linda Zentner"
+              ],
+              "loser_names": [
+                "Marion Cuthbertson",
+                "Jenn Pearson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Erin Thueson / Jade Call",
+              "players_away": "Kourtney Tew / Valerie Day",
+              "score": "6-4 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Idaho Falls",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Kourtney Tew",
+                "Valerie Day"
+              ],
+              "loser_names": [
+                "Erin Thueson",
+                "Jade Call"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kamarie Hearne / Jessica Bare",
+              "players_away": "Natalie Buttars / Natalie Piper",
+              "score": "6-3 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Kamarie Hearne",
+                "Jessica Bare"
+              ],
+              "loser_names": [
+                "Natalie Buttars",
+                "Natalie Piper"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "8f347e086582e8ff",
+          "date": "6/15/2026",
+          "tl_match_id": "1011970486",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970486",
+          "home_team": "Karen and Heather",
+          "away_team": "Howell",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Melanie Daw",
+              "players_away": "Karri Sloan",
+              "score": "1-6 6-4 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Melanie Daw"
+              ],
+              "loser_names": [
+                "Karri Sloan"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Nikelle Price",
+              "players_away": "Oaklee Craig",
+              "score": "6-1 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Nikelle Price"
+              ],
+              "loser_names": [
+                "Oaklee Craig"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Ronee Ross / Ranay Thompson",
+              "players_away": "Em Fonz / Megan Keller",
+              "score": "6-2 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Ronee Ross",
+                "Ranay Thompson"
+              ],
+              "loser_names": [
+                "Em Fonz",
+                "Megan Keller"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Karen Behrmann / Jenny Fullmer",
+              "players_away": "Lynne Blatter / Katilyn Onkes",
+              "score": "6-1 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Karen Behrmann",
+                "Jenny Fullmer"
+              ],
+              "loser_names": [
+                "Lynne Blatter",
+                "Katilyn Onkes"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Angie Sargent / Heidi Hartman",
+              "players_away": "Tera Craig / Tamara Gardner",
+              "score": "6-1 7-6",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Angie Sargent",
+                "Heidi Hartman"
+              ],
+              "loser_names": [
+                "Tera Craig",
+                "Tamara Gardner"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "f090636457254f81",
+          "date": "6/15/2026",
+          "tl_match_id": "1011970487",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970487",
+          "home_team": "Lob Stars",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Brinley Miller",
+              "players_away": "Breanna Aldrich",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Brinley Miller"
+              ],
+              "loser_names": [
+                "Breanna Aldrich"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Holly Russell",
+              "players_away": "Brianne Stuart",
+              "score": "4-6 6-4 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Holly Russell"
+              ],
+              "loser_names": [
+                "Brianne Stuart"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Carmen Peters / Joanna Bennett",
+              "players_away": "Avalon Russell / Lucy Anderson",
+              "score": "6-4 3-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Idaho Falls",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Avalon Russell",
+                "Lucy Anderson"
+              ],
+              "loser_names": [
+                "Carmen Peters",
+                "Joanna Bennett"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Aleesa Wilcox / Tori Thomason",
+              "players_away": "Marion Cuthbertson / Natalie Buttars",
+              "score": "6-3 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Aleesa Wilcox",
+                "Tori Thomason"
+              ],
+              "loser_names": [
+                "Marion Cuthbertson",
+                "Natalie Buttars"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Heather Redd / Monica Kuhn",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Heather Redd",
+                "Monica Kuhn"
+              ],
+              "loser_names": []
+            }
+          ]
+        },
+        {
+          "match_id": "249e9e9cd748fd60",
+          "date": "6/17/2026",
+          "tl_match_id": "1011970489",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970489",
+          "home_team": "Wonder Women",
+          "away_team": "Lob Stars",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Holly Gyles",
+              "players_away": "Aleesa Wilcox",
+              "score": "6-3 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Holly Gyles"
+              ],
+              "loser_names": [
+                "Aleesa Wilcox"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jade Call",
+              "players_away": "Holly Russell",
+              "score": "7-5 5-7 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Lob Stars",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Holly Russell"
+              ],
+              "loser_names": [
+                "Jade Call"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jacqualyn Nelson / Lisa Wheeler",
+              "players_away": "Tori Thomason / Rebecca Hansen",
+              "score": "7-5 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Jacqualyn Nelson",
+                "Lisa Wheeler"
+              ],
+              "loser_names": [
+                "Tori Thomason",
+                "Rebecca Hansen"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Shelby Hanson / Adrianne Shirley",
+              "players_away": "Anna Colling / Heather Redd",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Shelby Hanson",
+                "Adrianne Shirley"
+              ],
+              "loser_names": [
+                "Anna Colling",
+                "Heather Redd"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kelsey Lindsay / Erin Thueson",
+              "players_away": "Monica Kuhn / Carmen Peters",
+              "score": "6-7 7-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Lob Stars",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Monica Kuhn",
+                "Carmen Peters"
+              ],
+              "loser_names": [
+                "Kelsey Lindsay",
+                "Erin Thueson"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "97896489894628cd",
+          "date": "6/17/2026",
+          "tl_match_id": "1011970490",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970490",
+          "home_team": "Howell",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Makell Valora",
+              "players_away": "Kourtney Tew",
+              "score": "6-4 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Howell",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Makell Valora"
+              ],
+              "loser_names": [
+                "Kourtney Tew"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Tawni Howell",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Howell",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Tawni Howell"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Tina Taylor / Tamara Gardner",
+              "players_away": "Heidi Dillard / Marion Cuthbertson",
+              "score": "6-3 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Idaho Falls",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Heidi Dillard",
+                "Marion Cuthbertson"
+              ],
+              "loser_names": [
+                "Tina Taylor",
+                "Tamara Gardner"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Tera Craig / Katilyn Onkes",
+              "players_away": "Lucy Anderson / Avalon Russell",
+              "score": "6-1 7-5",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Idaho Falls",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Lucy Anderson",
+                "Avalon Russell"
+              ],
+              "loser_names": [
+                "Tera Craig",
+                "Katilyn Onkes"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Oaklee Craig / Hailey Ball",
+              "players_away": "Natalie Buttars / Natalie Piper",
+              "score": "3-6 6-0 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Idaho Falls",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Natalie Buttars",
+                "Natalie Piper"
+              ],
+              "loser_names": [
+                "Oaklee Craig",
+                "Hailey Ball"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "0a242ff62dc908db",
+          "date": "6/22/2026",
+          "tl_match_id": "1011970492",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970492",
+          "home_team": "Karen and Heather",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Nikelle Price",
+              "players_away": "Brianne Stuart",
+              "score": "2-6 4-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Idaho Falls",
+              "loser_team": "Karen and Heather",
+              "winner_names": [
+                "Brianne Stuart"
+              ],
+              "loser_names": [
+                "Nikelle Price"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Angie Sargent",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Angie Sargent"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lindsey Stevens / Lyndsey Hall",
+              "players_away": "Avalon Russell / Lucy Anderson",
+              "score": "6-3 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Lindsey Stevens",
+                "Lyndsey Hall"
+              ],
+              "loser_names": [
+                "Avalon Russell",
+                "Lucy Anderson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Lori Murdoch / Heather Davies",
+              "players_away": "Marion Cuthbertson / Heidi Dillard",
+              "score": "6-1 2-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Lori Murdoch",
+                "Heather Davies"
+              ],
+              "loser_names": [
+                "Marion Cuthbertson",
+                "Heidi Dillard"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Rebecca Webb / Ronee Ross",
+              "players_away": "Kate Miller / Natalie Piper",
+              "score": "6-3 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Rebecca Webb",
+                "Ronee Ross"
+              ],
+              "loser_names": [
+                "Kate Miller",
+                "Natalie Piper"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "7b46ad8541c97351",
+          "date": "6/22/2026",
+          "tl_match_id": "1011970493",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970493",
+          "home_team": "Wonder Women",
+          "away_team": "Howell",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Lost 2-3 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Emma Shurtliff",
+              "players_away": "Tawni Howell",
+              "score": "6-1 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Tawni Howell"
+              ],
+              "loser_names": [
+                "Emma Shurtliff"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jade Call",
+              "players_away": "Megan Keller",
+              "score": "6-4 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Jade Call"
+              ],
+              "loser_names": [
+                "Megan Keller"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jacqualyn Nelson / Shelby Hanson",
+              "players_away": "Karri Sloan / Lorraine Baker",
+              "score": "6-4 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Karri Sloan",
+                "Lorraine Baker"
+              ],
+              "loser_names": [
+                "Jacqualyn Nelson",
+                "Shelby Hanson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kamarie Hearne / Jennifer Jennings",
+              "players_away": "Lynne Blatter / Cori Cannon",
+              "score": "6-1 3-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Kamarie Hearne",
+                "Jennifer Jennings"
+              ],
+              "loser_names": [
+                "Lynne Blatter",
+                "Cori Cannon"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Erin Thueson / Jessica Bare",
+              "players_away": "Katilyn Onkes / Tina Taylor",
+              "score": "6-4 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Katilyn Onkes",
+                "Tina Taylor"
+              ],
+              "loser_names": [
+                "Erin Thueson",
+                "Jessica Bare"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "ae1cbf540469ab75",
+          "date": "6/3/2026",
+          "tl_match_id": "1011970477",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970477",
+          "home_team": "Karen and Heather",
+          "away_team": "Idaho Falls",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Heather Davies",
+              "players_away": "Breanna Aldrich",
+              "score": "6-1 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Heather Davies"
+              ],
+              "loser_names": [
+                "Breanna Aldrich"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Ann Traynor",
+              "players_away": "",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Ann Traynor"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lori Murdoch / Ronee Ross",
+              "players_away": "Natalie Piper / Marion Cuthbertson",
+              "score": "6-0 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Lori Murdoch",
+                "Ronee Ross"
+              ],
+              "loser_names": [
+                "Natalie Piper",
+                "Marion Cuthbertson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Karen Behrmann / Rebecca Webb",
+              "players_away": "Avalon Russell / Lucy Anderson",
+              "score": "6-3 7-5",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Idaho Falls",
+              "loser_team": "Karen and Heather",
+              "winner_names": [
+                "Avalon Russell",
+                "Lucy Anderson"
+              ],
+              "loser_names": [
+                "Karen Behrmann",
+                "Rebecca Webb"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Angie Sargent / Ranay Thompson",
+              "players_away": "Liz Curtis / Natalie Buttars",
+              "score": "6-0 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Idaho Falls",
+              "winner_names": [
+                "Angie Sargent",
+                "Ranay Thompson"
+              ],
+              "loser_names": [
+                "Liz Curtis",
+                "Natalie Buttars"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "644b32b96e5c39ba",
+          "date": "6/3/2026",
+          "tl_match_id": "1011970478",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970478",
+          "home_team": "Wonder Women",
+          "away_team": "Howell",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Jill Reed",
+              "players_away": "Tawni Howell",
+              "score": "6-4 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Jill Reed"
+              ],
+              "loser_names": [
+                "Tawni Howell"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Emma Shurtliff",
+              "players_away": "Makell Valora",
+              "score": "6-0 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Makell Valora"
+              ],
+              "loser_names": [
+                "Emma Shurtliff"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jessica Bare / Shelby Hanson",
+              "players_away": "Katilyn Onkes / Lorraine Baker",
+              "score": "6-3 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Jessica Bare",
+                "Shelby Hanson"
+              ],
+              "loser_names": [
+                "Katilyn Onkes",
+                "Lorraine Baker"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Erin Thueson / Adrianne Shirley",
+              "players_away": "Cori Cannon / Lynne Blatter",
+              "score": "6-2 1-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Cori Cannon",
+                "Lynne Blatter"
+              ],
+              "loser_names": [
+                "Erin Thueson",
+                "Adrianne Shirley"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Kamarie Hearne / Laura Kelley",
+              "players_away": "Megan Keller / Em Fonz",
+              "score": "6-2 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wonder Women",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Kamarie Hearne",
+                "Laura Kelley"
+              ],
+              "loser_names": [
+                "Megan Keller",
+                "Em Fonz"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "ca981d1bf06868ef",
+          "date": "6/8/2026",
+          "tl_match_id": "1011970481",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970481",
+          "home_team": "Karen and Heather",
+          "away_team": "Wonder Women",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Ronee Ross",
+              "players_away": "Laura Kelley",
+              "score": "6-2 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Ronee Ross"
+              ],
+              "loser_names": [
+                "Laura Kelley"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Nikelle Price",
+              "players_away": "Linda Zentner",
+              "score": "6-0 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Nikelle Price"
+              ],
+              "loser_names": [
+                "Linda Zentner"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Kelly Manwaring / Lindsey Stevens",
+              "players_away": "Jessica Bare / Jill Reed",
+              "score": "6-2 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Kelly Manwaring",
+                "Lindsey Stevens"
+              ],
+              "loser_names": [
+                "Jessica Bare",
+                "Jill Reed"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Jenny Fullmer / Heather Davies",
+              "players_away": "Jacqualyn Nelson / Adrianne Shirley",
+              "score": "7-5 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Karen and Heather",
+              "loser_team": "Wonder Women",
+              "winner_names": [
+                "Jenny Fullmer",
+                "Heather Davies"
+              ],
+              "loser_names": [
+                "Jacqualyn Nelson",
+                "Adrianne Shirley"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Erin Wood / Rebecca Webb",
+              "players_away": "Shelby Hanson / Lisa Wheeler",
+              "score": "6-4 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Wonder Women",
+              "loser_team": "Karen and Heather",
+              "winner_names": [
+                "Shelby Hanson",
+                "Lisa Wheeler"
+              ],
+              "loser_names": [
+                "Erin Wood",
+                "Rebecca Webb"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "a256816b6d37a789",
+          "date": "6/8/2026",
+          "tl_match_id": "1011970480",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970480",
+          "home_team": "Lob Stars",
+          "away_team": "Howell",
+          "team_wins_home": 1,
+          "team_wins_away": 4,
+          "score": "1-4",
+          "status": "Lost 1-4 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Emily McCormick",
+              "players_away": "Karri Sloan",
+              "score": "6-4 3-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Karri Sloan"
+              ],
+              "loser_names": [
+                "Emily McCormick"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Taralynn Sibbett",
+              "players_away": "Makell Valora",
+              "score": "7-5 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Makell Valora"
+              ],
+              "loser_names": [
+                "Taralynn Sibbett"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Carmen Peters / Monica Kuhn",
+              "players_away": "Tawni Howell / Hailey Ball",
+              "score": "6-4 7-6",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Tawni Howell",
+                "Hailey Ball"
+              ],
+              "loser_names": [
+                "Carmen Peters",
+                "Monica Kuhn"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Michelle Marlowe / Heather Redd",
+              "players_away": "Em Fonz / Megan Keller",
+              "score": "6-2 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Lob Stars",
+              "loser_team": "Howell",
+              "winner_names": [
+                "Michelle Marlowe",
+                "Heather Redd"
+              ],
+              "loser_names": [
+                "Em Fonz",
+                "Megan Keller"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Ashley Brusman / Rebecca Hansen",
+              "players_away": "Tera Craig / Tina Taylor",
+              "score": "6-1 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Howell",
+              "loser_team": "Lob Stars",
+              "winner_names": [
+                "Tera Craig",
+                "Tina Taylor"
+              ],
+              "loser_names": [
+                "Ashley Brusman",
+                "Rebecca Hansen"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Pocatello A",
+      "teams": [
+        {
+          "team_name": "Wendy Ellison",
+          "team_wins": 8,
+          "matches_played": 8,
+          "team_losses": 0,
+          "indiv_wins": 35,
+          "indiv_losses": 5,
+          "sets_won": 72,
+          "sets_lost": 18,
+          "games_won": 443,
+          "games_lost": 245,
+          "games_won_pct": "65.53%"
+        },
+        {
+          "team_name": "Drop Shot Divas",
+          "team_wins": 4,
+          "matches_played": 8,
+          "team_losses": 4,
+          "indiv_wins": 15,
+          "indiv_losses": 25,
+          "sets_won": 38,
+          "sets_lost": 55,
+          "games_won": 341,
+          "games_lost": 402,
+          "games_won_pct": "46.65%"
+        },
+        {
+          "team_name": "Simply Smashing",
+          "team_wins": 0,
+          "matches_played": 8,
+          "team_losses": 8,
+          "indiv_wins": 9,
+          "indiv_losses": 31,
+          "sets_won": 27,
+          "sets_lost": 68,
+          "games_won": 278,
+          "games_lost": 439,
+          "games_won_pct": "38.38%"
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "6f90cc65a8a727b9",
+          "date": "5/14/2026",
+          "tl_match_id": "1011970519",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970519",
+          "home_team": "Drop Shot Divas",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Annie Thomas",
+              "players_away": "Karen Dickerson",
+              "score": "6-3 2-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Karen Dickerson"
+              ],
+              "loser_names": [
+                "Annie Thomas"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Shanea Bevins",
+              "players_away": "Kirsten Nickisch",
+              "score": "4-6 7-5 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Shanea Bevins"
+              ],
+              "loser_names": [
+                "Kirsten Nickisch"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Anita Gibson / Karen Hartman",
+              "players_away": "Lisa Nelson / Robbie Spicer",
+              "score": "6-2 4-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Anita Gibson",
+                "Karen Hartman"
+              ],
+              "loser_names": [
+                "Lisa Nelson",
+                "Robbie Spicer"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Emily Smith / Diane Poole",
+              "players_away": "Michele Surmelis / Lori Tapanila",
+              "score": "6-7 7-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Emily Smith",
+                "Diane Poole"
+              ],
+              "loser_names": [
+                "Michele Surmelis",
+                "Lori Tapanila"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Rachel Krammen / Katy Green",
+              "players_away": "Aly Burgoyne / Venita Petti",
+              "score": "6-4 3-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Aly Burgoyne",
+                "Venita Petti"
+              ],
+              "loser_names": [
+                "Rachel Krammen",
+                "Katy Green"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "0b1c3d9f2a92ada4",
+          "date": "5/19/2026",
+          "tl_match_id": "1011970521",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970521",
+          "home_team": "Wendy Ellison",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Melissa Suru",
+              "players_away": "Kirsten Nickisch",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Melissa Suru"
+              ],
+              "loser_names": [
+                "Kirsten Nickisch"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Heather Farnsworth",
+              "players_away": "Aly Burgoyne",
+              "score": "6-3 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Heather Farnsworth"
+              ],
+              "loser_names": [
+                "Aly Burgoyne"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lyndsi Whitworth / Rachel Mattson",
+              "players_away": "Amy Cunningham / Patricia Bolinger",
+              "score": "6-1 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Lyndsi Whitworth",
+                "Rachel Mattson"
+              ],
+              "loser_names": [
+                "Amy Cunningham",
+                "Patricia Bolinger"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Wendy Elison / Teresa Henderson",
+              "players_away": "Laura Kelley / Michele Surmelis",
+              "score": "3-6 6-3 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Wendy Elison",
+                "Teresa Henderson"
+              ],
+              "loser_names": [
+                "Laura Kelley",
+                "Michele Surmelis"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Monica Mispireta / Cara Sonnemann",
+              "players_away": "Karlee Moeai / Victoria Scharp",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Monica Mispireta",
+                "Cara Sonnemann"
+              ],
+              "loser_names": [
+                "Karlee Moeai",
+                "Victoria Scharp"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "e63a99f1212af8f3",
+          "date": "5/21/2026",
+          "tl_match_id": "1011970523",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970523",
+          "home_team": "Wendy Ellison",
+          "away_team": "Drop Shot Divas",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Melissa Suru",
+              "players_away": "Shanea Bevins",
+              "score": "6-4 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Melissa Suru"
+              ],
+              "loser_names": [
+                "Shanea Bevins"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Monica Mispireta",
+              "players_away": "Annie Thomas",
+              "score": "2-6 6-4 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Wendy Ellison",
+              "winner_names": [
+                "Annie Thomas"
+              ],
+              "loser_names": [
+                "Monica Mispireta"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lyndsi Whitworth / Rachel Mattson",
+              "players_away": "Emily Smith / Amy Spicer",
+              "score": "6-0 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Lyndsi Whitworth",
+                "Rachel Mattson"
+              ],
+              "loser_names": [
+                "Emily Smith",
+                "Amy Spicer"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sarah Davids / Aspin Rhoades",
+              "players_away": "Rachel Krammen / Grace Jory",
+              "score": "6-3 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Sarah Davids",
+                "Aspin Rhoades"
+              ],
+              "loser_names": [
+                "Rachel Krammen",
+                "Grace Jory"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Theresa Mansfield / Christine Paulsen",
+              "players_away": "Anita Gibson / Diane Poole",
+              "score": "7-6 4-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Theresa Mansfield",
+                "Christine Paulsen"
+              ],
+              "loser_names": [
+                "Anita Gibson",
+                "Diane Poole"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "2730522b9d37ad3f",
+          "date": "5/28/2026",
+          "tl_match_id": "1011970525",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970525",
+          "home_team": "Drop Shot Divas",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Annie Thomas",
+              "players_away": "Kirsten Nickisch",
+              "score": "6-0 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Annie Thomas"
+              ],
+              "loser_names": [
+                "Kirsten Nickisch"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Shanea Bevins",
+              "players_away": "Karen Dickerson",
+              "score": "6-2 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Shanea Bevins"
+              ],
+              "loser_names": [
+                "Karen Dickerson"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Anita Gibson / Emily Smith",
+              "players_away": "Patricia Bolinger / Lisa Nelson",
+              "score": "2-6 6-4 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Patricia Bolinger",
+                "Lisa Nelson"
+              ],
+              "loser_names": [
+                "Anita Gibson",
+                "Emily Smith"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Rachel Krammen / Lyn McArthur",
+              "players_away": "Victoria Scharp / Venita Petti",
+              "score": "6-0 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Rachel Krammen",
+                "Lyn McArthur"
+              ],
+              "loser_names": [
+                "Victoria Scharp",
+                "Venita Petti"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Katy Green / Amy Spicer",
+              "players_away": "Shauna Myler / Karlee Moeai",
+              "score": "5-7 7-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Shauna Myler",
+                "Karlee Moeai"
+              ],
+              "loser_names": [
+                "Katy Green",
+                "Amy Spicer"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "0364709974b6b673",
+          "date": "6/11/2026",
+          "tl_match_id": "1011970535",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970535",
+          "home_team": "Wendy Ellison",
+          "away_team": "Drop Shot Divas",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Melissa Suru",
+              "players_away": "Annie Thomas",
+              "score": "7-5 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Melissa Suru"
+              ],
+              "loser_names": [
+                "Annie Thomas"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Aspin Rhoades",
+              "players_away": "Grace Jory",
+              "score": "6-1 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Aspin Rhoades"
+              ],
+              "loser_names": [
+                "Grace Jory"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Lyndsi Whitworth / Rachel Mattson",
+              "players_away": "Anita Gibson / Diane Poole",
+              "score": "6-2 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Lyndsi Whitworth",
+                "Rachel Mattson"
+              ],
+              "loser_names": [
+                "Anita Gibson",
+                "Diane Poole"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Sarah Davids / Cara Sonnemann",
+              "players_away": "Shanea Bevins / Lyn McArthur",
+              "score": "7-6 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Sarah Davids",
+                "Cara Sonnemann"
+              ],
+              "loser_names": [
+                "Shanea Bevins",
+                "Lyn McArthur"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Theresa Mansfield / Christine Paulsen",
+              "players_away": "Rachel Krammen / Karen Hartman",
+              "score": "6-2 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Theresa Mansfield",
+                "Christine Paulsen"
+              ],
+              "loser_names": [
+                "Rachel Krammen",
+                "Karen Hartman"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "6ee697be46dbca39",
+          "date": "6/16/2026",
+          "tl_match_id": "1011970533",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970533",
+          "home_team": "Wendy Ellison",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Melissa Suru",
+              "players_away": "Aly Burgoyne",
+              "score": "6-4 5-7 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Wendy Ellison",
+              "winner_names": [
+                "Aly Burgoyne"
+              ],
+              "loser_names": [
+                "Melissa Suru"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Heather Farnsworth",
+              "players_away": "Kirsten Nickisch",
+              "score": "6-1 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Heather Farnsworth"
+              ],
+              "loser_names": [
+                "Kirsten Nickisch"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Aspin Rhoades / Wendy Elison",
+              "players_away": "Karlee Moeai / Lisa Nelson",
+              "score": "6-7 6-1 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Aspin Rhoades",
+                "Wendy Elison"
+              ],
+              "loser_names": [
+                "Karlee Moeai",
+                "Lisa Nelson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Quincy Sutton / Teresa Henderson",
+              "players_away": "Laura Kelley / Amy Cunningham",
+              "score": "6-1 3-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Quincy Sutton",
+                "Teresa Henderson"
+              ],
+              "loser_names": [
+                "Laura Kelley",
+                "Amy Cunningham"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Monica Mispireta / Cara Sonnemann",
+              "players_away": "Panayota Semons-Short / Shauna Myler",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Monica Mispireta",
+                "Cara Sonnemann"
+              ],
+              "loser_names": [
+                "Panayota Semons-Short",
+                "Shauna Myler"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "9740c6246131f14c",
+          "date": "6/18/2026",
+          "tl_match_id": "1011970537",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970537",
+          "home_team": "Drop Shot Divas",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Annie Thomas",
+              "players_away": "Aly Burgoyne",
+              "score": "6-2 7-5",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Aly Burgoyne"
+              ],
+              "loser_names": [
+                "Annie Thomas"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Diane Poole",
+              "players_away": "Karen Dickerson",
+              "score": "6-4 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Diane Poole"
+              ],
+              "loser_names": [
+                "Karen Dickerson"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Melanie Daw / Karen Hartman",
+              "players_away": "Victoria Scharp / Lisa Nelson",
+              "score": "7-6 3-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Melanie Daw",
+                "Karen Hartman"
+              ],
+              "loser_names": [
+                "Victoria Scharp",
+                "Lisa Nelson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Rachel Krammen / Amy Spicer",
+              "players_away": "Michele Surmelis / Carrie Rose Lindley",
+              "score": "6-4 7-6",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Rachel Krammen",
+                "Amy Spicer"
+              ],
+              "loser_names": [
+                "Michele Surmelis",
+                "Carrie Rose Lindley"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Grace Jory / Shanea Bevins",
+              "players_away": "Shauna Myler / Panayota Semons-Short",
+              "score": "6-2 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Grace Jory",
+                "Shanea Bevins"
+              ],
+              "loser_names": [
+                "Shauna Myler",
+                "Panayota Semons-Short"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "dcf8cfcd54849fdd",
+          "date": "6/2/2026",
+          "tl_match_id": "1011970527",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970527",
+          "home_team": "Wendy Ellison",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Heather Farnsworth",
+              "players_away": "Aly Burgoyne",
+              "score": "6-4 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Wendy Ellison",
+              "winner_names": [
+                "Aly Burgoyne"
+              ],
+              "loser_names": [
+                "Heather Farnsworth"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Monica Mispireta",
+              "players_away": "Karlee Moeai",
+              "score": "6-0 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Monica Mispireta"
+              ],
+              "loser_names": [
+                "Karlee Moeai"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Quincy Sutton / Teresa Henderson",
+              "players_away": "Patricia Bolinger / Lisa Nelson",
+              "score": "6-4 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Quincy Sutton",
+                "Teresa Henderson"
+              ],
+              "loser_names": [
+                "Patricia Bolinger",
+                "Lisa Nelson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Cara Sonnemann / Sarah Davids",
+              "players_away": "Laura Kelley / Carrie Rose Lindley",
+              "score": "6-2 1-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Cara Sonnemann",
+                "Sarah Davids"
+              ],
+              "loser_names": [
+                "Laura Kelley",
+                "Carrie Rose Lindley"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Lyndsi Whitworth / Rachel Mattson",
+              "players_away": "Shauna Myler / Panayota Semons-Short",
+              "score": "6-3 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Lyndsi Whitworth",
+                "Rachel Mattson"
+              ],
+              "loser_names": [
+                "Shauna Myler",
+                "Panayota Semons-Short"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "7f2ac4acb92131af",
+          "date": "6/23/2026",
+          "tl_match_id": "1011970539",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970539",
+          "home_team": "Wendy Ellison",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 4,
+          "team_wins_away": 0,
+          "score": "4-0",
+          "status": "Won 4-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Melissa Suru",
+              "players_away": "Karen Dickerson",
+              "score": "6-1 5-7 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Melissa Suru"
+              ],
+              "loser_names": [
+                "Karen Dickerson"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "",
+              "players_away": "Dbl. Default",
+              "score": "",
+              "result": "",
+              "court_winner": null,
+              "winner_team": "",
+              "loser_team": "",
+              "winner_names": [],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Rachel Mattson / Lyndsi Whitworth",
+              "players_away": "Michele Surmelis / Amy Cunningham",
+              "score": "6-1 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Rachel Mattson",
+                "Lyndsi Whitworth"
+              ],
+              "loser_names": [
+                "Michele Surmelis",
+                "Amy Cunningham"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Quincy Sutton / Teresa Henderson",
+              "players_away": "Carrie Rose Lindley / Lori Tapanila",
+              "score": "6-0 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Quincy Sutton",
+                "Teresa Henderson"
+              ],
+              "loser_names": [
+                "Carrie Rose Lindley",
+                "Lori Tapanila"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Christine Paulsen / Theresa Mansfield",
+              "players_away": "Shauna Myler / Panayota Semons-Short",
+              "score": "6-1 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Christine Paulsen",
+                "Theresa Mansfield"
+              ],
+              "loser_names": [
+                "Shauna Myler",
+                "Panayota Semons-Short"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "280776e4763cd95e",
+          "date": "6/25/2026",
+          "tl_match_id": "1011970541",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970541",
+          "home_team": "Wendy Ellison",
+          "away_team": "Drop Shot Divas",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Won 5-0 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Heather Farnsworth",
+              "players_away": "Shanea Bevins",
+              "score": "6-3 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Heather Farnsworth"
+              ],
+              "loser_names": [
+                "Shanea Bevins"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Melissa Suru",
+              "players_away": "Grace Jory",
+              "score": "0-6 6-1 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Melissa Suru"
+              ],
+              "loser_names": [
+                "Grace Jory"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Quincy Sutton / Sarah Davids",
+              "players_away": "Anita Gibson / Karen Hartman",
+              "score": "6-1 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Quincy Sutton",
+                "Sarah Davids"
+              ],
+              "loser_names": [
+                "Anita Gibson",
+                "Karen Hartman"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Aspin Rhoades / Theresa Mansfield",
+              "players_away": "Rachel Krammen / Annie Thomas",
+              "score": "6-4 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Aspin Rhoades",
+                "Theresa Mansfield"
+              ],
+              "loser_names": [
+                "Rachel Krammen",
+                "Annie Thomas"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Cara Sonnemann / Christine Paulsen",
+              "players_away": "Lyn McArthur / Emily Smith",
+              "score": "6-2 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Cara Sonnemann",
+                "Christine Paulsen"
+              ],
+              "loser_names": [
+                "Lyn McArthur",
+                "Emily Smith"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "3f3cb057b6c0053c",
+          "date": "6/4/2026",
+          "tl_match_id": "1011970529",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970529",
+          "home_team": "Wendy Ellison",
+          "away_team": "Drop Shot Divas",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Won 4-1 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Melissa Suru",
+              "players_away": "Shanea Bevins",
+              "score": "7-5 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Wendy Ellison",
+              "winner_names": [
+                "Shanea Bevins"
+              ],
+              "loser_names": [
+                "Melissa Suru"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Nikelle Price",
+              "players_away": "Annie Thomas",
+              "score": "6-1 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Nikelle Price"
+              ],
+              "loser_names": [
+                "Annie Thomas"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Theresa Mansfield / Christine Paulsen",
+              "players_away": "Anita Gibson / Diane Poole",
+              "score": "7-6 5-7 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Theresa Mansfield",
+                "Christine Paulsen"
+              ],
+              "loser_names": [
+                "Anita Gibson",
+                "Diane Poole"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Wendy Elison / Aspin Rhoades",
+              "players_away": "Lyn McArthur / Amy Spicer",
+              "score": "6-0 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Wendy Elison",
+                "Aspin Rhoades"
+              ],
+              "loser_names": [
+                "Lyn McArthur",
+                "Amy Spicer"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Quincy Sutton / Monica Mispireta",
+              "players_away": "Rachel Krammen / Grace Jory",
+              "score": "6-2 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Wendy Ellison",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Quincy Sutton",
+                "Monica Mispireta"
+              ],
+              "loser_names": [
+                "Rachel Krammen",
+                "Grace Jory"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "df4ef71de32082bf",
+          "date": "6/9/2026",
+          "tl_match_id": "1011970531",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=1011970531",
+          "home_team": "Drop Shot Divas",
+          "away_team": "Simply Smashing",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Won 3-2 Confirmed",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Annie Thomas",
+              "players_away": "Aly Burgoyne",
+              "score": "6-0 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Aly Burgoyne"
+              ],
+              "loser_names": [
+                "Annie Thomas"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "",
+              "players_away": "Kirsten Nickisch",
+              "score": "6-0 6-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "Simply Smashing",
+              "loser_team": "Drop Shot Divas",
+              "winner_names": [
+                "Kirsten Nickisch"
+              ],
+              "loser_names": []
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Grace Jory / Shanea Bevins",
+              "players_away": "Laura Kelley / Michele Surmelis",
+              "score": "7-5 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Grace Jory",
+                "Shanea Bevins"
+              ],
+              "loser_names": [
+                "Laura Kelley",
+                "Michele Surmelis"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Rachel Krammen / Diane Poole",
+              "players_away": "Amy Cunningham / Carrie Rose Lindley",
+              "score": "6-4 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Rachel Krammen",
+                "Diane Poole"
+              ],
+              "loser_names": [
+                "Amy Cunningham",
+                "Carrie Rose Lindley"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Lyn McArthur / Karen Hartman",
+              "players_away": "Victoria Scharp / Lori Tapanila",
+              "score": "7-5 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "Drop Shot Divas",
+              "loser_team": "Simply Smashing",
+              "winner_names": [
+                "Lyn McArthur",
+                "Karen Hartman"
+              ],
+              "loser_names": [
+                "Victoria Scharp",
+                "Lori Tapanila"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Boise/TV A",
       "teams": [
         {
           "team_name": "Aloha Beaches 18+",
@@ -4667,6 +8002,1107 @@
               "loser_names": [
                 "Nelda Denton",
                 "Leah Hart"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flight_label": "Magic Valley A",
+      "teams": [
+        {
+          "team_name": "Slice Girls",
+          "team_wins": 0,
+          "matches_played": 0,
+          "team_losses": 0,
+          "indiv_wins": 0,
+          "indiv_losses": 0,
+          "sets_won": 0,
+          "sets_lost": 0,
+          "games_won": 0,
+          "games_lost": 0,
+          "games_won_pct": "0.00%"
+        }
+      ],
+      "matches": []
+    },
+    {
+      "flight_label": "Championships 3.5 Women",
+      "teams": [
+        {
+          "team_name": "TV1 - Aloha Beaches 18+",
+          "team_wins": 3,
+          "matches_played": 4,
+          "team_losses": 1,
+          "indiv_wins": 13,
+          "indiv_losses": 7,
+          "sets_won": 27,
+          "sets_lost": 19,
+          "games_won": 182,
+          "games_lost": 27,
+          "games_won_pct": "19"
+        },
+        {
+          "team_name": "IF - Karen and Heather",
+          "team_wins": 3,
+          "matches_played": 4,
+          "team_losses": 1,
+          "indiv_wins": 12,
+          "indiv_losses": 8,
+          "sets_won": 25,
+          "sets_lost": 18,
+          "games_won": 176,
+          "games_lost": 25,
+          "games_won_pct": "18"
+        },
+        {
+          "team_name": "POC - Wendy Ellison",
+          "team_wins": 2,
+          "matches_played": 4,
+          "team_losses": 2,
+          "indiv_wins": 9,
+          "indiv_losses": 11,
+          "sets_won": 21,
+          "sets_lost": 25,
+          "games_won": 192,
+          "games_lost": 21,
+          "games_won_pct": "25"
+        },
+        {
+          "team_name": "TV2 - Honey Deuce 18's",
+          "team_wins": 1,
+          "matches_played": 4,
+          "team_losses": 3,
+          "indiv_wins": 8,
+          "indiv_losses": 12,
+          "sets_won": 18,
+          "sets_lost": 25,
+          "games_won": 189,
+          "games_lost": 18,
+          "games_won_pct": "25"
+        },
+        {
+          "team_name": "TV3 - Each Hit",
+          "team_wins": 1,
+          "matches_played": 4,
+          "team_losses": 3,
+          "indiv_wins": 8,
+          "indiv_losses": 12,
+          "sets_won": 20,
+          "sets_lost": 24,
+          "games_won": 172,
+          "games_lost": 20,
+          "games_won_pct": "24"
+        }
+      ],
+      "matches": [
+        {
+          "match_id": "5a5dae55d6193b04",
+          "date": "7/17/2026",
+          "tl_match_id": "3157130",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3157130",
+          "home_team": "TV1 - Aloha Beaches 18+",
+          "away_team": "TV2 - Honey Deuce 18's",
+          "team_wins_home": 3,
+          "team_wins_away": 2,
+          "score": "3-2",
+          "status": "Confirmed by TV1 - Aloha Beaches 18+",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Katherine Bleth",
+              "players_away": "Kaitie Neely",
+              "score": "6-3 7-6",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV2 - Honey Deuce 18's",
+              "loser_team": "TV1 - Aloha Beaches 18+",
+              "winner_names": [
+                "Kaitie Neely"
+              ],
+              "loser_names": [
+                "Katherine Bleth"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Liz Given",
+              "players_away": "Stacia Albiston",
+              "score": "7-5 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Liz Given"
+              ],
+              "loser_names": [
+                "Stacia Albiston"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Katie Nelson / Amy Wendel",
+              "players_away": "Stacey Walker / Tiffany Roberts",
+              "score": "6-3 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Katie Nelson",
+                "Amy Wendel"
+              ],
+              "loser_names": [
+                "Stacey Walker",
+                "Tiffany Roberts"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Chrissy Rose / Hailey Smith",
+              "players_away": "Kiley Holt / Jean Nielsen",
+              "score": "6-1 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Chrissy Rose",
+                "Hailey Smith"
+              ],
+              "loser_names": [
+                "Kiley Holt",
+                "Jean Nielsen"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Nancy Mallory / Amy Hanson",
+              "players_away": "Jennifer Small / Emily Cole",
+              "score": "6-4 4-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV2 - Honey Deuce 18's",
+              "loser_team": "TV1 - Aloha Beaches 18+",
+              "winner_names": [
+                "Jennifer Small",
+                "Emily Cole"
+              ],
+              "loser_names": [
+                "Nancy Mallory",
+                "Amy Hanson"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "c542e4899f257195",
+          "date": "7/17/2026",
+          "tl_match_id": "3157131",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3157131",
+          "home_team": "POC - Wendy Ellison",
+          "away_team": "TV3 - Each Hit",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by 48 hr rule",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Melissa Suru",
+              "players_away": "Emily Sloop",
+              "score": "6-0 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV3 - Each Hit",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Emily Sloop"
+              ],
+              "loser_names": [
+                "Melissa Suru"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Heather Farnsworth",
+              "players_away": "Paige Brown",
+              "score": "7-5 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "POC - Wendy Ellison",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Heather Farnsworth"
+              ],
+              "loser_names": [
+                "Paige Brown"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Rachel Mattson / Lyndsi Whitworth",
+              "players_away": "Zel Mertz / Tina Measham",
+              "score": "6-2 2-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "POC - Wendy Ellison",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Rachel Mattson",
+                "Lyndsi Whitworth"
+              ],
+              "loser_names": [
+                "Zel Mertz",
+                "Tina Measham"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Quincy Sutton / Teresa Henderson",
+              "players_away": "Margie Waddel / Jane Perlaky",
+              "score": "7-5 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV3 - Each Hit",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Margie Waddel",
+                "Jane Perlaky"
+              ],
+              "loser_names": [
+                "Quincy Sutton",
+                "Teresa Henderson"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Aspin Rhoades / Theresa Mansfield",
+              "players_away": "Patty Jackson / Heidi Hawkins",
+              "score": "6-3 7-5",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV3 - Each Hit",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Patty Jackson",
+                "Heidi Hawkins"
+              ],
+              "loser_names": [
+                "Aspin Rhoades",
+                "Theresa Mansfield"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "ba53ecad959b1a71",
+          "date": "7/17/2026",
+          "tl_match_id": "3157133",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3157133",
+          "home_team": "IF - Karen and Heather",
+          "away_team": "POC - Wendy Ellison",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by IF - Karen and Heather",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Nikelle Price",
+              "players_away": "Melissa Suru",
+              "score": "3-6 7-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Nikelle Price"
+              ],
+              "loser_names": [
+                "Melissa Suru"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Ann Traynor",
+              "players_away": "Heather Farnsworth",
+              "score": "6-2 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "POC - Wendy Ellison",
+              "loser_team": "IF - Karen and Heather",
+              "winner_names": [
+                "Heather Farnsworth"
+              ],
+              "loser_names": [
+                "Ann Traynor"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Karen Behrmann / Lindsey Stevens",
+              "players_away": "Rachel Mattson / Lyndsi Whitworth",
+              "score": "6-2 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "POC - Wendy Ellison",
+              "loser_team": "IF - Karen and Heather",
+              "winner_names": [
+                "Rachel Mattson",
+                "Lyndsi Whitworth"
+              ],
+              "loser_names": [
+                "Karen Behrmann",
+                "Lindsey Stevens"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Melanie Daw / Heidi Hartman",
+              "players_away": "Wendy Elison / Aspin Rhoades",
+              "score": "6-3 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Melanie Daw",
+                "Heidi Hartman"
+              ],
+              "loser_names": [
+                "Wendy Elison",
+                "Aspin Rhoades"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Heather Davies / Lori Murdoch",
+              "players_away": "Quincy Sutton / Cara Sonnemann",
+              "score": "6-0 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "POC - Wendy Ellison",
+              "loser_team": "IF - Karen and Heather",
+              "winner_names": [
+                "Quincy Sutton",
+                "Cara Sonnemann"
+              ],
+              "loser_names": [
+                "Heather Davies",
+                "Lori Murdoch"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "528cef08f7c3070f",
+          "date": "7/17/2026",
+          "tl_match_id": "3157134",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3157134",
+          "home_team": "TV3 - Each Hit",
+          "away_team": "TV1 - Aloha Beaches 18+",
+          "team_wins_home": 1,
+          "team_wins_away": 4,
+          "score": "1-4",
+          "status": "Reported by League Coordinator",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Emily Sloop",
+              "players_away": "Brittney Lacey",
+              "score": "2-6 6-2 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Brittney Lacey"
+              ],
+              "loser_names": [
+                "Emily Sloop"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Christine Quintana",
+              "players_away": "Vanessa Schulte",
+              "score": "6-4 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Vanessa Schulte"
+              ],
+              "loser_names": [
+                "Christine Quintana"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jane Perlaky / Margie Waddel",
+              "players_away": "Amy Wendel / Nancy Mallory",
+              "score": "6-2 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV3 - Each Hit",
+              "loser_team": "TV1 - Aloha Beaches 18+",
+              "winner_names": [
+                "Jane Perlaky",
+                "Margie Waddel"
+              ],
+              "loser_names": [
+                "Amy Wendel",
+                "Nancy Mallory"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Shawna Byington / Leann Gilberg",
+              "players_away": "Hailey Smith / Liz Given",
+              "score": "6-1 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Hailey Smith",
+                "Liz Given"
+              ],
+              "loser_names": [
+                "Shawna Byington",
+                "Leann Gilberg"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Zel Mertz / Heidi Hawkins",
+              "players_away": "Susan Riley / Kimberlee Megale",
+              "score": "6-4 3-6 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Susan Riley",
+                "Kimberlee Megale"
+              ],
+              "loser_names": [
+                "Zel Mertz",
+                "Heidi Hawkins"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "d090538b05cfbd27",
+          "date": "7/17/2026",
+          "tl_match_id": "3157136",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3157136",
+          "home_team": "TV2 - Honey Deuce 18's",
+          "away_team": "IF - Karen and Heather",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by IF - Karen and Heather",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Emily Cole",
+              "players_away": "Erin Wood",
+              "score": "6-0 6-2",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV2 - Honey Deuce 18's",
+              "loser_team": "IF - Karen and Heather",
+              "winner_names": [
+                "Emily Cole"
+              ],
+              "loser_names": [
+                "Erin Wood"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Jean Nielsen",
+              "players_away": "Ronee Ross",
+              "score": "6-1 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Ronee Ross"
+              ],
+              "loser_names": [
+                "Jean Nielsen"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Stacey Walker / Tiffany Roberts",
+              "players_away": "Lindsey Stevens / Ranay Thompson",
+              "score": "6-3 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV2 - Honey Deuce 18's",
+              "loser_team": "IF - Karen and Heather",
+              "winner_names": [
+                "Stacey Walker",
+                "Tiffany Roberts"
+              ],
+              "loser_names": [
+                "Lindsey Stevens",
+                "Ranay Thompson"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Kiley Holt / Jennifer Small",
+              "players_away": "Melanie Daw / Heidi Hartman",
+              "score": "6-3 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Melanie Daw",
+                "Heidi Hartman"
+              ],
+              "loser_names": [
+                "Kiley Holt",
+                "Jennifer Small"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Loria Sylvia / Terri Mulcahy",
+              "players_away": "Heather Davies / Karen Behrmann",
+              "score": "6-4 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Heather Davies",
+                "Karen Behrmann"
+              ],
+              "loser_names": [
+                "Loria Sylvia",
+                "Terri Mulcahy"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "8fb2e38f4e3f153d",
+          "date": "7/18/2026",
+          "tl_match_id": "3157137",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3157137",
+          "home_team": "TV1 - Aloha Beaches 18+",
+          "away_team": "POC - Wendy Ellison",
+          "team_wins_home": 5,
+          "team_wins_away": 0,
+          "score": "5-0",
+          "status": "Reported by League Coordinator",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Vanessa Schulte",
+              "players_away": "Melissa Suru",
+              "score": "6-4 4-6 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Vanessa Schulte"
+              ],
+              "loser_names": [
+                "Melissa Suru"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Liz Given",
+              "players_away": "Heather Farnsworth",
+              "score": "6-4 7-5",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Liz Given"
+              ],
+              "loser_names": [
+                "Heather Farnsworth"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Chrissy Rose / Hailey Smith",
+              "players_away": "Rachel Mattson / Lyndsi Whitworth",
+              "score": "7-6 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Chrissy Rose",
+                "Hailey Smith"
+              ],
+              "loser_names": [
+                "Rachel Mattson",
+                "Lyndsi Whitworth"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Susan Riley / Amy Hanson",
+              "players_away": "Quincy Sutton / Cara Sonnemann",
+              "score": "3-6 6-4 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Susan Riley",
+                "Amy Hanson"
+              ],
+              "loser_names": [
+                "Quincy Sutton",
+                "Cara Sonnemann"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Amy Wendel / Brittney Lacey",
+              "players_away": "Teresa Henderson / Wendy Elison",
+              "score": "6-1 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Amy Wendel",
+                "Brittney Lacey"
+              ],
+              "loser_names": [
+                "Teresa Henderson",
+                "Wendy Elison"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "c259af3a3b8cda5d",
+          "date": "7/18/2026",
+          "tl_match_id": "3157139",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3157139",
+          "home_team": "TV3 - Each Hit",
+          "away_team": "TV2 - Honey Deuce 18's",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Reported by League Coordinator",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Emily Sloop",
+              "players_away": "Stacia Albiston",
+              "score": "6-3 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV3 - Each Hit",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Emily Sloop"
+              ],
+              "loser_names": [
+                "Stacia Albiston"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Christine Quintana",
+              "players_away": "Emily Cole",
+              "score": "6-3 6-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV2 - Honey Deuce 18's",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Emily Cole"
+              ],
+              "loser_names": [
+                "Christine Quintana"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jane Perlaky / Margie Waddel",
+              "players_away": "Stacey Walker / Tiffany Roberts",
+              "score": "6-3 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV2 - Honey Deuce 18's",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Stacey Walker",
+                "Tiffany Roberts"
+              ],
+              "loser_names": [
+                "Jane Perlaky",
+                "Margie Waddel"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Heidi Hawkins / Leann Gilberg",
+              "players_away": "Kiley Holt / Jennifer Small",
+              "score": "6-3 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV3 - Each Hit",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Heidi Hawkins",
+                "Leann Gilberg"
+              ],
+              "loser_names": [
+                "Kiley Holt",
+                "Jennifer Small"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Marnie Newton / Shawna Byington",
+              "players_away": "Loria Sylvia / Terri Mulcahy",
+              "score": "6-2 6-1",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV2 - Honey Deuce 18's",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Loria Sylvia",
+                "Terri Mulcahy"
+              ],
+              "loser_names": [
+                "Marnie Newton",
+                "Shawna Byington"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "0b996fe1378d5dd4",
+          "date": "7/18/2026",
+          "tl_match_id": "3157140",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3157140",
+          "home_team": "IF - Karen and Heather",
+          "away_team": "TV1 - Aloha Beaches 18+",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Confirmed by IF - Karen and Heather",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Ronee Ross",
+              "players_away": "Brittney Lacey",
+              "score": "6-2 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "TV1 - Aloha Beaches 18+",
+              "winner_names": [
+                "Ronee Ross"
+              ],
+              "loser_names": [
+                "Brittney Lacey"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Nikelle Price",
+              "players_away": "Katherine Bleth",
+              "score": "6-4 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "TV1 - Aloha Beaches 18+",
+              "winner_names": [
+                "Nikelle Price"
+              ],
+              "loser_names": [
+                "Katherine Bleth"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Ann Traynor / Erin Wood",
+              "players_away": "Chrissy Rose / Mardianne Howell",
+              "score": "6-4 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "TV1 - Aloha Beaches 18+",
+              "winner_names": [
+                "Ann Traynor",
+                "Erin Wood"
+              ],
+              "loser_names": [
+                "Chrissy Rose",
+                "Mardianne Howell"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Heidi Hartman / Melanie Daw",
+              "players_away": "Susan Riley / Teresa McDonald",
+              "score": "6-3 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "TV1 - Aloha Beaches 18+",
+              "winner_names": [
+                "Heidi Hartman",
+                "Melanie Daw"
+              ],
+              "loser_names": [
+                "Susan Riley",
+                "Teresa McDonald"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Ranay Thompson / Lindsey Stevens",
+              "players_away": "Hailey Smith / Liz Given",
+              "score": "4-6 6-4 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV1 - Aloha Beaches 18+",
+              "loser_team": "IF - Karen and Heather",
+              "winner_names": [
+                "Hailey Smith",
+                "Liz Given"
+              ],
+              "loser_names": [
+                "Ranay Thompson",
+                "Lindsey Stevens"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "da1cc199914fc671",
+          "date": "7/18/2026",
+          "tl_match_id": "3157142",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3157142",
+          "home_team": "POC - Wendy Ellison",
+          "away_team": "TV2 - Honey Deuce 18's",
+          "team_wins_home": 4,
+          "team_wins_away": 1,
+          "score": "4-1",
+          "status": "Reported by League Coordinator",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Melissa Suru",
+              "players_away": "Emily Cole",
+              "score": "6-4 6-4",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "TV2 - Honey Deuce 18's",
+              "loser_team": "POC - Wendy Ellison",
+              "winner_names": [
+                "Emily Cole"
+              ],
+              "loser_names": [
+                "Melissa Suru"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Aspin Rhoades",
+              "players_away": "Stacey Walker",
+              "score": "0-6 7-5 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "POC - Wendy Ellison",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Aspin Rhoades"
+              ],
+              "loser_names": [
+                "Stacey Walker"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Rachel Mattson / Lyndsi Whitworth",
+              "players_away": "Tiffany Roberts / Stacia Albiston",
+              "score": "6-4 6-4",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "POC - Wendy Ellison",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Rachel Mattson",
+                "Lyndsi Whitworth"
+              ],
+              "loser_names": [
+                "Tiffany Roberts",
+                "Stacia Albiston"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Quincy Sutton / Wendy Elison",
+              "players_away": "Loria Sylvia / Terri Mulcahy",
+              "score": "7-5 6-3",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "POC - Wendy Ellison",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Quincy Sutton",
+                "Wendy Elison"
+              ],
+              "loser_names": [
+                "Loria Sylvia",
+                "Terri Mulcahy"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Theresa Mansfield / Cara Sonnemann",
+              "players_away": "Jennifer Small / Kiley Holt",
+              "score": "4-6 6-3 1-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "POC - Wendy Ellison",
+              "loser_team": "TV2 - Honey Deuce 18's",
+              "winner_names": [
+                "Theresa Mansfield",
+                "Cara Sonnemann"
+              ],
+              "loser_names": [
+                "Jennifer Small",
+                "Kiley Holt"
+              ]
+            }
+          ]
+        },
+        {
+          "match_id": "d3868a8113ee770e",
+          "date": "7/18/2026",
+          "tl_match_id": "3157143",
+          "scorecard_url": "https://tennislink.usta.com/Leagues/Scorecard/printscorecard.aspx?matchnum=3157143",
+          "home_team": "TV3 - Each Hit",
+          "away_team": "IF - Karen and Heather",
+          "team_wins_home": 2,
+          "team_wins_away": 3,
+          "score": "2-3",
+          "status": "Confirmed by IF - Karen and Heather",
+          "pending": false,
+          "lines": [
+            {
+              "line": "1# Singles",
+              "players_home": "Emily Sloop",
+              "players_away": "Heather Davies",
+              "score": "7-5 6-1",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV3 - Each Hit",
+              "loser_team": "IF - Karen and Heather",
+              "winner_names": [
+                "Emily Sloop"
+              ],
+              "loser_names": [
+                "Heather Davies"
+              ]
+            },
+            {
+              "line": "2# Singles",
+              "players_home": "Erica Laursen",
+              "players_away": "Melanie Daw",
+              "score": "6-2 6-0",
+              "result": "home",
+              "court_winner": "home",
+              "winner_team": "TV3 - Each Hit",
+              "loser_team": "IF - Karen and Heather",
+              "winner_names": [
+                "Erica Laursen"
+              ],
+              "loser_names": [
+                "Melanie Daw"
+              ]
+            },
+            {
+              "line": "1# Doubles",
+              "players_home": "Jane Perlaky / Margie Waddel",
+              "players_away": "Ranay Thompson / Ronee Ross",
+              "score": "6-3 6-3",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Ranay Thompson",
+                "Ronee Ross"
+              ],
+              "loser_names": [
+                "Jane Perlaky",
+                "Margie Waddel"
+              ]
+            },
+            {
+              "line": "2# Doubles",
+              "players_home": "Patty Jackson / Marnie Newton",
+              "players_away": "Ann Traynor / Nikelle Price",
+              "score": "6-4 6-2",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Ann Traynor",
+                "Nikelle Price"
+              ],
+              "loser_names": [
+                "Patty Jackson",
+                "Marnie Newton"
+              ]
+            },
+            {
+              "line": "3# Doubles",
+              "players_home": "Leann Gilberg / Shawna Byington",
+              "players_away": "Lori Murdoch / Lindsey Stevens",
+              "score": "3-6 6-3 1-0",
+              "result": "away",
+              "court_winner": "away",
+              "winner_team": "IF - Karen and Heather",
+              "loser_team": "TV3 - Each Hit",
+              "winner_names": [
+                "Lori Murdoch",
+                "Lindsey Stevens"
+              ],
+              "loser_names": [
+                "Leann Gilberg",
+                "Shawna Byington"
               ]
             }
           ]

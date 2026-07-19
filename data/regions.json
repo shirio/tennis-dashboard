@@ -92,13 +92,26 @@
       ],
       "areas": [
         {
-          "area": "Idaho"
+          "area": "Idaho Falls",
+          "flight_suffix": "IDAHO FALLS"
+        },
+        {
+          "area": "Pocatello",
+          "flight_suffix": "POCATELLO"
+        },
+        {
+          "area": "Boise/TV",
+          "flight_suffix": "BOISE/TV"
+        },
+        {
+          "area": "Magic Valley",
+          "flight_suffix": "MAGIC VALLEY"
         }
       ],
       "label": "Idaho",
       "your_team_30": null,
       "your_team_35": null,
-      "has_districts": false
+      "has_districts": true
     }
   }
 }
