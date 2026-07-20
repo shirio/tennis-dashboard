@@ -204,29 +204,22 @@ def main():
     else:
         print(f"\n=== Step 2: Scraping baselines for {len(targets)} players ===")
 
-    # Split targets into those that need scraping vs instant NTRP defaults
-    scrape_targets = []
-    default_targets = []
-    for i, p in enumerate(targets):
-        nn = _norm(p.get("name", ""))
-        s_id = name_to_sid.get(nn) or p.get("tennisrecord_id")
-        if s_id or nn in in_ratings_table:
-            scrape_targets.append((i, p, s_id,
-                                   _player_division(p),
-                                   p.get("dynamic_rating_baseline")))
-        else:
-            default_targets.append((i, p))
+    # Scrape every target — get_baseline() works via a name-only lookup against
+    # matchhistory.aspx even with no s_id (confirmed: it still resolves to the
+    # right player and returns real history). Players absent from the bulk
+    # ratings-table export (e.g. because their TennisRecord area name doesn't
+    # match the state's configured tennisrecord_areas) used to skip straight to
+    # an instant NTRP default here, silently discarding real per-player history
+    # for anyone the bulk export missed. Now everyone gets a real scrape attempt;
+    # _apply_result() below still falls back to the NTRP default for players
+    # TennisRecord genuinely has no data for (no_rows/no_black_ratings/errors).
+    scrape_targets = [
+        (i, p, name_to_sid.get(_norm(p.get("name", ""))) or p.get("tennisrecord_id"),
+         _player_division(p), p.get("dynamic_rating_baseline"))
+        for i, p in enumerate(targets)
+    ]
 
-    # Apply NTRP defaults instantly for players not in ratings table
-    for _, p in default_targets:
-        division = _player_division(p)
-        default = ntrp_default(division)
-        if p.get("dynamic_rating_baseline") != default:
-            p["dynamic_rating_baseline"] = default
-            p["baseline_source"] = "ntrp_default"
-
-    print(f"  {len(scrape_targets)} need TennisRecord scrape, "
-          f"{len(default_targets)} get NTRP defaults")
+    print(f"  {len(scrape_targets)} players to scrape")
 
     # Counters (thread-safe)
     lock = threading.Lock()

@@ -506,11 +506,14 @@ def search_and_update_baselines(state_code: str | None = None,
 
         if baseline is not None:
             is_fallback = (err == "oldest_fallback")
-            existing = p.get("dynamic_rating_baseline")
-            # Never overwrite a good current-season baseline with an oldest_fallback.
-            # oldest_fallback can come from a completely different NTRP level (e.g.
-            # a 4.0-era rating for someone now playing 3.5) and will corrupt ratings.
-            if is_fallback and existing and p.get("baseline_source") != "oldest_fallback":
+            # Never overwrite a genuinely good pre-2026 baseline ("history") with
+            # a worse oldest_fallback. oldest_fallback can come from a completely
+            # different NTRP level (e.g. a 4.0-era rating for someone now playing
+            # 3.5) and will corrupt ratings. But a baseline that's merely an
+            # auto-assigned NTRP-level placeholder (baseline_source None/
+            # "ntrp_default" — set by engine/ratings.py before this ever runs)
+            # carries no real signal and must NOT block a real fallback result.
+            if is_fallback and p.get("baseline_source") == "history":
                 p.pop("pending_tennisrecord_lookup", None)
                 no_baseline += 1  # treat as no useful baseline found
             else:
