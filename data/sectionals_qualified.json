@@ -19,6 +19,11 @@
       "state": "UT",
       "team": "Wasatch Hills Ballers",
       "source": "districts_winner"
+    },
+    {
+      "state": "ID",
+      "team": "Serving Up Sass",
+      "source": "districts_winner"
     }
   ]
 }
