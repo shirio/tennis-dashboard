@@ -96,7 +96,9 @@ def _compute_expected_stats(
 
                 for ln in m["lines"]:
                     court_label = _line_label_short(ln.get("line", ""))
-                    court_result = (ln.get("result") or "").lower()
+                    # Same source of truth as _compute_player_stats_from_scorecards:
+                    # court_winner (from engine/normalize.py), not the raw "result".
+                    court_result = (ln.get("court_winner") or "").lower()
 
                     def _process(pname: str, parsed_is_home: bool):
                         key = pname.lower().strip()
@@ -105,16 +107,12 @@ def _compute_expected_stats(
                         if court_label:
                             courts[ntrp][key][court_label] += 1
 
-                        pteam = player_team.get(key, "")
-                        if pteam and match_home and match_away:
-                            if pteam == match_home:
-                                actual_home = True
-                            elif pteam == match_away:
-                                actual_home = False
-                            else:
-                                actual_home = (not parsed_is_home) if is_swapped else parsed_is_home
-                        else:
-                            actual_home = (not parsed_is_home) if is_swapped else parsed_is_home
+                        # Trust scorecard position + swap detection only, matching
+                        # the engine. A per-player team override breaks for players
+                        # on different teams per division (e.g. Shi L Oskooi is
+                        # DTC #3 in 3.0 but DTC #1 in 3.5) and for same-club matches
+                        # like DTC #1 vs DTC #3.
+                        actual_home = (not parsed_is_home) if is_swapped else parsed_is_home
 
                         if court_result in ("home", "away"):
                             won = (court_result == "home") if actual_home else (court_result == "away")
