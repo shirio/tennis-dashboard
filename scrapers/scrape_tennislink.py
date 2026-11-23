@@ -608,7 +608,11 @@ def _parse_match_detail_page(page: Page) -> list[dict]:
         section_body = section.strip()
         lines_in_section = [l.strip().replace('\xa0', '').strip() for l in section_body.split('\n') if l.strip().replace('\xa0', '').strip()]
 
-        # Filter out noise tokens
+        # Filter out noise tokens.
+        # NOTE: on a retirement USTA prints "Retired" under the WINNER's name
+        # (next to the green checkmark), even though the OTHER player retired
+        # and lost. Winner comes from the radio/checkmark above, never from
+        # "Retired" — see scrapers/test_retired_scorecard.py.
         _noise = {'completed', 'not played', 'default', 'retired',
                   '2:00 pm', '3:00 pm', '4:00 pm', '10:00 am', '11:00 am', '12:00 pm',
                   '12:00 midnight', '12:00 noon',
