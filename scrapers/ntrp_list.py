@@ -94,7 +94,7 @@ def parse_results_html(html: str, base_url: str = BASE_URL) -> list[dict]:
             rec["gender"] = (rec.get("gender") or "").upper()[:1] or None
             rec["rating_type"] = (rec.get("rating_type") or "").strip().upper() or None
             lvl = (rec.get("level") or "").strip()
-            rec["level"] = lvl if re.fullmatch(r"\d\.\d", lvl) else None
+            rec["level"] = lvl if re.fullmatch(r"\d\.\d", lvl) and lvl != "0.0" else None
             out.append(rec)
     return out
 

@@ -281,7 +281,7 @@ function fillSelect(id, vals, label) {{
 }}
 function uniq(f) {{ var s = {{}}; ROWS.forEach(function(r) {{ var v = f(r); if (v != null && v !== '') s[v] = 1; }}); return Object.keys(s).sort(); }}
 fillSelect('f26', uniq(function(r) {{ return r[2] == null ? null : fmt(r[2]); }}), function(v) {{ return '{YEAR_FROM}: ' + v; }});
-fillSelect('ft', uniq(function(r) {{ return r[3]; }}), function(v) {{ return '{YEAR_FROM}: ' + v + ' (' + (TYPES[v] || v) + ')'; }});
+fillSelect('ft', uniq(function(r) {{ return r[3]; }}), function(v) {{ return '{YEAR_FROM} type: ' + v + ' – ' + (TYPES[v] || v).split(' ')[0]; }});
 fillSelect('f27', uniq(function(r) {{ return r[4] == null ? null : fmt(r[4]); }}), function(v) {{ return '{YEAR_TO}: ' + v; }});
 function cmp(a, b) {{
   var x, y;

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jennifer Wang</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+       color: #222; background: #fafafa; padding: 1.5rem 16px 3rem; }
+a { color: #1a5fb4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1100px; margin: 0 auto; }
+.crumbs { font-size: 13px; margin-bottom: .8rem; color: #666; }
+h1 { font-size: 1.5rem; margin-bottom: .2rem; }
+.sub { color: #666; font-size: .92rem; margin-bottom: 1.2rem; }
+.line-pill { display: inline-block; padding: 1px 6px; border-radius: 8px;
+             font-size: 10px; font-weight: 700; margin-right: 3px; letter-spacing: .02em; }
+.pill-s1 { background: #FDEBD0; color: #A04000; }
+.pill-s2 { background: #FAD7A0; color: #784212; }
+.pill-s3 { background: #F9E79F; color: #7D6608; }
+.pill-d1 { background: #D6EAF8; color: #1A5276; }
+.pill-d2 { background: #D5F5E3; color: #1E8449; }
+.pill-d3 { background: #E8DAEF; color: #6C3483; }
+.dp { display: inline-block; padding: 1px 7px; border-radius: 8px; font-size: 11px; font-weight: 700; }
+.dp30 { background: #ddeeff; color: #1a5a9a; }
+.dp35 { background: #fff0d8; color: #8a5200; }
+.up { color: #1e8449; font-weight: 700; }
+.down { color: #b03a2e; font-weight: 700; }
+.muted { color: #999; }
+
+.hdr { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; align-items: flex-end; margin-bottom: 1rem; }
+.hdr .who { flex: 1 1 260px; }
+.kpis { display: flex; gap: .6rem; flex-wrap: wrap; }
+.kpi { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: .4rem .8rem; min-width: 96px; }
+.kpi .l { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: .03em; }
+.kpi .v { font-size: 1.15rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.recs { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .4rem 0 1.1rem; }
+.yrs { display: inline-flex; border: 1px solid #d0daf0; border-radius: 6px; overflow: hidden; margin-right: .4rem; }
+.yr { border: 0; background: #fff; padding: .25rem .6rem; font-size: 12px; cursor: pointer; color: #1a5fb4; }
+.yr.on { background: #1a5fb4; color: #fff; }
+.strip { display: flex; flex-wrap: wrap; gap: .5rem; }
+.strip[hidden] { display: none; }
+.stat { position: relative; background: #f0f4ff; border: 1px solid #d0daf0; border-radius: 6px;
+        padding: .25rem .6rem; font-size: 13px; cursor: default; outline: none; }
+.stat-l { color: #555; margin-right: .35rem; }
+.stat-v { font-weight: 700; font-variant-numeric: tabular-nums; }
+.tipbox { display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 5; background: #222;
+          color: #fff; border-radius: 6px; padding: .35rem .5rem; font-size: 12px; white-space: nowrap; }
+.tipbox td { padding: 1px 6px; }
+.tipbox td + td { font-weight: 700; text-align: right; }
+.stat:hover .tipbox, .stat:focus .tipbox { display: block; }
+.tbl-wrap { overflow-x: auto; background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; }
+table.hist { border-collapse: collapse; font-size: 13px; width: 100%; }
+.hist th, .hist td { padding: .4rem .55rem; text-align: left; border-bottom: 1px solid #f0f0f0;
+                     vertical-align: middle; white-space: nowrap; }
+.hist th { background: #f5f7fb; font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: .03em; }
+.hist td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.hist tr.dq td { opacity: .5; text-decoration: line-through; }
+.pn { white-space: nowrap; }
+</style></head><body><div class="wrap">
+<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada directory</a></div>
+<div class="hdr">
+  <div class="who"><h1>Jennifer Wang</h1>
+    <div class="sub">Las Vegas, NV · Female</div></div>
+  <div class="kpis">
+    <div class="kpi"><div class="l">Current NTRP</div><div class="v" title="Computer">3.0 C</div></div>
+    <div class="kpi"><div class="l">Baseline</div><div class="v">2.80</div></div>
+    <div class="kpi"><div class="l">Dynamic</div><div class="v">2.89</div></div>
+  </div>
+</div>
+<div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">Overall</span><span class="stat-v">2–4</span><span class="tipbox"><table><tr><td>2026</td><td>2–4</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">2–2</span><span class="tipbox"><table><tr><td>Singles</td><td>2–1</td></tr><tr><td>Doubles</td><td>0–1</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.5</span><span class="stat-v">0–2</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>0–2</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">2–1</span><span class="tipbox"><table><tr><td>3.0</td><td>2–1</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">0–3</span><span class="tipbox"><table><tr><td>3.0</td><td>0–1</td></tr><tr><td>3.5</td><td>0–2</td></tr></table></span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">Overall</span><span class="stat-v">2–4</span><span class="tipbox"><table><tr><td>2026</td><td>2–4</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">2–2</span><span class="tipbox"><table><tr><td>Singles</td><td>2–1</td></tr><tr><td>Doubles</td><td>0–1</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.5</span><span class="stat-v">0–2</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>0–2</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">2–1</span><span class="tipbox"><table><tr><td>3.0</td><td>2–1</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">0–3</span><span class="tipbox"><table><tr><td>3.0</td><td>0–1</td></tr><tr><td>3.5</td><td>0–2</td></tr></table></span></span></div></div>
+<div class="tbl-wrap"><table class="hist"><thead><tr>
+<th>Date</th><th>Div</th><th>Team</th><th>Line</th><th>PIT</th><th>R</th><th>Score</th>
+<th>Partner</th><th>Opponent(s)</th><th>Opp Team</th></tr></thead>
+<tbody><tr data-y="2026"><td>3/14</td><td><span class="dp dp30">3.0</span></td><td>TPC</td><td><span class="line-pill pill-s1">S1</span></td><td class="num muted">2.80</td><td><span class="up">W</span></td><td>6-0 6-0</td><td>—</td><td><span class="pn"><a href="desiree-mcivor.html">Desiree Mcivor</a> <span class="muted">(2.85)</span></span></td><td>RED ROCK CC</td></tr><tr data-y="2026"><td>3/14</td><td><span class="dp dp35">3.5</span></td><td>TPC</td><td><span class="line-pill pill-d3">D3</span></td><td class="num muted">2.86</td><td><span class="down">L</span></td><td>6-4 6-0</td><td><span class="pn"><a href="christina-smith.html">Christina Smith</a> <span class="muted">(2.76)</span></span></td><td><span class="pn"><a href="anna-clark.html">Anna Clark</a> <span class="muted">(3.12)</span></span><br><span class="pn"><a href="kara-gaston.html">Kara Gaston</a> <span class="muted">(2.96)</span></span></td><td>DTC #3</td></tr><tr data-y="2026"><td>4/11</td><td><span class="dp dp30">3.0</span></td><td>TPC</td><td><span class="line-pill pill-s1">S1</span></td><td class="num muted">2.86</td><td><span class="up">W</span></td><td>7-5 6-3</td><td>—</td><td><span class="pn"><a href="stephanie-stern.html">Stephanie Stern</a> <span class="muted">(2.68)</span></span></td><td>DTC #2</td></tr><tr data-y="2026"><td>4/18</td><td><span class="dp dp30">3.0</span></td><td>TPC</td><td><span class="line-pill pill-s2">S2</span></td><td class="num muted">2.88</td><td><span class="down">L</span></td><td>2-6 6-2 1-0</td><td>—</td><td><span class="pn"><a href="ani-zargaryan.html">Ani Zargaryan</a> <span class="muted">(2.94)</span></span></td><td>SUMMERLIN ARBORS</td></tr><tr data-y="2026"><td>4/25</td><td><span class="dp dp35">3.5</span></td><td>TPC</td><td><span class="line-pill pill-d2">D2</span></td><td class="num muted">2.83</td><td><span class="down">L</span></td><td>6-1 6-0</td><td><span class="pn"><a href="maggie-skinner.html">Maggie Skinner</a> <span class="muted">(3.57)</span></span></td><td><span class="pn"><a href="mary-lind.html">Mary Lind</a> <span class="muted">(3.50)</span></span><br><span class="pn"><a href="patti-zack.html">Patti Zack</a> <span class="muted">(3.39)</span></span></td><td>RED ROCK CC #2</td></tr><tr data-y="2026"><td>5/16</td><td><span class="dp dp30">3.0</span></td><td>TPC</td><td><span class="line-pill pill-d2">D2</span></td><td class="num muted">2.83</td><td><span class="down">L</span></td><td>7-5 6-3</td><td><span class="pn"><a href="kelley-candito.html">Kelley Candito</a> <span class="muted">(2.29)</span></span></td><td><span class="pn"><a href="margo-isler.html">Margo Isler</a> <span class="muted">(3.12)</span></span><br><span class="pn"><a href="adrian-cutolo.html">Adrian Cutolo</a> <span class="muted">(2.94)</span></span></td><td>LIFE TIME FITNESS/GV</td></tr></tbody></table></div>
+<p class="sub" style="margin-top:.6rem">PIT is our rating going into each match. W*/L* are defaults and don't count in the records.</p>
+</div>
+<script>
+document.querySelectorAll('.yr').forEach(function(b) {
+  b.onclick = function() {
+    var y = b.dataset.y;
+    document.querySelectorAll('.yr').forEach(function(x) { x.classList.toggle('on', x === b); });
+    document.querySelectorAll('.strip').forEach(function(s) { s.hidden = s.dataset.y !== y; });
+    document.querySelectorAll('.hist tbody tr').forEach(function(tr) {
+      tr.hidden = y !== 'all' && tr.dataset.y !== y; });
+  };
+});
+</script></body></html>
