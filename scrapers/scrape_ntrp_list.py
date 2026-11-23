@@ -56,6 +56,20 @@ def _select_by_option_text(page, wanted: str, label_hint: str) -> bool:
     return False
 
 
+def _dismiss_cookie_banner(page) -> None:
+    """Click "Reject All" on the cookie banner if it's showing."""
+    for name in ("Reject All", "Reject All Cookies"):
+        try:
+            b = page.get_by_role("button", name=name)
+            if b.count() and b.first.is_visible():
+                b.first.click(timeout=3_000)
+                print("    dismissed cookie banner")
+                time.sleep(1)
+                return
+        except Exception:
+            pass
+
+
 def _next_page_link(page, current: int):
     """Find a pager link for page current+1, or a 'Next' link."""
     nxt = str(current + 1)
@@ -81,6 +95,7 @@ def main(argv=None):
     ap.add_argument("--section", default="USTA/INTERMOUNTAIN")
     ap.add_argument("--district", default="NEVADA")
     ap.add_argument("--out", default=str(ROOT / "data" / "ntrp_raw"))
+    ap.add_argument("--tag", default="nv", help="File prefix for saved pages")
     args = ap.parse_args(argv)
 
     load_dotenv(ROOT / ".env")
@@ -90,7 +105,7 @@ def main(argv=None):
         return 1
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    tag = f"{args.district[:2].lower()}_{args.year}"
+    tag = f"{args.tag}_{args.year}"
 
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=False, slow_mo=150)
@@ -101,14 +116,17 @@ def main(argv=None):
             print("  opening Advanced Search …")
             page.goto(SEARCH_URL, wait_until="domcontentloaded", timeout=45_000)
             time.sleep(2)
+            _dismiss_cookie_banner(page)
             _select_by_option_text(page, str(args.year), "year")
             _select_by_option_text(page, args.section, "section")
             _select_by_option_text(page, args.district, "district")
             # Gender and Level default to "All"; leave League blank.
-            btn = page.query_selector("input[type=submit][value='Search'], input[value='Search'], button:has-text('Search')")
-            if not btn:
-                raise RuntimeError("Search button not found")
-            btn.click()
+            # The page also has hidden header "Search" buttons (e.g. #btnSearchNTRP),
+            # so target the form's own button by id.
+            btn = page.locator("#ctl00_mainContent_btnSearch")
+            if btn.count() == 0:
+                btn = page.locator("#ctl00_mainContent input[type=submit][value='Search']:visible").first
+            btn.click(timeout=15_000)
             page.wait_for_load_state("networkidle", timeout=60_000)
             time.sleep(2)
 
