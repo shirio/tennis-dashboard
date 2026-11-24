@@ -223,6 +223,7 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
             cols.append((f"d{i}", f"Δ {years[i-1]}–{str(y)[-2:]}"))
         cols.append((f"y{i}", str(y)))
     cols.append(("q", "ShiQ"))
+    cols.append(("b", "Bump"))
     default_on = {k: 1 for k, _ in cols
                   if not ((k[0] == "y" and int(k[1:]) < i_from) or (k[0] == "d" and int(k[1:]) <= i_from))}
     hide_css = "\n".join(f"table.h-{k} .c-{k} {{ display: none; }}" for k, _ in cols)
@@ -237,7 +238,8 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
         elif k[0] == "y":
             heads.append(f'<th data-k="{k}" class="c-{k} num">{lbl}</th>')
         else:
-            heads.append('<th data-k="q" class="c-q num">ShiQ</th>')
+            heads.append('<th data-k="q" class="c-q num">ShiQ</th>' if k == "q" else
+                         '<th data-k="b" class="c-b bump" title="Projected year-end USTA level change">Bump</th>')
     menu = "".join(f'<label><input type="checkbox" data-c="{k}"> {_esc(lbl)}</label>' for k, lbl in cols)
     note = ("<p class='note'>Showing our own Nevada players until the full USTA 2026 "
             "list is loaded.</p>" if placeholder else "")
@@ -283,6 +285,7 @@ th.sorted::after {{ content: " ▲"; font-size: 8px; }}
 th.sorted.desc::after {{ content: " ▼"; }}
 tbody tr:hover td {{ background: #faf9f6; }}
 th.sex, td.sex {{ text-align: center; }}
+th.bump, td.bump {{ text-align: center; cursor: default; }}
 th.delta, td.delta {{ text-align: center; padding-left: 4px; padding-right: 4px; }}
 td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 .lt {{ font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }}
@@ -352,6 +355,7 @@ function val(r, k) {{
   if (k === 'n') return r[0];
   if (k === 's') return r[1];
   if (k === 'q') return r[2];
+  if (k === 'b') return r[6] ? r[6][2] : null;
   if (k[0] === 'y') return r[4][+k.slice(1)];
   return null;
 }}
@@ -395,7 +399,10 @@ function render() {{
       var cls = (i && on['d' + i]) ? (d > 0 ? 'mv-up' : d < 0 ? 'mv-down' : '') : '';
       h += '<td class="c-y' + i + ' num">' + ntrp(r[4][i], r[5][i], cls) + '</td>';
     }}
-    h += '<td class="c-q num">' + (r[2] == null ? '' : r[2].toFixed(2)) + '</td></tr>';
+    h += '<td class="c-q num">' + (r[2] == null ? '' : r[2].toFixed(2)) + '</td>';
+    var b = r[6];
+    h += '<td class="c-b bump"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
+      + (b && b[0] ? '<span class="' + b[1] + '">' + b[0] + '</span>' : '') + '</td></tr>';
     out.push(h);
   }});
   document.getElementById('tb').innerHTML = out.join('');
@@ -438,7 +445,7 @@ document.querySelectorAll('#fg button').forEach(function(b) {{
 document.querySelectorAll('th[data-k]').forEach(function(th) {{
   th.onclick = function() {{
     var k = th.dataset.k;
-    if (sortK === k) sortDir = -sortDir; else {{ sortK = k; sortDir = (k[0] === 'd' || k === 'q') ? -1 : 1; }}
+    if (sortK === k) sortDir = -sortDir; else {{ sortK = k; sortDir = (k[0] === 'd' || k === 'q' || k === 'b') ? -1 : 1; }}
     document.querySelectorAll('th').forEach(function(x) {{ x.classList.remove('sorted', 'desc'); }});
     th.classList.add('sorted'); if (sortDir < 0) th.classList.add('desc');
     apply();
@@ -612,6 +619,17 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
     letter_tip = f' title="{_esc(RATING_TYPES.get(letter, ""))}"' if letter else ""
     usta_v = (f'{float(lvl):.1f}<span class="lt">{_esc(letter or "")}</span>' if lvl is not None else "—")
     dyn = p.get("global_rating")
+    bump = info.get("bump") or {}
+    bcall = bump.get("call")
+    if bcall in _BUMP_MARK or bcall == "hold":
+        sym, cls = _BUMP_MARK.get(bcall, ("", ""))
+        mark = f'<span class="{cls}">{sym}</span> ' if sym else ""
+        bump_line = (f'<div class="bumpl" title="{_esc(_bump_tip(bump))}">{mark}{_esc(bump.get("label", ""))}'
+                     f' · year-end est. {bump.get("estimate", 0):.2f}</div>')
+    elif bcall == "few_matches":
+        bump_line = f'<div class="bumpl">{_esc(bump.get("label", ""))} for a bump estimate</div>'
+    else:
+        bump_line = ""
     fmt2 = lambda v: f"{float(v):.2f}" if v is not None else "—"  # noqa: E731
     rdate = info.get("cur_date", info.get("rating_date")) or ""
     usta_sub = _esc(_mdy(rdate)) or "&nbsp;"
@@ -626,6 +644,7 @@ body {{ background: #fff; }}
 .phdr .who {{ min-width: 0; }}
 .phdr h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .15rem; }}
 .phdr .loc {{ font-size: 12px; color: #888; }}
+.bumpl {{ font-size: 12px; color: #555; margin-top: 2px; }}
 .cards {{ display: flex; gap: 8px; flex-wrap: nowrap; }}
 .card {{ text-align: center; background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
         box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }}
@@ -717,7 +736,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 <div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada players</a></div>
 <div class="phdr">
   <div class="who"><h1>{_esc(p["name"])}</h1>
-    <div class="loc">{_esc(city_state)} · {_esc(gender)}</div></div>
+    <div class="loc">{_esc(city_state)} · {_esc(gender)}</div>{bump_line}</div>
   <div class="cards">
     <div class="card"><div class="l">USTA</div><div class="v"{letter_tip}>{usta_v}</div><div class="s">{usta_sub}</div></div>
     <div class="card"><div class="l">ShiQ</div><div class="v">{fmt2(dyn)}</div><div class="s">{shiq_sub}</div></div>
@@ -784,6 +803,54 @@ def _usta_rows(year: int) -> list[dict]:
     return rows
 
 
+_BUMP_SORT = {"up": 2, "lean_up": 1, "hold": 0, "lean_down": -1, "down": -2,
+              "few_matches": -9, "unknown": -9}
+_BUMP_MARK = {"up": ("▲", "mv-up"), "lean_up": ("△", "mv-up"),
+              "down": ("▼", "mv-down"), "lean_down": ("▽", "mv-down")}
+
+
+def _bump_tip(b: dict) -> str:
+    call = b.get("call", "unknown")
+    if call in _BUMP_MARK or call == "hold":
+        tip = f"{b.get('label')}: year-end estimate {b.get('estimate', 0):.2f} after {b.get('matches', 0)} matches"
+        if "strikes" in b:
+            tip += f", {b['strikes']} strike{'s' if b['strikes'] != 1 else ''}"
+        return tip
+    return b.get("label") or "No bump estimate"
+
+
+def _bump_cell_data(b):
+    """[symbol, css class, sort key, tooltip] for the directory, or None."""
+    if not b:
+        return None
+    call = b.get("call", "unknown")
+    sym, cls = _BUMP_MARK.get(call, ("", ""))
+    if call in ("few_matches", "unknown"):
+        sym, cls = "–", "muted"
+    return [sym, cls, _BUMP_SORT.get(call, -9), _bump_tip(b)]
+
+
+def _nv_bumps(players: list[dict], links: dict, usta: list[dict]) -> dict[str, dict]:
+    """Bump calls for our NV players, using the USTA 2026 level when players.json has none.
+    Empty if engine.bump (PR 3) isn't available."""
+    try:
+        from engine.bump import compute_bumps
+        from engine import ratings as R
+    except ImportError:
+        return {}
+    level_by_id = {p["id"]: format_ntrp(usta[i].get("level"), usta[i].get("rating_type"))
+                   for i, p in links.items() if usta[i].get("level") is not None}
+    copies = []
+    for p in players:
+        q = dict(p)
+        if p.get("state") == STATE and p.get("id") in level_by_id:
+            q["ntrp_rating"] = level_by_id[p["id"]]
+        copies.append(q)
+    calls = compute_bumps(copies)
+    pbn = R._build_players_by_name(copies)
+    return {q["id"]: calls.get(k) for k, q in pbn.items() if q.get("id") in level_by_id}
+
+
 def build_directory() -> dict:
     players = _load(PLAYERS_JSON, [])
     db = [p for p in players if p.get("state") == STATE and p.get("id")]
@@ -815,10 +882,13 @@ def build_directory() -> dict:
         rows_y = _usta_rows(y)
         other_links[y] = link_years(usta, rows_y) if rows_y and not placeholder else {}
 
+    bumps = _nv_bumps(players, links, usta) if not placeholder else {}
+
     info_by_id: dict[str, dict] = {}
     rows = []
     for i, r in enumerate(usta):
         p = links.get(i)
+        bump = (bumps.get(p["id"]) or p.get("bump")) if p else None
         href = None
         dyn = None
         if p and p["id"] in with_hist:
@@ -832,13 +902,15 @@ def build_directory() -> dict:
                             cur_date=r27.get("rating_date"))
             else:
                 info["cur_year"] = YEAR_FROM if not placeholder else None
+            info["bump"] = bump
             info_by_id[p["id"]] = info
         by_year = {YEAR_FROM: r, YEAR_TO: r27}
         for y, lk in other_links.items():
             by_year[y] = lk.get(i) or {}
         rows.append([r["name"], r.get("gender"), dyn, href,
                      [by_year[y].get("level") for y in DIR_YEARS],
-                     [by_year[y].get("rating_type") for y in DIR_YEARS]])
+                     [by_year[y].get("rating_type") for y in DIR_YEARS],
+                     _bump_cell_data(bump)])
 
     # Player pages
     PLAYER_DIR.mkdir(parents=True, exist_ok=True)
