@@ -71,6 +71,10 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 .pn { white-space: nowrap; }
 .rt { color: #aaa; font-variant-numeric: tabular-nums; }
 .set.sw { color: #27500A; font-weight: 600; }
+.sd-up { color: #27500A; font-weight: 600; }
+.sd-down { color: #791F1F; font-weight: 600; }
+.sd0 { color: #aaa; }
+.hist td.c-sd { color: inherit; }
 .set.sl { color: #791F1F; font-weight: 600; }
 .sn { display: none; }
 .colbar { display: none; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }
@@ -94,7 +98,8 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   .c-score .set { display: block; }
   .sn { display: inline; }
   .tbl-wrap { overflow-x: auto; }  /* fallback only: a few very long name pairs exceed 358px */
-  table.hist { width: 100%; font-size: 11.5px; }
+  table.hist { width: 100%; font-size: 11px; }
+  .hist .line-pill, .hist .dp { padding: 1px 5px; }
   .hist th, .hist td { padding: 5px 2px; }
   .hist .c-date { padding-left: 0; }
   .hist .c-opp, .hist .c-oppteam { padding-right: 0; }
@@ -106,7 +111,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   .hist.h-div .c-div { display: none; }
   .hist.h-team .c-team { display: none; }
   .hist.h-line .c-line { display: none; }
-  .hist.h-pit .c-pit { display: none; }
+  .hist.h-sd .c-sd { display: none; }
   .hist.h-score .c-score { display: none; }
   .hist.h-partner .c-partner { display: none; }
   .hist.h-opp .c-opp { display: none; }
@@ -125,11 +130,11 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 <div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">Overall</span><span class="stat-v">1–1</span><span class="tipbox"><table><tr><td>2026</td><td>1–1</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">1–1</span><span class="tipbox"><table><tr><td>Singles</td><td>0–1</td></tr><tr><td>Doubles</td><td>1–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–1</span><span class="tipbox"><table><tr><td>3.0</td><td>0–1</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>3.0</td><td>1–0</td></tr></table></span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">Overall</span><span class="stat-v">1–1</span><span class="tipbox"><table><tr><td>2026</td><td>1–1</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">1–1</span><span class="tipbox"><table><tr><td>Singles</td><td>0–1</td></tr><tr><td>Doubles</td><td>1–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–1</span><span class="tipbox"><table><tr><td>3.0</td><td>0–1</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>3.0</td><td>1–0</td></tr></table></span></span></div></div>
 <div class="colbar"><span class="count" id="cnt">2 matches · 1–1</span>
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
-<div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="date"> Date</label><label><input type="checkbox" data-c="div"> Div</label><label><input type="checkbox" data-c="team"> Team</label><label><input type="checkbox" data-c="line"> Line</label><label><input type="checkbox" data-c="pit"> ShiQ</label><label><input type="checkbox" data-c="score"> Score</label><label><input type="checkbox" data-c="partner"> Partner</label><label><input type="checkbox" data-c="opp"> Opponents</label><label><input type="checkbox" data-c="oppteam"> Opp Team</label><div class="reset" id="colreset">Reset</div></div></div>
+<div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="date"> Date</label><label><input type="checkbox" data-c="div"> Div</label><label><input type="checkbox" data-c="team"> Team</label><label><input type="checkbox" data-c="line"> Line</label><label><input type="checkbox" data-c="score"> Score</label><label><input type="checkbox" data-c="sd"> ShiQ Δ</label><label><input type="checkbox" data-c="partner"> Partner</label><label><input type="checkbox" data-c="opp"> Opponents</label><label><input type="checkbox" data-c="oppteam"> Opp Team</label><div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-pit" title="ShiQ going into the match">ShiQ</th><th class="c-score">Score</th>
+<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th><th class="num c-sd" title="ShiQ change from this match">Δ</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-date">3/28/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #4</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="num c-pit">2.51</td><td class="c-score"><span class="set">4-6</span> <span class="set sw">6-3</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="kristin-stowe.html"><span class="fn">Kristin Stowe</span><span class="sn">K. Stowe</span></a> <span class="rt">2.65</span></span></td><td class="c-opp"><span class="pn"><a href="rochelle-hamatian.html"><span class="fn">Rochelle Hamatian</span><span class="sn">R. Hamatian</span></a> <span class="rt">2.67</span></span><br><span class="pn"><a href="michelle-inman.html"><span class="fn">Michelle Inman</span><span class="sn">M. Inman</span></a> <span class="rt">2.66</span></span></td><td class="c-oppteam">CLUB RIDGES</td></tr><tr data-y="2026"><td class="c-date">5/16/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #4</td><td class="c-line"><span class="line-pill pill-s2">S2</span></td><td class="num c-pit">2.57</td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">1-6</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="aida-shirley.html"><span class="fn">Aida Shirley</span><span class="sn">A. Shirley</span></a> <span class="rt">2.71</span></span></td><td class="c-oppteam">SPANISH TRAIL</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-date">3/28/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #4</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set">4-6</span> <span class="set sw">6-3</span> <span class="set sw">1-0</span></td><td class="num c-sd"><span class="sd-up">+.06</span></td><td class="c-partner"><span class="pn"><a href="kristin-stowe.html"><span class="fn">Kristin Stowe</span><span class="sn">K. Stowe</span></a> <span class="rt">2.65</span></span></td><td class="c-opp"><span class="pn"><a href="rochelle-hamatian.html"><span class="fn">Rochelle Hamatian</span><span class="sn">R. Hamatian</span></a> <span class="rt">2.67</span></span><br><span class="pn"><a href="michelle-inman.html"><span class="fn">Michelle Inman</span><span class="sn">M. Inman</span></a> <span class="rt">2.66</span></span></td><td class="c-oppteam">CLUB RIDGES</td></tr><tr data-y="2026"><td class="c-date">5/16/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #4</td><td class="c-line"><span class="line-pill pill-s2">S2</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">1-6</span></td><td class="num c-sd"><span class="sd0">0</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="aida-shirley.html"><span class="fn">Aida Shirley</span><span class="sn">A. Shirley</span></a> <span class="rt">2.71</span></span></td><td class="c-oppteam">SPANISH TRAIL</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {
@@ -144,9 +149,9 @@ document.querySelectorAll('.yr').forEach(function(b) {
 });
 var COUNTS = {"all": "2 matches · 1–1", "2026": "2 matches · 1–1"};
 (function() {
-  var ALL = ['date','div','team','line','pit','score','partner','opp','oppteam'];
-  var DEF = {date:1, div:1, line:1, score:1, partner:1, opp:1};
-  var KEY = 'nvPlayerCols2';  // bumped when the defaults changed
+  var ALL = ['date','div','team','line','score','sd','partner','opp','oppteam'];
+  var DEF = {date:1, div:1, line:1, score:1, sd:1, partner:1, opp:1};
+  var KEY = 'nvPlayerCols3';  // bumped when the defaults changed
   var tbl = document.querySelector('table.hist'), btn = document.getElementById('colbtn'),
       menu = document.getElementById('colmenu'), on;
   try { on = JSON.parse(localStorage.getItem(KEY)); } catch (e) { on = null; }

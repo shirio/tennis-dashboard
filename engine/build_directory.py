@@ -500,6 +500,17 @@ def _score_html(score: str, won: bool) -> str:
     return " ".join(out)
 
 
+def _sq_delta(d) -> str:
+    """+.04 / −.02 / 0 for a per-match ShiQ change."""
+    if d is None:
+        return ""
+    r = round(d, 2)
+    if r == 0:
+        return '<span class="sd0">0</span>'
+    txt = f"{abs(r):.2f}".lstrip("0")
+    return f'<span class="{"sd-up" if r > 0 else "sd-down"}">{"+" if r > 0 else "−"}{txt}</span>'
+
+
 def _mdy(d: str) -> str:
     """'2/11/2026' -> '2/11/26'; anything unparseable is returned unchanged."""
     m = re.match(r"^\s*(\d{1,2})/(\d{1,2})/(\d{2,4})\s*$", d or "")
@@ -508,8 +519,8 @@ def _mdy(d: str) -> str:
     return f"{int(m.group(1))}/{int(m.group(2))}/{int(m.group(3)) % 100:02d}"
 
 
-_HIST_COLS = [("date", "Date"), ("div", "Div"), ("team", "Team"), ("line", "Line"), ("pit", "ShiQ"),
-              ("score", "Score"), ("partner", "Partner"), ("opp", "Opponents"),
+_HIST_COLS = [("date", "Date"), ("div", "Div"), ("team", "Team"), ("line", "Line"),
+              ("score", "Score"), ("sd", "ShiQ Δ"), ("partner", "Partner"), ("opp", "Opponents"),
               ("oppteam", "Opp Team")]
 
 
@@ -526,8 +537,21 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         for k, v in strips.items())
 
     nk = _nkey(p["name"])
+
+    def _f(v):
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            return None
+    # ShiQ change per match: next match's pre-match ShiQ (or the current ShiQ after the
+    # last match) minus this match's pre-match ShiQ.
+    pits = [_f(pit(nk, r["date"], r["div"].replace(".", ""))) for r in history]
+    deltas = []
+    for i, before in enumerate(pits):
+        after = next((x for x in pits[i + 1:] if x is not None), _f(p.get("global_rating")))
+        deltas.append(None if before is None or after is None or history[i].get("wko") else after - before)
     body = []
-    for r in history:
+    for r, dlt in zip(history, deltas):
         sfx = r["div"].replace(".", "")
         lbl = _line_label_short(r["line"])
         pill = f'<span class="line-pill {_LINE_PILL_COLORS.get(lbl, "pill-d1")}">{_esc(lbl)}</span>'
@@ -546,8 +570,8 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
             f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-date">{_esc(date)}</td>'
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
             f'<td class="c-team">{_esc(r.get("my_team", ""))}</td><td class="c-line">{pill}</td>'
-            f'<td class="num c-pit">{_esc(pit(nk, r["date"], sfx))}</td>'
             f'<td class="c-score"{res_tip}>{score}</td>'
+            f'<td class="num c-sd">{_sq_delta(dlt)}</td>'
             f'<td class="c-partner">{partners}</td><td class="c-opp">{opps}</td>'
             f'<td class="c-oppteam">{_esc(r.get("opp_team", ""))}</td></tr>')
 
@@ -624,6 +648,10 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 .pn {{ white-space: nowrap; }}
 .rt {{ color: #aaa; font-variant-numeric: tabular-nums; }}
 .set.sw {{ color: #27500A; font-weight: 600; }}
+.sd-up {{ color: #27500A; font-weight: 600; }}
+.sd-down {{ color: #791F1F; font-weight: 600; }}
+.sd0 {{ color: #aaa; }}
+.hist td.c-sd {{ color: inherit; }}
 .set.sl {{ color: #791F1F; font-weight: 600; }}
 .sn {{ display: none; }}
 .colbar {{ display: none; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }}
@@ -647,7 +675,8 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
   .c-score .set {{ display: block; }}
   .sn {{ display: inline; }}
   .tbl-wrap {{ overflow-x: auto; }}  /* fallback only: a few very long name pairs exceed 358px */
-  table.hist {{ width: 100%; font-size: 11.5px; }}
+  table.hist {{ width: 100%; font-size: 11px; }}
+  .hist .line-pill, .hist .dp {{ padding: 1px 5px; }}
   .hist th, .hist td {{ padding: 5px 2px; }}
   .hist .c-date {{ padding-left: 0; }}
   .hist .c-opp, .hist .c-oppteam {{ padding-right: 0; }}
@@ -659,7 +688,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
   .hist.h-div .c-div {{ display: none; }}
   .hist.h-team .c-team {{ display: none; }}
   .hist.h-line .c-line {{ display: none; }}
-  .hist.h-pit .c-pit {{ display: none; }}
+  .hist.h-sd .c-sd {{ display: none; }}
   .hist.h-score .c-score {{ display: none; }}
   .hist.h-partner .c-partner {{ display: none; }}
   .hist.h-opp .c-opp {{ display: none; }}
@@ -680,7 +709,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden>{"".join(f'<label><input type="checkbox" data-c="{k}"> {lbl}</label>' for k, lbl in _HIST_COLS)}<div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-pit" title="ShiQ going into the match">ShiQ</th><th class="c-score">Score</th>
+<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th><th class="num c-sd" title="ShiQ change from this match">Δ</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
 <tbody>{"".join(body)}</tbody></table></div>
 </div>
@@ -697,9 +726,9 @@ document.querySelectorAll('.yr').forEach(function(b) {{
 }});
 var COUNTS = {json.dumps(counts, ensure_ascii=False)};
 (function() {{
-  var ALL = ['date','div','team','line','pit','score','partner','opp','oppteam'];
-  var DEF = {{date:1, div:1, line:1, score:1, partner:1, opp:1}};
-  var KEY = 'nvPlayerCols2';  // bumped when the defaults changed
+  var ALL = ['date','div','team','line','score','sd','partner','opp','oppteam'];
+  var DEF = {{date:1, div:1, line:1, score:1, sd:1, partner:1, opp:1}};
+  var KEY = 'nvPlayerCols3';  // bumped when the defaults changed
   var tbl = document.querySelector('table.hist'), btn = document.getElementById('colbtn'),
       menu = document.getElementById('colmenu'), on;
   try {{ on = JSON.parse(localStorage.getItem(KEY)); }} catch (e) {{ on = null; }}
