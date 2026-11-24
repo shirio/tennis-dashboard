@@ -170,7 +170,7 @@ tbody tr:hover td { background: #faf9f6; }
     <div class="row">
       <div class="opt phone">
         <div class="optlabel"><span class="tag">A on a phone</span></div>
-        <p class="why" style="max-width:390px">Same pills, scrolled sideways. Gender column drops (it's a filter); everything else fits.</p>
+        <p class="why" style="max-width:390px">Same pills, scrolled sideways. Sex column drops (it's a filter); everything else fits.</p>
         <div class="frame w390" id="phone"></div>
       </div>
     </div>
@@ -213,7 +213,7 @@ function filters(phone){
 }
 function head(){ return '<div class="crumbs"><a href="#">Tennis Dashboard</a> › Nevada</div><div class="ttl">Nevada players</div>'; }
 function tableA(rows,opt){ opt=opt||{};
-  var h='<table><thead><tr><th class="s">Name</th>'+(opt.phone?'':'<th>Gender</th>')+'<th class="n">2026</th><th class="c" title="Change from 2026 to 2027">Δ</th><th class="n">2027</th><th class="n">ShiQ</th>'+(opt.band?'<th></th>':'')+'</tr></thead><tbody>';
+  var h='<table><thead><tr><th class="s">Name</th>'+(opt.phone?'':'<th>Sex</th>')+'<th class="n">2026</th><th class="c" title="Change from 2026 to 2027">Δ</th><th class="n">2027</th><th class="n">ShiQ</th>'+(opt.band?'<th></th>':'')+'</tr></thead><tbody>';
   rows.forEach(function(r){ h+='<tr><td class="nm">'+nm(r)+'</td>'+(opt.phone?'':'<td class="g">'+r[1]+'</td>')+'<td class="n">'+lvl(r[2],r[3],opt.letter)+'</td><td class="c"></td><td class="n"></td><td class="n">'+(r[4]==null?'':r[4].toFixed(2))+'</td>'+(opt.band?'<td>'+meter(r)+'</td>':'')+'</tr>'; });
   return h+'</tbody></table>';
 }
