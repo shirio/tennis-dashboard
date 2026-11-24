@@ -207,44 +207,54 @@ h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 
 def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
     data = json.dumps(rows, separators=(",", ":"), ensure_ascii=False)
-    legend = "".join(f"<span><b>{k}</b> {_esc(v)}</span>" for k, v in RATING_TYPES.items())
     types_json = json.dumps(RATING_TYPES)
     note = ("<p class='note'>Showing our own Nevada players until the full USTA 2026 "
             "list is loaded.</p>" if placeholder else "")
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nevada Player Directory</title>
+<title>Nevada Players</title>
 <style>{_BASE_CSS}
-.controls {{ display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .8rem; }}
-.controls input[type=search] {{ flex: 1 1 220px; padding: .45rem .6rem; border: 1px solid #ccc;
-  border-radius: 6px; font-size: 14px; }}
-.controls select {{ padding: .4rem; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; background: #fff; }}
-.seg {{ display: inline-flex; border: 1px solid #ccc; border-radius: 999px; overflow: hidden; background: #fff; }}
-.seg button {{ border: 0; background: transparent; padding: .38rem .85rem; font-size: 13px; cursor: pointer; color: #333; }}
+body {{ background: #fff; }}
+h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .8rem; }}
+.controls {{ display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .6rem; }}
+.controls input[type=search] {{ flex: 0 1 260px; padding: .35rem .8rem; border: 1px solid #ccc;
+  border-radius: 20px; font-size: 13px; outline: none; }}
+.controls input[type=search]:focus {{ border-color: #1a5fb4; }}
+.controls select {{ appearance: none; -webkit-appearance: none; padding: .35rem 1.8rem .35rem .8rem;
+  border: 1px solid #ccc; border-radius: 20px; font-size: 13px; color: #333; cursor: pointer;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23888' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right .7rem center; }}
+.seg {{ display: inline-flex; border: 1px solid #ccc; border-radius: 20px; overflow: hidden; background: #fff; }}
+.seg button {{ border: 0; background: transparent; padding: .35rem .8rem; font-size: 13px; cursor: pointer; color: #333; }}
 .seg button + button {{ border-left: 1px solid #ddd; }}
 .seg button.on {{ background: #1a5fb4; color: #fff; }}
-th.sex, td.sex {{ text-align: center; }}
-.count {{ font-size: 13px; color: #666; margin-bottom: .4rem; }}
-.tbl-wrap {{ overflow-x: auto; background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; }}
-table {{ border-collapse: collapse; width: 100%; font-size: 14px; }}
-th, td {{ padding: .45rem .7rem; text-align: left; border-bottom: 1px solid #f0f0f0; white-space: nowrap; }}
-th {{ background: #f5f7fb; font-size: 12px; text-transform: uppercase; letter-spacing: .03em;
-     color: #555; cursor: pointer; user-select: none; position: sticky; top: 0; }}
-th.sorted::after {{ content: " ▲"; font-size: 9px; }}
+.count {{ font-size: 11px; color: #888; margin-bottom: .3rem; }}
+.tbl-wrap {{ overflow-x: auto; }}
+table {{ border-collapse: collapse; font-size: 12px; }}
+th, td {{ padding: 4px 10px; text-align: left; white-space: nowrap; }}
+th:first-child, td:first-child {{ padding-left: 0; }}
+th {{ font-size: 11px; font-weight: 600; color: #888; cursor: pointer; user-select: none;
+     position: sticky; top: 0; background: #fff; }}
+th.sorted::after {{ content: " ▲"; font-size: 8px; }}
 th.sorted.desc::after {{ content: " ▼"; }}
-th.delta, td.delta {{ width: 1px; padding-left: .2rem; padding-right: .2rem; text-align: center; }}
+tbody tr:hover td {{ background: #faf9f6; }}
+th.sex, td.sex {{ text-align: center; }}
+th.delta, td.delta {{ text-align: center; padding-left: 4px; padding-right: 4px; }}
 td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
-.lt {{ border-bottom: 1px dotted #aaa; cursor: help; }}
-.more {{ margin: .8rem auto; display: block; padding: .45rem 1.2rem; border: 1px solid #ccc;
-        border-radius: 6px; background: #fff; cursor: pointer; }}
-.legend {{ margin-top: 1rem; font-size: 12px; color: #555; display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; }}
+.lt {{ font-size: 10px; color: #aaa; margin-left: 2px; cursor: help; }}
+.up {{ color: #27500A; }}
+.stk {{ display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; font-size: 9px; line-height: 1; }}
+.stk i {{ font-style: normal; display: block; }}
+.stk i + i {{ margin-top: -4px; }}
+.down {{ color: #791F1F; }}
+.more {{ margin: .8rem 0; padding: .35rem 1rem; border: 1px solid #ccc;
+        border-radius: 20px; background: #fff; cursor: pointer; font-size: 12px; }}
 .note {{ background: #fff8e1; border: 1px solid #f0d58a; border-radius: 6px; padding: .5rem .8rem;
         font-size: 13px; margin-bottom: .8rem; }}
+@media (max-width: 500px) {{ th.sex, td.sex {{ display: none; }} }}
 </style></head><body><div class="wrap">
 <div class="crumbs"><a href="index.html">Tennis Dashboard</a> › Nevada</div>
-<h1>Nevada Player Directory</h1>
-<p class="sub">Every player on USTA's Nevada NTRP list: {YEAR_FROM} year-end rating, {YEAR_TO} year-end rating once it's out, and our ShiQ rating. {n_linked} players link to their match history.</p>
+<h1>Nevada players</h1>
 {note}
 <div class="controls">
   <input type="search" id="q" placeholder="Search name…" aria-label="Search name">
@@ -254,12 +264,11 @@ td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 <div class="count" id="count"></div>
 <div class="tbl-wrap"><table>
 <thead><tr>
-  <th data-k="0">Name</th><th data-k="1" class="sex">Sex</th><th data-k="2">{YEAR_FROM}</th>
+  <th data-k="0">Name</th><th data-k="1" class="sex">Sex</th><th data-k="2" class="num">{YEAR_FROM}</th>
   <th data-k="d" class="delta" title="Change from {YEAR_FROM} to {YEAR_TO}">Δ</th>
-  <th data-k="4">{YEAR_TO}</th><th data-k="6" class="num">ShiQ</th>
+  <th data-k="4" class="num">{YEAR_TO}</th><th data-k="6" class="num">ShiQ</th>
 </tr></thead><tbody id="tb"></tbody></table></div>
 <button class="more" id="more" hidden>Show more</button>
-<div class="legend"><b>Rating types:</b>{legend}</div>
 </div>
 <script>
 // rows: [name, gender, lvl26, type26, lvl27, type27, dynamic, link]
@@ -274,7 +283,7 @@ function ntrp(l, t) {{
   if (l == null) return '';
   var s = fmt(l);
   if (!t) return s;
-  return s + ' <span class="lt" title="' + (TYPES[t] || t) + '">' + t + '</span>';
+  return s + '<span class="lt" title="' + (TYPES[t] || t) + '">' + t + '</span>';
 }}
 function esc(s) {{ return String(s).replace(/[&<>"]/g, function(c) {{ return {{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}}[c]; }}); }}
 function fillSelect(id, vals, label) {{
@@ -312,15 +321,18 @@ function render() {{
   view.slice(0, shown).forEach(function(r) {{
     // one arrow per 0.5 level moved: ▲ / ▲▲ up, ▼ / ▼▼ down
     var d = delta(r), n = Math.round(Math.abs(d) / 0.5), dh = '';
-    if (n) dh = '<span class="' + (d > 0 ? 'up' : 'down') + '" title="' + (d > 0 ? 'Up ' : 'Down ') + Math.abs(d).toFixed(1) + '">'
-                + new Array(n + 1).join(d > 0 ? '▲' : '▼') + '</span>';
+    // arrows stack vertically (like a fast-forward icon turned up/down)
+    if (n) dh = '<span class="stk ' + (d > 0 ? 'up' : 'down') + '" title="' + (d > 0 ? 'Up ' : 'Down ') + Math.abs(d).toFixed(1) + '">'
+                + new Array(n + 1).join('<i>' + (d > 0 ? '▲' : '▼') + '</i>') + '</span>';
     var nm = r[7] ? '<a href="' + r[7] + '">' + esc(r[0]) + '</a>' : esc(r[0]);
-    out.push('<tr><td>' + nm + '</td><td class="sex">' + (r[1] || '') + '</td><td>' + ntrp(r[2], r[3])
-      + '</td><td class="delta">' + dh + '</td><td>' + ntrp(r[4], r[5])
+    out.push('<tr><td>' + nm + '</td><td class="sex">' + (r[1] || '') + '</td><td class="num">' + ntrp(r[2], r[3])
+      + '</td><td class="delta">' + dh + '</td><td class="num">' + ntrp(r[4], r[5])
       + '</td><td class="num">' + (r[6] == null ? '' : r[6].toFixed(2)) + '</td></tr>');
   }});
   document.getElementById('tb').innerHTML = out.join('');
-  document.getElementById('count').textContent = view.length.toLocaleString() + ' of ' + ROWS.length.toLocaleString() + ' players';
+  document.getElementById('count').textContent = view.length === ROWS.length
+    ? ROWS.length.toLocaleString() + ' players'
+    : view.length.toLocaleString() + ' of ' + ROWS.length.toLocaleString() + ' players';
   document.getElementById('more').hidden = shown >= view.length;
 }}
 document.getElementById('more').onclick = function() {{ shown += PAGE * 3; render(); }};
