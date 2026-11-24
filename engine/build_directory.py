@@ -394,9 +394,17 @@ def _record_strip(rec: dict) -> str:
 
 def _name_link(name: str, rating: str, link_for) -> str:
     href = link_for(name)
-    nm = f'<a href="{_esc(href)}">{_esc(name)}</a>' if href else _esc(name)
+    parts = name.split()
+    short = f"{parts[0][0]}. {' '.join(parts[1:])}" if len(parts) > 1 else name
+    label = f'<span class="fn">{_esc(name)}</span><span class="sn">{_esc(short)}</span>'
+    nm = f'<a href="{_esc(href)}">{label}</a>' if href else label
     r = f' <span class="rt">{_esc(rating or "NR")}</span>' if rating is not None else ""
     return f'<span class="pn">{nm}{r}</span>'
+
+
+_HIST_COLS = [("date", "Date"), ("div", "Div"), ("team", "Team"), ("line", "Line"), ("pit", "ShiQ"),
+              ("r", "R"), ("score", "Score"), ("partner", "Partner"), ("opp", "Opponents"),
+              ("oppteam", "Opp Team")]
 
 
 def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str:
@@ -430,12 +438,25 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         row_attr = f' class="dq" title="Invalid match: {_esc(", ".join(dq))} disqualified"' if dq else ""
         date = re.sub(r"/\d{4}$", "", r["date"])
         body.append(
-            f'<tr data-y="{_year(r["date"])}"{row_attr}><td>{_esc(date)}</td>'
-            f'<td><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
-            f'<td>{_esc(r.get("my_team", ""))}</td><td>{pill}</td>'
-            f'<td class="num">{_esc(pit(nk, r["date"], sfx))}</td>'
-            f'<td><span class="{rcls}"{res_tip}>{res}</span></td><td>{score}</td>'
-            f'<td>{partners}</td><td>{opps}</td><td>{_esc(r.get("opp_team", ""))}</td></tr>')
+            f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-date">{_esc(date)}</td>'
+            f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
+            f'<td class="c-team">{_esc(r.get("my_team", ""))}</td><td class="c-line">{pill}</td>'
+            f'<td class="num c-pit">{_esc(pit(nk, r["date"], sfx))}</td>'
+            f'<td class="c-r"><span class="{rcls}"{res_tip}>{res}</span></td><td class="c-score">{score}</td>'
+            f'<td class="c-partner">{partners}</td><td class="c-opp">{opps}</td>'
+            f'<td class="c-oppteam">{_esc(r.get("opp_team", ""))}</td></tr>')
+
+    counts = {}
+    for k in ["all"] + years:
+        rows_k = history if k == "all" else [r for r in history if _year(r["date"]) == k]
+        n = len(rows_k)
+        counts[k] = f'{n} match{"" if n == 1 else "es"} · {_wl(compute_records(rows_k)["overall"])}'
+
+    def _dkey(d):
+        m = re.match(r"(\d{1,2})/(\d{1,2})/(\d{4})", d or "")
+        return (int(m.group(3)), int(m.group(1)), int(m.group(2))) if m else (0, 0, 0)
+    last = max((_dkey(r["date"]) for r in history), default=(0, 0, 0))
+    shiq_sub = f"{last[1]}/{last[0]}" if last[0] else "&nbsp;"
 
     city_state = ", ".join(x for x in [info.get("city"), info.get("state")] if x) or p.get("state", "")
     gender = {"F": "Female", "M": "Male"}.get(info.get("gender") or "F", "")
@@ -444,15 +465,8 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         lvl, letter = parse_ntrp(p.get("ntrp_rating"))
     letter_tip = f' title="{_esc(RATING_TYPES.get(letter, ""))}"' if letter else ""
     usta_v = (f'{float(lvl):.1f}<span class="lt">{_esc(letter or "")}</span>' if lvl is not None else "—")
-    base = p.get("dynamic_rating_baseline")
     dyn = p.get("global_rating")
     fmt2 = lambda v: f"{float(v):.2f}" if v is not None else "—"  # noqa: E731
-    if base is not None and dyn is not None:
-        d = float(dyn) - float(base)
-        dcls = "mv-up" if d > 0.005 else ("mv-down" if d < -0.005 else "")
-        shiq_sub = f'<span class="{dcls}">{d:+.2f}</span>'
-    else:
-        shiq_sub = "&nbsp;"
     rdate = info.get("cur_date", info.get("rating_date")) or ""
     rdate = re.sub(r"^(\d{1,2})/\d{1,2}/(\d{4})$", r"\1/\2", rdate.strip())
     usta_sub = _esc(rdate) or "&nbsp;"
@@ -463,11 +477,11 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
 <title>{_esc(p["name"])}</title>
 <style>{_BASE_CSS}
 body {{ background: #fff; }}
-.hdr {{ display: flex; flex-wrap: wrap; gap: .8rem 1.6rem; align-items: flex-end; margin-bottom: 1rem; }}
-.hdr .who {{ flex: 1 1 240px; }}
-.hdr h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .15rem; }}
-.hdr .loc {{ font-size: 12px; color: #888; }}
-.cards {{ display: flex; gap: 10px; flex-wrap: wrap; }}
+.phdr {{ display: flex; justify-content: flex-start; align-items: center; gap: 20px; margin-bottom: 1rem; }}
+.phdr .who {{ min-width: 0; }}
+.phdr h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .15rem; }}
+.phdr .loc {{ font-size: 12px; color: #888; }}
+.cards {{ display: flex; gap: 8px; flex-wrap: nowrap; }}
 .card {{ text-align: center; background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
         box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }}
 .card .l {{ font-size: 11px; color: #888; }}
@@ -504,21 +518,49 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 .hist tr.dq td {{ opacity: .5; text-decoration: line-through; }}
 .pn {{ white-space: nowrap; }}
 .rt {{ color: #aaa; font-variant-numeric: tabular-nums; }}
+.sn {{ display: none; }}
+.colbar {{ display: none; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }}
+.colbar .count {{ font-size: 11px; color: #888; }}
+.colbtn {{ padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font: inherit; font-size: 11px;
+          color: #222; background: #fff; cursor: pointer; }}
+.colmenu {{ position: absolute; right: 0; top: 28px; z-index: 6; background: #fff; border-radius: 10px; padding: 4px;
+           min-width: 150px; box-shadow: 0 6px 24px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.08); }}
+.colmenu[hidden] {{ display: none; }}
+.colmenu label {{ display: flex; gap: 8px; align-items: center; padding: 6px 10px; border-radius: 6px;
+                 font-size: 12px; cursor: pointer; }}
+.colmenu label:hover {{ background: #f3f2ee; }}
+.colmenu .reset {{ color: #1a5fb4; font-size: 11px; padding: 6px 10px; cursor: pointer; }}
+@media (max-width: 500px) {{
+  .phdr {{ gap: 12px; }}
+  .phdr h1 {{ font-size: 18px; }}
+  .card {{ padding: .5rem .7rem; }}
+  .colbar {{ display: flex; }}
+  .fn, .hist .rt {{ display: none; }}
+  .sn {{ display: inline; }}
+  .tbl-wrap {{ overflow-x: visible; }}
+  table.hist {{ width: 100%; }}
+  .hist th, .hist td {{ padding: 5px 4px; }}
+  .hist td.c-partner, .hist td.c-opp {{ white-space: normal; }}
+  .hist .pn {{ white-space: normal; }}
+  .hist.h-date .c-date {{ display: none; }}\n  .hist.h-div .c-div {{ display: none; }}\n  .hist.h-team .c-team {{ display: none; }}\n  .hist.h-line .c-line {{ display: none; }}\n  .hist.h-pit .c-pit {{ display: none; }}\n  .hist.h-r .c-r {{ display: none; }}\n  .hist.h-score .c-score {{ display: none; }}\n  .hist.h-partner .c-partner {{ display: none; }}\n  .hist.h-opp .c-opp {{ display: none; }}\n  .hist.h-oppteam .c-oppteam {{ display: none; }}
+}}
 </style></head><body><div class="wrap">
 <div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada players</a></div>
-<div class="hdr">
+<div class="phdr">
   <div class="who"><h1>{_esc(p["name"])}</h1>
     <div class="loc">{_esc(city_state)} · {_esc(gender)}</div></div>
   <div class="cards">
-    <div class="card"><div class="l">Baseline</div><div class="v">{fmt2(base)}</div><div class="s">Dec 2025</div></div>
     <div class="card"><div class="l">USTA</div><div class="v"{letter_tip}>{usta_v}</div><div class="s">{usta_sub}</div></div>
     <div class="card"><div class="l">ShiQ</div><div class="v">{fmt2(dyn)}</div><div class="s">{shiq_sub}</div></div>
   </div>
 </div>
 <div class="recs"><span class="yrs">{toggle}</span>{strip_html}</div>
+<div class="colbar"><span class="count" id="cnt">{_esc(counts["all"])}</span>
+<button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
+<div class="colmenu" id="colmenu" hidden>{"".join(f'<label><input type="checkbox" data-c="{k}"> {lbl}</label>' for k, lbl in _HIST_COLS)}<div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th>Date</th><th>Div</th><th>Team</th><th>Line</th><th class="num" title="Our rating going into each match">PIT</th><th>R</th><th>Score</th>
-<th>Partner</th><th>Opponent(s)</th><th>Opp Team</th></tr></thead>
+<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-pit" title="ShiQ going into the match">ShiQ</th><th class="c-r">R</th><th class="c-score">Score</th>
+<th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
 <tbody>{"".join(body)}</tbody></table></div>
 </div>
 <script>
@@ -529,8 +571,32 @@ document.querySelectorAll('.yr').forEach(function(b) {{
     document.querySelectorAll('.strip').forEach(function(s) {{ s.hidden = s.dataset.y !== y; }});
     document.querySelectorAll('.hist tbody tr').forEach(function(tr) {{
       tr.hidden = y !== 'all' && tr.dataset.y !== y; }});
+    document.getElementById('cnt').textContent = COUNTS[y] || '';
   }};
 }});
+var COUNTS = {json.dumps(counts, ensure_ascii=False)};
+(function() {{
+  var ALL = ['date','div','team','line','pit','r','score','partner','opp','oppteam'];
+  var DEF = {{date:1, line:1, r:1, score:1, partner:1, opp:1}};
+  var KEY = 'nvPlayerCols';
+  var tbl = document.querySelector('table.hist'), btn = document.getElementById('colbtn'),
+      menu = document.getElementById('colmenu'), on;
+  try {{ on = JSON.parse(localStorage.getItem(KEY)); }} catch (e) {{ on = null; }}
+  if (!on || typeof on !== 'object') on = Object.assign({{}}, DEF);
+  function apply() {{
+    ALL.forEach(function(k) {{ tbl.classList.toggle('h-' + k, !on[k]); }});
+    menu.querySelectorAll('input').forEach(function(i) {{ i.checked = !!on[i.dataset.c]; }});
+  }}
+  function save() {{ try {{ localStorage.setItem(KEY, JSON.stringify(on)); }} catch (e) {{}} }}
+  function setOpen(v) {{ menu.hidden = !v; btn.setAttribute('aria-expanded', v); btn.textContent = v ? 'Columns ▴' : 'Columns ▾'; }}
+  btn.onclick = function(e) {{ e.stopPropagation(); setOpen(menu.hidden); }};
+  menu.addEventListener('change', function(e) {{ var c = e.target.dataset.c; if (!c) return;
+    on[c] = e.target.checked ? 1 : 0; apply(); save(); }});
+  document.getElementById('colreset').onclick = function() {{ on = Object.assign({{}}, DEF); apply();
+    try {{ localStorage.removeItem(KEY); }} catch (e) {{}} }};
+  document.addEventListener('click', function(e) {{ if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) setOpen(false); }});
+  apply();
+}})();
 </script></body></html>
 """
 
