@@ -101,7 +101,7 @@ tbody tr:hover td { background: #faf9f6; }
       <div><b>Wireframey lines and wasted width</b><ul><li>A rule under every row plus a box around the table.</li><li>Table stretches to 1100px for six short columns, so Name sits 480px from its rating.</li></ul></div>
       <div><b>Numbers not aligned</b><ul><li>2026 and 2027 are left-aligned text.</li><li>Rating letter has a dotted underline that reads as a link.</li></ul></div>
       <div><b>Copy clutter</b><ul><li>Two-line subtitle repeats what the columns say.</li><li>Seven-item rating-type legend under the table; a hover on the letter is enough.</li></ul></div>
-      <div><b>Dynamic is blank for 81% of rows</b><ul><li>Only 428 of 2,299 players have match history, so the column looks broken at first glance.</li><li>Blank is honest, but worth a decision (see options).</li></ul></div>
+      <div><b>Dynamic is blank for 81% of rows</b><ul><li>Only 428 of 2,299 players have match history, so the column looks broken at first glance.</li><li>Staying blank (decided: no "Has matches" filter).</li></ul></div>
       <div><b>Mobile</b><ul><li>Filters wrap to four rows; Δ, 2027, and Dynamic are off-screen to the right.</li><li>Player page: footnote under the table, cards with borders, all/2026 toggle shows the same thing twice.</li></ul></div>
     </div>
   </section>
@@ -117,7 +117,7 @@ tbody tr:hover td { background: #faf9f6; }
     <div class="row" style="margin-top:16px">
       <div class="opt">
         <div class="optlabel"><span class="tag">A · House style</span><span class="rec">Recommended</span></div>
-        <p class="why">Pill filters like the division tabs, content-fit table, no row rules, right-aligned tabular numbers, letter as a small suffix with a hover. 2027 filter hidden until Dec 2.</p>
+        <p class="why">Pill filters like the division tabs, content-fit table, no row rules, right-aligned tabular numbers, letter as a small suffix with a hover. 2027 filter hidden until Dec 2. No Movers or Has matches toggles; sort Δ to find movers.</p>
         <div class="frame" id="optA"></div>
       </div>
       <div class="opt">
@@ -209,8 +209,7 @@ function meter(r){ if(r[4]==null) return ""; var hi=r[2], lo=hi-0.49, p=(r[4]-lo
 function filters(phone){
   return '<div class="pills'+(phone?' scroll':'')+'"><span class="search">Search name…</span></div>'+
   '<div class="pills'+(phone?' scroll':'')+'"><span class="rtab on">All</span><span class="rtab">Women</span><span class="rtab">Men</span>'+
-  '<span class="gl">2026</span><span class="rtab on">All</span><span class="rtab">2.5</span><span class="rtab">3.0</span><span class="rtab">3.5</span><span class="rtab">4.0</span><span class="rtab">4.5</span><span class="rtab">5.0</span>'+
-  '<span class="gl">Show</span><span class="rtab">Movers</span><span class="rtab">Has matches</span></div>';
+  '<span class="gl">2026</span><span class="rtab on">All</span><span class="rtab">2.5</span><span class="rtab">3.0</span><span class="rtab">3.5</span><span class="rtab">4.0</span><span class="rtab">4.5</span><span class="rtab">5.0</span></div>';
 }
 function head(){ return '<div class="crumbs"><a href="#">Tennis Dashboard</a> › Nevada</div><div class="ttl">Nevada players</div>'; }
 function tableA(rows,opt){ opt=opt||{};
