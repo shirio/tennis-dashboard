@@ -892,7 +892,10 @@ def _bump_cell_data(b):
     if call not in _BUMP_MARK:  # holds, too few matches, unknown: empty cell, sorts last
         return None
     sym, cls = _BUMP_MARK[call]
-    return [sym, cls, _BUMP_SORT[call], _bump_tip(b)]
+    # Category first, then the engine's signed margin past the level edge, so
+    # descending runs strongest up -> most extreme down within each category.
+    sort = _BUMP_SORT[call] * 10 + float(b.get("margin") or 0)
+    return [sym, cls, round(sort, 4), _bump_tip(b)]
 
 
 def _nv_bumps(players: list[dict], links: dict, usta: list[dict]) -> dict[str, dict]:
