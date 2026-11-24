@@ -109,6 +109,25 @@ def link_usta_to_db(usta: list[dict], db_players: list[dict]) -> dict[int, dict]
     return links
 
 
+TR_HISTORY = Path("data") / "rating_history_tr.json"
+
+
+def _tr_history() -> dict[str, dict[int, float]]:
+    """{name key: {year: level}} from TennisRecord team rosters
+    (scrapers/scrape_tennisrecord_history.py). Rosters give the level a player
+    played at that season, with no rating letter."""
+    if not TR_HISTORY.exists():
+        return {}
+    out: dict[str, dict[int, float]] = {}
+    for r in json.loads(TR_HISTORY.read_text()):
+        for y, v in (r.get("years") or {}).items():
+            try:
+                out.setdefault(_nkey(r["name"]), {})[int(y)] = float(v["level"])
+            except (TypeError, ValueError, KeyError):
+                continue
+    return out
+
+
 def link_years(rows_from: list[dict], rows_to: list[dict]) -> dict[int, dict]:
     """Map index in rows_from -> the same player's row in rows_to (name+city, then name)."""
     by_nc: dict[tuple, list[dict]] = defaultdict(list)
@@ -209,6 +228,8 @@ h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 _DH = ('<svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" '
        'stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px">'
        '<polygon points="1,10 6,1.5 11,10"/></svg>')
+# Bump header: the Δ triangle with a small filled dot inside.
+_BH = _DH.replace('</svg>', '<circle cx="6" cy="7.2" r="1.25" fill="currentColor" stroke="none"/></svg>')
 
 
 def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
@@ -239,7 +260,7 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
             heads.append(f'<th data-k="{k}" class="c-{k} num">{lbl}</th>')
         else:
             heads.append('<th data-k="q" class="c-q num">ShiQ</th>' if k == "q" else
-                         '<th data-k="b" class="c-b bump" title="Projected year-end USTA level change">Bump</th>')
+                         f'<th data-k="b" class="c-b bump" title="Predicted USTA change" aria-label="Predicted USTA change">{_BH}</th>')
     menu = "".join(f'<label><input type="checkbox" data-c="{k}"> {_esc(lbl)}</label>' for k, lbl in cols)
     note = ("<p class='note'>Showing our own Nevada players until the full USTA 2026 "
             "list is loaded.</p>" if placeholder else "")
@@ -805,8 +826,18 @@ def _usta_rows(year: int) -> list[dict]:
 
 _BUMP_SORT = {"up": 2, "lean_up": 1, "hold": 0, "lean_down": -1, "down": -2,
               "few_matches": -9, "unknown": -9}
-_BUMP_MARK = {"up": ("▲", "mv-up"), "lean_up": ("△", "mv-up"),
-              "down": ("▼", "mv-down"), "lean_down": ("▽", "mv-down")}
+def _chev(up: bool, color: str, label: str) -> str:
+    """Single S2 chevron (same shape as the Δ column's caret), in a fixed color."""
+    pts = "2.5,10 7,6 11.5,10" if up else "2.5,5 7,9 11.5,5"
+    return (f'<svg class="bchev" viewBox="0 0 14 15" width="14" height="15" role="img" aria-label="{label}" '
+            f'style="color:{color};vertical-align:middle"><g fill="none" stroke="currentColor" stroke-width="2.4" '
+            f'stroke-linecap="round" stroke-linejoin="round"><polyline points="{pts}"/></g></svg>')
+
+
+_BUMP_MARK = {"up": (_chev(True, "#27500A", "Likely up"), "bm"),
+              "lean_up": (_chev(True, "#8fb36c", "Leaning up"), "bm"),
+              "down": (_chev(False, "#791F1F", "Likely down"), "bm"),
+              "lean_down": (_chev(False, "#c98b86", "Leaning down"), "bm")}
 
 
 def _bump_tip(b: dict) -> str:
@@ -882,6 +913,7 @@ def build_directory() -> dict:
         rows_y = _usta_rows(y)
         other_links[y] = link_years(usta, rows_y) if rows_y and not placeholder else {}
 
+    tr_hist = _tr_history()
     bumps = _nv_bumps(players, links, usta) if not placeholder else {}
 
     info_by_id: dict[str, dict] = {}
@@ -907,6 +939,10 @@ def build_directory() -> dict:
         by_year = {YEAR_FROM: r, YEAR_TO: r27}
         for y, lk in other_links.items():
             by_year[y] = lk.get(i) or {}
+            if by_year[y].get("level") is None:
+                lvl = (tr_hist.get(_nkey(r["name"])) or {}).get(y)
+                if lvl is not None:
+                    by_year[y] = {"level": lvl}  # roster level, no rating letter
         rows.append([r["name"], r.get("gender"), dyn, href,
                      [by_year[y].get("level") for y in DIR_YEARS],
                      [by_year[y].get("rating_type") for y in DIR_YEARS],
