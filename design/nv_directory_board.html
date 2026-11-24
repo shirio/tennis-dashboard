@@ -155,6 +155,9 @@ tbody tr:hover td { background: #faf9f6; }
         <div class="frame" id="d2"></div>
       </div>
     </div>
+    <h2 style="margin-top:20px">3b · Caret shape</h2>
+    <p class="why" style="margin:-4px 0 10px">Same colors, four shapes, at real size in the table. Top row is 3× for shape; the table is real size. 2027 values made up.</p>
+    <div class="row" id="carets"></div>
   </section>
 
   <section>
@@ -248,8 +251,18 @@ document.getElementById('l1').innerHTML = tableA([R[1],R[6],R[7],R[9]]);
 
 // Δ demos: 2027 values are invented to show up/down/same.
 var M = [["Maria Allen",3.0,"C",3.5,"C",3.3755],["Kelli Caderot",2.5,"S",3.5,"C",2.193],["Melissa Kwong-Blais",3.5,"C",4.0,"C",3.5794],["Francine Mazza",3.0,"C",3.0,"C",2.8228],["Kelley Ferrence",3.5,"C",3.0,"C",3.3152]];
-function caret(up,two){ var p=two?'<polygon points="0,14 5,7 10,14"/><polygon points="0,8 5,1 10,8"/>':'<polygon points="0,11 5,4 10,11"/>';
-  return '<svg class="car" viewBox="0 0 10 15" width="10" height="15" fill="currentColor" aria-label="'+(up?'Up ':'Down ')+(two?'two levels':'one level')+'"'+(up?'':' style="transform:scaleY(-1)"')+'>'+p+'</svg>'; }
+var CARET_STYLE='S0';
+function caret(up,two,st){ st=st||CARET_STYLE; var w=10,h=15,inner='',attrs='fill="currentColor"';
+  if(st==='S0'){ inner=two?'<polygon points="0,14 5,7 10,14"/><polygon points="0,8 5,1 10,8"/>':'<polygon points="0,11 5,4 10,11"/>'; }
+  if(st==='S1'){ w=14; attrs='fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+    inner=two?'<polyline points="2,12 7,7.5 12,12"/><polyline points="2,7.5 7,3 12,7.5"/>':'<polyline points="2,10 7,5.5 12,10"/>'; }
+  if(st==='S2'){ w=14; attrs='fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"';
+    inner=two?'<polyline points="2.5,12.5 7,8.5 11.5,12.5"/><polyline points="2.5,7 7,3 11.5,7"/>':'<polyline points="2.5,10 7,6 11.5,10"/>'; }
+  if(st==='S3'){ w=14; var gid='g'+Math.random().toString(36).slice(2,7);
+    attrs='fill="url(#'+gid+')" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"';
+    var tri=function(y){return '<path d="M2,'+(y+6)+' L7,'+(y)+' L12,'+(y+6)+' Z"/>';};
+    inner='<defs><linearGradient id="'+gid+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".55"/><stop offset="1" stop-color="currentColor"/></linearGradient></defs>'+(two?tri(7.5)+tri(2):tri(4.5)); }
+  return '<svg class="car" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'" '+attrs+' aria-label="'+(up?'Up ':'Down ')+(two?'two levels':'one level')+'"'+(up?'':' style="transform:scaleY(-1)"')+'>'+inner+'</svg>'; }
 function dtable(mode){ var h='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">Δ</th><th class="n">2027</th><th class="n">ShiQ</th></tr></thead><tbody>';
   M.forEach(function(m){ var d=m[3]-m[1], cls=d>0?'up':d<0?'down':'', n=Math.round(Math.abs(d)/0.5), ar=d?caret(d>0,n>1):'', cell='', v27=lvl(m[3],m[4]);
     if(mode===1) cell=ar?'<span class="'+cls+'b">'+ar+'</span>':'';
@@ -310,4 +323,15 @@ var DEF1={date:1,div:1,line:1,score:1,partner:1,opp:1};
   draw(); })();
 document.getElementById('m2').innerHTML=phoneHead()+'<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▾</button></div>'+mxTable({date:1,line:1,r:1,score:1,opp:1},false,true);
 document.getElementById('m3').innerHTML=phoneHead()+'<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▴</button>'+menu(DEF1)+'</div>'+mxTable(DEF1,true,false);
+
+(function(){ var names={S0:'S0 · Today: solid narrow triangle',S1:'S1 · Open chevron, thin',S2:'S2 · Open chevron, rounded medium',S3:'S3 · Wide soft triangle with ombre'};
+  var out=''; ['S0','S1','S2','S3'].forEach(function(st){
+    var demo='<div style="display:flex;gap:18px;align-items:center;font-size:12px;margin-bottom:10px">'+
+      '<span class="up">'+caret(true,false,st)+'</span><span class="up">'+caret(true,true,st)+'</span><span class="down">'+caret(false,false,st)+'</span><span class="down">'+caret(false,true,st)+'</span></div>';
+    var big='<div style="display:flex;gap:22px;align-items:center;margin-bottom:12px;transform-origin:left;">'+[[1,0,'up'],[1,1,'up'],[0,0,'down'],[0,1,'down']].map(function(a){return '<span class="'+a[2]+'" style="display:inline-block;transform:scale(3);transform-origin:left center;width:42px">'+caret(!!a[0],!!a[1],st)+'</span>';}).join('')+'</div>';
+    var tbl='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">Δ</th><th class="n">2027</th></tr></thead><tbody>'+
+      [['Maria Allen','3.0',1,0,'3.5'],['Kelli Caderot','2.5',1,1,'3.5'],['Kelley Ferrence','3.5',0,0,'3.0']].map(function(r){var c=r[2]?'up':'down';
+        return '<tr><td class="nm"><a href="#">'+r[0]+'</a></td><td class="n">'+r[1]+'<span class="lt">C</span></td><td class="c"><span class="'+c+'">'+caret(!!r[2],!!r[3],st)+'</span></td><td class="n"><span class="'+c+'b">'+r[4]+'<span class="lt">C</span></span></td></tr>';}).join('')+'</tbody></table>';
+    out+='<div class="opt" style="flex:1 1 250px"><div class="optlabel"><span class="tag">'+names[st]+'</span></div><div class="frame">'+big+tbl+'</div></div>'; });
+  document.getElementById('carets').innerHTML=out; })();
 </script>
