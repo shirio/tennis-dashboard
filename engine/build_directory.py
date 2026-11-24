@@ -206,8 +206,9 @@ h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 # Directory page
 # ---------------------------------------------------------------------------
 
-_DH = ('<svg viewBox="0 0 10 9" width="9" height="8" fill="currentColor" aria-hidden="true" '
-       'style="vertical-align:-1px"><polygon points="0,9 5,1 10,9"/></svg>')
+_DH = ('<svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" '
+       'stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px">'
+       '<polygon points="1,10 6,1.5 11,10"/></svg>')
 
 
 def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
@@ -526,7 +527,7 @@ def _mdy(d: str) -> str:
 
 
 _HIST_COLS = [("date", "Date"), ("div", "Div"), ("team", "Team"), ("line", "Line"),
-              ("score", "Score"), ("sd", "ShiQ Δ"), ("partner", "Partner"), ("opp", "Opponents"),
+              ("sd", "ShiQ Δ"), ("score", "Score"), ("partner", "Partner"), ("opp", "Opponents"),
               ("oppteam", "Opp Team")]
 
 
@@ -576,8 +577,8 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
             f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-date">{_esc(date)}</td>'
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
             f'<td class="c-team">{_esc(r.get("my_team", ""))}</td><td class="c-line">{pill}</td>'
-            f'<td class="c-score"{res_tip}>{score}</td>'
             f'<td class="num c-sd">{_sq_delta(dlt)}</td>'
+            f'<td class="c-score"{res_tip}>{score}</td>'
             f'<td class="c-partner">{partners}</td><td class="c-opp">{opps}</td>'
             f'<td class="c-oppteam">{_esc(r.get("opp_team", ""))}</td></tr>')
 
@@ -715,7 +716,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden>{"".join(f'<label><input type="checkbox" data-c="{k}"> {lbl}</label>' for k, lbl in _HIST_COLS)}<div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th><th class="num c-sd" title="ShiQ change from this match" aria-label="ShiQ change from this match">{_DH}</th>
+<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-sd" title="ShiQ change from this match" aria-label="ShiQ change from this match">{_DH}</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
 <tbody>{"".join(body)}</tbody></table></div>
 </div>
@@ -732,7 +733,7 @@ document.querySelectorAll('.yr').forEach(function(b) {{
 }});
 var COUNTS = {json.dumps(counts, ensure_ascii=False)};
 (function() {{
-  var ALL = ['date','div','team','line','score','sd','partner','opp','oppteam'];
+  var ALL = ['date','div','team','line','sd','score','partner','opp','oppteam'];
   var DEF = {{date:1, div:1, line:1, score:1, sd:1, partner:1, opp:1}};
   var KEY = 'nvPlayerCols3';  // bumped when the defaults changed
   var tbl = document.querySelector('table.hist'), btn = document.getElementById('colbtn'),
