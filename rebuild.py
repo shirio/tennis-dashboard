@@ -26,6 +26,7 @@ from pathlib import Path
 from scrapers.scrape_tennislink import _compute_player_stats_from_scorecards
 from engine.normalize import normalize_all
 from engine.ratings import run_ratings
+from engine.bump import run_bumps
 from engine.build_html import build_dashboards, build_sectionals_page
 
 DATA_DIR = Path("data")
@@ -74,6 +75,9 @@ def main():
 
     # Unified cross-state ratings
     run_ratings()
+
+    # Bump indicator (USTA-style year-end estimate), written onto players.json
+    run_bumps()
 
     # Build per-state dashboards
     build_dashboards(states)
