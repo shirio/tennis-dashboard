@@ -94,6 +94,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   .card { padding: .5rem .7rem; }
   .colbar { display: flex; }
   .fn { display: none; }
+  .hist tr.cy .yy { display: none; }
   .c-partner .rt { display: block; }
   .c-score .set { display: block; }
   .sn { display: inline; }
@@ -134,7 +135,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-sd" title="ShiQ change from this match" aria-label="ShiQ change from this match"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-date">6/6/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-sd"></td><td class="c-score" title="Won by default, not counted in records"><em class="muted">default</em></td><td class="c-partner"><span class="pn"><a href="kelsey-spence.html"><span class="fn">Kelsey Spence</span><span class="sn">K. Spence</span></a> <span class="rt">3.33</span></span></td><td class="c-opp"><em class="muted">default</em></td><td class="c-oppteam">TPC</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-date">6/6<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-sd"></td><td class="c-score" title="Won by default, not counted in records"><em class="muted">default</em></td><td class="c-partner"><span class="pn"><a href="kelsey-spence.html"><span class="fn">Kelsey Spence</span><span class="sn">K. Spence</span></a> <span class="rt">3.33</span></span></td><td class="c-opp"><em class="muted">default</em></td><td class="c-oppteam">TPC</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {
@@ -148,6 +149,9 @@ document.querySelectorAll('.yr').forEach(function(b) {
   };
 });
 var COUNTS = {"all": "1 match · 0–0", "2026": "1 match · 0–0"};
+// Phone drops the year from dates in the current year.
+(function() { var cy = String(new Date().getFullYear());
+  document.querySelectorAll('.hist tbody tr').forEach(function(tr) { if (tr.dataset.y === cy) tr.classList.add('cy'); }); })();
 (function() {
   var ALL = ['date','div','team','line','sd','score','partner','opp','oppteam'];
   var DEF = {date:1, div:1, line:1, score:1, sd:1, partner:1, opp:1};

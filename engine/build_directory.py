@@ -573,8 +573,10 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         dq = r.get("dq") or []
         row_attr = f' class="dq" title="Invalid match: {_esc(", ".join(dq))} disqualified"' if dq else ""
         date = _mdy(r["date"])
+        md, _, yy = date.rpartition("/")
+        date_html = f'{_esc(md)}<span class="yy">/{_esc(yy)}</span>' if md else _esc(date)
         body.append(
-            f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-date">{_esc(date)}</td>'
+            f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-date">{date_html}</td>'
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
             f'<td class="c-team">{_esc(r.get("my_team", ""))}</td><td class="c-line">{pill}</td>'
             f'<td class="c-sd">{_sq_delta(dlt)}</td>'
@@ -678,6 +680,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
   .card {{ padding: .5rem .7rem; }}
   .colbar {{ display: flex; }}
   .fn {{ display: none; }}
+  .hist tr.cy .yy {{ display: none; }}
   .c-partner .rt {{ display: block; }}
   .c-score .set {{ display: block; }}
   .sn {{ display: inline; }}
@@ -732,6 +735,9 @@ document.querySelectorAll('.yr').forEach(function(b) {{
   }};
 }});
 var COUNTS = {json.dumps(counts, ensure_ascii=False)};
+// Phone drops the year from dates in the current year.
+(function() {{ var cy = String(new Date().getFullYear());
+  document.querySelectorAll('.hist tbody tr').forEach(function(tr) {{ if (tr.dataset.y === cy) tr.classList.add('cy'); }}); }})();
 (function() {{
   var ALL = ['date','div','team','line','sd','score','partner','opp','oppteam'];
   var DEF = {{date:1, div:1, line:1, score:1, sd:1, partner:1, opp:1}};
