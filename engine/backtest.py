@@ -11,6 +11,7 @@ judged against "not updating at all".
 Run (after rebuild.py, from the repo root):
     python3 -m engine.backtest
     python3 -m engine.backtest --json   # machine-readable
+    python3 -m engine.backtest --holdout  # baseline vs v8 vs v9, second half
 """
 from __future__ import annotations
 
@@ -88,6 +89,75 @@ def score_events(events, rating_fn: RatingFn) -> Score:
     return sc
 
 
+def fit_slope(gaps: list[float]) -> float:
+    """Logistic slope a for P(win) = 1/(1+exp(-a*gap)), max likelihood by grid.
+
+    ``gaps`` are winner-side minus loser-side strength differences.
+    """
+    best = (float("inf"), 1.0)
+    for i in range(1, 81):
+        a = i * 0.25
+        ll = sum(math.log1p(math.exp(-a * g)) for g in gaps)
+        best = min(best, (ll, a))
+    return best[1]
+
+
+def holdout(gaps_by_event: list[Optional[float]], n_events: int) -> dict:
+    """Fit a win curve on the first half of the season, score the second half.
+
+    Puts every model on the same probability footing, so the comparison is
+    about how well each one RANKS players, not about its own win table.
+    """
+    half = n_events // 2
+    train = [g for g in gaps_by_event[:half] if g is not None]
+    test = [g for g in gaps_by_event[half:] if g is not None]
+    a = fit_slope(train)
+    sc = Score()
+    for g in test:
+        sc.add(1.0 / (1.0 + math.exp(-a * g)))
+    out = sc.summary()
+    out["slope"] = a
+    return out
+
+
+def _gap(e, rating_fn) -> Optional[float]:
+    if not e.winner_keys or len(e.winner_keys) != len(e.loser_keys):
+        return None
+    w = [rating_fn(k, e) for k in e.winner_keys]
+    l = [rating_fn(k, e) for k in e.loser_keys]
+    if None in w or None in l:
+        return None
+    return sum(w) / len(w) - sum(l) / len(l)
+
+
+def run_holdout(players: list[dict]) -> dict:
+    """Second-half-of-season comparison: frozen baseline vs ShiQ v8 vs v9."""
+    from engine import ratings_v9 as V9
+    pbn, events = load_events(players)
+    events = [e for e in events if sum(V9.games_won(e.score)) > 0]
+    n = len(events)
+
+    def baseline(k, e):
+        return pbn[k].get("dynamic_rating_baseline")
+
+    def shiq_pre(k, e):
+        return pbn[k].get("rating_timeline_" + e.division.replace(".", ""), {}).get(e.date)
+
+    v9 = V9.run_v9(events, V9.baselines_from_players(players))
+    v9_gap = {id(e): g for e, g in v9.pre_match}
+    res = {
+        "baseline": holdout([_gap(e, baseline) for e in events], n),
+        "shiq_v8": holdout([_gap(e, shiq_pre) for e in events], n),
+        "shiq_v9": holdout([v9_gap.get(id(e)) for e in events], n),
+    }
+    for fmt, singles in (("singles", True), ("doubles", False)):
+        idx = [i for i, e in enumerate(events) if (len(e.winner_keys) == 1) == singles]
+        sub = [events[i] for i in idx]
+        res[f"shiq_v8_{fmt}"] = holdout([_gap(e, shiq_pre) for e in sub], len(sub))
+        res[f"shiq_v9_{fmt}"] = holdout([v9_gap.get(id(e)) for e in sub], len(sub))
+    return res
+
+
 def run(players: list[dict]) -> dict:
     pbn, events = load_events(players)
 
@@ -107,8 +177,21 @@ def run(players: list[dict]) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[1])
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--holdout", action="store_true",
+                    help="compare baseline / v8 / v9 on the second half of the season")
     args = ap.parse_args()
-    res = run(R._load(R.PLAYERS_JSON, []))
+    players = R._load(R.PLAYERS_JSON, [])
+    if args.holdout:
+        res = run_holdout(players)
+        if args.json:
+            print(json.dumps(res, indent=2))
+            return
+        print("Second half of season, win curve fitted on first half:")
+        for name, s in res.items():
+            print(f"  {name:18s} lines={s['n']:5d}  accuracy={s['accuracy']:.1%}  "
+                  f"brier={s['brier']:.4f}  logloss={s['logloss']:.4f}")
+        return
+    res = run(players)
     if args.json:
         print(json.dumps(res, indent=2))
         return
