@@ -25,9 +25,13 @@ Instead of re-scraping every team page from scratch, this:
 Usage:
     python3 diff_update.py              # do the diff scrape
     python3 diff_update.py --dry-run    # show diffs but don't fetch details
+
+On a machine with no display (e.g. a cloud session), the script re-launches
+itself under xvfb-run so the browser gets a virtual screen. USTA's login
+rejects true headless Chromium, so the browser always runs "headed".
 """
 from __future__ import annotations
-import argparse, json, os, re, sys
+import argparse, json, os, re, shutil, sys
 from pathlib import Path
 from typing import Optional
 from bs4 import BeautifulSoup
@@ -676,12 +680,28 @@ def _lookup_and_add_unknown_players(standings_30: dict, standings_35: dict) -> i
     return added
 
 
+def _ensure_display() -> None:
+    """Re-exec under xvfb-run when on Linux with no display (cloud/CI)."""
+    if not sys.platform.startswith("linux") or os.environ.get("DISPLAY"):
+        return
+    if os.environ.get("DIFF_UPDATE_XVFB"):
+        return  # already re-launched; let Playwright report any error
+    xvfb = shutil.which("xvfb-run")
+    if not xvfb:
+        print("  [warn] no display and xvfb-run not found; the browser will fail to open")
+        return
+    os.environ["DIFF_UPDATE_XVFB"] = "1"
+    print("  [display] no display found, re-launching under xvfb-run", flush=True)
+    os.execv(xvfb, [xvfb, "-a", sys.executable, *sys.argv])
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="Show diffs but don't fetch details")
     ap.add_argument("--state", default="NV",
                     help="State code to update (e.g. NV, CO, UT). Default: NV")
     args = ap.parse_args()
+    _ensure_display()
 
     state_code = args.state.upper()
     n_updated = run(dry_run=args.dry_run, state_code=state_code)
