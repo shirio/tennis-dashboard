@@ -55,9 +55,8 @@ th.delta, td.delta { text-align: center; padding-left: 4px; padding-right: 4px; 
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .lt { font-size: 10px; color: #aaa; margin-left: 2px; cursor: help; }
 .up { color: #27500A; }
-.stk { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; font-size: 9px; line-height: 1; }
-.stk i { font-style: normal; display: block; }
-.stk i + i { margin-top: -4px; }
+.caret { vertical-align: middle; }
+.caret.down { transform: scaleY(-1); }
 .down { color: #791F1F; }
 .more { margin: .8rem 0; padding: .35rem 1rem; border: 1px solid #ccc;
         border-radius: 20px; background: #fff; cursor: pointer; font-size: 12px; }
@@ -89,6 +88,14 @@ var TYPES = {"S": "Self-rate or Medical Appeal", "A": "Appeal", "C": "Computer",
 var PAGE = 300, shown = PAGE, sortK = '0', sortDir = 1, view = [];
 var sex = '';
 function cur(r) { return r[4] != null ? r[4] : r[2]; }
+// Stacked carets (like a fast-forward icon turned up/down): one per 0.5 level.
+function caret(up, n) {
+  var shapes = n >= 2 ? '<polygon points="0,14 5,7 10,14"/><polygon points="0,8 5,1 10,8"/>'
+                      : '<polygon points="0,11 5,4 10,11"/>';
+  var label = (up ? 'Up ' : 'Down ') + (n >= 2 ? 'two levels' : 'one level');
+  return '<svg class="caret ' + (up ? 'up' : 'down') + '" viewBox="0 0 10 15" width="10" height="15" role="img" aria-label="'
+    + label + '"><title>' + label + '</title><g fill="currentColor">' + shapes + '</g></svg>';
+}
 function delta(r) { return (r[2] != null && r[4] != null) ? Math.round((r[4] - r[2]) * 10) / 10 : 0; }
 function fmt(l) { return l == null ? '' : l.toFixed(1); }
 function ntrp(l, t) {
@@ -133,9 +140,7 @@ function render() {
   view.slice(0, shown).forEach(function(r) {
     // one arrow per 0.5 level moved: ▲ / ▲▲ up, ▼ / ▼▼ down
     var d = delta(r), n = Math.round(Math.abs(d) / 0.5), dh = '';
-    // arrows stack vertically (like a fast-forward icon turned up/down)
-    if (n) dh = '<span class="stk ' + (d > 0 ? 'up' : 'down') + '" title="' + (d > 0 ? 'Up ' : 'Down ') + Math.abs(d).toFixed(1) + '">'
-                + new Array(n + 1).join('<i>' + (d > 0 ? '▲' : '▼') + '</i>') + '</span>';
+    if (n) dh = caret(d > 0, n);
     var nm = r[7] ? '<a href="' + r[7] + '">' + esc(r[0]) + '</a>' : esc(r[0]);
     out.push('<tr><td>' + nm + '</td><td class="sex">' + (r[1] || '') + '</td><td class="num">' + ntrp(r[2], r[3])
       + '</td><td class="delta">' + dh + '</td><td class="num">' + ntrp(r[4], r[5])
