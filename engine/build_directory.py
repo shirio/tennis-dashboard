@@ -442,7 +442,6 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
     lvl, letter = info.get("cur_level", info.get("level")), info.get("cur_type", info.get("rating_type"))
     if lvl is None:
         lvl, letter = parse_ntrp(p.get("ntrp_rating"))
-    cur_year = info.get("cur_year")
     letter_tip = f' title="{_esc(RATING_TYPES.get(letter, ""))}"' if letter else ""
     usta_v = (f'{float(lvl):.1f}<span class="lt">{_esc(letter or "")}</span>' if lvl is not None else "—")
     base = p.get("dynamic_rating_baseline")
@@ -454,7 +453,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         shiq_sub = f'<span class="{dcls}">{d:+.2f}</span>'
     else:
         shiq_sub = "&nbsp;"
-    usta_sub = _esc(f"{cur_year} year-end") if cur_year else "&nbsp;"
+    usta_sub = _esc(info.get("cur_date", info.get("rating_date")) or "") or "&nbsp;"
 
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
@@ -467,7 +466,7 @@ body {{ background: #fff; }}
 .hdr h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .15rem; }}
 .hdr .loc {{ font-size: 12px; color: #888; }}
 .cards {{ display: flex; gap: 10px; flex-wrap: wrap; }}
-.card {{ background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
+.card {{ text-align: center; background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
         box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }}
 .card .l {{ font-size: 11px; color: #888; }}
 .card .v {{ font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.25; }}
@@ -509,8 +508,8 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
   <div class="who"><h1>{_esc(p["name"])}</h1>
     <div class="loc">{_esc(city_state)} · {_esc(gender)}</div></div>
   <div class="cards">
-    <div class="card"><div class="l">USTA</div><div class="v"{letter_tip}>{usta_v}</div><div class="s">{usta_sub}</div></div>
     <div class="card"><div class="l">Baseline</div><div class="v">{fmt2(base)}</div><div class="s">Dec 2025</div></div>
+    <div class="card"><div class="l">USTA</div><div class="v"{letter_tip}>{usta_v}</div><div class="s">{usta_sub}</div></div>
     <div class="card"><div class="l">ShiQ</div><div class="v">{fmt2(dyn)}</div><div class="s">{shiq_sub}</div></div>
   </div>
 </div>
@@ -583,7 +582,8 @@ def build_directory() -> dict:
         if href:
             info = dict(r)
             if r27.get("level") is not None:
-                info.update(cur_level=r27["level"], cur_type=r27.get("rating_type"), cur_year=YEAR_TO)
+                info.update(cur_level=r27["level"], cur_type=r27.get("rating_type"), cur_year=YEAR_TO,
+                            cur_date=r27.get("rating_date"))
             else:
                 info["cur_year"] = YEAR_FROM if not placeholder else None
             info_by_id[p["id"]] = info
