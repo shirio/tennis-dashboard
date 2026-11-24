@@ -240,7 +240,7 @@ td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 </style></head><body><div class="wrap">
 <div class="crumbs"><a href="index.html">Tennis Dashboard</a> › Nevada</div>
 <h1>Nevada Player Directory</h1>
-<p class="sub">Every player on USTA's Nevada NTRP list: {YEAR_FROM} year-end rating, {YEAR_TO} year-end rating once it's out, and our dynamic rating. {n_linked} players link to their match history.</p>
+<p class="sub">Every player on USTA's Nevada NTRP list: {YEAR_FROM} year-end rating, {YEAR_TO} year-end rating once it's out, and our ShiQ rating. {n_linked} players link to their match history.</p>
 {note}
 <div class="controls">
   <input type="search" id="q" placeholder="Search name…" aria-label="Search name">
@@ -256,7 +256,7 @@ td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 <thead><tr>
   <th data-k="0">Name</th><th data-k="1">Gender</th><th data-k="2">{YEAR_FROM}</th>
   <th data-k="d" class="delta" title="Change from {YEAR_FROM} to {YEAR_TO}">Δ</th>
-  <th data-k="4">{YEAR_TO}</th><th data-k="6" class="num">Dynamic</th>
+  <th data-k="4">{YEAR_TO}</th><th data-k="6" class="num">ShiQ</th>
 </tr></thead><tbody id="tb"></tbody></table></div>
 <button class="more" id="more" hidden>Show more</button>
 <div class="legend"><b>Rating types:</b>{legend}</div>
@@ -468,7 +468,7 @@ table.hist {{ border-collapse: collapse; font-size: 13px; width: 100%; }}
   <div class="kpis">
     <div class="kpi"><div class="l">Current NTRP</div><div class="v"{letter_tip}>{_esc(current)}</div></div>
     <div class="kpi"><div class="l">Baseline</div><div class="v">{fmt2(base)}</div></div>
-    <div class="kpi"><div class="l">Dynamic</div><div class="v">{fmt2(dyn)}</div></div>
+    <div class="kpi"><div class="l">ShiQ</div><div class="v">{fmt2(dyn)}</div></div>
   </div>
 </div>
 <div class="recs"><span class="yrs">{toggle}</span>{strip_html}</div>
