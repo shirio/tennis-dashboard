@@ -324,6 +324,39 @@ def _rating_span(curr, baseline, ntrp_str: str) -> str:
         return f'<span class="rn">{s}</span>'
 
 
+_BUMP_SORT = {"up": 2, "lean_up": 1, "hold": 0, "lean_down": -1, "down": -2,
+              "few_matches": -9, "unknown": -9}
+_BUMP_MARK = {"up": ("▲", "bu"), "lean_up": ("△", "bu"),
+              "down": ("▼", "bd"), "lean_down": ("▽", "bd")}
+
+
+def _bump_cell(p: dict) -> str:
+    """Bump indicator cell: caret for a projected USTA level change, hover for detail.
+
+    Solid caret = likely, outlined = leaning; blank = holds; dash = too few
+    matches. See engine/bump.py.
+    """
+    b = p.get("bump") or {}
+    call = b.get("call", "unknown")
+    sort = _BUMP_SORT.get(call, -9)
+    if call in _BUMP_MARK:
+        sym, cls = _BUMP_MARK[call]
+        tip = (f"{b.get('label')}: year-end estimate {b.get('estimate', 0):.2f} "
+               f"after {b.get('matches', 0)} matches")
+        if "strikes" in b:
+            tip += f", {b['strikes']} strike{'s' if b['strikes'] != 1 else ''}"
+        inner = f'<span class="{cls}">{sym}</span>'
+    elif call == "hold":
+        tip = (f"Holds: year-end estimate {b.get('estimate', 0):.2f} "
+               f"after {b.get('matches', 0)} matches")
+        inner = ""
+    else:
+        tip = b.get("label") or "No bump estimate"
+        inner = '<span class="muted">–</span>'
+    return (f"<td class='bump-cell' data-sort='{sort}' title='{_esc(tip)}'>"
+            f"{inner}</td>")
+
+
 def _global_diff_span(glob, div_rating) -> str:
     """Show global-vs-division diff as a muted ±0.XX value. Blank if same or missing."""
     if glob is None or div_rating is None:
@@ -870,13 +903,14 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
                     f"<td>{_esc(ntrp_r)}</td>"
                     f"<td>{_esc(_fmt_rating(baseline))}</td>"
                     f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
-                    f"<td style='white-space:nowrap'>{_esc(str(wl))}</td>"
+                    + _bump_cell(p)
+                    + f"<td style='white-space:nowrap'>{_esc(str(wl))}</td>"
                     f"<td>{_lines_pills_html(lines)}</td>"
                     + (f"<td class='notes-cell'>{pnotes}</td>" if show_notes else "")
                     + f"</tr>\n"
                 )
             if not rows:
-                _ncols = 7 if show_notes else 6
+                _ncols = 8 if show_notes else 7
                 rows = f"<tr><td colspan='{_ncols}' class='muted'>No players yet.</td></tr>"
 
             team_tabs += (
@@ -893,7 +927,8 @@ def _rosters_tab(subflights: list[dict], players: list[dict], ntrp: str = "",
                 f'<th class="sortable" onclick="sortRoster(1)" data-label="NTRP">NTRP</th>'
                 f'<th class="sortable" onclick="sortRoster(2)" data-label="Base">Base</th>'
                 f'<th class="sortable" onclick="sortRoster(3)" data-label="New">New</th>'
-                f'<th class="sortable" onclick="sortRoster(4)" data-label="W–L">W–L</th><th>Lines</th>'
+                f'<th class="sortable" onclick="sortRoster(4)" data-label="Bump" title="Projected USTA year-end move: ▲ likely up, △ leaning up, ▽ leaning down, ▼ likely down, – too few matches">Bump</th>'
+                f'<th class="sortable" onclick="sortRoster(5)" data-label="W–L">W–L</th><th>Lines</th>'
                 + ('<th>Notes</th>' if show_notes else '')
                 + f'</tr></thead><tbody>{rows}</tbody></table></div>\n'
             )
@@ -2061,7 +2096,7 @@ tr:last-child td { border-bottom: none; }
 .st-w { text-align: right; padding-right: 2px; padding-left: 6px; white-space: nowrap; font-size: 11px; width: 1.6rem; }
 .st-l { text-align: right; padding-left: 2px; padding-right: 10px; white-space: nowrap; font-size: 11px; color: #aaa; width: 1.6rem; }
 .st-table thead th[colspan] { text-align: center; }
-.rpane table td:nth-child(6), #ap-table td:nth-child(7) { white-space: nowrap; }
+.rpane table td:nth-child(7), #ap-table td:nth-child(7) { white-space: nowrap; }
 .rpane table th:nth-child(1) { white-space: nowrap; }
 .pname-cell { white-space: nowrap; }
 .muted { color: #aaa; font-size: 11px; }
@@ -2075,6 +2110,9 @@ tr:last-child td { border-bottom: none; }
 /* Ratings */
 .ru { color: #27500A; font-weight: 600; }
 .rd { color: #791F1F; }
+.bump-cell { text-align: center; white-space: nowrap; cursor: default; }
+.bu { color: #27500A; font-weight: 700; }
+.bd { color: #791F1F; font-weight: 700; }
 .rn { color: #888; }
 /* SF pill */
 .sf-pill { display: inline-block; padding: 0 5px; border-radius: 8px;
@@ -3817,12 +3855,13 @@ def _build_sectionals_rosters(
                 f"<td>{_esc(ntrp_r)}</td>"
                 f"<td>{_esc(_fmt_rating(baseline))}</td>"
                 f"<td>{_rating_span(curr, baseline, ntrp_r)}</td>"
-                f"<td style='white-space:nowrap'>{_esc(str(wl))}</td>"
+                + _bump_cell(p)
+                + f"<td style='white-space:nowrap'>{_esc(str(wl))}</td>"
                 f"<td>{_lines_pills_html(lines)}</td>"
                 f"</tr>\n"
             )
         if not rows:
-            rows = "<tr><td colspan='6' class='muted'>No players yet.</td></tr>"
+            rows = "<tr><td colspan='7' class='muted'>No players yet.</td></tr>"
 
         rpanes += (
             f'<div id="{tid}" class="rpane{active}">'
@@ -3832,7 +3871,8 @@ def _build_sectionals_rosters(
             f'<th class="sortable" onclick="sortRoster(1)" data-label="NTRP">NTRP</th>'
             f'<th class="sortable" onclick="sortRoster(2)" data-label="Base">Base</th>'
             f'<th class="sortable" onclick="sortRoster(3)" data-label="New">New</th>'
-            f'<th class="sortable" onclick="sortRoster(4)" data-label="W–L">W–L</th><th>Lines</th>'
+            f'<th class="sortable" onclick="sortRoster(4)" data-label="Bump" title="Projected USTA year-end move: ▲ likely up, △ leaning up, ▽ leaning down, ▼ likely down, – too few matches">Bump</th>'
+            f'<th class="sortable" onclick="sortRoster(5)" data-label="W–L">W–L</th><th>Lines</th>'
             f'</tr></thead><tbody>{rows}</tbody></table></div>\n'
         )
         first = False
