@@ -202,8 +202,8 @@ tbody tr:hover td { background: #faf9f6; }
         <div class="frame w390" id="m1"></div>
       </div>
       <div class="opt phone">
-        <div class="optlabel"><span class="tag">Δ first</span></div>
-        <p class="why" style="max-width:390px">Same columns with the ShiQ change moved to the far left. It becomes a quick green/red strip down the edge, but it sits apart from the match it came from.</p>
+        <div class="optlabel"><span class="tag">ShiQ first, change underneath</span></div>
+        <p class="why" style="max-width:390px">Far-left column shows her ShiQ after each match, with the change in small colored type under it. Reads as a running rating down the edge.</p>
         <div class="frame w390" id="m1b"></div>
       </div>
       <div class="opt phone">
@@ -305,15 +305,18 @@ function ppl(list,short,rat){return list.map(function(x){return '<a href="#" cla
 function scoreHtml(sc,res,stack){ // stored winner-first; show player-first (her games, then opponents'). Color sets matching the result.
   return sc.split(' ').map(function(st){ var g=st.split('-').map(Number); if(res==='L') g=[g[1],g[0]];
     var t=g[0]+'-'+g[1], hit=res==='W'?g[0]>g[1]:g[0]<g[1]; return hit?'<span class="'+(res==='W'?'upb':'downb')+'">'+t+'</span>':t; }).join(stack?'<br>':' '); }
+function sstack(m){ var i=MX.indexOf(m), after=i<MX.length-1?+MX[i+1][4]:3.08, d=Math.round((after-(+m[4]))*100)/100;
+  var t=d?((d>0?'+':'−')+Math.abs(d).toFixed(2).replace(/^0/,'')):'0';
+  return '<span style="font-variant-numeric:tabular-nums">'+after.toFixed(2)+'</span><br><span class="'+(d>0?'up':d<0?'down':'r')+'" style="font-size:9.5px">'+t+'</span>'; }
 function sdelta(m){ var i=MX.indexOf(m), nxt=i<MX.length-1?+MX[i+1][4]:3.08, d=Math.round((nxt-(+m[4]))*100)/100;
   if(!d) return '<span class="r">0</span>'; var t=(d>0?'+':'−')+Math.abs(d).toFixed(2).replace(/^0/,''); return '<span class="'+(d>0?'up':'down')+'b">'+t+'</span>'; }
-function mxTable(on,short,rat,cols){ cols=cols||COLS;
+function mxTable(on,short,rat,cols,stack){ cols=cols||COLS;
   var h='<table class="mx mh"><thead><tr>';
-  cols.forEach(function(c){ if(!on[c[0]])return; var cl=/^(date|div|line|pit|score)$/.test(c[0])?' class="c"':''; h+='<th'+cl+(c[0]==='pit'?' title="ShiQ change from this match"':'')+'>'+(c[0]==='pit'?DH:c[1])+'</th>'; });
+  cols.forEach(function(c){ if(!on[c[0]])return; var cl=/^(date|div|line|pit|score)$/.test(c[0])?' class="c"':''; h+='<th'+cl+(c[0]==='pit'?' title="'+(stack?'ShiQ after this match, and the change':'ShiQ change from this match')+'"':'')+'>'+(c[0]==='pit'?(stack?'ShiQ':DH):c[1])+'</th>'; });
   h+='</tr></thead><tbody>';
   MX.forEach(function(m){ h+='<tr>';
     var cells={date:'<td class="c">'+m[0]+'</td>',div:'<td class="c"><span class="dv">'+m[1]+'</span></td>',team:'<td>'+m[2]+'</td>',line:'<td class="c"><span class="lp '+m[3].toLowerCase()+'">'+m[3]+'</span></td>',
-      pit:'<td class="c">'+sdelta(m)+'</td>',r:'<td class="c '+m[5]+'">'+m[5]+'</td>',score:'<td class="sc c">'+scoreHtml(m[6],m[5],short)+'</td>',partner:'<td class="pt">'+(short?m[7].map(function(x){return '<a href="#" class="short-nm">'+shortN(x[0])+'</a><br><span class="r">'+x[1]+'</span>';}).join('<br>'):ppl(m[7],short,rat))+'</td>',
+      pit:'<td class="c">'+(stack?sstack(m):sdelta(m))+'</td>',r:'<td class="c '+m[5]+'">'+m[5]+'</td>',score:'<td class="sc c">'+scoreHtml(m[6],m[5],short)+'</td>',partner:'<td class="pt">'+(short?m[7].map(function(x){return '<a href="#" class="short-nm">'+shortN(x[0])+'</a><br><span class="r">'+x[1]+'</span>';}).join('<br>'):ppl(m[7],short,rat))+'</td>',
       opp:'<td class="opp">'+ppl(m[8],short,short||rat)+'</td>',oppteam:'<td>'+m[9]+'</td>'};
     cols.forEach(function(c){ if(on[c[0]]) h+=cells[c[0]]; }); h+='</tr>'; });
   return h+'</tbody></table>';
@@ -335,5 +338,5 @@ document.getElementById('m3').innerHTML=phoneHead()+'<div class="colbar"><span c
 
 
 (function(){ var c2=[COLS[4]].concat(COLS.filter(function(c){return c[0]!=='pit';}));
-  document.getElementById('m1b').innerHTML=phoneHead()+'<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▾</button></div>'+mxTable(DEF1,true,false,c2); })();
+  document.getElementById('m1b').innerHTML=phoneHead()+'<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▾</button></div>'+mxTable(DEF1,true,false,c2,true); })();
 </script>
