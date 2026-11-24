@@ -120,14 +120,9 @@ tbody tr:hover td { background: #faf9f6; }
     </div>
     <div class="row" style="margin-top:16px">
       <div class="opt">
-        <div class="optlabel"><span class="tag">A · House style</span><span class="rec">Recommended</span></div>
+        <div class="optlabel"><span class="tag">A · House style</span><span class="rec">Chosen</span></div>
         <p class="why">Pill filters like the division tabs, content-fit table, no row rules, right-aligned tabular numbers, letter as a small suffix with a hover. One Rating dropdown that always filters on the current rating (2026 now, 2027 after Dec 2). No Movers or Has matches toggles; sort Δ or ShiQ instead.</p>
         <div class="frame" id="optA"></div>
-      </div>
-      <div class="opt">
-        <div class="optlabel"><span class="tag">B · A + level band</span></div>
-        <p class="why">Adds a small track for where ShiQ sits inside the 2026 level's range (3.0 = 2.51–3.00). Green past the top, red below the bottom. Useful for spotting likely movers, but it edges toward the projections you dropped.</p>
-        <div class="frame" id="optB"></div>
       </div>
     </div>
   </section>
@@ -223,7 +218,6 @@ document.getElementById('today').innerHTML =
  '<table class="oldtable" style="width:100%"><thead><tr><th>Name ▲</th><th>Gender</th><th>2026</th><th>Δ</th><th>2027</th><th style="text-align:right">Dynamic</th></tr></thead><tbody>'+
  R.slice(0,5).map(function(r){return '<tr><td class="nm">'+nm(r)+'</td><td>'+r[1]+'</td><td>'+r[2].toFixed(1)+' <span style="border-bottom:1px dotted #aaa">'+r[3]+'</span></td><td></td><td></td><td style="text-align:right">'+(r[4]==null?'':r[4].toFixed(2))+'</td></tr>';}).join('')+'</tbody></table>';
 document.getElementById('optA').innerHTML = head()+filters()+'<div class="count">2,299 players</div>'+tableA(R);
-document.getElementById('optB').innerHTML = head()+filters()+'<div class="count">2,299 players</div>'+tableA(R,{band:1});
 document.getElementById('phone').innerHTML = head()+filters(1)+'<div class="count">2,299 players</div>'+tableA(R.slice(0,9),{phone:1});
 document.getElementById('l1').innerHTML = tableA([R[1],R[6],R[7],R[9]]);
 
