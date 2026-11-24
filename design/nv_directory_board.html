@@ -155,14 +155,9 @@ tbody tr:hover td { background: #faf9f6; }
     <h2>4 · Rating letter</h2>
     <div class="row">
       <div class="opt">
-        <div class="optlabel"><span class="tag">L1 · Every letter, small gray</span><span class="rec">Recommended</span></div>
+        <div class="optlabel"><span class="tag">L1 · Every letter, small gray</span><span class="rec">Chosen</span></div>
         <p class="why">Consistent; nothing implied by absence. Hover names the type.</p>
         <div class="frame" id="l1"></div>
-      </div>
-      <div class="opt">
-        <div class="optlabel"><span class="tag">L2 · Hide C, show the rest</span></div>
-        <p class="why">76% are C, so S, A, M, and T stand out. Risk: a bare "3.0" could be read as unknown.</p>
-        <div class="frame" id="l2"></div>
       </div>
     </div>
   </section>
@@ -228,7 +223,6 @@ document.getElementById('optA').innerHTML = head()+filters()+'<div class="count"
 document.getElementById('optB').innerHTML = head()+filters()+'<div class="count">2,299 players</div>'+tableA(R,{band:1});
 document.getElementById('phone').innerHTML = head()+filters(1)+'<div class="count">2,299 players</div>'+tableA(R.slice(0,9),{phone:1});
 document.getElementById('l1').innerHTML = tableA([R[1],R[6],R[7],R[9]]);
-document.getElementById('l2').innerHTML = tableA([R[1],R[6],R[7],R[9]],{letter:"hideC"});
 
 // Δ demos: 2027 values are invented to show up/down/same.
 var M = [["Maria Allen",3.0,"C",3.5,"C",3.3755],["Kelli Caderot",2.5,"S",3.5,"C",2.193],["Melissa Kwong-Blais",3.5,"C",4.0,"C",3.5794],["Francine Mazza",3.0,"C",3.0,"C",2.8228],["Kelley Ferrence",3.5,"C",3.0,"C",3.3152]];
