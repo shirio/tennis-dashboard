@@ -408,7 +408,7 @@ function render() {{
   var out = [];
   view.slice(0, shown).forEach(function(r) {{
     var nm = r[3] ? '<a href="' + r[3] + '">' + esc(r[0]) + '</a>' : esc(r[0]);
-    var h = '<tr><td class="c-n">' + nm + '</td><td class="c-s sex">' + (r[1] || '') + '</td>';
+    var h = '<tr><td class="c-n" title="' + esc(r[0]) + '">' + nm + '</td><td class="c-s sex">' + (r[1] || '') + '</td>';
     for (var i = 0; i < YEARS.length; i++) {{
       var d = i ? delta(r, i) : 0;
       if (i) {{
@@ -447,8 +447,8 @@ function render() {{
   function setOpen(v) {{ menu.hidden = !v; btn.setAttribute('aria-expanded', v); btn.textContent = v ? 'Columns ▴' : 'Columns ▾'; }}
   btn.onclick = function(e) {{ e.stopPropagation(); setOpen(menu.hidden); }};
   menu.addEventListener('change', function(e) {{ var c = e.target.dataset.c; if (!c) return;
-    on[c] = e.target.checked ? 1 : 0; if (c === 's') on._s = 1; applyCols(); save(); render(); }});
-  document.getElementById('colreset').onclick = function() {{ on = Object.assign({{}}, DEF); applyCols(); render();
+    on[c] = e.target.checked ? 1 : 0; if (c === 's') on._s = 1; applyCols(); save(); render(); if (lockW) fitWidths(); }});
+  document.getElementById('colreset').onclick = function() {{ on = Object.assign({{}}, DEF); applyCols(); render(); if (lockW) fitWidths();
     try {{ localStorage.removeItem(KEY); }} catch (e) {{}} }};
   document.addEventListener('click', function(e) {{ if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) setOpen(false); }});
   applyCols();
@@ -472,6 +472,39 @@ document.querySelectorAll('th[data-k]').forEach(function(th) {{
     apply();
   }};
 }});
+// Lock column widths: measure every column over ALL rows once (all columns on,
+// every header showing a sort arrow), then pin those as min-widths so sorting,
+// filtering or paging never moves the columns. On a narrow screen the Name
+// column is capped to the space left over, and long names get an ellipsis.
+var lockW = null;
+function fitWidths() {{
+  var tbl = document.getElementById('tbl'), ths = tbl.querySelectorAll('th[data-k]');
+  if (!lockW) {{
+    var keepOn = on, keepCls = tbl.className;
+    on = {{}}; COLS.forEach(function(k) {{ on[k] = 1; }});
+    tbl.className = 'show-s';
+    ths.forEach(function(th) {{ th.classList.add('sorted', 'desc'); }});
+    view = ROWS.slice(); shown = ROWS.length; render();
+    lockW = {{}};
+    ths.forEach(function(th) {{ lockW[th.dataset.k] = Math.ceil(th.getBoundingClientRect().width); }});
+    ths.forEach(function(th) {{ th.classList.remove('sorted', 'desc'); }});
+    on = keepOn; tbl.className = keepCls; shown = PAGE;
+  }}
+  var others = 0;
+  ths.forEach(function(th) {{
+    th.style.boxSizing = 'border-box';
+    if (th.dataset.k !== 'n') {{ th.style.minWidth = lockW[th.dataset.k] + 'px'; if (th.offsetParent) others += lockW[th.dataset.k]; }}
+  }});
+  var room = tbl.parentNode.clientWidth - others;
+  var nw = Math.max(110, Math.min(lockW.n, room));
+  var thn = tbl.querySelector('th[data-k="n"]');
+  thn.style.minWidth = thn.style.width = thn.style.maxWidth = nw + 'px';
+  document.getElementById('nmcap').textContent = nw < lockW.n
+    ? '#tbl td.c-n {{ max-width: ' + nw + 'px; overflow: hidden; text-overflow: ellipsis; }}' : '';
+}}
+var nmcap = document.createElement('style'); nmcap.id = 'nmcap'; document.head.appendChild(nmcap);
+fitWidths();
+window.addEventListener('resize', fitWidths);
 document.querySelector('th[data-k="n"]').classList.add('sorted');
 apply();
 </script></body></html>
@@ -851,14 +884,15 @@ def _bump_tip(b: dict) -> str:
 
 
 def _bump_cell_data(b):
-    """[symbol, css class, sort key, tooltip] for the directory, or None."""
+    """[symbol, css class, sort key, tooltip] for the directory, or None when
+    there is no up/down prediction."""
     if not b:
         return None
     call = b.get("call", "unknown")
-    sym, cls = _BUMP_MARK.get(call, ("", ""))
-    if call in ("few_matches", "unknown"):
-        sym, cls = "–", "muted"
-    return [sym, cls, _BUMP_SORT.get(call, -9), _bump_tip(b)]
+    if call not in _BUMP_MARK:  # holds, too few matches, unknown: empty cell, sorts last
+        return None
+    sym, cls = _BUMP_MARK[call]
+    return [sym, cls, _BUMP_SORT[call], _bump_tip(b)]
 
 
 def _nv_bumps(players: list[dict], links: dict, usta: list[dict]) -> dict[str, dict]:
