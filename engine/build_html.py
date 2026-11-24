@@ -1113,6 +1113,8 @@ def _traverse_match_histories(
                             "partners": partners, "partner_r": partner_r_list,
                             "opps": opps, "opp_r": opp_r_list,
                             "opp_team": opp_team,
+                            "my_team": (m_home_team if player_team == m_home_team.lower()
+                                        else m_away_team),
                             "sw": sw, "sl": sl, "gw": gw, "gl": gl,
                             # Court had a disqualified player — not a valid competitive
                             # match. "dq" lists who; "self_dq" flags whether THIS player
@@ -1156,61 +1158,13 @@ def _traverse_match_histories(
     return player_histories, player_stats
 
 
-def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
-                 other_subflights: list[dict] = None,
-                 is_sectionals: bool = False,
-                 all_players_pool: list[dict] = None,
-                 sf_display: dict | None = None,
-                 state_code: str = "",
-                 case_map: dict | None = None) -> str:
-    _sfx = ntrp.replace(".", "") if ntrp else ""
-    other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
-    _other_sfx = other_ntrp.replace(".", "")
-    sf_display = sf_display or {}
+def _make_pit_rating(_pool: list[dict], _sfx: str, _other_sfx: str):
+    """Build a point-in-time rating lookup: pit(nkey, match_date, div_sfx) -> "3.12".
 
-    # Build team → subflight column label lookup (keyed uppercase for case-insensitive match)
-    # Don't let "Championships" override a team's regular-season subflight
-    team_to_sf: dict[str, str] = {}
-    team_to_sf_raw: dict[str, str] = {}
-    for sf_obj in (subflights or []):
-        raw_lbl = sf_obj.get("flight_label", "")
-        _, col_lbl, _ = sf_display.get(raw_lbl, (raw_lbl, raw_lbl, ""))
-        for t in sf_obj.get("teams", []):
-            tn = t.get("team_name", "").upper()
-            if tn not in team_to_sf or not raw_lbl.lower().startswith("championships"):
-                team_to_sf[tn] = col_lbl
-                team_to_sf_raw[tn] = raw_lbl
-
-    def _in_ntrp(p):
-        return _player_in_division(p, ntrp)
-
-    div_players = [p for p in players if _in_ntrp(p)]
-    div_players.sort(
-        key=lambda p: -(p.get(f"rating_{_sfx}") or
-                        p.get("current_division_rating") or
-                        p.get("dynamic_rating_baseline") or 0)
-    )
-
-    # ── Build per-player match histories from both divisions ──────────────────
-    _pool = all_players_pool if all_players_pool else players
-    # Detect ambiguous names in pool for state-qualified key lookups
-    _name_counts_pool: dict[str, int] = {}
-    for _pp in _pool:
-        _nk = _nkey(_pp.get("name", ""))
-        if _nk:
-            _name_counts_pool[_nk] = _name_counts_pool.get(_nk, 0) + 1
-    _ambiguous_pool = {k for k, c in _name_counts_pool.items() if c > 1}
-
-    def _player_history_key(p: dict) -> str:
-        """Key used to look up this player's history/stats (state-qualified if ambiguous)."""
-        nk = _nkey(p.get("name", ""))
-        if nk in _ambiguous_pool:
-            st = (p.get("state") or "").lower()
-            return f"{st}::{nk}" if st else nk
-        return nk
-    player_histories, player_stats = _traverse_match_histories(
-        _pool, ntrp, subflights, other_subflights, state_code=state_code)
-
+    Shared by the state dashboards' All Players tab and the NV player pages so
+    both show the same pre-match rating. Timelines are keyed by _nkey(name);
+    _sfx/_other_sfx set which division's final rating wins as the last fallback.
+    """
     # ── Rating timeline lookups (for point-in-time rating in match history) ──
     # Keyed nkey -> sfx -> {date: rating} (NOT flat-merged — see _ap_pit_rating)
     _tl_pre: dict[str, dict[str, dict[str, float]]] = {}
@@ -1336,6 +1290,73 @@ def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
             _, latest_v = max(all_prior, key=lambda kv: _date_sort_key(kv[0]))
             return f"{latest_v - delta:.2f}"
         return _tl_base.get(nkey, "") or _tl_final.get(nkey, "")
+
+    def _ap_post_rating(nkey: str, match_date: str, rec_sfx: str):
+        """Rating right after this match (de-levered), or None if the engine has no
+        post-match entry for this player, division and date."""
+        v = _tl_post.get(nkey, {}).get(rec_sfx, {}).get(match_date)
+        return None if v is None else v - _lever3_delta(nkey)
+
+    _ap_pit_rating.post = _ap_post_rating
+    return _ap_pit_rating
+
+
+def _players_tab(players: list[dict], ntrp: str, subflights: list[dict] = None,
+                 other_subflights: list[dict] = None,
+                 is_sectionals: bool = False,
+                 all_players_pool: list[dict] = None,
+                 sf_display: dict | None = None,
+                 state_code: str = "",
+                 case_map: dict | None = None) -> str:
+    _sfx = ntrp.replace(".", "") if ntrp else ""
+    other_ntrp = "3.5" if ntrp == "3.0" else "3.0"
+    _other_sfx = other_ntrp.replace(".", "")
+    sf_display = sf_display or {}
+
+    # Build team → subflight column label lookup (keyed uppercase for case-insensitive match)
+    # Don't let "Championships" override a team's regular-season subflight
+    team_to_sf: dict[str, str] = {}
+    team_to_sf_raw: dict[str, str] = {}
+    for sf_obj in (subflights or []):
+        raw_lbl = sf_obj.get("flight_label", "")
+        _, col_lbl, _ = sf_display.get(raw_lbl, (raw_lbl, raw_lbl, ""))
+        for t in sf_obj.get("teams", []):
+            tn = t.get("team_name", "").upper()
+            if tn not in team_to_sf or not raw_lbl.lower().startswith("championships"):
+                team_to_sf[tn] = col_lbl
+                team_to_sf_raw[tn] = raw_lbl
+
+    def _in_ntrp(p):
+        return _player_in_division(p, ntrp)
+
+    div_players = [p for p in players if _in_ntrp(p)]
+    div_players.sort(
+        key=lambda p: -(p.get(f"rating_{_sfx}") or
+                        p.get("current_division_rating") or
+                        p.get("dynamic_rating_baseline") or 0)
+    )
+
+    # ── Build per-player match histories from both divisions ──────────────────
+    _pool = all_players_pool if all_players_pool else players
+    # Detect ambiguous names in pool for state-qualified key lookups
+    _name_counts_pool: dict[str, int] = {}
+    for _pp in _pool:
+        _nk = _nkey(_pp.get("name", ""))
+        if _nk:
+            _name_counts_pool[_nk] = _name_counts_pool.get(_nk, 0) + 1
+    _ambiguous_pool = {k for k, c in _name_counts_pool.items() if c > 1}
+
+    def _player_history_key(p: dict) -> str:
+        """Key used to look up this player's history/stats (state-qualified if ambiguous)."""
+        nk = _nkey(p.get("name", ""))
+        if nk in _ambiguous_pool:
+            st = (p.get("state") or "").lower()
+            return f"{st}::{nk}" if st else nk
+        return nk
+    player_histories, player_stats = _traverse_match_histories(
+        _pool, ntrp, subflights, other_subflights, state_code=state_code)
+
+    _ap_pit_rating = _make_pit_rating(_pool, _sfx, _other_sfx)
 
     # ── Build HTML rows ───────────────────────────────────────────────────────
     rows = ""

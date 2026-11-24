@@ -27,6 +27,7 @@ from scrapers.scrape_tennislink import _compute_player_stats_from_scorecards
 from engine.normalize import normalize_all
 from engine.ratings import run_ratings
 from engine.build_html import build_dashboards, build_sectionals_page
+from engine.build_directory import build_directory
 
 DATA_DIR = Path("data")
 REGIONS_JSON = DATA_DIR / "regions.json"
@@ -80,6 +81,10 @@ def main():
 
     # Build sectionals comparison page
     build_sectionals_page()
+
+    # Nevada player directory + per-player match-history pages
+    if "NV" in states:
+        build_directory()
 
     print(f"\nDone! Dashboards rebuilt for {', '.join(states)}.")
 
