@@ -63,7 +63,9 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 .hist th, .hist td { padding: .3rem .6rem; text-align: left; vertical-align: middle; white-space: nowrap; }
 .hist th:first-child, .hist td:first-child { padding-left: 0; }
 .hist th { font-size: 11px; color: #888; font-weight: 600; }
-.hist .c-date, .hist .c-div, .hist .c-line, .hist .c-score, .hist th.c-sd, .hist td.c-sd { text-align: center; }
+.hist .c-date, .hist .c-div, .hist .c-line, .hist .c-score, .hist .c-sq { text-align: center; }
+.hist td.c-sq { line-height: 1.2; }
+.sq-after { display: block; color: #aaa; font-size: 9.5px; font-weight: 400; font-variant-numeric: tabular-nums; }
 .hist th.num, .hist td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
@@ -74,7 +76,6 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 .sd-up { color: #27500A; font-weight: 600; }
 .sd-down { color: #791F1F; font-weight: 600; }
 .sd0 { color: #aaa; }
-.hist td.c-sd { color: inherit; }
 .set.sl { color: #791F1F; font-weight: 600; }
 .sn { display: none; }
 .colbar { display: none; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }
@@ -102,7 +103,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   table.hist { width: 100%; font-size: 11px; }
   .hist .line-pill, .hist .dp { padding: 1px 5px; }
   .hist th, .hist td { padding: 5px 2px; }
-  .hist .c-date { padding-left: 0; }
+  .hist .c-sq { padding-left: 0; }
   .hist .c-opp, .hist .c-oppteam { padding-right: 0; }
   .hist td.c-partner, .hist td.c-opp { white-space: normal; }
   .hist .pn { white-space: nowrap; }
@@ -112,7 +113,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   .hist.h-div .c-div { display: none; }
   .hist.h-team .c-team { display: none; }
   .hist.h-line .c-line { display: none; }
-  .hist.h-sd .c-sd { display: none; }
+  .hist.h-sq .c-sq { display: none; }
   .hist.h-score .c-score { display: none; }
   .hist.h-partner .c-partner { display: none; }
   .hist.h-opp .c-opp { display: none; }
@@ -131,11 +132,11 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 <div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">Overall</span><span class="stat-v">1–2</span><span class="tipbox"><table><tr><td>2026</td><td>1–2</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">1–2</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>1–2</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">1–2</span><span class="tipbox"><table><tr><td>3.0</td><td>1–2</td></tr></table></span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">Overall</span><span class="stat-v">1–2</span><span class="tipbox"><table><tr><td>2026</td><td>1–2</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">1–2</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>1–2</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">1–2</span><span class="tipbox"><table><tr><td>3.0</td><td>1–2</td></tr></table></span></span></div></div>
 <div class="colbar"><span class="count" id="cnt">3 matches · 1–2</span>
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
-<div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="date"> Date</label><label><input type="checkbox" data-c="div"> Div</label><label><input type="checkbox" data-c="team"> Team</label><label><input type="checkbox" data-c="line"> Line</label><label><input type="checkbox" data-c="sd"> ShiQ Δ</label><label><input type="checkbox" data-c="score"> Score</label><label><input type="checkbox" data-c="partner"> Partner</label><label><input type="checkbox" data-c="opp"> Opponents</label><label><input type="checkbox" data-c="oppteam"> Opp Team</label><div class="reset" id="colreset">Reset</div></div></div>
+<div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="sq"> ShiQ</label><label><input type="checkbox" data-c="date"> Date</label><label><input type="checkbox" data-c="div"> Div</label><label><input type="checkbox" data-c="team"> Team</label><label><input type="checkbox" data-c="line"> Line</label><label><input type="checkbox" data-c="score"> Score</label><label><input type="checkbox" data-c="partner"> Partner</label><label><input type="checkbox" data-c="opp"> Opponents</label><label><input type="checkbox" data-c="oppteam"> Opp Team</label><div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-sd" title="ShiQ change from this match" aria-label="ShiQ change from this match"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th class="c-score">Score</th>
+<th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-date">3/21<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #2</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-sd"><span class="sd-down">−.04</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">1-6</span></td><td class="c-partner"><span class="pn"><a href="elizabeth-abatangelo.html"><span class="fn">Elizabeth Abatangelo</span><span class="sn">E. Abatangelo</span></a> <span class="rt">2.74</span></span></td><td class="c-opp"><span class="pn"><a href="heather-rosenthal.html"><span class="fn">Heather Rosenthal</span><span class="sn">H. Rosenthal</span></a> <span class="rt">2.81</span></span><br><span class="pn"><a href="cynthia-lau.html"><span class="fn">Cynthia Lau</span><span class="sn">C. Lau</span></a> <span class="rt">2.69</span></span></td><td class="c-oppteam">ANTHEM CC</td></tr><tr data-y="2026"><td class="c-date">4/11<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #2</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-sd"><span class="sd-up">+.06</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">5-7</span></td><td class="c-partner"><span class="pn"><a href="kathryn-wilson.html"><span class="fn">Kathryn Wilson</span><span class="sn">K. Wilson</span></a> <span class="rt">2.72</span></span></td><td class="c-opp"><span class="pn"><a href="jeralyn-marchesi.html"><span class="fn">Jeralyn Marchesi</span><span class="sn">J. Marchesi</span></a> <span class="rt">3.19</span></span><br><span class="pn"><a href="meghan-arnold.html"><span class="fn">Meghan Arnold</span><span class="sn">M. Arnold</span></a> <span class="rt">2.60</span></span></td><td class="c-oppteam">TPC</td></tr><tr data-y="2026"><td class="c-date">5/16<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #2</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-sd"><span class="sd-up">+.03</span></td><td class="c-score"><span class="set sw">6-1</span> <span class="set">2-6</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="meekyoung-lee.html"><span class="fn">Meekyoung Lee</span><span class="sn">M. Lee</span></a> <span class="rt">2.65</span></span></td><td class="c-opp"><span class="pn"><a href="ann-marie-weaver.html"><span class="fn">ANN MARIE WEAVER</span><span class="sn">A. WEAVER</span></a> <span class="rt">2.82</span></span><br><span class="pn"><a href="chelsi-grady.html"><span class="fn">Chelsi Grady</span><span class="sn">C. Grady</span></a> <span class="rt">3.01</span></span></td><td class="c-oppteam">ANTHEM CC</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.04</span><span class="sq-after">2.92</span></td><td class="c-date">3/21<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #2</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">1-6</span></td><td class="c-partner"><span class="pn"><a href="elizabeth-abatangelo.html"><span class="fn">Elizabeth Abatangelo</span><span class="sn">E. Abatangelo</span></a> <span class="rt">2.74</span></span></td><td class="c-opp"><span class="pn"><a href="heather-rosenthal.html"><span class="fn">Heather Rosenthal</span><span class="sn">H. Rosenthal</span></a> <span class="rt">2.81</span></span><br><span class="pn"><a href="cynthia-lau.html"><span class="fn">Cynthia Lau</span><span class="sn">C. Lau</span></a> <span class="rt">2.69</span></span></td><td class="c-oppteam">ANTHEM CC</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.06</span><span class="sq-after">2.98</span></td><td class="c-date">4/11<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #2</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">5-7</span></td><td class="c-partner"><span class="pn"><a href="kathryn-wilson.html"><span class="fn">Kathryn Wilson</span><span class="sn">K. Wilson</span></a> <span class="rt">2.72</span></span></td><td class="c-opp"><span class="pn"><a href="jeralyn-marchesi.html"><span class="fn">Jeralyn Marchesi</span><span class="sn">J. Marchesi</span></a> <span class="rt">3.19</span></span><br><span class="pn"><a href="meghan-arnold.html"><span class="fn">Meghan Arnold</span><span class="sn">M. Arnold</span></a> <span class="rt">2.60</span></span></td><td class="c-oppteam">TPC</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.03</span><span class="sq-after">3.01</span></td><td class="c-date">5/16<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #2</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sw">6-1</span> <span class="set">2-6</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="meekyoung-lee.html"><span class="fn">Meekyoung Lee</span><span class="sn">M. Lee</span></a> <span class="rt">2.65</span></span></td><td class="c-opp"><span class="pn"><a href="ann-marie-weaver.html"><span class="fn">ANN MARIE WEAVER</span><span class="sn">A. WEAVER</span></a> <span class="rt">2.82</span></span><br><span class="pn"><a href="chelsi-grady.html"><span class="fn">Chelsi Grady</span><span class="sn">C. Grady</span></a> <span class="rt">3.01</span></span></td><td class="c-oppteam">ANTHEM CC</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {
@@ -153,9 +154,9 @@ var COUNTS = {"all": "3 matches · 1–2", "2026": "3 matches · 1–2"};
 (function() { var cy = String(new Date().getFullYear());
   document.querySelectorAll('.hist tbody tr').forEach(function(tr) { if (tr.dataset.y === cy) tr.classList.add('cy'); }); })();
 (function() {
-  var ALL = ['date','div','team','line','sd','score','partner','opp','oppteam'];
-  var DEF = {date:1, div:1, line:1, score:1, sd:1, partner:1, opp:1};
-  var KEY = 'nvPlayerCols3';  // bumped when the defaults changed
+  var ALL = ['sq','date','div','team','line','score','partner','opp','oppteam'];
+  var DEF = {sq:1, date:1, div:1, line:1, score:1, partner:1, opp:1};
+  var KEY = 'nvPlayerCols4';  // bumped when the defaults changed
   var tbl = document.querySelector('table.hist'), btn = document.getElementById('colbtn'),
       menu = document.getElementById('colmenu'), on;
   try { on = JSON.parse(localStorage.getItem(KEY)); } catch (e) { on = null; }

@@ -1290,6 +1290,14 @@ def _make_pit_rating(_pool: list[dict], _sfx: str, _other_sfx: str):
             _, latest_v = max(all_prior, key=lambda kv: _date_sort_key(kv[0]))
             return f"{latest_v - delta:.2f}"
         return _tl_base.get(nkey, "") or _tl_final.get(nkey, "")
+
+    def _ap_post_rating(nkey: str, match_date: str, rec_sfx: str):
+        """Rating right after this match (de-levered), or None if the engine has no
+        post-match entry for this player, division and date."""
+        v = _tl_post.get(nkey, {}).get(rec_sfx, {}).get(match_date)
+        return None if v is None else v - _lever3_delta(nkey)
+
+    _ap_pit_rating.post = _ap_post_rating
     return _ap_pit_rating
 
 
