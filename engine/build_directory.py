@@ -509,7 +509,7 @@ def _mdy(d: str) -> str:
 
 
 _HIST_COLS = [("date", "Date"), ("div", "Div"), ("team", "Team"), ("line", "Line"), ("pit", "ShiQ"),
-              ("r", "R"), ("score", "Score"), ("partner", "Partner"), ("opp", "Opponents"),
+              ("score", "Score"), ("partner", "Partner"), ("opp", "Opponents"),
               ("oppteam", "Opp Team")]
 
 
@@ -532,9 +532,8 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         lbl = _line_label_short(r["line"])
         pill = f'<span class="line-pill {_LINE_PILL_COLORS.get(lbl, "pill-d1")}">{_esc(lbl)}</span>'
         wko = r.get("wko")
-        res = ("W*" if r["won"] else "L*") if wko else ("W" if r["won"] else "L")
-        res_tip = ' title="Default, not counted in records"' if wko else ""
-        rcls = "" if wko else ("up" if r["won"] else "down")
+        res_tip = (f' title="{"Won" if r["won"] else "Lost"} by default, not counted in records"'
+                   if wko else "")
         score = '<em class="muted">default</em>' if wko else _score_html(r.get("score") or "", r["won"])
         partners = "<br>".join(_name_link(n, (r.get("partner_r") or [None] * 9)[i], link_for)
                                for i, n in enumerate(r.get("partners") or [])) or "—"
@@ -548,7 +547,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
             f'<td class="c-team">{_esc(r.get("my_team", ""))}</td><td class="c-line">{pill}</td>'
             f'<td class="num c-pit">{_esc(pit(nk, r["date"], sfx))}</td>'
-            f'<td class="c-r"><span class="{rcls}"{res_tip}>{res}</span></td><td class="c-score">{score}</td>'
+            f'<td class="c-score"{res_tip}>{score}</td>'
             f'<td class="c-partner">{partners}</td><td class="c-opp">{opps}</td>'
             f'<td class="c-oppteam">{_esc(r.get("opp_team", ""))}</td></tr>')
 
@@ -617,6 +616,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 .hist th, .hist td {{ padding: .3rem .6rem; text-align: left; vertical-align: middle; white-space: nowrap; }}
 .hist th:first-child, .hist td:first-child {{ padding-left: 0; }}
 .hist th {{ font-size: 11px; color: #888; font-weight: 600; }}
+.hist .c-date, .hist .c-div, .hist .c-line, .hist .c-score {{ text-align: center; }}
 .hist th.num, .hist td.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 .hist td.num {{ color: #aaa; }}
 .hist tbody tr:hover td {{ background: #faf9f6; }}
@@ -653,7 +653,15 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
   .hist .c-opp, .hist .c-oppteam {{ padding-right: 0; }}
   .hist td.c-partner, .hist td.c-opp {{ white-space: normal; }}
   .hist .pn {{ white-space: normal; }}
-  .hist.h-date .c-date {{ display: none; }}\n  .hist.h-div .c-div {{ display: none; }}\n  .hist.h-team .c-team {{ display: none; }}\n  .hist.h-line .c-line {{ display: none; }}\n  .hist.h-pit .c-pit {{ display: none; }}\n  .hist.h-r .c-r {{ display: none; }}\n  .hist.h-score .c-score {{ display: none; }}\n  .hist.h-partner .c-partner {{ display: none; }}\n  .hist.h-opp .c-opp {{ display: none; }}\n  .hist.h-oppteam .c-oppteam {{ display: none; }}
+  .hist.h-date .c-date {{ display: none; }}
+  .hist.h-div .c-div {{ display: none; }}
+  .hist.h-team .c-team {{ display: none; }}
+  .hist.h-line .c-line {{ display: none; }}
+  .hist.h-pit .c-pit {{ display: none; }}
+  .hist.h-score .c-score {{ display: none; }}
+  .hist.h-partner .c-partner {{ display: none; }}
+  .hist.h-opp .c-opp {{ display: none; }}
+  .hist.h-oppteam .c-oppteam {{ display: none; }}
 }}
 </style></head><body><div class="wrap">
 <div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada players</a></div>
@@ -670,7 +678,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden>{"".join(f'<label><input type="checkbox" data-c="{k}"> {lbl}</label>' for k, lbl in _HIST_COLS)}<div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-pit" title="ShiQ going into the match">ShiQ</th><th class="c-r">R</th><th class="c-score">Score</th>
+<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-pit" title="ShiQ going into the match">ShiQ</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
 <tbody>{"".join(body)}</tbody></table></div>
 </div>
@@ -687,7 +695,7 @@ document.querySelectorAll('.yr').forEach(function(b) {{
 }});
 var COUNTS = {json.dumps(counts, ensure_ascii=False)};
 (function() {{
-  var ALL = ['date','div','team','line','pit','r','score','partner','opp','oppteam'];
+  var ALL = ['date','div','team','line','pit','score','partner','opp','oppteam'];
   var DEF = {{date:1, div:1, line:1, score:1, partner:1, opp:1}};
   var KEY = 'nvPlayerCols2';  // bumped when the defaults changed
   var tbl = document.querySelector('table.hist'), btn = document.getElementById('colbtn'),
