@@ -40,6 +40,7 @@ h2 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
 .rtab.on { background: #eee; color: #222; font-weight: 600; border-color: #999; }
 .gl { font-size: 10px; font-weight: 700; color: var(--sub); text-transform: uppercase; letter-spacing: .5px; margin: 0 2px 0 6px; }
 .gl:first-child { margin-left: 0; }
+.rtab.dd { color: #222; }
 .search { border: 1px solid #ccc; border-radius: 20px; padding: 4px 12px; font-size: 12px; color: var(--soft); width: 180px; background: #fff; }
 .count { font-size: 11px; color: var(--sub); margin: 4px 0 6px; }
 table { border-collapse: collapse; font-size: 12px; }
@@ -117,7 +118,7 @@ tbody tr:hover td { background: #faf9f6; }
     <div class="row" style="margin-top:16px">
       <div class="opt">
         <div class="optlabel"><span class="tag">A · House style</span><span class="rec">Recommended</span></div>
-        <p class="why">Pill filters like the division tabs, content-fit table, no row rules, right-aligned tabular numbers, letter as a small suffix with a hover. 2027 filter hidden until Dec 2. No Movers or Has matches toggles; sort Δ to find movers.</p>
+        <p class="why">Pill filters like the division tabs, content-fit table, no row rules, right-aligned tabular numbers, letter as a small suffix with a hover. One Rating dropdown that always filters on the current rating (2026 now, 2027 after Dec 2). No Movers or Has matches toggles; sort Δ or Dynamic instead.</p>
         <div class="frame" id="optA"></div>
       </div>
       <div class="opt">
@@ -130,20 +131,21 @@ tbody tr:hover td { background: #faf9f6; }
 
   <section>
     <h2>3 · The Δ column after Dec 2</h2>
+    <p class="why" style="margin:-4px 0 10px">Kelli Caderot shows a made-up two-level jump.</p>
     <div class="row">
       <div class="opt">
         <div class="optlabel"><span class="tag">Δ1 · Arrow only</span><span class="fake">2027 values made up</span></div>
-        <p class="why">Narrowest. What PR 2 does today.</p>
+        <p class="why">▲ one level (0.5), ▲▲ two levels; same for ▼. Narrowest.</p>
         <div class="frame" id="d1"></div>
       </div>
       <div class="opt">
         <div class="optlabel"><span class="tag">Δ2 · Arrow + tinted 2027</span><span class="rec">Recommended</span><span class="fake">made up</span></div>
-        <p class="why">Same narrow column; the 2027 rating takes the arrow's color so the change reads as one unit.</p>
+        <p class="why">Same carets; the 2027 rating takes their color so the change reads as one unit.</p>
         <div class="frame" id="d2"></div>
       </div>
       <div class="opt">
         <div class="optlabel"><span class="tag">Δ3 · Pill</span><span class="fake">made up</span></div>
-        <p class="why">Soft green or red pill with the arrow. Loudest; good if movers are the main reason people visit.</p>
+        <p class="why">Same carets in a soft green or red pill. Loudest; good if movers are the main reason people visit.</p>
         <div class="frame" id="d3"></div>
       </div>
     </div>
@@ -209,7 +211,7 @@ function meter(r){ if(r[4]==null) return ""; var hi=r[2], lo=hi-0.49, p=(r[4]-lo
 function filters(phone){
   return '<div class="pills'+(phone?' scroll':'')+'"><span class="search">Search name…</span></div>'+
   '<div class="pills'+(phone?' scroll':'')+'"><span class="rtab on">All</span><span class="rtab">Women</span><span class="rtab">Men</span>'+
-  '<span class="gl">2026</span><span class="rtab on">All</span><span class="rtab">2.5</span><span class="rtab">3.0</span><span class="rtab">3.5</span><span class="rtab">4.0</span><span class="rtab">4.5</span><span class="rtab">5.0</span></div>';
+  '<span class="rtab dd">Rating: All ▾</span></div>';
 }
 function head(){ return '<div class="crumbs"><a href="#">Tennis Dashboard</a> › Nevada</div><div class="ttl">Nevada players</div>'; }
 function tableA(rows,opt){ opt=opt||{};
@@ -229,12 +231,12 @@ document.getElementById('l1').innerHTML = tableA([R[1],R[6],R[7],R[9]]);
 document.getElementById('l2').innerHTML = tableA([R[1],R[6],R[7],R[9]],{letter:"hideC"});
 
 // Δ demos: 2027 values are invented to show up/down/same.
-var M = [["Maria Allen",3.0,"C",3.5,"C",3.3755],["Kelli Caderot",2.5,"S",2.5,"C",2.193],["Melissa Kwong-Blais",3.5,"C",4.0,"C",3.5794],["Francine Mazza",3.0,"C",3.0,"C",2.8228],["Kelley Ferrence",3.5,"C",3.0,"C",3.3152]];
+var M = [["Maria Allen",3.0,"C",3.5,"C",3.3755],["Kelli Caderot",2.5,"S",3.5,"C",2.193],["Melissa Kwong-Blais",3.5,"C",4.0,"C",3.5794],["Francine Mazza",3.0,"C",3.0,"C",2.8228],["Kelley Ferrence",3.5,"C",3.0,"C",3.3152]];
 function dtable(mode){ var h='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">Δ</th><th class="n">2027</th><th class="n">Dynamic</th></tr></thead><tbody>';
-  M.forEach(function(m){ var d=m[3]-m[1], cls=d>0?'up':d<0?'down':'', ar=d>0?'▲':d<0?'▼':'', cell='', v27=lvl(m[3],m[4]);
+  M.forEach(function(m){ var d=m[3]-m[1], cls=d>0?'up':d<0?'down':'', n=Math.round(Math.abs(d)/0.5), ar=d>0?(n>1?'▲▲':'▲'):d<0?(n>1?'▼▼':'▼'):'', cell='', v27=lvl(m[3],m[4]);
     if(mode===1) cell=ar?'<span class="'+cls+'b">'+ar+'</span>':'';
     if(mode===2){ cell=ar?'<span class="'+cls+'b">'+ar+'</span>':''; if(ar) v27='<span class="'+cls+'b">'+m[3].toFixed(1)+'</span><span class="lt">'+m[4]+'</span>'; }
-    if(mode===3) cell=ar?'<span class="dpill '+cls+'">'+ar+' '+Math.abs(d).toFixed(1)+'</span>':'';
+    if(mode===3) cell=ar?'<span class="dpill '+cls+'">'+ar+'</span>':'';
     h+='<tr><td class="nm"><a href="#">'+m[0]+'</a></td><td class="n">'+lvl(m[1],m[2])+'</td><td class="c">'+cell+'</td><td class="n">'+v27+'</td><td class="n">'+m[5].toFixed(2)+'</td></tr>'; });
   return h+'</tbody></table>'; }
 document.getElementById('d1').innerHTML=dtable(1);
