@@ -647,7 +647,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 .hist th, .hist td {{ padding: .3rem .6rem; text-align: left; vertical-align: middle; white-space: nowrap; }}
 .hist th:first-child, .hist td:first-child {{ padding-left: 0; }}
 .hist th {{ font-size: 11px; color: #888; font-weight: 600; }}
-.hist .c-date, .hist .c-div, .hist .c-line, .hist .c-score {{ text-align: center; }}
+.hist .c-date, .hist .c-div, .hist .c-line, .hist .c-score, .hist th.c-sd, .hist td.c-sd {{ text-align: center; }}
 .hist th.num, .hist td.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 .hist td.num {{ color: #aaa; }}
 .hist tbody tr:hover td {{ background: #faf9f6; }}
