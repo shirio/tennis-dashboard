@@ -73,7 +73,7 @@ tbody tr:hover td { background: #faf9f6; }
 
 /* player page */
 .cards { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-.mcard { background: linear-gradient(180deg, #f8f7f3, #f2f1ec); border-radius: 8px; padding: .6rem .9rem; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
+.mcard { text-align: center; min-width: 0; background: linear-gradient(180deg, #f8f7f3, #f2f1ec); border-radius: 8px; padding: .6rem .9rem; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
 .mlabel { font-size: 11px; color: var(--sub); margin-bottom: 2px; }
 .mval { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
 .msub { font-size: 11px; color: var(--sub); margin-top: 1px; }
@@ -167,7 +167,7 @@ tbody tr:hover td { background: #faf9f6; }
     <div class="row">
       <div class="opt">
         <div class="optlabel"><span class="tag">P1 · Cards</span><span class="rec">Chosen</span></div>
-        <p class="why">House-style cards. ShiQ shows its change from baseline in green or red.</p>
+        <p class="why">Baseline → USTA → ShiQ, centered. Each card: title, number, and a bottom line (USTA shows the date the rating was assigned).</p>
         <div class="frame" id="p1"></div>
       </div>
       <div class="opt">
@@ -232,7 +232,7 @@ var mh='<table class="mh" style="margin-top:4px"><thead><tr><th>Date</th><th>Div
  '<tr><td>3/28</td><td><span class="dv">3.0</span></td><td>Desert Palm</td><td><span class="lp d2">D2</span></td><td class="n r">3.00</td><td class="L">L</td><td>6-0 6-3</td><td class="pt"><a href="#">Yong Mi DeMilliano</a> <span class="r">2.59</span></td><td class="opp"><a href="#">Francine Mazza</a> <span class="r">2.81</span><br><a href="#">Abigail Cox</a> <span class="r">3.02</span></td></tr>'+
  '</tbody></table>';
 document.getElementById('p1').innerHTML='<div class="crumbs"><a href="#">Tennis Dashboard</a> › <a href="#">Nevada players</a></div><div class="pname">Ara Lee Stimson</div><div class="psub">Las Vegas, NV · Female</div>'+
- '<div class="cards"><div class="mcard"><div class="mlabel">USTA</div><div class="mval">3.0<span class="lt" style="font-size:12px">C</span></div></div><div class="mcard"><div class="mlabel">Baseline</div><div class="mval">2.94</div><div class="msub">Dec 2025</div></div><div class="mcard"><div class="mlabel">ShiQ</div><div class="mval">3.08</div><div class="msub"><span class="upb">+0.14</span></div></div></div>'+recs+mh;
+ '<div class="cards"><div class="mcard"><div class="mlabel">Baseline</div><div class="mval">2.94</div><div class="msub">Dec 2025</div></div><div class="mcard"><div class="mlabel">USTA</div><div class="mval">3.0<span class="lt" style="font-size:12px">C</span></div><div class="msub">12/31/2025</div></div><div class="mcard"><div class="mlabel">ShiQ</div><div class="mval">3.08</div><div class="msub"><span class="upb">+0.14</span></div></div></div>'+recs+mh;
 document.getElementById('p2').innerHTML='<div class="crumbs"><a href="#">Tennis Dashboard</a> › <a href="#">Nevada players</a></div><div class="pname">Ara Lee Stimson</div>'+
  '<div class="inline-hdr">Las Vegas, NV · Female · <b>3.0</b><span class="lt">C</span> · baseline <b>2.94</b> → ShiQ <b>3.08</b> <span class="upb">+0.14</span></div>'+recs+mh;
 </script>
