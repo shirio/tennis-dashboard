@@ -1,0 +1,255 @@
+<title>Nevada Directory Design Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one column of labeled frames; each frame renders a mock in the dashboard's own house style. Single light look on purpose, matching the live site. */
+:root {
+  --bg: #ecebe6; --frame: #ffffff; --card: #f5f4f0; --ink: #222; --sub: #888; --soft: #aaa;
+  --up: #27500A; --upbg: #EAF3DE; --down: #791F1F; --downbg: #FCEBEB; --link: #1a5fb4;
+  --pick: #3a5a8c; --pickbg: #e8edf5;
+  color-scheme: light;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding-block: 24px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.board { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px; }
+h1 { font-size: 22px; font-weight: 600; }
+h2 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+.lede { color: #555; margin-top: 4px; max-width: 70ch; }
+.crit { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+.crit div { background: var(--frame); border-radius: 10px; padding: 12px 14px; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+.crit b { display: block; margin-bottom: 4px; }
+.crit ul { padding-left: 16px; color: #444; display: grid; gap: 3px; }
+.row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+.opt { display: flex; flex-direction: column; gap: 8px; min-width: 0; flex: 1 1 520px; }
+.opt.phone { flex: 0 0 auto; }
+.optlabel { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.optlabel .tag { font-weight: 600; }
+.optlabel .rec { font-size: 11px; font-weight: 600; color: var(--up); background: var(--upbg); padding: 1px 8px; border-radius: 10px; }
+.optlabel .fake { font-size: 11px; color: #8a5200; background: #fff0d8; padding: 1px 8px; border-radius: 10px; }
+.why { color: #555; max-width: 75ch; }
+.frame { background: var(--frame); border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.04); overflow-x: auto; min-width: 0; }
+.frame.w390 { width: 390px; max-width: 100%; padding: 14px 12px; }
+
+/* ---- house style (from women_nv_30.html) ---- */
+.crumbs { font-size: 12px; color: var(--sub); margin-bottom: 8px; }
+.crumbs a { color: var(--link); text-decoration: none; }
+.ttl { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+.pills { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+.pills.scroll { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; }
+.rtab { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font-size: 11px; color: #666; white-space: nowrap; background: #fff; }
+.rtab.on { background: #eee; color: #222; font-weight: 600; border-color: #999; }
+.gl { font-size: 10px; font-weight: 700; color: var(--sub); text-transform: uppercase; letter-spacing: .5px; margin: 0 2px 0 6px; }
+.gl:first-child { margin-left: 0; }
+.search { border: 1px solid #ccc; border-radius: 20px; padding: 4px 12px; font-size: 12px; color: var(--soft); width: 180px; background: #fff; }
+.count { font-size: 11px; color: var(--sub); margin: 4px 0 6px; }
+table { border-collapse: collapse; font-size: 12px; }
+th { text-align: left; padding: 5px 8px; color: var(--sub); font-weight: 600; font-size: 11px; white-space: nowrap; }
+td { padding: 5px 8px; white-space: nowrap; vertical-align: middle; }
+th.n, td.n { text-align: right; font-variant-numeric: tabular-nums; }
+th.c, td.c { text-align: center; }
+th.s::after { content: " ▲"; font-size: 8px; }
+tbody tr:hover td { background: #faf9f6; }
+.nm a { color: var(--link); text-decoration: none; font-weight: 500; }
+.nm span { font-weight: 500; }
+.g { color: var(--sub); }
+.lt { color: var(--soft); font-size: 10px; margin-left: 2px; }
+.up { color: var(--up); } .down { color: var(--down); }
+.upb { color: var(--up); font-weight: 600; } .downb { color: var(--down); font-weight: 600; }
+.dpill { display: inline-block; padding: 0 6px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+.dpill.up { background: var(--upbg); } .dpill.down { background: var(--downbg); }
+.meter { display: inline-flex; align-items: center; gap: 6px; }
+.track { position: relative; width: 44px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #ece9e1, #e2ded3); }
+.dot { position: absolute; top: -2px; width: 10px; height: 10px; border-radius: 50%; margin-left: -5px;
+  background: radial-gradient(circle at 35% 30%, #fff 0, #8a8a8a 45%, #6a6a6a 100%); box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+.dot.hi { background: radial-gradient(circle at 35% 30%, #d9f0c4 0, #4f8a1f 45%, #27500A 100%); }
+.dot.lo { background: radial-gradient(circle at 35% 30%, #f8d3d3 0, #b03a2e 45%, #791F1F 100%); }
+.oldtable th { background: #f5f7fb; text-transform: uppercase; letter-spacing: .03em; color: #555; border-bottom: 1px solid #f0f0f0; }
+.oldtable td { border-bottom: 1px solid #f0f0f0; }
+
+/* player page */
+.cards { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.mcard { background: linear-gradient(180deg, #f8f7f3, #f2f1ec); border-radius: 8px; padding: .6rem .9rem; box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
+.mlabel { font-size: 11px; color: var(--sub); margin-bottom: 2px; }
+.mval { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.msub { font-size: 11px; color: var(--sub); margin-top: 1px; }
+.pname { font-size: 20px; font-weight: 600; }
+.psub { color: var(--sub); font-size: 12px; margin: 2px 0 12px; }
+.inline-hdr { font-size: 13px; color: #444; margin: 2px 0 12px; }
+.inline-hdr b { font-variant-numeric: tabular-nums; }
+.rec { display: inline-flex; gap: 4px; align-items: baseline; }
+.rec b { font-variant-numeric: tabular-nums; }
+.lp { display: inline-block; padding: 1px 6px; border-radius: 8px; font-size: 10px; font-weight: 700; }
+.d1 { background: #D6EAF8; color: #1A5276; } .d2 { background: #D5F5E3; color: #1E8449; }
+.dv { display: inline-block; padding: 0 6px; border-radius: 8px; font-size: 10px; font-weight: 600; background: #ddeeff; color: #1a5a9a; }
+.opp { line-height: 1.5; }
+.opp a, .pt a { color: var(--link); text-decoration: none; }
+.r { color: var(--soft); font-variant-numeric: tabular-nums; }
+.W { color: var(--up); font-weight: 600; } .L { color: var(--down); font-weight: 600; }
+.mh td { vertical-align: top; padding-top: 6px; padding-bottom: 6px; }
+</style>
+
+<div class="board">
+  <header>
+    <h1>Nevada directory: design options</h1>
+    <p class="lede">Critique of the PR 2 build against your tenets, then side-by-side options with real players from the 2026 list. Pick per section; nothing here is locked in.</p>
+  </header>
+
+  <section>
+    <h2>1 · What's off today</h2>
+    <div class="crit">
+      <div><b>Doesn't look like the rest of the site</b><ul><li>Blue-gray header band, bordered table card, uppercase headers, native dropdowns.</li><li>The division dashboards use warm cards, pill tabs, and plain tables.</li></ul></div>
+      <div><b>Wireframey lines and wasted width</b><ul><li>A rule under every row plus a box around the table.</li><li>Table stretches to 1100px for six short columns, so Name sits 480px from its rating.</li></ul></div>
+      <div><b>Numbers not aligned</b><ul><li>2026 and 2027 are left-aligned text.</li><li>Rating letter has a dotted underline that reads as a link.</li></ul></div>
+      <div><b>Copy clutter</b><ul><li>Two-line subtitle repeats what the columns say.</li><li>Seven-item rating-type legend under the table; a hover on the letter is enough.</li></ul></div>
+      <div><b>Dynamic is blank for 81% of rows</b><ul><li>Only 428 of 2,299 players have match history, so the column looks broken at first glance.</li><li>Blank is honest, but worth a decision (see options).</li></ul></div>
+      <div><b>Mobile</b><ul><li>Filters wrap to four rows; Δ, 2027, and Dynamic are off-screen to the right.</li><li>Player page: footnote under the table, cards with borders, all/2026 toggle shows the same thing twice.</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2 · Directory layout</h2>
+    <div class="row">
+      <div class="opt">
+        <div class="optlabel"><span class="tag">Today (PR 2)</span></div>
+        <div class="frame" id="today"></div>
+      </div>
+    </div>
+    <div class="row" style="margin-top:16px">
+      <div class="opt">
+        <div class="optlabel"><span class="tag">A · House style</span><span class="rec">Recommended</span></div>
+        <p class="why">Pill filters like the division tabs, content-fit table, no row rules, right-aligned tabular numbers, letter as a small suffix with a hover. 2027 filter hidden until Dec 2.</p>
+        <div class="frame" id="optA"></div>
+      </div>
+      <div class="opt">
+        <div class="optlabel"><span class="tag">B · A + level band</span></div>
+        <p class="why">Adds a small track for where Dynamic sits inside the 2026 level's range (3.0 = 2.51–3.00). Green past the top, red below the bottom. Useful for spotting likely movers, but it edges toward the projections you dropped.</p>
+        <div class="frame" id="optB"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>3 · The Δ column after Dec 2</h2>
+    <div class="row">
+      <div class="opt">
+        <div class="optlabel"><span class="tag">Δ1 · Arrow only</span><span class="fake">2027 values made up</span></div>
+        <p class="why">Narrowest. What PR 2 does today.</p>
+        <div class="frame" id="d1"></div>
+      </div>
+      <div class="opt">
+        <div class="optlabel"><span class="tag">Δ2 · Arrow + tinted 2027</span><span class="rec">Recommended</span><span class="fake">made up</span></div>
+        <p class="why">Same narrow column; the 2027 rating takes the arrow's color so the change reads as one unit.</p>
+        <div class="frame" id="d2"></div>
+      </div>
+      <div class="opt">
+        <div class="optlabel"><span class="tag">Δ3 · Pill</span><span class="fake">made up</span></div>
+        <p class="why">Soft green or red pill with the arrow. Loudest; good if movers are the main reason people visit.</p>
+        <div class="frame" id="d3"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>4 · Rating letter</h2>
+    <div class="row">
+      <div class="opt">
+        <div class="optlabel"><span class="tag">L1 · Every letter, small gray</span><span class="rec">Recommended</span></div>
+        <p class="why">Consistent; nothing implied by absence. Hover names the type.</p>
+        <div class="frame" id="l1"></div>
+      </div>
+      <div class="opt">
+        <div class="optlabel"><span class="tag">L2 · Hide C, show the rest</span></div>
+        <p class="why">76% are C, so S, A, M, and T stand out. Risk: a bare "3.0" could be read as unknown.</p>
+        <div class="frame" id="l2"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>5 · Phone</h2>
+    <div class="row">
+      <div class="opt phone">
+        <div class="optlabel"><span class="tag">A on a phone</span></div>
+        <p class="why" style="max-width:390px">Same pills, scrolled sideways. Gender column drops (it's a filter); everything else fits.</p>
+        <div class="frame w390" id="phone"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>6 · Player page header</h2>
+    <div class="row">
+      <div class="opt">
+        <div class="optlabel"><span class="tag">P1 · Cards</span><span class="rec">Recommended</span></div>
+        <p class="why">House-style cards. Dynamic carries the change since baseline in green or red.</p>
+        <div class="frame" id="p1"></div>
+      </div>
+      <div class="opt">
+        <div class="optlabel"><span class="tag">P2 · One line</span></div>
+        <p class="why">Compact sentence; matches how the division notes read. Less scannable.</p>
+        <div class="frame" id="p2"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// Real rows from data/ntrp_nv_2026.json + our dynamic ratings (PR 2).
+var R = [
+ ["Amy Bernstein","F",2.5,"C",2.5152,1],["Claudia Hernandez","F",3.5,"C",3.4208,1],["Brady Stevens","M",3.5,"C",null,0],
+ ["Francine Mazza","F",3.0,"C",2.8228,1],["Joshua Thompson","M",4.0,"C",null,0],["Julie Brown","F",3.0,"C",3.0871,1],
+ ["Kelli Caderot","F",2.5,"S",2.193,1],["Maria Allen","F",3.0,"C",3.3755,1],["Melissa Kwong-Blais","F",3.5,"C",3.5794,1],
+ ["Shannon Becker","F",2.5,"S",null,0],["Tammie Meng","F",3.0,"C",null,0]
+];
+var TYPES = {C:"Computer",S:"Self-rate or Medical Appeal",A:"Appeal",M:"Mixed Exclusive Year-end",T:"Tournament Exclusive Year-end",D:"Disqualification",E:"Early Start League dynamic"};
+function lvl(v,t,mode){ if(v==null) return ""; var s=v.toFixed(1); if(mode==="hideC"&&t==="C") return s; return s+'<span class="lt" title="'+TYPES[t]+'">'+t+'</span>'; }
+function nm(r){ return r[5] ? '<a href="#">'+r[0]+'</a>' : '<span>'+r[0]+'</span>'; }
+function meter(r){ if(r[4]==null) return ""; var hi=r[2], lo=hi-0.49, p=(r[4]-lo)/(hi-lo), cls=""; if(p>1){cls="hi";p=1.08;} else if(p<0){cls="lo";p=-0.08;}
+  return '<span class="meter"><span class="track"><span class="dot '+cls+'" style="left:'+(p*100)+'%"></span></span></span>'; }
+function filters(phone){
+  return '<div class="pills'+(phone?' scroll':'')+'"><span class="search">Search name…</span></div>'+
+  '<div class="pills'+(phone?' scroll':'')+'"><span class="rtab on">All</span><span class="rtab">Women</span><span class="rtab">Men</span>'+
+  '<span class="gl">2026</span><span class="rtab on">All</span><span class="rtab">2.5</span><span class="rtab">3.0</span><span class="rtab">3.5</span><span class="rtab">4.0</span><span class="rtab">4.5</span><span class="rtab">5.0</span>'+
+  '<span class="gl">Show</span><span class="rtab">Movers</span><span class="rtab">Has matches</span></div>';
+}
+function head(){ return '<div class="crumbs"><a href="#">Tennis Dashboard</a> › Nevada</div><div class="ttl">Nevada players</div>'; }
+function tableA(rows,opt){ opt=opt||{};
+  var h='<table><thead><tr><th class="s">Name</th>'+(opt.phone?'':'<th>Gender</th>')+'<th class="n">2026</th><th class="c" title="Change from 2026 to 2027">Δ</th><th class="n">2027</th><th class="n">Dynamic</th>'+(opt.band?'<th></th>':'')+'</tr></thead><tbody>';
+  rows.forEach(function(r){ h+='<tr><td class="nm">'+nm(r)+'</td>'+(opt.phone?'':'<td class="g">'+r[1]+'</td>')+'<td class="n">'+lvl(r[2],r[3],opt.letter)+'</td><td class="c"></td><td class="n"></td><td class="n">'+(r[4]==null?'':r[4].toFixed(2))+'</td>'+(opt.band?'<td>'+meter(r)+'</td>':'')+'</tr>'; });
+  return h+'</tbody></table>';
+}
+document.getElementById('today').innerHTML =
+ '<div class="crumbs"><a href="#">Tennis Dashboard</a> › Nevada</div><div class="ttl" style="font-size:22px">Nevada Player Directory</div>'+
+ '<p style="color:#666;margin:-6px 0 10px;max-width:80ch">Every player on USTA\'s Nevada NTRP list: 2026 year-end rating, 2027 year-end rating once it\'s out, and our dynamic rating. 428 players link to their match history.</p>'+
+ '<table class="oldtable" style="width:100%"><thead><tr><th>Name ▲</th><th>Gender</th><th>2026</th><th>Δ</th><th>2027</th><th style="text-align:right">Dynamic</th></tr></thead><tbody>'+
+ R.slice(0,5).map(function(r){return '<tr><td class="nm">'+nm(r)+'</td><td>'+r[1]+'</td><td>'+r[2].toFixed(1)+' <span style="border-bottom:1px dotted #aaa">'+r[3]+'</span></td><td></td><td></td><td style="text-align:right">'+(r[4]==null?'':r[4].toFixed(2))+'</td></tr>';}).join('')+'</tbody></table>';
+document.getElementById('optA').innerHTML = head()+filters()+'<div class="count">2,299 players</div>'+tableA(R);
+document.getElementById('optB').innerHTML = head()+filters()+'<div class="count">2,299 players</div>'+tableA(R,{band:1});
+document.getElementById('phone').innerHTML = head()+filters(1)+'<div class="count">2,299 players</div>'+tableA(R.slice(0,9),{phone:1});
+document.getElementById('l1').innerHTML = tableA([R[1],R[6],R[7],R[9]]);
+document.getElementById('l2').innerHTML = tableA([R[1],R[6],R[7],R[9]],{letter:"hideC"});
+
+// Δ demos: 2027 values are invented to show up/down/same.
+var M = [["Maria Allen",3.0,"C",3.5,"C",3.3755],["Kelli Caderot",2.5,"S",2.5,"C",2.193],["Melissa Kwong-Blais",3.5,"C",4.0,"C",3.5794],["Francine Mazza",3.0,"C",3.0,"C",2.8228],["Kelley Ferrence",3.5,"C",3.0,"C",3.3152]];
+function dtable(mode){ var h='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">Δ</th><th class="n">2027</th><th class="n">Dynamic</th></tr></thead><tbody>';
+  M.forEach(function(m){ var d=m[3]-m[1], cls=d>0?'up':d<0?'down':'', ar=d>0?'▲':d<0?'▼':'', cell='', v27=lvl(m[3],m[4]);
+    if(mode===1) cell=ar?'<span class="'+cls+'b">'+ar+'</span>':'';
+    if(mode===2){ cell=ar?'<span class="'+cls+'b">'+ar+'</span>':''; if(ar) v27='<span class="'+cls+'b">'+m[3].toFixed(1)+'</span><span class="lt">'+m[4]+'</span>'; }
+    if(mode===3) cell=ar?'<span class="dpill '+cls+'">'+ar+' '+Math.abs(d).toFixed(1)+'</span>':'';
+    h+='<tr><td class="nm"><a href="#">'+m[0]+'</a></td><td class="n">'+lvl(m[1],m[2])+'</td><td class="c">'+cell+'</td><td class="n">'+v27+'</td><td class="n">'+m[5].toFixed(2)+'</td></tr>'; });
+  return h+'</tbody></table>'; }
+document.getElementById('d1').innerHTML=dtable(1);
+document.getElementById('d2').innerHTML=dtable(2);
+document.getElementById('d3').innerHTML=dtable(3);
+
+// Player page (real: Ara Lee Stimson)
+var recs='<div class="pills"><span class="rtab on">Overall <b>5–1</b></span><span class="rtab">3.0 <b>5–1</b></span><span class="rtab">Singles <b>0–0</b></span><span class="rtab">Doubles <b>5–1</b></span></div>';
+var mh='<table class="mh" style="margin-top:4px"><thead><tr><th>Date</th><th>Div</th><th>Team</th><th>Line</th><th class="n" title="Our rating going into the match">PIT</th><th>R</th><th>Score</th><th>Partner</th><th>Opponents</th></tr></thead><tbody>'+
+ '<tr><td>3/14</td><td><span class="dv">3.0</span></td><td>Desert Palm</td><td><span class="lp d1">D1</span></td><td class="n r">2.94</td><td class="W">W</td><td>7-5 6-4</td><td class="pt"><a href="#">Alexandria Chang</a> <span class="r">2.72</span></td><td class="opp"><a href="#">Maggie Pacholuk</a> <span class="r">2.74</span><br><a href="#">Jaqueline Schultz</a> <span class="r">3.08</span></td></tr>'+
+ '<tr><td>3/28</td><td><span class="dv">3.0</span></td><td>Desert Palm</td><td><span class="lp d2">D2</span></td><td class="n r">3.00</td><td class="L">L</td><td>6-0 6-3</td><td class="pt"><a href="#">Yong Mi DeMilliano</a> <span class="r">2.59</span></td><td class="opp"><a href="#">Francine Mazza</a> <span class="r">2.81</span><br><a href="#">Abigail Cox</a> <span class="r">3.02</span></td></tr>'+
+ '</tbody></table>';
+document.getElementById('p1').innerHTML='<div class="crumbs"><a href="#">Tennis Dashboard</a> › <a href="#">Nevada players</a></div><div class="pname">Ara Lee Stimson</div><div class="psub">Las Vegas, NV · Female</div>'+
+ '<div class="cards"><div class="mcard"><div class="mlabel">2026 NTRP</div><div class="mval">3.0<span class="lt" style="font-size:12px">C</span></div></div><div class="mcard"><div class="mlabel">Baseline</div><div class="mval">2.94</div><div class="msub">Dec 2025</div></div><div class="mcard"><div class="mlabel">Dynamic</div><div class="mval">3.08</div><div class="msub"><span class="upb">+0.14</span> since baseline</div></div></div>'+recs+mh;
+document.getElementById('p2').innerHTML='<div class="crumbs"><a href="#">Tennis Dashboard</a> › <a href="#">Nevada players</a></div><div class="pname">Ara Lee Stimson</div>'+
+ '<div class="inline-hdr">Las Vegas, NV · Female · <b>3.0</b><span class="lt">C</span> · baseline <b>2.94</b> → dynamic <b>3.08</b> <span class="upb">+0.14</span></div>'+recs+mh;
+</script>
