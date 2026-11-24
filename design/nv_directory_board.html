@@ -203,8 +203,13 @@ tbody tr:hover td { background: #faf9f6; }
       </div>
       <div class="opt phone">
         <div class="optlabel"><span class="tag">ShiQ first, change underneath</span></div>
-        <p class="why" style="max-width:390px">Far-left column shows her ShiQ after each match, with the change in small colored type under it. Reads as a running rating down the edge.</p>
+        <p class="why" style="max-width:390px">Far-left column shows her ShiQ after each match in gray, like other ratings, with the change in small colored type under it.</p>
         <div class="frame w390" id="m1b"></div>
+      </div>
+      <div class="opt phone">
+        <div class="optlabel"><span class="tag">Change on top, ShiQ underneath</span></div>
+        <p class="why" style="max-width:390px">Flipped: the colored change leads, with her ShiQ after the match in small gray under it.</p>
+        <div class="frame w390" id="m1c"></div>
       </div>
       <div class="opt phone">
         <div class="optlabel"><span class="tag">M1 · Opponents only</span></div>
@@ -307,7 +312,10 @@ function scoreHtml(sc,res,stack){ // stored winner-first; show player-first (her
     var t=g[0]+'-'+g[1], hit=res==='W'?g[0]>g[1]:g[0]<g[1]; return hit?'<span class="'+(res==='W'?'upb':'downb')+'">'+t+'</span>':t; }).join(stack?'<br>':' '); }
 function sstack(m){ var i=MX.indexOf(m), after=i<MX.length-1?+MX[i+1][4]:3.08, d=Math.round((after-(+m[4]))*100)/100;
   var t=d?((d>0?'+':'−')+Math.abs(d).toFixed(2).replace(/^0/,'')):'0';
-  return '<span style="font-variant-numeric:tabular-nums">'+after.toFixed(2)+'</span><br><span class="'+(d>0?'up':d<0?'down':'r')+'" style="font-size:9.5px">'+t+'</span>'; }
+  var rt='<span class="r" style="font-variant-numeric:tabular-nums">'+after.toFixed(2)+'</span>', dc=(d>0?'up':d<0?'down':'r');
+  if(STACK_FLIP) return '<span class="'+dc+'b">'+t+'</span><br><span class="r" style="font-size:9.5px">'+after.toFixed(2)+'</span>';
+  return rt+'<br><span class="'+dc+'" style="font-size:9.5px">'+t+'</span>'; }
+var STACK_FLIP=false;
 function sdelta(m){ var i=MX.indexOf(m), nxt=i<MX.length-1?+MX[i+1][4]:3.08, d=Math.round((nxt-(+m[4]))*100)/100;
   if(!d) return '<span class="r">0</span>'; var t=(d>0?'+':'−')+Math.abs(d).toFixed(2).replace(/^0/,''); return '<span class="'+(d>0?'up':'down')+'b">'+t+'</span>'; }
 function mxTable(on,short,rat,cols,stack){ cols=cols||COLS;
@@ -338,5 +346,7 @@ document.getElementById('m3').innerHTML=phoneHead()+'<div class="colbar"><span c
 
 
 (function(){ var c2=[COLS[4]].concat(COLS.filter(function(c){return c[0]!=='pit';}));
-  document.getElementById('m1b').innerHTML=phoneHead()+'<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▾</button></div>'+mxTable(DEF1,true,false,c2,true); })();
+  var bar='<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▾</button></div>';
+  document.getElementById('m1b').innerHTML=phoneHead()+bar+mxTable(DEF1,true,false,c2,true);
+  STACK_FLIP=true; document.getElementById('m1c').innerHTML=phoneHead()+bar+mxTable(DEF1,true,false,c2,true); STACK_FLIP=false; })();
 </script>
