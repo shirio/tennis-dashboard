@@ -577,7 +577,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
             f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-date">{_esc(date)}</td>'
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
             f'<td class="c-team">{_esc(r.get("my_team", ""))}</td><td class="c-line">{pill}</td>'
-            f'<td class="num c-sd">{_sq_delta(dlt)}</td>'
+            f'<td class="c-sd">{_sq_delta(dlt)}</td>'
             f'<td class="c-score"{res_tip}>{score}</td>'
             f'<td class="c-partner">{partners}</td><td class="c-opp">{opps}</td>'
             f'<td class="c-oppteam">{_esc(r.get("opp_team", ""))}</td></tr>')
@@ -716,7 +716,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden>{"".join(f'<label><input type="checkbox" data-c="{k}"> {lbl}</label>' for k, lbl in _HIST_COLS)}<div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-sd" title="ShiQ change from this match" aria-label="ShiQ change from this match">{_DH}</th><th class="c-score">Score</th>
+<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-sd" title="ShiQ change from this match" aria-label="ShiQ change from this match">{_DH}</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
 <tbody>{"".join(body)}</tbody></table></div>
 </div>
