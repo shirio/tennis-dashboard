@@ -36,10 +36,12 @@ h1 { font-size: 20px; font-weight: 600; margin-bottom: .8rem; }
 .controls select { appearance: none; -webkit-appearance: none; padding: .35rem 1.8rem .35rem .8rem;
   border: 1px solid #ccc; border-radius: 20px; font-size: 13px; color: #333; cursor: pointer;
   background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23888' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right .7rem center; }
-.seg { display: inline-flex; border: 1px solid #ccc; border-radius: 20px; overflow: hidden; background: #fff; }
-.seg button { border: 0; background: transparent; padding: .35rem .8rem; font-size: 13px; cursor: pointer; color: #333; }
-.seg button + button { border-left: 1px solid #ddd; }
-.seg button.on { background: #1a5fb4; color: #fff; }
+.seg { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid #ccc; border-radius: 20px; background: #fff; }
+.seg button { border: 0; background: transparent; padding: .25rem .75rem; border-radius: 16px; font-size: 13px; cursor: pointer; color: #555; }
+.seg button.on { background: linear-gradient(180deg,#f3f3f3,#e6e6e6); color: #222; font-weight: 600;
+                 box-shadow: 0 1px 1px rgba(0,0,0,.08); }
+.mv-up { color: #27500A; font-weight: 600; }
+.mv-down { color: #791F1F; font-weight: 600; }
 .count { font-size: 11px; color: #888; margin-bottom: .3rem; }
 .tbl-wrap { overflow-x: auto; }
 table { border-collapse: collapse; font-size: 12px; }
@@ -98,9 +100,9 @@ function caret(up, n) {
 }
 function delta(r) { return (r[2] != null && r[4] != null) ? Math.round((r[4] - r[2]) * 10) / 10 : 0; }
 function fmt(l) { return l == null ? '' : l.toFixed(1); }
-function ntrp(l, t) {
+function ntrp(l, t, cls) {
   if (l == null) return '';
-  var s = fmt(l);
+  var s = cls ? '<span class="' + cls + '">' + fmt(l) + '</span>' : fmt(l);
   if (!t) return s;
   return s + '<span class="lt" title="' + (TYPES[t] || t) + '">' + t + '</span>';
 }
@@ -143,7 +145,7 @@ function render() {
     if (n) dh = caret(d > 0, n);
     var nm = r[7] ? '<a href="' + r[7] + '">' + esc(r[0]) + '</a>' : esc(r[0]);
     out.push('<tr><td>' + nm + '</td><td class="sex">' + (r[1] || '') + '</td><td class="num">' + ntrp(r[2], r[3])
-      + '</td><td class="delta">' + dh + '</td><td class="num">' + ntrp(r[4], r[5])
+      + '</td><td class="delta">' + dh + '</td><td class="num">' + ntrp(r[4], r[5], d > 0 ? 'mv-up' : d < 0 ? 'mv-down' : '')
       + '</td><td class="num">' + (r[6] == null ? '' : r[6].toFixed(2)) + '</td></tr>');
   });
   document.getElementById('tb').innerHTML = out.join('');
