@@ -28,7 +28,7 @@ h2 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
 .optlabel .fake { font-size: 11px; color: #8a5200; background: #fff0d8; padding: 1px 8px; border-radius: 10px; }
 .why { color: #555; max-width: 75ch; }
 .frame { background: var(--frame); border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.04); overflow-x: auto; min-width: 0; }
-.frame.w390 { width: 390px; max-width: 100%; padding: 14px 12px; }
+.frame.w390 { width: 390px; max-width: 100%; padding: 14px 16px; }
 
 /* ---- house style (from women_nv_30.html) ---- */
 .crumbs { font-size: 12px; color: var(--sub); margin-bottom: 8px; }
@@ -57,7 +57,7 @@ tbody tr:hover td { background: #faf9f6; }
 .nm a { color: var(--link); text-decoration: none; font-weight: 500; }
 .nm span { font-weight: 500; }
 .g { color: var(--sub); }
-.lt { color: var(--soft); font-size: 10px; margin-left: 2px; }
+.lt { color: inherit; font-size: 10px; margin-left: 2px; }
 .up { color: var(--up); } .down { color: var(--down); }
 .upb { color: var(--up); font-weight: 600; } .downb { color: var(--down); font-weight: 600; }
 .dpill { display: inline-block; padding: 0 6px; border-radius: 8px; font-size: 11px; font-weight: 600; }
@@ -97,7 +97,8 @@ tbody tr:hover td { background: #faf9f6; }
 
 /* phone match history */
 .mx { width: 100%; table-layout: auto; }
-.mx th, .mx td { padding: 5px 4px; }
+.mx th, .mx td { padding: 5px 2px; }
+.mx th:first-child, .mx td:first-child { padding-left: 0; } .mx th:last-child, .mx td:last-child { padding-right: 0; }
 .mx td.sc { white-space: nowrap; }
 .colbar { display: flex; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }
 .colbtn { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font-size: 11px; color: #222; background: #fff; cursor: pointer; font: inherit; font-size: 11px; }
@@ -138,7 +139,7 @@ tbody tr:hover td { background: #faf9f6; }
     <div class="row" style="margin-top:16px">
       <div class="opt">
         <div class="optlabel"><span class="tag">A · House style</span><span class="rec">Chosen</span></div>
-        <p class="why">Pill filters like the division tabs, content-fit table, no row rules, right-aligned tabular numbers, letter as a small suffix with a hover. One Rating dropdown that always filters on the current rating (2026 now, 2027 after Dec 2). No Movers or Has matches toggles; sort Δ or ShiQ instead.</p>
+        <p class="why">Pill filters like the division tabs, content-fit table, no row rules, right-aligned tabular numbers, letter as a small suffix in the number's color, with a hover. One Rating dropdown that always filters on the current rating (2026 now, 2027 after Dec 2). No Movers or Has matches toggles; sort Δ or ShiQ instead.</p>
         <div class="frame" id="optA"></div>
       </div>
     </div>
@@ -160,7 +161,7 @@ tbody tr:hover td { background: #faf9f6; }
     <h2>4 · Rating letter</h2>
     <div class="row">
       <div class="opt">
-        <div class="optlabel"><span class="tag">L1 · Every letter, small gray</span><span class="rec">Chosen</span></div>
+        <div class="optlabel"><span class="tag">L1 · Every letter, same color as the number</span><span class="rec">Chosen</span></div>
         <p class="why">Consistent; nothing implied by absence. Hover names the type.</p>
         <div class="frame" id="l1"></div>
       </div>
@@ -195,7 +196,7 @@ tbody tr:hover td { background: #faf9f6; }
     <div class="row">
       <div class="opt phone">
         <div class="optlabel"><span class="tag">M2 · Partner too, short names</span><span class="rec">Chosen</span></div>
-        <p class="why" style="max-width:390px">Date, Line, R, Score, Partner, and Opponents as "A. Chang". Div, Team, ShiQ, and Opp Team start hidden. Try the Columns menu.</p>
+        <p class="why" style="max-width:390px">Date, Line, R, Score, Partner, and Opponents as "A. Chang" with ratings; the partner's rating sits under the name. Div, Team, ShiQ, and Opp Team start hidden. Try the Columns menu.</p>
         <div class="frame w390" id="m1"></div>
       </div>
       <div class="opt phone">
@@ -252,7 +253,7 @@ function caret(up,two){ var p=two?'<polygon points="0,14 5,7 10,14"/><polygon po
 function dtable(mode){ var h='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">Δ</th><th class="n">2027</th><th class="n">ShiQ</th></tr></thead><tbody>';
   M.forEach(function(m){ var d=m[3]-m[1], cls=d>0?'up':d<0?'down':'', n=Math.round(Math.abs(d)/0.5), ar=d?caret(d>0,n>1):'', cell='', v27=lvl(m[3],m[4]);
     if(mode===1) cell=ar?'<span class="'+cls+'b">'+ar+'</span>':'';
-    if(mode===2){ cell=ar?'<span class="'+cls+'b">'+ar+'</span>':''; if(ar) v27='<span class="'+cls+'b">'+m[3].toFixed(1)+'</span><span class="lt">'+m[4]+'</span>'; }
+    if(mode===2){ cell=ar?'<span class="'+cls+'b">'+ar+'</span>':''; if(ar) v27='<span class="'+cls+'b">'+m[3].toFixed(1)+'<span class="lt">'+m[4]+'</span></span>'; }
     if(mode===3) cell=ar?'<span class="dpill '+cls+'">'+ar+'</span>':'';
     h+='<tr><td class="nm"><a href="#">'+m[0]+'</a></td><td class="n">'+lvl(m[1],m[2])+'</td><td class="c">'+cell+'</td><td class="n">'+v27+'</td><td class="n">'+m[5].toFixed(2)+'</td></tr>'; });
   return h+'</tbody></table>'; }
@@ -288,8 +289,8 @@ function mxTable(on,short,rat){
   h+='</tr></thead><tbody>';
   MX.forEach(function(m){ h+='<tr>';
     var cells={date:'<td>'+m[0]+'</td>',div:'<td><span class="dv">'+m[1]+'</span></td>',team:'<td>'+m[2]+'</td>',line:'<td class="c"><span class="lp '+m[3].toLowerCase()+'">'+m[3]+'</span></td>',
-      pit:'<td class="n r">'+m[4]+'</td>',r:'<td class="c '+m[5]+'">'+m[5]+'</td>',score:'<td class="sc">'+m[6]+'</td>',partner:'<td class="pt">'+ppl(m[7],short,rat)+'</td>',
-      opp:'<td class="opp">'+ppl(m[8],short,rat)+'</td>',oppteam:'<td>'+m[9]+'</td>'};
+      pit:'<td class="n r">'+m[4]+'</td>',r:'<td class="c '+m[5]+'">'+m[5]+'</td>',score:'<td class="sc">'+(short?m[6].split(' ').join('<br>'):m[6])+'</td>',partner:'<td class="pt">'+(short?m[7].map(function(x){return '<a href="#" class="short-nm">'+shortN(x[0])+'</a><br><span class="r">'+x[1]+'</span>';}).join('<br>'):ppl(m[7],short,rat))+'</td>',
+      opp:'<td class="opp">'+ppl(m[8],short,short||rat)+'</td>',oppteam:'<td>'+m[9]+'</td>'};
     COLS.forEach(function(c){ if(on[c[0]]) h+=cells[c[0]]; }); h+='</tr>'; });
   return h+'</tbody></table>';
 }
