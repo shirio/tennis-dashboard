@@ -66,7 +66,7 @@ tbody tr:hover td { background: #faf9f6; }
 th.sex, td.sex { text-align: center; }
 th.delta, td.delta { text-align: center; padding-left: 4px; padding-right: 4px; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-.lt { font-size: 10px; color: #aaa; margin-left: 2px; cursor: help; }
+.lt { font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }
 .up { color: #27500A; }
 .caret { vertical-align: middle; }
 .caret.down { transform: scaleY(-1); }
@@ -130,9 +130,8 @@ function delta(r, i) { var a = r[4][i - 1], b = r[4][i]; return (a != null && b 
 function fmt(l) { return l == null ? '' : l.toFixed(1); }
 function ntrp(l, t, cls) {
   if (l == null) return '';
-  var s = cls ? '<span class="' + cls + '">' + fmt(l) + '</span>' : fmt(l);
-  if (!t) return s;
-  return s + '<span class="lt" title="' + (TYPES[t] || t) + '">' + t + '</span>';
+  var s = fmt(l) + (t ? '<span class="lt" title="' + (TYPES[t] || t) + '">' + t + '</span>' : '');
+  return cls ? '<span class="' + cls + '">' + s + '</span>' : s;
 }
 function esc(s) { return String(s).replace(/[&<>"]/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 function fillSelect(id, vals, label) {

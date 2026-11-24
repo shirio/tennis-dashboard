@@ -38,7 +38,7 @@ body { background: #fff; }
 .card .l { font-size: 11px; color: #888; }
 .card .v { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.25; }
 .card .s { font-size: 11px; color: #888; }
-.lt { font-size: 10px; color: #aaa; margin-left: 2px; font-weight: 400; }
+.lt { font-size: 10px; color: inherit; margin-left: 2px; font-weight: 400; }
 .v .lt { font-size: 12px; margin-left: 3px; }
 .mv-up { color: #27500A; font-weight: 600; }
 .mv-down { color: #791F1F; font-weight: 600; }
@@ -86,11 +86,15 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   .phdr h1 { font-size: 18px; }
   .card { padding: .5rem .7rem; }
   .colbar { display: flex; }
-  .fn, .hist .rt { display: none; }
+  .fn { display: none; }
+  .c-partner .rt { display: block; }
+  .c-score .set { display: block; }
   .sn { display: inline; }
   .tbl-wrap { overflow-x: visible; }
   table.hist { width: 100%; }
-  .hist th, .hist td { padding: 5px 4px; }
+  .hist th, .hist td { padding: 5px 2px; }
+  .hist .c-date { padding-left: 0; }
+  .hist .c-opp, .hist .c-oppteam { padding-right: 0; }
   .hist td.c-partner, .hist td.c-opp { white-space: normal; }
   .hist .pn { white-space: normal; }
   .hist.h-date .c-date { display: none; }
@@ -121,7 +125,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-pit" title="ShiQ going into the match">ShiQ</th><th class="c-r">R</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-date">3/14/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-s2">S2</span></td><td class="num c-pit">3.39</td><td class="c-r"><span class="down">L</span></td><td class="c-score">6-3 6-0</td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="punam-patel.html"><span class="fn">Punam Patel</span><span class="sn">P. Patel</span></a> <span class="rt">3.28</span></span></td><td class="c-oppteam">DESERT PALM</td></tr><tr data-y="2026"><td class="c-date">3/21/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">3.33</td><td class="c-r"><span class="down">L</span></td><td class="c-score">6-1 6-1</td><td class="c-partner"><span class="pn"><a href="alisia-pulella.html"><span class="fn">Alisia Pulella</span><span class="sn">A. Pulella</span></a> <span class="rt">3.21</span></span></td><td class="c-opp"><span class="pn"><a href="karen-watts.html"><span class="fn">Karen Watts</span><span class="sn">K. Watts</span></a> <span class="rt">3.49</span></span><br><span class="pn"><a href="tanya-hale.html"><span class="fn">Tanya Hale</span><span class="sn">T. Hale</span></a> <span class="rt">3.49</span></span></td><td class="c-oppteam">RED ROCK CC #2</td></tr><tr data-y="2026"><td class="c-date">6/6/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">3.33</td><td class="c-r"><span class="" title="Default, not counted in records">W*</span></td><td class="c-score"><em class="muted">default</em></td><td class="c-partner"><span class="pn"><a href="catherine-perez.html"><span class="fn">Catherine Perez</span><span class="sn">C. Perez</span></a> <span class="rt">3.14</span></span></td><td class="c-opp"><em class="muted">default</em></td><td class="c-oppteam">TPC</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-date">3/14/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-s2">S2</span></td><td class="num c-pit">3.39</td><td class="c-r"><span class="down">L</span></td><td class="c-score"><span class="set">6-3</span> <span class="set">6-0</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="punam-patel.html"><span class="fn">Punam Patel</span><span class="sn">P. Patel</span></a> <span class="rt">3.28</span></span></td><td class="c-oppteam">DESERT PALM</td></tr><tr data-y="2026"><td class="c-date">3/21/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">3.33</td><td class="c-r"><span class="down">L</span></td><td class="c-score"><span class="set">6-1</span> <span class="set">6-1</span></td><td class="c-partner"><span class="pn"><a href="alisia-pulella.html"><span class="fn">Alisia Pulella</span><span class="sn">A. Pulella</span></a> <span class="rt">3.21</span></span></td><td class="c-opp"><span class="pn"><a href="karen-watts.html"><span class="fn">Karen Watts</span><span class="sn">K. Watts</span></a> <span class="rt">3.49</span></span><br><span class="pn"><a href="tanya-hale.html"><span class="fn">Tanya Hale</span><span class="sn">T. Hale</span></a> <span class="rt">3.49</span></span></td><td class="c-oppteam">RED ROCK CC #2</td></tr><tr data-y="2026"><td class="c-date">6/6/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">3.33</td><td class="c-r"><span class="" title="Default, not counted in records">W*</span></td><td class="c-score"><em class="muted">default</em></td><td class="c-partner"><span class="pn"><a href="catherine-perez.html"><span class="fn">Catherine Perez</span><span class="sn">C. Perez</span></a> <span class="rt">3.14</span></span></td><td class="c-opp"><em class="muted">default</em></td><td class="c-oppteam">TPC</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {

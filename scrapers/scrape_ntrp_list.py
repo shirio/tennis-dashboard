@@ -14,6 +14,9 @@ The results page is forward-only: never go "back" to the form; start a fresh
 Advanced Search instead. On any failure the window stays open for 60 s and a
 screenshot is saved next to the HTML, so you can see what went wrong.
 
+Note: the Championship Year filter lists players active that year with their
+CURRENT rating, not that year's year-end rating (checked 2026-11-24).
+
 Usage:
     python3 scrapers/scrape_ntrp_list.py --year 2026
     python3 scrapers/scrape_ntrp_list.py --year 2022,2023,2024,2025   # one login
@@ -104,8 +107,10 @@ def _search_year(page, year, args, out, tag) -> None:
     # The page also has hidden header "Search" buttons (e.g. #btnSearchNTRP),
     # so target the form's own button by id.
     btn = page.locator("#ctl00_mainContent_btnSearch")
+    if btn.count() == 0:  # on a repeat search the form button is ...btnSearchNTRP
+        btn = page.locator("#ctl00_mainContent_btnSearchNTRP")
     if btn.count() == 0:
-        btn = page.locator("#ctl00_mainContent input[type=submit][value='Search']:visible").first
+        btn = page.locator("input[type=submit][value='Search']:visible").first
     btn.click(timeout=15_000)
     page.wait_for_load_state("networkidle", timeout=60_000)
     time.sleep(2)

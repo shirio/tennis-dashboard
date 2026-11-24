@@ -38,7 +38,7 @@ body { background: #fff; }
 .card .l { font-size: 11px; color: #888; }
 .card .v { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.25; }
 .card .s { font-size: 11px; color: #888; }
-.lt { font-size: 10px; color: #aaa; margin-left: 2px; font-weight: 400; }
+.lt { font-size: 10px; color: inherit; margin-left: 2px; font-weight: 400; }
 .v .lt { font-size: 12px; margin-left: 3px; }
 .mv-up { color: #27500A; font-weight: 600; }
 .mv-down { color: #791F1F; font-weight: 600; }
@@ -86,11 +86,15 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   .phdr h1 { font-size: 18px; }
   .card { padding: .5rem .7rem; }
   .colbar { display: flex; }
-  .fn, .hist .rt { display: none; }
+  .fn { display: none; }
+  .c-partner .rt { display: block; }
+  .c-score .set { display: block; }
   .sn { display: inline; }
   .tbl-wrap { overflow-x: visible; }
   table.hist { width: 100%; }
-  .hist th, .hist td { padding: 5px 4px; }
+  .hist th, .hist td { padding: 5px 2px; }
+  .hist .c-date { padding-left: 0; }
+  .hist .c-opp, .hist .c-oppteam { padding-right: 0; }
   .hist td.c-partner, .hist td.c-opp { white-space: normal; }
   .hist .pn { white-space: normal; }
   .hist.h-date .c-date { display: none; }
@@ -121,7 +125,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-pit" title="ShiQ going into the match">ShiQ</th><th class="c-r">R</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-date">3/28/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #4</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="num c-pit">2.51</td><td class="c-r"><span class="up">W</span></td><td class="c-score">4-6 6-3 1-0</td><td class="c-partner"><span class="pn"><a href="kristin-stowe.html"><span class="fn">Kristin Stowe</span><span class="sn">K. Stowe</span></a> <span class="rt">2.65</span></span></td><td class="c-opp"><span class="pn"><a href="rochelle-hamatian.html"><span class="fn">Rochelle Hamatian</span><span class="sn">R. Hamatian</span></a> <span class="rt">2.67</span></span><br><span class="pn"><a href="michelle-inman.html"><span class="fn">Michelle Inman</span><span class="sn">M. Inman</span></a> <span class="rt">2.66</span></span></td><td class="c-oppteam">CLUB RIDGES</td></tr><tr data-y="2026"><td class="c-date">5/16/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #4</td><td class="c-line"><span class="line-pill pill-s2">S2</span></td><td class="num c-pit">2.57</td><td class="c-r"><span class="down">L</span></td><td class="c-score">6-3 6-1</td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="aida-shirley.html"><span class="fn">Aida Shirley</span><span class="sn">A. Shirley</span></a> <span class="rt">2.71</span></span></td><td class="c-oppteam">SPANISH TRAIL</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-date">3/28/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #4</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="num c-pit">2.51</td><td class="c-r"><span class="up">W</span></td><td class="c-score"><span class="set">4-6</span> <span class="set">6-3</span> <span class="set">1-0</span></td><td class="c-partner"><span class="pn"><a href="kristin-stowe.html"><span class="fn">Kristin Stowe</span><span class="sn">K. Stowe</span></a> <span class="rt">2.65</span></span></td><td class="c-opp"><span class="pn"><a href="rochelle-hamatian.html"><span class="fn">Rochelle Hamatian</span><span class="sn">R. Hamatian</span></a> <span class="rt">2.67</span></span><br><span class="pn"><a href="michelle-inman.html"><span class="fn">Michelle Inman</span><span class="sn">M. Inman</span></a> <span class="rt">2.66</span></span></td><td class="c-oppteam">CLUB RIDGES</td></tr><tr data-y="2026"><td class="c-date">5/16/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #4</td><td class="c-line"><span class="line-pill pill-s2">S2</span></td><td class="num c-pit">2.57</td><td class="c-r"><span class="down">L</span></td><td class="c-score"><span class="set">6-3</span> <span class="set">6-1</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="aida-shirley.html"><span class="fn">Aida Shirley</span><span class="sn">A. Shirley</span></a> <span class="rt">2.71</span></span></td><td class="c-oppteam">SPANISH TRAIL</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {

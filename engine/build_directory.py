@@ -279,7 +279,7 @@ tbody tr:hover td {{ background: #faf9f6; }}
 th.sex, td.sex {{ text-align: center; }}
 th.delta, td.delta {{ text-align: center; padding-left: 4px; padding-right: 4px; }}
 td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
-.lt {{ font-size: 10px; color: #aaa; margin-left: 2px; cursor: help; }}
+.lt {{ font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }}
 .up {{ color: #27500A; }}
 .caret {{ vertical-align: middle; }}
 .caret.down {{ transform: scaleY(-1); }}
@@ -331,9 +331,8 @@ function delta(r, i) {{ var a = r[4][i - 1], b = r[4][i]; return (a != null && b
 function fmt(l) {{ return l == null ? '' : l.toFixed(1); }}
 function ntrp(l, t, cls) {{
   if (l == null) return '';
-  var s = cls ? '<span class="' + cls + '">' + fmt(l) + '</span>' : fmt(l);
-  if (!t) return s;
-  return s + '<span class="lt" title="' + (TYPES[t] || t) + '">' + t + '</span>';
+  var s = fmt(l) + (t ? '<span class="lt" title="' + (TYPES[t] || t) + '">' + t + '</span>' : '');
+  return cls ? '<span class="' + cls + '">' + s + '</span>' : s;
 }}
 function esc(s) {{ return String(s).replace(/[&<>"]/g, function(c) {{ return {{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}}[c]; }}); }}
 function fillSelect(id, vals, label) {{
@@ -514,7 +513,8 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         res = ("W*" if r["won"] else "L*") if wko else ("W" if r["won"] else "L")
         res_tip = ' title="Default, not counted in records"' if wko else ""
         rcls = "" if wko else ("up" if r["won"] else "down")
-        score = '<em class="muted">default</em>' if wko else _esc(r.get("score", ""))
+        score = ('<em class="muted">default</em>' if wko else
+                 " ".join(f'<span class="set">{_esc(x)}</span>' for x in (r.get("score") or "").split()))
         partners = "<br>".join(_name_link(n, (r.get("partner_r") or [None] * 9)[i], link_for)
                                for i, n in enumerate(r.get("partners") or [])) or "—"
         opps = "<br>".join(_name_link(n, (r.get("opp_r") or [None] * 9)[i], link_for)
@@ -571,7 +571,7 @@ body {{ background: #fff; }}
 .card .l {{ font-size: 11px; color: #888; }}
 .card .v {{ font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.25; }}
 .card .s {{ font-size: 11px; color: #888; }}
-.lt {{ font-size: 10px; color: #aaa; margin-left: 2px; font-weight: 400; }}
+.lt {{ font-size: 10px; color: inherit; margin-left: 2px; font-weight: 400; }}
 .v .lt {{ font-size: 12px; margin-left: 3px; }}
 .mv-up {{ color: #27500A; font-weight: 600; }}
 .mv-down {{ color: #791F1F; font-weight: 600; }}
@@ -619,11 +619,15 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
   .phdr h1 {{ font-size: 18px; }}
   .card {{ padding: .5rem .7rem; }}
   .colbar {{ display: flex; }}
-  .fn, .hist .rt {{ display: none; }}
+  .fn {{ display: none; }}
+  .c-partner .rt {{ display: block; }}
+  .c-score .set {{ display: block; }}
   .sn {{ display: inline; }}
   .tbl-wrap {{ overflow-x: visible; }}
   table.hist {{ width: 100%; }}
-  .hist th, .hist td {{ padding: 5px 4px; }}
+  .hist th, .hist td {{ padding: 5px 2px; }}
+  .hist .c-date {{ padding-left: 0; }}
+  .hist .c-opp, .hist .c-oppteam {{ padding-right: 0; }}
   .hist td.c-partner, .hist td.c-opp {{ white-space: normal; }}
   .hist .pn {{ white-space: normal; }}
   .hist.h-date .c-date {{ display: none; }}\n  .hist.h-div .c-div {{ display: none; }}\n  .hist.h-team .c-team {{ display: none; }}\n  .hist.h-line .c-line {{ display: none; }}\n  .hist.h-pit .c-pit {{ display: none; }}\n  .hist.h-r .c-r {{ display: none; }}\n  .hist.h-score .c-score {{ display: none; }}\n  .hist.h-partner .c-partner {{ display: none; }}\n  .hist.h-opp .c-opp {{ display: none; }}\n  .hist.h-oppteam .c-oppteam {{ display: none; }}

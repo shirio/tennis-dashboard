@@ -38,7 +38,7 @@ body { background: #fff; }
 .card .l { font-size: 11px; color: #888; }
 .card .v { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.25; }
 .card .s { font-size: 11px; color: #888; }
-.lt { font-size: 10px; color: #aaa; margin-left: 2px; font-weight: 400; }
+.lt { font-size: 10px; color: inherit; margin-left: 2px; font-weight: 400; }
 .v .lt { font-size: 12px; margin-left: 3px; }
 .mv-up { color: #27500A; font-weight: 600; }
 .mv-down { color: #791F1F; font-weight: 600; }
@@ -86,11 +86,15 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   .phdr h1 { font-size: 18px; }
   .card { padding: .5rem .7rem; }
   .colbar { display: flex; }
-  .fn, .hist .rt { display: none; }
+  .fn { display: none; }
+  .c-partner .rt { display: block; }
+  .c-score .set { display: block; }
   .sn { display: inline; }
   .tbl-wrap { overflow-x: visible; }
   table.hist { width: 100%; }
-  .hist th, .hist td { padding: 5px 4px; }
+  .hist th, .hist td { padding: 5px 2px; }
+  .hist .c-date { padding-left: 0; }
+  .hist .c-opp, .hist .c-oppteam { padding-right: 0; }
   .hist td.c-partner, .hist td.c-opp { white-space: normal; }
   .hist .pn { white-space: normal; }
   .hist.h-date .c-date { display: none; }
@@ -121,7 +125,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-pit" title="ShiQ going into the match">ShiQ</th><th class="c-r">R</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-date">4/18/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SUMMERLIN ARBORS</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">3.12</td><td class="c-r"><span class="" title="Default, not counted in records">W*</span></td><td class="c-score"><em class="muted">default</em></td><td class="c-partner"><span class="pn"><a href="christine-ballard.html"><span class="fn">Christine Ballard</span><span class="sn">C. Ballard</span></a> <span class="rt">3.18</span></span></td><td class="c-opp"><em class="muted">default</em></td><td class="c-oppteam">ANTHEM CC</td></tr><tr data-y="2026"><td class="c-date">5/2/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SUMMERLIN ARBORS</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">3.12</td><td class="c-r"><span class="down">L</span></td><td class="c-score">6-2 6-1</td><td class="c-partner"><span class="pn"><a href="amrita-soli.html"><span class="fn">Amrita Soli</span><span class="sn">A. Soli</span></a> <span class="rt">3.24</span></span></td><td class="c-opp"><span class="pn"><a href="kirsten-ingram.html"><span class="fn">Kirsten Ingram</span><span class="sn">K. Ingram</span></a> <span class="rt">3.17</span></span><br><span class="pn"><a href="heidi-thornhill.html"><span class="fn">Heidi Thornhill</span><span class="sn">H. Thornhill</span></a> <span class="rt">3.37</span></span></td><td class="c-oppteam">ANTHEM CC</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-date">4/18/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SUMMERLIN ARBORS</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">3.12</td><td class="c-r"><span class="" title="Default, not counted in records">W*</span></td><td class="c-score"><em class="muted">default</em></td><td class="c-partner"><span class="pn"><a href="christine-ballard.html"><span class="fn">Christine Ballard</span><span class="sn">C. Ballard</span></a> <span class="rt">3.18</span></span></td><td class="c-opp"><em class="muted">default</em></td><td class="c-oppteam">ANTHEM CC</td></tr><tr data-y="2026"><td class="c-date">5/2/26</td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SUMMERLIN ARBORS</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">3.12</td><td class="c-r"><span class="down">L</span></td><td class="c-score"><span class="set">6-2</span> <span class="set">6-1</span></td><td class="c-partner"><span class="pn"><a href="amrita-soli.html"><span class="fn">Amrita Soli</span><span class="sn">A. Soli</span></a> <span class="rt">3.24</span></span></td><td class="c-opp"><span class="pn"><a href="kirsten-ingram.html"><span class="fn">Kirsten Ingram</span><span class="sn">K. Ingram</span></a> <span class="rt">3.17</span></span><br><span class="pn"><a href="heidi-thornhill.html"><span class="fn">Heidi Thornhill</span><span class="sn">H. Thornhill</span></a> <span class="rt">3.37</span></span></td><td class="c-oppteam">ANTHEM CC</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {
