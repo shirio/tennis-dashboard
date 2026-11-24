@@ -133,19 +133,9 @@ tbody tr:hover td { background: #faf9f6; }
     <p class="why" style="margin:-4px 0 10px">Kelli Caderot shows a made-up two-level jump.</p>
     <div class="row">
       <div class="opt">
-        <div class="optlabel"><span class="tag">Δ1 · Arrow only</span><span class="fake">2027 values made up</span></div>
-        <p class="why">One caret for one level (0.5), two stacked carets for two levels; same pointing down. Narrowest.</p>
-        <div class="frame" id="d1"></div>
-      </div>
-      <div class="opt">
-        <div class="optlabel"><span class="tag">Δ2 · Arrow + tinted 2027</span><span class="rec">Recommended</span><span class="fake">made up</span></div>
-        <p class="why">Same carets; the 2027 rating takes their color so the change reads as one unit.</p>
+        <div class="optlabel"><span class="tag">Δ2 · Arrow + tinted 2027</span><span class="rec">Chosen</span><span class="fake">2027 values made up</span></div>
+        <p class="why">One caret per 0.5 level (two stacked for two levels); the 2027 rating takes their color so the change reads as one unit.</p>
         <div class="frame" id="d2"></div>
-      </div>
-      <div class="opt">
-        <div class="optlabel"><span class="tag">Δ3 · Pill</span><span class="fake">made up</span></div>
-        <p class="why">Same carets in a soft green or red pill. Loudest; good if movers are the main reason people visit.</p>
-        <div class="frame" id="d3"></div>
       </div>
     </div>
   </section>
@@ -233,9 +223,7 @@ function dtable(mode){ var h='<table><thead><tr><th>Name</th><th class="n">2026<
     if(mode===3) cell=ar?'<span class="dpill '+cls+'">'+ar+'</span>':'';
     h+='<tr><td class="nm"><a href="#">'+m[0]+'</a></td><td class="n">'+lvl(m[1],m[2])+'</td><td class="c">'+cell+'</td><td class="n">'+v27+'</td><td class="n">'+m[5].toFixed(2)+'</td></tr>'; });
   return h+'</tbody></table>'; }
-document.getElementById('d1').innerHTML=dtable(1);
 document.getElementById('d2').innerHTML=dtable(2);
-document.getElementById('d3').innerHTML=dtable(3);
 
 // Player page (real: Ara Lee Stimson)
 var recs='<div class="pills"><span class="rtab on">Overall <b>5–1</b></span><span class="rtab">3.0 <b>5–1</b></span><span class="rtab">Singles <b>0–0</b></span><span class="rtab">Doubles <b>5–1</b></span></div>';
