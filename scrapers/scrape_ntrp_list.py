@@ -16,6 +16,7 @@ screenshot is saved next to the HTML, so you can see what went wrong.
 
 Usage:
     python3 scrapers/scrape_ntrp_list.py --year 2026
+    python3 scrapers/scrape_ntrp_list.py --year 2022,2023,2024,2025   # one login
 """
 from __future__ import annotations
 
@@ -89,9 +90,49 @@ def _next_page_link(page, current: int):
     return None
 
 
+def _search_year(page, year, args, out, tag) -> None:
+    """Fresh Advanced Search for one year; save every results page."""
+    print(f"  opening Advanced Search for {year} …")
+    page.goto(SEARCH_URL, wait_until="domcontentloaded", timeout=45_000)
+    time.sleep(2)
+    _dismiss_cookie_banner(page)
+    if not _select_by_option_text(page, str(year), "year"):
+        raise RuntimeError(f"year {year} not offered")
+    _select_by_option_text(page, args.section, "section")
+    _select_by_option_text(page, args.district, "district")
+    # Gender and Level default to "All"; leave League blank.
+    # The page also has hidden header "Search" buttons (e.g. #btnSearchNTRP),
+    # so target the form's own button by id.
+    btn = page.locator("#ctl00_mainContent_btnSearch")
+    if btn.count() == 0:
+        btn = page.locator("#ctl00_mainContent input[type=submit][value='Search']:visible").first
+    btn.click(timeout=15_000)
+    page.wait_for_load_state("networkidle", timeout=60_000)
+    time.sleep(2)
+
+    n = 1
+    while True:
+        html = page.content()
+        path = out / f"{tag}_p{n:02d}.html"
+        path.write_text(html, encoding="utf-8")
+        rows = len(re.findall(r"<tr", html, re.I))
+        print(f"  saved {path.name} ({rows} table rows)")
+        if n >= MAX_PAGES:
+            break
+        link = _next_page_link(page, n)
+        if not link:
+            break
+        link.click()
+        page.wait_for_load_state("networkidle", timeout=60_000)
+        time.sleep(2)
+        n += 1
+    print(f"  {year}: {n} page(s) saved to {out}")
+    time.sleep(5)  # be gentle between searches
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
-    ap.add_argument("--year", default="2026")
+    ap.add_argument("--year", default="2026", help="One year or a comma list, all in one login")
     ap.add_argument("--section", default="USTA/INTERMOUNTAIN")
     ap.add_argument("--district", default="NEVADA")
     ap.add_argument("--out", default=str(ROOT / "data" / "ntrp_raw"))
@@ -105,7 +146,8 @@ def main(argv=None):
         return 1
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    tag = f"{args.tag}_{args.year}"
+    years = [y.strip() for y in str(args.year).split(",") if y.strip()]
+    tag = f"{args.tag}_{years[0]}"
 
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=False, slow_mo=150)
@@ -113,40 +155,9 @@ def main(argv=None):
         page = ctx.new_page()
         try:
             login(page, user, pw_)
-            print("  opening Advanced Search …")
-            page.goto(SEARCH_URL, wait_until="domcontentloaded", timeout=45_000)
-            time.sleep(2)
-            _dismiss_cookie_banner(page)
-            _select_by_option_text(page, str(args.year), "year")
-            _select_by_option_text(page, args.section, "section")
-            _select_by_option_text(page, args.district, "district")
-            # Gender and Level default to "All"; leave League blank.
-            # The page also has hidden header "Search" buttons (e.g. #btnSearchNTRP),
-            # so target the form's own button by id.
-            btn = page.locator("#ctl00_mainContent_btnSearch")
-            if btn.count() == 0:
-                btn = page.locator("#ctl00_mainContent input[type=submit][value='Search']:visible").first
-            btn.click(timeout=15_000)
-            page.wait_for_load_state("networkidle", timeout=60_000)
-            time.sleep(2)
-
-            n = 1
-            while True:
-                html = page.content()
-                path = out / f"{tag}_p{n:02d}.html"
-                path.write_text(html, encoding="utf-8")
-                rows = len(re.findall(r"<tr", html, re.I))
-                print(f"  saved {path.name} ({rows} table rows)")
-                if n >= MAX_PAGES:
-                    break
-                link = _next_page_link(page, n)
-                if not link:
-                    break
-                link.click()
-                page.wait_for_load_state("networkidle", timeout=60_000)
-                time.sleep(2)
-                n += 1
-            print(f"  done: {n} page(s) saved to {out}")
+            for year in years:
+                tag = f"{args.tag}_{year}"
+                _search_year(page, year, args, out, tag)
         except Exception as e:
             shot = out / f"{tag}_error.png"
             try:
