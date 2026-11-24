@@ -27,52 +27,64 @@ h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 .down { color: #b03a2e; font-weight: 700; }
 .muted { color: #999; }
 
-.hdr { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; align-items: flex-end; margin-bottom: 1rem; }
-.hdr .who { flex: 1 1 260px; }
-.kpis { display: flex; gap: .6rem; flex-wrap: wrap; }
-.kpi { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: .4rem .8rem; min-width: 96px; }
-.kpi .l { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: .03em; }
-.kpi .v { font-size: 1.15rem; font-weight: 700; font-variant-numeric: tabular-nums; }
-.recs { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .4rem 0 1.1rem; }
-.yrs { display: inline-flex; border: 1px solid #d0daf0; border-radius: 6px; overflow: hidden; margin-right: .4rem; }
-.yr { border: 0; background: #fff; padding: .25rem .6rem; font-size: 12px; cursor: pointer; color: #1a5fb4; }
-.yr.on { background: #1a5fb4; color: #fff; }
-.strip { display: flex; flex-wrap: wrap; gap: .5rem; }
+body { background: #fff; }
+.hdr { display: flex; flex-wrap: wrap; gap: .8rem 1.6rem; align-items: flex-end; margin-bottom: 1rem; }
+.hdr .who { flex: 1 1 240px; }
+.hdr h1 { font-size: 20px; font-weight: 600; margin-bottom: .15rem; }
+.hdr .loc { font-size: 12px; color: #888; }
+.cards { display: flex; gap: 10px; flex-wrap: wrap; }
+.card { background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
+.card .l { font-size: 11px; color: #888; }
+.card .v { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.25; }
+.card .s { font-size: 11px; color: #888; }
+.lt { font-size: 10px; color: #aaa; margin-left: 2px; font-weight: 400; }
+.v .lt { font-size: 12px; margin-left: 3px; }
+.mv-up { color: #27500A; font-weight: 600; }
+.mv-down { color: #791F1F; font-weight: 600; }
+.recs { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: .4rem 0 1.1rem; }
+.yrs { display: inline-flex; gap: 4px; margin-right: .4rem; }
+.yr { border: 1px solid #ccc; border-radius: 20px; background: #fff; padding: 2px 10px; font-size: 11px;
+      cursor: pointer; color: #555; font-family: inherit; }
+.yr.on { background: linear-gradient(180deg,#f4f4f2,#e4e4e0); color: #222; border-color: #bbb; font-weight: 600; }
+.strip { display: flex; flex-wrap: wrap; gap: .4rem; }
 .strip[hidden] { display: none; }
-.stat { position: relative; background: #f0f4ff; border: 1px solid #d0daf0; border-radius: 6px;
-        padding: .25rem .6rem; font-size: 13px; cursor: default; outline: none; }
-.stat-l { color: #555; margin-right: .35rem; }
-.stat-v { font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat { position: relative; border: 1px solid #ccc; border-radius: 20px; background: #fff;
+        padding: 2px 10px; font-size: 11px; cursor: default; outline: none; }
+.stat-l { color: #888; margin-right: .35rem; }
+.stat-v { font-weight: 600; font-variant-numeric: tabular-nums; }
 .tipbox { display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 5; background: #222;
           color: #fff; border-radius: 6px; padding: .35rem .5rem; font-size: 12px; white-space: nowrap; }
 .tipbox td { padding: 1px 6px; }
 .tipbox td + td { font-weight: 700; text-align: right; }
 .stat:hover .tipbox, .stat:focus .tipbox { display: block; }
-.tbl-wrap { overflow-x: auto; background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; }
-table.hist { border-collapse: collapse; font-size: 13px; width: 100%; }
-.hist th, .hist td { padding: .4rem .55rem; text-align: left; border-bottom: 1px solid #f0f0f0;
-                     vertical-align: middle; white-space: nowrap; }
-.hist th { background: #f5f7fb; font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: .03em; }
-.hist td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tbl-wrap { overflow-x: auto; }
+table.hist { border-collapse: collapse; font-size: 12px; }
+.hist th, .hist td { padding: .3rem .6rem; text-align: left; vertical-align: middle; white-space: nowrap; }
+.hist th:first-child, .hist td:first-child { padding-left: 0; }
+.hist th { font-size: 11px; color: #888; font-weight: 600; }
+.hist th.num, .hist td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.hist td.num { color: #aaa; }
+.hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
 .pn { white-space: nowrap; }
+.rt { color: #aaa; font-variant-numeric: tabular-nums; }
 </style></head><body><div class="wrap">
-<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada directory</a></div>
+<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada players</a></div>
 <div class="hdr">
   <div class="who"><h1>Arlene Lytle</h1>
-    <div class="sub">Las Vegas, NV · Female</div></div>
-  <div class="kpis">
-    <div class="kpi"><div class="l">Current NTRP</div><div class="v" title="Appeal">3.0 A</div></div>
-    <div class="kpi"><div class="l">Baseline</div><div class="v">1.82</div></div>
-    <div class="kpi"><div class="l">ShiQ</div><div class="v">1.85</div></div>
+    <div class="loc">Las Vegas, NV · Female</div></div>
+  <div class="cards">
+    <div class="card"><div class="l">USTA</div><div class="v" title="Appeal">3.0<span class="lt">A</span></div><div class="s">2026 year-end</div></div>
+    <div class="card"><div class="l">Baseline</div><div class="v">1.82</div><div class="s">Dec 2025</div></div>
+    <div class="card"><div class="l">ShiQ</div><div class="v">1.85</div><div class="s"><span class="mv-up">+0.03</span></div></div>
   </div>
 </div>
 <div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">Overall</span><span class="stat-v">0–5</span><span class="tipbox"><table><tr><td>2026</td><td>0–5</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">0–5</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>0–5</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">0–5</span><span class="tipbox"><table><tr><td>3.0</td><td>0–5</td></tr></table></span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">Overall</span><span class="stat-v">0–5</span><span class="tipbox"><table><tr><td>2026</td><td>0–5</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">0–5</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>0–5</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">0–5</span><span class="tipbox"><table><tr><td>3.0</td><td>0–5</td></tr></table></span></span></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th>Date</th><th>Div</th><th>Team</th><th>Line</th><th>PIT</th><th>R</th><th>Score</th>
+<th>Date</th><th>Div</th><th>Team</th><th>Line</th><th class="num" title="Our rating going into each match">PIT</th><th>R</th><th>Score</th>
 <th>Partner</th><th>Opponent(s)</th><th>Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td>3/28</td><td><span class="dp dp30">3.0</span></td><td>SOUTHERN HIGHLANDS</td><td><span class="line-pill pill-d2">D2</span></td><td class="num muted">1.82</td><td><span class="down">L</span></td><td>6-4 6-1</td><td><span class="pn"><a href="daniella-toms.html">Daniella Toms</a> <span class="muted">(2.76)</span></span></td><td><span class="pn"><a href="jihee-anh.html">Jihee Anh</a> <span class="muted">(2.95)</span></span><br><span class="pn"><a href="nancie-webster.html">NANCIE WEBSTER</a> <span class="muted">(2.78)</span></span></td><td>DTC #2</td></tr><tr data-y="2026"><td>4/11</td><td><span class="dp dp30">3.0</span></td><td>SOUTHERN HIGHLANDS</td><td><span class="line-pill pill-d1">D1</span></td><td class="num muted">1.82</td><td><span class="down">L</span></td><td>6-2 6-4</td><td><span class="pn"><a href="addy-iveth-zilberman.html">Addy Iveth Zilberman</a> <span class="muted">(2.61)</span></span></td><td><span class="pn"><a href="kellye-ray.html">Kellye Ray</a> <span class="muted">(2.84)</span></span><br><span class="pn"><a href="carolina-nigro.html">Carolina Nigro</a> <span class="muted">(2.88)</span></span></td><td>RED ROCK CC</td></tr><tr data-y="2026"><td>4/18</td><td><span class="dp dp30">3.0</span></td><td>SOUTHERN HIGHLANDS</td><td><span class="line-pill pill-d1">D1</span></td><td class="num muted">1.85</td><td><span class="down">L</span></td><td>7-5 6-2</td><td><span class="pn"><a href="margaret-bruno.html">Margaret Bruno</a> <span class="muted">(2.98)</span></span></td><td><span class="pn"><a href="han-hu.html">Han Hu</a> <span class="muted">(2.83)</span></span><br><span class="pn"><a href="margo-isler.html">Margo Isler</a> <span class="muted">(3.16)</span></span></td><td>LIFE TIME FITNESS/GV</td></tr><tr data-y="2026"><td>5/2</td><td><span class="dp dp30">3.0</span></td><td>SOUTHERN HIGHLANDS</td><td><span class="line-pill pill-d2">D2</span></td><td class="num muted">1.85</td><td><span class="down">L</span></td><td>6-3 6-4</td><td><span class="pn"><a href="shaza-nayef.html">Shaza Nayef</a> <span class="muted">(2.80)</span></span></td><td><span class="pn"><a href="christina-smith.html">Christina Smith</a> <span class="muted">(2.89)</span></span><br><span class="pn"><a href="amy-arbeli.html">Amy Arbeli</a> <span class="muted">(3.05)</span></span></td><td>TPC</td></tr><tr data-y="2026"><td>5/9</td><td><span class="dp dp30">3.0</span></td><td>SOUTHERN HIGHLANDS</td><td><span class="line-pill pill-d1">D1</span></td><td class="num muted">1.85</td><td><span class="down">L</span></td><td>6-2 6-0</td><td><span class="pn"><a href="addy-iveth-zilberman.html">Addy Iveth Zilberman</a> <span class="muted">(2.77)</span></span></td><td><span class="pn"><a href="tayoni-coleman.html">Tayoni Coleman</a> <span class="muted">(3.11)</span></span><br><span class="pn"><a href="tina-nathalia.html">Tina Nathalia</a> <span class="muted">(3.08)</span></span></td><td>SUMMERLIN ARBORS</td></tr></tbody></table></div>
-<p class="sub" style="margin-top:.6rem">PIT is our rating going into each match. W*/L* are defaults and don't count in the records.</p>
+<tbody><tr data-y="2026"><td>3/28</td><td><span class="dp dp30">3.0</span></td><td>SOUTHERN HIGHLANDS</td><td><span class="line-pill pill-d2">D2</span></td><td class="num">1.82</td><td><span class="down">L</span></td><td>6-4 6-1</td><td><span class="pn"><a href="daniella-toms.html">Daniella Toms</a> <span class="rt">2.76</span></span></td><td><span class="pn"><a href="jihee-anh.html">Jihee Anh</a> <span class="rt">2.95</span></span><br><span class="pn"><a href="nancie-webster.html">NANCIE WEBSTER</a> <span class="rt">2.78</span></span></td><td>DTC #2</td></tr><tr data-y="2026"><td>4/11</td><td><span class="dp dp30">3.0</span></td><td>SOUTHERN HIGHLANDS</td><td><span class="line-pill pill-d1">D1</span></td><td class="num">1.82</td><td><span class="down">L</span></td><td>6-2 6-4</td><td><span class="pn"><a href="addy-iveth-zilberman.html">Addy Iveth Zilberman</a> <span class="rt">2.61</span></span></td><td><span class="pn"><a href="kellye-ray.html">Kellye Ray</a> <span class="rt">2.84</span></span><br><span class="pn"><a href="carolina-nigro.html">Carolina Nigro</a> <span class="rt">2.88</span></span></td><td>RED ROCK CC</td></tr><tr data-y="2026"><td>4/18</td><td><span class="dp dp30">3.0</span></td><td>SOUTHERN HIGHLANDS</td><td><span class="line-pill pill-d1">D1</span></td><td class="num">1.85</td><td><span class="down">L</span></td><td>7-5 6-2</td><td><span class="pn"><a href="margaret-bruno.html">Margaret Bruno</a> <span class="rt">2.98</span></span></td><td><span class="pn"><a href="han-hu.html">Han Hu</a> <span class="rt">2.83</span></span><br><span class="pn"><a href="margo-isler.html">Margo Isler</a> <span class="rt">3.16</span></span></td><td>LIFE TIME FITNESS/GV</td></tr><tr data-y="2026"><td>5/2</td><td><span class="dp dp30">3.0</span></td><td>SOUTHERN HIGHLANDS</td><td><span class="line-pill pill-d2">D2</span></td><td class="num">1.85</td><td><span class="down">L</span></td><td>6-3 6-4</td><td><span class="pn"><a href="shaza-nayef.html">Shaza Nayef</a> <span class="rt">2.80</span></span></td><td><span class="pn"><a href="christina-smith.html">Christina Smith</a> <span class="rt">2.89</span></span><br><span class="pn"><a href="amy-arbeli.html">Amy Arbeli</a> <span class="rt">3.05</span></span></td><td>TPC</td></tr><tr data-y="2026"><td>5/9</td><td><span class="dp dp30">3.0</span></td><td>SOUTHERN HIGHLANDS</td><td><span class="line-pill pill-d1">D1</span></td><td class="num">1.85</td><td><span class="down">L</span></td><td>6-2 6-0</td><td><span class="pn"><a href="addy-iveth-zilberman.html">Addy Iveth Zilberman</a> <span class="rt">2.77</span></span></td><td><span class="pn"><a href="tayoni-coleman.html">Tayoni Coleman</a> <span class="rt">3.11</span></span><br><span class="pn"><a href="tina-nathalia.html">Tina Nathalia</a> <span class="rt">3.08</span></span></td><td>SUMMERLIN ARBORS</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {

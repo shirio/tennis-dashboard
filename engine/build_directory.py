@@ -395,7 +395,7 @@ def _record_strip(rec: dict) -> str:
 def _name_link(name: str, rating: str, link_for) -> str:
     href = link_for(name)
     nm = f'<a href="{_esc(href)}">{_esc(name)}</a>' if href else _esc(name)
-    r = f' <span class="muted">({_esc(rating or "NR")})</span>' if rating is not None else ""
+    r = f' <span class="rt">{_esc(rating or "NR")}</span>' if rating is not None else ""
     return f'<span class="pn">{nm}{r}</span>'
 
 
@@ -419,6 +419,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         pill = f'<span class="line-pill {_LINE_PILL_COLORS.get(lbl, "pill-d1")}">{_esc(lbl)}</span>'
         wko = r.get("wko")
         res = ("W*" if r["won"] else "L*") if wko else ("W" if r["won"] else "L")
+        res_tip = ' title="Default, not counted in records"' if wko else ""
         rcls = "" if wko else ("up" if r["won"] else "down")
         score = '<em class="muted">default</em>' if wko else _esc(r.get("score", ""))
         partners = "<br>".join(_name_link(n, (r.get("partner_r") or [None] * 9)[i], link_for)
@@ -432,72 +433,92 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
             f'<tr data-y="{_year(r["date"])}"{row_attr}><td>{_esc(date)}</td>'
             f'<td><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
             f'<td>{_esc(r.get("my_team", ""))}</td><td>{pill}</td>'
-            f'<td class="num muted">{_esc(pit(nk, r["date"], sfx))}</td>'
-            f'<td><span class="{rcls}">{res}</span></td><td>{score}</td>'
+            f'<td class="num">{_esc(pit(nk, r["date"], sfx))}</td>'
+            f'<td><span class="{rcls}"{res_tip}>{res}</span></td><td>{score}</td>'
             f'<td>{partners}</td><td>{opps}</td><td>{_esc(r.get("opp_team", ""))}</td></tr>')
 
     city_state = ", ".join(x for x in [info.get("city"), info.get("state")] if x) or p.get("state", "")
     gender = {"F": "Female", "M": "Male"}.get(info.get("gender") or "F", "")
-    lvl, letter = info.get("level"), info.get("rating_type")
+    lvl, letter = info.get("cur_level", info.get("level")), info.get("cur_type", info.get("rating_type"))
     if lvl is None:
         lvl, letter = parse_ntrp(p.get("ntrp_rating"))
-    current = format_ntrp(lvl, letter) or "—"
+    cur_year = info.get("cur_year")
     letter_tip = f' title="{_esc(RATING_TYPES.get(letter, ""))}"' if letter else ""
+    usta_v = (f'{float(lvl):.1f}<span class="lt">{_esc(letter or "")}</span>' if lvl is not None else "—")
     base = p.get("dynamic_rating_baseline")
     dyn = p.get("global_rating")
     fmt2 = lambda v: f"{float(v):.2f}" if v is not None else "—"  # noqa: E731
+    if base is not None and dyn is not None:
+        d = float(dyn) - float(base)
+        dcls = "mv-up" if d > 0.005 else ("mv-down" if d < -0.005 else "")
+        shiq_sub = f'<span class="{dcls}">{d:+.2f}</span>'
+    else:
+        shiq_sub = "&nbsp;"
+    usta_sub = _esc(f"{cur_year} year-end") if cur_year else "&nbsp;"
 
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{_esc(p["name"])}</title>
 <style>{_BASE_CSS}
-.hdr {{ display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; align-items: flex-end; margin-bottom: 1rem; }}
-.hdr .who {{ flex: 1 1 260px; }}
-.kpis {{ display: flex; gap: .6rem; flex-wrap: wrap; }}
-.kpi {{ background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: .4rem .8rem; min-width: 96px; }}
-.kpi .l {{ font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: .03em; }}
-.kpi .v {{ font-size: 1.15rem; font-weight: 700; font-variant-numeric: tabular-nums; }}
-.recs {{ display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .4rem 0 1.1rem; }}
-.yrs {{ display: inline-flex; border: 1px solid #d0daf0; border-radius: 6px; overflow: hidden; margin-right: .4rem; }}
-.yr {{ border: 0; background: #fff; padding: .25rem .6rem; font-size: 12px; cursor: pointer; color: #1a5fb4; }}
-.yr.on {{ background: #1a5fb4; color: #fff; }}
-.strip {{ display: flex; flex-wrap: wrap; gap: .5rem; }}
+body {{ background: #fff; }}
+.hdr {{ display: flex; flex-wrap: wrap; gap: .8rem 1.6rem; align-items: flex-end; margin-bottom: 1rem; }}
+.hdr .who {{ flex: 1 1 240px; }}
+.hdr h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .15rem; }}
+.hdr .loc {{ font-size: 12px; color: #888; }}
+.cards {{ display: flex; gap: 10px; flex-wrap: wrap; }}
+.card {{ background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }}
+.card .l {{ font-size: 11px; color: #888; }}
+.card .v {{ font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.25; }}
+.card .s {{ font-size: 11px; color: #888; }}
+.lt {{ font-size: 10px; color: #aaa; margin-left: 2px; font-weight: 400; }}
+.v .lt {{ font-size: 12px; margin-left: 3px; }}
+.mv-up {{ color: #27500A; font-weight: 600; }}
+.mv-down {{ color: #791F1F; font-weight: 600; }}
+.recs {{ display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: .4rem 0 1.1rem; }}
+.yrs {{ display: inline-flex; gap: 4px; margin-right: .4rem; }}
+.yr {{ border: 1px solid #ccc; border-radius: 20px; background: #fff; padding: 2px 10px; font-size: 11px;
+      cursor: pointer; color: #555; font-family: inherit; }}
+.yr.on {{ background: linear-gradient(180deg,#f4f4f2,#e4e4e0); color: #222; border-color: #bbb; font-weight: 600; }}
+.strip {{ display: flex; flex-wrap: wrap; gap: .4rem; }}
 .strip[hidden] {{ display: none; }}
-.stat {{ position: relative; background: #f0f4ff; border: 1px solid #d0daf0; border-radius: 6px;
-        padding: .25rem .6rem; font-size: 13px; cursor: default; outline: none; }}
-.stat-l {{ color: #555; margin-right: .35rem; }}
-.stat-v {{ font-weight: 700; font-variant-numeric: tabular-nums; }}
+.stat {{ position: relative; border: 1px solid #ccc; border-radius: 20px; background: #fff;
+        padding: 2px 10px; font-size: 11px; cursor: default; outline: none; }}
+.stat-l {{ color: #888; margin-right: .35rem; }}
+.stat-v {{ font-weight: 600; font-variant-numeric: tabular-nums; }}
 .tipbox {{ display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 5; background: #222;
           color: #fff; border-radius: 6px; padding: .35rem .5rem; font-size: 12px; white-space: nowrap; }}
 .tipbox td {{ padding: 1px 6px; }}
 .tipbox td + td {{ font-weight: 700; text-align: right; }}
 .stat:hover .tipbox, .stat:focus .tipbox {{ display: block; }}
-.tbl-wrap {{ overflow-x: auto; background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; }}
-table.hist {{ border-collapse: collapse; font-size: 13px; width: 100%; }}
-.hist th, .hist td {{ padding: .4rem .55rem; text-align: left; border-bottom: 1px solid #f0f0f0;
-                     vertical-align: middle; white-space: nowrap; }}
-.hist th {{ background: #f5f7fb; font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: .03em; }}
-.hist td.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
+.tbl-wrap {{ overflow-x: auto; }}
+table.hist {{ border-collapse: collapse; font-size: 12px; }}
+.hist th, .hist td {{ padding: .3rem .6rem; text-align: left; vertical-align: middle; white-space: nowrap; }}
+.hist th:first-child, .hist td:first-child {{ padding-left: 0; }}
+.hist th {{ font-size: 11px; color: #888; font-weight: 600; }}
+.hist th.num, .hist td.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
+.hist td.num {{ color: #aaa; }}
+.hist tbody tr:hover td {{ background: #faf9f6; }}
 .hist tr.dq td {{ opacity: .5; text-decoration: line-through; }}
 .pn {{ white-space: nowrap; }}
+.rt {{ color: #aaa; font-variant-numeric: tabular-nums; }}
 </style></head><body><div class="wrap">
-<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada directory</a></div>
+<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada players</a></div>
 <div class="hdr">
   <div class="who"><h1>{_esc(p["name"])}</h1>
-    <div class="sub">{_esc(city_state)} · {_esc(gender)}</div></div>
-  <div class="kpis">
-    <div class="kpi"><div class="l">Current NTRP</div><div class="v"{letter_tip}>{_esc(current)}</div></div>
-    <div class="kpi"><div class="l">Baseline</div><div class="v">{fmt2(base)}</div></div>
-    <div class="kpi"><div class="l">ShiQ</div><div class="v">{fmt2(dyn)}</div></div>
+    <div class="loc">{_esc(city_state)} · {_esc(gender)}</div></div>
+  <div class="cards">
+    <div class="card"><div class="l">USTA</div><div class="v"{letter_tip}>{usta_v}</div><div class="s">{usta_sub}</div></div>
+    <div class="card"><div class="l">Baseline</div><div class="v">{fmt2(base)}</div><div class="s">Dec 2025</div></div>
+    <div class="card"><div class="l">ShiQ</div><div class="v">{fmt2(dyn)}</div><div class="s">{shiq_sub}</div></div>
   </div>
 </div>
 <div class="recs"><span class="yrs">{toggle}</span>{strip_html}</div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th>Date</th><th>Div</th><th>Team</th><th>Line</th><th>PIT</th><th>R</th><th>Score</th>
+<th>Date</th><th>Div</th><th>Team</th><th>Line</th><th class="num" title="Our rating going into each match">PIT</th><th>R</th><th>Score</th>
 <th>Partner</th><th>Opponent(s)</th><th>Opp Team</th></tr></thead>
 <tbody>{"".join(body)}</tbody></table></div>
-<p class="sub" style="margin-top:.6rem">PIT is our rating going into each match. W*/L* are defaults and don't count in the records.</p>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {{
@@ -558,8 +579,14 @@ def build_directory() -> dict:
         if p and p["id"] in with_hist:
             href = f"{PLAYER_DIR.as_posix()}/{p['id']}.html"
             dyn = round(float(p["global_rating"]), 4) if p.get("global_rating") is not None else None
-            info_by_id[p["id"]] = r
         r27 = year_links.get(i) or {}
+        if href:
+            info = dict(r)
+            if r27.get("level") is not None:
+                info.update(cur_level=r27["level"], cur_type=r27.get("rating_type"), cur_year=YEAR_TO)
+            else:
+                info["cur_year"] = YEAR_FROM if not placeholder else None
+            info_by_id[p["id"]] = info
         rows.append([r["name"], r.get("gender"), r.get("level"), r.get("rating_type"),
                      r27.get("level"), r27.get("rating_type"), dyn, href])
 
