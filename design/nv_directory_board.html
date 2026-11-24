@@ -376,6 +376,6 @@ var o=''; ['H1','H2','H3','H4'].forEach(function(k){ var hp=HP[k][2];
   B.forEach(function(r){ var bc=r[4]===null?'<span class="r">–</span>':r[4]?pchev(r[4],!!r[5]):'';
     h+='<tr><td class="nm"><a href="#">'+r[0]+'</a></td><td class="n">'+r[1]+'<span class="lt">'+r[2]+'</span></td><td class="c"></td><td class="n"></td><td class="n">'+r[3].toFixed(2)+'</td><td class="c">'+bc+'</td></tr>'; });
   h+='</tbody></table>';
-  o+='<div class="opt" style="flex:1 1 470px"><div class="optlabel"><span class="tag">'+HP[k][0]+'</span>'+(k==='H2'?'<span class="rec">Recommended</span>':'')+'<span class="fake">bump made up</span></div><p class="why">'+HP[k][1]+'</p><div class="frame">'+big+h+'</div></div>'; });
+  o+='<div class="opt" style="flex:1 1 470px"><div class="optlabel"><span class="tag">'+HP[k][0]+'</span>'+(k==='H2'?'<span class="rec">Chosen</span>':'')+'<span class="fake">bump made up</span></div><p class="why">'+HP[k][1]+'</p><div class="frame">'+big+h+'</div></div>'; });
 document.getElementById('hdr8').innerHTML=o;
 </script>
