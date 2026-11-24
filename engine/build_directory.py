@@ -220,7 +220,11 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
 .controls input[type=search] {{ flex: 1 1 220px; padding: .45rem .6rem; border: 1px solid #ccc;
   border-radius: 6px; font-size: 14px; }}
 .controls select {{ padding: .4rem; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; background: #fff; }}
-.controls label {{ font-size: 13px; display: flex; gap: .3rem; align-items: center; }}
+.seg {{ display: inline-flex; border: 1px solid #ccc; border-radius: 999px; overflow: hidden; background: #fff; }}
+.seg button {{ border: 0; background: transparent; padding: .38rem .85rem; font-size: 13px; cursor: pointer; color: #333; }}
+.seg button + button {{ border-left: 1px solid #ddd; }}
+.seg button.on {{ background: #1a5fb4; color: #fff; }}
+th.sex, td.sex {{ text-align: center; }}
 .count {{ font-size: 13px; color: #666; margin-bottom: .4rem; }}
 .tbl-wrap {{ overflow-x: auto; background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; }}
 table {{ border-collapse: collapse; width: 100%; font-size: 14px; }}
@@ -244,17 +248,13 @@ td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 {note}
 <div class="controls">
   <input type="search" id="q" placeholder="Search name…" aria-label="Search name">
-  <select id="fg" aria-label="Gender"><option value="">All genders</option><option value="F">Female</option><option value="M">Male</option></select>
-  <select id="f26" aria-label="{YEAR_FROM} level"><option value="">{YEAR_FROM}: all levels</option></select>
-  <select id="ft" aria-label="{YEAR_FROM} rating type"><option value="">{YEAR_FROM}: all types</option></select>
-  <select id="f27" aria-label="{YEAR_TO} level"><option value="">{YEAR_TO}: all levels</option></select>
-  <label><input type="checkbox" id="fm"> Movers only</label>
-  <label><input type="checkbox" id="fh"> Has match history</label>
+  <span class="seg" id="fg" role="group" aria-label="Sex"><button class="on" data-v="">All</button><button data-v="M">M</button><button data-v="F">F</button></span>
+  <select id="fr" aria-label="Rating" title="Filters on the current rating: {YEAR_TO} when published, otherwise {YEAR_FROM}"><option value="">Rating: all</option></select>
 </div>
 <div class="count" id="count"></div>
 <div class="tbl-wrap"><table>
 <thead><tr>
-  <th data-k="0">Name</th><th data-k="1">Gender</th><th data-k="2">{YEAR_FROM}</th>
+  <th data-k="0">Name</th><th data-k="1" class="sex">Sex</th><th data-k="2">{YEAR_FROM}</th>
   <th data-k="d" class="delta" title="Change from {YEAR_FROM} to {YEAR_TO}">Δ</th>
   <th data-k="4">{YEAR_TO}</th><th data-k="6" class="num">ShiQ</th>
 </tr></thead><tbody id="tb"></tbody></table></div>
@@ -266,6 +266,8 @@ td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 var ROWS = {data};
 var TYPES = {types_json};
 var PAGE = 300, shown = PAGE, sortK = '0', sortDir = 1, view = [];
+var sex = '';
+function cur(r) {{ return r[4] != null ? r[4] : r[2]; }}
 function delta(r) {{ return (r[2] != null && r[4] != null) ? Math.round((r[4] - r[2]) * 10) / 10 : 0; }}
 function fmt(l) {{ return l == null ? '' : l.toFixed(1); }}
 function ntrp(l, t) {{
@@ -280,9 +282,7 @@ function fillSelect(id, vals, label) {{
   vals.forEach(function(v) {{ var o = document.createElement('option'); o.value = v; o.textContent = label(v); el.appendChild(o); }});
 }}
 function uniq(f) {{ var s = {{}}; ROWS.forEach(function(r) {{ var v = f(r); if (v != null && v !== '') s[v] = 1; }}); return Object.keys(s).sort(); }}
-fillSelect('f26', uniq(function(r) {{ return r[2] == null ? null : fmt(r[2]); }}), function(v) {{ return '{YEAR_FROM}: ' + v; }});
-fillSelect('ft', uniq(function(r) {{ return r[3]; }}), function(v) {{ return '{YEAR_FROM} type: ' + v + ' – ' + (TYPES[v] || v).split(' ')[0]; }});
-fillSelect('f27', uniq(function(r) {{ return r[4] == null ? null : fmt(r[4]); }}), function(v) {{ return '{YEAR_TO}: ' + v; }});
+fillSelect('fr', uniq(function(r) {{ return cur(r) == null ? null : fmt(cur(r)); }}), function(v) {{ return v; }});
 function cmp(a, b) {{
   var x, y;
   if (sortK === 'd') {{ x = delta(a); y = delta(b);
@@ -297,17 +297,11 @@ function cmp(a, b) {{
 }}
 function apply() {{
   var q = document.getElementById('q').value.trim().toLowerCase();
-  var g = document.getElementById('fg').value, l26 = document.getElementById('f26').value,
-      t = document.getElementById('ft').value, l27 = document.getElementById('f27').value,
-      m = document.getElementById('fm').checked, h = document.getElementById('fh').checked;
+  var lv = document.getElementById('fr').value;
   view = ROWS.filter(function(r) {{
     if (q && r[0].toLowerCase().indexOf(q) === -1) return false;
-    if (g && r[1] !== g) return false;
-    if (l26 && fmt(r[2]) !== l26) return false;
-    if (t && r[3] !== t) return false;
-    if (l27 && fmt(r[4]) !== l27) return false;
-    if (m && delta(r) === 0) return false;
-    if (h && !r[7]) return false;
+    if (sex && r[1] !== sex) return false;
+    if (lv && fmt(cur(r)) !== lv) return false;
     return true;
   }});
   view.sort(cmp);
@@ -316,10 +310,12 @@ function apply() {{
 function render() {{
   var out = [];
   view.slice(0, shown).forEach(function(r) {{
-    var d = delta(r), dh = d > 0 ? '<span class="up" title="Up ' + d.toFixed(1) + '">▲</span>'
-                       : d < 0 ? '<span class="down" title="Down ' + (-d).toFixed(1) + '">▼</span>' : '';
+    // one arrow per 0.5 level moved: ▲ / ▲▲ up, ▼ / ▼▼ down
+    var d = delta(r), n = Math.round(Math.abs(d) / 0.5), dh = '';
+    if (n) dh = '<span class="' + (d > 0 ? 'up' : 'down') + '" title="' + (d > 0 ? 'Up ' : 'Down ') + Math.abs(d).toFixed(1) + '">'
+                + new Array(n + 1).join(d > 0 ? '▲' : '▼') + '</span>';
     var nm = r[7] ? '<a href="' + r[7] + '">' + esc(r[0]) + '</a>' : esc(r[0]);
-    out.push('<tr><td>' + nm + '</td><td>' + (r[1] || '') + '</td><td>' + ntrp(r[2], r[3])
+    out.push('<tr><td>' + nm + '</td><td class="sex">' + (r[1] || '') + '</td><td>' + ntrp(r[2], r[3])
       + '</td><td class="delta">' + dh + '</td><td>' + ntrp(r[4], r[5])
       + '</td><td class="num">' + (r[6] == null ? '' : r[6].toFixed(2)) + '</td></tr>');
   }});
@@ -328,8 +324,14 @@ function render() {{
   document.getElementById('more').hidden = shown >= view.length;
 }}
 document.getElementById('more').onclick = function() {{ shown += PAGE * 3; render(); }};
-['q','fg','f26','ft','f27','fm','fh'].forEach(function(id) {{
-  document.getElementById(id).addEventListener(id === 'q' ? 'input' : 'change', apply);
+document.getElementById('q').addEventListener('input', apply);
+document.getElementById('fr').addEventListener('change', apply);
+document.querySelectorAll('#fg button').forEach(function(b) {{
+  b.onclick = function() {{
+    sex = b.dataset.v;
+    document.querySelectorAll('#fg button').forEach(function(x) {{ x.classList.toggle('on', x === b); }});
+    apply();
+  }};
 }});
 document.querySelectorAll('th[data-k]').forEach(function(th) {{
   th.onclick = function() {{
