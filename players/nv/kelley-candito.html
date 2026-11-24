@@ -93,13 +93,15 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   .c-partner .rt { display: block; }
   .c-score .set { display: block; }
   .sn { display: inline; }
-  .tbl-wrap { overflow-x: visible; }
-  table.hist { width: 100%; }
+  .tbl-wrap { overflow-x: auto; }  /* fallback only: a few very long name pairs exceed 358px */
+  table.hist { width: 100%; font-size: 11.5px; }
   .hist th, .hist td { padding: 5px 2px; }
   .hist .c-date { padding-left: 0; }
   .hist .c-opp, .hist .c-oppteam { padding-right: 0; }
   .hist td.c-partner, .hist td.c-opp { white-space: normal; }
-  .hist .pn { white-space: normal; }
+  .hist .pn { white-space: nowrap; }
+  .hist th { white-space: nowrap; }
+  .hist .c-oppteam { padding-right: 0; }
   .hist.h-date .c-date { display: none; }
   .hist.h-div .c-div { display: none; }
   .hist.h-team .c-team { display: none; }
