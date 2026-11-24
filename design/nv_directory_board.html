@@ -41,6 +41,9 @@ h2 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
 .gl { font-size: 10px; font-weight: 700; color: var(--sub); text-transform: uppercase; letter-spacing: .5px; margin: 0 2px 0 6px; }
 .gl:first-child { margin-left: 0; }
 .rtab.dd { color: #222; }
+.seg { display: inline-flex; border: 1px solid #ccc; border-radius: 20px; padding: 2px; background: #fff; }
+.seg span { padding: 2px 10px; border-radius: 16px; font-size: 11px; color: #666; }
+.seg span.on { background: linear-gradient(180deg, #f3f3f3, #e6e6e6); color: #222; font-weight: 600; box-shadow: 0 1px 1px rgba(0,0,0,.08); }
 .search { border: 1px solid #ccc; border-radius: 20px; padding: 4px 12px; font-size: 12px; color: var(--soft); width: 180px; background: #fff; }
 .count { font-size: 11px; color: var(--sub); margin: 4px 0 6px; }
 table { border-collapse: collapse; font-size: 12px; }
@@ -205,7 +208,7 @@ function meter(r){ if(r[4]==null) return ""; var hi=r[2], lo=hi-0.49, p=(r[4]-lo
   return '<span class="meter"><span class="track"><span class="dot '+cls+'" style="left:'+(p*100)+'%"></span></span></span>'; }
 function filters(phone){
   return '<div class="pills'+(phone?' scroll':'')+'"><span class="search">Search name…</span></div>'+
-  '<div class="pills'+(phone?' scroll':'')+'"><span class="rtab on">All</span><span class="rtab">Women</span><span class="rtab">Men</span>'+
+  '<div class="pills'+(phone?' scroll':'')+'"><span class="seg"><span class="on">All</span><span>M</span><span>F</span></span>'+
   '<span class="rtab dd">Rating: All ▾</span></div>';
 }
 function head(){ return '<div class="crumbs"><a href="#">Tennis Dashboard</a> › Nevada</div><div class="ttl">Nevada players</div>'; }
