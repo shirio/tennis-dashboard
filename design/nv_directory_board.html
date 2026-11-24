@@ -102,8 +102,8 @@ tbody tr:hover td { background: #faf9f6; }
       <div><b>Wireframey lines and wasted width</b><ul><li>A rule under every row plus a box around the table.</li><li>Table stretches to 1100px for six short columns, so Name sits 480px from its rating.</li></ul></div>
       <div><b>Numbers not aligned</b><ul><li>2026 and 2027 are left-aligned text.</li><li>Rating letter has a dotted underline that reads as a link.</li></ul></div>
       <div><b>Copy clutter</b><ul><li>Two-line subtitle repeats what the columns say.</li><li>Seven-item rating-type legend under the table; a hover on the letter is enough.</li></ul></div>
-      <div><b>Dynamic is blank for 81% of rows</b><ul><li>Only 428 of 2,299 players have match history, so the column looks broken at first glance.</li><li>Staying blank (decided: no "Has matches" filter).</li></ul></div>
-      <div><b>Mobile</b><ul><li>Filters wrap to four rows; Δ, 2027, and Dynamic are off-screen to the right.</li><li>Player page: footnote under the table, cards with borders, all/2026 toggle shows the same thing twice.</li></ul></div>
+      <div><b>ShiQ is blank for 81% of rows</b><ul><li>Only 428 of 2,299 players have match history, so the column looks broken at first glance.</li><li>Staying blank (decided: no "Has matches" filter).</li></ul></div>
+      <div><b>Mobile</b><ul><li>Filters wrap to four rows; Δ, 2027, and ShiQ are off-screen to the right.</li><li>Player page: footnote under the table, cards with borders, all/2026 toggle shows the same thing twice.</li></ul></div>
     </div>
   </section>
 
@@ -118,12 +118,12 @@ tbody tr:hover td { background: #faf9f6; }
     <div class="row" style="margin-top:16px">
       <div class="opt">
         <div class="optlabel"><span class="tag">A · House style</span><span class="rec">Recommended</span></div>
-        <p class="why">Pill filters like the division tabs, content-fit table, no row rules, right-aligned tabular numbers, letter as a small suffix with a hover. One Rating dropdown that always filters on the current rating (2026 now, 2027 after Dec 2). No Movers or Has matches toggles; sort Δ or Dynamic instead.</p>
+        <p class="why">Pill filters like the division tabs, content-fit table, no row rules, right-aligned tabular numbers, letter as a small suffix with a hover. One Rating dropdown that always filters on the current rating (2026 now, 2027 after Dec 2). No Movers or Has matches toggles; sort Δ or ShiQ instead.</p>
         <div class="frame" id="optA"></div>
       </div>
       <div class="opt">
         <div class="optlabel"><span class="tag">B · A + level band</span></div>
-        <p class="why">Adds a small track for where Dynamic sits inside the 2026 level's range (3.0 = 2.51–3.00). Green past the top, red below the bottom. Useful for spotting likely movers, but it edges toward the projections you dropped.</p>
+        <p class="why">Adds a small track for where ShiQ sits inside the 2026 level's range (3.0 = 2.51–3.00). Green past the top, red below the bottom. Useful for spotting likely movers, but it edges toward the projections you dropped.</p>
         <div class="frame" id="optB"></div>
       </div>
     </div>
@@ -183,7 +183,7 @@ tbody tr:hover td { background: #faf9f6; }
     <div class="row">
       <div class="opt">
         <div class="optlabel"><span class="tag">P1 · Cards</span><span class="rec">Recommended</span></div>
-        <p class="why">House-style cards. Dynamic carries the change since baseline in green or red.</p>
+        <p class="why">House-style cards. ShiQ carries the change since baseline in green or red.</p>
         <div class="frame" id="p1"></div>
       </div>
       <div class="opt">
@@ -196,7 +196,7 @@ tbody tr:hover td { background: #faf9f6; }
 </div>
 
 <script>
-// Real rows from data/ntrp_nv_2026.json + our dynamic ratings (PR 2).
+// Real rows from data/ntrp_nv_2026.json + our ShiQ ratings (PR 2).
 var R = [
  ["Amy Bernstein","F",2.5,"C",2.5152,1],["Claudia Hernandez","F",3.5,"C",3.4208,1],["Brady Stevens","M",3.5,"C",null,0],
  ["Francine Mazza","F",3.0,"C",2.8228,1],["Joshua Thompson","M",4.0,"C",null,0],["Julie Brown","F",3.0,"C",3.0871,1],
@@ -215,7 +215,7 @@ function filters(phone){
 }
 function head(){ return '<div class="crumbs"><a href="#">Tennis Dashboard</a> › Nevada</div><div class="ttl">Nevada players</div>'; }
 function tableA(rows,opt){ opt=opt||{};
-  var h='<table><thead><tr><th class="s">Name</th>'+(opt.phone?'':'<th>Gender</th>')+'<th class="n">2026</th><th class="c" title="Change from 2026 to 2027">Δ</th><th class="n">2027</th><th class="n">Dynamic</th>'+(opt.band?'<th></th>':'')+'</tr></thead><tbody>';
+  var h='<table><thead><tr><th class="s">Name</th>'+(opt.phone?'':'<th>Gender</th>')+'<th class="n">2026</th><th class="c" title="Change from 2026 to 2027">Δ</th><th class="n">2027</th><th class="n">ShiQ</th>'+(opt.band?'<th></th>':'')+'</tr></thead><tbody>';
   rows.forEach(function(r){ h+='<tr><td class="nm">'+nm(r)+'</td>'+(opt.phone?'':'<td class="g">'+r[1]+'</td>')+'<td class="n">'+lvl(r[2],r[3],opt.letter)+'</td><td class="c"></td><td class="n"></td><td class="n">'+(r[4]==null?'':r[4].toFixed(2))+'</td>'+(opt.band?'<td>'+meter(r)+'</td>':'')+'</tr>'; });
   return h+'</tbody></table>';
 }
@@ -232,7 +232,7 @@ document.getElementById('l2').innerHTML = tableA([R[1],R[6],R[7],R[9]],{letter:"
 
 // Δ demos: 2027 values are invented to show up/down/same.
 var M = [["Maria Allen",3.0,"C",3.5,"C",3.3755],["Kelli Caderot",2.5,"S",3.5,"C",2.193],["Melissa Kwong-Blais",3.5,"C",4.0,"C",3.5794],["Francine Mazza",3.0,"C",3.0,"C",2.8228],["Kelley Ferrence",3.5,"C",3.0,"C",3.3152]];
-function dtable(mode){ var h='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">Δ</th><th class="n">2027</th><th class="n">Dynamic</th></tr></thead><tbody>';
+function dtable(mode){ var h='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">Δ</th><th class="n">2027</th><th class="n">ShiQ</th></tr></thead><tbody>';
   M.forEach(function(m){ var d=m[3]-m[1], cls=d>0?'up':d<0?'down':'', n=Math.round(Math.abs(d)/0.5), ar=d>0?(n>1?'▲▲':'▲'):d<0?(n>1?'▼▼':'▼'):'', cell='', v27=lvl(m[3],m[4]);
     if(mode===1) cell=ar?'<span class="'+cls+'b">'+ar+'</span>':'';
     if(mode===2){ cell=ar?'<span class="'+cls+'b">'+ar+'</span>':''; if(ar) v27='<span class="'+cls+'b">'+m[3].toFixed(1)+'</span><span class="lt">'+m[4]+'</span>'; }
@@ -250,7 +250,7 @@ var mh='<table class="mh" style="margin-top:4px"><thead><tr><th>Date</th><th>Div
  '<tr><td>3/28</td><td><span class="dv">3.0</span></td><td>Desert Palm</td><td><span class="lp d2">D2</span></td><td class="n r">3.00</td><td class="L">L</td><td>6-0 6-3</td><td class="pt"><a href="#">Yong Mi DeMilliano</a> <span class="r">2.59</span></td><td class="opp"><a href="#">Francine Mazza</a> <span class="r">2.81</span><br><a href="#">Abigail Cox</a> <span class="r">3.02</span></td></tr>'+
  '</tbody></table>';
 document.getElementById('p1').innerHTML='<div class="crumbs"><a href="#">Tennis Dashboard</a> › <a href="#">Nevada players</a></div><div class="pname">Ara Lee Stimson</div><div class="psub">Las Vegas, NV · Female</div>'+
- '<div class="cards"><div class="mcard"><div class="mlabel">2026 NTRP</div><div class="mval">3.0<span class="lt" style="font-size:12px">C</span></div></div><div class="mcard"><div class="mlabel">Baseline</div><div class="mval">2.94</div><div class="msub">Dec 2025</div></div><div class="mcard"><div class="mlabel">Dynamic</div><div class="mval">3.08</div><div class="msub"><span class="upb">+0.14</span> since baseline</div></div></div>'+recs+mh;
+ '<div class="cards"><div class="mcard"><div class="mlabel">2026 NTRP</div><div class="mval">3.0<span class="lt" style="font-size:12px">C</span></div></div><div class="mcard"><div class="mlabel">Baseline</div><div class="mval">2.94</div><div class="msub">Dec 2025</div></div><div class="mcard"><div class="mlabel">ShiQ</div><div class="mval">3.08</div><div class="msub"><span class="upb">+0.14</span> since baseline</div></div></div>'+recs+mh;
 document.getElementById('p2').innerHTML='<div class="crumbs"><a href="#">Tennis Dashboard</a> › <a href="#">Nevada players</a></div><div class="pname">Ara Lee Stimson</div>'+
- '<div class="inline-hdr">Las Vegas, NV · Female · <b>3.0</b><span class="lt">C</span> · baseline <b>2.94</b> → dynamic <b>3.08</b> <span class="upb">+0.14</span></div>'+recs+mh;
+ '<div class="inline-hdr">Las Vegas, NV · Female · <b>3.0</b><span class="lt">C</span> · baseline <b>2.94</b> → ShiQ <b>3.08</b> <span class="upb">+0.14</span></div>'+recs+mh;
 </script>
