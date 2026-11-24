@@ -223,6 +223,13 @@ tbody tr:hover td { background: #faf9f6; }
       </div>
     </div>
   </section>
+
+  <section>
+    <h2>8 · One language for change</h2>
+    <p class="why" style="margin:-4px 0 12px;max-width:80ch">Three things move: <b>ShiQ</b> after a match (a continuous number), the <b>USTA</b> level at year end (official, in 0.5 steps), and our <b>prediction</b> of that USTA move. Proposal: ShiQ stays numeric (+.04), USTA moves are solid chevrons, and predictions are the same chevron drawn so it looks provisional. Pick a prediction treatment below. Bump values are made up.</p>
+    <div class="frame" style="margin-bottom:14px"><table><thead><tr><th>Meaning</th><th>Where</th><th class="c">Up</th><th class="c">Down</th><th>Header</th></tr></thead><tbody id="legend8"></tbody></table></div>
+    <div class="row" id="pred8"></div>
+  </section>
 </div>
 
 <script>
@@ -349,4 +356,35 @@ document.getElementById('m3').innerHTML=phoneHead()+'<div class="colbar"><span c
   var bar='<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▾</button></div>';
   document.getElementById('m1b').innerHTML=phoneHead()+bar+mxTable(DEF1,true,false,c2,true);
   STACK_FLIP=true; document.getElementById('m1c').innerHTML=phoneHead()+bar+mxTable(DEF1,true,false,c2,true); STACK_FLIP=false; })();
+
+// ---- section 8: prediction treatments ----
+function chev(up,two,mode,strong){ // mode: solid | dash | dot | ghost
+  var a='fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"', op=strong===false?' opacity=".5"':'';
+  if(mode==='dash') a='fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="2.4 1.6"';
+  if(mode==='dot') a='fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 2.45"';
+  if(mode==='ghost') a='fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"';
+  var pts=two?'<polyline points="2.5,12.5 7,8.5 11.5,12.5"/><polyline points="2.5,7 7,3 11.5,7"/>':'<polyline points="2,10.5 7,6 12,10.5"/>';
+  if(mode==='ghost') pts='<polygon points="0.9,9.6 7,4.1 13.1,9.6 11.6,11.2 7,7.1 2.4,11.2"/>';
+  var extra='';
+  return '<svg class="car" viewBox="0 0 14 15" width="14" height="15" '+a+op+(up?'':' style="transform:scaleY(-1)"')+'>'+pts+extra+'</svg>'; }
+function tri(mode){ var a='fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"'; if(mode==='dash') a+=' stroke-dasharray="2 1.8"'; if(mode==='dot') a='fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="0 2.6"'; 
+  return '<svg viewBox="0 0 12 11" width="10" height="9" '+a+' style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg>'; }
+document.getElementById('legend8').innerHTML=
+ '<tr><td>ShiQ change from one match</td><td class="g">Player page, first column</td><td class="c"><span class="upb">+.04</span></td><td class="c"><span class="downb">−.02</span></td><td class="g">"ShiQ"</td></tr>'+
+ '<tr><td>USTA year-end change (official)</td><td class="g">Directory, after Dec 2</td><td class="c"><span class="up">'+chev(1,0,'solid')+' '+chev(1,1,'solid')+'</span></td><td class="c"><span class="down">'+chev(0,0,'solid')+' '+chev(0,1,'solid')+'</span></td><td class="g">'+tri('solid')+'</td></tr>'+
+ '<tr><td>Predicted USTA change</td><td class="g">Directory + player page, before Dec 2</td><td class="c"><span class="up">'+chev(1,0,'ghost')+'</span></td><td class="c"><span class="down">'+chev(0,0,'ghost')+'</span></td><td class="g">'+tri('dot')+' (dotted)</td></tr>';
+var B=[["Maria Allen","3.0","C",3.38,1,1],["Julie Brown","3.0","C",3.09,1,0],["Francine Mazza","3.0","C",2.82,0,null],["Kelli Caderot","2.5","S",2.19,-1,0],["Claudia Hernandez","3.5","C",3.42,0,null],["Amy Bernstein","2.5","C",2.52,null,null]];
+var MODES=[['dot','P1 · Dotted','Round dots along the chevron. Reads as "not yet drawn in." Likely = full color, leaning = faded. Gets fuzzy at 14px.',0],
+           ['dash','P2 · Dashed','Short dashes. At 14px the dashes turn into little diamonds.',0],
+           ['ghost','P3 · Hollow','The chevron drawn as an empty outline, like the hollow header triangle: "shape without substance yet." Solid = official, hollow = predicted. Clearest at real size.',1]];
+var o=''; MODES.forEach(function(md){
+  var h='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">'+tri('solid')+'</th><th class="n">2027</th><th class="n">ShiQ</th><th class="c" title="Predicted USTA change">'+tri(md[0])+'</th></tr></thead><tbody>';
+  B.forEach(function(r){ var bc='';
+    if(r[4]===null) bc='<span class="r">–</span>'; else if(r[4]) bc='<span class="'+(r[4]>0?'up':'down')+'">'+chev(r[4]>0,0,md[0],!!r[5])+'</span>';
+    h+='<tr><td class="nm"><a href="#">'+r[0]+'</a></td><td class="n">'+r[1]+'<span class="lt">'+r[2]+'</span></td><td class="c"></td><td class="n"></td><td class="n">'+r[3].toFixed(2)+'</td><td class="c">'+bc+'</td></tr>'; });
+  h+='</tbody></table>';
+  var big='<div style="display:flex;gap:30px;margin:4px 0 14px 4px">'+[[1,1,'up'],[1,0,'up'],[0,1,'down'],[0,0,'down']].map(function(a){return '<span class="'+a[2]+'" style="display:inline-block;transform:scale(2.6);transform-origin:left center;width:36px">'+chev(!!a[0],0,md[0],!!a[1])+'</span>';}).join('')+'</div>';
+  var pp='<div class="psub" style="margin:10px 0 0">Player page line: <span class="up">'+chev(1,0,md[0],true)+'</span> Likely up · year-end est. 3.16</div>';
+  o+='<div class="opt" style="flex:1 1 320px"><div class="optlabel"><span class="tag">'+md[1]+'</span>'+(md[3]?'<span class="rec">Recommended</span>':'')+'<span class="fake">bump made up</span></div><p class="why">'+md[2]+' Big row: likely up, leaning up, likely down, leaning down. Dash = too few matches.</p><div class="frame">'+big+h+pp+'</div></div>'; });
+document.getElementById('pred8').innerHTML=o;
 </script>
