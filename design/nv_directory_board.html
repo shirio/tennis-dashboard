@@ -91,6 +91,19 @@ tbody tr:hover td { background: #faf9f6; }
 .r { color: var(--soft); font-variant-numeric: tabular-nums; }
 .W { color: var(--up); font-weight: 600; } .L { color: var(--down); font-weight: 600; }
 .mh td { vertical-align: top; padding-top: 6px; padding-bottom: 6px; }
+
+/* phone match history */
+.mx { width: 100%; table-layout: auto; }
+.mx th, .mx td { padding: 5px 4px; }
+.mx td.sc { white-space: nowrap; }
+.colbar { display: flex; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }
+.colbtn { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font-size: 11px; color: #222; background: #fff; cursor: pointer; font: inherit; font-size: 11px; }
+.colmenu { position: absolute; right: 0; top: 28px; z-index: 5; background: #fff; border-radius: 10px; padding: 4px; min-width: 150px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.08); }
+.colmenu label { display: flex; gap: 8px; align-items: center; padding: 6px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; }
+.colmenu label:hover { background: #f3f2ee; }
+.colmenu .reset { color: var(--link); font-size: 11px; padding: 6px 10px; cursor: pointer; }
+.short-nm { white-space: nowrap; }
 </style>
 
 <div class="board">
@@ -177,6 +190,28 @@ tbody tr:hover td { background: #faf9f6; }
       </div>
     </div>
   </section>
+
+  <section>
+    <h2>7 · Player matches on a phone</h2>
+    <p class="why" style="margin:-4px 0 12px">Real matches for Ara Lee Stimson at 390px. A Columns menu shows or hides any column; the choice is remembered on that phone. Defaults fit without sideways scroll. Desktop keeps every column.</p>
+    <div class="row">
+      <div class="opt phone">
+        <div class="optlabel"><span class="tag">M1 · Opponents only</span><span class="rec">Recommended</span></div>
+        <p class="why" style="max-width:390px">Date, Line, R, Score, Opponents with ratings. Partner, Div, Team, PIT, and Opp Team start hidden. Try the Columns menu.</p>
+        <div class="frame w390" id="m1"></div>
+      </div>
+      <div class="opt phone">
+        <div class="optlabel"><span class="tag">M2 · Partner too, short names</span></div>
+        <p class="why" style="max-width:390px">Adds Partner by using "A. Chang" style names and dropping the ratings next to names. More people, less detail.</p>
+        <div class="frame w390" id="m2"></div>
+      </div>
+      <div class="opt phone">
+        <div class="optlabel"><span class="tag">Columns menu, open</span></div>
+        <p class="why" style="max-width:390px">Checkbox list with a full-row hover. Closes on any outside tap. "Reset" goes back to the defaults.</p>
+        <div class="frame w390" id="m3" style="padding-bottom:40px"></div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <script>
@@ -235,4 +270,40 @@ document.getElementById('p1').innerHTML='<div class="crumbs"><a href="#">Tennis 
  '<div class="cards"><div class="mcard"><div class="mlabel">Baseline</div><div class="mval">2.94</div><div class="msub">Dec 2025</div></div><div class="mcard"><div class="mlabel">USTA</div><div class="mval">3.0<span class="lt" style="font-size:12px">C</span></div><div class="msub">12/31/2025</div></div><div class="mcard"><div class="mlabel">ShiQ</div><div class="mval">3.08</div><div class="msub"><span class="upb">+0.14</span></div></div></div>'+recs+mh;
 document.getElementById('p2').innerHTML='<div class="crumbs"><a href="#">Tennis Dashboard</a> › <a href="#">Nevada players</a></div><div class="pname">Ara Lee Stimson</div>'+
  '<div class="inline-hdr">Las Vegas, NV · Female · <b>3.0</b><span class="lt">C</span> · baseline <b>2.94</b> → ShiQ <b>3.08</b> <span class="upb">+0.14</span></div>'+recs+mh;
+
+// ---- phone match history (real: Ara Lee Stimson) ----
+var MX=[
+ ["3/14","3.0","Desert Palm","D1","2.94","W","7-5 6-4",[["Alexandria Chang","2.72"]],[["Maggie Pacholuk","2.74"],["Jaqueline Schultz","3.08"]],"DTC #1"],
+ ["3/21","3.0","Desert Palm","D1","2.98","W","6-3 6-2",[["Alexandria Chang","2.72"]],[["Julie Schoolmeester","2.75"],["Nicole Horton","2.85"]],"Spanish Oaks"],
+ ["3/28","3.0","Desert Palm","D2","3.00","L","6-0 6-3",[["Yong Mi DeMilliano","2.59"]],[["Francine Mazza","2.81"],["Abigail Cox","3.02"]],"Whitney Mesa Park"],
+ ["5/2","3.0","Desert Palm","D1","3.02","W","6-2 6-0",[["Alexandria Chang","2.86"]],[["Michelle Inman","2.63"],["Jennifer Olson","2.60"]],"Club Ridges"],
+ ["5/9","3.0","Desert Palm","D2","3.03","W","7-6 6-1",[["Karen Hom","3.20"]],[["Sandra Mier","2.94"],["Yesenia Arias","3.02"]],"DTC #1"],
+ ["6/6","3.0","Desert Palm","D1","3.05","W","7-5 6-3",[["Alexandria Chang","2.84"]],[["Maryna Post","2.92"],["Olga Bencini","2.95"]],"DTC #4"]];
+var COLS=[["date","Date"],["div","Div"],["team","Team"],["line","Line"],["pit","PIT"],["r","R"],["score","Score"],["partner","Partner"],["opp","Opponents"],["oppteam","Opp Team"]];
+function shortN(n){var p=n.split(' ');return p[0][0]+'. '+p.slice(1).join(' ');}
+function ppl(list,short,rat){return list.map(function(x){return '<a href="#" class="short-nm">'+(short?shortN(x[0]):x[0])+'</a>'+(rat?' <span class="r">'+x[1]+'</span>':'');}).join('<br>');}
+function mxTable(on,short,rat){
+  var h='<table class="mx mh"><thead><tr>';
+  COLS.forEach(function(c){ if(!on[c[0]])return; var cl=c[0]==='pit'?' class="n"':(c[0]==='r'||c[0]==='line')?' class="c"':''; h+='<th'+cl+'>'+c[1]+'</th>'; });
+  h+='</tr></thead><tbody>';
+  MX.forEach(function(m){ h+='<tr>';
+    var cells={date:'<td>'+m[0]+'</td>',div:'<td><span class="dv">'+m[1]+'</span></td>',team:'<td>'+m[2]+'</td>',line:'<td class="c"><span class="lp '+m[3].toLowerCase()+'">'+m[3]+'</span></td>',
+      pit:'<td class="n r">'+m[4]+'</td>',r:'<td class="c '+m[5]+'">'+m[5]+'</td>',score:'<td class="sc">'+m[6]+'</td>',partner:'<td class="pt">'+ppl(m[7],short,rat)+'</td>',
+      opp:'<td class="opp">'+ppl(m[8],short,rat)+'</td>',oppteam:'<td>'+m[9]+'</td>'};
+    COLS.forEach(function(c){ if(on[c[0]]) h+=cells[c[0]]; }); h+='</tr>'; });
+  return h+'</tbody></table>';
+}
+function phoneHead(){return '<div class="crumbs"><a href="#">Nevada players</a></div><div class="pname" style="font-size:18px">Ara Lee Stimson</div><div class="psub">Las Vegas, NV · Female</div>';}
+function menu(on){return '<div class="colmenu">'+COLS.map(function(c){return '<label><input type="checkbox" data-c="'+c[0]+'"'+(on[c[0]]?' checked':'')+'> '+c[1]+'</label>';}).join('')+'<div class="reset">Reset</div></div>';}
+var DEF1={date:1,line:1,r:1,score:1,opp:1};
+(function(){ var el=document.getElementById('m1'), on=Object.assign({},DEF1), open=false;
+  function draw(){ el.innerHTML=phoneHead()+'<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn" id="m1btn">Columns ▾</button>'+(open?menu(on):'')+'</div>'+mxTable(on,false,true); }
+  el.addEventListener('click',function(e){ var t=e.target;
+    if(t.id==='m1btn'){open=!open;draw();return;}
+    if(t.dataset&&t.dataset.c){on[t.dataset.c]=t.checked?1:0;draw();return;}
+    if(t.classList.contains('reset')){on=Object.assign({},DEF1);draw();return;} });
+  document.addEventListener('click',function(e){ if(open&&!el.querySelector('.colbar').contains(e.target)){open=false;draw();} });
+  draw(); })();
+document.getElementById('m2').innerHTML=phoneHead()+'<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▾</button></div>'+mxTable({date:1,line:1,r:1,score:1,partner:1,opp:1},true,false);
+document.getElementById('m3').innerHTML=phoneHead()+'<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▴</button>'+menu(DEF1)+'</div>'+mxTable(DEF1,false,true);
 </script>
