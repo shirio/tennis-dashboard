@@ -323,7 +323,7 @@ function mxTable(on,short,rat,cols,stack){ cols=cols||COLS;
   cols.forEach(function(c){ if(!on[c[0]])return; var cl=/^(date|div|line|pit|score)$/.test(c[0])?' class="c"':''; h+='<th'+cl+(c[0]==='pit'?' title="'+(stack?'ShiQ after this match, and the change':'ShiQ change from this match')+'"':'')+'>'+(c[0]==='pit'?(stack?'ShiQ':DH):c[1])+'</th>'; });
   h+='</tr></thead><tbody>';
   MX.forEach(function(m){ h+='<tr>';
-    var cells={date:'<td class="c">'+m[0]+'</td>',div:'<td class="c"><span class="dv">'+m[1]+'</span></td>',team:'<td>'+m[2]+'</td>',line:'<td class="c"><span class="lp '+m[3].toLowerCase()+'">'+m[3]+'</span></td>',
+    var cells={date:'<td class="c">'+(short?m[0].replace(new RegExp('/'+String(new Date().getFullYear()).slice(2)+'$'),''):m[0])+'</td>',div:'<td class="c"><span class="dv">'+m[1]+'</span></td>',team:'<td>'+m[2]+'</td>',line:'<td class="c"><span class="lp '+m[3].toLowerCase()+'">'+m[3]+'</span></td>',
       pit:'<td class="c">'+(stack?sstack(m):sdelta(m))+'</td>',r:'<td class="c '+m[5]+'">'+m[5]+'</td>',score:'<td class="sc c">'+scoreHtml(m[6],m[5],short)+'</td>',partner:'<td class="pt">'+(short?m[7].map(function(x){return '<a href="#" class="short-nm">'+shortN(x[0])+'</a><br><span class="r">'+x[1]+'</span>';}).join('<br>'):ppl(m[7],short,rat))+'</td>',
       opp:'<td class="opp">'+ppl(m[8],short,short||rat)+'</td>',oppteam:'<td>'+m[9]+'</td>'};
     cols.forEach(function(c){ if(on[c[0]]) h+=cells[c[0]]; }); h+='</tr>'; });
