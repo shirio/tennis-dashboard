@@ -43,6 +43,7 @@ DIRECTORY_HTML = Path("nv_directory.html")
 PLAYER_DIR = Path("players") / "nv"
 YEAR_FROM = 2026
 YEAR_TO = 2027
+DIR_YEARS = (2022, 2023, 2024, 2025, 2026, 2027)  # directory columns, oldest first
 
 
 def _esc(s) -> str:
@@ -208,6 +209,30 @@ h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
     data = json.dumps(rows, separators=(",", ":"), ensure_ascii=False)
     types_json = json.dumps(RATING_TYPES)
+    years = list(DIR_YEARS)
+    i_from = years.index(YEAR_FROM)
+    # Column keys: s (sex), y<i> (year i), d<i> (change from year i-1 to year i), q (ShiQ)
+    cols = [("s", "Sex")]
+    for i, y in enumerate(years):
+        if i:
+            cols.append((f"d{i}", f"Δ {years[i-1]}–{str(y)[-2:]}"))
+        cols.append((f"y{i}", str(y)))
+    cols.append(("q", "ShiQ"))
+    default_on = {k: 1 for k, _ in cols
+                  if not ((k[0] == "y" and int(k[1:]) < i_from) or (k[0] == "d" and int(k[1:]) <= i_from))}
+    hide_css = "\n".join(f"table.h-{k} .c-{k} {{ display: none; }}" for k, _ in cols)
+    heads = ['<th data-k="n" class="c-n">Name</th>']
+    for k, lbl in cols:
+        if k == "s":
+            heads.append('<th data-k="s" class="c-s sex">Sex</th>')
+        elif k[0] == "d":
+            i = int(k[1:])
+            heads.append(f'<th data-k="{k}" class="c-{k} delta" title="Change from {years[i-1]} to {years[i]}">Δ</th>')
+        elif k[0] == "y":
+            heads.append(f'<th data-k="{k}" class="c-{k} num">{lbl}</th>')
+        else:
+            heads.append('<th data-k="q" class="c-q num">ShiQ</th>')
+    menu = "".join(f'<label><input type="checkbox" data-c="{k}"> {_esc(lbl)}</label>' for k, lbl in cols)
     note = ("<p class='note'>Showing our own Nevada players until the full USTA 2026 "
             "list is loaded.</p>" if placeholder else "")
     return f"""<!DOCTYPE html>
@@ -230,7 +255,18 @@ h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .8rem; }}
                  box-shadow: 0 1px 1px rgba(0,0,0,.08); }}
 .mv-up {{ color: #27500A; font-weight: 600; }}
 .mv-down {{ color: #791F1F; font-weight: 600; }}
-.count {{ font-size: 11px; color: #888; margin-bottom: .3rem; }}
+.colbar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: .3rem;
+          position: relative; max-width: 640px; }}
+.count {{ font-size: 11px; color: #888; }}
+.colbtn {{ padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font: inherit; font-size: 11px;
+          color: #222; background: #fff; cursor: pointer; }}
+.colmenu {{ position: absolute; right: 0; top: 28px; z-index: 6; background: #fff; border-radius: 10px; padding: 4px;
+           min-width: 160px; box-shadow: 0 6px 24px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.08); }}
+.colmenu[hidden] {{ display: none; }}
+.colmenu label {{ display: flex; gap: 8px; align-items: center; padding: 6px 10px; border-radius: 6px;
+                 font-size: 12px; cursor: pointer; white-space: nowrap; }}
+.colmenu label:hover {{ background: #f3f2ee; }}
+.colmenu .reset {{ color: #1a5fb4; font-size: 11px; padding: 6px 10px; cursor: pointer; }}
 .tbl-wrap {{ overflow-x: auto; }}
 table {{ border-collapse: collapse; font-size: 12px; }}
 th, td {{ padding: 4px 10px; text-align: left; white-space: nowrap; }}
@@ -252,7 +288,8 @@ td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
         border-radius: 20px; background: #fff; cursor: pointer; font-size: 12px; }}
 .note {{ background: #fff8e1; border: 1px solid #f0d58a; border-radius: 6px; padding: .5rem .8rem;
         font-size: 13px; margin-bottom: .8rem; }}
-@media (max-width: 500px) {{ th.sex, td.sex {{ display: none; }} }}
+{hide_css}
+@media (max-width: 500px) {{ table:not(.show-s) .c-s {{ display: none; }} }}
 </style></head><body><div class="wrap">
 <div class="crumbs"><a href="index.html">Tennis Dashboard</a> › Nevada</div>
 <h1>Nevada players</h1>
@@ -262,22 +299,25 @@ td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
   <span class="seg" id="fg" role="group" aria-label="Sex"><button class="on" data-v="">All</button><button data-v="M">M</button><button data-v="F">F</button></span>
   <select id="fr" aria-label="Rating" title="Filters on the current rating: {YEAR_TO} when published, otherwise {YEAR_FROM}"><option value="">Rating: all</option></select>
 </div>
-<div class="count" id="count"></div>
-<div class="tbl-wrap"><table>
-<thead><tr>
-  <th data-k="0">Name</th><th data-k="1" class="sex">Sex</th><th data-k="2" class="num">{YEAR_FROM}</th>
-  <th data-k="d" class="delta" title="Change from {YEAR_FROM} to {YEAR_TO}">Δ</th>
-  <th data-k="4" class="num">{YEAR_TO}</th><th data-k="6" class="num">ShiQ</th>
-</tr></thead><tbody id="tb"></tbody></table></div>
+<div class="colbar"><span class="count" id="count"></span>
+<button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
+<div class="colmenu" id="colmenu" hidden>{menu}<div class="reset" id="colreset">Reset</div></div></div>
+<div class="tbl-wrap"><table id="tbl">
+<thead><tr>{"".join(heads)}</tr></thead><tbody id="tb"></tbody></table></div>
 <button class="more" id="more" hidden>Show more</button>
 </div>
 <script>
-// rows: [name, gender, lvl26, type26, lvl27, type27, dynamic, link]
+// rows: [name, gender, shiq, link, [level per year], [letter per year]]; YEARS gives the year order.
 var ROWS = {data};
+var YEARS = {json.dumps(years)};
+var IFROM = {i_from};
 var TYPES = {types_json};
-var PAGE = 300, shown = PAGE, sortK = '0', sortDir = 1, view = [];
+var COLS = {json.dumps([k for k, _ in cols])};
+var DEF = {json.dumps(default_on)};
+var PAGE = 300, shown = PAGE, sortK = 'n', sortDir = 1, view = [], on;
 var sex = '';
-function cur(r) {{ return r[4] != null ? r[4] : r[2]; }}
+var LAST = YEARS.length - 1;
+function cur(r) {{ return r[4][LAST] != null ? r[4][LAST] : r[4][IFROM]; }}
 // Stacked carets (like a fast-forward icon turned up/down): one per 0.5 level.
 function caret(up, n) {{
   var shapes = n >= 2 ? '<polygon points="0,14 5,7 10,14"/><polygon points="0,8 5,1 10,8"/>'
@@ -286,7 +326,8 @@ function caret(up, n) {{
   return '<svg class="caret ' + (up ? 'up' : 'down') + '" viewBox="0 0 10 15" width="10" height="15" role="img" aria-label="'
     + label + '"><title>' + label + '</title><g fill="currentColor">' + shapes + '</g></svg>';
 }}
-function delta(r) {{ return (r[2] != null && r[4] != null) ? Math.round((r[4] - r[2]) * 10) / 10 : 0; }}
+// change from year i-1 to year i
+function delta(r, i) {{ var a = r[4][i - 1], b = r[4][i]; return (a != null && b != null) ? Math.round((b - a) * 10) / 10 : 0; }}
 function fmt(l) {{ return l == null ? '' : l.toFixed(1); }}
 function ntrp(l, t, cls) {{
   if (l == null) return '';
@@ -301,12 +342,19 @@ function fillSelect(id, vals, label) {{
 }}
 function uniq(f) {{ var s = {{}}; ROWS.forEach(function(r) {{ var v = f(r); if (v != null && v !== '') s[v] = 1; }}); return Object.keys(s).sort(); }}
 fillSelect('fr', uniq(function(r) {{ return cur(r) == null ? null : fmt(cur(r)); }}), function(v) {{ return v; }});
+function val(r, k) {{
+  if (k === 'n') return r[0];
+  if (k === 's') return r[1];
+  if (k === 'q') return r[2];
+  if (k[0] === 'y') return r[4][+k.slice(1)];
+  return null;
+}}
 function cmp(a, b) {{
   var x, y;
-  if (sortK === 'd') {{ x = delta(a); y = delta(b);
+  if (sortK[0] === 'd') {{ var i = +sortK.slice(1); x = delta(a, i); y = delta(b, i);
     // movers first: biggest move up, then down; non-movers last
     if ((x === 0) !== (y === 0)) return x === 0 ? 1 : -1;
-  }} else {{ var k = +sortK; x = a[k]; y = b[k]; }}
+  }} else {{ x = val(a, sortK); y = val(b, sortK); }}
   if (x == null && y == null) return 0;
   if (x == null) return 1;
   if (y == null) return -1;
@@ -328,13 +376,21 @@ function apply() {{
 function render() {{
   var out = [];
   view.slice(0, shown).forEach(function(r) {{
-    // one arrow per 0.5 level moved: ▲ / ▲▲ up, ▼ / ▼▼ down
-    var d = delta(r), n = Math.round(Math.abs(d) / 0.5), dh = '';
-    if (n) dh = caret(d > 0, n);
-    var nm = r[7] ? '<a href="' + r[7] + '">' + esc(r[0]) + '</a>' : esc(r[0]);
-    out.push('<tr><td>' + nm + '</td><td class="sex">' + (r[1] || '') + '</td><td class="num">' + ntrp(r[2], r[3])
-      + '</td><td class="delta">' + dh + '</td><td class="num">' + ntrp(r[4], r[5], d > 0 ? 'mv-up' : d < 0 ? 'mv-down' : '')
-      + '</td><td class="num">' + (r[6] == null ? '' : r[6].toFixed(2)) + '</td></tr>');
+    var nm = r[3] ? '<a href="' + r[3] + '">' + esc(r[0]) + '</a>' : esc(r[0]);
+    var h = '<tr><td class="c-n">' + nm + '</td><td class="c-s sex">' + (r[1] || '') + '</td>';
+    for (var i = 0; i < YEARS.length; i++) {{
+      var d = i ? delta(r, i) : 0;
+      if (i) {{
+        // one arrow per 0.5 level moved
+        var n = Math.round(Math.abs(d) / 0.5);
+        h += '<td class="c-d' + i + ' delta">' + (n ? caret(d > 0, n) : '') + '</td>';
+      }}
+      // color a changed rating only when its Δ column is showing
+      var cls = (i && on['d' + i]) ? (d > 0 ? 'mv-up' : d < 0 ? 'mv-down' : '') : '';
+      h += '<td class="c-y' + i + ' num">' + ntrp(r[4][i], r[5][i], cls) + '</td>';
+    }}
+    h += '<td class="c-q num">' + (r[2] == null ? '' : r[2].toFixed(2)) + '</td></tr>';
+    out.push(h);
   }});
   document.getElementById('tb').innerHTML = out.join('');
   document.getElementById('count').textContent = view.length === ROWS.length
@@ -342,6 +398,27 @@ function render() {{
     : view.length.toLocaleString() + ' of ' + ROWS.length.toLocaleString() + ' players';
   document.getElementById('more').hidden = shown >= view.length;
 }}
+// Columns menu: choice saved per browser
+(function() {{
+  var KEY = 'nvDirCols', tbl = document.getElementById('tbl'), btn = document.getElementById('colbtn'),
+      menu = document.getElementById('colmenu');
+  try {{ on = JSON.parse(localStorage.getItem(KEY)); }} catch (e) {{ on = null; }}
+  if (!on || typeof on !== 'object') on = Object.assign({{}}, DEF);
+  window.applyCols = function() {{
+    COLS.forEach(function(k) {{ tbl.classList.toggle('h-' + k, !on[k]); }});
+    tbl.classList.toggle('show-s', !!on.s && on._s === 1);
+    menu.querySelectorAll('input').forEach(function(i) {{ i.checked = !!on[i.dataset.c]; }});
+  }};
+  function save() {{ try {{ localStorage.setItem(KEY, JSON.stringify(on)); }} catch (e) {{}} }}
+  function setOpen(v) {{ menu.hidden = !v; btn.setAttribute('aria-expanded', v); btn.textContent = v ? 'Columns ▴' : 'Columns ▾'; }}
+  btn.onclick = function(e) {{ e.stopPropagation(); setOpen(menu.hidden); }};
+  menu.addEventListener('change', function(e) {{ var c = e.target.dataset.c; if (!c) return;
+    on[c] = e.target.checked ? 1 : 0; if (c === 's') on._s = 1; applyCols(); save(); render(); }});
+  document.getElementById('colreset').onclick = function() {{ on = Object.assign({{}}, DEF); applyCols(); render();
+    try {{ localStorage.removeItem(KEY); }} catch (e) {{}} }};
+  document.addEventListener('click', function(e) {{ if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) setOpen(false); }});
+  applyCols();
+}})();
 document.getElementById('more').onclick = function() {{ shown += PAGE * 3; render(); }};
 document.getElementById('q').addEventListener('input', apply);
 document.getElementById('fr').addEventListener('change', apply);
@@ -355,13 +432,13 @@ document.querySelectorAll('#fg button').forEach(function(b) {{
 document.querySelectorAll('th[data-k]').forEach(function(th) {{
   th.onclick = function() {{
     var k = th.dataset.k;
-    if (sortK === k) sortDir = -sortDir; else {{ sortK = k; sortDir = (k === 'd' || k === '6') ? -1 : 1; }}
+    if (sortK === k) sortDir = -sortDir; else {{ sortK = k; sortDir = (k[0] === 'd' || k === 'q') ? -1 : 1; }}
     document.querySelectorAll('th').forEach(function(x) {{ x.classList.remove('sorted', 'desc'); }});
     th.classList.add('sorted'); if (sortDir < 0) th.classList.add('desc');
     apply();
   }};
 }});
-document.querySelector('th[data-k="0"]').classList.add('sorted');
+document.querySelector('th[data-k="n"]').classList.add('sorted');
 apply();
 </script></body></html>
 """
@@ -402,6 +479,14 @@ def _name_link(name: str, rating: str, link_for) -> str:
     return f'<span class="pn">{nm}{r}</span>'
 
 
+def _mdy(d: str) -> str:
+    """'2/11/2026' -> '2/11/26'; anything unparseable is returned unchanged."""
+    m = re.match(r"^\s*(\d{1,2})/(\d{1,2})/(\d{2,4})\s*$", d or "")
+    if not m:
+        return (d or "").strip()
+    return f"{int(m.group(1))}/{int(m.group(2))}/{int(m.group(3)) % 100:02d}"
+
+
 _HIST_COLS = [("date", "Date"), ("div", "Div"), ("team", "Team"), ("line", "Line"), ("pit", "ShiQ"),
               ("r", "R"), ("score", "Score"), ("partner", "Partner"), ("opp", "Opponents"),
               ("oppteam", "Opp Team")]
@@ -436,7 +521,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
                            for i, n in enumerate(r.get("opps") or [])) or '<em class="muted">default</em>'
         dq = r.get("dq") or []
         row_attr = f' class="dq" title="Invalid match: {_esc(", ".join(dq))} disqualified"' if dq else ""
-        date = re.sub(r"/\d{4}$", "", r["date"])
+        date = _mdy(r["date"])
         body.append(
             f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-date">{_esc(date)}</td>'
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
@@ -456,7 +541,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         m = re.match(r"(\d{1,2})/(\d{1,2})/(\d{4})", d or "")
         return (int(m.group(3)), int(m.group(1)), int(m.group(2))) if m else (0, 0, 0)
     last = max((_dkey(r["date"]) for r in history), default=(0, 0, 0))
-    shiq_sub = f"{last[1]}/{last[0]}" if last[0] else "&nbsp;"
+    shiq_sub = f"{last[1]}/{last[2]}/{last[0] % 100:02d}" if last[0] else "&nbsp;"
 
     city_state = ", ".join(x for x in [info.get("city"), info.get("state")] if x) or p.get("state", "")
     gender = {"F": "Female", "M": "Male"}.get(info.get("gender") or "F", "")
@@ -468,8 +553,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
     dyn = p.get("global_rating")
     fmt2 = lambda v: f"{float(v):.2f}" if v is not None else "—"  # noqa: E731
     rdate = info.get("cur_date", info.get("rating_date")) or ""
-    rdate = re.sub(r"^(\d{1,2})/\d{1,2}/(\d{4})$", r"\1/\2", rdate.strip())
-    usta_sub = _esc(rdate) or "&nbsp;"
+    usta_sub = _esc(_mdy(rdate)) or "&nbsp;"
 
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
@@ -636,6 +720,12 @@ def build_directory() -> dict:
         links = link_usta_to_db(usta, db)
     nxt = _usta_rows(YEAR_TO)
     year_links = link_years(usta, nxt) if nxt else {}
+    other_links = {}
+    for y in DIR_YEARS:
+        if y in (YEAR_FROM, YEAR_TO):
+            continue
+        rows_y = _usta_rows(y)
+        other_links[y] = link_years(usta, rows_y) if rows_y and not placeholder else {}
 
     info_by_id: dict[str, dict] = {}
     rows = []
@@ -655,8 +745,12 @@ def build_directory() -> dict:
             else:
                 info["cur_year"] = YEAR_FROM if not placeholder else None
             info_by_id[p["id"]] = info
-        rows.append([r["name"], r.get("gender"), r.get("level"), r.get("rating_type"),
-                     r27.get("level"), r27.get("rating_type"), dyn, href])
+        by_year = {YEAR_FROM: r, YEAR_TO: r27}
+        for y, lk in other_links.items():
+            by_year[y] = lk.get(i) or {}
+        rows.append([r["name"], r.get("gender"), dyn, href,
+                     [by_year[y].get("level") for y in DIR_YEARS],
+                     [by_year[y].get("rating_type") for y in DIR_YEARS]])
 
     # Player pages
     PLAYER_DIR.mkdir(parents=True, exist_ok=True)
@@ -670,7 +764,7 @@ def build_directory() -> dict:
         html = _player_html(p, info, histories[_nkey(p["name"])], pit, link_for)
         (PLAYER_DIR / f"{pid}.html").write_text(html, encoding="utf-8")
 
-    n_linked = sum(1 for r in rows if r[7])
+    n_linked = sum(1 for r in rows if r[3])
     DIRECTORY_HTML.write_text(_directory_html(rows, placeholder, n_linked), encoding="utf-8")
     unlinked = [p["name"] for pid, p in with_hist.items() if pid not in info_by_id]
     print(f"  [html] {DIRECTORY_HTML}  ({len(rows)} players, {n_linked} linked"
