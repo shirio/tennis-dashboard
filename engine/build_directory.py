@@ -453,7 +453,9 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         shiq_sub = f'<span class="{dcls}">{d:+.2f}</span>'
     else:
         shiq_sub = "&nbsp;"
-    usta_sub = _esc(info.get("cur_date", info.get("rating_date")) or "") or "&nbsp;"
+    rdate = info.get("cur_date", info.get("rating_date")) or ""
+    rdate = re.sub(r"^(\d{1,2})/\d{1,2}/(\d{4})$", r"\1/\2", rdate.strip())
+    usta_sub = _esc(rdate) or "&nbsp;"
 
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
