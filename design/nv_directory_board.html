@@ -152,13 +152,11 @@ tbody tr:hover td { background: #faf9f6; }
     <div class="row">
       <div class="opt">
         <div class="optlabel"><span class="tag">Δ2 · Arrow + tinted 2027</span><span class="rec">Chosen</span><span class="fake">2027 values made up</span></div>
-        <p class="why">One caret per 0.5 level (two stacked for two levels); the 2027 rating takes their color so the change reads as one unit.</p>
+        <p class="why">Rounded open chevrons, one per 0.5 level (two stacked for two levels); the column header is a small solid triangle; the 2027 rating takes their color so the change reads as one unit.</p>
         <div class="frame" id="d2"></div>
       </div>
     </div>
-    <h2 style="margin-top:20px">3b · Caret shape</h2>
-    <p class="why" style="margin:-4px 0 10px">Same colors, four shapes, at real size in the table. Top row is 3× for shape; the table is real size. 2027 values made up.</p>
-    <div class="row" id="carets"></div>
+
   </section>
 
   <section>
@@ -218,6 +216,7 @@ tbody tr:hover td { background: #faf9f6; }
 </div>
 
 <script>
+var DH='<svg viewBox="0 0 10 9" width="9" height="8" fill="currentColor" aria-label="Change" style="vertical-align:-1px"><polygon points="0,9 5,1 10,9"/></svg>';
 // Real rows from data/ntrp_nv_2026.json + our ShiQ ratings (PR 2).
 var R = [
  ["Amy Bernstein","F",2.5,"C",2.5152,1],["Claudia Hernandez","F",3.5,"C",3.4208,1],["Brady Stevens","M",3.5,"C",null,0],
@@ -237,7 +236,7 @@ function filters(phone){
 }
 function head(){ return '<div class="crumbs"><a href="#">Tennis Dashboard</a> › Nevada</div><div class="ttl">Nevada players</div>'; }
 function tableA(rows,opt){ opt=opt||{};
-  var h='<table><thead><tr><th class="s">Name</th>'+(opt.phone?'':'<th class="c">Sex</th>')+'<th class="n">2026</th><th class="c" title="Change from 2026 to 2027">Δ</th><th class="n">2027</th><th class="n">ShiQ</th>'+(opt.band?'<th></th>':'')+'</tr></thead><tbody>';
+  var h='<table><thead><tr><th class="s">Name</th>'+(opt.phone?'':'<th class="c">Sex</th>')+'<th class="n">2026</th><th class="c" title="Change from 2026 to 2027">'+DH+'</th><th class="n">2027</th><th class="n">ShiQ</th>'+(opt.band?'<th></th>':'')+'</tr></thead><tbody>';
   rows.forEach(function(r){ h+='<tr><td class="nm">'+nm(r)+'</td>'+(opt.phone?'':'<td class="g c">'+r[1]+'</td>')+'<td class="n">'+lvl(r[2],r[3],opt.letter)+'</td><td class="c"></td><td class="n"></td><td class="n">'+(r[4]==null?'':r[4].toFixed(2))+'</td>'+(opt.band?'<td>'+meter(r)+'</td>':'')+'</tr>'; });
   return h+'</tbody></table>';
 }
@@ -252,7 +251,8 @@ document.getElementById('l1').innerHTML = tableA([R[1],R[6],R[7],R[9]]);
 
 // Δ demos: 2027 values are invented to show up/down/same.
 var M = [["Maria Allen",3.0,"C",3.5,"C",3.3755],["Kelli Caderot",2.5,"S",3.5,"C",2.193],["Melissa Kwong-Blais",3.5,"C",4.0,"C",3.5794],["Francine Mazza",3.0,"C",3.0,"C",2.8228],["Kelley Ferrence",3.5,"C",3.0,"C",3.3152]];
-var CARET_STYLE='S0';
+var CARET_STYLE='S2';
+var DH='<svg viewBox="0 0 10 9" width="9" height="8" fill="currentColor" aria-label="Change" style="vertical-align:-1px"><polygon points="0,9 5,1 10,9"/></svg>';
 function caret(up,two,st){ st=st||CARET_STYLE; var w=10,h=15,inner='',attrs='fill="currentColor"';
   if(st==='S0'){ inner=two?'<polygon points="0,14 5,7 10,14"/><polygon points="0,8 5,1 10,8"/>':'<polygon points="0,11 5,4 10,11"/>'; }
   if(st==='S1'){ w=14; attrs='fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
@@ -264,7 +264,7 @@ function caret(up,two,st){ st=st||CARET_STYLE; var w=10,h=15,inner='',attrs='fil
     var tri=function(y){return '<path d="M2,'+(y+6)+' L7,'+(y)+' L12,'+(y+6)+' Z"/>';};
     inner='<defs><linearGradient id="'+gid+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".55"/><stop offset="1" stop-color="currentColor"/></linearGradient></defs>'+(two?tri(7.5)+tri(2):tri(4.5)); }
   return '<svg class="car" viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+'" '+attrs+' aria-label="'+(up?'Up ':'Down ')+(two?'two levels':'one level')+'"'+(up?'':' style="transform:scaleY(-1)"')+'>'+inner+'</svg>'; }
-function dtable(mode){ var h='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">Δ</th><th class="n">2027</th><th class="n">ShiQ</th></tr></thead><tbody>';
+function dtable(mode){ var h='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">'+DH+'</th><th class="n">2027</th><th class="n">ShiQ</th></tr></thead><tbody>';
   M.forEach(function(m){ var d=m[3]-m[1], cls=d>0?'up':d<0?'down':'', n=Math.round(Math.abs(d)/0.5), ar=d?caret(d>0,n>1):'', cell='', v27=lvl(m[3],m[4]);
     if(mode===1) cell=ar?'<span class="'+cls+'b">'+ar+'</span>':'';
     if(mode===2){ cell=ar?'<span class="'+cls+'b">'+ar+'</span>':''; if(ar) v27='<span class="'+cls+'b">'+m[3].toFixed(1)+'<span class="lt">'+m[4]+'</span></span>'; }
@@ -275,7 +275,7 @@ document.getElementById('d2').innerHTML=dtable(2);
 
 // Player page (real: Ara Lee Stimson)
 var recs='<div class="pills"><span class="rtab on">Overall <b>5–1</b></span><span class="rtab">3.0 <b>5–1</b></span><span class="rtab">Singles <b>0–0</b></span><span class="rtab">Doubles <b>5–1</b></span></div>';
-var mh='<table class="mh" style="margin-top:4px"><thead><tr><th class="c">Date</th><th class="c">Div</th><th>Team</th><th class="c">Line</th><th class="c">Score</th><th class="n" title="ShiQ change from this match">Δ</th><th>Partner</th><th>Opponents</th></tr></thead><tbody>'+
+var mh='<table class="mh" style="margin-top:4px"><thead><tr><th class="c">Date</th><th class="c">Div</th><th>Team</th><th class="c">Line</th><th class="c">Score</th><th class="n" title="ShiQ change from this match">'+DH+'</th><th>Partner</th><th>Opponents</th></tr></thead><tbody>'+
  '<tr><td class="c">3/14/26</td><td class="c"><span class="dv">3.0</span></td><td>Desert Palm</td><td class="c"><span class="lp d1">D1</span></td><td class="c"><span class="upb">7-5</span> <span class="upb">6-4</span></td><td class="n"><span class="upb">+.04</span></td><td class="pt"><a href="#">Alexandria Chang</a> <span class="r">2.72</span></td><td class="opp"><a href="#">Maggie Pacholuk</a> <span class="r">2.74</span><br><a href="#">Jaqueline Schultz</a> <span class="r">3.08</span></td></tr>'+
  '<tr><td class="c">3/28/26</td><td class="c"><span class="dv">3.0</span></td><td>Desert Palm</td><td class="c"><span class="lp d2">D2</span></td><td class="c"><span class="downb">0-6</span> <span class="downb">3-6</span></td><td class="n"><span class="upb">+.02</span></td><td class="pt"><a href="#">Yong Mi DeMilliano</a> <span class="r">2.59</span></td><td class="opp"><a href="#">Francine Mazza</a> <span class="r">2.81</span><br><a href="#">Abigail Cox</a> <span class="r">3.02</span></td></tr>'+
  '</tbody></table>';
@@ -304,7 +304,7 @@ function sdelta(m){ var i=MX.indexOf(m), nxt=i<MX.length-1?+MX[i+1][4]:3.08, d=M
   if(!d) return '<span class="r">0</span>'; var t=(d>0?'+':'−')+Math.abs(d).toFixed(2).replace(/^0/,''); return '<span class="'+(d>0?'up':'down')+'b">'+t+'</span>'; }
 function mxTable(on,short,rat){
   var h='<table class="mx mh"><thead><tr>';
-  COLS.forEach(function(c){ if(!on[c[0]])return; var cl=c[0]==='pit'?' class="n"':/^(date|div|line|score)$/.test(c[0])?' class="c"':''; h+='<th'+cl+(c[0]==='pit'?' title="ShiQ change from this match"':'')+'>'+(c[0]==='pit'?'Δ':c[1])+'</th>'; });
+  COLS.forEach(function(c){ if(!on[c[0]])return; var cl=c[0]==='pit'?' class="n"':/^(date|div|line|score)$/.test(c[0])?' class="c"':''; h+='<th'+cl+(c[0]==='pit'?' title="ShiQ change from this match"':'')+'>'+(c[0]==='pit'?DH:c[1])+'</th>'; });
   h+='</tr></thead><tbody>';
   MX.forEach(function(m){ h+='<tr>';
     var cells={date:'<td class="c">'+m[0]+'</td>',div:'<td class="c"><span class="dv">'+m[1]+'</span></td>',team:'<td>'+m[2]+'</td>',line:'<td class="c"><span class="lp '+m[3].toLowerCase()+'">'+m[3]+'</span></td>',
@@ -327,14 +327,5 @@ var DEF1={date:1,div:1,line:1,pit:1,score:1,partner:1,opp:1};
 document.getElementById('m2').innerHTML=phoneHead()+'<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▾</button></div>'+mxTable({date:1,line:1,r:1,score:1,opp:1},false,true);
 document.getElementById('m3').innerHTML=phoneHead()+'<div class="colbar"><span class="count">6 matches · 5–1</span><button class="colbtn">Columns ▴</button>'+menu(DEF1)+'</div>'+mxTable(DEF1,true,false);
 
-(function(){ var names={S0:'S0 · Today: solid narrow triangle',S1:'S1 · Open chevron, thin',S2:'S2 · Open chevron, rounded medium',S3:'S3 · Wide soft triangle with ombre'};
-  var out=''; ['S0','S1','S2','S3'].forEach(function(st){
-    var demo='<div style="display:flex;gap:18px;align-items:center;font-size:12px;margin-bottom:10px">'+
-      '<span class="up">'+caret(true,false,st)+'</span><span class="up">'+caret(true,true,st)+'</span><span class="down">'+caret(false,false,st)+'</span><span class="down">'+caret(false,true,st)+'</span></div>';
-    var big='<div style="display:flex;gap:22px;align-items:center;margin-bottom:12px;transform-origin:left;">'+[[1,0,'up'],[1,1,'up'],[0,0,'down'],[0,1,'down']].map(function(a){return '<span class="'+a[2]+'" style="display:inline-block;transform:scale(3);transform-origin:left center;width:42px">'+caret(!!a[0],!!a[1],st)+'</span>';}).join('')+'</div>';
-    var tbl='<table><thead><tr><th>Name</th><th class="n">2026</th><th class="c">Δ</th><th class="n">2027</th></tr></thead><tbody>'+
-      [['Maria Allen','3.0',1,0,'3.5'],['Kelli Caderot','2.5',1,1,'3.5'],['Kelley Ferrence','3.5',0,0,'3.0']].map(function(r){var c=r[2]?'up':'down';
-        return '<tr><td class="nm"><a href="#">'+r[0]+'</a></td><td class="n">'+r[1]+'<span class="lt">C</span></td><td class="c"><span class="'+c+'">'+caret(!!r[2],!!r[3],st)+'</span></td><td class="n"><span class="'+c+'b">'+r[4]+'<span class="lt">C</span></span></td></tr>';}).join('')+'</tbody></table>';
-    out+='<div class="opt" style="flex:1 1 250px"><div class="optlabel"><span class="tag">'+names[st]+'</span></div><div class="frame">'+big+tbl+'</div></div>'; });
-  document.getElementById('carets').innerHTML=out; })();
+
 </script>
