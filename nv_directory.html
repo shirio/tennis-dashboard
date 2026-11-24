@@ -102,7 +102,7 @@ table.h-q .c-q { display: none; }
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="s"> Sex</label><label><input type="checkbox" data-c="y0"> 2022</label><label><input type="checkbox" data-c="d1"> Δ 2022–23</label><label><input type="checkbox" data-c="y1"> 2023</label><label><input type="checkbox" data-c="d2"> Δ 2023–24</label><label><input type="checkbox" data-c="y2"> 2024</label><label><input type="checkbox" data-c="d3"> Δ 2024–25</label><label><input type="checkbox" data-c="y3"> 2025</label><label><input type="checkbox" data-c="d4"> Δ 2025–26</label><label><input type="checkbox" data-c="y4"> 2026</label><label><input type="checkbox" data-c="d5"> Δ 2026–27</label><label><input type="checkbox" data-c="y5"> 2027</label><label><input type="checkbox" data-c="q"> ShiQ</label><div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table id="tbl">
-<thead><tr><th data-k="n" class="c-n">Name</th><th data-k="s" class="c-s sex">Sex</th><th data-k="y0" class="c-y0 num">2022</th><th data-k="d1" class="c-d1 delta" title="Change from 2022 to 2023">Δ</th><th data-k="y1" class="c-y1 num">2023</th><th data-k="d2" class="c-d2 delta" title="Change from 2023 to 2024">Δ</th><th data-k="y2" class="c-y2 num">2024</th><th data-k="d3" class="c-d3 delta" title="Change from 2024 to 2025">Δ</th><th data-k="y3" class="c-y3 num">2025</th><th data-k="d4" class="c-d4 delta" title="Change from 2025 to 2026">Δ</th><th data-k="y4" class="c-y4 num">2026</th><th data-k="d5" class="c-d5 delta" title="Change from 2026 to 2027">Δ</th><th data-k="y5" class="c-y5 num">2027</th><th data-k="q" class="c-q num">ShiQ</th></tr></thead><tbody id="tb"></tbody></table></div>
+<thead><tr><th data-k="n" class="c-n">Name</th><th data-k="s" class="c-s sex">Sex</th><th data-k="y0" class="c-y0 num">2022</th><th data-k="d1" class="c-d1 delta" title="Change from 2022 to 2023" aria-label="Change from 2022 to 2023"><svg viewBox="0 0 10 9" width="9" height="8" fill="currentColor" aria-hidden="true" style="vertical-align:-1px"><polygon points="0,9 5,1 10,9"/></svg></th><th data-k="y1" class="c-y1 num">2023</th><th data-k="d2" class="c-d2 delta" title="Change from 2023 to 2024" aria-label="Change from 2023 to 2024"><svg viewBox="0 0 10 9" width="9" height="8" fill="currentColor" aria-hidden="true" style="vertical-align:-1px"><polygon points="0,9 5,1 10,9"/></svg></th><th data-k="y2" class="c-y2 num">2024</th><th data-k="d3" class="c-d3 delta" title="Change from 2024 to 2025" aria-label="Change from 2024 to 2025"><svg viewBox="0 0 10 9" width="9" height="8" fill="currentColor" aria-hidden="true" style="vertical-align:-1px"><polygon points="0,9 5,1 10,9"/></svg></th><th data-k="y3" class="c-y3 num">2025</th><th data-k="d4" class="c-d4 delta" title="Change from 2025 to 2026" aria-label="Change from 2025 to 2026"><svg viewBox="0 0 10 9" width="9" height="8" fill="currentColor" aria-hidden="true" style="vertical-align:-1px"><polygon points="0,9 5,1 10,9"/></svg></th><th data-k="y4" class="c-y4 num">2026</th><th data-k="d5" class="c-d5 delta" title="Change from 2026 to 2027" aria-label="Change from 2026 to 2027"><svg viewBox="0 0 10 9" width="9" height="8" fill="currentColor" aria-hidden="true" style="vertical-align:-1px"><polygon points="0,9 5,1 10,9"/></svg></th><th data-k="y5" class="c-y5 num">2027</th><th data-k="q" class="c-q num">ShiQ</th></tr></thead><tbody id="tb"></tbody></table></div>
 <button class="more" id="more" hidden>Show more</button>
 </div>
 <script>
@@ -119,11 +119,12 @@ var LAST = YEARS.length - 1;
 function cur(r) { return r[4][LAST] != null ? r[4][LAST] : r[4][IFROM]; }
 // Stacked carets (like a fast-forward icon turned up/down): one per 0.5 level.
 function caret(up, n) {
-  var shapes = n >= 2 ? '<polygon points="0,14 5,7 10,14"/><polygon points="0,8 5,1 10,8"/>'
-                      : '<polygon points="0,11 5,4 10,11"/>';
+  var shapes = n >= 2 ? '<polyline points="2.5,12.5 7,8.5 11.5,12.5"/><polyline points="2.5,7 7,3 11.5,7"/>'
+                      : '<polyline points="2.5,10 7,6 11.5,10"/>';
   var label = (up ? 'Up ' : 'Down ') + (n >= 2 ? 'two levels' : 'one level');
-  return '<svg class="caret ' + (up ? 'up' : 'down') + '" viewBox="0 0 10 15" width="10" height="15" role="img" aria-label="'
-    + label + '"><title>' + label + '</title><g fill="currentColor">' + shapes + '</g></svg>';
+  return '<svg class="caret ' + (up ? 'up' : 'down') + '" viewBox="0 0 14 15" width="14" height="15" role="img" aria-label="'
+    + label + '"><title>' + label + '</title><g fill="none" stroke="currentColor" stroke-width="2.4" '
+    + 'stroke-linecap="round" stroke-linejoin="round">' + shapes + '</g></svg>';
 }
 // change from year i-1 to year i
 function delta(r, i) { var a = r[4][i - 1], b = r[4][i]; return (a != null && b != null) ? Math.round((b - a) * 10) / 10 : 0; }

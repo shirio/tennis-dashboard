@@ -206,6 +206,10 @@ h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 # Directory page
 # ---------------------------------------------------------------------------
 
+_DH = ('<svg viewBox="0 0 10 9" width="9" height="8" fill="currentColor" aria-hidden="true" '
+       'style="vertical-align:-1px"><polygon points="0,9 5,1 10,9"/></svg>')
+
+
 def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
     data = json.dumps(rows, separators=(",", ":"), ensure_ascii=False)
     types_json = json.dumps(RATING_TYPES)
@@ -227,7 +231,8 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
             heads.append('<th data-k="s" class="c-s sex">Sex</th>')
         elif k[0] == "d":
             i = int(k[1:])
-            heads.append(f'<th data-k="{k}" class="c-{k} delta" title="Change from {years[i-1]} to {years[i]}">Δ</th>')
+            heads.append(f'<th data-k="{k}" class="c-{k} delta" title="Change from {years[i-1]} to {years[i]}" '
+                         f'aria-label="Change from {years[i-1]} to {years[i]}">{_DH}</th>')
         elif k[0] == "y":
             heads.append(f'<th data-k="{k}" class="c-{k} num">{lbl}</th>')
         else:
@@ -320,11 +325,12 @@ var LAST = YEARS.length - 1;
 function cur(r) {{ return r[4][LAST] != null ? r[4][LAST] : r[4][IFROM]; }}
 // Stacked carets (like a fast-forward icon turned up/down): one per 0.5 level.
 function caret(up, n) {{
-  var shapes = n >= 2 ? '<polygon points="0,14 5,7 10,14"/><polygon points="0,8 5,1 10,8"/>'
-                      : '<polygon points="0,11 5,4 10,11"/>';
+  var shapes = n >= 2 ? '<polyline points="2.5,12.5 7,8.5 11.5,12.5"/><polyline points="2.5,7 7,3 11.5,7"/>'
+                      : '<polyline points="2.5,10 7,6 11.5,10"/>';
   var label = (up ? 'Up ' : 'Down ') + (n >= 2 ? 'two levels' : 'one level');
-  return '<svg class="caret ' + (up ? 'up' : 'down') + '" viewBox="0 0 10 15" width="10" height="15" role="img" aria-label="'
-    + label + '"><title>' + label + '</title><g fill="currentColor">' + shapes + '</g></svg>';
+  return '<svg class="caret ' + (up ? 'up' : 'down') + '" viewBox="0 0 14 15" width="14" height="15" role="img" aria-label="'
+    + label + '"><title>' + label + '</title><g fill="none" stroke="currentColor" stroke-width="2.4" '
+    + 'stroke-linecap="round" stroke-linejoin="round">' + shapes + '</g></svg>';
 }}
 // change from year i-1 to year i
 function delta(r, i) {{ var a = r[4][i - 1], b = r[4][i]; return (a != null && b != null) ? Math.round((b - a) * 10) / 10 : 0; }}
@@ -709,7 +715,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden>{"".join(f'<label><input type="checkbox" data-c="{k}"> {lbl}</label>' for k, lbl in _HIST_COLS)}<div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th><th class="num c-sd" title="ShiQ change from this match">Δ</th>
+<th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th><th class="num c-sd" title="ShiQ change from this match" aria-label="ShiQ change from this match">{_DH}</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
 <tbody>{"".join(body)}</tbody></table></div>
 </div>
