@@ -471,11 +471,33 @@ def _record_strip(rec: dict) -> str:
 def _name_link(name: str, rating: str, link_for) -> str:
     href = link_for(name)
     parts = name.split()
-    short = f"{parts[0][0]}. {' '.join(parts[1:])}" if len(parts) > 1 else name
+    short = f"{parts[0][0]}. {parts[-1]}" if len(parts) > 1 else name
     label = f'<span class="fn">{_esc(name)}</span><span class="sn">{_esc(short)}</span>'
     nm = f'<a href="{_esc(href)}">{label}</a>' if href else label
     r = f' <span class="rt">{_esc(rating or "NR")}</span>' if rating is not None else ""
     return f'<span class="pn">{nm}{r}</span>'
+
+
+def _score_html(score: str, won: bool) -> str:
+    """Show the score from the player's side (her games first), one span per set.
+    On a win, the sets she won are green; on a loss, the sets she lost are red.
+    Scores are usually stored winner-first; if the second number wins more sets,
+    the stored score is read the other way round."""
+    sets = score.split()
+    nums = [tuple(map(int, x.split("-"))) if re.fullmatch(r"\d+-\d+", x) else None for x in sets]
+    a = sum(1 for n in nums if n and n[0] > n[1])
+    b = sum(1 for n in nums if n and n[1] > n[0])
+    winner_first = a >= b
+    flip = winner_first != won
+    out = []
+    for x, n in zip(sets, nums):
+        if n is None:
+            out.append(f'<span class="set">{_esc(x)}</span>')
+            continue
+        mine, theirs = (n[1], n[0]) if flip else n
+        cls = " sw" if won and mine > theirs else (" sl" if not won and mine < theirs else "")
+        out.append(f'<span class="set{cls}">{mine}-{theirs}</span>')
+    return " ".join(out)
 
 
 def _mdy(d: str) -> str:
@@ -513,8 +535,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         res = ("W*" if r["won"] else "L*") if wko else ("W" if r["won"] else "L")
         res_tip = ' title="Default, not counted in records"' if wko else ""
         rcls = "" if wko else ("up" if r["won"] else "down")
-        score = ('<em class="muted">default</em>' if wko else
-                 " ".join(f'<span class="set">{_esc(x)}</span>' for x in (r.get("score") or "").split()))
+        score = '<em class="muted">default</em>' if wko else _score_html(r.get("score") or "", r["won"])
         partners = "<br>".join(_name_link(n, (r.get("partner_r") or [None] * 9)[i], link_for)
                                for i, n in enumerate(r.get("partners") or [])) or "—"
         opps = "<br>".join(_name_link(n, (r.get("opp_r") or [None] * 9)[i], link_for)
@@ -602,6 +623,8 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 .hist tr.dq td {{ opacity: .5; text-decoration: line-through; }}
 .pn {{ white-space: nowrap; }}
 .rt {{ color: #aaa; font-variant-numeric: tabular-nums; }}
+.set.sw {{ color: #27500A; font-weight: 600; }}
+.set.sl {{ color: #791F1F; font-weight: 600; }}
 .sn {{ display: none; }}
 .colbar {{ display: none; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }}
 .colbar .count {{ font-size: 11px; color: #888; }}
@@ -665,8 +688,8 @@ document.querySelectorAll('.yr').forEach(function(b) {{
 var COUNTS = {json.dumps(counts, ensure_ascii=False)};
 (function() {{
   var ALL = ['date','div','team','line','pit','r','score','partner','opp','oppteam'];
-  var DEF = {{date:1, line:1, r:1, score:1, partner:1, opp:1}};
-  var KEY = 'nvPlayerCols';
+  var DEF = {{date:1, div:1, line:1, score:1, partner:1, opp:1}};
+  var KEY = 'nvPlayerCols2';  // bumped when the defaults changed
   var tbl = document.querySelector('table.hist'), btn = document.getElementById('colbtn'),
       menu = document.getElementById('colmenu'), on;
   try {{ on = JSON.parse(localStorage.getItem(KEY)); }} catch (e) {{ on = null; }}

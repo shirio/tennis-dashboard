@@ -69,6 +69,8 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
 .pn { white-space: nowrap; }
 .rt { color: #aaa; font-variant-numeric: tabular-nums; }
+.set.sw { color: #27500A; font-weight: 600; }
+.set.sl { color: #791F1F; font-weight: 600; }
 .sn { display: none; }
 .colbar { display: none; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }
 .colbar .count { font-size: 11px; color: #888; }
@@ -125,7 +127,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="num c-pit" title="ShiQ going into the match">ShiQ</th><th class="c-r">R</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-date">4/25/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">2.48</td><td class="c-r"><span class="up">W</span></td><td class="c-score"><span class="set">6-4</span> <span class="set">3-6</span> <span class="set">1-0</span></td><td class="c-partner"><span class="pn"><a href="ali-wolak.html"><span class="fn">Ali Wolak</span><span class="sn">A. Wolak</span></a> <span class="rt">2.37</span></span></td><td class="c-opp"><span class="pn"><a href="christy-shulman.html"><span class="fn">Christy Shulman</span><span class="sn">C. Shulman</span></a> <span class="rt">2.98</span></span><br><span class="pn"><a href="christy-cropper.html"><span class="fn">Christy Cropper</span><span class="sn">C. Cropper</span></a> <span class="rt">2.28</span></span></td><td class="c-oppteam">CLUB RIDGES</td></tr><tr data-y="2026"><td class="c-date">5/2/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">2.52</td><td class="c-r"><span class="down">L</span></td><td class="c-score"><span class="set">6-0</span> <span class="set">6-1</span></td><td class="c-partner"><span class="pn"><a href="debbie-fleury.html"><span class="fn">Debbie Fleury</span><span class="sn">D. Fleury</span></a> <span class="rt">2.79</span></span></td><td class="c-opp"><span class="pn"><a href="venetia-espinueva.html"><span class="fn">Venetia Espinueva</span><span class="sn">V. Espinueva</span></a> <span class="rt">2.72</span></span><br><span class="pn"><a href="tiffany-vance.html"><span class="fn">Tiffany Vance</span><span class="sn">T. Vance</span></a> <span class="rt">2.53</span></span></td><td class="c-oppteam">DTC #4</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-date">4/25/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">2.48</td><td class="c-r"><span class="up">W</span></td><td class="c-score"><span class="set sw">6-4</span> <span class="set">3-6</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="ali-wolak.html"><span class="fn">Ali Wolak</span><span class="sn">A. Wolak</span></a> <span class="rt">2.37</span></span></td><td class="c-opp"><span class="pn"><a href="christy-shulman.html"><span class="fn">Christy Shulman</span><span class="sn">C. Shulman</span></a> <span class="rt">2.98</span></span><br><span class="pn"><a href="christy-cropper.html"><span class="fn">Christy Cropper</span><span class="sn">C. Cropper</span></a> <span class="rt">2.28</span></span></td><td class="c-oppteam">CLUB RIDGES</td></tr><tr data-y="2026"><td class="c-date">5/2/26</td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">DTC #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="num c-pit">2.52</td><td class="c-r"><span class="down">L</span></td><td class="c-score"><span class="set sl">0-6</span> <span class="set sl">1-6</span></td><td class="c-partner"><span class="pn"><a href="debbie-fleury.html"><span class="fn">Debbie Fleury</span><span class="sn">D. Fleury</span></a> <span class="rt">2.79</span></span></td><td class="c-opp"><span class="pn"><a href="venetia-espinueva.html"><span class="fn">Venetia Espinueva</span><span class="sn">V. Espinueva</span></a> <span class="rt">2.72</span></span><br><span class="pn"><a href="tiffany-vance.html"><span class="fn">Tiffany Vance</span><span class="sn">T. Vance</span></a> <span class="rt">2.53</span></span></td><td class="c-oppteam">DTC #4</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {
@@ -141,8 +143,8 @@ document.querySelectorAll('.yr').forEach(function(b) {
 var COUNTS = {"all": "2 matches · 1–1", "2026": "2 matches · 1–1"};
 (function() {
   var ALL = ['date','div','team','line','pit','r','score','partner','opp','oppteam'];
-  var DEF = {date:1, line:1, r:1, score:1, partner:1, opp:1};
-  var KEY = 'nvPlayerCols';
+  var DEF = {date:1, div:1, line:1, score:1, partner:1, opp:1};
+  var KEY = 'nvPlayerCols2';  // bumped when the defaults changed
   var tbl = document.querySelector('table.hist'), btn = document.getElementById('colbtn'),
       menu = document.getElementById('colmenu'), on;
   try { on = JSON.parse(localStorage.getItem(KEY)); } catch (e) { on = null; }
