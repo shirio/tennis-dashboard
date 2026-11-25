@@ -212,13 +212,19 @@ var COUNTS = {"all": "25 matches · 6–19 overall", "2026": "25 matches · 6–
   try { on = JSON.parse(localStorage.getItem(KEY)); } catch (e) { on = null; }
   if (!on || typeof on !== 'object') on = Object.assign({}, DEF);
   function apply() {
-    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]);
-      tbl.classList.remove('fc-' + k, 'lc-' + k); });
-    // first / last showing column, for the rounded ends of washed rows
-    var vis = ALL.filter(function(k) { return on[k]; });
-    if (vis.length) { tbl.classList.add('fc-' + vis[0], 'lc-' + vis[vis.length - 1]); }
+    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]); });
+    ends();
     menu.querySelectorAll('input').forEach(function(i) { i.checked = !!on[i.dataset.c]; });
   }
+  // first / last column actually showing (desktop shows them all), for the
+  // rounded ends of washed rows
+  function ends() {
+    ALL.forEach(function(k) { tbl.classList.remove('fc-' + k, 'lc-' + k); });
+    var vis = ALL.filter(function(k) { var th = tbl.querySelector('th.c-' + k);
+      return th && getComputedStyle(th).display !== 'none'; });
+    if (vis.length) tbl.classList.add('fc-' + vis[0], 'lc-' + vis[vis.length - 1]);
+  }
+  window.addEventListener('resize', ends);
   function save() { try { localStorage.setItem(KEY, JSON.stringify(on)); } catch (e) {} }
   function setOpen(v) { menu.hidden = !v; btn.setAttribute('aria-expanded', v); btn.textContent = v ? 'Columns ▴' : 'Columns ▾'; }
   btn.onclick = function(e) { e.stopPropagation(); setOpen(menu.hidden); };
