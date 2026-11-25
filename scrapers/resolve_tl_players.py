@@ -53,7 +53,7 @@ CAND_CACHE = ROOT / "data" / f"tl_candidate_teams_{YEAR}.json"
 # name), confirmed by Shirin: {our name: TennisLink name}.
 ALIASES = {"Renee Johnson": "Renee Warner"}
 # Appearances Shirin is checking by hand: kept as separate people, flagged.
-MANUAL_REVIEW = {("Amy Graybeal", "CHAMP|USTA ADULT 18 & OVER- W4.0|6/16/2026|SPANISH OAKS")}
+MANUAL_REVIEW: set[tuple[str, str]] = set()   # Amy Graybeal's Spanish Oaks Districts: confirmed hers
 
 
 def _slug(n: str) -> str:
@@ -77,6 +77,20 @@ def champ_to_local(d) -> dict[str, str]:
         if t.get("kind") == "league":
             for r in t.get("roster", []):
                 on_roster[norm(r["name"])].add(tid)
+    known = set(d["teams"])  # every league team id we know of, crawled or not
+    for v in d.get("player_teams", {}).values():
+        known.update(v)
+    if CAND_CACHE.exists():
+        for v in json.loads(CAND_CACHE.read_text()).values():
+            known.update(v)
+    for m in d["matches"].values():   # who played for a team, incl. uncrawled teams
+        if m["kind"] != "league":
+            continue
+        known.update(m["teams"])
+        for ln in m["lines"]:
+            for side, idx in (("home", 0), ("away", 1)):
+                for p in ln[f"players_{side}"]:
+                    on_roster[norm(p)].add(m["teams"][idx])
     players_of = collections.defaultdict(set)
     for m in d["matches"].values():
         if m["kind"] != "champ":
@@ -92,16 +106,38 @@ def champ_to_local(d) -> dict[str, str]:
         lvl = set(re.findall(r"\d\.\d", cname))
         age = re.search(r"\b(18|40|55|65)\s*&\s*OVER", cname)
 
+        tri = "TRI" in cname and "LEVEL" in cname
+
         def fits(tid):
             parts = tid.split("|")
-            lf = (parts[1] + " " + parts[2]).upper()
-            return ((not lvl or any(x in parts[2] for x in lvl)) and
-                    (not age or f"{age.group(1)} & OVER" in lf))
+            league, flight = parts[1].upper(), parts[2].upper()
+            if tri != ("TRI" in league and "LEVEL" in league):
+                return False
+            flevels = set(re.findall(r"\d\.\d", flight))
+            if lvl and flevels != lvl:          # same level(s) exactly
+                return False
+            return not age or f"{age.group(1)} & OVER" in league + " " + flight
+
+        # Same team name in a fitting league flight wins outright. Otherwise go
+        # by roster overlap: a team that wins Districts is renamed in its league
+        # listing to STATE/CAPTAIN/DIVISION (e.g. SPANISH OAKS -> NV/EDGE/18&OVERW4.0).
+        cteam = ctid.rsplit("|", 1)[1]
+        same = [t for t in known if not t.startswith("CHAMP|")
+                and t.rsplit("|", 1)[1] == cteam and fits(t)]
+        if len(same) == 1:
+            out[ctid] = same[0]
+            continue
+        renamed = [t for t in known if not t.startswith("CHAMP|") and
+                   re.match(r"^[A-Z]{2}/[^/]+/", t.rsplit("|", 1)[1]) and fits(t)]
         votes = collections.Counter(t for n in names for t in on_roster.get(n, ()) if fits(t))
-        if votes:
-            best, n = votes.most_common(1)[0]
-            if n >= 2:
-                out[ctid] = best
+        if votes and votes.most_common(1)[0][1] >= 2:
+            out[ctid] = votes.most_common(1)[0][0]
+        elif cteam.count("/") >= 2:
+            # Sectionals/Nationals label "Nevada/Edge/18&Over4.0W" <-> league "NV/EDGE/18&OVERW4.0"
+            cap = cteam.split("/")[1].strip().upper()
+            hit = [t for t in renamed if t.rsplit("|", 1)[1].split("/")[1].strip().upper() == cap]
+            if len(hit) == 1:
+                out[ctid] = hit[0]
     return out
 
 

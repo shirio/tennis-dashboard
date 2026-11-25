@@ -31,4 +31,10 @@ No page shows a player id or city, so: base identity = name + team; join to the 
 teams in one flight, or both in one match, unless the player's own team list covers every team
 (mid-year rating change, tagged `rating_changed`). Anything else stays separate, flagged `ambiguous`.
 
-`ALIASES` in resolve_tl_players.py maps core players whose TennisLink name differs (Renee Johnson -> Renee Warner); `MANUAL_REVIEW` keeps appearances being checked by hand separate (Amy Graybeal, Spanish Oaks 18+ 4.0 Districts).
+`ALIASES` in resolve_tl_players.py maps core players whose TennisLink name differs (Renee Johnson -> Renee Warner); `MANUAL_REVIEW` keeps appearances being checked by hand separate (empty now).
+
+Renamed teams: a team that wins Districts is renamed in its league listing to STATE/CAPTAIN/DIVISION
+(SPANISH OAKS -> `NV/EDGE/18&OVERW4.0`), and appears at Sectionals/Nationals as `Nevada/Edge/18&Over4.0W`.
+Championship teams are mapped back to league teams of the same age group and level: same club name, else
+roster overlap (rosters plus everyone who played league lines for a team, crawled or not), else the
+captain segment of a STATE/CAPTAIN/DIVISION label.
