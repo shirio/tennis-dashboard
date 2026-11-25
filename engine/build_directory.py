@@ -121,6 +121,9 @@ def _tr_history() -> dict[str, dict[int, float]]:
         return {}
     out: dict[str, dict[int, float]] = {}
     for r in json.loads(TR_HISTORY.read_text()):
+        cur = (r.get("current") or {}).get("level")
+        if cur is not None:
+            out.setdefault(_nkey(r["name"]), {})["cur"] = float(cur)
         for y, v in (r.get("years") or {}).items():
             try:
                 out.setdefault(_nkey(r["name"]), {})[int(y)] = float(v["level"])
@@ -1171,7 +1174,12 @@ def build_directory() -> dict:
         for y, lk in other_links.items():
             by_year[y] = lk.get(i) or {}
             if by_year[y].get("level") is None:
-                lvl = (tr_hist.get(_nkey(r["name"])) or {}).get(y)
+                th = tr_hist.get(_nkey(r["name"])) or {}
+                # Same-name guard: use a TennisRecord history only when its current
+                # level matches this USTA row's.
+                if th.get("cur") != r.get("level"):
+                    th = {}
+                lvl = th.get(y)
                 if lvl is not None:
                     by_year[y] = {"level": lvl}  # roster level, no rating letter
         rows.append([r["name"], r.get("gender"), dyn, href,
