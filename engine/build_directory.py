@@ -295,7 +295,9 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
             heads.append(f'<th data-k="{k}" class="c-{k} delta" title="Change from {years[i-1]} to {years[i]}" '
                          f'aria-label="Change from {years[i-1]} to {years[i]}">{_DH}</th>')
         elif k[0] == "y":
-            heads.append(f'<th data-k="{k}" class="c-{k} num">{lbl}</th>')
+            # Seasons before the current one read 'yy to keep the columns narrow (Shirin)
+            yl = f"’{lbl[-2:]}" if int(lbl) < YEAR_FROM else lbl
+            heads.append(f'<th data-k="{k}" class="c-{k} num" title="{lbl}">{yl}</th>')
         elif k in ("ws", "wd"):
             fmt_name = "singles" if k == "ws" else "doubles"
             heads.append(f'<th data-k="{k}" class="c-{k} num ctr" title="USTA World Tennis Number ({fmt_name}) '
@@ -373,6 +375,8 @@ th.bump, td.bump {{ text-align: center; cursor: default; font-variant-numeric: t
 .bld {{ color: #c98b86; font-weight: 600; }}
 .bh {{ color: #aaa; font-weight: 400; }}
 th.delta, td.delta {{ text-align: center; padding-left: 4px; padding-right: 4px; }}
+th.delta .hl svg {{ position: relative; left: var(--dx, 0); }}
+thead th.delta {{ z-index: 4; }}
 td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 td.ctr, th.ctr {{ text-align: center; }}
 th {{ vertical-align: bottom; line-height: 1.25; }}
@@ -381,7 +385,7 @@ th.ctr.sorted .hl {{ left: -5px; }}
 .ap {{ margin-left: 1px; }}
 .apc {{ color: #b26a00; }}
 .up {{ color: #27500A; }}
-.caret {{ vertical-align: middle; }}
+.caret {{ vertical-align: middle; position: relative; }}
 .caret.down {{ transform: scaleY(-1); }}
 .down {{ color: #791F1F; }}
 .more {{ margin: .8rem 0; padding: .35rem 1rem; border: 1px solid #ccc;
@@ -440,9 +444,9 @@ function ntrp(l, t, cls, ap) {{
   if (l == null) return '';
   var tip = TYPES[t] || t;
   if (ap) tip += '. ' + ap[2];
-  var s = fmt(l) + (t ? '<span class="lt" title="' + esc(tip) + '">' + t
+  var s = '<span class="nv">' + fmt(l) + '</span>' + (t ? '<span class="lt" title="' + esc(tip) + '">' + t
     + (ap ? '<span class="ap' + (ap[1] ? ' apc' : '') + '">' + ap[0] + '</span>' : '') + '</span>' : '');
-  return cls ? '<span class="' + cls + '">' + s + '</span>' : s;
+  return '<span class="nw' + (cls ? ' ' + cls : '') + '">' + s + '</span>';
 }}
 // WTN columns: r[7] = [singles NTRP, WTN, confidence, doubles NTRP, WTN, confidence]
 function wtnCell(r, o, k, f) {{
@@ -532,7 +536,35 @@ function render() {{
     ? ROWS.length.toLocaleString() + ' players'
     : view.length.toLocaleString() + ' of ' + ROWS.length.toLocaleString() + ' players';
   document.getElementById('more').hidden = shown >= view.length;
+  centerCarets();
 }}
+// Each Δ caret sits midway between where the rating on its left ends (letter
+// included) and where the number on its right starts. Year cells are right-aligned
+// and often wider than their values, so centering in the Δ cell alone looks lopsided.
+function centerCarets() {{
+  var moves = [];
+  document.querySelectorAll('#tb td.delta svg').forEach(function(svg) {{
+    var td = svg.parentNode, a = td.previousElementSibling, b = td.nextElementSibling;
+    var an = a && a.querySelector('.nw'), bn = b && b.querySelector('.nv');
+    if (!an || !bn || !td.offsetParent) return;
+    var ar = an.getBoundingClientRect(), br = bn.getBoundingClientRect(), sr = svg.getBoundingClientRect();
+    if (!ar.width || !br.width) return;
+    var cur = parseFloat(svg.style.left) || 0;
+    moves.push([svg, cur + (ar.right + br.left) / 2 - (sr.left + sr.right) / 2]);
+  }});
+  moves.forEach(function(m) {{ m[0].style.left = m[1].toFixed(1) + 'px'; }});
+  // Move each Δ header's triangle to the same spot, so carets sit under it
+  var sum = {{}};
+  moves.forEach(function(m) {{ var k = m[0].parentNode.className.split(' ')[0];
+    (sum[k] = sum[k] || []).push(m[1]); }});
+  document.querySelectorAll('#tbl th.delta').forEach(function(th) {{
+    var v = sum['c-' + th.dataset.k];
+    if (!v) return;
+    v.sort(function(a, b) {{ return a - b; }});
+    th.style.setProperty('--dx', v[v.length >> 1].toFixed(1) + 'px');
+  }});
+}}
+window.addEventListener('resize', centerCarets);
 // Columns menu: choice saved per browser
 (function() {{
   var KEY = 'nvDirCols', tbl = document.getElementById('tbl'), btn = document.getElementById('colbtn'),
@@ -607,7 +639,7 @@ function fitWidths() {{
   var thn = tbl.querySelector('th[data-k="n"]');
   thn.style.minWidth = thn.style.width = thn.style.maxWidth = nw + 'px';
   document.getElementById('nmcap').textContent = nw < lockW.n
-    ? '#tbl td.c-n {{ max-width: ' + nw + 'px; overflow: hidden; text-overflow: ellipsis; }}' : '';
+    ? '#tbl td.c-n {{ max-width: ' + nw + 'px; overflow: hidden; text-overflow: ellipsis; }}' : '';  centerCarets();
 }}
 document.querySelectorAll('#tbl th[data-k]').forEach(function(th) {{ th.innerHTML = '<span class="hl">' + th.innerHTML + '</span>'; }});
 var nmcap = document.createElement('style'); nmcap.id = 'nmcap'; document.head.appendChild(nmcap);
@@ -730,6 +762,15 @@ def _score_html(score: str, won: bool) -> str:
     return " ".join(out)
 
 
+def _team_td(cls: str, name: str, full: str) -> str:
+    from engine.crawl_history import is_renamed
+    short = _esc(_abbrev_team(name))
+    if full and is_renamed(full) and full != name:
+        return (f'<td class="{cls}"><span class="rn" tabindex="0" data-full="{_esc(full)}" '
+                f'aria-label="{short}, listed as {_esc(full)}">{short}</span></td>')
+    return f'<td class="{cls}" title="{_esc(name)}">{short}</td>'
+
+
 def _sq_delta(d) -> str:
     """+.04 / −.02 / ±0 for a per-match ShiQ change."""
     if d is None:
@@ -807,8 +848,12 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         dq = r.get("dq") or []
         # Mixed doubles: same test as scrape_tl_teams.is_mixed (league or flight name),
         # never the Div pill (6.0-8.0 levels are shared with senior combined leagues).
+        # Flagged in the markup but not styled for now (Shirin will pick a marker).
         mix = "MIXED" in f'{r.get("league_full", "")} {r.get("flight", "")}'.upper()
-        cls = " ".join(c for c, on in (("dq", dq), ("mix", mix)) if on)
+        # Postseason rows get the lavender wash (Shirin, 2026-11-25), since the
+        # League column is hidden by default on phones.
+        post = r.get("league") in ("Playoff", "Districts", "Sectionals", "Nationals")
+        cls = " ".join(c for c, on in (("dq", dq), ("mix", mix), ("post", post)) if on)
         row_attr = (f' class="{cls}"' if cls else "") + (
             f' title="Invalid match: {_esc(", ".join(dq))} disqualified"' if dq else "")
         date = _mdy(r["date"])
@@ -818,10 +863,10 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
             f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-sq">{sq}</td><td class="c-date">{date_html}</td>'
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
             f'<td class="c-lg" title="{_esc(r.get("league_full", ""))}">{_esc(r.get("league", ""))}</td>'
-            f'<td class="c-team" title="{_esc(r.get("my_team", ""))}">{_esc(_abbrev_team(r.get("my_team", "")))}</td><td class="c-line">{pill}</td>'
+            f'{_team_td("c-team", r.get("my_team", ""), r.get("my_team_full", ""))}<td class="c-line">{pill}</td>'
             f'<td class="c-score"{res_tip}>{score}</td>'
             f'<td class="c-partner">{partners}</td><td class="c-opp">{opps}</td>'
-            f'<td class="c-oppteam" title="{_esc(r.get("opp_team", ""))}">{_esc(_abbrev_team(r.get("opp_team", "")))}</td></tr>')
+            f'{_team_td("c-oppteam", r.get("opp_team", ""), r.get("opp_team_full", ""))}</tr>')
 
     counts = {}
     for k in ["all"] + years:
@@ -914,9 +959,33 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
 .hist td.num {{ color: #aaa; }}
 .hist tbody tr:hover td {{ background: #faf9f6; }}
 .hist tr.dq td {{ opacity: .5; text-decoration: line-through; }}
-.hist tr.mix td {{ background: #f6f4f9; }}
-.hist tr.mix td:first-child {{ border-radius: 6px 0 0 6px; }}
-.hist tr.mix td:last-child {{ border-radius: 0 6px 6px 0; }}
+.rn {{ position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }}
+.rn::after {{ content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }}
+.rn.open::after {{ display: block; }}
+@media (hover: hover) {{ .rn:hover::after {{ display: block; }} }}
+.hist tr.post td {{ background: #f6f4f9; }}
+.hist.fc-sq tr.post td.c-sq {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-sq tr.post td.c-sq {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-date tr.post td.c-date {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-date tr.post td.c-date {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-div tr.post td.c-div {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-div tr.post td.c-div {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-lg tr.post td.c-lg {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-lg tr.post td.c-lg {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-team tr.post td.c-team {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-team tr.post td.c-team {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-line tr.post td.c-line {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-line tr.post td.c-line {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-score tr.post td.c-score {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-score tr.post td.c-score {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-partner tr.post td.c-partner {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-partner tr.post td.c-partner {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-opp tr.post td.c-opp {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-opp tr.post td.c-opp {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-oppteam tr.post td.c-oppteam {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-oppteam tr.post td.c-oppteam {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
 .pn {{ white-space: nowrap; }}
 .rt {{ color: #aaa; font-variant-numeric: tabular-nums; }}
 .set.sw {{ color: #27500A; font-weight: 600; }}
@@ -990,6 +1059,12 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
 <tbody>{"".join(reversed(body))}</tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {{
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) {{ if (x !== t) x.classList.remove('open'); }});
+  if (t) t.classList.toggle('open');
+}});
 document.querySelectorAll('.yr').forEach(function(b) {{
   b.onclick = function() {{
     var y = b.dataset.y;
@@ -1013,7 +1088,11 @@ var COUNTS = {json.dumps(counts, ensure_ascii=False)};
   try {{ on = JSON.parse(localStorage.getItem(KEY)); }} catch (e) {{ on = null; }}
   if (!on || typeof on !== 'object') on = Object.assign({{}}, DEF);
   function apply() {{
-    ALL.forEach(function(k) {{ tbl.classList.toggle('h-' + k, !on[k]); }});
+    ALL.forEach(function(k) {{ tbl.classList.toggle('h-' + k, !on[k]);
+      tbl.classList.remove('fc-' + k, 'lc-' + k); }});
+    // first / last showing column, for the rounded ends of washed rows
+    var vis = ALL.filter(function(k) {{ return on[k]; }});
+    if (vis.length) {{ tbl.classList.add('fc-' + vis[0], 'lc-' + vis[vis.length - 1]); }}
     menu.querySelectorAll('input').forEach(function(i) {{ i.checked = !!on[i.dataset.c]; }});
   }}
   function save() {{ try {{ localStorage.setItem(KEY, JSON.stringify(on)); }} catch (e) {{}} }}

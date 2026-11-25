@@ -83,9 +83,33 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
-.hist tr.mix td { background: #f6f4f9; }
-.hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
-.hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
+.hist tr.post td { background: #f6f4f9; }
+.hist.fc-sq tr.post td.c-sq { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-sq tr.post td.c-sq { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-date tr.post td.c-date { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-date tr.post td.c-date { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-div tr.post td.c-div { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-div tr.post td.c-div { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-lg tr.post td.c-lg { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-lg tr.post td.c-lg { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-team tr.post td.c-team { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-team tr.post td.c-team { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-line tr.post td.c-line { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-line tr.post td.c-line { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-score tr.post td.c-score { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-score tr.post td.c-score { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-partner tr.post td.c-partner { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-partner tr.post td.c-partner { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-opp tr.post td.c-opp { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-opp tr.post td.c-opp { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-oppteam tr.post td.c-oppteam { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-oppteam tr.post td.c-oppteam { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
 .pn { white-space: nowrap; }
 .rt { color: #aaa; font-variant-numeric: tabular-nums; }
 .set.sw { color: #27500A; font-weight: 600; }
@@ -156,9 +180,15 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-lg">League</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.07</span><span class="sq-after">2.93</span></td><td class="c-date">10/25<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="League National Adult 40 3.0F">Nationals</td><td class="c-team" title="Southern (Fisher)">Southern (Fisher)</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">4-6</span> <span class="set sl">2-6</span></td><td class="c-partner"><span class="pn"><a href="kaelin-cramer-national.html"><span class="fn">Kaelin Cramer</span><span class="sn">K. Cramer</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="yi-kuang-national.html"><span class="fn">Yi Kuang</span><span class="sn">Y. Kuang</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="sophia-yang-national.html"><span class="fn">Sophia Yang</span><span class="sn">S. Yang</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="Eastern (Kwon)">Eastern (Kwon)</td></tr></tbody></table></div>
+<tbody><tr data-y="2026" class="post"><td class="c-sq"><span class="sd-down">−.07</span><span class="sq-after">2.93</span></td><td class="c-date">10/25<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="League National Adult 40 3.0F">Nationals</td><td class="c-team"><span class="rn" tabindex="0" data-full="Southern/Fisher/40&amp;Ove3.0W" aria-label="Southern (Fisher), listed as Southern/Fisher/40&amp;Ove3.0W">Southern (Fisher)</span></td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">4-6</span> <span class="set sl">2-6</span></td><td class="c-partner"><span class="pn"><a href="kaelin-cramer-national.html"><span class="fn">Kaelin Cramer</span><span class="sn">K. Cramer</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="yi-kuang-national.html"><span class="fn">Yi Kuang</span><span class="sn">Y. Kuang</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="sophia-yang-national.html"><span class="fn">Sophia Yang</span><span class="sn">S. Yang</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="Eastern/Kwon/40&amp;Over3.0W" aria-label="Eastern (Kwon), listed as Eastern/Kwon/40&amp;Over3.0W">Eastern (Kwon)</span></td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;
@@ -182,7 +212,11 @@ var COUNTS = {"all": "1 match · 0–1 overall", "2026": "1 match · 0–1 overa
   try { on = JSON.parse(localStorage.getItem(KEY)); } catch (e) { on = null; }
   if (!on || typeof on !== 'object') on = Object.assign({}, DEF);
   function apply() {
-    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]); });
+    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]);
+      tbl.classList.remove('fc-' + k, 'lc-' + k); });
+    // first / last showing column, for the rounded ends of washed rows
+    var vis = ALL.filter(function(k) { return on[k]; });
+    if (vis.length) { tbl.classList.add('fc-' + vis[0], 'lc-' + vis[vis.length - 1]); }
     menu.querySelectorAll('input').forEach(function(i) { i.checked = !!on[i.dataset.c]; });
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(on)); } catch (e) {} }

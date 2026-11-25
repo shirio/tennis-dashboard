@@ -83,9 +83,33 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
-.hist tr.mix td { background: #f6f4f9; }
-.hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
-.hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
+.hist tr.post td { background: #f6f4f9; }
+.hist.fc-sq tr.post td.c-sq { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-sq tr.post td.c-sq { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-date tr.post td.c-date { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-date tr.post td.c-date { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-div tr.post td.c-div { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-div tr.post td.c-div { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-lg tr.post td.c-lg { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-lg tr.post td.c-lg { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-team tr.post td.c-team { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-team tr.post td.c-team { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-line tr.post td.c-line { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-line tr.post td.c-line { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-score tr.post td.c-score { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-score tr.post td.c-score { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-partner tr.post td.c-partner { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-partner tr.post td.c-partner { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-opp tr.post td.c-opp { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-opp tr.post td.c-opp { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-oppteam tr.post td.c-oppteam { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-oppteam tr.post td.c-oppteam { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
 .pn { white-space: nowrap; }
 .rt { color: #aaa; font-variant-numeric: tabular-nums; }
 .set.sw { color: #27500A; font-weight: 600; }
@@ -156,9 +180,15 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-lg">League</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.05</span><span class="sq-after">2.91</span></td><td class="c-date">10/24<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team" title="Hawaii (Barnfield)">Hawaii (Barnfield)</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">1-6</span></td><td class="c-partner"><span class="pn"><a href="lorena-whiteside-hawaii.html"><span class="fn">Lorena Whiteside</span><span class="sn">L. Whiteside</span></a> <span class="rt">2.96</span></span></td><td class="c-opp"><span class="pn"><a href="lorraine-hall-national.html"><span class="fn">Lorraine Hall</span><span class="sn">L. Hall</span></a> <span class="rt">3.03</span></span><br><span class="pn"><a href="robin-sealey-national.html"><span class="fn">Robin Sealey</span><span class="sn">R. Sealey</span></a> <span class="rt">3.01</span></span></td><td class="c-oppteam" title="Southern (Jenkins)">Southern (Jenkins)</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.05</span><span class="sq-after">2.91</span></td><td class="c-date">10/24<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team" title="Hawaii (Barnfield)">Hawaii (Barnfield)</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set">7-5</span> <span class="set sl">1-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="yu-chuan-peters-hawaii.html"><span class="fn">Yu-Chuan Peters</span><span class="sn">Y. Peters</span></a> <span class="rt">2.88</span></span></td><td class="c-opp"><span class="pn"><a href="jane-cerhan-national.html"><span class="fn">Jane Cerhan</span><span class="sn">J. Cerhan</span></a> <span class="rt">2.97</span></span><br><span class="pn"><a href="diana-kelm-national.html"><span class="fn">Diana Kelm</span><span class="sn">D. Kelm</span></a> <span class="rt">3.17</span></span></td><td class="c-oppteam" title="Northern (Chalmers)">Northern (Chalmers)</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.04</span><span class="sq-after">2.96</span></td><td class="c-date">10/23<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team" title="Hawaii (Barnfield)">Hawaii (Barnfield)</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set">1-6</span> <span class="set sw">6-3</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="keiko-morales-hawaii.html"><span class="fn">Keiko Morales</span><span class="sn">K. Morales</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="amanda-lubarsky-national.html"><span class="fn">Amanda Lubarsky</span><span class="sn">A. Lubarsky</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="marlena-crandall-national.html"><span class="fn">Marlena Crandall</span><span class="sn">M. Crandall</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="Newengland (Hoffman)">Newengland (Hoffman)</td></tr></tbody></table></div>
+<tbody><tr data-y="2026" class="post"><td class="c-sq"><span class="sd-down">−.05</span><span class="sq-after">2.91</span></td><td class="c-date">10/24<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team"><span class="rn" tabindex="0" data-full="Hawaii/Barnfield/40&amp;Over3.5W" aria-label="Hawaii (Barnfield), listed as Hawaii/Barnfield/40&amp;Over3.5W">Hawaii (Barnfield)</span></td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">1-6</span></td><td class="c-partner"><span class="pn"><a href="lorena-whiteside-hawaii.html"><span class="fn">Lorena Whiteside</span><span class="sn">L. Whiteside</span></a> <span class="rt">2.96</span></span></td><td class="c-opp"><span class="pn"><a href="lorraine-hall-national.html"><span class="fn">Lorraine Hall</span><span class="sn">L. Hall</span></a> <span class="rt">3.03</span></span><br><span class="pn"><a href="robin-sealey-national.html"><span class="fn">Robin Sealey</span><span class="sn">R. Sealey</span></a> <span class="rt">3.01</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="Southern/Jenkins/40&amp;Over3.5W" aria-label="Southern (Jenkins), listed as Southern/Jenkins/40&amp;Over3.5W">Southern (Jenkins)</span></td></tr><tr data-y="2026" class="post"><td class="c-sq"><span class="sd-down">−.05</span><span class="sq-after">2.91</span></td><td class="c-date">10/24<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team"><span class="rn" tabindex="0" data-full="Hawaii/Barnfield/40&amp;Over3.5W" aria-label="Hawaii (Barnfield), listed as Hawaii/Barnfield/40&amp;Over3.5W">Hawaii (Barnfield)</span></td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set">7-5</span> <span class="set sl">1-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="yu-chuan-peters-hawaii.html"><span class="fn">Yu-Chuan Peters</span><span class="sn">Y. Peters</span></a> <span class="rt">2.88</span></span></td><td class="c-opp"><span class="pn"><a href="jane-cerhan-national.html"><span class="fn">Jane Cerhan</span><span class="sn">J. Cerhan</span></a> <span class="rt">2.97</span></span><br><span class="pn"><a href="diana-kelm-national.html"><span class="fn">Diana Kelm</span><span class="sn">D. Kelm</span></a> <span class="rt">3.17</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="Northern/Chalmers/40&amp;Over3.5W" aria-label="Northern (Chalmers), listed as Northern/Chalmers/40&amp;Over3.5W">Northern (Chalmers)</span></td></tr><tr data-y="2026" class="post"><td class="c-sq"><span class="sd-down">−.04</span><span class="sq-after">2.96</span></td><td class="c-date">10/23<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team"><span class="rn" tabindex="0" data-full="Hawaii/Barnfield/40&amp;Over3.5W" aria-label="Hawaii (Barnfield), listed as Hawaii/Barnfield/40&amp;Over3.5W">Hawaii (Barnfield)</span></td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set">1-6</span> <span class="set sw">6-3</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="keiko-morales-hawaii.html"><span class="fn">Keiko Morales</span><span class="sn">K. Morales</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="amanda-lubarsky-national.html"><span class="fn">Amanda Lubarsky</span><span class="sn">A. Lubarsky</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="marlena-crandall-national.html"><span class="fn">Marlena Crandall</span><span class="sn">M. Crandall</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="NewEngland/Hoffman/40&amp;Over3.5W" aria-label="NewEngland (Hoffman), listed as NewEngland/Hoffman/40&amp;Over3.5W">NewEngland (Hoffman)</span></td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;
@@ -182,7 +212,11 @@ var COUNTS = {"all": "3 matches · 1–2 overall", "2026": "3 matches · 1–2 o
   try { on = JSON.parse(localStorage.getItem(KEY)); } catch (e) { on = null; }
   if (!on || typeof on !== 'object') on = Object.assign({}, DEF);
   function apply() {
-    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]); });
+    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]);
+      tbl.classList.remove('fc-' + k, 'lc-' + k); });
+    // first / last showing column, for the rounded ends of washed rows
+    var vis = ALL.filter(function(k) { return on[k]; });
+    if (vis.length) { tbl.classList.add('fc-' + vis[0], 'lc-' + vis[vis.length - 1]); }
     menu.querySelectorAll('input').forEach(function(i) { i.checked = !!on[i.dataset.c]; });
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(on)); } catch (e) {} }

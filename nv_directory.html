@@ -96,6 +96,8 @@ th.bump, td.bump { text-align: center; cursor: default; font-variant-numeric: ta
 .bld { color: #c98b86; font-weight: 600; }
 .bh { color: #aaa; font-weight: 400; }
 th.delta, td.delta { text-align: center; padding-left: 4px; padding-right: 4px; }
+th.delta .hl svg { position: relative; left: var(--dx, 0); }
+thead th.delta { z-index: 4; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 td.ctr, th.ctr { text-align: center; }
 th { vertical-align: bottom; line-height: 1.25; }
@@ -104,7 +106,7 @@ th.ctr.sorted .hl { left: -5px; }
 .ap { margin-left: 1px; }
 .apc { color: #b26a00; }
 .up { color: #27500A; }
-.caret { vertical-align: middle; }
+.caret { vertical-align: middle; position: relative; }
 .caret.down { transform: scaleY(-1); }
 .down { color: #791F1F; }
 .more { margin: .8rem 0; padding: .35rem 1rem; border: 1px solid #ccc;
@@ -146,7 +148,7 @@ table.h-e .c-e { display: none; }
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="s"> Sex</label><label><input type="checkbox" data-c="y0"> 2022</label><label><input type="checkbox" data-c="d1"> Δ 2022–23</label><label><input type="checkbox" data-c="y1"> 2023</label><label><input type="checkbox" data-c="d2"> Δ 2023–24</label><label><input type="checkbox" data-c="y2"> 2024</label><label><input type="checkbox" data-c="d3"> Δ 2024–25</label><label><input type="checkbox" data-c="y3"> 2025</label><label><input type="checkbox" data-c="d4"> Δ 2025–26</label><label><input type="checkbox" data-c="y4"> 2026</label><label><input type="checkbox" data-c="q"> ShiQ</label><label><input type="checkbox" data-c="ws"> WTN Singles</label><label><input type="checkbox" data-c="wd"> WTN Doubles</label><label><input type="checkbox" data-c="b"> Bump</label><label><input type="checkbox" data-c="e"> Bump Score</label><div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table id="tbl">
-<thead><tr><th data-k="n" class="c-n">Name</th><th data-k="s" class="c-s sex">Sex</th><th data-k="y0" class="c-y0 num">2022</th><th data-k="d1" class="c-d1 delta" title="Change from 2022 to 2023" aria-label="Change from 2022 to 2023"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y1" class="c-y1 num">2023</th><th data-k="d2" class="c-d2 delta" title="Change from 2023 to 2024" aria-label="Change from 2023 to 2024"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y2" class="c-y2 num">2024</th><th data-k="d3" class="c-d3 delta" title="Change from 2024 to 2025" aria-label="Change from 2024 to 2025"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y3" class="c-y3 num">2025</th><th data-k="d4" class="c-d4 delta" title="Change from 2025 to 2026" aria-label="Change from 2025 to 2026"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y4" class="c-y4 num">2026</th><th data-k="q" class="c-q num">ShiQ</th><th data-k="ws" class="c-ws num ctr" title="USTA World Tennis Number (singles) converted to the NTRP scale">WTN<br>Singles</th><th data-k="wd" class="c-wd num ctr" title="USTA World Tennis Number (doubles) converted to the NTRP scale">WTN<br>Doubles</th><th data-k="b" class="c-b bump" title="Predicted USTA change" aria-label="Predicted USTA change"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/><circle cx="6" cy="7.2" r="1.25" fill="currentColor" stroke="none"/></svg></th><th data-k="e" class="c-e num ctr" title="Year-end estimate from the Bump engine">Bump<br>Score</th></tr></thead><tbody id="tb"></tbody></table></div>
+<thead><tr><th data-k="n" class="c-n">Name</th><th data-k="s" class="c-s sex">Sex</th><th data-k="y0" class="c-y0 num" title="2022">’22</th><th data-k="d1" class="c-d1 delta" title="Change from 2022 to 2023" aria-label="Change from 2022 to 2023"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y1" class="c-y1 num" title="2023">’23</th><th data-k="d2" class="c-d2 delta" title="Change from 2023 to 2024" aria-label="Change from 2023 to 2024"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y2" class="c-y2 num" title="2024">’24</th><th data-k="d3" class="c-d3 delta" title="Change from 2024 to 2025" aria-label="Change from 2024 to 2025"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y3" class="c-y3 num" title="2025">’25</th><th data-k="d4" class="c-d4 delta" title="Change from 2025 to 2026" aria-label="Change from 2025 to 2026"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y4" class="c-y4 num" title="2026">2026</th><th data-k="q" class="c-q num">ShiQ</th><th data-k="ws" class="c-ws num ctr" title="USTA World Tennis Number (singles) converted to the NTRP scale">WTN<br>Singles</th><th data-k="wd" class="c-wd num ctr" title="USTA World Tennis Number (doubles) converted to the NTRP scale">WTN<br>Doubles</th><th data-k="b" class="c-b bump" title="Predicted USTA change" aria-label="Predicted USTA change"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/><circle cx="6" cy="7.2" r="1.25" fill="currentColor" stroke="none"/></svg></th><th data-k="e" class="c-e num ctr" title="Year-end estimate from the Bump engine">Bump<br>Score</th></tr></thead><tbody id="tb"></tbody></table></div>
 <button class="more" id="more" hidden>Show more</button>
 </div>
 <script>
@@ -177,9 +179,9 @@ function ntrp(l, t, cls, ap) {
   if (l == null) return '';
   var tip = TYPES[t] || t;
   if (ap) tip += '. ' + ap[2];
-  var s = fmt(l) + (t ? '<span class="lt" title="' + esc(tip) + '">' + t
+  var s = '<span class="nv">' + fmt(l) + '</span>' + (t ? '<span class="lt" title="' + esc(tip) + '">' + t
     + (ap ? '<span class="ap' + (ap[1] ? ' apc' : '') + '">' + ap[0] + '</span>' : '') + '</span>' : '');
-  return cls ? '<span class="' + cls + '">' + s + '</span>' : s;
+  return '<span class="nw' + (cls ? ' ' + cls : '') + '">' + s + '</span>';
 }
 // WTN columns: r[7] = [singles NTRP, WTN, confidence, doubles NTRP, WTN, confidence]
 function wtnCell(r, o, k, f) {
@@ -269,7 +271,35 @@ function render() {
     ? ROWS.length.toLocaleString() + ' players'
     : view.length.toLocaleString() + ' of ' + ROWS.length.toLocaleString() + ' players';
   document.getElementById('more').hidden = shown >= view.length;
+  centerCarets();
 }
+// Each Δ caret sits midway between where the rating on its left ends (letter
+// included) and where the number on its right starts. Year cells are right-aligned
+// and often wider than their values, so centering in the Δ cell alone looks lopsided.
+function centerCarets() {
+  var moves = [];
+  document.querySelectorAll('#tb td.delta svg').forEach(function(svg) {
+    var td = svg.parentNode, a = td.previousElementSibling, b = td.nextElementSibling;
+    var an = a && a.querySelector('.nw'), bn = b && b.querySelector('.nv');
+    if (!an || !bn || !td.offsetParent) return;
+    var ar = an.getBoundingClientRect(), br = bn.getBoundingClientRect(), sr = svg.getBoundingClientRect();
+    if (!ar.width || !br.width) return;
+    var cur = parseFloat(svg.style.left) || 0;
+    moves.push([svg, cur + (ar.right + br.left) / 2 - (sr.left + sr.right) / 2]);
+  });
+  moves.forEach(function(m) { m[0].style.left = m[1].toFixed(1) + 'px'; });
+  // Move each Δ header's triangle to the same spot, so carets sit under it
+  var sum = {};
+  moves.forEach(function(m) { var k = m[0].parentNode.className.split(' ')[0];
+    (sum[k] = sum[k] || []).push(m[1]); });
+  document.querySelectorAll('#tbl th.delta').forEach(function(th) {
+    var v = sum['c-' + th.dataset.k];
+    if (!v) return;
+    v.sort(function(a, b) { return a - b; });
+    th.style.setProperty('--dx', v[v.length >> 1].toFixed(1) + 'px');
+  });
+}
+window.addEventListener('resize', centerCarets);
 // Columns menu: choice saved per browser
 (function() {
   var KEY = 'nvDirCols', tbl = document.getElementById('tbl'), btn = document.getElementById('colbtn'),
@@ -344,7 +374,7 @@ function fitWidths() {
   var thn = tbl.querySelector('th[data-k="n"]');
   thn.style.minWidth = thn.style.width = thn.style.maxWidth = nw + 'px';
   document.getElementById('nmcap').textContent = nw < lockW.n
-    ? '#tbl td.c-n { max-width: ' + nw + 'px; overflow: hidden; text-overflow: ellipsis; }' : '';
+    ? '#tbl td.c-n { max-width: ' + nw + 'px; overflow: hidden; text-overflow: ellipsis; }' : '';  centerCarets();
 }
 document.querySelectorAll('#tbl th[data-k]').forEach(function(th) { th.innerHTML = '<span class="hl">' + th.innerHTML + '</span>'; });
 var nmcap = document.createElement('style'); nmcap.id = 'nmcap'; document.head.appendChild(nmcap);

@@ -83,9 +83,33 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
-.hist tr.mix td { background: #f6f4f9; }
-.hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
-.hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
+.hist tr.post td { background: #f6f4f9; }
+.hist.fc-sq tr.post td.c-sq { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-sq tr.post td.c-sq { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-date tr.post td.c-date { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-date tr.post td.c-date { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-div tr.post td.c-div { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-div tr.post td.c-div { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-lg tr.post td.c-lg { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-lg tr.post td.c-lg { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-team tr.post td.c-team { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-team tr.post td.c-team { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-line tr.post td.c-line { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-line tr.post td.c-line { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-score tr.post td.c-score { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-score tr.post td.c-score { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-partner tr.post td.c-partner { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-partner tr.post td.c-partner { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-opp tr.post td.c-opp { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-opp tr.post td.c-opp { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-oppteam tr.post td.c-oppteam { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-oppteam tr.post td.c-oppteam { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
 .pn { white-space: nowrap; }
 .rt { color: #aaa; font-variant-numeric: tabular-nums; }
 .set.sw { color: #27500A; font-weight: 600; }
@@ -159,6 +183,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.03</span><span class="sq-after">3.30</span></td><td class="c-date">11/19<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA FALL SENIOR LEAGUE">Senior</td><td class="c-team" title="ALL IN #2">All In #2</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">2-6</span> <span class="set sl">3-6</span></td><td class="c-partner"><span class="pn"><a href="janet-lightheart.html"><span class="fn">Janet Lightheart</span><span class="sn">J. Lightheart</span></a> <span class="rt">2.78</span></span></td><td class="c-opp"><span class="pn"><a href="sally-ryba.html"><span class="fn">Sally Ryba</span><span class="sn">S. Ryba</span></a> <span class="rt">3.28</span></span><br><span class="pn"><a href="marilyn-fenn.html"><span class="fn">Marilyn Fenn</span><span class="sn">M. Fenn</span></a> <span class="rt">2.98</span></span></td><td class="c-oppteam" title="LIFE TIME FITNESS/GV #1">LTF #1</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.06</span><span class="sq-after">3.33</span></td><td class="c-date">11/2<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA FALL SENIOR LEAGUE">Senior</td><td class="c-team" title="ALL IN #2">All In #2</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sw">6-4</span> <span class="set sw">6-3</span></td><td class="c-partner"><span class="pn"><a href="janet-lightheart.html"><span class="fn">Janet Lightheart</span><span class="sn">J. Lightheart</span></a> <span class="rt">2.74</span></span></td><td class="c-opp"><span class="pn"><a href="karen-miller.html"><span class="fn">Karen Miller</span><span class="sn">K. Miller</span></a> <span class="rt">3.33</span></span><br><span class="pn"><a href="margaret-pettigrew.html"><span class="fn">Margaret Pettigrew</span><span class="sn">M. Pettigrew</span></a> <span class="rt">2.76</span></span></td><td class="c-oppteam" title="SUMMERLIN ARBORS">Summerlin</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd0">±0</span><span class="sq-after">3.27</span></td><td class="c-date">10/22<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA FALL SENIOR LEAGUE">Senior</td><td class="c-team" title="ALL IN #2">All In #2</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sw">6-4</span> <span class="set sw">7-6</span></td><td class="c-partner"><span class="pn"><a href="darla-beutler.html"><span class="fn">Darla Beutler</span><span class="sn">D. Beutler</span></a> <span class="rt">3.24</span></span></td><td class="c-opp"><span class="pn"><a href="irene-frazier.html"><span class="fn">Irene Frazier</span><span class="sn">I. Frazier</span></a> <span class="rt">3.11</span></span><br><span class="pn"><a href="tina-shirey.html"><span class="fn">Tina Shirey</span><span class="sn">T. Shirey</span></a> <span class="rt">3.21</span></span></td><td class="c-oppteam" title="DRAGONRIDGE CC #3">Dragonridge #3</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.01</span><span class="sq-after">3.27</span></td><td class="c-date">10/15<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA FALL SENIOR LEAGUE">Senior</td><td class="c-team" title="ALL IN #2">All In #2</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set">6-3</span> <span class="set sl">1-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="darla-beutler.html"><span class="fn">Darla Beutler</span><span class="sn">D. Beutler</span></a> <span class="rt">3.25</span></span></td><td class="c-opp"><span class="pn"><a href="sally-ryba.html"><span class="fn">Sally Ryba</span><span class="sn">S. Ryba</span></a> <span class="rt">3.30</span></span><br><span class="pn"><a href="joan-perricone.html"><span class="fn">Joan Perricone</span><span class="sn">J. Perricone</span></a> <span class="rt">3.47</span></span></td><td class="c-oppteam" title="LIFE TIME FITNESS/GV #1">LTF #1</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.03</span><span class="sq-after">3.28</span></td><td class="c-date">10/8<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA FALL SENIOR LEAGUE">Senior</td><td class="c-team" title="ALL IN #2">All In #2</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sl">6-7</span> <span class="set">6-3</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="lori-tharp.html"><span class="fn">Lori Tharp</span><span class="sn">L. Tharp</span></a> <span class="rt">3.25</span></span></td><td class="c-opp"><span class="pn"><a href="joan-stertzer.html"><span class="fn">Joan Stertzer</span><span class="sn">J. Stertzer</span></a> <span class="rt">3.35</span></span><br><span class="pn"><a href="cynthia-whyte.html"><span class="fn">Cynthia Whyte</span><span class="sn">C. Whyte</span></a> <span class="rt">3.32</span></span></td><td class="c-oppteam" title="SIENA SUMMERLIN">SIENA SUMMERLIN</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd0">±0</span><span class="sq-after">3.25</span></td><td class="c-date">10/1<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA FALL SENIOR LEAGUE">Senior</td><td class="c-team" title="ALL IN #2">All In #2</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sl">2-6</span> <span class="set sl">4-6</span></td><td class="c-partner"><span class="pn"><a href="dione-russell.html"><span class="fn">Dione Russell</span><span class="sn">D. Russell</span></a> <span class="rt">3.31</span></span></td><td class="c-opp"><span class="pn"><a href="kami-adamson.html"><span class="fn">Kami Adamson</span><span class="sn">K. Adamson</span></a> <span class="rt">3.53</span></span><br><span class="pn"><a href="christina-drees.html"><span class="fn">Christina Drees</span><span class="sn">C. Drees</span></a> <span class="rt">3.59</span></span></td><td class="c-oppteam" title="CANYON GATE">CANYON GATE</td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;
@@ -182,7 +212,11 @@ var COUNTS = {"all": "6 matches · 2–4 overall", "2026": "6 matches · 2–4 o
   try { on = JSON.parse(localStorage.getItem(KEY)); } catch (e) { on = null; }
   if (!on || typeof on !== 'object') on = Object.assign({}, DEF);
   function apply() {
-    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]); });
+    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]);
+      tbl.classList.remove('fc-' + k, 'lc-' + k); });
+    // first / last showing column, for the rounded ends of washed rows
+    var vis = ALL.filter(function(k) { return on[k]; });
+    if (vis.length) { tbl.classList.add('fc-' + vis[0], 'lc-' + vis[vis.length - 1]); }
     menu.querySelectorAll('input').forEach(function(i) { i.checked = !!on[i.dataset.c]; });
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(on)); } catch (e) {} }

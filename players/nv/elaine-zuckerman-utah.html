@@ -83,9 +83,33 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
-.hist tr.mix td { background: #f6f4f9; }
-.hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
-.hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
+.hist tr.post td { background: #f6f4f9; }
+.hist.fc-sq tr.post td.c-sq { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-sq tr.post td.c-sq { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-date tr.post td.c-date { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-date tr.post td.c-date { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-div tr.post td.c-div { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-div tr.post td.c-div { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-lg tr.post td.c-lg { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-lg tr.post td.c-lg { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-team tr.post td.c-team { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-team tr.post td.c-team { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-line tr.post td.c-line { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-line tr.post td.c-line { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-score tr.post td.c-score { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-score tr.post td.c-score { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-partner tr.post td.c-partner { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-partner tr.post td.c-partner { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-opp tr.post td.c-opp { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-opp tr.post td.c-opp { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+.hist.fc-oppteam tr.post td.c-oppteam { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+.hist.lc-oppteam tr.post td.c-oppteam { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
 .pn { white-space: nowrap; }
 .rt { color: #aaa; font-variant-numeric: tabular-nums; }
 .set.sw { color: #27500A; font-weight: 600; }
@@ -159,6 +183,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.03</span><span class="sq-after">3.19</span></td><td class="c-date">10/6<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="2026 Fall Outdoor League-Weekday">Weekday</td><td class="c-team" title="PC MARC-Alexander/Levin">PC MARC-Alexander/Levin</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sw">6-4</span> <span class="set sw">6-2</span></td><td class="c-partner"><span class="pn"><a href="samantha-levin-utah.html"><span class="fn">Samantha Levin</span><span class="sn">S. Levin</span></a> <span class="rt">2.97</span></span></td><td class="c-opp"><span class="pn"><a href="carolyn-andrus-utah.html"><span class="fn">Carolyn Andrus</span><span class="sn">C. Andrus</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="karen-wilson-utah.html"><span class="fn">Karen Wilson</span><span class="sn">K. Wilson</span></a> <span class="rt">3.11</span></span></td><td class="c-oppteam" title="Sunpro-For The Love">Sunpro-For The Love</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.04</span><span class="sq-after">3.16</span></td><td class="c-date">9/29<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="2026 Fall Outdoor League-Weekday">Weekday</td><td class="c-team" title="PC MARC-Alexander/Levin">PC MARC-Alexander/Levin</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set">6-7</span> <span class="set sw">6-1</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="samantha-levin-utah.html"><span class="fn">Samantha Levin</span><span class="sn">S. Levin</span></a> <span class="rt">2.95</span></span></td><td class="c-opp"><span class="pn"><a href="lora-lyon-utah.html"><span class="fn">Lora Lyon</span><span class="sn">L. Lyon</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="krissie-summerhays-utah.html"><span class="fn">Krissie Summerhays</span><span class="sn">K. Summerhays</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="Cottonwood Club-Summerhays/Winson">Cottonwood Club-Summerhays/Winson</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.18</span><span class="sq-after">3.12</span></td><td class="c-date">9/22<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="2026 Fall Outdoor League-Weekday">Weekday</td><td class="c-team" title="PC MARC-Alexander/Levin">PC MARC-Alexander/Levin</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">0-6</span> <span class="set sl">2-6</span></td><td class="c-partner"><span class="pn"><a href="samantha-levin-utah.html"><span class="fn">Samantha Levin</span><span class="sn">S. Levin</span></a> <span class="rt">3.04</span></span></td><td class="c-opp"><span class="pn"><a href="jennifer-tooley-utah.html"><span class="fn">Jennifer Tooley</span><span class="sn">J. Tooley</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="lesley-scruggs-utah.html"><span class="fn">Lesley Scruggs</span><span class="sn">L. Scruggs</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="Fall Orange Crush">Fall Orange Crush</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.09</span><span class="sq-after">3.30</span></td><td class="c-date">9/15<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="2026 Fall Outdoor League-Weekday">Weekday</td><td class="c-team" title="PC MARC-Alexander/Levin">PC MARC-Alexander/Levin</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sw">6-0</span> <span class="set sw">6-3</span></td><td class="c-partner"><span class="pn"><a href="samantha-levin-utah.html"><span class="fn">Samantha Levin</span><span class="sn">S. Levin</span></a> <span class="rt">2.99</span></span></td><td class="c-opp"><span class="pn"><a href="nancy-sparrer-utah.html"><span class="fn">Nancy Sparrer</span><span class="sn">N. Sparrer</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="mary-harrison-utah.html"><span class="fn">Mary Harrison</span><span class="sn">M. Harrison</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="SLTHC Ball Babes">SLTHC Ball Babes</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.02</span><span class="sq-after">3.21</span></td><td class="c-date">9/8<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="2026 Fall Outdoor League-Weekday">Weekday</td><td class="c-team" title="PC MARC-Alexander/Levin">PC MARC-Alexander/Levin</td><td class="c-line"><span class="line-pill pill-d1">D4</span></td><td class="c-score"><span class="set sw">7-6</span> <span class="set">5-7</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="betsy-wright-utah.html"><span class="fn">Betsy Wright</span><span class="sn">B. Wright</span></a> <span class="rt">2.98</span></span></td><td class="c-opp"><span class="pn"><a href="susan-knight-utah.html"><span class="fn">Susan Knight</span><span class="sn">S. Knight</span></a> <span class="rt">3.03</span></span><br><span class="pn"><a href="danna-miller-utah.html"><span class="fn">Danna Miller</span><span class="sn">D. Miller</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="Sports Mall-Knowlton/Lake">Sports Mall-Knowlton/Lake</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.02</span><span class="sq-after">3.23</span></td><td class="c-date">9/1<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="2026 Fall Outdoor League-Weekday">Weekday</td><td class="c-team" title="PC MARC-Alexander/Levin">PC MARC-Alexander/Levin</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set">7-5</span> <span class="set sl">4-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="samantha-levin-utah.html"><span class="fn">Samantha Levin</span><span class="sn">S. Levin</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="lanie-wilkinson-utah.html"><span class="fn">Lanie Wilkinson</span><span class="sn">L. Wilkinson</span></a> <span class="rt">3.06</span></span><br><span class="pn"><a href="kelli-lowell-utah.html"><span class="fn">Kelli Lowell</span><span class="sn">K. Lowell</span></a> <span class="rt">3.08</span></span></td><td class="c-oppteam" title="Ladies In Black">Ladies In Black</td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;
@@ -182,7 +212,11 @@ var COUNTS = {"all": "6 matches · 4–2 overall", "2026": "6 matches · 4–2 o
   try { on = JSON.parse(localStorage.getItem(KEY)); } catch (e) { on = null; }
   if (!on || typeof on !== 'object') on = Object.assign({}, DEF);
   function apply() {
-    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]); });
+    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]);
+      tbl.classList.remove('fc-' + k, 'lc-' + k); });
+    // first / last showing column, for the rounded ends of washed rows
+    var vis = ALL.filter(function(k) { return on[k]; });
+    if (vis.length) { tbl.classList.add('fc-' + vis[0], 'lc-' + vis[vis.length - 1]); }
     menu.querySelectorAll('input').forEach(function(i) { i.checked = !!on[i.dataset.c]; });
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(on)); } catch (e) {} }

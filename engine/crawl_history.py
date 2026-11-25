@@ -65,11 +65,66 @@ def league_tag(m: dict) -> str:
 
 
 def champ_team_label(name: str) -> str:
-    """'Nevada/Cunningham/18&Over3.0W' -> 'Nevada (Cunningham)'."""
-    parts = name.split("/")
+    """'Nevada/Cunningham/18&Over3.0W' -> 'Nevada (Cunningham)'; 'NV/EDGE/...' -> 'NV (Edge)'."""
+    parts = [x.strip() for x in name.split("/")]
     if len(parts) >= 3:
-        return f"{parts[0].title()} ({parts[1].title()})"
+        def fix(s):  # keep TennisLink's own casing (NorCal, MOValley) unless it's all caps
+            return s.title() if s.isupper() and len(s) > 3 else s
+        return f"{fix(parts[0])} ({fix(parts[1])})"
     return name
+
+
+def is_renamed(name: str) -> bool:
+    """District/section winners are renamed STATE/CAPTAIN/DIVISION (e.g. NV/Song/40&Over3.5W)."""
+    return (name or "").count("/") >= 2
+
+
+# Renamed teams whose club name isn't in the crawl, from Shirin (2026-11-24/25)
+KNOWN_ORIGINS = {
+    "NV/EDGE/18&OVERW4.0": "Spanish Oaks",
+}
+
+
+def _team_sig(text: str):
+    u = (text or "").upper().replace(" ", "")
+    age = re.search(r"(18|40|55|65)&OVER", u)
+    return (age.group(1) if age else None, "TRI" in u, set(re.findall(r"\d\.\d", u)))
+
+
+def renamed_team_origins(crawl: dict) -> dict[str, str]:
+    """{team id: original club team name} for renamed teams (Shirin, 2026-11-25).
+    The original is the same age group / level (or Tri-Level) team most of the
+    renamed team's players also played on, when that's a clear winner."""
+    teams, people = crawl.get("teams", {}), crawl.get("people", {})
+    members: dict[str, set] = {}
+    for pid, p in people.items():
+        for tid in p.get("teams", []):
+            members.setdefault(tid, set()).add(pid)
+    out = {}
+    for tid, t in teams.items():
+        name = t.get("name") or ""
+        if not is_renamed(name):
+            continue
+        known = KNOWN_ORIGINS.get(name.upper().replace(" ", ""))
+        if known:
+            out[tid] = known
+            continue
+        age, tri, lv = _team_sig(name)
+        cnt: dict[str, int] = {}
+        for pid in members.get(tid, ()):
+            for o in people[pid].get("teams", []):
+                ot = teams.get(o) or {}
+                on = ot.get("name") or o.split("|")[-1]
+                if is_renamed(on):
+                    continue
+                a2, tri2, lv2 = _team_sig(" ".join([ot.get("league", ""), ot.get("flight", ""), o]))
+                if tri != tri2 or (not tri and (a2 != age or not lv & lv2)):
+                    continue
+                cnt[on] = cnt.get(on, 0) + 1
+        best = sorted(cnt.items(), key=lambda kv: -kv[1])
+        if best and best[0][1] >= 3 and (len(best) == 1 or best[0][1] >= 2 * best[1][1]):
+            out[tid] = best[0][0]
+    return out
 
 
 def _line_label(lbl: str) -> str:
@@ -126,14 +181,27 @@ def crawl_histories(crawl: dict, timelines: dict[str, dict]) -> dict[str, list[d
         v = (timelines.get(pid) or {}).get(date)
         return f"{float(v[0]):.2f}" if v else None
 
+    origins = renamed_team_origins(crawl)
+    by_name = dict(KNOWN_ORIGINS)
+    for tid, o in origins.items():
+        by_name.setdefault((teams[tid].get("name") or "").upper().replace(" ", ""), o)
+
     def team_name(team_id, raw):
+        """Display name; renamed district/section winners show their club team's name."""
         t = teams.get(team_id) or {}
         if t.get("kind") == "champ":
             src = (champs.get(t.get("champ", "")) or {}).get("from_team")
             if src and src.split("|")[-1] and raw.upper().startswith("NEVADA/"):
-                # our own club team that advanced (renamed STATE/CAPTAIN/DIVISION)
-                return src.split("|")[-1]
-            return champ_team_label(raw)
+                # our own club team that advanced (renamed STATE/CAPTAIN/DIVISION);
+                # that league team may itself carry the renamed name
+                club = src.split("|")[-1]
+                if not is_renamed(club):
+                    return club
+                if src in origins:
+                    return origins[src]
+        if is_renamed(raw):
+            return (origins.get(team_id) or by_name.get(raw.upper().replace(" ", ""))
+                    or champ_team_label(raw))
         return raw
 
     out: dict[str, list[dict]] = {}
@@ -167,6 +235,8 @@ def crawl_histories(crawl: dict, timelines: dict[str, dict]) -> dict[str, list[d
                 "league_full": m.get("league", ""), "flight": m.get("flight", ""),
                 "my_team": team_name(my_tid, m.get("home" if side == "home" else "away", "")),
                 "opp_team": team_name(op_tid, m.get("away" if side == "home" else "home", "")),
+                "my_team_full": m.get("home" if side == "home" else "away", ""),
+                "opp_team_full": m.get("away" if side == "home" else "home", ""),
                 "line": _line_label(lbl), "score": line.get("score", ""),
                 "won": line.get("winner") == side, "wko": wko,
                 "dq": line.get("dq") or [],
