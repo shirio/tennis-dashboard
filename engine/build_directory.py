@@ -848,8 +848,12 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         dq = r.get("dq") or []
         # Mixed doubles: same test as scrape_tl_teams.is_mixed (league or flight name),
         # never the Div pill (6.0-8.0 levels are shared with senior combined leagues).
+        # Flagged in the markup but not styled for now (Shirin will pick a marker).
         mix = "MIXED" in f'{r.get("league_full", "")} {r.get("flight", "")}'.upper()
-        cls = " ".join(c for c, on in (("dq", dq), ("mix", mix)) if on)
+        # Postseason rows get the lavender wash (Shirin, 2026-11-25), since the
+        # League column is hidden by default on phones.
+        post = r.get("league") in ("Playoff", "Districts", "Sectionals", "Nationals")
+        cls = " ".join(c for c, on in (("dq", dq), ("mix", mix), ("post", post)) if on)
         row_attr = (f' class="{cls}"' if cls else "") + (
             f' title="Invalid match: {_esc(", ".join(dq))} disqualified"' if dq else "")
         date = _mdy(r["date"])
@@ -961,9 +965,27 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
        background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }}
 .rn.open::after {{ display: block; }}
 @media (hover: hover) {{ .rn:hover::after {{ display: block; }} }}
-.hist tr.mix td {{ background: #f6f4f9; }}
-.hist tr.mix td:first-child {{ border-radius: 6px 0 0 6px; }}
-.hist tr.mix td:last-child {{ border-radius: 0 6px 6px 0; }}
+.hist tr.post td {{ background: #f6f4f9; }}
+.hist.fc-sq tr.post td.c-sq {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-sq tr.post td.c-sq {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-date tr.post td.c-date {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-date tr.post td.c-date {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-div tr.post td.c-div {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-div tr.post td.c-div {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-lg tr.post td.c-lg {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-lg tr.post td.c-lg {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-team tr.post td.c-team {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-team tr.post td.c-team {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-line tr.post td.c-line {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-line tr.post td.c-line {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-score tr.post td.c-score {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-score tr.post td.c-score {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-partner tr.post td.c-partner {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-partner tr.post td.c-partner {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-opp tr.post td.c-opp {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-opp tr.post td.c-opp {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
+.hist.fc-oppteam tr.post td.c-oppteam {{ border-top-left-radius: 6px; border-bottom-left-radius: 6px; }}
+.hist.lc-oppteam tr.post td.c-oppteam {{ border-top-right-radius: 6px; border-bottom-right-radius: 6px; }}
 .pn {{ white-space: nowrap; }}
 .rt {{ color: #aaa; font-variant-numeric: tabular-nums; }}
 .set.sw {{ color: #27500A; font-weight: 600; }}
@@ -1066,7 +1088,11 @@ var COUNTS = {json.dumps(counts, ensure_ascii=False)};
   try {{ on = JSON.parse(localStorage.getItem(KEY)); }} catch (e) {{ on = null; }}
   if (!on || typeof on !== 'object') on = Object.assign({{}}, DEF);
   function apply() {{
-    ALL.forEach(function(k) {{ tbl.classList.toggle('h-' + k, !on[k]); }});
+    ALL.forEach(function(k) {{ tbl.classList.toggle('h-' + k, !on[k]);
+      tbl.classList.remove('fc-' + k, 'lc-' + k); }});
+    // first / last showing column, for the rounded ends of washed rows
+    var vis = ALL.filter(function(k) {{ return on[k]; }});
+    if (vis.length) {{ tbl.classList.add('fc-' + vis[0], 'lc-' + vis[vis.length - 1]); }}
     menu.querySelectorAll('input').forEach(function(i) {{ i.checked = !!on[i.dataset.c]; }});
   }}
   function save() {{ try {{ localStorage.setItem(KEY, JSON.stringify(on)); }} catch (e) {{}} }}
