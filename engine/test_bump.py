@@ -107,6 +107,7 @@ class TestYearEndWindow(unittest.TestCase):
         self.assertFalse(bump.counts_toward_year_end("11/14/2026", "2026 NTA ADULT FALL LEAGUE"))
         self.assertTrue(bump.counts_toward_year_end("11/8/2026", "2026 NTA ADULT FALL LEAGUE"))
         self.assertTrue(bump.counts_toward_year_end("12/6/2025", ""))
+        self.assertFalse(bump.counts_toward_year_end("6/1/2026", "2026 USTA ADULT MIXED 18 & OVER"))
 
     def test_two_level_call(self):
         c = bump.year_end_call(4.09, 30, 3.5, "C")
