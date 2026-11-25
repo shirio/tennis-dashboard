@@ -90,26 +90,70 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .rn.open::after { display: block; }
 @media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.post td { background: #f6f4f9; }
-.hist.fc-sq tr.post td.c-sq { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-sq tr.post td.c-sq { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-date tr.post td.c-date { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-date tr.post td.c-date { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-div tr.post td.c-div { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-div tr.post td.c-div { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-lg tr.post td.c-lg { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-lg tr.post td.c-lg { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-team tr.post td.c-team { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-team tr.post td.c-team { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-line tr.post td.c-line { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-line tr.post td.c-line { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-score tr.post td.c-score { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-score tr.post td.c-score { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-partner tr.post td.c-partner { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-partner tr.post td.c-partner { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-opp tr.post td.c-opp { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-opp tr.post td.c-opp { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-oppteam tr.post td.c-oppteam { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-oppteam tr.post td.c-oppteam { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+/* Postseason runs: one block, 8px past the text on each side (the table wrapper
+   reaches 8px into the page gutter and the outer cells get 8px of padding), with
+   only the run's outer corners rounded (Shirin, 2026-11-25). */
+.hist-wrap { margin: 0 -8px; }
+.hist.fc-sq th.c-sq, .hist.fc-sq td.c-sq { padding-left: 8px; }
+.hist.lc-sq th.c-sq, .hist.lc-sq td.c-sq { padding-right: 8px; }
+.hist.fc-sq tr.po-top td.c-sq { border-top-left-radius: 6px; }
+.hist.fc-sq tr.po-bot td.c-sq { border-bottom-left-radius: 6px; }
+.hist.lc-sq tr.po-top td.c-sq { border-top-right-radius: 6px; }
+.hist.lc-sq tr.po-bot td.c-sq { border-bottom-right-radius: 6px; }
+.hist.fc-date th.c-date, .hist.fc-date td.c-date { padding-left: 8px; }
+.hist.lc-date th.c-date, .hist.lc-date td.c-date { padding-right: 8px; }
+.hist.fc-date tr.po-top td.c-date { border-top-left-radius: 6px; }
+.hist.fc-date tr.po-bot td.c-date { border-bottom-left-radius: 6px; }
+.hist.lc-date tr.po-top td.c-date { border-top-right-radius: 6px; }
+.hist.lc-date tr.po-bot td.c-date { border-bottom-right-radius: 6px; }
+.hist.fc-div th.c-div, .hist.fc-div td.c-div { padding-left: 8px; }
+.hist.lc-div th.c-div, .hist.lc-div td.c-div { padding-right: 8px; }
+.hist.fc-div tr.po-top td.c-div { border-top-left-radius: 6px; }
+.hist.fc-div tr.po-bot td.c-div { border-bottom-left-radius: 6px; }
+.hist.lc-div tr.po-top td.c-div { border-top-right-radius: 6px; }
+.hist.lc-div tr.po-bot td.c-div { border-bottom-right-radius: 6px; }
+.hist.fc-lg th.c-lg, .hist.fc-lg td.c-lg { padding-left: 8px; }
+.hist.lc-lg th.c-lg, .hist.lc-lg td.c-lg { padding-right: 8px; }
+.hist.fc-lg tr.po-top td.c-lg { border-top-left-radius: 6px; }
+.hist.fc-lg tr.po-bot td.c-lg { border-bottom-left-radius: 6px; }
+.hist.lc-lg tr.po-top td.c-lg { border-top-right-radius: 6px; }
+.hist.lc-lg tr.po-bot td.c-lg { border-bottom-right-radius: 6px; }
+.hist.fc-team th.c-team, .hist.fc-team td.c-team { padding-left: 8px; }
+.hist.lc-team th.c-team, .hist.lc-team td.c-team { padding-right: 8px; }
+.hist.fc-team tr.po-top td.c-team { border-top-left-radius: 6px; }
+.hist.fc-team tr.po-bot td.c-team { border-bottom-left-radius: 6px; }
+.hist.lc-team tr.po-top td.c-team { border-top-right-radius: 6px; }
+.hist.lc-team tr.po-bot td.c-team { border-bottom-right-radius: 6px; }
+.hist.fc-line th.c-line, .hist.fc-line td.c-line { padding-left: 8px; }
+.hist.lc-line th.c-line, .hist.lc-line td.c-line { padding-right: 8px; }
+.hist.fc-line tr.po-top td.c-line { border-top-left-radius: 6px; }
+.hist.fc-line tr.po-bot td.c-line { border-bottom-left-radius: 6px; }
+.hist.lc-line tr.po-top td.c-line { border-top-right-radius: 6px; }
+.hist.lc-line tr.po-bot td.c-line { border-bottom-right-radius: 6px; }
+.hist.fc-score th.c-score, .hist.fc-score td.c-score { padding-left: 8px; }
+.hist.lc-score th.c-score, .hist.lc-score td.c-score { padding-right: 8px; }
+.hist.fc-score tr.po-top td.c-score { border-top-left-radius: 6px; }
+.hist.fc-score tr.po-bot td.c-score { border-bottom-left-radius: 6px; }
+.hist.lc-score tr.po-top td.c-score { border-top-right-radius: 6px; }
+.hist.lc-score tr.po-bot td.c-score { border-bottom-right-radius: 6px; }
+.hist.fc-partner th.c-partner, .hist.fc-partner td.c-partner { padding-left: 8px; }
+.hist.lc-partner th.c-partner, .hist.lc-partner td.c-partner { padding-right: 8px; }
+.hist.fc-partner tr.po-top td.c-partner { border-top-left-radius: 6px; }
+.hist.fc-partner tr.po-bot td.c-partner { border-bottom-left-radius: 6px; }
+.hist.lc-partner tr.po-top td.c-partner { border-top-right-radius: 6px; }
+.hist.lc-partner tr.po-bot td.c-partner { border-bottom-right-radius: 6px; }
+.hist.fc-opp th.c-opp, .hist.fc-opp td.c-opp { padding-left: 8px; }
+.hist.lc-opp th.c-opp, .hist.lc-opp td.c-opp { padding-right: 8px; }
+.hist.fc-opp tr.po-top td.c-opp { border-top-left-radius: 6px; }
+.hist.fc-opp tr.po-bot td.c-opp { border-bottom-left-radius: 6px; }
+.hist.lc-opp tr.po-top td.c-opp { border-top-right-radius: 6px; }
+.hist.lc-opp tr.po-bot td.c-opp { border-bottom-right-radius: 6px; }
+.hist.fc-oppteam th.c-oppteam, .hist.fc-oppteam td.c-oppteam { padding-left: 8px; }
+.hist.lc-oppteam th.c-oppteam, .hist.lc-oppteam td.c-oppteam { padding-right: 8px; }
+.hist.fc-oppteam tr.po-top td.c-oppteam { border-top-left-radius: 6px; }
+.hist.fc-oppteam tr.po-bot td.c-oppteam { border-bottom-left-radius: 6px; }
+.hist.lc-oppteam tr.po-top td.c-oppteam { border-top-right-radius: 6px; }
+.hist.lc-oppteam tr.po-bot td.c-oppteam { border-bottom-right-radius: 6px; }
 .pn { white-space: nowrap; }
 .rt { color: #aaa; font-variant-numeric: tabular-nums; }
 .set.sw { color: #27500A; font-weight: 600; }
@@ -177,7 +221,7 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <div class="colbar"><span class="count" id="cnt">12 matches · 7–5 overall</span>
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="sq"> ShiQ</label><label><input type="checkbox" data-c="date"> Date</label><label><input type="checkbox" data-c="div"> Div</label><label><input type="checkbox" data-c="lg"> League</label><label><input type="checkbox" data-c="team"> Team</label><label><input type="checkbox" data-c="line"> Line</label><label><input type="checkbox" data-c="score"> Score</label><label><input type="checkbox" data-c="partner"> Partner</label><label><input type="checkbox" data-c="opp"> Opponents</label><label><input type="checkbox" data-c="oppteam"> Opp Team</label><div class="reset" id="colreset">Reset</div></div></div>
-<div class="tbl-wrap"><table class="hist"><thead><tr>
+<div class="tbl-wrap hist-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-lg">League</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
 <tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.03</span><span class="sq-after">3.26</span></td><td class="c-date">11/24<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA ADULT 70 &amp; OVER LEAGUE">70+</td><td class="c-team" title="LIFE TIME FITNESS/GV">LTF</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sw">6-1</span> <span class="set sw">6-1</span></td><td class="c-partner"><span class="pn"><a href="sally-zimmerman.html"><span class="fn">Sally Zimmerman</span><span class="sn">S. Zimmerman</span></a> <span class="rt">3.15</span></span></td><td class="c-opp"><span class="pn"><a href="ruby-leong.html"><span class="fn">Ruby Leong</span><span class="sn">R. Leong</span></a> <span class="rt">3.12</span></span><br><span class="pn"><a href="diane-schopp.html"><span class="fn">Diane Schopp</span><span class="sn">D. Schopp</span></a> <span class="rt">2.58</span></span></td><td class="c-oppteam" title="SUN CITY ANTHEM">SC Anthem</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.01</span><span class="sq-after">3.23</span></td><td class="c-date">11/17<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA ADULT 70 &amp; OVER LEAGUE">70+</td><td class="c-team" title="LIFE TIME FITNESS/GV">LTF</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sw">7-6</span> <span class="set sw">6-4</span></td><td class="c-partner"><span class="pn"><a href="donna-mednicoff.html"><span class="fn">Donna Mednicoff</span><span class="sn">D. Mednicoff</span></a> <span class="rt">3.02</span></span></td><td class="c-opp"><span class="pn"><a href="pam-kirkendall.html"><span class="fn">Pam Kirkendall</span><span class="sn">P. Kirkendall</span></a> <span class="rt">3.13</span></span><br><span class="pn"><a href="melanie-cortez.html"><span class="fn">Melanie Cortez</span><span class="sn">M. Cortez</span></a> <span class="rt">3.09</span></span></td><td class="c-oppteam" title="SPANISH TRAIL #1">S. Trail #1</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.02</span><span class="sq-after">3.22</span></td><td class="c-date">11/10<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA ADULT 70 &amp; OVER LEAGUE">70+</td><td class="c-team" title="LIFE TIME FITNESS/GV">LTF</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set">6-7</span> <span class="set sw">6-0</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="donna-mednicoff.html"><span class="fn">Donna Mednicoff</span><span class="sn">D. Mednicoff</span></a> <span class="rt">3.05</span></span></td><td class="c-opp"><span class="pn"><a href="pamela-rusk.html"><span class="fn">Pamela Rusk</span><span class="sn">P. Rusk</span></a> <span class="rt">3.17</span></span><br><span class="pn"><a href="marisa-ptak.html"><span class="fn">Marisa Ptak</span><span class="sn">M. Ptak</span></a> <span class="rt">2.87</span></span></td><td class="c-oppteam" title="SPANISH TRAIL #2">S. Trail #2</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.02</span><span class="sq-after">3.20</span></td><td class="c-date">11/3<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA ADULT 70 &amp; OVER LEAGUE">70+</td><td class="c-team" title="LIFE TIME FITNESS/GV">LTF</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sw">6-3</span> <span class="set sw">6-4</span></td><td class="c-partner"><span class="pn"><a href="sally-zimmerman.html"><span class="fn">Sally Zimmerman</span><span class="sn">S. Zimmerman</span></a> <span class="rt">3.17</span></span></td><td class="c-opp"><span class="pn"><a href="ruby-leong.html"><span class="fn">Ruby Leong</span><span class="sn">R. Leong</span></a> <span class="rt">3.12</span></span><br><span class="pn"><a href="marcia-loss.html"><span class="fn">Marcia Loss</span><span class="sn">M. Loss</span></a> <span class="rt">3.20</span></span></td><td class="c-oppteam" title="SUN CITY ANTHEM">SC Anthem</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.02</span><span class="sq-after">3.18</span></td><td class="c-date">10/27<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA ADULT 70 &amp; OVER LEAGUE">70+</td><td class="c-team" title="LIFE TIME FITNESS/GV">LTF</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set">1-6</span> <span class="set sw">6-2</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="sally-zimmerman.html"><span class="fn">Sally Zimmerman</span><span class="sn">S. Zimmerman</span></a> <span class="rt">3.13</span></span></td><td class="c-opp"><span class="pn"><a href="arlene-babbitt.html"><span class="fn">Arlene Babbitt</span><span class="sn">A. Babbitt</span></a> <span class="rt">3.19</span></span><br><span class="pn"><a href="karen-miller.html"><span class="fn">Karen Miller</span><span class="sn">K. Miller</span></a> <span class="rt">3.35</span></span></td><td class="c-oppteam" title="SPANISH TRAIL #1">S. Trail #1</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.02</span><span class="sq-after">3.16</span></td><td class="c-date">10/20<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA ADULT 70 &amp; OVER LEAGUE">70+</td><td class="c-team" title="LIFE TIME FITNESS/GV">LTF</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sw">6-1</span> <span class="set sw">6-0</span></td><td class="c-partner"><span class="pn"><a href="joan-perricone.html"><span class="fn">Joan Perricone</span><span class="sn">J. Perricone</span></a> <span class="rt">3.48</span></span></td><td class="c-opp"><span class="pn"><a href="sheila-stetts.html"><span class="fn">Sheila Stetts</span><span class="sn">S. Stetts</span></a> <span class="rt">2.71</span></span><br><span class="pn"><a href="patricia-boudier.html"><span class="fn">Patricia Boudier</span><span class="sn">P. Boudier</span></a> <span class="rt">2.63</span></span></td><td class="c-oppteam" title="SPANISH TRAIL #2">S. Trail #2</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.02</span><span class="sq-after">3.14</span></td><td class="c-date">10/13<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA ADULT 70 &amp; OVER LEAGUE">70+</td><td class="c-team" title="LIFE TIME FITNESS/GV">LTF</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set">3-6</span> <span class="set sw">6-1</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="donna-mednicoff.html"><span class="fn">Donna Mednicoff</span><span class="sn">D. Mednicoff</span></a> <span class="rt">3.14</span></span></td><td class="c-opp"><span class="pn"><a href="joan-chevalier.html"><span class="fn">Joan Chevalier</span><span class="sn">J. Chevalier</span></a> <span class="rt">2.79</span></span><br><span class="pn"><a href="wacharee-rosenberg.html"><span class="fn">Wacharee Rosenberg</span><span class="sn">W. Rosenberg</span></a> <span class="rt">2.98</span></span></td><td class="c-oppteam" title="SUN CITY ANTHEM">SC Anthem</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.11</span><span class="sq-after">3.16</span></td><td class="c-date">10/6<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA ADULT 70 &amp; OVER LEAGUE">70+</td><td class="c-team" title="LIFE TIME FITNESS/GV">LTF</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sl">2-6</span> <span class="set sl">2-6</span></td><td class="c-partner"><span class="pn"><a href="annette-whiteside.html"><span class="fn">Annette Whiteside</span><span class="sn">A. Whiteside</span></a> <span class="rt">2.95</span></span></td><td class="c-opp"><span class="pn"><a href="arlene-babbitt.html"><span class="fn">Arlene Babbitt</span><span class="sn">A. Babbitt</span></a> <span class="rt">3.06</span></span><br><span class="pn"><a href="merrilu-kutcher.html"><span class="fn">Merrilu Kutcher</span><span class="sn">M. Kutcher</span></a> <span class="rt">3.03</span></span></td><td class="c-oppteam" title="SPANISH TRAIL #1">S. Trail #1</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.04</span><span class="sq-after">3.27</span></td><td class="c-date">5/19<span class="yy">/26</span></td><td class="c-div"><span class="dp dp80">8.0</span></td><td class="c-lg" title="2026 NTA ADULT 65 &amp; OVER LEAGUE">65+</td><td class="c-team" title="ANNETTE&#x27;S TEAM">ANNETTE&#x27;S TEAM</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sl">1-6</span> <span class="set sl">3-6</span></td><td class="c-partner"><span class="pn"><a href="gayl-fitzgerald.html"><span class="fn">Gayl Fitzgerald</span><span class="sn">G. Fitzgerald</span></a> <span class="rt">3.81</span></span></td><td class="c-opp"><span class="pn"><a href="cynthia-turner.html"><span class="fn">Cynthia Turner</span><span class="sn">C. Turner</span></a> <span class="rt">3.81</span></span><br><span class="pn"><a href="nora-taylor.html"><span class="fn">Nora Taylor</span><span class="sn">N. Taylor</span></a> <span class="rt">3.59</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="NV/Antoniadis/65&amp;OverW8.0" aria-label="NV (Antoniadis), listed as NV/Antoniadis/65&amp;OverW8.0">NV (Antoniadis)</span></td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.04</span><span class="sq-after">3.27</span></td><td class="c-date">5/19<span class="yy">/26</span></td><td class="c-div"><span class="dp dp80">8.0</span></td><td class="c-lg" title="2026 NTA ADULT 65 &amp; OVER LEAGUE">65+</td><td class="c-team" title="ANNETTE&#x27;S TEAM">ANNETTE&#x27;S TEAM</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">5-7</span> <span class="set sl">1-6</span></td><td class="c-partner"><span class="pn"><a href="victoria-nienhuis.html"><span class="fn">Victoria Nienhuis</span><span class="sn">V. Nienhuis</span></a> <span class="rt">3.20</span></span></td><td class="c-opp"><span class="pn"><a href="cynthia-turner.html"><span class="fn">Cynthia Turner</span><span class="sn">C. Turner</span></a> <span class="rt">3.81</span></span><br><span class="pn"><a href="denise-goshorn.html"><span class="fn">Denise Goshorn</span><span class="sn">D. Goshorn</span></a> <span class="rt">3.78</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="NV/Antoniadis/65&amp;OverW8.0" aria-label="NV (Antoniadis), listed as NV/Antoniadis/65&amp;OverW8.0">NV (Antoniadis)</span></td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.07</span><span class="sq-after">3.31</span></td><td class="c-date">4/28<span class="yy">/26</span></td><td class="c-div"><span class="dp dp80">8.0</span></td><td class="c-lg" title="2026 NTA ADULT 65 &amp; OVER LEAGUE">65+</td><td class="c-team" title="ANNETTE&#x27;S TEAM">ANNETTE&#x27;S TEAM</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set">7-5</span> <span class="set sl">0-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="victoria-nienhuis.html"><span class="fn">Victoria Nienhuis</span><span class="sn">V. Nienhuis</span></a> <span class="rt">3.17</span></span></td><td class="c-opp"><span class="pn"><a href="debbie-torbati.html"><span class="fn">Debbie Torbati</span><span class="sn">D. Torbati</span></a> <span class="rt">3.75</span></span><br><span class="pn"><a href="joni-gurrola.html"><span class="fn">Joni Gurrola</span><span class="sn">J. Gurrola</span></a> <span class="rt">3.75</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="NV/Antoniadis/65&amp;OverW8.0" aria-label="NV (Antoniadis), listed as NV/Antoniadis/65&amp;OverW8.0">NV (Antoniadis)</span></td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.01</span><span class="sq-after">3.24</span></td><td class="c-date">3/26<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="2026 NTA ADULT 65 &amp; OVER LEAGUE">65+</td><td class="c-team" title="DRAGONRIDGE CC">Dragonridge</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set">6-4</span> <span class="set sl">2-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="annette-whiteside.html"><span class="fn">Annette Whiteside</span><span class="sn">A. Whiteside</span></a> <span class="rt">3.01</span></span></td><td class="c-opp"><span class="pn"><a href="susan-gray.html"><span class="fn">Susan Gray</span><span class="sn">S. Gray</span></a> <span class="rt">3.26</span></span><br><span class="pn"><a href="kelly-mcpherson.html"><span class="fn">Kelly McPherson</span><span class="sn">K. McPherson</span></a> <span class="rt">3.21</span></span></td><td class="c-oppteam" title="DTC">DTC</td></tr></tbody></table></div>
@@ -196,9 +240,20 @@ document.querySelectorAll('.yr').forEach(function(b) {
     document.querySelectorAll('.strip').forEach(function(s) { s.hidden = s.dataset.y !== y; });
     document.querySelectorAll('.hist tbody tr').forEach(function(tr) {
       tr.hidden = y !== 'all' && tr.dataset.y !== y; });
+    runs();
     document.getElementById('cnt').textContent = COUNTS[y] || '';
   };
 });
+// Consecutive visible postseason rows form one block: mark each run's first and last row
+function runs() {
+  var vis = [].filter.call(document.querySelectorAll('.hist tbody tr'), function(tr) { return !tr.hidden; });
+  vis.forEach(function(tr, i) {
+    var p = tr.classList.contains('post');
+    tr.classList.toggle('po-top', p && !(vis[i - 1] && vis[i - 1].classList.contains('post')));
+    tr.classList.toggle('po-bot', p && !(vis[i + 1] && vis[i + 1].classList.contains('post')));
+  });
+}
+runs();
 var COUNTS = {"all": "12 matches · 7–5 overall", "2026": "12 matches · 7–5 overall"};
 // Phone drops the year from dates in the current year.
 (function() { var cy = String(new Date().getFullYear());
@@ -212,13 +267,19 @@ var COUNTS = {"all": "12 matches · 7–5 overall", "2026": "12 matches · 7–5
   try { on = JSON.parse(localStorage.getItem(KEY)); } catch (e) { on = null; }
   if (!on || typeof on !== 'object') on = Object.assign({}, DEF);
   function apply() {
-    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]);
-      tbl.classList.remove('fc-' + k, 'lc-' + k); });
-    // first / last showing column, for the rounded ends of washed rows
-    var vis = ALL.filter(function(k) { return on[k]; });
-    if (vis.length) { tbl.classList.add('fc-' + vis[0], 'lc-' + vis[vis.length - 1]); }
+    ALL.forEach(function(k) { tbl.classList.toggle('h-' + k, !on[k]); });
+    ends();
     menu.querySelectorAll('input').forEach(function(i) { i.checked = !!on[i.dataset.c]; });
   }
+  // first / last column actually showing (desktop shows them all), for the
+  // rounded ends of washed rows
+  function ends() {
+    ALL.forEach(function(k) { tbl.classList.remove('fc-' + k, 'lc-' + k); });
+    var vis = ALL.filter(function(k) { var th = tbl.querySelector('th.c-' + k);
+      return th && getComputedStyle(th).display !== 'none'; });
+    if (vis.length) tbl.classList.add('fc-' + vis[0], 'lc-' + vis[vis.length - 1]);
+  }
+  window.addEventListener('resize', ends);
   function save() { try { localStorage.setItem(KEY, JSON.stringify(on)); } catch (e) {} }
   function setOpen(v) { menu.hidden = !v; btn.setAttribute('aria-expanded', v); btn.textContent = v ? 'Columns ▴' : 'Columns ▾'; }
   btn.onclick = function(e) { e.stopPropagation(); setOpen(menu.hidden); };
