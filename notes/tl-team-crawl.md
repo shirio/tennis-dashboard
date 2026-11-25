@@ -38,3 +38,8 @@ Renamed teams: a team that wins Districts is renamed in its league listing to ST
 Championship teams are mapped back to league teams of the same age group and level: same club name, else
 roster overlap (rosters plus everyone who played league lines for a team, crawled or not), else the
 captain segment of a STATE/CAPTAIN/DIVISION label.
+
+## Year-end rating window
+
+Each match has `year_end` = {counts, rating_year, reason}. Summer leagues never count toward
+year-end NTRP. Matches after the cutoff (2026: Nov 8, `YEAR_END_CUTOFF`) count toward the next year.
