@@ -42,7 +42,7 @@ captain segment of a STATE/CAPTAIN/DIVISION label.
 ## Year-end rating window
 
 Each match has `year_end` = {counts, rating_year, reason}. Summer leagues never count toward
-year-end NTRP. Matches after the cutoff (2026: Nov 8, `YEAR_END_CUTOFF`) count toward the next year.
+year-end NTRP. Matches after the cutoff (2026: Nov 8; 2025: Nov 9, assumed; `YEAR_END_CUTOFF`) count toward the next year.
 
 ## Championship sub-flights
 
