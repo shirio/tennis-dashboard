@@ -250,10 +250,10 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
             cols.append((f"d{i}", f"Δ {years[i-1]}–{str(y)[-2:]}"))
         cols.append((f"y{i}", str(y)))
     cols.append(("q", "ShiQ"))
-    cols.append(("ws", "WTN S"))
-    cols.append(("wd", "WTN D"))
+    cols.append(("ws", "WTN Singles"))
+    cols.append(("wd", "WTN Doubles"))
     cols.append(("b", "Bump"))
-    cols.append(("e", "Bump est."))
+    cols.append(("e", "Bump Score"))
     default_on = {k: 1 for k, _ in cols
                   if not ((k[0] == "y" and int(k[1:]) < i_from) or (k[0] == "d" and int(k[1:]) <= i_from))}
     hide_css = "\n".join(f"table.h-{k} .c-{k} {{ display: none; }}" for k, _ in cols)
@@ -269,11 +269,11 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
             heads.append(f'<th data-k="{k}" class="c-{k} num">{lbl}</th>')
         elif k in ("ws", "wd"):
             fmt_name = "singles" if k == "ws" else "doubles"
-            heads.append(f'<th data-k="{k}" class="c-{k} num" title="USTA World Tennis Number ({fmt_name}) '
-                         f'converted to the NTRP scale">{lbl}</th>')
+            heads.append(f'<th data-k="{k}" class="c-{k} num ctr" title="USTA World Tennis Number ({fmt_name}) '
+                         f'converted to the NTRP scale">WTN<br>{fmt_name.title()}</th>')
         else:
             heads.append('<th data-k="q" class="c-q num">ShiQ</th>' if k == "q" else
-                         '<th data-k="e" class="c-e num" title="Year-end estimate from the Bump engine">Est.</th>' if k == "e" else
+                         '<th data-k="e" class="c-e num ctr" title="Year-end estimate from the Bump engine">Bump<br>Score</th>' if k == "e" else
                          f'<th data-k="b" class="c-b bump" title="Predicted USTA change" aria-label="Predicted USTA change">{_BH}</th>')
     menu = "".join(f'<label><input type="checkbox" data-c="{k}"> {_esc(lbl)}</label>' for k, lbl in cols)
     note = ("<p class='note'>Showing our own Nevada players until the full USTA 2026 "
@@ -315,10 +315,11 @@ table {{ border-collapse: collapse; font-size: 12px; }}
 th, td {{ padding: 4px 6px; text-align: left; white-space: nowrap; }}
 th:first-child, td:first-child {{ padding-left: 0; }}
 th {{ font-size: 11px; font-weight: 600; color: #888; cursor: pointer; user-select: none;
-     position: sticky; top: 0; background: #fff; }}
+     position: sticky; top: 0; background: #fff; z-index: 3; }}
+table.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 1px); }}
 /* Sort arrow takes no width: drawn just past the header text, over the gap. */
 th .hl {{ position: relative; }}
-th.sorted {{ z-index: 2; }}
+th.sorted {{ z-index: 4; }}
 th.sorted .hl::after {{ content: "▲"; font-size: 8px; position: absolute; left: 100%; margin-left: 2px;
   top: 50%; transform: translateY(-50%); }}
 th.sorted.desc .hl::after {{ content: "▼"; }}
@@ -336,6 +337,9 @@ th.bump, td.bump {{ text-align: center; cursor: default; font-variant-numeric: t
 .bh {{ color: #aaa; font-weight: 400; }}
 th.delta, td.delta {{ text-align: center; padding-left: 4px; padding-right: 4px; }}
 td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
+td.ctr, th.ctr {{ text-align: center; }}
+th {{ vertical-align: bottom; line-height: 1.25; }}
+th.ctr.sorted .hl {{ left: -5px; }}
 .lt {{ font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }}
 .up {{ color: #27500A; }}
 .caret {{ vertical-align: middle; }}
@@ -395,8 +399,8 @@ function ntrp(l, t, cls) {{
 // WTN columns: r[7] = [singles NTRP, WTN, confidence, doubles NTRP, WTN, confidence]
 function wtnCell(r, o, k, f) {{
   var w = r[7];
-  if (!w || w[o] == null) return '<td class="c-' + k + ' num"></td>';
-  return '<td class="c-' + k + ' num" title="WTN ' + f + ' ' + w[o + 1].toFixed(2) + ' (confidence ' + w[o + 2]
+  if (!w || w[o] == null) return '<td class="c-' + k + ' num ctr"></td>';
+  return '<td class="c-' + k + ' num ctr" title="WTN ' + f + ' ' + w[o + 1].toFixed(2) + ' (confidence ' + w[o + 2]
     + '%) = NTRP ' + w[o].toFixed(2) + '">' + w[o].toFixed(2) + '</td>';
 }}
 function esc(s) {{ return String(s).replace(/[&<>"]/g, function(c) {{ return {{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}}[c]; }}); }}
@@ -463,7 +467,7 @@ function render() {{
     h += '<td class="c-b bump"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
       + (b && b[0] ? '<span class="' + b[1] + '">' + b[0] + '</span>' : '') + '</td>';
     var e = r[8];
-    h += '<td class="c-e num"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
+    h += '<td class="c-e num ctr"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
       + (e ? '<span class="' + e[1] + '">' + e[0].toFixed(2) + '</span>' : '') + '</td></tr>';
     out.push(h);
   }});
@@ -548,6 +552,22 @@ fitWidths();
 window.addEventListener('resize', fitWidths);
 document.querySelector('th[data-k="n"]').classList.add('sorted');
 apply();
+// Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
+// from following the page, so slide the header cells down as the page scrolls.
+(function() {{
+  var t = document.querySelector('table#tbl, table.hist'); if (!t) return;
+  function stick() {{
+    var th = t.tHead; if (!th) return;
+    var r = t.getBoundingClientRect(), h = th.offsetHeight;
+    var off = Math.max(0, Math.min(-r.top, r.height - h * 2));
+    var v = off ? 'translateY(' + off + 'px)' : '';
+    t.classList.toggle('stuck', off > 0);
+    th.querySelectorAll('th').forEach(function(c) {{ c.style.transform = v; }});
+  }}
+  window.addEventListener('scroll', stick, {{ passive: true }});
+  window.addEventListener('resize', stick);
+  stick();
+}})();
 </script></body></html>
 """
 
@@ -564,14 +584,16 @@ def _tip(label: str, value: str, tip_rows: list[tuple[str, str]]) -> str:
 
 
 def _record_strip(rec: dict) -> str:
+    def wl(pair):  # no matches of that kind: ∅ rather than 0–0
+        return "∅" if not (pair[0] or pair[1]) else _wl(pair)
     parts = []
     # No overall pill: the match count line under the strip already gives the W-L.
     for div in sorted(rec["by_div"]):
         parts.append(_tip(div, _wl(rec["by_div"][div]),
-                          [("Singles", _wl(rec["by_div_type"].get((div, "singles"), [0, 0]))),
-                           ("Doubles", _wl(rec["by_div_type"].get((div, "doubles"), [0, 0])))]))
+                          [("Singles", wl(rec["by_div_type"].get((div, "singles"), [0, 0]))),
+                           ("Doubles", wl(rec["by_div_type"].get((div, "doubles"), [0, 0])))]))
     for kind in ("singles", "doubles"):
-        parts.append(_tip(kind.title(), _wl(rec[kind]),
+        parts.append(_tip(kind.title(), wl(rec[kind]),
                           [(d, _wl(v)) for d, v in sorted(rec[f"{kind}_by_div"].items())]))
     return "".join(parts)
 
@@ -609,12 +631,12 @@ def _score_html(score: str, won: bool) -> str:
 
 
 def _sq_delta(d) -> str:
-    """+.04 / −.02 / 0 for a per-match ShiQ change."""
+    """+.04 / −.02 / ±0 for a per-match ShiQ change."""
     if d is None:
         return ""
     r = round(d, 2)
     if r == 0:
-        return '<span class="sd0">0</span>'
+        return '<span class="sd0">±0</span>'
     txt = f"{abs(r):.2f}".lstrip("0")
     return f'<span class="{"sd-up" if r > 0 else "sd-down"}">{"+" if r > 0 else "−"}{txt}</span>'
 
@@ -770,7 +792,8 @@ body {{ background: #fff; }}
 table.hist {{ border-collapse: collapse; font-size: 12px; }}
 .hist th, .hist td {{ padding: .3rem .6rem; text-align: left; vertical-align: middle; white-space: nowrap; }}
 .hist th:first-child, .hist td:first-child {{ padding-left: 0; }}
-.hist th {{ font-size: 11px; color: #888; font-weight: 600; }}
+.hist th {{ font-size: 11px; color: #888; font-weight: 600; background: #fff; position: relative; z-index: 3; }}
+table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 1px); }}
 .hist .c-date, .hist .c-div, .hist .c-line, .hist .c-score, .hist .c-sq {{ text-align: center; }}
 .hist td.c-sq {{ line-height: 1.2; }}
 .sq-after {{ display: block; color: #aaa; font-size: 9.5px; font-weight: 400; font-variant-numeric: tabular-nums; }}
@@ -883,6 +906,22 @@ var COUNTS = {json.dumps(counts, ensure_ascii=False)};
     try {{ localStorage.removeItem(KEY); }} catch (e) {{}} }};
   document.addEventListener('click', function(e) {{ if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) setOpen(false); }});
   apply();
+}})();
+// Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
+// from following the page, so slide the header cells down as the page scrolls.
+(function() {{
+  var t = document.querySelector('table#tbl, table.hist'); if (!t) return;
+  function stick() {{
+    var th = t.tHead; if (!th) return;
+    var r = t.getBoundingClientRect(), h = th.offsetHeight;
+    var off = Math.max(0, Math.min(-r.top, r.height - h * 2));
+    var v = off ? 'translateY(' + off + 'px)' : '';
+    t.classList.toggle('stuck', off > 0);
+    th.querySelectorAll('th').forEach(function(c) {{ c.style.transform = v; }});
+  }}
+  window.addEventListener('scroll', stick, {{ passive: true }});
+  window.addEventListener('resize', stick);
+  stick();
 }})();
 </script></body></html>
 """

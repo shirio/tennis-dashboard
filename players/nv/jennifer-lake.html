@@ -63,7 +63,8 @@ body { background: #fff; }
 table.hist { border-collapse: collapse; font-size: 12px; }
 .hist th, .hist td { padding: .3rem .6rem; text-align: left; vertical-align: middle; white-space: nowrap; }
 .hist th:first-child, .hist td:first-child { padding-left: 0; }
-.hist th { font-size: 11px; color: #888; font-weight: 600; }
+.hist th { font-size: 11px; color: #888; font-weight: 600; background: #fff; position: relative; z-index: 3; }
+table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1px); }
 .hist .c-date, .hist .c-div, .hist .c-line, .hist .c-score, .hist .c-sq { text-align: center; }
 .hist td.c-sq { line-height: 1.2; }
 .sq-after { display: block; color: #aaa; font-size: 9.5px; font-weight: 400; font-variant-numeric: tabular-nums; }
@@ -132,7 +133,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
     <div class="card" title="USTA World Tennis Number (doubles) converted to the NTRP scale; confidence 100%"><div class="l">Doubles</div><div class="v">2.45</div><div class="s">WTN 29.5</div></div>
   </div>
 </div>
-<div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">2–5</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>2–5</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">2–5</span><span class="tipbox"><table><tr><td>3.0</td><td>2–5</td></tr></table></span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">2–5</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>2–5</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">2–5</span><span class="tipbox"><table><tr><td>3.0</td><td>2–5</td></tr></table></span></span></div></div>
+<div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">2–5</span><span class="tipbox"><table><tr><td>Singles</td><td>∅</td></tr><tr><td>Doubles</td><td>2–5</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">∅</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">2–5</span><span class="tipbox"><table><tr><td>3.0</td><td>2–5</td></tr></table></span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">2–5</span><span class="tipbox"><table><tr><td>Singles</td><td>∅</td></tr><tr><td>Doubles</td><td>2–5</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">∅</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">2–5</span><span class="tipbox"><table><tr><td>3.0</td><td>2–5</td></tr></table></span></span></div></div>
 <div class="colbar"><span class="count" id="cnt">7 matches · 2–5 overall</span>
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="sq"> ShiQ</label><label><input type="checkbox" data-c="date"> Date</label><label><input type="checkbox" data-c="div"> Div</label><label><input type="checkbox" data-c="team"> Team</label><label><input type="checkbox" data-c="line"> Line</label><label><input type="checkbox" data-c="score"> Score</label><label><input type="checkbox" data-c="partner"> Partner</label><label><input type="checkbox" data-c="opp"> Opponents</label><label><input type="checkbox" data-c="oppteam"> Opp Team</label><div class="reset" id="colreset">Reset</div></div></div>
@@ -177,5 +178,21 @@ var COUNTS = {"all": "7 matches · 2–5 overall", "2026": "7 matches · 2–5 o
     try { localStorage.removeItem(KEY); } catch (e) {} };
   document.addEventListener('click', function(e) { if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) setOpen(false); });
   apply();
+})();
+// Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
+// from following the page, so slide the header cells down as the page scrolls.
+(function() {
+  var t = document.querySelector('table#tbl, table.hist'); if (!t) return;
+  function stick() {
+    var th = t.tHead; if (!th) return;
+    var r = t.getBoundingClientRect(), h = th.offsetHeight;
+    var off = Math.max(0, Math.min(-r.top, r.height - h * 2));
+    var v = off ? 'translateY(' + off + 'px)' : '';
+    t.classList.toggle('stuck', off > 0);
+    th.querySelectorAll('th').forEach(function(c) { c.style.transform = v; });
+  }
+  window.addEventListener('scroll', stick, { passive: true });
+  window.addEventListener('resize', stick);
+  stick();
 })();
 </script></body></html>
