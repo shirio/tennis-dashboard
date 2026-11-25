@@ -233,9 +233,15 @@ _BH = _DH.replace('</svg>', '<circle cx="6" cy="7.2" r="1.25" fill="currentColor
 
 
 def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
+    years = list(DIR_YEARS)
+    # Leave off trailing years nobody has a rating for yet (e.g. 2027 before year-end
+    # ratings come out); the year and its change column come back once data exists.
+    while len(years) > 1 and not any(r[4][len(years) - 1] is not None for r in rows):
+        years.pop()
+    n = len(years)
+    rows = [r[:4] + [r[4][:n], r[5][:n]] + r[6:] for r in rows]
     data = json.dumps(rows, separators=(",", ":"), ensure_ascii=False)
     types_json = json.dumps(RATING_TYPES)
-    years = list(DIR_YEARS)
     i_from = years.index(YEAR_FROM)
     # Column keys: s (sex), y<i> (year i), d<i> (change from year i-1 to year i), q (ShiQ)
     cols = [("s", "Sex")]
@@ -839,7 +845,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody>{"".join(body)}</tbody></table></div>
+<tbody>{"".join(reversed(body))}</tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {{
