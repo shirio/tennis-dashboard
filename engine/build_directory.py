@@ -369,7 +369,8 @@ th.sorted .hl::after {{ content: "▲"; font-size: 8px; position: absolute; left
 th.sorted.desc .hl::after {{ content: "▼"; }}
 /* when sorted, nudge right-aligned / centered titles left so the arrow fits inside the column */
 th.num.sorted .hl {{ left: -9px; }}
-th.sex.sorted .hl, th.bump.sorted .hl, th.delta.sorted .hl {{ left: -5px; }}
+th.sex.sorted .hl, th.bump.sorted .hl {{ left: -5px; }}
+th.delta.sorted .hl {{ left: calc(var(--dx, 0px) - 5px); }}
 tbody tr:hover td {{ background: #faf9f6; }}
 th.sex, td.sex {{ text-align: center; }}
 th.bump, td.bump {{ text-align: center; cursor: default; font-variant-numeric: tabular-nums;
@@ -380,7 +381,9 @@ th.bump, td.bump {{ text-align: center; cursor: default; font-variant-numeric: t
 .bld {{ color: #c98b86; font-weight: 600; }}
 .bh {{ color: #aaa; font-weight: 400; }}
 th.delta, td.delta {{ text-align: center; padding-left: 4px; padding-right: 4px; }}
-th.delta .hl svg {{ position: relative; left: var(--dx, 0); }}
+/* Move the whole title (triangle + sort arrow) to sit over the carets, so the
+   sort arrow stays beside the triangle instead of on top of it */
+th.delta .hl {{ left: var(--dx, 0); }}
 thead th.delta {{ z-index: 4; }}
 td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 td.ctr, th.ctr {{ text-align: center; }}
