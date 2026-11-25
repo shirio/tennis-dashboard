@@ -59,10 +59,11 @@ table { border-collapse: collapse; font-size: 12px; }
 th, td { padding: 4px 6px; text-align: left; white-space: nowrap; }
 th:first-child, td:first-child { padding-left: 0; }
 th { font-size: 11px; font-weight: 600; color: #888; cursor: pointer; user-select: none;
-     position: sticky; top: 0; background: #fff; }
+     position: sticky; top: 0; background: #fff; z-index: 3; }
+table.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1px); }
 /* Sort arrow takes no width: drawn just past the header text, over the gap. */
 th .hl { position: relative; }
-th.sorted { z-index: 2; }
+th.sorted { z-index: 4; }
 th.sorted .hl::after { content: "▲"; font-size: 8px; position: absolute; left: 100%; margin-left: 2px;
   top: 50%; transform: translateY(-50%); }
 th.sorted.desc .hl::after { content: "▼"; }
@@ -80,6 +81,9 @@ th.bump, td.bump { text-align: center; cursor: default; font-variant-numeric: ta
 .bh { color: #aaa; font-weight: 400; }
 th.delta, td.delta { text-align: center; padding-left: 4px; padding-right: 4px; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.ctr, th.ctr { text-align: center; }
+th { vertical-align: bottom; line-height: 1.25; }
+th.ctr.sorted .hl { left: -5px; }
 .lt { font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }
 .up { color: #27500A; }
 .caret { vertical-align: middle; }
@@ -116,9 +120,9 @@ table.h-e .c-e { display: none; }
 </div>
 <div class="colbar"><span class="count" id="count"></span>
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
-<div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="s"> Sex</label><label><input type="checkbox" data-c="y0"> 2022</label><label><input type="checkbox" data-c="d1"> Δ 2022–23</label><label><input type="checkbox" data-c="y1"> 2023</label><label><input type="checkbox" data-c="d2"> Δ 2023–24</label><label><input type="checkbox" data-c="y2"> 2024</label><label><input type="checkbox" data-c="d3"> Δ 2024–25</label><label><input type="checkbox" data-c="y3"> 2025</label><label><input type="checkbox" data-c="d4"> Δ 2025–26</label><label><input type="checkbox" data-c="y4"> 2026</label><label><input type="checkbox" data-c="q"> ShiQ</label><label><input type="checkbox" data-c="ws"> WTN S</label><label><input type="checkbox" data-c="wd"> WTN D</label><label><input type="checkbox" data-c="b"> Bump</label><label><input type="checkbox" data-c="e"> Bump est.</label><div class="reset" id="colreset">Reset</div></div></div>
+<div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="s"> Sex</label><label><input type="checkbox" data-c="y0"> 2022</label><label><input type="checkbox" data-c="d1"> Δ 2022–23</label><label><input type="checkbox" data-c="y1"> 2023</label><label><input type="checkbox" data-c="d2"> Δ 2023–24</label><label><input type="checkbox" data-c="y2"> 2024</label><label><input type="checkbox" data-c="d3"> Δ 2024–25</label><label><input type="checkbox" data-c="y3"> 2025</label><label><input type="checkbox" data-c="d4"> Δ 2025–26</label><label><input type="checkbox" data-c="y4"> 2026</label><label><input type="checkbox" data-c="q"> ShiQ</label><label><input type="checkbox" data-c="ws"> WTN Singles</label><label><input type="checkbox" data-c="wd"> WTN Doubles</label><label><input type="checkbox" data-c="b"> Bump</label><label><input type="checkbox" data-c="e"> Bump Score</label><div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table id="tbl">
-<thead><tr><th data-k="n" class="c-n">Name</th><th data-k="s" class="c-s sex">Sex</th><th data-k="y0" class="c-y0 num">2022</th><th data-k="d1" class="c-d1 delta" title="Change from 2022 to 2023" aria-label="Change from 2022 to 2023"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y1" class="c-y1 num">2023</th><th data-k="d2" class="c-d2 delta" title="Change from 2023 to 2024" aria-label="Change from 2023 to 2024"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y2" class="c-y2 num">2024</th><th data-k="d3" class="c-d3 delta" title="Change from 2024 to 2025" aria-label="Change from 2024 to 2025"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y3" class="c-y3 num">2025</th><th data-k="d4" class="c-d4 delta" title="Change from 2025 to 2026" aria-label="Change from 2025 to 2026"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y4" class="c-y4 num">2026</th><th data-k="q" class="c-q num">ShiQ</th><th data-k="ws" class="c-ws num" title="USTA World Tennis Number (singles) converted to the NTRP scale">WTN S</th><th data-k="wd" class="c-wd num" title="USTA World Tennis Number (doubles) converted to the NTRP scale">WTN D</th><th data-k="b" class="c-b bump" title="Predicted USTA change" aria-label="Predicted USTA change"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/><circle cx="6" cy="7.2" r="1.25" fill="currentColor" stroke="none"/></svg></th><th data-k="e" class="c-e num" title="Year-end estimate from the Bump engine">Est.</th></tr></thead><tbody id="tb"></tbody></table></div>
+<thead><tr><th data-k="n" class="c-n">Name</th><th data-k="s" class="c-s sex">Sex</th><th data-k="y0" class="c-y0 num">2022</th><th data-k="d1" class="c-d1 delta" title="Change from 2022 to 2023" aria-label="Change from 2022 to 2023"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y1" class="c-y1 num">2023</th><th data-k="d2" class="c-d2 delta" title="Change from 2023 to 2024" aria-label="Change from 2023 to 2024"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y2" class="c-y2 num">2024</th><th data-k="d3" class="c-d3 delta" title="Change from 2024 to 2025" aria-label="Change from 2024 to 2025"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y3" class="c-y3 num">2025</th><th data-k="d4" class="c-d4 delta" title="Change from 2025 to 2026" aria-label="Change from 2025 to 2026"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/></svg></th><th data-k="y4" class="c-y4 num">2026</th><th data-k="q" class="c-q num">ShiQ</th><th data-k="ws" class="c-ws num ctr" title="USTA World Tennis Number (singles) converted to the NTRP scale">WTN<br>Singles</th><th data-k="wd" class="c-wd num ctr" title="USTA World Tennis Number (doubles) converted to the NTRP scale">WTN<br>Doubles</th><th data-k="b" class="c-b bump" title="Predicted USTA change" aria-label="Predicted USTA change"><svg viewBox="0 0 12 11" width="10" height="9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-1px"><polygon points="1,10 6,1.5 11,10"/><circle cx="6" cy="7.2" r="1.25" fill="currentColor" stroke="none"/></svg></th><th data-k="e" class="c-e num ctr" title="Year-end estimate from the Bump engine">Bump<br>Score</th></tr></thead><tbody id="tb"></tbody></table></div>
 <button class="more" id="more" hidden>Show more</button>
 </div>
 <script>
@@ -153,8 +157,8 @@ function ntrp(l, t, cls) {
 // WTN columns: r[7] = [singles NTRP, WTN, confidence, doubles NTRP, WTN, confidence]
 function wtnCell(r, o, k, f) {
   var w = r[7];
-  if (!w || w[o] == null) return '<td class="c-' + k + ' num"></td>';
-  return '<td class="c-' + k + ' num" title="WTN ' + f + ' ' + w[o + 1].toFixed(2) + ' (confidence ' + w[o + 2]
+  if (!w || w[o] == null) return '<td class="c-' + k + ' num ctr"></td>';
+  return '<td class="c-' + k + ' num ctr" title="WTN ' + f + ' ' + w[o + 1].toFixed(2) + ' (confidence ' + w[o + 2]
     + '%) = NTRP ' + w[o].toFixed(2) + '">' + w[o].toFixed(2) + '</td>';
 }
 function esc(s) { return String(s).replace(/[&<>"]/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
@@ -221,7 +225,7 @@ function render() {
     h += '<td class="c-b bump"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
       + (b && b[0] ? '<span class="' + b[1] + '">' + b[0] + '</span>' : '') + '</td>';
     var e = r[8];
-    h += '<td class="c-e num"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
+    h += '<td class="c-e num ctr"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
       + (e ? '<span class="' + e[1] + '">' + e[0].toFixed(2) + '</span>' : '') + '</td></tr>';
     out.push(h);
   });
@@ -306,4 +310,20 @@ fitWidths();
 window.addEventListener('resize', fitWidths);
 document.querySelector('th[data-k="n"]').classList.add('sorted');
 apply();
+// Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
+// from following the page, so slide the header cells down as the page scrolls.
+(function() {
+  var t = document.querySelector('table#tbl, table.hist'); if (!t) return;
+  function stick() {
+    var th = t.tHead; if (!th) return;
+    var r = t.getBoundingClientRect(), h = th.offsetHeight;
+    var off = Math.max(0, Math.min(-r.top, r.height - h * 2));
+    var v = off ? 'translateY(' + off + 'px)' : '';
+    t.classList.toggle('stuck', off > 0);
+    th.querySelectorAll('th').forEach(function(c) { c.style.transform = v; });
+  }
+  window.addEventListener('scroll', stick, { passive: true });
+  window.addEventListener('resize', stick);
+  stick();
+})();
 </script></body></html>

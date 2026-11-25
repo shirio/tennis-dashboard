@@ -63,7 +63,8 @@ body { background: #fff; }
 table.hist { border-collapse: collapse; font-size: 12px; }
 .hist th, .hist td { padding: .3rem .6rem; text-align: left; vertical-align: middle; white-space: nowrap; }
 .hist th:first-child, .hist td:first-child { padding-left: 0; }
-.hist th { font-size: 11px; color: #888; font-weight: 600; }
+.hist th { font-size: 11px; color: #888; font-weight: 600; background: #fff; position: relative; z-index: 3; }
+table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1px); }
 .hist .c-date, .hist .c-div, .hist .c-line, .hist .c-score, .hist .c-sq { text-align: center; }
 .hist td.c-sq { line-height: 1.2; }
 .sq-after { display: block; color: #aaa; font-size: 9.5px; font-weight: 400; font-variant-numeric: tabular-nums; }
@@ -178,5 +179,21 @@ var COUNTS = {"all": "14 matches · 7–7 overall", "2026": "14 matches · 7–7
     try { localStorage.removeItem(KEY); } catch (e) {} };
   document.addEventListener('click', function(e) { if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) setOpen(false); });
   apply();
+})();
+// Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
+// from following the page, so slide the header cells down as the page scrolls.
+(function() {
+  var t = document.querySelector('table#tbl, table.hist'); if (!t) return;
+  function stick() {
+    var th = t.tHead; if (!th) return;
+    var r = t.getBoundingClientRect(), h = th.offsetHeight;
+    var off = Math.max(0, Math.min(-r.top, r.height - h * 2));
+    var v = off ? 'translateY(' + off + 'px)' : '';
+    t.classList.toggle('stuck', off > 0);
+    th.querySelectorAll('th').forEach(function(c) { c.style.transform = v; });
+  }
+  window.addEventListener('scroll', stick, { passive: true });
+  window.addEventListener('resize', stick);
+  stick();
 })();
 </script></body></html>
