@@ -33,8 +33,6 @@ body { background: #fff; }
 .phdr h1 { font-size: 20px; font-weight: 600; margin-bottom: .15rem; }
 .phdr .loc { font-size: 12px; color: #888; }
 .bumpl { font-size: 12px; color: #555; margin-top: 2px; }
-.card .v.wtnv { font-size: 15px; white-space: nowrap; }
-.card .wtnv span + span { margin-left: 6px; }
 .cards { display: flex; gap: 8px; flex-wrap: nowrap; }
 .card { text-align: center; background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
         box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
@@ -93,9 +91,10 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 .colmenu label:hover { background: #f3f2ee; }
 .colmenu .reset { color: #1a5fb4; font-size: 11px; padding: 6px 10px; cursor: pointer; }
 @media (max-width: 500px) {
-  .phdr { gap: 12px; }
   .phdr h1 { font-size: 18px; }
-  .card { padding: .5rem .7rem; }
+  .phdr { gap: 10px 12px; flex-wrap: wrap; }
+  .card { padding: .5rem .6rem; }
+  .card .s { white-space: nowrap; }
   .colbar { display: flex; }
   .fn { display: none; }
   .hist tr.cy .yy { display: none; }
@@ -130,7 +129,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   <div class="cards">
     <div class="card"><div class="l">USTA</div><div class="v" title="Computer">3.5<span class="lt">C</span></div><div class="s">12/31/25</div></div>
     <div class="card"><div class="l">ShiQ</div><div class="v">3.51</div><div class="s">5/23/26</div></div>
-    <div class="card"><div class="l" title="USTA World Tennis Number converted to the NTRP scale">WTN says</div><div class="v wtnv"><span title="WTN doubles 22.61, confidence 100%">D 3.48</span></div><div class="s">WTN D 22.6</div></div>
+    <div class="card" title="USTA World Tennis Number (doubles) converted to the NTRP scale; confidence 100%"><div class="l">Doubles</div><div class="v">3.48</div><div class="s">WTN 22.6</div></div>
   </div>
 </div>
 <div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">Overall</span><span class="stat-v">4–0</span><span class="tipbox"><table><tr><td>2026</td><td>4–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.5</span><span class="stat-v">4–0</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>4–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">4–0</span><span class="tipbox"><table><tr><td>3.5</td><td>4–0</td></tr></table></span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">Overall</span><span class="stat-v">4–0</span><span class="tipbox"><table><tr><td>2026</td><td>4–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">3.5</span><span class="stat-v">4–0</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>4–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">4–0</span><span class="tipbox"><table><tr><td>3.5</td><td>4–0</td></tr></table></span></span></div></div>

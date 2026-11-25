@@ -717,8 +717,6 @@ body {{ background: #fff; }}
 .phdr h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .15rem; }}
 .phdr .loc {{ font-size: 12px; color: #888; }}
 .bumpl {{ font-size: 12px; color: #555; margin-top: 2px; }}
-.card .v.wtnv {{ font-size: 15px; white-space: nowrap; }}
-.card .wtnv span + span {{ margin-left: 6px; }}
 .cards {{ display: flex; gap: 8px; flex-wrap: nowrap; }}
 .card {{ text-align: center; background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
         box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }}
@@ -777,9 +775,10 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 .colmenu label:hover {{ background: #f3f2ee; }}
 .colmenu .reset {{ color: #1a5fb4; font-size: 11px; padding: 6px 10px; cursor: pointer; }}
 @media (max-width: 500px) {{
-  .phdr {{ gap: 12px; }}
   .phdr h1 {{ font-size: 18px; }}
-  .card {{ padding: .5rem .7rem; }}
+  .phdr {{ gap: 10px 12px; flex-wrap: wrap; }}
+  .card {{ padding: .5rem .6rem; }}
+  .card .s {{ white-space: nowrap; }}
   .colbar {{ display: flex; }}
   .fn {{ display: none; }}
   .hist tr.cy .yy {{ display: none; }}
@@ -904,20 +903,18 @@ def _bump_tip(b: dict) -> str:
 
 
 def _wtn_card(p: dict) -> str:
-    """Player-page card: WTN singles / doubles converted to NTRP."""
+    """Player-page cards: WTN singles / doubles converted to NTRP, one card per format."""
     w = p.get("wtn")
     if not w:
         return ""
-    parts, tips = [], []
-    for f, lbl in (("singles", "S"), ("doubles", "D")):
+    out = []
+    for f, lbl in (("singles", "Singles"), ("doubles", "Doubles")):
         x = w.get(f)
         if x:
-            parts.append(f'<span title="WTN {f} {x["wtn"]:.2f}, confidence {x["confidence"]}%">'
-                         f'{lbl} {x["ntrp"]:.2f}</span>')
-            tips.append(f'{lbl} {x["wtn"]:.1f}')
-    return ('    <div class="card"><div class="l" title="USTA World Tennis Number converted to the NTRP scale">'
-            f'WTN says</div><div class="v wtnv">{" ".join(parts)}</div>'
-            f'<div class="s">WTN {" · ".join(tips)}</div></div>\n')
+            out.append(f'    <div class="card" title="USTA World Tennis Number ({f}) converted to the NTRP scale; '
+                       f'confidence {x["confidence"]}%"><div class="l">{lbl}</div><div class="v">{x["ntrp"]:.2f}</div>'
+                       f'<div class="s">WTN {x["wtn"]:.1f}</div></div>\n')
+    return "".join(out)
 
 
 def _wtn_cell_data(p) -> list | None:
