@@ -381,7 +381,7 @@ th.ctr.sorted .hl {{ left: -5px; }}
 .ap {{ margin-left: 1px; }}
 .apc {{ color: #b26a00; }}
 .up {{ color: #27500A; }}
-.caret {{ vertical-align: middle; }}
+.caret {{ vertical-align: middle; position: relative; }}
 .caret.down {{ transform: scaleY(-1); }}
 .down {{ color: #791F1F; }}
 .more {{ margin: .8rem 0; padding: .35rem 1rem; border: 1px solid #ccc;
@@ -440,9 +440,9 @@ function ntrp(l, t, cls, ap) {{
   if (l == null) return '';
   var tip = TYPES[t] || t;
   if (ap) tip += '. ' + ap[2];
-  var s = fmt(l) + (t ? '<span class="lt" title="' + esc(tip) + '">' + t
+  var s = '<span class="nv">' + fmt(l) + '</span>' + (t ? '<span class="lt" title="' + esc(tip) + '">' + t
     + (ap ? '<span class="ap' + (ap[1] ? ' apc' : '') + '">' + ap[0] + '</span>' : '') + '</span>' : '');
-  return cls ? '<span class="' + cls + '">' + s + '</span>' : s;
+  return '<span class="nw' + (cls ? ' ' + cls : '') + '">' + s + '</span>';
 }}
 // WTN columns: r[7] = [singles NTRP, WTN, confidence, doubles NTRP, WTN, confidence]
 function wtnCell(r, o, k, f) {{
@@ -532,7 +532,25 @@ function render() {{
     ? ROWS.length.toLocaleString() + ' players'
     : view.length.toLocaleString() + ' of ' + ROWS.length.toLocaleString() + ' players';
   document.getElementById('more').hidden = shown >= view.length;
+  centerCarets();
 }}
+// Each Δ caret sits midway between where the rating on its left ends (letter
+// included) and where the number on its right starts. Year cells are right-aligned
+// and often wider than their values, so centering in the Δ cell alone looks lopsided.
+function centerCarets() {{
+  var moves = [];
+  document.querySelectorAll('#tb td.delta svg').forEach(function(svg) {{
+    var td = svg.parentNode, a = td.previousElementSibling, b = td.nextElementSibling;
+    var an = a && a.querySelector('.nw'), bn = b && b.querySelector('.nv');
+    if (!an || !bn || !td.offsetParent) return;
+    var ar = an.getBoundingClientRect(), br = bn.getBoundingClientRect(), sr = svg.getBoundingClientRect();
+    if (!ar.width || !br.width) return;
+    var cur = parseFloat(svg.style.left) || 0;
+    moves.push([svg, cur + (ar.right + br.left) / 2 - (sr.left + sr.right) / 2]);
+  }});
+  moves.forEach(function(m) {{ m[0].style.left = m[1].toFixed(1) + 'px'; }});
+}}
+window.addEventListener('resize', centerCarets);
 // Columns menu: choice saved per browser
 (function() {{
   var KEY = 'nvDirCols', tbl = document.getElementById('tbl'), btn = document.getElementById('colbtn'),
@@ -607,7 +625,7 @@ function fitWidths() {{
   var thn = tbl.querySelector('th[data-k="n"]');
   thn.style.minWidth = thn.style.width = thn.style.maxWidth = nw + 'px';
   document.getElementById('nmcap').textContent = nw < lockW.n
-    ? '#tbl td.c-n {{ max-width: ' + nw + 'px; overflow: hidden; text-overflow: ellipsis; }}' : '';
+    ? '#tbl td.c-n {{ max-width: ' + nw + 'px; overflow: hidden; text-overflow: ellipsis; }}' : '';  centerCarets();
 }}
 document.querySelectorAll('#tbl th[data-k]').forEach(function(th) {{ th.innerHTML = '<span class="hl">' + th.innerHTML + '</span>'; }});
 var nmcap = document.createElement('style'); nmcap.id = 'nmcap'; document.head.appendChild(nmcap);
