@@ -51,6 +51,7 @@ STRIKE_MARGIN = 0.30
 LEVEL_WIDTH = 0.50
 
 # Category thresholds on (year-end estimate - level top) / floor distance.
+LOWEST_LEVEL = 2.5        # adult leagues bottom out here
 CLEAR_MARGIN = 0.05      # this far past the line = "likely"
 
 
@@ -257,6 +258,10 @@ def year_end_call(estimate: Optional[float], matches: int, level: Optional[float
         margin = est - top if (top - est) < (est - floor) else est - floor
         call = ("lean_up" if est > top - CLEAR_MARGIN / 2 else
                 "lean_down" if est < floor + CLEAR_MARGIN / 2 else "hold")
+    if level <= LOWEST_LEVEL and call in ("down", "lean_down"):
+        # Nobody drops below 2.5 (no NV player is rated 2.0); in the 2025
+        # backtest all 13 "down" calls at 2.5 held.
+        call = "hold"
     out = {
         "estimate": round(est, 3),
         "margin": round(margin, 3),
