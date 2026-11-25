@@ -542,14 +542,14 @@ def _tip(label: str, value: str, tip_rows: list[tuple[str, str]]) -> str:
 
 def _record_strip(rec: dict) -> str:
     parts = []
-    parts.append(_tip("Overall", _wl(rec["overall"]),
+    parts.append(_tip("All", _wl(rec["overall"]),
                       [(y, _wl(v)) for y, v in sorted(rec["by_year"].items())]))
     for div in sorted(rec["by_div"]):
         parts.append(_tip(div, _wl(rec["by_div"][div]),
                           [("Singles", _wl(rec["by_div_type"].get((div, "singles"), [0, 0]))),
                            ("Doubles", _wl(rec["by_div_type"].get((div, "doubles"), [0, 0])))]))
-    for kind in ("singles", "doubles"):
-        parts.append(_tip(kind.title(), _wl(rec[kind]),
+    for kind, short in (("singles", "Sng"), ("doubles", "Dbl")):
+        parts.append(_tip(short, _wl(rec[kind]),
                           [(d, _wl(v)) for d, v in sorted(rec[f"{kind}_by_div"].items())]))
     return "".join(parts)
 
