@@ -17,6 +17,7 @@ and adds:
     shiq_singles  r + singles offset (only for players with a singles line)
     shiq_singles_matches / shiq_matches  match counts behind those numbers
     shiq_v8       the old v8 number, kept for reference
+    shiq_timeline {date: [ShiQ going in, ShiQ after]} across every level
 
 Players with no scored match keep their baseline, as before.
 """
@@ -60,6 +61,20 @@ def compute(players: list[dict], use_crawl: bool = True):
     return pbn, res
 
 
+def _all_levels_timeline(res, k: str) -> dict[str, list[float]]:
+    """date -> [ShiQ going into that date's first match, ShiQ after its last],
+    across every level and league (rating_timeline_30/35 cover 3.0/3.5 only)."""
+    by_date: dict[str, list[float]] = {}
+    # res.timeline entries were created in match order, so the first entry
+    # for a date holds the earliest pre and later entries the later posts.
+    for (_div, date), (pre, post) in res.timeline.get(k, {}).items():
+        if date in by_date:
+            by_date[date][1] = round(post, 4)
+        else:
+            by_date[date] = [round(pre, 4), round(post, 4)]
+    return by_date
+
+
 def _write_crawl_people(res) -> int:
     """ShiQ for crawled players who aren't in players.json."""
     out = {}
@@ -71,7 +86,8 @@ def _write_crawl_people(res) -> int:
                       "level": person.get("level"),
                       "shiq": round(res.rating[k], 4), "matches": res.matches[k],
                       "shiq_singles": round(res.singles(k), 4) if sm else None,
-                      "singles_matches": sm}
+                      "singles_matches": sm,
+                      "timeline": _all_levels_timeline(res, k)}
     (R.PLAYERS_JSON.parent / "shiq_crawl_people.json").write_text(
         json.dumps(out, indent=1, ensure_ascii=False))
     return len(out)
@@ -88,7 +104,7 @@ def apply_v9(players: list[dict] | None = None, save: bool = True) -> dict:
         p["shiq_v8"] = p.get("global_rating")
         if k not in res.matches:
             for f in ("shiq_singles", "shiq_doubles", "shiq_matches",
-                      "shiq_singles_matches"):
+                      "shiq_singles_matches", "shiq_timeline"):
                 p.pop(f, None)
             bl = p.get("dynamic_rating_baseline")
             if bl is not None:
@@ -113,6 +129,7 @@ def apply_v9(players: list[dict] | None = None, save: bool = True) -> dict:
         for div in ("30", "35"):
             p[f"rating_timeline_{div}"] = {}
             p[f"rating_post_timeline_{div}"] = {}
+        p["shiq_timeline"] = _all_levels_timeline(res, k)
         for (division, date), (pre, post) in res.timeline.get(k, {}).items():
             dk = _div_key(division)
             if dk is None:
