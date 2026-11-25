@@ -27,6 +27,10 @@ h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 .dp { display: inline-block; padding: 1px 7px; border-radius: 8px; font-size: 11px; font-weight: 700; }
 .dp30 { background: #ddeeff; color: #1a5a9a; }
 .dp35 { background: #fff0d8; color: #8a5200; }
+.dp25 { background: #e6f4ea; color: #2d6a3e; }
+.dp40 { background: #fde4e4; color: #9a2a2a; }
+.dp45 { background: #efe3f7; color: #5e3485; }
+.dp60, .dp70, .dp80, .dp90 { background: #ececec; color: #444; }
 .up { color: #1e8449; font-weight: 700; }
 .down { color: #b03a2e; font-weight: 700; }
 .muted { color: #999; }
@@ -45,6 +49,8 @@ body { background: #fff; }
 .card .s { font-size: 11px; color: #888; }
 .lt { font-size: 10px; color: inherit; margin-left: 2px; font-weight: 400; }
 .v .lt { font-size: 12px; margin-left: 3px; }
+.ap { margin-left: 1px; }
+.apc { color: #b26a00; }
 .mv-up { color: #27500A; font-weight: 600; }
 .mv-down { color: #791F1F; font-weight: 600; }
 .recs { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: .4rem 0 1.1rem; }
@@ -69,8 +75,9 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 .hist th:first-child, .hist td:first-child { padding-left: 0; }
 .hist th { font-size: 11px; color: #888; font-weight: 600; background: #fff; position: relative; z-index: 3; }
 table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1px); }
-.hist .c-date, .hist .c-div, .hist .c-line, .hist .c-score, .hist .c-sq { text-align: center; }
+.hist .c-date, .hist .c-div, .hist .c-lg, .hist .c-line, .hist .c-score, .hist .c-sq { text-align: center; }
 .hist td.c-sq { line-height: 1.2; }
+.hist td.c-lg { color: #666; font-size: 11px; }
 .sq-after { display: block; color: #aaa; font-size: 9.5px; font-weight: 400; font-variant-numeric: tabular-nums; }
 .hist th.num, .hist td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .hist td.num { color: #aaa; }
@@ -118,6 +125,7 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
   .hist .c-oppteam { padding-right: 0; }
   .hist.h-date .c-date { display: none; }
   .hist.h-div .c-div { display: none; }
+  .hist.h-lg .c-lg { display: none; }
   .hist.h-team .c-team { display: none; }
   .hist.h-line .c-line { display: none; }
   .hist.h-sq .c-sq { display: none; }
@@ -134,18 +142,18 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
     <div class="loc">Las Vegas, NV · Female</div><div class="bumpl">Too few matches (1) for a bump estimate</div></div>
   <div class="cards">
     <div class="card"><div class="l">USTA</div><div class="v" title="Computer">3.5<span class="lt">C</span></div><div class="s">12/31/25</div></div>
-    <div class="card"><div class="l">ShiQ</div><div class="v">3.23</div><div class="s">6/6/26</div></div>
+    <div class="card"><div class="l">ShiQ</div><div class="v">3.23</div><div class="s">1/28/26</div></div>
     <div class="card" title="USTA World Tennis Number (doubles) converted to the NTRP scale; confidence 70%"><div class="l">Doubles</div><div class="v">3.50</div><div class="s">WTN 22.4</div></div>
   </div>
 </div>
-<div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">∅</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">∅</span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">∅</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">∅</span></span></div></div>
-<div class="colbar"><span class="count" id="cnt">1 match · 0–0 overall</span>
+<div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">3.5</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>Singles</td><td>∅</td></tr><tr><td>Doubles</td><td>1–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">∅</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>3.5</td><td>1–0</td></tr></table></span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">3.5</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>Singles</td><td>∅</td></tr><tr><td>Doubles</td><td>1–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">∅</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>3.5</td><td>1–0</td></tr></table></span></span></div></div>
+<div class="colbar"><span class="count" id="cnt">1 match · 1–0 overall</span>
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
-<div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="sq"> ShiQ</label><label><input type="checkbox" data-c="date"> Date</label><label><input type="checkbox" data-c="div"> Div</label><label><input type="checkbox" data-c="team"> Team</label><label><input type="checkbox" data-c="line"> Line</label><label><input type="checkbox" data-c="score"> Score</label><label><input type="checkbox" data-c="partner"> Partner</label><label><input type="checkbox" data-c="opp"> Opponents</label><label><input type="checkbox" data-c="oppteam"> Opp Team</label><div class="reset" id="colreset">Reset</div></div></div>
+<div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="sq"> ShiQ</label><label><input type="checkbox" data-c="date"> Date</label><label><input type="checkbox" data-c="div"> Div</label><label><input type="checkbox" data-c="lg"> League</label><label><input type="checkbox" data-c="team"> Team</label><label><input type="checkbox" data-c="line"> Line</label><label><input type="checkbox" data-c="score"> Score</label><label><input type="checkbox" data-c="partner"> Partner</label><label><input type="checkbox" data-c="opp"> Opponents</label><label><input type="checkbox" data-c="oppteam"> Opp Team</label><div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
+<th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-lg">League</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-sq"></td><td class="c-date">6/6<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team" title="TPC">TPC</td><td class="c-line"><span class="line-pill pill-s2">S2</span></td><td class="c-score" title="Won by default, not counted in records"><em class="muted">default</em></td><td class="c-partner">—</td><td class="c-opp"><em class="muted">default</em></td><td class="c-oppteam" title="SPANISH TRAIL #1">S. Trail #1</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.02</span><span class="sq-after">3.23</span></td><td class="c-date">1/28<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="2026 NTA LADIES SPRING WEEKDAY LEAGUE">Weekday</td><td class="c-team" title="TPC">TPC</td><td class="c-line"><span class="line-pill pill-d1">D4</span></td><td class="c-score"><span class="set sw">7-6</span> <span class="set sw">6-2</span></td><td class="c-partner"><span class="pn"><a href="nicole-nestman.html"><span class="fn">Nicole Nestman</span><span class="sn">N. Nestman</span></a> <span class="rt">3.02</span></span></td><td class="c-opp"><span class="pn"><a href="lisa-winston.html"><span class="fn">Lisa Winston</span><span class="sn">L. Winston</span></a> <span class="rt">3.25</span></span><br><span class="pn"><a href="luanne-balelo.html"><span class="fn">Luanne Balelo</span><span class="sn">L. Balelo</span></a> <span class="rt">2.84</span></span></td><td class="c-oppteam" title="RED ROCK CC #1">Red Rock #1</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {
@@ -158,12 +166,12 @@ document.querySelectorAll('.yr').forEach(function(b) {
     document.getElementById('cnt').textContent = COUNTS[y] || '';
   };
 });
-var COUNTS = {"all": "1 match · 0–0 overall", "2026": "1 match · 0–0 overall"};
+var COUNTS = {"all": "1 match · 1–0 overall", "2026": "1 match · 1–0 overall"};
 // Phone drops the year from dates in the current year.
 (function() { var cy = String(new Date().getFullYear());
   document.querySelectorAll('.hist tbody tr').forEach(function(tr) { if (tr.dataset.y === cy) tr.classList.add('cy'); }); })();
 (function() {
-  var ALL = ['sq','date','div','team','line','score','partner','opp','oppteam'];
+  var ALL = ['sq','date','div','lg','team','line','score','partner','opp','oppteam'];
   var DEF = {sq:1, date:1, div:1, line:1, score:1, partner:1, opp:1};
   var KEY = 'nvPlayerCols4';  // bumped when the defaults changed
   var tbl = document.querySelector('table.hist'), btn = document.getElementById('colbtn'),
