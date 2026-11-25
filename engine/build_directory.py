@@ -224,6 +224,10 @@ h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 .dp { display: inline-block; padding: 1px 7px; border-radius: 8px; font-size: 11px; font-weight: 700; }
 .dp30 { background: #ddeeff; color: #1a5a9a; }
 .dp35 { background: #fff0d8; color: #8a5200; }
+.dp25 { background: #e6f4ea; color: #2d6a3e; }
+.dp40 { background: #fde4e4; color: #9a2a2a; }
+.dp45 { background: #efe3f7; color: #5e3485; }
+.dp60, .dp70, .dp80, .dp90 { background: #ececec; color: #444; }
 .up { color: #1e8449; font-weight: 700; }
 .down { color: #b03a2e; font-weight: 700; }
 .muted { color: #999; }
@@ -665,8 +669,8 @@ def _record_strip(rec: dict) -> str:
     return "".join(parts)
 
 
-def _name_link(name: str, rating: str, link_for) -> str:
-    href = link_for(name)
+def _name_link(name: str, rating: str, link_for, key: str | None = None) -> str:
+    href = (link_for(key) if key else None) or link_for(name)
     parts = name.split()
     short = f"{parts[0][0]}. {parts[-1]}" if len(parts) > 1 else name
     label = f'<span class="fn">{_esc(name)}</span><span class="sn">{_esc(short)}</span>'
@@ -716,7 +720,7 @@ def _mdy(d: str) -> str:
     return f"{int(m.group(1))}/{int(m.group(2))}/{int(m.group(3)) % 100:02d}"
 
 
-_HIST_COLS = [("sq", "ShiQ"), ("date", "Date"), ("div", "Div"), ("team", "Team"), ("line", "Line"),
+_HIST_COLS = [("sq", "ShiQ"), ("date", "Date"), ("div", "Div"), ("lg", "League"), ("team", "Team"), ("line", "Line"),
               ("score", "Score"), ("partner", "Partner"), ("opp", "Opponents"),
               ("oppteam", "Opp Team")]
 
@@ -765,9 +769,11 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         res_tip = (f' title="{"Won" if r["won"] else "Lost"} by default, not counted in records"'
                    if wko else "")
         score = '<em class="muted">default</em>' if wko else _score_html(r.get("score") or "", r["won"])
-        partners = "<br>".join(_name_link(n, (r.get("partner_r") or [None] * 9)[i], link_for)
+        partners = "<br>".join(_name_link(n, (r.get("partner_r") or [None] * 9)[i], link_for,
+                                          (r.get("partner_ids") or [None] * 9)[i])
                                for i, n in enumerate(r.get("partners") or [])) or "—"
-        opps = "<br>".join(_name_link(n, (r.get("opp_r") or [None] * 9)[i], link_for)
+        opps = "<br>".join(_name_link(n, (r.get("opp_r") or [None] * 9)[i], link_for,
+                                      (r.get("opp_ids") or [None] * 9)[i])
                            for i, n in enumerate(r.get("opps") or [])) or '<em class="muted">default</em>'
         dq = r.get("dq") or []
         row_attr = f' class="dq" title="Invalid match: {_esc(", ".join(dq))} disqualified"' if dq else ""
@@ -777,6 +783,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         body.append(
             f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-sq">{sq}</td><td class="c-date">{date_html}</td>'
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
+            f'<td class="c-lg" title="{_esc(r.get("league_full", ""))}">{_esc(r.get("league", ""))}</td>'
             f'<td class="c-team" title="{_esc(r.get("my_team", ""))}">{_esc(_abbrev_team(r.get("my_team", "")))}</td><td class="c-line">{pill}</td>'
             f'<td class="c-score"{res_tip}>{score}</td>'
             f'<td class="c-partner">{partners}</td><td class="c-opp">{opps}</td>'
@@ -865,8 +872,9 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
 .hist th:first-child, .hist td:first-child {{ padding-left: 0; }}
 .hist th {{ font-size: 11px; color: #888; font-weight: 600; background: #fff; position: relative; z-index: 3; }}
 table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 1px); }}
-.hist .c-date, .hist .c-div, .hist .c-line, .hist .c-score, .hist .c-sq {{ text-align: center; }}
+.hist .c-date, .hist .c-div, .hist .c-lg, .hist .c-line, .hist .c-score, .hist .c-sq {{ text-align: center; }}
 .hist td.c-sq {{ line-height: 1.2; }}
+.hist td.c-lg {{ color: #666; font-size: 11px; }}
 .sq-after {{ display: block; color: #aaa; font-size: 9.5px; font-weight: 400; font-variant-numeric: tabular-nums; }}
 .hist th.num, .hist td.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 .hist td.num {{ color: #aaa; }}
@@ -914,6 +922,7 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
   .hist .c-oppteam {{ padding-right: 0; }}
   .hist.h-date .c-date {{ display: none; }}
   .hist.h-div .c-div {{ display: none; }}
+  .hist.h-lg .c-lg {{ display: none; }}
   .hist.h-team .c-team {{ display: none; }}
   .hist.h-line .c-line {{ display: none; }}
   .hist.h-sq .c-sq {{ display: none; }}
@@ -938,7 +947,7 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden>{"".join(f'<label><input type="checkbox" data-c="{k}"> {lbl}</label>' for k, lbl in _HIST_COLS)}<div class="reset" id="colreset">Reset</div></div></div>
 <div class="tbl-wrap"><table class="hist"><thead><tr>
-<th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
+<th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-lg">League</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
 <tbody>{"".join(reversed(body))}</tbody></table></div>
 </div>
@@ -958,7 +967,7 @@ var COUNTS = {json.dumps(counts, ensure_ascii=False)};
 (function() {{ var cy = String(new Date().getFullYear());
   document.querySelectorAll('.hist tbody tr').forEach(function(tr) {{ if (tr.dataset.y === cy) tr.classList.add('cy'); }}); }})();
 (function() {{
-  var ALL = ['sq','date','div','team','line','score','partner','opp','oppteam'];
+  var ALL = ['sq','date','div','lg','team','line','score','partner','opp','oppteam'];
   var DEF = {{sq:1, date:1, div:1, line:1, score:1, partner:1, opp:1}};
   var KEY = 'nvPlayerCols4';  // bumped when the defaults changed
   var tbl = document.querySelector('table.hist'), btn = document.getElementById('colbtn'),
@@ -1148,6 +1157,77 @@ def _nv_bumps(players: list[dict], links: dict, usta: list[dict]) -> dict[str, d
     return {q["id"]: calls.get(k) for k, q in pbn.items() if q.get("id") in level_by_id}
 
 
+_CRAWL: dict = {}
+
+
+def _slug(s: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+
+
+def _guess_gender(hist: list[dict]):
+    txt = " ".join(r.get("league_full", "") + " " + r.get("flight", "") for r in hist).upper()
+    w = len(re.findall(r"WOMEN|LADIES|\d\.\dW\b|- W\d", txt))
+    m = len(re.findall(r"(?<!WO)MEN\b|\d\.\dM\b|- M\d", txt))
+    return "F" if w > m else "M" if m > w else None
+
+
+def _plan_pages(players: list[dict], db: list[dict], histories: dict, pit):
+    """Which player pages to write and where each history comes from.
+    Returns ({page id: {p, hist, pit, info?}}, {crawl person id: page id}).
+
+    With the TennisLink team crawl on disk (data/tl_team_matches_<year>.json),
+    every crawled person with at least one match gets a page built from the crawl.
+    Core players keep their players.json id; others get a name slug (plus the
+    area outside Nevada). Core players the crawl doesn't cover keep their
+    standings history."""
+    global _CRAWL
+    from engine.crawl_events import load_crawl
+    from engine.crawl_history import (TimelinePit, crawl_histories, load_timelines,
+                                      person_player_keys)
+    _CRAWL = load_crawl(YEAR_FROM) or {}
+    pages: dict[str, dict] = {}
+    pid_page: dict[str, str] = {}
+    c_hist, c_tl, core_of = {}, {}, {}
+    if _CRAWL:
+        c_tl = load_timelines(players, _CRAWL)
+        c_hist = crawl_histories(_CRAWL, c_tl)
+        for cpid, p in person_player_keys(players, _CRAWL).items():
+            if p.get("state") == STATE and p.get("id") and cpid in c_hist:
+                # same-name people can map to one core player: keep the busiest
+                cur = core_of.get(p["id"])
+                if not cur or len(c_hist[cpid]) > len(c_hist[cur]):
+                    core_of[p["id"]] = cpid
+    for p in db:
+        cpid = core_of.get(p["id"])
+        if cpid:
+            pages[p["id"]] = {"p": p, "hist": c_hist[cpid], "pit": TimelinePit(c_tl.get(cpid))}
+            pid_page[cpid] = p["id"]
+        elif histories.get(_nkey(p["name"])):
+            pages[p["id"]] = {"p": p, "hist": histories[_nkey(p["name"])], "pit": pit}
+    shiq = _load(DATA_DIR / "shiq_crawl_people.json", {})
+    for cpid in sorted(c_hist):
+        if cpid in pid_page:
+            continue
+        person = _CRAWL["people"][cpid]
+        area = person.get("area") or ""
+        base = _slug(person["name"]) + ("" if area == "NEVADA" else "-" + _slug(area))
+        pg, k = base, 2
+        while pg in pages:
+            pg, k = f"{base}-{k}", k + 1
+        sq = shiq.get(cpid) or {}
+        p = {"name": person["name"], "id": pg, "global_rating": sq.get("shiq"),
+             "shiq_singles": sq.get("shiq_singles"), "ntrp_rating": person.get("level")}
+        info = {"city": (person.get("city") or "").title() or None,
+                "state": "NV" if area == "NEVADA" else area.title(),
+                "gender": _guess_gender(c_hist[cpid])}
+        lv = re.match(r"(\d\.\d)\s*([A-Z])?", person.get("level") or "")
+        if lv:
+            info.update(level=lv.group(1), rating_type=lv.group(2))
+        pages[pg] = {"p": p, "hist": c_hist[cpid], "pit": TimelinePit(c_tl.get(cpid)), "info": info}
+        pid_page[cpid] = pg
+    return pages, pid_page
+
+
 def build_directory() -> dict:
     players = _load(PLAYERS_JSON, [])
     db = [p for p in players if p.get("state") == STATE and p.get("id")]
@@ -1157,7 +1237,13 @@ def build_directory() -> dict:
     histories, _ = _traverse_match_histories(db, "3.0", s30.get("subflights", []),
                                              s35.get("subflights", []), state_code=STATE)
     pit = _make_pit_rating(db, "30", "35")
-    with_hist = {p["id"]: p for p in db if histories.get(_nkey(p["name"]))}
+    pages, pid_page = _plan_pages(players, db, histories, pit)
+    with_hist = {k: v["p"] for k, v in pages.items()}
+    person_by_url = {}
+    crawl_shiq = _load(DATA_DIR / "shiq_crawl_people.json", {})
+    for cpid, person in (_CRAWL.get("people") or {}).items():
+        if person.get("history_url") and cpid in pid_page:
+            person_by_url.setdefault(person["history_url"], cpid)
 
     usta = _usta_rows(YEAR_FROM)
     placeholder = not usta
@@ -1191,9 +1277,17 @@ def build_directory() -> dict:
         bump = (bumps.get(p["id"]) or p.get("bump")) if p else None
         href = None
         dyn = None
-        if p and p["id"] in with_hist:
-            href = f"{PLAYER_DIR.as_posix()}/{p['id']}.html"
-            dyn = round(float(p["global_rating"]), 4) if p.get("global_rating") is not None else None
+        page_id = p["id"] if p and p["id"] in with_hist else None
+        if not page_id:  # not a core player: the crawl's person with this TennisLink page
+            cpid = person_by_url.get(r.get("history_url"))
+            page_id = pid_page.get(cpid)
+            if page_id:
+                sq = (crawl_shiq.get(cpid) or {}).get("shiq")
+                dyn = round(float(sq), 4) if sq is not None else None
+        if page_id:
+            href = f"{PLAYER_DIR.as_posix()}/{page_id}.html"
+            if p and p.get("global_rating") is not None:
+                dyn = round(float(p["global_rating"]), 4)
         r27 = year_links.get(i) or {}
         if href:
             info = dict(r)
@@ -1203,7 +1297,7 @@ def build_directory() -> dict:
             else:
                 info["cur_year"] = YEAR_FROM if not placeholder else None
             info["bump"] = bump
-            info_by_id[p["id"]] = info
+            info_by_id[page_id] = info
         by_year = {YEAR_FROM: r, YEAR_TO: r27}
         for y, lk in other_links.items():
             by_year[y] = lk.get(i) or {}
@@ -1246,15 +1340,26 @@ def build_directory() -> dict:
 
     # Player pages
     PLAYER_DIR.mkdir(parents=True, exist_ok=True)
-    page_for_name = {_nkey(p["name"]): f"{p['id']}.html" for p in with_hist.values()}
+    name_count: dict[str, int] = defaultdict(int)
+    for v in pages.values():
+        name_count[_nkey(v["p"]["name"])] += 1
+    page_for_name = {_nkey(v["p"]["name"]): f"{k}.html" for k, v in pages.items()
+                     if name_count[_nkey(v["p"]["name"])] == 1}
 
-    def link_for(name: str):
-        return page_for_name.get(_nkey(name))
+    def link_for(key: str):
+        """Page for a crawl person id, else for a (unique) name."""
+        if key in pid_page:
+            return f"{pid_page[key]}.html"
+        return page_for_name.get(_nkey(key))
 
-    for pid, p in with_hist.items():
-        info = info_by_id.get(pid) or {"state": STATE, "gender": "F"}
-        html = _player_html(p, info, histories[_nkey(p["name"])], pit, link_for)
+    for pid, v in pages.items():
+        info = info_by_id.get(pid) or v.get("info") or {"state": STATE, "gender": "F"}
+        html = _player_html(v["p"], info, v["hist"], v["pit"], link_for)
         (PLAYER_DIR / f"{pid}.html").write_text(html, encoding="utf-8")
+    # Pages left over from an earlier build (renamed or no longer linked)
+    for old in PLAYER_DIR.glob("*.html"):
+        if old.stem not in pages:
+            old.unlink()
 
     n_linked = sum(1 for r in rows if r[3])
     DIRECTORY_HTML.write_text(_directory_html(rows, placeholder, n_linked), encoding="utf-8")
