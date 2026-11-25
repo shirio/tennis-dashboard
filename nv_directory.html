@@ -56,15 +56,20 @@ h1 { font-size: 20px; font-weight: 600; margin-bottom: .8rem; }
 .colmenu .reset { color: #1a5fb4; font-size: 11px; padding: 6px 10px; cursor: pointer; }
 .tbl-wrap { overflow-x: auto; }
 table { border-collapse: collapse; font-size: 12px; }
-th, td { padding: 4px 10px; text-align: left; white-space: nowrap; }
+th, td { padding: 4px 6px; text-align: left; white-space: nowrap; }
 th:first-child, td:first-child { padding-left: 0; }
 th { font-size: 11px; font-weight: 600; color: #888; cursor: pointer; user-select: none;
      position: sticky; top: 0; background: #fff; }
-th.sorted::after { content: " ▲"; font-size: 8px; }
-th.sorted.desc::after { content: " ▼"; }
+/* Sort arrow takes no width: drawn just past the header text, over the gap. */
+th .hl { position: relative; }
+th.sorted { z-index: 2; }
+th.sorted .hl::after { content: "▲"; font-size: 8px; position: absolute; left: 100%; margin-left: 2px;
+  top: 50%; transform: translateY(-50%); }
+th.sorted.desc .hl::after { content: "▼"; }
 tbody tr:hover td { background: #faf9f6; }
 th.sex, td.sex { text-align: center; }
-th.bump, td.bump { text-align: center; cursor: default; font-variant-numeric: tabular-nums; }
+th.bump, td.bump { text-align: center; cursor: default; font-variant-numeric: tabular-nums;
+  padding-left: 4px; padding-right: 4px; }
 .bu { color: #27500A; font-weight: 600; }
 .blu { color: #8fb36c; font-weight: 600; }
 .bd { color: #791F1F; font-weight: 600; }
@@ -253,8 +258,8 @@ document.querySelectorAll('th[data-k]').forEach(function(th) {
     apply();
   };
 });
-// Lock column widths: measure every column over ALL rows once (all columns on,
-// every header showing a sort arrow), then pin those as min-widths so sorting,
+// Lock column widths: measure every column over ALL rows once (all columns on;
+// the sort arrow is drawn outside the layout), then pin those as min-widths so sorting,
 // filtering or paging never moves the columns. On a narrow screen the Name
 // column is capped to the space left over, and long names get an ellipsis.
 var lockW = null;
@@ -264,11 +269,9 @@ function fitWidths() {
     var keepOn = on, keepCls = tbl.className;
     on = {}; COLS.forEach(function(k) { on[k] = 1; });
     tbl.className = 'show-s';
-    ths.forEach(function(th) { th.classList.add('sorted', 'desc'); });
     view = ROWS.slice(); shown = ROWS.length; render();
     lockW = {};
     ths.forEach(function(th) { lockW[th.dataset.k] = Math.ceil(th.getBoundingClientRect().width); });
-    ths.forEach(function(th) { th.classList.remove('sorted', 'desc'); });
     on = keepOn; tbl.className = keepCls; shown = PAGE;
   }
   var others = 0;
@@ -283,6 +286,7 @@ function fitWidths() {
   document.getElementById('nmcap').textContent = nw < lockW.n
     ? '#tbl td.c-n { max-width: ' + nw + 'px; overflow: hidden; text-overflow: ellipsis; }' : '';
 }
+document.querySelectorAll('#tbl th[data-k]').forEach(function(th) { th.innerHTML = '<span class="hl">' + th.innerHTML + '</span>'; });
 var nmcap = document.createElement('style'); nmcap.id = 'nmcap'; document.head.appendChild(nmcap);
 fitWidths();
 window.addEventListener('resize', fitWidths);
