@@ -55,12 +55,40 @@ def league_tag(m: dict) -> str:
     lg = (m.get("league") or "").upper()
     if "PLAYOFF" in lg:
         return "Playoff"
-    for pat, tag in [(r"TRI-?LEVEL", "Tri-Level"), (r"\b18 ?& ?OVER", "18+"), (r"\b40 ?& ?OVER", "40+"),
-                     (r"\b55 ?& ?OVER", "55+"), (r"\b65 ?& ?OVER", "65+"), (r"\b70 ?& ?OVER", "70+"),
-                     (r"WEEKDAY", "Weekday"), (r"SENIOR", "Senior"), (r"SUMMER", "Summer"),
-                     (r"FLEX", "Flex"), (r"MIXED", "Mixed"), (r"FALL", "Fall"), (r"SPRING", "Spring")]:
-        if re.search(pat, lg):
-            return tag
+    return _league_kind(lg)
+
+
+_LEAGUE_PATS = [(r"TRI-?LEVEL", "Tri-Level"), (r"\b18 ?& ?OVER", "18+"), (r"\b40 ?& ?OVER", "40+"),
+                (r"\b55 ?& ?OVER", "55+"), (r"\b65 ?& ?OVER", "65+"), (r"\b70 ?& ?OVER", "70+"),
+                (r"ADULT (18|40|55|65)\b", None),  # 'League National Adult 40 3.5F'
+                (r"WEEKDAY", "Weekday"), (r"SENIOR", "Senior"), (r"SUMMER", "Summer"),
+                (r"FLEX", "Flex"), (r"MIXED", "Mixed"), (r"FALL", "Fall"), (r"SPRING", "Spring")]
+
+
+def _league_kind(text: str) -> str:
+    for pat, tag in _LEAGUE_PATS:
+        x = re.search(pat, text or "")
+        if x:
+            return tag or f"{x.group(1)}+"
+    return ""
+
+
+POSTSEASON = ("Playoff", "Districts", "Sectionals", "Nationals")
+
+
+def league_sub(m: dict, crawl: dict) -> str:
+    """For a postseason match, the league it came out of (18+, Tri-Level, Weekday...):
+    read from the match's league, its level path, and the championship's own name and
+    feeder team (Shirin, 2026-11-25: show it under Districts/Sectionals/...)."""
+    texts = [m.get("league") or "", m.get("level") or ""]
+    champs, teams = crawl.get("champ_flights", {}), crawl.get("teams", {})
+    for tid in m.get("teams") or []:
+        cf = champs.get((teams.get(tid) or {}).get("champ", "")) or {}
+        texts += [cf.get("name") or "", cf.get("from_team") or ""]
+    for s in texts:
+        k = _league_kind(s.upper().replace("PLAYOFF", ""))
+        if k:
+            return k
     return ""
 
 
@@ -260,6 +288,7 @@ def crawl_histories(crawl: dict, timelines: dict[str, dict],
             wko = not mine or not theirs or not line.get("winner")
             rows.append({
                 "date": date, "mid": mid, "div": level_of(m, line) or "?", "league": league_tag(m),
+                "league_sub": league_sub(m, crawl) if league_tag(m) in POSTSEASON else "",
                 "league_full": m.get("league", ""), "flight": m.get("flight", ""),
                 "my_team": team_name(my_tid, m.get("home" if side == "home" else "away", "")),
                 "opp_team": team_name(op_tid, m.get("away" if side == "home" else "home", "")),
