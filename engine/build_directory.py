@@ -310,6 +310,9 @@ th.sorted {{ z-index: 2; }}
 th.sorted .hl::after {{ content: "▲"; font-size: 8px; position: absolute; left: 100%; margin-left: 2px;
   top: 50%; transform: translateY(-50%); }}
 th.sorted.desc .hl::after {{ content: "▼"; }}
+/* right-aligned and centered headers: arrow before the text, in the left padding */
+th.num.sorted .hl::after, th.sex.sorted .hl::after, th.bump.sorted .hl::after, th.delta.sorted .hl::after {{
+  left: auto; right: 100%; margin-left: 0; margin-right: 2px; }}
 tbody tr:hover td {{ background: #faf9f6; }}
 th.sex, td.sex {{ text-align: center; }}
 th.bump, td.bump {{ text-align: center; cursor: default; font-variant-numeric: tabular-nums;
