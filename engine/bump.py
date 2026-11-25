@@ -267,24 +267,82 @@ def year_end_call(estimate: Optional[float], matches: int, level: Optional[float
         }[call],
         "matches": matches,
     }
+    # Past the top of the NEXT level too: a two-level move (e.g. 3.5 -> 4.5).
+    if call == "up" and est > top + LEVEL_WIDTH + CLEAR_MARGIN:
+        out["levels"] = 2
+        out["label"] = "Likely up two levels"
+    elif call == "down" and est <= floor - LEVEL_WIDTH - CLEAR_MARGIN:
+        out["levels"] = 2
+        out["label"] = "Likely down two levels"
     if letter in ("S", "A") and strikes is not None:
         out["strikes"] = strikes
     return out
 
 
-def compute_bumps(players: list[dict], events: Optional[list] = None,
-                  playoffs: Optional[set[str]] = None) -> dict[str, dict]:
-    """{player_key: year_end_call(...)} for every player in players.json."""
-    pbn = R._build_players_by_name(players)
-    if events is None:
-        events = R._collect_court_events(R._discover_standings_files(), pbn)
-        events.sort(key=R._date_sort_key)
-    if playoffs is None:
-        playoffs = playoff_match_ids()
+# Which matches USTA counts toward a year-end rating (Shirin, 2026-11-25):
+# every adult league except summer leagues, played after the previous year's
+# cutoff and on or before this year's. The cutoff is about a month before the
+# year-end ratings come out; later matches count toward the next year.
+RATING_YEAR_WINDOWS = {
+    2026: ("11/9/2025", "11/8/2026"),
+}
+CURRENT_RATING_YEAR = 2026
+
+
+def counts_toward_year_end(date: str, league: str = "",
+                           year: int = CURRENT_RATING_YEAR) -> bool:
+    if "SUMMER" in (league or "").upper():
+        return False
+    lo, hi = RATING_YEAR_WINDOWS[year]
+    k = R._date_str_sort_key
+    return k(lo) <= k(date) <= k(hi)
+
+
+def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_YEAR):
+    """(events, starts, letters, playoffs) for the year-end fit: standings
+    data plus the TennisLink team crawl, filtered to matches USTA counts."""
+    from engine import crawl_events as C
+    events = R._collect_court_events(R._discover_standings_files(), pbn)
+    playoffs = playoff_match_ids()
     levels = {k: parse_level(p.get("ntrp_rating")) for k, p in pbn.items()}
     starts = {k: start_rating(p.get("dynamic_rating_baseline"), *levels[k])
               for k, p in pbn.items()}
-    letters = {k: levels[k][1] for k in pbn}
+    crawl = C.load_crawl(year)
+    if crawl:
+        extra, keys = C.crawl_events(crawl, pbn, events)
+        matches = crawl.get("matches", {})
+        events += [e for e in extra
+                   if counts_toward_year_end(e.date, matches[e.match_id].get("league", ""), year)]
+        playoffs |= {mid for mid, m in matches.items() if m.get("kind") == "champ"}
+        for pid, k in keys.items():
+            if k.startswith("tl::"):
+                person = crawl["people"][pid]
+                levels[k] = parse_level(person.get("level"))
+                starts[k] = start_rating(C.baseline_for(person), *levels[k])
+    events = [e for e in events if counts_toward_year_end(e.date, "", year)]
+    events.sort(key=R._date_sort_key)
+    letters = {k: lv[1] for k, lv in levels.items()}
+    return events, starts, letters, playoffs, levels
+
+
+def compute_bumps(players: list[dict], events: Optional[list] = None,
+                  playoffs: Optional[set[str]] = None) -> dict[str, dict]:
+    """{player_key: year_end_call(...)} for every player in players.json.
+
+    With no ``events``, uses the standings plus the team crawl (see
+    year_end_inputs)."""
+    pbn = R._build_players_by_name(players)
+    if events is None:
+        events, starts, letters, auto_playoffs, levels = year_end_inputs(players, pbn)
+        if playoffs is None:
+            playoffs = auto_playoffs
+    else:
+        if playoffs is None:
+            playoffs = playoff_match_ids()
+        levels = {k: parse_level(p.get("ntrp_rating")) for k, p in pbn.items()}
+        starts = {k: start_rating(p.get("dynamic_rating_baseline"), *levels[k])
+                  for k, p in pbn.items()}
+        letters = {k: levels[k][1] for k in pbn}
     year_end, counts = fit_year_end(events, starts, letters, playoffs)
     strikes = run_bump(events, starts, levels)    # running rating: strikes only
     out = {}
