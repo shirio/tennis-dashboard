@@ -100,6 +100,12 @@ _TEAM_ABBREV = {
     "spanish trail #2":           "S. Trail #2",
     "summerlin arbors":           "Summerlin",
     "whitney mesa park":          "Whitney",
+    "madeira canyon park":        "Madeira",
+    "sun city anthem":            "SC Anthem",
+    "all in":                     "All In",
+    # TennisLink typos seen in the 2026 crawl
+    "dragonridge c":              "Dragonridge",
+    "summerin arbors":            "Summerlin",
 }
 
 
@@ -148,6 +154,10 @@ def _abbrev_team(name: str, case_map: dict[str, str] | None = None) -> str:
     key = name.lower().strip()
     if key in _TEAM_ABBREV:
         return _TEAM_ABBREV[key]
+    # Numbered teams of a known club: "ANTHEM CC #1" -> "Anthem #1"
+    m = re.match(r"^(.*?)\s*#\s*(\d+)$", key)
+    if m and m.group(1) in _TEAM_ABBREV:
+        return f"{_TEAM_ABBREV[m.group(1)]} #{m.group(2)}"
     return _display_team_name(name, case_map)
 
 

@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -104,6 +105,13 @@ def person_player_keys(players: list[dict], crawl: dict) -> dict[str, dict]:
     return {pid: pbn[k] for pid, k in person_keys(crawl, pbn).items() if k in pbn}
 
 
+def norm_name(s: str) -> str:
+    """Same key the identity pass uses (scrapers.scrape_tl_teams.norm):
+    accents dropped, punctuation such as ' and - turned into spaces."""
+    s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode()
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", s.lower())).strip()
+
+
 def crawl_histories(crawl: dict, timelines: dict[str, dict]) -> dict[str, list[dict]]:
     """{person id: [history rows, oldest first]}."""
     ident = crawl.get("identity_person", {})
@@ -112,7 +120,7 @@ def crawl_histories(crawl: dict, timelines: dict[str, dict]) -> dict[str, list[d
     matches = crawl.get("matches", {})
 
     def pid_of(name, team_id):
-        return ident.get(f"{name.lower()}#{team_id}")
+        return ident.get(f"{norm_name(name)}#{team_id}")
 
     def pre(pid, date):
         v = (timelines.get(pid) or {}).get(date)
