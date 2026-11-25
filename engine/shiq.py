@@ -22,6 +22,8 @@ Players with no scored match keep their baseline, as before.
 """
 from __future__ import annotations
 
+import json
+
 from engine import ratings as R
 from engine import ratings_v9 as V9
 
@@ -34,12 +36,45 @@ def _div_key(division: str) -> str | None:
     return None
 
 
-def compute(players: list[dict]):
+def compute(players: list[dict], use_crawl: bool = True):
+    """Run v9 over the standings data plus the TennisLink team crawl."""
+    from engine import crawl_events as C
     pbn = R._build_players_by_name(players)
     events = R._collect_court_events(R._discover_standings_files(), pbn)
+    baselines = V9.baselines_from_players(players)
+    provisional: set[str] = set()
+    crawl = C.load_crawl() if use_crawl else None
+    people = {}
+    if crawl:
+        extra, keys = C.crawl_events(crawl, pbn, events)
+        events += extra
+        for pid, k in keys.items():
+            if k.startswith("tl::"):
+                baselines[k] = C.baseline_for(crawl["people"][pid])
+                provisional.add(k)
+                people[k] = crawl["people"][pid]
     events.sort(key=R._date_sort_key)
-    res = V9.run_v9(events, V9.baselines_from_players(players), timelines=True)
+    res = V9.run_v9(events, baselines, timelines=True,
+                    provisional_keys=frozenset(provisional))
+    res.crawl_people = people
     return pbn, res
+
+
+def _write_crawl_people(res) -> int:
+    """ShiQ for crawled players who aren't in players.json."""
+    out = {}
+    for k, person in getattr(res, "crawl_people", {}).items():
+        if k not in res.matches:
+            continue
+        sm = res.singles_matches.get(k, 0)
+        out[k[4:]] = {"name": person["name"], "area": person.get("area"),
+                      "level": person.get("level"),
+                      "shiq": round(res.rating[k], 4), "matches": res.matches[k],
+                      "shiq_singles": round(res.singles(k), 4) if sm else None,
+                      "singles_matches": sm}
+    (R.PLAYERS_JSON.parent / "shiq_crawl_people.json").write_text(
+        json.dumps(out, indent=1, ensure_ascii=False))
+    return len(out)
 
 
 def apply_v9(players: list[dict] | None = None, save: bool = True) -> dict:
@@ -85,9 +120,12 @@ def apply_v9(players: list[dict] | None = None, save: bool = True) -> dict:
             p[f"rating_timeline_{dk}"][date] = round(pre, 4)
             p[f"rating_post_timeline_{dk}"][date] = round(post, 4)
         n += 1
+    n_crawl = 0
     if own and save:
         R._save(R.PLAYERS_JSON, players)
-    print(f"  [shiq v9] {n} players rated from {len(res.pre_match)} court lines")
+        n_crawl = _write_crawl_people(res)
+    print(f"  [shiq v9] {n} players rated from {len(res.pre_match)} court lines"
+          f" (+{n_crawl} crawled players not in players.json)")
     return {"players": n, "lines": len(res.pre_match)}
 
 
