@@ -80,3 +80,18 @@ class TestTimelines(unittest.TestCase):
     def test_side_win_probability_is_average_gap(self):
         self.assertAlmostEqual(V9.side_win_probability([3.2, 3.0], [3.1, 3.1]), 0.5)
         self.assertGreater(V9.side_win_probability([3.3], [3.0]), 0.85)
+
+
+def test_line_timeline_two_matches_same_day():
+    from engine import ratings as R
+    from engine.ratings_v9 import run_v9
+    ev = [R.CourtEvent(date="11/6/2026", match_id="C1", line_label="#3 Doubles", division="3.0",
+                       winner_keys=["a", "b"], loser_keys=["c", "d"], score="6-4 6-1"),
+          R.CourtEvent(date="11/6/2026", match_id="C2", line_label="#3 Doubles", division="3.0",
+                       winner_keys=["a", "b"], loser_keys=["e", "f"], score="6-0 6-0")]
+    res = run_v9(ev, {k: 3.0 for k in "abcdef"}, timelines=True)
+    l1, l2 = res.line_timeline["a"]["C1|#3 Doubles"], res.line_timeline["a"]["C2|#3 Doubles"]
+    assert l1[1] == l2[0]                      # second match starts where the first ended
+    assert l1[0] < l1[1] < l2[1]
+    day = res.timeline["a"][("3.0", "11/6/2026")]
+    assert day == [l1[0], l2[1]]

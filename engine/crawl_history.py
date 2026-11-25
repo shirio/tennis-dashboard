@@ -152,6 +152,25 @@ def load_timelines(players: list[dict], crawl: dict, crawl_people_path: Path | N
     return out
 
 
+def load_line_timelines(players: list[dict], crawl: dict,
+                        crawl_people_path: Path | None = None) -> dict[str, dict]:
+    """{crawl person id: {"match id|line": [before, after]}}: each line's own change."""
+    from engine import ratings as R
+    from engine.crawl_events import person_keys
+    pbn = R._build_players_by_name(players)
+    out = {}
+    for pid, k in person_keys(crawl, pbn).items():
+        p = pbn.get(k)
+        if p and p.get("shiq_lines"):
+            out[pid] = p["shiq_lines"]
+    path = crawl_people_path or ROOT / "data" / "shiq_crawl_people.json"
+    if path.exists():
+        for pid, v in json.loads(path.read_text()).items():
+            if pid not in out and v.get("lines"):
+                out[pid] = v["lines"]
+    return out
+
+
 def person_player_keys(players: list[dict], crawl: dict) -> dict[str, dict]:
     """{crawl person id: players.json entry} for crawled people who are core players."""
     from engine import ratings as R
@@ -167,7 +186,8 @@ def norm_name(s: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", s.lower())).strip()
 
 
-def crawl_histories(crawl: dict, timelines: dict[str, dict]) -> dict[str, list[dict]]:
+def crawl_histories(crawl: dict, timelines: dict[str, dict],
+                    lines: dict[str, dict] | None = None) -> dict[str, list[dict]]:
     """{person id: [history rows, oldest first]}."""
     ident = crawl.get("identity_person", {})
     teams = crawl.get("teams", {})
@@ -177,8 +197,16 @@ def crawl_histories(crawl: dict, timelines: dict[str, dict]) -> dict[str, list[d
     def pid_of(name, team_id):
         return ident.get(f"{norm_name(name)}#{team_id}")
 
-    def pre(pid, date):
-        v = (timelines.get(pid) or {}).get(date)
+    lines = lines or {}
+
+    def line_sq(pid, ref):
+        v = (lines.get(pid) or {}).get(ref)
+        return [float(v[0]), float(v[1])] if v else None
+
+    def pre(pid, date, ref=None):
+        v = line_sq(pid, ref) if ref else None
+        if v is None:
+            v = (timelines.get(pid) or {}).get(date)
         return f"{float(v[0]):.2f}" if v else None
 
     origins = renamed_team_origins(crawl)
@@ -240,8 +268,9 @@ def crawl_histories(crawl: dict, timelines: dict[str, dict]) -> dict[str, list[d
                 "line": _line_label(lbl), "score": line.get("score", ""),
                 "won": line.get("winner") == side, "wko": wko,
                 "dq": line.get("dq") or [],
-                "partners": partners, "partner_ids": p_ids, "partner_r": [pre(x, date) for x in p_ids],
-                "opps": theirs, "opp_ids": o_ids, "opp_r": [pre(x, date) for x in o_ids],
+                "partners": partners, "partner_ids": p_ids, "partner_r": [pre(x, date, f"{mid}|{lbl}") for x in p_ids],
+                "opps": theirs, "opp_ids": o_ids, "opp_r": [pre(x, date, f"{mid}|{lbl}") for x in o_ids],
+                "sq": line_sq(pid, f"{mid}|{lbl}"),
                 "year_end": (m.get("year_end") or {}).get("counts"),
             })
 

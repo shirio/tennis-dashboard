@@ -18,6 +18,7 @@ and adds:
     shiq_singles_matches / shiq_matches  match counts behind those numbers
     shiq_v8       the old v8 number, kept for reference
     shiq_timeline {date: [ShiQ going in, ShiQ after]} across every level
+    shiq_lines    {"match id|line": [ShiQ going in, ShiQ after]}, one per line
 
 Players with no scored match keep their baseline, as before.
 """
@@ -130,6 +131,12 @@ def _all_levels_timeline(res, k: str) -> dict[str, list[float]]:
     return by_date
 
 
+def _line_timeline(res, k: str) -> dict[str, list[float]]:
+    """{"match id|line": [ShiQ going in, ShiQ after]}: each line's own change,
+    so two matches on one day each show theirs."""
+    return {ref: [round(a, 4), round(b, 4)] for ref, (a, b) in res.line_timeline.get(k, {}).items()}
+
+
 def _write_crawl_people(res) -> int:
     """ShiQ for crawled players who aren't in players.json."""
     out = {}
@@ -142,7 +149,8 @@ def _write_crawl_people(res) -> int:
                       "shiq": round(res.rating[k], 4), "matches": res.matches[k],
                       "shiq_singles": round(res.singles(k), 4) if sm else None,
                       "singles_matches": sm,
-                      "timeline": _all_levels_timeline(res, k)}
+                      "timeline": _all_levels_timeline(res, k),
+                      "lines": _line_timeline(res, k)}
     (R.PLAYERS_JSON.parent / "shiq_crawl_people.json").write_text(
         json.dumps(out, indent=1, ensure_ascii=False))
     return len(out)
@@ -159,7 +167,7 @@ def apply_v9(players: list[dict] | None = None, save: bool = True) -> dict:
         p["shiq_v8"] = p.get("global_rating")
         if k not in res.matches:
             for f in ("shiq_singles", "shiq_doubles", "shiq_matches",
-                      "shiq_singles_matches", "shiq_timeline"):
+                      "shiq_singles_matches", "shiq_timeline", "shiq_lines"):
                 p.pop(f, None)
             bl = p.get("dynamic_rating_baseline")
             if bl is not None:
@@ -185,6 +193,7 @@ def apply_v9(players: list[dict] | None = None, save: bool = True) -> dict:
             p[f"rating_timeline_{div}"] = {}
             p[f"rating_post_timeline_{div}"] = {}
         p["shiq_timeline"] = _all_levels_timeline(res, k)
+        p["shiq_lines"] = _line_timeline(res, k)
         for (division, date), (pre, post) in res.timeline.get(k, {}).items():
             dk = _div_key(division)
             if dk is None:
