@@ -1,8 +1,10 @@
 name: Deploy to GitHub Pages
 
+# GitHub's built-in "pages build and deployment" already publishes every push
+# to main. Running this workflow on push too made two deploys race for the same
+# commit, and this one kept failing ("No artifacts named github-pages"), which
+# sent a failure email for nearly every merge. Kept as a manual fallback only.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
