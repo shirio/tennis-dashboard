@@ -319,8 +319,8 @@ h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .8rem; }}
                  box-shadow: 0 1px 1px rgba(0,0,0,.08); }}
 .mv-up {{ color: #27500A; font-weight: 600; }}
 .mv-down {{ color: #791F1F; font-weight: 600; }}
-.colbar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: .3rem;
-          position: relative; max-width: 640px; }}
+.colbar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 0;
+          padding: 4px 0; position: sticky; top: 0; z-index: 7; background: #fff; max-width: 640px; }}
 .count {{ font-size: 11px; color: #888; }}
 .colbtn {{ padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font: inherit; font-size: 11px;
           color: #222; background: #fff; cursor: pointer; }}
@@ -374,6 +374,12 @@ th.ctr.sorted .hl {{ left: -5px; }}
         font-size: 13px; margin-bottom: .8rem; }}
 {hide_css}
 @media (max-width: 500px) {{ table:not(.show-s) .c-s {{ display: none; }} }}
+/* Phones: the Name column stays put while the table scrolls sideways. */
+@media (max-width: 500px) {{
+  #tbl .c-n {{ position: sticky; left: 0; background: #fff; z-index: 2; }}
+  .tbl-wrap.xs #tbl .c-n {{ box-shadow: 1px 0 0 #eee; }}
+  #tbl th.c-n {{ z-index: 5; }}
+}}
 </style></head><body><div class="wrap">
 <div class="crumbs"><a href="index.html">Tennis Dashboard</a> › Nevada</div>
 <h1>Nevada players</h1>
@@ -623,14 +629,21 @@ function saveView() {{
   window.addEventListener('scroll', function() {{ clearTimeout(st); st = setTimeout(saveView, 200); }}, {{ passive: true }});
   ['q', 'fr'].forEach(function(id) {{ document.getElementById(id).addEventListener('input', saveView); }});
 }})();
+// Phones: show the Name column's edge line only once the table has scrolled sideways.
+(function() {{
+  var w = document.querySelector('.tbl-wrap'); if (!w || !document.getElementById('tbl')) return;
+  w.addEventListener('scroll', function() {{ w.classList.toggle('xs', w.scrollLeft > 0); }}, {{ passive: true }});
+}})();
 // Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
 // from following the page, so slide the header cells down as the page scrolls.
 (function() {{
   var t = document.querySelector('table#tbl, table.hist'); if (!t) return;
   function stick() {{
     var th = t.tHead; if (!th) return;
+    // The count + Columns bar above the table is CSS-sticky; titles stick just under it.
+    var cb = document.querySelector('.colbar'), top = cb ? cb.offsetHeight : 0;
     var r = t.getBoundingClientRect(), h = th.offsetHeight;
-    var off = Math.max(0, Math.min(-r.top, r.height - h * 2));
+    var off = Math.max(0, Math.min(top - r.top, r.height - h * 2));
     var v = off ? 'translateY(' + off + 'px)' : '';
     t.classList.toggle('stuck', off > 0);
     th.querySelectorAll('th').forEach(function(c) {{ c.style.transform = v; }});
@@ -888,7 +901,8 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
 .sd0 {{ color: #aaa; }}
 .set.sl {{ color: #791F1F; font-weight: 600; }}
 .sn {{ display: none; }}
-.colbar {{ display: none; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }}
+.colbar {{ display: none; justify-content: space-between; align-items: center; margin: 4px 0 0; padding: 4px 0;
+          position: sticky; top: 0; z-index: 7; background: #fff; }}
 .colbar .count {{ font-size: 11px; color: #888; }}
 .colbtn {{ padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font: inherit; font-size: 11px;
           color: #222; background: #fff; cursor: pointer; }}
@@ -1011,8 +1025,10 @@ var COUNTS = {json.dumps(counts, ensure_ascii=False)};
   var t = document.querySelector('table#tbl, table.hist'); if (!t) return;
   function stick() {{
     var th = t.tHead; if (!th) return;
+    // The count + Columns bar above the table is CSS-sticky; titles stick just under it.
+    var cb = document.querySelector('.colbar'), top = cb ? cb.offsetHeight : 0;
     var r = t.getBoundingClientRect(), h = th.offsetHeight;
-    var off = Math.max(0, Math.min(-r.top, r.height - h * 2));
+    var off = Math.max(0, Math.min(top - r.top, r.height - h * 2));
     var v = off ? 'translateY(' + off + 'px)' : '';
     t.classList.toggle('stuck', off > 0);
     th.querySelectorAll('th').forEach(function(c) {{ c.style.transform = v; }});
