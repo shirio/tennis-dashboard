@@ -28,6 +28,7 @@ from pathlib import Path
 
 from engine.build_html import (
     _LINE_PILL_COLORS,
+    _abbrev_team,
     _date_sort_key,
     _line_label_short,
     _make_pit_rating,
@@ -293,6 +294,14 @@ h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .8rem; }}
 .controls input[type=search] {{ flex: 0 1 260px; padding: .35rem .8rem; border: 1px solid #ccc;
   border-radius: 20px; font-size: 13px; outline: none; }}
 .controls input[type=search]:focus {{ border-color: #1a5fb4; }}
+.qwrap {{ position: relative; display: inline-flex; flex: 0 1 260px; }}
+.qwrap input[type=search] {{ flex: 1 1 auto; width: 100%; padding-right: 1.9rem; }}
+.qwrap input::-webkit-search-cancel-button {{ -webkit-appearance: none; display: none; }}
+.qx {{ position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;
+      border: 0; border-radius: 50%; background: #e4e4e4; color: #555; font-size: 14px; line-height: 20px;
+      padding: 0; cursor: pointer; }}
+.qx:hover {{ background: #d0d0d0; color: #222; }}
+.qx[hidden] {{ display: none; }}
 .controls select {{ appearance: none; -webkit-appearance: none; padding: .35rem 1.8rem .35rem .8rem;
   border: 1px solid #ccc; border-radius: 20px; font-size: 13px; color: #333; cursor: pointer;
   background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23888' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right .7rem center; }}
@@ -360,7 +369,7 @@ th.ctr.sorted .hl {{ left: -5px; }}
 <h1>Nevada players</h1>
 {note}
 <div class="controls">
-  <input type="search" id="q" placeholder="Search name…" aria-label="Search name">
+  <span class="qwrap"><input type="search" id="q" placeholder="Search name…" aria-label="Search name"><button type="button" id="qx" class="qx" aria-label="Clear search" title="Clear" hidden>×</button></span>
   <span class="seg" id="fg" role="group" aria-label="Sex"><button class="on" data-v="">All</button><button data-v="M">M</button><button data-v="F">F</button></span>
   <select id="fr" aria-label="Rating" title="Filters on the current rating: {YEAR_TO} when published, otherwise {YEAR_FROM}"><option value="">Rating: all</option></select>
 </div>
@@ -505,6 +514,13 @@ function render() {{
 }})();
 document.getElementById('more').onclick = function() {{ shown += PAGE * 3; render(); }};
 document.getElementById('q').addEventListener('input', apply);
+(function() {{
+  var q = document.getElementById('q'), x = document.getElementById('qx');
+  function sync() {{ x.hidden = !q.value; }}
+  q.addEventListener('input', sync);
+  x.onclick = function() {{ q.value = ''; sync(); apply(); if (window.saveView) saveView(); q.focus(); }};
+  window.syncQx = sync;
+}})();
 document.getElementById('fr').addEventListener('change', apply);
 document.querySelectorAll('#fg button').forEach(function(b) {{
   b.onclick = function() {{
@@ -574,6 +590,7 @@ function saveView() {{
     th0.classList.add('sorted'); if (sortDir < 0) th0.classList.add('desc');
     apply();
     if (v.shown > shown) {{ shown = v.shown; render(); }}
+    if (window.syncQx) syncQx();
     window.scrollTo(0, v.y || 0);
   }} else {{
     document.querySelector('th[data-k="n"]').classList.add('sorted');
@@ -743,10 +760,10 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         body.append(
             f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-sq">{sq}</td><td class="c-date">{date_html}</td>'
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
-            f'<td class="c-team">{_esc(r.get("my_team", ""))}</td><td class="c-line">{pill}</td>'
+            f'<td class="c-team" title="{_esc(r.get("my_team", ""))}">{_esc(_abbrev_team(r.get("my_team", "")))}</td><td class="c-line">{pill}</td>'
             f'<td class="c-score"{res_tip}>{score}</td>'
             f'<td class="c-partner">{partners}</td><td class="c-opp">{opps}</td>'
-            f'<td class="c-oppteam">{_esc(r.get("opp_team", ""))}</td></tr>')
+            f'<td class="c-oppteam" title="{_esc(r.get("opp_team", ""))}">{_esc(_abbrev_team(r.get("opp_team", "")))}</td></tr>')
 
     counts = {}
     for k in ["all"] + years:
