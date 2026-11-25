@@ -545,7 +545,7 @@ document.getElementById('q').addEventListener('input', apply);
   var q = document.getElementById('q'), x = document.getElementById('qx');
   function sync() {{ x.hidden = !q.value; }}
   q.addEventListener('input', sync);
-  x.onclick = function() {{ q.value = ''; sync(); apply(); if (window.saveView) saveView(); q.focus(); }};
+  x.onclick = function() {{ q.value = ''; sync(); apply(); if (window.saveView) saveView(); q.blur(); }};
   window.syncQx = sync;
 }})();
 document.getElementById('fr').addEventListener('change', apply);
