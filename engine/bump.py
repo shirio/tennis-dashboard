@@ -280,7 +280,7 @@ def year_end_call(estimate: Optional[float], matches: int, level: Optional[float
 
 
 # Which matches USTA counts toward a year-end rating (Shirin, 2026-11-25):
-# every adult league except summer leagues, played after the previous year's
+# every adult league except summer and mixed leagues, played after the previous year's
 # cutoff and on or before this year's. The cutoff is about a month before the
 # year-end ratings come out; later matches count toward the next year.
 RATING_YEAR_WINDOWS = {
@@ -291,7 +291,8 @@ CURRENT_RATING_YEAR = 2026
 
 def counts_toward_year_end(date: str, league: str = "",
                            year: int = CURRENT_RATING_YEAR) -> bool:
-    if "SUMMER" in (league or "").upper():
+    lg = (league or "").upper()
+    if "SUMMER" in lg or "MIXED" in lg:   # mixed never counts toward NTRP (Shirin)
         return False
     lo, hi = RATING_YEAR_WINDOWS[year]
     k = R._date_str_sort_key
