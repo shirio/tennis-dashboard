@@ -91,7 +91,8 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .sd0 { color: #aaa; }
 .set.sl { color: #791F1F; font-weight: 600; }
 .sn { display: none; }
-.colbar { display: none; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }
+.colbar { display: none; justify-content: space-between; align-items: center; margin: 4px 0 0; padding: 4px 0;
+          position: sticky; top: 0; z-index: 7; background: #fff; }
 .colbar .count { font-size: 11px; color: #888; }
 .colbtn { padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font: inherit; font-size: 11px;
           color: #222; background: #fff; cursor: pointer; }
@@ -141,7 +142,7 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
   <div class="who"><h1>Stacy Burr</h1>
     <div class="loc">Henderson, NV · Female</div><div class="bumpl" title="Likely down: year-end estimate 2.45 after 24 matches, 0 strikes"><span class="bm"><svg class="bchev" viewBox="0 0 14 15" width="14" height="15" role="img" aria-label="Likely down" style="color:#791F1F;vertical-align:middle"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5,5 7,9 11.5,5"/></g></svg></span> Likely down · year-end est. 2.45</div></div>
   <div class="cards">
-    <div class="card"><div class="l">USTA</div><div class="v" title="Appeal. Probably appealed up: TennisRecord estimate 2.50 after the last 2025 match (12/09/2025), 3.0 band is 2.50–3.00 (close, needs review)">3.0<span class="lt">A<span class="ap apc">↑</span></span></div><div class="s">12/31/25</div></div>
+    <div class="card"><div class="l">USTA</div><div class="v" title="Appeal. Probably appealed up: TennisRecord estimate 2.67 after the last 2025 match (11/04/2025), 3.0 band is 2.50–3.00 (close, needs review)">3.0<span class="lt">A<span class="ap apc">↑</span></span></div><div class="s">12/31/25</div></div>
     <div class="card"><div class="l">ShiQ</div><div class="v">2.28</div><div class="s">11/24/26</div></div>
     <div class="card" title="USTA World Tennis Number (doubles) converted to the NTRP scale; confidence 100%"><div class="l">Doubles</div><div class="v">2.35</div><div class="s">WTN 30.2</div></div>
   </div>
@@ -215,8 +216,10 @@ var COUNTS = {"all": "32 matches · 6–26 overall", "2026": "32 matches · 6–
   var t = document.querySelector('table#tbl, table.hist'); if (!t) return;
   function stick() {
     var th = t.tHead; if (!th) return;
+    // The count + Columns bar above the table is CSS-sticky; titles stick just under it.
+    var cb = document.querySelector('.colbar'), top = cb ? cb.offsetHeight : 0;
     var r = t.getBoundingClientRect(), h = th.offsetHeight;
-    var off = Math.max(0, Math.min(-r.top, r.height - h * 2));
+    var off = Math.max(0, Math.min(top - r.top, r.height - h * 2));
     var v = off ? 'translateY(' + off + 'px)' : '';
     t.classList.toggle('stuck', off > 0);
     th.querySelectorAll('th').forEach(function(c) { c.style.transform = v; });

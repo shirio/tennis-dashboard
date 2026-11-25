@@ -319,8 +319,8 @@ h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .8rem; }}
                  box-shadow: 0 1px 1px rgba(0,0,0,.08); }}
 .mv-up {{ color: #27500A; font-weight: 600; }}
 .mv-down {{ color: #791F1F; font-weight: 600; }}
-.colbar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: .3rem;
-          position: relative; max-width: 640px; }}
+.colbar {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 0;
+          padding: 4px 0; position: sticky; top: 0; z-index: 7; background: #fff; max-width: 640px; }}
 .count {{ font-size: 11px; color: #888; }}
 .colbtn {{ padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font: inherit; font-size: 11px;
           color: #222; background: #fff; cursor: pointer; }}
@@ -629,8 +629,10 @@ function saveView() {{
   var t = document.querySelector('table#tbl, table.hist'); if (!t) return;
   function stick() {{
     var th = t.tHead; if (!th) return;
+    // The count + Columns bar above the table is CSS-sticky; titles stick just under it.
+    var cb = document.querySelector('.colbar'), top = cb ? cb.offsetHeight : 0;
     var r = t.getBoundingClientRect(), h = th.offsetHeight;
-    var off = Math.max(0, Math.min(-r.top, r.height - h * 2));
+    var off = Math.max(0, Math.min(top - r.top, r.height - h * 2));
     var v = off ? 'translateY(' + off + 'px)' : '';
     t.classList.toggle('stuck', off > 0);
     th.querySelectorAll('th').forEach(function(c) {{ c.style.transform = v; }});
@@ -888,7 +890,8 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
 .sd0 {{ color: #aaa; }}
 .set.sl {{ color: #791F1F; font-weight: 600; }}
 .sn {{ display: none; }}
-.colbar {{ display: none; justify-content: space-between; align-items: center; margin: 4px 0 6px; position: relative; }}
+.colbar {{ display: none; justify-content: space-between; align-items: center; margin: 4px 0 0; padding: 4px 0;
+          position: sticky; top: 0; z-index: 7; background: #fff; }}
 .colbar .count {{ font-size: 11px; color: #888; }}
 .colbtn {{ padding: 4px 10px; border: 1px solid #ccc; border-radius: 20px; font: inherit; font-size: 11px;
           color: #222; background: #fff; cursor: pointer; }}
@@ -1011,8 +1014,10 @@ var COUNTS = {json.dumps(counts, ensure_ascii=False)};
   var t = document.querySelector('table#tbl, table.hist'); if (!t) return;
   function stick() {{
     var th = t.tHead; if (!th) return;
+    // The count + Columns bar above the table is CSS-sticky; titles stick just under it.
+    var cb = document.querySelector('.colbar'), top = cb ? cb.offsetHeight : 0;
     var r = t.getBoundingClientRect(), h = th.offsetHeight;
-    var off = Math.max(0, Math.min(-r.top, r.height - h * 2));
+    var off = Math.max(0, Math.min(top - r.top, r.height - h * 2));
     var v = off ? 'translateY(' + off + 'px)' : '';
     t.classList.toggle('stuck', off > 0);
     th.querySelectorAll('th').forEach(function(c) {{ c.style.transform = v; }});
