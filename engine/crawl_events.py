@@ -120,8 +120,10 @@ def crawl_events(crawl: dict, pbn: dict, existing: list[R.CourtEvent] = ()
                 # the match was PLAYED; the standings keep the scheduled date of a
                 # rescheduled match (e.g. scheduled 3/14, played 3/19). Use the
                 # played date so ratings timelines line up with the crawl pages.
-                if dup is not None and dup.date != m["date"]:
-                    dup.date = m["date"]
+                if dup is not None:
+                    if dup.date != m["date"]:
+                        dup.date = m["date"]
+                    dup.crawl_ref = f"{mid}|{ln['line']}"
                 continue
             seen.setdefault(sig, []).append((day, None))
             out.append(R.CourtEvent(date=m["date"], match_id=mid, line_label=ln["line"],

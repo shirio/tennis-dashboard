@@ -826,11 +826,18 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
     # ShiQ per match: change = post-match minus pre-match (engine timelines, de-levered).
     # With no post value, fall back to the next match's pre (or the current ShiQ) and
     # leave the "after" line blank.
-    pits = [_f(pit(nk, r["date"], r["div"].replace(".", ""))) for r in history]
+    # Crawl rows carry their own line's [before, after] ("sq"), so two matches
+    # on one day each show their own change.
+    pits = [r["sq"][0] if r.get("sq") else _f(pit(nk, r["date"], r["div"].replace(".", "")))
+            for r in history]
     shiq_cells = []
     for i, (r, before) in enumerate(zip(history, pits)):
         if r.get("wko") or before is None:
             shiq_cells.append("")
+            continue
+        if r.get("sq"):
+            after = r["sq"][1]
+            shiq_cells.append(_sq_delta(after - before) + f'<span class="sq-after">{after:.2f}</span>')
             continue
         post_fn = getattr(pit, "post", None)
         after = post_fn(nk, r["date"], r["div"].replace(".", "")) if post_fn else None
@@ -1371,15 +1378,15 @@ def _plan_pages(players: list[dict], db: list[dict], histories: dict, pit):
     standings history."""
     global _CRAWL
     from engine.crawl_events import load_crawl
-    from engine.crawl_history import (TimelinePit, crawl_histories, load_timelines,
-                                      person_player_keys)
+    from engine.crawl_history import (TimelinePit, crawl_histories, load_line_timelines,
+                                      load_timelines, person_player_keys)
     _CRAWL = load_crawl(YEAR_FROM) or {}
     pages: dict[str, dict] = {}
     pid_page: dict[str, str] = {}
     c_hist, c_tl, core_of = {}, {}, {}
     if _CRAWL:
         c_tl = load_timelines(players, _CRAWL)
-        c_hist = crawl_histories(_CRAWL, c_tl)
+        c_hist = crawl_histories(_CRAWL, c_tl, load_line_timelines(players, _CRAWL))
         for cpid, p in person_player_keys(players, _CRAWL).items():
             if p.get("state") == STATE and p.get("id") and cpid in c_hist:
                 # same-name people can map to one core player: keep the busiest

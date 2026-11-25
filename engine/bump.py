@@ -289,6 +289,7 @@ def year_end_call(estimate: Optional[float], matches: int, level: Optional[float
 # cutoff and on or before this year's. The cutoff is about a month before the
 # year-end ratings come out; later matches count toward the next year.
 RATING_YEAR_WINDOWS = {
+    2025: ("11/10/2024", "11/9/2025"),   # cutoff assumed Nov 9 (Shirin, unconfirmed)
     2026: ("11/9/2025", "11/8/2026"),
 }
 CURRENT_RATING_YEAR = 2026

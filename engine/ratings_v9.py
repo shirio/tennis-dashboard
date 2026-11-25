@@ -66,6 +66,8 @@ class V9Result:
     # Filled when run_v9(timelines=True):
     # player -> {(division, date): (rating going in, rating after that date)}
     timeline: dict[str, dict[tuple[str, str], list[float]]] = field(default_factory=dict)
+    # player -> {"match id|line": [rating going in, rating after]}, one per line
+    line_timeline: dict[str, dict[str, list[float]]] = field(default_factory=dict)
     # One entry per scored event, in processed order:
     # (event, pre-match strength diff winner-side minus loser-side)
     pre_match: list[tuple[R.CourtEvent, float]] = field(default_factory=list)
@@ -116,6 +118,13 @@ def is_provisional(baseline: Optional[float]) -> bool:
     return baseline is None or round(baseline, 2) in _DEFAULT_BASELINES
 
 
+def line_ref(e) -> str:
+    """Key of one court line: 'match id|line'. A standings line that the
+    TennisLink crawl also has carries the crawl's key (crawl_ref), so the
+    crawl-based player pages can find it."""
+    return getattr(e, "crawl_ref", None) or f"{e.match_id}|{e.line_label}"
+
+
 def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
            params: Params = Params(), timelines: bool = False,
            provisional_keys: frozenset = frozenset()) -> V9Result:
@@ -147,9 +156,11 @@ def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
         gap = sw - sl
         res.pre_match.append((e, gap))
         if timelines:
+            ref = line_ref(e)
             for k in e.winner_keys + e.loser_keys:
                 res.timeline.setdefault(k, {}).setdefault(
                     (e.division, e.date), [res.rating[k], res.rating[k]])
+                res.line_timeline.setdefault(k, {})[ref] = [res.rating[k], res.rating[k]]
 
         delta = w / (w + l) - expected_game_share(gap, params.k)
         for k, sign in [(k, 1.0) for k in e.winner_keys] + [(k, -1.0) for k in e.loser_keys]:
@@ -165,6 +176,7 @@ def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
                 res.singles_matches[k] = res.singles_matches.get(k, 0) + 1
             if timelines:
                 res.timeline[k][(e.division, e.date)][1] = res.rating[k]
+                res.line_timeline[k][ref][1] = res.rating[k]
     return res
 
 
