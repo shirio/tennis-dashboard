@@ -244,6 +244,8 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
             cols.append((f"d{i}", f"Δ {years[i-1]}–{str(y)[-2:]}"))
         cols.append((f"y{i}", str(y)))
     cols.append(("q", "ShiQ"))
+    cols.append(("ws", "WTN S"))
+    cols.append(("wd", "WTN D"))
     cols.append(("b", "Bump"))
     default_on = {k: 1 for k, _ in cols
                   if not ((k[0] == "y" and int(k[1:]) < i_from) or (k[0] == "d" and int(k[1:]) <= i_from))}
@@ -258,6 +260,10 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
                          f'aria-label="Change from {years[i-1]} to {years[i]}">{_DH}</th>')
         elif k[0] == "y":
             heads.append(f'<th data-k="{k}" class="c-{k} num">{lbl}</th>')
+        elif k in ("ws", "wd"):
+            fmt_name = "singles" if k == "ws" else "doubles"
+            heads.append(f'<th data-k="{k}" class="c-{k} num" title="USTA World Tennis Number ({fmt_name}) '
+                         f'converted to the NTRP scale">{lbl}</th>')
         else:
             heads.append('<th data-k="q" class="c-q num">ShiQ</th>' if k == "q" else
                          f'<th data-k="b" class="c-b bump" title="Predicted USTA change" aria-label="Predicted USTA change">{_BH}</th>')
@@ -337,7 +343,7 @@ td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 <button class="more" id="more" hidden>Show more</button>
 </div>
 <script>
-// rows: [name, gender, shiq, link, [level per year], [letter per year]]; YEARS gives the year order.
+// rows: [name, gender, shiq, link, [level per year], [letter per year], bump, wtn]; YEARS gives the year order.
 var ROWS = {data};
 var YEARS = {json.dumps(years)};
 var IFROM = {i_from};
@@ -365,6 +371,13 @@ function ntrp(l, t, cls) {{
   var s = fmt(l) + (t ? '<span class="lt" title="' + (TYPES[t] || t) + '">' + t + '</span>' : '');
   return cls ? '<span class="' + cls + '">' + s + '</span>' : s;
 }}
+// WTN columns: r[7] = [singles NTRP, WTN, confidence, doubles NTRP, WTN, confidence]
+function wtnCell(r, o, k, f) {{
+  var w = r[7];
+  if (!w || w[o] == null) return '<td class="c-' + k + ' num"></td>';
+  return '<td class="c-' + k + ' num" title="WTN ' + f + ' ' + w[o + 1].toFixed(2) + ' (confidence ' + w[o + 2]
+    + '%) = NTRP ' + w[o].toFixed(2) + '">' + w[o].toFixed(2) + '</td>';
+}}
 function esc(s) {{ return String(s).replace(/[&<>"]/g, function(c) {{ return {{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}}[c]; }}); }}
 function fillSelect(id, vals, label) {{
   var el = document.getElementById(id);
@@ -377,6 +390,8 @@ function val(r, k) {{
   if (k === 's') return r[1];
   if (k === 'q') return r[2];
   if (k === 'b') return r[6] ? r[6][2] : null;
+  if (k === 'ws') return r[7] ? r[7][0] : null;
+  if (k === 'wd') return r[7] ? r[7][3] : null;
   if (k[0] === 'y') return r[4][+k.slice(1)];
   return null;
 }}
@@ -421,6 +436,7 @@ function render() {{
       h += '<td class="c-y' + i + ' num">' + ntrp(r[4][i], r[5][i], cls) + '</td>';
     }}
     h += '<td class="c-q num">' + (r[2] == null ? '' : r[2].toFixed(2)) + '</td>';
+    h += wtnCell(r, 0, 'ws', 'singles') + wtnCell(r, 3, 'wd', 'doubles');
     var b = r[6];
     h += '<td class="c-b bump"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
       + (b && b[0] ? '<span class="' + b[1] + '">' + b[0] + '</span>' : '') + '</td></tr>';
@@ -438,6 +454,7 @@ function render() {{
       menu = document.getElementById('colmenu');
   try {{ on = JSON.parse(localStorage.getItem(KEY)); }} catch (e) {{ on = null; }}
   if (!on || typeof on !== 'object') on = Object.assign({{}}, DEF);
+  COLS.forEach(function(k) {{ if (!(k in on)) on[k] = DEF[k]; }});  // columns added since the choice was saved
   window.applyCols = function() {{
     COLS.forEach(function(k) {{ tbl.classList.toggle('h-' + k, !on[k]); }});
     tbl.classList.toggle('show-s', !!on.s && on._s === 1);
@@ -466,7 +483,7 @@ document.querySelectorAll('#fg button').forEach(function(b) {{
 document.querySelectorAll('th[data-k]').forEach(function(th) {{
   th.onclick = function() {{
     var k = th.dataset.k;
-    if (sortK === k) sortDir = -sortDir; else {{ sortK = k; sortDir = (k[0] === 'd' || k === 'q' || k === 'b') ? -1 : 1; }}
+    if (sortK === k) sortDir = -sortDir; else {{ sortK = k; sortDir = (k[0] === 'd' || k === 'q' || k === 'b' || k[0] === 'w') ? -1 : 1; }}
     document.querySelectorAll('th').forEach(function(x) {{ x.classList.remove('sorted', 'desc'); }});
     th.classList.add('sorted'); if (sortDir < 0) th.classList.add('desc');
     apply();
@@ -673,6 +690,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
     letter_tip = f' title="{_esc(RATING_TYPES.get(letter, ""))}"' if letter else ""
     usta_v = (f'{float(lvl):.1f}<span class="lt">{_esc(letter or "")}</span>' if lvl is not None else "—")
     dyn = p.get("global_rating")
+    wtn_card = _wtn_card(p)
     bump = info.get("bump") or {}
     bcall = bump.get("call")
     if bcall in _BUMP_MARK or bcall == "hold":
@@ -699,6 +717,8 @@ body {{ background: #fff; }}
 .phdr h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .15rem; }}
 .phdr .loc {{ font-size: 12px; color: #888; }}
 .bumpl {{ font-size: 12px; color: #555; margin-top: 2px; }}
+.card .v.wtnv {{ font-size: 15px; white-space: nowrap; }}
+.card .wtnv span + span {{ margin-left: 6px; }}
 .cards {{ display: flex; gap: 8px; flex-wrap: nowrap; }}
 .card {{ text-align: center; background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
         box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }}
@@ -794,7 +814,7 @@ table.hist {{ border-collapse: collapse; font-size: 12px; }}
   <div class="cards">
     <div class="card"><div class="l">USTA</div><div class="v"{letter_tip}>{usta_v}</div><div class="s">{usta_sub}</div></div>
     <div class="card"><div class="l">ShiQ</div><div class="v">{fmt2(dyn)}</div><div class="s">{shiq_sub}</div></div>
-  </div>
+{wtn_card}  </div>
 </div>
 <div class="recs"><span class="yrs">{toggle}</span>{strip_html}</div>
 <div class="colbar"><span class="count" id="cnt">{_esc(counts["all"])}</span>
@@ -881,6 +901,35 @@ def _bump_tip(b: dict) -> str:
             tip += f", {b['strikes']} strike{'s' if b['strikes'] != 1 else ''}"
         return tip
     return b.get("label") or "No bump estimate"
+
+
+def _wtn_card(p: dict) -> str:
+    """Player-page card: WTN singles / doubles converted to NTRP."""
+    w = p.get("wtn")
+    if not w:
+        return ""
+    parts, tips = [], []
+    for f, lbl in (("singles", "S"), ("doubles", "D")):
+        x = w.get(f)
+        if x:
+            parts.append(f'<span title="WTN {f} {x["wtn"]:.2f}, confidence {x["confidence"]}%">'
+                         f'{lbl} {x["ntrp"]:.2f}</span>')
+            tips.append(f'{lbl} {x["wtn"]:.1f}')
+    return ('    <div class="card"><div class="l" title="USTA World Tennis Number converted to the NTRP scale">'
+            f'WTN says</div><div class="v wtnv">{" ".join(parts)}</div>'
+            f'<div class="s">WTN {" · ".join(tips)}</div></div>\n')
+
+
+def _wtn_cell_data(p) -> list | None:
+    """[singles NTRP, WTN, confidence, doubles NTRP, WTN, confidence] or None."""
+    w = (p or {}).get("wtn")
+    if not w:
+        return None
+    out = []
+    for f in ("singles", "doubles"):
+        x = w.get(f) or {}
+        out += [x.get("ntrp"), x.get("wtn"), x.get("confidence")]
+    return out
 
 
 def _bump_cell_data(b):
@@ -983,7 +1032,7 @@ def build_directory() -> dict:
         rows.append([r["name"], r.get("gender"), dyn, href,
                      [by_year[y].get("level") for y in DIR_YEARS],
                      [by_year[y].get("rating_type") for y in DIR_YEARS],
-                     _bump_cell_data(bump)])
+                     _bump_cell_data(bump), _wtn_cell_data(p)])
 
     # Player pages
     PLAYER_DIR.mkdir(parents=True, exist_ok=True)

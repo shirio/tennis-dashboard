@@ -27,6 +27,8 @@ from scrapers.scrape_tennislink import _compute_player_stats_from_scorecards
 from engine.normalize import normalize_all
 from engine.ratings import run_ratings
 from engine.bump import run_bumps
+from engine.shiq import apply_v9
+from engine.wtn import run_wtn
 from engine.build_html import build_dashboards, build_sectionals_page
 from engine.build_directory import build_directory
 
@@ -76,6 +78,12 @@ def main():
 
     # Unified cross-state ratings
     run_ratings()
+
+    # ShiQ v9 replaces v8's numbers on every page (v8 kept as shiq_v8)
+    apply_v9()
+
+    # USTA World Tennis Number, converted to NTRP (directory + player pages)
+    run_wtn()
 
     # Bump indicator (USTA-style year-end estimate), written onto players.json
     run_bumps()
