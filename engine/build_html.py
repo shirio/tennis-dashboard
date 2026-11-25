@@ -148,6 +148,10 @@ def _abbrev_team(name: str, case_map: dict[str, str] | None = None) -> str:
     key = name.lower().strip()
     if key in _TEAM_ABBREV:
         return _TEAM_ABBREV[key]
+    # "ANTHEM CC #1" -> "Anthem #1": abbreviate the club, keep the team number
+    m = re.match(r"^(.*?)\s*(#\s*\d+)$", key)
+    if m and m.group(1) in _TEAM_ABBREV:
+        return f"{_TEAM_ABBREV[m.group(1)]} {m.group(2).replace(' ', '')}"
     return _display_team_name(name, case_map)
 
 
