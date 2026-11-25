@@ -98,3 +98,17 @@ class TestBump(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestYearEndWindow(unittest.TestCase):
+    def test_summer_and_late_matches_do_not_count(self):
+        self.assertTrue(bump.counts_toward_year_end("6/16/2026", "2026 USTA ADULT LEAGUE 18 & OVER"))
+        self.assertFalse(bump.counts_toward_year_end("7/14/2026", "2026 NTA SUMMER LEAGUE"))
+        self.assertFalse(bump.counts_toward_year_end("11/14/2026", "2026 NTA ADULT FALL LEAGUE"))
+        self.assertTrue(bump.counts_toward_year_end("11/8/2026", "2026 NTA ADULT FALL LEAGUE"))
+        self.assertTrue(bump.counts_toward_year_end("12/6/2025", ""))
+
+    def test_two_level_call(self):
+        c = bump.year_end_call(4.09, 30, 3.5, "C")
+        self.assertEqual((c["call"], c.get("levels")), ("up", 2))
+        self.assertEqual(bump.year_end_call(3.7, 30, 3.5, "C").get("levels"), None)
