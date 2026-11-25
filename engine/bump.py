@@ -5,27 +5,33 @@ will land for each player, and whether that moves them up or down a level.
 
 This is deliberately NOT ShiQ. ShiQ (engine/ratings_v9.py) tries to measure
 true strength. The Bump indicator copies the publicly reverse-engineered
-shape of USTA's year-end math, even where we think that math is a worse
-measure of strength:
+shape of USTA's math (r/10s analysis, updated Nov 2026), even where we think
+that math is a worse measure of strength.
 
-* Each match produces a performance number from the share of games won
-  against the strength of the opponents faced. Past a margin ceiling, extra
-  games add nothing.
-* Both doubles partners get exactly the same score-driven credit.
-* The running rating after a match is the average of that match's
-  performance and the previous three running ratings, so one match moves a
-  player about a quarter of the way.
-* Fewer than 3 matches in the rating year: the rating carries forward.
-* Year-end call: above the level's top (3.00 for a 3.0) is a bump up, below
-  its floor (2.50 for a 3.0) is a bump down.
-* Self-rated / appealed players (S, A) can also be disqualified mid-year:
-  three "strikes", each a running rating above level + 0.30 after a match.
+Year-end (fit_year_end):
+* Each match is scored on share of games won against the strength of the
+  other side; past a margin cap, extra games add nothing, so a blowout of a
+  much weaker player can even pull you down.
+* Every match of the rating year counts; recent ones only a little more
+  (last 5 = 26% of the year-end, 6-10 = 23%, 11-15 = 15%, 16-20 = 17%,
+  older = 19%). Playoff (Championships) matches count about 2.5x.
+* Opponents and partners are judged where they FINISH the year, so all
+  players are solved together.
+* Both doubles partners get the same score-driven credit.
+* What a computer-rated player carried in still matters; a self-rate or
+  appeal level fades within a few matches.
+* Fewer than 3 matches: the rating carries forward.
+* Call: above the level's top (3.00 for a 3.0) = up, at or below its floor
+  (2.50) = down.
+
+Strikes (run_bump): self-rated / appealed players are DQ'd mid-year after
+three matches that leave their RUNNING rating (this match averaged with the
+previous three) at level + 0.30 or more. Strikes do not feed the year-end.
 
 Starting point is the Dec 2025 TennisRecord estimate of each player's USTA
-dynamic rating (dynamic_rating_baseline), kept inside the player's current
-level (see start_rating), so every call inherits that
-estimate's error. Calls are checked against the real year-end ratings after
-they are published (Dec 2).
+dynamic rating, kept inside the player's current level (start_rating), so
+every call inherits that estimate's error. Calls are checked against the
+real year-end ratings after they are published (Dec 2).
 """
 from __future__ import annotations
 
@@ -38,7 +44,7 @@ from engine.ratings_v9 import games_won
 
 K = 1.2                  # same game-share curve as ShiQ v9
 SHARE_CEILING = 0.92     # game shares beyond this count as this (margin cap)
-MAX_GAP = 0.35           # a blowout "plays like" at most this far above the opponents (fits the post's base rates)
+MAX_GAP = 0.50           # a blowout "plays like" at most this far above the opponents (tuned to base rates)
 WINDOW = 4               # this match + previous 3 running ratings
 MIN_MATCHES = 3
 STRIKE_MARGIN = 0.30
@@ -130,8 +136,104 @@ def run_bump(events: list[R.CourtEvent], baselines: dict[str, float],
     return st
 
 
-def year_end_call(state: Optional[BumpState], level: Optional[float],
-                  letter: str = "") -> dict:
+# ---------------------------------------------------------------------------
+# Year-end model (v2, after the Nov 2026 update to the published analysis)
+# ---------------------------------------------------------------------------
+# The year-end is NOT where the running average lands. It is a re-scoring of
+# the whole rating year:
+#   * every match counts; recent ones only a little more. Share of the
+#     year-end by match recency (newest first):
+#       last 5: 26%, 6-10: 23%, 11-15: 15%, 16-20: 17%, older: 19%
+#   * playoff (Championships) matches carry ~2.5x a regular match
+#   * each match is judged against where opponents and partners FINISH the
+#     year, not where they stood that day (solved jointly, below)
+#   * what a player carried in from last year still matters for computer-
+#     rated players; a self-rate / appeal level fades within 3-4 matches.
+RECENCY_SHARE = [(5, 0.26), (5, 0.23), (5, 0.15), (5, 0.17)]
+OLDER_SHARE = 0.19
+PLAYOFF_WEIGHT = 2.5
+PRIOR_WEIGHT_COMPUTER = 2.0   # carry-in, in "matches" (tuned to base rates)
+PRIOR_WEIGHT_SELF = 1.0       # S / A: fades within a few matches
+FIT_ITERATIONS = 60
+FIT_DAMPING = 0.5
+
+
+def recency_weights(n: int) -> list[float]:
+    """Per-match weights, oldest first, for a player with n counted matches.
+
+    Scaled so a match in the newest block weighs about 1.
+    """
+    w_rev: list[float] = []
+    for size, share in RECENCY_SHARE:
+        w_rev += [share / size * 5 / 1.3] * size
+    if n > len(w_rev):
+        older = n - len(w_rev)
+        w_rev += [OLDER_SHARE * 5 / 1.3 / older] * older
+    return list(reversed(w_rev[:n]))
+
+
+def playoff_match_ids() -> set[str]:
+    """match_ids from Championships flights in the standings files."""
+    ids: set[str] = set()
+    for path, _ in R._discover_standings_files():
+        data = R._load(path, {})
+        for sf in data.get("subflights", []):
+            if "championship" in (sf.get("flight_label") or "").lower():
+                ids.update(m.get("match_id", "") for m in sf.get("matches", []))
+    return ids
+
+
+def fit_year_end(events: list[R.CourtEvent], start: dict[str, float],
+                 letters: dict[str, str], playoffs: set[str] = frozenset()
+                 ) -> tuple[dict[str, float], dict[str, int]]:
+    """Jointly solve every player's year-end number.
+
+    Each player's year-end Y balances the pull of their prior (start rating,
+    weight PRIOR_WEIGHT_*) against the weighted surplus of each match:
+        surplus = implied_gap(game share) - (Y_own_side - Y_other_side)
+    using everyone's year-end Y, so opponents are judged where they finish.
+    Partners get the same surplus (equal credit).
+    """
+    scored = []
+    per_player: dict[str, list[int]] = {}
+    for e in events:
+        if not e.winner_keys or len(e.winner_keys) != len(e.loser_keys):
+            continue
+        w, l = games_won(e.score)
+        if w + l == 0:
+            continue
+        idx = len(scored)
+        scored.append((e, implied_gap(w / (w + l)), e.match_id in playoffs))
+        for k in e.winner_keys + e.loser_keys:
+            per_player.setdefault(k, []).append(idx)
+
+    weight: dict[tuple[str, int], float] = {}
+    for k, idxs in per_player.items():
+        for i, rw in zip(idxs, recency_weights(len(idxs))):
+            weight[(k, i)] = rw * (PLAYOFF_WEIGHT if scored[i][2] else 1.0)
+
+    Y = {k: (start.get(k) or 3.0) for k in per_player}
+    prior_w = {k: (PRIOR_WEIGHT_SELF if letters.get(k) in ("S", "A")
+                   else PRIOR_WEIGHT_COMPUTER) for k in per_player}
+    for _ in range(FIT_ITERATIONS):
+        push = {k: 0.0 for k in Y}
+        for i, (e, gap, _) in enumerate(scored):
+            sw = sum(Y[k] for k in e.winner_keys) / len(e.winner_keys)
+            sl = sum(Y[k] for k in e.loser_keys) / len(e.loser_keys)
+            surplus = gap - (sw - sl)
+            for k in e.winner_keys:
+                push[k] += weight[(k, i)] * surplus
+            for k in e.loser_keys:
+                push[k] -= weight[(k, i)] * surplus
+        for k in Y:
+            total_w = prior_w[k] + sum(weight[(k, i)] for i in per_player[k])
+            step = (push[k] - prior_w[k] * (Y[k] - (start.get(k) or 3.0))) / total_w
+            Y[k] += FIT_DAMPING * step
+    return Y, {k: len(v) for k, v in per_player.items()}
+
+
+def year_end_call(estimate: Optional[float], matches: int, level: Optional[float],
+                  letter: str = "", strikes: Optional[int] = None) -> dict:
     """Summarise one player's bump outlook.
 
     Returns {estimate, margin, call, label, matches, strikes}. ``call`` is one
@@ -139,11 +241,10 @@ def year_end_call(state: Optional[BumpState], level: Optional[float],
     """
     if level is None:
         return {"call": "unknown", "label": "No NTRP level"}
-    if state is None or state.matches < MIN_MATCHES:
-        n = state.matches if state else 0
-        return {"call": "few_matches", "label": f"Too few matches ({n})",
-                "matches": n}
-    est = state.history[-1]
+    if estimate is None or matches < MIN_MATCHES:
+        return {"call": "few_matches", "label": f"Too few matches ({matches})",
+                "matches": matches}
+    est = estimate
     top, floor = level, level - LEVEL_WIDTH
     if est > top:
         margin = est - top
@@ -164,24 +265,34 @@ def year_end_call(state: Optional[BumpState], level: Optional[float],
             "up": "Likely up", "lean_up": "Leaning up", "hold": "Holds",
             "lean_down": "Leaning down", "down": "Likely down",
         }[call],
-        "matches": state.matches,
+        "matches": matches,
     }
-    if letter in ("S", "A"):
-        out["strikes"] = state.strikes
+    if letter in ("S", "A") and strikes is not None:
+        out["strikes"] = strikes
     return out
 
 
-def compute_bumps(players: list[dict], events: Optional[list] = None) -> dict[str, dict]:
+def compute_bumps(players: list[dict], events: Optional[list] = None,
+                  playoffs: Optional[set[str]] = None) -> dict[str, dict]:
     """{player_key: year_end_call(...)} for every player in players.json."""
     pbn = R._build_players_by_name(players)
     if events is None:
         events = R._collect_court_events(R._discover_standings_files(), pbn)
         events.sort(key=R._date_sort_key)
+    if playoffs is None:
+        playoffs = playoff_match_ids()
     levels = {k: parse_level(p.get("ntrp_rating")) for k, p in pbn.items()}
-    baselines = {k: start_rating(p.get("dynamic_rating_baseline"), *levels[k])
-                 for k, p in pbn.items()}
-    states = run_bump(events, baselines, levels)
-    return {k: year_end_call(states.get(k), *levels[k]) for k in pbn}
+    starts = {k: start_rating(p.get("dynamic_rating_baseline"), *levels[k])
+              for k, p in pbn.items()}
+    letters = {k: levels[k][1] for k in pbn}
+    year_end, counts = fit_year_end(events, starts, letters, playoffs)
+    strikes = run_bump(events, starts, levels)    # running rating: strikes only
+    out = {}
+    for k in pbn:
+        st = strikes.get(k)
+        out[k] = year_end_call(year_end.get(k), counts.get(k, 0), *levels[k],
+                               strikes=st.strikes if st else None)
+    return out
 
 
 def run_bumps() -> int:
