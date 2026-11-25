@@ -374,6 +374,11 @@ th.ctr.sorted .hl {{ left: -5px; }}
         font-size: 13px; margin-bottom: .8rem; }}
 {hide_css}
 @media (max-width: 500px) {{ table:not(.show-s) .c-s {{ display: none; }} }}
+/* Phones: the Name column stays put while the table scrolls sideways. */
+@media (max-width: 500px) {{
+  #tbl .c-n {{ position: sticky; left: 0; background: #fff; z-index: 2; box-shadow: 1px 0 0 #eee; }}
+  #tbl th.c-n {{ z-index: 5; }}
+}}
 </style></head><body><div class="wrap">
 <div class="crumbs"><a href="index.html">Tennis Dashboard</a> › Nevada</div>
 <h1>Nevada players</h1>
