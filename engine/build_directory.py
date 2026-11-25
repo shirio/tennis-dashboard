@@ -28,6 +28,7 @@ from pathlib import Path
 
 from engine.build_html import (
     _LINE_PILL_COLORS,
+    _abbrev_team,
     _date_sort_key,
     _line_label_short,
     _make_pit_rating,
@@ -120,6 +121,9 @@ def _tr_history() -> dict[str, dict[int, float]]:
         return {}
     out: dict[str, dict[int, float]] = {}
     for r in json.loads(TR_HISTORY.read_text()):
+        cur = (r.get("current") or {}).get("level")
+        if cur is not None:
+            out.setdefault(_nkey(r["name"]), {})["cur"] = float(cur)
         for y, v in (r.get("years") or {}).items():
             try:
                 out.setdefault(_nkey(r["name"]), {})[int(y)] = float(v["level"])
@@ -202,6 +206,10 @@ a { color: #1a5fb4; text-decoration: none; }
 a:hover { text-decoration: underline; }
 .wrap { max-width: 1100px; margin: 0 auto; }
 .crumbs { font-size: 13px; margin-bottom: .8rem; color: #666; }
+.navbtns { float: right; display: inline-flex; gap: 6px; }
+.navbtns button { font: inherit; font-size: 12px; color: #555; background: #fff; border: 1px solid #ddd;
+                  border-radius: 12px; padding: 1px 9px; cursor: pointer; }
+.navbtns button:hover { border-color: #bbb; color: #222; }
 h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 .sub { color: #666; font-size: .92rem; margin-bottom: 1.2rem; }
 .line-pill { display: inline-block; padding: 1px 6px; border-radius: 8px;
@@ -289,6 +297,14 @@ h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .8rem; }}
 .controls input[type=search] {{ flex: 0 1 260px; padding: .35rem .8rem; border: 1px solid #ccc;
   border-radius: 20px; font-size: 13px; outline: none; }}
 .controls input[type=search]:focus {{ border-color: #1a5fb4; }}
+.qwrap {{ position: relative; display: inline-flex; flex: 0 1 260px; }}
+.qwrap input[type=search] {{ flex: 1 1 auto; width: 100%; padding-right: 1.9rem; }}
+.qwrap input::-webkit-search-cancel-button {{ -webkit-appearance: none; display: none; }}
+.qx {{ position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;
+      border: 0; border-radius: 50%; background: #e4e4e4; color: #555; font-size: 14px; line-height: 20px;
+      padding: 0; cursor: pointer; }}
+.qx:hover {{ background: #d0d0d0; color: #222; }}
+.qx[hidden] {{ display: none; }}
 .controls select {{ appearance: none; -webkit-appearance: none; padding: .35rem 1.8rem .35rem .8rem;
   border: 1px solid #ccc; border-radius: 20px; font-size: 13px; color: #333; cursor: pointer;
   background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23888' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right .7rem center; }}
@@ -356,7 +372,7 @@ th.ctr.sorted .hl {{ left: -5px; }}
 <h1>Nevada players</h1>
 {note}
 <div class="controls">
-  <input type="search" id="q" placeholder="Search name…" aria-label="Search name">
+  <span class="qwrap"><input type="search" id="q" placeholder="Search name…" aria-label="Search name"><button type="button" id="qx" class="qx" aria-label="Clear search" title="Clear" hidden>×</button></span>
   <span class="seg" id="fg" role="group" aria-label="Sex"><button class="on" data-v="">All</button><button data-v="M">M</button><button data-v="F">F</button></span>
   <select id="fr" aria-label="Rating" title="Filters on the current rating: {YEAR_TO} when published, otherwise {YEAR_FROM}"><option value="">Rating: all</option></select>
 </div>
@@ -501,6 +517,13 @@ function render() {{
 }})();
 document.getElementById('more').onclick = function() {{ shown += PAGE * 3; render(); }};
 document.getElementById('q').addEventListener('input', apply);
+(function() {{
+  var q = document.getElementById('q'), x = document.getElementById('qx');
+  function sync() {{ x.hidden = !q.value; }}
+  q.addEventListener('input', sync);
+  x.onclick = function() {{ q.value = ''; sync(); apply(); if (window.saveView) saveView(); q.focus(); }};
+  window.syncQx = sync;
+}})();
 document.getElementById('fr').addEventListener('change', apply);
 document.querySelectorAll('#fg button').forEach(function(b) {{
   b.onclick = function() {{
@@ -550,8 +573,38 @@ document.querySelectorAll('#tbl th[data-k]').forEach(function(th) {{ th.innerHTM
 var nmcap = document.createElement('style'); nmcap.id = 'nmcap'; document.head.appendChild(nmcap);
 fitWidths();
 window.addEventListener('resize', fitWidths);
-document.querySelector('th[data-k="n"]').classList.add('sorted');
-apply();
+// Remember the view (search, filters, sort, rows shown, scroll) for this tab, so
+// coming back from a player page puts you exactly where you were.
+var VKEY = 'nvDirView';
+function saveView() {{
+  try {{ sessionStorage.setItem(VKEY, JSON.stringify({{ k: sortK, d: sortDir, sex: sex,
+    q: document.getElementById('q').value, fr: document.getElementById('fr').value,
+    shown: shown, y: window.scrollY }})); }} catch (e) {{}}
+}}
+(function() {{
+  var v = null;
+  try {{ v = JSON.parse(sessionStorage.getItem(VKEY)); }} catch (e) {{}}
+  var th0 = v && document.querySelector('th[data-k="' + v.k + '"]');
+  if (th0) {{
+    sortK = v.k; sortDir = v.d === -1 ? -1 : 1; sex = v.sex || '';
+    document.getElementById('q').value = v.q || '';
+    document.getElementById('fr').value = v.fr || '';
+    document.querySelectorAll('#fg button').forEach(function(x) {{ x.classList.toggle('on', x.dataset.v === sex); }});
+    th0.classList.add('sorted'); if (sortDir < 0) th0.classList.add('desc');
+    apply();
+    if (v.shown > shown) {{ shown = v.shown; render(); }}
+    if (window.syncQx) syncQx();
+    window.scrollTo(0, v.y || 0);
+  }} else {{
+    document.querySelector('th[data-k="n"]').classList.add('sorted');
+    apply();
+  }}
+  window.addEventListener('pagehide', saveView);
+  document.getElementById('tb').addEventListener('click', function(e) {{ if (e.target.closest('a')) saveView(); }});
+  var st = null;
+  window.addEventListener('scroll', function() {{ clearTimeout(st); st = setTimeout(saveView, 200); }}, {{ passive: true }});
+  ['q', 'fr'].forEach(function(id) {{ document.getElementById(id).addEventListener('input', saveView); }});
+}})();
 // Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
 // from following the page, so slide the header cells down as the page scrolls.
 (function() {{
@@ -710,10 +763,10 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         body.append(
             f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-sq">{sq}</td><td class="c-date">{date_html}</td>'
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
-            f'<td class="c-team">{_esc(r.get("my_team", ""))}</td><td class="c-line">{pill}</td>'
+            f'<td class="c-team" title="{_esc(r.get("my_team", ""))}">{_esc(_abbrev_team(r.get("my_team", "")))}</td><td class="c-line">{pill}</td>'
             f'<td class="c-score"{res_tip}>{score}</td>'
             f'<td class="c-partner">{partners}</td><td class="c-opp">{opps}</td>'
-            f'<td class="c-oppteam">{_esc(r.get("opp_team", ""))}</td></tr>')
+            f'<td class="c-oppteam" title="{_esc(r.get("opp_team", ""))}">{_esc(_abbrev_team(r.get("opp_team", "")))}</td></tr>')
 
     counts = {}
     for k in ["all"] + years:
@@ -852,7 +905,8 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
   .hist.h-oppteam .c-oppteam {{ display: none; }}
 }}
 </style></head><body><div class="wrap">
-<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada players</a></div>
+<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html" id="dirlink">Nevada players</a>
+<span class="navbtns"><button type="button" id="navback" title="Back to the last page you were on" hidden>‹ Back</button><button type="button" id="navfwd" title="Forward">Forward ›</button></span></div>
 <div class="phdr">
   <div class="who"><h1>{_esc(p["name"])}</h1>
     <div class="loc">{_esc(city_state)} · {_esc(gender)}</div>{bump_line}</div>
@@ -907,6 +961,23 @@ var COUNTS = {json.dumps(counts, ensure_ascii=False)};
   document.addEventListener('click', function(e) {{ if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) setOpen(false); }});
   apply();
 }})();
+// Back / Forward buttons (the Claude preview has no browser buttons). The
+// "Nevada players" link goes back in history when the directory is the page you
+// came from, so its search, sort and scroll are just as you left them.
+(function() {{
+  var back = document.getElementById('navback'), fwd = document.getElementById('navfwd'),
+      dir = document.getElementById('dirlink');
+  if (!back) return;
+  if (history.length > 1) back.hidden = false;
+  back.onclick = function() {{ history.back(); }};
+  fwd.onclick = function() {{ history.forward(); }};
+  dir.addEventListener('click', function(e) {{
+    var ref = document.referrer || '';
+    if (/nv_directory\.html|\/index\.html$|\/$/.test(ref.split('?')[0]) && ref.indexOf('/players/') === -1 && history.length > 1) {{
+      e.preventDefault(); history.back();
+    }}
+  }});
+}})();
 // Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
 // from following the page, so slide the header cells down as the page scrolls.
 (function() {{
@@ -935,6 +1006,10 @@ def _usta_rows(year: int) -> list[dict]:
     rows = _load(DATA_DIR / f"ntrp_{STATE.lower()}_{year}.json", [])
     for r in rows:
         r["level"] = float(r["level"]) if r.get("level") else None
+        # The USTA list prints a mid-season disqualification as type C with the DQ
+        # date. Computer ratings are only ever dated 12/31, so show those as D.
+        if r.get("rating_type") == "C" and r.get("rating_date") and not r["rating_date"].startswith("12/31"):
+            r["rating_type"] = "D"
     return rows
 
 
@@ -1099,7 +1174,12 @@ def build_directory() -> dict:
         for y, lk in other_links.items():
             by_year[y] = lk.get(i) or {}
             if by_year[y].get("level") is None:
-                lvl = (tr_hist.get(_nkey(r["name"])) or {}).get(y)
+                th = tr_hist.get(_nkey(r["name"])) or {}
+                # Same-name guard: use a TennisRecord history only when its current
+                # level matches this USTA row's.
+                if th.get("cur") != r.get("level"):
+                    th = {}
+                lvl = th.get(y)
                 if lvl is not None:
                     by_year[y] = {"level": lvl}  # roster level, no rating letter
         rows.append([r["name"], r.get("gender"), dyn, href,

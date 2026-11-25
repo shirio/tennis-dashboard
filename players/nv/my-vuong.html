@@ -10,6 +10,10 @@ a { color: #1a5fb4; text-decoration: none; }
 a:hover { text-decoration: underline; }
 .wrap { max-width: 1100px; margin: 0 auto; }
 .crumbs { font-size: 13px; margin-bottom: .8rem; color: #666; }
+.navbtns { float: right; display: inline-flex; gap: 6px; }
+.navbtns button { font: inherit; font-size: 12px; color: #555; background: #fff; border: 1px solid #ddd;
+                  border-radius: 12px; padding: 1px 9px; cursor: pointer; }
+.navbtns button:hover { border-color: #bbb; color: #222; }
 h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 .sub { color: #666; font-size: .92rem; margin-bottom: 1.2rem; }
 .line-pill { display: inline-block; padding: 1px 6px; border-radius: 8px;
@@ -123,7 +127,8 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
   .hist.h-oppteam .c-oppteam { display: none; }
 }
 </style></head><body><div class="wrap">
-<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada players</a></div>
+<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html" id="dirlink">Nevada players</a>
+<span class="navbtns"><button type="button" id="navback" title="Back to the last page you were on" hidden>‹ Back</button><button type="button" id="navfwd" title="Forward">Forward ›</button></span></div>
 <div class="phdr">
   <div class="who"><h1>My Vuong</h1>
     <div class="loc">Las Vegas, NV · Female</div><div class="bumpl" title="Holds: year-end estimate 3.35 after 3 matches">Holds · year-end est. 3.35</div></div>
@@ -140,7 +145,7 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.01</span><span class="sq-after">3.33</span></td><td class="c-date">5/23<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set">6-3</span> <span class="set sl">2-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="sara-sager.html"><span class="fn">Sara Sager</span><span class="sn">S. Sager</span></a> <span class="rt">3.56</span></span></td><td class="c-opp"><span class="pn"><a href="travis-azous.html"><span class="fn">Travis Azous</span><span class="sn">T. Azous</span></a> <span class="rt">3.47</span></span><br><span class="pn"><a href="kathleen-chamberlain.html"><span class="fn">Kathleen Chamberlain</span><span class="sn">K. Chamberlain</span></a> <span class="rt">3.65</span></span></td><td class="c-oppteam">RED ROCK CC #2</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.04</span><span class="sq-after">3.32</span></td><td class="c-date">5/2<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">2-6</span> <span class="set sl">4-6</span></td><td class="c-partner"><span class="pn"><a href="vinne-chen.html"><span class="fn">vinne chen</span><span class="sn">v. chen</span></a> <span class="rt">3.10</span></span></td><td class="c-opp"><span class="pn"><a href="claudia-hernandez.html"><span class="fn">Claudia Hernandez</span><span class="sn">C. Hernandez</span></a> <span class="rt">3.50</span></span><br><span class="pn"><a href="michelle-jarvis.html"><span class="fn">michelle jarvis</span><span class="sn">m. jarvis</span></a> <span class="rt">2.98</span></span></td><td class="c-oppteam">DTC #1</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd0">±0</span><span class="sq-after">3.36</span></td><td class="c-date">4/18<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">SPANISH TRAIL #1</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set">7-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="nicole-medas.html"><span class="fn">Nicole Medas</span><span class="sn">N. Medas</span></a> <span class="rt">3.35</span></span></td><td class="c-opp"><span class="pn"><a href="jamie-kelvington.html"><span class="fn">Jamie Kelvington</span><span class="sn">J. Kelvington</span></a> <span class="rt">3.46</span></span><br><span class="pn"><a href="lori-labarbera.html"><span class="fn">Lori LaBarbera</span><span class="sn">L. LaBarbera</span></a> <span class="rt">3.38</span></span></td><td class="c-oppteam">DRAGONRIDGE CC</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.01</span><span class="sq-after">3.33</span></td><td class="c-date">5/23<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team" title="SPANISH TRAIL #1">S. Trail #1</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set">6-3</span> <span class="set sl">2-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="sara-sager.html"><span class="fn">Sara Sager</span><span class="sn">S. Sager</span></a> <span class="rt">3.56</span></span></td><td class="c-opp"><span class="pn"><a href="travis-azous.html"><span class="fn">Travis Azous</span><span class="sn">T. Azous</span></a> <span class="rt">3.47</span></span><br><span class="pn"><a href="kathleen-chamberlain.html"><span class="fn">Kathleen Chamberlain</span><span class="sn">K. Chamberlain</span></a> <span class="rt">3.65</span></span></td><td class="c-oppteam" title="RED ROCK CC #2">Red Rock #2</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.04</span><span class="sq-after">3.32</span></td><td class="c-date">5/2<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team" title="SPANISH TRAIL #1">S. Trail #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">2-6</span> <span class="set sl">4-6</span></td><td class="c-partner"><span class="pn"><a href="vinne-chen.html"><span class="fn">vinne chen</span><span class="sn">v. chen</span></a> <span class="rt">3.10</span></span></td><td class="c-opp"><span class="pn"><a href="claudia-hernandez.html"><span class="fn">Claudia Hernandez</span><span class="sn">C. Hernandez</span></a> <span class="rt">3.50</span></span><br><span class="pn"><a href="michelle-jarvis.html"><span class="fn">michelle jarvis</span><span class="sn">m. jarvis</span></a> <span class="rt">2.98</span></span></td><td class="c-oppteam" title="DTC #1">DTC #1</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd0">±0</span><span class="sq-after">3.36</span></td><td class="c-date">4/18<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team" title="SPANISH TRAIL #1">S. Trail #1</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set">7-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="nicole-medas.html"><span class="fn">Nicole Medas</span><span class="sn">N. Medas</span></a> <span class="rt">3.35</span></span></td><td class="c-opp"><span class="pn"><a href="jamie-kelvington.html"><span class="fn">Jamie Kelvington</span><span class="sn">J. Kelvington</span></a> <span class="rt">3.46</span></span><br><span class="pn"><a href="lori-labarbera.html"><span class="fn">Lori LaBarbera</span><span class="sn">L. LaBarbera</span></a> <span class="rt">3.38</span></span></td><td class="c-oppteam" title="DRAGONRIDGE CC">Dragonridge</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {
@@ -178,6 +183,23 @@ var COUNTS = {"all": "3 matches · 0–3 overall", "2026": "3 matches · 0–3 o
     try { localStorage.removeItem(KEY); } catch (e) {} };
   document.addEventListener('click', function(e) { if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) setOpen(false); });
   apply();
+})();
+// Back / Forward buttons (the Claude preview has no browser buttons). The
+// "Nevada players" link goes back in history when the directory is the page you
+// came from, so its search, sort and scroll are just as you left them.
+(function() {
+  var back = document.getElementById('navback'), fwd = document.getElementById('navfwd'),
+      dir = document.getElementById('dirlink');
+  if (!back) return;
+  if (history.length > 1) back.hidden = false;
+  back.onclick = function() { history.back(); };
+  fwd.onclick = function() { history.forward(); };
+  dir.addEventListener('click', function(e) {
+    var ref = document.referrer || '';
+    if (/nv_directory\.html|\/index\.html$|\/$/.test(ref.split('?')[0]) && ref.indexOf('/players/') === -1 && history.length > 1) {
+      e.preventDefault(); history.back();
+    }
+  });
 })();
 // Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
 // from following the page, so slide the header cells down as the page scrolls.

@@ -10,6 +10,10 @@ a { color: #1a5fb4; text-decoration: none; }
 a:hover { text-decoration: underline; }
 .wrap { max-width: 1100px; margin: 0 auto; }
 .crumbs { font-size: 13px; margin-bottom: .8rem; color: #666; }
+.navbtns { float: right; display: inline-flex; gap: 6px; }
+.navbtns button { font: inherit; font-size: 12px; color: #555; background: #fff; border: 1px solid #ddd;
+                  border-radius: 12px; padding: 1px 9px; cursor: pointer; }
+.navbtns button:hover { border-color: #bbb; color: #222; }
 h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 .sub { color: #666; font-size: .92rem; margin-bottom: 1.2rem; }
 .line-pill { display: inline-block; padding: 1px 6px; border-radius: 8px;
@@ -123,7 +127,8 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
   .hist.h-oppteam .c-oppteam { display: none; }
 }
 </style></head><body><div class="wrap">
-<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html">Nevada players</a></div>
+<div class="crumbs"><a href="../../index.html">Tennis Dashboard</a> › <a href="../../nv_directory.html" id="dirlink">Nevada players</a>
+<span class="navbtns"><button type="button" id="navback" title="Back to the last page you were on" hidden>‹ Back</button><button type="button" id="navfwd" title="Forward">Forward ›</button></span></div>
 <div class="phdr">
   <div class="who"><h1>Preslyn Harris</h1>
     <div class="loc">Las Vegas, NV · Female</div><div class="bumpl">Too few matches (2) for a bump estimate</div></div>
@@ -140,7 +145,7 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.01</span><span class="sq-after">3.15</span></td><td class="c-date">5/16<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">DTC #2</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">1-6</span> <span class="set">6-4</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="marchelle-locke.html"><span class="fn">Marchelle Locke</span><span class="sn">M. Locke</span></a> <span class="rt">3.21</span></span></td><td class="c-opp"><span class="pn"><a href="shiangyuh-wu.html"><span class="fn">Shiangyuh Wu</span><span class="sn">S. Wu</span></a> <span class="rt">3.45</span></span><br><span class="pn"><a href="shaun-bruce.html"><span class="fn">Shaun Bruce</span><span class="sn">S. Bruce</span></a> <span class="rt">3.38</span></span></td><td class="c-oppteam">SUMMERLIN ARBORS</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.01</span><span class="sq-after">3.14</span></td><td class="c-date">4/25<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">DTC #2</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">5-7</span> <span class="set">7-5</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="fiona-yeh.html"><span class="fn">Fiona Yeh</span><span class="sn">F. Yeh</span></a> <span class="rt">3.14</span></span></td><td class="c-opp"><span class="pn"><a href="heidi-thornhill.html"><span class="fn">Heidi Thornhill</span><span class="sn">H. Thornhill</span></a> <span class="rt">3.34</span></span><br><span class="pn"><a href="kirsten-ingram.html"><span class="fn">Kirsten Ingram</span><span class="sn">K. Ingram</span></a> <span class="rt">3.20</span></span></td><td class="c-oppteam">ANTHEM CC</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd0">±0</span></td><td class="c-date">3/21<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">DTC #2</td><td class="c-line"><span class="line-pill pill-s1">S1</span></td><td class="c-score"><span class="set sl">1-6</span> <span class="set sl">2-6</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="lyndsey-van-der-laan.html"><span class="fn">Lyndsey van der Laan</span><span class="sn">L. Laan</span></a> <span class="rt">3.42</span></span></td><td class="c-oppteam">ANTHEM CC</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.01</span><span class="sq-after">3.15</span></td><td class="c-date">5/16<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team" title="DTC #2">DTC #2</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">1-6</span> <span class="set">6-4</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="marchelle-locke.html"><span class="fn">Marchelle Locke</span><span class="sn">M. Locke</span></a> <span class="rt">3.21</span></span></td><td class="c-opp"><span class="pn"><a href="shiangyuh-wu.html"><span class="fn">Shiangyuh Wu</span><span class="sn">S. Wu</span></a> <span class="rt">3.45</span></span><br><span class="pn"><a href="shaun-bruce.html"><span class="fn">Shaun Bruce</span><span class="sn">S. Bruce</span></a> <span class="rt">3.38</span></span></td><td class="c-oppteam" title="SUMMERLIN ARBORS">Summerlin</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.01</span><span class="sq-after">3.14</span></td><td class="c-date">4/25<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team" title="DTC #2">DTC #2</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">5-7</span> <span class="set">7-5</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="fiona-yeh.html"><span class="fn">Fiona Yeh</span><span class="sn">F. Yeh</span></a> <span class="rt">3.14</span></span></td><td class="c-opp"><span class="pn"><a href="heidi-thornhill.html"><span class="fn">Heidi Thornhill</span><span class="sn">H. Thornhill</span></a> <span class="rt">3.34</span></span><br><span class="pn"><a href="kirsten-ingram.html"><span class="fn">Kirsten Ingram</span><span class="sn">K. Ingram</span></a> <span class="rt">3.20</span></span></td><td class="c-oppteam" title="ANTHEM CC">Anthem</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd0">±0</span></td><td class="c-date">3/21<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team" title="DTC #2">DTC #2</td><td class="c-line"><span class="line-pill pill-s1">S1</span></td><td class="c-score"><span class="set sl">1-6</span> <span class="set sl">2-6</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="lyndsey-van-der-laan.html"><span class="fn">Lyndsey van der Laan</span><span class="sn">L. Laan</span></a> <span class="rt">3.42</span></span></td><td class="c-oppteam" title="ANTHEM CC">Anthem</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {
@@ -178,6 +183,23 @@ var COUNTS = {"all": "3 matches · 0–3 overall", "2026": "3 matches · 0–3 o
     try { localStorage.removeItem(KEY); } catch (e) {} };
   document.addEventListener('click', function(e) { if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) setOpen(false); });
   apply();
+})();
+// Back / Forward buttons (the Claude preview has no browser buttons). The
+// "Nevada players" link goes back in history when the directory is the page you
+// came from, so its search, sort and scroll are just as you left them.
+(function() {
+  var back = document.getElementById('navback'), fwd = document.getElementById('navfwd'),
+      dir = document.getElementById('dirlink');
+  if (!back) return;
+  if (history.length > 1) back.hidden = false;
+  back.onclick = function() { history.back(); };
+  fwd.onclick = function() { history.forward(); };
+  dir.addEventListener('click', function(e) {
+    var ref = document.referrer || '';
+    if (/nv_directory\.html|\/index\.html$|\/$/.test(ref.split('?')[0]) && ref.indexOf('/players/') === -1 && history.length > 1) {
+      e.preventDefault(); history.back();
+    }
+  });
 })();
 // Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
 // from following the page, so slide the header cells down as the page scrolls.

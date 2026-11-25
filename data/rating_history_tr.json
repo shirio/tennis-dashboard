@@ -212,28 +212,24 @@
   },
   "years": {
    "2025": {
-    "matches": 4,
+    "matches": 9,
     "level": "2.5",
-    "team": "PH GREEN Intermountain"
+    "team": "SPANISH TRAIL Intermountain"
    },
    "2024": {
-    "matches": 4,
+    "matches": 25,
     "level": "2.5",
-    "team": "PH PURPLE Intermountain"
+    "team": "SPANISH TRAIL Intermountain"
    },
    "2023": {
-    "matches": 11,
+    "matches": 5,
     "level": "2.5",
-    "team": "PH PURPLE Intermountain"
-   },
-   "2022": {
-    "matches": 12,
-    "level": "2.5",
-    "team": "PH RED Intermountain"
+    "team": "DTC #2 Intermountain"
    }
   },
-  "fetches": 9,
-  "seconds": 36.6
+  "fetches": 7,
+  "s": "2",
+  "seconds": 27.9
  },
  {
   "name": "Emelia Allen",
@@ -278,8 +274,7 @@
    "2025": {
     "matches": 59,
     "level": "3.0",
-    "team": "ANTHEM CC Intermountain",
-    "cached": true
+    "team": "ANTHEM CC Intermountain"
    },
    "2024": {
     "matches": 16,
@@ -292,40 +287,31 @@
     "team": "STC Brown Midwest"
    }
   },
-  "fetches": 5,
-  "seconds": 31.8
+  "fetches": 7,
+  "seconds": 65.5
  },
  {
   "name": "Maria Allen",
   "current": {
-   "level": 2.5,
+   "level": 3.0,
    "type": "C",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 4,
-    "level": "2.5",
-    "team": "Sportime Harbor Island Eastern"
+    "matches": 44,
+    "level": "3.0",
+    "team": "DRAGONRIDGE CC Intermountain"
    },
    "2024": {
-    "matches": 2,
-    "level": "2.5",
-    "team": "Sportime Westchester HI Eastern"
-   },
-   "2023": {
-    "matches": 3,
+    "matches": 14,
     "level": "3.0",
-    "team": "SPORTIME Westchester Eastern"
-   },
-   "2022": {
-    "matches": 2,
-    "level": "3.0",
-    "team": "Sportime Harbor Island Eastern"
+    "team": "WHITNEY MESA PARK #1 Intermountain"
    }
   },
-  "fetches": 9,
-  "seconds": 33.5
+  "fetches": 5,
+  "s": "3",
+  "seconds": 39.4
  },
  {
   "name": "Kate Alred",
@@ -364,36 +350,35 @@
  {
   "name": "Dawn Anderson",
   "current": {
-   "level": 3.0,
+   "level": 3.5,
    "type": "C",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 14,
+    "matches": 43,
     "level": "3.5",
-    "team": "ANTHEM CC Intermountain",
-    "cached": true
+    "team": "ANTHEM CC Intermountain"
    },
    "2024": {
-    "matches": 6,
-    "level": "3.0",
-    "team": "Foxhall (Dawn Anderson)* Southern"
+    "matches": 54,
+    "level": "3.5",
+    "team": "ANTHEM CC Intermountain"
    },
    "2023": {
-    "matches": 8,
+    "matches": 54,
     "level": "3.0",
-    "team": "ANTHEM CC Intermountain",
-    "cached": true
+    "team": "ANTHEM CC Intermountain"
    },
    "2022": {
-    "matches": 21,
+    "matches": 42,
     "level": "3.0",
-    "team": "Foxhall (Dawn Anderson)* Southern"
+    "team": "ANTHEM CC Intermountain"
    }
   },
-  "fetches": 5,
-  "seconds": 25.1
+  "fetches": 9,
+  "s": "3",
+  "seconds": 97.5
  },
  {
   "name": "Francie Angelov",
@@ -905,10 +890,36 @@
  },
  {
   "name": "Megan Bell",
-  "current": {},
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.2
+  "current": {
+   "level": 3.5,
+   "type": "C",
+   "date": "12/31/2025"
+  },
+  "years": {
+   "2025": {
+    "matches": 52,
+    "level": "3.5",
+    "team": "DTC #5 Intermountain"
+   },
+   "2024": {
+    "matches": 41,
+    "level": "3.5",
+    "team": "DTC #4 Intermountain"
+   },
+   "2023": {
+    "matches": 32,
+    "level": "3.0",
+    "team": "DTC #1 Intermountain"
+   },
+   "2022": {
+    "matches": 38,
+    "level": "3.0",
+    "team": "DTC #2 Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "8",
+  "seconds": 71.6
  },
  {
   "name": "Olga Bencini",
@@ -930,7 +941,7 @@
    }
   },
   "fetches": 5,
-  "seconds": 34.4
+  "seconds": 27.1
  },
  {
   "name": "Andi Berger",
@@ -1000,13 +1011,35 @@
  {
   "name": "Amy Bernstein",
   "current": {
-   "level": 3.0,
+   "level": 2.5,
    "type": "C",
-   "date": "12/31/2015"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.1
+  "years": {
+   "2025": {
+    "matches": 32,
+    "level": "2.5",
+    "team": "DTC #4 Intermountain"
+   },
+   "2024": {
+    "matches": 40,
+    "level": "2.5",
+    "team": "ALL AMERICAN TENNIS CLUB #2 Intermountain"
+   },
+   "2023": {
+    "matches": 27,
+    "level": "2.5",
+    "team": "DTC #4 Intermountain"
+   },
+   "2022": {
+    "matches": 34,
+    "level": "2.5",
+    "team": "DTC #3 Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "3",
+  "seconds": 75.3
  },
  {
   "name": "Pam Birnbaum",
@@ -1044,13 +1077,35 @@
  {
   "name": "Jennifer Blais",
   "current": {
-   "level": 3.5,
+   "level": 3.0,
    "type": "C",
-   "date": "12/31/2018"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 6.4
+  "years": {
+   "2025": {
+    "matches": 35,
+    "level": "3.0",
+    "team": "TPC Intermountain"
+   },
+   "2024": {
+    "matches": 29,
+    "level": "3.0",
+    "team": "TPC Intermountain"
+   },
+   "2023": {
+    "matches": 22,
+    "level": "3.0",
+    "team": "TPC #2 Intermountain"
+   },
+   "2022": {
+    "matches": 14,
+    "level": "3.0",
+    "team": "RED ROCK CC #2 Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "2",
+  "seconds": 59.4
  },
  {
   "name": "Elena Bolha",
@@ -1272,18 +1327,40 @@
    }
   },
   "fetches": 7,
-  "seconds": 27.6
+  "seconds": 25.8
  },
  {
   "name": "Julie Brown",
   "current": {
-   "level": 4.0,
+   "level": 3.0,
    "type": "C",
-   "date": "12/31/2021"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 7.6
+  "years": {
+   "2025": {
+    "matches": 100,
+    "level": "3.0",
+    "team": "TPC Intermountain"
+   },
+   "2024": {
+    "matches": 73,
+    "level": "3.0",
+    "team": "RED ROCK CC Intermountain"
+   },
+   "2023": {
+    "matches": 82,
+    "level": "2.5",
+    "team": "SPANISH TRAIL Intermountain"
+   },
+   "2022": {
+    "matches": 48,
+    "level": "2.5",
+    "team": "RED ROCK CC #2 Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "22",
+  "seconds": 124.6
  },
  {
   "name": "Lora Brown",
@@ -1341,11 +1418,33 @@
   "current": {
    "level": 3.0,
    "type": "C",
-   "date": "12/31/2014"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.6
+  "years": {
+   "2025": {
+    "matches": 69,
+    "level": "3.0",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
+   },
+   "2024": {
+    "matches": 37,
+    "level": "3.0",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
+   },
+   "2023": {
+    "matches": 61,
+    "level": "2.5",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
+   },
+   "2022": {
+    "matches": 25,
+    "level": "2.5",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "2",
+  "seconds": 97.2
  },
  {
   "name": "Theresa Burnette",
@@ -1980,7 +2079,7 @@
    }
   },
   "fetches": 9,
-  "seconds": 86.2
+  "seconds": 51.8
  },
  {
   "name": "Moon-Hui Choi",
@@ -2019,34 +2118,35 @@
  {
   "name": "Anna Clark",
   "current": {
-   "level": 3.5,
+   "level": 3.0,
    "type": "C",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 15,
-    "level": "3.5",
-    "team": "STC COUCH/VANDEBERG Texas"
+    "matches": 65,
+    "level": "3.0",
+    "team": "DTC #2 Intermountain"
    },
    "2024": {
-    "matches": 24,
-    "level": "3.5",
-    "team": "STC ZVONECEK Texas"
+    "matches": 35,
+    "level": "3.0",
+    "team": "DTC #2 Intermountain"
    },
    "2023": {
-    "matches": 14,
-    "level": "3.5",
-    "team": "STC ZVONECEK Texas"
+    "matches": 44,
+    "level": "3.0",
+    "team": "DTC #2 Intermountain"
    },
    "2022": {
-    "matches": 21,
-    "level": "3.5",
-    "team": "STC ZVONECEK Texas"
+    "matches": 36,
+    "level": "2.5",
+    "team": "WHITNEY MESA PARK Intermountain"
    }
   },
   "fetches": 9,
-  "seconds": 57.8
+  "s": "8",
+  "seconds": 80.1
  },
  {
   "name": "Tricia Colbert",
@@ -2146,13 +2246,35 @@
  {
   "name": "Sydney Collins",
   "current": {
-   "level": 3.5,
+   "level": 3.0,
    "type": "C",
-   "date": "12/31/2017"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.3
+  "years": {
+   "2025": {
+    "matches": 12,
+    "level": "3.0",
+    "team": "Johnson/Collins CRC Southern"
+   },
+   "2024": {
+    "matches": 16,
+    "level": "3.0",
+    "team": "CRC-Keith Southern"
+   },
+   "2023": {
+    "matches": 16,
+    "level": "3.0",
+    "team": "CRC-Keith Southern"
+   },
+   "2022": {
+    "matches": 2,
+    "level": "2.5",
+    "team": "BP - Destiny Mojica Southern"
+   }
+  },
+  "fetches": 9,
+  "s": "2",
+  "seconds": 43.7
  },
  {
   "name": "Lisa Cook",
@@ -2163,29 +2285,29 @@
   },
   "years": {
    "2025": {
-    "matches": 30,
+    "matches": 54,
     "level": "3.5",
-    "team": "SUMMERLIN ARBORS Intermountain",
-    "cached": true
+    "team": "SUMMERLIN ARBORS #1 Intermountain"
    },
    "2024": {
-    "matches": 26,
+    "matches": 43,
     "level": "3.5",
-    "team": "Harris 55s 7.5 Combo W Fri AM Southern"
+    "team": "SUMMERLIN ARBORS Intermountain"
    },
    "2023": {
-    "matches": 36,
+    "matches": 39,
     "level": "3.5",
-    "team": "Womack 7.5 Combo 18s Thurs AM Southern"
+    "team": "SUMMERLIN ARBORS #1 Intermountain"
    },
    "2022": {
-    "matches": 40,
+    "matches": 43,
     "level": "3.5",
-    "team": "Cook - 55+ 6.5W Southern"
+    "team": "SUMMERLIN ARBORS Intermountain"
    }
   },
-  "fetches": 7,
-  "seconds": 60.1
+  "fetches": 9,
+  "s": "5",
+  "seconds": 91.8
  },
  {
   "name": "Rika Cook",
@@ -2245,35 +2367,35 @@
  {
   "name": "Amy Cooper",
   "current": {
-   "level": 4.5,
+   "level": 3.5,
    "type": "C",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 13,
+    "matches": 17,
     "level": "3.5",
-    "team": "DESERT PALM Intermountain",
-    "cached": true
+    "team": "DESERT PALM Intermountain"
    },
    "2024": {
-    "matches": 8,
-    "level": "4.5",
-    "team": "Beechmont Midwest"
+    "matches": 14,
+    "level": "3.5",
+    "team": "ALL AMERICAN TENNIS CLUB Intermountain"
    },
    "2023": {
-    "matches": 13,
-    "level": "4.5",
-    "team": "Harpers Midwest"
+    "matches": 30,
+    "level": "3.5",
+    "team": "SUMMERLIN ARBORS Intermountain"
    },
    "2022": {
-    "matches": 3,
-    "level": "4.5",
-    "team": "Queen City Blue Midwest"
+    "matches": 39,
+    "level": "3.5",
+    "team": "SUMMERLIN ARBORS #2 Intermountain"
    }
   },
-  "fetches": 7,
-  "seconds": 48.4
+  "fetches": 9,
+  "s": "4",
+  "seconds": 57.9
  },
  {
   "name": "Stacie Corelle",
@@ -2531,13 +2653,35 @@
  {
   "name": "Kimberly Cunningham",
   "current": {
-   "level": 4.0,
+   "level": 2.5,
    "type": "C",
-   "date": "12/31/2019"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 6.5
+  "years": {
+   "2025": {
+    "matches": 37,
+    "level": "2.5",
+    "team": "DTC #1 Intermountain"
+   },
+   "2024": {
+    "matches": 22,
+    "level": "2.5",
+    "team": "DTC #1 Intermountain"
+   },
+   "2023": {
+    "matches": 47,
+    "level": "2.5",
+    "team": "DTC #1 Intermountain"
+   },
+   "2022": {
+    "matches": 36,
+    "level": "2.5",
+    "team": "DTC #2 Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "3",
+  "seconds": 82.1
  },
  {
   "name": "Sabine Curtis",
@@ -2867,30 +3011,17 @@
  },
  {
   "name": "Jane Doe",
-  "current": {
-   "level": 2.5,
-   "type": "C",
-   "date": "12/31/2025"
-  },
+  "current": {},
   "years": {
-   "2025": {
-    "matches": 6,
-    "level": "3.0",
-    "team": "LS:40 & over:Jordan New England"
-   },
    "2023": {
     "matches": 2,
-    "level": "3.0",
-    "team": "LS:3.0 Women:Kupka New England"
-   },
-   "2022": {
-    "matches": 1,
-    "level": "3.0",
-    "team": "LS:3.0 Women:Kupka New England"
+    "level": null,
+    "team": null
    }
   },
-  "fetches": 7,
-  "seconds": 27.4
+  "fetches": 2,
+  "s": "47",
+  "seconds": 9.3
  },
  {
   "name": "Jena Domingue",
@@ -3055,13 +3186,25 @@
  {
   "name": "Sharon Edwards",
   "current": {
-   "level": 4.0,
+   "level": 2.5,
    "type": "C",
-   "date": "12/31/2021"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 6.2
+  "years": {
+   "2025": {
+    "matches": 13,
+    "level": "2.5",
+    "team": "SPANISH OAKS Intermountain"
+   },
+   "2024": {
+    "matches": 15,
+    "level": "2.5",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
+   }
+  },
+  "fetches": 5,
+  "s": "2",
+  "seconds": 24.1
  },
  {
   "name": "Annabel Elliott",
@@ -3483,16 +3626,26 @@
  },
  {
   "name": "Genesis Garcia",
-  "current": {},
+  "current": {
+   "level": 3.0,
+   "type": "A",
+   "date": "12/31/2025"
+  },
   "years": {
-   "2022": {
-    "matches": 6,
-    "level": null,
-    "team": null
+   "2025": {
+    "matches": 22,
+    "level": "2.5",
+    "team": "SPANISH TRAIL #2 Intermountain"
+   },
+   "2024": {
+    "matches": 8,
+    "level": "2.5",
+    "team": "SUMMERLIN ARBORS Intermountain"
    }
   },
-  "fetches": 2,
-  "seconds": 9.4
+  "fetches": 5,
+  "s": "2",
+  "seconds": 22.3
  },
  {
   "name": "Kathryn Garlan",
@@ -3686,13 +3839,35 @@
  {
   "name": "Robin Gordon",
   "current": {
-   "level": 4.0,
+   "level": 3.0,
    "type": "C",
-   "date": "12/31/2018"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 6.9
+  "years": {
+   "2025": {
+    "matches": 18,
+    "level": "3.0",
+    "team": "DTC #3 Intermountain"
+   },
+   "2024": {
+    "matches": 19,
+    "level": "3.0",
+    "team": "DTC #3 Intermountain"
+   },
+   "2023": {
+    "matches": 20,
+    "level": "3.0",
+    "team": "DTC #5 Intermountain"
+   },
+   "2022": {
+    "matches": 20,
+    "level": "3.0",
+    "team": "DTC #3 Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "2",
+  "seconds": 58.6
  },
  {
   "name": "Shellene Goudge",
@@ -3791,10 +3966,31 @@
  },
  {
   "name": "Chelsea Gray",
-  "current": {},
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.1
+  "current": {
+   "level": 3.5,
+   "type": "C",
+   "date": "12/31/2025"
+  },
+  "years": {
+   "2025": {
+    "matches": 55,
+    "level": "3.5",
+    "team": "SOUTHERN HIGHLANDS #1 Intermountain"
+   },
+   "2024": {
+    "matches": 46,
+    "level": "3.0",
+    "team": "WHITNEY MESA PARK #1 Intermountain"
+   },
+   "2023": {
+    "matches": 19,
+    "level": "2.5",
+    "team": "MADEIRA CANYON PARK Intermountain"
+   }
+  },
+  "fetches": 7,
+  "s": "2",
+  "seconds": 62.4
  },
  {
   "name": "Eva Gryczon",
@@ -3954,7 +4150,7 @@
    }
   },
   "fetches": 9,
-  "seconds": 57.9
+  "seconds": 57.8
  },
  {
   "name": "Tanya Hale",
@@ -3993,37 +4189,35 @@
  {
   "name": "Jennifer Hall",
   "current": {
-   "level": 3.0,
+   "level": 3.5,
    "type": "C",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 16,
+    "matches": 47,
     "level": "3.5",
-    "team": "TPC Intermountain",
-    "cached": true
+    "team": "TPC Intermountain"
    },
    "2024": {
-    "matches": 24,
+    "matches": 39,
     "level": "3.0",
-    "team": "TPC Intermountain",
-    "cached": true
+    "team": "TPC Intermountain"
    },
    "2023": {
-    "matches": 14,
+    "matches": 5,
     "level": "3.0",
-    "team": "TIC Ream Midwest"
+    "team": "Harris-First One In-Woodlands CC Texas"
    },
    "2022": {
-    "matches": 10,
+    "matches": 9,
     "level": "3.0",
-    "team": "TPC #2 Intermountain",
-    "cached": true
+    "team": "TPC #2 Intermountain"
    }
   },
-  "fetches": 3,
-  "seconds": 14.6
+  "fetches": 9,
+  "s": "12",
+  "seconds": 70.6
  },
  {
   "name": "Rochelle Hamatian",
@@ -4059,10 +4253,26 @@
  },
  {
   "name": "Nicole Harper",
-  "current": {},
-  "years": {},
-  "fetches": 1,
-  "seconds": 6.6
+  "current": {
+   "level": 2.5,
+   "type": "C",
+   "date": "12/31/2025"
+  },
+  "years": {
+   "2025": {
+    "matches": 14,
+    "level": "2.5",
+    "team": "ANTHEM CC Intermountain"
+   },
+   "2024": {
+    "matches": 11,
+    "level": "2.5",
+    "team": "DRAGONRIDGE CC Intermountain"
+   }
+  },
+  "fetches": 5,
+  "s": "2",
+  "seconds": 20.9
  },
  {
   "name": "Marlaina Harris",
@@ -4185,29 +4395,25 @@
  {
   "name": "Jocelyn Herman",
   "current": {
-   "level": 3.0,
+   "level": 2.5,
    "type": "C",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 15,
-    "level": "3.0",
-    "team": "Armonk Domes Eastern"
+    "matches": 23,
+    "level": "2.5",
+    "team": "SPANISH TRAIL #2 Intermountain"
    },
    "2024": {
-    "matches": 15,
-    "level": "3.0",
-    "team": "Armonk Indoor: Serves You Right Eastern"
-   },
-   "2023": {
     "matches": 5,
-    "level": "3.0",
-    "team": "Fairview Country Club: 40-LOVE Eastern"
+    "level": "2.5",
+    "team": "SUMMERLIN ARBORS Intermountain"
    }
   },
-  "fetches": 7,
-  "seconds": 40.6
+  "fetches": 5,
+  "s": "2",
+  "seconds": 19.1
  },
  {
   "name": "Claudia Hernandez",
@@ -4246,10 +4452,36 @@
  },
  {
   "name": "Melissa Hicks",
-  "current": {},
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.2
+  "current": {
+   "level": 3.0,
+   "type": "C",
+   "date": "12/31/2025"
+  },
+  "years": {
+   "2025": {
+    "matches": 41,
+    "level": "3.0",
+    "team": "DTC #2 Intermountain"
+   },
+   "2024": {
+    "matches": 51,
+    "level": "3.0",
+    "team": "ALL AMERICAN TENNIS CLUB #1 Intermountain"
+   },
+   "2023": {
+    "matches": 43,
+    "level": "2.5",
+    "team": "RED ROCK CC Intermountain"
+   },
+   "2022": {
+    "matches": 40,
+    "level": "2.5",
+    "team": "DTC #1 Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "2",
+  "seconds": 96.8
  },
  {
   "name": "Robi Hinton",
@@ -4289,20 +4521,35 @@
  {
   "name": "Nancy Holland",
   "current": {
-   "level": 3.0,
+   "level": 3.5,
    "type": "C",
-   "date": "12/31/2021"
+   "date": "12/31/2025"
   },
   "years": {
-   "2022": {
-    "matches": 4,
+   "2025": {
+    "matches": 66,
     "level": "3.5",
-    "team": "SUMMERLIN ARBORS #2 Intermountain",
-    "cached": true
+    "team": "SUMMERLIN ARBORS #1 Intermountain"
+   },
+   "2024": {
+    "matches": 51,
+    "level": "4.0",
+    "team": "SUMMERLIN ARBORS Intermountain"
+   },
+   "2023": {
+    "matches": 53,
+    "level": "3.5",
+    "team": "SUMMERLIN ARBORS #1 Intermountain"
+   },
+   "2022": {
+    "matches": 41,
+    "level": "3.5",
+    "team": "SUMMERLIN ARBORS #2 Intermountain"
    }
   },
-  "fetches": 1,
-  "seconds": 6.9
+  "fetches": 9,
+  "s": "2",
+  "seconds": 106.5
  },
  {
   "name": "Karen Hom",
@@ -4729,19 +4976,25 @@
  {
   "name": "Lindsey Jacobs",
   "current": {
-   "level": 3.5,
-   "type": "C",
-   "date": "12/31/2022"
+   "level": 3.0,
+   "type": "A",
+   "date": "12/31/2025"
   },
   "years": {
-   "2022": {
-    "matches": 4,
-    "level": "3.5",
-    "team": "Dossett (SD) Missouri Valley"
+   "2025": {
+    "matches": 39,
+    "level": "2.5",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
+   },
+   "2024": {
+    "matches": 19,
+    "level": "2.5",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
    }
   },
-  "fetches": 3,
-  "seconds": 12.9
+  "fetches": 5,
+  "s": "2",
+  "seconds": 34.9
  },
  {
   "name": "Michelle Jarvis",
@@ -4857,24 +5110,43 @@
  {
   "name": "Jamie Johnson",
   "current": {
-   "level": 2.5,
+   "level": 3.0,
    "type": "C",
-   "date": "12/31/2016"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.1
+  "years": {
+   "2025": {
+    "matches": 20,
+    "level": "3.0",
+    "team": "TPC #2 Intermountain"
+   }
+  },
+  "fetches": 3,
+  "s": "3",
+  "seconds": 18.0
  },
  {
   "name": "Megan Johnson",
   "current": {
    "level": 2.5,
    "type": "C",
-   "date": "12/31/2018"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 11.4
+  "years": {
+   "2025": {
+    "matches": 28,
+    "level": "2.5",
+    "team": "DTC #2 Intermountain"
+   },
+   "2024": {
+    "matches": 5,
+    "level": "2.5",
+    "team": "DTC #4 Intermountain"
+   }
+  },
+  "fetches": 5,
+  "s": "21",
+  "seconds": 23.5
  },
  {
   "name": "Monica Johnson",
@@ -4885,29 +5157,24 @@
   },
   "years": {
    "2025": {
-    "matches": 14,
+    "matches": 19,
     "level": "3.5",
-    "team": "DESERT PALM Intermountain",
-    "cached": true
+    "team": "DESERT PALM Intermountain"
    },
    "2024": {
-    "matches": 9,
+    "matches": 10,
     "level": "3.5",
-    "team": "Sugar Creek (Janelle Blasingame)* Southern"
-   },
-   "2023": {
-    "matches": 5,
-    "level": "3.5",
-    "team": "McGhee TC (Xena Whittier)* Southern"
+    "team": "ALL AMERICAN TENNIS CLUB Intermountain"
    },
    "2022": {
-    "matches": 16,
+    "matches": 9,
     "level": "3.5",
-    "team": "PCTC - Dunlap/Gatlin Southern"
+    "team": "DTC #1 Intermountain"
    }
   },
   "fetches": 7,
-  "seconds": 27.0
+  "s": "4",
+  "seconds": 26.8
  },
  {
   "name": "Shawanna Johnson",
@@ -4947,37 +5214,35 @@
  {
   "name": "Lisa Jones",
   "current": {
-   "level": 4.0,
+   "level": 3.0,
    "type": "C",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 22,
+    "matches": 47,
     "level": "3.0",
-    "team": "SPANISH OAKS Intermountain",
-    "cached": true
+    "team": "SPANISH OAKS Intermountain"
    },
    "2024": {
-    "matches": 20,
+    "matches": 48,
     "level": "3.0",
-    "team": "SPANISH OAKS Intermountain",
-    "cached": true
+    "team": "SPANISH OAKS Intermountain"
    },
    "2023": {
-    "matches": 21,
+    "matches": 15,
     "level": "3.0",
-    "team": "DTC #3 Intermountain",
-    "cached": true
+    "team": "DTC #3 Intermountain"
    },
    "2022": {
-    "matches": 18,
-    "level": "4.0",
-    "team": "PD55/Weaver/FTC Southern"
+    "matches": 3,
+    "level": "3.0",
+    "team": "DTC #2 Intermountain"
    }
   },
-  "fetches": 3,
-  "seconds": 16.0
+  "fetches": 9,
+  "s": "12",
+  "seconds": 63.3
  },
  {
   "name": "Liz Jones",
@@ -5179,27 +5444,28 @@
   "current": {
    "level": 3.0,
    "type": "C",
-   "date": "12/31/2024"
+   "date": "12/31/2025"
   },
   "years": {
-   "2024": {
-    "matches": 12,
-    "level": "3.0",
-    "team": "Berry/Johnson/SRC Southern"
-   },
-   "2023": {
+   "2025": {
     "matches": 11,
     "level": "3.0",
-    "team": "Hickman/Fayetteville/SRC Southern"
+    "team": "SOUTHERN HIGHLANDS Intermountain"
+   },
+   "2023": {
+    "matches": 10,
+    "level": "3.5",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
    },
    "2022": {
-    "matches": 5,
+    "matches": 36,
     "level": "3.0",
-    "team": "Hickman/Fayetteville/SRC Southern"
+    "team": "SOUTHERN HIGHLANDS Intermountain"
    }
   },
   "fetches": 7,
-  "seconds": 31.0
+  "s": "2",
+  "seconds": 34.8
  },
  {
   "name": "Debra Kelleher",
@@ -5237,24 +5503,68 @@
  {
   "name": "Anne Kellogg",
   "current": {
-   "level": 4.5,
+   "level": 3.5,
    "type": "C",
-   "date": "12/31/2019"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.2
+  "years": {
+   "2025": {
+    "matches": 40,
+    "level": "3.5",
+    "team": "RED ROCK CC #3 Intermountain"
+   },
+   "2024": {
+    "matches": 20,
+    "level": "3.5",
+    "team": "SPANISH TRAIL Intermountain"
+   },
+   "2023": {
+    "matches": 15,
+    "level": "4.0",
+    "team": "SUMMERLIN ARBORS #2 Intermountain"
+   },
+   "2022": {
+    "matches": 21,
+    "level": "4.0",
+    "team": "SUMMERLIN ARBORS #2 Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "2",
+  "seconds": 66.3
  },
  {
   "name": "Maureen Kelly",
   "current": {
-   "level": 4.5,
+   "level": 2.5,
    "type": "C",
-   "date": "12/31/2014"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 4.8
+  "years": {
+   "2025": {
+    "matches": 40,
+    "level": "2.5",
+    "team": "DTC #3 Intermountain"
+   },
+   "2024": {
+    "matches": 46,
+    "level": "2.5",
+    "team": "DTC #1 Intermountain"
+   },
+   "2023": {
+    "matches": 21,
+    "level": "2.5",
+    "team": "DTC #2 Intermountain"
+   },
+   "2022": {
+    "matches": 8,
+    "level": "2.5",
+    "team": "DTC #1 Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "2",
+  "seconds": 63.6
  },
  {
   "name": "Jamie Kelvington",
@@ -5386,13 +5696,35 @@
  {
   "name": "Amy Kirk",
   "current": {
-   "level": 4.0,
+   "level": 3.5,
    "type": "C",
-   "date": "12/31/2021"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.5
+  "years": {
+   "2025": {
+    "matches": 5,
+    "level": "3.5",
+    "team": "DRAGONRIDGE CC Intermountain"
+   },
+   "2024": {
+    "matches": 11,
+    "level": "3.5",
+    "team": "DRAGONRIDGE CC Intermountain"
+   },
+   "2023": {
+    "matches": 11,
+    "level": "3.5",
+    "team": "DRAGONRIDGE CC Intermountain"
+   },
+   "2022": {
+    "matches": 16,
+    "level": "3.5",
+    "team": "DRAGONRIDGE CC Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "2",
+  "seconds": 42.3
  },
  {
   "name": "Karen Kiyono",
@@ -5821,10 +6153,36 @@
  },
  {
   "name": "Taylor Larson",
-  "current": {},
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.3
+  "current": {
+   "level": 3.0,
+   "type": "C",
+   "date": "12/31/2024"
+  },
+  "years": {
+   "2025": {
+    "matches": 1,
+    "level": "3.0",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
+   },
+   "2024": {
+    "matches": 6,
+    "level": "3.0",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
+   },
+   "2023": {
+    "matches": 11,
+    "level": "3.0",
+    "team": "LIFE TIME FITNESS/GV #2 Intermountain"
+   },
+   "2022": {
+    "matches": 17,
+    "level": "2.5",
+    "team": "SOUTHERN HIGHLANDS Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "2",
+  "seconds": 31.6
  },
  {
   "name": "Crystal LaTour",
@@ -5912,23 +6270,34 @@
   "name": "Mai Le",
   "current": {
    "level": 3.5,
-   "type": "S",
-   "date": "5/21/2026"
+   "type": "C",
+   "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 8,
+    "matches": 12,
     "level": "3.5",
-    "team": "MPTC - Guardians of the Galaxy Texas"
+    "team": "DTC #3 Intermountain"
    },
    "2024": {
-    "matches": 4,
+    "matches": 17,
     "level": "3.5",
-    "team": "MPTC - Ball Busters Texas"
+    "team": "DTC #3 Intermountain"
+   },
+   "2023": {
+    "matches": 18,
+    "level": "3.5",
+    "team": "DTC #1 Intermountain"
+   },
+   "2022": {
+    "matches": 18,
+    "level": "3.5",
+    "team": "DTC #2 Intermountain"
    }
   },
-  "fetches": 5,
-  "seconds": 18.9
+  "fetches": 9,
+  "s": "2",
+  "seconds": 47.4
  },
  {
   "name": "Meryll Ledesma",
@@ -6007,13 +6376,35 @@
  {
   "name": "Tracey Lee",
   "current": {
-   "level": 3.0,
+   "level": 3.5,
    "type": "C",
-   "date": "12/31/2014"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 4.5
+  "years": {
+   "2025": {
+    "matches": 53,
+    "level": "3.5",
+    "team": "RED ROCK CC #1 Intermountain"
+   },
+   "2024": {
+    "matches": 62,
+    "level": "3.5",
+    "team": "LIFE TIME FITNESS/GV Intermountain"
+   },
+   "2023": {
+    "matches": 74,
+    "level": "3.0",
+    "team": "DTC #1 Intermountain"
+   },
+   "2022": {
+    "matches": 70,
+    "level": "2.5",
+    "team": "SPANISH TRAIL Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "3",
+  "seconds": 107.4
  },
  {
   "name": "Donna Lefever",
@@ -6197,7 +6588,7 @@
    }
   },
   "fetches": 9,
-  "seconds": 61.1
+  "seconds": 61.0
  },
  {
   "name": "Kimberly Lippisch",
@@ -6267,14 +6658,12 @@
    "2025": {
     "matches": 83,
     "level": "3.5",
-    "team": "ANTHEM CC Intermountain",
-    "cached": true
+    "team": "ANTHEM CC Intermountain"
    },
    "2024": {
     "matches": 39,
     "level": "3.5",
-    "team": "ANTHEM CC Intermountain",
-    "cached": true
+    "team": "ANTHEM CC Intermountain"
    },
    "2023": {
     "matches": 12,
@@ -6287,8 +6676,8 @@
     "team": "4.0 KIW Phillips W18S Southwest"
    }
   },
-  "fetches": 5,
-  "seconds": 27.1
+  "fetches": 9,
+  "seconds": 84.0
  },
  {
   "name": "Courtney Long",
@@ -6491,8 +6880,7 @@
    "2024": {
     "matches": 17,
     "level": "3.0",
-    "team": "SPANISH OAKS Intermountain",
-    "cached": true
+    "team": "SPANISH OAKS Intermountain"
    },
    "2023": {
     "matches": 14,
@@ -6505,8 +6893,8 @@
     "team": "CV-Shadow Mountain Resort/Denton & Lestrange So California"
    }
   },
-  "fetches": 7,
-  "seconds": 34.1
+  "fetches": 9,
+  "seconds": 43.1
  },
  {
   "name": "Jeralyn Marchesi",
@@ -6593,13 +6981,25 @@
  {
   "name": "Leah Martin",
   "current": {
-   "level": 4.0,
-   "type": "S",
-   "date": "8/23/2019"
+   "level": 2.5,
+   "type": "C",
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.3
+  "years": {
+   "2025": {
+    "matches": 24,
+    "level": "2.5",
+    "team": "SPANISH TRAIL #1 Intermountain"
+   },
+   "2024": {
+    "matches": 3,
+    "level": "2.5",
+    "team": "SPANISH OAKS Intermountain"
+   }
+  },
+  "fetches": 5,
+  "s": "4",
+  "seconds": 26.6
  },
  {
   "name": "Jessica Marx",
@@ -6622,33 +7022,13 @@
   "name": "Blair May",
   "current": {
    "level": 3.5,
-   "type": "C",
-   "date": "12/31/2025"
+   "type": "S",
+   "date": "3/13/2026"
   },
-  "years": {
-   "2025": {
-    "matches": 7,
-    "level": "3.5",
-    "team": "Duval/Gibson/18&Over3.5W Florida"
-   },
-   "2024": {
-    "matches": 9,
-    "level": "3.5",
-    "team": "Sawgrass - Toby Florida"
-   },
-   "2023": {
-    "matches": 5,
-    "level": "3.5",
-    "team": "Sawgrass - Toby Florida"
-   },
-   "2022": {
-    "matches": 7,
-    "level": "3.5",
-    "team": "DUVAL - Sawgrass - Toby Florida"
-   }
-  },
-  "fetches": 9,
-  "seconds": 35.3
+  "years": {},
+  "fetches": 1,
+  "s": "2",
+  "seconds": 7.4
  },
  {
   "name": "Francine Mazza",
@@ -6903,7 +7283,7 @@
    }
   },
   "fetches": 9,
-  "seconds": 55.6
+  "seconds": 44.4
  },
  {
   "name": "Nancy McPartlin",
@@ -7083,11 +7463,23 @@
   "current": {
    "level": 3.5,
    "type": "C",
-   "date": "12/31/2014"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.8
+  "years": {
+   "2025": {
+    "matches": 35,
+    "level": "2.5",
+    "team": "TPC Intermountain"
+   },
+   "2024": {
+    "matches": 3,
+    "level": "2.5",
+    "team": "TPC Intermountain"
+   }
+  },
+  "fetches": 5,
+  "s": "2",
+  "seconds": 23.4
  },
  {
   "name": "Sandra Mier",
@@ -7469,10 +7861,36 @@
  },
  {
   "name": "Cindy Nguyen",
-  "current": {},
-  "years": {},
-  "fetches": 1,
-  "seconds": 8.5
+  "current": {
+   "level": 3.0,
+   "type": "C",
+   "date": "12/31/2025"
+  },
+  "years": {
+   "2025": {
+    "matches": 9,
+    "level": "3.5",
+    "team": "SPANISH OAKS Intermountain"
+   },
+   "2024": {
+    "matches": 15,
+    "level": "3.0",
+    "team": "SPANISH OAKS Intermountain"
+   },
+   "2023": {
+    "matches": 18,
+    "level": "3.0",
+    "team": "SPANISH TRAIL Intermountain"
+   },
+   "2022": {
+    "matches": 21,
+    "level": "3.0",
+    "team": "SPANISH OAKS Intermountain"
+   }
+  },
+  "fetches": 9,
+  "s": "4",
+  "seconds": 44.6
  },
  {
   "name": "Kelly Nguyen",
@@ -7483,56 +7901,57 @@
   },
   "years": {
    "2025": {
-    "matches": 11,
+    "matches": 24,
     "level": "3.5",
-    "team": "TPC Sugarloaf (Hanh Struck)* Southern"
+    "team": "RED ROCK CC #2 Intermountain"
    },
    "2024": {
-    "matches": 20,
-    "level": "3.5",
-    "team": "TPC Sugarloaf (Jude Shepherd)* Southern"
+    "matches": 3,
+    "level": null,
+    "team": null
    },
    "2023": {
-    "matches": 19,
-    "level": "3.5",
-    "team": "TPC Sugarloaf (Zahara Merchant)* Southern"
+    "matches": 47,
+    "level": "3.0",
+    "team": "DTC #3 Intermountain"
    },
    "2022": {
-    "matches": 36,
-    "level": "3.5",
-    "team": "TPC Sugarloaf (Meylin Gonzalez)* Southern"
+    "matches": 31,
+    "level": "2.5",
+    "team": "DTC #1 Intermountain"
    }
   },
-  "fetches": 9,
-  "seconds": 73.4
+  "fetches": 8,
+  "s": "4",
+  "seconds": 55.4
  },
  {
   "name": "Loc Nguyen",
   "current": {
-   "level": 4.0,
-   "type": "M",
-   "date": "12/31/2024"
+   "level": 3.5,
+   "type": "C",
+   "date": "12/31/2025"
   },
   "years": {
-   "2024": {
-    "matches": 6,
-    "level": "4.0",
-    "team": "OC Los Cab - Nicole - Sun3 So California"
+   "2025": {
+    "matches": 27,
+    "level": "3.5",
+    "team": "DTC #2 Intermountain"
    },
    "2023": {
-    "matches": 9,
-    "level": "4.0",
-    "team": "OC Tennis Lovers - LPC Diekneit Sat 11am So California"
+    "matches": 20,
+    "level": "3.5",
+    "team": "DTC #3 Intermountain"
    },
    "2022": {
-    "matches": 25,
+    "matches": 26,
     "level": "3.5",
-    "team": "DESERT PALM #2 Intermountain",
-    "cached": true
+    "team": "NV/VANNAH/ADULT 18 & OVER W3.5 Intermountain"
    }
   },
-  "fetches": 5,
-  "seconds": 26.5
+  "fetches": 7,
+  "s": "2",
+  "seconds": 36.9
  },
  {
   "name": "Carolina Nigro",
@@ -7628,36 +8047,35 @@
  {
   "name": "Jennifer Olson",
   "current": {
-   "level": 3.5,
+   "level": 3.0,
    "type": "C",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 39,
-    "level": "3.5",
-    "team": "Winter Winner/Gulf Harbour-Wonnenberg Florida"
+    "matches": 30,
+    "level": "3.0",
+    "team": "DTC #2 Intermountain"
    },
    "2024": {
-    "matches": 50,
+    "matches": 35,
     "level": "3.0",
-    "team": "RED ROCK CC Intermountain",
-    "cached": true
+    "team": "SPANISH TRAIL Intermountain"
    },
    "2023": {
-    "matches": 50,
-    "level": "3.5",
-    "team": "Elysium 2 Midwest"
+    "matches": 41,
+    "level": "3.0",
+    "team": "DTC Intermountain"
    },
    "2022": {
-    "matches": 47,
+    "matches": 48,
     "level": "3.0",
-    "team": "DTC #4 Intermountain",
-    "cached": true
+    "team": "DTC #2 Intermountain"
    }
   },
-  "fetches": 5,
-  "seconds": 51.7
+  "fetches": 9,
+  "s": "4",
+  "seconds": 92.2
  },
  {
   "name": "Shi L Oskooi",
@@ -8079,34 +8497,34 @@
   "name": "Kelly Perkins",
   "current": {
    "level": 3.0,
-   "type": "C",
+   "type": "A",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 25,
-    "level": "3.0",
-    "team": "Netherland Southern"
+    "matches": 15,
+    "level": "2.5",
+    "team": "SPANISH TRAIL Intermountain"
    },
    "2024": {
-    "matches": 10,
+    "matches": 21,
     "level": "3.0",
-    "team": "TPC Intermountain",
-    "cached": true
+    "team": "TPC Intermountain"
    },
    "2023": {
-    "matches": 18,
+    "matches": 7,
     "level": "3.0",
-    "team": "Netherland Southern"
+    "team": "TPC #2 Intermountain"
    },
    "2022": {
-    "matches": 19,
-    "level": "3.0",
-    "team": "Townsend Southern"
+    "matches": 16,
+    "level": "2.5",
+    "team": "TPC Intermountain"
    }
   },
-  "fetches": 7,
-  "seconds": 36.5
+  "fetches": 9,
+  "s": "2",
+  "seconds": 45.0
  },
  {
   "name": "Joan Perricone",
@@ -8119,8 +8537,7 @@
    "2025": {
     "matches": 37,
     "level": "3.5",
-    "team": "LIFE TIME FITNESS/GV #2 Intermountain",
-    "cached": true
+    "team": "LIFE TIME FITNESS/GV #2 Intermountain"
    },
    "2024": {
     "matches": 7,
@@ -8138,26 +8555,36 @@
     "team": "Chester 4.0 Eastern"
    }
   },
-  "fetches": 7,
-  "seconds": 33.5
+  "fetches": 9,
+  "seconds": 65.5
  },
  {
   "name": "Jennifer Petrie",
   "current": {
-   "level": 3.0,
+   "level": 3.5,
    "type": "C",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 4,
+    "matches": 33,
     "level": "3.5",
-    "team": "LIFE TIME FITNESS/GV #2 Intermountain",
-    "cached": true
+    "team": "LIFE TIME FITNESS/GV #2 Intermountain"
+   },
+   "2024": {
+    "matches": 17,
+    "level": "4.0",
+    "team": "LIFE TIME FITNESS/GV Intermountain"
+   },
+   "2023": {
+    "matches": 4,
+    "level": "4.0",
+    "team": "LIFE TIME FITNESS/GV #2 Intermountain"
    }
   },
-  "fetches": 1,
-  "seconds": 5.5
+  "fetches": 7,
+  "s": "2",
+  "seconds": 40.1
  },
  {
   "name": "Jenni Pevoto",
@@ -8179,10 +8606,21 @@
  },
  {
   "name": "Elizabeth Pierce",
-  "current": {},
-  "years": {},
-  "fetches": 1,
-  "seconds": 8.0
+  "current": {
+   "level": 3.0,
+   "type": "C",
+   "date": "12/31/2025"
+  },
+  "years": {
+   "2025": {
+    "matches": 6,
+    "level": "2.5",
+    "team": "RED ROCK CC Intermountain"
+   }
+  },
+  "fetches": 3,
+  "s": "4",
+  "seconds": 12.9
  },
  {
   "name": "Maryna Post",
@@ -8435,19 +8873,34 @@
   "name": "Christina Rich",
   "current": {
    "level": 3.5,
-   "type": "M",
-   "date": "12/31/2024"
+   "type": "C",
+   "date": "12/31/2025"
   },
   "years": {
-   "2024": {
-    "matches": 3,
+   "2025": {
+    "matches": 40,
     "level": "3.5",
-    "team": "DRAGONRIDGE CC Intermountain",
-    "cached": true
+    "team": "DRAGONRIDGE CC Intermountain"
+   },
+   "2024": {
+    "matches": 35,
+    "level": "3.5",
+    "team": "DRAGONRIDGE CC #1 Intermountain"
+   },
+   "2023": {
+    "matches": 39,
+    "level": "3.5",
+    "team": "DRAGONRIDGE CC #1 Intermountain"
+   },
+   "2022": {
+    "matches": 39,
+    "level": "3.5",
+    "team": "DRAGONRIDGE CC Intermountain"
    }
   },
-  "fetches": 1,
-  "seconds": 12.7
+  "fetches": 9,
+  "s": "2",
+  "seconds": 73.9
  },
  {
   "name": "Ashley Richas",
@@ -8495,14 +8948,12 @@
    "2025": {
     "matches": 81,
     "level": "3.0",
-    "team": "ANTHEM CC Intermountain",
-    "cached": true
+    "team": "DTC #3 Intermountain"
    },
    "2024": {
     "matches": 29,
     "level": "3.0",
-    "team": "TPC Intermountain",
-    "cached": true
+    "team": "TPC Intermountain"
    },
    "2023": {
     "matches": 15,
@@ -8515,8 +8966,8 @@
     "team": "SDNC 3.5 La Costa/ Zielinski (3:2) So California"
    }
   },
-  "fetches": 5,
-  "seconds": 31.9
+  "fetches": 9,
+  "seconds": 61.4
  },
  {
   "name": "Jennifer Roberts",
@@ -8998,35 +9449,20 @@
  {
   "name": "Katie Sanders",
   "current": {
-   "level": 3.5,
-   "type": "C",
-   "date": "12/31/2024"
+   "level": 3.0,
+   "type": "S",
+   "date": "8/11/2025"
   },
   "years": {
    "2025": {
-    "matches": 4,
+    "matches": 5,
     "level": "3.0",
-    "team": "WHITNEY MESA PARK Intermountain",
-    "cached": true
-   },
-   "2024": {
-    "matches": 23,
-    "level": "3.5",
-    "team": "Sequoyah/Vivian White Southern"
-   },
-   "2023": {
-    "matches": 10,
-    "level": "3.5",
-    "team": "Lynne Barkeloo Southern"
-   },
-   "2022": {
-    "matches": 4,
-    "level": "3.5",
-    "team": "Haney Southern"
+    "team": "WHITNEY MESA PARK Intermountain"
    }
   },
-  "fetches": 7,
-  "seconds": 55.4
+  "fetches": 3,
+  "s": "3",
+  "seconds": 10.4
  },
  {
   "name": "Seda Sargsyan",
@@ -9254,7 +9690,7 @@
    }
   },
   "fetches": 4,
-  "seconds": 19.4
+  "seconds": 25.0
  },
  {
   "name": "Jaqueline Schultz",
@@ -9279,27 +9715,28 @@
   "current": {
    "level": 3.5,
    "type": "C",
-   "date": "12/31/2024"
+   "date": "12/31/2025"
   },
   "years": {
-   "2024": {
-    "matches": 4,
+   "2025": {
+    "matches": 15,
     "level": "3.5",
-    "team": "Lost Mountain (Patty Craven)* Southern"
+    "team": "SUMMERLIN ARBORS Intermountain"
    },
    "2023": {
-    "matches": 13,
+    "matches": 11,
     "level": "3.5",
-    "team": "Laurel Park (Lana Haffner)* Southern"
+    "team": "SUMMERLIN ARBORS #2 Intermountain"
    },
    "2022": {
-    "matches": 10,
+    "matches": 8,
     "level": "3.5",
-    "team": "Lost Mountain (Patty Craven)* Southern"
+    "team": "SUMMERLIN ARBORS #1 Intermountain"
    }
   },
   "fetches": 7,
-  "seconds": 32.5
+  "s": "3",
+  "seconds": 31.6
  },
  {
   "name": "Rhianna Schwartz",
@@ -9756,34 +10193,14 @@
  {
   "name": "Julie Smith",
   "current": {
-   "level": 3.5,
-   "type": "C",
-   "date": "12/31/2025"
+   "level": 3.0,
+   "type": "S",
+   "date": "2/11/2026"
   },
-  "years": {
-   "2025": {
-    "matches": 21,
-    "level": "3.5",
-    "team": "Chata/Pat Majestic Southern"
-   },
-   "2024": {
-    "matches": 9,
-    "level": "3.5",
-    "team": "Chata/Lesa Cleaveland Southern"
-   },
-   "2023": {
-    "matches": 36,
-    "level": "3.5",
-    "team": "Smith/Rollings-CC Southern"
-   },
-   "2022": {
-    "matches": 31,
-    "level": "3.5",
-    "team": "Team Smith Southern"
-   }
-  },
-  "fetches": 9,
-  "seconds": 65.8
+  "years": {},
+  "fetches": 1,
+  "s": "28",
+  "seconds": 5.2
  },
  {
   "name": "Amrita Soli",
@@ -9857,10 +10274,21 @@
  },
  {
   "name": "Kelsey Spence",
-  "current": {},
-  "years": {},
-  "fetches": 1,
-  "seconds": 6.1
+  "current": {
+   "level": 3.5,
+   "type": "C",
+   "date": "12/31/2023"
+  },
+  "years": {
+   "2023": {
+    "matches": 16,
+    "level": "4.0",
+    "team": "SPANISH TRAIL Intermountain"
+   }
+  },
+  "fetches": 3,
+  "s": "2",
+  "seconds": 20.5
  },
  {
   "name": "Kim Springer",
@@ -9876,29 +10304,25 @@
  {
   "name": "Stephanie Stern",
   "current": {
-   "level": 3.5,
+   "level": 3.0,
    "type": "C",
-   "date": "12/31/2024"
+   "date": "12/31/2025"
   },
   "years": {
+   "2025": {
+    "matches": 34,
+    "level": "2.5",
+    "team": "DTC #3 Intermountain"
+   },
    "2024": {
-    "matches": 6,
-    "level": "4.0",
-    "team": "OGT:Phoenix 4.0:Campbell/Martin New England"
-   },
-   "2023": {
-    "matches": 10,
-    "level": "3.5",
-    "team": "Rye Racquet Club: Racquettes Eastern"
-   },
-   "2022": {
-    "matches": 18,
-    "level": "3.5",
-    "team": "Rye Racquet Club: Racquettes Eastern"
+    "matches": 15,
+    "level": "2.5",
+    "team": "CANYON GATE Intermountain"
    }
   },
-  "fetches": 7,
-  "seconds": 38.2
+  "fetches": 5,
+  "s": "4",
+  "seconds": 28.0
  },
  {
   "name": "Joan Stertzer",
@@ -9974,10 +10398,26 @@
  },
  {
   "name": "Hannah Stevens",
-  "current": {},
-  "years": {},
-  "fetches": 1,
-  "seconds": 12.6
+  "current": {
+   "level": 3.5,
+   "type": "C",
+   "date": "12/31/2025"
+  },
+  "years": {
+   "2025": {
+    "matches": 16,
+    "level": "3.5",
+    "team": "SUMMERLIN ARBORS Intermountain"
+   },
+   "2024": {
+    "matches": 15,
+    "level": "3.0",
+    "team": "DTC #2 Intermountain"
+   }
+  },
+  "fetches": 5,
+  "s": "3",
+  "seconds": 30.3
  },
  {
   "name": "Ara Lee Stimson",
@@ -10067,34 +10507,13 @@
   "name": "Hannah Tang",
   "current": {
    "level": 3.0,
-   "type": "C",
-   "date": "12/31/2025"
+   "type": "S",
+   "date": "12/14/2025"
   },
-  "years": {
-   "2025": {
-    "matches": 7,
-    "level": "3.0",
-    "team": "DESERT PALM Intermountain"
-   },
-   "2024": {
-    "matches": 21,
-    "level": "3.0",
-    "team": "DESERT PALM Intermountain",
-    "cached": true
-   },
-   "2023": {
-    "matches": 9,
-    "level": "3.0",
-    "team": "DESERT PALM Intermountain"
-   },
-   "2022": {
-    "matches": 5,
-    "level": "3.0",
-    "team": "DESERT PALM Intermountain"
-   }
-  },
-  "fetches": 7,
-  "seconds": 29.3
+  "years": {},
+  "fetches": 1,
+  "s": "3",
+  "seconds": 4.2
  },
  {
   "name": "Michelle Tarnow",
@@ -10647,14 +11066,12 @@
    "2025": {
     "matches": 33,
     "level": "3.5",
-    "team": "SUN CITY ANTHEM Intermountain",
-    "cached": true
+    "team": "SUN CITY ANTHEM Intermountain"
    },
    "2024": {
     "matches": 18,
     "level": "3.0",
-    "team": "SUN CITY ANTHEM #2 Intermountain",
-    "cached": true
+    "team": "SUN CITY ANTHEM #2 Intermountain"
    },
    "2023": {
     "matches": 14,
@@ -10662,19 +11079,31 @@
     "team": "SWW-VAC-Fourtner Pacific NW"
    }
   },
-  "fetches": 3,
-  "seconds": 27.5
+  "fetches": 7,
+  "seconds": 38.7
  },
  {
   "name": "Laura Vasquez",
   "current": {
-   "level": 2.5,
+   "level": 3.0,
    "type": "C",
-   "date": "12/31/2015"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 5.7
+  "years": {
+   "2025": {
+    "matches": 16,
+    "level": "2.5",
+    "team": "DTC #3 Intermountain"
+   },
+   "2024": {
+    "matches": 9,
+    "level": "2.5",
+    "team": "DTC #1 Intermountain"
+   }
+  },
+  "fetches": 5,
+  "s": "2",
+  "seconds": 22.2
  },
  {
   "name": "Karen Veazey",
@@ -10935,28 +11364,44 @@
  },
  {
   "name": "Caroline Walton",
-  "current": {},
+  "current": {
+   "level": 3.5,
+   "type": "S",
+   "date": "1/31/2026"
+  },
   "years": {
    "2022": {
-    "matches": 6,
+    "matches": 18,
     "level": "3.5",
-    "team": "RED ROCK CC #3 Intermountain",
-    "cached": true
+    "team": "RED ROCK CC #3 Intermountain"
    }
   },
-  "fetches": 1,
-  "seconds": 5.8
+  "fetches": 3,
+  "s": "2",
+  "seconds": 18.2
  },
  {
   "name": "Jennifer Wang",
   "current": {
-   "level": 4.5,
+   "level": 3.0,
    "type": "C",
-   "date": "12/31/2019"
+   "date": "12/31/2025"
   },
-  "years": {},
-  "fetches": 1,
-  "seconds": 7.9
+  "years": {
+   "2025": {
+    "matches": 39,
+    "level": "2.5",
+    "team": "TPC Intermountain"
+   },
+   "2024": {
+    "matches": 7,
+    "level": "2.5",
+    "team": "TPC Intermountain"
+   }
+  },
+  "fetches": 5,
+  "s": "9",
+  "seconds": 28.9
  },
  {
   "name": "Jamie Warrington",
@@ -11004,8 +11449,7 @@
    "2025": {
     "matches": 36,
     "level": "3.0",
-    "team": "WHITNEY MESA PARK Intermountain",
-    "cached": true
+    "team": "MADEIRA CANYON PARK Intermountain"
    },
    "2024": {
     "matches": 41,
@@ -11023,8 +11467,8 @@
     "team": "Green, Venecca Southern"
    }
   },
-  "fetches": 7,
-  "seconds": 52.7
+  "fetches": 9,
+  "seconds": 65.2
  },
  {
   "name": "Amy Waters",
@@ -11106,14 +11550,12 @@
    "2025": {
     "matches": 52,
     "level": "3.5",
-    "team": "SUMMERLIN ARBORS #1 Intermountain",
-    "cached": true
+    "team": "RED ROCK CC #3 Intermountain"
    },
    "2024": {
     "matches": 49,
     "level": "3.5",
-    "team": "SUMMERLIN ARBORS Intermountain",
-    "cached": true
+    "team": "SUMMERLIN ARBORS Intermountain"
    },
    "2023": {
     "matches": 40,
@@ -11126,8 +11568,8 @@
     "team": "SFV - Sets In The City So California"
    }
   },
-  "fetches": 5,
-  "seconds": 36.5
+  "fetches": 9,
+  "seconds": 65.6
  },
  {
   "name": "Ann Marie Weaver",
@@ -11330,34 +11772,30 @@
  {
   "name": "Lisa Williams",
   "current": {
-   "level": 4.5,
+   "level": 3.0,
    "type": "C",
    "date": "12/31/2025"
   },
   "years": {
    "2025": {
-    "matches": 6,
-    "level": "4.5",
-    "team": "Seay Texas"
+    "matches": 9,
+    "level": "3.0",
+    "team": "LIFE TIME FITNESS/GV Intermountain"
    },
    "2024": {
     "matches": 7,
-    "level": "4.5",
-    "team": "CTHS LEWIS Texas"
+    "level": "3.5",
+    "team": "LIFE TIME FITNESS/GV #1 Intermountain"
    },
    "2023": {
     "matches": 3,
-    "level": "4.5",
-    "team": "Vaughan/Rive Texas"
-   },
-   "2022": {
-    "matches": 3,
-    "level": null,
-    "team": null
+    "level": "3.5",
+    "team": "LIFE TIME FITNESS/GV #1 Intermountain"
    }
   },
-  "fetches": 8,
-  "seconds": 37.2
+  "fetches": 7,
+  "s": "5",
+  "seconds": 30.6
  },
  {
   "name": "Jan Willis",
@@ -11500,32 +11938,29 @@
   },
   "years": {
    "2025": {
-    "matches": 8,
+    "matches": 25,
     "level": "3.0",
-    "team": "DTC #3 Intermountain",
-    "cached": true
+    "team": "DTC #3 Intermountain"
    },
    "2024": {
-    "matches": 5,
+    "matches": 13,
     "level": "3.0",
-    "team": "DTC #3 Intermountain",
-    "cached": true
+    "team": "DTC #3 Intermountain"
    },
    "2023": {
-    "matches": 7,
+    "matches": 11,
     "level": "3.0",
-    "team": "DTC #6 Intermountain",
-    "cached": true
+    "team": "DTC #6 Intermountain"
    },
    "2022": {
-    "matches": 5,
+    "matches": 8,
     "level": "2.5",
-    "team": "DTC #1 Intermountain",
-    "cached": true
+    "team": "DTC #1 Intermountain"
    }
   },
-  "fetches": 1,
-  "seconds": 6.5
+  "fetches": 9,
+  "s": "2",
+  "seconds": 44.3
  },
  {
   "name": "Suzy Wirth",

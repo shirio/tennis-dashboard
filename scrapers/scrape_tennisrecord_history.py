@@ -98,16 +98,33 @@ def roster_levels(soup: BeautifulSoup) -> dict[str, str]:
 SEEN: dict[int, dict[str, tuple[str, str]]] = {}
 
 
-def player_history(sess, name: str, pause: float, max_teams: int = 3, years_wanted=None) -> dict:
+def _profile_ids() -> dict[str, str]:
+    """{player name: TennisRecord s= id} from players.json profile URLs. TennisRecord
+    uses s= to tell apart players who share a name; without it the bare name can
+    land on someone in another section."""
+    out = {}
+    for p in json.loads((ROOT / "data" / "players.json").read_text()):
+        m = re.search(r"[?&]s=(\d+)", p.get("profile_url") or "")
+        if m:
+            out[p["name"]] = m.group(1)
+    return out
+
+
+def player_history(sess, name: str, pause: float, max_teams: int = 3, years_wanted=None,
+                   s: str | None = None, use_cache: bool = True) -> dict:
     t0 = time.time()
-    q = quote(name)
+    q = quote(name) + (f"&s={s}" if s else "")
+    # The roster cache is keyed by name, so it can't tell same-name players apart.
+    use_cache = use_cache and not s
     prof = _get(sess, f"{BASE}/adult/profile.aspx?playername={q}&mt=0&lt=0&yr=1", pause)
     years = profile_years(prof)
     out = {"name": name, "current": current_rating(prof), "years": {}, "fetches": 1}
+    if s:
+        out["s"] = s
     for y in sorted(years, reverse=True):
         if not years[y] or (years_wanted and y not in years_wanted):
             continue
-        hit = SEEN.get(y, {}).get(name.lower())
+        hit = SEEN.get(y, {}).get(name.lower()) if use_cache else None
         if hit:
             out["years"][str(y)] = {"matches": years[y], "level": hit[0], "team": hit[1], "cached": True}
             continue
@@ -117,8 +134,9 @@ def player_history(sess, name: str, pause: float, max_teams: int = 3, years_want
         for team, url in team_links(mh)[:max_teams]:
             levels = roster_levels(_get(sess, url, pause))
             out["fetches"] += 1
-            for who, l in levels.items():
-                SEEN.setdefault(y, {}).setdefault(who, (l, team))
+            if use_cache:
+                for who, l in levels.items():
+                    SEEN.setdefault(y, {}).setdefault(who, (l, team))
             lvl = levels.get(name.lower())
             if lvl:
                 rec.update(level=lvl, team=team)
@@ -145,6 +163,7 @@ def main(argv=None):
     ap.add_argument("--shard", help="i/n: only every n-th name starting at i (run n copies in parallel)")
     ap.add_argument("--years", help="Year range to pull, e.g. 2022-2025 (default: all)")
     ap.add_argument("--pause", type=float, default=0.5, help="Seconds after each request")
+    ap.add_argument("--no-cache", action="store_true", help="Don't use roster levels cached by name")
     args = ap.parse_args(argv)
 
     yw = None
@@ -168,11 +187,13 @@ def main(argv=None):
             for who, v in m.items():
                 SEEN.setdefault(int(y), {}).setdefault(who, tuple(v))
     sess = requests.Session()
+    ids = _profile_ids()
     for i, n in enumerate(names, 1):
         if n in done:
             continue
         try:
-            r = player_history(sess, n, args.pause, years_wanted=yw)
+            r = player_history(sess, n, args.pause, years_wanted=yw, s=ids.get(n),
+                               use_cache=not args.no_cache)
         except Exception as e:  # keep going; record the failure
             r = {"name": n, "error": str(e)}
         done[n] = r
