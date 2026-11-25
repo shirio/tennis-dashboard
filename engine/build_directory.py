@@ -629,12 +629,12 @@ def _score_html(score: str, won: bool) -> str:
 
 
 def _sq_delta(d) -> str:
-    """+.04 / −.02 / 0 for a per-match ShiQ change."""
+    """+.04 / −.02 / ±0 for a per-match ShiQ change."""
     if d is None:
         return ""
     r = round(d, 2)
     if r == 0:
-        return '<span class="sd0">0</span>'
+        return '<span class="sd0">±0</span>'
     txt = f"{abs(r):.2f}".lstrip("0")
     return f'<span class="{"sd-up" if r > 0 else "sd-down"}">{"+" if r > 0 else "−"}{txt}</span>'
 
