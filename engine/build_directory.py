@@ -133,6 +133,22 @@ def _tr_history() -> dict[str, dict[int, float]]:
     return out
 
 
+def _self_rate_after_gap(by_year: dict) -> None:
+    """Mark a roster-only season (level, no letter) as S when the two seasons
+    before it are blank and she played some season before those."""
+    ys = sorted(by_year)
+    for y in ys:
+        v = by_year[y]
+        if v.get("level") is None or v.get("rating_type"):
+            continue
+        if any((by_year.get(y - k) or {}).get("level") is not None for k in (1, 2)):
+            continue
+        if y - 1 not in by_year or y - 2 not in by_year:
+            continue
+        if any((by_year.get(e) or {}).get("level") is not None for e in ys if e < y - 2):
+            by_year[y] = dict(v, rating_type="S")
+
+
 def link_years(rows_from: list[dict], rows_to: list[dict]) -> dict[int, dict]:
     """Map index in rows_from -> the same player's row in rows_to (name+city, then name)."""
     by_nc: dict[tuple, list[dict]] = defaultdict(list)
@@ -545,7 +561,7 @@ document.getElementById('q').addEventListener('input', apply);
   var q = document.getElementById('q'), x = document.getElementById('qx');
   function sync() {{ x.hidden = !q.value; }}
   q.addEventListener('input', sync);
-  x.onclick = function() {{ q.value = ''; sync(); apply(); if (window.saveView) saveView(); q.focus(); }};
+  x.onclick = function() {{ q.value = ''; sync(); apply(); if (window.saveView) saveView(); q.blur(); }};
   window.syncQx = sync;
 }})();
 document.getElementById('fr').addEventListener('change', apply);
@@ -1326,6 +1342,9 @@ def build_directory() -> dict:
                 lvl = th.get(y)
                 if lvl is not None:
                     by_year[y] = {"level": lvl}  # roster level, no rating letter
+        # Two blank seasons since she last played: the rating expired, so the
+        # season she comes back in is a self-rate (Shirin: Darian McCauley 2025 = 3.0 S).
+        _self_rate_after_gap(by_year)
         # Manual fixes (data/rating_overrides.json) win over lists and rosters
         for ys, fix in (overrides.get(r["name"]) or {}).items():
             if int(ys) in by_year:
@@ -1341,11 +1360,16 @@ def build_directory() -> dict:
                 # compare with the level she played at in season Y.
                 d = by_year[y].get("rating_date") or ""
                 py = int(d[-4:]) if d[-4:].isdigit() else y - 1
-                prior = (by_year.get(py) or {}).get("level")
+                # Prev = the level of season py, or the latest season before it she
+                # played; earlier = the season she played before that (Prior).
+                played = [(yy, by_year[yy]["level"]) for yy in sorted(by_year, reverse=True)
+                          if yy <= py and (by_year.get(yy) or {}).get("level") is not None]
+                prior = played[0][1] if played else None
+                earlier = next((v for _, v in played[1:]), None)
                 rec = appeal_dyn.get(r["name"].lower())
                 if not rec or rec.get("year", YEAR_FROM - 1) != py:
                     rec = None
-                a = appeal_call(by_year[y].get("level"), prior, rec, py)
+                a = appeal_call(by_year[y].get("level"), prior, rec, py, earlier=earlier)
             appeals.append(_appeal_cell(a))
         if href and appeals[DIR_YEARS.index(info.get("cur_year") or YEAR_FROM)]:
             info["appeal"] = appeals[DIR_YEARS.index(info.get("cur_year") or YEAR_FROM)]

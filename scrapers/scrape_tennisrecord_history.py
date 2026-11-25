@@ -80,16 +80,22 @@ def _loc_ok(loc, want) -> bool:
     return bool(loc and want and loc[1] == want[1])
 
 
-def find_profile(sess, name: str, want, pause: float, s: str | None = None, max_s: int = 8):
+def find_profile(sess, name: str, want, pause: float, s: str | None = None, max_s: int = 40):
     """The profile page for `name` whose home state matches `want` (city, state).
     TennisRecord tells same-name players apart with s=1, 2, ...; the bare name is s=1.
+    An s past the last profile returns the last one again, so stop on a repeat
+    (Steve Kim of Las Vegas is s=11; the old cap of 8 missed him).
     Returns (soup, s, loc); soup is None when no profile matches."""
     q = quote(name)
     tries = [s] if s else [None] + [str(k) for k in range(2, max_s + 1)]
-    first = None
+    first = prev = None
     for k in tries:
         soup = _get(sess, f"{BASE}/adult/profile.aspx?playername={q}{'&s=' + k if k else ''}&mt=0&lt=0&yr=1", pause)
         loc = profile_location(soup, name)
+        sig = soup.get_text(" ", strip=True)[:4000]
+        if k and not s and sig == prev:  # past the last same-name profile
+            break
+        prev = sig
         if first is None:
             first = (soup, k, loc)
         if s or not want or _loc_ok(loc, want):

@@ -30,8 +30,15 @@ from scrapers.scrape_tennisrecord_history import BASE, _get, _profile_ids, _rows
 DATE = re.compile(r"\d\d/\d\d/\d{4}$")
 
 
-def year_matches(soup) -> list[dict]:
-    """Match rows (newest first) from a matchhistory page: date, league, match rating, dynamic after."""
+def _dkey(d: str) -> tuple:
+    m, dd, y = (int(x) for x in d.split("/"))
+    return (y, m, dd)
+
+
+def year_matches(soup, mixed: bool = False) -> list[dict]:
+    """Match rows (newest first) from a matchhistory page: date, league, match rating, dynamic after.
+    Mixed rows are skipped: mixed matches never feed USTA's
+    official (non-mixed) NTRP, so they are left out (Shirin, 2026-11-25)."""
     for t in soup.find_all("table"):
         rows = _rows(t)
         if rows and rows[0][:1] == ["Match Date"]:
@@ -41,6 +48,8 @@ def year_matches(soup) -> list[dict]:
                     try:
                         dyn = float(r[-1])
                     except ValueError:
+                        continue
+                    if ("MIXED" in r[1].upper()) != mixed:  # mixed rows carry the mixed rating
                         continue
                     out.append({"date": r[0], "league": r[1], "match": r[-2], "dyn": dyn})
             return out
@@ -75,11 +84,11 @@ def main(argv=None):
         # A year-end appeal dated 12/31/Y was made on the computer rating from season Y.
         d = r.get("rating_date") or ""
         year = int(d[-4:]) if d[-4:].isdigit() else args.year
-        if n in done and done[n].get("year", args.year) == year:
+        if n in done and done[n].get("year", args.year) == year and done[n].get("no_mixed"):
             continue
         want = (r.get("city") or "", r.get("state") or "") if cnt[n] == 1 else None
         s = ids.get(n) or (hist.get(n) or {}).get("s")
-        rec = {"name": n, "level": r["level"], "date": r.get("rating_date"), "year": year}
+        rec = {"name": n, "level": r["level"], "date": r.get("rating_date"), "year": year, "no_mixed": True}
         try:
             prof, k, loc = find_profile(sess, n, want, args.pause, s)
             rec["loc"] = loc
@@ -88,15 +97,25 @@ def main(argv=None):
             else:
                 rec["s"] = k
                 txt = prof.get_text(" ", strip=True)
-                m = re.search(r"([1-7]\.\d{4})\s+(\d{1,2}/\d{1,2}/\d{4})\s+Projected", txt)
+                m = re.search(r"([1-7]\.\d{4})\s*(M?)\s+(\d{1,2}/\d{1,2}/\d{4})\s+Projected", txt)
                 if m:
-                    rec["dyn_now"], rec["dyn_now_date"] = float(m.group(1)), m.group(2)
+                    rec["dyn_now"], rec["dyn_now_date"] = float(m.group(1)), m.group(3)
+                    # "M" after the dynamic: a mixed-only player, so mixed matches are
+                    # all TennisRecord has to rate her on (Shirin, Rogel Valles)
+                    rec["mixed_only"] = m.group(2) == "M"
                 q = quote(n) + (f"&s={k}" if k else "")
                 mh = _get(sess, f"{BASE}/adult/matchhistory.aspx?year={year}&playername={q}&mt=0&lt=0&yr=0", args.pause)
-                ms = year_matches(mh)
+                ms = year_matches(mh, mixed=rec.get("mixed_only", False))
                 rec["matches"] = len(ms)
-                if ms:
-                    rec["last"] = ms[0]
+                rec["dyn_by_date"] = {m["date"]: m["dyn"] for m in reversed(ms)}
+                # Year-end counting stops about a month before ratings come out
+                # (Nov 8 in 2026), so read the estimate as of that cutoff.
+                cut = (year, 11, 8)
+                before = [m for m in ms if _dkey(m["date"]) <= cut]
+                if before:
+                    rec["last"] = before[0]
+                elif ms:
+                    rec["after_cutoff_only"] = True
         except Exception as e:  # keep going
             rec["error"] = str(e)
         done[n] = rec
