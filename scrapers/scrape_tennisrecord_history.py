@@ -69,6 +69,42 @@ def current_rating(soup: BeautifulSoup) -> dict:
     return {"level": float(m.group(1)), "type": m.group(2), "date": m.group(3)} if m else {}
 
 
+def profile_location(soup: BeautifulSoup, name: str) -> tuple[str, str] | None:
+    """(city, state) from the profile header, e.g. 'Nicole Reyes (Las Vegas, NV)'."""
+    txt = soup.get_text(" ", strip=True)
+    m = re.search(re.escape(name) + r"\s*\(([^()]*?),\s*([A-Z]{2})\)", txt, re.I)
+    return (m.group(1).strip(), m.group(2)) if m else None
+
+
+def _loc_ok(loc, want) -> bool:
+    return bool(loc and want and loc[1] == want[1])
+
+
+def find_profile(sess, name: str, want, pause: float, s: str | None = None, max_s: int = 40):
+    """The profile page for `name` whose home state matches `want` (city, state).
+    TennisRecord tells same-name players apart with s=1, 2, ...; the bare name is s=1.
+    An s past the last profile returns the last one again, so stop on a repeat
+    (Steve Kim of Las Vegas is s=11; the old cap of 8 missed him).
+    Returns (soup, s, loc); soup is None when no profile matches."""
+    q = quote(name)
+    tries = [s] if s else [None] + [str(k) for k in range(2, max_s + 1)]
+    first = prev = None
+    for k in tries:
+        soup = _get(sess, f"{BASE}/adult/profile.aspx?playername={q}{'&s=' + k if k else ''}&mt=0&lt=0&yr=1", pause)
+        loc = profile_location(soup, name)
+        sig = soup.get_text(" ", strip=True)[:4000]
+        if k and not s and sig == prev:  # past the last same-name profile
+            break
+        prev = sig
+        if first is None:
+            first = (soup, k, loc)
+        if s or not want or _loc_ok(loc, want):
+            return soup, k, loc
+        if loc is None and k:  # ran past the last same-name profile
+            break
+    return None, None, first[2] if first else None
+
+
 def team_links(soup: BeautifulSoup) -> list[tuple[str, str]]:
     """(team name, url) for each distinct team in the match history table, in page order."""
     seen, out = set(), []
@@ -111,14 +147,18 @@ def _profile_ids() -> dict[str, str]:
 
 
 def player_history(sess, name: str, pause: float, max_teams: int = 3, years_wanted=None,
-                   s: str | None = None, use_cache: bool = True) -> dict:
+                   s: str | None = None, use_cache: bool = True, want=None) -> dict:
+    """`want` = (city, state) from the USTA list: pick the same-name profile from that state."""
     t0 = time.time()
+    prof, s, loc = find_profile(sess, name, want, pause, s)
+    if prof is None:
+        return {"name": name, "current": {}, "years": {}, "loc": loc, "unmatched": True,
+                "seconds": round(time.time() - t0, 1)}
     q = quote(name) + (f"&s={s}" if s else "")
     # The roster cache is keyed by name, so it can't tell same-name players apart.
     use_cache = use_cache and not s
-    prof = _get(sess, f"{BASE}/adult/profile.aspx?playername={q}&mt=0&lt=0&yr=1", pause)
     years = profile_years(prof)
-    out = {"name": name, "current": current_rating(prof), "years": {}, "fetches": 1}
+    out = {"name": name, "current": current_rating(prof), "years": {}, "fetches": 1, "loc": loc}
     if s:
         out["s"] = s
     for y in sorted(years, reverse=True):
@@ -188,12 +228,32 @@ def main(argv=None):
                 SEEN.setdefault(int(y), {}).setdefault(who, tuple(v))
     sess = requests.Session()
     ids = _profile_ids()
+    want_of = {}
+    lst = ROOT / "data" / "ntrp_nv_2026.json"
+    if lst.exists():
+        rows = json.loads(lst.read_text())
+        cnt = {}
+        for r in rows:
+            cnt[r["name"]] = cnt.get(r["name"], 0) + 1
+        want_of = {r["name"]: (r.get("city") or "", r.get("state") or "") for r in rows
+                   if cnt[r["name"]] == 1 and r.get("state")}
+    # Resumed entries pulled before the location check: verify the home state, re-pull if wrong.
+    for n in [n for n in names if n in done and "loc" not in done[n] and want_of.get(n) and not ids.get(n)]:
+        try:
+            _, k, loc = find_profile(sess, n, want_of[n], args.pause)
+        except Exception:
+            continue
+        if k is None and _loc_ok(loc, want_of[n]):
+            done[n]["loc"] = loc
+        else:
+            print(f"[recheck] {n}: first profile is {loc}, wanted {want_of[n]} -> re-pull", flush=True)
+            del done[n]
     for i, n in enumerate(names, 1):
         if n in done:
             continue
         try:
             r = player_history(sess, n, args.pause, years_wanted=yw, s=ids.get(n),
-                               use_cache=not args.no_cache)
+                               use_cache=not args.no_cache, want=None if ids.get(n) else want_of.get(n))
         except Exception as e:  # keep going; record the failure
             r = {"name": n, "error": str(e)}
         done[n] = r

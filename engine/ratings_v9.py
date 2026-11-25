@@ -21,7 +21,7 @@ How it works
 * Players with no real baseline (NTRP default) learn faster for their first
   few matches, because their starting number is a guess.
 * Win probability for the matchup explorer / backtest is a logistic curve of
-  the strength gap, ``1 / (1 + exp(-WIN_SLOPE * gap))``, fitted on our data.
+  the strength gap, ``floor + (1 - 2*floor) / (1 + exp(-WIN_SLOPE * gap))``, fitted on our data.
 """
 from __future__ import annotations
 
@@ -39,7 +39,10 @@ LR = 0.20               # step size for the shared rating
 LR_SINGLES_OFFSET = 0.10  # extra step for the singles offset on singles lines
 PROVISIONAL_BOOST = 2.0   # step multiplier for players starting on an NTRP default
 PROVISIONAL_MATCHES = 5   # ... for this many matches
-WIN_SLOPE = 7.0          # logistic slope for win probability
+WIN_SLOPE = 8.0          # logistic slope for win probability
+UPSET_FLOOR = 0.04       # even a lopsided matchup is an upset ~4% of the time
+# (refit 2026-11-25 on 13,852 lines: the plain curve said 97% where favourites
+#  won 93%; slope 8 with a 4% floor tops out at 96% and matches actual rates)
 
 # Baselines that are just the NTRP fallback (ratings._NTRP_DEFAULT_RATING)
 _DEFAULT_BASELINES = {round(v, 2) for v in R._NTRP_DEFAULT_RATING.values()}
@@ -76,9 +79,11 @@ class V9Result:
         return self.rating.get(k)
 
 
-def win_probability(gap: float, slope: float = WIN_SLOPE) -> float:
-    """P(side wins) given strength gap (side minus opponents)."""
-    return 1.0 / (1.0 + math.exp(-slope * gap))
+def win_probability(gap: float, slope: float = WIN_SLOPE,
+                    floor: float = UPSET_FLOOR) -> float:
+    """P(side wins) given strength gap (side minus opponents), kept within
+    [floor, 1 - floor]."""
+    return floor + (1.0 - 2.0 * floor) / (1.0 + math.exp(-slope * gap))
 
 
 def side_win_probability(side: list[float], opp: list[float],
@@ -112,15 +117,18 @@ def is_provisional(baseline: Optional[float]) -> bool:
 
 
 def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
-           params: Params = Params(), timelines: bool = False) -> V9Result:
+           params: Params = Params(), timelines: bool = False,
+           provisional_keys: frozenset = frozenset()) -> V9Result:
     """Process court events in the given (chronological) order.
 
     With ``timelines`` the result also records, per player and per
     (division, date), the shared rating going into that date's first match
-    and after its last one.
+    and after its last one. ``provisional_keys`` are players whose baseline
+    is only a guess (e.g. crawled players placed mid-level), so they learn
+    faster at first like NTRP-default players.
     """
     res = V9Result()
-    provisional = {k: is_provisional(v) for k, v in baselines.items()}
+    provisional = {k: is_provisional(v) or k in provisional_keys for k, v in baselines.items()}
 
     def strength(k: str, singles: bool) -> float:
         if k not in res.rating:
