@@ -248,6 +248,8 @@ def resolve(d, fetch: bool) -> dict:
         nv_list[norm(r["name"])].append(r)
     cache = json.loads(CAND_CACHE.read_text()) if CAND_CACHE.exists() else {}
     # our 429's team lists from the crawl, keyed by history_url
+    for hu, tids in d.get("player_teams_by_url", {}).items():
+        cache.setdefault(hu, tids)
     by_slug = d.get("player_teams", {})
     for rows in nv_list.values():
         for r in rows:
@@ -385,10 +387,16 @@ def resolve(d, fetch: bool) -> dict:
 
 
 def main():
+    global OUT, YEAR, CAND_CACHE
     ap = argparse.ArgumentParser()
     ap.add_argument("--fetch", action="store_true",
                     help="log in and open candidate player pages for duplicate names")
+    ap.add_argument("--year", type=int, default=2026)
     a = ap.parse_args()
+    import scrapers.scrape_tl_teams as stt
+    stt.set_year(a.year)
+    OUT, YEAR = stt.OUT, a.year
+    CAND_CACHE = ROOT / "data" / f"tl_candidate_teams_{YEAR}.json"
     d = json.loads(OUT.read_text())
     t0 = time.time()
     d = resolve(d, a.fetch)
