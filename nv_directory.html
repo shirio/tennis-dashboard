@@ -189,13 +189,13 @@ function val(r, k) {
   if (k === 'ws') return r[7] ? r[7][0] : null;
   if (k === 'wd') return r[7] ? r[7][3] : null;
   if (k[0] === 'y') {
-    // Level first, then the rating letter within a level: D > C > A > S (others after S)
+    // Level first, then the rating letter within a level: D > M > C > A > S (others after S)
     var i = +k.slice(1), v = r[4][i];
     return v == null ? null : v + (LETTER_RANK[r[5][i]] || 0) / 100;
   }
   return null;
 }
-var LETTER_RANK = { D: 4, C: 3, A: 2, S: 1 };
+var LETTER_RANK = { D: 5, M: 4, C: 3, A: 2, S: 1 };
 function cmp(a, b) {
   var x, y;
   if (sortK[0] === 'd') { var i = +sortK.slice(1); x = delta(a, i); y = delta(b, i);
