@@ -304,6 +304,9 @@ def resolve(d, fetch: bool) -> dict:
         }
         for it in group:
             id2p[f"{it['nname']}#{it['team']}"] = pid
+            # also the plain lower-cased name, for readers that key on
+            # name.lower() (apostrophes, hyphens: "jamie o'connell")
+            id2p.setdefault(f"{it['name'].lower()}#{it['team']}", pid)
 
     review = {(norm(n), t) for n, t in MANUAL_REVIEW}
     for (nn, area), items in list(by_name_area.items()):
