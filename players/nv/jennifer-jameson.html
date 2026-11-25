@@ -83,6 +83,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.mix td { background: #f6f4f9; }
 .hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
 .hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
@@ -159,6 +165,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.02</span><span class="sq-after">3.66</span></td><td class="c-date">4/20<span class="yy">/26</span></td><td class="c-div"><span class="dp dp40">4.0</span></td><td class="c-lg" title="2026 NTA LADIES SPRING WEEKDAY LEAGUE">Weekday</td><td class="c-team" title="DRAGONRIDGE CC #1">Dragonridge #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set">2-6</span> <span class="set sw">7-5</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="melissa-kwong-blais.html"><span class="fn">Melissa Kwong-Blais</span><span class="sn">M. Kwong-Blais</span></a> <span class="rt">3.44</span></span></td><td class="c-opp"><span class="pn"><a href="kelly-maier.html"><span class="fn">Kelly Maier</span><span class="sn">K. Maier</span></a> <span class="rt">3.53</span></span><br><span class="pn"><a href="kathryn-garlan.html"><span class="fn">Kathryn Garlan</span><span class="sn">K. Garlan</span></a> <span class="rt">3.53</span></span></td><td class="c-oppteam" title="RED ROCK CC #2">Red Rock #2</td></tr><tr data-y="2026"><td class="c-sq"></td><td class="c-date">3/7<span class="yy">/26</span></td><td class="c-div"><span class="dp dp40">4.0</span></td><td class="c-lg" title="2026 USTA ADULT LEAGUE 40 &amp; OVER">40+</td><td class="c-team" title="RED ROCK CC #1">Red Rock #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score" title="Won by default, not counted in records"><em class="muted">default</em></td><td class="c-partner"><span class="pn"><a href="mary-stephenson.html"><span class="fn">Mary Stephenson</span><span class="sn">M. Stephenson</span></a></span></td><td class="c-opp"><em class="muted">default</em></td><td class="c-oppteam" title="RED ROCK CC #3">Red Rock #3</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.07</span><span class="sq-after">3.68</span></td><td class="c-date">2/7<span class="yy">/26</span></td><td class="c-div"><span class="dp dp40">4.0</span></td><td class="c-lg" title="2026 USTA ADULT LEAGUE 40 &amp; OVER">40+</td><td class="c-team" title="RED ROCK CC #1">Red Rock #1</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">2-6</span> <span class="set sl">2-6</span></td><td class="c-partner"><span class="pn"><a href="jennifer-cerny.html"><span class="fn">Jennifer Cerny</span><span class="sn">J. Cerny</span></a> <span class="rt">4.00</span></span></td><td class="c-opp"><span class="pn"><a href="josephine-mcpeak.html"><span class="fn">Josephine McPeak</span><span class="sn">J. McPeak</span></a> <span class="rt">3.98</span></span><br><span class="pn"><a href="jonna-gilmore.html"><span class="fn">Jonna Gilmore</span><span class="sn">J. Gilmore</span></a> <span class="rt">4.01</span></span></td><td class="c-oppteam" title="TPC">TPC</td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;

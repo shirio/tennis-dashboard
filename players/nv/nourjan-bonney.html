@@ -83,6 +83,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.mix td { background: #f6f4f9; }
 .hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
 .hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
@@ -161,6 +167,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.04</span><span class="sq-after">2.99</span></td><td class="c-date">3/28<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="2026 USTA ADULT LEAGUE 18 &amp; OVER">18+</td><td class="c-team" title="DESERT PALM">D. Palm</td><td class="c-line"><span class="line-pill pill-s1">S1</span></td><td class="c-score"><span class="set sw">6-3</span> <span class="set sw">6-1</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="tori-walker.html"><span class="fn">Tori Walker</span><span class="sn">T. Walker</span></a> <span class="rt">2.84</span></span></td><td class="c-oppteam" title="WHITNEY MESA PARK">Whitney</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.05</span><span class="sq-after">2.95</span></td><td class="c-date">3/21<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="2026 USTA ADULT LEAGUE 18 &amp; OVER">18+</td><td class="c-team" title="DESERT PALM">D. Palm</td><td class="c-line"><span class="line-pill pill-s1">S1</span></td><td class="c-score"><span class="set sw">6-2</span> <span class="set sw">6-0</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="michele-behnen.html"><span class="fn">Michele Behnen</span><span class="sn">M. Behnen</span></a> <span class="rt">2.73</span></span></td><td class="c-oppteam" title="SPANISH OAKS">S. Oaks</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.02</span><span class="sq-after">2.90</span></td><td class="c-date">3/14<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="2026 USTA ADULT LEAGUE 18 &amp; OVER">18+</td><td class="c-team" title="DESERT PALM">D. Palm</td><td class="c-line"><span class="line-pill pill-s1">S1</span></td><td class="c-score"><span class="set sw">6-3</span> <span class="set sw">6-3</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="sandra-mier.html"><span class="fn">Sandra Mier</span><span class="sn">S. Mier</span></a> <span class="rt">2.76</span></span></td><td class="c-oppteam" title="DTC #1">DTC #1</td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;

@@ -83,6 +83,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.mix td { background: #f6f4f9; }
 .hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
 .hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
@@ -156,9 +162,15 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-lg">League</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-sq"><span class="sd0">±0</span><span class="sq-after">3.00</span></td><td class="c-date">7/21<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="2026 USTA Adult 40 &amp; Over">40+</td><td class="c-team" title="Ivory Ridge Smash Sisters">Ivory Ridge Smash Sisters</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">0-6</span> <span class="set">6-4</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="tiffany-riley-utah.html"><span class="fn">Tiffany Riley</span><span class="sn">T. Riley</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="kristina-dell-orco-utah.html"><span class="fn">Kristina Dell&#x27;Orco</span><span class="sn">K. Dell&#x27;Orco</span></a> <span class="rt">3.17</span></span><br><span class="pn"><a href="nancy-koefoed-utah.html"><span class="fn">Nancy Koefoed</span><span class="sn">N. Koefoed</span></a> <span class="rt">3.30</span></span></td><td class="c-oppteam" title="Utah/Alexander/40&amp;Over/3.5W">Utah/Alexander/40&amp;Over/3.5W</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-sq"><span class="sd0">±0</span><span class="sq-after">3.00</span></td><td class="c-date">7/21<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="2026 USTA Adult 40 &amp; Over">40+</td><td class="c-team" title="Ivory Ridge Smash Sisters">Ivory Ridge Smash Sisters</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">0-6</span> <span class="set">6-4</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="tiffany-riley-utah.html"><span class="fn">Tiffany Riley</span><span class="sn">T. Riley</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="kristina-dell-orco-utah.html"><span class="fn">Kristina Dell&#x27;Orco</span><span class="sn">K. Dell&#x27;Orco</span></a> <span class="rt">3.17</span></span><br><span class="pn"><a href="nancy-koefoed-utah.html"><span class="fn">Nancy Koefoed</span><span class="sn">N. Koefoed</span></a> <span class="rt">3.30</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="Utah/Alexander/40&amp;Over/3.5W" aria-label="Utah (Alexander), listed as Utah/Alexander/40&amp;Over/3.5W">Utah (Alexander)</span></td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;

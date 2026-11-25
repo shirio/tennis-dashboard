@@ -83,6 +83,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.mix td { background: #f6f4f9; }
 .hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
 .hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
@@ -156,9 +162,15 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-lg">League</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.03</span><span class="sq-after">2.97</span></td><td class="c-date">8/28<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="55 &amp; Over 7.0W">Sectionals</td><td class="c-team" title="Utah (Affleck)">Utah (Affleck)</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">1-6</span> <span class="set">6-4</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="allison-leishman-utah.html"><span class="fn">Allison Leishman</span><span class="sn">A. Leishman</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="lori-abbott-montana.html"><span class="fn">Lori Abbott</span><span class="sn">L. Abbott</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="terri-nickless-montana.html"><span class="fn">Terri Nickless</span><span class="sn">T. Nickless</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="Montana (Rembe)">Montana (Rembe)</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.03</span><span class="sq-after">2.97</span></td><td class="c-date">8/28<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="55 &amp; Over 7.0W">Sectionals</td><td class="c-team"><span class="rn" tabindex="0" data-full="Utah/Affleck/55&amp;Over7.0W" aria-label="Utah (Affleck), listed as Utah/Affleck/55&amp;Over7.0W">Utah (Affleck)</span></td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">1-6</span> <span class="set">6-4</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="allison-leishman-utah.html"><span class="fn">Allison Leishman</span><span class="sn">A. Leishman</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="lori-abbott-montana.html"><span class="fn">Lori Abbott</span><span class="sn">L. Abbott</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="terri-nickless-montana.html"><span class="fn">Terri Nickless</span><span class="sn">T. Nickless</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="Montana/Rembe/55&amp;Over7.0W" aria-label="Montana (Rembe), listed as Montana/Rembe/55&amp;Over7.0W">Montana (Rembe)</span></td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;

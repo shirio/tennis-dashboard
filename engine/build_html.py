@@ -103,6 +103,7 @@ _TEAM_ABBREV = {
     "madeira canyon park":        "Madeira",
     "sun city anthem":            "SC Anthem",
     "all in":                     "All In",
+    "las vegas cc":               "Las Vegas",
     # TennisLink typos seen in the 2026 crawl
     "dragonridge c":              "Dragonridge",
     "summerin arbors":            "Summerlin",

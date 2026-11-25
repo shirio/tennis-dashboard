@@ -83,6 +83,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.mix td { background: #f6f4f9; }
 .hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
 .hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
@@ -160,6 +166,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.03</span><span class="sq-after">1.96</span></td><td class="c-date">5/9<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="2026 USTA ADULT LEAGUE 18 &amp; OVER">18+</td><td class="c-team" title="CLUB RIDGES">Ridges</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">2-6</span></td><td class="c-partner"><span class="pn"><a href="christy-cropper.html"><span class="fn">Christy Cropper</span><span class="sn">C. Cropper</span></a> <span class="rt">2.06</span></span></td><td class="c-opp"><span class="pn"><a href="jocelyn-goldman.html"><span class="fn">Jocelyn Goldman</span><span class="sn">J. Goldman</span></a> <span class="rt">2.67</span></span><br><span class="pn"><a href="liz-macdonald.html"><span class="fn">Liz MacDonald</span><span class="sn">L. MacDonald</span></a> <span class="rt">2.81</span></span></td><td class="c-oppteam" title="SPANISH OAKS">S. Oaks</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.08</span><span class="sq-after">1.93</span></td><td class="c-date">4/18<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="2026 USTA ADULT LEAGUE 18 &amp; OVER">18+</td><td class="c-team" title="CLUB RIDGES">Ridges</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">0-6</span> <span class="set sl">1-6</span></td><td class="c-partner"><span class="pn"><a href="christy-shulman.html"><span class="fn">Christy Shulman</span><span class="sn">C. Shulman</span></a> <span class="rt">2.73</span></span></td><td class="c-opp"><span class="pn"><a href="leah-bonilla.html"><span class="fn">Leah Bonilla</span><span class="sn">L. Bonilla</span></a> <span class="rt">2.53</span></span><br><span class="pn"><a href="nancy-ozun.html"><span class="fn">Nancy Ozun</span><span class="sn">N. Ozun</span></a> <span class="rt">2.43</span></span></td><td class="c-oppteam" title="SPANISH TRAIL">S. Trail</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.01</span><span class="sq-after">2.01</span></td><td class="c-date">3/28<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="2026 USTA ADULT LEAGUE 18 &amp; OVER">18+</td><td class="c-team" title="CLUB RIDGES">Ridges</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">1-6</span> <span class="set sl">2-6</span></td><td class="c-partner"><span class="pn"><a href="christy-cropper.html"><span class="fn">Christy Cropper</span><span class="sn">C. Cropper</span></a> <span class="rt">2.11</span></span></td><td class="c-opp"><span class="pn"><a href="tiffany-vance.html"><span class="fn">Tiffany Vance</span><span class="sn">T. Vance</span></a> <span class="rt">2.40</span></span><br><span class="pn"><a href="elis-desiree-peetsalu.html"><span class="fn">Elis Desiree Peetsalu</span><span class="sn">E. Peetsalu</span></a> <span class="rt">2.57</span></span></td><td class="c-oppteam" title="DTC #4">DTC #4</td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;

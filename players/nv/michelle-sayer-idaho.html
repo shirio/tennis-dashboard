@@ -83,6 +83,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.mix td { background: #f6f4f9; }
 .hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
 .hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
@@ -159,6 +165,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.05</span><span class="sq-after">3.15</span></td><td class="c-date">8/1<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="7.0 Women">Districts</td><td class="c-team" title="IF - Grand Slammers">IF - Grand Slammers</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set">7-6</span> <span class="set sl">6-7</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="julie-umphlette-idaho.html"><span class="fn">Julie Umphlette</span><span class="sn">J. Umphlette</span></a> <span class="rt">3.23</span></span></td><td class="c-opp"><span class="pn"><a href="lurline-berry-idaho.html"><span class="fn">Lurline Berry</span><span class="sn">L. Berry</span></a> <span class="rt">3.07</span></span><br><span class="pn"><a href="michele-surmelis-idaho.html"><span class="fn">Michele Surmelis</span><span class="sn">M. Surmelis</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="POC - Unforced Terrors">POC - Unforced Terrors</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.20</span><span class="sq-after">3.20</span></td><td class="c-date">7/31<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="7.0 Women">Districts</td><td class="c-team" title="IF - Grand Slammers">IF - Grand Slammers</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sw">6-2</span> <span class="set sw">6-2</span></td><td class="c-partner"><span class="pn"><a href="julie-umphlette-idaho.html"><span class="fn">Julie Umphlette</span><span class="sn">J. Umphlette</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="cynthia-copple-idaho.html"><span class="fn">Cynthia Copple</span><span class="sn">C. Copple</span></a> <span class="rt">3.00</span></span><br><span class="pn"><a href="stacey-strong-idaho.html"><span class="fn">Stacey Strong</span><span class="sn">S. Strong</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="TV1 - Shady Ladies">TV1 - Shady Ladies</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.20</span><span class="sq-after">3.20</span></td><td class="c-date">7/31<span class="yy">/26</span></td><td class="c-div"><span class="dp dp70">7.0</span></td><td class="c-lg" title="7.0 Women">Districts</td><td class="c-team" title="IF - Grand Slammers">IF - Grand Slammers</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sw">6-3</span> <span class="set sw">6-2</span></td><td class="c-partner"><span class="pn"><a href="lori-murdoch-idaho.html"><span class="fn">Lori Murdoch</span><span class="sn">L. Murdoch</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="molly-arrossa-idaho.html"><span class="fn">Molly Arrossa</span><span class="sn">M. Arrossa</span></a> <span class="rt">3.42</span></span><br><span class="pn"><a href="janet-roe-idaho.html"><span class="fn">Janet Roe</span><span class="sn">J. Roe</span></a> <span class="rt">3.03</span></span></td><td class="c-oppteam" title="TF - Go-netters">TF - Go-netters</td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;

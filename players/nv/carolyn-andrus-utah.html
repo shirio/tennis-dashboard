@@ -83,6 +83,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.mix td { background: #f6f4f9; }
 .hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
 .hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
@@ -159,6 +165,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.06</span><span class="sq-after">2.94</span></td><td class="c-date">10/6<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="2026 Fall Outdoor League-Weekday">Weekday</td><td class="c-team" title="Sunpro-For The Love">Sunpro-For The Love</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sl">4-6</span> <span class="set sl">2-6</span></td><td class="c-partner"><span class="pn"><a href="karen-wilson-utah.html"><span class="fn">Karen Wilson</span><span class="sn">K. Wilson</span></a> <span class="rt">3.11</span></span></td><td class="c-opp"><span class="pn"><a href="samantha-levin-utah.html"><span class="fn">Samantha Levin</span><span class="sn">S. Levin</span></a> <span class="rt">2.97</span></span><br><span class="pn"><a href="elaine-zuckerman-utah.html"><span class="fn">Elaine Zuckerman</span><span class="sn">E. Zuckerman</span></a> <span class="rt">3.16</span></span></td><td class="c-oppteam" title="PC MARC-Alexander/Levin">PC MARC-Alexander/Levin</td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;

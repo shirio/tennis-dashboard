@@ -83,6 +83,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.mix td { background: #f6f4f9; }
 .hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
 .hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
@@ -156,9 +162,15 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-lg">League</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.01</span><span class="sq-after">2.82</span></td><td class="c-date">10/24<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team" title="Southwest (Arnaud)">Southwest (Arnaud)</td><td class="c-line"><span class="line-pill pill-s1">S1</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">3-6</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="fang-wong-national.html"><span class="fn">Fang Wong</span><span class="sn">F. Wong</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="Norcal (Chang)">Norcal (Chang)</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.17</span><span class="sq-after">2.83</span></td><td class="c-date">10/23<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team" title="Southwest (Arnaud)">Southwest (Arnaud)</td><td class="c-line"><span class="line-pill pill-s1">S1</span></td><td class="c-score"><span class="set sl">0-6</span> <span class="set sl">1-6</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="heshan-liu-national.html"><span class="fn">Heshan Liu</span><span class="sn">H. Liu</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam" title="Northern (Chalmers)">Northern (Chalmers)</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.01</span><span class="sq-after">2.82</span></td><td class="c-date">10/24<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team"><span class="rn" tabindex="0" data-full="Southwest/Arnaud/40&amp;Over3.5W" aria-label="Southwest (Arnaud), listed as Southwest/Arnaud/40&amp;Over3.5W">Southwest (Arnaud)</span></td><td class="c-line"><span class="line-pill pill-s1">S1</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">3-6</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="fang-wong-national.html"><span class="fn">Fang Wong</span><span class="sn">F. Wong</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="NorCal/Chang/40&amp;Over3.5W" aria-label="NorCal (Chang), listed as NorCal/Chang/40&amp;Over3.5W">NorCal (Chang)</span></td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.17</span><span class="sq-after">2.83</span></td><td class="c-date">10/23<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team"><span class="rn" tabindex="0" data-full="Southwest/Arnaud/40&amp;Over3.5W" aria-label="Southwest (Arnaud), listed as Southwest/Arnaud/40&amp;Over3.5W">Southwest (Arnaud)</span></td><td class="c-line"><span class="line-pill pill-s1">S1</span></td><td class="c-score"><span class="set sl">0-6</span> <span class="set sl">1-6</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="heshan-liu-national.html"><span class="fn">Heshan Liu</span><span class="sn">H. Liu</span></a> <span class="rt">3.00</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="Northern/Chalmers/40&amp;Over3.5W" aria-label="Northern (Chalmers), listed as Northern/Chalmers/40&amp;Over3.5W">Northern (Chalmers)</span></td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;

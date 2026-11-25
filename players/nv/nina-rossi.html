@@ -83,6 +83,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .hist td.num { color: #aaa; }
 .hist tbody tr:hover td { background: #faf9f6; }
 .hist tr.dq td { opacity: .5; text-decoration: line-through; }
+.rn { position: relative; cursor: help; text-decoration: underline dotted #999; text-decoration-thickness: 1.5px;
+       text-underline-offset: 3px; outline: none; }
+.rn::after { content: attr(data-full); display: none; position: absolute; left: 0; top: calc(100% + 4px); z-index: 6;
+       background: #333; color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+.rn.open::after { display: block; }
+@media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.mix td { background: #f6f4f9; }
 .hist tr.mix td:first-child { border-radius: 6px 0 0 6px; }
 .hist tr.mix td:last-child { border-radius: 0 6px 6px 0; }
@@ -159,6 +165,12 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.10</span><span class="sq-after">2.63</span></td><td class="c-date">11/21<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="2026 NTA ADULT FALL LEAGUE">Fall</td><td class="c-team" title="SPANISH TRAIL">S. Trail</td><td class="c-line"><span class="line-pill pill-s1">S1</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">6-7</span></td><td class="c-partner">—</td><td class="c-opp"><span class="pn"><a href="michelle-mortensen.html"><span class="fn">Michelle Mortensen</span><span class="sn">M. Mortensen</span></a> <span class="rt">2.41</span></span></td><td class="c-oppteam" title="DTC #2">DTC #2</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd0">±0</span><span class="sq-after">2.73</span></td><td class="c-date">9/15<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="2026 NTA LADIES FALL WEEKDAY LEAGUE">Weekday</td><td class="c-team" title="SPANISH TRAIL">S. Trail</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sl">5-7</span> <span class="set">7-6</span> <span class="set sl">0-1</span></td><td class="c-partner"><span class="pn"><a href="jenny-mulopulos.html"><span class="fn">Jenny Mulopulos</span><span class="sn">J. Mulopulos</span></a> <span class="rt">2.82</span></span></td><td class="c-opp"><span class="pn"><a href="carolina-nigro.html"><span class="fn">Carolina Nigro</span><span class="sn">C. Nigro</span></a> <span class="rt">2.90</span></span><br><span class="pn"><a href="kellye-ray.html"><span class="fn">Kellye Ray</span><span class="sn">K. Ray</span></a> <span class="rt">2.80</span></span></td><td class="c-oppteam" title="RED ROCK CC">Red Rock</td></tr><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.02</span><span class="sq-after">2.73</span></td><td class="c-date">9/8<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-lg" title="2026 NTA LADIES FALL WEEKDAY LEAGUE">Weekday</td><td class="c-team" title="SPANISH TRAIL">S. Trail</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sl">3-6</span> <span class="set sl">3-6</span></td><td class="c-partner"><span class="pn"><a href="jenny-mulopulos.html"><span class="fn">Jenny Mulopulos</span><span class="sn">J. Mulopulos</span></a> <span class="rt">2.83</span></span></td><td class="c-opp"><span class="pn"><a href="kelly-twells.html"><span class="fn">Kelly Twells</span><span class="sn">K. Twells</span></a> <span class="rt">2.93</span></span><br><span class="pn"><a href="therese-laudenslager.html"><span class="fn">Therese Laudenslager</span><span class="sn">T. Laudenslager</span></a> <span class="rt">3.06</span></span></td><td class="c-oppteam" title="ANTHEM CC">Anthem</td></tr></tbody></table></div>
 </div>
 <script>
+// Renamed teams: tap shows the full TennisLink name (hover does on desktop)
+document.addEventListener('click', function(e) {
+  var t = e.target.closest && e.target.closest('.rn');
+  document.querySelectorAll('.rn.open').forEach(function(x) { if (x !== t) x.classList.remove('open'); });
+  if (t) t.classList.toggle('open');
+});
 document.querySelectorAll('.yr').forEach(function(b) {
   b.onclick = function() {
     var y = b.dataset.y;
