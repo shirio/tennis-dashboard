@@ -674,7 +674,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
     for k in ["all"] + years:
         rows_k = history if k == "all" else [r for r in history if _year(r["date"]) == k]
         n = len(rows_k)
-        counts[k] = f'{n} match{"" if n == 1 else "es"} · {_wl(compute_records(rows_k)["overall"])}'
+        counts[k] = f'{n} match{"" if n == 1 else "es"} · {_wl(compute_records(rows_k)["overall"])} overall'
 
     def _dkey(d):
         m = re.match(r"(\d{1,2})/(\d{1,2})/(\d{4})", d or "")
