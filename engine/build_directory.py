@@ -245,6 +245,7 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
         cols.append((f"y{i}", str(y)))
     cols.append(("q", "ShiQ"))
     cols.append(("b", "Bump"))
+    cols.append(("e", "Bump est."))
     default_on = {k: 1 for k, _ in cols
                   if not ((k[0] == "y" and int(k[1:]) < i_from) or (k[0] == "d" and int(k[1:]) <= i_from))}
     hide_css = "\n".join(f"table.h-{k} .c-{k} {{ display: none; }}" for k, _ in cols)
@@ -260,6 +261,7 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
             heads.append(f'<th data-k="{k}" class="c-{k} num">{lbl}</th>')
         else:
             heads.append('<th data-k="q" class="c-q num">ShiQ</th>' if k == "q" else
+                         '<th data-k="e" class="c-e num" title="Year-end estimate from the Bump engine">Est.</th>' if k == "e" else
                          f'<th data-k="b" class="c-b bump" title="Predicted USTA change" aria-label="Predicted USTA change">{_BH}</th>')
     menu = "".join(f'<label><input type="checkbox" data-c="{k}"> {_esc(lbl)}</label>' for k, lbl in cols)
     note = ("<p class='note'>Showing our own Nevada players until the full USTA 2026 "
@@ -298,15 +300,28 @@ h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .8rem; }}
 .colmenu .reset {{ color: #1a5fb4; font-size: 11px; padding: 6px 10px; cursor: pointer; }}
 .tbl-wrap {{ overflow-x: auto; }}
 table {{ border-collapse: collapse; font-size: 12px; }}
-th, td {{ padding: 4px 10px; text-align: left; white-space: nowrap; }}
+th, td {{ padding: 4px 6px; text-align: left; white-space: nowrap; }}
 th:first-child, td:first-child {{ padding-left: 0; }}
 th {{ font-size: 11px; font-weight: 600; color: #888; cursor: pointer; user-select: none;
      position: sticky; top: 0; background: #fff; }}
-th.sorted::after {{ content: " ▲"; font-size: 8px; }}
-th.sorted.desc::after {{ content: " ▼"; }}
+/* Sort arrow takes no width: drawn just past the header text, over the gap. */
+th .hl {{ position: relative; }}
+th.sorted {{ z-index: 2; }}
+th.sorted .hl::after {{ content: "▲"; font-size: 8px; position: absolute; left: 100%; margin-left: 2px;
+  top: 50%; transform: translateY(-50%); }}
+th.sorted.desc .hl::after {{ content: "▼"; }}
+/* when sorted, nudge right-aligned / centered titles left so the arrow fits inside the column */
+th.num.sorted .hl {{ left: -9px; }}
+th.sex.sorted .hl, th.bump.sorted .hl, th.delta.sorted .hl {{ left: -5px; }}
 tbody tr:hover td {{ background: #faf9f6; }}
 th.sex, td.sex {{ text-align: center; }}
-th.bump, td.bump {{ text-align: center; cursor: default; }}
+th.bump, td.bump {{ text-align: center; cursor: default; font-variant-numeric: tabular-nums;
+  padding-left: 4px; padding-right: 4px; }}
+.bu {{ color: #27500A; font-weight: 600; }}
+.blu {{ color: #8fb36c; font-weight: 600; }}
+.bd {{ color: #791F1F; font-weight: 600; }}
+.bld {{ color: #c98b86; font-weight: 600; }}
+.bh {{ color: #aaa; font-weight: 400; }}
 th.delta, td.delta {{ text-align: center; padding-left: 4px; padding-right: 4px; }}
 td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 .lt {{ font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }}
@@ -377,6 +392,7 @@ function val(r, k) {{
   if (k === 's') return r[1];
   if (k === 'q') return r[2];
   if (k === 'b') return r[6] ? r[6][2] : null;
+  if (k === 'e') return r[7] ? r[7][0] : null;
   if (k[0] === 'y') return r[4][+k.slice(1)];
   return null;
 }}
@@ -423,7 +439,10 @@ function render() {{
     h += '<td class="c-q num">' + (r[2] == null ? '' : r[2].toFixed(2)) + '</td>';
     var b = r[6];
     h += '<td class="c-b bump"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
-      + (b && b[0] ? '<span class="' + b[1] + '">' + b[0] + '</span>' : '') + '</td></tr>';
+      + (b && b[0] ? '<span class="' + b[1] + '">' + b[0] + '</span>' : '') + '</td>';
+    var e = r[7];
+    h += '<td class="c-e num"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
+      + (e ? '<span class="' + e[1] + '">' + e[0].toFixed(2) + '</span>' : '') + '</td></tr>';
     out.push(h);
   }});
   document.getElementById('tb').innerHTML = out.join('');
@@ -466,14 +485,14 @@ document.querySelectorAll('#fg button').forEach(function(b) {{
 document.querySelectorAll('th[data-k]').forEach(function(th) {{
   th.onclick = function() {{
     var k = th.dataset.k;
-    if (sortK === k) sortDir = -sortDir; else {{ sortK = k; sortDir = (k[0] === 'd' || k === 'q' || k === 'b') ? -1 : 1; }}
+    if (sortK === k) sortDir = -sortDir; else {{ sortK = k; sortDir = (k[0] === 'd' || k === 'q' || k === 'b' || k === 'e') ? -1 : 1; }}
     document.querySelectorAll('th').forEach(function(x) {{ x.classList.remove('sorted', 'desc'); }});
     th.classList.add('sorted'); if (sortDir < 0) th.classList.add('desc');
     apply();
   }};
 }});
-// Lock column widths: measure every column over ALL rows once (all columns on,
-// every header showing a sort arrow), then pin those as min-widths so sorting,
+// Lock column widths: measure every column over ALL rows once (all columns on;
+// the sort arrow is drawn outside the layout), then pin those as min-widths so sorting,
 // filtering or paging never moves the columns. On a narrow screen the Name
 // column is capped to the space left over, and long names get an ellipsis.
 var lockW = null;
@@ -483,11 +502,9 @@ function fitWidths() {{
     var keepOn = on, keepCls = tbl.className;
     on = {{}}; COLS.forEach(function(k) {{ on[k] = 1; }});
     tbl.className = 'show-s';
-    ths.forEach(function(th) {{ th.classList.add('sorted', 'desc'); }});
     view = ROWS.slice(); shown = ROWS.length; render();
     lockW = {{}};
     ths.forEach(function(th) {{ lockW[th.dataset.k] = Math.ceil(th.getBoundingClientRect().width); }});
-    ths.forEach(function(th) {{ th.classList.remove('sorted', 'desc'); }});
     on = keepOn; tbl.className = keepCls; shown = PAGE;
   }}
   var others = 0;
@@ -502,6 +519,7 @@ function fitWidths() {{
   document.getElementById('nmcap').textContent = nw < lockW.n
     ? '#tbl td.c-n {{ max-width: ' + nw + 'px; overflow: hidden; text-overflow: ellipsis; }}' : '';
 }}
+document.querySelectorAll('#tbl th[data-k]').forEach(function(th) {{ th.innerHTML = '<span class="hl">' + th.innerHTML + '</span>'; }});
 var nmcap = document.createElement('style'); nmcap.id = 'nmcap'; document.head.appendChild(nmcap);
 fitWidths();
 window.addEventListener('resize', fitWidths);
@@ -524,8 +542,7 @@ def _tip(label: str, value: str, tip_rows: list[tuple[str, str]]) -> str:
 
 def _record_strip(rec: dict) -> str:
     parts = []
-    parts.append(_tip("Overall", _wl(rec["overall"]),
-                      [(y, _wl(v)) for y, v in sorted(rec["by_year"].items())]))
+    # No overall pill: the match count line under the strip already gives the W-L.
     for div in sorted(rec["by_div"]):
         parts.append(_tip(div, _wl(rec["by_div"][div]),
                           [("Singles", _wl(rec["by_div_type"].get((div, "singles"), [0, 0]))),
@@ -657,7 +674,7 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
     for k in ["all"] + years:
         rows_k = history if k == "all" else [r for r in history if _year(r["date"]) == k]
         n = len(rows_k)
-        counts[k] = f'{n} match{"" if n == 1 else "es"} · {_wl(compute_records(rows_k)["overall"])}'
+        counts[k] = f'{n} match{"" if n == 1 else "es"} · {_wl(compute_records(rows_k)["overall"])} overall'
 
     def _dkey(d):
         m = re.match(r"(\d{1,2})/(\d{1,2})/(\d{4})", d or "")
@@ -873,6 +890,10 @@ _BUMP_MARK = {"up": (_chev(True, "#27500A", "Likely up"), "bm"),
               "lean_down": (_chev(False, "#c98b86", "Leaning down"), "bm")}
 
 
+# Directory Bump cell: the year-end estimate, colored like the chevrons.
+_BUMP_CLS = {"up": "bu", "lean_up": "blu", "lean_down": "bld", "down": "bd", "hold": "bh"}
+
+
 def _bump_tip(b: dict) -> str:
     call = b.get("call", "unknown")
     if call in _BUMP_MARK or call == "hold":
@@ -889,13 +910,23 @@ def _bump_cell_data(b):
     if not b:
         return None
     call = b.get("call", "unknown")
-    if call not in _BUMP_MARK:  # holds, too few matches, unknown: empty cell, sorts last
+    if call == "hold":  # empty cell, but hovering shows the year-end estimate; sorts last
+        return ["", "", None, _bump_tip(b)]
+    if call not in _BUMP_MARK:  # too few matches, unknown: empty cell, no tooltip, sorts last
         return None
     sym, cls = _BUMP_MARK[call]
     # Category first, then the engine's signed margin past the level edge, so
     # descending runs strongest up -> most extreme down within each category.
     sort = _BUMP_SORT[call] * 10 + float(b.get("margin") or 0)
     return [sym, cls, round(sort, 4), _bump_tip(b)]
+
+
+def _bump_est_data(b):
+    """[year-end estimate, css class] for the directory's estimate column, or None."""
+    call = (b or {}).get("call")
+    if call not in _BUMP_CLS or b.get("estimate") is None:
+        return None
+    return [round(float(b["estimate"]), 2), _BUMP_CLS[call]]
 
 
 def _nv_bumps(players: list[dict], links: dict, usta: list[dict]) -> dict[str, dict]:
@@ -983,7 +1014,7 @@ def build_directory() -> dict:
         rows.append([r["name"], r.get("gender"), dyn, href,
                      [by_year[y].get("level") for y in DIR_YEARS],
                      [by_year[y].get("rating_type") for y in DIR_YEARS],
-                     _bump_cell_data(bump)])
+                     _bump_cell_data(bump), _bump_est_data(bump)])
 
     # Player pages
     PLAYER_DIR.mkdir(parents=True, exist_ok=True)

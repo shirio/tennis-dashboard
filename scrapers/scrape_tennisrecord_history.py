@@ -142,6 +142,7 @@ def main(argv=None):
     g.add_argument("--names", help="Comma-separated player names")
     g.add_argument("--linked", action="store_true", help="All players with a page in players/nv")
     ap.add_argument("--out", help="JSON file to write (resumes: names already in it are skipped)")
+    ap.add_argument("--shard", help="i/n: only every n-th name starting at i (run n copies in parallel)")
     ap.add_argument("--years", help="Year range to pull, e.g. 2022-2025 (default: all)")
     ap.add_argument("--pause", type=float, default=0.5, help="Seconds after each request")
     args = ap.parse_args(argv)
@@ -151,6 +152,9 @@ def main(argv=None):
         a, _, b = args.years.partition("-")
         yw = set(range(int(a), int(b or a) + 1))
     names = _linked_names() if args.linked else [n.strip() for n in args.names.split(",")]
+    if args.shard:
+        i, n = (int(x) for x in args.shard.split("/"))
+        names = names[i::n]
     done = {}
     if args.out and Path(args.out).exists():
         done = {r["name"]: r for r in json.loads(Path(args.out).read_text())}
