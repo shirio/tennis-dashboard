@@ -59,3 +59,24 @@ class TestV9(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestTimelines(unittest.TestCase):
+    def test_pre_and_post_by_date(self):
+        bl = {"a": 3.0, "b": 3.0, "c": 3.0}
+        events = [
+            ev(["a"], ["b"], "6-2 6-2", date="3/1/2026", line="1# Singles"),
+            ev(["a"], ["c"], "6-2 6-2", date="3/1/2026", line="2# Singles"),
+            ev(["b"], ["a"], "6-4 6-4", date="3/8/2026", line="1# Singles"),
+        ]
+        r = V9.run_v9(events, bl, timelines=True)
+        pre, post = r.timeline["a"][("3.0", "3/1/2026")]
+        self.assertEqual(pre, 3.0)
+        pre2, post2 = r.timeline["a"][("3.0", "3/8/2026")]
+        self.assertEqual(pre2, post)          # rating carried into next date
+        self.assertAlmostEqual(post2, r.rating["a"])
+        self.assertEqual(r.singles_matches["a"], 3)
+
+    def test_side_win_probability_is_average_gap(self):
+        self.assertAlmostEqual(V9.side_win_probability([3.2, 3.0], [3.1, 3.1]), 0.5)
+        self.assertGreater(V9.side_win_probability([3.3], [3.0]), 0.85)

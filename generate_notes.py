@@ -1402,7 +1402,7 @@ def main():
                     _mdate = m.get("date", "")
 
                     def _build_record(name, own_names, opp_names, won, team):
-                        from engine.ratings import _cross_pair_expected
+                        from engine.ratings_v9 import side_win_probability
                         k = _name_key(name)
                         # Point-in-time ratings going INTO this match
                         own_r   = _pit(k, _mdate)
@@ -1413,8 +1413,8 @@ def main():
                         opp_avg = sum(opp_rs) / len(opp_rs) if opp_rs else None
                         # Cross-pair expected win probability using PIT ratings
                         if own_r is not None and opp_rs:
-                            expected_prob = _cross_pair_expected(
-                                own_r, partner_r, opp_rs)
+                            own_side = [own_r] + ([partner_r] if partner_r is not None else [])
+                            expected_prob = side_win_probability(own_side, opp_rs)
                         else:
                             expected_prob = None
                         return {
@@ -1666,8 +1666,8 @@ def main():
                 if m["opp_avg"] is None:
                     return None
                 diff = bl - m["opp_avg"]
-                from engine.ratings import _win_probability
-                return _win_probability(diff)
+                from engine.ratings_v9 import win_probability
+                return win_probability(diff)
 
             surprising_wins = [
                 m for m in this_matches

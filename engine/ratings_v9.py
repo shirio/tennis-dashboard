@@ -2,8 +2,9 @@
 engine/ratings_v9.py
 ShiQ v9: games-based sequential rating with a per-player singles offset.
 
-Runs BESIDE the v8 engine (engine/ratings.py) until it wins on the
-backtest scorecard (engine/backtest.py). Nothing here changes v8 output.
+This is the ShiQ every page shows: engine/shiq.py runs it after the v8
+engine (engine/ratings.py) and overwrites v8's rating fields with v9's.
+v9 beat v8 on the backtest scorecard (engine/backtest.py --holdout).
 
 How it works
 ------------
@@ -58,6 +59,10 @@ class V9Result:
     rating: dict[str, float] = field(default_factory=dict)          # shared r
     singles_offset: dict[str, float] = field(default_factory=dict)  # o
     matches: dict[str, int] = field(default_factory=dict)
+    singles_matches: dict[str, int] = field(default_factory=dict)
+    # Filled when run_v9(timelines=True):
+    # player -> {(division, date): (rating going in, rating after that date)}
+    timeline: dict[str, dict[tuple[str, str], list[float]]] = field(default_factory=dict)
     # One entry per scored event, in processed order:
     # (event, pre-match strength diff winner-side minus loser-side)
     pre_match: list[tuple[R.CourtEvent, float]] = field(default_factory=list)
@@ -74,6 +79,12 @@ class V9Result:
 def win_probability(gap: float, slope: float = WIN_SLOPE) -> float:
     """P(side wins) given strength gap (side minus opponents)."""
     return 1.0 / (1.0 + math.exp(-slope * gap))
+
+
+def side_win_probability(side: list[float], opp: list[float],
+                         slope: float = WIN_SLOPE) -> float:
+    """P(side wins) for singles or doubles: a side's strength is its average."""
+    return win_probability(sum(side) / len(side) - sum(opp) / len(opp), slope)
 
 
 def expected_game_share(gap: float, k: float = K) -> float:
@@ -101,8 +112,13 @@ def is_provisional(baseline: Optional[float]) -> bool:
 
 
 def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
-           params: Params = Params()) -> V9Result:
-    """Process court events in the given (chronological) order."""
+           params: Params = Params(), timelines: bool = False) -> V9Result:
+    """Process court events in the given (chronological) order.
+
+    With ``timelines`` the result also records, per player and per
+    (division, date), the shared rating going into that date's first match
+    and after its last one.
+    """
     res = V9Result()
     provisional = {k: is_provisional(v) for k, v in baselines.items()}
 
@@ -122,6 +138,10 @@ def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
         sl = sum(strength(k, singles) for k in e.loser_keys) / len(e.loser_keys)
         gap = sw - sl
         res.pre_match.append((e, gap))
+        if timelines:
+            for k in e.winner_keys + e.loser_keys:
+                res.timeline.setdefault(k, {}).setdefault(
+                    (e.division, e.date), [res.rating[k], res.rating[k]])
 
         delta = w / (w + l) - expected_game_share(gap, params.k)
         for k, sign in [(k, 1.0) for k in e.winner_keys] + [(k, -1.0) for k in e.loser_keys]:
@@ -133,6 +153,10 @@ def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
                 res.singles_offset[k] = (res.singles_offset.get(k, 0.0)
                                          + sign * params.lr_offset * boost * delta)
             res.matches[k] = n + 1
+            if singles:
+                res.singles_matches[k] = res.singles_matches.get(k, 0) + 1
+            if timelines:
+                res.timeline[k][(e.division, e.date)][1] = res.rating[k]
     return res
 
 

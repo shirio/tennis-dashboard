@@ -11,7 +11,7 @@ judged against "not updating at all".
 Run (after rebuild.py, from the repo root):
     python3 -m engine.backtest
     python3 -m engine.backtest --json   # machine-readable
-    python3 -m engine.backtest --holdout  # baseline vs v8 vs v9, second half
+    python3 -m engine.backtest --holdout  # baseline vs published ShiQ vs v9
 """
 from __future__ import annotations
 
@@ -131,7 +131,11 @@ def _gap(e, rating_fn) -> Optional[float]:
 
 
 def run_holdout(players: list[dict]) -> dict:
-    """Second-half-of-season comparison: frozen baseline vs ShiQ v8 vs v9."""
+    """Second-half-of-season comparison: frozen baseline vs the published ShiQ
+    timelines in players.json vs a fresh v9 run.
+
+    Since ShiQ switched to v9 (engine/shiq.py), "shiq_published" is v9's
+    per-date numbers; before that it was v8's."""
     from engine import ratings_v9 as V9
     pbn, events = load_events(players)
     events = [e for e in events if sum(V9.games_won(e.score)) > 0]
@@ -147,13 +151,13 @@ def run_holdout(players: list[dict]) -> dict:
     v9_gap = {id(e): g for e, g in v9.pre_match}
     res = {
         "baseline": holdout([_gap(e, baseline) for e in events], n),
-        "shiq_v8": holdout([_gap(e, shiq_pre) for e in events], n),
+        "shiq_published": holdout([_gap(e, shiq_pre) for e in events], n),
         "shiq_v9": holdout([v9_gap.get(id(e)) for e in events], n),
     }
     for fmt, singles in (("singles", True), ("doubles", False)):
         idx = [i for i, e in enumerate(events) if (len(e.winner_keys) == 1) == singles]
         sub = [events[i] for i in idx]
-        res[f"shiq_v8_{fmt}"] = holdout([_gap(e, shiq_pre) for e in sub], len(sub))
+        res[f"shiq_published_{fmt}"] = holdout([_gap(e, shiq_pre) for e in sub], len(sub))
         res[f"shiq_v9_{fmt}"] = holdout([v9_gap.get(id(e)) for e in sub], len(sub))
     return res
 
@@ -178,7 +182,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[1])
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--holdout", action="store_true",
-                    help="compare baseline / v8 / v9 on the second half of the season")
+                    help="compare baseline / published ShiQ / v9 on the second half of the season")
     args = ap.parse_args()
     players = R._load(R.PLAYERS_JSON, [])
     if args.holdout:
@@ -188,7 +192,7 @@ def main() -> None:
             return
         print("Second half of season, win curve fitted on first half:")
         for name, s in res.items():
-            print(f"  {name:18s} lines={s['n']:5d}  accuracy={s['accuracy']:.1%}  "
+            print(f"  {name:24s} lines={s['n']:5d}  accuracy={s['accuracy']:.1%}  "
                   f"brier={s['brier']:.4f}  logloss={s['logloss']:.4f}")
         return
     res = run(players)
