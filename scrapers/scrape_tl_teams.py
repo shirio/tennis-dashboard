@@ -362,6 +362,31 @@ def _names(s: str) -> list[str]:
     return out
 
 
+# Last match date that counts toward each year-end NTRP rating (per Shirin:
+# 2026 cutoff Nov 8; later matches count toward the next year). Summer
+# leagues never count toward year-end ratings.
+YEAR_END_CUTOFF = {2026: (11, 8)}
+
+
+def tag_year_end(m: dict) -> None:
+    """Set m['year_end'] = {counts, rating_year, reason}."""
+    try:
+        mo, dy, yr = map(int, m["date"].split("/"))
+    except (ValueError, AttributeError):
+        m["year_end"] = {"counts": None, "rating_year": None, "reason": "no date"}
+        return
+    if "SUMMER" in (m.get("league", "") + " " + m.get("level", "")).upper():
+        m["year_end"] = {"counts": False, "rating_year": None, "reason": "summer league"}
+        return
+    cut = YEAR_END_CUTOFF.get(yr)
+    if cut is None:
+        m["year_end"] = {"counts": True, "rating_year": None, "reason": f"no {yr} cutoff set"}
+    elif (mo, dy) > cut:
+        m["year_end"] = {"counts": True, "rating_year": yr + 1, "reason": f"after {cut[0]}/{cut[1]}/{yr}"}
+    else:
+        m["year_end"] = {"counts": True, "rating_year": yr, "reason": ""}
+
+
 def clean_store(d: dict) -> None:
     """Re-clean stored line names (footnotes, "(DQ)" suffixes) and rebuild the
     everyone-seen players index from rosters + matches."""
@@ -371,6 +396,7 @@ def clean_store(d: dict) -> None:
             for r in t.get("roster", []):
                 add_player(d, r["name"], norm_area(t.get("district", "")), tid, r.get("ntrp"))
     for mkey, m in d["matches"].items():
+        tag_year_end(m)
         areas = ([norm_area(m.get("district", ""))] * 2 if m["kind"] == "league" else
                  [champ_area(n, m.get("level", "")) for n in (m["home"], m["away"])])
         for ln in m["lines"]:
