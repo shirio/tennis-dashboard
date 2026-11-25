@@ -244,18 +244,85 @@ def crawl_team(page, d, tid, row) -> None:
         if not first:
             goto(page, team["url"])
         first = False
-        click(page, f"#{c['el_id']}")
-        txt = page.inner_text("body")
-        hm = re.search(r"Championship\tLevel\n([^\t\n]+)\t([^\n]+)", txt)
-        click(page, "#ctl00_mainContent_lnkMatchSummaryForCPFlight")
-        cids = list(dict.fromkeys(re.findall(r"ViewScore\((\d+),12,", page.content())))
-        d["champ_flights"][ckey] = {"name": hm.group(1).strip() if hm else c["name"],
-                                    "level": hm.group(2).strip() if hm else "",
-                                    "date": c["date"], "match_ids": cids, "from_team": tid}
-        for mid in cids:
-            d["_progress"]["match_queue"].setdefault(f"C{mid}", {"tl_id": mid, "t": 12, "champ": ckey})
+        crawl_champ(page, d, ckey, c, tid, team["url"], on_team_page=True)
         d["_progress"]["champs_done"].append(ckey)
         d["_timing"]["champ_flight"].append(round(time.time() - t1, 2))
+
+
+_SUBFLIGHT_SEL = "a[id*='rptChampHeaderPart2'][id$='lnkCPSubFlightForTeamStandings']"
+
+
+def _open_champ(page, team_url: str, name: str, el_id: str | None, on_team_page: bool) -> bool:
+    """From the team page, click the Championship Advancement called `name`."""
+    if not on_team_page:
+        goto(page, team_url)
+    if not el_id:
+        el = next((a for a in page.query_selector_all("a[id*='rptChampAdvancementForTeamSummary']")
+                   if (a.inner_text() or "").strip() == name), None)
+        if not el:
+            return False
+        el_id = el.get_attribute("id")
+    click(page, f"#{el_id}")
+    return True
+
+
+def crawl_champ(page, d, ckey: str, c: dict, tid: str, team_url: str,
+                on_team_page: bool = False) -> None:
+    """Collect every match id of a championship flight. Nationals (and some
+    Sectionals) are split into subflights: pools / round robin, semifinals,
+    3rd-4th playoff. The flight's Match Summary only lists one of them, so
+    open each subflight's Match Summary in turn."""
+    if not _open_champ(page, team_url, c["name"], c.get("el_id"), on_team_page):
+        print(f"  [warn] championship {ckey}: link not found on {tid}")
+        return
+    txt = page.inner_text("body")
+    hm = re.search(r"Championship\tLevel\n([^\t\n]+)\t([^\n]+)", txt)
+    subs = [(a.get_attribute("id"), (a.inner_text() or "").strip().lstrip("/ ").strip())
+            for a in page.query_selector_all(_SUBFLIGHT_SEL)]
+    cids: list[str] = []
+    if len(subs) <= 1:
+        click(page, "#ctl00_mainContent_lnkMatchSummaryForCPFlight")
+        cids = re.findall(r"ViewScore\((\d+),12,", page.content())
+    else:
+        for i, (sid, label) in enumerate(subs):
+            if i:
+                _open_champ(page, team_url, c["name"], None, False)
+            click(page, f"#{sid}")
+            click(page, "#ctl00_mainContent_lnkMatchSummaryForCPFlight")
+            cids += re.findall(r"ViewScore\((\d+),12,", page.content())
+    cids = list(dict.fromkeys(cids))
+    old = d["champ_flights"].get(ckey, {})
+    if not cids and old.get("match_ids"):
+        print(f"  [warn] {ckey}: no matches found this time; keeping the {len(old['match_ids'])} known")
+        cids = old["match_ids"]
+    d["champ_flights"][ckey] = {"name": hm.group(1).strip() if hm else c["name"],
+                                "level": hm.group(2).strip() if hm else "",
+                                "date": c["date"], "match_ids": cids,
+                                "subflights": [s[1] for s in subs],
+                                "from_team": old.get("from_team", tid)}
+    for mid in cids:
+        d["_progress"]["match_queue"].setdefault(f"C{mid}", {"tl_id": mid, "t": 12, "champ": ckey})
+
+
+def refresh_champs(page, d) -> int:
+    """Re-collect every known championship flight (all subflights). Returns
+    how many new match ids were queued."""
+    before = len(d["_progress"]["match_queue"])
+    for ckey, cf in list(d["champ_flights"].items()):
+        team = d["teams"].get(cf.get("from_team", ""), {})
+        if not team.get("url"):
+            print(f"  [warn] {ckey}: no team url")
+            continue
+        name, date = ckey.rsplit("|", 1)
+        try:
+            crawl_champ(page, d, ckey, {"name": name, "date": date}, cf["from_team"], team["url"])
+        except RuntimeError:
+            raise
+        except Exception as e:
+            print(f"  [warn] {ckey}: {e}")
+        print(f"  {ckey}: {len(d['champ_flights'][ckey]['match_ids'])} matches "
+              f"{d['champ_flights'][ckey].get('subflights') or ''}", flush=True)
+    return len(d["_progress"]["match_queue"]) - before
 
 
 # ---------------------------------------------------------------------------
@@ -342,6 +409,10 @@ _FIX_LINE_LABELS = r"""() => {
       const k = t.match(/^(\d\.\d)\s+(Singles|Doubles)\s*#\s*(\d+)$/i);
       if (k) { m = [t, k[3], k[2]]; lvl = k[1]; }
     }
+    if (!m) {   // Tri-Level championship scorecards: "4.0 1 Doubles"
+      const c = t.match(/^(\d\.\d)\s+(\d+)\s+(Singles|Doubles)$/i);
+      if (c) { orig.push(c[1]); n.nodeValue = '#' + c[2] + ' ' + c[3][0].toUpperCase() + c[3].slice(1).toLowerCase(); continue; }
+    }
     if (m) { orig.push(lvl); n.nodeValue = m[1] + '# ' + m[2][0].toUpperCase() + m[2].slice(1).toLowerCase(); }
     else if (/^Scoring Format:/i.test(t)) { skip = !/:\s*\S/.test(t); n.nodeValue = ''; }
   }
@@ -349,7 +420,7 @@ _FIX_LINE_LABELS = r"""() => {
 
 
 _NOT_A_NAME = re.compile(r"tie[- ]?break|scoring format|^\s*(rd|nd|st|th)\b|pro set|match tb"
-                         r"|^note\b|^timed match|^\(dq\)|^\*\s*-|awarded to|disqualified|^dbl\.? default", re.I)
+                         r"|^note\b|^timed match|^tie$|^\(dq\)|^\*\s*-|awarded to|disqualified|^dbl\.? default", re.I)
 _DQ_SUFFIX = re.compile(r"\s*-\s*\(DQ\)\*?\s*$", re.I)
 
 

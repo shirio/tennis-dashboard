@@ -43,3 +43,10 @@ captain segment of a STATE/CAPTAIN/DIVISION label.
 
 Each match has `year_end` = {counts, rating_year, reason}. Summer leagues never count toward
 year-end NTRP. Matches after the cutoff (2026: Nov 8, `YEAR_END_CUTOFF`) count toward the next year.
+
+## Championship sub-flights
+
+Nationals (and some other championships) are split into sub-flights (round robin, semifinals/final,
+3rd/4th playoff); the flight Match Summary lists only one, so `crawl_champ` opens each sub-flight.
+Tri-Level championship scorecards label lines "4.0 1 Doubles". `refresh_champs` re-collects known flights.
+2025: `python3 scrapers/scrape_tl_teams.py --year 2025` -> data/tl_team_matches_2025.json.
