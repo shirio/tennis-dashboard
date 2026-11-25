@@ -2,5 +2,7 @@
  "_about": "Manual rating fixes from Shirin. Keyed by player name, then season year. Applied on top of the USTA lists and TennisRecord rosters.",
  "Shi L Oskooi": {"2025": {"level": 3.0, "rating_type": "S"}},
  "Jill Morrison": {"2025": {"level": 3.0, "rating_type": "A", "appeal": "down",
-                   "why": "Appealed down: cusp 3.5, appealed to 3.0 (per Shirin), though she mostly played 3.5"}}
+                   "why": "Appealed down: cusp 3.5, appealed to 3.0 (per Shirin), though she mostly played 3.5"}},
+ "Steve Kim": {"2026": {"level": 3.0, "rating_type": "A", "rating_date": "12/31/2024", "appeal": "down",
+               "why": "Appealed down from 3.5 (checked by Shirin)"}}
 }
