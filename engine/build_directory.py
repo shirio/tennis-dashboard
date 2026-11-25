@@ -889,7 +889,8 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
         body.append(
             f'<tr data-y="{_year(r["date"])}"{row_attr}><td class="c-sq">{sq}</td><td class="c-date">{date_html}</td>'
             f'<td class="c-div"><span class="dp dp{sfx}">{_esc(r["div"])}</span></td>'
-            f'<td class="c-lg" title="{_esc(r.get("league_full", ""))}">{_esc(r.get("league", ""))}</td>'
+            f'<td class="c-lg" title="{_esc(r.get("league_full", ""))}">{_esc(r.get("league", ""))}'
+            + (f'<span class="lg2">{_esc(r["league_sub"])}</span>' if r.get("league_sub") else "") + '</td>'
             f'{_team_td("c-team", r.get("my_team", ""), r.get("my_team_full", ""))}<td class="c-line">{pill}</td>'
             f'<td class="c-score"{res_tip}>{score}</td>'
             f'<td class="c-partner">{partners}</td><td class="c-opp">{opps}</td>'
@@ -981,6 +982,7 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
 .hist .c-date, .hist .c-div, .hist .c-lg, .hist .c-line, .hist .c-score, .hist .c-sq {{ text-align: center; }}
 .hist td.c-sq {{ line-height: 1.2; }}
 .hist td.c-lg {{ color: #666; font-size: 11px; }}
+.hist td.c-lg .lg2 {{ display: block; color: #999; font-size: 10px; line-height: 1.2; }}
 .sq-after {{ display: block; color: #aaa; font-size: 9.5px; font-weight: 400; font-variant-numeric: tabular-nums; }}
 .hist th.num, .hist td.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 .hist td.num {{ color: #aaa; }}
