@@ -44,7 +44,7 @@ from engine.ratings_v9 import games_won
 
 K = 1.2                  # same game-share curve as ShiQ v9
 SHARE_CEILING = 0.92     # game shares beyond this count as this (margin cap)
-MAX_GAP = 0.50           # a blowout "plays like" at most this far above the opponents (tuned to base rates)
+MAX_GAP = 0.90           # a blowout "plays like" at most this far above the opponents (tuned to base rates, 2026-11-25)
 WINDOW = 4               # this match + previous 3 running ratings
 MIN_MATCHES = 3
 STRIKE_MARGIN = 0.30
@@ -152,7 +152,7 @@ def run_bump(events: list[R.CourtEvent], baselines: dict[str, float],
 RECENCY_SHARE = [(5, 0.26), (5, 0.23), (5, 0.15), (5, 0.17)]
 OLDER_SHARE = 0.19
 PLAYOFF_WEIGHT = 2.5
-PRIOR_WEIGHT_COMPUTER = 2.0   # carry-in, in "matches" (tuned to base rates)
+PRIOR_WEIGHT_COMPUTER = 1.0   # carry-in, in "matches" (tuned to base rates, 2026-11-25)
 PRIOR_WEIGHT_SELF = 1.0       # S / A: fades within a few matches
 FIT_ITERATIONS = 60
 FIT_DAMPING = 0.5

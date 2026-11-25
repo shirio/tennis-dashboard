@@ -81,7 +81,7 @@ class TestBump(unittest.TestCase):
         self.assertGreater(y_with["a"], y_alone["a"])
 
     def test_blowout_of_much_weaker_player_can_lower_rating(self):
-        bl = {"a": 3.0, "b": 2.3}
+        bl = {"a": 3.0, "b": 1.9}   # gap beyond MAX_GAP
         y, _ = bump.fit_year_end([ev(["a"], ["b"], "6-0 6-0", "1# Singles")], bl, {})
         self.assertLess(y["a"], 3.0)
 
