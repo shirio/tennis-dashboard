@@ -584,14 +584,16 @@ def _tip(label: str, value: str, tip_rows: list[tuple[str, str]]) -> str:
 
 
 def _record_strip(rec: dict) -> str:
+    def wl(pair):  # no matches of that kind: ∅ rather than 0–0
+        return "∅" if not (pair[0] or pair[1]) else _wl(pair)
     parts = []
     # No overall pill: the match count line under the strip already gives the W-L.
     for div in sorted(rec["by_div"]):
         parts.append(_tip(div, _wl(rec["by_div"][div]),
-                          [("Singles", _wl(rec["by_div_type"].get((div, "singles"), [0, 0]))),
-                           ("Doubles", _wl(rec["by_div_type"].get((div, "doubles"), [0, 0])))]))
+                          [("Singles", wl(rec["by_div_type"].get((div, "singles"), [0, 0]))),
+                           ("Doubles", wl(rec["by_div_type"].get((div, "doubles"), [0, 0])))]))
     for kind in ("singles", "doubles"):
-        parts.append(_tip(kind.title(), _wl(rec[kind]),
+        parts.append(_tip(kind.title(), wl(rec[kind]),
                           [(d, _wl(v)) for d, v in sorted(rec[f"{kind}_by_div"].items())]))
     return "".join(parts)
 
