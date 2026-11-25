@@ -310,7 +310,6 @@ th.sorted {{ z-index: 2; }}
 th.sorted .hl::after {{ content: "▲"; font-size: 8px; position: absolute; left: 100%; margin-left: 2px;
   top: 50%; transform: translateY(-50%); }}
 th.sorted.desc .hl::after {{ content: "▼"; }}
-th.num {{ padding-right: 14px; }} /* room for the arrow after right-aligned titles */
 tbody tr:hover td {{ background: #faf9f6; }}
 th.sex, td.sex {{ text-align: center; }}
 th.bump, td.bump {{ text-align: center; cursor: default; font-variant-numeric: tabular-nums;
