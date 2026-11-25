@@ -113,3 +113,11 @@ class TestYearEndWindow(unittest.TestCase):
         c = bump.year_end_call(4.09, 30, 3.5, "C")
         self.assertEqual((c["call"], c.get("levels")), ("up", 2))
         self.assertEqual(bump.year_end_call(3.7, 30, 3.5, "C").get("levels"), None)
+
+
+def test_no_down_call_below_lowest_level():
+    from engine.bump import year_end_call
+    c = year_end_call(1.90, 10, 2.5, "C")
+    assert c["call"] == "hold" and c["estimate"] == 1.9
+    assert "levels" not in c
+    assert year_end_call(2.40, 10, 3.0, "C")["call"] == "down"

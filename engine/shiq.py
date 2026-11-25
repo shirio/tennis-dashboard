@@ -37,6 +37,51 @@ def _div_key(division: str) -> str | None:
     return None
 
 
+# Starting points from the previous season's crawl (tested 2026-11-25 on the
+# 2026 matches: first-half accuracy 74.7% -> 75.6%, Brier 0.1716 -> 0.1678;
+# little change late in the season, when 2026 results dominate).
+PRIOR_YEAR = 2025
+PRIOR_MIN_MATCHES = 3        # crawled-only players: 2025 ShiQ replaces "level - 0.25"
+PRIOR_SETTLED_MATCHES = 5    # enough 2025 matches to drop the provisional boost
+PRIOR_CORE_WEIGHT = 0.5      # core players: blend with the Dec 2025 TennisRecord baseline
+
+
+def prior_year_ratings(crawl: dict, keys: dict[str, str], pbn: dict,
+                       year: int = PRIOR_YEAR) -> tuple[dict[str, float], dict[str, int]]:
+    """End-of-season ShiQ from the previous year's crawl, keyed like this
+    year's events. People are matched across years by their TennisLink
+    history link (stable per person), NV names by players.json key.
+    Everyone starts the old season at their roster level - 0.25."""
+    from engine import crawl_events as C
+    old = C.load_crawl(year)
+    if not old:
+        return {}, {}
+    by_url = {v.get("history_url"): keys[pid] for pid, v in crawl.get("people", {}).items()
+              if v.get("history_url") and pid in keys}
+    ev, old_keys = C.crawl_events(old, pbn, [])
+    remap = {k: by_url.get(old["people"][pid].get("history_url")) or k
+             for pid, k in old_keys.items()}
+    start: dict[str, float] = {}
+    for pid, k in old_keys.items():
+        person = old["people"][pid]
+        try:
+            b = float(person.get("ntrp")) - 0.25     # that season's roster level
+        except (TypeError, ValueError):
+            b = C.baseline_for(person)
+        if b is not None:
+            start.setdefault(remap[k], b)
+    events = []
+    for e in ev:
+        if sum(V9.games_won(e.score)) <= 0 or len(e.winner_keys) != len(e.loser_keys):
+            continue
+        e.winner_keys = [remap.get(x, x) for x in e.winner_keys]
+        e.loser_keys = [remap.get(x, x) for x in e.loser_keys]
+        events.append(e)
+    events.sort(key=R._date_sort_key)
+    res = V9.run_v9(events, start, provisional_keys=frozenset(start))
+    return dict(res.rating), dict(res.matches)
+
+
 def compute(players: list[dict], use_crawl: bool = True):
     """Run v9 over the standings data plus the TennisLink team crawl."""
     from engine import crawl_events as C
@@ -54,6 +99,16 @@ def compute(players: list[dict], use_crawl: bool = True):
                 baselines[k] = C.baseline_for(crawl["people"][pid])
                 provisional.add(k)
                 people[k] = crawl["people"][pid]
+        prior, n_prior = prior_year_ratings(crawl, keys, pbn)
+        for k, r in prior.items():
+            n = n_prior[k]
+            if k.startswith("tl::") and n >= PRIOR_MIN_MATCHES:
+                baselines[k] = r
+            elif not k.startswith("tl::") and n >= PRIOR_SETTLED_MATCHES \
+                    and baselines.get(k) is not None:
+                baselines[k] = PRIOR_CORE_WEIGHT * r + (1 - PRIOR_CORE_WEIGHT) * baselines[k]
+            if n >= PRIOR_SETTLED_MATCHES:
+                provisional.discard(k)
     events.sort(key=R._date_sort_key)
     res = V9.run_v9(events, baselines, timelines=True,
                     provisional_keys=frozenset(provisional))
