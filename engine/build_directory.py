@@ -302,7 +302,7 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
         elif k[0] == "y":
             # Seasons before the current one read 'yy to keep the columns narrow (Shirin)
             yl = f"’{lbl[-2:]}" if int(lbl) < YEAR_FROM else lbl
-            heads.append(f'<th data-k="{k}" class="c-{k} num" title="{lbl}">{yl}</th>')
+            heads.append(f'<th data-k="{k}" class="c-{k} num yr" title="{lbl}">{yl}</th>')
         elif k in ("ws", "wd"):
             fmt_name = "singles" if k == "ws" else "doubles"
             heads.append(f'<th data-k="{k}" class="c-{k} num ctr" title="USTA World Tennis Number ({fmt_name}) '
@@ -392,6 +392,9 @@ th.ctr.sorted .hl {{ left: -5px; }}
 .lt {{ font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }}
 /* Fixed-width letter slot, filled or empty, so numbers line up and letters line up */
 td.num .lt {{ display: inline-block; width: 2.1em; text-align: left; }}
+/* Year titles end where the numbers end, not over the letter slot (6px pad + 2px margin + 21px slot) */
+th.yr {{ padding-right: 29px; }}
+th.yr.sorted .hl {{ left: 0; }}
 .ap {{ margin-left: 1px; }}
 .apc {{ color: #b26a00; }}
 .up {{ color: #27500A; }}
