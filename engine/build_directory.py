@@ -805,7 +805,12 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
                                       (r.get("opp_ids") or [None] * 9)[i])
                            for i, n in enumerate(r.get("opps") or [])) or '<em class="muted">default</em>'
         dq = r.get("dq") or []
-        row_attr = f' class="dq" title="Invalid match: {_esc(", ".join(dq))} disqualified"' if dq else ""
+        # Mixed doubles: same test as scrape_tl_teams.is_mixed (league or flight name),
+        # never the Div pill (6.0-8.0 levels are shared with senior combined leagues).
+        mix = "MIXED" in f'{r.get("league_full", "")} {r.get("flight", "")}'.upper()
+        cls = " ".join(c for c, on in (("dq", dq), ("mix", mix)) if on)
+        row_attr = (f' class="{cls}"' if cls else "") + (
+            f' title="Invalid match: {_esc(", ".join(dq))} disqualified"' if dq else "")
         date = _mdy(r["date"])
         md, _, yy = date.rpartition("/")
         date_html = f'{_esc(md)}<span class="yy">/{_esc(yy)}</span>' if md else _esc(date)
@@ -896,7 +901,7 @@ body {{ background: #fff; }}
 .tipbox td + td {{ font-weight: 700; text-align: right; }}
 .stat:hover .tipbox, .stat:focus .tipbox {{ display: block; }}
 .tbl-wrap {{ overflow-x: auto; }}
-table.hist {{ border-collapse: collapse; font-size: 12px; }}
+table.hist {{ border-collapse: separate; border-spacing: 0; font-size: 12px; }}
 .hist th, .hist td {{ padding: .3rem .6rem; text-align: left; vertical-align: middle; white-space: nowrap; }}
 .hist th:first-child, .hist td:first-child {{ padding-left: 0; }}
 .hist th {{ font-size: 11px; color: #888; font-weight: 600; background: #fff; position: relative; z-index: 3; }}
@@ -909,6 +914,9 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
 .hist td.num {{ color: #aaa; }}
 .hist tbody tr:hover td {{ background: #faf9f6; }}
 .hist tr.dq td {{ opacity: .5; text-decoration: line-through; }}
+.hist tr.mix td {{ background: #f6f4f9; }}
+.hist tr.mix td:first-child {{ border-radius: 6px 0 0 6px; }}
+.hist tr.mix td:last-child {{ border-radius: 0 6px 6px 0; }}
 .pn {{ white-space: nowrap; }}
 .rt {{ color: #aaa; font-variant-numeric: tabular-nums; }}
 .set.sw {{ color: #27500A; font-weight: 600; }}
