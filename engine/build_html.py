@@ -2679,27 +2679,10 @@ def _score_desc_short(score: str) -> str:
     return "tight"
 
 
-_MX_WIN_PROB_STEPS = [
-    (0.40, 0.82), (0.30, 0.75), (0.20, 0.68), (0.10, 0.58), (0.00, 0.50),
-    (-0.10, 0.42), (-0.20, 0.32), (-0.30, 0.25), (-0.40, 0.18),
-]
-_MX_WIN_PROB_FLOOR = 0.12
-
-
 def _win_prob_gap(gap: float) -> float:
-    """Interpolated win probability from rating gap (player − opponent)."""
-    gap = round(gap, 4)
-    if gap >= _MX_WIN_PROB_STEPS[0][0]:
-        return _MX_WIN_PROB_STEPS[0][1]
-    if gap < _MX_WIN_PROB_STEPS[-1][0]:
-        return _MX_WIN_PROB_FLOOR
-    for i in range(len(_MX_WIN_PROB_STEPS) - 1):
-        hi_gap, hi_prob = _MX_WIN_PROB_STEPS[i]
-        lo_gap, lo_prob = _MX_WIN_PROB_STEPS[i + 1]
-        if gap >= lo_gap:
-            frac = (gap - lo_gap) / (hi_gap - lo_gap) if hi_gap != lo_gap else 0
-            return lo_prob + frac * (hi_prob - lo_prob)
-    return _MX_WIN_PROB_FLOOR
+    """ShiQ v9 win probability from rating gap (player − opponent)."""
+    from engine.ratings_v9 import win_probability
+    return win_probability(gap)
 
 
 def _analysis_tab(ntrp: str) -> str:

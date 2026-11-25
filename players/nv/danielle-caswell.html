@@ -91,9 +91,10 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 .colmenu label:hover { background: #f3f2ee; }
 .colmenu .reset { color: #1a5fb4; font-size: 11px; padding: 6px 10px; cursor: pointer; }
 @media (max-width: 500px) {
-  .phdr { gap: 12px; }
   .phdr h1 { font-size: 18px; }
-  .card { padding: .5rem .7rem; }
+  .phdr { gap: 10px 12px; flex-wrap: wrap; }
+  .card { padding: .5rem .6rem; }
+  .card .s { white-space: nowrap; }
   .colbar { display: flex; }
   .fn { display: none; }
   .hist tr.cy .yy { display: none; }
@@ -127,7 +128,8 @@ table.hist { border-collapse: collapse; font-size: 12px; }
     <div class="loc">Las Vegas, NV · Female</div><div class="bumpl">Too few matches (1) for a bump estimate</div></div>
   <div class="cards">
     <div class="card"><div class="l">USTA</div><div class="v" title="Computer">3.0<span class="lt">C</span></div><div class="s">12/31/25</div></div>
-    <div class="card"><div class="l">ShiQ</div><div class="v">2.76</div><div class="s">4/25/26</div></div>
+    <div class="card"><div class="l">ShiQ</div><div class="v">2.65</div><div class="s">4/25/26</div></div>
+    <div class="card" title="USTA World Tennis Number (doubles) converted to the NTRP scale; confidence 100%"><div class="l">Doubles</div><div class="v">2.75</div><div class="s">WTN 27.5</div></div>
   </div>
 </div>
 <div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>1–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>3.0</td><td>1–0</td></tr></table></span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">3.0</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>1–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>3.0</td><td>1–0</td></tr></table></span></span></div></div>
@@ -137,7 +139,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.13</span><span class="sq-after">2.76</span></td><td class="c-date">4/25<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">TPC</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sw">6-3</span> <span class="set">2-6</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="jennifer-blais.html"><span class="fn">Jennifer Blais</span><span class="sn">J. Blais</span></a> <span class="rt">2.81</span></span></td><td class="c-opp"><span class="pn"><a href="lisa-schnitz.html"><span class="fn">Lisa Schnitz</span><span class="sn">L. Schnitz</span></a> <span class="rt">3.12</span></span><br><span class="pn"><a href="kim-knotts.html"><span class="fn">Kim Knotts</span><span class="sn">K. Knotts</span></a> <span class="rt">2.80</span></span></td><td class="c-oppteam">DTC #3</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-up">+.02</span><span class="sq-after">2.65</span></td><td class="c-date">4/25<span class="yy">/26</span></td><td class="c-div"><span class="dp dp30">3.0</span></td><td class="c-team">TPC</td><td class="c-line"><span class="line-pill pill-d1">D1</span></td><td class="c-score"><span class="set sw">6-3</span> <span class="set">2-6</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="jennifer-blais.html"><span class="fn">Jennifer Blais</span><span class="sn">J. Blais</span></a> <span class="rt">2.74</span></span></td><td class="c-opp"><span class="pn"><a href="lisa-schnitz.html"><span class="fn">Lisa Schnitz</span><span class="sn">L. Schnitz</span></a> <span class="rt">2.94</span></span><br><span class="pn"><a href="kim-knotts.html"><span class="fn">Kim Knotts</span><span class="sn">K. Knotts</span></a> <span class="rt">2.79</span></span></td><td class="c-oppteam">DTC #3</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {

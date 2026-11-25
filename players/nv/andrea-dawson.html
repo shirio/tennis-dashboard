@@ -91,9 +91,10 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 .colmenu label:hover { background: #f3f2ee; }
 .colmenu .reset { color: #1a5fb4; font-size: 11px; padding: 6px 10px; cursor: pointer; }
 @media (max-width: 500px) {
-  .phdr { gap: 12px; }
   .phdr h1 { font-size: 18px; }
-  .card { padding: .5rem .7rem; }
+  .phdr { gap: 10px 12px; flex-wrap: wrap; }
+  .card { padding: .5rem .6rem; }
+  .card .s { white-space: nowrap; }
   .colbar { display: flex; }
   .fn { display: none; }
   .hist tr.cy .yy { display: none; }
@@ -127,7 +128,9 @@ table.hist { border-collapse: collapse; font-size: 12px; }
     <div class="loc">Henderson, NV · Female</div><div class="bumpl">Too few matches (1) for a bump estimate</div></div>
   <div class="cards">
     <div class="card"><div class="l">USTA</div><div class="v" title="Computer">3.5<span class="lt">C</span></div><div class="s">12/31/25</div></div>
-    <div class="card"><div class="l">ShiQ</div><div class="v">3.21</div><div class="s">5/9/26</div></div>
+    <div class="card"><div class="l">ShiQ</div><div class="v">3.22</div><div class="s">5/9/26</div></div>
+    <div class="card" title="USTA World Tennis Number (singles) converted to the NTRP scale; confidence 60%"><div class="l">Singles</div><div class="v">3.19</div><div class="s">WTN 29.2</div></div>
+    <div class="card" title="USTA World Tennis Number (doubles) converted to the NTRP scale; confidence 100%"><div class="l">Doubles</div><div class="v">3.17</div><div class="s">WTN 24.7</div></div>
   </div>
 </div>
 <div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">3.5</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>1–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>3.5</td><td>1–0</td></tr></table></span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">3.5</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>Singles</td><td>0–0</td></tr><tr><td>Doubles</td><td>1–0</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">1–0</span><span class="tipbox"><table><tr><td>3.5</td><td>1–0</td></tr></table></span></span></div></div>
@@ -137,7 +140,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 <div class="tbl-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.02</span><span class="sq-after">3.21</span></td><td class="c-date">5/9<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">DRAGONRIDGE CC</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set">3-6</span> <span class="set sw">6-2</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="christina-rich.html"><span class="fn">Christina Rich</span><span class="sn">C. Rich</span></a> <span class="rt">3.37</span></span></td><td class="c-opp"><span class="pn"><a href="alisia-pulella.html"><span class="fn">Alisia Pulella</span><span class="sn">A. Pulella</span></a> <span class="rt">3.31</span></span><br><span class="pn"><a href="natasha-kattau.html"><span class="fn">Natasha Kattau</span><span class="sn">N. Kattau</span></a> <span class="rt">3.01</span></span></td><td class="c-oppteam">SPANISH TRAIL #1</td></tr></tbody></table></div>
+<tbody><tr data-y="2026"><td class="c-sq"><span class="sd-down">−.01</span><span class="sq-after">3.22</span></td><td class="c-date">5/9<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-team">DRAGONRIDGE CC</td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set">3-6</span> <span class="set sw">6-2</span> <span class="set sw">1-0</span></td><td class="c-partner"><span class="pn"><a href="christina-rich.html"><span class="fn">Christina Rich</span><span class="sn">C. Rich</span></a> <span class="rt">3.29</span></span></td><td class="c-opp"><span class="pn"><a href="alisia-pulella.html"><span class="fn">Alisia Pulella</span><span class="sn">A. Pulella</span></a> <span class="rt">3.16</span></span><br><span class="pn"><a href="natasha-kattau.html"><span class="fn">Natasha Kattau</span><span class="sn">N. Kattau</span></a> <span class="rt">2.99</span></span></td><td class="c-oppteam">SPANISH TRAIL #1</td></tr></tbody></table></div>
 </div>
 <script>
 document.querySelectorAll('.yr').forEach(function(b) {

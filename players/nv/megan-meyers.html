@@ -91,9 +91,10 @@ table.hist { border-collapse: collapse; font-size: 12px; }
 .colmenu label:hover { background: #f3f2ee; }
 .colmenu .reset { color: #1a5fb4; font-size: 11px; padding: 6px 10px; cursor: pointer; }
 @media (max-width: 500px) {
-  .phdr { gap: 12px; }
   .phdr h1 { font-size: 18px; }
-  .card { padding: .5rem .7rem; }
+  .phdr { gap: 10px 12px; flex-wrap: wrap; }
+  .card { padding: .5rem .6rem; }
+  .card .s { white-space: nowrap; }
   .colbar { display: flex; }
   .fn { display: none; }
   .hist tr.cy .yy { display: none; }
@@ -128,6 +129,7 @@ table.hist { border-collapse: collapse; font-size: 12px; }
   <div class="cards">
     <div class="card"><div class="l">USTA</div><div class="v" title="Computer">3.5<span class="lt">C</span></div><div class="s">12/31/25</div></div>
     <div class="card"><div class="l">ShiQ</div><div class="v">3.21</div><div class="s">6/6/26</div></div>
+    <div class="card" title="USTA World Tennis Number (doubles) converted to the NTRP scale; confidence 70%"><div class="l">Doubles</div><div class="v">3.50</div><div class="s">WTN 22.4</div></div>
   </div>
 </div>
 <div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2026">2026</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">0–0</span></span></div><div class="strip" data-y="2026" hidden><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">0–0</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">0–0</span></span></div></div>
