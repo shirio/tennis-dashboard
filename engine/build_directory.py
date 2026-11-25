@@ -376,7 +376,8 @@ th.ctr.sorted .hl {{ left: -5px; }}
 @media (max-width: 500px) {{ table:not(.show-s) .c-s {{ display: none; }} }}
 /* Phones: the Name column stays put while the table scrolls sideways. */
 @media (max-width: 500px) {{
-  #tbl .c-n {{ position: sticky; left: 0; background: #fff; z-index: 2; box-shadow: 1px 0 0 #eee; }}
+  #tbl .c-n {{ position: sticky; left: 0; background: #fff; z-index: 2; }}
+  .tbl-wrap.xs #tbl .c-n {{ box-shadow: 1px 0 0 #eee; }}
   #tbl th.c-n {{ z-index: 5; }}
 }}
 </style></head><body><div class="wrap">
@@ -627,6 +628,11 @@ function saveView() {{
   var st = null;
   window.addEventListener('scroll', function() {{ clearTimeout(st); st = setTimeout(saveView, 200); }}, {{ passive: true }});
   ['q', 'fr'].forEach(function(id) {{ document.getElementById(id).addEventListener('input', saveView); }});
+}})();
+// Phones: show the Name column's edge line only once the table has scrolled sideways.
+(function() {{
+  var w = document.querySelector('.tbl-wrap'); if (!w || !document.getElementById('tbl')) return;
+  w.addEventListener('scroll', function() {{ w.classList.toggle('xs', w.scrollLeft > 0); }}, {{ passive: true }});
 }})();
 // Sticky column titles: the table sits in a sideways-scroll box, which stops CSS sticky
 // from following the page, so slide the header cells down as the page scrolls.
