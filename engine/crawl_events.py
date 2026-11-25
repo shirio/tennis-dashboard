@@ -98,9 +98,10 @@ def crawl_events(crawl: dict, pbn: dict, existing: list[R.CourtEvent] = ()
         for mid, line, side in person.get("matches", []):
             side_people.setdefault((mid, line, side), []).append(keys[pid])
 
-    seen: dict[tuple, list[int]] = {}
+    # sig -> [(day, existing event or None)]
+    seen: dict[tuple, list[tuple[int, Optional[R.CourtEvent]]]] = {}
     for e in existing:
-        seen.setdefault(_sig(e.winner_keys, e.loser_keys), []).append(_day(e.date))
+        seen.setdefault(_sig(e.winner_keys, e.loser_keys), []).append((_day(e.date), e))
     out = []
     for mid, m in crawl.get("matches", {}).items():
         for ln in m.get("lines", []):
@@ -113,9 +114,16 @@ def crawl_events(crawl: dict, pbn: dict, existing: list[R.CourtEvent] = ()
                 continue
             w, l = (home, away) if win == "home" else (away, home)
             sig, day = _sig(w, l), _day(m["date"])
-            if any(abs(day - d) <= 30 for d in seen.get(sig, [])):
+            dup = next((e for d, e in seen.get(sig, []) if abs(day - d) <= 30), False)
+            if dup is not False:
+                # Same line already in the standings data. The crawl has the date
+                # the match was PLAYED; the standings keep the scheduled date of a
+                # rescheduled match (e.g. scheduled 3/14, played 3/19). Use the
+                # played date so ratings timelines line up with the crawl pages.
+                if dup is not None and dup.date != m["date"]:
+                    dup.date = m["date"]
                 continue
-            seen.setdefault(sig, []).append(day)
+            seen.setdefault(sig, []).append((day, None))
             out.append(R.CourtEvent(date=m["date"], match_id=mid, line_label=ln["line"],
                                     division=_level(m, ln), winner_keys=list(w),
                                     loser_keys=list(l), score=ln["score"]))
