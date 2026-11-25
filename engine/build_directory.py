@@ -889,7 +889,9 @@ def _bump_cell_data(b):
     if not b:
         return None
     call = b.get("call", "unknown")
-    if call not in _BUMP_MARK:  # holds, too few matches, unknown: empty cell, sorts last
+    if call == "hold":  # empty cell, but hovering shows the year-end estimate; sorts last
+        return ["", "", None, _bump_tip(b)]
+    if call not in _BUMP_MARK:  # too few matches, unknown: empty cell, no tooltip, sorts last
         return None
     sym, cls = _BUMP_MARK[call]
     # Category first, then the engine's signed margin past the level edge, so
