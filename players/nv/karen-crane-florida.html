@@ -90,26 +90,70 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 .rn.open::after { display: block; }
 @media (hover: hover) { .rn:hover::after { display: block; } }
 .hist tr.post td { background: #f6f4f9; }
-.hist.fc-sq tr.post td.c-sq { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-sq tr.post td.c-sq { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-date tr.post td.c-date { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-date tr.post td.c-date { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-div tr.post td.c-div { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-div tr.post td.c-div { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-lg tr.post td.c-lg { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-lg tr.post td.c-lg { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-team tr.post td.c-team { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-team tr.post td.c-team { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-line tr.post td.c-line { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-line tr.post td.c-line { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-score tr.post td.c-score { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-score tr.post td.c-score { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-partner tr.post td.c-partner { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-partner tr.post td.c-partner { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-opp tr.post td.c-opp { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-opp tr.post td.c-opp { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
-.hist.fc-oppteam tr.post td.c-oppteam { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
-.hist.lc-oppteam tr.post td.c-oppteam { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+/* Postseason runs: one block, 8px past the text on each side (the table wrapper
+   reaches 8px into the page gutter and the outer cells get 8px of padding), with
+   only the run's outer corners rounded (Shirin, 2026-11-25). */
+.hist-wrap { margin: 0 -8px; }
+.hist.fc-sq th.c-sq, .hist.fc-sq td.c-sq { padding-left: 8px; }
+.hist.lc-sq th.c-sq, .hist.lc-sq td.c-sq { padding-right: 8px; }
+.hist.fc-sq tr.po-top td.c-sq { border-top-left-radius: 6px; }
+.hist.fc-sq tr.po-bot td.c-sq { border-bottom-left-radius: 6px; }
+.hist.lc-sq tr.po-top td.c-sq { border-top-right-radius: 6px; }
+.hist.lc-sq tr.po-bot td.c-sq { border-bottom-right-radius: 6px; }
+.hist.fc-date th.c-date, .hist.fc-date td.c-date { padding-left: 8px; }
+.hist.lc-date th.c-date, .hist.lc-date td.c-date { padding-right: 8px; }
+.hist.fc-date tr.po-top td.c-date { border-top-left-radius: 6px; }
+.hist.fc-date tr.po-bot td.c-date { border-bottom-left-radius: 6px; }
+.hist.lc-date tr.po-top td.c-date { border-top-right-radius: 6px; }
+.hist.lc-date tr.po-bot td.c-date { border-bottom-right-radius: 6px; }
+.hist.fc-div th.c-div, .hist.fc-div td.c-div { padding-left: 8px; }
+.hist.lc-div th.c-div, .hist.lc-div td.c-div { padding-right: 8px; }
+.hist.fc-div tr.po-top td.c-div { border-top-left-radius: 6px; }
+.hist.fc-div tr.po-bot td.c-div { border-bottom-left-radius: 6px; }
+.hist.lc-div tr.po-top td.c-div { border-top-right-radius: 6px; }
+.hist.lc-div tr.po-bot td.c-div { border-bottom-right-radius: 6px; }
+.hist.fc-lg th.c-lg, .hist.fc-lg td.c-lg { padding-left: 8px; }
+.hist.lc-lg th.c-lg, .hist.lc-lg td.c-lg { padding-right: 8px; }
+.hist.fc-lg tr.po-top td.c-lg { border-top-left-radius: 6px; }
+.hist.fc-lg tr.po-bot td.c-lg { border-bottom-left-radius: 6px; }
+.hist.lc-lg tr.po-top td.c-lg { border-top-right-radius: 6px; }
+.hist.lc-lg tr.po-bot td.c-lg { border-bottom-right-radius: 6px; }
+.hist.fc-team th.c-team, .hist.fc-team td.c-team { padding-left: 8px; }
+.hist.lc-team th.c-team, .hist.lc-team td.c-team { padding-right: 8px; }
+.hist.fc-team tr.po-top td.c-team { border-top-left-radius: 6px; }
+.hist.fc-team tr.po-bot td.c-team { border-bottom-left-radius: 6px; }
+.hist.lc-team tr.po-top td.c-team { border-top-right-radius: 6px; }
+.hist.lc-team tr.po-bot td.c-team { border-bottom-right-radius: 6px; }
+.hist.fc-line th.c-line, .hist.fc-line td.c-line { padding-left: 8px; }
+.hist.lc-line th.c-line, .hist.lc-line td.c-line { padding-right: 8px; }
+.hist.fc-line tr.po-top td.c-line { border-top-left-radius: 6px; }
+.hist.fc-line tr.po-bot td.c-line { border-bottom-left-radius: 6px; }
+.hist.lc-line tr.po-top td.c-line { border-top-right-radius: 6px; }
+.hist.lc-line tr.po-bot td.c-line { border-bottom-right-radius: 6px; }
+.hist.fc-score th.c-score, .hist.fc-score td.c-score { padding-left: 8px; }
+.hist.lc-score th.c-score, .hist.lc-score td.c-score { padding-right: 8px; }
+.hist.fc-score tr.po-top td.c-score { border-top-left-radius: 6px; }
+.hist.fc-score tr.po-bot td.c-score { border-bottom-left-radius: 6px; }
+.hist.lc-score tr.po-top td.c-score { border-top-right-radius: 6px; }
+.hist.lc-score tr.po-bot td.c-score { border-bottom-right-radius: 6px; }
+.hist.fc-partner th.c-partner, .hist.fc-partner td.c-partner { padding-left: 8px; }
+.hist.lc-partner th.c-partner, .hist.lc-partner td.c-partner { padding-right: 8px; }
+.hist.fc-partner tr.po-top td.c-partner { border-top-left-radius: 6px; }
+.hist.fc-partner tr.po-bot td.c-partner { border-bottom-left-radius: 6px; }
+.hist.lc-partner tr.po-top td.c-partner { border-top-right-radius: 6px; }
+.hist.lc-partner tr.po-bot td.c-partner { border-bottom-right-radius: 6px; }
+.hist.fc-opp th.c-opp, .hist.fc-opp td.c-opp { padding-left: 8px; }
+.hist.lc-opp th.c-opp, .hist.lc-opp td.c-opp { padding-right: 8px; }
+.hist.fc-opp tr.po-top td.c-opp { border-top-left-radius: 6px; }
+.hist.fc-opp tr.po-bot td.c-opp { border-bottom-left-radius: 6px; }
+.hist.lc-opp tr.po-top td.c-opp { border-top-right-radius: 6px; }
+.hist.lc-opp tr.po-bot td.c-opp { border-bottom-right-radius: 6px; }
+.hist.fc-oppteam th.c-oppteam, .hist.fc-oppteam td.c-oppteam { padding-left: 8px; }
+.hist.lc-oppteam th.c-oppteam, .hist.lc-oppteam td.c-oppteam { padding-right: 8px; }
+.hist.fc-oppteam tr.po-top td.c-oppteam { border-top-left-radius: 6px; }
+.hist.fc-oppteam tr.po-bot td.c-oppteam { border-bottom-left-radius: 6px; }
+.hist.lc-oppteam tr.po-top td.c-oppteam { border-top-right-radius: 6px; }
+.hist.lc-oppteam tr.po-bot td.c-oppteam { border-bottom-right-radius: 6px; }
 .pn { white-space: nowrap; }
 .rt { color: #aaa; font-variant-numeric: tabular-nums; }
 .set.sw { color: #27500A; font-weight: 600; }
@@ -177,7 +221,7 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <div class="colbar"><span class="count" id="cnt">1 match · 1–0 overall</span>
 <button class="colbtn" id="colbtn" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
 <div class="colmenu" id="colmenu" hidden><label><input type="checkbox" data-c="sq"> ShiQ</label><label><input type="checkbox" data-c="date"> Date</label><label><input type="checkbox" data-c="div"> Div</label><label><input type="checkbox" data-c="lg"> League</label><label><input type="checkbox" data-c="team"> Team</label><label><input type="checkbox" data-c="line"> Line</label><label><input type="checkbox" data-c="score"> Score</label><label><input type="checkbox" data-c="partner"> Partner</label><label><input type="checkbox" data-c="opp"> Opponents</label><label><input type="checkbox" data-c="oppteam"> Opp Team</label><div class="reset" id="colreset">Reset</div></div></div>
-<div class="tbl-wrap"><table class="hist"><thead><tr>
+<div class="tbl-wrap hist-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-lg">League</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
 <tbody><tr data-y="2026" class="post"><td class="c-sq"><span class="sd-up">+.03</span><span class="sq-after">3.03</span></td><td class="c-date">10/24<span class="yy">/26</span></td><td class="c-div"><span class="dp dp35">3.5</span></td><td class="c-lg" title="League National Adult 40 3.5F">Nationals</td><td class="c-team"><span class="rn" tabindex="0" data-full="Florida/Pelliccia/40&amp;Over3.5W" aria-label="Florida (Pelliccia), listed as Florida/Pelliccia/40&amp;Over3.5W">Florida (Pelliccia)</span></td><td class="c-line"><span class="line-pill pill-d3">D3</span></td><td class="c-score"><span class="set sw">7-5</span> <span class="set sw">7-5</span></td><td class="c-partner"><span class="pn"><a href="yardise-jones-florida.html"><span class="fn">Yardise Jones</span><span class="sn">Y. Jones</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="katayoun-yaraghi-josephs-national.html"><span class="fn">Katayoun Yaraghi-Josephs</span><span class="sn">K. Yaraghi-Josephs</span></a> <span class="rt">2.96</span></span><br><span class="pn"><a href="julia-leavitt-national.html"><span class="fn">Julia Leavitt</span><span class="sn">J. Leavitt</span></a> <span class="rt">2.98</span></span></td><td class="c-oppteam"><span class="rn" tabindex="0" data-full="Caribbean/Szytel/40&amp;Over3.5W" aria-label="Caribbean (Szytel), listed as Caribbean/Szytel/40&amp;Over3.5W">Caribbean (Szytel)</span></td></tr></tbody></table></div>
@@ -196,9 +240,20 @@ document.querySelectorAll('.yr').forEach(function(b) {
     document.querySelectorAll('.strip').forEach(function(s) { s.hidden = s.dataset.y !== y; });
     document.querySelectorAll('.hist tbody tr').forEach(function(tr) {
       tr.hidden = y !== 'all' && tr.dataset.y !== y; });
+    runs();
     document.getElementById('cnt').textContent = COUNTS[y] || '';
   };
 });
+// Consecutive visible postseason rows form one block: mark each run's first and last row
+function runs() {
+  var vis = [].filter.call(document.querySelectorAll('.hist tbody tr'), function(tr) { return !tr.hidden; });
+  vis.forEach(function(tr, i) {
+    var p = tr.classList.contains('post');
+    tr.classList.toggle('po-top', p && !(vis[i - 1] && vis[i - 1].classList.contains('post')));
+    tr.classList.toggle('po-bot', p && !(vis[i + 1] && vis[i + 1].classList.contains('post')));
+  });
+}
+runs();
 var COUNTS = {"all": "1 match · 1–0 overall", "2026": "1 match · 1–0 overall"};
 // Phone drops the year from dates in the current year.
 (function() { var cy = String(new Date().getFullYear());
