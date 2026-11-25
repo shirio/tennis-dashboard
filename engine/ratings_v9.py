@@ -112,15 +112,18 @@ def is_provisional(baseline: Optional[float]) -> bool:
 
 
 def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
-           params: Params = Params(), timelines: bool = False) -> V9Result:
+           params: Params = Params(), timelines: bool = False,
+           provisional_keys: frozenset = frozenset()) -> V9Result:
     """Process court events in the given (chronological) order.
 
     With ``timelines`` the result also records, per player and per
     (division, date), the shared rating going into that date's first match
-    and after its last one.
+    and after its last one. ``provisional_keys`` are players whose baseline
+    is only a guess (e.g. crawled players placed mid-level), so they learn
+    faster at first like NTRP-default players.
     """
     res = V9Result()
-    provisional = {k: is_provisional(v) for k, v in baselines.items()}
+    provisional = {k: is_provisional(v) or k in provisional_keys for k, v in baselines.items()}
 
     def strength(k: str, singles: bool) -> float:
         if k not in res.rating:

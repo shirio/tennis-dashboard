@@ -1,0 +1,122 @@
+"""
+engine/crawl_events.py
+Court events from the TennisLink team crawl (data/tl_team_matches_<year>.json,
+written by scrapers/scrape_tl_teams.py and scrapers/resolve_tl_players.py).
+
+Each crawled line becomes an engine CourtEvent. Players are identified by
+the identity pass's ``people`` ids, then mapped onto players.json keys
+(same name key, Nevada, or an ``aka`` alias) so the crawl and the existing
+standings data rate the same person. Crawled people who aren't in
+players.json get their own key, ``tl::<person id>``.
+
+Lines already present in the standings data are dropped so nothing is
+counted twice. A line matches when it has the same winners and losers within
+30 days (the standings and TennisLink can disagree on the date of a
+rescheduled match).
+"""
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+from typing import Optional
+
+from engine import ratings as R
+
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def crawl_path(year: int = 2026) -> Path:
+    return ROOT / "data" / f"tl_team_matches_{year}.json"
+
+
+def load_crawl(year: int = 2026) -> Optional[dict]:
+    p = crawl_path(year)
+    return json.loads(p.read_text()) if p.exists() else None
+
+
+def _level(m: dict, line: dict) -> str:
+    """'3.0' style level for a line: the line's own (Tri-Level), else from flight/league."""
+    if line.get("level"):
+        return line["level"]
+    for txt in (m.get("flight") or "", m.get("league") or ""):
+        x = re.search(r"(\d\.\d)\s*W", txt.upper()) or re.search(r"\b(\d\.\d)\b", txt)
+        if x:
+            return x.group(1)
+    return ""
+
+
+def person_keys(crawl: dict, pbn: dict) -> dict[str, str]:
+    """crawl person id -> engine player key."""
+    nv_keys = {}
+    for k, p in pbn.items():
+        if (p.get("state") or "NV").upper() == "NV":
+            nv_keys.setdefault(R._name_key(p.get("name", "")), k)
+    out = {}
+    for pid, person in crawl.get("people", {}).items():
+        key = None
+        if person.get("area") == "NEVADA":
+            for nm in [person["name"]] + list(person.get("aka") or []):
+                key = nv_keys.get(R._name_key(nm))
+                if key:
+                    break
+        out[pid] = key or f"tl::{pid}"
+    return out
+
+
+def baseline_for(person: dict) -> Optional[float]:
+    """Starting guess for a crawled player with no TennisRecord baseline:
+    a quarter below their USTA level (mid-level)."""
+    lv = re.match(r"(\d\.\d)", person.get("level") or person.get("ntrp") or "")
+    if not lv:
+        try:
+            return float(person.get("ntrp")) - 0.25
+        except (TypeError, ValueError):
+            return None
+    return float(lv.group(1)) - 0.25
+
+
+def _sig(winners: list[str], losers: list[str]) -> tuple:
+    # Score text differs between sources (match tiebreak "1-0" vs "10-7"), so
+    # the signature is who won and who lost.
+    return frozenset(winners), frozenset(losers)
+
+
+def _day(date: str) -> int:
+    m = re.match(r"(\d{1,2})/(\d{1,2})/(\d{4})", date or "")
+    if not m:
+        return -10**6
+    mo, d, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
+    return y * 372 + mo * 31 + d
+
+
+def crawl_events(crawl: dict, pbn: dict, existing: list[R.CourtEvent] = ()
+                 ) -> tuple[list[R.CourtEvent], dict[str, str]]:
+    keys = person_keys(crawl, pbn)
+    side_people: dict[tuple[str, str, str], list[str]] = {}
+    for pid, person in crawl.get("people", {}).items():
+        for mid, line, side in person.get("matches", []):
+            side_people.setdefault((mid, line, side), []).append(keys[pid])
+
+    seen: dict[tuple, list[int]] = {}
+    for e in existing:
+        seen.setdefault(_sig(e.winner_keys, e.loser_keys), []).append(_day(e.date))
+    out = []
+    for mid, m in crawl.get("matches", {}).items():
+        for ln in m.get("lines", []):
+            win = ln.get("winner")
+            if win not in ("home", "away") or not ln.get("score"):
+                continue
+            home = side_people.get((mid, ln["line"], "home"), [])
+            away = side_people.get((mid, ln["line"], "away"), [])
+            if not home or not away or len(home) != len(away):
+                continue
+            w, l = (home, away) if win == "home" else (away, home)
+            sig, day = _sig(w, l), _day(m["date"])
+            if any(abs(day - d) <= 30 for d in seen.get(sig, [])):
+                continue
+            seen.setdefault(sig, []).append(day)
+            out.append(R.CourtEvent(date=m["date"], match_id=mid, line_label=ln["line"],
+                                    division=_level(m, ln), winner_keys=list(w),
+                                    loser_keys=list(l), score=ln["score"]))
+    return out, keys
