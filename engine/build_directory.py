@@ -295,7 +295,9 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
             heads.append(f'<th data-k="{k}" class="c-{k} delta" title="Change from {years[i-1]} to {years[i]}" '
                          f'aria-label="Change from {years[i-1]} to {years[i]}">{_DH}</th>')
         elif k[0] == "y":
-            heads.append(f'<th data-k="{k}" class="c-{k} num">{lbl}</th>')
+            # Seasons before the current one read 'yy to keep the columns narrow (Shirin)
+            yl = f"’{lbl[-2:]}" if int(lbl) < YEAR_FROM else lbl
+            heads.append(f'<th data-k="{k}" class="c-{k} num" title="{lbl}">{yl}</th>')
         elif k in ("ws", "wd"):
             fmt_name = "singles" if k == "ws" else "doubles"
             heads.append(f'<th data-k="{k}" class="c-{k} num ctr" title="USTA World Tennis Number ({fmt_name}) '
@@ -373,6 +375,8 @@ th.bump, td.bump {{ text-align: center; cursor: default; font-variant-numeric: t
 .bld {{ color: #c98b86; font-weight: 600; }}
 .bh {{ color: #aaa; font-weight: 400; }}
 th.delta, td.delta {{ text-align: center; padding-left: 4px; padding-right: 4px; }}
+th.delta .hl svg {{ position: relative; left: var(--dx, 0); }}
+thead th.delta {{ z-index: 4; }}
 td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 td.ctr, th.ctr {{ text-align: center; }}
 th {{ vertical-align: bottom; line-height: 1.25; }}
@@ -549,6 +553,16 @@ function centerCarets() {{
     moves.push([svg, cur + (ar.right + br.left) / 2 - (sr.left + sr.right) / 2]);
   }});
   moves.forEach(function(m) {{ m[0].style.left = m[1].toFixed(1) + 'px'; }});
+  // Move each Δ header's triangle to the same spot, so carets sit under it
+  var sum = {{}};
+  moves.forEach(function(m) {{ var k = m[0].parentNode.className.split(' ')[0];
+    (sum[k] = sum[k] || []).push(m[1]); }});
+  document.querySelectorAll('#tbl th.delta').forEach(function(th) {{
+    var v = sum['c-' + th.dataset.k];
+    if (!v) return;
+    v.sort(function(a, b) {{ return a - b; }});
+    th.style.setProperty('--dx', v[v.length >> 1].toFixed(1) + 'px');
+  }});
 }}
 window.addEventListener('resize', centerCarets);
 // Columns menu: choice saved per browser
