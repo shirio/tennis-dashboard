@@ -35,6 +35,7 @@ from engine.build_html import (
     _nkey,
     _traverse_match_histories,
 )
+from engine.appeals import appeal_call, load_dynamics
 from engine.ntrp_defs import RATING_TYPES, format_ntrp, parse_ntrp
 
 DATA_DIR = Path("data")
@@ -247,7 +248,7 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
     while len(years) > 1 and not any(r[4][len(years) - 1] is not None for r in rows):
         years.pop()
     n = len(years)
-    rows = [r[:4] + [r[4][:n], r[5][:n]] + r[6:] for r in rows]
+    rows = [r[:4] + [r[4][:n], r[5][:n]] + r[6:9] + [r[9][:n]] for r in rows]
     data = json.dumps(rows, separators=(",", ":"), ensure_ascii=False)
     types_json = json.dumps(RATING_TYPES)
     i_from = years.index(YEAR_FROM)
@@ -357,6 +358,8 @@ td.ctr, th.ctr {{ text-align: center; }}
 th {{ vertical-align: bottom; line-height: 1.25; }}
 th.ctr.sorted .hl {{ left: -5px; }}
 .lt {{ font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }}
+.ap {{ margin-left: 1px; }}
+.apc {{ color: #b26a00; }}
 .up {{ color: #27500A; }}
 .caret {{ vertical-align: middle; }}
 .caret.down {{ transform: scaleY(-1); }}
@@ -407,9 +410,12 @@ function caret(up, n) {{
 // change from year i-1 to year i
 function delta(r, i) {{ var a = r[4][i - 1], b = r[4][i]; return (a != null && b != null) ? Math.round((b - a) * 10) / 10 : 0; }}
 function fmt(l) {{ return l == null ? '' : l.toFixed(1); }}
-function ntrp(l, t, cls) {{
+function ntrp(l, t, cls, ap) {{
   if (l == null) return '';
-  var s = fmt(l) + (t ? '<span class="lt" title="' + (TYPES[t] || t) + '">' + t + '</span>' : '');
+  var tip = TYPES[t] || t;
+  if (ap) tip += '. ' + ap[2];
+  var s = fmt(l) + (t ? '<span class="lt" title="' + esc(tip) + '">' + t
+    + (ap ? '<span class="ap' + (ap[1] ? ' apc' : '') + '">' + ap[0] + '</span>' : '') + '</span>' : '');
   return cls ? '<span class="' + cls + '">' + s + '</span>' : s;
 }}
 // WTN columns: r[7] = [singles NTRP, WTN, confidence, doubles NTRP, WTN, confidence]
@@ -435,13 +441,16 @@ function val(r, k) {{
   if (k === 'ws') return r[7] ? r[7][0] : null;
   if (k === 'wd') return r[7] ? r[7][3] : null;
   if (k[0] === 'y') {{
-    // Level first, then the rating letter within a level: D > M > C > A > S (others after S)
+    // Level first, then the rating letter within a level: D > M > A↓ > C > A↑ > A > S (others after S)
     var i = +k.slice(1), v = r[4][i];
-    return v == null ? null : v + (LETTER_RANK[r[5][i]] || 0) / 100;
+    // An appeal down ranks just above C, an appeal up just below C.
+    var t = r[5][i], ap = r[9] && r[9][i];
+    if (t === 'A' && ap && ap[0] !== '?') t = ap[0] === '↓' ? 'A↓' : 'A↑';
+    return v == null ? null : v + (LETTER_RANK[t] || 0) / 100;
   }}
   return null;
 }}
-var LETTER_RANK = {{ D: 5, M: 4, C: 3, A: 2, S: 1 }};
+var LETTER_RANK = {{ D: 5, M: 4, 'A↓': 3.5, C: 3, 'A↑': 2.5, A: 2, S: 1 }};
 function cmp(a, b) {{
   var x, y;
   if (sortK[0] === 'd') {{ var i = +sortK.slice(1); x = delta(a, i); y = delta(b, i);
@@ -480,7 +489,7 @@ function render() {{
       }}
       // color a changed rating only when its Δ column is showing
       var cls = (i && on['d' + i]) ? (d > 0 ? 'mv-up' : d < 0 ? 'mv-down' : '') : '';
-      h += '<td class="c-y' + i + ' num">' + ntrp(r[4][i], r[5][i], cls) + '</td>';
+      h += '<td class="c-y' + i + ' num">' + ntrp(r[4][i], r[5][i], cls, r[9] && r[9][i]) + '</td>';
     }}
     h += '<td class="c-q num">' + (r[2] == null ? '' : r[2].toFixed(2)) + '</td>';
     h += wtnCell(r, 0, 'ws', 'singles') + wtnCell(r, 3, 'wd', 'doubles');
@@ -790,14 +799,16 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
     lvl, letter = info.get("cur_level", info.get("level")), info.get("cur_type", info.get("rating_type"))
     if lvl is None:
         lvl, letter = parse_ntrp(p.get("ntrp_rating"))
-    letter_tip = f' title="{_esc(RATING_TYPES.get(letter, ""))}"' if letter else ""
-    usta_v = (f'{float(lvl):.1f}<span class="lt">{_esc(letter or "")}</span>' if lvl is not None else "—")
+    ap = info.get("appeal") if letter == "A" else None
+    ap_html = f'<span class="ap{" apc" if ap[1] else ""}">{ap[0]}</span>' if ap else ""
+    letter_tip = (f' title="{_esc(RATING_TYPES.get(letter, "") + (". " + ap[2] if ap else ""))}"' if letter else "")
+    usta_v = (f'{float(lvl):.1f}<span class="lt">{_esc(letter or "")}{ap_html}</span>' if lvl is not None else "—")
     dyn = p.get("global_rating")
     wtn_card = _wtn_card(p)
     bump = info.get("bump") or {}
     bcall = bump.get("call")
     if bcall in _BUMP_MARK or bcall == "hold":
-        sym, cls = _BUMP_MARK.get(bcall, ("", ""))
+        sym, cls = (_BUMP_MARK2 if bump.get("levels") == 2 and bcall in _BUMP_MARK2 else _BUMP_MARK).get(bcall, ("", ""))
         mark = f'<span class="{cls}">{sym}</span> ' if sym else ""
         bump_line = (f'<div class="bumpl" title="{_esc(_bump_tip(bump))}">{mark}{_esc(bump.get("label", ""))}'
                      f' · year-end est. {bump.get("estimate", 0):.2f}</div>')
@@ -828,6 +839,8 @@ body {{ background: #fff; }}
 .card .s {{ font-size: 11px; color: #888; }}
 .lt {{ font-size: 10px; color: inherit; margin-left: 2px; font-weight: 400; }}
 .v .lt {{ font-size: 12px; margin-left: 3px; }}
+.ap {{ margin-left: 1px; }}
+.apc {{ color: #b26a00; }}
 .mv-up {{ color: #27500A; font-weight: 600; }}
 .mv-down {{ color: #791F1F; font-weight: 600; }}
 .recs {{ display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: .4rem 0 1.1rem; }}
@@ -1020,14 +1033,21 @@ def _usta_rows(year: int) -> list[dict]:
 
 _BUMP_SORT = {"up": 2, "lean_up": 1, "hold": 0, "lean_down": -1, "down": -2,
               "few_matches": -9, "unknown": -9}
-def _chev(up: bool, color: str, label: str) -> str:
-    """Single S2 chevron (same shape as the Δ column's caret), in a fixed color."""
-    pts = "2.5,10 7,6 11.5,10" if up else "2.5,5 7,9 11.5,5"
+def _chev(up: bool, color: str, label: str, n: int = 1) -> str:
+    """S2 chevron (same shape as the Δ column's caret), in a fixed color; n=2 stacks two."""
+    if n == 2:
+        pts = ["2.5,7.5 7,3.5 11.5,7.5", "2.5,12.5 7,8.5 11.5,12.5"] if up else ["2.5,2.5 7,6.5 11.5,2.5", "2.5,7.5 7,11.5 11.5,7.5"]
+    else:
+        pts = ["2.5,10 7,6 11.5,10" if up else "2.5,5 7,9 11.5,5"]
+    lines = "".join(f'<polyline points="{q}"/>' for q in pts)
     return (f'<svg class="bchev" viewBox="0 0 14 15" width="14" height="15" role="img" aria-label="{label}" '
             f'style="color:{color};vertical-align:middle"><g fill="none" stroke="currentColor" stroke-width="2.4" '
-            f'stroke-linecap="round" stroke-linejoin="round"><polyline points="{pts}"/></g></svg>')
+            f'stroke-linecap="round" stroke-linejoin="round">{lines}</g></svg>')
 
 
+# Two levels (bump["levels"] == 2): double chevron.
+_BUMP_MARK2 = {"up": (_chev(True, "#27500A", "Likely up two levels", 2), "bm"),
+               "down": (_chev(False, "#791F1F", "Likely down two levels", 2), "bm")}
 _BUMP_MARK = {"up": (_chev(True, "#27500A", "Likely up"), "bm"),
               "lean_up": (_chev(True, "#8fb36c", "Leaning up"), "bm"),
               "down": (_chev(False, "#791F1F", "Likely down"), "bm"),
@@ -1085,11 +1105,18 @@ def _bump_cell_data(b):
         return ["", "", None, _bump_tip(b)]
     if call not in _BUMP_MARK:  # too few matches, unknown: empty cell, no tooltip, sorts last
         return None
-    sym, cls = _BUMP_MARK[call]
+    sym, cls = (_BUMP_MARK2 if b.get("levels") == 2 and call in _BUMP_MARK2 else _BUMP_MARK)[call]
     # Category first, then the engine's signed margin past the level edge, so
     # descending runs strongest up -> most extreme down within each category.
     sort = _BUMP_SORT[call] * 10 + float(b.get("margin") or 0)
     return [sym, cls, round(sort, 4), _bump_tip(b)]
+
+
+def _appeal_cell(a):
+    """[arrow, close (0/1), explanation] for one A rating, or None."""
+    if not a:
+        return None
+    return [{"up": "↑", "down": "↓"}.get(a["dir"], "?"), 1 if a["close"] else 0, a["why"]]
 
 
 def _bump_est_data(b):
@@ -1153,6 +1180,8 @@ def build_directory() -> dict:
         other_links[y] = link_years(usta, rows_y) if rows_y and not placeholder else {}
 
     tr_hist = _tr_history()
+    appeal_dyn = load_dynamics()
+    overrides = {k: v for k, v in _load(DATA_DIR / "rating_overrides.json", {}).items() if not k.startswith("_")}
     bumps = _nv_bumps(players, links, usta) if not placeholder else {}
 
     info_by_id: dict[str, dict] = {}
@@ -1187,10 +1216,33 @@ def build_directory() -> dict:
                 lvl = th.get(y)
                 if lvl is not None:
                     by_year[y] = {"level": lvl}  # roster level, no rating letter
+        # Manual fixes (data/rating_overrides.json) win over lists and rosters
+        for ys, fix in (overrides.get(r["name"]) or {}).items():
+            if int(ys) in by_year:
+                by_year[int(ys)] = dict(fix)
+        # Appeal direction for each year with an A rating
+        appeals = []
+        for y in DIR_YEARS:
+            a = None
+            if by_year[y].get("appeal"):
+                a = {"dir": by_year[y]["appeal"], "close": False, "why": by_year[y].get("why", "")}
+            elif by_year[y].get("rating_type") == "A":
+                # An appeal dated 12/31/Y was made on season Y's computer rating, so
+                # compare with the level she played at in season Y.
+                d = by_year[y].get("rating_date") or ""
+                py = int(d[-4:]) if d[-4:].isdigit() else y - 1
+                prior = (by_year.get(py) or {}).get("level")
+                rec = appeal_dyn.get(r["name"].lower())
+                if not rec or rec.get("year", YEAR_FROM - 1) != py:
+                    rec = None
+                a = appeal_call(by_year[y].get("level"), prior, rec, py)
+            appeals.append(_appeal_cell(a))
+        if href and appeals[DIR_YEARS.index(info.get("cur_year") or YEAR_FROM)]:
+            info["appeal"] = appeals[DIR_YEARS.index(info.get("cur_year") or YEAR_FROM)]
         rows.append([r["name"], r.get("gender"), dyn, href,
                      [by_year[y].get("level") for y in DIR_YEARS],
                      [by_year[y].get("rating_type") for y in DIR_YEARS],
-                     _bump_cell_data(bump), _wtn_cell_data(p), _bump_est_data(bump)])
+                     _bump_cell_data(bump), _wtn_cell_data(p), _bump_est_data(bump), appeals])
 
     # Player pages
     PLAYER_DIR.mkdir(parents=True, exist_ok=True)
