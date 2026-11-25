@@ -392,9 +392,9 @@ th.ctr.sorted .hl {{ left: -5px; }}
 .lt {{ font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }}
 /* Fixed-width letter slot, filled or empty, so numbers line up and letters line up */
 td.num .lt {{ display: inline-block; width: 2.1em; text-align: left; }}
-/* Year titles end where the numbers end, not over the letter slot (6px pad + 2px margin + 21px slot) */
-th.yr {{ padding-right: 29px; }}
-th.yr.sorted .hl {{ left: 0; }}
+/* Year titles sit centered over the whole column (number + letter slot) (Shirin) */
+th.yr {{ text-align: center; }}
+th.yr.sorted .hl {{ left: -5px; }}
 .ap {{ margin-left: 1px; }}
 .apc {{ color: #b26a00; }}
 .up {{ color: #27500A; }}
