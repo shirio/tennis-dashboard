@@ -245,6 +245,7 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
         cols.append((f"y{i}", str(y)))
     cols.append(("q", "ShiQ"))
     cols.append(("b", "Bump"))
+    cols.append(("e", "Bump est."))
     default_on = {k: 1 for k, _ in cols
                   if not ((k[0] == "y" and int(k[1:]) < i_from) or (k[0] == "d" and int(k[1:]) <= i_from))}
     hide_css = "\n".join(f"table.h-{k} .c-{k} {{ display: none; }}" for k, _ in cols)
@@ -260,6 +261,7 @@ def _directory_html(rows: list[list], placeholder: bool, n_linked: int) -> str:
             heads.append(f'<th data-k="{k}" class="c-{k} num">{lbl}</th>')
         else:
             heads.append('<th data-k="q" class="c-q num">ShiQ</th>' if k == "q" else
+                         '<th data-k="e" class="c-e num" title="Year-end estimate from the Bump engine">Est.</th>' if k == "e" else
                          f'<th data-k="b" class="c-b bump" title="Predicted USTA change" aria-label="Predicted USTA change">{_BH}</th>')
     menu = "".join(f'<label><input type="checkbox" data-c="{k}"> {_esc(lbl)}</label>' for k, lbl in cols)
     note = ("<p class='note'>Showing our own Nevada players until the full USTA 2026 "
@@ -306,7 +308,12 @@ th.sorted::after {{ content: " ▲"; font-size: 8px; }}
 th.sorted.desc::after {{ content: " ▼"; }}
 tbody tr:hover td {{ background: #faf9f6; }}
 th.sex, td.sex {{ text-align: center; }}
-th.bump, td.bump {{ text-align: center; cursor: default; }}
+th.bump, td.bump {{ text-align: center; cursor: default; font-variant-numeric: tabular-nums; }}
+.bu {{ color: #27500A; font-weight: 600; }}
+.blu {{ color: #8fb36c; font-weight: 600; }}
+.bd {{ color: #791F1F; font-weight: 600; }}
+.bld {{ color: #c98b86; font-weight: 600; }}
+.bh {{ color: #aaa; font-weight: 400; }}
 th.delta, td.delta {{ text-align: center; padding-left: 4px; padding-right: 4px; }}
 td.num, th.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
 .lt {{ font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }}
@@ -377,6 +384,7 @@ function val(r, k) {{
   if (k === 's') return r[1];
   if (k === 'q') return r[2];
   if (k === 'b') return r[6] ? r[6][2] : null;
+  if (k === 'e') return r[7] ? r[7][0] : null;
   if (k[0] === 'y') return r[4][+k.slice(1)];
   return null;
 }}
@@ -423,7 +431,10 @@ function render() {{
     h += '<td class="c-q num">' + (r[2] == null ? '' : r[2].toFixed(2)) + '</td>';
     var b = r[6];
     h += '<td class="c-b bump"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
-      + (b && b[0] ? '<span class="' + b[1] + '">' + b[0] + '</span>' : '') + '</td></tr>';
+      + (b && b[0] ? '<span class="' + b[1] + '">' + b[0] + '</span>' : '') + '</td>';
+    var e = r[7];
+    h += '<td class="c-e num"' + (b ? ' title="' + esc(b[3]) + '"' : '') + '>'
+      + (e ? '<span class="' + e[1] + '">' + e[0].toFixed(2) + '</span>' : '') + '</td></tr>';
     out.push(h);
   }});
   document.getElementById('tb').innerHTML = out.join('');
@@ -466,7 +477,7 @@ document.querySelectorAll('#fg button').forEach(function(b) {{
 document.querySelectorAll('th[data-k]').forEach(function(th) {{
   th.onclick = function() {{
     var k = th.dataset.k;
-    if (sortK === k) sortDir = -sortDir; else {{ sortK = k; sortDir = (k[0] === 'd' || k === 'q' || k === 'b') ? -1 : 1; }}
+    if (sortK === k) sortDir = -sortDir; else {{ sortK = k; sortDir = (k[0] === 'd' || k === 'q' || k === 'b' || k === 'e') ? -1 : 1; }}
     document.querySelectorAll('th').forEach(function(x) {{ x.classList.remove('sorted', 'desc'); }});
     th.classList.add('sorted'); if (sortDir < 0) th.classList.add('desc');
     apply();
@@ -873,6 +884,10 @@ _BUMP_MARK = {"up": (_chev(True, "#27500A", "Likely up"), "bm"),
               "lean_down": (_chev(False, "#c98b86", "Leaning down"), "bm")}
 
 
+# Directory Bump cell: the year-end estimate, colored like the chevrons.
+_BUMP_CLS = {"up": "bu", "lean_up": "blu", "lean_down": "bld", "down": "bd", "hold": "bh"}
+
+
 def _bump_tip(b: dict) -> str:
     call = b.get("call", "unknown")
     if call in _BUMP_MARK or call == "hold":
@@ -898,6 +913,14 @@ def _bump_cell_data(b):
     # descending runs strongest up -> most extreme down within each category.
     sort = _BUMP_SORT[call] * 10 + float(b.get("margin") or 0)
     return [sym, cls, round(sort, 4), _bump_tip(b)]
+
+
+def _bump_est_data(b):
+    """[year-end estimate, css class] for the directory's estimate column, or None."""
+    call = (b or {}).get("call")
+    if call not in _BUMP_CLS or b.get("estimate") is None:
+        return None
+    return [round(float(b["estimate"]), 2), _BUMP_CLS[call]]
 
 
 def _nv_bumps(players: list[dict], links: dict, usta: list[dict]) -> dict[str, dict]:
@@ -985,7 +1008,7 @@ def build_directory() -> dict:
         rows.append([r["name"], r.get("gender"), dyn, href,
                      [by_year[y].get("level") for y in DIR_YEARS],
                      [by_year[y].get("rating_type") for y in DIR_YEARS],
-                     _bump_cell_data(bump)])
+                     _bump_cell_data(bump), _bump_est_data(bump)])
 
     # Player pages
     PLAYER_DIR.mkdir(parents=True, exist_ok=True)
