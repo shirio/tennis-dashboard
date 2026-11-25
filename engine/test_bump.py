@@ -39,15 +39,51 @@ class TestBump(unittest.TestCase):
     def test_too_few_matches(self):
         bl = {"a": 2.98, "b": 2.6}
         st = bump.run_bump([ev(["a"], ["b"], "6-0 6-0", "1# Singles")], bl, {})
-        self.assertEqual(bump.year_end_call(st["a"], 3.0, "C")["call"], "few_matches")
+        self.assertEqual(bump.year_end_call(None, st["a"].matches, 3.0, "C")["call"],
+                         "few_matches")
 
     def test_bump_up_after_strong_season(self):
         bl = {"a": 2.95, "b": 2.95, "c": 2.95}
         events = [ev(["a"], [o], "6-1 6-1", "1# Singles") for o in ["b", "c"] * 3]
-        st = bump.run_bump(events, bl, {})
-        call = bump.year_end_call(st["a"], 3.0, "C")
+        y, n = bump.fit_year_end(events, bl, {})
+        call = bump.year_end_call(y["a"], n["a"], 3.0, "C")
         self.assertIn(call["call"], ("up", "lean_up"))
         self.assertGreater(call["estimate"], 3.0)
+
+    def test_recency_weights_shape(self):
+        w = bump.recency_weights(25)
+        self.assertEqual(len(w), 25)
+        self.assertGreater(w[-1], w[0])             # newest heavier than oldest
+        last5, older = sum(w[-5:]), sum(w[:5])
+        self.assertAlmostEqual(last5 / older, 0.26 / 0.19, places=6)
+
+    def test_playoff_match_counts_more(self):
+        bl = {"a": 2.8, "b": 2.8, "c": 2.8}
+        reg = ev(["a"], ["b"], "6-2 6-2", "1# Singles")
+        po = CourtEvent(date="6/1/2026", match_id="p", line_label="1# Singles",
+                        division="3.0", winner_keys=["a"], loser_keys=["c"],
+                        score="6-2 6-2")
+        loss = CourtEvent(date="6/2/2026", match_id="q", line_label="1# Singles",
+                          division="3.0", winner_keys=["c"], loser_keys=["a"],
+                          score="6-2 6-2")
+        y0, _ = bump.fit_year_end([reg, po, loss], bl, {}, set())
+        y1, _ = bump.fit_year_end([reg, po, loss], bl, {}, {"p"})
+        self.assertGreater(y1["a"], y0["a"])
+
+    def test_opponents_judged_where_they_finish(self):
+        # a beats b early; b then beats strong players. a's year-end should
+        # rise with b's, even though a never played again.
+        bl = {"a": 2.8, "b": 2.8, "x": 3.0, "y": 3.0}
+        early = ev(["a"], ["b"], "6-4 6-4", "1# Singles")
+        later = [ev(["b"], [o], "6-1 6-1", "1# Singles") for o in ["x", "y", "x"]]
+        y_with, _ = bump.fit_year_end([early] + later, bl, {})
+        y_alone, _ = bump.fit_year_end([early], bl, {})
+        self.assertGreater(y_with["a"], y_alone["a"])
+
+    def test_blowout_of_much_weaker_player_can_lower_rating(self):
+        bl = {"a": 3.0, "b": 2.3}
+        y, _ = bump.fit_year_end([ev(["a"], ["b"], "6-0 6-0", "1# Singles")], bl, {})
+        self.assertLess(y["a"], 3.0)
 
     def test_strikes_only_for_self_rated(self):
         opps = [f"o{i}" for i in range(8)]
@@ -57,7 +93,7 @@ class TestBump(unittest.TestCase):
         levels = {"a": (3.0, "S"), "b": (3.0, "C")}
         st = bump.run_bump(events, bl, levels)
         self.assertGreater(st["a"].strikes, 0)
-        self.assertNotIn("strikes", bump.year_end_call(st["b"], 3.0, "C"))
+        self.assertNotIn("strikes", bump.year_end_call(3.0, 5, 3.0, "C", strikes=st["b"].strikes))
 
 
 if __name__ == "__main__":
