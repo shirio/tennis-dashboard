@@ -112,6 +112,7 @@ def link_usta_to_db(usta: list[dict], db_players: list[dict]) -> dict[int, dict]
 
 
 TR_HISTORY = Path("data") / "rating_history_tr.json"
+TR_FIRST_YEAR = 2022   # the TennisRecord history pull covers 2022 on
 
 
 def _tr_history() -> dict[str, dict[int, float]]:
@@ -125,6 +126,10 @@ def _tr_history() -> dict[str, dict[int, float]]:
         cur = (r.get("current") or {}).get("level")
         if cur is not None:
             out.setdefault(_nkey(r["name"]), {})["cur"] = float(cur)
+        played = [int(y) for y, v in (r.get("years") or {}).items()
+                  if str(y).isdigit() and (v or {}).get("matches")]
+        if played:
+            out.setdefault(_nkey(r["name"]), {})["first"] = min(played)
         for y, v in (r.get("years") or {}).items():
             try:
                 out.setdefault(_nkey(r["name"]), {})[int(y)] = float(v["level"])
@@ -382,6 +387,8 @@ td.ctr, th.ctr {{ text-align: center; }}
 th {{ vertical-align: bottom; line-height: 1.25; }}
 th.ctr.sorted .hl {{ left: -5px; }}
 .lt {{ font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }}
+/* Fixed-width letter slot, filled or empty, so numbers line up and letters line up */
+td.num .lt {{ display: inline-block; width: 2.1em; text-align: left; }}
 .ap {{ margin-left: 1px; }}
 .apc {{ color: #b26a00; }}
 .up {{ color: #27500A; }}
@@ -445,7 +452,8 @@ function ntrp(l, t, cls, ap) {{
   var tip = TYPES[t] || t;
   if (ap) tip += '. ' + ap[2];
   var s = '<span class="nv">' + fmt(l) + '</span>' + (t ? '<span class="lt" title="' + esc(tip) + '">' + t
-    + (ap ? '<span class="ap' + (ap[1] ? ' apc' : '') + '">' + ap[0] + '</span>' : '') + '</span>' : '');
+    + (ap ? '<span class="ap' + (ap[1] ? ' apc' : '') + '">' + ap[0] + '</span>' : '') + '</span>'
+    : '<span class="lt"></span>');
   return '<span class="nw' + (cls ? ' ' + cls : '') + '">' + s + '</span>';
 }}
 // WTN columns: r[7] = [singles NTRP, WTN, confidence, doubles NTRP, WTN, confidence]
@@ -1495,20 +1503,29 @@ def build_directory() -> dict:
             info["bump"] = bump
             info_by_id[page_id] = info
         by_year = {YEAR_FROM: r, YEAR_TO: r27}
+        th = tr_hist.get(_nkey(r["name"])) or {}
+        # Same-name guard: use a TennisRecord history only when its current
+        # level matches this USTA row's.
+        if th.get("cur") != r.get("level"):
+            th = {}
         for y, lk in other_links.items():
             by_year[y] = lk.get(i) or {}
             if by_year[y].get("level") is None:
-                th = tr_hist.get(_nkey(r["name"])) or {}
-                # Same-name guard: use a TennisRecord history only when its current
-                # level matches this USTA row's.
-                if th.get("cur") != r.get("level"):
-                    th = {}
                 lvl = th.get(y)
                 if lvl is not None:
                     by_year[y] = {"level": lvl}  # roster level, no rating letter
         # Two blank seasons since she last played: the rating expired, so the
         # season she comes back in is a self-rate (Shirin: Darian McCauley 2025 = 3.0 S).
         _self_rate_after_gap(by_year)
+        # First season after two blank seasons with no earlier play in the
+        # TennisRecord pull (2022 on): a new player, or an expired rating, so
+        # a self-rate either way (Shirin: Adam Bilzerian 2024 = 4.0 S). A first
+        # season in 2022 or 2023 may follow play before the pull, so it's left alone.
+        fy = th.get("first")
+        if fy is not None and fy - 2 >= TR_FIRST_YEAR and fy in by_year \
+                and by_year[fy].get("level") is not None \
+                and not by_year[fy].get("rating_type"):
+            by_year[fy] = dict(by_year[fy], rating_type="S")
         # Manual fixes (data/rating_overrides.json) win over lists and rosters
         for ys, fix in (overrides.get(r["name"]) or {}).items():
             if int(ys) in by_year:
