@@ -88,11 +88,33 @@ def played_level(person: dict, matches: Optional[dict] = None) -> Optional[float
     return min(found) if found else None
 
 
+OOS_TR_FILE = ROOT / "data" / "oos_playoff_opponents_tr.json"
+_oos_tr: Optional[dict] = None
+
+
+def tr_baseline(person: dict) -> Optional[float]:
+    """TennisRecord dynamic rating going into their first playoff match vs NV,
+    for out-of-state playoff opponents (hand-collected by Shirin, Nov 2026)."""
+    global _oos_tr
+    if _oos_tr is None:
+        try:
+            rows = json.loads(OOS_TR_FILE.read_text())
+        except (OSError, ValueError):
+            rows = []
+        _oos_tr = {(r["name"].strip().lower(), (r.get("state") or "").strip().lower()): r["tr"]
+                   for r in rows if isinstance(r.get("tr"), (int, float))}
+    key = ((person.get("name") or "").strip().lower(), (person.get("area") or "").strip().lower())
+    return _oos_tr.get(key)
+
+
 def baseline_for(person: dict, matches: Optional[dict] = None) -> Optional[float]:
     """Starting guess for a crawled player with no TennisRecord baseline:
     a quarter below their USTA level (mid-level). Out-of-state players at
     Sectionals/Nationals often have no level on record; with ``matches``
     (the crawl's match table) they start mid-level at the level they played."""
+    tr = tr_baseline(person)
+    if tr is not None:
+        return float(tr)
     lv = re.match(r"(\d\.\d)", person.get("level") or person.get("ntrp") or "")
     if lv:
         return float(lv.group(1)) - 0.25

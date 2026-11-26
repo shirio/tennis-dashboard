@@ -103,7 +103,8 @@ def compute(players: list[dict], use_crawl: bool = True):
         prior, n_prior = prior_year_ratings(crawl, keys, pbn)
         for k, r in prior.items():
             n = n_prior[k]
-            if k.startswith("tl::") and n >= PRIOR_MIN_MATCHES:
+            if k.startswith("tl::") and n >= PRIOR_MIN_MATCHES and not (
+                    people.get(k) and C.tr_baseline(people[k]) is not None):
                 baselines[k] = r
             elif not k.startswith("tl::") and n >= PRIOR_SETTLED_MATCHES \
                     and baselines.get(k) is not None:
