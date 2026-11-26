@@ -436,7 +436,7 @@ def _names(s: str) -> list[str]:
 # Last match date that counts toward each year-end NTRP rating (per Shirin:
 # 2026 cutoff Nov 8; later matches count toward the next year). Summer
 # leagues never count toward year-end ratings.
-YEAR_END_CUTOFF = {2025: (11, 9), 2026: (11, 8)}   # 2025: assumed by Shirin
+YEAR_END_CUTOFF = {2024: (11, 10), 2025: (11, 9), 2026: (11, 8)}   # 2025: assumed by Shirin; 2024: provisional, to confirm
 
 
 def tag_year_end(m: dict) -> None:
@@ -552,12 +552,12 @@ def our_players(names: list[str] | None) -> list[dict]:
     return rows
 
 
-def ntrp_players(gender: str | None = None) -> list[dict]:
+def ntrp_players(gender: str | None = None, list_path: Path | None = None) -> list[dict]:
     """Everyone on the USTA NV NTRP list (data/ntrp_nv_2026.json), women first.
     id = name slug (matches players/nv slugs, so the core players already done
     are skipped); names on the list more than once get the history_url's
     par1 appended so each person is opened."""
-    rows = json.loads(NTRP_LIST.read_text())
+    rows = json.loads((list_path or NTRP_LIST).read_text())
     if gender:
         rows = [r for r in rows if r.get("gender") == gender]
     rows = sorted(rows, key=lambda r: (r.get("gender") != "F", r["name"]))
@@ -670,11 +670,14 @@ def main():
     ap.add_argument("--ntrp-list", action="store_true",
                     help="everyone on the NV NTRP list (women first) instead of players/nv")
     ap.add_argument("--gender", choices=["F", "M"], help="with --ntrp-list: one gender only")
+    ap.add_argument("--list", help="with --ntrp-list: list file (default data/ntrp_nv_2026.json); "
+                    "data/ntrp_nv_<year>.json is used when it exists")
     a = ap.parse_args()
     set_year(a.year)
     load_dotenv(ROOT / ".env")
     if a.ntrp_list:
-        players = ntrp_players(a.gender)
+        lp = Path(a.list) if a.list else ROOT / "data" / f"ntrp_nv_{a.year}.json"
+        players = ntrp_players(a.gender, lp if lp.exists() else None)
     else:
         players = our_players([n.strip() for n in a.names.split(",")] if a.names else None)
     print(f"{len(players)} players")
