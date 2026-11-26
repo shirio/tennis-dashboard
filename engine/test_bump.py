@@ -199,3 +199,17 @@ def test_play_up_shares_ignore_combo_flights():
           CourtEvent("1/2/2026", "m2", "D1", "7.0", ["a", "b"], ["c", "d"], "6-1 6-1")]
     sh = play_up_shares(ev, {"a": (3.0, "C"), "c": (3.5, "C")})
     assert sh["a"] == 0.5 and sh["c"] == 0.0
+
+
+def test_bumped_up_last_year_near_down_line_predicts_down():
+    from engine.bump import year_end_call
+    c = year_end_call(3.07, 20, 3.5, "C", bumped_up=True)
+    assert c["direction"] == "down" and c["label"] == "Leaning down (bumped up last year)"
+    assert year_end_call(3.07, 20, 3.5, "C")["direction"] == "hold"
+    assert year_end_call(3.15, 20, 3.5, "C", bumped_up=True)["direction"] == "hold"
+
+
+def test_4_0_down_line_sits_a_little_higher():
+    from engine.bump import year_end_call
+    assert year_end_call(3.52, 20, 4.0, "C")["direction"] == "down"
+    assert year_end_call(3.02, 20, 3.5, "C")["direction"] == "hold"

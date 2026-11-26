@@ -56,6 +56,11 @@ CLEAR_MARGIN = 0.05      # this far past the line = "likely"
 LEAN_DOWN_ZONE = 0.10    # this close above the down line = "Leaning down". Down calls are
                          # strict (84% right) but catch under half of real downs, and most
                          # misses sat within 0.10 of the line (Shirin, 2026-11-26).
+BUMPED_UP_DOWN_ZONE = 0.10  # bumped up last year and this close above the down line = predicted down.
+                            # Near the line they went down 12 of 25 times vs 20 of 143 for players
+                            # at the same level two years running (2025 backtest: downs caught
+                            # 34 -> 42 of 72, Shirin 2026-11-26).
+DOWN_LINE_SHIFT = {4.0: 0.03}  # 4.0 pools sit low; downs there were caught only 4 of 16.
 PLAY_UP_ZONE = 0.05      # this close under the up line, and ...
 PLAY_UP_SHARE = 0.90     # ... this share of matches on higher-level flights = "Leaning up".
                          # Near the line, players who mostly play up went up far more often
@@ -298,12 +303,13 @@ def recenter_levels(year_end: dict[str, float], counts: dict[str, int],
 
 def year_end_call(estimate: Optional[float], matches: int, level: Optional[float],
                   letter: str = "", strikes: Optional[int] = None,
-                  play_up: float = 0.0) -> dict:
+                  play_up: float = 0.0, bumped_up: bool = False) -> dict:
     """Summarise one player's bump outlook.
 
     Returns {estimate, margin, call, label, matches, strikes}. ``call`` is one
     of up / lean_up / hold / lean_down / down / few_matches / unknown.
     ``play_up`` is the share of counted matches on higher-level flights.
+    ``bumped_up``: the player's level went up at last year's year-end.
     ``direction`` (up / hold / down) is the backtested prediction: up when the
     estimate is past the top (or the play-up tiebreak applies), down when at or
     under the floor.
@@ -314,7 +320,7 @@ def year_end_call(estimate: Optional[float], matches: int, level: Optional[float
         return {"call": "few_matches", "label": f"Too few matches ({matches})",
                 "matches": matches}
     est = estimate
-    top, floor = level, level - LEVEL_WIDTH
+    top, floor = level, level - LEVEL_WIDTH + DOWN_LINE_SHIFT.get(level, 0.0)
     if est > top:
         margin = est - top
         call = "up" if margin >= CLEAR_MARGIN else "lean_up"
@@ -330,6 +336,8 @@ def year_end_call(estimate: Optional[float], matches: int, level: Optional[float
                 and play_up >= PLAY_UP_SHARE)
     if tiebreak:
         call = "lean_up"
+    slide_back = (bumped_up and level > LOWEST_LEVEL and not tiebreak
+                  and floor < est <= floor + BUMPED_UP_DOWN_ZONE)
     if level <= LOWEST_LEVEL and call in ("down", "lean_down"):
         # Nobody drops below 2.5 (no NV player is rated 2.0); in the 2025
         # backtest all 13 "down" calls at 2.5 held.
@@ -344,8 +352,11 @@ def year_end_call(estimate: Optional[float], matches: int, level: Optional[float
         }[call],
         "matches": matches,
         "direction": ("up" if est > top or tiebreak else
-                      "down" if est <= floor and level > LOWEST_LEVEL else "hold"),
+                      "down" if (est <= floor and level > LOWEST_LEVEL) or slide_back
+                      else "hold"),
     }
+    if slide_back:
+        out["label"] = "Leaning down (bumped up last year)"
     if tiebreak:
         out["label"] = "Leaning up (plays up)"
         out["play_up"] = round(play_up, 2)
@@ -383,6 +394,9 @@ def counts_toward_year_end(date: str, league: str = "",
 
 
 TR_STARTS: set[str] = set()   # filled by year_end_inputs
+
+
+PRIOR_LEVELS: dict[str, float] = {}   # last year's level, from last year's crawl rosters
 
 
 def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_YEAR):
@@ -435,6 +449,9 @@ def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_Y
             events.append(e)
         playoffs |= {mid for mid, m in pm.items() if m.get("kind") == "champ"}
         for pid, k in remap.items():
+            lv_prev = parse_level(prev["people"][pid].get("ntrp"))[0]
+            if lv_prev is not None:
+                PRIOR_LEVELS.setdefault(k, lv_prev)
             if k.startswith("tl::") and k not in levels:
                 person = prev["people"][pid]
                 levels[k] = parse_level(person.get("level"))
@@ -520,7 +537,9 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
         st = strikes.get(k)
         out[k] = year_end_call(year_end.get(k), counts.get(k, 0), *levels[k],
                                strikes=st.strikes if st else None,
-                               play_up=play_up.get(k, 0.0))
+                               play_up=play_up.get(k, 0.0),
+                               bumped_up=(levels[k][0] is not None and k in PRIOR_LEVELS
+                                          and PRIOR_LEVELS[k] < levels[k][0]))
     return out
 
 
