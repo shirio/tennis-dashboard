@@ -64,16 +64,44 @@ def person_keys(crawl: dict, pbn: dict) -> dict[str, str]:
     return out
 
 
-def baseline_for(person: dict) -> Optional[float]:
-    """Starting guess for a crawled player with no TennisRecord baseline:
-    a quarter below their USTA level (mid-level)."""
-    lv = re.match(r"(\d\.\d)", person.get("level") or person.get("ntrp") or "")
-    if not lv:
+def played_level(person: dict, matches: Optional[dict] = None) -> Optional[float]:
+    """Lowest NTRP level a crawled player played at, from the levels printed
+    on their match lines (or the league name). Players can play up but not
+    down, so the lowest is the best guess at their own level. Combo leagues
+    (6.0, 7.0, ...) don't say a player's own level and are skipped."""
+    if not matches:
+        return None
+    found = []
+    for mid, line, _side in person.get("matches") or []:
+        m = matches.get(mid) or {}
+        lv = next((l.get("level") for l in m.get("lines") or []
+                   if l.get("line") == line and l.get("level")), None)
+        if not lv:
+            hit = re.search(r"(?<![\d.])([1-5]\.[05])(?![\d/])", m.get("league") or "")
+            lv = hit.group(1) if hit else None
         try:
-            return float(person.get("ntrp")) - 0.25
+            v = float(lv)
         except (TypeError, ValueError):
-            return None
-    return float(lv.group(1)) - 0.25
+            continue
+        if 1.5 <= v <= 5.5:
+            found.append(v)
+    return min(found) if found else None
+
+
+def baseline_for(person: dict, matches: Optional[dict] = None) -> Optional[float]:
+    """Starting guess for a crawled player with no TennisRecord baseline:
+    a quarter below their USTA level (mid-level). Out-of-state players at
+    Sectionals/Nationals often have no level on record; with ``matches``
+    (the crawl's match table) they start mid-level at the level they played."""
+    lv = re.match(r"(\d\.\d)", person.get("level") or person.get("ntrp") or "")
+    if lv:
+        return float(lv.group(1)) - 0.25
+    try:
+        return float(person.get("ntrp")) - 0.25
+    except (TypeError, ValueError):
+        pass
+    played = played_level(person, matches)
+    return None if played is None else played - 0.25
 
 
 def _sig(winners: list[str], losers: list[str]) -> tuple:

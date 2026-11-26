@@ -136,3 +136,27 @@ def test_no_down_call_below_lowest_level():
     assert c["call"] == "hold" and c["estimate"] == 1.9
     assert "levels" not in c
     assert year_end_call(2.40, 10, 3.0, "C")["call"] == "down"
+
+
+def test_mid_level_start():
+    assert bump.mid_level_start(3.0) == 2.75
+    assert bump.mid_level_start(3.5, 3.4) == 3.25
+    assert bump.mid_level_start(None, 3.1) == 3.1   # unknown level: keep the fallback
+    assert bump.START_MODE == "mid"
+
+
+def test_out_of_state_player_without_level_starts_at_level_played():
+    from engine import crawl_events as C
+    matches = {
+        "M1": {"league": "18 & OVER TRI-LEVEL 3.0/3.5/4.0W",
+               "lines": [{"line": "#2 Doubles", "level": "3.5"}]},
+        "M2": {"league": "18 & Over Adult 4.0W", "lines": [{"line": "#1 Doubles"}]},
+        "M3": {"league": "55 & Over 7.0W", "lines": [{"line": "#1 Doubles"}]},
+    }
+    person = {"level": None, "ntrp": None,
+              "matches": [["M1", "#2 Doubles", "away"], ["M2", "#1 Doubles", "home"]]}
+    assert C.baseline_for(person) is None            # no match table: unknown
+    assert C.baseline_for(person, matches) == 3.25   # lowest level played, mid
+    combo = {"level": None, "matches": [["M3", "#1 Doubles", "home"]]}
+    assert C.baseline_for(combo, matches) is None    # combo leagues say nothing
+    assert C.baseline_for({"level": "3.0C"}, matches) == 2.75
