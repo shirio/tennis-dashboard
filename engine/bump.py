@@ -353,7 +353,7 @@ def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_Y
             if k.startswith("tl::"):
                 person = crawl["people"][pid]
                 levels[k] = parse_level(person.get("level"))
-                starts[k] = start_rating(C.baseline_for(person), *levels[k])
+                starts[k] = start_rating(C.baseline_for(person, matches), *levels[k])
     # The rating year starts in the previous November, so its first weeks
     # (fall-league finals, Tri-Level Sectionals and Nationals) are in LAST
     # year's crawl. People are matched across years by their TennisLink
@@ -381,7 +381,7 @@ def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_Y
             if k.startswith("tl::") and k not in levels:
                 person = prev["people"][pid]
                 levels[k] = parse_level(person.get("level"))
-                starts[k] = start_rating(C.baseline_for(person), *levels[k])
+                starts[k] = start_rating(C.baseline_for(person, pm), *levels[k])
     events = [e for e in events if counts_toward_year_end(e.date, "", year)]
     events.sort(key=R._date_sort_key)
     letters = {k: lv[1] for k, lv in levels.items()}
