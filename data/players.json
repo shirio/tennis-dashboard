@@ -80251,9 +80251,9 @@
       "estimate": 2.517,
       "margin": 0.017,
       "call": "lean_down",
-      "label": "Leaning down",
+      "label": "Leaning down (bumped up last year)",
       "matches": 20,
-      "direction": "hold"
+      "direction": "down"
     },
     "shiq_v8": 2.525,
     "shiq_doubles": 2.4842,
@@ -82689,9 +82689,9 @@
       "estimate": 2.549,
       "margin": 0.049,
       "call": "lean_down",
-      "label": "Leaning down",
+      "label": "Leaning down (bumped up last year)",
       "matches": 42,
-      "direction": "hold"
+      "direction": "down"
     },
     "shiq_v8": 2.668,
     "shiq_doubles": 2.4975,
@@ -90640,9 +90640,9 @@
       "estimate": 2.52,
       "margin": 0.02,
       "call": "lean_down",
-      "label": "Leaning down",
+      "label": "Leaning down (bumped up last year)",
       "matches": 9,
-      "direction": "hold",
+      "direction": "down",
       "strikes": 0
     },
     "shiq_v8": 1.5528,
@@ -95863,9 +95863,9 @@
       "estimate": 2.533,
       "margin": 0.033,
       "call": "lean_down",
-      "label": "Leaning down",
+      "label": "Leaning down (bumped up last year)",
       "matches": 10,
-      "direction": "hold"
+      "direction": "down"
     },
     "shiq_v8": 2.4037,
     "shiq_doubles": 2.3322,
@@ -147603,9 +147603,9 @@
       "estimate": 3.045,
       "margin": 0.045,
       "call": "lean_down",
-      "label": "Leaning down",
+      "label": "Leaning down (bumped up last year)",
       "matches": 14,
-      "direction": "hold"
+      "direction": "down"
     },
     "shiq_v8": 3.25,
     "shiq_doubles": 2.8873,
