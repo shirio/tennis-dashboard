@@ -552,6 +552,30 @@ def our_players(names: list[str] | None) -> list[dict]:
     return rows
 
 
+def ntrp_players(gender: str | None = None) -> list[dict]:
+    """Everyone on the USTA NV NTRP list (data/ntrp_nv_2026.json), women first.
+    id = name slug (matches players/nv slugs, so the core players already done
+    are skipped); names on the list more than once get the history_url's
+    par1 appended so each person is opened."""
+    rows = json.loads(NTRP_LIST.read_text())
+    if gender:
+        rows = [r for r in rows if r.get("gender") == gender]
+    rows = sorted(rows, key=lambda r: (r.get("gender") != "F", r["name"]))
+    slug = lambda n: re.sub(r"[^a-z0-9]+", "-", n.lower()).strip("-")
+    count = {}
+    for r in rows:
+        count[slug(r["name"])] = count.get(slug(r["name"]), 0) + 1
+    out = []
+    for r in rows:
+        s = slug(r["name"])
+        if count[s] > 1:
+            par1 = re.search(r"par1=([^&]+)", r.get("history_url") or "")
+            s += "--" + re.sub(r"[^A-Za-z0-9]", "", par1.group(1) if par1 else r.get("city", ""))[:12]
+        out.append({"id": s, "name": r["name"], "history_url": r.get("history_url"),
+                    "gender": r.get("gender")})
+    return out
+
+
 def run(page, players: list[dict], fetch_matches: bool = True) -> dict:
     d = load_store()
     prog = d["_progress"]
@@ -600,6 +624,8 @@ def run(page, players: list[dict], fetch_matches: bool = True) -> dict:
             if n_new_teams % SAVE_EVERY == 0:
                 save_store(d)
         d["player_teams"][pl["id"]] = tids
+        if pl.get("history_url"):
+            d.setdefault("player_teams_by_url", {})[pl["history_url"]] = tids
         if not failed:  # leave the player to be retried on resume
             prog["players_done"].append(pl["id"])
         save_store(d)
@@ -641,10 +667,16 @@ def main():
     ap.add_argument("--no-matches", action="store_true", help="steps A+B only")
     ap.add_argument("--headless", action="store_true")
     ap.add_argument("--year", type=int, default=YEAR, help="season (default %(default)s)")
+    ap.add_argument("--ntrp-list", action="store_true",
+                    help="everyone on the NV NTRP list (women first) instead of players/nv")
+    ap.add_argument("--gender", choices=["F", "M"], help="with --ntrp-list: one gender only")
     a = ap.parse_args()
     set_year(a.year)
     load_dotenv(ROOT / ".env")
-    players = our_players([n.strip() for n in a.names.split(",")] if a.names else None)
+    if a.ntrp_list:
+        players = ntrp_players(a.gender)
+    else:
+        players = our_players([n.strip() for n in a.names.split(",")] if a.names else None)
     print(f"{len(players)} players")
     with sync_playwright() as p:
         b = p.chromium.launch(headless=a.headless)
