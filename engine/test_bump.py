@@ -181,3 +181,21 @@ def test_playoffs_with_little_known_out_of_state_players_count_1x():
     e2 = R.CourtEvent(date="8/1/2026", match_id="C2", line_label="#1 Doubles", division="3.0",
                       winner_keys=["a", "b"], loser_keys=["tl::z|NEVADA|3", "c"], score="6-4 6-4")
     assert B.little_known_playoffs([e1, e2], {"C1", "C2"}) == {"C1"}
+
+
+def test_play_up_tiebreak_leans_up_just_under_the_line():
+    from engine.bump import year_end_call
+    c = year_end_call(2.96, 20, 3.0, "C", play_up=0.95)
+    assert c["call"] == "lean_up" and c["direction"] == "up"
+    assert c["label"] == "Leaning up (plays up)"
+    assert year_end_call(2.96, 20, 3.0, "C", play_up=0.5)["direction"] == "hold"
+    assert year_end_call(2.90, 20, 3.0, "C", play_up=1.0)["direction"] == "hold"
+
+
+def test_play_up_shares_ignore_combo_flights():
+    from engine.bump import play_up_shares
+    from engine.ratings import CourtEvent
+    ev = [CourtEvent("1/1/2026", "m1", "D1", "3.5", ["a", "b"], ["c", "d"], "6-1 6-1"),
+          CourtEvent("1/2/2026", "m2", "D1", "7.0", ["a", "b"], ["c", "d"], "6-1 6-1")]
+    sh = play_up_shares(ev, {"a": (3.0, "C"), "c": (3.5, "C")})
+    assert sh["a"] == 0.5 and sh["c"] == 0.0
