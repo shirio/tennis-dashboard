@@ -96,7 +96,7 @@ th.bump, td.bump { text-align: center; cursor: default; font-variant-numeric: ta
 .bd { color: #791F1F; font-weight: 600; }
 .bld { color: #c98b86; font-weight: 600; }
 .bh { color: #aaa; font-weight: 400; }
-th.delta, td.delta { text-align: center; padding-left: 4px; padding-right: 4px; }
+th.delta, td.delta { text-align: center; padding-left: 1px; padding-right: 1px; }
 /* Move the whole title (triangle + sort arrow) to sit over the carets, so the
    sort arrow stays beside the triangle instead of on top of it */
 th.delta .hl { left: var(--dx, 0); }
@@ -107,7 +107,9 @@ th { vertical-align: bottom; line-height: 1.25; }
 th.ctr.sorted .hl { left: -5px; }
 .lt { font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }
 /* Fixed-width letter slot, filled or empty, so numbers line up and letters line up */
-td.num .lt { display: inline-block; width: 2.1em; text-align: left; }
+td.num .lt { display: inline-block; width: 1.8em; text-align: left; }
+/* Year columns hug the Δ columns beside them (Shirin) */
+th.yr, td[class^="c-y"] { padding-left: 2px; padding-right: 2px; }
 /* Year titles sit centered over what the column shows (number + letter); JS sets --cx (Shirin) */
 th.yr { text-align: center; }
 th.yr .hl { left: var(--cx, 0); }
