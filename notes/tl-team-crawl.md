@@ -50,3 +50,11 @@ Nationals (and some other championships) are split into sub-flights (round robin
 3rd/4th playoff); the flight Match Summary lists only one, so `crawl_champ` opens each sub-flight.
 Tri-Level championship scorecards label lines "4.0 1 Doubles". `refresh_champs` re-collects known flights.
 2025: `python3 scrapers/scrape_tl_teams.py --year 2025` -> data/tl_team_matches_2025.json.
+
+## Full NV crawl (Nov 2026)
+
+`scripts/run_full_tl_crawl.sh` crawls the teams of everyone on `data/ntrp_nv_2026.json`
+(`scrape_tl_teams.py --ntrp-list --gender F|M --year Y`): women 2026, women 2025, men 2026, men 2025,
+then `resolve_tl_players.py --year Y`. Headed Chromium only (login fails headless); run it detached
+(nohup) so it outlives the Claude session. `ONE_PERSON` in resolve_tl_players.py lists unlisted NV
+names Shirin confirmed are one person despite different roster NTRP.
