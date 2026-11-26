@@ -397,6 +397,13 @@ TR_STARTS: set[str] = set()   # filled by year_end_inputs
 
 
 PRIOR_LEVELS: dict[str, float] = {}   # last year's level, from last year's crawl rosters
+TL_AREA: dict[str, str] = {}   # crawl-only ("tl::") key -> TennisLink area, filled by year_end_inputs
+
+
+def is_nv_crawl_key(k: str) -> bool:
+    """A crawl-only key for a Nevada person. Uses the person's area, not the
+    key text: crawl person ids are TennisLink player ids, not name|AREA|n."""
+    return k.startswith("tl::") and (TL_AREA.get(k) == "NEVADA" or "|NEVADA|" in k)
 
 
 def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_YEAR):
@@ -418,6 +425,7 @@ def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_Y
         for pid, k in keys.items():
             person = crawl["people"][pid]
             if k.startswith("tl::"):
+                TL_AREA.setdefault(k, person.get("area") or "")
                 levels[k] = parse_level(person.get("level"))
                 starts[k] = start_rating(C.baseline_for(person, matches), *levels[k])
             elif person.get("area") != "NEVADA" and C.tr_baseline(person) is not None:
@@ -452,6 +460,8 @@ def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_Y
             lv_prev = parse_level(prev["people"][pid].get("ntrp"))[0]
             if lv_prev is not None:
                 PRIOR_LEVELS.setdefault(k, lv_prev)
+            if k.startswith("tl::"):
+                TL_AREA.setdefault(k, prev["people"][pid].get("area") or "")
             if k.startswith("tl::") and k not in levels:
                 person = prev["people"][pid]
                 levels[k] = parse_level(person.get("level"))
@@ -491,7 +501,7 @@ def little_known_playoffs(events: list, playoffs: set[str]) -> set[str]:
     2026 backtest: 90.3% -> 91.5% right, mostly fewer false downs (Shirin
     approved 2026-11-26). Nevada-only playoffs keep the extra weight."""
     def little_known(k: str) -> bool:
-        return k.startswith("tl::") and "|NEVADA|" not in k and k not in TR_STARTS
+        return k.startswith("tl::") and not is_nv_crawl_key(k) and k not in TR_STARTS
     return {e.match_id for e in events if e.match_id in playoffs
             and any(little_known(k) for k in e.winner_keys + e.loser_keys)}
 
@@ -530,7 +540,7 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
                                     known_through=known)
     def is_nv(k: str) -> bool:
         if k.startswith("tl::"):
-            return "|NEVADA|" in k
+            return is_nv_crawl_key(k)
         return (pbn[k].get("state") or "NV").upper() == "NV" if k in pbn else False
     year_end = recenter_levels(year_end, counts, levels, is_nv)
     strikes = run_bump(events, starts, levels)    # running rating: strikes only
@@ -538,7 +548,7 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
     out = {}
     keys = list(pbn)
     if include_crawl:
-        keys += [k for k in levels if k.startswith("tl::") and "|NEVADA|" in k]
+        keys += [k for k in levels if is_nv_crawl_key(k)]
     for k in keys:
         st = strikes.get(k)
         out[k] = year_end_call(year_end.get(k), counts.get(k, 0), *levels[k],

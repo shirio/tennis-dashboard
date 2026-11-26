@@ -213,3 +213,15 @@ def test_4_0_down_line_sits_a_little_higher():
     from engine.bump import year_end_call
     assert year_end_call(3.52, 20, 4.0, "C")["direction"] == "down"
     assert year_end_call(3.02, 20, 3.5, "C")["direction"] == "hold"
+
+
+def test_nv_crawl_key_uses_area_not_key_text():
+    from engine import bump as B
+    B.TL_AREA.clear()
+    B.TL_AREA["tl::iuYTg1LXponzeVRzgkfLHg=="] = "NEVADA"
+    B.TL_AREA["tl::x:abc123def456"] = "UTAH"
+    assert B.is_nv_crawl_key("tl::iuYTg1LXponzeVRzgkfLHg==")
+    assert not B.is_nv_crawl_key("tl::x:abc123def456")
+    assert B.is_nv_crawl_key("tl::kara-gaston|NEVADA|0")   # old-style keys still work
+    assert not B.is_nv_crawl_key("Kara Gaston")
+    B.TL_AREA.clear()
