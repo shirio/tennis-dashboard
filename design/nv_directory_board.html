@@ -116,6 +116,14 @@ tbody tr:hover td { background: #faf9f6; }
 .dv.mixp { background: #e9e4f2; color: #5b4a7a; }
 .v4 tr.mix td.pt, .v4 tr.mix td.opp, .v4 tr.mix td.sc { font-style: italic; }
 .mixnote { font-size: 10px; color: #8a7fa3; font-style: italic; }
+.hist10 { border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.hist10 th { font-size: 10.5px; color: var(--sub); font-weight: 600; padding: 0 4px 2px; text-align: center; }
+.hist10 td { font-size: 13px; padding: 0 4px; text-align: center; white-space: nowrap; }
+.hist10 td.cx { padding: 0 1px; color: var(--sub); } .hist10 th.cx { padding: 0 1px; }
+.hist10 .lt { font-size: 10px; margin-left: 1px; }
+.hcard { text-align: left; } .hcard .mlabel { text-align: center; }
+.strip10 { font-size: 12px; color: #444; font-variant-numeric: tabular-nums; display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; margin-top: 4px; }
+.strip10 .yy { color: var(--sub); font-size: 10.5px; margin-right: 2px; }
 </style>
 
 <div class="board">
@@ -240,6 +248,11 @@ tbody tr:hover td { background: #faf9f6; }
     <h2>9 · Mixed matches</h2>
     <p class="why" style="margin:-4px 0 12px;max-width:80ch">A quiet cue that a row is mixed doubles, so it reads as nonstandard without shouting. Same six real matches for Ara Lee Stimson plus two <b>made-up</b> mixed rows (3/25 and 5/16) with men as partner or opponent. Mixed Div levels (6.0, 7.0, 8.0) already get a gray pill today, but senior combined leagues share it, so gray alone can't say "mixed". Each option is shown on desktop and on a phone.</p>
     <div id="mix9"></div>
+  </section>
+  <section>
+    <h2>10 · Rating history on the player page</h2>
+    <p class="why" style="margin:-4px 0 12px;max-width:80ch">Real data: Nicole Austin's year-end USTA levels 2022–2026 (2.5, 3.0, 3.5, 3.0, 3.0 C), from the same TennisRecord pull the directory uses, with the directory's own carets between years. 2027 drops in on Dec 2 and gets its caret then. Each option is shown on desktop and on a phone.</p>
+    <div id="hist10"></div>
   </section>
 </div>
 
@@ -409,5 +422,35 @@ document.getElementById('hdr8').innerHTML=o;
   });
   STACK_FLIP=false; MX=base; MIXV=null;
   document.getElementById('mix9').innerHTML=o;
+})();
+// ---- section 10: rating history ----
+(function(){
+  var Y=[["2022",2.5,""],["2023",3.0,""],["2024",3.5,""],["2025",3.0,""],["2026",3.0,"C"]];
+  function cx(a,b){ if(b===a) return ''; var up=b>a, two=Math.abs(b-a)>0.75; return '<span class="'+(up?'up':'down')+'">'+caret(up,two)+'</span>'; }
+  function tbl(short){ var h='<table class="hist10"><thead><tr>', b='<tr>';
+    Y.forEach(function(y,i){ if(i){ h+='<th class="cx"></th>'; b+='<td class="cx">'+cx(Y[i-1][1],y[1])+'</td>'; }
+      h+='<th>'+(short?"’"+y[0].slice(2):y[0])+'</th>'; b+='<td>'+y[1].toFixed(1)+(y[2]?'<span class="lt">'+y[2]+'</span>':'')+'</td>'; });
+    return h+'</tr></thead><tbody>'+b+'</tr></tbody></table>'; }
+  function cards(){ return '<div class="mcard"><div class="mlabel">USTA</div><div class="mval">3.0<span class="lt" style="font-size:12px">C</span></div><div class="msub">12/31/25</div></div>'+
+    '<div class="mcard"><div class="mlabel">ShiQ</div><div class="mval">3.12</div><div class="msub">11/18/26</div></div>'; }
+  function who(phone,extra){ return '<div class="pwho"><div class="pname"'+(phone?' style="font-size:18px"':'')+'>Nicole Austin</div><div class="psub" style="margin-bottom:0">Las Vegas, NV · Female</div>'+(extra||'')+'</div>'; }
+  function spark(w){ var x0=6,x1=w-6,yv=function(v){return 36-(v-2.5)*20;}, pts=Y.map(function(y,i){return [x0+i*(x1-x0)/(Y.length-1),yv(y[1])];});
+    var d='M'+pts.map(function(p,i){ return i? 'H'+p[0].toFixed(1)+'V'+p[1].toFixed(1) : p[0]+','+p[1]; }).join('');
+    // step: hold each year's level until the next year
+    d='M'+pts[0][0]+','+pts[0][1]; for(var i=1;i<pts.length;i++){ var mx=(pts[i-1][0]+pts[i][0])/2; d+=' H'+mx.toFixed(1)+' V'+pts[i][1]+' H'+pts[i][0].toFixed(1); }
+    return '<svg width="'+w+'" height="42" viewBox="0 0 '+w+' 42"><path d="'+d+'" fill="none" stroke="#888" stroke-width="1.6" stroke-linejoin="round"/>'+
+      pts.map(function(p,i){return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="2.4" fill="'+(i===pts.length-1?'#222':'#888')+'"/><text x="'+p[0]+'" y="'+(p[1]-5)+'" font-size="9" text-anchor="middle" fill="#666">'+Y[i][1].toFixed(1)+'</text>';}).join('')+'</svg>'+
+      '<div style="display:flex;justify-content:space-between;font-size:9.5px;color:#888;padding:0 2px">'+Y.map(function(y){return "<span>’"+y[0].slice(2)+'</span>';}).join('')+'</div>'; }
+  var V=[
+   ["H-A · History card beside the others","A third card titled History: years across the top, levels under them, carets between. Reads like a row of the directory, so it's instantly familiar.",1,
+     function(ph){ return '<div class="phdr"'+(ph?' style="flex-wrap:wrap;gap:10px 14px"':'')+'>'+who(ph)+'<div class="cards"'+(ph?' style="flex-wrap:wrap"':'')+'>'+cards()+'<div class="mcard hcard"><div class="mlabel">History</div>'+tbl(ph)+'</div></div></div>'; }],
+   ["H-B · Quiet strip under the name","Inline under the city line, small and gray: ’22 2.5 › ’23 3.0 … with the same carets. Takes no extra height, but it's easy to overlook.",0,
+     function(ph){ var st='<div class="strip10">'+Y.map(function(y,i){ return (i?cx(Y[i-1][1],y[1]):'')+'<span><span class="yy">’'+y[0].slice(2)+'</span>'+y[1].toFixed(1)+(y[2]?'<span class="lt">'+y[2]+'</span>':'')+'</span>'; }).join(' ')+'</div>';
+       return '<div class="phdr"'+(ph?' style="flex-wrap:wrap;gap:10px 14px"':'')+'>'+who(ph,st)+'<div class="cards">'+cards()+'</div></div>'; }],
+   ["H-C · Step chart card","A History card with a tiny step line: each year's level held until the next. Shows the shape at a glance; exact values sit above the dots.",0,
+     function(ph){ return '<div class="phdr"'+(ph?' style="flex-wrap:wrap;gap:10px 14px"':'')+'>'+who(ph)+'<div class="cards"'+(ph?' style="flex-wrap:wrap"':'')+'>'+cards()+'<div class="mcard hcard" style="padding:.5rem .7rem"><div class="mlabel">History</div>'+spark(ph?150:170)+'</div></div></div>'; }]];
+  var o=''; V.forEach(function(v){ o+='<div class="optlabel" style="margin-top:18px"><span class="tag">'+v[0]+'</span>'+(v[2]?'<span class="rec">Recommended</span>':'')+'</div><p class="why" style="max-width:80ch">'+v[1]+'</p>'+
+    '<div class="row"><div class="opt"><div class="frame">'+v[3](false)+'</div></div><div class="opt phone"><div class="frame w390">'+v[3](true)+'</div></div></div>'; });
+  document.getElementById('hist10').innerHTML=o;
 })();
 </script>
