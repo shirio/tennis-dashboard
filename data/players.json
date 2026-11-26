@@ -52449,8 +52449,8 @@
     "bump": {
       "estimate": 2.597,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 35
     },
     "shiq_v8": 3.0133,
@@ -55662,8 +55662,8 @@
     "bump": {
       "estimate": 2.577,
       "margin": 0.077,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 32
     },
     "shiq_v8": 2.7899,
@@ -58677,8 +58677,8 @@
     "bump": {
       "estimate": 2.528,
       "margin": 0.028,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 9
     },
     "shiq_v8": 2.8626,
@@ -62732,8 +62732,8 @@
     "bump": {
       "estimate": 2.589,
       "margin": 0.089,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 16,
       "strikes": 0
     },
@@ -63006,8 +63006,8 @@
     "bump": {
       "estimate": 2.59,
       "margin": 0.09,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 37
     },
     "shiq_v8": 2.882,
@@ -64223,8 +64223,8 @@
     "bump": {
       "estimate": 2.564,
       "margin": 0.064,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 35
     },
     "shiq_v8": 2.647,
@@ -65254,8 +65254,8 @@
     "bump": {
       "estimate": 2.588,
       "margin": 0.088,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 14
     },
     "shiq_v8": 2.8718,
@@ -71710,8 +71710,8 @@
     "bump": {
       "estimate": 2.582,
       "margin": 0.082,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 46
     },
     "shiq_v8": 2.8186,
@@ -77044,8 +77044,8 @@
     "bump": {
       "estimate": 2.575,
       "margin": 0.075,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 32
     },
     "shiq_v8": 2.7002,
@@ -79125,8 +79125,8 @@
     "bump": {
       "estimate": 2.555,
       "margin": 0.055,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 28,
       "strikes": 0
     },
@@ -80518,8 +80518,8 @@
     "bump": {
       "estimate": 2.556,
       "margin": 0.056,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 27
     },
     "shiq_v8": 2.7811,
@@ -82003,8 +82003,8 @@
     "bump": {
       "estimate": 2.531,
       "margin": 0.031,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 33,
       "strikes": 0
     },
@@ -82429,8 +82429,8 @@
     "bump": {
       "estimate": 2.548,
       "margin": 0.048,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 42
     },
     "shiq_v8": 2.668,
@@ -85063,8 +85063,8 @@
     "bump": {
       "estimate": 2.594,
       "margin": 0.094,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 45,
       "strikes": 0
     },
@@ -87981,8 +87981,8 @@
     "bump": {
       "estimate": 2.578,
       "margin": 0.078,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 22
     },
     "shiq_v8": 2.5744,
@@ -88731,8 +88731,8 @@
     "bump": {
       "estimate": 2.555,
       "margin": 0.055,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.5199,
@@ -95559,8 +95559,8 @@
     "bump": {
       "estimate": 2.526,
       "margin": 0.026,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 10
     },
     "shiq_v8": 2.4037,
@@ -126876,8 +126876,8 @@
     "bump": {
       "estimate": 3.058,
       "margin": 0.058,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 28
     },
     "shiq_v8": 3.3048,
@@ -132577,8 +132577,8 @@
     "bump": {
       "estimate": 3.097,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 39
     },
     "shiq_v8": 3.2156,
@@ -140645,8 +140645,8 @@
     "bump": {
       "estimate": 3.083,
       "margin": 0.083,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 10
     },
     "shiq_v8": 3.2446,
@@ -142137,8 +142137,8 @@
     "bump": {
       "estimate": 3.048,
       "margin": 0.048,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 10
     },
     "shiq_v8": 3.1453,
@@ -143951,8 +143951,8 @@
     "bump": {
       "estimate": 3.1,
       "margin": 0.1,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 8
     },
     "shiq_v8": 3.2552,
@@ -145073,8 +145073,8 @@
     "bump": {
       "estimate": 3.073,
       "margin": 0.073,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 11
     },
     "shiq_v8": 3.2993,
@@ -147143,8 +147143,8 @@
     "bump": {
       "estimate": 3.045,
       "margin": 0.045,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 14
     },
     "shiq_v8": 3.25,
@@ -147289,8 +147289,8 @@
     "bump": {
       "estimate": 3.072,
       "margin": 0.072,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7
     },
     "shiq_v8": 3.12,
@@ -147532,8 +147532,8 @@
     "bump": {
       "estimate": 3.05,
       "margin": 0.05,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 23
     },
     "shiq_v8": 3.2401,
@@ -148652,8 +148652,8 @@
     "bump": {
       "estimate": 3.036,
       "margin": 0.036,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 14
     },
     "shiq_v8": 3.2407,
@@ -152046,8 +152046,8 @@
     "bump": {
       "estimate": 3.097,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 21
     },
     "shiq_v8": 3.21,
@@ -152289,8 +152289,8 @@
     "bump": {
       "estimate": 3.073,
       "margin": 0.073,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 31
     },
     "shiq_v8": 3.0557,
@@ -153116,8 +153116,8 @@
     "bump": {
       "estimate": 3.046,
       "margin": 0.046,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 37
     },
     "shiq_v8": 3.0723,
@@ -155463,8 +155463,8 @@
     "bump": {
       "estimate": 3.074,
       "margin": 0.074,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 9
     },
     "shiq_v8": 3.0936,
@@ -216765,8 +216765,8 @@
     "bump": {
       "estimate": 2.592,
       "margin": 0.092,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 26
     },
     "shiq_v8": 2.8787,
@@ -222182,8 +222182,8 @@
     "bump": {
       "estimate": 2.597,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -226103,8 +226103,8 @@
     "bump": {
       "estimate": 2.536,
       "margin": 0.036,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -231105,8 +231105,8 @@
     "bump": {
       "estimate": 2.543,
       "margin": 0.043,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -231376,8 +231376,8 @@
     "bump": {
       "estimate": 2.582,
       "margin": 0.082,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.6552,
@@ -231807,8 +231807,8 @@
     "bump": {
       "estimate": 2.551,
       "margin": 0.051,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.6357,
@@ -233225,8 +233225,8 @@
     "bump": {
       "estimate": 2.579,
       "margin": 0.079,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -239767,8 +239767,8 @@
     "bump": {
       "estimate": 2.593,
       "margin": 0.093,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -240611,8 +240611,8 @@
     "bump": {
       "estimate": 2.559,
       "margin": 0.059,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -242393,8 +242393,8 @@
     "bump": {
       "estimate": 2.579,
       "margin": 0.079,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -243281,8 +243281,8 @@
     "bump": {
       "estimate": 2.566,
       "margin": 0.066,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -249463,8 +249463,8 @@
     "bump": {
       "estimate": 2.535,
       "margin": 0.035,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -249748,8 +249748,8 @@
     "bump": {
       "estimate": 2.597,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.5072,
@@ -250034,8 +250034,8 @@
     "bump": {
       "estimate": 2.563,
       "margin": 0.063,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -255880,8 +255880,8 @@
     "bump": {
       "estimate": 2.56,
       "margin": 0.06,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.6474,
@@ -256928,8 +256928,8 @@
     "bump": {
       "estimate": 2.589,
       "margin": 0.089,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -258003,8 +258003,8 @@
     "bump": {
       "estimate": 2.537,
       "margin": 0.037,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -260693,8 +260693,8 @@
     "bump": {
       "estimate": 2.573,
       "margin": 0.073,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.5092,
@@ -266646,8 +266646,8 @@
     "bump": {
       "estimate": 2.586,
       "margin": 0.086,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 8
     },
     "shiq_v8": 2.664,
@@ -268200,8 +268200,8 @@
     "bump": {
       "estimate": 2.561,
       "margin": 0.061,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 2.6591,
@@ -270011,8 +270011,8 @@
     "bump": {
       "estimate": 2.558,
       "margin": 0.058,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -274511,8 +274511,8 @@
     "bump": {
       "estimate": 2.556,
       "margin": 0.056,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -274948,8 +274948,8 @@
     "bump": {
       "estimate": 2.573,
       "margin": 0.073,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -277014,8 +277014,8 @@
     "bump": {
       "estimate": 2.58,
       "margin": 0.08,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.4858,
@@ -281048,8 +281048,8 @@
     "bump": {
       "estimate": 2.599,
       "margin": 0.099,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7
     },
     "shiq_v8": 2.6536,
@@ -281163,8 +281163,8 @@
     "bump": {
       "estimate": 2.548,
       "margin": 0.048,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.502,
@@ -281643,8 +281643,8 @@
     "bump": {
       "estimate": 2.598,
       "margin": 0.098,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.4656,
@@ -283157,8 +283157,8 @@
     "bump": {
       "estimate": 2.542,
       "margin": 0.042,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.4423,
@@ -284542,8 +284542,8 @@
     "bump": {
       "estimate": 2.526,
       "margin": 0.026,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.6217,
@@ -284727,8 +284727,8 @@
     "bump": {
       "estimate": 2.533,
       "margin": 0.033,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -285028,8 +285028,8 @@
     "bump": {
       "estimate": 2.597,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -289552,8 +289552,8 @@
     "bump": {
       "estimate": 2.599,
       "margin": 0.099,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -289753,8 +289753,8 @@
     "bump": {
       "estimate": 2.545,
       "margin": 0.045,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.6723,
@@ -290147,8 +290147,8 @@
     "bump": {
       "estimate": 2.597,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 2.7026,
@@ -290812,8 +290812,8 @@
     "bump": {
       "estimate": 2.551,
       "margin": 0.051,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -291761,8 +291761,8 @@
     "bump": {
       "estimate": 2.529,
       "margin": 0.029,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -292062,8 +292062,8 @@
     "bump": {
       "estimate": 2.574,
       "margin": 0.074,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 2.79,
@@ -292251,8 +292251,8 @@
     "bump": {
       "estimate": 2.595,
       "margin": 0.095,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.678,
@@ -292611,8 +292611,8 @@
     "bump": {
       "estimate": 2.592,
       "margin": 0.092,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 8
     },
     "shiq_v8": 2.7612,
@@ -298914,8 +298914,8 @@
     "bump": {
       "estimate": 2.551,
       "margin": 0.051,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -299432,8 +299432,8 @@
     "bump": {
       "estimate": 2.568,
       "margin": 0.068,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -299983,8 +299983,8 @@
     "bump": {
       "estimate": 2.548,
       "margin": 0.048,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.6361,
@@ -300559,8 +300559,8 @@
     "bump": {
       "estimate": 2.571,
       "margin": 0.071,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -301160,8 +301160,8 @@
     "bump": {
       "estimate": 2.592,
       "margin": 0.092,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -301271,8 +301271,8 @@
     "bump": {
       "estimate": 2.575,
       "margin": 0.075,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -301365,8 +301365,8 @@
     "bump": {
       "estimate": 2.54,
       "margin": 0.04,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.6648,
@@ -301460,8 +301460,8 @@
     "bump": {
       "estimate": 2.572,
       "margin": 0.072,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -301557,8 +301557,8 @@
     "bump": {
       "estimate": 2.585,
       "margin": 0.085,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -308855,8 +308855,8 @@
     "bump": {
       "estimate": 2.537,
       "margin": 0.037,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -310894,8 +310894,8 @@
     "bump": {
       "estimate": 2.541,
       "margin": 0.041,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -311324,8 +311324,8 @@
     "bump": {
       "estimate": 2.562,
       "margin": 0.062,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.79,
@@ -317400,8 +317400,8 @@
     "bump": {
       "estimate": 2.531,
       "margin": 0.031,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 2.6362,
@@ -320666,8 +320666,8 @@
     "bump": {
       "estimate": 2.582,
       "margin": 0.082,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.6649,
@@ -321077,8 +321077,8 @@
     "bump": {
       "estimate": 2.526,
       "margin": 0.026,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.6516,
@@ -324870,8 +324870,8 @@
     "bump": {
       "estimate": 2.573,
       "margin": 0.073,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.826,
@@ -326403,8 +326403,8 @@
     "bump": {
       "estimate": 2.589,
       "margin": 0.089,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.6258,
@@ -330772,8 +330772,8 @@
     "bump": {
       "estimate": 2.548,
       "margin": 0.048,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.781,
@@ -331084,8 +331084,8 @@
     "bump": {
       "estimate": 2.562,
       "margin": 0.062,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -331189,8 +331189,8 @@
     "bump": {
       "estimate": 2.597,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7
     },
     "shiq_v8": 2.5676,
@@ -331920,8 +331920,8 @@
     "bump": {
       "estimate": 2.542,
       "margin": 0.042,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.5255,
@@ -335032,8 +335032,8 @@
     "bump": {
       "estimate": 2.554,
       "margin": 0.054,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -335955,8 +335955,8 @@
     "bump": {
       "estimate": 2.561,
       "margin": 0.061,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -338335,8 +338335,8 @@
     "bump": {
       "estimate": 2.598,
       "margin": 0.098,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -338624,8 +338624,8 @@
     "bump": {
       "estimate": 2.579,
       "margin": 0.079,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -339198,8 +339198,8 @@
     "bump": {
       "estimate": 2.594,
       "margin": 0.094,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 2.7171,
@@ -339605,8 +339605,8 @@
     "bump": {
       "estimate": 2.554,
       "margin": 0.054,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.7102,
@@ -339811,8 +339811,8 @@
     "bump": {
       "estimate": 2.535,
       "margin": 0.035,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.5158,
@@ -343439,8 +343439,8 @@
     "bump": {
       "estimate": 2.525,
       "margin": 0.025,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.5509,
@@ -347688,8 +347688,8 @@
     "bump": {
       "estimate": 2.555,
       "margin": 0.055,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -349582,8 +349582,8 @@
     "bump": {
       "estimate": 2.574,
       "margin": 0.074,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -349857,8 +349857,8 @@
     "bump": {
       "estimate": 2.597,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -352060,8 +352060,8 @@
     "bump": {
       "estimate": 2.556,
       "margin": 0.056,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -352263,8 +352263,8 @@
     "bump": {
       "estimate": 2.582,
       "margin": 0.082,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -357252,8 +357252,8 @@
     "bump": {
       "estimate": 2.574,
       "margin": 0.074,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -359700,8 +359700,8 @@
     "bump": {
       "estimate": 2.573,
       "margin": 0.073,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -360366,8 +360366,8 @@
     "bump": {
       "estimate": 2.548,
       "margin": 0.048,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -367480,8 +367480,8 @@
     "bump": {
       "estimate": 2.535,
       "margin": 0.035,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -368227,8 +368227,8 @@
     "bump": {
       "estimate": 2.557,
       "margin": 0.057,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -368782,8 +368782,8 @@
     "bump": {
       "estimate": 2.584,
       "margin": 0.084,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -368975,8 +368975,8 @@
     "bump": {
       "estimate": 2.529,
       "margin": 0.029,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7
     },
     "shiq_v8": 2.7006,
@@ -369094,8 +369094,8 @@
     "bump": {
       "estimate": 2.584,
       "margin": 0.084,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -369528,8 +369528,8 @@
     "bump": {
       "estimate": 2.573,
       "margin": 0.073,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -372589,8 +372589,8 @@
     "bump": {
       "estimate": 2.534,
       "margin": 0.034,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7
     },
     "shiq_v8": 2.6367,
@@ -375020,8 +375020,8 @@
     "bump": {
       "estimate": 2.59,
       "margin": 0.09,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -375442,8 +375442,8 @@
     "bump": {
       "estimate": 2.55,
       "margin": 0.05,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -380731,8 +380731,8 @@
     "bump": {
       "estimate": 2.593,
       "margin": 0.093,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.5574,
@@ -385059,8 +385059,8 @@
     "bump": {
       "estimate": 2.557,
       "margin": 0.057,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.5651,
@@ -386310,8 +386310,8 @@
     "bump": {
       "estimate": 2.58,
       "margin": 0.08,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -387193,8 +387193,8 @@
     "bump": {
       "estimate": 2.572,
       "margin": 0.072,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.2852,
@@ -387278,8 +387278,8 @@
     "bump": {
       "estimate": 2.56,
       "margin": 0.06,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.5073,
@@ -391823,8 +391823,8 @@
     "bump": {
       "estimate": 2.573,
       "margin": 0.073,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7
     },
     "shiq_v8": 2.7894,
@@ -393369,8 +393369,8 @@
     "bump": {
       "estimate": 2.592,
       "margin": 0.092,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -396915,8 +396915,8 @@
     "bump": {
       "estimate": 2.595,
       "margin": 0.095,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7
     },
     "shiq_v8": 2.55,
@@ -397036,8 +397036,8 @@
     "bump": {
       "estimate": 2.597,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 2.6709,
@@ -397381,8 +397381,8 @@
     "bump": {
       "estimate": 2.561,
       "margin": 0.061,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.4812,
@@ -399335,8 +399335,8 @@
     "bump": {
       "estimate": 2.557,
       "margin": 0.057,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -399651,8 +399651,8 @@
     "bump": {
       "estimate": 2.573,
       "margin": 0.073,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -400488,8 +400488,8 @@
     "bump": {
       "estimate": 2.596,
       "margin": 0.096,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -400705,8 +400705,8 @@
     "bump": {
       "estimate": 2.577,
       "margin": 0.077,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -404211,8 +404211,8 @@
     "bump": {
       "estimate": 2.594,
       "margin": 0.094,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -405912,8 +405912,8 @@
     "bump": {
       "estimate": 2.54,
       "margin": 0.04,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.7611,
@@ -406356,8 +406356,8 @@
     "bump": {
       "estimate": 2.6,
       "margin": 0.1,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -412679,8 +412679,8 @@
     "bump": {
       "estimate": 2.577,
       "margin": 0.077,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7,
       "strikes": 0
     },
@@ -413012,8 +413012,8 @@
     "bump": {
       "estimate": 2.557,
       "margin": 0.057,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.5049,
@@ -413645,8 +413645,8 @@
     "bump": {
       "estimate": 2.598,
       "margin": 0.098,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.4602,
@@ -417039,8 +417039,8 @@
     "bump": {
       "estimate": 3.077,
       "margin": 0.077,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.2891,
@@ -417500,8 +417500,8 @@
     "bump": {
       "estimate": 3.077,
       "margin": 0.077,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.1768,
@@ -419358,8 +419358,8 @@
     "bump": {
       "estimate": 3.054,
       "margin": 0.054,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.2345,
@@ -421106,8 +421106,8 @@
     "bump": {
       "estimate": 3.049,
       "margin": 0.049,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -430643,8 +430643,8 @@
     "bump": {
       "estimate": 3.061,
       "margin": 0.061,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 3.3106,
@@ -430832,8 +430832,8 @@
     "bump": {
       "estimate": 3.074,
       "margin": 0.074,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.2741,
@@ -436973,8 +436973,8 @@
     "bump": {
       "estimate": 3.1,
       "margin": 0.1,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.0426,
@@ -441749,8 +441749,8 @@
     "bump": {
       "estimate": 3.05,
       "margin": 0.05,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.2507,
@@ -441842,8 +441842,8 @@
     "bump": {
       "estimate": 3.096,
       "margin": 0.096,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.1011,
@@ -443461,8 +443461,8 @@
     "bump": {
       "estimate": 3.092,
       "margin": 0.092,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.0289,
@@ -444911,8 +444911,8 @@
     "bump": {
       "estimate": 3.089,
       "margin": 0.089,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7,
       "strikes": 0
     },
@@ -445910,8 +445910,8 @@
     "bump": {
       "estimate": 3.087,
       "margin": 0.087,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -448447,8 +448447,8 @@
     "bump": {
       "estimate": 3.099,
       "margin": 0.099,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.3599,
@@ -451414,8 +451414,8 @@
     "bump": {
       "estimate": 3.085,
       "margin": 0.085,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.1592,
@@ -453254,8 +453254,8 @@
     "bump": {
       "estimate": 3.093,
       "margin": 0.093,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.3546,
@@ -466266,8 +466266,8 @@
     "bump": {
       "estimate": 3.099,
       "margin": 0.099,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.0353,
@@ -468665,8 +468665,8 @@
     "bump": {
       "estimate": 3.099,
       "margin": 0.099,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 3.1021,
@@ -471042,8 +471042,8 @@
     "bump": {
       "estimate": 3.094,
       "margin": 0.094,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.1316,
@@ -471508,8 +471508,8 @@
     "bump": {
       "estimate": 3.085,
       "margin": 0.085,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -471863,8 +471863,8 @@
     "bump": {
       "estimate": 3.058,
       "margin": 0.058,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.9965,
@@ -472737,8 +472737,8 @@
     "bump": {
       "estimate": 3.093,
       "margin": 0.093,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -479911,8 +479911,8 @@
     "bump": {
       "estimate": 3.086,
       "margin": 0.086,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.2037,
@@ -480325,8 +480325,8 @@
     "bump": {
       "estimate": 3.086,
       "margin": 0.086,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.2133,
@@ -489453,8 +489453,8 @@
     "bump": {
       "estimate": 3.029,
       "margin": 0.029,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.0119,
@@ -490671,8 +490671,8 @@
     "bump": {
       "estimate": 3.075,
       "margin": 0.075,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 3.1518,
@@ -496590,8 +496590,8 @@
     "bump": {
       "estimate": 3.053,
       "margin": 0.053,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -497133,8 +497133,8 @@
     "bump": {
       "estimate": 3.046,
       "margin": 0.046,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 3.2168,
@@ -499586,8 +499586,8 @@
     "bump": {
       "estimate": 3.09,
       "margin": 0.09,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.1752,
@@ -499770,8 +499770,8 @@
     "bump": {
       "estimate": 3.096,
       "margin": 0.096,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.2002,
@@ -500089,8 +500089,8 @@
     "bump": {
       "estimate": 3.047,
       "margin": 0.047,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.1111,
@@ -500372,8 +500372,8 @@
     "bump": {
       "estimate": 3.075,
       "margin": 0.075,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.1658,
@@ -504748,8 +504748,8 @@
     "bump": {
       "estimate": 3.062,
       "margin": 0.062,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 3.0737,
@@ -505120,8 +505120,8 @@
     "bump": {
       "estimate": 3.057,
       "margin": 0.057,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.0434,
@@ -507766,8 +507766,8 @@
     "bump": {
       "estimate": 2.584,
       "margin": 0.084,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.85,
@@ -508518,8 +508518,8 @@
     "bump": {
       "estimate": 3.088,
       "margin": 0.088,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 3.0308,
@@ -508697,8 +508697,8 @@
     "bump": {
       "estimate": 3.093,
       "margin": 0.093,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.0386,
@@ -512296,8 +512296,8 @@
     "bump": {
       "estimate": 3.059,
       "margin": 0.059,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 3.2297,
@@ -517042,8 +517042,8 @@
     "bump": {
       "estimate": 2.56,
       "margin": 0.06,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.8079,
@@ -523678,8 +523678,8 @@
     "bump": {
       "estimate": 3.086,
       "margin": 0.086,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -524690,8 +524690,8 @@
     "bump": {
       "estimate": 3.064,
       "margin": 0.064,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -524781,8 +524781,8 @@
     "bump": {
       "estimate": 3.082,
       "margin": 0.082,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -532966,8 +532966,8 @@
     "bump": {
       "estimate": 2.577,
       "margin": 0.077,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.9299,
@@ -534435,8 +534435,8 @@
     "bump": {
       "estimate": 3.096,
       "margin": 0.096,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -535779,8 +535779,8 @@
     "bump": {
       "estimate": 3.099,
       "margin": 0.099,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.3339,
@@ -540997,8 +540997,8 @@
     "bump": {
       "estimate": 3.096,
       "margin": 0.096,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 3.1968,
@@ -543068,8 +543068,8 @@
     "bump": {
       "estimate": 3.074,
       "margin": 0.074,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.124,
@@ -543261,8 +543261,8 @@
     "bump": {
       "estimate": 3.088,
       "margin": 0.088,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.3572,
@@ -543827,8 +543827,8 @@
     "bump": {
       "estimate": 3.058,
       "margin": 0.058,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -545166,8 +545166,8 @@
     "bump": {
       "estimate": 3.087,
       "margin": 0.087,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -545348,8 +545348,8 @@
     "bump": {
       "estimate": 3.092,
       "margin": 0.092,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -551017,8 +551017,8 @@
     "bump": {
       "estimate": 3.065,
       "margin": 0.065,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 3.109,
@@ -551850,8 +551850,8 @@
     "bump": {
       "estimate": 3.07,
       "margin": 0.07,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -557137,8 +557137,8 @@
     "bump": {
       "estimate": 3.089,
       "margin": 0.089,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.954,
@@ -557967,8 +557967,8 @@
     "bump": {
       "estimate": 3.087,
       "margin": 0.087,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 3.0396,
@@ -558199,8 +558199,8 @@
     "bump": {
       "estimate": 3.091,
       "margin": 0.091,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.2261,
@@ -559555,8 +559555,8 @@
     "bump": {
       "estimate": 3.063,
       "margin": 0.063,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 3.1541,
@@ -559914,8 +559914,8 @@
     "bump": {
       "estimate": 3.081,
       "margin": 0.081,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 3.0679,
@@ -563213,8 +563213,8 @@
     "bump": {
       "estimate": 3.057,
       "margin": 0.057,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -563520,8 +563520,8 @@
     "bump": {
       "estimate": 3.089,
       "margin": 0.089,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.0965,
@@ -564529,8 +564529,8 @@
     "bump": {
       "estimate": 3.062,
       "margin": 0.062,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -564615,8 +564615,8 @@
     "bump": {
       "estimate": 3.042,
       "margin": 0.042,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -569224,8 +569224,8 @@
     "bump": {
       "estimate": 3.082,
       "margin": 0.082,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 3.17,
@@ -570036,8 +570036,8 @@
     "bump": {
       "estimate": 2.591,
       "margin": 0.091,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.8155,
@@ -576038,8 +576038,8 @@
     "bump": {
       "estimate": 2.592,
       "margin": 0.092,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.8054,
@@ -577412,8 +577412,8 @@
     "bump": {
       "estimate": 2.554,
       "margin": 0.054,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.5832,
@@ -577731,8 +577731,8 @@
     "bump": {
       "estimate": 2.563,
       "margin": 0.063,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7
     },
     "shiq_v8": 2.6096,
@@ -579835,8 +579835,8 @@
     "bump": {
       "estimate": 2.539,
       "margin": 0.039,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -585014,8 +585014,8 @@
     "bump": {
       "estimate": 2.569,
       "margin": 0.069,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 2.5858,
@@ -586116,8 +586116,8 @@
     "bump": {
       "estimate": 2.59,
       "margin": 0.09,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -586258,8 +586258,8 @@
     "bump": {
       "estimate": 2.599,
       "margin": 0.099,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 2.4791,
@@ -586928,8 +586928,8 @@
     "bump": {
       "estimate": 2.579,
       "margin": 0.079,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 2.7846,
@@ -592593,8 +592593,8 @@
     "bump": {
       "estimate": 2.576,
       "margin": 0.076,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -593524,8 +593524,8 @@
     "bump": {
       "estimate": 2.572,
       "margin": 0.072,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -593725,8 +593725,8 @@
     "bump": {
       "estimate": 2.559,
       "margin": 0.059,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -602588,8 +602588,8 @@
     "bump": {
       "estimate": 2.56,
       "margin": 0.06,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 2.8761,
@@ -608597,8 +608597,8 @@
     "bump": {
       "estimate": 2.575,
       "margin": 0.075,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 9
     },
     "shiq_v8": 2.6995,
@@ -608824,8 +608824,8 @@
     "bump": {
       "estimate": 2.569,
       "margin": 0.069,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.5252,
@@ -609627,8 +609627,8 @@
     "bump": {
       "estimate": 2.556,
       "margin": 0.056,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -613013,8 +613013,8 @@
     "bump": {
       "estimate": 2.566,
       "margin": 0.066,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -613397,8 +613397,8 @@
     "bump": {
       "estimate": 2.571,
       "margin": 0.071,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 8
     },
     "shiq_v8": 2.71,
@@ -613829,8 +613829,8 @@
     "bump": {
       "estimate": 2.539,
       "margin": 0.039,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 2.7495,
@@ -616264,8 +616264,8 @@
     "bump": {
       "estimate": 3.098,
       "margin": 0.098,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -619293,8 +619293,8 @@
     "bump": {
       "estimate": 3.061,
       "margin": 0.061,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 3.0625,
@@ -620980,8 +620980,8 @@
     "bump": {
       "estimate": 3.095,
       "margin": 0.095,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -623791,8 +623791,8 @@
     "bump": {
       "estimate": 3.067,
       "margin": 0.067,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 3.1056,
@@ -626954,8 +626954,8 @@
     "bump": {
       "estimate": 3.097,
       "margin": 0.097,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 3.3791,
@@ -631571,8 +631571,8 @@
     "bump": {
       "estimate": 3.032,
       "margin": 0.032,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -633085,8 +633085,8 @@
     "bump": {
       "estimate": 3.065,
       "margin": 0.065,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6
     },
     "shiq_v8": 3.1953,
@@ -633264,8 +633264,8 @@
     "bump": {
       "estimate": 3.086,
       "margin": 0.086,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 9
     },
     "shiq_v8": 3.4632,
@@ -638078,8 +638078,8 @@
     "bump": {
       "estimate": 3.045,
       "margin": 0.045,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 9
     },
     "shiq_v8": 3.1416,
@@ -641150,8 +641150,8 @@
     "bump": {
       "estimate": 3.056,
       "margin": 0.056,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 3.1148,
@@ -642491,8 +642491,8 @@
     "bump": {
       "estimate": 3.085,
       "margin": 0.085,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 8
     },
     "shiq_v8": 3.3028,
@@ -643703,8 +643703,8 @@
     "bump": {
       "estimate": 3.089,
       "margin": 0.089,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.3832,
@@ -647620,8 +647620,8 @@
     "bump": {
       "estimate": 3.089,
       "margin": 0.089,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7
     },
     "shiq_v8": 3.2901,
@@ -652794,8 +652794,8 @@
     "bump": {
       "estimate": 3.058,
       "margin": 0.058,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -659825,8 +659825,8 @@
     "bump": {
       "estimate": 2.579,
       "margin": 0.079,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.6166,
@@ -660931,8 +660931,8 @@
     "bump": {
       "estimate": 2.584,
       "margin": 0.084,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 2.8141,
@@ -661449,8 +661449,8 @@
     "bump": {
       "estimate": 2.594,
       "margin": 0.094,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 8
     },
     "shiq_v8": 2.7162,
@@ -661934,8 +661934,8 @@
     "bump": {
       "estimate": 2.589,
       "margin": 0.089,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7
     },
     "shiq_v8": 2.7136,
@@ -664869,8 +664869,8 @@
     "bump": {
       "estimate": 3.062,
       "margin": 0.062,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 9
     },
     "shiq_v8": 3.1277,
@@ -666396,8 +666396,8 @@
     "bump": {
       "estimate": 3.094,
       "margin": 0.094,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 8
     },
     "shiq_v8": 3.3037,
@@ -668102,8 +668102,8 @@
     "bump": {
       "estimate": 3.027,
       "margin": 0.027,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 11
     },
     "shiq_v8": 3.2528,
@@ -679693,8 +679693,8 @@
     "bump": {
       "estimate": 3.07,
       "margin": 0.07,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3
     },
     "shiq_v8": 3.09,
@@ -680171,8 +680171,8 @@
     "bump": {
       "estimate": 3.08,
       "margin": 0.08,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.2347,
@@ -682302,8 +682302,8 @@
     "bump": {
       "estimate": 2.535,
       "margin": 0.035,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -684806,8 +684806,8 @@
     "bump": {
       "estimate": 2.593,
       "margin": 0.093,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 10
     },
     "shiq_v8": 2.8881,
@@ -685513,8 +685513,8 @@
     "bump": {
       "estimate": 2.596,
       "margin": 0.096,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 8
     },
     "shiq_v8": 2.6545,
@@ -690319,8 +690319,8 @@
     "bump": {
       "estimate": 2.595,
       "margin": 0.095,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4,
       "strikes": 0
     },
@@ -694978,8 +694978,8 @@
     "bump": {
       "estimate": 2.593,
       "margin": 0.093,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 9,
       "strikes": 0
     },
@@ -697195,8 +697195,8 @@
     "bump": {
       "estimate": 2.587,
       "margin": 0.087,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.6588,
@@ -697506,8 +697506,8 @@
     "bump": {
       "estimate": 2.58,
       "margin": 0.08,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 7,
       "strikes": 0
     },
@@ -699305,8 +699305,8 @@
     "bump": {
       "estimate": 2.58,
       "margin": 0.08,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 13,
       "strikes": 0
     },
@@ -700629,8 +700629,8 @@
     "bump": {
       "estimate": 2.536,
       "margin": 0.036,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 4
     },
     "shiq_v8": 2.7103,
@@ -701331,8 +701331,8 @@
     "bump": {
       "estimate": 2.541,
       "margin": 0.041,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5,
       "strikes": 0
     },
@@ -701431,8 +701431,8 @@
     "bump": {
       "estimate": 2.54,
       "margin": 0.04,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 6,
       "strikes": 0
     },
@@ -702170,8 +702170,8 @@
     "bump": {
       "estimate": 3.081,
       "margin": 0.081,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 12
     },
     "shiq_v8": 3.1831,
@@ -705193,8 +705193,8 @@
     "bump": {
       "estimate": 3.043,
       "margin": 0.043,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 3,
       "strikes": 0
     },
@@ -706179,8 +706179,8 @@
     "bump": {
       "estimate": 3.085,
       "margin": 0.085,
-      "call": "hold",
-      "label": "Holds",
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 5
     },
     "shiq_v8": 3.0043,
