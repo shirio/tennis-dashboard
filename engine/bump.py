@@ -53,6 +53,9 @@ LEVEL_WIDTH = 0.50
 # Category thresholds on (year-end estimate - level top) / floor distance.
 LOWEST_LEVEL = 2.5        # adult leagues bottom out here
 CLEAR_MARGIN = 0.05      # this far past the line = "likely"
+LEAN_DOWN_ZONE = 0.10    # this close above the down line = "Leaning down". Down calls are
+                         # strict (84% right) but catch under half of real downs, and most
+                         # misses sat within 0.10 of the line (Shirin, 2026-11-26).
 
 
 @dataclass
@@ -261,6 +264,31 @@ def fit_year_end(events: list[R.CourtEvent], start: dict[str, float],
             {k: len(v) for k, v in per_player.items()})
 
 
+RECENTER_MIN_PLAYERS = 20   # a level needs this many NV players to re-center
+
+
+def recenter_levels(year_end: dict[str, float], counts: dict[str, int],
+                    levels: dict[str, tuple[Optional[float], str]],
+                    is_nv) -> dict[str, float]:
+    """Shift every player at a level by the same amount so that level's Nevada
+    players (MIN_MATCHES+) average the middle of the band again.
+
+    Everyone starts mid-level, but the higher pools drift low over a season
+    (losses to strong out-of-state playoff teams and to the level above), which
+    pushed players near the bottom edge into false "down" calls. Order within a
+    level is unchanged. 2025 -> 2026 backtest on 973 NV women: false downs
+    27 -> 7, 90.3% -> 91.6% right (Shirin approved 2026-11-26)."""
+    by_level: dict[float, list[float]] = {}
+    for k, y in year_end.items():
+        lv = (levels.get(k) or (None,))[0]
+        if lv is not None and counts.get(k, 0) >= MIN_MATCHES and is_nv(k):
+            by_level.setdefault(lv, []).append(y - lv)
+    shift = {lv: -LEVEL_WIDTH / 2 - sum(d) / len(d)
+             for lv, d in by_level.items() if len(d) >= RECENTER_MIN_PLAYERS}
+    return {k: y + shift.get((levels.get(k) or (None,))[0], 0.0)
+            for k, y in year_end.items()}
+
+
 def year_end_call(estimate: Optional[float], matches: int, level: Optional[float],
                   letter: str = "", strikes: Optional[int] = None) -> dict:
     """Summarise one player's bump outlook.
@@ -285,7 +313,7 @@ def year_end_call(estimate: Optional[float], matches: int, level: Optional[float
         # Inside the level: distance to the nearer edge, signed toward it.
         margin = est - top if (top - est) < (est - floor) else est - floor
         call = ("lean_up" if est > top - CLEAR_MARGIN / 2 else
-                "lean_down" if est < floor + CLEAR_MARGIN / 2 else "hold")
+                "lean_down" if est <= floor + LEAN_DOWN_ZONE else "hold")
     if level <= LOWEST_LEVEL and call in ("down", "lean_down"):
         # Nobody drops below 2.5 (no NV player is rated 2.0); in the 2025
         # backtest all 13 "down" calls at 2.5 held.
@@ -399,6 +427,19 @@ def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_Y
     return events, starts, letters, playoffs, levels, known_through
 
 
+def little_known_playoffs(events: list, playoffs: set[str]) -> set[str]:
+    """Playoff matches with an out-of-state player we know little about: no
+    season of her own in our data and no hand-collected TennisRecord start.
+    These count like regular matches (1x) instead of PLAYOFF_WEIGHT, because a
+    loss to an opponent we underrate looks like a real drop at 2.5x. 2025 ->
+    2026 backtest: 90.3% -> 91.5% right, mostly fewer false downs (Shirin
+    approved 2026-11-26). Nevada-only playoffs keep the extra weight."""
+    def little_known(k: str) -> bool:
+        return k.startswith("tl::") and "|NEVADA|" not in k and k not in TR_STARTS
+    return {e.match_id for e in events if e.match_id in playoffs
+            and any(little_known(k) for k in e.winner_keys + e.loser_keys)}
+
+
 def compute_bumps(players: list[dict], events: Optional[list] = None,
                   playoffs: Optional[set[str]] = None) -> dict[str, dict]:
     """{player_key: year_end_call(...)} for every player in players.json.
@@ -409,7 +450,7 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
     if events is None:
         events, starts, letters, auto_playoffs, levels, known = year_end_inputs(players, pbn)
         if playoffs is None:
-            playoffs = auto_playoffs
+            playoffs = auto_playoffs - little_known_playoffs(events, auto_playoffs)
     else:
         if playoffs is None:
             playoffs = playoff_match_ids()
@@ -428,6 +469,11 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
         known = {}
     year_end, counts = fit_year_end(events, starts, letters, playoffs,
                                     known_through=known)
+    def is_nv(k: str) -> bool:
+        if k.startswith("tl::"):
+            return "|NEVADA|" in k
+        return (pbn[k].get("state") or "NV").upper() == "NV" if k in pbn else False
+    year_end = recenter_levels(year_end, counts, levels, is_nv)
     strikes = run_bump(events, starts, levels)    # running rating: strikes only
     out = {}
     for k in pbn:
