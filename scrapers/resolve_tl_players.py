@@ -407,7 +407,7 @@ def resolve(d, fetch: bool) -> dict:
 
 
 def main():
-    global OUT, YEAR, CAND_CACHE
+    global OUT, YEAR, CAND_CACHE, NTRP_LIST
     ap = argparse.ArgumentParser()
     ap.add_argument("--fetch", action="store_true",
                     help="log in and open candidate player pages for duplicate names")
@@ -417,6 +417,9 @@ def main():
     stt.set_year(a.year)
     OUT, YEAR = stt.OUT, a.year
     CAND_CACHE = ROOT / "data" / f"tl_candidate_teams_{YEAR}.json"
+    yl = ROOT / "data" / f"ntrp_nv_{YEAR}.json"   # that year's list (players active then)
+    if yl.exists():
+        NTRP_LIST = yl
     d = json.loads(OUT.read_text())
     t0 = time.time()
     d = resolve(d, a.fetch)
