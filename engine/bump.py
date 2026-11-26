@@ -412,7 +412,10 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
         known = {}
     if START_MODE == "mid":
         # Nothing is baked into a mid-level start, so every counted match counts.
-        starts = {k: mid_level_start((levels.get(k) or (None,))[0], s)
+        # Out-of-state ("tl::") players already start mid-level, or at their
+        # hand-collected TennisRecord rating when we have one (baseline_for).
+        starts = {k: s if k.startswith("tl::") else
+                  mid_level_start((levels.get(k) or (None,))[0], s)
                   for k, s in starts.items()}
         known = {}
     year_end, counts = fit_year_end(events, starts, letters, playoffs,
