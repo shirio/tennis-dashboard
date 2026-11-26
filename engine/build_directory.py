@@ -1433,14 +1433,15 @@ def _bump_est_data(b):
     return [round(float(b["estimate"]), 2), _BUMP_CLS[call]]
 
 
-def _nv_bumps(players: list[dict], links: dict, usta: list[dict]) -> dict[str, dict]:
-    """Bump calls for our NV players, using the USTA 2026 level when players.json has none.
-    Empty if engine.bump (PR 3) isn't available."""
+def _nv_bumps(players: list[dict], links: dict, usta: list[dict]) -> tuple[dict, dict]:
+    """Bump calls for our NV players, using the USTA 2026 level when players.json has none,
+    and {crawl person id: call} for crawled Nevada people outside players.json
+    (men and everyone else on the NV list). Empty if engine.bump isn't available."""
     try:
         from engine.bump import compute_bumps
         from engine import ratings as R
     except ImportError:
-        return {}
+        return {}, {}
     level_by_id = {p["id"]: format_ntrp(usta[i].get("level"), usta[i].get("rating_type"))
                    for i, p in links.items() if usta[i].get("level") is not None}
     copies = []
@@ -1449,9 +1450,11 @@ def _nv_bumps(players: list[dict], links: dict, usta: list[dict]) -> dict[str, d
         if p.get("state") == STATE and p.get("id") in level_by_id:
             q["ntrp_rating"] = level_by_id[p["id"]]
         copies.append(q)
-    calls = compute_bumps(copies)
+    calls = compute_bumps(copies, include_crawl=True)
     pbn = R._build_players_by_name(copies)
-    return {q["id"]: calls.get(k) for k, q in pbn.items() if q.get("id") in level_by_id}
+    core = {q["id"]: calls.get(k) for k, q in pbn.items() if q.get("id") in level_by_id}
+    crawl = {k[4:]: c for k, c in calls.items() if k.startswith("tl::")}
+    return core, crawl
 
 
 _CRAWL: dict = {}
@@ -1565,7 +1568,7 @@ def build_directory() -> dict:
     tr_hist = _tr_history()
     appeal_dyn = load_dynamics()
     overrides = {k: v for k, v in _load(DATA_DIR / "rating_overrides.json", {}).items() if not k.startswith("_")}
-    bumps = _nv_bumps(players, links, usta) if not placeholder else {}
+    bumps, crawl_bumps = _nv_bumps(players, links, usta) if not placeholder else ({}, {})
 
     info_by_id: dict[str, dict] = {}
     rows = []
@@ -1578,6 +1581,8 @@ def build_directory() -> dict:
         if not page_id:  # not a core player: the crawl's person with this TennisLink page
             cpid = person_by_url.get(r.get("history_url"))
             page_id = pid_page.get(cpid)
+            if not bump:
+                bump = crawl_bumps.get(cpid)
             if page_id:
                 sq = (crawl_shiq.get(cpid) or {}).get("shiq")
                 dyn = round(float(sq), 4) if sq is not None else None
@@ -1668,8 +1673,11 @@ def build_directory() -> dict:
             return f"{pid_page[key]}.html"
         return page_for_name.get(_nkey(key))
 
+    page_cpid = {pg: cpid for cpid, pg in pid_page.items()}
     for pid, v in pages.items():
         info = info_by_id.get(pid) or v.get("info") or {"state": STATE, "gender": "F"}
+        if not info.get("bump") and page_cpid.get(pid) in crawl_bumps:
+            info = dict(info, bump=crawl_bumps[page_cpid[pid]])
         html = _player_html(v["p"], info, v["hist"], v["pit"], link_for)
         (PLAYER_DIR / f"{pid}.html").write_text(html, encoding="utf-8")
     # Pages left over from an earlier build (renamed or no longer linked)
