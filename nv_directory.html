@@ -108,9 +108,10 @@ th.ctr.sorted .hl { left: -5px; }
 .lt { font-size: 10px; color: inherit; margin-left: 2px; cursor: help; }
 /* Fixed-width letter slot, filled or empty, so numbers line up and letters line up */
 td.num .lt { display: inline-block; width: 2.1em; text-align: left; }
-/* Year titles sit centered over the whole column (number + letter slot) (Shirin) */
+/* Year titles sit centered over what the column shows (number + letter); JS sets --cx (Shirin) */
 th.yr { text-align: center; }
-th.yr.sorted .hl { left: -5px; }
+th.yr .hl { left: var(--cx, 0); }
+th.yr.sorted .hl { left: calc(var(--cx, 0px) - 5px); }
 .ap { margin-left: 1px; }
 .apc { color: #b26a00; }
 .up { color: #27500A; }
@@ -285,16 +286,42 @@ function render() {
 // Each Δ caret sits midway between where the rating on its left ends (letter
 // included) and where the number on its right starts. Year cells are right-aligned
 // and often wider than their values, so centering in the Δ cell alone looks lopsided.
+// Right edge of the visible text in a rating cell: the number, plus the letter
+// and appeal arrow if there are any (the letter slot itself is fixed-width)
+function inkRight(nw) {
+  var nv = nw.querySelector('.nv'), lt = nw.querySelector('.lt'), r = nv.getBoundingClientRect().right;
+  if (!nv.getBoundingClientRect().width) return 0;
+  if (lt && lt.textContent.trim()) {
+    var rg = document.createRange(); rg.selectNodeContents(lt);
+    r = Math.max(r, rg.getBoundingClientRect().right);
+  }
+  return r;
+}
 function centerCarets() {
   var moves = [];
   document.querySelectorAll('#tb td.delta svg').forEach(function(svg) {
     var td = svg.parentNode, a = td.previousElementSibling, b = td.nextElementSibling;
     var an = a && a.querySelector('.nw'), bn = b && b.querySelector('.nv');
     if (!an || !bn || !td.offsetParent) return;
-    var ar = an.getBoundingClientRect(), br = bn.getBoundingClientRect(), sr = svg.getBoundingClientRect();
-    if (!ar.width || !br.width) return;
+    var ar = inkRight(an), br = bn.getBoundingClientRect(), sr = svg.getBoundingClientRect();
+    if (!ar || !br.width) return;
     var cur = parseFloat(svg.style.left) || 0;
-    moves.push([svg, cur + (ar.right + br.left) / 2 - (sr.left + sr.right) / 2]);
+    moves.push([svg, cur + (ar + br.left) / 2 - (sr.left + sr.right) / 2]);
+  });
+  // Center each year title over what its cells actually show (number + letter),
+  // not over the cell, whose reserved letter slot is often empty
+  document.querySelectorAll('#tbl th.yr').forEach(function(th) {
+    if (!th.offsetParent) return;
+    var cs = [];
+    document.querySelectorAll('#tb td.c-' + th.dataset.k + ' .nw').forEach(function(nw) {
+      var l = nw.querySelector('.nv').getBoundingClientRect().left, r = inkRight(nw);
+      if (r) cs.push((l + r) / 2);
+    });
+    if (!cs.length) return;
+    cs.sort(function(x, y) { return x - y; });
+    var hl = th.querySelector('.hl') || th, hr = hl.getBoundingClientRect();
+    var cur = parseFloat(th.style.getPropertyValue('--cx')) || 0;
+    th.style.setProperty('--cx', (cur + cs[cs.length >> 1] - (hr.left + hr.right) / 2).toFixed(1) + 'px');
   });
   moves.forEach(function(m) { m[0].style.left = m[1].toFixed(1) + 'px'; });
   // Move each Δ header's triangle to the same spot, so carets sit under it
