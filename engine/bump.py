@@ -56,6 +56,10 @@ CLEAR_MARGIN = 0.05      # this far past the line = "likely"
 LEAN_DOWN_ZONE = 0.10    # this close above the down line = "Leaning down". Down calls are
                          # strict (84% right) but catch under half of real downs, and most
                          # misses sat within 0.10 of the line (Shirin, 2026-11-26).
+PLAY_UP_ZONE = 0.05      # this close under the up line, and ...
+PLAY_UP_SHARE = 0.90     # ... this share of matches on higher-level flights = "Leaning up".
+                         # Near the line, players who mostly play up went up far more often
+                         # (2025 backtest: ups caught 68 -> 70 of 95, calls still 82% right).
 
 
 @dataclass
@@ -169,7 +173,10 @@ RECENCY_SHARE = [(5, 0.26), (5, 0.23), (5, 0.15), (5, 0.17)]
 OLDER_SHARE = 0.19
 PLAYOFF_WEIGHT = 2.5
 PRIOR_WEIGHT_COMPUTER = 1.0   # carry-in, in "matches" (tuned to base rates, 2026-11-25)
-PRIOR_WEIGHT_SELF = 1.0       # S / A: fades within a few matches
+PRIOR_WEIGHT_SELF = 0.5       # S (new, self-rated): their results take over sooner. In the
+                              # 2025 backtest new players near the line went up 1 in 3 times,
+                              # and halving this caught 62 -> 68 of 95 ups (calls 78% -> 82% right).
+                              # A (appeal) players are returning, so they use the computer weight.
 FIT_ITERATIONS = 60
 FIT_DAMPING = 0.5
 
@@ -244,7 +251,7 @@ def fit_year_end(events: list[R.CourtEvent], start: dict[str, float],
 
     Y = {k: (start.get(k) or 3.0) for e, _, _ in scored
          for k in e.winner_keys + e.loser_keys}
-    prior_w = {k: (PRIOR_WEIGHT_SELF if letters.get(k) in ("S", "A")
+    prior_w = {k: (PRIOR_WEIGHT_SELF if letters.get(k) == "S"
                    else PRIOR_WEIGHT_COMPUTER) for k in per_player}
     for _ in range(FIT_ITERATIONS):
         push = {k: 0.0 for k in Y}
@@ -290,11 +297,16 @@ def recenter_levels(year_end: dict[str, float], counts: dict[str, int],
 
 
 def year_end_call(estimate: Optional[float], matches: int, level: Optional[float],
-                  letter: str = "", strikes: Optional[int] = None) -> dict:
+                  letter: str = "", strikes: Optional[int] = None,
+                  play_up: float = 0.0) -> dict:
     """Summarise one player's bump outlook.
 
     Returns {estimate, margin, call, label, matches, strikes}. ``call`` is one
     of up / lean_up / hold / lean_down / down / few_matches / unknown.
+    ``play_up`` is the share of counted matches on higher-level flights.
+    ``direction`` (up / hold / down) is the backtested prediction: up when the
+    estimate is past the top (or the play-up tiebreak applies), down when at or
+    under the floor.
     """
     if level is None:
         return {"call": "unknown", "label": "No NTRP level"}
@@ -314,6 +326,10 @@ def year_end_call(estimate: Optional[float], matches: int, level: Optional[float
         margin = est - top if (top - est) < (est - floor) else est - floor
         call = ("lean_up" if est > top - CLEAR_MARGIN / 2 else
                 "lean_down" if est <= floor + LEAN_DOWN_ZONE else "hold")
+    tiebreak = (floor < est <= top and top - est < PLAY_UP_ZONE
+                and play_up >= PLAY_UP_SHARE)
+    if tiebreak:
+        call = "lean_up"
     if level <= LOWEST_LEVEL and call in ("down", "lean_down"):
         # Nobody drops below 2.5 (no NV player is rated 2.0); in the 2025
         # backtest all 13 "down" calls at 2.5 held.
@@ -327,7 +343,12 @@ def year_end_call(estimate: Optional[float], matches: int, level: Optional[float
             "lean_down": "Leaning down", "down": "Likely down",
         }[call],
         "matches": matches,
+        "direction": ("up" if est > top or tiebreak else
+                      "down" if est <= floor and level > LOWEST_LEVEL else "hold"),
     }
+    if tiebreak:
+        out["label"] = "Leaning up (plays up)"
+        out["play_up"] = round(play_up, 2)
     # Past the top of the NEXT level too: a two-level move (e.g. 3.5 -> 4.5).
     if call == "up" and est > top + LEVEL_WIDTH + CLEAR_MARGIN:
         out["levels"] = 2
@@ -427,6 +448,24 @@ def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_Y
     return events, starts, letters, playoffs, levels, known_through
 
 
+def play_up_shares(events, levels) -> dict[str, float]:
+    """Share of each player's matches played on a single-level flight above
+    their own level (combo flights like 7.0 don't count as playing up)."""
+    total: dict[str, int] = {}
+    up: dict[str, int] = {}
+    for e in events:
+        try:
+            flight = float(e.division)
+        except (TypeError, ValueError):
+            flight = None
+        for k in e.winner_keys + e.loser_keys:
+            total[k] = total.get(k, 0) + 1
+            lv = (levels.get(k) or (None,))[0]
+            if flight is not None and flight <= 5.5 and lv is not None and flight > lv:
+                up[k] = up.get(k, 0) + 1
+    return {k: up.get(k, 0) / n for k, n in total.items()}
+
+
 def little_known_playoffs(events: list, playoffs: set[str]) -> set[str]:
     """Playoff matches with an out-of-state player we know little about: no
     season of her own in our data and no hand-collected TennisRecord start.
@@ -475,11 +514,13 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
         return (pbn[k].get("state") or "NV").upper() == "NV" if k in pbn else False
     year_end = recenter_levels(year_end, counts, levels, is_nv)
     strikes = run_bump(events, starts, levels)    # running rating: strikes only
+    play_up = play_up_shares(events, levels)
     out = {}
     for k in pbn:
         st = strikes.get(k)
         out[k] = year_end_call(year_end.get(k), counts.get(k, 0), *levels[k],
-                               strikes=st.strikes if st else None)
+                               strikes=st.strikes if st else None,
+                               play_up=play_up.get(k, 0.0))
     return out
 
 
