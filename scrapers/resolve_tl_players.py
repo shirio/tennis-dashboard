@@ -263,10 +263,20 @@ def resolve(d, fetch: bool) -> dict:
     for it in ids.values():
         if it["area"] != "INTERMOUNTAIN":
             areas_of[it["nname"]].add(it["area"])
+    # The wildcard team's name also shows up as a local team in the player's
+    # own state ("NEVADA|...|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W"): that settles
+    # it even when the name exists in two states (Megan Bell: NV and TX).
+    team_areas = collections.defaultdict(set)
+    for it in ids.values():
+        if it["area"] != "INTERMOUNTAIN":
+            team_areas[(it["nname"], it["team"].rsplit("|", 1)[-1])].add(it["area"])
     for it in ids.values():
         if it["area"] == "INTERMOUNTAIN":
             a = areas_of.get(it["nname"], set())
-            if len(a) == 1:
+            same = team_areas.get((it["nname"], it["team"].rsplit("|", 1)[-1]), set())
+            if len(same) == 1:
+                it["area"] = next(iter(same))
+            elif len(a) == 1:
                 it["area"] = next(iter(a))
             elif not a and len(nv_list.get(it["nname"], [])) == 1:
                 it["area"] = "NEVADA"

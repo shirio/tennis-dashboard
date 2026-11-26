@@ -712944,7 +712944,8 @@
     "NEVADA|2026 TRI-LEVEL 18 & OVER LEAGUE 3.0/3.5/4.0|3.0/3.5/4.0 WOMEN|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W",
     "NEVADA|2026 TRI-LEVEL 18 & OVER LEAGUE 3.5/4.0/4.5|3.5/4.0/4.5 WOMEN|SPANISH OAKS #2",
     "NEVADA|2026 USTA ADULT LEAGUE 18 & OVER|3.5 WOMEN- 18 & OVER|DTC #2",
-    "NEVADA|2026 USTA ADULT LEAGUE 18 & OVER|4.0 WOMEN- 18 & OVER|DTC #3"
+    "NEVADA|2026 USTA ADULT LEAGUE 18 & OVER|4.0 WOMEN- 18 & OVER|DTC #3",
+    "CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W"
    ],
    "matches": [
     [
@@ -713116,6 +713117,31 @@
      "C3148744",
      "#1 Doubles",
      "home"
+    ],
+    [
+     "C3182417",
+     "#2 Doubles",
+     "home"
+    ],
+    [
+     "C3182419",
+     "#2 Doubles",
+     "away"
+    ],
+    [
+     "C3182421",
+     "#2 Doubles",
+     "away"
+    ],
+    [
+     "C3182425",
+     "#2 Doubles",
+     "home"
+    ],
+    [
+     "C3182429",
+     "#2 Doubles",
+     "away"
     ]
    ],
    "flags": []
@@ -788428,7 +788454,8 @@
     "NEVADA|2026 TRI-LEVEL 18 & OVER LEAGUE 3.5/4.0/4.5|3.5/4.0/4.5 WOMEN|RED ROCK CC",
     "NEVADA|2026 TRI-LEVEL 18 & OVER LEAGUE 4.0/4.5/5.0|4.0/4.5/5.0 WOMEN|INTERMOUNTAIN/BACK/TRILEVEL5.0W",
     "NEVADA|2026 USTA ADULT LEAGUE 18 & OVER|4.5 WOMEN- 18 & OVER|RED ROCK CC",
-    "NEVADA|2026 USTA ADULT LEAGUE 40 & OVER|4.5 WOMEN- 40 & OVER|RED ROCK CC"
+    "NEVADA|2026 USTA ADULT LEAGUE 40 & OVER|4.5 WOMEN- 40 & OVER|RED ROCK CC",
+    "CHAMP|18 & OVER TRI-LEVEL 4.0/4.5/5.0W|11/6/2026|INTERMOUNTAIN/BACK/TRILEVEL5.0W"
    ],
    "matches": [
     [
@@ -788640,6 +788667,16 @@
      "L1011620351",
      "#1 Doubles",
      "away"
+    ],
+    [
+     "C3182467",
+     "#2 Doubles",
+     "away"
+    ],
+    [
+     "C3182468",
+     "#2 Doubles",
+     "home"
     ]
    ],
    "flags": []
@@ -912761,48 +912798,6 @@
     "out_of_state"
    ]
   },
-  "megan-bell|INTERMOUNTAIN|3410": {
-   "name": "Megan Bell",
-   "area": "INTERMOUNTAIN",
-   "city": null,
-   "level": null,
-   "history_url": null,
-   "on_nv_list": false,
-   "ntrp": "3.5",
-   "teams": [
-    "CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W"
-   ],
-   "matches": [
-    [
-     "C3182417",
-     "#2 Doubles",
-     "home"
-    ],
-    [
-     "C3182419",
-     "#2 Doubles",
-     "away"
-    ],
-    [
-     "C3182421",
-     "#2 Doubles",
-     "away"
-    ],
-    [
-     "C3182425",
-     "#2 Doubles",
-     "home"
-    ],
-    [
-     "C3182429",
-     "#2 Doubles",
-     "away"
-    ]
-   ],
-   "flags": [
-    "out_of_state"
-   ]
-  },
   "lexi-farr|UTAH|3411": {
    "name": "Lexi Farr",
    "area": "UTAH",
@@ -951107,33 +951102,6 @@
      "L1011668025",
      "#1 Doubles",
      "away"
-    ]
-   ],
-   "flags": [
-    "out_of_state"
-   ]
-  },
-  "brigitte-fallon|INTERMOUNTAIN|4673": {
-   "name": "Brigitte Fallon",
-   "area": "INTERMOUNTAIN",
-   "city": null,
-   "level": null,
-   "history_url": null,
-   "on_nv_list": false,
-   "ntrp": "4.5",
-   "teams": [
-    "CHAMP|18 & OVER TRI-LEVEL 4.0/4.5/5.0W|11/6/2026|INTERMOUNTAIN/BACK/TRILEVEL5.0W"
-   ],
-   "matches": [
-    [
-     "C3182467",
-     "#2 Doubles",
-     "away"
-    ],
-    [
-     "C3182468",
-     "#2 Doubles",
-     "home"
     ]
    ],
    "flags": [
@@ -1061766,7 +1061734,7 @@
   "mae alexander#CHAMP|4.0 W|6/19/2026|DJOKERS": "mae-alexander|UTAH|3409",
   "mae alexander#UTAH - UT-SALT LAKE CITY|2026 USTA ADULT 18 & OVER|4.5W PM|TORRES": "mae-alexander|UTAH|3409",
   "mae alexander#UTAH - UT-SALT LAKE CITY|2026 USTA ADULT 18 & OVER|4.0W PM|DJOKERS": "mae-alexander|UTAH|3409",
-  "megan bell#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W": "megan-bell|INTERMOUNTAIN|3410",
+  "megan bell#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W": "megan-bell|NEVADA|320",
   "lexi farr#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|UT/HALES/TRILEVEL/3.0/3.5/4.0W": "lexi-farr|UTAH|3411",
   "lexi farr#UTAH - UT-SALT LAKE CITY|2026 WINTER LEAGUE-WEEKDAY|4.0W AM|SPORTS MALL-GREEN": "lexi-farr|UTAH|3411",
   "lexi farr#CHAMP|W3.0/3.5/4.0|9/25/2026|OUT OF YOUR LEAGUE": "lexi-farr|UTAH|3411",
@@ -1063733,7 +1063701,7 @@
   "miwa ishisaka#SO.CALIFORNIA - ORANGE COUNTY|2026 SCTA DOUBLES 18 & OVER - OC|OC WOMEN WE - 4.5|OC COSTA MESA - JENNA - SUN": "miwa-ishisaka|SO.CALIFORNIA|4671",
   "kari keese#SO.CALIFORNIA - ORANGE COUNTY|2026 USTA ADULT 18 & OVER - OC|OC WOMEN WE - 4.5|OC RCI - HAY - SAT12": "kari-keese|SO.CALIFORNIA|4672",
   "kari keese#SO.CALIFORNIA - ORANGE COUNTY|2026 USTA ADULT 40 & OVER - OC WE|OC WOMEN 4.5 WE|OC LLW RCI - LY - 12": "kari-keese|SO.CALIFORNIA|4672",
-  "brigitte fallon#CHAMP|18 & OVER TRI-LEVEL 4.0/4.5/5.0W|11/6/2026|INTERMOUNTAIN/BACK/TRILEVEL5.0W": "brigitte-fallon|INTERMOUNTAIN|4673",
+  "brigitte fallon#CHAMP|18 & OVER TRI-LEVEL 4.0/4.5/5.0W|11/6/2026|INTERMOUNTAIN/BACK/TRILEVEL5.0W": "brigitte-fallon|NEVADA|925",
   "masha carey#CHAMP|18 & Over Adult 4.0W|8/7/2026|COLORADO/REICHARDT/18&OVER4.0W": "masha-carey|COLORADO|4674",
   "masha carey#CHAMP|W 4.0|6/19/2026|GPTC GREEN": "masha-carey|COLORADO|4674",
   "molly shinners#CHAMP|18 & Over Adult 4.0W|8/7/2026|COLORADO/REICHARDT/18&OVER4.0W": "molly-shinners|COLORADO|4675",
@@ -1068411,7 +1068379,7 @@
   "unlisted_merged": 6793,
   "unlisted_ambiguous": 30,
   "identities": 17907,
-  "people": 8182,
+  "people": 8180,
   "people_flagged_ambiguous": 60,
   "names_shared_by_2plus_people": 589
  },

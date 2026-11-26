@@ -52,28 +52,101 @@ def person_keys(crawl: dict, pbn: dict) -> dict[str, str]:
     for k, p in pbn.items():
         if (p.get("state") or "NV").upper() == "NV":
             nv_keys.setdefault(R._name_key(p.get("name", "")), k)
+    # Colorado, Utah and Idaho players also have full seasons in players.json
+    # (their own dashboards), so playoff opponents from those states are
+    # linked by name and state and keep their own ShiQ/Bump. "INTERMOUNTAIN"
+    # (section-level team names) is linked only when the name is unique
+    # among those states.
+    other: dict[tuple[str, str], str] = {}
+    by_name: dict[str, list[str]] = {}
+    for k, p in pbn.items():
+        st = (p.get("state") or "NV").upper()
+        if st in AREA_STATE.values():
+            nk = R._name_key(p.get("name", ""))
+            other.setdefault((nk, st), k)
+            by_name.setdefault(nk, []).append(k)
     out = {}
     for pid, person in crawl.get("people", {}).items():
         key = None
-        if person.get("area") == "NEVADA":
-            for nm in [person["name"]] + list(person.get("aka") or []):
-                key = nv_keys.get(R._name_key(nm))
-                if key:
-                    break
+        area = person.get("area") or ""
+        names = [person["name"]] + list(person.get("aka") or [])
+        for nm in names:
+            nk = R._name_key(nm)
+            if area == "NEVADA":
+                key = nv_keys.get(nk)
+            elif area in AREA_STATE:
+                key = other.get((nk, AREA_STATE[area]))
+            elif area == "INTERMOUNTAIN" and len(by_name.get(nk, [])) == 1:
+                key = by_name[nk][0]
+            if key:
+                break
         out[pid] = key or f"tl::{pid}"
     return out
 
 
-def baseline_for(person: dict) -> Optional[float]:
-    """Starting guess for a crawled player with no TennisRecord baseline:
-    a quarter below their USTA level (mid-level)."""
-    lv = re.match(r"(\d\.\d)", person.get("level") or person.get("ntrp") or "")
-    if not lv:
+AREA_STATE = {"COLORADO": "CO", "UTAH": "UT", "IDAHO": "ID"}
+
+
+def played_level(person: dict, matches: Optional[dict] = None) -> Optional[float]:
+    """Lowest NTRP level a crawled player played at, from the levels printed
+    on their match lines (or the league name). Players can play up but not
+    down, so the lowest is the best guess at their own level. Combo leagues
+    (6.0, 7.0, ...) don't say a player's own level and are skipped."""
+    if not matches:
+        return None
+    found = []
+    for mid, line, _side in person.get("matches") or []:
+        m = matches.get(mid) or {}
+        lv = next((l.get("level") for l in m.get("lines") or []
+                   if l.get("line") == line and l.get("level")), None)
+        if not lv:
+            hit = re.search(r"(?<![\d.])([1-5]\.[05])(?![\d/])", m.get("league") or "")
+            lv = hit.group(1) if hit else None
         try:
-            return float(person.get("ntrp")) - 0.25
+            v = float(lv)
         except (TypeError, ValueError):
-            return None
-    return float(lv.group(1)) - 0.25
+            continue
+        if 1.5 <= v <= 5.5:
+            found.append(v)
+    return min(found) if found else None
+
+
+OOS_TR_FILE = ROOT / "data" / "oos_playoff_opponents_tr.json"
+_oos_tr: Optional[dict] = None
+
+
+def tr_baseline(person: dict) -> Optional[float]:
+    """TennisRecord dynamic rating going into their first playoff match vs NV,
+    for out-of-state playoff opponents (hand-collected by Shirin, Nov 2026)."""
+    global _oos_tr
+    if _oos_tr is None:
+        try:
+            rows = json.loads(OOS_TR_FILE.read_text())
+        except (OSError, ValueError):
+            rows = []
+        _oos_tr = {(r["name"].strip().lower(), (r.get("state") or "").strip().lower()): r["tr"]
+                   for r in rows if isinstance(r.get("tr"), (int, float))}
+    key = ((person.get("name") or "").strip().lower(), (person.get("area") or "").strip().lower())
+    return _oos_tr.get(key)
+
+
+def baseline_for(person: dict, matches: Optional[dict] = None) -> Optional[float]:
+    """Starting guess for a crawled player with no TennisRecord baseline:
+    a quarter below their USTA level (mid-level). Out-of-state players at
+    Sectionals/Nationals often have no level on record; with ``matches``
+    (the crawl's match table) they start mid-level at the level they played."""
+    tr = tr_baseline(person)
+    if tr is not None:
+        return float(tr)
+    lv = re.match(r"(\d\.\d)", person.get("level") or person.get("ntrp") or "")
+    if lv:
+        return float(lv.group(1)) - 0.25
+    try:
+        return float(person.get("ntrp")) - 0.25
+    except (TypeError, ValueError):
+        pass
+    played = played_level(person, matches)
+    return None if played is None else played - 0.25
 
 
 def _sig(winners: list[str], losers: list[str]) -> tuple:

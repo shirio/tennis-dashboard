@@ -68,7 +68,7 @@ def prior_year_ratings(crawl: dict, keys: dict[str, str], pbn: dict,
         try:
             b = float(person.get("ntrp")) - 0.25     # that season's roster level
         except (TypeError, ValueError):
-            b = C.baseline_for(person)
+            b = C.baseline_for(person, old.get("matches"))
         if b is not None:
             start.setdefault(remap[k], b)
     events = []
@@ -97,13 +97,14 @@ def compute(players: list[dict], use_crawl: bool = True):
         events += extra
         for pid, k in keys.items():
             if k.startswith("tl::"):
-                baselines[k] = C.baseline_for(crawl["people"][pid])
+                baselines[k] = C.baseline_for(crawl["people"][pid], crawl.get("matches"))
                 provisional.add(k)
                 people[k] = crawl["people"][pid]
         prior, n_prior = prior_year_ratings(crawl, keys, pbn)
         for k, r in prior.items():
             n = n_prior[k]
-            if k.startswith("tl::") and n >= PRIOR_MIN_MATCHES:
+            if k.startswith("tl::") and n >= PRIOR_MIN_MATCHES and not (
+                    people.get(k) and C.tr_baseline(people[k]) is not None):
                 baselines[k] = r
             elif not k.startswith("tl::") and n >= PRIOR_SETTLED_MATCHES \
                     and baselines.get(k) is not None:

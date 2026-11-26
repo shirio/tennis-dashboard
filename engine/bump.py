@@ -94,6 +94,18 @@ def start_rating(baseline: Optional[float], level: Optional[float],
     return min(max(baseline, lo), level)
 
 
+# Where each player starts the rating year. "mid" = the middle of their
+# current level (level - 0.25). On the 2025 -> 2026 backtest (383 core NV
+# players) mid-level starts scored 93% against 88% for TennisRecord's
+# December numbers, which start too many players near a level edge.
+START_MODE = "mid"
+
+
+def mid_level_start(level: Optional[float], fallback: Optional[float] = None) -> Optional[float]:
+    """Middle of the player's level; ``fallback`` when the level is unknown."""
+    return fallback if level is None else level - LEVEL_WIDTH / 2
+
+
 def implied_gap(share: float) -> float:
     """Strength gap that would make this game share the expected one."""
     s = min(max(share, 1.0 - SHARE_CEILING), SHARE_CEILING)
@@ -185,7 +197,8 @@ def playoff_match_ids() -> set[str]:
 
 
 def fit_year_end(events: list[R.CourtEvent], start: dict[str, float],
-                 letters: dict[str, str], playoffs: set[str] = frozenset()
+                 letters: dict[str, str], playoffs: set[str] = frozenset(),
+                 known_through: Optional[dict[str, str]] = None
                  ) -> tuple[dict[str, float], dict[str, int]]:
     """Jointly solve every player's year-end number.
 
@@ -194,7 +207,19 @@ def fit_year_end(events: list[R.CourtEvent], start: dict[str, float],
         surplus = implied_gap(game share) - (Y_own_side - Y_other_side)
     using everyone's year-end Y, so opponents are judged where they finish.
     Partners get the same surplus (equal credit).
+
+    ``known_through`` maps a player to the date of their start rating. Events
+    flagged ``prior_crawl`` (late matches from last year's crawl) on or before
+    that date are already in the start, so they don't move or count for that
+    player; the player still counts as a partner/opponent for everyone else.
     """
+    known_through = known_through or {}
+    k_date = R._date_str_sort_key
+
+    def already_known(k: str, e) -> bool:
+        d = known_through.get(k)
+        return bool(d) and getattr(e, "prior_crawl", False) and k_date(e.date) <= k_date(d)
+
     scored = []
     per_player: dict[str, list[int]] = {}
     for e in events:
@@ -206,14 +231,16 @@ def fit_year_end(events: list[R.CourtEvent], start: dict[str, float],
         idx = len(scored)
         scored.append((e, implied_gap(w / (w + l)), e.match_id in playoffs))
         for k in e.winner_keys + e.loser_keys:
-            per_player.setdefault(k, []).append(idx)
+            if not already_known(k, e):
+                per_player.setdefault(k, []).append(idx)
 
     weight: dict[tuple[str, int], float] = {}
     for k, idxs in per_player.items():
         for i, rw in zip(idxs, recency_weights(len(idxs))):
             weight[(k, i)] = rw * (PLAYOFF_WEIGHT if scored[i][2] else 1.0)
 
-    Y = {k: (start.get(k) or 3.0) for k in per_player}
+    Y = {k: (start.get(k) or 3.0) for e, _, _ in scored
+         for k in e.winner_keys + e.loser_keys}
     prior_w = {k: (PRIOR_WEIGHT_SELF if letters.get(k) in ("S", "A")
                    else PRIOR_WEIGHT_COMPUTER) for k in per_player}
     for _ in range(FIT_ITERATIONS):
@@ -223,14 +250,15 @@ def fit_year_end(events: list[R.CourtEvent], start: dict[str, float],
             sl = sum(Y[k] for k in e.loser_keys) / len(e.loser_keys)
             surplus = gap - (sw - sl)
             for k in e.winner_keys:
-                push[k] += weight[(k, i)] * surplus
+                push[k] += weight.get((k, i), 0.0) * surplus
             for k in e.loser_keys:
-                push[k] -= weight[(k, i)] * surplus
-        for k in Y:
+                push[k] -= weight.get((k, i), 0.0) * surplus
+        for k in per_player:
             total_w = prior_w[k] + sum(weight[(k, i)] for i in per_player[k])
             step = (push[k] - prior_w[k] * (Y[k] - (start.get(k) or 3.0))) / total_w
             Y[k] += FIT_DAMPING * step
-    return Y, {k: len(v) for k, v in per_player.items()}
+    return ({k: Y[k] for k in per_player},
+            {k: len(v) for k, v in per_player.items()})
 
 
 def year_end_call(estimate: Optional[float], matches: int, level: Optional[float],
@@ -305,6 +333,9 @@ def counts_toward_year_end(date: str, league: str = "",
     return k(lo) <= k(date) <= k(hi)
 
 
+TR_STARTS: set[str] = set()   # filled by year_end_inputs
+
+
 def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_YEAR):
     """(events, starts, letters, playoffs) for the year-end fit: standings
     data plus the TennisLink team crawl, filtered to matches USTA counts."""
@@ -322,14 +353,50 @@ def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_Y
                    if counts_toward_year_end(e.date, matches[e.match_id].get("league", ""), year)]
         playoffs |= {mid for mid, m in matches.items() if m.get("kind") == "champ"}
         for pid, k in keys.items():
+            person = crawl["people"][pid]
             if k.startswith("tl::"):
-                person = crawl["people"][pid]
                 levels[k] = parse_level(person.get("level"))
-                starts[k] = start_rating(C.baseline_for(person), *levels[k])
+                starts[k] = start_rating(C.baseline_for(person, matches), *levels[k])
+            elif person.get("area") != "NEVADA" and C.tr_baseline(person) is not None:
+                # A CO/UT/ID playoff opponent linked to their own season: start at
+                # the hand-collected TennisRecord rating (see compute_bumps).
+                starts[k] = start_rating(C.tr_baseline(person), *levels[k])
+                TR_STARTS.add(k)
+    # The rating year starts in the previous November, so its first weeks
+    # (fall-league finals, Tri-Level Sectionals and Nationals) are in LAST
+    # year's crawl. People are matched across years by their TennisLink
+    # history link, NV players by players.json key.
+    prev = C.load_crawl(year - 1)
+    if prev:
+        by_url = {}
+        if crawl:
+            by_url = {v.get("history_url"): keys[pid] for pid, v in crawl.get("people", {}).items()
+                      if v.get("history_url") and pid in keys}
+        extra, prev_keys = C.crawl_events(prev, pbn, events)
+        remap = {pid: by_url.get(prev["people"][pid].get("history_url")) or k
+                 for pid, k in prev_keys.items()}
+        key_map = {prev_keys[pid]: k for pid, k in remap.items()}
+        pm = prev.get("matches", {})
+        for e in extra:
+            if not counts_toward_year_end(e.date, pm[e.match_id].get("league", ""), year):
+                continue
+            e.winner_keys = [key_map.get(x, x) for x in e.winner_keys]
+            e.loser_keys = [key_map.get(x, x) for x in e.loser_keys]
+            e.prior_crawl = True
+            events.append(e)
+        playoffs |= {mid for mid, m in pm.items() if m.get("kind") == "champ"}
+        for pid, k in remap.items():
+            if k.startswith("tl::") and k not in levels:
+                person = prev["people"][pid]
+                levels[k] = parse_level(person.get("level"))
+                starts[k] = start_rating(C.baseline_for(person, pm), *levels[k])
     events = [e for e in events if counts_toward_year_end(e.date, "", year)]
     events.sort(key=R._date_sort_key)
     letters = {k: lv[1] for k, lv in levels.items()}
-    return events, starts, letters, playoffs, levels
+    # A TennisRecord start dated in December already includes late-fall matches.
+    known_through = {k: p["baseline_date"] for k, p in pbn.items()
+                     if p.get("baseline_date") and p.get("dynamic_rating_baseline") is not None}
+    return events, starts, letters, playoffs, levels, known_through
 
 
 def compute_bumps(players: list[dict], events: Optional[list] = None,
@@ -340,7 +407,7 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
     year_end_inputs)."""
     pbn = R._build_players_by_name(players)
     if events is None:
-        events, starts, letters, auto_playoffs, levels = year_end_inputs(players, pbn)
+        events, starts, letters, auto_playoffs, levels, known = year_end_inputs(players, pbn)
         if playoffs is None:
             playoffs = auto_playoffs
     else:
@@ -350,7 +417,17 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
         starts = {k: start_rating(p.get("dynamic_rating_baseline"), *levels[k])
                   for k, p in pbn.items()}
         letters = {k: levels[k][1] for k in pbn}
-    year_end, counts = fit_year_end(events, starts, letters, playoffs)
+        known = {}
+    if START_MODE == "mid":
+        # Nothing is baked into a mid-level start, so every counted match counts.
+        # Out-of-state ("tl::") players already start mid-level, or at their
+        # hand-collected TennisRecord rating when we have one (baseline_for).
+        starts = {k: s if k.startswith("tl::") or k in TR_STARTS else
+                  mid_level_start((levels.get(k) or (None,))[0], s)
+                  for k, s in starts.items()}
+        known = {}
+    year_end, counts = fit_year_end(events, starts, letters, playoffs,
+                                    known_through=known)
     strikes = run_bump(events, starts, levels)    # running rating: strikes only
     out = {}
     for k in pbn:

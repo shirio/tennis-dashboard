@@ -80,6 +80,21 @@ class TestBump(unittest.TestCase):
         y_alone, _ = bump.fit_year_end([early], bl, {})
         self.assertGreater(y_with["a"], y_alone["a"])
 
+    def test_late_fall_match_already_in_baseline_not_counted_twice(self):
+        bl = {"a": 2.9, "b": 2.9}
+        late = CourtEvent(date="11/20/2025", match_id="f", line_label="1# Singles",
+                          division="3.0", winner_keys=["a"], loser_keys=["b"],
+                          score="6-0 6-0")
+        late.prior_crawl = True
+        y0, n0 = bump.fit_year_end([late], bl, {})
+        y1, n1 = bump.fit_year_end([late], bl, {}, known_through={"a": "12/10/2025"})
+        self.assertGreater(y0["a"], 2.9)
+        self.assertNotIn("a", n1)              # a's baseline already has it
+        self.assertEqual(n1["b"], 1)           # b's doesn't: b still moves
+        self.assertLess(y1["b"], 2.9)
+        y2, n2 = bump.fit_year_end([late], bl, {}, known_through={"a": "11/15/2025"})
+        self.assertEqual(n2["a"], 1)           # played after the baseline: counts
+
     def test_blowout_of_much_weaker_player_can_lower_rating(self):
         bl = {"a": 3.0, "b": 1.9}   # gap beyond MAX_GAP
         y, _ = bump.fit_year_end([ev(["a"], ["b"], "6-0 6-0", "1# Singles")], bl, {})
@@ -121,3 +136,27 @@ def test_no_down_call_below_lowest_level():
     assert c["call"] == "hold" and c["estimate"] == 1.9
     assert "levels" not in c
     assert year_end_call(2.40, 10, 3.0, "C")["call"] == "down"
+
+
+def test_mid_level_start():
+    assert bump.mid_level_start(3.0) == 2.75
+    assert bump.mid_level_start(3.5, 3.4) == 3.25
+    assert bump.mid_level_start(None, 3.1) == 3.1   # unknown level: keep the fallback
+    assert bump.START_MODE == "mid"
+
+
+def test_out_of_state_player_without_level_starts_at_level_played():
+    from engine import crawl_events as C
+    matches = {
+        "M1": {"league": "18 & OVER TRI-LEVEL 3.0/3.5/4.0W",
+               "lines": [{"line": "#2 Doubles", "level": "3.5"}]},
+        "M2": {"league": "18 & Over Adult 4.0W", "lines": [{"line": "#1 Doubles"}]},
+        "M3": {"league": "55 & Over 7.0W", "lines": [{"line": "#1 Doubles"}]},
+    }
+    person = {"level": None, "ntrp": None,
+              "matches": [["M1", "#2 Doubles", "away"], ["M2", "#1 Doubles", "home"]]}
+    assert C.baseline_for(person) is None            # no match table: unknown
+    assert C.baseline_for(person, matches) == 3.25   # lowest level played, mid
+    combo = {"level": None, "matches": [["M3", "#1 Doubles", "home"]]}
+    assert C.baseline_for(combo, matches) is None    # combo leagues say nothing
+    assert C.baseline_for({"level": "3.0C"}, matches) == 2.75
