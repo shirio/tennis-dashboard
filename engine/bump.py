@@ -94,6 +94,18 @@ def start_rating(baseline: Optional[float], level: Optional[float],
     return min(max(baseline, lo), level)
 
 
+# Where each player starts the rating year. "mid" = the middle of their
+# current level (level - 0.25). On the 2025 -> 2026 backtest (383 core NV
+# players) mid-level starts scored 93% against 88% for TennisRecord's
+# December numbers, which start too many players near a level edge.
+START_MODE = "mid"
+
+
+def mid_level_start(level: Optional[float], fallback: Optional[float] = None) -> Optional[float]:
+    """Middle of the player's level; ``fallback`` when the level is unknown."""
+    return fallback if level is None else level - LEVEL_WIDTH / 2
+
+
 def implied_gap(share: float) -> float:
     """Strength gap that would make this game share the expected one."""
     s = min(max(share, 1.0 - SHARE_CEILING), SHARE_CEILING)
@@ -397,6 +409,11 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
         starts = {k: start_rating(p.get("dynamic_rating_baseline"), *levels[k])
                   for k, p in pbn.items()}
         letters = {k: levels[k][1] for k in pbn}
+        known = {}
+    if START_MODE == "mid":
+        # Nothing is baked into a mid-level start, so every counted match counts.
+        starts = {k: mid_level_start((levels.get(k) or (None,))[0], s)
+                  for k, s in starts.items()}
         known = {}
     year_end, counts = fit_year_end(events, starts, letters, playoffs,
                                     known_through=known)

@@ -136,3 +136,10 @@ def test_no_down_call_below_lowest_level():
     assert c["call"] == "hold" and c["estimate"] == 1.9
     assert "levels" not in c
     assert year_end_call(2.40, 10, 3.0, "C")["call"] == "down"
+
+
+def test_mid_level_start():
+    assert bump.mid_level_start(3.0) == 2.75
+    assert bump.mid_level_start(3.5, 3.4) == 3.25
+    assert bump.mid_level_start(None, 3.1) == 3.1   # unknown level: keep the fallback
+    assert bump.START_MODE == "mid"
