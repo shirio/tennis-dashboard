@@ -7616,8 +7616,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.385,
-      "margin": -0.115,
+      "estimate": 2.384,
+      "margin": -0.116,
       "call": "hold",
       "label": "Holds",
       "matches": 32,
@@ -8359,8 +8359,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.503,
-      "margin": 0.003,
+      "estimate": 2.502,
+      "margin": 0.002,
       "call": "lean_up",
       "label": "Leaning up",
       "matches": 31
@@ -12342,8 +12342,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.324,
-      "margin": -0.176,
+      "estimate": 2.323,
+      "margin": -0.177,
       "call": "hold",
       "label": "Holds",
       "matches": 24
@@ -13686,8 +13686,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 2.266,
-      "margin": -0.234,
+      "estimate": 2.265,
+      "margin": -0.235,
       "call": "hold",
       "label": "Holds",
       "matches": 6
@@ -19876,8 +19876,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.187,
-      "margin": 0.187,
+      "estimate": 2.186,
+      "margin": 0.186,
       "call": "hold",
       "label": "Holds",
       "matches": 26
@@ -22120,8 +22120,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.091,
-      "margin": 0.091,
+      "estimate": 3.09,
+      "margin": 0.09,
       "call": "up",
       "label": "Likely up",
       "matches": 34
@@ -22484,8 +22484,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 2.944,
-      "margin": -0.056,
+      "estimate": 2.943,
+      "margin": -0.057,
       "call": "hold",
       "label": "Holds",
       "matches": 20,
@@ -22868,8 +22868,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.289,
-      "margin": 0.289,
+      "estimate": 3.29,
+      "margin": 0.29,
       "call": "up",
       "label": "Likely up",
       "matches": 52
@@ -24067,8 +24067,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.973,
-      "margin": -0.027,
+      "estimate": 2.972,
+      "margin": -0.028,
       "call": "hold",
       "label": "Holds",
       "matches": 34
@@ -24482,8 +24482,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.134,
-      "margin": 0.134,
+      "estimate": 3.133,
+      "margin": 0.133,
       "call": "up",
       "label": "Likely up",
       "matches": 37
@@ -24910,8 +24910,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.131,
-      "margin": 0.131,
+      "estimate": 3.13,
+      "margin": 0.13,
       "call": "up",
       "label": "Likely up",
       "matches": 50
@@ -26228,8 +26228,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.193,
-      "margin": 0.193,
+      "estimate": 3.192,
+      "margin": 0.192,
       "call": "up",
       "label": "Likely up",
       "matches": 62
@@ -26782,8 +26782,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.039,
-      "margin": 0.039,
+      "estimate": 3.04,
+      "margin": 0.04,
       "call": "lean_up",
       "label": "Leaning up",
       "matches": 27
@@ -27152,8 +27152,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.182,
-      "margin": 0.182,
+      "estimate": 3.183,
+      "margin": 0.183,
       "call": "up",
       "label": "Likely up",
       "matches": 72
@@ -29022,8 +29022,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.166,
-      "margin": 0.166,
+      "estimate": 3.159,
+      "margin": 0.159,
       "call": "up",
       "label": "Likely up",
       "matches": 15
@@ -29231,8 +29231,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.004,
-      "margin": 0.004,
+      "estimate": 3.005,
+      "margin": 0.005,
       "call": "lean_up",
       "label": "Leaning up",
       "matches": 37
@@ -29771,8 +29771,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.063,
-      "margin": 0.063,
+      "estimate": 3.061,
+      "margin": 0.061,
       "call": "up",
       "label": "Likely up",
       "matches": 44
@@ -31141,8 +31141,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.11,
-      "margin": 0.11,
+      "estimate": 3.109,
+      "margin": 0.109,
       "call": "up",
       "label": "Likely up",
       "matches": 58
@@ -32056,8 +32056,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.814,
-      "margin": -0.186,
+      "estimate": 2.813,
+      "margin": -0.187,
       "call": "hold",
       "label": "Holds",
       "matches": 31
@@ -33042,8 +33042,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.777,
-      "margin": -0.223,
+      "estimate": 2.776,
+      "margin": -0.224,
       "call": "hold",
       "label": "Holds",
       "matches": 50
@@ -33998,8 +33998,8 @@
     },
     "state": "NV",
     "bump": {
-      "estimate": 2.829,
-      "margin": -0.171,
+      "estimate": 2.828,
+      "margin": -0.172,
       "call": "hold",
       "label": "Holds",
       "matches": 58
@@ -34769,8 +34769,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.889,
-      "margin": -0.111,
+      "estimate": 2.888,
+      "margin": -0.112,
       "call": "hold",
       "label": "Holds",
       "matches": 22
@@ -35120,8 +35120,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.026,
-      "margin": 0.026,
+      "estimate": 3.025,
+      "margin": 0.025,
       "call": "lean_up",
       "label": "Leaning up",
       "matches": 44
@@ -35631,8 +35631,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.176,
-      "margin": 0.176,
+      "estimate": 3.175,
+      "margin": 0.175,
       "call": "up",
       "label": "Likely up",
       "matches": 52
@@ -36127,8 +36127,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.638,
-      "margin": 0.138,
+      "estimate": 2.637,
+      "margin": 0.137,
       "call": "hold",
       "label": "Holds",
       "matches": 10
@@ -38082,8 +38082,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.782,
-      "margin": -0.218,
+      "estimate": 2.781,
+      "margin": -0.219,
       "call": "hold",
       "label": "Holds",
       "matches": 17
@@ -38884,8 +38884,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.812,
-      "margin": -0.188,
+      "estimate": 2.813,
+      "margin": -0.187,
       "call": "hold",
       "label": "Holds",
       "matches": 44
@@ -39418,8 +39418,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.954,
-      "margin": -0.046,
+      "estimate": 2.953,
+      "margin": -0.047,
       "call": "hold",
       "label": "Holds",
       "matches": 29
@@ -40460,8 +40460,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.098,
-      "margin": 0.098,
+      "estimate": 3.097,
+      "margin": 0.097,
       "call": "up",
       "label": "Likely up",
       "matches": 43
@@ -40965,8 +40965,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.742,
-      "margin": 0.242,
+      "estimate": 2.741,
+      "margin": 0.241,
       "call": "hold",
       "label": "Holds",
       "matches": 32
@@ -41340,8 +41340,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.817,
-      "margin": -0.183,
+      "estimate": 2.816,
+      "margin": -0.184,
       "call": "hold",
       "label": "Holds",
       "matches": 44
@@ -42800,8 +42800,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.803,
-      "margin": -0.197,
+      "estimate": 2.802,
+      "margin": -0.198,
       "call": "hold",
       "label": "Holds",
       "matches": 26
@@ -43261,8 +43261,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.909,
-      "margin": -0.091,
+      "estimate": 2.908,
+      "margin": -0.092,
       "call": "hold",
       "label": "Holds",
       "matches": 60
@@ -45329,8 +45329,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.743,
-      "margin": 0.243,
+      "estimate": 2.742,
+      "margin": 0.242,
       "call": "hold",
       "label": "Holds",
       "matches": 28
@@ -45645,8 +45645,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.77,
-      "margin": -0.23,
+      "estimate": 2.769,
+      "margin": -0.231,
       "call": "hold",
       "label": "Holds",
       "matches": 39
@@ -46484,8 +46484,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.524,
-      "margin": 0.024,
+      "estimate": 2.523,
+      "margin": 0.023,
       "call": "lean_down",
       "label": "Leaning down",
       "matches": 25,
@@ -48414,8 +48414,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.759,
-      "margin": -0.241,
+      "estimate": 2.758,
+      "margin": -0.242,
       "call": "hold",
       "label": "Holds",
       "matches": 47
@@ -51800,8 +51800,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.903,
-      "margin": -0.097,
+      "estimate": 2.902,
+      "margin": -0.098,
       "call": "hold",
       "label": "Holds",
       "matches": 43
@@ -53940,8 +53940,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.733,
-      "margin": 0.233,
+      "estimate": 2.732,
+      "margin": 0.232,
       "call": "hold",
       "label": "Holds",
       "matches": 22
@@ -54226,8 +54226,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.805,
-      "margin": -0.195,
+      "estimate": 2.806,
+      "margin": -0.194,
       "call": "hold",
       "label": "Holds",
       "matches": 20
@@ -55585,8 +55585,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.784,
-      "margin": -0.216,
+      "estimate": 2.783,
+      "margin": -0.217,
       "call": "hold",
       "label": "Holds",
       "matches": 28
@@ -55928,8 +55928,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.921,
-      "margin": -0.079,
+      "estimate": 2.92,
+      "margin": -0.08,
       "call": "hold",
       "label": "Holds",
       "matches": 33
@@ -56327,8 +56327,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.644,
-      "margin": 0.144,
+      "estimate": 2.643,
+      "margin": 0.143,
       "call": "hold",
       "label": "Holds",
       "matches": 34
@@ -56706,8 +56706,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.814,
-      "margin": -0.186,
+      "estimate": 2.823,
+      "margin": -0.177,
       "call": "hold",
       "label": "Holds",
       "matches": 25
@@ -58526,8 +58526,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.887,
-      "margin": -0.113,
+      "estimate": 2.889,
+      "margin": -0.111,
       "call": "hold",
       "label": "Holds",
       "matches": 17
@@ -59625,8 +59625,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.652,
-      "margin": 0.152,
+      "estimate": 2.651,
+      "margin": 0.151,
       "call": "hold",
       "label": "Holds",
       "matches": 22
@@ -61882,8 +61882,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.599,
-      "margin": 0.099,
+      "estimate": 2.598,
+      "margin": 0.098,
       "call": "hold",
       "label": "Holds",
       "matches": 37
@@ -62577,8 +62577,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.765,
-      "margin": -0.235,
+      "estimate": 2.764,
+      "margin": -0.236,
       "call": "hold",
       "label": "Holds",
       "matches": 5
@@ -63482,8 +63482,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.683,
-      "margin": 0.183,
+      "estimate": 2.682,
+      "margin": 0.182,
       "call": "hold",
       "label": "Holds",
       "matches": 29
@@ -64433,8 +64433,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.738,
-      "margin": 0.238,
+      "estimate": 2.737,
+      "margin": 0.237,
       "call": "hold",
       "label": "Holds",
       "matches": 46
@@ -65120,8 +65120,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.918,
-      "margin": -0.082,
+      "estimate": 2.917,
+      "margin": -0.083,
       "call": "hold",
       "label": "Holds",
       "matches": 19
@@ -65412,8 +65412,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.708,
-      "margin": 0.208,
+      "estimate": 2.707,
+      "margin": 0.207,
       "call": "up",
       "label": "Likely up",
       "matches": 31,
@@ -70030,8 +70030,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.748,
-      "margin": 0.248,
+      "estimate": 2.746,
+      "margin": 0.246,
       "call": "hold",
       "label": "Holds",
       "matches": 52
@@ -70564,8 +70564,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.586,
-      "margin": 0.086,
+      "estimate": 2.585,
+      "margin": 0.085,
       "call": "hold",
       "label": "Holds",
       "matches": 46
@@ -73456,8 +73456,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 2.426,
-      "margin": -0.074,
+      "estimate": 2.425,
+      "margin": -0.075,
       "call": "down",
       "label": "Likely down",
       "matches": 13
@@ -75868,8 +75868,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 2.633,
-      "margin": 0.133,
+      "estimate": 2.632,
+      "margin": 0.132,
       "call": "hold",
       "label": "Holds",
       "matches": 32
@@ -77538,8 +77538,8 @@
     "state": "NV",
     "baseline_source": "ntrp_default",
     "bump": {
-      "estimate": 2.45,
-      "margin": -0.05,
+      "estimate": 2.451,
+      "margin": -0.049,
       "call": "lean_down",
       "label": "Leaning down",
       "matches": 13
@@ -77941,8 +77941,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.559,
-      "margin": 0.059,
+      "estimate": 2.558,
+      "margin": 0.058,
       "call": "hold",
       "label": "Holds",
       "matches": 28,
@@ -79334,8 +79334,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.563,
-      "margin": 0.063,
+      "estimate": 2.564,
+      "margin": 0.064,
       "call": "hold",
       "label": "Holds",
       "matches": 27
@@ -81703,8 +81703,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.523,
-      "margin": 0.023,
+      "estimate": 2.522,
+      "margin": 0.022,
       "call": "lean_down",
       "label": "Leaning down",
       "matches": 26
@@ -87102,8 +87102,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.394,
-      "margin": -0.106,
+      "estimate": 2.393,
+      "margin": -0.107,
       "call": "down",
       "label": "Likely down",
       "matches": 31,
@@ -88889,8 +88889,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.53,
-      "margin": 0.03,
+      "estimate": 2.529,
+      "margin": 0.029,
       "call": "lean_up",
       "label": "Leaning up",
       "matches": 19
@@ -91782,8 +91782,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.403,
-      "margin": -0.097,
+      "estimate": 2.404,
+      "margin": -0.096,
       "call": "hold",
       "label": "Holds",
       "matches": 10
@@ -92635,8 +92635,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 2.72,
-      "margin": 0.22,
+      "estimate": 2.719,
+      "margin": 0.219,
       "call": "hold",
       "label": "Holds",
       "matches": 4,
@@ -96304,8 +96304,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.419,
-      "margin": -0.081,
+      "estimate": 2.418,
+      "margin": -0.082,
       "call": "hold",
       "label": "Holds",
       "matches": 23
@@ -99577,8 +99577,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.975,
-      "margin": 0.475,
+      "estimate": 3.976,
+      "margin": 0.476,
       "call": "up",
       "label": "Likely up",
       "matches": 37
@@ -100102,8 +100102,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.465,
-      "margin": -0.035,
+      "estimate": 3.464,
+      "margin": -0.036,
       "call": "hold",
       "label": "Holds",
       "matches": 68
@@ -100735,8 +100735,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.487,
-      "margin": -0.013,
+      "estimate": 3.485,
+      "margin": -0.015,
       "call": "lean_up",
       "label": "Leaning up",
       "matches": 55
@@ -101885,8 +101885,8 @@
     "team": "DRAGONRIDGE CC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.53,
-    "current_division_rating": 3.5129,
-    "global_rating": 3.5129,
+    "current_division_rating": 3.5132,
+    "global_rating": 3.5132,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-1",
     "lines_played": 2,
@@ -101896,8 +101896,8 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "No 3.0 matches played yet. 5-0 in 3.5. In 3.5: D1 beat Mary Lind (3.37) + Kathleen Chamberlain (3.56) in a third-set tiebreak.",
     "notes_35": "Undefeated but all opponents below baseline (avg 3.30).",
-    "rating_30": 3.5129,
-    "rating_35": 3.5129,
+    "rating_30": 3.5132,
+    "rating_35": 3.5132,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.53,
     "iter_rating_35": 4.724,
@@ -101961,17 +101961,17 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.358,
-      "margin": -0.142,
+      "estimate": 3.345,
+      "margin": -0.155,
       "call": "hold",
       "label": "Holds",
       "matches": 43
     },
     "shiq_v8": 3.5625,
-    "shiq_doubles": 3.5129,
+    "shiq_doubles": 3.5132,
     "shiq_matches": 44,
     "shiq_singles_matches": 1,
-    "shiq_singles": 3.5182,
+    "shiq_singles": 3.5185,
     "wtn": {
       "singles": {
         "wtn": 30.75,
@@ -102156,7 +102156,7 @@
       ],
       "11/23/2026": [
         3.5793,
-        3.5129
+        3.5132
       ]
     },
     "shiq_lines": {
@@ -102334,7 +102334,7 @@
       ],
       "L1012219257|#3 Doubles": [
         3.5793,
-        3.5129
+        3.5132
       ]
     },
     "lines_played_35": [
@@ -102871,8 +102871,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.651,
-      "margin": 0.151,
+      "estimate": 3.645,
+      "margin": 0.145,
       "call": "up",
       "label": "Likely up",
       "matches": 57
@@ -103351,8 +103351,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.488,
-      "margin": -0.012,
+      "estimate": 3.481,
+      "margin": -0.019,
       "call": "lean_up",
       "label": "Leaning up",
       "matches": 20
@@ -104336,8 +104336,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.234,
-      "margin": 0.234,
+      "estimate": 3.235,
+      "margin": 0.235,
       "call": "hold",
       "label": "Holds",
       "matches": 43
@@ -104748,8 +104748,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.285,
-      "margin": -0.215,
+      "estimate": 3.28,
+      "margin": -0.22,
       "call": "hold",
       "label": "Holds",
       "matches": 50
@@ -105113,8 +105113,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.428,
-      "margin": -0.072,
+      "estimate": 3.429,
+      "margin": -0.071,
       "call": "hold",
       "label": "Holds",
       "matches": 28
@@ -105963,8 +105963,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.472,
-      "margin": -0.028,
+      "estimate": 3.473,
+      "margin": -0.027,
       "call": "hold",
       "label": "Holds",
       "matches": 21
@@ -106234,8 +106234,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.266,
-      "margin": -0.234,
+      "estimate": 3.264,
+      "margin": -0.236,
       "call": "hold",
       "label": "Holds",
       "matches": 42
@@ -106667,8 +106667,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.317,
-      "margin": -0.183,
+      "estimate": 3.316,
+      "margin": -0.184,
       "call": "hold",
       "label": "Holds",
       "matches": 67
@@ -107240,8 +107240,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.526,
-      "margin": 0.026,
+      "estimate": 3.525,
+      "margin": 0.025,
       "call": "lean_up",
       "label": "Leaning up",
       "matches": 21
@@ -107494,8 +107494,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.355,
-      "margin": -0.145,
+      "estimate": 3.354,
+      "margin": -0.146,
       "call": "hold",
       "label": "Holds",
       "matches": 42
@@ -108562,8 +108562,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.271,
-      "margin": -0.229,
+      "estimate": 3.269,
+      "margin": -0.231,
       "call": "hold",
       "label": "Holds",
       "matches": 45
@@ -109057,8 +109057,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.181,
-      "margin": 0.181,
+      "estimate": 3.18,
+      "margin": 0.18,
       "call": "hold",
       "label": "Holds",
       "matches": 60
@@ -109616,8 +109616,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.318,
-      "margin": -0.182,
+      "estimate": 3.317,
+      "margin": -0.183,
       "call": "hold",
       "label": "Holds",
       "matches": 33
@@ -110079,8 +110079,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.826,
-      "margin": -0.174,
+      "estimate": 2.825,
+      "margin": -0.175,
       "call": "hold",
       "label": "Holds",
       "matches": 4,
@@ -110673,8 +110673,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.206,
-      "margin": 0.206,
+      "estimate": 3.195,
+      "margin": 0.195,
       "call": "hold",
       "label": "Holds",
       "matches": 54
@@ -111175,8 +111175,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.206,
-      "margin": 0.206,
+      "estimate": 3.205,
+      "margin": 0.205,
       "call": "hold",
       "label": "Holds",
       "matches": 12
@@ -111371,8 +111371,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.095,
-      "margin": 0.095,
+      "estimate": 3.091,
+      "margin": 0.091,
       "call": "hold",
       "label": "Holds",
       "matches": 60
@@ -112082,8 +112082,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.356,
-      "margin": -0.144,
+      "estimate": 3.35,
+      "margin": -0.15,
       "call": "hold",
       "label": "Holds",
       "matches": 31
@@ -112458,8 +112458,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.391,
-      "margin": -0.109,
+      "estimate": 3.39,
+      "margin": -0.11,
       "call": "hold",
       "label": "Holds",
       "matches": 45
@@ -113264,8 +113264,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.294,
-      "margin": -0.206,
+      "estimate": 3.293,
+      "margin": -0.207,
       "call": "hold",
       "label": "Holds",
       "matches": 81
@@ -113943,8 +113943,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.086,
-      "margin": 0.086,
+      "estimate": 3.085,
+      "margin": 0.085,
       "call": "hold",
       "label": "Holds",
       "matches": 20
@@ -114520,8 +114520,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.264,
-      "margin": -0.236,
+      "estimate": 3.26,
+      "margin": -0.24,
       "call": "hold",
       "label": "Holds",
       "matches": 33
@@ -114913,8 +114913,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.397,
-      "margin": -0.103,
+      "estimate": 3.396,
+      "margin": -0.104,
       "call": "hold",
       "label": "Holds",
       "matches": 26
@@ -115234,8 +115234,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.263,
-      "margin": -0.237,
+      "estimate": 3.266,
+      "margin": -0.234,
       "call": "hold",
       "label": "Holds",
       "matches": 53
@@ -115727,8 +115727,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.331,
-      "margin": -0.169,
+      "estimate": 3.33,
+      "margin": -0.17,
       "call": "hold",
       "label": "Holds",
       "matches": 30
@@ -116074,8 +116074,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.319,
-      "margin": -0.181,
+      "estimate": 3.321,
+      "margin": -0.179,
       "call": "hold",
       "label": "Holds",
       "matches": 34
@@ -117208,8 +117208,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.281,
-      "margin": -0.219,
+      "estimate": 3.278,
+      "margin": -0.222,
       "call": "hold",
       "label": "Holds",
       "matches": 51
@@ -117698,8 +117698,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.31,
-      "margin": -0.19,
+      "estimate": 3.309,
+      "margin": -0.191,
       "call": "hold",
       "label": "Holds",
       "matches": 59
@@ -118245,8 +118245,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.34,
-      "margin": -0.16,
+      "estimate": 3.338,
+      "margin": -0.162,
       "call": "hold",
       "label": "Holds",
       "matches": 30
@@ -118985,8 +118985,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.315,
-      "margin": -0.185,
+      "estimate": 3.326,
+      "margin": -0.174,
       "call": "hold",
       "label": "Holds",
       "matches": 33
@@ -119262,8 +119262,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.239,
-      "margin": 0.239,
+      "estimate": 3.229,
+      "margin": 0.229,
       "call": "hold",
       "label": "Holds",
       "matches": 18
@@ -119509,8 +119509,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.567,
-      "margin": 0.067,
+      "estimate": 3.565,
+      "margin": 0.065,
       "call": "up",
       "label": "Likely up",
       "matches": 34
@@ -119802,8 +119802,8 @@
     "team": "DTC #2",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.47,
-    "current_division_rating": 3.3727,
-    "global_rating": 3.3727,
+    "current_division_rating": 3.2878,
+    "global_rating": 3.2878,
     "ntrp_rating": "3.5 C",
     "wl_record": "0-3",
     "lines_played": 3,
@@ -119813,8 +119813,8 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "No 3.0 matches played yet. 6-1 in 3.5. In 3.5: S2 beat Hayley Rodes (3.51) comfortably.",
     "notes_35": "Upset: W4 D1 with Nicole Reyes — beat Nancy Holland (3.40) + Rika Cook (3.46) in a tiebreak at 41% odds. Tough loss in W3 D2 alongside Melissa Kwong-Blais to Lee/Uyeno — one of the division's top pairs (4-1). Dynamically deployed across formats — wins both in singles (3-0) and doubles (3-1).",
-    "rating_30": 3.3727,
-    "rating_35": 3.3727,
+    "rating_30": 3.2878,
+    "rating_35": 3.2878,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.47,
     "iter_rating_35": 4.7524,
@@ -119841,8 +119841,8 @@
       "9/11/2026": 3.7206,
       "9/12/2026": 3.6311,
       "11/6/2026": 3.4525,
-      "11/7/2026": 3.429,
-      "11/8/2026": 3.3787
+      "11/7/2026": 3.3913,
+      "11/8/2026": 3.3059
     },
     "rating_post_timeline_30": {},
     "rating_post_timeline_35": {
@@ -119865,24 +119865,24 @@
       "9/1/2026": 3.7206,
       "9/11/2026": 3.6311,
       "9/12/2026": 3.5495,
-      "11/6/2026": 3.429,
-      "11/7/2026": 3.3787,
-      "11/8/2026": 3.3686
+      "11/6/2026": 3.3913,
+      "11/7/2026": 3.3059,
+      "11/8/2026": 3.2796
     },
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.354,
-      "margin": -0.146,
+      "estimate": 3.321,
+      "margin": -0.179,
       "call": "hold",
       "label": "Holds",
       "matches": 38
     },
     "shiq_v8": 3.5822,
-    "shiq_doubles": 3.3727,
+    "shiq_doubles": 3.2878,
     "shiq_matches": 37,
     "shiq_singles_matches": 12,
-    "shiq_singles": 3.3525,
+    "shiq_singles": 3.2676,
     "wtn": {
       "singles": {
         "wtn": 25.99,
@@ -120015,19 +120015,19 @@
       ],
       "11/6/2026": [
         3.4525,
-        3.429
+        3.3913
       ],
       "11/7/2026": [
-        3.429,
-        3.3787
+        3.3913,
+        3.3059
       ],
       "11/8/2026": [
-        3.3787,
-        3.3686
+        3.3059,
+        3.2796
       ],
       "11/21/2026": [
-        3.3686,
-        3.3727
+        3.2796,
+        3.2878
       ]
     },
     "shiq_lines": {
@@ -120157,27 +120157,27 @@
       ],
       "C3182417|#2 Doubles": [
         3.4525,
-        3.417
+        3.3983
       ],
       "C3182419|#2 Doubles": [
-        3.417,
-        3.429
+        3.3983,
+        3.3913
       ],
       "C3182421|#2 Doubles": [
-        3.429,
-        3.4115
+        3.3913,
+        3.3553
       ],
       "C3182425|#2 Doubles": [
-        3.4115,
-        3.3787
+        3.3553,
+        3.3059
       ],
       "C3182429|#2 Doubles": [
-        3.3787,
-        3.3686
+        3.3059,
+        3.2796
       ],
       "L1012172493|#3 Doubles": [
-        3.3686,
-        3.3727
+        3.2796,
+        3.2878
       ]
     },
     "lines_played_35": [
@@ -120256,8 +120256,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.294,
-      "margin": -0.206,
+      "estimate": 3.3,
+      "margin": -0.2,
       "call": "hold",
       "label": "Holds",
       "matches": 39
@@ -120666,8 +120666,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.241,
-      "margin": 0.241,
+      "estimate": 3.235,
+      "margin": 0.235,
       "call": "hold",
       "label": "Holds",
       "matches": 40
@@ -121122,8 +121122,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.104,
-      "margin": 0.104,
+      "estimate": 3.103,
+      "margin": 0.103,
       "call": "hold",
       "label": "Holds",
       "matches": 57
@@ -121604,8 +121604,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.295,
-      "margin": -0.205,
+      "estimate": 3.278,
+      "margin": -0.222,
       "call": "hold",
       "label": "Holds",
       "matches": 21
@@ -121832,8 +121832,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.282,
-      "margin": -0.218,
+      "estimate": 3.279,
+      "margin": -0.221,
       "call": "hold",
       "label": "Holds",
       "matches": 29
@@ -122154,8 +122154,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.177,
-      "margin": 0.177,
+      "estimate": 3.162,
+      "margin": 0.162,
       "call": "hold",
       "label": "Holds",
       "matches": 11
@@ -122338,8 +122338,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.235,
-      "margin": 0.235,
+      "estimate": 3.234,
+      "margin": 0.234,
       "call": "hold",
       "label": "Holds",
       "matches": 34
@@ -122713,8 +122713,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.132,
-      "margin": 0.132,
+      "estimate": 3.129,
+      "margin": 0.129,
       "call": "hold",
       "label": "Holds",
       "matches": 28
@@ -123027,8 +123027,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.297,
-      "margin": -0.203,
+      "estimate": 3.295,
+      "margin": -0.205,
       "call": "hold",
       "label": "Holds",
       "matches": 32
@@ -123373,8 +123373,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.188,
-      "margin": 0.188,
+      "estimate": 3.184,
+      "margin": 0.184,
       "call": "hold",
       "label": "Holds",
       "matches": 20
@@ -123637,8 +123637,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.253,
-      "margin": -0.247,
+      "estimate": 3.247,
+      "margin": 0.247,
       "call": "hold",
       "label": "Holds",
       "matches": 65
@@ -124993,8 +124993,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.254,
-      "margin": -0.246,
+      "estimate": 3.252,
+      "margin": -0.248,
       "call": "hold",
       "label": "Holds",
       "matches": 33
@@ -125359,8 +125359,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.35,
-      "margin": -0.15,
+      "estimate": 3.349,
+      "margin": -0.151,
       "call": "hold",
       "label": "Holds",
       "matches": 16
@@ -125562,8 +125562,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.036,
-      "margin": 0.036,
+      "estimate": 3.037,
+      "margin": 0.037,
       "call": "hold",
       "label": "Holds",
       "matches": 28
@@ -125860,8 +125860,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.288,
-      "margin": -0.212,
+      "estimate": 3.287,
+      "margin": -0.213,
       "call": "hold",
       "label": "Holds",
       "matches": 64
@@ -126456,8 +126456,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.273,
-      "margin": -0.227,
+      "estimate": 3.271,
+      "margin": -0.229,
       "call": "hold",
       "label": "Holds",
       "matches": 22
@@ -126723,8 +126723,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.116,
-      "margin": 0.116,
+      "estimate": 3.117,
+      "margin": 0.117,
       "call": "hold",
       "label": "Holds",
       "matches": 37
@@ -127764,8 +127764,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.185,
-      "margin": 0.185,
+      "estimate": 3.184,
+      "margin": 0.184,
       "call": "hold",
       "label": "Holds",
       "matches": 27
@@ -128317,8 +128317,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.033,
-      "margin": 0.033,
+      "estimate": 3.031,
+      "margin": 0.031,
       "call": "hold",
       "label": "Holds",
       "matches": 62
@@ -128834,8 +128834,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.403,
-      "margin": -0.097,
+      "estimate": 3.402,
+      "margin": -0.098,
       "call": "hold",
       "label": "Holds",
       "matches": 20
@@ -129075,8 +129075,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.294,
-      "margin": -0.206,
+      "estimate": 3.293,
+      "margin": -0.207,
       "call": "hold",
       "label": "Holds",
       "matches": 26
@@ -129386,8 +129386,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.357,
-      "margin": -0.143,
+      "estimate": 3.352,
+      "margin": -0.148,
       "call": "hold",
       "label": "Holds",
       "matches": 32
@@ -129754,8 +129754,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.439,
-      "margin": -0.061,
+      "estimate": 3.438,
+      "margin": -0.062,
       "call": "hold",
       "label": "Holds",
       "matches": 21
@@ -130084,8 +130084,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.271,
-      "margin": -0.229,
+      "estimate": 3.26,
+      "margin": -0.24,
       "call": "hold",
       "label": "Holds",
       "matches": 50
@@ -130506,8 +130506,8 @@
     "team": "DTC #2",
     "division": "3.5 Women A",
     "dynamic_rating_baseline": 3.4,
-    "current_division_rating": 3.6645,
-    "global_rating": 3.6645,
+    "current_division_rating": 3.4916,
+    "global_rating": 3.4916,
     "ntrp_rating": "3.5 C",
     "wl_record": "1-3",
     "lines_played": 4,
@@ -130517,8 +130517,8 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl04_LinkButton2",
     "notes_30": "No 3.0 matches played yet. 9-0 in 3.5. In 3.5: D1 beat Yan Uyeno (3.47) + Tracey Lee (3.52) in a third-set tiebreak.",
     "notes_35": "Most-deployed player (9/12 weeks). Upset: W8 D1 with Nicole Reyes — beat Yan Uyeno (3.47) + Tracey Lee (3.52) in a tiebreak at 36% odds.",
-    "rating_30": 3.6645,
-    "rating_35": 3.6645,
+    "rating_30": 3.4916,
+    "rating_35": 3.4916,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.4,
     "iter_rating_35": 4.7264,
@@ -130544,7 +130544,10 @@
       "9/12/2026": 3.7177,
       "9/19/2026": 3.751,
       "9/26/2026": 3.7453,
-      "10/11/2026": 3.6751
+      "10/11/2026": 3.6751,
+      "11/6/2026": 3.6645,
+      "11/7/2026": 3.6033,
+      "11/8/2026": 3.5179
     },
     "rating_post_timeline_30": {},
     "rating_post_timeline_35": {
@@ -130567,22 +130570,25 @@
       "9/12/2026": 3.751,
       "9/19/2026": 3.7486,
       "9/26/2026": 3.7179,
-      "10/11/2026": 3.6704
+      "10/11/2026": 3.6704,
+      "11/6/2026": 3.6033,
+      "11/7/2026": 3.5179,
+      "11/8/2026": 3.4916
     },
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.558,
-      "margin": 0.058,
-      "call": "up",
-      "label": "Likely up",
-      "matches": 36
+      "estimate": 3.377,
+      "margin": -0.123,
+      "call": "hold",
+      "label": "Holds",
+      "matches": 41
     },
     "shiq_v8": 3.5208,
-    "shiq_doubles": 3.6645,
-    "shiq_matches": 34,
+    "shiq_doubles": 3.4916,
+    "shiq_matches": 39,
     "shiq_singles_matches": 5,
-    "shiq_singles": 3.6428,
+    "shiq_singles": 3.47,
     "wtn": {
       "singles": {
         "wtn": 28.9,
@@ -130720,6 +130726,18 @@
       "10/31/2026": [
         3.6862,
         3.6645
+      ],
+      "11/6/2026": [
+        3.6645,
+        3.6033
+      ],
+      "11/7/2026": [
+        3.6033,
+        3.5179
+      ],
+      "11/8/2026": [
+        3.5179,
+        3.4916
       ]
     },
     "shiq_lines": {
@@ -130858,6 +130876,26 @@
       "L1012172476|#2 Doubles": [
         3.6862,
         3.6645
+      ],
+      "C3182417|#2 Doubles": [
+        3.6645,
+        3.6103
+      ],
+      "C3182419|#2 Doubles": [
+        3.6103,
+        3.6033
+      ],
+      "C3182421|#2 Doubles": [
+        3.6033,
+        3.5673
+      ],
+      "C3182425|#2 Doubles": [
+        3.5673,
+        3.5179
+      ],
+      "C3182429|#2 Doubles": [
+        3.5179,
+        3.4916
       ]
     },
     "lines_played_35": [
@@ -130931,8 +130969,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.167,
-      "margin": 0.167,
+      "estimate": 3.165,
+      "margin": 0.165,
       "call": "hold",
       "label": "Holds",
       "matches": 23
@@ -131201,8 +131239,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.067,
-      "margin": 0.067,
+      "estimate": 3.065,
+      "margin": 0.065,
       "call": "hold",
       "label": "Holds",
       "matches": 39
@@ -131592,8 +131630,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.096,
-      "margin": 0.096,
+      "estimate": 3.094,
+      "margin": 0.094,
       "call": "hold",
       "label": "Holds",
       "matches": 45
@@ -132031,8 +132069,8 @@
     "state": "NV",
     "baseline_source": "ntrp_default",
     "bump": {
-      "estimate": 3.282,
-      "margin": -0.218,
+      "estimate": 3.267,
+      "margin": -0.233,
       "call": "hold",
       "label": "Holds",
       "matches": 31
@@ -132338,8 +132376,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.044,
-      "margin": 0.044,
+      "estimate": 3.041,
+      "margin": 0.041,
       "call": "hold",
       "label": "Holds",
       "matches": 16
@@ -132631,8 +132669,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.081,
-      "margin": 0.081,
+      "estimate": 3.08,
+      "margin": 0.08,
       "call": "hold",
       "label": "Holds",
       "matches": 28
@@ -132954,8 +132992,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.166,
-      "margin": 0.166,
+      "estimate": 3.159,
+      "margin": 0.159,
       "call": "hold",
       "label": "Holds",
       "matches": 35
@@ -133567,8 +133605,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.224,
-      "margin": 0.224,
+      "estimate": 3.223,
+      "margin": 0.223,
       "call": "hold",
       "label": "Holds",
       "matches": 24
@@ -133863,8 +133901,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.094,
-      "margin": 0.094,
+      "estimate": 3.093,
+      "margin": 0.093,
       "call": "hold",
       "label": "Holds",
       "matches": 35
@@ -134179,8 +134217,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.137,
-      "margin": 0.137,
+      "estimate": 3.134,
+      "margin": 0.134,
       "call": "hold",
       "label": "Holds",
       "matches": 11
@@ -134396,8 +134434,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.449,
-      "margin": -0.051,
+      "estimate": 3.446,
+      "margin": -0.054,
       "call": "hold",
       "label": "Holds",
       "matches": 55
@@ -134915,8 +134953,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.054,
-      "margin": 0.054,
+      "estimate": 3.053,
+      "margin": 0.053,
       "call": "hold",
       "label": "Holds",
       "matches": 26
@@ -135202,8 +135240,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.171,
-      "margin": 0.171,
+      "estimate": 3.169,
+      "margin": 0.169,
       "call": "hold",
       "label": "Holds",
       "matches": 6
@@ -135334,8 +135372,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.205,
-      "margin": 0.205,
+      "estimate": 3.204,
+      "margin": 0.204,
       "call": "hold",
       "label": "Holds",
       "matches": 25
@@ -135719,8 +135757,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.328,
-      "margin": -0.172,
+      "estimate": 3.327,
+      "margin": -0.173,
       "call": "hold",
       "label": "Holds",
       "matches": 13
@@ -135912,8 +135950,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.091,
-      "margin": 0.091,
+      "estimate": 3.089,
+      "margin": 0.089,
       "call": "hold",
       "label": "Holds",
       "matches": 34
@@ -136622,8 +136660,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.098,
-      "margin": 0.098,
+      "estimate": 3.095,
+      "margin": 0.095,
       "call": "hold",
       "label": "Holds",
       "matches": 12
@@ -137330,8 +137368,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.317,
-      "margin": -0.183,
+      "estimate": 3.316,
+      "margin": -0.184,
       "call": "hold",
       "label": "Holds",
       "matches": 10
@@ -137786,8 +137824,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.37,
-      "margin": -0.13,
+      "estimate": 3.368,
+      "margin": -0.132,
       "call": "hold",
       "label": "Holds",
       "matches": 22
@@ -138070,8 +138108,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.246,
-      "margin": 0.246,
+      "estimate": 3.236,
+      "margin": 0.236,
       "call": "hold",
       "label": "Holds",
       "matches": 22
@@ -138386,8 +138424,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.329,
-      "margin": -0.171,
+      "estimate": 3.328,
+      "margin": -0.172,
       "call": "hold",
       "label": "Holds",
       "matches": 16
@@ -138628,8 +138666,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.198,
-      "margin": 0.198,
+      "estimate": 3.196,
+      "margin": 0.196,
       "call": "hold",
       "label": "Holds",
       "matches": 18
@@ -138902,8 +138940,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.145,
-      "margin": 0.145,
+      "estimate": 3.138,
+      "margin": 0.138,
       "call": "hold",
       "label": "Holds",
       "matches": 39
@@ -139245,8 +139283,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.069,
-      "margin": 0.069,
+      "estimate": 3.068,
+      "margin": 0.068,
       "call": "hold",
       "label": "Holds",
       "matches": 10
@@ -139978,8 +140016,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.364,
-      "margin": -0.136,
+      "estimate": 3.357,
+      "margin": -0.143,
       "call": "hold",
       "label": "Holds",
       "matches": 20
@@ -140230,8 +140268,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.34,
-      "margin": -0.16,
+      "estimate": 3.338,
+      "margin": -0.162,
       "call": "hold",
       "label": "Holds",
       "matches": 12
@@ -140442,8 +140480,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.249,
-      "margin": 0.249,
+      "estimate": 3.25,
+      "margin": 0.25,
       "call": "hold",
       "label": "Holds",
       "matches": 28
@@ -140938,8 +140976,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.111,
-      "margin": 0.111,
+      "estimate": 3.11,
+      "margin": 0.11,
       "call": "hold",
       "label": "Holds",
       "matches": 21
@@ -141178,8 +141216,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.139,
-      "margin": 0.139,
+      "estimate": 3.136,
+      "margin": 0.136,
       "call": "hold",
       "label": "Holds",
       "matches": 16
@@ -141378,8 +141416,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.112,
-      "margin": 0.112,
+      "estimate": 3.111,
+      "margin": 0.111,
       "call": "hold",
       "label": "Holds",
       "matches": 5,
@@ -141517,8 +141555,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.326,
-      "margin": -0.174,
+      "estimate": 3.325,
+      "margin": -0.175,
       "call": "hold",
       "label": "Holds",
       "matches": 20
@@ -141981,8 +142019,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.09,
-      "margin": 0.09,
+      "estimate": 3.091,
+      "margin": 0.091,
       "call": "hold",
       "label": "Holds",
       "matches": 50
@@ -142408,8 +142446,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.25,
-      "margin": 0.25,
+      "estimate": 3.247,
+      "margin": 0.247,
       "call": "hold",
       "label": "Holds",
       "matches": 11
@@ -142551,8 +142589,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.066,
-      "margin": 0.066,
+      "estimate": 3.065,
+      "margin": 0.065,
       "call": "hold",
       "label": "Holds",
       "matches": 8
@@ -142682,8 +142720,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.097,
-      "margin": 0.097,
+      "estimate": 3.089,
+      "margin": 0.089,
       "call": "hold",
       "label": "Holds",
       "matches": 17
@@ -142931,8 +142969,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.956,
-      "margin": -0.044,
+      "estimate": 2.957,
+      "margin": -0.043,
       "call": "lean_down",
       "label": "Leaning down",
       "matches": 36
@@ -143317,8 +143355,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.09,
-      "margin": 0.09,
+      "estimate": 3.089,
+      "margin": 0.089,
       "call": "hold",
       "label": "Holds",
       "matches": 11
@@ -143460,8 +143498,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.088,
-      "margin": 0.088,
+      "estimate": 3.087,
+      "margin": 0.087,
       "call": "hold",
       "label": "Holds",
       "matches": 23
@@ -143866,8 +143904,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.215,
-      "margin": 0.215,
+      "estimate": 3.214,
+      "margin": 0.214,
       "call": "hold",
       "label": "Holds",
       "matches": 24
@@ -144583,8 +144621,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.304,
-      "margin": -0.196,
+      "estimate": 3.297,
+      "margin": -0.203,
       "call": "hold",
       "label": "Holds",
       "matches": 30
@@ -144917,8 +144955,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.163,
-      "margin": 0.163,
+      "estimate": 3.158,
+      "margin": 0.158,
       "call": "hold",
       "label": "Holds",
       "matches": 37
@@ -145743,8 +145781,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.003,
-      "margin": 0.003,
+      "estimate": 3.004,
+      "margin": 0.004,
       "call": "lean_down",
       "label": "Leaning down",
       "matches": 14
@@ -145889,8 +145927,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.041,
-      "margin": 0.041,
+      "estimate": 3.039,
+      "margin": 0.039,
       "call": "hold",
       "label": "Holds",
       "matches": 7
@@ -146132,8 +146170,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.993,
-      "margin": -0.007,
+      "estimate": 2.992,
+      "margin": -0.008,
       "call": "lean_down",
       "label": "Leaning down",
       "matches": 23
@@ -146398,8 +146436,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.95,
-      "margin": -0.05,
+      "estimate": 2.949,
+      "margin": -0.051,
       "call": "hold",
       "label": "Holds",
       "matches": 33
@@ -147735,8 +147773,8 @@
     "team": "DRAGONRIDGE CC",
     "division": "3.5 Women B",
     "dynamic_rating_baseline": 3.04,
-    "current_division_rating": 3.4813,
-    "global_rating": 3.4813,
+    "current_division_rating": 3.4811,
+    "global_rating": 3.4811,
     "ntrp_rating": "3.5 C",
     "wl_record": "2-1",
     "lines_played": 3,
@@ -147746,8 +147784,8 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "No 3.0 matches played yet. 5-1 in 3.5. In 3.5: S1 beat Shilpa Daulat (3.46) in a tight match.",
     "notes_35": "Two upsets: W3 S1 — beat Valerie Witherspoon (3.45) in a tiebreak at 20% odds; W5 S1 — beat Shilpa Daulat (3.46) in a tight match at 30% odds. Started at S2 (lost vs weaker opp), moved up to S1 (won in a third-set tiebreak vs much weaker opp).",
-    "rating_30": 3.4813,
-    "rating_35": 3.4813,
+    "rating_30": 3.4811,
+    "rating_35": 3.4811,
     "baseline_date": "11/24/2025",
     "iter_rating_30": 3.04,
     "iter_rating_35": 4.8906,
@@ -147819,17 +147857,17 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.364,
-      "margin": -0.136,
+      "estimate": 3.36,
+      "margin": -0.14,
       "call": "hold",
       "label": "Holds",
       "matches": 25
     },
     "shiq_v8": 3.4991,
-    "shiq_doubles": 3.4813,
+    "shiq_doubles": 3.4811,
     "shiq_matches": 33,
     "shiq_singles_matches": 14,
-    "shiq_singles": 3.6975,
+    "shiq_singles": 3.6973,
     "wtn": {
       "singles": {
         "wtn": 25.76,
@@ -147974,7 +148012,7 @@
       ],
       "11/23/2026": [
         3.4149,
-        3.4813
+        3.4811
       ]
     },
     "shiq_lines": {
@@ -148108,7 +148146,7 @@
       ],
       "L1012219257|#3 Doubles": [
         3.4149,
-        3.4813
+        3.4811
       ]
     },
     "lines_played_35": [
@@ -148320,8 +148358,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.248,
-      "margin": 0.248,
+      "estimate": 3.246,
+      "margin": 0.246,
       "call": "hold",
       "label": "Holds",
       "matches": 7,
@@ -148477,8 +148515,8 @@
       "11/21/2026": 3.1048
     },
     "bump": {
-      "estimate": 3.156,
-      "margin": 0.156,
+      "estimate": 3.155,
+      "margin": 0.155,
       "call": "hold",
       "label": "Holds",
       "matches": 25
@@ -149024,8 +149062,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.077,
-      "margin": 0.077,
+      "estimate": 3.075,
+      "margin": 0.075,
       "call": "hold",
       "label": "Holds",
       "matches": 14
@@ -149429,8 +149467,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.928,
-      "margin": -0.072,
+      "estimate": 2.927,
+      "margin": -0.073,
       "call": "down",
       "label": "Likely down",
       "matches": 40
@@ -149893,8 +149931,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.971,
-      "margin": -0.029,
+      "estimate": 2.969,
+      "margin": -0.031,
       "call": "lean_down",
       "label": "Leaning down",
       "matches": 21
@@ -150154,8 +150192,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.916,
-      "margin": -0.084,
+      "estimate": 2.915,
+      "margin": -0.085,
       "call": "hold",
       "label": "Holds",
       "matches": 25
@@ -150474,8 +150512,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.075,
-      "margin": 0.075,
+      "estimate": 3.074,
+      "margin": 0.074,
       "call": "hold",
       "label": "Holds",
       "matches": 15
@@ -150889,10 +150927,10 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.03,
-      "margin": 0.03,
-      "call": "hold",
-      "label": "Holds",
+      "estimate": 3.021,
+      "margin": 0.021,
+      "call": "lean_down",
+      "label": "Leaning down",
       "matches": 31
     },
     "shiq_v8": 3.0557,
@@ -151716,8 +151754,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.01,
-      "margin": 0.01,
+      "estimate": 3.006,
+      "margin": 0.006,
       "call": "lean_down",
       "label": "Leaning down",
       "matches": 37
@@ -152218,8 +152256,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.157,
-      "margin": 0.157,
+      "estimate": 3.151,
+      "margin": 0.151,
       "call": "hold",
       "label": "Holds",
       "matches": 31
@@ -152554,8 +152592,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.898,
-      "margin": -0.102,
+      "estimate": 2.897,
+      "margin": -0.103,
       "call": "down",
       "label": "Likely down",
       "matches": 32
@@ -152835,8 +152873,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.173,
-      "margin": 0.173,
+      "estimate": 3.172,
+      "margin": 0.172,
       "call": "hold",
       "label": "Holds",
       "matches": 17,
@@ -153046,8 +153084,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.1,
-      "margin": 0.1,
+      "estimate": 3.098,
+      "margin": 0.098,
       "call": "hold",
       "label": "Holds",
       "matches": 11
@@ -153250,8 +153288,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.143,
-      "margin": 0.143,
+      "estimate": 3.142,
+      "margin": 0.142,
       "call": "hold",
       "label": "Holds",
       "matches": 34
@@ -153600,10 +153638,10 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.975,
-      "margin": -0.025,
-      "call": "lean_up",
-      "label": "Leaning up",
+      "estimate": 2.973,
+      "margin": -0.027,
+      "call": "hold",
+      "label": "Holds",
       "matches": 23
     },
     "shiq_v8": 3.0879,
@@ -153861,8 +153899,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.815,
-      "margin": -0.185,
+      "estimate": 2.805,
+      "margin": -0.195,
       "call": "hold",
       "label": "Holds",
       "matches": 13
@@ -154468,8 +154506,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.729,
-      "margin": 0.229,
+      "estimate": 2.725,
+      "margin": 0.225,
       "call": "hold",
       "label": "Holds",
       "matches": 19
@@ -154725,8 +154763,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.096,
-      "margin": 0.096,
+      "estimate": 3.095,
+      "margin": 0.095,
       "call": "up",
       "label": "Likely up",
       "matches": 32
@@ -155013,8 +155051,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.08,
-      "margin": 0.08,
+      "estimate": 3.079,
+      "margin": 0.079,
       "call": "hold",
       "label": "Holds",
       "matches": 9,
@@ -155167,8 +155205,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.826,
-      "margin": -0.174,
+      "estimate": 2.825,
+      "margin": -0.175,
       "call": "hold",
       "label": "Holds",
       "matches": 10
@@ -155617,8 +155655,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.864,
-      "margin": -0.136,
+      "estimate": 2.863,
+      "margin": -0.137,
       "call": "hold",
       "label": "Holds",
       "matches": 29
@@ -155925,8 +155963,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.953,
-      "margin": -0.047,
+      "estimate": 2.952,
+      "margin": -0.048,
       "call": "hold",
       "label": "Holds",
       "matches": 14
@@ -156451,8 +156489,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.058,
-      "margin": 0.058,
+      "estimate": 3.057,
+      "margin": 0.057,
       "call": "up",
       "label": "Likely up",
       "matches": 34
@@ -157540,8 +157578,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.778,
-      "margin": -0.222,
+      "estimate": 2.777,
+      "margin": -0.223,
       "call": "hold",
       "label": "Holds",
       "matches": 11
@@ -157976,8 +158014,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.198,
-      "margin": 0.198,
+      "estimate": 3.195,
+      "margin": 0.195,
       "call": "hold",
       "label": "Holds",
       "matches": 13,
@@ -161699,8 +161737,8 @@
     "team": "SOUTHERN HIGHLANDS",
     "division": "4.0 Women B",
     "dynamic_rating_baseline": 3.99,
-    "current_division_rating": 3.7818,
-    "global_rating": 3.7818,
+    "current_division_rating": 3.782,
+    "global_rating": 3.782,
     "ntrp_rating": null,
     "wl_record": null,
     "lines_played": null,
@@ -161710,8 +161748,8 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "",
     "notes_35": "",
-    "rating_30": 3.7818,
-    "rating_35": 3.7818,
+    "rating_30": 3.782,
+    "rating_35": 3.782,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.99,
     "iter_rating_35": 3.99,
@@ -161728,7 +161766,7 @@
     "shiq_v8": 3.99,
     "rating_post_timeline_30": {},
     "rating_post_timeline_35": {},
-    "shiq_doubles": 3.7818,
+    "shiq_doubles": 3.782,
     "shiq_matches": 36,
     "shiq_singles_matches": 0,
     "shiq_timeline": {
@@ -161874,7 +161912,7 @@
       ],
       "11/23/2026": [
         3.8264,
-        3.7818
+        3.782
       ]
     },
     "shiq_lines": {
@@ -162020,7 +162058,7 @@
       ],
       "L1012219257|#1 Doubles": [
         3.8264,
-        3.7818
+        3.782
       ]
     }
   },
@@ -162251,8 +162289,8 @@
     "team": "DTC #4",
     "division": "4.0 Women B",
     "dynamic_rating_baseline": 4.0502,
-    "current_division_rating": 3.7545,
-    "global_rating": 3.7545,
+    "current_division_rating": 3.7543,
+    "global_rating": 3.7543,
     "ntrp_rating": null,
     "wl_record": null,
     "lines_played": null,
@@ -162262,8 +162300,8 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "",
     "notes_35": "",
-    "rating_30": 3.7545,
-    "rating_35": 3.7545,
+    "rating_30": 3.7543,
+    "rating_35": 3.7543,
     "baseline_date": "12/06/2025",
     "iter_rating_30": 4.0502,
     "iter_rating_35": 4.0502,
@@ -162283,10 +162321,10 @@
       "8/18/2026": 3.8699
     },
     "rating_post_timeline_35": {},
-    "shiq_doubles": 3.7545,
+    "shiq_doubles": 3.7543,
     "shiq_matches": 50,
     "shiq_singles_matches": 3,
-    "shiq_singles": 3.6715,
+    "shiq_singles": 3.6712,
     "shiq_timeline": {
       "1/10/2026": [
         3.8132,
@@ -162478,7 +162516,7 @@
       ],
       "11/23/2026": [
         3.6882,
-        3.7545
+        3.7543
       ]
     },
     "shiq_lines": {
@@ -162680,7 +162718,7 @@
       ],
       "L1012219257|#3 Doubles": [
         3.6882,
-        3.7545
+        3.7543
       ]
     }
   },
@@ -163209,8 +163247,8 @@
     "team": "SPANISH OAKS",
     "division": "4.0 Women A",
     "dynamic_rating_baseline": 3.94,
-    "current_division_rating": 3.8724,
-    "global_rating": 3.8724,
+    "current_division_rating": 3.8721,
+    "global_rating": 3.8721,
     "ntrp_rating": null,
     "wl_record": null,
     "lines_played": null,
@@ -163219,8 +163257,8 @@
     "profile_url": "/adult/profile.aspx?playername=Rachel Calderon Young",
     "notes_30": "",
     "notes_35": "",
-    "rating_30": 3.8724,
-    "rating_35": 3.8724,
+    "rating_30": 3.8721,
+    "rating_35": 3.8721,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.94,
     "iter_rating_35": 3.94,
@@ -163241,10 +163279,10 @@
     "rating_post_timeline_35": {
       "7/25/2026": 3.9835
     },
-    "shiq_doubles": 3.8724,
+    "shiq_doubles": 3.8721,
     "shiq_matches": 39,
     "shiq_singles_matches": 12,
-    "shiq_singles": 3.9183,
+    "shiq_singles": 3.918,
     "shiq_timeline": {
       "1/3/2026": [
         3.9407,
@@ -163396,7 +163434,7 @@
       ],
       "11/23/2026": [
         3.8277,
-        3.8724
+        3.8721
       ]
     },
     "shiq_lines": {
@@ -163554,7 +163592,7 @@
       ],
       "L1012219257|#1 Doubles": [
         3.8277,
-        3.8724
+        3.8721
       ]
     }
   },
@@ -163565,8 +163603,8 @@
     "team": "DTC #4",
     "division": "4.0 Women B",
     "dynamic_rating_baseline": 3.91,
-    "current_division_rating": 3.6966,
-    "global_rating": 3.6966,
+    "current_division_rating": 3.6964,
+    "global_rating": 3.6964,
     "ntrp_rating": null,
     "wl_record": null,
     "lines_played": null,
@@ -163576,8 +163614,8 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "",
     "notes_35": "",
-    "rating_30": 3.6966,
-    "rating_35": 3.6966,
+    "rating_30": 3.6964,
+    "rating_35": 3.6964,
     "baseline_date": "12/13/2025",
     "iter_rating_30": 3.91,
     "iter_rating_35": 3.91,
@@ -163594,7 +163632,7 @@
     "shiq_v8": 3.91,
     "rating_post_timeline_30": {},
     "rating_post_timeline_35": {},
-    "shiq_doubles": 3.6966,
+    "shiq_doubles": 3.6964,
     "shiq_matches": 35,
     "shiq_singles_matches": 0,
     "shiq_timeline": {
@@ -163736,7 +163774,7 @@
       ],
       "11/23/2026": [
         3.652,
-        3.6966
+        3.6964
       ]
     },
     "shiq_lines": {
@@ -163878,7 +163916,7 @@
       ],
       "L1012219257|#1 Doubles": [
         3.652,
-        3.6966
+        3.6964
       ]
     }
   },
@@ -164526,8 +164564,8 @@
     "team": "SOUTHERN HIGHLANDS",
     "division": "4.0 Women B",
     "dynamic_rating_baseline": 3.92,
-    "current_division_rating": 3.9181,
-    "global_rating": 3.9181,
+    "current_division_rating": 3.9142,
+    "global_rating": 3.9142,
     "ntrp_rating": null,
     "wl_record": null,
     "lines_played": null,
@@ -164537,8 +164575,8 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "",
     "notes_35": "",
-    "rating_30": 3.9181,
-    "rating_35": 3.9181,
+    "rating_30": 3.9142,
+    "rating_35": 3.9142,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.92,
     "iter_rating_35": 3.92,
@@ -164555,7 +164593,7 @@
     "shiq_v8": 3.92,
     "rating_post_timeline_30": {},
     "rating_post_timeline_35": {},
-    "shiq_doubles": 3.9181,
+    "shiq_doubles": 3.9142,
     "shiq_matches": 33,
     "shiq_singles_matches": 0,
     "shiq_timeline": {
@@ -164685,11 +164723,11 @@
       ],
       "11/21/2026": [
         3.9668,
-        3.9627
+        3.9586
       ],
       "11/23/2026": [
-        3.9627,
-        3.9181
+        3.9586,
+        3.9142
       ]
     },
     "shiq_lines": {
@@ -164819,11 +164857,11 @@
       ],
       "L1012172493|#3 Doubles": [
         3.9668,
-        3.9627
+        3.9586
       ],
       "L1012219257|#1 Doubles": [
-        3.9627,
-        3.9181
+        3.9586,
+        3.9142
       ]
     }
   },
@@ -172502,8 +172540,8 @@
     "team": "LIFE TIME FITNESS/GV",
     "division": "4.0 Women B",
     "dynamic_rating_baseline": 3.88,
-    "current_division_rating": 3.7331,
-    "global_rating": 3.7331,
+    "current_division_rating": 3.7292,
+    "global_rating": 3.7292,
     "ntrp_rating": null,
     "wl_record": null,
     "lines_played": null,
@@ -172513,8 +172551,8 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "",
     "notes_35": "",
-    "rating_30": 3.7331,
-    "rating_35": 3.7331,
+    "rating_30": 3.7292,
+    "rating_35": 3.7292,
     "baseline_date": "12/15/2025",
     "iter_rating_30": 3.88,
     "iter_rating_35": 3.88,
@@ -172531,7 +172569,7 @@
     "shiq_v8": 3.88,
     "rating_post_timeline_30": {},
     "rating_post_timeline_35": {},
-    "shiq_doubles": 3.7331,
+    "shiq_doubles": 3.7292,
     "shiq_matches": 17,
     "shiq_singles_matches": 0,
     "shiq_timeline": {
@@ -172597,11 +172635,11 @@
       ],
       "11/21/2026": [
         3.8035,
-        3.7995
+        3.7953
       ],
       "11/23/2026": [
-        3.7995,
-        3.7331
+        3.7953,
+        3.7292
       ]
     },
     "shiq_lines": {
@@ -172667,11 +172705,11 @@
       ],
       "L1012172493|#3 Doubles": [
         3.8035,
-        3.7995
+        3.7953
       ],
       "L1012219257|#3 Doubles": [
-        3.7995,
-        3.7331
+        3.7953,
+        3.7292
       ]
     }
   },
@@ -178449,8 +178487,8 @@
     "state": "NV",
     "baseline_source": "ntrp_default",
     "bump": {
-      "estimate": 3.465,
-      "margin": -0.035,
+      "estimate": 3.464,
+      "margin": -0.036,
       "call": "hold",
       "label": "Holds",
       "matches": 30
@@ -180676,8 +180714,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.81,
-      "margin": 0.31,
+      "estimate": 3.808,
+      "margin": 0.308,
       "call": "up",
       "label": "Likely up",
       "matches": 15
@@ -182721,8 +182759,8 @@
     "team": "DTC #3",
     "division": "4.0 Women A",
     "dynamic_rating_baseline": 3.68,
-    "current_division_rating": 3.5932,
-    "global_rating": 3.5932,
+    "current_division_rating": 3.5974,
+    "global_rating": 3.5974,
     "ntrp_rating": null,
     "wl_record": null,
     "lines_played": null,
@@ -182732,8 +182770,8 @@
     "tennislink_id": "ctl00_mainContent_rptPlayersNameYear_ctl00_rptPlayerName_ctl00_LinkButton2",
     "notes_30": "",
     "notes_35": "",
-    "rating_30": 3.5932,
-    "rating_35": 3.5932,
+    "rating_30": 3.5974,
+    "rating_35": 3.5974,
     "baseline_date": "03/14/2026",
     "iter_rating_30": 3.68,
     "iter_rating_35": 3.68,
@@ -182750,10 +182788,10 @@
     "shiq_v8": 3.68,
     "rating_post_timeline_30": {},
     "rating_post_timeline_35": {},
-    "shiq_doubles": 3.5932,
+    "shiq_doubles": 3.5974,
     "shiq_matches": 12,
     "shiq_singles_matches": 2,
-    "shiq_singles": 3.5728,
+    "shiq_singles": 3.577,
     "shiq_timeline": {
       "3/14/2026": [
         3.6729,
@@ -182801,7 +182839,7 @@
       ],
       "11/21/2026": [
         3.5892,
-        3.5932
+        3.5974
       ]
     },
     "shiq_lines": {
@@ -182851,7 +182889,7 @@
       ],
       "L1012172493|#3 Doubles": [
         3.5892,
-        3.5932
+        3.5974
       ]
     }
   },
@@ -190608,8 +190646,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.566,
-      "margin": 0.066,
+      "estimate": 3.565,
+      "margin": 0.065,
       "call": "up",
       "label": "Likely up",
       "matches": 19
@@ -192954,8 +192992,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.471,
-      "margin": -0.029,
+      "estimate": 3.469,
+      "margin": -0.031,
       "call": "hold",
       "label": "Holds",
       "matches": 18
@@ -194252,8 +194290,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.336,
-      "margin": -0.164,
+      "estimate": 3.335,
+      "margin": -0.165,
       "call": "hold",
       "label": "Holds",
       "matches": 13
@@ -194410,8 +194448,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 3.248,
-      "margin": 0.248,
+      "estimate": 3.247,
+      "margin": 0.247,
       "call": "hold",
       "label": "Holds",
       "matches": 24
@@ -194641,8 +194679,8 @@
     "state": "NV",
     "baseline_source": "oldest_fallback",
     "bump": {
-      "estimate": 3.235,
-      "margin": 0.235,
+      "estimate": 3.238,
+      "margin": 0.238,
       "call": "hold",
       "label": "Holds",
       "matches": 3
@@ -194728,8 +194766,8 @@
     "state": "NV",
     "baseline_source": "history",
     "bump": {
-      "estimate": 2.861,
-      "margin": -0.139,
+      "estimate": 2.86,
+      "margin": -0.14,
       "call": "down",
       "label": "Likely down",
       "matches": 20,
@@ -198055,8 +198093,8 @@
     "rating_post_timeline_35": {},
     "state": "NV",
     "bump": {
-      "estimate": 2.862,
-      "margin": -0.138,
+      "estimate": 2.861,
+      "margin": -0.139,
       "call": "hold",
       "label": "Holds",
       "matches": 13,
@@ -198234,8 +198272,8 @@
     "state": "NV",
     "team": "CLUB RIDGES",
     "bump": {
-      "estimate": 2.208,
-      "margin": 0.208,
+      "estimate": 2.207,
+      "margin": 0.207,
       "call": "hold",
       "label": "Holds",
       "matches": 7
@@ -198363,8 +198401,8 @@
     "state": "NV",
     "team": "LIFE TIME FITNESS/GV",
     "bump": {
-      "estimate": 3.247,
-      "margin": 0.247,
+      "estimate": 3.222,
+      "margin": 0.222,
       "call": "hold",
       "label": "Holds",
       "matches": 3
@@ -654896,8 +654934,8 @@
     "notes_30": "No 3.0 matches played yet. 7-0 in 3.5. In 3.5: D1 beat Yan Uyeno (3.47) + Tracey Lee (3.52) in a third-set tiebreak.",
     "notes_35": "Two upsets: W8 D1 with Megan Bell — beat Yan Uyeno (3.47) + Tracey Lee (3.52) in a tiebreak at 36% odds; W4 D1 with Loc Nguyen — beat Nancy Holland (3.40) + Rika Cook (3.46) in a tiebreak at 41% odds.",
     "bump": {
-      "estimate": 3.301,
-      "margin": -0.199,
+      "estimate": 3.314,
+      "margin": -0.186,
       "call": "hold",
       "label": "Holds",
       "matches": 38,
