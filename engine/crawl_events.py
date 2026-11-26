@@ -52,16 +52,39 @@ def person_keys(crawl: dict, pbn: dict) -> dict[str, str]:
     for k, p in pbn.items():
         if (p.get("state") or "NV").upper() == "NV":
             nv_keys.setdefault(R._name_key(p.get("name", "")), k)
+    # Colorado, Utah and Idaho players also have full seasons in players.json
+    # (their own dashboards), so playoff opponents from those states are
+    # linked by name and state and keep their own ShiQ/Bump. "INTERMOUNTAIN"
+    # (section-level team names) is linked only when the name is unique
+    # among those states.
+    other: dict[tuple[str, str], str] = {}
+    by_name: dict[str, list[str]] = {}
+    for k, p in pbn.items():
+        st = (p.get("state") or "NV").upper()
+        if st in AREA_STATE.values():
+            nk = R._name_key(p.get("name", ""))
+            other.setdefault((nk, st), k)
+            by_name.setdefault(nk, []).append(k)
     out = {}
     for pid, person in crawl.get("people", {}).items():
         key = None
-        if person.get("area") == "NEVADA":
-            for nm in [person["name"]] + list(person.get("aka") or []):
-                key = nv_keys.get(R._name_key(nm))
-                if key:
-                    break
+        area = person.get("area") or ""
+        names = [person["name"]] + list(person.get("aka") or [])
+        for nm in names:
+            nk = R._name_key(nm)
+            if area == "NEVADA":
+                key = nv_keys.get(nk)
+            elif area in AREA_STATE:
+                key = other.get((nk, AREA_STATE[area]))
+            elif area == "INTERMOUNTAIN" and len(by_name.get(nk, [])) == 1:
+                key = by_name[nk][0]
+            if key:
+                break
         out[pid] = key or f"tl::{pid}"
     return out
+
+
+AREA_STATE = {"COLORADO": "CO", "UTAH": "UT", "IDAHO": "ID"}
 
 
 def played_level(person: dict, matches: Optional[dict] = None) -> Optional[float]:

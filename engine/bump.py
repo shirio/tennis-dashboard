@@ -333,6 +333,9 @@ def counts_toward_year_end(date: str, league: str = "",
     return k(lo) <= k(date) <= k(hi)
 
 
+TR_STARTS: set[str] = set()   # filled by year_end_inputs
+
+
 def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_YEAR):
     """(events, starts, letters, playoffs) for the year-end fit: standings
     data plus the TennisLink team crawl, filtered to matches USTA counts."""
@@ -350,10 +353,15 @@ def year_end_inputs(players: list[dict], pbn: dict, year: int = CURRENT_RATING_Y
                    if counts_toward_year_end(e.date, matches[e.match_id].get("league", ""), year)]
         playoffs |= {mid for mid, m in matches.items() if m.get("kind") == "champ"}
         for pid, k in keys.items():
+            person = crawl["people"][pid]
             if k.startswith("tl::"):
-                person = crawl["people"][pid]
                 levels[k] = parse_level(person.get("level"))
                 starts[k] = start_rating(C.baseline_for(person, matches), *levels[k])
+            elif person.get("area") != "NEVADA" and C.tr_baseline(person) is not None:
+                # A CO/UT/ID playoff opponent linked to their own season: start at
+                # the hand-collected TennisRecord rating (see compute_bumps).
+                starts[k] = start_rating(C.tr_baseline(person), *levels[k])
+                TR_STARTS.add(k)
     # The rating year starts in the previous November, so its first weeks
     # (fall-league finals, Tri-Level Sectionals and Nationals) are in LAST
     # year's crawl. People are matched across years by their TennisLink
@@ -414,7 +422,7 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
         # Nothing is baked into a mid-level start, so every counted match counts.
         # Out-of-state ("tl::") players already start mid-level, or at their
         # hand-collected TennisRecord rating when we have one (baseline_for).
-        starts = {k: s if k.startswith("tl::") else
+        starts = {k: s if k.startswith("tl::") or k in TR_STARTS else
                   mid_level_start((levels.get(k) or (None,))[0], s)
                   for k, s in starts.items()}
         known = {}
