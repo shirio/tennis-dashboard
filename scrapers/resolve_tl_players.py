@@ -33,6 +33,8 @@ from __future__ import annotations
 
 import argparse
 import collections
+import hashlib
+import urllib.parse
 import json
 import os
 import re
@@ -58,6 +60,13 @@ ALIASES = {"Renee Johnson": "Renee Warner"}
 ONE_PERSON = {"Adela Smith", "Zharmayne Dizon", "Jason Schieck", "Larry Fernandez",
               "Jeffrey Gromny"}
 MANUAL_REVIEW: set[tuple[str, str]] = set()   # Amy Graybeal's Spanish Oaks Districts: confirmed hers
+
+
+def _tl_pid(history_url: str | None) -> str | None:
+    """TennisLink player id: the par1 of a ratings-list history_url, decoded.
+    The same person has the same par1 on every year's list."""
+    m = re.search(r"[?&]par1=([^&]+)", history_url or "")
+    return urllib.parse.unquote(m.group(1)) if m else None
 
 
 def _slug(n: str) -> str:
@@ -133,9 +142,12 @@ def champ_to_local(d) -> dict[str, str]:
             continue
         renamed = [t for t in known if not t.startswith("CHAMP|") and
                    re.match(r"^[A-Z]{2}/[^/]+/", t.rsplit("|", 1)[1]) and fits(t)]
-        votes = collections.Counter(t for n in names for t in on_roster.get(n, ()) if fits(t))
-        if votes and votes.most_common(1)[0][1] >= 2:
-            out[ctid] = votes.most_common(1)[0][0]
+        votes = collections.Counter(t for n in sorted(names)
+                                    for t in sorted(on_roster.get(n, ())) if fits(t))
+        # ties broken by team key, so results don't depend on set order
+        best = max(votes.items(), key=lambda kv: (kv[1], kv[0])) if votes else None
+        if best and best[1] >= 2:
+            out[ctid] = best[0]
         elif cteam.count("/") >= 2:
             # Sectionals/Nationals label "Nevada/Edge/18&Over4.0W" <-> league "NV/EDGE/18&OVERW4.0"
             cap = cteam.split("/")[1].strip().upper()
@@ -306,7 +318,18 @@ def resolve(d, fetch: bool) -> dict:
 
     def new_person(group, entry=None, flags=()):
         g0 = group[0]
-        pid = f"{g0['nname'].replace(' ', '-')}|{g0['area']}|{len(people)}"
+        # Stable ids (reusable across crawls, states, years): the TennisLink
+        # player id (par1 of the ratings-list history_url) when the person is
+        # on a list; else x:sha1(normalized name|first team key)[:12].
+        tl_pid = _tl_pid(entry.get("history_url")) if entry else None
+        if tl_pid and tl_pid not in people:
+            pid = tl_pid
+        else:
+            first = sorted(it["team"] for it in group)[0]
+            base = "x:" + hashlib.sha1(f"{g0['nname']}|{first}".encode()).hexdigest()[:12]
+            pid, k = base, 2
+            while pid in people:
+                pid, k = f"{base}-{k}", k + 1
         refs = [r for it in group for r in it["matches"]]
         people[pid] = {
             "name": g0["name"], "area": g0["area"],
@@ -317,6 +340,7 @@ def resolve(d, fetch: bool) -> dict:
             "ntrp": next((it["ntrp"] for it in group if it["ntrp"]), None),
             "teams": sorted({it["team"] for it in group}),
             "matches": refs, "flags": sorted(set(flags)),
+            "tl_pid": tl_pid, "unresolved": pid != tl_pid,
         }
         for it in group:
             id2p[f"{it['nname']}#{it['team']}"] = pid
