@@ -380,7 +380,7 @@ th.bump, td.bump {{ text-align: center; cursor: default; font-variant-numeric: t
 .bd {{ color: #791F1F; font-weight: 600; }}
 .bld {{ color: #c98b86; font-weight: 600; }}
 .bh {{ color: #aaa; font-weight: 400; }}
-th.delta, td.delta {{ text-align: center; padding-left: 1px; padding-right: 1px; }}
+th.delta, td.delta {{ text-align: center; padding-left: 8px; padding-right: 8px; }}
 /* Move the whole title (triangle + sort arrow) to sit over the carets, so the
    sort arrow stays beside the triangle instead of on top of it */
 th.delta .hl {{ left: var(--dx, 0); }}
@@ -974,12 +974,17 @@ def _player_html(p: dict, info: dict, history: list[dict], pit, link_for) -> str
 <title>{_esc(p["name"])}</title>
 <style>{_BASE_CSS}
 body {{ background: #fff; }}
-.phdr {{ display: flex; justify-content: flex-start; align-items: center; gap: 20px; margin-bottom: 1rem; }}
-.phdr .who {{ min-width: 0; }}
+.phdr {{ display: flex; justify-content: flex-start; align-items: center; gap: 20px; row-gap: 10px;
+         flex-wrap: wrap; margin-bottom: 1rem; }}
+/* The name block never shrinks; when the cards don't fit beside it they drop below it together */
+.phdr .who {{ flex: 0 0 auto; max-width: 100%; }}
 .phdr h1 {{ font-size: 20px; font-weight: 600; margin-bottom: .15rem; }}
 .phdr .loc {{ font-size: 12px; color: #888; }}
 .bumpl {{ font-size: 12px; color: #555; margin-top: 2px; }}
-.cards {{ display: flex; gap: 8px; flex-wrap: nowrap; }}
+.cards {{ display: flex; gap: 8px; flex-wrap: wrap; row-gap: 8px; }}
+.card.hcard {{ padding: .5rem .6rem; }}
+.hcard svg {{ display: block; margin-top: 2px; }}
+.hcard .sp-m {{ display: none; }}
 .card {{ text-align: center; background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
         box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }}
 .card .l {{ font-size: 11px; color: #888; }}
@@ -1116,6 +1121,8 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
 @media (max-width: 500px) {{
   .phdr h1 {{ font-size: 18px; }}
   .phdr {{ gap: 10px 12px; flex-wrap: wrap; }}
+  .hcard .sp-d {{ display: none; }}
+  .hcard .sp-m {{ display: block; }}
   .card {{ padding: .5rem .6rem; }}
   .card .s {{ white-space: nowrap; }}
   .colbar {{ display: flex; }}
@@ -1154,7 +1161,7 @@ table.hist.stuck thead th {{ background: linear-gradient(to top, #ddd 1px, #fff 
   <div class="cards">
     <div class="card"><div class="l">USTA</div><div class="v"{letter_tip}>{usta_v}</div><div class="s">{usta_sub}</div></div>
     <div class="card"><div class="l">ShiQ</div><div class="v">{fmt2(dyn)}</div><div class="s">{shiq_sub}</div></div>
-{wtn_card}  </div>
+{_history_card(info)}{wtn_card}  </div>
 </div>
 <div class="recs"><span class="yrs">{toggle}</span>{strip_html}</div>
 <div class="colbar"><span class="count" id="cnt">{_esc(counts["all"])}</span>
@@ -1318,6 +1325,53 @@ def _bump_tip(b: dict) -> str:
             tip += f", {b['strikes']} strike{'s' if b['strikes'] != 1 else ''}"
         return tip
     return b.get("label") or "No bump estimate"
+
+
+def _spark_svg(pts: list, years: list[int], w: int, cls: str) -> str:
+    """Step chart: each year's level held until the midpoint to the next year."""
+    lv = [v for _, v in pts]
+    lo, hi = min(lv), max(lv)
+    top, bot = 14, 14          # room for the value labels above and the years below
+    ph = max(14, (hi - lo) * 20)   # 0.5 of level = 10px
+    h = int(top + ph + bot)
+    x0, x1 = 8, w - 8
+    n = len(years)
+    xs = {y: x0 + i * (x1 - x0) / max(1, n - 1) for i, y in enumerate(years)}
+    off = (h - top - bot - (hi - lo) * 20) / 2
+    yv = lambda v: top + off + (hi - v) * 20
+    d, prev = [], None
+    for y, v in pts:
+        x, yy = xs[y], yv(v)
+        if prev and prev[0] == y - 1:
+            mx = (xs[prev[0]] + x) / 2
+            d.append(f"H{mx:.1f}V{yy:.1f}H{x:.1f}")
+        else:
+            d.append(f"M{x:.1f},{yy:.1f}")
+        prev = (y, v)
+    cur = years[-1]
+    dots = "".join(
+        f'<circle cx="{xs[y]:.1f}" cy="{yv(v):.1f}" r="2.4" fill="{"#222" if y == cur else "#888"}"/>'
+        f'<text x="{xs[y]:.1f}" y="{yv(v) - 5:.1f}" font-size="9" text-anchor="middle" fill="#666">{v:.1f}</text>'
+        for y, v in pts)
+    yl = "".join(f'<text x="{xs[y]:.1f}" y="{h - 2}" font-size="9.5" text-anchor="middle" fill="#888">’{str(y)[2:]}</text>'
+                 for y in years)
+    return (f'<svg class="{cls}" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" '
+            f'aria-label="Year-end USTA levels">'
+            f'<path d="{"".join(d)}" fill="none" stroke="#888" stroke-width="1.6" stroke-linejoin="round"/>'
+            f'{dots}{yl}</svg>')
+
+
+def _history_card(info: dict) -> str:
+    """Third header card: a tiny step chart of year-end USTA levels (design option H-C)."""
+    cur = info.get("cur_year")
+    known = [(y, float(v)) for y, v, _ in info.get("years") or [] if v is not None and (not cur or y <= cur)]
+    if len(known) < 2:
+        return ""
+    years = list(range(known[0][0], (cur or known[-1][0]) + 1))
+    tip = " · ".join(f"{y}: {v:.1f}{(' ' + t) if t else ''}" for y, v, t in info["years"]
+                     if v is not None and y in years)
+    return (f'    <div class="card hcard" title="{_esc(tip)}"><div class="l">History</div>'
+            f'{_spark_svg(known, years, 170, "sp-d")}{_spark_svg(known, years, 140, "sp-m")}</div>\n')
 
 
 def _wtn_card(p: dict) -> str:
@@ -1591,6 +1645,8 @@ def build_directory() -> dict:
                     rec = None
                 a = appeal_call(by_year[y].get("level"), prior, rec, py, earlier=earlier)
             appeals.append(_appeal_cell(a))
+        if href:  # History card on the player page: the same levels as the year columns
+            info["years"] = [(y, by_year[y].get("level"), by_year[y].get("rating_type")) for y in DIR_YEARS]
         if href and appeals[DIR_YEARS.index(info.get("cur_year") or YEAR_FROM)]:
             info["appeal"] = appeals[DIR_YEARS.index(info.get("cur_year") or YEAR_FROM)]
         rows.append([r["name"], r.get("gender"), dyn, href,
