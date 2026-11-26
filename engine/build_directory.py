@@ -555,8 +555,8 @@ function render() {{
   document.getElementById('more').hidden = shown >= view.length;
   centerCarets();
 }}
-// Each Δ caret sits midway between where the rating on its left ends (letter
-// included) and where the number on its right starts. Year cells are right-aligned
+// Each Δ caret sits midway between where the number on its left ends (letters
+// ignored) and where the number on its right starts. Year cells are right-aligned
 // and often wider than their values, so centering in the Δ cell alone looks lopsided.
 // Right edge of the visible text in a rating cell: the number, plus the letter
 // and appeal arrow if there are any (the letter slot itself is fixed-width)
@@ -575,7 +575,9 @@ function centerCarets() {{
     var td = svg.parentNode, a = td.previousElementSibling, b = td.nextElementSibling;
     var an = a && a.querySelector('.nw'), bn = b && b.querySelector('.nv');
     if (!an || !bn || !td.offsetParent) return;
-    var ar = inkRight(an), br = bn.getBoundingClientRect(), sr = svg.getBoundingClientRect();
+    // numbers only: letters never move the caret, so every caret in a column lines up
+    var ar = an.querySelector('.nv').getBoundingClientRect().right, br = bn.getBoundingClientRect(),
+        sr = svg.getBoundingClientRect();
     if (!ar || !br.width) return;
     var cur = parseFloat(svg.style.left) || 0;
     moves.push([svg, cur + (ar + br.left) / 2 - (sr.left + sr.right) / 2]);
