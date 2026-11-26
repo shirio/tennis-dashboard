@@ -160,3 +160,24 @@ def test_out_of_state_player_without_level_starts_at_level_played():
     combo = {"level": None, "matches": [["M3", "#1 Doubles", "home"]]}
     assert C.baseline_for(combo, matches) is None    # combo leagues say nothing
     assert C.baseline_for({"level": "3.0C"}, matches) == 2.75
+
+
+def test_recenter_levels_moves_each_level_to_its_middle():
+    from engine import bump as B
+    ye = {f"p{i}": 3.60 + 0.01 * i for i in range(25)}          # 4.0 pool averages 3.72
+    ye.update({f"q{i}": 2.75 + 0.01 * (i - 12) for i in range(25)})  # 3.0 pool already mid
+    levels = {k: (4.0, "C") if k[0] == "p" else (3.0, "C") for k in ye}
+    out = B.recenter_levels(ye, {k: 5 for k in ye}, levels, lambda k: True)
+    p = [out[k] for k in ye if k[0] == "p"]
+    assert abs(sum(p) / len(p) - 3.75) < 1e-9
+    assert abs(out["p1"] - out["p0"] - 0.01) < 1e-9             # order kept
+    assert abs(out["q0"] - ye["q0"]) < 1e-9
+
+
+def test_playoffs_with_little_known_out_of_state_players_count_1x():
+    from engine import bump as B, ratings as R
+    e1 = R.CourtEvent(date="8/1/2026", match_id="C1", line_label="#1 Doubles", division="3.0",
+                      winner_keys=["a", "b"], loser_keys=["tl::x|UTAH|1", "tl::y|UTAH|2"], score="6-4 6-4")
+    e2 = R.CourtEvent(date="8/1/2026", match_id="C2", line_label="#1 Doubles", division="3.0",
+                      winner_keys=["a", "b"], loser_keys=["tl::z|NEVADA|3", "c"], score="6-4 6-4")
+    assert B.little_known_playoffs([e1, e2], {"C1", "C2"}) == {"C1"}
