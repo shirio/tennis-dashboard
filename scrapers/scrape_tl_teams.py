@@ -436,7 +436,7 @@ def _names(s: str) -> list[str]:
 # Last match date that counts toward each year-end NTRP rating (per Shirin:
 # 2026 cutoff Nov 8; later matches count toward the next year). Summer
 # leagues never count toward year-end ratings.
-YEAR_END_CUTOFF = {2025: (11, 9), 2026: (11, 8)}   # 2025: assumed by Shirin
+YEAR_END_CUTOFF = {2024: (11, 10), 2025: (11, 9), 2026: (11, 8)}   # 2025: assumed by Shirin; 2024: provisional, to confirm
 
 
 def tag_year_end(m: dict) -> None:
