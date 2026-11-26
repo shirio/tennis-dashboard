@@ -396032,7 +396032,8 @@
     "NEVADA|2026 TRI-LEVEL 18 & OVER LEAGUE 3.0/3.5/4.0|3.0/3.5/4.0 WOMEN|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W",
     "NEVADA|2026 TRI-LEVEL 18 & OVER LEAGUE 3.5/4.0/4.5|3.5/4.0/4.5 WOMEN|SPANISH OAKS #2",
     "NEVADA|2026 USTA ADULT LEAGUE 18 & OVER|3.5 WOMEN- 18 & OVER|DTC #2",
-    "NEVADA|2026 USTA ADULT LEAGUE 18 & OVER|4.0 WOMEN- 18 & OVER|DTC #3"
+    "NEVADA|2026 USTA ADULT LEAGUE 18 & OVER|4.0 WOMEN- 18 & OVER|DTC #3",
+    "CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W"
    ],
    "matches": [
     [
@@ -396204,6 +396205,31 @@
      "C3148744",
      "#1 Doubles",
      "home"
+    ],
+    [
+     "C3182417",
+     "#2 Doubles",
+     "home"
+    ],
+    [
+     "C3182419",
+     "#2 Doubles",
+     "away"
+    ],
+    [
+     "C3182421",
+     "#2 Doubles",
+     "away"
+    ],
+    [
+     "C3182425",
+     "#2 Doubles",
+     "home"
+    ],
+    [
+     "C3182429",
+     "#2 Doubles",
+     "away"
     ]
    ],
    "flags": []
@@ -518742,48 +518768,6 @@
     "out_of_state"
    ]
   },
-  "megan-bell|INTERMOUNTAIN|2204": {
-   "name": "Megan Bell",
-   "area": "INTERMOUNTAIN",
-   "city": null,
-   "level": null,
-   "history_url": null,
-   "on_nv_list": false,
-   "ntrp": "3.5",
-   "teams": [
-    "CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W"
-   ],
-   "matches": [
-    [
-     "C3182417",
-     "#2 Doubles",
-     "home"
-    ],
-    [
-     "C3182419",
-     "#2 Doubles",
-     "away"
-    ],
-    [
-     "C3182421",
-     "#2 Doubles",
-     "away"
-    ],
-    [
-     "C3182425",
-     "#2 Doubles",
-     "home"
-    ],
-    [
-     "C3182429",
-     "#2 Doubles",
-     "away"
-    ]
-   ],
-   "flags": [
-    "out_of_state"
-   ]
-  },
   "lexi-farr|UTAH|2205": {
    "name": "Lexi Farr",
    "area": "UTAH",
@@ -533760,7 +533744,7 @@
   "heather pina#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|MT/RUTHRUFF/TRILEVEL/3.0/3.5/4.0W": "heather-pina|MONTANA|2201",
   "mae alexander#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|UT/HALES/TRILEVEL/3.0/3.5/4.0W": "mae-alexander|UTAH|2202",
   "heather evans#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|UT/HALES/TRILEVEL/3.0/3.5/4.0W": "heather-evans|UTAH|2203",
-  "megan bell#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W": "megan-bell|INTERMOUNTAIN|2204",
+  "megan bell#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W": "megan-bell|NEVADA|320",
   "lexi farr#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|UT/HALES/TRILEVEL/3.0/3.5/4.0W": "lexi-farr|UTAH|2205",
   "emily kelly#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|UT/HALES/TRILEVEL/3.0/3.5/4.0W": "emily-kelly|UTAH|2206",
   "jessica eckert#CHAMP|18 & OVER TRI-LEVEL 3.0/3.5/4.0W|11/6/2026|UT/HALES/TRILEVEL/3.0/3.5/4.0W": "jessica-eckert|UTAH|2207",
