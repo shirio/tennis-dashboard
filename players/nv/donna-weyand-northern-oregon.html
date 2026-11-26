@@ -36,12 +36,17 @@ h1 { font-size: 1.5rem; margin-bottom: .2rem; }
 .muted { color: #999; }
 
 body { background: #fff; }
-.phdr { display: flex; justify-content: flex-start; align-items: center; gap: 20px; margin-bottom: 1rem; }
-.phdr .who { min-width: 0; }
+.phdr { display: flex; justify-content: flex-start; align-items: center; gap: 20px; row-gap: 10px;
+         flex-wrap: wrap; margin-bottom: 1rem; }
+/* The name block never shrinks; when the cards don't fit beside it they drop below it together */
+.phdr .who { flex: 0 0 auto; max-width: 100%; }
 .phdr h1 { font-size: 20px; font-weight: 600; margin-bottom: .15rem; }
 .phdr .loc { font-size: 12px; color: #888; }
 .bumpl { font-size: 12px; color: #555; margin-top: 2px; }
-.cards { display: flex; gap: 8px; flex-wrap: nowrap; }
+.cards { display: flex; gap: 8px; flex-wrap: wrap; row-gap: 8px; }
+.card.hcard { padding: .5rem .6rem; }
+.hcard svg { display: block; margin-top: 2px; }
+.hcard .sp-m { display: none; }
 .card { text-align: center; background: linear-gradient(180deg,#f8f7f3,#f2f1ec); border-radius: 8px; padding: .6rem .9rem;
         box-shadow: inset 0 1px 0 rgba(255,255,255,.7); }
 .card .l { font-size: 11px; color: #888; }
@@ -178,6 +183,8 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 @media (max-width: 500px) {
   .phdr h1 { font-size: 18px; }
   .phdr { gap: 10px 12px; flex-wrap: wrap; }
+  .hcard .sp-d { display: none; }
+  .hcard .sp-m { display: block; }
   .card { padding: .5rem .6rem; }
   .card .s { white-space: nowrap; }
   .colbar { display: flex; }
@@ -215,7 +222,7 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
     <div class="loc">Northern Oregon · Female</div></div>
   <div class="cards">
     <div class="card"><div class="l">USTA</div><div class="v">—</div><div class="s">&nbsp;</div></div>
-    <div class="card"><div class="l">ShiQ</div><div class="v">2.87</div><div class="s">9/28/25</div></div>
+    <div class="card"><div class="l">ShiQ</div><div class="v">—</div><div class="s">9/28/25</div></div>
   </div>
 </div>
 <div class="recs"><span class="yrs"><button class="yr on" data-y="all">all</button><button class="yr" data-y="2025">2025</button></span><div class="strip" data-y="all"><span class="stat" tabindex="0"><span class="stat-l">6.0</span><span class="stat-v">0–1</span><span class="tipbox"><table><tr><td>Singles</td><td>∅</td></tr><tr><td>Doubles</td><td>0–1</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">∅</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">0–1</span><span class="tipbox"><table><tr><td>6.0</td><td>0–1</td></tr></table></span></span></div><div class="strip" data-y="2025" hidden><span class="stat" tabindex="0"><span class="stat-l">6.0</span><span class="stat-v">0–1</span><span class="tipbox"><table><tr><td>Singles</td><td>∅</td></tr><tr><td>Doubles</td><td>0–1</td></tr></table></span></span><span class="stat" tabindex="0"><span class="stat-l">Singles</span><span class="stat-v">∅</span></span><span class="stat" tabindex="0"><span class="stat-l">Doubles</span><span class="stat-v">0–1</span><span class="tipbox"><table><tr><td>6.0</td><td>0–1</td></tr></table></span></span></div></div>
@@ -225,7 +232,7 @@ table.hist.stuck thead th { background: linear-gradient(to top, #ddd 1px, #fff 1
 <div class="tbl-wrap hist-wrap"><table class="hist"><thead><tr>
 <th class="c-sq" title="ShiQ change from this match, and ShiQ after it">ShiQ</th><th class="c-date">Date</th><th class="c-div">Div</th><th class="c-lg">League</th><th class="c-team">Team</th><th class="c-line">Line</th><th class="c-score">Score</th>
 <th class="c-partner">Partner</th><th class="c-opp">Opponents</th><th class="c-oppteam">Opp Team</th></tr></thead>
-<tbody><tr data-y="2025"><td class="c-sq"><span class="sd-down">−.13</span><span class="sq-after">2.87</span></td><td class="c-date">9/28<span class="yy">/25</span></td><td class="c-div"><span class="dp dp60">6.0</span></td><td class="c-lg" title="2026 Adult 55 &amp; Over">55+</td><td class="c-team" title="CGM-Watson/Perlmutter">CGM-Watson/Perlmutter</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">1-6</span> <span class="set sl">1-6</span></td><td class="c-partner"><span class="pn"><a href="tamara-phillips-northern-oregon.html"><span class="fn">Tamara Phillips</span><span class="sn">T. Phillips</span></a> <span class="rt">3.00</span></span></td><td class="c-opp"><span class="pn"><a href="stephany-mo-northern-oregon.html"><span class="fn">Stephany Mo</span><span class="sn">S. Mo</span></a> <span class="rt">3.14</span></span><br><span class="pn"><a href="heather-dale-northern-oregon.html"><span class="fn">Heather Dale</span><span class="sn">H. Dale</span></a> <span class="rt">2.98</span></span></td><td class="c-oppteam" title="WHRC-Thakkar/Bothne">WHRC-Thakkar/Bothne</td></tr></tbody></table></div>
+<tbody><tr data-y="2025"><td class="c-sq"></td><td class="c-date">9/28<span class="yy">/25</span></td><td class="c-div"><span class="dp dp60">6.0</span></td><td class="c-lg" title="2026 Adult 55 &amp; Over">55+</td><td class="c-team" title="CGM-Watson/Perlmutter">CGM-Watson/Perlmutter</td><td class="c-line"><span class="line-pill pill-d2">D2</span></td><td class="c-score"><span class="set sl">1-6</span> <span class="set sl">1-6</span></td><td class="c-partner"><span class="pn"><a href="tamara-phillips-northern-oregon.html"><span class="fn">Tamara Phillips</span><span class="sn">T. Phillips</span></a></span></td><td class="c-opp"><span class="pn"><a href="stephany-mo-northern-oregon.html"><span class="fn">Stephany Mo</span><span class="sn">S. Mo</span></a></span><br><span class="pn"><a href="heather-dale-northern-oregon.html"><span class="fn">Heather Dale</span><span class="sn">H. Dale</span></a></span></td><td class="c-oppteam" title="WHRC-Thakkar/Bothne">WHRC-Thakkar/Bothne</td></tr></tbody></table></div>
 </div>
 <script>
 // Renamed teams: tap shows the full TennisLink name (hover does on desktop)
