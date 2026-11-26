@@ -53,6 +53,9 @@ CAND_CACHE = ROOT / "data" / f"tl_candidate_teams_{YEAR}.json"
 # name), confirmed by Shirin: {our name: TennisLink name}.
 ALIASES = {"Renee Johnson": "Renee Warner"}
 # Appearances Shirin is checking by hand: kept as separate people, flagged.
+# NV names Shirin confirmed are one person although their roster NTRP differs
+# (mid-year rating change) and they aren't on the NV list to tie them together.
+ONE_PERSON = {"Adela Smith", "Zharmayne Dizon"}
 MANUAL_REVIEW: set[tuple[str, str]] = set()   # Amy Graybeal's Spanish Oaks Districts: confirmed hers
 
 
@@ -374,7 +377,9 @@ def resolve(d, fetch: bool) -> dict:
         else:
             groups = merge_groups(items)
             flags = ["not_on_nv_list"] if area == "NEVADA" else ["out_of_state"]
-            if len(groups) == 1:
+            if len(groups) > 1 and area == "NEVADA" and nn in {norm(n) for n in ONE_PERSON}:
+                new_person(items, None, flags + ["rating_changed"]); st["unlisted_confirmed_one"] += 1
+            elif len(groups) == 1:
                 new_person(items, None, flags); st["unlisted_merged"] += 1
             else:
                 st["unlisted_ambiguous"] += 1
