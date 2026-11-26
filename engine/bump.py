@@ -497,11 +497,14 @@ def little_known_playoffs(events: list, playoffs: set[str]) -> set[str]:
 
 
 def compute_bumps(players: list[dict], events: Optional[list] = None,
-                  playoffs: Optional[set[str]] = None) -> dict[str, dict]:
+                  playoffs: Optional[set[str]] = None,
+                  include_crawl: bool = False) -> dict[str, dict]:
     """{player_key: year_end_call(...)} for every player in players.json.
 
     With no ``events``, uses the standings plus the team crawl (see
-    year_end_inputs)."""
+    year_end_inputs). ``include_crawl`` adds calls for crawled Nevada people
+    who aren't in players.json (keys ``tl::<crawl person id>``), so every
+    player on the NV list, men included, gets a Bump."""
     pbn = R._build_players_by_name(players)
     if events is None:
         events, starts, letters, auto_playoffs, levels, known = year_end_inputs(players, pbn)
@@ -533,7 +536,10 @@ def compute_bumps(players: list[dict], events: Optional[list] = None,
     strikes = run_bump(events, starts, levels)    # running rating: strikes only
     play_up = play_up_shares(events, levels)
     out = {}
-    for k in pbn:
+    keys = list(pbn)
+    if include_crawl:
+        keys += [k for k in levels if k.startswith("tl::") and "|NEVADA|" in k]
+    for k in keys:
         st = strikes.get(k)
         out[k] = year_end_call(year_end.get(k), counts.get(k, 0), *levels[k],
                                strikes=st.strikes if st else None,
