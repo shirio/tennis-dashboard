@@ -38,49 +38,59 @@ def _div_key(division: str) -> str | None:
     return None
 
 
-# Starting points from the previous season's crawl (tested 2026-11-25 on the
-# 2026 matches: first-half accuracy 74.7% -> 75.6%, Brier 0.1716 -> 0.1678;
-# little change late in the season, when 2026 results dominate).
-PRIOR_YEAR = 2025
-PRIOR_MIN_MATCHES = 3        # crawled-only players: 2025 ShiQ replaces "level - 0.25"
-PRIOR_SETTLED_MATCHES = 5    # enough 2025 matches to drop the provisional boost
-PRIOR_CORE_WEIGHT = 0.5      # core players: blend with the Dec 2025 TennisRecord baseline
+# Start of season = every earlier season we have crawled, rolled forward
+# (Shirin, 2026-11-27). Each player starts the FIRST crawled season they appear
+# in at that season's roster level - 0.25 and is carried through every later
+# match. Tested on 2026's 26.9k lines: chaining 2024 -> 2025 -> 2026 beats
+# the 2025-only start a little; keeping the Dec 2025 TennisRecord number at
+# half weight for core players beats dropping it.
+HISTORY_YEARS = (2024, 2025)
+SETTLED_MATCHES = 5          # enough earlier matches to drop the provisional boost
+TR_CORE_WEIGHT = 0.5         # core players: blend the carried rating with Dec 2025 TennisRecord
+TR_HISTORY_ENOUGH = 10       # ... only when they have fewer TennisLink matches than this in 2024-25
+                             # (backtest 2026-11-27: TR adds nothing once a player has 10+ matches)
 
 
-def prior_year_ratings(crawl: dict, keys: dict[str, str], pbn: dict,
-                       year: int = PRIOR_YEAR) -> tuple[dict[str, float], dict[str, int]]:
-    """End-of-season ShiQ from the previous year's crawl, keyed like this
-    year's events. People are matched across years by their TennisLink
-    history link (stable per person), NV names by players.json key.
-    Everyone starts the old season at their roster level - 0.25."""
+def history_state(crawl: dict, keys: dict[str, str], pbn: dict, skip_refs: set,
+                  years: tuple[int, ...] = HISTORY_YEARS) -> V9.V9Result:
+    """v9 run over every earlier crawled season, keyed like this year's
+    events. People are matched across years by their TennisLink history link
+    (stable per person), NV names by players.json key. Lines already in this
+    year's events (``skip_refs``) or in an earlier year's crawl are dropped."""
     from engine import crawl_events as C
-    old = C.load_crawl(year)
-    if not old:
-        return {}, {}
     by_url = {v.get("history_url"): keys[pid] for pid, v in crawl.get("people", {}).items()
               if v.get("history_url") and pid in keys}
-    ev, old_keys = C.crawl_events(old, pbn, [])
-    remap = {k: by_url.get(old["people"][pid].get("history_url")) or k
-             for pid, k in old_keys.items()}
     start: dict[str, float] = {}
-    for pid, k in old_keys.items():
-        person = old["people"][pid]
-        try:
-            b = float(person.get("ntrp")) - 0.25     # that season's roster level
-        except (TypeError, ValueError):
-            b = C.baseline_for(person, old.get("matches"))
-        if b is not None:
-            start.setdefault(remap[k], b)
     events = []
-    for e in ev:
-        if sum(V9.games_won(e.score)) <= 0 or len(e.winner_keys) != len(e.loser_keys):
+    seen = set(skip_refs)
+    for year in years:
+        old = C.load_crawl(year)
+        if not old:
             continue
-        e.winner_keys = [remap.get(x, x) for x in e.winner_keys]
-        e.loser_keys = [remap.get(x, x) for x in e.loser_keys]
-        events.append(e)
+        ev, old_keys = C.crawl_events(old, pbn, [])
+        remap = {}
+        for pid, k in old_keys.items():
+            url = old["people"][pid].get("history_url")
+            remap[k] = by_url.get(url) or (f"url:{url}" if url else k)
+            person = old["people"][pid]
+            try:
+                b = float(person.get("ntrp")) - 0.25     # that season's roster level
+            except (TypeError, ValueError):
+                b = C.baseline_for(person, old.get("matches"))
+            if b is not None:
+                start.setdefault(remap[k], b)
+        for e in ev:
+            if sum(V9.games_won(e.score)) <= 0 or len(e.winner_keys) != len(e.loser_keys):
+                continue
+            ref = V9.line_ref(e)
+            if ref in seen:
+                continue
+            seen.add(ref)
+            e.winner_keys = [remap.get(x, x) for x in e.winner_keys]
+            e.loser_keys = [remap.get(x, x) for x in e.loser_keys]
+            events.append(e)
     events.sort(key=R._date_sort_key)
-    res = V9.run_v9(events, start, provisional_keys=frozenset(start))
-    return dict(res.rating), dict(res.matches)
+    return V9.run_v9(events, start, provisional_keys=frozenset(start))
 
 
 def compute(players: list[dict], use_crawl: bool = True):
@@ -92,6 +102,7 @@ def compute(players: list[dict], use_crawl: bool = True):
     provisional: set[str] = set()
     crawl = C.load_crawl() if use_crawl else None
     people = {}
+    state = None
     if crawl:
         extra, keys = C.crawl_events(crawl, pbn, events)
         events += extra
@@ -100,20 +111,25 @@ def compute(players: list[dict], use_crawl: bool = True):
                 baselines[k] = C.baseline_for(crawl["people"][pid], crawl.get("matches"))
                 provisional.add(k)
                 people[k] = crawl["people"][pid]
-        prior, n_prior = prior_year_ratings(crawl, keys, pbn)
-        for k, r in prior.items():
-            n = n_prior[k]
-            if k.startswith("tl::") and n >= PRIOR_MIN_MATCHES and not (
-                    people.get(k) and C.tr_baseline(people[k]) is not None):
-                baselines[k] = r
-            elif not k.startswith("tl::") and n >= PRIOR_SETTLED_MATCHES \
+        state = history_state(crawl, keys, pbn, {V9.line_ref(e) for e in events})
+        for k in list(state.rating):
+            n = state.matches.get(k, 0)
+            # Out-of-state playoff opponents with a hand-collected TennisRecord
+            # number and little history keep that number.
+            if k.startswith("tl::") and people.get(k) and C.tr_baseline(people[k]) is not None \
+                    and n < SETTLED_MATCHES:
+                del state.rating[k]
+                continue
+            if n < TR_HISTORY_ENOUGH and not k.startswith("tl::") and not k.startswith("url:") \
                     and baselines.get(k) is not None:
-                baselines[k] = PRIOR_CORE_WEIGHT * r + (1 - PRIOR_CORE_WEIGHT) * baselines[k]
-            if n >= PRIOR_SETTLED_MATCHES:
+                state.rating[k] = TR_CORE_WEIGHT * baselines[k] + (1 - TR_CORE_WEIGHT) * state.rating[k]
+            if n >= SETTLED_MATCHES:
                 provisional.discard(k)
+            else:
+                provisional.add(k)
     events.sort(key=R._date_sort_key)
     res = V9.run_v9(events, baselines, timelines=True,
-                    provisional_keys=frozenset(provisional))
+                    provisional_keys=frozenset(provisional), state=state)
     res.crawl_people = people
     return pbn, res
 
