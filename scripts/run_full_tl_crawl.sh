@@ -15,8 +15,15 @@ for phase in "${phases[@]}"; do
   years+=($y)
   for attempt in 1 2 3 4 5 6; do
     echo "=== phase $g $y attempt $attempt $(date '+%F %T')"
-    if $PY -u scrapers/scrape_tl_teams.py --ntrp-list --gender $g --year $y; then
+    $PY -u scrapers/scrape_tl_teams.py --ntrp-list --gender $g --year $y
+    rc=$?
+    if (( rc == 0 )); then
       echo "=== phase $g $y done $(date '+%F %T')"; break
+    elif (( rc == 3 )); then
+      # USTA wants a CAPTCHA: stop (never retry logins into it) and ask for a hand sign-in
+      echo "=== CAPTCHA: sign in with scrapers/tl_signin.py, then rerun $(date '+%F %T')"
+      osascript -e 'display notification "USTA wants a sign-in with a code. Run scrapers/tl_signin.py." with title "TennisLink crawl paused"' 2>/dev/null
+      exit 3
     fi
     sleep $((attempt * 120))
   done
