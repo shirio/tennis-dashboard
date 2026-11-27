@@ -227,13 +227,12 @@ def merge_groups(items: list[dict]) -> list[list[dict]]:
 def fetch_candidate_teams(rows: list[dict], cache: dict) -> None:
     from dotenv import load_dotenv
     from playwright.sync_api import sync_playwright
-    from scrapers.scrape_tennislink import login
+    from scrapers.scrape_tl_teams import open_browser, session_login
 
     load_dotenv(ROOT / ".env")
     with sync_playwright() as p:
-        b = p.chromium.launch(headless=False)
-        page = b.new_context(viewport={"width": 1300, "height": 900}).new_page()
-        login(page, os.environ["TENNISLINK_USER"], os.environ["TENNISLINK_PASS"])
+        b, page = open_browser(p)   # crawler's profile: reuse the USTA session
+        session_login(page)
         for i, r in enumerate(rows, 1):
             try:
                 goto(page, r["history_url"])
@@ -257,20 +256,44 @@ def fetch_candidate_teams(rows: list[dict], cache: dict) -> None:
 # main
 # ---------------------------------------------------------------------------
 
+# Ratings lists by district code (data/ntrp_<code>_<year>.json). NV always;
+# other states' lists, when crawled (out-of-state opponents), resolve that
+# state's players the same way.
+DISTRICTS = {"nv": "NEVADA", "ut": "UTAH", "id": "IDAHO", "co": "COLORADO",
+             "mt": "MONTANA", "wy": "WYOMING", "nm": "NEW MEXICO"}
+
+
+def load_area_lists() -> dict:
+    """{district: {normalized name: [list rows]}} for every list present."""
+    out = {"NEVADA": collections.defaultdict(list)}
+    for r in json.loads(NTRP_LIST.read_text()):
+        out["NEVADA"][norm(r["name"])].append(r)
+    for code, district in DISTRICTS.items():
+        f = ROOT / "data" / f"ntrp_{code}_{YEAR}.json"
+        if code == "nv" or not f.exists():
+            continue
+        out[district] = collections.defaultdict(list)
+        for r in json.loads(f.read_text()):
+            out[district][norm(r["name"])].append(r)
+    return out
+
+
 def resolve(d, fetch: bool) -> dict:
     ids = build_identities(d)
-    nv_list = collections.defaultdict(list)
-    for r in json.loads(NTRP_LIST.read_text()):
-        nv_list[norm(r["name"])].append(r)
+    area_lists = load_area_lists()
+    print("lists:", {a: sum(map(len, l.values())) for a, l in area_lists.items()})
     cache = json.loads(CAND_CACHE.read_text()) if CAND_CACHE.exists() else {}
     # our 429's team lists from the crawl, keyed by history_url
     for hu, tids in d.get("player_teams_by_url", {}).items():
         cache.setdefault(hu, tids)
     by_slug = d.get("player_teams", {})
-    for rows in nv_list.values():
-        for r in rows:
-            if _slug(r["name"]) in by_slug and r.get("history_url"):
-                cache.setdefault(r["history_url"], by_slug[_slug(r["name"])])
+    code_of = {v: k for k, v in DISTRICTS.items()}
+    for area, lst in area_lists.items():
+        pre = "" if area == "NEVADA" else code_of[area] + ":"
+        for rows in lst.values():
+            for r in rows:
+                if pre + _slug(r["name"]) in by_slug and r.get("history_url"):
+                    cache.setdefault(r["history_url"], by_slug[pre + _slug(r["name"])])
 
     # Section wildcard teams at Sectionals ("Intermountain/Simister/...") mix
     # players from several states: give each player the state where the
@@ -294,8 +317,10 @@ def resolve(d, fetch: bool) -> dict:
                 it["area"] = next(iter(same))
             elif len(a) == 1:
                 it["area"] = next(iter(a))
-            elif not a and len(nv_list.get(it["nname"], [])) == 1:
-                it["area"] = "NEVADA"
+            elif not a:
+                listed = [ar for ar, l in area_lists.items() if l.get(it["nname"])]
+                if len(listed) == 1 and len(area_lists[listed[0]][it["nname"]]) == 1:
+                    it["area"] = listed[0]
 
     by_name_area = collections.defaultdict(list)
     for it in ids.values():
@@ -304,9 +329,9 @@ def resolve(d, fetch: bool) -> dict:
     if fetch:
         need = {}
         for (nn, area), items in by_name_area.items():
-            if area == "NEVADA" and (len(nv_list.get(nn, [])) >= 2 or (
-                    len(nv_list.get(nn, [])) == 1 and len(merge_groups(items)) > 1)):
-                for r in nv_list[nn]:
+            lc = area_lists.get(area, {}).get(nn, [])
+            if len(lc) >= 2 or (len(lc) == 1 and len(merge_groups(items)) > 1):
+                for r in lc:
                     if r.get("history_url") and r["history_url"] not in cache:
                         need[r["history_url"]] = r
         print(f"fetching {len(need)} candidate player pages")
@@ -336,7 +361,8 @@ def resolve(d, fetch: bool) -> dict:
             "city": entry.get("city") if entry else None,
             "level": (f"{entry.get('level')} {entry.get('rating_type', '')}".strip() if entry else None),
             "history_url": entry.get("history_url") if entry else None,
-            "on_nv_list": bool(entry),
+            "on_nv_list": bool(entry) and g0["area"] == "NEVADA",
+            "on_list": bool(entry),
             "ntrp": next((it["ntrp"] for it in group if it["ntrp"]), None),
             "teams": sorted({it["team"] for it in group}),
             "matches": refs, "flags": sorted(set(flags)),
@@ -356,7 +382,7 @@ def resolve(d, fetch: bool) -> dict:
             new_person([it], None, ["ambiguous", "manual_review"])
         if not items:
             continue
-        cands = nv_list.get(nn, []) if area == "NEVADA" else []
+        cands = area_lists.get(area, {}).get(nn, [])
         if len(cands) == 1:
             groups = merge_groups(items)
             owned = cache.get(cands[0].get("history_url"))
@@ -368,7 +394,7 @@ def resolve(d, fetch: bool) -> dict:
                     club = it["team"].rsplit("|", 1)[1]
                     return not it["local_team"] or any(t.rsplit("|", 1)[1] == club for t in owned)
                 return False
-            if len(groups) > 1 and nn in {norm(n) for n in ONE_PERSON}:
+            if len(groups) > 1 and area == "NEVADA" and nn in {norm(n) for n in ONE_PERSON}:
                 st["list_unique_confirmed_one"] += 1
                 new_person(items, cands[0], ["rating_changed"])
                 continue
@@ -406,6 +432,8 @@ def resolve(d, fetch: bool) -> dict:
         else:
             groups = merge_groups(items)
             flags = ["not_on_nv_list"] if area == "NEVADA" else ["out_of_state"]
+            if area != "NEVADA" and area in area_lists:
+                flags.append("not_on_list")
             if len(groups) > 1 and area == "NEVADA" and nn in {norm(n) for n in ONE_PERSON}:
                 new_person(items, None, flags + ["rating_changed"]); st["unlisted_confirmed_one"] += 1
             elif len(groups) == 1:
