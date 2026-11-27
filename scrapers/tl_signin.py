@@ -22,14 +22,8 @@ with sync_playwright() as p:
     ctx, page = open_browser(p)
     page.goto(LOGIN_URL, wait_until="domcontentloaded", timeout=45_000)
     print("Sign in to USTA in the browser window (email, password, and the code if asked).", flush=True)
-    for _ in range(60 * 60 * 3):
-        if signed_in(page):
-            print("Signed in. You can leave the rest to the crawler.", flush=True)
-            time.sleep(3)
-            break
+    while not signed_in(page):   # waits as long as it takes
         time.sleep(1)
-    else:
-        print("Gave up after 3 hours without a sign-in.")
-        ctx.close()
-        sys.exit(1)
+    print("Signed in. You can leave the rest to the crawler.", flush=True)
+    time.sleep(3)
     ctx.close()
