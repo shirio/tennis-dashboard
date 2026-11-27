@@ -25,6 +25,8 @@ Players with no scored match keep their baseline, as before.
 from __future__ import annotations
 
 import json
+import os
+from typing import Optional
 
 from engine import ratings as R
 from engine import ratings_v9 as V9
@@ -49,10 +51,36 @@ SETTLED_MATCHES = 5          # enough earlier matches to drop the provisional bo
 TR_CORE_WEIGHT = 0.5         # core players: blend the carried rating with Dec 2025 TennisRecord
 TR_HISTORY_ENOUGH = 10       # ... only when they have fewer TennisLink matches than this in 2024-25
                              # (backtest 2026-11-27: TR adds nothing once a player has 10+ matches)
+TR_DEC2023_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                               "data", "tr_dec2023_baselines.json")
+
+
+def tr_dec2023_starts(crawl: dict, keys: dict[str, str], pbn: dict) -> dict[str, float]:
+    """Hand-entered TennisRecord ratings as of Dec 2023 (last black rating),
+    keyed like this year's events. They start the 2024 history chain for
+    players with little TennisLink history, in place of roster level - 0.25,
+    and replace the Dec 2025 TennisRecord blend for them."""
+    try:
+        with open(TR_DEC2023_FILE) as f:
+            rows = json.load(f).get("players", [])
+    except (OSError, ValueError):
+        return {}
+    by_name: dict[str, str] = {}
+    for pid, k in keys.items():
+        by_name.setdefault(crawl["people"][pid]["name"].lower(), k)
+    for k, x in pbn.items():
+        by_name[x["name"].lower()] = k
+    out = {}
+    for r in rows:
+        k = by_name.get((r.get("name") or "").lower())
+        if k and r.get("tr_rating") is not None:
+            out[k] = float(r["tr_rating"])
+    return out
 
 
 def history_state(crawl: dict, keys: dict[str, str], pbn: dict, skip_refs: set,
-                  years: tuple[int, ...] = HISTORY_YEARS) -> V9.V9Result:
+                  years: tuple[int, ...] = HISTORY_YEARS,
+                  known_starts: Optional[dict[str, float]] = None) -> V9.V9Result:
     """v9 run over every earlier crawled season, keyed like this year's
     events. People are matched across years by their TennisLink history link
     (stable per person), NV names by players.json key. Lines already in this
@@ -90,7 +118,10 @@ def history_state(crawl: dict, keys: dict[str, str], pbn: dict, skip_refs: set,
             e.loser_keys = [remap.get(x, x) for x in e.loser_keys]
             events.append(e)
     events.sort(key=R._date_sort_key)
-    return V9.run_v9(events, start, provisional_keys=frozenset(start))
+    known_starts = known_starts or {}
+    start.update(known_starts)      # a real earlier rating beats a roster guess
+    return V9.run_v9(events, start,
+                     provisional_keys=frozenset(k for k in start if k not in known_starts))
 
 
 def compute(players: list[dict], use_crawl: bool = True):
@@ -111,7 +142,9 @@ def compute(players: list[dict], use_crawl: bool = True):
                 baselines[k] = C.baseline_for(crawl["people"][pid], crawl.get("matches"))
                 provisional.add(k)
                 people[k] = crawl["people"][pid]
-        state = history_state(crawl, keys, pbn, {V9.line_ref(e) for e in events})
+        dec23 = tr_dec2023_starts(crawl, keys, pbn)
+        state = history_state(crawl, keys, pbn, {V9.line_ref(e) for e in events},
+                              known_starts=dec23)
         for k in list(state.rating):
             n = state.matches.get(k, 0)
             # Out-of-state playoff opponents with a hand-collected TennisRecord
@@ -120,7 +153,7 @@ def compute(players: list[dict], use_crawl: bool = True):
                     and n < SETTLED_MATCHES:
                 del state.rating[k]
                 continue
-            if n < TR_HISTORY_ENOUGH and not k.startswith("tl::") and not k.startswith("url:") \
+            if n < TR_HISTORY_ENOUGH and k not in dec23 and not k.startswith("tl::") and not k.startswith("url:") \
                     and baselines.get(k) is not None:
                 state.rating[k] = TR_CORE_WEIGHT * baselines[k] + (1 - TR_CORE_WEIGHT) * state.rating[k]
             if n >= SETTLED_MATCHES:
