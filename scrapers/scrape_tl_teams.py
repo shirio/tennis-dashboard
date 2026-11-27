@@ -51,7 +51,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from scrapers.scrape_tennislink import (  # noqa: E402
-    BASE_URL, PLAYER_SEARCH_URL, login, _wait_for_network,
+    BASE_URL, LOGIN_URL, PLAYER_SEARCH_URL, login, _wait_for_network,
     _search_player_and_get_nv_row, _extract_roster, _parse_match_detail_page,
 )
 
@@ -658,6 +658,56 @@ def set_year(year: int) -> None:
     OUT = ROOT / "data" / f"tl_team_matches_{year}.json"
 
 
+PROFILE_DIR = ROOT / "data" / ".cache" / "tl_profile"   # persistent browser profile (gitignored)
+CAPTCHA_EXIT = 3
+
+
+class CaptchaRequired(RuntimeError):
+    pass
+
+
+def open_browser(p, headless: bool = False):
+    """Persistent Chromium profile, so a sign-in (done once by hand when USTA
+    asks for a CAPTCHA, see scrapers/tl_signin.py) carries over between runs."""
+    PROFILE_DIR.mkdir(parents=True, exist_ok=True)
+    ctx = p.chromium.launch_persistent_context(
+        str(PROFILE_DIR), headless=headless, viewport={"width": 1300, "height": 900})
+    page = ctx.pages[0] if ctx.pages else ctx.new_page()
+    return ctx, page
+
+
+def signed_in(page) -> bool:
+    u = page.url.lower()
+    return "tennislink.usta.com" in u and "account.usta.com" not in u
+
+
+def session_login(page) -> None:
+    """Reuse the profile's USTA session if it is still valid; otherwise log in
+    with .env credentials. Never tries to get past a CAPTCHA: raises
+    CaptchaRequired so a person can sign in with scrapers/tl_signin.py."""
+    page.goto(LOGIN_URL, wait_until="domcontentloaded", timeout=45_000)
+    time.sleep(3)
+    if signed_in(page):
+        print(f"  [login] session still valid ({page.url})")
+        return
+    if _captcha_visible(page):
+        raise CaptchaRequired("USTA sign-in shows a CAPTCHA; run scrapers/tl_signin.py and sign in by hand")
+    try:
+        login(page, os.environ["TENNISLINK_USER"], os.environ["TENNISLINK_PASS"])
+    except RuntimeError:
+        if _captcha_visible(page):
+            raise CaptchaRequired("USTA sign-in shows a CAPTCHA; run scrapers/tl_signin.py and sign in by hand")
+        raise
+
+
+def _captcha_visible(page) -> bool:
+    try:
+        t = page.inner_text("body").lower()
+    except Exception:
+        return False
+    return "not a robot" in t or "enter the code shown above" in t or "captcha" in t
+
+
 def main():
     from dotenv import load_dotenv
     from playwright.sync_api import sync_playwright
@@ -682,11 +732,15 @@ def main():
         players = our_players([n.strip() for n in a.names.split(",")] if a.names else None)
     print(f"{len(players)} players")
     with sync_playwright() as p:
-        b = p.chromium.launch(headless=a.headless)
-        page = b.new_context(viewport={"width": 1300, "height": 900}).new_page()
-        login(page, os.environ["TENNISLINK_USER"], os.environ["TENNISLINK_PASS"])
+        ctx, page = open_browser(p, headless=a.headless)
+        try:
+            session_login(page)
+        except CaptchaRequired as e:
+            print(f"[captcha] {e}", flush=True)
+            ctx.close()
+            sys.exit(CAPTCHA_EXIT)
         run(page, players, fetch_matches=not a.no_matches)
-        b.close()
+        ctx.close()
 
 
 if __name__ == "__main__":
