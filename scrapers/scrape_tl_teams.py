@@ -663,7 +663,7 @@ def set_year(year: int) -> None:
     OUT = ROOT / "data" / f"tl_team_matches_{year}.json"
 
 
-PROFILE_DIR = ROOT / "data" / ".cache" / "tl_profile"   # persistent browser profile (gitignored)
+PROFILE_DIR = Path(os.environ.get("TL_PROFILE") or ROOT / "data" / ".cache" / "tl_profile")  # persistent browser profile (gitignored); TL_PROFILE: a copy for a parallel run
 CAPTCHA_EXIT = 3
 
 
