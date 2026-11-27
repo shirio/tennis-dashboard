@@ -32,7 +32,9 @@ class TestV9(unittest.TestCase):
     def test_blowout_of_weak_side_barely_moves(self):
         bl = {"a": 3.4, "b": 2.6}
         r = V9.run_v9([ev(["a"], ["b"], "6-0 6-0", line="1# Singles")], bl)
-        self.assertLess(abs(r.rating["a"] - 3.4), 0.03)
+        even = V9.run_v9([ev(["a"], ["b"], "6-0 6-0", line="1# Singles")], {"a": 3.0, "b": 3.0})
+        # A blowout of a much weaker side moves far less than one over an equal.
+        self.assertLess(abs(r.rating["a"] - 3.4), 0.5 * abs(even.rating["a"] - 3.0))
 
     def test_partners_get_equal_credit(self):
         bl = {"a": 3.3, "b": 2.9, "c": 3.1, "d": 3.1}
@@ -79,7 +81,7 @@ class TestTimelines(unittest.TestCase):
 
     def test_side_win_probability_is_average_gap(self):
         self.assertAlmostEqual(V9.side_win_probability([3.2, 3.0], [3.1, 3.1]), 0.5)
-        self.assertGreater(V9.side_win_probability([3.3], [3.0]), 0.85)
+        self.assertGreater(V9.side_win_probability([3.3], [3.0]), 0.65)  # slope 3, fit 2026-11-27
 
 
 def test_line_timeline_two_matches_same_day():

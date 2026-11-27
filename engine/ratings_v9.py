@@ -34,12 +34,15 @@ from engine import ratings as R
 # ---------------------------------------------------------------------------
 # Parameters (tuned on the first half of spring 2026, see engine/backtest.py)
 # ---------------------------------------------------------------------------
-K = 1.2                 # game-share sensitivity to strength gap
-LR = 0.20               # step size for the shared rating
+# Retuned 2026-11-27 on the full 2024-2026 TennisLink crawl (tuned on 2025,
+# checked on 2026's 26.9k lines): ratings move faster and the game-share curve
+# is flatter. Brier 0.2137 -> 0.2026 with WIN_SLOPE refit (old: K 1.2, LR 0.20, slope 8).
+K = 0.8                 # game-share sensitivity to strength gap
+LR = 0.30               # step size for the shared rating
 LR_SINGLES_OFFSET = 0.10  # extra step for the singles offset on singles lines
 PROVISIONAL_BOOST = 2.0   # step multiplier for players starting on an NTRP default
 PROVISIONAL_MATCHES = 5   # ... for this many matches
-WIN_SLOPE = 8.0          # logistic slope for win probability
+WIN_SLOPE = 3.0          # logistic slope for win probability (fit on 2025 lines, 2026-11-27)
 UPSET_FLOOR = 0.04       # even a lopsided matchup is an upset ~4% of the time
 # (refit 2026-11-25 on 13,852 lines: the plain curve said 97% where favourites
 #  won 93%; slope 8 with a 4% floor tops out at 96% and matches actual rates)
@@ -127,16 +130,24 @@ def line_ref(e) -> str:
 
 def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
            params: Params = Params(), timelines: bool = False,
-           provisional_keys: frozenset = frozenset()) -> V9Result:
+           provisional_keys: frozenset = frozenset(),
+           state: Optional[V9Result] = None) -> V9Result:
     """Process court events in the given (chronological) order.
 
     With ``timelines`` the result also records, per player and per
     (division, date), the shared rating going into that date's first match
     and after its last one. ``provisional_keys`` are players whose baseline
     is only a guess (e.g. crawled players placed mid-level), so they learn
-    faster at first like NTRP-default players.
+    faster at first like NTRP-default players. ``state`` continues from an
+    earlier run (prior seasons): ratings, singles offsets and match counts
+    carry over; ``baselines`` only seeds players new to this run.
     """
     res = V9Result()
+    if state is not None:
+        res.rating = dict(state.rating)
+        res.singles_offset = dict(state.singles_offset)
+        res.matches = dict(state.matches)
+        res.singles_matches = dict(state.singles_matches)
     provisional = {k: is_provisional(v) or k in provisional_keys for k, v in baselines.items()}
 
     def strength(k: str, singles: bool) -> float:
