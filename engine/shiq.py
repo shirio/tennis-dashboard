@@ -47,6 +47,8 @@ def _div_key(division: str) -> str | None:
 HISTORY_YEARS = (2024, 2025)
 SETTLED_MATCHES = 5          # enough earlier matches to drop the provisional boost
 TR_CORE_WEIGHT = 0.5         # core players: blend the carried rating with Dec 2025 TennisRecord
+TR_HISTORY_ENOUGH = 10       # ... only when they have fewer TennisLink matches than this in 2024-25
+                             # (backtest 2026-11-27: TR adds nothing once a player has 10+ matches)
 
 
 def history_state(crawl: dict, keys: dict[str, str], pbn: dict, skip_refs: set,
@@ -118,7 +120,8 @@ def compute(players: list[dict], use_crawl: bool = True):
                     and n < SETTLED_MATCHES:
                 del state.rating[k]
                 continue
-            if not k.startswith("tl::") and not k.startswith("url:") and baselines.get(k) is not None:
+            if n < TR_HISTORY_ENOUGH and not k.startswith("tl::") and not k.startswith("url:") \
+                    and baselines.get(k) is not None:
                 state.rating[k] = TR_CORE_WEIGHT * baselines[k] + (1 - TR_CORE_WEIGHT) * state.rating[k]
             if n >= SETTLED_MATCHES:
                 provisional.discard(k)
