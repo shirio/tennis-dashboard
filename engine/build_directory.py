@@ -23,6 +23,7 @@ from __future__ import annotations
 import html as _html
 import json
 import re
+import urllib.parse
 from collections import defaultdict
 from pathlib import Path
 
@@ -1279,6 +1280,65 @@ var COUNTS = {json.dumps(counts, ensure_ascii=False)};
 # Entry point
 # ---------------------------------------------------------------------------
 
+def _par1(url) -> Optional[str]:
+    m = re.search(r"par1=([^&]+)", url or "")
+    return urllib.parse.unquote(m.group(1)) if m else None
+
+
+_TL_YEAR: dict[int, dict] = {}
+
+
+def _tl_year_levels(year: int) -> dict[str, dict]:
+    """{TennisLink par1: {"level", "rating_type"?}} for Nevada people in that
+    year's team crawl. The level is the one on her latest roster of the year
+    (team rosters list each player's NTRP for that season). When an earlier
+    roster that year shows a lower level, she was moved up mid-year: a D
+    (disqualification) rating (Shirin, 2026-11-26: Courtney Long 2024 = 3.0 D)."""
+    if year in _TL_YEAR:
+        return _TL_YEAR[year]
+    from engine.crawl_events import load_crawl
+    crawl = load_crawl(year) or {}
+    first: dict[str, tuple] = {}
+    for m in crawl.get("matches", {}).values():
+        k = _mdy_key(m.get("date"))
+        if k:
+            for t in m.get("teams", []):
+                if t not in first or k < first[t]:
+                    first[t] = k
+    out = {}
+    for person in crawl.get("people", {}).values():
+        pid = _par1(person.get("history_url"))
+        if not pid or person.get("area") != "NEVADA":
+            continue
+        seq = []
+        for t in person.get("teams", []):
+            if t.startswith("CHAMP") or t not in first:
+                continue
+            for x in (crawl.get("teams", {}).get(t) or {}).get("roster", []):
+                if x.get("name") == person.get("name") and x.get("ntrp"):
+                    try:
+                        seq.append((first[t], float(x["ntrp"])))
+                    except ValueError:
+                        pass
+        if not seq:
+            continue
+        seq.sort()
+        rec = {"level": seq[-1][1]}
+        if any(lv < seq[-1][1] for _, lv in seq[:-1]) and seq[0][1] < seq[-1][1]:
+            rec["rating_type"] = "D"
+        out[pid] = rec
+    _TL_YEAR[year] = out
+    return out
+
+
+def _mdy_key(s):
+    try:
+        mo, d, y = (int(x) for x in (s or "").split("/"))
+        return (y, mo, d)
+    except ValueError:
+        return None
+
+
 def _usta_rows(year: int) -> list[dict]:
     rows = _load(DATA_DIR / f"ntrp_{STATE.lower()}_{year}.json", [])
     for r in rows:
@@ -1562,6 +1622,11 @@ def build_directory() -> dict:
     for y in DIR_YEARS:
         if y in (YEAR_FROM, YEAR_TO):
             continue
+        if y < YEAR_FROM and _tl_year_levels(y):
+            # TennisLink's list for a past year shows players' CURRENT ratings,
+            # so past seasons come from that year's team rosters instead.
+            other_links[y] = {}
+            continue
         rows_y = _usta_rows(y)
         other_links[y] = link_years(usta, rows_y) if rows_y and not placeholder else {}
 
@@ -1608,6 +1673,9 @@ def build_directory() -> dict:
             th = {}
         for y, lk in other_links.items():
             by_year[y] = lk.get(i) or {}
+            if by_year[y].get("level") is None and y < YEAR_FROM:
+                # TennisLink rosters beat TennisRecord (Shirin, 2026-11-26)
+                by_year[y] = dict(_tl_year_levels(y).get(_par1(r.get("history_url")), {}))
             if by_year[y].get("level") is None:
                 lvl = th.get(y)
                 if lvl is not None:
