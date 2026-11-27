@@ -36,7 +36,7 @@ sys.path.insert(0, str(ROOT))
 from dotenv import load_dotenv  # noqa: E402
 from playwright.sync_api import sync_playwright  # noqa: E402
 
-from scrapers.scrape_tennislink import login  # noqa: E402
+from scrapers.scrape_tl_teams import CAPTCHA_EXIT, CaptchaRequired, open_browser, session_login  # noqa: E402
 
 SEARCH_URL = "https://tennislink.usta.com/leagues/reports/NTRP/AdvancedSearch.aspx"
 MAX_PAGES = 300
@@ -93,7 +93,7 @@ def _next_page_link(page, current: int):
     return None
 
 
-def _search_year(page, year, args, out, tag) -> None:
+def _search_year(page, year, args, out, tag, area=None) -> None:
     """Fresh Advanced Search for one year; save every results page."""
     print(f"  opening Advanced Search for {year} …")
     page.goto(SEARCH_URL, wait_until="domcontentloaded", timeout=45_000)
@@ -103,6 +103,9 @@ def _search_year(page, year, args, out, tag) -> None:
         raise RuntimeError(f"year {year} not offered")
     _select_by_option_text(page, args.section, "section")
     _select_by_option_text(page, args.district, "district")
+    if area:  # districts split into areas (e.g. Utah) show the rest of the form only after one is picked
+        if not _select_by_option_text(page, area, "area"):
+            raise RuntimeError(f"area {area} not offered")
     # Gender and Level default to "All"; leave League blank.
     # The page also has hidden header "Search" buttons (e.g. #btnSearchNTRP),
     # so target the form's own button by id.
@@ -142,6 +145,7 @@ def main(argv=None):
     ap.add_argument("--district", default="NEVADA")
     ap.add_argument("--out", default=str(ROOT / "data" / "ntrp_raw"))
     ap.add_argument("--tag", default="nv", help="File prefix for saved pages")
+    ap.add_argument("--area", default="", help="Comma list of areas, one search each (districts like UTAH need one)")
     args = ap.parse_args(argv)
 
     load_dotenv(ROOT / ".env")
@@ -155,14 +159,20 @@ def main(argv=None):
     tag = f"{args.tag}_{years[0]}"
 
     with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=False, slow_mo=150)
-        ctx = browser.new_context(viewport={"width": 1280, "height": 900})
-        page = ctx.new_page()
+        # same persistent profile as the team crawler: reuse the USTA session,
+        # and stop (never answer) if USTA asks for a CAPTCHA
+        ctx, page = open_browser(pw)
         try:
-            login(page, user, pw_)
+            try:
+                session_login(page)
+            except CaptchaRequired:
+                print("  USTA wants a CAPTCHA: sign in with scrapers/tl_signin.py, then rerun")
+                return CAPTCHA_EXIT
+            areas = [a.strip() for a in args.area.split(",") if a.strip()] or [None]
             for year in years:
-                tag = f"{args.tag}_{year}"
-                _search_year(page, year, args, out, tag)
+                for i, area in enumerate(areas, 1):
+                    tag = f"{args.tag}_{year}" + (f"_a{i}" if area else "")
+                    _search_year(page, year, args, out, tag, area)
         except Exception as e:
             shot = out / f"{tag}_error.png"
             try:
@@ -175,7 +185,7 @@ def main(argv=None):
             return 1
         finally:
             time.sleep(3)
-            browser.close()
+            ctx.close()
     return 0
 
 
