@@ -74,6 +74,18 @@ def _dismiss_cookie_banner(page) -> None:
             pass
 
 
+def _settle(page):
+    """Wait for a results page. A very large one (Denver Metro: ~11,000 rows
+    on one page) can keep the network busy past the wait; go on once the
+    page has loaded."""
+    try:
+        page.wait_for_load_state("networkidle", timeout=60_000)
+    except Exception:
+        page.wait_for_load_state("load", timeout=120_000)
+        print("  (network still busy after 60 s; page loaded, going on)")
+    time.sleep(2)
+
+
 def _next_page_link(page, current: int):
     """Find a pager link for page current+1, or a 'Next' link."""
     nxt = str(current + 1)
@@ -130,8 +142,7 @@ def _search_year(page, year, args, out, tag, area=None) -> None:
     if btn.count() == 0:
         btn = page.locator("input[type=submit][value='Search']:visible").first
     btn.click(timeout=15_000)
-    page.wait_for_load_state("networkidle", timeout=60_000)
-    time.sleep(2)
+    _settle(page)
 
     n = 1
     while True:
@@ -146,8 +157,7 @@ def _search_year(page, year, args, out, tag, area=None) -> None:
         if not link:
             break
         link.click()
-        page.wait_for_load_state("networkidle", timeout=60_000)
-        time.sleep(2)
+        _settle(page)
         n += 1
     print(f"  {year}: {n} page(s) saved to {out}")
     time.sleep(5)  # be gentle between searches
