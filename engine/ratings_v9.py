@@ -23,7 +23,8 @@ How it works
 * Players with no real baseline (NTRP default) learn faster for their first
   few matches, because their starting number is a guess.
 * Win probability for the matchup explorer / backtest is a logistic curve of
-  the strength gap, ``floor + (1 - 2*floor) / (1 + exp(-WIN_SLOPE * gap))``, fitted on our data.
+  the strength gap, ``floor + (1 - 2*floor) / (1 + exp(-slope * gap))``; the slope grows
+  with how many matches the players have behind them (win_slope), fitted on our data.
 """
 from __future__ import annotations
 
@@ -56,7 +57,17 @@ SINGLES_TO_DOUBLES = 0.75
 K_DOUBLES = 0.7         # doubles game shares follow the gap a bit more loosely
 PROVISIONAL_BOOST = 2.0   # step multiplier for players starting on an NTRP default
 PROVISIONAL_MATCHES = 5   # ... for this many matches
-WIN_SLOPE = 3.0          # logistic slope for win probability (fit on 2025 lines, 2026-11-27)
+WIN_SLOPE = 3.0          # logistic slope when we don't know how much history the players have
+# Confidence grows with history (Shirin 2026-11-28: the odds must match reality).
+# One slope was too cautious for players with history (said 85%, won 92%) and
+# too confident for new ones (said 90%+, won 78%). The slope now runs from
+# WIN_SLOPE_NEW to WIN_SLOPE_SETTLED with the fewer side's prior same-type
+# matches n:  slope = new + (settled - new) * (1 - exp(-n / WIN_SLOPE_TAU)).
+# Tuned on half of 2026's lines, checked on the other half: Brier 0.2059 ->
+# 0.2040 and 0.2038 -> 0.2020; the 90%+ group now wins about as often as predicted.
+WIN_SLOPE_NEW = 2.0
+WIN_SLOPE_SETTLED = 4.5
+WIN_SLOPE_TAU = 3.0
 UPSET_FLOOR = 0.04       # even a lopsided matchup is an upset ~4% of the time
 # (refit 2026-11-25 on 13,852 lines: the plain curve said 97% where favourites
 #  won 93%; slope 8 with a 4% floor tops out at 96% and matches actual rates)
@@ -90,6 +101,8 @@ class V9Result:
     # One entry per scored event, in processed order:
     # (event, pre-match strength diff winner-side minus loser-side)
     pre_match: list[tuple[R.CourtEvent, float]] = field(default_factory=list)
+    # Parallel to pre_match: prior same-type matches of the line's least-experienced player
+    pre_match_n: list[int] = field(default_factory=list)
 
     def singles(self, k: str) -> Optional[float]:
         if k not in self.rating:
@@ -100,17 +113,28 @@ class V9Result:
         return self.rating.get(k)
 
 
-def win_probability(gap: float, slope: float = WIN_SLOPE,
-                    floor: float = UPSET_FLOOR) -> float:
+def win_slope(matches: Optional[int]) -> float:
+    """Logistic slope for a line whose less-experienced side has ``matches``
+    prior same-type (singles or doubles) matches; WIN_SLOPE when unknown."""
+    if matches is None:
+        return WIN_SLOPE
+    return WIN_SLOPE_NEW + (WIN_SLOPE_SETTLED - WIN_SLOPE_NEW) * (1.0 - math.exp(-matches / WIN_SLOPE_TAU))
+
+
+def win_probability(gap: float, slope: Optional[float] = None,
+                    floor: float = UPSET_FLOOR, matches: Optional[int] = None) -> float:
     """P(side wins) given strength gap (side minus opponents), kept within
-    [floor, 1 - floor]."""
+    [floor, 1 - floor]. ``matches``: prior same-type matches of the side with
+    fewer (sets the confidence); ``slope`` overrides it."""
+    if slope is None:
+        slope = win_slope(matches)
     return floor + (1.0 - 2.0 * floor) / (1.0 + math.exp(-slope * gap))
 
 
 def side_win_probability(side: list[float], opp: list[float],
-                         slope: float = WIN_SLOPE) -> float:
+                         slope: Optional[float] = None, matches: Optional[int] = None) -> float:
     """P(side wins) for singles or doubles: a side's strength is its average."""
-    return win_probability(sum(side) / len(side) - sum(opp) / len(opp), slope)
+    return win_probability(sum(side) / len(side) - sum(opp) / len(opp), slope, matches=matches)
 
 
 def expected_game_share(gap: float, k: float = K) -> float:
@@ -182,6 +206,10 @@ def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
         sl = sum(strength(k, singles) for k in e.loser_keys) / len(e.loser_keys)
         gap = sw - sl
         res.pre_match.append((e, gap))
+        res.pre_match_n.append(min(
+            (res.singles_matches.get(k, 0) if singles
+             else res.matches.get(k, 0) - res.singles_matches.get(k, 0))
+            for k in e.winner_keys + e.loser_keys))
         if timelines:
             ref = line_ref(e)
             for k in e.winner_keys + e.loser_keys:

@@ -1414,7 +1414,7 @@ def main():
                         # Cross-pair expected win probability using PIT ratings
                         if own_r is not None and opp_rs:
                             own_side = [own_r] + ([partner_r] if partner_r is not None else [])
-                            expected_prob = side_win_probability(own_side, opp_rs)
+                            expected_prob = side_win_probability(own_side, opp_rs, matches=30)  # core players: settled curve
                         else:
                             expected_prob = None
                         return {
@@ -1667,7 +1667,7 @@ def main():
                     return None
                 diff = bl - m["opp_avg"]
                 from engine.ratings_v9 import win_probability
-                return win_probability(diff)
+                return win_probability(diff, matches=30)  # core players: settled curve
 
             surprising_wins = [
                 m for m in this_matches
