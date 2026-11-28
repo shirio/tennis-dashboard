@@ -58,3 +58,19 @@ Tri-Level championship scorecards label lines "4.0 1 Doubles". `refresh_champs` 
 then `resolve_tl_players.py --year Y`. Headed Chromium only (login fails headless); run it detached
 (nohup) so it outlives the Claude session. `ONE_PERSON` in resolve_tl_players.py lists unlisted NV
 names Shirin confirmed are one person despite different roster NTRP.
+
+## Per-state files (data/crawl/<year>/<code>.json)
+
+The crawler and the identity pass still work on one combined file per year
+(data/tl_team_matches_<year>.json). After each crawl, split it per crawled state:
+
+    ~/.venvs/tennis-dashboard/bin/python scripts/split_crawl.py 2026
+
+Each state file keeps the combined shape (teams, champ_flights, matches, people,
+identity_person, player_teams_by_url, _resolve). A state gets the teams its listed
+players are on (any district), its own league teams, every match of those teams,
+whole championship flights its teams reached, and every person in those matches,
+with only that file's match refs. Interstate matches and people sit in more than
+one file under the same id, so readers load every file for the year and merge by
+id, taking the union of a person's match refs. Team ids drop the district's
+area ("TEXAS - HOUSTON|…" becomes "TEXAS|…").

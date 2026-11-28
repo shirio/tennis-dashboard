@@ -106,7 +106,9 @@ def strip_subflight(flight: str) -> str:
 
 
 def team_id(district, league, flight, name) -> str:
-    return "|".join([district.strip().upper(), league.strip().upper(),
+    # district without its area ("UTAH - UT-SALT LAKE CITY" -> "UTAH"): player
+    # pages and match headers spell it differently for the same team
+    return "|".join([norm_area(district), league.strip().upper(),
                      strip_subflight(flight).upper(), name.strip().upper()])
 
 
@@ -135,7 +137,7 @@ def load_store() -> dict:
 def save_store(d: dict):
     OUT.parent.mkdir(parents=True, exist_ok=True)
     tmp = OUT.with_suffix(".tmp")
-    tmp.write_text(json.dumps(d, indent=1, ensure_ascii=False))
+    tmp.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")))  # compact: keeps the yearly file under GitHub's 100 MB
     tmp.replace(OUT)
 
 
@@ -557,7 +559,12 @@ def ntrp_players(gender: str | None = None, list_path: Path | None = None) -> li
     id = name slug (matches players/nv slugs, so the core players already done
     are skipped); names on the list more than once get the history_url's
     par1 appended so each person is opened."""
-    rows = json.loads((list_path or NTRP_LIST).read_text())
+    lp = list_path or NTRP_LIST
+    rows = json.loads(lp.read_text())
+    # other districts' lists (ntrp_ut_2026.json …) get their code as an id prefix,
+    # so a Utah John Smith is never skipped as the NV John Smith already done
+    m = re.match(r"ntrp_([a-z]+)_", lp.name)
+    prefix = "" if not m or m.group(1) == "nv" else m.group(1) + ":"
     if gender:
         rows = [r for r in rows if r.get("gender") == gender]
     rows = sorted(rows, key=lambda r: (r.get("gender") != "F", r["name"]))
@@ -571,7 +578,7 @@ def ntrp_players(gender: str | None = None, list_path: Path | None = None) -> li
         if count[s] > 1:
             par1 = re.search(r"par1=([^&]+)", r.get("history_url") or "")
             s += "--" + re.sub(r"[^A-Za-z0-9]", "", par1.group(1) if par1 else r.get("city", ""))[:12]
-        out.append({"id": s, "name": r["name"], "history_url": r.get("history_url"),
+        out.append({"id": prefix + s, "name": r["name"], "history_url": r.get("history_url"),
                     "gender": r.get("gender")})
     return out
 
@@ -658,7 +665,7 @@ def set_year(year: int) -> None:
     OUT = ROOT / "data" / f"tl_team_matches_{year}.json"
 
 
-PROFILE_DIR = ROOT / "data" / ".cache" / "tl_profile"   # persistent browser profile (gitignored)
+PROFILE_DIR = Path(os.environ.get("TL_PROFILE") or ROOT / "data" / ".cache" / "tl_profile")  # persistent browser profile (gitignored); TL_PROFILE: a copy for a parallel run
 CAPTCHA_EXIT = 3
 
 
