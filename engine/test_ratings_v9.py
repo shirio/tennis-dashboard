@@ -49,6 +49,13 @@ class TestV9(unittest.TestCase):
         self.assertGreater(r.singles_offset["a"], 0.0)
         self.assertGreater(r.singles("a"), r.doubles("a"))
 
+    def test_singles_line_moves_doubles_three_quarters(self):
+        bl = {"a": 3.2, "c": 3.2}   # real baselines, no provisional boost
+        r = V9.run_v9([ev(["a"], ["c"], "6-3 6-3", line="1# Singles")], bl)
+        moved_d = r.doubles("a") - 3.2
+        moved_s = r.singles("a") - 3.2
+        self.assertAlmostEqual(moved_d, V9.SINGLES_TO_DOUBLES * moved_s)
+
     def test_provisional_player_learns_faster(self):
         bl = {"new": 2.60, "est": 2.63, "x": 2.6, "y": 2.6}
         r1 = V9.run_v9([ev(["new"], ["x"], "6-2 6-2", line="1# Singles")], bl)

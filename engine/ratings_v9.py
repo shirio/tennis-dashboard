@@ -8,8 +8,10 @@ v9 beat v8 on the backtest scorecard (engine/backtest.py --holdout).
 
 How it works
 ------------
-* Every player has one shared rating ``r`` (starts at the Dec baseline) and a
+* Every player has a doubles rating ``r`` (starts at the Dec baseline) and a
   singles offset ``o`` (starts at 0). Doubles strength = r, singles = r + o.
+  A doubles line moves both; a singles line moves singles fully and doubles
+  75% as much (see LR_DOUBLES / LR_SINGLES / SINGLES_TO_DOUBLES).
 * For each completed court line, oldest first, the engine predicts the share
   of games the winning side should take:
       expected = 0.5 + 0.5 * tanh(K * (side_A - side_B))
@@ -37,9 +39,21 @@ from engine import ratings as R
 # Retuned 2026-11-27 on the full 2024-2026 TennisLink crawl (tuned on 2025,
 # checked on 2026's 26.9k lines): ratings move faster and the game-share curve
 # is flatter. Brier 0.2137 -> 0.2026 with WIN_SLOPE refit (old: K 1.2, LR 0.20, slope 8).
-K = 0.8                 # game-share sensitivity to strength gap
-LR = 0.30               # step size for the shared rating
-LR_SINGLES_OFFSET = 0.10  # extra step for the singles offset on singles lines
+K = 0.8                 # game-share sensitivity to strength gap (singles lines)
+LR = 0.30               # (kept for reference; see the split below)
+LR_SINGLES_OFFSET = 0.10  # (kept for reference; see the split below)
+# Singles / doubles split (Shirin, 2026-11-27; tuned on 2025 lines, checked on
+# 2026's 26.9k): the doubles rating r and the singles rating r + o.
+#   doubles line: r moves LR_DOUBLES * miss; the singles rating moves with it.
+#   singles line: the singles rating moves LR_SINGLES * miss, r moves
+#                 SINGLES_TO_DOUBLES of that (the offset o takes the rest).
+# Fully separate ratings were worse (Brier 0.2062): most players have few
+# singles lines. This split: Brier 0.2027 -> 0.1995 (singles 0.1995 -> 0.1988,
+# doubles 0.2038 -> 0.1998).
+LR_DOUBLES = 0.50
+LR_SINGLES = 0.60
+SINGLES_TO_DOUBLES = 0.75
+K_DOUBLES = 0.7         # doubles game shares follow the gap a bit more loosely
 PROVISIONAL_BOOST = 2.0   # step multiplier for players starting on an NTRP default
 PROVISIONAL_MATCHES = 5   # ... for this many matches
 WIN_SLOPE = 3.0          # logistic slope for win probability (fit on 2025 lines, 2026-11-27)
@@ -54,8 +68,10 @@ _DEFAULT_BASELINES = {round(v, 2) for v in R._NTRP_DEFAULT_RATING.values()}
 @dataclass
 class Params:
     k: float = K
-    lr: float = LR
-    lr_offset: float = LR_SINGLES_OFFSET
+    k_doubles: float = K_DOUBLES
+    lr_doubles: float = LR_DOUBLES
+    lr_singles: float = LR_SINGLES
+    singles_to_doubles: float = SINGLES_TO_DOUBLES
     provisional_boost: float = PROVISIONAL_BOOST
     provisional_matches: int = PROVISIONAL_MATCHES
 
@@ -173,15 +189,19 @@ def run_v9(events: list[R.CourtEvent], baselines: dict[str, float],
                     (e.division, e.date), [res.rating[k], res.rating[k]])
                 res.line_timeline.setdefault(k, {})[ref] = [res.rating[k], res.rating[k]]
 
-        delta = w / (w + l) - expected_game_share(gap, params.k)
+        delta = w / (w + l) - expected_game_share(gap, params.k if singles else params.k_doubles)
         for k, sign in [(k, 1.0) for k in e.winner_keys] + [(k, -1.0) for k in e.loser_keys]:
             n = res.matches.get(k, 0)
             boost = (params.provisional_boost
                      if provisional.get(k, True) and n < params.provisional_matches else 1.0)
-            res.rating[k] += sign * params.lr * boost * delta
+            step = sign * boost * delta
             if singles:
+                shared = params.lr_singles * params.singles_to_doubles * step
+                res.rating[k] += shared
                 res.singles_offset[k] = (res.singles_offset.get(k, 0.0)
-                                         + sign * params.lr_offset * boost * delta)
+                                         + params.lr_singles * step - shared)
+            else:
+                res.rating[k] += params.lr_doubles * step
             res.matches[k] = n + 1
             if singles:
                 res.singles_matches[k] = res.singles_matches.get(k, 0) + 1
