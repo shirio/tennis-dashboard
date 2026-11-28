@@ -62,6 +62,18 @@ class TestV9(unittest.TestCase):
         r2 = V9.run_v9([ev(["est"], ["y"], "6-2 6-2", line="1# Singles")], bl)
         self.assertGreater(r1.rating["new"] - 2.60, r2.rating["est"] - 2.63)
 
+    def test_confidence_grows_with_history(self):
+        new = V9.win_probability(0.3, matches=0)
+        settled = V9.win_probability(0.3, matches=50)
+        self.assertLess(new, settled)
+        self.assertAlmostEqual(V9.win_probability(0.3), V9.win_probability(0.3, V9.WIN_SLOPE))
+
+    def test_pre_match_records_least_experienced_count(self):
+        bl = {"a": 3.0, "b": 3.0, "c": 3.0}
+        r = V9.run_v9([ev(["a"], ["b"], "6-4 6-4", line="1# Singles"),
+                       ev(["a"], ["c"], "6-4 6-4", line="1# Singles")], bl)
+        self.assertEqual(r.pre_match_n, [0, 0])   # c is new in the second match
+
     def test_win_probability_symmetric(self):
         self.assertAlmostEqual(V9.win_probability(0.2) + V9.win_probability(-0.2), 1.0)
 

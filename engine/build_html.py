@@ -2691,9 +2691,11 @@ def _score_desc_short(score: str) -> str:
 
 
 def _win_prob_gap(gap: float) -> float:
-    """ShiQ v9 win probability from rating gap (player − opponent)."""
-    from engine.ratings_v9 import win_probability
-    return win_probability(gap)
+    """shIQ win probability from rating gap (player − opponent). Dashboard
+    players are core players with a real starting rating and seasons of
+    history, so they get the settled (most confident) curve."""
+    from engine.ratings_v9 import win_probability, WIN_SLOPE_SETTLED
+    return win_probability(gap, WIN_SLOPE_SETTLED)
 
 
 def _analysis_tab(ntrp: str) -> str:
