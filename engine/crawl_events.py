@@ -27,10 +27,57 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def crawl_path(year: int = 2026) -> Path:
+    """The old combined file (still read when no per-state files exist)."""
     return ROOT / "data" / f"tl_team_matches_{year}.json"
 
 
+def crawl_dir(year: int = 2026) -> Path:
+    """Per-state crawl files: data/crawl/<year>/<state code>.json."""
+    return ROOT / "data" / "crawl" / str(year)
+
+
+_MERGE_BY_ID = ("teams", "matches", "champ_flights", "identity_person", "player_teams_by_url")
+
+
+def merge_crawls(parts: list[dict]) -> dict:
+    """One crawl dict from per-state files. Teams, matches, champ flights and
+    the identity maps merge by id (a record in two state files is the same
+    record). People merge by id with the union of their ``matches`` refs and
+    ``teams``; other fields come from the first file that has the person."""
+    out: dict = {k: {} for k in _MERGE_BY_ID}
+    out["people"] = {}
+    out["states"] = []
+    for part in parts:
+        out["states"].append(part.get("code") or part.get("state"))
+        for k in _MERGE_BY_ID:
+            v = part.get(k)
+            if isinstance(v, dict):
+                for kk, vv in v.items():
+                    out[k].setdefault(kk, vv)
+        for pid, per in (part.get("people") or {}).items():
+            have = out["people"].get(pid)
+            if have is None:
+                out["people"][pid] = dict(per)
+                continue
+            seen = {tuple(r) for r in have.get("matches", [])}
+            have["matches"] = list(have.get("matches", [])) + [
+                r for r in per.get("matches", []) if tuple(r) not in seen]
+            have["teams"] = list(have.get("teams", [])) + [
+                t for t in per.get("teams", []) if t not in set(have.get("teams", []))]
+        for k, v in part.items():   # anything else (e.g. _resolve): first file wins
+            if k not in out and k not in ("year", "state", "code"):
+                out[k] = v
+    if parts:
+        out["year"] = parts[0].get("year")
+    return out
+
+
 def load_crawl(year: int = 2026) -> Optional[dict]:
+    """The year's crawl: every data/crawl/<year>/*.json merged, else the old
+    combined data/tl_team_matches_<year>.json, else None."""
+    files = sorted(crawl_dir(year).glob("*.json")) if crawl_dir(year).is_dir() else []
+    if files:
+        return merge_crawls([json.loads(f.read_text()) for f in files])
     p = crawl_path(year)
     return json.loads(p.read_text()) if p.exists() else None
 
