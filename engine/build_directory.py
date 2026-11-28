@@ -1531,12 +1531,26 @@ def _guess_gender(hist: list[dict]):
     return "F" if w > m else "M" if m > w else None
 
 
+def _people_near_state(crawl: dict, year: int, code: str = "nv") -> set:
+    """Crawl people who get a page in this state's directory: everyone in the
+    state's own crawl file for the year (its players, their teammates and
+    everyone in those teams' matches), or everyone when the year has no
+    per-state files. Other states' whole leagues (Utah, Idaho, ...) stay out:
+    a page for each of those would push the site past GitHub Pages' 1 GB limit."""
+    from engine.crawl_events import crawl_dir
+    f = crawl_dir(year) / f"{code}.json"
+    if not f.exists():
+        return set((crawl.get("people") or {}))
+    return set(json.loads(f.read_text()).get("people") or {})
+
+
 def _plan_pages(players: list[dict], db: list[dict], histories: dict, pit):
     """Which player pages to write and where each history comes from.
     Returns ({page id: {p, hist, pit, info?}}, {crawl person id: page id}).
 
     With the TennisLink team crawl on disk (data/tl_team_matches_<year>.json),
-    every crawled person with at least one match gets a page built from the crawl.
+    every person in Nevada's crawl file with at least one match gets a page
+    built from the crawl (other states' crawl files add opponents' data, not pages).
     Core players keep their players.json id; others get a name slug (plus the
     area outside Nevada). Core players the crawl doesn't cover keep their
     standings history."""
@@ -1565,8 +1579,9 @@ def _plan_pages(players: list[dict], db: list[dict], histories: dict, pit):
         elif histories.get(_nkey(p["name"])):
             pages[p["id"]] = {"p": p, "hist": histories[_nkey(p["name"])], "pit": pit}
     shiq = _load(DATA_DIR / "shiq_crawl_people.json", {})
+    near_nv = _people_near_state(_CRAWL, YEAR_FROM, STATE.lower())
     for cpid in sorted(c_hist):
-        if cpid in pid_page:
+        if cpid in pid_page or cpid not in near_nv:
             continue
         person = _CRAWL["people"][cpid]
         area = person.get("area") or ""
