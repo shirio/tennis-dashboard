@@ -62,6 +62,60 @@ def canon_team_ids(d):
                             for k, v in d.get("identity_person", {}).items()}
 
 
+LIMIT = 90e6  # bytes per file; GitHub refuses files over 100 MB
+
+
+def dump(f):
+    return json.dumps(f, ensure_ascii=False, separators=(",", ":"))
+
+
+def chunk(f, limit):
+    """One state's file, or several (<code>.json, <code>-2.json, ...) when it
+    would pass `limit`: matches are dealt out in id order, and each part keeps
+    the teams, flights and people (with only that part's match refs) its
+    matches need. load_crawl merges them back by id like any two states."""
+    size = len(dump(f).encode())
+    if size <= limit:
+        return [f]
+    k = int(size // limit) + 1
+    while True:
+        parts = _deal(f, k)
+        if max(len(dump(x).encode()) for x in parts) <= limit or k >= len(f["matches"]):
+            return parts
+        k += 1
+
+
+def _deal(f, k):
+    mids = sorted(f["matches"])
+    n = -(-len(mids) // k)
+    parts = []
+    for i in range(k):
+        ms = set(mids[i * n:(i + 1) * n])
+        if not ms:
+            continue
+        tids = {t for m in ms for t in f["matches"][m].get("teams", []) if t in f["teams"]}
+        people = {}
+        for pid, p in f["people"].items():
+            refs = [r for r in p["matches"] if r[0] in ms]
+            if refs or (i == 0 and not p["matches"]):
+                q = dict(p)
+                q["matches"] = refs
+                q["teams"] = [t for t in p["teams"] if t in tids or t.startswith("CHAMP|")] if i else p["teams"]
+                people[pid] = q
+        part = dict(f)
+        part["matches"] = {m: f["matches"][m] for m in sorted(ms)}
+        part["people"] = people
+        if i:
+            part["teams"] = {t: f["teams"][t] for t in sorted(tids)}
+            fl = {str(f["matches"][m].get("tl_id")) for m in ms}
+            part["champ_flights"] = {ck: cf for ck, cf in f["champ_flights"].items()
+                                     if fl & {str(x) for x in cf.get("match_ids", [])}}
+            part["identity_person"] = {kk: v for kk, v in f["identity_person"].items() if v in people}
+            part["player_teams_by_url"] = {}
+        parts.append(part)
+    return parts
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("year", type=int)
@@ -174,10 +228,16 @@ def main():
                                     if url_state.get(hu, "nv") == c},
             "_resolve": d.get("_resolve", {}),
         }
-        path = out / f"{c}.json"
-        path.write_text(json.dumps(f, ensure_ascii=False, separators=(",", ":")))
+        for old in out.glob(f"{c}-*.json"):
+            old.unlink()
+        parts = chunk(f, LIMIT)
+        sizes = []
+        for i, part in enumerate(parts, 1):
+            path = out / (f"{c}.json" if i == 1 else f"{c}-{i}.json")
+            path.write_text(dump(part))
+            sizes.append(round(path.stat().st_size / 1e6, 1))
         summary[c] = {"matches": len(mids), "teams": len(tids), "people": len(people),
-                      "MB": round(path.stat().st_size / 1e6, 1)}
+                      "MB": sizes if len(sizes) > 1 else sizes[0]}
     # every match lands somewhere
     placed = {mid for mid, ss in match_states.items() if ss}
     summary["_unplaced_matches"] = len(set(d["matches"]) - placed)
