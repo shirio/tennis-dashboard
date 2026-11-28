@@ -93,6 +93,21 @@ def _next_page_link(page, current: int):
     return None
 
 
+def _district_areas(page, year, args) -> list[str]:
+    """Areas the district is split into (Utah: UT-SALT LAKE CITY, ...), if any."""
+    page.goto(SEARCH_URL, wait_until="domcontentloaded", timeout=45_000)
+    time.sleep(2)
+    _dismiss_cookie_banner(page)
+    _select_by_option_text(page, str(year), "year")
+    _select_by_option_text(page, args.section, "section")
+    _select_by_option_text(page, args.district, "district")
+    sel = page.query_selector("#ctl00_mainContent_ddlArea")
+    if not sel:
+        return []
+    opts = sel.evaluate("s => Array.from(s.options).map(o => o.text.trim())")
+    return [o for o in opts if o and not o.lower().startswith("select")]
+
+
 def _search_year(page, year, args, out, tag, area=None) -> None:
     """Fresh Advanced Search for one year; save every results page."""
     print(f"  opening Advanced Search for {year} …")
@@ -168,7 +183,10 @@ def main(argv=None):
             except CaptchaRequired:
                 print("  USTA wants a CAPTCHA: sign in with scrapers/tl_signin.py, then rerun")
                 return CAPTCHA_EXIT
-            areas = [a.strip() for a in args.area.split(",") if a.strip()] or [None]
+            areas = [a.strip() for a in args.area.split(",") if a.strip()]
+            if not areas or areas == ["ALL"]:
+                areas = _district_areas(page, years[0], args) or [None]
+                print(f"  areas: {areas}")
             for year in years:
                 for i, area in enumerate(areas, 1):
                     tag = f"{args.tag}_{year}" + (f"_a{i}" if area else "")

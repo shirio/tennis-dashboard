@@ -476,7 +476,7 @@ def main():
     t0 = time.time()
     d = resolve(d, a.fetch)
     tmp = OUT.with_suffix(".tmp")
-    tmp.write_text(json.dumps(d, indent=1, ensure_ascii=False))
+    tmp.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")))  # compact: keeps the yearly file under GitHub's 100 MB
     tmp.replace(OUT)
     print(json.dumps(d["_resolve"], indent=1), f"\n{round(time.time() - t0, 1)} s")
 
