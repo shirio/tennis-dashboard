@@ -106,7 +106,9 @@ def strip_subflight(flight: str) -> str:
 
 
 def team_id(district, league, flight, name) -> str:
-    return "|".join([district.strip().upper(), league.strip().upper(),
+    # district without its area ("UTAH - UT-SALT LAKE CITY" -> "UTAH"): player
+    # pages and match headers spell it differently for the same team
+    return "|".join([norm_area(district), league.strip().upper(),
                      strip_subflight(flight).upper(), name.strip().upper()])
 
 
