@@ -298,9 +298,12 @@ def resolve(d, fetch: bool) -> dict:
     # Section wildcard teams at Sectionals ("Intermountain/Simister/...") mix
     # players from several states: give each player the state where the
     # name otherwise appears, if that is exactly one state.
+    # Only the section's own states count: a namesake met in another section
+    # (Scott Baker, Ohio Valley) can't be on an Intermountain team.
+    SECTION = {"NEVADA", "UTAH", "IDAHO", "COLORADO", "MONTANA", "WYOMING"}
     areas_of = collections.defaultdict(set)
     for it in ids.values():
-        if it["area"] != "INTERMOUNTAIN":
+        if it["area"] in SECTION:
             areas_of[it["nname"]].add(it["area"])
     # The wildcard team's name also shows up as a local team in the player's
     # own state ("NEVADA|...|INTERMOUNTAIN/VANNAH/TRILEVEL4.0W"): that settles
