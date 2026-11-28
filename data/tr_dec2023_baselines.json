@@ -1,0 +1,1645 @@
+{
+ "description": "TennisRecord dynamic rating as of the last match on or before 12/31/2023 (last black rating), entered by hand by Shirin 2026-11-27 for NV players with under 10 TennisLink matches in 2024-25. tr_rating null = no usable rating (see note). Used by engine/shiq.py as the start of the 2024 history chain.",
+ "players": [
+  {
+   "name": "Elise Altfas",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Self-rated, so no legal dynamic rating. 2023 was only tournament matches in the self-rate category (no ratings given). Started league play in 2024 as a 4.0 S (opponents\u2019 pages show her as self-rated; rosters say 4.0)."
+  },
+  {
+   "name": "Debbie Barbaroussis-Goot",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.76,
+   "as_of_match": "2023-04-17",
+   "note": "Only TR player with this name; TR lists location as Saint George, UT"
+  },
+  {
+   "name": "Azucena Benito",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Elena Bolha",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Mari K Bradley",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Christina Brandt",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Jacqueline Brooks",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.97,
+   "as_of_match": "2023-12-14",
+   "note": null
+  },
+  {
+   "name": "Gabrielle Brucker",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Matches through 2014 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "stephanie chen",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.81,
+   "as_of_match": "2023-06-03",
+   "note": "8 players with this name; used the NV one"
+  },
+  {
+   "name": "Stella Chivikas",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.64,
+   "as_of_match": "2023-11-05",
+   "note": null
+  },
+  {
+   "name": "Lea Cohen",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Lisa Davis-Wilson",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.01,
+   "as_of_match": "2021-02-27",
+   "note": "Last black rating is from 2021"
+  },
+  {
+   "name": "Shannon Demus",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Rebecca Dunne",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Charlotte Durisseau",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Carri Geer-Thevenot",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 4.08,
+   "as_of_match": "2023-11-19",
+   "note": null
+  },
+  {
+   "name": "Kara Godfrey",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Celeste Hughes",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Amanda Irving",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 1.97,
+   "as_of_match": "2023-05-24",
+   "note": null
+  },
+  {
+   "name": "Melanie Isbell",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Kathleen Janssen",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 4.23,
+   "as_of_match": "2023-09-16",
+   "note": null
+  },
+  {
+   "name": "lisa krzyzaniak",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.14,
+   "as_of_match": "2023-12-16",
+   "note": null
+  },
+  {
+   "name": "Jennifer Lake",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.13,
+   "as_of_match": "2023-12-09",
+   "note": "4 players with this name; used the NV one"
+  },
+  {
+   "name": "Vanessa Landreman",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.04,
+   "as_of_match": "2021-06-18",
+   "note": "Last black rating is from 2021"
+  },
+  {
+   "name": "Taylor Larson",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.63,
+   "as_of_match": "2023-12-09",
+   "note": null
+  },
+  {
+   "name": "Yamila De Leon",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Chelsea Loomis",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 4.0,
+   "as_of_match": "2023-12-08",
+   "note": null
+  },
+  {
+   "name": "Eileen Ly",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Erin Mangino",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.35,
+   "as_of_match": "2023-11-04",
+   "note": null
+  },
+  {
+   "name": "Cassidy De La Mare",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Darian McCauley",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.54,
+   "as_of_match": "2018-05-12",
+   "note": "Last black rating is from 2018"
+  },
+  {
+   "name": "Janel Mcdonald",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Tammie Meng",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Alexis Michaud",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.27,
+   "as_of_match": "2023-04-19",
+   "note": null
+  },
+  {
+   "name": "Jules Mitchell",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Michelle Mortensen",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.15,
+   "as_of_match": "2023-11-08",
+   "note": null
+  },
+  {
+   "name": "Madeleine Navar",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Grace Nemec",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.68,
+   "as_of_match": "2022-05-14",
+   "note": "Last black rating is from 2022"
+  },
+  {
+   "name": "Virginia Nisson",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.96,
+   "as_of_match": "2023-11-11",
+   "note": null
+  },
+  {
+   "name": "Claire Oraee",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.56,
+   "as_of_match": "2023-06-26",
+   "note": null
+  },
+  {
+   "name": "Vivienne Osmena",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Jennifer Peterson",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.76,
+   "as_of_match": "2023-12-04",
+   "note": null
+  },
+  {
+   "name": "Jelena Petrovic",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Elizabeth Pierce",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Kristi Pishko",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Cecilia Reynolds",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Heather Rose",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Matches through 2014 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Seda Sargsyan",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "2 Las Vegas profiles with this name; used the 3.5 C one (matches this sheet). Matches through 2020 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Candace Sartini",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Nicole Solovey",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Tiffany Vance",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Alisun Vehar",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Matches through 2016 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Evelyn Vernetti",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Matches through 2023 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "My Vuong",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.43,
+   "as_of_match": "2023-11-04",
+   "note": null
+  },
+  {
+   "name": "Michelle Willoughby",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.12,
+   "as_of_match": "2023-02-11",
+   "note": null
+  },
+  {
+   "name": "Brooke Abel",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Christopher Andre",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Matches through 2021 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Mark Joseph Apostol",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Zachary Austin",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 2.55,
+   "as_of_match": "2022-11-21",
+   "note": "2 players with this name; used the 3.0 C one (TR lists Cibolo, TX, but he plays NV leagues); no matches in 2023, last black rating is from 2022"
+  },
+  {
+   "name": "Lenny Badger",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.51,
+   "as_of_match": "2023-02-18",
+   "note": null
+  },
+  {
+   "name": "Mitch Baron",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.08,
+   "as_of_match": "2018-12-17",
+   "note": "Last black rating is from 2018"
+  },
+  {
+   "name": "Pam Barrie",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2024, so no rating by end of 2023"
+  },
+  {
+   "name": "Alina Barthle",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "David Bauman",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "2 players with this name; used the NV one; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "John Ivan Bauzon",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Doug Beil",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.56,
+   "as_of_match": "2023-05-21",
+   "note": "Only TR player with this name; TR lists location as Cary, NC"
+  },
+  {
+   "name": "Kandarp Bhatt",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.82,
+   "as_of_match": "2018-08-10",
+   "note": "Last black rating is from 2018"
+  },
+  {
+   "name": "David Blank",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.62,
+   "as_of_match": "2021-06-20",
+   "note": "3 players with this name; used the NV one; last black rating is from 2021"
+  },
+  {
+   "name": "Lindsay Buckley",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "John Cain",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.07,
+   "as_of_match": "2023-12-15",
+   "note": "5 players with this name; used the NV one"
+  },
+  {
+   "name": "Gia Ann Juneca Calvelo",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.43,
+   "as_of_match": "2016-02-13",
+   "note": "Last black rating is from 2016"
+  },
+  {
+   "name": "Deryck Campbell",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Joaquin Castruita",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.34,
+   "as_of_match": "2023-06-14",
+   "note": null
+  },
+  {
+   "name": "Deb Chaltron",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.47,
+   "as_of_match": "2023-12-09",
+   "note": null
+  },
+  {
+   "name": "Justin Chang",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "11 players with this name; used the NV one; matches through 2019 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Jaekeun Cho",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "2 players with this name; used the NV one; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Brandon Christopher",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.71,
+   "as_of_match": "2022-12-10",
+   "note": "Last black rating is from 2022"
+  },
+  {
+   "name": "Kelly Wai Man Chu",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Roman Chumanov",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Aftin Coakley",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "DC Collins",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 2.51,
+   "as_of_match": "2023-12-06",
+   "note": null
+  },
+  {
+   "name": "Brett Condon",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.76,
+   "as_of_match": "2019-03-22",
+   "note": "Last black rating is from 2019"
+  },
+  {
+   "name": "Kota Cook",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.91,
+   "as_of_match": "2016-06-17",
+   "note": "Last black rating is from 2016"
+  },
+  {
+   "name": "Glen Cordero",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2024, so no rating by end of 2023"
+  },
+  {
+   "name": "Paul Cornbleth",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.53,
+   "as_of_match": "2023-11-04",
+   "note": null
+  },
+  {
+   "name": "Varun Desai",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.72,
+   "as_of_match": "2023-07-08",
+   "note": null
+  },
+  {
+   "name": "Alfie Dewhurst",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Matches through 2023 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Michel Dierickx",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Michael Dinielli",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.69,
+   "as_of_match": "2023-12-09",
+   "note": null
+  },
+  {
+   "name": "Nancy Drabicki",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.63,
+   "as_of_match": "2023-04-17",
+   "note": "Only TR player with this name; TR lists location as Washington, UT"
+  },
+  {
+   "name": "Janis Elliott",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Clay Ellish",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Brandynn Elwart",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "John Ewing",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 2.82,
+   "as_of_match": "2023-12-02",
+   "note": "3 players with this name; used the NV one"
+  },
+  {
+   "name": "Tonia Fike",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.6,
+   "as_of_match": "2016-09-20",
+   "note": "Last black rating is from 2016"
+  },
+  {
+   "name": "Getnet Fikre",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.09,
+   "as_of_match": "2023-12-09",
+   "note": null
+  },
+  {
+   "name": "Brian Patrick Foley",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.96,
+   "as_of_match": "2023-08-12",
+   "note": null
+  },
+  {
+   "name": "Diona Fonte",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.71,
+   "as_of_match": "2023-06-13",
+   "note": null
+  },
+  {
+   "name": "Christopher Ford",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 2.44,
+   "as_of_match": "2023-06-17",
+   "note": "3 players with this name; used the NV one"
+  },
+  {
+   "name": "Gaetano Franceschi",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Only TR player with this name; TR lists location as Chippewa Falls, WI; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "John Francisco",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Courtney Fuhrmann",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.98,
+   "as_of_match": "2023-12-16",
+   "note": null
+  },
+  {
+   "name": "Garth Gamble",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.25,
+   "as_of_match": "2021-09-25",
+   "note": "Last black rating is from 2021"
+  },
+  {
+   "name": "Josiah J Garlan",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Matches through 2023 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Priscilla Gaughan",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "William Gaughan",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "2 players with this name; used the NV one; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Lydia Gebrai",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Matthew Giedt-Paredes",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.15,
+   "as_of_match": "2023-03-04",
+   "note": null
+  },
+  {
+   "name": "John Gillespie",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "5 players with this name; used the NV one; matches through 2015 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Dominic Grizzelle",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 2.7,
+   "as_of_match": "2023-10-28",
+   "note": null
+  },
+  {
+   "name": "Griffin Haddrill",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Dan Hagin",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.09,
+   "as_of_match": "2023-10-21",
+   "note": null
+  },
+  {
+   "name": "David Hakan",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 2.87,
+   "as_of_match": "2020-03-06",
+   "note": "Last black rating is from 2020"
+  },
+  {
+   "name": "Alice Han-Carlsson",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 4.57,
+   "as_of_match": "2023-12-01",
+   "note": null
+  },
+  {
+   "name": "Nicholas Hansen",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 2.83,
+   "as_of_match": "2023-12-09",
+   "note": "2 players with this name; used the NV one"
+  },
+  {
+   "name": "Ayako Hasegawa",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Only TR player with this name; TR lists location as Aliso Viejo, CA; matches through 2023 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Mary Hernan",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Carmel-Mary Hill",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 4.51,
+   "as_of_match": "2021-08-28",
+   "note": "Last black rating is from 2021"
+  },
+  {
+   "name": "Ben Ho",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Denise Hoogland",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.85,
+   "as_of_match": "2022-11-16",
+   "note": "Last black rating is from 2022"
+  },
+  {
+   "name": "Justin Hseih",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Ann Hudson",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "2 players with this name; used the NV one; no TR matches before 2024, so no rating by end of 2023"
+  },
+  {
+   "name": "Richard Keller Ii",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Takuya Ishigaki",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.28,
+   "as_of_match": "2023-12-09",
+   "note": null
+  },
+  {
+   "name": "Erik Jorsal",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.72,
+   "as_of_match": "2023-06-02",
+   "note": null
+  },
+  {
+   "name": "Ryan Joyce",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.5,
+   "as_of_match": "2022-11-05",
+   "note": "4 players with this name; used the NV one; last black rating is from 2022"
+  },
+  {
+   "name": "Sammy Kariyo",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "David Kartzinel",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.24,
+   "as_of_match": "2023-09-16",
+   "note": null
+  },
+  {
+   "name": "Adam Keith",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.53,
+   "as_of_match": "2023-10-21",
+   "note": "2 players with this name; used the NV one"
+  },
+  {
+   "name": "Lynn Kellogg",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 4.02,
+   "as_of_match": "2023-12-01",
+   "note": null
+  },
+  {
+   "name": "Blake Kelly",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "2 Las Vegas profiles with this name. Used the 3.5 C one (matches this sheet), which has no TR matches before 2025. The other profile has no current rating and matches 2014\u20132020, none with a black rating. Either way, no rating by end of 2023"
+  },
+  {
+   "name": "Lisa King",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.46,
+   "as_of_match": "2019-09-16",
+   "note": "9 players with this name; used the NV one; last black rating is from 2019"
+  },
+  {
+   "name": "Keith Kirby",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Pam Kirkendall",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.45,
+   "as_of_match": "2023-04-20",
+   "note": "2 players with this name; used the NV one"
+  },
+  {
+   "name": "Tyler Klunick",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.61,
+   "as_of_match": "2023-12-02",
+   "note": null
+  },
+  {
+   "name": "Sandy Knopow",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Randy Kondler",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.58,
+   "as_of_match": "2022-05-24",
+   "note": "Last black rating is from 2022"
+  },
+  {
+   "name": "Radha Kotamarti",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.61,
+   "as_of_match": "2023-09-18",
+   "note": null
+  },
+  {
+   "name": "John Kraus",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 2.68,
+   "as_of_match": "2022-12-01",
+   "note": "3 players with this name; used the NV one; last black rating is from 2022"
+  },
+  {
+   "name": "Robert Kraut",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "3 players with this name; used the NV one; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Alex Kreston",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.08,
+   "as_of_match": "2022-10-22",
+   "note": "Last black rating is from 2022"
+  },
+  {
+   "name": "David Kwun",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.54,
+   "as_of_match": "2019-05-18",
+   "note": "Last black rating is from 2019"
+  },
+  {
+   "name": "Chelsea Lankowsky",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Jen Loucks",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Jacqueline Magno",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.17,
+   "as_of_match": "2023-12-13",
+   "note": null
+  },
+  {
+   "name": "Gerardo Marquez",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.32,
+   "as_of_match": "2023-06-16",
+   "note": null
+  },
+  {
+   "name": "Craig Mason",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.23,
+   "as_of_match": "2022-11-05",
+   "note": "3 players with this name; used the NV one; last black rating is from 2022"
+  },
+  {
+   "name": "Russ Mayhew",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.32,
+   "as_of_match": "2017-08-04",
+   "note": "Only TR player with this name; TR lists location as Murrieta, CA; last black rating is from 2017"
+  },
+  {
+   "name": "Norma McMahan",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2024, so no rating by end of 2023"
+  },
+  {
+   "name": "Vishisht Mehta",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Jim Meservey",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.49,
+   "as_of_match": "2023-11-18",
+   "note": null
+  },
+  {
+   "name": "Andrew Meyers",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "2 players with this name; used the NV one; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Mary Michel",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.6,
+   "as_of_match": "2023-11-03",
+   "note": null
+  },
+  {
+   "name": "Ryan Millbern",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Majid Mirzazadeh",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.12,
+   "as_of_match": "2023-11-10",
+   "note": null
+  },
+  {
+   "name": "Elise Mizrachi",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Steve Moy",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.3,
+   "as_of_match": "2023-12-09",
+   "note": "2 players with this name; used the NV one"
+  },
+  {
+   "name": "Collin Murphy",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "2 players with this name; used the NV one; matches through 2023 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Brandon Myers",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "5 players with this name; used the NV one; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Dan Nelson",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.59,
+   "as_of_match": "2023-11-18",
+   "note": "6 players with this name; used the NV one"
+  },
+  {
+   "name": "Treasure Nyame",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.14,
+   "as_of_match": "2023-12-02",
+   "note": null
+  },
+  {
+   "name": "Patrick ONeill",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.79,
+   "as_of_match": "2021-10-16",
+   "note": "4 players with this name; used the NV one; last black rating is from 2021"
+  },
+  {
+   "name": "David Oraee",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.13,
+   "as_of_match": "2023-08-24",
+   "note": null
+  },
+  {
+   "name": "Alison Orci",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.19,
+   "as_of_match": "2023-05-06",
+   "note": null
+  },
+  {
+   "name": "Niclas Paalzow",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.17,
+   "as_of_match": "2021-11-20",
+   "note": "Last black rating is from 2021"
+  },
+  {
+   "name": "Cj Park",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Tyler Parlade",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Matches through 2020 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Kelly Parrish",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "2 players with this name; used the NV one; no TR matches before 2024, so no rating by end of 2023"
+  },
+  {
+   "name": "Nakul Patel",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 2.64,
+   "as_of_match": "2022-10-29",
+   "note": "Last black rating is from 2022"
+  },
+  {
+   "name": "Kimberly Penny",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.11,
+   "as_of_match": "2023-09-20",
+   "note": null
+  },
+  {
+   "name": "Karen Petersen",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.57,
+   "as_of_match": "2023-12-04",
+   "note": "2 players with this name; used the NV one"
+  },
+  {
+   "name": "Chad Poopat",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.31,
+   "as_of_match": "2023-12-09",
+   "note": null
+  },
+  {
+   "name": "AJ Poulin",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.11,
+   "as_of_match": "2023-11-11",
+   "note": "Only TR player with this name; TR lists location as Eagle, ID"
+  },
+  {
+   "name": "Tammie Quinlan",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.95,
+   "as_of_match": "2018-06-16",
+   "note": "Only TR player with this name; TR lists location as Eleele, HI; last black rating is from 2018"
+  },
+  {
+   "name": "Reed Radosevich",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.54,
+   "as_of_match": "2018-06-01",
+   "note": "Last black rating is from 2018"
+  },
+  {
+   "name": "Rafaella Reynolds",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 1.87,
+   "as_of_match": "2023-12-07",
+   "note": null
+  },
+  {
+   "name": "Phenix Rivera",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Claire Roth",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.97,
+   "as_of_match": "2023-03-31",
+   "note": "2 players with this name; used the NV one"
+  },
+  {
+   "name": "Darren Rouvi",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Matt Rowley",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.7,
+   "as_of_match": "2022-03-27",
+   "note": "Last black rating is from 2022"
+  },
+  {
+   "name": "Michael Savage",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 2.35,
+   "as_of_match": "2023-12-02",
+   "note": "3 players with this name; used the NV one"
+  },
+  {
+   "name": "Aaron Schnitz",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.95,
+   "as_of_match": "2023-11-18",
+   "note": null
+  },
+  {
+   "name": "Daniel Simon",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "3 players with this name; used the NV one; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Jen Sisneros",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.08,
+   "as_of_match": "2023-11-29",
+   "note": null
+  },
+  {
+   "name": "Robert Sjoholm",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.67,
+   "as_of_match": "2023-04-28",
+   "note": null
+  },
+  {
+   "name": "Stephen Spelman",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.82,
+   "as_of_match": "2023-04-28",
+   "note": null
+  },
+  {
+   "name": "Jill Spencer",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.63,
+   "as_of_match": "2021-12-20",
+   "note": "Last black rating is from 2021"
+  },
+  {
+   "name": "Audra Stevens",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "2 TR players with this name: Reno (3.5 C) and Las Vegas (2.5 C). Used the Las Vegas one, which matches this sheet; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Ryan Stibor",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.22,
+   "as_of_match": "2023-06-04",
+   "note": null
+  },
+  {
+   "name": "Lindsay Stoddard",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 3.61,
+   "as_of_match": "2023-11-17",
+   "note": null
+  },
+  {
+   "name": "Mark Tetzlaff",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.78,
+   "as_of_match": "2023-06-04",
+   "note": null
+  },
+  {
+   "name": "Paul Theobald",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.15,
+   "as_of_match": "2023-09-16",
+   "note": null
+  },
+  {
+   "name": "Dirk Thye",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 4.26,
+   "as_of_match": "2017-03-25",
+   "note": "Last black rating is from 2017"
+  },
+  {
+   "name": "Kenny Tran",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "4 players with this name; used the NV one; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Howard Tsang",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "Matches through 2015 but no black rating (only red, S or unrated); no legal rating by end of 2023"
+  },
+  {
+   "name": "Angela Ventura",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2024, so no rating by end of 2023"
+  },
+  {
+   "name": "Courtney Wadhams",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Michelle West",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "4 players with this name; used the NV one; no TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "JP White",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.8,
+   "as_of_match": "2023-10-14",
+   "note": null
+  },
+  {
+   "name": "Sanford White",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.15,
+   "as_of_match": "2023-08-12",
+   "note": null
+  },
+  {
+   "name": "Jordan Wickman",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Judy Winreb",
+   "state": "NV",
+   "gender": "Female",
+   "tr_rating": 2.96,
+   "as_of_match": "2021-05-15",
+   "note": "Last black rating is from 2021"
+  },
+  {
+   "name": "Norman Wu",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "No TR matches before 2025, so no rating by end of 2023"
+  },
+  {
+   "name": "Abdiel Yamomo",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": 3.44,
+   "as_of_match": "2023-09-30",
+   "note": null
+  },
+  {
+   "name": "David Young",
+   "state": "NV",
+   "gender": "Male",
+   "tr_rating": null,
+   "as_of_match": null,
+   "note": "19 players with this name; used the NV one; no TR matches before 2025, so no rating by end of 2023"
+  }
+ ]
+}
